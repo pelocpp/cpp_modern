@@ -137,3 +137,4 @@ Für die Implementierung einer Klasse `TowerHanoiView` bieten sich folgende Elem
 Tabelle 2. Öffentliche Elemente der Klasse `TowerHanoiView`.
 
 Eine Klasse `TowerHanoiController` fehlt schließendlich noch zur Umsetzung einer Anwendung auf Basis des MVC-Entwurfsmusters. Im wesentlich besitzt sie eine Reihe von Methoden, die mit den HTML5-`Button`-Steuerelementen aus Abbildung 1 verknüpft sind. Für alle weiteren Details meiner Umsetzung werfen Sie doch bitte einen Blick in den Quellcode.
+Eine Klasse `TowerHanoiController` fehlt schließendlich noch zur Umsetzung einer Anwendung auf Basis des MVC-Entwurfsmusters. Im wesentlich besitzt sie eine Reihe von Methoden, die mit den HTML5-`Button`-Steuerelementen aus Abbildung 1 verknüpft sind. Für alle weiteren Details meiner Umsetzung werfen Sie doch bitte einen Blick in den Quellcode.
