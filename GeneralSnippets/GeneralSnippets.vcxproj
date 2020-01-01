@@ -139,9 +139,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Program.cpp" />
+    <ClCompile Include="ReferenceWrapper\ReferenceWrapper.cpp" />
+    <ClCompile Include="StaticAssert\StaticAssert.cpp" />
+    <ClCompile Include="StructuredBinding\StructuredBinding.cpp" />
+    <ClCompile Include="TypeTraits\TypeTraits.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md" />
+    <None Include="ReferenceWrapper\Readme.md" />
+    <None Include="StaticAssert\Readme.md" />
+    <None Include="StructuredBinding\Readme.md" />
+    <None Include="TypeTraits\Readme.md" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

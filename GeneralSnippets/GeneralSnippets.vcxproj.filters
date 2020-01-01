@@ -18,8 +18,24 @@
     <ClCompile Include="Program.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ReferenceWrapper\ReferenceWrapper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StaticAssert\StaticAssert.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StructuredBinding\StructuredBinding.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TypeTraits\TypeTraits.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md" />
+    <None Include="ReferenceWrapper\Readme.md" />
+    <None Include="StaticAssert\Readme.md" />
+    <None Include="StructuredBinding\Readme.md" />
+    <None Include="TypeTraits\Readme.md" />
   </ItemGroup>
 </Project>
