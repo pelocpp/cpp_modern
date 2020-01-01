@@ -3,16 +3,22 @@
 #include <algorithm>
 
 // =====================================================================================
+// Structured Binding
+// =====================================================================================
+
+// =====================================================================================
+// https://www.geeksforgeeks.org/structured-binding-c/
+// or
+// https://www.grimm-jaud.de/index.php/blog/initialisierung
+// =====================================================================================
+
+
+// =====================================================================================
 // https://www.geeksforgeeks.org/structured-binding-c/
 // =====================================================================================
 
 
 // IST NICHT KOMPLETT ÜBERNOMMEN !!!
-
-// Siehe auch
-
-// https://www.grimm-jaud.de/index.php/blog/initialisierung
-
 
 // creating a structure named Point 
 class Point {
