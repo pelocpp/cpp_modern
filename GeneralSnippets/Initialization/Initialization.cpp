@@ -13,8 +13,6 @@
 // "Peter Pohmann" // Kapitel 2.15
 // =====================================================================================
 
-#include <iostream> 
-
 namespace UniformInitialization {
 
 	void test_01() {
@@ -127,8 +125,7 @@ namespace UniformInitialization {
 	}
 }
 
-int main()
-// int main_uniform_initialization()
+int main_uniform_initialization()
 {
 	using namespace UniformInitialization;
 

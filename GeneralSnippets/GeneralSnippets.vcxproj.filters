@@ -33,6 +33,9 @@
     <ClCompile Include="Initialization\Initialization.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="InitializerList\InitializerList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md" />
@@ -43,5 +46,6 @@
     <None Include="Initialization\Readme.md">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="InitializerList\Readme.md" />
   </ItemGroup>
 </Project>
