@@ -140,6 +140,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Initialization\Initialization.cpp" />
     <ClCompile Include="Program.cpp" />
     <ClCompile Include="ReferenceWrapper\ReferenceWrapper.cpp" />
     <ClCompile Include="StaticAssert\StaticAssert.cpp" />
@@ -148,6 +149,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md" />
+    <None Include="Initialization\Readme.md" />
     <None Include="ReferenceWrapper\Readme.md" />
     <None Include="StaticAssert\Readme.md" />
     <None Include="StructuredBinding\Readme.md" />

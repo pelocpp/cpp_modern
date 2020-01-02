@@ -65,7 +65,7 @@ namespace MyReferenceWrapper {
 
 using namespace MyReferenceWrapper;
 
-int main()
+int main_reference_wrapper ()
 {
     std::cout << "Reference Wrapper" << std::endl;
 

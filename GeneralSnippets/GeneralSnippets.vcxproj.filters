@@ -30,6 +30,9 @@
     <ClCompile Include="TypeTraits\TypeTraits.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Initialization\Initialization.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md" />
@@ -37,5 +40,8 @@
     <None Include="StaticAssert\Readme.md" />
     <None Include="StructuredBinding\Readme.md" />
     <None Include="TypeTraits\Readme.md" />
+    <None Include="Initialization\Readme.md">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
