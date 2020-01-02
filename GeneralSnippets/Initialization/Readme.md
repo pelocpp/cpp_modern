@@ -15,7 +15,7 @@ Ferner wird auf die Initialisierung von Default-Werten eingegangen.
 
 Die Ausgabe des Code-Snippets sieht so aus:
 
-```c++
+```cpp
 99
 Hans
 1, 2, 3, 4, 5,
