@@ -15,7 +15,7 @@ Den Aspekt der Templatespezialisierung kann man an den beiden unterschiedlichen 
 
 ```cpp
 Value: 10
-Value: **1**
+Value: <b>1</b>
 Value: 12.5
 ```
 
@@ -23,7 +23,7 @@ bzw.
 
 ```cpp
 Value: 10
-Value: **true**
+Value: <b>true</b>
 Value: 12.5
 ```
 
