@@ -120,8 +120,7 @@ namespace InitializerList {
     }
 }
 
-int main()
-// int main_initializer_list()
+int main_initializer_list()
 {
     using namespace InitializerList;
 
