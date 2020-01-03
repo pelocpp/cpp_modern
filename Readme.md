@@ -12,6 +12,8 @@ Es folgt eine tabellarische Auflistung der Unterverzeichnisse:
 | StaticAssert | Compile-Time Makro `static_assert` |
 | TypeTraits | Typmerkmale |
 | StructuredBinding | Eine neue Möglichkeit der Rückgabe mehrerer Werte |
+| ClassTemplatesBasics | Grundlagen zu Klassentemplates |
+| FunctionTemplatesBasics | Grundlagen zu Funktionstemplates |
 | MetaProgramming | Programmierung zur Übersetzungszeit |
 
 Tabelle 1. Überblick über alle Code-Snippets

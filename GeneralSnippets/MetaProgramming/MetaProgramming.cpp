@@ -1,10 +1,5 @@
 #include <iostream>
 #include <type_traits>
-//#include <string>
-//#include <iterator>
-//#include <vector>
-//#include <map>
-//#include <algorithm>
 
 // =====================================================================================
 // Metaprogramming
@@ -92,8 +87,7 @@ namespace Metaprogramming {
     }
 }
 
-int main()
-// int main_metaprogramming()
+int main_metaprogramming()
 {
     using namespace Metaprogramming;
 

@@ -140,6 +140,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ClassTemplatesBasics\ClassTemplatesBasics.cpp" />
+    <ClCompile Include="FunctionTemplatesBasics\FunctionTemplatesBasics.cpp" />
     <ClCompile Include="Initialization\Initialization.cpp" />
     <ClCompile Include="InitializerList\InitializerList.cpp" />
     <ClCompile Include="MetaProgramming\MetaProgramming.cpp" />
@@ -151,6 +153,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md" />
+    <None Include="ClassTemplatesBasics\Readme.md" />
+    <None Include="FunctionTemplatesBasics\Readme.md" />
     <None Include="Initialization\Readme.md" />
     <None Include="InitializerList\Readme.md" />
     <None Include="MetaProgramming\Readme.md" />

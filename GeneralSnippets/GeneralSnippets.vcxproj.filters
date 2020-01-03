@@ -39,6 +39,12 @@
     <ClCompile Include="MetaProgramming\MetaProgramming.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="FunctionTemplatesBasics\FunctionTemplatesBasics.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ClassTemplatesBasics\ClassTemplatesBasics.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md" />
@@ -51,5 +57,9 @@
     </None>
     <None Include="InitializerList\Readme.md" />
     <None Include="MetaProgramming\Readme.md" />
+    <None Include="FunctionTemplatesBasics\Readme.md">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="ClassTemplatesBasics\Readme.md" />
   </ItemGroup>
 </Project>
