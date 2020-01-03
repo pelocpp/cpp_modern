@@ -1,5 +1,4 @@
 #include <iostream>
-#include <type_traits>
 
 // =====================================================================================
 // Funktionstemplates
@@ -38,8 +37,7 @@ namespace FunctionTemplatesBasics {
     }
 }
 
-int main()
-// int main_function_templates_basics()
+int main_function_templates_basics()
 {
     using namespace FunctionTemplatesBasics;
 
