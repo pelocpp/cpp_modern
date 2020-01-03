@@ -13,7 +13,7 @@ Es wird auf die beiden Features
 
 Den Aspekt der Templatespezialisierung kann man an den beiden unterschiedlichen Ausgaben
 
-```cpp
+<pre>
 Value: 10
 Value: <b>1</b>
 Value: 12.5
@@ -25,7 +25,7 @@ bzw.
 Value: 10
 Value: <b>true</b>
 Value: 12.5
-```
+</pre>
 
 erkennen.
 
