@@ -8,7 +8,7 @@ Es folgt eine tabellarische Auflistung der Unterverzeichnisse:
 |:-------------- |-----------------------------------------|
 | Initialization | Einheitliches Initialisierungs-Konzept |
 | Initialisierungsliste | Klasse `std::initializer_list<T>` |
-| ReferenceWrapper  | Einsatz von ReferenceWrapper mit Vektoren. |
+| ReferenceWrapper  | Beispiele zum Einsatz eines Referenz-Wrappers |
 | StaticAssert | Compile-Time Makro `static_assert` |
 | TypeTraits | Typmerkmale |
 | StructuredBinding | Eine neue Möglichkeit der Rückgabe mehrerer Werte |
