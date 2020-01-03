@@ -6,11 +6,11 @@ Es folgt eine tabellarische Auflistung der Unterverzeichnisse:
 
 | Unterverzeichnis | Thematik |
 |:-------------- |-----------------------------------------|
+| Initialization | Einheitliches Initialisierungs-Konzept |
+| Initialisierungsliste | Klasse `std::initializer_list<T>` |
 | ReferenceWrapper  | Einsatz von ReferenceWrapper mit Vektoren. |
 | StaticAssert | Compile-Time Makro `static_assert` |
 | TypeTraits | Typmerkmale |
 | StructuredBinding | Eine neue Möglichkeit der Rückgabe mehrerer Werte |
-| Initialization | Einheitliches Initialisierungs-Konzept |
-| Initialisierungsliste | Klasse `std::initializer_list<T>` |
 
 Tabelle 1. Überblick über alle Code-Snippets
