@@ -158,6 +158,7 @@
     <None Include="Initialization\Readme.md" />
     <None Include="InitializerList\Readme.md" />
     <None Include="MetaProgramming\Readme.md" />
+    <None Include="ParametersWithConstAndRef\Readme.md" />
     <None Include="ReferenceWrapper\Readme.md" />
     <None Include="StaticAssert\Readme.md" />
     <None Include="StructuredBinding\Readme.md" />

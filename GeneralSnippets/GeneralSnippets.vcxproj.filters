@@ -61,5 +61,6 @@
       <Filter>Source Files</Filter>
     </None>
     <None Include="ClassTemplatesBasics\Readme.md" />
+    <None Include="ParametersWithConstAndRef\Readme.md" />
   </ItemGroup>
 </Project>
