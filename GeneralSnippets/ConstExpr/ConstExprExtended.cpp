@@ -8,6 +8,8 @@
 
 namespace ConstExprExtended {
 
+#if MY_COMPILER_DOESNT_ACCEPT_THIS_EXAMPLE
+
     template<typename T>
     class List
     {
@@ -179,9 +181,13 @@ namespace ConstExprExtended {
         return l;
     }
 
+#endif
+
     void test_01() {
-        constexpr std::size_t n = range(0, 300).reverse().sort().sum();
-        std::cout << n << std::endl;
+        // my compiler doesn't accept this statement :-)
+
+        // constexpr std::size_t n = range(0, 300).reverse().sort().sum();
+        // std::cout << n << std::endl;
     }
 }
 
