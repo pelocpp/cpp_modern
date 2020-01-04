@@ -1,4 +1,4 @@
-# constexpr - Ausdrücke, die der Compiler zur Übersetzungszeit auswertet.
+# constexpr - Methoden, die der Compiler zur Übersetzungszeit ausführt.
 
 *Allgemeines*:
 

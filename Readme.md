@@ -15,6 +15,7 @@ Es folgt eine tabellarische Auflistung der Unterverzeichnisse:
 | ClassTemplatesBasics | Grundlagen zu Klassentemplates |
 | FunctionTemplatesBasics | Grundlagen zu Funktionstemplates |
 | ParametersWithConstAndRef | Die Deklarationen `int& const`, `int const&`, `const& int` und `const int&` im Vergleich |
-| MetaProgramming | Programmierung zur Übersetzungszeit |
+| ConstExpr | Die Deklarationen `int& const`, `int const&`, `const& int` und `const int&` im Vergleich |
+| MetaProgramming |  Methoden, die der Compiler zur Übersetzungszeit ausführt. |
 
 Tabelle 1. Überblick über alle Code-Snippets
