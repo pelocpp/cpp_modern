@@ -48,11 +48,11 @@ Aus dem engl. C++-Manual habe ich einen Überblick bzgl. der Gestaltungsmöglichke
 
 | Capture Clause Example | Explanation |
 |:-------------- |-----------------------------------------|
-| []	    | Capture nothing (or, a scorched earth strategy?) |
-| [&]	    | Capture any referenced variable by reference |
-| [=]	    | Capture any referenced variable by making a copy |
-| [=, &foo]	| Capture any referenced variable by making a copy, but capture variable foo by reference |
-| [bar]	    | Capture bar by making a copy; don't copy anything else |
-| [this]	| Capture the this pointer of the enclosing class |
+| `[]` | Capture nothing |
+| `[&]` | Capture any referenced variable by reference |
+| `[=]` | Capture any referenced variable by making a copy |
+| `[=, &foo]` | Capture any referenced variable by making a copy, but capture variable `foo` by reference |
+| `[bar]` | Capture `bar` by making a copy; don't copy anything else |
+| `[this]` | Capture the `this` pointer of the enclosing class |
 
 Tabelle: Liste aller Optionen für die Lambda-Zugriffsklausel.
