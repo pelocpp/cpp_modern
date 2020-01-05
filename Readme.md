@@ -14,6 +14,7 @@ Es folgt eine tabellarische Auflistung der Unterverzeichnisse:
 | StructuredBinding | Eine neue Möglichkeit der Rückgabe mehrerer Werte |
 | ClassTemplatesBasics | Grundlagen zu Klassentemplates |
 | FunctionTemplatesBasics | Grundlagen zu Funktionstemplates |
+| Lambda | Lambda-Funktionen |
 | ParametersWithConstAndRef | Die Deklarationen `int& const`, `int const&`, `const& int` und `const int&` im Vergleich |
 | ConstExpr | Methoden, die der Compiler zur Übersetzungszeit ausführt. |
 | MetaProgramming | Programmierung zur Übersetzungszeit. |

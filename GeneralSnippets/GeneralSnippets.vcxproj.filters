@@ -51,6 +51,9 @@
     <ClCompile Include="ConstExpr\ConstExprExtended.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Lambda\Lambda.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md" />
@@ -69,5 +72,6 @@
     <None Include="ClassTemplatesBasics\Readme.md" />
     <None Include="ParametersWithConstAndRef\Readme.md" />
     <None Include="ConstExpr\Readme.md" />
+    <None Include="Lambda\Readme.md" />
   </ItemGroup>
 </Project>
