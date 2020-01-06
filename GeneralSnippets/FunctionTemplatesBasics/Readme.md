@@ -1,6 +1,6 @@
 # Funktionstemplates: Grundlagen
 
-Es word an einem einfachen Beispiel die Syntax zu Funktionstemplates gezeigt.
+Es wird an einem einfachen Beispiel die Syntax zu Funktionstemplates gezeigt.
 
 **Hinweis**:
 
