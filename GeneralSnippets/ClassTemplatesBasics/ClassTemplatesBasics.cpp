@@ -61,6 +61,8 @@ namespace ClassTemplatesBasics_SimpleTemplate_1 {
         std::cout << "Object has value: " << obj2.hasValue() << "\n";
         std::string dontKnow2 = obj2.getValue();
     }
+
+    void test_02() {}
 }
 
 namespace ClassTemplatesBasics_SimpleTemplate_2 {
@@ -132,6 +134,8 @@ namespace ClassTemplatesBasics_SimpleTemplate_2 {
         std::cout << "Object has value: " << obj2.hasValue() << "\n";
         std::string dontKnow2 = obj2.getValue();
     }
+
+    void test_02() {}
 }
 
 namespace ClassTemplatesBasics_MethodsTemplates {
@@ -158,6 +162,8 @@ namespace ClassTemplatesBasics_MethodsTemplates {
         Printer errorPrinter (std::cerr);
         errorPrinter.print(654.321).print(" <== ").print(100).print("\n");
     }
+
+    void test_02() {}
 }
 
 namespace ClassTemplatesBasics_DependentKeywordTypename {
@@ -186,6 +192,8 @@ namespace ClassTemplatesBasics_DependentKeywordTypename {
         infos<long>("long");
         infos<long long>("long long");
     }
+
+    void test_02() {}
 }
 
 namespace ClassTemplatesBasics_TemplateMethodSpecialization {
@@ -225,6 +233,8 @@ namespace ClassTemplatesBasics_TemplateMethodSpecialization {
         stringContainer.setData(std::string("Who am I?"));
         std::cout << stringContainer.getData() << std::endl;
     }
+
+    void test_02() {}
 }
 
 
@@ -343,15 +353,14 @@ namespace ClassTemplatesBasics_PartialClassTemplateSpecialization {
     }
 }
 
-int main()
-// int main_class_templates_basics()
+int main_class_templates_basics()
 {
-    // using namespace ClassTemplatesBasics_SimpleTemplate_1;
-    // using namespace ClassTemplatesBasics_SimpleTemplate_2;
-    // using namespace ClassTemplatesBasics_MethodsTemplates;
-    // using namespace ClassTemplatesBasics_DependentKeywordTypename;
-    // using namespace ClassTemplatesBasics_TemplateMethodSpecialization;
-    using namespace ClassTemplatesBasics_PartialClassTemplateSpecialization;
+    using namespace ClassTemplatesBasics_SimpleTemplate_1;
+    //using namespace ClassTemplatesBasics_SimpleTemplate_2;
+    //using namespace ClassTemplatesBasics_MethodsTemplates;
+    //using namespace ClassTemplatesBasics_DependentKeywordTypename;
+    //using namespace ClassTemplatesBasics_TemplateMethodSpecialization;
+    //using namespace ClassTemplatesBasics_PartialClassTemplateSpecialization;
 
     test_01();
     test_02();
