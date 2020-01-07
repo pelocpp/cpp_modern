@@ -96,14 +96,46 @@ namespace VariadicTemplates {
         // recursive variadic template invocation
         listTypeNames(std::cout, (short) 123, 123, (long) 123, 3.14F, 3.14, 'A', "ABC", false);
     }
+
+    template<typename ...Args>
+    void printer(Args... args) {
+        (std::cout << ... << args) << std::endl;
+    }
+
+    template <typename... Args>
+    void printerWithSeperator(Args... args)
+    {
+        std::string sep = " ";
+        ((std::cout << args << sep), ...) << std::endl;
+    }
+
+    // demonstrating fold expressions
+    void test_04() {
+
+        printer(1, 2, 3, "ABC", "DEF", "GHI");
+        printerWithSeperator(1, 2, 3, "ABC", "DEF", "GHI");
+    }
+
+    template<typename ...Args>
+    auto anotherAdder(Args ...args)
+    {
+        return (args + ... + 0);
+    }
+
+    void test_05() {
+        int sum = anotherAdder<int>(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        std::cout << "Sum from 1 up to 10: " << sum << std::endl;
+    }
 }
 
 int main()
 {
     using namespace VariadicTemplates;
-    test_01();
-    test_02();
-    test_03();
+    //test_01();
+    //test_02();
+    //test_03();
+    test_04();
+    test_05();
     return 0;
 }
 
