@@ -17,11 +17,11 @@ Den Aspekt der Templatespezialisierung kann man an den beiden unterschiedlichen 
 Value: 10
 Value: <b>1</b>
 Value: 12.5
-```
+</pre>
 
 bzw.
 
-```cpp
+<pre>
 Value: 10
 Value: <b>true</b>
 Value: 12.5
