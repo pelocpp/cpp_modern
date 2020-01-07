@@ -57,6 +57,15 @@
     <ClCompile Include="VariadicTemplates\VariadicTemplate.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SharedPtr\SharedPtr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WeakPtr\WeakPtr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UniquePtr\UniquePtr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="ParametersWithConstAndRef\Readme.md">
@@ -99,6 +108,15 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Initialization\Readme.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="UniquePtr\Readme.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="WeakPtr\Readme.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="SharedPtr\Readme.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

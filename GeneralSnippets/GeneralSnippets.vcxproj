@@ -150,10 +150,13 @@
     <ClCompile Include="MetaProgramming\MetaProgramming.cpp" />
     <ClCompile Include="Program.cpp" />
     <ClCompile Include="ReferenceWrapper\ReferenceWrapper.cpp" />
+    <ClCompile Include="SharedPtr\SharedPtr.cpp" />
     <ClCompile Include="StaticAssert\StaticAssert.cpp" />
     <ClCompile Include="StructuredBinding\StructuredBinding.cpp" />
     <ClCompile Include="TypeTraits\TypeTraits.cpp" />
+    <ClCompile Include="UniquePtr\UniquePtr.cpp" />
     <ClCompile Include="VariadicTemplates\VariadicTemplate.cpp" />
+    <ClCompile Include="WeakPtr\WeakPtr.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md" />
@@ -166,10 +169,13 @@
     <None Include="MetaProgramming\Readme.md" />
     <None Include="ParametersWithConstAndRef\Readme.md" />
     <None Include="ReferenceWrapper\Readme.md" />
+    <None Include="SharedPtr\Readme.md" />
     <None Include="StaticAssert\Readme.md" />
     <None Include="StructuredBinding\Readme.md" />
     <None Include="TypeTraits\Readme.md" />
+    <None Include="UniquePtr\Readme.md" />
     <None Include="VariadicTemplates\Readme.md" />
+    <None Include="WeakPtr\Readme.md" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

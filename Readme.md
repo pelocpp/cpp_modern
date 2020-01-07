@@ -10,6 +10,9 @@ Es folgt eine tabellarische Auflistung der Unterverzeichnisse:
 | Initialisierungsliste | Klasse `std::initializer_list<T>` |
 | ReferenceWrapper  | Beispiele zum Einsatz eines Referenz-Wrappers |
 | StaticAssert | Compile-Time Makro `static_assert` |
+| UniquePointer | Klasse `std::unique_ptr<T>` |
+| SharedPointer | Klasse `std::shared_ptr<T>` |
+| WeakPointer | Klasse `std::weak_ptr<T>` |
 | TypeTraits | Typmerkmale |
 | StructuredBinding | Eine neue Möglichkeit der Rückgabe mehrerer Werte |
 | ClassTemplatesBasics | Grundlagen zu Klassentemplates |
@@ -17,7 +20,7 @@ Es folgt eine tabellarische Auflistung der Unterverzeichnisse:
 | Lambda | Lambda-Funktionen |
 | ParametersWithConstAndRef | Die Deklarationen `int& const`, `int const&`, `const& int` und `const int&` im Vergleich |
 | ConstExpr | Methoden, die der Compiler zur Übersetzungszeit ausführt. |
-| VariadicTemplates | Templates mit variabler Argumentanzahl (Variadische Templates). |
+| VariadicTemplates | Templates mit variabler Argumentanzahl (Variadische Templates) und *fold expressions*. |
 | MetaProgramming | Programmierung zur Übersetzungszeit. |
 
 Tabelle 1. Überblick über alle Code-Snippets

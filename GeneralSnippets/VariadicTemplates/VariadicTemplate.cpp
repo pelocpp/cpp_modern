@@ -128,7 +128,7 @@ namespace VariadicTemplates {
     }
 }
 
-int main()
+int main_variadic_templates()
 {
     using namespace VariadicTemplates;
     //test_01();
