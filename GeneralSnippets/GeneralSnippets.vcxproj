@@ -153,6 +153,7 @@
     <ClCompile Include="StaticAssert\StaticAssert.cpp" />
     <ClCompile Include="StructuredBinding\StructuredBinding.cpp" />
     <ClCompile Include="TypeTraits\TypeTraits.cpp" />
+    <ClCompile Include="VariadicTemplates\VariadicTemplate.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md" />
@@ -168,6 +169,7 @@
     <None Include="StaticAssert\Readme.md" />
     <None Include="StructuredBinding\Readme.md" />
     <None Include="TypeTraits\Readme.md" />
+    <None Include="VariadicTemplates\Readme.md" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -17,6 +17,7 @@ Es folgt eine tabellarische Auflistung der Unterverzeichnisse:
 | Lambda | Lambda-Funktionen |
 | ParametersWithConstAndRef | Die Deklarationen `int& const`, `int const&`, `const& int` und `const int&` im Vergleich |
 | ConstExpr | Methoden, die der Compiler zur Übersetzungszeit ausführt. |
+| VariadicTemplates | Templates mit variabler Argumentanzahl (Variadische Templates). |
 | MetaProgramming | Programmierung zur Übersetzungszeit. |
 
 Tabelle 1. Überblick über alle Code-Snippets

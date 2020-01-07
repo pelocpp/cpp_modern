@@ -54,24 +54,52 @@
     <ClCompile Include="Lambda\Lambda.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="VariadicTemplates\VariadicTemplate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\Readme.md" />
-    <None Include="ReferenceWrapper\Readme.md" />
-    <None Include="StaticAssert\Readme.md" />
-    <None Include="StructuredBinding\Readme.md" />
-    <None Include="TypeTraits\Readme.md" />
-    <None Include="Initialization\Readme.md">
-      <Filter>Source Files</Filter>
+    <None Include="ParametersWithConstAndRef\Readme.md">
+      <Filter>Resource Files</Filter>
     </None>
-    <None Include="InitializerList\Readme.md" />
-    <None Include="MetaProgramming\Readme.md" />
+    <None Include="ClassTemplatesBasics\Readme.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Readme.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="StaticAssert\Readme.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="InitializerList\Readme.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Lambda\Readme.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="StructuredBinding\Readme.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="MetaProgramming\Readme.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="ConstExpr\Readme.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="ReferenceWrapper\Readme.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="TypeTraits\Readme.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="VariadicTemplates\Readme.md">
+      <Filter>Resource Files</Filter>
+    </None>
     <None Include="FunctionTemplatesBasics\Readme.md">
-      <Filter>Source Files</Filter>
+      <Filter>Resource Files</Filter>
     </None>
-    <None Include="ClassTemplatesBasics\Readme.md" />
-    <None Include="ParametersWithConstAndRef\Readme.md" />
-    <None Include="ConstExpr\Readme.md" />
-    <None Include="Lambda\Readme.md" />
+    <None Include="Initialization\Readme.md">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
