@@ -13,6 +13,7 @@ Es folgt eine tabellarische Auflistung der Unterverzeichnisse:
 | ConstructursOrder | Reihenfolge der Aufrufe von Konstruktoren und Destruktoren |
 | ReferenceWrapper  | Beispiele zum Einsatz eines Referenz-Wrappers |
 | StaticAssert | Compile-Time Makro `static_assert` |
+| InputOutputStreams | Streams manipulieren und formatieren |
 | UniquePointer | Klasse `std::unique_ptr<T>` |
 | SharedPointer | Klasse `std::shared_ptr<T>` |
 | WeakPointer | Klasse `std::weak_ptr<T>` |

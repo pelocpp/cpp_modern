@@ -37,7 +37,7 @@ const char* - value: ABC
 bool - value: 0
 ```
 
-Ausgabe der Code-Snippets zu  *fold expressions*:
+Ausgabe der Code-Snippets zu *fold expressions*:
 
 ```cpp
 123ABCDEFGHI

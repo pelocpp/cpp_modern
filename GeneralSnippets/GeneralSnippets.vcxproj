@@ -148,6 +148,7 @@
     <ClCompile Include="FunctionTemplatesBasics\FunctionTemplatesBasics.cpp" />
     <ClCompile Include="Initialization\Initialization.cpp" />
     <ClCompile Include="InitializerList\InitializerList.cpp" />
+    <ClCompile Include="InputOutputStreams\InputOutputStreams.cpp" />
     <ClCompile Include="Lambda\Lambda.cpp" />
     <ClCompile Include="MetaProgramming\MetaProgramming.cpp" />
     <ClCompile Include="Program.cpp" />
@@ -169,6 +170,7 @@
     <None Include="FunctionTemplatesBasics\Readme.md" />
     <None Include="Initialization\Readme.md" />
     <None Include="InitializerList\Readme.md" />
+    <None Include="InputOutputStreams\Readme.md" />
     <None Include="Lambda\Readme.md" />
     <None Include="MetaProgramming\Readme.md" />
     <None Include="ParametersWithConstAndRef\Readme.md" />

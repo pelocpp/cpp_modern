@@ -40,7 +40,7 @@ namespace OrderConstructorInvocations {
     }
 }
 
-int main()
+int main_order_constructor_invocations()
 {
     using namespace OrderConstructorInvocations;
     test_01();

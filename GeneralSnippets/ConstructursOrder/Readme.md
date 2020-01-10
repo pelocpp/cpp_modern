@@ -15,7 +15,7 @@ Prinzipiell gilt:
   2. Hat die Klasse (genauer: das Objekt) Unterobjekte, so werden als Zweites die Konstruktoren der Unterobjekte aufgerufen.
      Die Reihenfolge ergibt sich dabei aus der textuellen Reihenfolge, in der die Unterobjekte in der umgebenden Klasse definiert sind.
 
-  3. Der Konstruktor des aktuellen Objekts (genauer: der Rumpf dieses Konstruktores) gelangt nun zur Ausführung.
+  3. Der Konstruktor des aktuellen Objekts (genauer: der Rumpf dieses Konstruktors) gelangt nun zur Ausführung.
 
   Bzgl. der Aufrufe der Destruktoren kann man sagen, dass diese in der genau umgekehrten Reihenfolge aufgerufen werden.
 
