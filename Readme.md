@@ -8,6 +8,7 @@ Es folgt eine tabellarische Auflistung der Unterverzeichnisse:
 |:-------------- |-----------------------------------------|
 | Initialization | Einheitliches Initialisierungs-Konzept |
 | Initialisierungsliste | Klasse `std::initializer_list<T>` |
+| Typumwandlungen |  `static_cast`, `dynamic_cast`, `const_cast` und `reinterpret_cast` |
 | ReferenceWrapper  | Beispiele zum Einsatz eines Referenz-Wrappers |
 | StaticAssert | Compile-Time Makro `static_assert` |
 | UniquePointer | Klasse `std::unique_ptr<T>` |
