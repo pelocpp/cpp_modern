@@ -8,7 +8,8 @@ Es folgt eine tabellarische Auflistung der Unterverzeichnisse:
 |:-------------- |-----------------------------------------|
 | Initialization | Einheitliches Initialisierungs-Konzept |
 | Initialisierungsliste | Klasse `std::initializer_list<T>` |
-| Typumwandlungen |  `static_cast`, `dynamic_cast`, `const_cast` und `reinterpret_cast` |
+| Typumwandlungen | `static_cast`, `dynamic_cast`, `const_cast` und `reinterpret_cast` |
+| ParametersWithConstAndRef | Die Deklarationen `int& const`, `int const&`, `const& int` und `const int&` im Vergleich |
 | ReferenceWrapper  | Beispiele zum Einsatz eines Referenz-Wrappers |
 | StaticAssert | Compile-Time Makro `static_assert` |
 | UniquePointer | Klasse `std::unique_ptr<T>` |
@@ -19,7 +20,6 @@ Es folgt eine tabellarische Auflistung der Unterverzeichnisse:
 | ClassTemplatesBasics | Grundlagen zu Klassentemplates |
 | FunctionTemplatesBasics | Grundlagen zu Funktionstemplates |
 | Lambda | Lambda-Funktionen |
-| ParametersWithConstAndRef | Die Deklarationen `int& const`, `int const&`, `const& int` und `const int&` im Vergleich |
 | ConstExpr | Methoden, die der Compiler zur Übersetzungszeit ausführt. |
 | VariadicTemplates | Templates mit variabler Argumentanzahl (Variadische Templates) und *fold expressions*. |
 | MetaProgramming | Programmierung zur Übersetzungszeit. |
