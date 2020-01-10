@@ -7,8 +7,8 @@ Es folgt eine tabellarische Auflistung der Unterverzeichnisse:
 | Unterverzeichnis | Thematik |
 |:-------------- |-----------------------------------------|
 | Initialization | Einheitliches Initialisierungs-Konzept |
-| Initialisierungsliste | Klasse `std::initializer_list<T>` |
-| Typumwandlungen | `static_cast`, `dynamic_cast`, `const_cast` und `reinterpret_cast` |
+| InitializerList | Klasse `std::initializer_list<T>` |
+| Casts | Die Typumwandlungen `static_cast`, `dynamic_cast`, `const_cast` und `reinterpret_cast` |
 | ParametersWithConstAndRef | Die Deklarationen `int& const`, `int const&`, `const& int` und `const int&` im Vergleich |
 | ReferenceWrapper  | Beispiele zum Einsatz eines Referenz-Wrappers |
 | StaticAssert | Compile-Time Makro `static_assert` |
