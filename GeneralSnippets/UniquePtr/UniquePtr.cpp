@@ -70,8 +70,7 @@ namespace UniquePointer {
     }
 }
 
-int main()
-// int main_unique_pointer()
+int main_unique_pointer()
 {
     using namespace UniquePointer;
     // test_01();

@@ -66,6 +66,9 @@
     <ClCompile Include="UniquePtr\UniquePtr.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Casts\Casts.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="ParametersWithConstAndRef\Readme.md">
@@ -117,6 +120,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="SharedPtr\Readme.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Casts\Readme.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
