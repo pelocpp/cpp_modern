@@ -10,6 +10,7 @@ Es folgt eine tabellarische Auflistung der Unterverzeichnisse:
 | InitializerList | Klasse `std::initializer_list<T>` |
 | Casts | Typumwandlungen `static_cast`, `dynamic_cast`, `const_cast` und `reinterpret_cast` |
 | ParametersWithConstAndRef | Die Deklarationen `int& const`, `int const&`, `const& int` und `const int&` im Vergleich |
+| ConstructursOrder | Reihenfolge der Aufrufe von Konstruktoren und Destruktoren |
 | ReferenceWrapper  | Beispiele zum Einsatz eines Referenz-Wrappers |
 | StaticAssert | Compile-Time Makro `static_assert` |
 | UniquePointer | Klasse `std::unique_ptr<T>` |

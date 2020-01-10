@@ -69,6 +69,9 @@
     <ClCompile Include="Casts\Casts.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ConstructursOrder\ConstructorsOrder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="ParametersWithConstAndRef\Readme.md">
@@ -123,6 +126,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Casts\Readme.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="ConstructursOrder\Readme.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

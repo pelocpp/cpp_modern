@@ -159,7 +159,7 @@ namespace CastReinterpret {
     }
 }
 
-int main()
+int main_casts()
 {
     using namespace CastStatic;
     // using namespace CastDynamic;

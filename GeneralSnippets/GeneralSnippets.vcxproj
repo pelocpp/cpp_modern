@@ -144,6 +144,7 @@
     <ClCompile Include="ClassTemplatesBasics\ClassTemplatesBasics.cpp" />
     <ClCompile Include="ConstExpr\ConstExpr.cpp" />
     <ClCompile Include="ConstExpr\ConstExprExtended.cpp" />
+    <ClCompile Include="ConstructursOrder\ConstructorsOrder.cpp" />
     <ClCompile Include="FunctionTemplatesBasics\FunctionTemplatesBasics.cpp" />
     <ClCompile Include="Initialization\Initialization.cpp" />
     <ClCompile Include="InitializerList\InitializerList.cpp" />
@@ -164,6 +165,7 @@
     <None Include="Casts\Readme.md" />
     <None Include="ClassTemplatesBasics\Readme.md" />
     <None Include="ConstExpr\Readme.md" />
+    <None Include="ConstructursOrder\Readme.md" />
     <None Include="FunctionTemplatesBasics\Readme.md" />
     <None Include="Initialization\Readme.md" />
     <None Include="InitializerList\Readme.md" />
