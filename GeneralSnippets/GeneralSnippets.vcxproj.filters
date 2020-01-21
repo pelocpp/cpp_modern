@@ -81,6 +81,9 @@
     <ClCompile Include="TemplateTemplateParameter\TemplateTemplateParameter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PerfectForwarding\PerfectForwarding.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="ParametersWithConstAndRef\Readme.md">
@@ -149,5 +152,6 @@
     <None Include="TemplateTemplateParameter\Readme.md">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="PerfectForwarding\Readme.md" />
   </ItemGroup>
 </Project>

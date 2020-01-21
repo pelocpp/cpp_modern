@@ -85,7 +85,7 @@ namespace TemplateTemplateParameter {
     }
 }
 
-int main() {
+int main_template_template_parameter() {
 
     using namespace TemplateTemplateParameter;
 

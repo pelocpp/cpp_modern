@@ -151,6 +151,7 @@
     <ClCompile Include="InputOutputStreams\InputOutputStreams.cpp" />
     <ClCompile Include="Lambda\Lambda.cpp" />
     <ClCompile Include="MetaProgramming\MetaProgramming.cpp" />
+    <ClCompile Include="PerfectForwarding\PerfectForwarding.cpp" />
     <ClCompile Include="Program.cpp" />
     <ClCompile Include="ReferenceWrapper\ReferenceWrapper.cpp" />
     <ClCompile Include="RValueLValue\RValueLValue.cpp" />
@@ -176,6 +177,7 @@
     <None Include="Lambda\Readme.md" />
     <None Include="MetaProgramming\Readme.md" />
     <None Include="ParametersWithConstAndRef\Readme.md" />
+    <None Include="PerfectForwarding\Readme.md" />
     <None Include="ReferenceWrapper\Readme.md" />
     <None Include="RValueLValue\Readme.md" />
     <None Include="SharedPtr\Readme.md" />
