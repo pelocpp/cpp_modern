@@ -157,6 +157,7 @@
     <ClCompile Include="SharedPtr\SharedPtr.cpp" />
     <ClCompile Include="StaticAssert\StaticAssert.cpp" />
     <ClCompile Include="StructuredBinding\StructuredBinding.cpp" />
+    <ClCompile Include="TemplateTemplateParameter\TemplateTemplateParameter.cpp" />
     <ClCompile Include="TypeTraits\TypeTraits.cpp" />
     <ClCompile Include="UniquePtr\UniquePtr.cpp" />
     <ClCompile Include="VariadicTemplates\VariadicTemplate.cpp" />
@@ -180,6 +181,7 @@
     <None Include="SharedPtr\Readme.md" />
     <None Include="StaticAssert\Readme.md" />
     <None Include="StructuredBinding\Readme.md" />
+    <None Include="TemplateTemplateParameter\Readme.md" />
     <None Include="TypeTraits\Readme.md" />
     <None Include="UniquePtr\Readme.md" />
     <None Include="VariadicTemplates\Readme.md" />

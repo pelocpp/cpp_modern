@@ -72,7 +72,7 @@ namespace LValueRValue {
 
 
 
-int main() {
+int main_rvalue_lvalue() {
 
     using namespace LValueRValue;
 
