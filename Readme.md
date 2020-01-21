@@ -25,5 +25,6 @@ Es folgt eine tabellarische Auflistung der Unterverzeichnisse:
 | ConstExpr | Methoden, die der Compiler zur Übersetzungszeit ausführt. |
 | VariadicTemplates | Templates mit variabler Argumentanzahl (Variadische Templates) und *fold expressions*. |
 | MetaProgramming | Programmierung zur Übersetzungszeit. |
+| RValueLValue | LValue- und RValue Referenzen. |
 
 Tabelle 1. Überblick über alle Code-Snippets

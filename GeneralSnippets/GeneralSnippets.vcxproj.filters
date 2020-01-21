@@ -75,6 +75,9 @@
     <ClCompile Include="InputOutputStreams\InputOutputStreams.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="RValueLValue\RValueLValue.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="ParametersWithConstAndRef\Readme.md">
@@ -137,5 +140,6 @@
     <None Include="InputOutputStreams\Readme.md">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="RValueLValue\Readme.md" />
   </ItemGroup>
 </Project>

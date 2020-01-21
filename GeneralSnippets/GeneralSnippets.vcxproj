@@ -153,6 +153,7 @@
     <ClCompile Include="MetaProgramming\MetaProgramming.cpp" />
     <ClCompile Include="Program.cpp" />
     <ClCompile Include="ReferenceWrapper\ReferenceWrapper.cpp" />
+    <ClCompile Include="RValueLValue\RValueLValue.cpp" />
     <ClCompile Include="SharedPtr\SharedPtr.cpp" />
     <ClCompile Include="StaticAssert\StaticAssert.cpp" />
     <ClCompile Include="StructuredBinding\StructuredBinding.cpp" />
@@ -175,6 +176,7 @@
     <None Include="MetaProgramming\Readme.md" />
     <None Include="ParametersWithConstAndRef\Readme.md" />
     <None Include="ReferenceWrapper\Readme.md" />
+    <None Include="RValueLValue\Readme.md" />
     <None Include="SharedPtr\Readme.md" />
     <None Include="StaticAssert\Readme.md" />
     <None Include="StructuredBinding\Readme.md" />

@@ -16,4 +16,3 @@ d'tor Dummy
 Weak_ptr expired: 1
 End-of-program
 ```
-
