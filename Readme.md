@@ -26,5 +26,6 @@ Es folgt eine tabellarische Auflistung der Unterverzeichnisse:
 | VariadicTemplates | Templates mit variabler Argumentanzahl (Variadische Templates) und *fold expressions*. |
 | MetaProgramming | Programmierung zur Übersetzungszeit. |
 | RValueLValue | LValue- und RValue Referenzen. |
+| TemplateTemplateParameter | Template Template Parameter. |
 
 Tabelle 1. Überblick über alle Code-Snippets

@@ -146,6 +146,8 @@
     <None Include="RValueLValue\Readme.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="TemplateTemplateParameter\Readme.md" />
+    <None Include="TemplateTemplateParameter\Readme.md">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
