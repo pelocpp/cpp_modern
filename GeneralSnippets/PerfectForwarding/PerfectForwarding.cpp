@@ -7,22 +7,25 @@
 namespace PerfectForwarding {
 
     void overloaded(int const& arg) {
-        std::cout << "by lvalue" << std::endl;
+        std::cout << "By lvalue" << std::endl;
     }
 
     void overloaded(int&& arg) { 
-        std::cout << "by rvalue" << std::endl;
+        std::cout << "By rvalue" << std::endl;
     }
 
-    template< typename t >
-    /* "t &&" with "t" being template param is special, and  adjusts "t" to be
-       (for example) "int &" or non-ref "int" so std::forward knows what to do. */
-    void forwarding(t&& arg) {
+    /*
+     * Note: "T&&" with "T" being template param is special:
+     *       It adjusts "T" to be (for example) "int &" or non-ref "int" so std::forward knows what to do.
+     */
+
+    template <typename T>
+    void forwarding(T&& arg) {
         std::cout << "via std::forward: ";
-        overloaded(std::forward< t >(arg));
+        overloaded(std::forward<T>(arg));
         std::cout << "via std::move: ";
-        overloaded(std::move(arg)); // conceptually this would invalidate arg
-        std::cout << "by simple passing: ";
+        overloaded(std::move(arg));  // conceptually this would invalidate arg
+        std::cout << "By simple passing: ";
         overloaded(arg);
     }
 

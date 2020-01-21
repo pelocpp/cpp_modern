@@ -21,11 +21,11 @@ This allows rvalue arguments to be passed on as rvalues, and lvalues to be passe
 
 ```cpp
 initial caller passes rvalue:
-via std::forward: by rvalue
-via std::move: by rvalue
-by simple passing: by lvalue
+via std::forward: By rvalue
+via std::move: By rvalue
+By simple passing: By lvalue
 initial caller passes lvalue:
-via std::forward: by lvalue
-via std::move: by rvalue
-by simple passing: by lvalue
+via std::forward: By lvalue
+via std::move: By rvalue
+By simple passing: By lvalue
 ```

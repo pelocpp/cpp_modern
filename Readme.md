@@ -27,5 +27,6 @@ Es folgt eine tabellarische Auflistung der Unterverzeichnisse:
 | MetaProgramming | Programmierung zur Übersetzungszeit. |
 | RValueLValue | LValue- und RValue Referenzen. |
 | TemplateTemplateParameter | Template Template Parameter. |
+| PerfectForwarding | Perfect Forwarding (`std::forward`). |
 
 Tabelle 1. Überblick über alle Code-Snippets
