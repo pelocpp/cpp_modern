@@ -22,7 +22,7 @@ sind am Anfang der C++-Quelldatei folgende Zeilen hinzuzufügen:
 #endif  // _DEBUG
 ```
 
-Die endgültige Aktivierung findet in der main-Funktion statt:
+Die endgültige Aktivierung findet in der `main`-Funktion statt:
 
 ```cpp
 int main() {
