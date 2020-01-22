@@ -6,6 +6,7 @@ Es folgt eine tabellarische Auflistung der Unterverzeichnisse:
 
 | Unterverzeichnis | Thematik |
 |:-------------- |-----------------------------------------|
+| MemoryLeaks | CRT (C-Runtime-Library) Memory Leak Detection |
 | Initialization | Einheitliches Initialisierungs-Konzept |
 | InitializerList | Klasse `std::initializer_list<T>` |
 | Casts | Typumwandlungen `static_cast`, `dynamic_cast`, `const_cast` und `reinterpret_cast` |

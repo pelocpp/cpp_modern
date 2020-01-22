@@ -150,6 +150,7 @@
     <ClCompile Include="InitializerList\InitializerList.cpp" />
     <ClCompile Include="InputOutputStreams\InputOutputStreams.cpp" />
     <ClCompile Include="Lambda\Lambda.cpp" />
+    <ClCompile Include="MemoryLeaks\MemoryLeaks.cpp" />
     <ClCompile Include="MetaProgramming\MetaProgramming.cpp" />
     <ClCompile Include="PerfectForwarding\PerfectForwarding.cpp" />
     <ClCompile Include="Program.cpp" />
@@ -175,6 +176,7 @@
     <None Include="InitializerList\Readme.md" />
     <None Include="InputOutputStreams\Readme.md" />
     <None Include="Lambda\Readme.md" />
+    <None Include="MemoryLeaks\Readme.md" />
     <None Include="MetaProgramming\Readme.md" />
     <None Include="ParametersWithConstAndRef\Readme.md" />
     <None Include="PerfectForwarding\Readme.md" />
