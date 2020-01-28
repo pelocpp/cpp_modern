@@ -1,4 +1,5 @@
-# Lambda-Funktionen
+
+-Funktionen
 
 *Allgemeines*:
 
@@ -11,15 +12,15 @@ Es werden folgende Überlegungen der Reihe nach betrachtet:
   * Betrachtung 2:</br>Sortieren eines Vektors mit Lambda-Methode:</br>
     Er werden die Vereinfachungen bzgl. der ersten Variante vorgestellt.
 
-  * Betrachtung 3:</br>Blick auf die *Capture Clause* / Zugriffsklausel</br>
+  * Betrachtung 3:</br>Blick auf die *Capture Clause*: / Zugriffsklausel</br>
     Es wird auf die Lambda-Zugriffsklausel (engl.: *Capture Clause*) eingegangen.
 
-* Betrachtung 4:</br>`std::function`<> Methode</br>
+* Betrachtung 4:</br>`std::function`<> Methode:</br>
     Der generische Wrapper `std::function` wird eingeführt.
 
 
 Teilweise werden Beispiele (mit gutem und schlechtem Vorbildcharakter) entworfen,
-um auf die Problematik von Lambda-Zugriffsklausel näher einzugehen.
+um auf die Problematik der Lambda-Zugriffsklausel näher einzugehen.
 
 
 Die Ausgabe von Betrachtung 3 sieht auf meinem Rechner wie folgt aus:
@@ -30,10 +31,10 @@ Reference: -858993460 -858993460
 ```
 
 In der vierten Betrachtung ist es mit Hilfe des Standard-Wrappers `std::function` möglich, Lambda-Funktionen
-auch als (Aktual-)Parameter an andere Methoden/Funktionen übergeben zu können.
+auch als (Aktual-)Parameter an andere Methoden/Funktionen zu übergeben.
 
-Die Vielfältigkeiten im Umgang mit Lamda-Funktionen werden damit noch größer - es ändert sich aber nichts an dem Umstand,
-dass Zugriffsklausel mit Referenzen nicht zum erwünschten Resultat führen:
+Die Vielfältigkeiten im Umgang mit Lambda-Funktionen werden damit noch größer - es ändert sich aber nichts an dem Umstand,
+dass Zugriffsklauseln mit Referenzen nicht zum erwünschten Resultat führen:
 
 Die Ausgabe von Betrachtung 4 sieht auf meinem Rechner wie folgt aus:
 

@@ -58,8 +58,7 @@ namespace WeakPointer {
     }
 }
 
-int main()
-// int main_weak_pointer()
+int main_weak_pointer()
 {
     using namespace WeakPointer;
     test_01();

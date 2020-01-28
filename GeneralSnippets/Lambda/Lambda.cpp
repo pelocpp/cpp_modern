@@ -123,7 +123,10 @@ namespace Lambda {
         outerLambda2();
     }
 
-    std::pair<std::function<void(std::string const&)>, std::function<void(std::string const&)>> test_05_helper_a() {
+    std::pair<
+        std::function<void(std::string const&)>, 
+        std::function<void(std::string const&)>
+    > test_05_helper_a() {
 
         int n = 1;
         int m = 2;
@@ -136,7 +139,9 @@ namespace Lambda {
             std::cerr << info << "Reference: " << n << " " << m << std::endl;
         };
 
-        return std::pair<std::function<void(std::string const&)>, std::function<void(std::string const&)>>(lambda1, lambda2);
+        return std::pair<
+            std::function<void(std::string const&)>,
+            std::function<void(std::string const&)>>(lambda1, lambda2);
     }
 
     void test_05_helper_b(std::function<void(std::string const&)> lambda) {
@@ -155,13 +160,14 @@ namespace Lambda {
     }
 }
 
-int main_lambdas()
+int main()
+// int main_lambdas()
 {
     using namespace Lambda;
-    //test_01();
-    //test_02();
-    //test_03();
-    // test_04();
+    test_01();
+    test_02();
+    test_03();
+    test_04();
     test_05();
     return 0;
 }
