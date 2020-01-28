@@ -14,7 +14,9 @@ namespace WeakPointer {
 
     public:
 
-        Dummy() = default;
+        Dummy() {
+            std::cerr << "c'tor Dummy" << std::endl;
+        }
 
         ~Dummy() {
             std::cerr << "d'tor Dummy" << std::endl;
@@ -33,30 +35,31 @@ namespace WeakPointer {
         {
             std::cout << "Begin-of-Scope" << std::endl;
 
-            std::shared_ptr<Dummy> ptr (new Dummy);
+            std::shared_ptr<Dummy> ptr = std::make_shared<Dummy>();
 
             std::cerr << "Usage count shared_ptr: " << ptr.use_count() << std::endl;
 
             weak = ptr;
 
-            std::cerr << "Weak_ptr expired: " << weak.expired() << std::endl;
+            std::cerr << "Is weak ptr expired: " << weak.expired() << std::endl;
 
             // need shared pointer to access weak pointer
-            std::shared_ptr<Dummy> tempSharedPtr = weak.lock(); 
+            std::shared_ptr<Dummy> tempPtr = weak.lock(); 
             std::cerr << "Usage count shared_ptr: " << ptr.use_count() << std::endl;
 
             // access weak pointer via shared pointer
-            tempSharedPtr->helloWorld();
+            tempPtr->helloWorld();
 
             std::cout << "End-of-Scope" << std::endl;
         }
 
-        std::cerr << "Weak_ptr expired: " << weak.expired() << std::endl;
+        std::cerr << "Is weak ptr expired: " << weak.expired() << std::endl;
         std::cout << "End-of-program" << std::endl;
     }
 }
 
-int main_weak_pointer()
+int main()
+// int main_weak_pointer()
 {
     using namespace WeakPointer;
     test_01();

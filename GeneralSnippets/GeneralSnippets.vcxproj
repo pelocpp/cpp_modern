@@ -161,7 +161,8 @@
     <ClCompile Include="StructuredBinding\StructuredBinding.cpp" />
     <ClCompile Include="TemplateTemplateParameter\TemplateTemplateParameter.cpp" />
     <ClCompile Include="TypeTraits\TypeTraits.cpp" />
-    <ClCompile Include="UniquePtr\UniquePtr.cpp" />
+    <ClCompile Include="UniquePtr\UniquePtr01.cpp" />
+    <ClCompile Include="UniquePtr\UniquePtr02.cpp" />
     <ClCompile Include="VariadicTemplates\VariadicTemplate.cpp" />
     <ClCompile Include="WeakPtr\WeakPtr.cpp" />
   </ItemGroup>

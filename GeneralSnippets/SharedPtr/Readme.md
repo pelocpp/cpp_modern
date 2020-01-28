@@ -10,6 +10,7 @@ Ausgabe des Code-Snippets - klassisch:
 
 ```cpp
 Begin-of-program
+c'tor Dummy
 Hello World
 d'tor Dummy
 End-of-program
@@ -19,7 +20,11 @@ Ausgabe des Code-Snippets - mit Wrapper-Klasse:
 
 ```cpp
 Begin-of-program
+c'tor Dummy
+outer use_count: 1
 Hello World
+inner use_count: 2
+outer use_count: 1
 End-of-program
 d'tor Dummy
 ```
@@ -32,3 +37,17 @@ damit kommt es zum Destruktor-Aufruf, bevor die `main`-Funktion verlassen wird.
 
 In der zweiten Variante wird der Destruktor des Testobjekts implizit im Destruktor der `std::shared_ptr`-Wrapperklasse aufgerufen.
 Damit erfolgen etwaige Testausgaben nach dem eigentlichen Verlassen der `main`-Funktion.
+
+Ein weiteres Snippet demonstriert, wie sich ein Shared-Pointer "sharen" lässt:
+
+Ausgabe des Code-Snippets:
+
+```cpp
+Begin-of-program
+c'tor Dummy
+use_count: 3
+use_count: 3
+use_count: 3
+End-of-program
+d'tor Dummy
+```

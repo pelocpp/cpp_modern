@@ -25,7 +25,9 @@ namespace SharedPointer {
 
     public:
 
-        Dummy() = default;
+        Dummy() {
+            std::cerr << "c'tor Dummy" << std::endl;
+        }
 
         ~Dummy() {
             std::cerr << "d'tor Dummy" << std::endl;
@@ -57,9 +59,12 @@ namespace SharedPointer {
         // return std::shared_ptr<Dummy>(new Dummy);
     }
 
-    void doSomething2(std::shared_ptr<Dummy> const& ptr) {
+    // note: play with 'call-by-value' or 'call-by-reference'
+    void doSomething2(const std::shared_ptr<Dummy> ptr) {
 
         ptr->helloWorld();
+
+        std::cout << "inner use_count: " << ptr.use_count() <<  std::endl;
 
         // note: what happens, if delete is called on ptr?
         // you don't do that!
@@ -67,16 +72,39 @@ namespace SharedPointer {
 
     void test_01() {
         std::cout << "Begin-of-program" << std::endl;
+        // creation:
+        // 'firstShared' is a shared pointer for a new instance of 'Dummy' 
+        std::shared_ptr<Dummy> firstShared = std::make_shared<Dummy>();
+
+        // create several smart pointers that share the same object
+        std::shared_ptr<Dummy> secondShared(firstShared);
+        // 1st way: Copy constructing
+
+        std::shared_ptr<Dummy> thirdShared;
+        thirdShared = firstShared;
+        // 2nd way: Assigning
+
+        std::cout << "use_count: " << firstShared.use_count() << std::endl;
+        std::cout << "use_count: " << secondShared.use_count() << std::endl;
+        std::cout << "use_count: " << thirdShared.use_count() << std::endl;
+
+        std::cout << "End-of-program" << std::endl;
+    }
+
+    void test_02() {
+        std::cout << "Begin-of-program" << std::endl;
         Dummy* dummy = createDummy();
         doSomething(dummy);
         delete dummy;
         std::cout << "End-of-program" << std::endl;
     }
 
-    void test_02() {
+    void test_03() {
         std::cout << "Begin-of-program" << std::endl;
         std::shared_ptr<Dummy> ptr = createDummy2();
+        std::cout << "outer use_count: " << ptr.use_count() << std::endl;
         doSomething2(ptr);
+        std::cout << "outer use_count: " << ptr.use_count() << std::endl;
         // no explicit delete on Object ptr - shared ptr goes out of scope!
         std::cout << "End-of-program" << std::endl;
     }
@@ -89,6 +117,7 @@ int main_shared_ptr()
     using namespace SharedPointer;
     test_01();
     test_02();
+    test_03();
     return 0;
 }
 
