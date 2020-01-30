@@ -1,88 +1,84 @@
-// ===============================================================================
-// Unique Pointer - Zweites Beispiel
-// ===============================================================================
+// =====================================================================================
+// Unique Pointer - Beispiel aus Buch
+// =====================================================================================
 
 #include <iostream>
 #include <memory>
 
-namespace UniquePointerZwei {
+namespace UniquePointer {
 
-    class Dummy
-    {
-        Dummy(Dummy const&) = default;
-        Dummy& operator=(Dummy const&) = default;
+    // Dummy Window Hierarchy
+    class Component { };             
+    class Label : public Component { };
+    class Textfield : public Component { };
 
+    class Button : public Component {
     public:
-
-        Dummy() {
-            std::cerr << "c'tor Dummy" << std::endl;
-        }
-
-        ~Dummy() {
-            std::cerr << "d'tor Dummy" << std::endl;
-        }
-
-        void helloWorld() {
-            std::cerr << "Hello World" << std::endl;
-        }
+        int m_id; // need explicit ID for different buttons
+        explicit Button(int id) : m_id{ id } {}
     };
 
-    std::unique_ptr<int> createUniquePointer()
-    {
-        std::unique_ptr<int> ptr = std::make_unique<int>(100);
-        return ptr;
+    class Window { };
+
+    class MyDialog : public Window {
+        std::string m_title;
+
+        // all these widgets are bound to the lifetime of the corresponding 'MyDialog' object
+        std::unique_ptr<Label> m_lblFirstname{ new Label{} };        
+        std::unique_ptr<Textfield> m_txtFirstname{ new Textfield{} };
+        std::unique_ptr<Label> m_lblLastname{ new Label{} };     
+        std::unique_ptr<Textfield> m_txtLastname{ new Textfield{} };
+        std::unique_ptr<Button> m_btnOk{ new Button{1} };
+        std::unique_ptr<Button> m_btnAbort{ new Button{2} };
+
+    public:
+        explicit MyDialog(const std::string& title) : m_title{ title } {}
+        std::unique_ptr<Button> showModal() {
+            return std::move(m_btnOk);
+        }    
+    };
+
+    // helper functions
+    std::unique_ptr<MyDialog> createDialog() {
+        // note: flow of 'raw pointer' !!!
+        return std::unique_ptr<MyDialog>{ new MyDialog{ "Enter Name" } };
+    }
+
+    int showDialog() {
+        std::unique_ptr<MyDialog> dialog = createDialog();     
+        std::unique_ptr<Button> pressed = dialog->showModal(); 
+        return pressed->m_id;
+    }
+
+    void showAnotherDialog() {
+        std::unique_ptr<MyDialog> dialog = createDialog();
+        std::unique_ptr<Button> pressed1 = dialog->showModal();
+        std::cout << "You've clicked " << pressed1->m_id << std::endl;
+        std::unique_ptr<Button> pressed2 = dialog->showModal();  // this cannot work !!!
+        std::cout << "You've clicked " << pressed2->m_id << std::endl;
     }
 
     void test_01() {
-        // creates a unique_ptr to an int with value 20
-        std::unique_ptr<int> ptr1 = std::make_unique<int>(20);
-        std::cerr << "ptr1: " << *ptr1 << std::endl;
-
-        int* ip1 = ptr1.get();
-        (*ip1)++;
-        std::cerr << "ip: " << *ip1 << std::endl;
-        std::cerr << "ptr1: " << *ptr1 << std::endl;
-
-        // second std::unique_ptr by moving 'ptr1' to 'ptr2',
-        // 'ptr1' doesn't own the object anymore
-        std::unique_ptr<int> ptr2 = std::move(ptr1);
-        // std::cerr << "ptr1: " << *ptr1 << std::endl;  // crashes 
-        std::cerr << "ptr2: " << *ptr2 << std::endl;
-
-        std::unique_ptr<int> ptr3;
-        ptr3 = std::move(ptr2);
-        int* ip3 = ptr3.get();
-        (*ip3)++;
-        std::cerr << "ptr3: " << *ptr3 << std::endl;
-
-        // retrieving a unique pointer from a function
-        std::unique_ptr<int> ptr4 = createUniquePointer();
-
-        // compare with this:
-        // int* foo_createUniquePointer();
-        // int* p = foo_createUniquePointer();  // who has to delete p ????
+        int pressed_id = showDialog();
+        if (pressed_id == 1) {
+            std::cout << "You've clicked Okay" << std::endl;
+        }
     }
 
     void test_02() {
-        // creates a unique_ptr to an Dummy object
-        std::unique_ptr<Dummy> ptr = std::make_unique<Dummy>();
-    }
-
-    void test_03() {
-        // creates a unique_ptr to an array of 20 ints
-        std::unique_ptr<int[]> ptr2 = std::make_unique<int[]>(20);
+        showAnotherDialog();
     }
 }
 
-int main_unique_pointer_02()
+int main_unique_pointer()
 {
-    using namespace UniquePointerZwei;
+    using namespace UniquePointer;
     test_01();
-    test_02();
+    // test_02();
 
     return 0;
 }
 
-// =================================================================================
+// =====================================================================================
 // End-of-File
-// ===============================================================================
+// =====================================================================================

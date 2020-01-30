@@ -1,31 +1,13 @@
 #include <iostream>
 #include <memory>
 
+#include "../Global/Dummy.h"
+
 // =====================================================================================
 // Weak Pointer
 // =====================================================================================
 
 namespace WeakPointer {
-
-    class Dummy
-    {
-        Dummy(Dummy const&) = default;
-        Dummy& operator=(Dummy const&) = default;
-
-    public:
-
-        Dummy() {
-            std::cerr << "c'tor Dummy" << std::endl;
-        }
-
-        ~Dummy() {
-            std::cerr << "d'tor Dummy" << std::endl;
-        }
-
-        void helloWorld() {
-            std::cerr << "Hello World" << std::endl;
-        }
-    };
 
     void test_01() {
 
@@ -48,7 +30,7 @@ namespace WeakPointer {
             std::cerr << "Usage count shared_ptr: " << ptr.use_count() << std::endl;
 
             // access weak pointer via shared pointer
-            tempPtr->helloWorld();
+            tempPtr->saHello();
 
             std::cout << "End-of-Scope" << std::endl;
         }

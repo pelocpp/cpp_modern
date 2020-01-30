@@ -146,6 +146,7 @@
     <ClCompile Include="ConstExpr\ConstExprExtended.cpp" />
     <ClCompile Include="ConstructursOrder\ConstructorsOrder.cpp" />
     <ClCompile Include="FunctionTemplatesBasics\FunctionTemplatesBasics.cpp" />
+    <ClCompile Include="Global\Dummy.cpp" />
     <ClCompile Include="Initialization\Initialization.cpp" />
     <ClCompile Include="InitializerList\InitializerList.cpp" />
     <ClCompile Include="InputOutputStreams\InputOutputStreams.cpp" />
@@ -161,8 +162,8 @@
     <ClCompile Include="StructuredBinding\StructuredBinding.cpp" />
     <ClCompile Include="TemplateTemplateParameter\TemplateTemplateParameter.cpp" />
     <ClCompile Include="TypeTraits\TypeTraits.cpp" />
-    <ClCompile Include="UniquePtr\UniquePtr01.cpp" />
     <ClCompile Include="UniquePtr\UniquePtr02.cpp" />
+    <ClCompile Include="UniquePtr\UniquePtr01.cpp" />
     <ClCompile Include="VariadicTemplates\VariadicTemplate.cpp" />
     <ClCompile Include="WeakPtr\WeakPtr.cpp" />
   </ItemGroup>
@@ -191,6 +192,9 @@
     <None Include="UniquePtr\Readme.md" />
     <None Include="VariadicTemplates\Readme.md" />
     <None Include="WeakPtr\Readme.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Global\Dummy.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,3 +1,7 @@
+// =====================================================================================
+// Shared Pointer
+// =====================================================================================
+
 #define _CRTDBG_MAP_ALLOC
 #include <cstdlib>
 #include <crtdbg.h>
@@ -12,31 +16,9 @@
 #include <iostream>
 #include <memory>
 
-// =====================================================================================
-// Shared Pointer
-// =====================================================================================
+#include "../Global/Dummy.h"
 
 namespace SharedPointer {
-
-    class Dummy
-    {
-        Dummy(Dummy const&) = default;
-        Dummy& operator=(Dummy const&) = default;
-
-    public:
-
-        Dummy() {
-            std::cerr << "c'tor Dummy" << std::endl;
-        }
-
-        ~Dummy() {
-            std::cerr << "d'tor Dummy" << std::endl;
-        }
-
-        void helloWorld() {
-            std::cerr << "Hello World" << std::endl;
-        }
-    };
 
     // classical approach
     Dummy* createDummy() {
@@ -45,7 +27,7 @@ namespace SharedPointer {
 
     void doSomething(Dummy* dummy) {
 
-        dummy->helloWorld();
+        dummy->saHello();
 
         // note: what happens, if delete is called on dummy?
         // delete dummy;
@@ -62,7 +44,7 @@ namespace SharedPointer {
     // note: play with 'call-by-value' or 'call-by-reference'
     void doSomething2(const std::shared_ptr<Dummy> ptr) {
 
-        ptr->helloWorld();
+        ptr->saHello();
 
         std::cout << "inner use_count: " << ptr.use_count() <<  std::endl;
 

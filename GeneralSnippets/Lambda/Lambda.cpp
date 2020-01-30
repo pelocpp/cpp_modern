@@ -160,8 +160,8 @@ namespace Lambda {
     }
 }
 
-int main()
-// int main_lambdas()
+// int main()
+int main_lambdas()
 {
     using namespace Lambda;
     test_01();

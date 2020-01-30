@@ -84,10 +84,13 @@
     <ClCompile Include="MemoryLeaks\MemoryLeaks.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="UniquePtr\UniquePtr02.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="UniquePtr\UniquePtr01.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="UniquePtr\UniquePtr02.cpp">
+    <ClCompile Include="Global\Dummy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -164,5 +167,10 @@
     <None Include="MemoryLeaks\Readme.md">
       <Filter>Resource Files</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Global\Dummy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
