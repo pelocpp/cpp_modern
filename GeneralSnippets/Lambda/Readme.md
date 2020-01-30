@@ -1,5 +1,4 @@
-
--Funktionen
+# Lambda-Funktionen
 
 *Allgemeines*:
 
@@ -45,7 +44,7 @@ in test_05     Reference: -858993460 -858993460
 in test_helper Reference: 15725908 15726376
 ```
 
-Aus dem engl. C++-Manual habe ich einen Überblick bzgl. der Gestaltungsmöglichkeiten der übernommen:
+Aus dem engl. C++-Manual habe ich einen Überblick bzgl. der Gestaltungsmöglichkeiten der Zugriffsklausel übernommen:
 
 | Capture Clause Example | Explanation |
 |:-------------- |-----------------------------------------|
