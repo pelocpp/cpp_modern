@@ -57,8 +57,7 @@ namespace UniquePointerZwei {
     }
 }
 
-int main()
-// int main_unique_pointer_02()
+int main_unique_pointer_02()
 {
     using namespace UniquePointerZwei;
     test_01();

@@ -93,6 +93,9 @@
     <ClCompile Include="Global\Dummy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TemplateStaticPolymorphism\TemplateStaticPolymorphism.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="ParametersWithConstAndRef\Readme.md">
@@ -167,6 +170,7 @@
     <None Include="MemoryLeaks\Readme.md">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="TemplateStaticPolymorphism\Readme.md" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Global\Dummy.h">
