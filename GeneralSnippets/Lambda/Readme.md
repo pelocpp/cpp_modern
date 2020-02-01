@@ -55,7 +55,7 @@ Aus dem engl. C++-Manual habe ich einen Überblick bzgl. der Gestaltungsmöglichke
 | `[bar]` | Capture `bar` by making a copy; don't copy anything else |
 | `[this]` | Capture the `this` pointer of the enclosing class |
 
-Tabelle: Liste aller Optionen für die Lambda-Zugriffsklausel.
+Tabelle 1: Liste aller Optionen für die Lambda-Zugriffsklausel.
 
 Neben der Zugriffsklausel kann eine Lambda-Funktion mit zahlreichen Schlüsselwörtern *garniert* werden.
 Siehe hierzu Abbildung 1:
