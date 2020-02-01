@@ -203,6 +203,9 @@
   <ItemGroup>
     <ClInclude Include="Global\Dummy.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="Lambda\LambdaStructure.png" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

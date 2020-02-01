@@ -55,7 +55,7 @@ namespace Lambda {
         std::cout << std::endl;
 
         std::sort(std::begin(myVector), std::end(myVector),
-            [](const int n1, const int n2) { return n1 < n2; }
+            [] (const int n1, const int n2) { return n1 < n2; }
         );
 
         for (int n : myVector) {
@@ -65,14 +65,48 @@ namespace Lambda {
 
     void test_03() {
 
+        // shortest lambda on earth: no parameters, capturing and doing nothing
+        auto nothing = []{};
+        nothing();
+
+        // c'tor notation
+        auto itsOne ([] { return 1; });
+        auto itsTwo ([] { return 2; });
+        std::cout << itsOne() << ", " << itsTwo() << std::endl;
+
+        // "copy-c'tor" notation
+        auto itsFour = [] { return 4; };
+        auto itsFive = [] { return 5; };
+        std::cout << itsFour() << ", " << itsFive() << std::endl;
+
+        // works with anything that defines the plus 'operator+'
+        auto plus = [] (auto l, auto r) { return l + r; };
+        std::cout << plus(1, 2) << std::endl;
+        std::cout << plus(std::string{ "a" }, "b") << std::endl;
+
+        // inline-definition and invocation of lambda funtion
+        std::cout << [] (auto l, auto r) { return l + r; } (11, 12) << std::endl;
+
+        // closure with variable definition
+        auto counter = [count = 50]() mutable { ++count; return count; };
+        for (size_t i{ 0 }; i < 5; ++i) {
+            std::cout << counter() << " ";
+        }
+        std::cout << std::endl;
+    }
+
+    // ==============
+
+    void test_04() {
+
         int n = 1;
         int m = 2;
 
-        auto l1 = [=]() {
+        auto l1 = [=] () {
             std::cerr << "Copy:      " << n << " " << m << std::endl;
         };
 
-        auto l2 = [&]() {
+        auto l2 = [&] {
             std::cerr << "Reference: " << n << " " << m << std::endl;
         };
 
@@ -88,24 +122,24 @@ namespace Lambda {
         l3();
     }
 
-    auto test_04_helper_a() {
+    auto test_05_helper_a() {
 
         int n = 1;
         int m = 2;
 
-        auto lambda = [=]() {
+        auto lambda = [=] {
             std::cerr << "Copy:      " << n << " " << m << std::endl;
         };
 
         return lambda;
     }
 
-    auto test_04_helper_b() {
+    auto test_05_helper_b() {
 
         int n = 1;
         int m = 2;
 
-        auto lambda = [&]() {
+        auto lambda = [&] {
             std::cerr << "Reference: " << n << " " << m << std::endl;
         };
 
@@ -115,10 +149,10 @@ namespace Lambda {
         return lambda;  // I would't do this never ever :-)
     }
 
-    void test_04() {
+    void test_05() {
 
-        auto outerLambda1 = test_04_helper_a();
-        auto outerLambda2 = test_04_helper_b();
+        auto outerLambda1 = test_05_helper_a();
+        auto outerLambda2 = test_05_helper_b();
         outerLambda1();
         outerLambda2();
     }
@@ -126,7 +160,8 @@ namespace Lambda {
     std::pair<
         std::function<void(std::string const&)>, 
         std::function<void(std::string const&)>
-    > test_05_helper_a() {
+    > 
+    test_06_helper_a() {
 
         int n = 1;
         int m = 2;
@@ -144,24 +179,43 @@ namespace Lambda {
             std::function<void(std::string const&)>>(lambda1, lambda2);
     }
 
-    void test_05_helper_b(std::function<void(std::string const&)> lambda) {
+    void test_06_helper_b(std::function<void(std::string const&)> lambda) {
         lambda("in test_helper ");
     }
 
-    void test_05() {
+    void test_06() {
 
-        auto [lambda1, lambda2] = test_05_helper_a();
+        auto [lambda1, lambda2] = test_06_helper_a();
 
         lambda1("in test_05     ");
-        test_05_helper_b(lambda1);
+        test_06_helper_b(lambda1);
 
         lambda2("in test_05     ");
-        test_05_helper_b(lambda2);
+        test_06_helper_b(lambda2);
+    }
+
+    void test_07() {
+
+        // Example demonstrating so called 'Currying':
+        // This means that we take a function that can accept some parameters
+        // and store it in another function object, which accepts fewer parameters.
+
+        // In our example, we store the 'plus' function and only accept one parameter,
+        // which we forward to the 'plus' function.The other parameter is the
+        // value 10, which we save in the function object. This way, we get a function,
+        // which we call 'plusTen' because it can add that value
+        // to the single parameter it accepts :
+
+        auto plus = [](auto l, auto r) { return l + r; };
+
+        auto plusTen = [=](int x) { return plus(10, x); };
+
+        std::cout << plusTen(5) << std::endl;
     }
 }
 
-// int main()
-int main_lambdas()
+int main()
+// int main_lambdas()
 {
     using namespace Lambda;
     test_01();
@@ -169,6 +223,8 @@ int main_lambdas()
     test_03();
     test_04();
     test_05();
+    test_06();
+
     return 0;
 }
 

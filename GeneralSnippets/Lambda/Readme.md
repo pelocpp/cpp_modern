@@ -56,3 +56,10 @@ Aus dem engl. C++-Manual habe ich einen Überblick bzgl. der Gestaltungsmöglichke
 | `[this]` | Capture the `this` pointer of the enclosing class |
 
 Tabelle: Liste aller Optionen für die Lambda-Zugriffsklausel.
+
+Neben der Zugriffsklausel kann eine Lambda-Funktion mit zahlreichen Schlüsselwörtern *garniert* werden.
+Siehe hierzu Abbildung 1:
+
+<img src="LambdaStructure.png" width="150">
+
+Abbildung 1: Besonderheiten im Aufbau einer Lambda-Funktion.
