@@ -161,7 +161,8 @@
     <ClCompile Include="StaticAssert\StaticAssert.cpp" />
     <ClCompile Include="StructuredBinding\StructuredBinding.cpp" />
     <ClCompile Include="TemplateStaticPolymorphism\TemplateStaticPolymorphism.cpp" />
-    <ClCompile Include="TemplateTemplateParameter\TemplateTemplateParameter.cpp" />
+    <ClCompile Include="TemplateTemplateParameter\TemplateTemplateParameter_01.cpp" />
+    <ClCompile Include="TemplateTemplateParameter\TemplateTemplateParameter_02.cpp" />
     <ClCompile Include="TypeTraits\TypeTraits.cpp" />
     <ClCompile Include="UniquePtr\UniquePtr02.cpp" />
     <ClCompile Include="UniquePtr\UniquePtr01.cpp" />

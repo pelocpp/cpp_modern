@@ -160,7 +160,7 @@ namespace TemplatesStaticPolymorphism {
     }
 }
 
-int main() {
+int main_templates_static_polymorphism() {
 
     // using namespace TemplatesClassicPolymorphism;
     using namespace TemplatesStaticPolymorphism;

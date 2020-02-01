@@ -6,7 +6,7 @@
 #include <cctype>
 #include <stdexcept>
 
-namespace TemplateTemplateParameter {
+namespace TemplateTemplateParameter_02 {
 
     template<typename T>
     struct NoMaxCheck
@@ -85,9 +85,9 @@ namespace TemplateTemplateParameter {
     }
 }
 
-int main_template_template_parameter() {
+int main_template_template_parameter_02() {
 
-    using namespace TemplateTemplateParameter;
+    using namespace TemplateTemplateParameter_02;
 
     _test_01_template_template_parameter();
     return 0;

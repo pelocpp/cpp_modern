@@ -75,9 +75,6 @@
     <ClCompile Include="RValueLValue\RValueLValue.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TemplateTemplateParameter\TemplateTemplateParameter.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="PerfectForwarding\PerfectForwarding.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -94,6 +91,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TemplateStaticPolymorphism\TemplateStaticPolymorphism.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TemplateTemplateParameter\TemplateTemplateParameter_02.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TemplateTemplateParameter\TemplateTemplateParameter_01.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
