@@ -60,6 +60,6 @@ Tabelle: Liste aller Optionen für die Lambda-Zugriffsklausel.
 Neben der Zugriffsklausel kann eine Lambda-Funktion mit zahlreichen Schlüsselwörtern *garniert* werden.
 Siehe hierzu Abbildung 1:
 
-<img src="LambdaStructure.png" width="400">
+<img src="LambdaStructure.png" width="300">
 
 Abbildung 1: Besonderheiten im Aufbau einer Lambda-Funktion.
