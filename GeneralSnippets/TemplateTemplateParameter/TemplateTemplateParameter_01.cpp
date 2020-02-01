@@ -3,195 +3,93 @@
 // =====================================================================================
 
 #include <iostream>
-#include <memory>
 #include <vector>
 #include <list>
 #include <string>
 
-#include <cstddef>
-#include <stdexcept>
-#include <vector>
-#include <optional>
-#include <utility>
+namespace TemplateTemplateParameterFunction {
 
-namespace TemplateTemplateParameter01 {
-
-    //template <template <typename, typename...> class Container>
-    //void bar(const Container<T>& c, const T& t)
-    //{
-    //    //
-    //}
-
-    //template<template <class> class ContainerT, class ValueT>
-    //void foo(const ContainerT<ValueT>& c)
-    //{
-    //    typedef ContainerT<ValueT> type;
-    //    for (typename  type::iterator it = c.begin(); it != c.end(); ++it)
-    //    {
-    //        // do some stuff
-    //    }
-    //}
-
-    //template <template<typename> class ContainerT, typename ValueT>
-    //void foo(const ContainerT<ValueT>& c)
-    //{
-    //    typedef ContainerT<ValueT> type1;
-    //    for (typename type1::iterator it = c.begin(); it != c.end(); ++it)
-    //    {
-    //        // do some stuff
-    //    }
-    //}
-
-    //template <template<typename> class ContainerT, typename ValueT>
-    //void foo(const ContainerT<ValueT>& c)
-    //{
-    //    typedef ContainerT<ValueT> type1;
-    //    for (typename type1::iterator it = c.begin(); it != c.end(); ++it)
-    //    {
-    //        // do some stuff
-    //    }
-    //}
-
-    template <template <typename, typename> class Container, typename Value, typename Allocator = std::allocator<Value> >
-    void bar(const Container<Value, Allocator>& container, const Value& t)
+    template <
+        typename Value, 
+        template <typename, typename> class Container, 
+        typename Allocator = std::allocator<Value>
+    >
+    void testMe(Container<Value, Allocator>& container, const Value& value)
     {
-        container.push_back(t);
-        container.push_back(t);
-        container.push_back(t);
-        container.push_back(t);
-        container.push_back(t);
+        container.push_back(value);
+        container.push_back(value);
+        container.push_back(value);
 
         for (const auto& elem : container) {
             std::cout << elem << std::endl;
         }
     }
 
-    //void _test_01_template_template_parameter() {
-
-    //    std::vector<int> intVector;
-    //    std::list<std::string> stringList;
-
-    //    //foo(intVector);
-    //    //foo(stringList);
-
-    //}
-
-    void _test_02_template_template_parameter() {
+    void test_01_template_template_parameter_function() {
 
         std::vector<int> intVector;
-        bar(intVector, 123);
+        testMe(intVector, 123);
 
-        //std::vector<float> c;
-        //bar(c, 1.2f);
+        std::vector<float> floatVector;
+        testMe(floatVector, 1.2f);
 
-        //std::list<std::string> stringList;
-        //bar(stringList, std::string("werwer"));
+        std::list<std::string> stringList;
+        testMe(stringList, std::string("ABC"));
     }
 }
 
-namespace TemplateTemplateParameter02 {
+namespace TemplateTemplateParameterClass {
 
-    template <typename T,
-        template <typename E, typename Allocator = std::allocator<E>> class Container = std::vector>
-    class Grid
+    template <
+        typename T,
+        template <typename E, typename Allocator = std::allocator<E>> class Container = std::vector
+    >
+    class MyContainer
     {
     public:
-        explicit Grid(size_t width = kDefaultWidth, size_t height = kDefaultHeight);
-        virtual ~Grid() = default;
-
-        // Explicitly default a copy constructor and assignment operator.
-        Grid(const Grid& src) = default;
-        Grid<T, Container>& operator=(const Grid& rhs) = default;
-
-        // Explicitly default a move constructor and assignment operator.
-        Grid(Grid&& src) = default;
-        Grid<T, Container>& operator=(Grid&& rhs) = default;
-
-        std::optional<T>& at(size_t x, size_t y);
-        const std::optional<T>& at(size_t x, size_t y) const;
-
-        size_t getHeight() const { return mHeight; }
-        size_t getWidth() const { return mWidth; }
-
-        void testMe();
-
-        static const size_t kDefaultWidth = 10;
-        static const size_t kDefaultHeight = 10;
+        virtual ~MyContainer() = default;
+        void testMe(T);
 
     private:
-        void verifyCoordinate(size_t x, size_t y) const;
-
-        std::vector<Container<std::optional<T>>> mCells;
-        size_t mWidth = 0, mHeight = 0;
-
         Container<T> m_anotherContainer;
     };
 
-    template <typename T, template <typename E, typename Allocator = std::allocator<E>> class Container>
-    Grid<T, Container>::Grid(size_t width, size_t height)
-        : mWidth(width)
-        , mHeight(height)
+    template <
+        typename T,
+        template <typename E, typename Allocator = std::allocator<E>> class Container
+    >
+    void MyContainer<T, Container>::testMe(T elem) 
     {
-        mCells.resize(mWidth);
-        for (auto& column : mCells) {
-            column.resize(mHeight);
-        }
-    }
-
-    template <typename T, template <typename E, typename Allocator = std::allocator<E>> class Container>
-    void Grid<T, Container>::testMe() 
-    {
-        m_anotherContainer.push_back(1);
-        m_anotherContainer.push_back(2);
-        m_anotherContainer.push_back(3);
+        m_anotherContainer.push_back(elem);
+        m_anotherContainer.push_back(elem);
+        m_anotherContainer.push_back(elem);
 
         for (const auto& elem : m_anotherContainer) {
             std::cout << elem << std::endl;
         }
     }
 
+    void test_01_template_template_parameter_class() {
 
-    template <typename T, template <typename E, typename Allocator = std::allocator<E>> class Container>
-    void Grid<T, Container>::verifyCoordinate(size_t x, size_t y) const
-    {
-        if (x >= mWidth || y >= mHeight) {
-            throw std::out_of_range("");
-        }
-    }
+        MyContainer<int, std::vector> myIntContainer;
+        myIntContainer.testMe(1);
 
-    template <typename T, template <typename E, typename Allocator = std::allocator<E>> class Container>
-    const std::optional<T>& Grid<T, Container>::at(size_t x, size_t y) const
-    {
-        verifyCoordinate(x, y);
-        return mCells[x][y];
-    }
+        MyContainer<float, std::vector> myFloatContainer;
+        myFloatContainer.testMe(9.9F);
 
-    template <typename T, template <typename E, typename Allocator = std::allocator<E>> class Container>
-    std::optional<T>& Grid<T, Container>::at(size_t x, size_t y)
-    {
-        return const_cast<std::optional<T>&>(std::as_const(*this).at(x, y));
-    }
-
-    void _test_02_template_template_parameter() {
-
-        //Grid<int, std::vector> myGrid;
-        //myGrid.at(1, 2) = 3;
-        //std::cout << myGrid.at(1, 2).value_or(0) << std::endl;
-
-        Grid<int, std::vector> myGrid2;
-        myGrid2.testMe();
-
+        MyContainer<std::string, std::vector> myStringContainer;
+        myStringContainer.testMe(std::string("XYZ"));
     }
 }
 
-
 int main() {
 
-    using namespace TemplateTemplateParameter01;
-   //  using namespace TemplateTemplateParameter02;
+    using namespace TemplateTemplateParameterFunction;
+    using namespace TemplateTemplateParameterClass;
 
-    _test_02_template_template_parameter();
-  //   _test_02_template_template_parameter();
+    test_01_template_template_parameter_function();
+    test_01_template_template_parameter_class();
+
     return 0;
 }
 

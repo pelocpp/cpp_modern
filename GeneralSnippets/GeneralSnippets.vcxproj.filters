@@ -99,6 +99,12 @@
     <ClCompile Include="TemplateTemplateParameter\TemplateTemplateParameter_01.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Allocator\Allocator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ArrayDecay\ArrayDecay.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="ParametersWithConstAndRef\Readme.md">
@@ -173,7 +179,15 @@
     <None Include="MemoryLeaks\Readme.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="TemplateStaticPolymorphism\Readme.md" />
+    <None Include="Allocator\Readme.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="TemplateStaticPolymorphism\Readme.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="ArrayDecay\Readme.md">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Global\Dummy.h">

@@ -140,6 +140,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Allocator\Allocator.cpp" />
+    <ClCompile Include="ArrayDecay\ArrayDecay.cpp" />
     <ClCompile Include="Casts\Casts.cpp" />
     <ClCompile Include="ClassTemplatesBasics\ClassTemplatesBasics.cpp" />
     <ClCompile Include="ConstExpr\ConstExpr.cpp" />
@@ -171,6 +173,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md" />
+    <None Include="Allocator\Readme.md" />
+    <None Include="ArrayDecay\Readme.md" />
     <None Include="Casts\Readme.md" />
     <None Include="ClassTemplatesBasics\Readme.md" />
     <None Include="ConstExpr\Readme.md" />

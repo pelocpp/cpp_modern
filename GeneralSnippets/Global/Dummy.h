@@ -2,22 +2,30 @@
 // Dummy Class for Testing Purposes
 // ===============================================================================
 
+constexpr bool isVerbose = false;
+
 class Dummy
 {
 private:
     int m_dummy;
 public:
     explicit Dummy() : m_dummy (0){
-        std::cout << "c'tor Dummy" << std::endl;
+        if (isVerbose) {
+            std::cout << "c'tor Dummy" << std::endl;
+        }
     }
 
     explicit Dummy(int dummy) : m_dummy(dummy) {
-        std::cout << "c'tor Dummy" << std::endl;
+        if (isVerbose) {
+            std::cout << "c'tor Dummy" << std::endl;
+        }
     }
 
     // "Big-Three"
     ~Dummy() {
-        std::cout << "d'tor Dummy" << std::endl;
+        if (isVerbose) {
+            std::cout << "d'tor Dummy" << std::endl;
+        }
     }
 
     Dummy(const Dummy& other) {
@@ -56,7 +64,7 @@ public:
     }
 
     void saHello() { 
-        std::cout << "Hello Dummy" << std::endl;
+        std::cout << "Hello Dummy [" << m_dummy << "]" << std::endl;
     }
 
     // output
