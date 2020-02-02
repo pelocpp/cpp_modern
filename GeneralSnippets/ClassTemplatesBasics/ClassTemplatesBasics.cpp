@@ -3,6 +3,8 @@
 #include <limits>
 #include <vector>
 
+#include "../Global/Dummy.h"
+
 // =====================================================================================
 // Klassentemplates
 // =====================================================================================
@@ -173,6 +175,7 @@ namespace ClassTemplatesBasics_DependentKeywordTypename {
 
         using TShort = typename std::numeric_limits<T>;  // <== NOTE: usage of keyword typename
                                                          //     dependent name
+        
         std::cout
             << name << ':' << std::endl 
             << "  Num Bits:" << TShort::digits             // number bits without sign-bit
@@ -236,7 +239,6 @@ namespace ClassTemplatesBasics_TemplateMethodSpecialization {
 
     void test_02() {}
 }
-
 
 namespace ClassTemplatesBasics_PartialClassTemplateSpecialization {
 
@@ -353,6 +355,89 @@ namespace ClassTemplatesBasics_PartialClassTemplateSpecialization {
     }
 }
 
+namespace ClassTemplatesBasics_SFINAE {
+
+    // See  https://eli.thegreenplace.net/2014/sfinae-and-enable_if/
+
+    // Demonstration of "Substitution Failure Is Not An Error": SFINAE
+
+    void foo(unsigned int i) {
+        std::cout << "unsigned " << i << std::endl;
+    }
+
+    template <typename T>
+    void foo(const T& t) {
+        std::cout << "template " << t << std::endl;
+
+    }
+
+    // --------------------
+
+    template <bool, typename T = void>
+    struct enable_iff
+    {};
+
+    template <typename T>
+    struct enable_iff<true, T> {
+        typedef T type;
+    };
+
+    template <
+        typename T,
+        typename enable_iff<std::is_integral<T>::value, T>::type* = nullptr
+    >
+    void do_stuff(T& t) {
+        std::cout << "do_stuff integral\n";
+        // an implementation for integral types (int, char, unsigned, etc.)
+    }
+
+    template <
+        typename T,
+        typename enable_iff<std::is_class<T>::value, T>::type* = nullptr
+    >
+    void do_stuff(T& t) {
+        // an implementation for class types
+        std::cout << "do_stuff classes\n";
+    }
+
+    // --------------------
+
+    template <
+        typename T,
+        typename std::enable_if<std::is_integral<T>::value, T>::type* = nullptr
+    >
+    void do_stuff2(T& t) {
+        std::cout << "do_stuff2 integral\n";
+        // an implementation for integral types (int, char, unsigned, etc.)
+    }
+
+    template <
+        typename T,
+        typename std::enable_if<std::is_class<T>::value, T>::type* = nullptr
+    >
+    void do_stuff2(T& t) {
+        // an implementation for class types
+        std::cout << "do_stuff2 classes\n";
+    }
+
+    void test_01() {
+
+        foo(42);
+    }
+
+    void test_02() {
+
+        int n = 123;
+        Dummy dummy;
+
+        do_stuff<int>(n);
+        do_stuff<Dummy>(dummy);
+    
+        do_stuff2<int>(n);
+        do_stuff2<Dummy>(dummy);
+    }
+}
+
 int main_class_templates_basics()
 {
     using namespace ClassTemplatesBasics_SimpleTemplate_1;
@@ -361,6 +446,7 @@ int main_class_templates_basics()
     //using namespace ClassTemplatesBasics_DependentKeywordTypename;
     //using namespace ClassTemplatesBasics_TemplateMethodSpecialization;
     //using namespace ClassTemplatesBasics_PartialClassTemplateSpecialization;
+    //using namespace ClassTemplatesBasics_SFINAE;
 
     test_01();
     test_02();

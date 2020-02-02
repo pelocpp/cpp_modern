@@ -13,7 +13,7 @@
 
 namespace Allocator {
 
-    void test_01() {
+    void test_01_allocator() {
 
         std::allocator<int> myIntAlloc;    // default allocator for ints
         int* ip = myIntAlloc.allocate(3);  // space for three ints
@@ -77,7 +77,7 @@ namespace Allocator {
 
     constexpr int Max = 50;
 
-    void test_02() { 
+    void test_02_allocator() {
 
         std::cout << "Not using reserve: \n";
 
@@ -89,7 +89,7 @@ namespace Allocator {
         }
     }
 
-    void test_03() {
+    void test_03_allocator() {
 
         std::cout << "Using reserve: \n";
 
@@ -114,7 +114,7 @@ namespace Allocator {
 
     constexpr int AnotherMax = 5;
 
-    void test_04a() {
+    void test_04a_allocator() {
 
         std::cout << "Insertion: push_back - Object by LValue reference" << std::endl;
 
@@ -128,7 +128,7 @@ namespace Allocator {
         }
     }
 
-    void test_04b() {
+    void test_04b_allocator() {
 
         std::cout << "Insertion: push_back - Object by RValue reference" << std::endl;
 
@@ -141,7 +141,7 @@ namespace Allocator {
         }
     }
 
-    void test_04c() {
+    void test_04c_allocator() {
 
         std::cout << "Insertion: emplace_back" << std::endl;
 
@@ -158,13 +158,13 @@ namespace Allocator {
 int main_allocator()
 {
     using namespace Allocator;
-    test_01();
-    test_02();
-    test_03();
+    test_01_allocator();
+    test_02_allocator();
+    test_03_allocator();
 
-    test_04a();
-    test_04b();
-    test_04c();
+    test_04a_allocator();
+    test_04b_allocator();
+    test_04c_allocator();
 
     return 0;
 }

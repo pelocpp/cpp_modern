@@ -105,6 +105,12 @@
     <ClCompile Include="ArrayDecay\ArrayDecay.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Any\Any.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Tuple\Tuples.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="ParametersWithConstAndRef\Readme.md">
@@ -186,6 +192,12 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="ArrayDecay\Readme.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Any\Readme.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Tuple\Readme.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

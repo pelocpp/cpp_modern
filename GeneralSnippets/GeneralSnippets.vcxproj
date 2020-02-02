@@ -141,6 +141,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Allocator\Allocator.cpp" />
+    <ClCompile Include="Any\Any.cpp" />
     <ClCompile Include="ArrayDecay\ArrayDecay.cpp" />
     <ClCompile Include="Casts\Casts.cpp" />
     <ClCompile Include="ClassTemplatesBasics\ClassTemplatesBasics.cpp" />
@@ -165,6 +166,7 @@
     <ClCompile Include="TemplateStaticPolymorphism\TemplateStaticPolymorphism.cpp" />
     <ClCompile Include="TemplateTemplateParameter\TemplateTemplateParameter_01.cpp" />
     <ClCompile Include="TemplateTemplateParameter\TemplateTemplateParameter_02.cpp" />
+    <ClCompile Include="Tuple\Tuples.cpp" />
     <ClCompile Include="TypeTraits\TypeTraits.cpp" />
     <ClCompile Include="UniquePtr\UniquePtr02.cpp" />
     <ClCompile Include="UniquePtr\UniquePtr01.cpp" />
@@ -174,6 +176,7 @@
   <ItemGroup>
     <None Include="..\Readme.md" />
     <None Include="Allocator\Readme.md" />
+    <None Include="Any\Readme.md" />
     <None Include="ArrayDecay\Readme.md" />
     <None Include="Casts\Readme.md" />
     <None Include="ClassTemplatesBasics\Readme.md" />
@@ -195,6 +198,7 @@
     <None Include="StructuredBinding\Readme.md" />
     <None Include="TemplateStaticPolymorphism\Readme.md" />
     <None Include="TemplateTemplateParameter\Readme.md" />
+    <None Include="Tuple\Readme.md" />
     <None Include="TypeTraits\Readme.md" />
     <None Include="UniquePtr\Readme.md" />
     <None Include="VariadicTemplates\Readme.md" />
