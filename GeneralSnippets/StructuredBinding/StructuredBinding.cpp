@@ -1,10 +1,10 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-
 // =====================================================================================
 // Structured Binding
 // =====================================================================================
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
 
 // =====================================================================================
 // https://www.geeksforgeeks.org/structured-binding-c/

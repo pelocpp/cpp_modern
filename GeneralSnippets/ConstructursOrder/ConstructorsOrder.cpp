@@ -1,9 +1,9 @@
-#include <iostream>
-#include <memory>
-
 // =====================================================================================
 // Weak Pointer
 // =====================================================================================
+
+#include <iostream>
+#include <memory>
 
 namespace OrderConstructorInvocations {
 

@@ -1,8 +1,9 @@
-#include <iostream>
-
 // =====================================================================================
 // Funktionstemplates
 // =====================================================================================
+
+#include <iostream>
+#include <memory>
 
 namespace FunctionTemplatesBasics {
 

@@ -1,12 +1,12 @@
+// =====================================================================================
+// Lambda Methods
+// =====================================================================================
+
 #include <iostream>
 #include <vector>
 #include <algorithm>
 #include <functional>
 #include <utility>
-
-// =====================================================================================
-// Lambda Methods
-// =====================================================================================
 
 namespace Lambda {
 
@@ -94,8 +94,6 @@ namespace Lambda {
         }
         std::cout << std::endl;
     }
-
-    // ==============
 
     void test_04() {
 
@@ -194,7 +192,22 @@ namespace Lambda {
         test_06_helper_b(lambda2);
     }
 
+    // decltype may modify type deduction, e.g. in generic lamdas
+    // (decltype (t + u), decltype (t) or decltype (u) are valid)
+    template <typename T, typename U>
+    auto add(const T& t, const U& u) -> decltype (t + u) { return t + u; }
+
     void test_07() {
+         
+        int n = 1;
+        double d = 2.7;
+
+        auto result = add(n, d);
+
+        std::cout << result << std::endl;
+    }
+
+    void test_08() {
 
         // Example demonstrating so called 'Currying':
         // This means that we take a function that can accept some parameters
@@ -214,8 +227,7 @@ namespace Lambda {
     }
 }
 
-int main()
-// int main_lambdas()
+int main_lambdas()
 {
     using namespace Lambda;
     test_01();
@@ -224,6 +236,8 @@ int main()
     test_04();
     test_05();
     test_06();
+    test_07();
+    test_08();
 
     return 0;
 }

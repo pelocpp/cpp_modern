@@ -1,10 +1,10 @@
-#include <iostream>
-#include <limits>
-#include <initializer_list>
-
 // =====================================================================================
 // constexpr extended
 // =====================================================================================
+
+#include <iostream>
+#include <limits>
+#include <initializer_list>
 
 namespace ConstExprExtended {
 
