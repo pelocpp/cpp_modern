@@ -2,59 +2,112 @@
 // Structured Binding
 // =====================================================================================
 
+#define  _CRT_SECURE_NO_WARNINGS 
 #include <iostream>
+#include <tuple>
 #include <vector>
-#include <algorithm>
+#include <string>
+#include <chrono>
+#include <ctime>
+#include <iomanip>
 
-// =====================================================================================
-// https://www.geeksforgeeks.org/structured-binding-c/
-// or
-// https://www.grimm-jaud.de/index.php/blog/initialisierung
-// =====================================================================================
+namespace C17_News {
 
+    std::pair<int, int> divide_remainder(int dividend, int divisor) {
+        int quotient = dividend / divisor;
+        int remainder = dividend % divisor;
+        return std::make_pair(quotient, remainder);
+    }
 
-// =====================================================================================
-// https://www.geeksforgeeks.org/structured-binding-c/
-// =====================================================================================
+    void test_01_c17_news() {
+        const auto result = divide_remainder(16, 3);
+        std::cout << "16 / 3 is "
+            << result.first << " with a remainder of "
+            << result.second << std::endl;
+    }
 
+    void test_02_c17_news() {
+        auto [fraction, remainder] = divide_remainder(20, 3);
+        std::cout << "20 / 3 is "
+            << fraction << " with a remainder of "
+            << remainder << std::endl;
+    }
 
-// IST NICHT KOMPLETT ÜBERNOMMEN !!!
+    std::tuple<std::string, std::time_t, float>
+        stock_info(const std::string& name) {
+        std::chrono::system_clock::time_point now = std::chrono::system_clock::now();
+        std::time_t t_current = std::chrono::system_clock::to_time_t(now);
+        return std::make_tuple<>("INTC", t_current, 49.99F);
+    }
 
-// creating a structure named Point 
-class Point {
-public:
-    int x;
-    int y;
-};
+    void test_03_c17_news() {
+        const auto [name, time, price] = stock_info("INTC");
+        std::cout << name << ": "
+            << price << " at "
+            << std::put_time(std::localtime(&time), "%F %T") << std::endl;
+    }
 
-void test_structured_binding_01() {
+    class Point {
+    public:
+        int x;
+        int y;
+    };
 
-    Point p = { 1, 2 };
+    void test_04_c17_news() {
 
-    int x_coord = p.x;
-    int y_coord = p.y;
+        // without structured binding
+        Point p1 = { 1, 2 };
 
-    std::cout << "X Coordinate : " << x_coord << std::endl;
-    std::cout << "Y Coordinate : " << y_coord << std::endl;
-}
+        int x_coord = p1.x;
+        int y_coord = p1.y;
 
-void test_structured_binding_02() {
+        std::cout << "X Coordinate : " << x_coord << std::endl;
+        std::cout << "Y Coordinate : " << y_coord << std::endl;
 
-    Point p = { 1,2 };
+        // with structured binding
+        Point p2 = { 10, 20 };
 
-    // structure binding 
-    auto [x_coord, y_coord] = p;
+        auto [x_coord, y_coord] = p2;
 
-    std::cout << "X Coordinate : " << x_coord << std::endl;
-    std::cout << "Y Coordinate : " << y_coord << std::endl;
+        std::cout << "X Coordinate : " << x_coord << std::endl;
+        std::cout << "Y Coordinate : " << y_coord << std::endl;
+    }
+
+    struct employee {
+        unsigned id;
+        std::string name;
+        std::string role;
+        unsigned phone;
+    };
+
+    void test_05_c17_news() {
+
+        struct employee worker { 9987, "Sepp", "Engineer", 987654321 };
+        struct employee manager { 999, "Hans", "Manager", 123456789 };
+
+        std::vector<employee> employees{
+            worker,
+            manager
+        };
+
+        for (const auto& [id, name, role, salary] : employees) {
+            std::cout
+                << "Name: " << name
+                << "Role: " << role
+                << "Salary: " << salary << std::endl;
+        }
+    }
 }
 
 int main_structured_binding()
 {
-    std::cout << "Begin:" << std::endl;
-    // test_structured_binding_01();
-    test_structured_binding_02();
-    std::cout << "End:" << std::endl;
+    using namespace C17_News;
+
+    test_01_c17_news();
+    test_02_c17_news();
+    test_03_c17_news();
+    test_04_c17_news();
+    test_05_c17_news();
 
     return 0;
 }
