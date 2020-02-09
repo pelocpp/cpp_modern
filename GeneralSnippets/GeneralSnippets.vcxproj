@@ -115,6 +115,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -163,6 +164,7 @@
     <ClCompile Include="SharedPtr\SharedPtr.cpp" />
     <ClCompile Include="StaticAssert\StaticAssert.cpp" />
     <ClCompile Include="StructuredBinding\StructuredBinding.cpp" />
+    <ClCompile Include="TemplateConstexprIf\Template_ConstExpr_If.cpp" />
     <ClCompile Include="TemplateStaticPolymorphism\TemplateStaticPolymorphism.cpp" />
     <ClCompile Include="TemplateTemplateParameter\TemplateTemplateParameter_01.cpp" />
     <ClCompile Include="TemplateTemplateParameter\TemplateTemplateParameter_02.cpp" />
@@ -196,6 +198,7 @@
     <None Include="SharedPtr\Readme.md" />
     <None Include="StaticAssert\Readme.md" />
     <None Include="StructuredBinding\Readme.md" />
+    <None Include="TemplateConstexprIf\Readme.md" />
     <None Include="TemplateStaticPolymorphism\Readme.md" />
     <None Include="TemplateTemplateParameter\Readme.md" />
     <None Include="Tuple\Readme.md" />

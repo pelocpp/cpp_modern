@@ -7,6 +7,7 @@ Es folgt eine tabellarische Auflistung der Unterverzeichnisse:
 | Unterverzeichnis | Thematik |
 |:-------------- |-----------------------------------------|
 | MemoryLeaks | CRT (C-Runtime-Library) Memory Leak Detection |
+| Allocator | Container und Speicher-Allokatoren |
 | Initialization | Einheitliches Initialisierungs-Konzept |
 | InitializerList | Klasse `std::initializer_list<T>` |
 | Casts | Typumwandlungen `static_cast`, `dynamic_cast`, `const_cast` und `reinterpret_cast` |
@@ -27,6 +28,8 @@ Es folgt eine tabellarische Auflistung der Unterverzeichnisse:
 | VariadicTemplates | Templates mit variabler Argumentanzahl (Variadische Templates) und *fold expressions*. |
 | MetaProgramming | Programmierung zur Übersetzungszeit. |
 | RValueLValue | LValue- und RValue Referenzen. |
+| TemplateStaticPolymorphism | Templates und statischer Polymorphismus. |
+| TemplateConstexprIf | Templates und bedingte Compilierung (`if constexpr`). |
 | TemplateTemplateParameter | Template Template Parameter. |
 | PerfectForwarding | Perfect Forwarding (`std::forward`). |
 

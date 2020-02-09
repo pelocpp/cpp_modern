@@ -111,6 +111,9 @@
     <ClCompile Include="Tuple\Tuples.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TemplateConstexprIf\Template_ConstExpr_If.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="ParametersWithConstAndRef\Readme.md">
@@ -198,6 +201,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Tuple\Readme.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="TemplateConstexprIf\Readme.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

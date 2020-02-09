@@ -58,11 +58,11 @@ namespace C17_News {
         // without structured binding
         Point p1 = { 1, 2 };
 
-        int x_coord = p1.x;
-        int y_coord = p1.y;
+        int x = p1.x;
+        int y = p1.y;
 
-        std::cout << "X Coordinate : " << x_coord << std::endl;
-        std::cout << "Y Coordinate : " << y_coord << std::endl;
+        std::cout << "X Coordinate : " << x << std::endl;
+        std::cout << "Y Coordinate : " << y << std::endl;
 
         // with structured binding
         Point p2 = { 10, 20 };
