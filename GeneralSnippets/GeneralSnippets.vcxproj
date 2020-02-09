@@ -145,11 +145,9 @@
     <ClCompile Include="Any\Any.cpp" />
     <ClCompile Include="ArrayDecay\ArrayDecay.cpp" />
     <ClCompile Include="Casts\Casts.cpp" />
-    <ClCompile Include="ClassTemplatesBasics\ClassTemplatesBasics.cpp" />
     <ClCompile Include="ConstExpr\ConstExpr.cpp" />
     <ClCompile Include="ConstExpr\ConstExprExtended.cpp" />
     <ClCompile Include="ConstructursOrder\ConstructorsOrder.cpp" />
-    <ClCompile Include="FunctionTemplatesBasics\FunctionTemplatesBasics.cpp" />
     <ClCompile Include="Global\Dummy.cpp" />
     <ClCompile Include="Initialization\Initialization.cpp" />
     <ClCompile Include="InitializerList\InitializerList.cpp" />
@@ -165,6 +163,8 @@
     <ClCompile Include="StaticAssert\StaticAssert.cpp" />
     <ClCompile Include="StructuredBinding\StructuredBinding.cpp" />
     <ClCompile Include="TemplateConstexprIf\Template_ConstExpr_If.cpp" />
+    <ClCompile Include="TemplatesClassBasics\ClassTemplatesBasics.cpp" />
+    <ClCompile Include="TemplatesFunctionBasics\FunctionTemplatesBasics.cpp" />
     <ClCompile Include="TemplateStaticPolymorphism\TemplateStaticPolymorphism.cpp" />
     <ClCompile Include="TemplateTemplateParameter\TemplateTemplateParameter_01.cpp" />
     <ClCompile Include="TemplateTemplateParameter\TemplateTemplateParameter_02.cpp" />
@@ -181,10 +181,8 @@
     <None Include="Any\Readme.md" />
     <None Include="ArrayDecay\Readme.md" />
     <None Include="Casts\Readme.md" />
-    <None Include="ClassTemplatesBasics\Readme.md" />
     <None Include="ConstExpr\Readme.md" />
     <None Include="ConstructursOrder\Readme.md" />
-    <None Include="FunctionTemplatesBasics\Readme.md" />
     <None Include="Initialization\Readme.md" />
     <None Include="InitializerList\Readme.md" />
     <None Include="InputOutputStreams\Readme.md" />
@@ -199,6 +197,8 @@
     <None Include="StaticAssert\Readme.md" />
     <None Include="StructuredBinding\Readme.md" />
     <None Include="TemplateConstexprIf\Readme.md" />
+    <None Include="TemplatesClassBasics\Readme.md" />
+    <None Include="TemplatesFunctionBasics\Readme.md" />
     <None Include="TemplateStaticPolymorphism\Readme.md" />
     <None Include="TemplateTemplateParameter\Readme.md" />
     <None Include="Tuple\Readme.md" />

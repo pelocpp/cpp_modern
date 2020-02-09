@@ -39,12 +39,6 @@
     <ClCompile Include="MetaProgramming\MetaProgramming.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="FunctionTemplatesBasics\FunctionTemplatesBasics.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ClassTemplatesBasics\ClassTemplatesBasics.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ConstExpr\ConstExpr.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -114,12 +108,15 @@
     <ClCompile Include="TemplateConstexprIf\Template_ConstExpr_If.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TemplatesClassBasics\ClassTemplatesBasics.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TemplatesFunctionBasics\FunctionTemplatesBasics.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="ParametersWithConstAndRef\Readme.md">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="ClassTemplatesBasics\Readme.md">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="..\Readme.md">
@@ -150,9 +147,6 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="VariadicTemplates\Readme.md">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="FunctionTemplatesBasics\Readme.md">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Initialization\Readme.md">
@@ -204,6 +198,12 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="TemplateConstexprIf\Readme.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="TemplatesClassBasics\Readme.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="TemplatesFunctionBasics\Readme.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
