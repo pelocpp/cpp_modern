@@ -6,13 +6,11 @@
 #include <string>
 #include <iterator>
 #include <vector>
-#include <map>
+#include <algorithm>
 
 // =====================================================================================
 // "Peter Pohmann" // Kapitel 2.14
 // =====================================================================================
-
-#include <algorithm>
 
 namespace InitializerList {
 
@@ -30,7 +28,7 @@ namespace InitializerList {
 
     template<typename T>
     void printMe(std::initializer_list<T> list) {
-        for (auto value : list) {
+        for (const auto& value : list) {
             std::cout << value << " - ";
         }
         std::cout << std::endl;
@@ -38,14 +36,14 @@ namespace InitializerList {
 
     template<typename T>
     void printMeToo(std::initializer_list<T> list) {
-        std::cout << "Begin of list:" << std::endl;
+        std::cout << "Begin of list: ";
         std::for_each(
             std::begin(list),
             std::end(list),
-            [](T elem) {
-                std::cout << elem << std::endl;
+            [](const T& elem) {
+                std::cout << elem << " - ";
             });
-        std::cout << "End of list." << std::endl;
+        std::cout << " End of list." << std::endl;
     }
 
     class MyPeople {
@@ -67,7 +65,7 @@ namespace InitializerList {
         std::for_each(
             std::begin(people.m_names),
             std::prev(std::end(people.m_names)),
-            [](std::string elem) {
+            [](const std::string& elem) {
                 std::cout << elem << " - ";
             });
 
@@ -95,6 +93,8 @@ namespace InitializerList {
         printMe({ "ABC", "DEF", "GHI" });
         printMe<std::string>({ "ABC", "DEF", "GHI" });
         printMe<std::string>({ std::string("RST"), std::string("UVW"), std::string("XYZ") });
+
+        std::cout << "--------------------------------" << std::endl;
 
         printMeToo({ 'a', 'b', 'c' });        // template argument T can be deduced automatically
         printMeToo<char>({ 'a','b', 'c' });   // template argument T specified explicitly
