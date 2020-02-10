@@ -163,7 +163,8 @@
     <ClCompile Include="StaticAssert\StaticAssert.cpp" />
     <ClCompile Include="StructuredBinding\StructuredBinding.cpp" />
     <ClCompile Include="TemplateConstexprIf\Template_ConstExpr_If.cpp" />
-    <ClCompile Include="TemplatesClassBasics\ClassTemplatesBasics.cpp" />
+    <ClCompile Include="TemplatesClassBasics\TemplatesClassBasics01.cpp" />
+    <ClCompile Include="TemplatesClassBasics\TemplatesClassBasics02.cpp" />
     <ClCompile Include="TemplatesFunctionBasics\FunctionTemplatesBasics.cpp" />
     <ClCompile Include="TemplateStaticPolymorphism\TemplateStaticPolymorphism.cpp" />
     <ClCompile Include="TemplateTemplateParameter\TemplateTemplateParameter_01.cpp" />

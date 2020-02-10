@@ -108,10 +108,13 @@
     <ClCompile Include="TemplateConstexprIf\Template_ConstExpr_If.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TemplatesClassBasics\ClassTemplatesBasics.cpp">
+    <ClCompile Include="TemplatesFunctionBasics\FunctionTemplatesBasics.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TemplatesFunctionBasics\FunctionTemplatesBasics.cpp">
+    <ClCompile Include="TemplatesClassBasics\TemplatesClassBasics01.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TemplatesClassBasics\TemplatesClassBasics02.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

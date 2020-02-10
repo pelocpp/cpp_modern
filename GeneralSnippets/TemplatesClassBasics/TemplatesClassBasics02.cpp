@@ -438,9 +438,9 @@ namespace ClassTemplatesBasics_SFINAE {
     }
 }
 
-int main_class_templates_basics()
+int main_class_templates_basics_02()
 {
-    using namespace ClassTemplatesBasics_SimpleTemplate_1;
+    //using namespace ClassTemplatesBasics_SimpleTemplate_1;
     //using namespace ClassTemplatesBasics_SimpleTemplate_2;
     //using namespace ClassTemplatesBasics_MethodsTemplates;
     //using namespace ClassTemplatesBasics_DependentKeywordTypename;
@@ -448,8 +448,8 @@ int main_class_templates_basics()
     //using namespace ClassTemplatesBasics_PartialClassTemplateSpecialization;
     //using namespace ClassTemplatesBasics_SFINAE;
 
-    test_01();
-    test_02();
+    //test_01();
+    //test_02();
 
     return 0;
 }
