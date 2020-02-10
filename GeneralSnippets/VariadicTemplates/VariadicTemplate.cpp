@@ -27,21 +27,27 @@ namespace VariadicTemplates {
         int sum = adder(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
         std::cout << "Sum from 1 up to 10: " << sum << std::endl;
 
-        std::string stringConcat = adder(std::string("ABC"), std::string("DEF"), std::string("GHI"), std::string("JKL"), std::string("MNO"));
+        std::string stringConcat = adder (
+            std::string("ABC"),
+            std::string("DEF"), 
+            std::string("GHI"), 
+            std::string("JKL"),
+            std::string("MNO")
+        );
         std::cout << "String Concatenation: " << stringConcat << std::endl;
     }
 
     void test_02() {
 
         const std::map<std::type_index, std::string> typeNames {
-            { std::type_index(typeid(int)),  "int"},
-            { std::type_index(typeid(long)),  "long"},
-            { std::type_index(typeid(short)),  "short"},
-            { std::type_index(typeid(char)),  "char"},
-            { std::type_index(typeid(const char*)), "const char*"},
-            { std::type_index(typeid(float)),  "float"},
-            { std::type_index(typeid(double)),  "double"},
-            { std::type_index(typeid(bool)),  "bool"}
+            { std::type_index(typeid(int)),          "int"},
+            { std::type_index(typeid(long)),         "long"},
+            { std::type_index(typeid(short)),        "short"},
+            { std::type_index(typeid(char)),         "char"},
+            { std::type_index(typeid(const char*)),  "const char*"},
+            { std::type_index(typeid(float)),        "float"},
+            { std::type_index(typeid(double)),       "double"},
+            { std::type_index(typeid(bool)),         "bool"}
         };
 
         // classic C++
@@ -66,14 +72,14 @@ namespace VariadicTemplates {
     void listTypeNames(std::ostream & os, T val) { 
 
         static const std::map<std::type_index, std::string> typeNames{
-            { std::type_index(typeid(int)),  "int"},
-            { std::type_index(typeid(long)),  "long"},
-            { std::type_index(typeid(short)),  "short"},
-            { std::type_index(typeid(char)),  "char"},
-            { std::type_index(typeid(const char*)), "const char*"},
-            { std::type_index(typeid(float)),  "float"},
-            { std::type_index(typeid(double)),  "double"},
-            { std::type_index(typeid(bool)),  "bool"}
+            { std::type_index(typeid(int)),          "int"},
+            { std::type_index(typeid(long)),         "long"},
+            { std::type_index(typeid(short)),        "short"},
+            { std::type_index(typeid(char)),         "char"},
+            { std::type_index(typeid(const char*)),  "const char*"},
+            { std::type_index(typeid(float)),        "float"},
+            { std::type_index(typeid(double)),       "double"},
+            { std::type_index(typeid(bool)),         "bool"}
         };
 
         const std::string typeName = typeNames.at(std::type_index(typeid(T)));
@@ -131,9 +137,9 @@ namespace VariadicTemplates {
 int main_variadic_templates()
 {
     using namespace VariadicTemplates;
-    //test_01();
-    //test_02();
-    //test_03();
+    test_01();
+    test_02();
+    test_03();
     test_04();
     test_05();
     return 0;

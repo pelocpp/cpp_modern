@@ -16,7 +16,7 @@ namespace PerfectForwarding {
 
     /*
      * Note: "T&&" with "T" being template param is special:
-     *       It adjusts "T" to be (for example) "int &" or non-ref "int" so std::forward knows what to do.
+     *       It adjusts "T" to be (for example) "int&" or non-ref "int" so std::forward knows what to do.
      */
 
     template <typename T>
@@ -32,6 +32,7 @@ namespace PerfectForwarding {
     void test_01_perfect_forwarding() {
         std::cout << "initial caller passes rvalue:" << std::endl;
         forwarding(5);
+        std::cout << "----------------------------" << std::endl;
         std::cout << "initial caller passes lvalue:" << std::endl;
         int x = 5;
         forwarding(x);
@@ -41,7 +42,6 @@ namespace PerfectForwarding {
 int main_perfect_forwarding() {
 
     using namespace PerfectForwarding;
-
     test_01_perfect_forwarding();
     return 0;
 }
