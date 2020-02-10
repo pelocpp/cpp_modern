@@ -30,7 +30,7 @@ namespace WeakPointer {
             std::cerr << "Usage count shared_ptr: " << ptr.use_count() << std::endl;
 
             // access weak pointer via shared pointer
-            tempPtr->saHello();
+            tempPtr->sayHello();
 
             std::cout << "End-of-Scope" << std::endl;
         }

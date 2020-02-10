@@ -32,7 +32,7 @@ namespace Allocator {
     }
 
     // Minimalistic C++11 allocator with debug output
-    template <class Tp>
+    template <typename Tp>
     struct MyAlloc {
 
         // An allocator that is used to acquire/release memory

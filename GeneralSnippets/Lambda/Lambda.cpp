@@ -10,14 +10,24 @@
 
 namespace Lambda {
 
-    struct CompareMyInts {
+    bool myCompare (const int n1, const int n2) {
+        return n1 < n2;
+    }
 
+    struct MyComparer {
         bool operator() (const int n1, const int n2) {
             return n1 < n2;
         }
     };
 
     void test_01() {
+
+        // local class within function possible
+        struct MyInternalComparer {
+            bool operator() (const int n1, const int n2) {
+                return n1 < n2;
+            }
+        };
 
         std::vector<int> myVector;
         myVector.push_back(5);
@@ -32,7 +42,11 @@ namespace Lambda {
         }
         std::cout << std::endl;
 
-        std::sort(std::begin(myVector), std::end(myVector), CompareMyInts());
+        std::sort(std::begin(myVector), std::end(myVector), myCompare);
+        // or
+        std::sort(std::begin(myVector), std::end(myVector), MyComparer());
+        // or
+        std::sort(std::begin(myVector), std::end(myVector), MyInternalComparer());
 
         for (int n : myVector) {
             std::cout << n << ' ';
@@ -141,9 +155,6 @@ namespace Lambda {
             std::cerr << "Reference: " << n << " " << m << std::endl;
         };
 
-        n = 3;
-        m = 4;
-
         return lambda;  // I would't do this never ever :-)
     }
 
@@ -221,7 +232,7 @@ namespace Lambda {
 
         auto plus = [](auto l, auto r) { return l + r; };
 
-        auto plusTen = [=](int x) { return plus(10, x); };
+        auto plusTen = [plus](int x) { return plus(10, x); };
 
         std::cout << plusTen(5) << std::endl;
     }

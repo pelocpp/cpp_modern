@@ -63,7 +63,7 @@ public:
         return m_dummy;
     }
 
-    void saHello() { 
+    void sayHello() { 
         std::cout << "Hello Dummy [" << m_dummy << "]" << std::endl;
     }
 
