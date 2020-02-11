@@ -32,36 +32,36 @@ namespace Allocator {
     }
 
     // Minimalistic C++11 allocator with debug output
-    template <typename Tp>
+    template <typename T>
     struct MyAlloc {
 
         // An allocator that is used to acquire/release memory
         // and to construct/destroy the elements in that memory.
         // The type must meet the requirements of Allocator.
-        // The behavior is undefined if Allocator::value_type is not the same as Tp
-        typedef Tp value_type;
+        // The behavior is undefined if Allocator::value_type is not the same as T
+        typedef T value_type;
 
         MyAlloc() = default;
 
-        template <class T>
-        MyAlloc(const MyAlloc<T>& alloc) {
-            // std::cout << __FUNCSIG__ << std::endl;
+        template <class TP>
+        MyAlloc(const MyAlloc<TP>& alloc) {
+            std::cout << __FUNCSIG__ << std::endl;
         }
 
-        Tp* allocate(std::size_t n);
-        void deallocate(Tp* p, std::size_t n);
+        T* allocate(std::size_t n);
+        void deallocate(T* p, std::size_t n);
     };
 
-    template <class Tp>
-    Tp* MyAlloc<Tp>::allocate(std::size_t n) {
-        n = n * sizeof(Tp);
+    template <class T>
+    T* MyAlloc<T>::allocate(std::size_t n) {
+        n = n * sizeof(T);
         std::cout << "allocating " << n << " bytes" << std::endl;
-        return static_cast<Tp*>(::operator new(n));
+        return static_cast<T*>(::operator new(n));
     }
 
-    template <class Tp>
-    void MyAlloc<Tp>::deallocate(Tp* p, std::size_t n) {
-        std::cout << "deallocating " << n * sizeof(Tp) << " bytes" << std::endl;
+    template <class T>
+    void MyAlloc<T>::deallocate(T* p, std::size_t n) {
+        std::cout << "deallocating " << n * sizeof(T) << " bytes" << std::endl;
         ::operator delete(p);
     }
 
@@ -79,37 +79,20 @@ namespace Allocator {
 
     void test_02_allocator() {
 
-        std::cout << "Not using reserve: \n";
-
-        std::vector<int, MyAlloc<int>> v1;
-
-        for (int n = 0; n < Max; ++n) {
-            std::cout << "    ==> push_back(" << n << ")" << std::endl;
-            v1.push_back(n);
-        }
-    }
-
-    void test_03_allocator() {
-
-        std::cout << "Using reserve: \n";
-
-        std::vector<int, MyAlloc<int>> v1;
-        v1.reserve(Max);
+        std::vector<int, MyAlloc<int>> vec;
+        // v1.reserve(Max);  // put into comments ... or not
 
         for (int n = 0; n < Max; ++n) {
             std::cout << "    ==> push_back(" << n << ")" << std::endl;
-            v1.push_back(n);
+            vec.push_back(n);
         }
     }
 
     /*
     * Note:
     *
-    * a) Watch difference between executions with and without
-    *    'vec.reserve' invocation
-    * 
-    * b) Watch difference between vector containers with and without
-    *    user-defined allocator
+    * Watch difference between executions with and without
+    * 'vec.reserve' invocation
     */
 
     constexpr int AnotherMax = 5;
@@ -117,10 +100,7 @@ namespace Allocator {
     void test_04a_allocator() {
 
         std::cout << "Insertion: push_back - Object by LValue reference" << std::endl;
-
-        // std::vector<Dummy> vec;
         std::vector<Dummy, MyAlloc<Dummy>> vec;
-
         // vec.reserve(AnotherMax);  // put into comments ... or not
         for (int n = 0; n < AnotherMax; ++n) {
             Dummy dummy(n);
@@ -131,11 +111,8 @@ namespace Allocator {
     void test_04b_allocator() {
 
         std::cout << "Insertion: push_back - Object by RValue reference" << std::endl;
-
-        // std::vector<Dummy> vec;
         std::vector<Dummy, MyAlloc<Dummy>> vec;
-
-        vec.reserve(AnotherMax); // put into comments ... or not
+        // vec.reserve(AnotherMax); // put into comments ... or not
         for (int n = 0; n < AnotherMax; ++n) {
             vec.push_back(Dummy(n));
         }
@@ -144,11 +121,8 @@ namespace Allocator {
     void test_04c_allocator() {
 
         std::cout << "Insertion: emplace_back" << std::endl;
-
-        // std::vector<Dummy> vec;
         std::vector<Dummy, MyAlloc<Dummy>> vec;
-
-        vec.reserve(AnotherMax);   // put into comments ... or not
+        // vec.reserve(AnotherMax);   // put into comments ... or not
         for (int n = 0; n < AnotherMax; ++n) {
             vec.emplace_back(n);
         }
@@ -158,9 +132,9 @@ namespace Allocator {
 int main_allocator()
 {
     using namespace Allocator;
+
     test_01_allocator();
     test_02_allocator();
-    test_03_allocator();
 
     test_04a_allocator();
     test_04b_allocator();
