@@ -13,13 +13,13 @@ Dies erfolgt mit Hilfe eines sogenannten "*Fold-Ausdrucks*".
 darstellt:
 
 | Name | Ausdruck | Wird erweitert zu |
-|:----- |---|--|
-| Unary Left Fold | (... op pack) | ((pack1 op pack2) op ...) op packN |
-| Binary Left Fold | (init op ... op pack) | 	(((init op pack1) op pack2) op ...) op packN |
-| Unary Right Fold | (pack op ...) | 	pack1 op (... op (packN-1 op packN)) |
-| Binary Right Fold | (pack op ... op init) | pack1 op (... op (packN-1 op (packN op init))) |
+|:-|:-|:-|
+| Unary Left Fold | (... "op" pack) | ((pack<sub>1</sub> "op" pack<sub>2</sub>) "op" ...) "op" pack<sub>N</sub> |
+| Binary Left Fold | (init "op" ... "op" pack) | 	(((init "op" pack1) "op" pack2) "op" ...) "op" packN |
+| Unary Right Fold | (pack "op" ...) | 	pack1 "op" (... "op" (packN-1 "op" packN)) |
+| Binary Right Fold | (pack "op" ... "op" init) | pack1 "op" (... "op" (packN-1 "op" (packN "op" init))) |
 
-Tabelle *Folding-Expressions*
+Tabelle *"Folding-Expressions"*.
 
 Der Addierer und ein einfacher Printer demonstrieren in den Code-Snippets *fold expressions*.
 
