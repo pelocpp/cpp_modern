@@ -7,7 +7,7 @@ unterscheinden:
   * dynamischer Polymorphismus
 
 Prinzipiell bedeutet der klassische (dynamische) Polymorphismus, dass die Auswahl des Aufrufs einer Methode bzw. Funktion
-in Abhängigkeit des tatsächlich zur Laufzeit vorliegenden Objekts zur Laufzeit erfolgt.
+in Abhängigkeit des tatsächlich zur Laufzeit vorliegenden Objekts erfolgt.
 
 Sind Schablonen (Templates) im Spiel, kann diese Festlegung statisch (also zur Übersetzungszeit) erfolgen.
 

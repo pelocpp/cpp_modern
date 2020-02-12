@@ -4,7 +4,6 @@
 
 #include <iostream>
 #include <vector>
-#include <cstdlib>
 
 class Coord {
 private:
@@ -76,17 +75,18 @@ namespace TemplatesClassicPolymorphism {
         }
     }
 
-    void _test_01_template_static_polymorphims() {
+    void _test_template_static_polymorphism() {
 
         Line line;
         Circle c1; 
         Circle c2;
         Circle c3;
+        Coord  coord;
 
         myDraw(line);                // myDraw(GeoObj&) => Line::draw()
         myDraw(c1);                  // myDraw(GeoObj&) => Circle::draw()
-        distance(c2, c3);            // distance(GeoObj&,GeoObj&)
-        distance(line, c1);          // distance(GeoObj&,GeoObj&)
+        coord = distance(c2, c3);    // distance(GeoObj&,GeoObj&)
+        coord = distance(line, c1);  // distance(GeoObj&,GeoObj&)
         std::vector<GeoObj*> vec;    // heterogeneous collection
         vec.push_back(&line);        // insert line
         vec.push_back(&c1);          // insert circle
@@ -137,19 +137,19 @@ namespace TemplatesStaticPolymorphism {
         }
     }
 
-    void _test_02_template_static_polymorphims() {
+    void _test_template_static_polymorphism() {
 
         Line line;
         Circle c1;
         Circle c2;
         Circle c3;
-
+        Coord  coord;
                                         // Note: Type Deduction
         myDraw(line);                   // myDraw<Line>(GeoObj&) => Line::draw()
         myDraw(c1);                     // myDraw<Circle>(GeoObj&) => Circle::draw()
                                         
-        distance(c2, c3);               // distance<Circle,Circle>(GeoObj1&,GeoObj2&)
-        distance(line, c1);             // distance<Line,Circle>(GeoObj1&,GeoObj2&)
+        coord = distance(c2, c3);       // distance<Circle,Circle>(GeoObj1&,GeoObj2&)
+        coord =distance(line, c1);      // distance<Line,Circle>(GeoObj1&,GeoObj2&)
 
         // std::vector<GeoObj*> coll;   // ERROR: no heterogeneous collection possible
         std::vector<Circle> vec;        // OK: homogeneous collection possible
@@ -162,10 +162,10 @@ namespace TemplatesStaticPolymorphism {
 
 int main_templates_static_polymorphism() {
 
-    // using namespace TemplatesClassicPolymorphism;
-    using namespace TemplatesStaticPolymorphism;
+    using namespace TemplatesClassicPolymorphism;
+    // using namespace TemplatesStaticPolymorphism;
 
-    _test_02_template_static_polymorphims();
+    _test_template_static_polymorphism();
     return 0;
 }
 

@@ -9,8 +9,6 @@
 
 namespace AnySamples {
 
-    using AnyRow = std::tuple<std::any, std::any, std::any>;
-
     void test_01_any() {
 
         std::any a = 1;
@@ -51,15 +49,32 @@ namespace AnySamples {
         std::cout << *i << "\n";
     }
 
+    using Row = std::tuple<std::any, std::any, std::any>;
+
+    // helper method (forward declaration)
     std::string anyToString(const std::any&);
 
     void test_02_any() {
 
-        AnyRow row1 = std::tuple<int, int, int>{ 1,2, 3 };
-        AnyRow row2 = std::tuple<char, std::string, double>{ '1', std::string("ABC"), 99.99 };
-        AnyRow row3 = std::tuple<bool, bool, int>{ true, false, 123 };
+        Row row1 = std::tuple<int, int, int>{
+            1,
+            2,
+            3 
+        };
 
-        std::vector<AnyRow> mySheet;
+        Row row2 = std::tuple<char, std::string, double>{ 
+            '1', 
+            std::string("ABC"),
+            99.99
+        };
+        
+        Row row3 = std::tuple<bool, bool, int>{
+            true,
+            false,
+            123 
+        };
+
+        std::vector<Row> mySheet;
 
         mySheet.push_back(row1);
         mySheet.push_back(row2);

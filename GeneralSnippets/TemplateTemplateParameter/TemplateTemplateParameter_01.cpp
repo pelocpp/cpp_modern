@@ -5,16 +5,17 @@
 #include <iostream>
 #include <vector>
 #include <list>
+#include <deque>
 #include <string>
 
 namespace TemplateTemplateParameterFunction {
 
     template <
-        typename Value, 
-        template <typename, typename> class Container, 
-        typename Allocator = std::allocator<Value>
+        typename T, 
+        template <typename type, typename allocator> typename CONTAINER,
+        typename ALLOCATOR = std::allocator<T>
     >
-    void testMe(Container<Value, Allocator>& container, const Value& value)
+    void testMe(CONTAINER<T, ALLOCATOR>& container, const T& value)
     {
         container.push_back(value);
         container.push_back(value);
@@ -25,12 +26,12 @@ namespace TemplateTemplateParameterFunction {
         }
     }
 
-    void test_01_template_template_parameter_function() {
+    void test_01_ttp() {
 
         std::vector<int> intVector;
         testMe(intVector, 123);
 
-        std::vector<float> floatVector;
+        std::deque<float> floatVector;
         testMe(floatVector, 1.2f);
 
         std::list<std::string> stringList;
@@ -42,9 +43,11 @@ namespace TemplateTemplateParameterClass {
 
     template <
         typename T,
-        template <typename E, typename Allocator = std::allocator<E>> class Container = std::vector
-    >
-    class MyContainer
+        template <
+            typename,
+            typename Allocator = std::allocator<T>> typename Container = std::vector
+        >
+        class MyContainer
     {
     public:
         virtual ~MyContainer() = default;
@@ -56,9 +59,11 @@ namespace TemplateTemplateParameterClass {
 
     template <
         typename T,
-        template <typename E, typename Allocator = std::allocator<E>> class Container
-    >
-    void MyContainer<T, Container>::testMe(T elem) 
+        template <
+            typename,
+            typename Allocator = std::allocator<T>> typename Container
+        >
+        void MyContainer<T, Container>::testMe(T elem)
     {
         m_anotherContainer.push_back(elem);
         m_anotherContainer.push_back(elem);
@@ -69,15 +74,15 @@ namespace TemplateTemplateParameterClass {
         }
     }
 
-    void test_01_template_template_parameter_class() {
+    void test_01_ttp() {
 
         MyContainer<int, std::vector> myIntContainer;
         myIntContainer.testMe(1);
 
-        MyContainer<float, std::vector> myFloatContainer;
+        MyContainer<float, std::deque> myFloatContainer;
         myFloatContainer.testMe(9.9F);
 
-        MyContainer<std::string, std::vector> myStringContainer;
+        MyContainer<std::string, std::list> myStringContainer;
         myStringContainer.testMe(std::string("XYZ"));
     }
 }
@@ -85,11 +90,8 @@ namespace TemplateTemplateParameterClass {
 int main_template_template_parameter () {
 
     using namespace TemplateTemplateParameterFunction;
-    using namespace TemplateTemplateParameterClass;
-
-    test_01_template_template_parameter_function();
-    test_01_template_template_parameter_class();
-
+    // using namespace TemplateTemplateParameterClass;
+    test_01_ttp();
     return 0;
 }
 
