@@ -9,7 +9,7 @@ Variadische Templates bestehen aus zwei Template-Überladungen:
 Ab C++ 17 kann man die zwei Templates eines variadischen Templates auch auf eines reduzieren. 
 Dies erfolgt mit Hilfe eines sogenannten "*Fold-Ausdrucks*".
 
-*"Folding-Expressions"* lassen sich in 4 Kategorien einteilen, wie folgende Tabelle 
+*Folding-Expressions* lassen sich in 4 Kategorien einteilen, wie folgende Tabelle 
 darstellt:
 
 | Name | Ausdruck | Wird erweitert zu |
@@ -23,7 +23,7 @@ Tabelle *"Folding-Expressions"*.
 
 Der Addierer und ein einfacher Printer demonstrieren in den Code-Snippets *fold expressions*.
 
-Theoretisch stehen für *"Folding-Expressions"* 32 Operatoren zur Verfügung.
+Theoretisch stehen für *Folding-Expressions* 32 Operatoren zur Verfügung.
 Diese wären `+`, `-`, `*`, `/`, `%`, `^`, `&`, `|`, `=`, `<`, `>`, `<<`, `>>`, `+=`, `-=`, `*=`, `/=`, `%=`, `^=`, `&=`, `|=`, `<<=`, `>>=`, `==`, `!=`, `<=`, `>=`, `&&`, `||`, `,`, `.*` und `->*`.
 
 Ausgabe der Code-Snippets zu variadische Templates:
