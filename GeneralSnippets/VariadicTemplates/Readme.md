@@ -29,7 +29,7 @@ Diese wären `+`, `-`, `*`, `/`, `%`, `^`, `&`, `|`, `=`, `<`, `>`, `<<`, `>>`, `
 Ein Sonderfall des Foldings ist das sogenannte *"Folding über einem Komma"*.
 Dieses wird ebenfalls an mehreren Beispielen veranschaulicht.
 
-Ausgabe der Code-Snippets zu variadische Templates:
+Ausgabe der Code-Snippets zu variadischen Templates:
 
 ```cpp
 Sum from 1 up to 10: 55
