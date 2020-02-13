@@ -62,17 +62,54 @@ namespace MyTypeTraits {
     void test_02() {
         // AnotherKind<const int*> anotherKind;  // compiles
     }
-}
 
-using namespace MyTypeTraits;
+    // =====================================================================================
+
+    template <typename T>
+    struct ReferenceType
+    {
+        typedef T type;
+    };
+
+    template <typename T>
+    struct ReferenceType<T&>
+    {
+        typedef T& type;
+    };
+
+    template <typename T>
+    void checkReference()
+    {
+        if (std::is_reference<T>::value == true) {
+            std::cout << "reference " << std::endl;
+        }
+        else {
+            std::cout << "not reference" << std::endl;
+        }
+    }
+
+    void test_03() {
+
+        std::cout << "int: ";
+        checkReference<int>();
+
+        std::cout << "int&: ";
+        checkReference<int&>();
+
+        std::cout << "ReferenceType<int>::type > ";
+        checkReference< ReferenceType<int>::type >();
+
+        std::cout << "ReferenceTypeint&>::type > : ";
+        checkReference< ReferenceType<int&>::type >();
+    }
+}
 
 int main_type_traits()
 {
-    std::cout << "Type Traits" << std::endl;
-
+    using namespace MyTypeTraits;
     test_01();
     test_02();
-
+    test_03();
     return 0;
 }
 

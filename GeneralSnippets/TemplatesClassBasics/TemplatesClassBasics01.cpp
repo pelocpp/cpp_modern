@@ -1,16 +1,13 @@
-#include <iostream>
-#include <string>
-
 // =====================================================================================
 // Klassentemplates
 // =====================================================================================
 
+#include <iostream>
+#include <string>
+
 namespace ClassTemplatesBasics_SimpleTemplateDefinition {
 
-    /*
-     * general definition of class template
-     */
-
+    // general definition of class template
     template <typename N, typename D>
     class Ratio {
     public:
@@ -28,29 +25,17 @@ namespace ClassTemplatesBasics_SimpleTemplateDefinition {
         D m_denom;
     };
 
-    // Sidestep: making argument type deduction explicitly (make_XXX function)
-    template <typename N, typename D>
-    Ratio<N, D>
-        make_ratio(const N& num, const D& denom) {
-        return { num, denom };
-    }
-
-    void test_01_class_template_basics() {
+    void test_01() {
         Ratio <int, double> ratio1;
         Ratio <int, double> ratio2(1, 5.0);
-        Ratio ratio3(3, 4.0);
-        Ratio ratio4 = make_ratio(1.0, 2.0);  // explicit type deduction
-        auto ratio5{ make_ratio(1.0, 2.0) };  // explicit type deduction
+        Ratio ratio3(3, 4.0);  // explicit type deduction
     }
 }
 
 namespace ClassTemplatesBasics_TemplateExplicitSpecialization {
 
-    /*
-     * Template explicit specialization
-     */
-
-    // Repitition (!)
+    // Explicit Template Specialization
+    // hier: Wiederholung der Basis-Schablone
     template <typename N, typename D>
     class Ratio {
     public:
@@ -68,7 +53,7 @@ namespace ClassTemplatesBasics_TemplateExplicitSpecialization {
         D m_denom;
     };
 
-    // Explicit specialization: Whole class (Full specialization)
+    // Explicit specialization: a) Whole class (Full specialization)
     template <>
     class Ratio<double, double> {
     public:
@@ -84,11 +69,11 @@ namespace ClassTemplatesBasics_TemplateExplicitSpecialization {
         double m_value;
     };
 
-    // Explicit specialization: Only member function
+    // Explicit specialization: b) Only member function
     template <>
     Ratio<float, float>::operator double() const { return m_num / m_denom; }
 
-    void test_01_class_template_basics() {
+    void test_01() {
 
         Ratio <double, double> ratio(1, 5.0);
         double value = static_cast<double>(ratio);
@@ -102,11 +87,8 @@ namespace ClassTemplatesBasics_TemplateExplicitSpecialization {
 
 namespace ClassTemplatesBasics_TemplatePartialSpecialization {
 
-    /*
-     * Template partial specializations
-     */
-
-    // Repitition (!)
+    // Partial Template Specialization
+    // hier: Wiederholung der Basis-Schablone
     template <typename N, typename D>
     class Ratio {
     public:
@@ -124,6 +106,7 @@ namespace ClassTemplatesBasics_TemplatePartialSpecialization {
         D m_denom;
     };
 
+    // Partial Template Specialization: a) Reduktion auf einen Parameter
     template <typename D>
     class Ratio<double, D> {
     public:
@@ -138,6 +121,7 @@ namespace ClassTemplatesBasics_TemplatePartialSpecialization {
         double m_value;
     };
 
+    // Partial Template Specialization: b) Reduktion auf einen Parameter
     template <typename N>
     class Ratio<N, double> {
     public:
@@ -152,7 +136,7 @@ namespace ClassTemplatesBasics_TemplatePartialSpecialization {
         double m_value;
     };
 
-    void test_01_class_template_basics() {
+    void test_01() {
 
         Ratio <double, int> ratio1(1.0, 2);
         Ratio <int, double> ratio2(1, 2.0);
@@ -161,7 +145,6 @@ namespace ClassTemplatesBasics_TemplatePartialSpecialization {
         // ambigous: full specialization resolves
         // Ratio <double, double> ratio4(1, 2);
     }
-
 }
 
 namespace ClassTemplatesBasics_MethodsTemplates {
@@ -180,7 +163,7 @@ namespace ClassTemplatesBasics_MethodsTemplates {
         }
     };
 
-    void test_01_class_template_basics() {
+    void test_01() {
 
         Printer normalPrinter(std::cout);
         normalPrinter.print(100).print(" --> ").print(123.456).print("\n");
@@ -196,9 +179,7 @@ int main_class_templates_basics_01()
     // using namespace ClassTemplatesBasics_TemplateExplicitSpecialization;
     // using namespace ClassTemplatesBasics_TemplatePartialSpecialization;
     // using namespace ClassTemplatesBasics_MethodsTemplates;
-
-    test_01_class_template_basics();
-
+    test_01();
     return 0;
 }
 

@@ -2,8 +2,6 @@
 // static_assert
 // =====================================================================================
 
-#include <iostream>
-
 // =====================================================================================
 // https://www.geeksforgeeks.org/understanding-static_assert-c-11/
 // und
@@ -22,8 +20,9 @@ struct Grid {
 template <class T, int Size>
 class MyVector {
 
-    // Compile time assertion to check if the size of the vector is greater than 3 or not.
-    // If any vector is declared whose size is less than 4, the assertion will fail
+    // Compile time assertion to check if the size of the vector
+    // is greater than 3 or not. If any vector is declared whose size
+    // is less than 4, the assertion will fail
 
     static_assert(Size > 3, "Vector size is too small!");
     T m_values[Size];
@@ -31,11 +30,13 @@ class MyVector {
 
 int main_static_assert()
 {
+#pragma warning( disable : 4101 )
+
     static_assert(sizeof(void*) == 4, "Size of Pointer is 32-bits!");
     // static_assert(sizeof(void*) == 8, "Size of Pointer is 64-bits!");
 
     Grid<int, 10, 5> intGrid;
-    Grid<std::string, 3, 4> strGrid;
+    Grid<std::string, 3, 4> stringGrid;
     // Grid<double, 0, 0> doubleGrid;   // doesn't compile
     Grid<long long, 1, 0> longGrid;
 
