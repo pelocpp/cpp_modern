@@ -26,6 +26,9 @@ Der Addierer und ein einfacher Printer demonstrieren in den Code-Snippets *fold 
 Theoretisch stehen für *Folding-Expressions* 32 Operatoren zur Verfügung.
 Diese wären `+`, `-`, `*`, `/`, `%`, `^`, `&`, `|`, `=`, `<`, `>`, `<<`, `>>`, `+=`, `-=`, `*=`, `/=`, `%=`, `^=`, `&=`, `|=`, `<<=`, `>>=`, `==`, `!=`, `<=`, `>=`, `&&`, `||`, `,`, `.*` und `->*`.
 
+Ein Sonderfall des Foldings ist das sogenannte *"Folding über einem Komma"*.
+Dieses wird ebenfalls an mehreren Beispielen veranschaulicht.
+
 Ausgabe der Code-Snippets zu variadische Templates:
 
 ```cpp
