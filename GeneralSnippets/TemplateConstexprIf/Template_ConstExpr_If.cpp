@@ -25,12 +25,12 @@ namespace TemplateConstExprIf {
         T addToVector(U x)
         {
             // create a copy of the member vector
-            T copy(m_val);
+            T vecCopy(m_val);
 
-            for (auto& n : copy) {
+            for (auto& n : vecCopy) {
                 n += x;
             }
-            return copy;
+            return vecCopy;
         }
 
         template <typename U>
@@ -39,12 +39,12 @@ namespace TemplateConstExprIf {
             // if constexpr (std::is_same<T, std::vector<U>>::value) {
 
                 // create a copy of the member vector
-                T copy(m_val);
+                T vecCopy(m_val);
 
-                for (auto& n : copy) {
+                for (auto& n : vecCopy) {
                     n += x;
                 }
-                return copy;
+                return vecCopy;
             }
             else {
                 return m_val + x;
@@ -52,67 +52,69 @@ namespace TemplateConstExprIf {
         }
     };
 
-    void test_01_constexpr_if () {
-
-        Adder<int> intAdder(121);
-        int n = intAdder.addSingle(212);
+    void test_01() {
+        Adder<int> intAdder(123);
+        int n = intAdder.addSingle(456);
         std::cout << n << std::endl;
 
-        float f = Adder<float>{1.5}.addSingle(2);
+        Adder<float> floatAdder(1.5);
+        float f = floatAdder.addSingle(2);
         std::cout << f << std::endl;
 
-        std::string s = 
-            Adder<std::string>{ std::string ("ABC")}.addSingle(std::string("XYZ"));
+        Adder<std::string> stringAdder("ABC");
+        std::string s = stringAdder.addSingle(std::string("XYZ"));
         std::cout << s << std::endl;
 
         std::vector<int> numbers{ 1, 2, 3 };
-        std::vector<int> numbersResult = 
-            Adder<std::vector<int>>{numbers}.addToVector(10);
-        for (int elem : numbersResult)
-            std::cout << elem << ' ';
+        Adder<std::vector<int>> intVecAdder(numbers);
+        std::vector<int> numbersResult = intVecAdder.addToVector(10);
+        for (int n : numbersResult)
+            std::cout << n << ' ';
         std::cout << std::endl;
 
-        std::vector<std::string> stringVec{ "A", "B", "C" };
-        std::vector<std::string> stringResult = 
-            Adder<std::vector<std::string>>{stringVec}.addToVector(std::string{ "Z" });
+        std::vector<std::string> strings{ "A", "B", "C" };
+        Adder<std::vector<std::string>> intStringAdder(strings);
+        std::vector<std::string> stringResult =
+            intStringAdder.addToVector(std::string{ "Z" });
         for (std::string s : stringResult)
             std::cout << s << ' ';
     }
 
-    void test_02_constexpr_if() {
-        Adder<int> intAdder(121);
-        int n = intAdder.add(212);
+    void test_02() {
+        Adder<int> intAdder(123);
+        int n = intAdder.add(456);
         std::cout << n << std::endl;
 
-        float f = Adder<float>{ 1.5 }.add(2);
+        Adder<float> floatAdder(1.5);
+        float f = floatAdder.add(2);
         std::cout << f << std::endl;
 
-        std::string s =
-            Adder<std::string>{ std::string("ABC") }.add(std::string("XYZ"));
+        Adder<std::string> stringAdder("ABC");
+        std::string s = stringAdder.add(std::string("XYZ"));
         std::cout << s << std::endl;
 
         std::vector<int> numbers{ 1, 2, 3 };
-        std::vector<int> numbersResult =
-            Adder<std::vector<int>>{ numbers }.add(10);
-        for (int elem : numbersResult)
-            std::cout << elem << ' ';
+        Adder<std::vector<int>> intVecAdder(numbers);
+        std::vector<int> numbersResult = intVecAdder.add(10);
+        for (int n : numbersResult)
+            std::cout << n << ' ';
         std::cout << std::endl;
 
-        std::vector<std::string> stringVec{ "A", "B", "C" };
+        std::vector<std::string> strings{ "A", "B", "C" };
+        Adder<std::vector<std::string>> intStringAdder(strings);
         std::vector<std::string> stringResult =
-            Adder<std::vector<std::string>>{ stringVec }.add(std::string{ "Z" });
+            intStringAdder.add(std::string{ "Z" });
         for (std::string s : stringResult)
             std::cout << s << ' ';
     }
 }
 
-int main_constexpr_if ()
+int main_constexpr_if()
 {
     using namespace TemplateConstExprIf;
-    test_01_constexpr_if();
+    test_01();
     std::cout << std::endl;
-    test_02_constexpr_if();
-
+    test_02();
     return 0;
 }
 

@@ -8,9 +8,29 @@
 
 namespace TupleSamples {
 
-    using ConcreteRow = std::tuple<int, char, double, std::string>;
+    using Row = std::tuple<int, char, double, std::string>;
 
-    std::string rowToString(const ConcreteRow& row) {
+    // forward declaration
+    std::string rowToString(const Row& row);
+
+    void test_01() {
+
+        Row row1 = std::make_tuple(10, 'A', 1.11, "Mueller");
+        Row row2 = std::make_tuple(11, 'B', 2.22, "Sepp");
+        Row row3 = std::make_tuple(12, 'C', 3.33, "Hans");
+
+        std::vector<Row> mySheet;
+
+        mySheet.push_back(row1);
+        mySheet.push_back(row2);
+        mySheet.push_back(row3);
+
+        for (Row row : mySheet) {
+            std::cout << rowToString(row) << std::endl;
+        }
+    }
+
+    std::string rowToString(const Row& row) {
 
         int n = std::get<0>(row);
         char ch = std::get<1>(row);
@@ -20,30 +40,13 @@ namespace TupleSamples {
         return "Id: " + std::to_string(n) + ", " + std::to_string(ch) + ", " + s;
     }
 
-    void test_01_tuples() {
+    void test_02() {
 
-        ConcreteRow row1 = std::make_tuple(10, 'A', 1.11, "Mueller");
-        ConcreteRow row2 = std::make_tuple(11, 'B', 2.22, "Sepp");
-        ConcreteRow row3 = std::make_tuple(12, 'C', 3.33, "Hans");
+        Row row1 = std::make_tuple(10, 'A', 1.11, "Mueller");
+        Row row2 = std::make_tuple(11, 'B', 2.22, "Sepp");
+        Row row3 = std::make_tuple(12, 'C', 3.33, "Hans");
 
-        std::vector<ConcreteRow> mySheet;
-
-        mySheet.push_back(row1);
-        mySheet.push_back(row2);
-        mySheet.push_back(row3);
-
-        for (ConcreteRow row : mySheet) {
-            std::cout << rowToString(row) << std::endl;
-        }
-    }
-
-    void test_02_tuples() {
-
-        ConcreteRow row1 = std::make_tuple(10, 'A', 1.11, "Mueller");
-        ConcreteRow row2 = std::make_tuple(11, 'B', 2.22, "Sepp");
-        ConcreteRow row3 = std::make_tuple(12, 'C', 3.33, "Hans");
-
-        std::vector<ConcreteRow> mySheet;
+        std::vector<Row> mySheet;
 
         mySheet.push_back(row1);
         mySheet.push_back(row2);
@@ -71,9 +74,8 @@ namespace TupleSamples {
 int main_tuples()
 {
     using namespace TupleSamples;
-    test_01_tuples();
-    test_02_tuples();
-
+    test_01();
+    test_02();
     return 0;
 }
 

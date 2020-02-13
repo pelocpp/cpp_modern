@@ -48,19 +48,19 @@ namespace Allocator {
             std::cout << __FUNCSIG__ << std::endl;
         }
 
-        T* allocate(std::size_t n);
-        void deallocate(T* p, std::size_t n);
+        T* allocate(size_t n);
+        void deallocate(T* p, size_t n);
     };
 
     template <class T>
-    T* MyAlloc<T>::allocate(std::size_t n) {
+    T* MyAlloc<T>::allocate(size_t n) {
         n = n * sizeof(T);
         std::cout << "allocating " << n << " bytes" << std::endl;
         return static_cast<T*>(::operator new(n));
     }
 
     template <class T>
-    void MyAlloc<T>::deallocate(T* p, std::size_t n) {
+    void MyAlloc<T>::deallocate(T* p, size_t n) {
         std::cout << "deallocating " << n * sizeof(T) << " bytes" << std::endl;
         ::operator delete(p);
     }
@@ -132,14 +132,11 @@ namespace Allocator {
 int main_allocator()
 {
     using namespace Allocator;
-
     test_01_allocator();
     test_02_allocator();
-
     test_04a_allocator();
     test_04b_allocator();
     test_04c_allocator();
-
     return 0;
 }
 

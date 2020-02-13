@@ -19,14 +19,14 @@ namespace StructuredBinding {
         return std::make_pair(quotient, remainder);
     }
 
-    void test_01_sb() {
+    void test_01() {
         const auto result = divide_remainder(16, 3);
         std::cout << "16 / 3 is "
             << result.first << " with a remainder of "
             << result.second << std::endl;
     }
 
-    void test_02_sb() {
+    void test_02() {
         auto [fraction, remainder] = divide_remainder(20, 3);
         std::cout << "20 / 3 is "
             << fraction << " with a remainder of "
@@ -42,7 +42,7 @@ namespace StructuredBinding {
         return std::make_tuple<>("INTC", current_time, 49.99F);
     }
 
-    void test_03_sb() {
+    void test_03() {
         const auto [name, time, price] = stock_info("INTC");
         std::cout << name << ": "
             << price << " at "
@@ -55,7 +55,7 @@ namespace StructuredBinding {
         int m_y;
     };
 
-    void test_04_sb() {
+    void test_04() {
 
         // without structured binding
         Point p1 = { 1, 2 };
@@ -77,7 +77,7 @@ namespace StructuredBinding {
         unsigned phone;
     };
 
-    void test_05_sb() {
+    void test_05() {
 
         Employee worker { 9987, "Sepp", "Engineer", 987654321 };
         Employee manager { 999, "Hans", "Manager", 123456789 };
@@ -96,13 +96,11 @@ namespace StructuredBinding {
 int main_structuredbinding()
 {
     using namespace StructuredBinding;
-
-    test_01_sb();
-    test_02_sb();
-    test_03_sb();
-    test_04_sb();
-    test_05_sb();
-
+    test_01();
+    test_02();
+    test_03();
+    test_04();
+    test_05();
     return 0;
 }
 
