@@ -24,7 +24,7 @@ Tabelle *"Folding-Expressions"*.
 Der Addierer und ein einfacher Printer demonstrieren in den Code-Snippets *fold expressions*.
 
 Theoretisch stehen für *"Folding-Expressions"* 32 Operatoren zur Verfügung.
-Diese wären `+`, `-`, `*`, `/`, `%`, `^`, `&`, `|`, `=`, `<`, `>`, `<<`, `>>`, `+=`, `-=`, `*=`, `/=`, `%=`, `^=`, `&=`, `|=`, `<<=`, `>>=`, `==`, `!=`, `<=`, `>=`, `&&`, `||`, `,`, `.*` und `->*.
+Diese wären `+`, `-`, `*`, `/`, `%`, `^`, `&`, `|`, `=`, `<`, `>`, `<<`, `>>`, `+=`, `-=`, `*=`, `/=`, `%=`, `^=`, `&=`, `|=`, `<<=`, `>>=`, `==`, `!=`, `<=`, `>=`, `&&`, `||`, `,`, `.*` und `->*`.
 
 Ausgabe der Code-Snippets zu variadische Templates:
 
