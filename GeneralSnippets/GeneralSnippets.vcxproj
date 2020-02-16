@@ -157,6 +157,7 @@
     <ClCompile Include="MetaProgramming\MetaProgramming.cpp" />
     <ClCompile Include="PerfectForwarding\PerfectForwarding.cpp" />
     <ClCompile Include="Program.cpp" />
+    <ClCompile Include="RAII\RAII.cpp" />
     <ClCompile Include="ReferenceWrapper\ReferenceWrapper.cpp" />
     <ClCompile Include="RValueLValue\RValueLValue.cpp" />
     <ClCompile Include="SharedPtr\SharedPtr.cpp" />
@@ -192,6 +193,7 @@
     <None Include="MetaProgramming\Readme.md" />
     <None Include="ParametersWithConstAndRef\Readme.md" />
     <None Include="PerfectForwarding\Readme.md" />
+    <None Include="RAII\Readme.md" />
     <None Include="ReferenceWrapper\Readme.md" />
     <None Include="RValueLValue\Readme.md" />
     <None Include="SharedPtr\Readme.md" />

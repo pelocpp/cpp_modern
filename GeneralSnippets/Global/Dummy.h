@@ -2,7 +2,7 @@
 // Dummy Class for Testing Purposes
 // ===============================================================================
 
-constexpr bool isVerbose = false;
+constexpr bool isVerbose = true;
 
 class Dummy
 {

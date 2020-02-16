@@ -117,6 +117,9 @@
     <ClCompile Include="TemplatesClassBasics\TemplatesClassBasics02.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="RAII\RAII.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="ParametersWithConstAndRef\Readme.md">
@@ -210,6 +213,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="UsingNamespaceStd\Readme.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="RAII\Readme.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
