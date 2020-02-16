@@ -209,6 +209,9 @@
     <None Include="TemplatesFunctionBasics\Readme.md">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="UsingNamespaceStd\Readme.md">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Global\Dummy.h">

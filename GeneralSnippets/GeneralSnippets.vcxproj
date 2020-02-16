@@ -205,6 +205,7 @@
     <None Include="Tuple\Readme.md" />
     <None Include="TypeTraits\Readme.md" />
     <None Include="UniquePtr\Readme.md" />
+    <None Include="UsingNamespaceStd\Readme.md" />
     <None Include="VariadicTemplates\Readme.md" />
     <None Include="WeakPtr\Readme.md" />
   </ItemGroup>
