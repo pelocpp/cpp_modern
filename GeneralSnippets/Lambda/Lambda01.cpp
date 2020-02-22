@@ -6,7 +6,6 @@
 #include <vector>
 #include <algorithm>
 #include <functional>
-#include <utility>
 
 namespace Lambda {
 

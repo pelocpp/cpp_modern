@@ -37,72 +37,6 @@ namespace VariadicTemplates {
         std::cout << "String Concatenation: " << stringConcat << std::endl;
     }
 
-    void test_02() {
-
-        const std::map<std::type_index, std::string> typeNames {
-            { std::type_index(typeid(int)),          "int"},
-            { std::type_index(typeid(long)),         "long"},
-            { std::type_index(typeid(short)),        "short"},
-            { std::type_index(typeid(char)),         "char"},
-            { std::type_index(typeid(const char*)),  "const char*"},
-            { std::type_index(typeid(float)),        "float"},
-            { std::type_index(typeid(double)),       "double"},
-            { std::type_index(typeid(bool)),         "bool"}
-        };
-
-        // classic C++
-        std::map<std::type_index, std::string>::const_iterator it;
-        for (it = typeNames.begin(); it != typeNames.end(); it++) {
-            std::cout << "Value: " << it->second << std::endl;
-        }
-
-        // or C++11
-        for (auto const& elem : typeNames) {
-            std::cout << "Value: " << elem.second << std::endl;
-        }
-
-        // or C++17
-        for (auto const& [key, value] : typeNames) {
-            std::cout << "Value: " << value << std::endl;
-        }
-    }
-
-    // Non-recursive template part (regular template)
-    template <typename T>
-    void listTypeNames(std::ostream & os, T val) { 
-
-        static const std::map<std::type_index, std::string> typeNames{
-            { std::type_index(typeid(int)),          "int"},
-            { std::type_index(typeid(long)),         "long"},
-            { std::type_index(typeid(short)),        "short"},
-            { std::type_index(typeid(char)),         "char"},
-            { std::type_index(typeid(const char*)),  "const char*"},
-            { std::type_index(typeid(float)),        "float"},
-            { std::type_index(typeid(double)),       "double"},
-            { std::type_index(typeid(bool)),         "bool"}
-        };
-
-        const std::string typeName = typeNames.at(std::type_index(typeid(T)));
-        os << typeName << " - value: " << val << '\n';
-    }
-
-    // Recursive template part
-    // Note: ... specifies a so called 'parameter pack')
-    template<typename First, typename ...Args>
-    void listTypeNames(std::ostream & os, First first, Args ...args) {
-        listTypeNames(os, first);    // non-recursive call with first element
-        listTypeNames(os, args...);  // recursive call with remaining elements
-    }
-
-    void test_03() {
-
-        // regular template invocation
-        listTypeNames(std::cout, 3.1415);                      
-
-        // recursive variadic template invocation
-        listTypeNames(std::cout, (short) 123, 123, (long) 123, 3.14F, 3.14, 'A', "ABC", false);
-    }
-
     template<typename ...Args>
     void printer(Args... args) {
         // binary left fold (init == ostream)
@@ -110,7 +44,7 @@ namespace VariadicTemplates {
     }
 
     // demonstrating fold expressions
-    void test_04() {
+    void test_02() {
         printer(1, 2, 3, "ABC", "DEF", "GHI");
     }
 
@@ -119,7 +53,7 @@ namespace VariadicTemplates {
         return (args + ... + 0);  // binary right fold (init == 0)
     }
 
-    void test_05() {
+    void test_03() {
         int sum = anotherAdder<int>(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
         std::cout << "Sum from 1 up to 10: " << sum << std::endl;
     }
@@ -131,7 +65,7 @@ namespace VariadicTemplates {
         return (args - ... - 0);  // binary right fold (init == 0)
     }
 
-    void test_06a() {
+    void test_04a() {
         // binary right fold: 1 - (2 - (3 - (4 - ( 5 - 0)))) = 3
         int result = anotherSubtracterBRF<int>(1, 2, 3, 4, 5);
         std::cout << "BRF: 1 - (2 - (3 - (4 - ( 5 - 0)))): " << result << std::endl;
@@ -144,7 +78,7 @@ namespace VariadicTemplates {
         return (0 - ... - args);  // binary left fold (init == 0)
     }
 
-    void test_06b() {
+    void test_04b() {
         // binary left fold: ((((0 - 1) - 2) - 3) - 4) - 5 =  -15
         int result = anotherSubtracterBLF<int>(1, 2, 3, 4, 5);
         std::cout << "BLF: ((((0 - 1) - 2) - 3) - 4) - 5: " << result << std::endl;
@@ -157,7 +91,7 @@ namespace VariadicTemplates {
         return (args - ...);  // unary right fold
     }
 
-    void test_06c() {
+    void test_04c() {
         // unary right fold: 1 - (2 - (3 - (4 - 5))) = 3
         int result = anotherSubtracterURF<int>(1, 2, 3, 4, 5);
         std::cout << "URF: 1 - (2 - (3 - (4 - 5))): " << result << std::endl;
@@ -170,7 +104,7 @@ namespace VariadicTemplates {
         return (... - args);  // unary left fold
     }
 
-    void test_06d() {
+    void test_04d() {
         // unary left fold: ((((1 - 2) - 3) - 4) - 5 = -13
         int result = anotherSubtracterULF<int>(1, 2, 3, 4, 5);
         std::cout << "URF: ((((1 - 2) - 3) - 4) - 5: " << result << std::endl;
@@ -187,7 +121,7 @@ namespace VariadicTemplates {
     }
 
     // demonstrating fold expressions
-    void test_07() {
+    void test_05() {
         printerWithSeperator(1, 2, 3, "ABC", "DEF", "GHI");
     }
 
@@ -207,7 +141,7 @@ namespace VariadicTemplates {
     }
 
     // demonstrating fold expressions
-    void test_08() {
+    void test_06() {
         printerWithSeperator02(1, 2, 3, "ABC", "DEF", "GHI");
     }
 }
@@ -218,14 +152,12 @@ int main_variadic_templates()
     test_01();
     test_02();
     test_03();
-    test_04();
+    test_04a();
+    test_04b();
+    test_04c();
+    test_04d();
     test_05();
-    test_06a();
-    test_06b();
-    test_06c();
-    test_06d();
-    test_07();
-    test_08();
+    test_06();
     return 0;
 }
 

@@ -152,7 +152,8 @@
     <ClCompile Include="Initialization\Initialization.cpp" />
     <ClCompile Include="InitializerList\InitializerList.cpp" />
     <ClCompile Include="InputOutputStreams\InputOutputStreams.cpp" />
-    <ClCompile Include="Lambda\Lambda.cpp" />
+    <ClCompile Include="Lambda\Lambda01.cpp" />
+    <ClCompile Include="Lambda\Lambda02.cpp" />
     <ClCompile Include="MemoryLeaks\MemoryLeaks.cpp" />
     <ClCompile Include="MetaProgramming\MetaProgramming.cpp" />
     <ClCompile Include="PerfectForwarding\PerfectForwarding.cpp" />
@@ -174,7 +175,9 @@
     <ClCompile Include="TypeTraits\TypeTraits.cpp" />
     <ClCompile Include="UniquePtr\UniquePtr02.cpp" />
     <ClCompile Include="UniquePtr\UniquePtr01.cpp" />
-    <ClCompile Include="VariadicTemplates\VariadicTemplate.cpp" />
+    <ClCompile Include="VariadicTemplates\VariadicTemplate01.cpp" />
+    <ClCompile Include="VariadicTemplates\VariadicTemplate02.cpp" />
+    <ClCompile Include="VariadicTemplates\VariadicTemplate03.cpp" />
     <ClCompile Include="WeakPtr\WeakPtr.cpp" />
   </ItemGroup>
   <ItemGroup>

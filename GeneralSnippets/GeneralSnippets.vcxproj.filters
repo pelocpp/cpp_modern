@@ -45,12 +45,6 @@
     <ClCompile Include="ConstExpr\ConstExprExtended.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Lambda\Lambda.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="VariadicTemplates\VariadicTemplate.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="SharedPtr\SharedPtr.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -118,6 +112,21 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="RAII\RAII.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VariadicTemplates\VariadicTemplate01.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VariadicTemplates\VariadicTemplate03.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VariadicTemplates\VariadicTemplate02.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Lambda\Lambda01.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Lambda\Lambda02.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
