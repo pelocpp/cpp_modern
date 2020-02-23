@@ -141,6 +141,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Accumulate\Accumulate.cpp" />
     <ClCompile Include="Allocator\Allocator.cpp" />
     <ClCompile Include="Any\Any.cpp" />
     <ClCompile Include="ArrayDecay\ArrayDecay.cpp" />
@@ -148,6 +149,7 @@
     <ClCompile Include="ConstExpr\ConstExpr.cpp" />
     <ClCompile Include="ConstExpr\ConstExprExtended.cpp" />
     <ClCompile Include="ConstructursOrder\ConstructorsOrder.cpp" />
+    <ClCompile Include="Explicit\Explicit.cpp" />
     <ClCompile Include="Global\Dummy.cpp" />
     <ClCompile Include="Initialization\Initialization.cpp" />
     <ClCompile Include="InitializerList\InitializerList.cpp" />
@@ -156,6 +158,7 @@
     <ClCompile Include="Lambda\Lambda02.cpp" />
     <ClCompile Include="MemoryLeaks\MemoryLeaks.cpp" />
     <ClCompile Include="MetaProgramming\MetaProgramming.cpp" />
+    <ClCompile Include="Optional\Optional.cpp" />
     <ClCompile Include="PerfectForwarding\PerfectForwarding.cpp" />
     <ClCompile Include="Program.cpp" />
     <ClCompile Include="RAII\RAII.cpp" />
@@ -178,10 +181,12 @@
     <ClCompile Include="VariadicTemplates\VariadicTemplate01.cpp" />
     <ClCompile Include="VariadicTemplates\VariadicTemplate02.cpp" />
     <ClCompile Include="VariadicTemplates\VariadicTemplate03.cpp" />
+    <ClCompile Include="Variant\Variant.cpp" />
     <ClCompile Include="WeakPtr\WeakPtr.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md" />
+    <None Include="Accumulate\Readme.md" />
     <None Include="Allocator\Readme.md" />
     <None Include="Any\Readme.md" />
     <None Include="ArrayDecay\Readme.md" />
@@ -212,6 +217,7 @@
     <None Include="UniquePtr\Readme.md" />
     <None Include="UsingNamespaceStd\Readme.md" />
     <None Include="VariadicTemplates\Readme.md" />
+    <None Include="Variant\Readme.md" />
     <None Include="WeakPtr\Readme.md" />
   </ItemGroup>
   <ItemGroup>

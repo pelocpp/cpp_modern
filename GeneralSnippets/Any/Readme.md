@@ -1,5 +1,1 @@
 # std::any
-
-*Allgemeines*:
-
-TBD

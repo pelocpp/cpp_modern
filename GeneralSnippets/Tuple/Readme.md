@@ -1,5 +1,1 @@
 # std::tuple
-
-*Allgemeines*:
-
-TBD

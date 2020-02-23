@@ -129,6 +129,18 @@
     <ClCompile Include="Lambda\Lambda02.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Accumulate\Accumulate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Variant\Variant.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Optional\Optional.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Explicit\Explicit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="ParametersWithConstAndRef\Readme.md">
@@ -225,6 +237,12 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="RAII\Readme.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Accumulate\Readme.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Variant\Readme.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
