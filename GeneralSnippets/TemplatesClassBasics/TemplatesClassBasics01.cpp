@@ -11,7 +11,7 @@ namespace ClassTemplatesBasics_SimpleTemplateDefinition {
     template <typename N, typename D>
     class Ratio {
     public:
-        Ratio() : m_num(N{}), m_denom(D{}) {}
+        Ratio() : m_num(N{}), m_denom(D{1}) {}
 
         Ratio(const N& num, const D& denom)
             : m_num(num), m_denom(denom) {}
@@ -39,7 +39,7 @@ namespace ClassTemplatesBasics_TemplateExplicitSpecialization {
     template <typename N, typename D>
     class Ratio {
     public:
-        Ratio() : m_num(N{}), m_denom(D{}) {}
+        Ratio() : m_num(N{}), m_denom(D{1}) {}
 
         Ratio(const N& num, const D& denom)
             : m_num(num), m_denom(denom) {}
@@ -92,7 +92,7 @@ namespace ClassTemplatesBasics_TemplatePartialSpecialization {
     template <typename N, typename D>
     class Ratio {
     public:
-        Ratio() : m_num(N{}), m_denom(D{}) {}
+        Ratio() : m_num(N{}), m_denom(D{1}) {}
 
         Ratio(const N& num, const D& denom)
             : m_num(num), m_denom(denom) {}
