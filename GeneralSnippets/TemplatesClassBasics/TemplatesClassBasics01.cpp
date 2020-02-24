@@ -55,7 +55,7 @@ namespace ClassTemplatesBasics_TemplateExplicitSpecialization {
 
     // Explicit specialization: a) Whole class (Full specialization)
     template <>
-    class Ratio<double, double> {
+    class Ratio<short, short> {
     public:
         Ratio() : m_value(0.0) {}
 
@@ -79,7 +79,7 @@ namespace ClassTemplatesBasics_TemplateExplicitSpecialization {
         double value = static_cast<double>(ratio);
         std::cout << value << std::endl;
 
-        Ratio <float, float> fratio(3, 4);
+        Ratio <short, short> fratio(3, 4.45);
         value = static_cast<double>(fratio);
         std::cout << value << std::endl;
     }
