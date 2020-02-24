@@ -4,7 +4,7 @@ Die Funktionsweise der Wrapper-Klasse wird an einem Beispiel aufgezeigt.
 
 Interessant ist der Weak-Pointer bei zyklischen Referenzen:
 
-<img src="cycle.jpg" width="300">
+<img src="cycle.jpg" width="500">
 
 Ausgabe des Code-Snippets:
 
