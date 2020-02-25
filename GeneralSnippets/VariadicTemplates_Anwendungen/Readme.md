@@ -467,7 +467,7 @@ Siehe <https://pabloariasal.github.io/2018/06/26/std-variant/>
 
 Neben der Beschreibung gibt es eine weitere C++-Definition zu beachten:
 
-### *Why doesn’t overloading work for derived classes*
+### *Why doesn't overloading work for derived classes*
 
 Oder an folgendem Beispiel betrachtet:
 
