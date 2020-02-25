@@ -2,9 +2,9 @@
 
 ## Pack expansion: Types and Values
 
-Umwandlung Parameter Pack in ein std::tuple
+Umwandlung Parameter Pack in ein `std::tuple`
 
-[](https://arne-mertz.de/2016/11/modern-c-features-variadic-templates/)
+<https://arne-mertz.de/2016/11/modern-c-features-variadic-templates/>
 
 ```cpp
 #include <iostream>
@@ -18,9 +18,6 @@ Umwandlung Parameter Pack in ein std::tuple
 // =============================================================
 // Pack expansion: Types and Values
 // =============================================================
-
-// See more:
-// https://arne-mertz.de/2016/11/modern-c-features-variadic-templates/
 
 // =============================================================
 // templates
@@ -67,11 +64,11 @@ T(std::forward<Args>(args)...);
 
 Siehe eine detailliertere Beschreibung unter *Arne Mertz*:
 
-[](https://arne-mertz.de/2016/11/modern-c-features-variadic-templates/)
+<https://arne-mertz.de/2016/11/modern-c-features-variadic-templates/>
 
 und
 
-[](https://arne-mertz.de/2015/10/new-c-features-templated-rvalue-references-and-stdforward/)
+<https://arne-mertz.de/2015/10/new-c-features-templated-rvalue-references-and-stdforward/>
 
 ```cpp
 #include <iostream>

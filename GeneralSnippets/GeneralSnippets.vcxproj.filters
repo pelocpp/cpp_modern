@@ -245,6 +245,7 @@
     <None Include="Variant\Readme.md">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="VariadicTemplates_Anwendungen\Readme.md" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Global\Dummy.h">

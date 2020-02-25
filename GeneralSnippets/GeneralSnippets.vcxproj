@@ -217,6 +217,7 @@
     <None Include="UniquePtr\Readme.md" />
     <None Include="UsingNamespaceStd\Readme.md" />
     <None Include="VariadicTemplates\Readme.md" />
+    <None Include="VariadicTemplates_Anwendungen\Readme.md" />
     <None Include="Variant\Readme.md" />
     <None Include="WeakPtr\Readme.md" />
   </ItemGroup>
