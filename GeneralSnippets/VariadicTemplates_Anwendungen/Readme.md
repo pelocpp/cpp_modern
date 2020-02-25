@@ -460,3 +460,141 @@ int main()
 ```
 
 ---
+
+
+
+## Standard-Klasse std::visit und eine Funktion make_visitor
+
+Siehe <https://pabloariasal.github.io/2018/06/26/std-variant/>
+
+Neben der Beschreibung gibt es eine weitere C++-Definition zu beachten:
+
+### *Why doesn’t overloading work for derived classes*
+
+Oder an folgendem Beispiel betrachtet:
+
+```cpp
+ using namespace std;
+    class B {
+    public:
+        int f(int i) { cout << "f(int): "; return i+1; }
+        // ...
+    };
+    class D : public B {
+    public:
+        double f(double d) { cout << "f(double): "; return d+1.3; }
+        // ...
+    };
+    int main()
+    {
+        D* pd = new D;
+        cout << pd->f(2) << '\n';
+        cout << pd->f(2.3) << '\n';
+        delete pd;
+    }
+```
+
+
+Die Ausgabe lautet
+
+f(double): 3.3
+    f(double): 3.6
+
+
+und nicht wie möglicherweise erwartet:
+
+```cpp
+  f(int): 3
+    f(double): 3.6
+``using
+
+Warum das so ist, kann unter dem letzten Link nachgelesen werden.
+Damit erklären sich die vielen `using`-Anweisungen in dem Lösungsvorschlag.
+
+
+```cpp
+// =====================================================================================
+// Variadic Templates - Overload Pattern
+// =====================================================================================
+
+#include<iostream>
+#include <variant>
+#include <string>
+
+namespace VariadicTemplatesOverloadPattern {
+
+    // https://pabloariasal.github.io/2018/06/26/std-variant/
+    // or
+    // https://www.bfilipek.com/2018/09/visit-variants.html
+
+    template <class... Ts>
+    struct Visitor;
+
+    template <class T, class... Ts>
+    struct Visitor<T, Ts...> : T, Visitor<Ts...>
+    {
+        Visitor(T t, Ts... rest) : T(t), Visitor<Ts...>(rest...) {}
+
+        using T::operator();
+        using Visitor<Ts...>::operator();
+    };
+
+    template <class T>
+    struct Visitor<T> : T
+    {
+        Visitor(T t) : T(t) {}
+
+        using T::operator();
+    };
+
+    template<typename ...Ts>
+    auto make_visitor(Ts... lamdbas)
+    {
+        return Visitor<Ts...>(lamdbas...);
+    }
+
+    auto myVisitor = make_visitor(
+        [](int n)
+        {
+            // called if variant holds an int
+            std::cout << "Variant holds an int right now: " << n << std::endl;
+        },
+        [](float f)
+        {
+            // called if variant holds a float
+            std::cout << "Variant holds a float right now: " << f << std::endl;
+        },
+        [](char ch)
+        {
+            // called if variant holds a char
+            std::cout << "Variant holds a char right now: " << ch << std::endl;
+        }
+    );
+
+    void test_01() {
+
+        std::variant<int, float, char> var = 42;
+        std::visit(myVisitor, var);
+        var = 3.141f;
+        std::visit(myVisitor, var);
+        var = 'c';
+        std::visit(myVisitor, var);
+    }
+}
+
+int main()
+// int main_overload_pattern()
+{
+    using namespace VariadicTemplatesOverloadPattern;
+    test_01();
+    return 0;
+}
+
+// =====================================================================================
+// End-of-File
+// =====================================================================================
+```
+
+---
+
+

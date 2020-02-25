@@ -49,12 +49,12 @@ namespace VariadicTemplatesOverloadPattern {
             // called if variant holds a float
             std::cout << "Variant holds a float right now: " << f << std::endl;
         },
-            [](char ch)
+        [](char ch)
         {
             // called if variant holds a char
             std::cout << "Variant holds a char right now: " << ch << std::endl;
         }
-        );
+    );
 
     void test_01() {
 
@@ -67,7 +67,8 @@ namespace VariadicTemplatesOverloadPattern {
     }
 }
 
-int main_overload_pattern()
+int main()
+// int main_overload_pattern()
 {
     using namespace VariadicTemplatesOverloadPattern;
     test_01();
