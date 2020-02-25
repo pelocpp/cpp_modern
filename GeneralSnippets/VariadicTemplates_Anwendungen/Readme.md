@@ -461,8 +461,6 @@ int main()
 
 ---
 
-
-
 ## Standard-Klasse std::visit und eine Funktion make_visitor
 
 Siehe <https://pabloariasal.github.io/2018/06/26/std-variant/>
@@ -494,19 +492,19 @@ Oder an folgendem Beispiel betrachtet:
     }
 ```
 
-
 Die Ausgabe lautet
 
+```cpp
 f(double): 3.3
-    f(double): 3.6
-
+f(double): 3.6
+```
 
 und nicht wie möglicherweise erwartet:
 
 ```cpp
-  f(int): 3
-    f(double): 3.6
-``using
+f(int): 3
+f(double): 3.6
+``
 
 Warum das so ist, kann unter dem letzten Link nachgelesen werden.
 Damit erklären sich die vielen `using`-Anweisungen in dem Lösungsvorschlag.
@@ -596,5 +594,3 @@ int main()
 ```
 
 ---
-
-
