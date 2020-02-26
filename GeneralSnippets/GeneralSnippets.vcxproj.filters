@@ -111,9 +111,6 @@
     <ClCompile Include="TemplatesClassBasics\TemplatesClassBasics02.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="RAII\RAII.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="VariadicTemplates\VariadicTemplate01.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -145,6 +142,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Lambda\Lambda02.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RAII\RAII01.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RAII\RAII02.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -251,8 +254,12 @@
     <None Include="Variant\Readme.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="VariadicTemplates_Anwendungen\Readme.md" />
-    <None Include="Array\Readme.md" />
+    <None Include="Array\Readme.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="VariadicTemplates_Anwendungen\Readme.md">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Global\Dummy.h">
