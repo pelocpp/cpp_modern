@@ -1,47 +1,56 @@
 // =====================================================================================
-// Lambda and Closure Classes
+// Lambda and Visitor
 // =====================================================================================
 
 #include <iostream>
+#include <functional>
 
-namespace LambdaAndClosure {
+namespace LambdaAndVisitor {
 
-    void test_01() {
-
-        const int n{ 10 };
-        auto lambda = [n](int a) {return n + a; };
-        const auto m = lambda(20); // m is now 30
-        std::cout << "m: " << m << std::endl;
-    }
-
-    class ClosureClass
-    {
+    class BinaryTreeNode {
     public:
-        ClosureClass(int n) : m_n(n) {}
-
-        int operator()(int a)
-        {
-            return m_n + a;
+        BinaryTreeNode(
+            int value,
+            BinaryTreeNode* left,
+            BinaryTreeNode* right)
+            : m_value(value), m_left(left), m_right(right) {
         }
 
     private:
-        int m_n;
+        int m_value;
+        BinaryTreeNode* m_left;
+        BinaryTreeNode* m_right;
+
+    public:
+        void accept(std::function<void(BinaryTreeNode & node)> visitor) {
+            visitor(*this);
+            if (m_left != nullptr) m_left->accept(visitor);
+            if (m_right != nullptr) m_right->accept(visitor);
+        }
+
+        int value() const { return m_value; }
     };
 
-    void test_02() {
+    void test_01() {
 
-        const int n{ 30 };
-        auto lambda = ClosureClass(n);
-        const auto m = lambda(20); // m is now 50
-        std::cout << "m: " << m << std::endl;
+        BinaryTreeNode tree(1,
+            new BinaryTreeNode(2,
+                new BinaryTreeNode(3, nullptr, nullptr),
+                new BinaryTreeNode(4, nullptr, nullptr)),
+            new BinaryTreeNode(2, nullptr, nullptr)
+        );
+
+        tree.accept([](BinaryTreeNode& visit) {
+            std::cout << visit.value() << std::endl;
+            }
+        );
     }
 }
 
-int main_lambdaandclosure()
+int main_lambd_and_visitor()
 {
-    using namespace LambdaAndClosure;
+    using namespace LambdaAndVisitor;
     test_01();
-    test_02();
     return 0;
 }
 

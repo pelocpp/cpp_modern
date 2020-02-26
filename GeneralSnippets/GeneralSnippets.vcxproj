@@ -145,6 +145,7 @@
     <ClCompile Include="Allocator\Allocator.cpp" />
     <ClCompile Include="Any\Any.cpp" />
     <ClCompile Include="ArrayDecay\ArrayDecay.cpp" />
+    <ClCompile Include="Array\Array.cpp" />
     <ClCompile Include="Casts\Casts.cpp" />
     <ClCompile Include="ConstExpr\ConstExpr.cpp" />
     <ClCompile Include="ConstExpr\ConstExprExtended.cpp" />
@@ -156,6 +157,7 @@
     <ClCompile Include="InputOutputStreams\InputOutputStreams.cpp" />
     <ClCompile Include="Lambda\Lambda01.cpp" />
     <ClCompile Include="Lambda\Lambda02.cpp" />
+    <ClCompile Include="Lambda\Lambda03.cpp" />
     <ClCompile Include="MemoryLeaks\MemoryLeaks.cpp" />
     <ClCompile Include="MetaProgramming\MetaProgramming.cpp" />
     <ClCompile Include="Optional\Optional.cpp" />
@@ -190,6 +192,7 @@
     <None Include="Allocator\Readme.md" />
     <None Include="Any\Readme.md" />
     <None Include="ArrayDecay\Readme.md" />
+    <None Include="Array\Readme.md" />
     <None Include="Casts\Readme.md" />
     <None Include="ConstExpr\Readme.md" />
     <None Include="ConstructursOrder\Readme.md" />

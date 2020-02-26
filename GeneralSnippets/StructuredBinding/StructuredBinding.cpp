@@ -66,7 +66,7 @@ namespace StructuredBinding {
         Point p2 = { 10, 20 };
         auto [x, y] = p2;
         std::cout << "X Coordinate : " << x << std::endl;
-        std::cout << "Y Coordinate : " << x << std::endl;
+        std::cout << "Y Coordinate : " << y << std::endl;
     }
 
     class Employee {

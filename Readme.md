@@ -24,6 +24,7 @@ Tabelle 1. Grundlagen-Code-Snippets.
 |:-------------- |-----------------------------------------|
 | Accumulate | STL-Algorithmus `std::accumulate` und Lambda-Funktionen in der Anwendung |
 | Any | Neue STL-Utility Klasse `std::any` |
+| Array | Neue STL-Utility Klasse `std::array` |
 | ConstExpr | Methoden, die der Compiler zur Übersetzungszeit ausführt |
 | Explicit | Schlüsselwort `explicit` |
 | Initialization | Einheitliches Initialisierungs-Konzept |

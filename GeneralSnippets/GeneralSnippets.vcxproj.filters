@@ -141,6 +141,12 @@
     <ClCompile Include="Explicit\Explicit.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Array\Array.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Lambda\Lambda03.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="ParametersWithConstAndRef\Readme.md">
@@ -246,6 +252,7 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="VariadicTemplates_Anwendungen\Readme.md" />
+    <None Include="Array\Readme.md" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Global\Dummy.h">

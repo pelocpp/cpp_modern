@@ -67,8 +67,7 @@ namespace VariadicTemplatesOverloadPattern {
     }
 }
 
-int main()
-// int main_overload_pattern()
+int main_overload_pattern()
 {
     using namespace VariadicTemplatesOverloadPattern;
     test_01();
