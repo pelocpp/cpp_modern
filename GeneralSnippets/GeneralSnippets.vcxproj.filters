@@ -126,9 +126,6 @@
     <ClCompile Include="Lambda\Lambda01.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Lambda\Lambda02.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Accumulate\Accumulate.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -145,6 +142,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Lambda\Lambda03.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Lambda\Lambda02.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

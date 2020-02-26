@@ -156,8 +156,8 @@
     <ClCompile Include="InitializerList\InitializerList.cpp" />
     <ClCompile Include="InputOutputStreams\InputOutputStreams.cpp" />
     <ClCompile Include="Lambda\Lambda01.cpp" />
-    <ClCompile Include="Lambda\Lambda02.cpp" />
     <ClCompile Include="Lambda\Lambda03.cpp" />
+    <ClCompile Include="Lambda\Lambda02.cpp" />
     <ClCompile Include="MemoryLeaks\MemoryLeaks.cpp" />
     <ClCompile Include="MetaProgramming\MetaProgramming.cpp" />
     <ClCompile Include="Optional\Optional.cpp" />

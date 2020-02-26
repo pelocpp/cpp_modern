@@ -1,56 +1,47 @@
 // =====================================================================================
-// Lambda and Visitor
+// Lambda and Closure Classes
 // =====================================================================================
 
 #include <iostream>
-#include <functional>
 
-namespace LambdaAndVisitor {
-
-    class BinaryTreeNode {
-    public:
-        BinaryTreeNode(
-            int value,
-            BinaryTreeNode* left,
-            BinaryTreeNode* right)
-            : m_value(value), m_left(left), m_right(right) {
-        }
-
-    private:
-        int m_value;
-        BinaryTreeNode* m_left;
-        BinaryTreeNode* m_right;
-
-    public:
-        void accept(std::function<void(BinaryTreeNode & node)> visitor) {
-            visitor(*this);
-            if (m_left != nullptr) m_left->accept(visitor);
-            if (m_right != nullptr) m_right->accept(visitor);
-        }
-
-        int value() const { return m_value; }
-    };
+namespace LambdaAndClosure {
 
     void test_01() {
 
-        BinaryTreeNode tree(1,
-            new BinaryTreeNode(2,
-                new BinaryTreeNode(3, nullptr, nullptr),
-                new BinaryTreeNode(4, nullptr, nullptr)),
-            new BinaryTreeNode(2, nullptr, nullptr)
-        );
+        const int n{ 10 };
+        auto lambda = [n](int a) {return n + a; };
+        const auto m = lambda(20); // m is now 30
+        std::cout << "m: " << m << std::endl;
+    }
 
-        tree.accept([](BinaryTreeNode& visit) {
-            std::cout << visit.value() << std::endl;
-            }
-        );
+    class ClosureClass
+    {
+    public:
+        ClosureClass(int n) : m_n(n) {}
+
+        int operator()(int a)
+        {
+            return m_n + a;
+        }
+
+    private:
+        int m_n;
+    };
+
+    void test_02() {
+
+        const int n{ 30 };
+        auto lambda = ClosureClass(n);
+        const auto m = lambda(20); // m is now 50
+        std::cout << "m: " << m << std::endl;
     }
 }
 
-int main_lambd_and_visitor()
+int main_lambdaandclosure()
 {
-    using namespace LambdaAndVisitor;
+    using namespace LambdaAndClosure;
     test_01();
+    test_02();
     return 0;
 }
 
