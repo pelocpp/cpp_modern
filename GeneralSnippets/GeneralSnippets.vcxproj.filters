@@ -150,6 +150,9 @@
     <ClCompile Include="RAII\RAII02.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Literals\Literals.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="ParametersWithConstAndRef\Readme.md">
@@ -260,6 +263,7 @@
     <None Include="VariadicTemplates_Anwendungen\Readme.md">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="Literals\Readme.md" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Global\Dummy.h">

@@ -29,7 +29,8 @@ Tabelle 1. Grundlagen-Code-Snippets.
 | Explicit | Schlüsselwort `explicit` |
 | Initialization | Einheitliches Initialisierungs-Konzept |
 | InitializerList | Klasse `std::initializer_list<T>` |
-| Lambda | Lambda-Funktionen |
+| Lambda | Lambda-Funktionen |#
+| Literals | Benutzerdefinierte Literale |
 | MetaProgramming | Programmierung zur Übersetzungszeit |
 | Optional | Neue STL-Utility Klasse `std::optional` |
 | PerfectForwarding | Perfect Forwarding (`std::forward`) |

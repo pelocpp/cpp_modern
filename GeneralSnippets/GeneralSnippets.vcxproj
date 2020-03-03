@@ -158,6 +158,7 @@
     <ClCompile Include="Lambda\Lambda01.cpp" />
     <ClCompile Include="Lambda\Lambda03.cpp" />
     <ClCompile Include="Lambda\Lambda02.cpp" />
+    <ClCompile Include="Literals\Literals.cpp" />
     <ClCompile Include="MemoryLeaks\MemoryLeaks.cpp" />
     <ClCompile Include="MetaProgramming\MetaProgramming.cpp" />
     <ClCompile Include="Optional\Optional.cpp" />
@@ -201,6 +202,7 @@
     <None Include="InitializerList\Readme.md" />
     <None Include="InputOutputStreams\Readme.md" />
     <None Include="Lambda\Readme.md" />
+    <None Include="Literals\Readme.md" />
     <None Include="MemoryLeaks\Readme.md" />
     <None Include="MetaProgramming\Readme.md" />
     <None Include="ParametersWithConstAndRef\Readme.md" />
