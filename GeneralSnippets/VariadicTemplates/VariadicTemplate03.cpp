@@ -1,86 +1,76 @@
 // =====================================================================================
-// Variadic Templates
+// Variadic Templates - Overload Pattern
 // =====================================================================================
 
-#include <iostream>
-#include <map>
-#include <typeinfo>
-#include <typeindex>
+#include<iostream>
+#include <variant>
+#include <string>
 
-namespace VariadicTemplates03 {
+namespace VariadicTemplatesOverloadPattern {
+
+    // https://pabloariasal.github.io/2018/06/26/std-variant/
+    // or
+    // https://www.bfilipek.com/2018/09/visit-variants.html
+
+    template <class... Ts>
+    struct Visitor;
+
+    template <class T, class... Ts>
+    struct Visitor<T, Ts...> : T, Visitor<Ts...>
+    {
+        Visitor(T t, Ts... rest) : T(t), Visitor<Ts...>(rest...) {}
+
+        using T::operator();
+        using Visitor<Ts...>::operator();
+    };
+
+    template <class T>
+    struct Visitor<T> : T
+    {
+        Visitor(T t) : T(t) {}
+
+        using T::operator();
+    };
+
+    template<typename ...Ts>
+    auto make_visitor(Ts... lamdbas)
+    {
+        return Visitor<Ts...>(lamdbas...);
+    }
+
+    auto myVisitor = make_visitor(
+        [](int n)
+        {
+            // called if variant holds an int
+            std::cout << "Variant holds an int right now: " << n << std::endl;
+        },
+        [](float f)
+        {
+            // called if variant holds a float
+            std::cout << "Variant holds a float right now: " << f << std::endl;
+        },
+        [](char ch)
+        {
+            // called if variant holds a char
+            std::cout << "Variant holds a char right now: " << ch << std::endl;
+        }
+    );
 
     void test_01() {
 
-        const std::map<std::type_index, std::string> typeNames {
-            { std::type_index(typeid(int)),          "int"},
-            { std::type_index(typeid(long)),         "long"},
-            { std::type_index(typeid(short)),        "short"},
-            { std::type_index(typeid(char)),         "char"},
-            { std::type_index(typeid(const char*)),  "const char*"},
-            { std::type_index(typeid(float)),        "float"},
-            { std::type_index(typeid(double)),       "double"},
-            { std::type_index(typeid(bool)),         "bool"}
-        };
-
-        // classic C++
-        std::map<std::type_index, std::string>::const_iterator it;
-        for (it = typeNames.begin(); it != typeNames.end(); it++) {
-            std::cout << "Value: " << it->second << std::endl;
-        }
-
-        // or C++11
-        for (auto const& elem : typeNames) {
-            std::cout << "Value: " << elem.second << std::endl;
-        }
-
-        // or C++17
-        for (auto const& [key, value] : typeNames) {
-            std::cout << "Value: " << value << std::endl;
-        }
-    }
-
-    // Non-recursive template part (regular template)
-    template <typename T>
-    void listTypeNames(std::ostream & os, T val) { 
-
-        static const std::map<std::type_index, std::string> typeNames{
-            { std::type_index(typeid(int)),          "int"},
-            { std::type_index(typeid(long)),         "long"},
-            { std::type_index(typeid(short)),        "short"},
-            { std::type_index(typeid(char)),         "char"},
-            { std::type_index(typeid(const char*)),  "const char*"},
-            { std::type_index(typeid(float)),        "float"},
-            { std::type_index(typeid(double)),       "double"},
-            { std::type_index(typeid(bool)),         "bool"}
-        };
-
-        const std::string typeName = typeNames.at(std::type_index(typeid(T)));
-        os << typeName << " - value: " << val << '\n';
-    }
-
-    // Recursive template part
-    // Note: ... specifies a so called 'parameter pack')
-    template<typename First, typename ...Args>
-    void listTypeNames(std::ostream & os, First first, Args ...args) {
-        listTypeNames(os, first);    // non-recursive call with first element
-        listTypeNames(os, args...);  // recursive call with remaining elements
-    }
-
-    void test_02() {
-
-        // regular template invocation
-        listTypeNames(std::cout, 3.1415);                      
-
-        // recursive variadic template invocation
-        listTypeNames(std::cout, (short) 123, 123, (long) 123, 3.14F, 3.14, 'A', "ABC", false);
+        std::variant<int, float, char> var = 42;
+        std::visit(myVisitor, var);
+        var = 3.141f;
+        std::visit(myVisitor, var);
+        var = 'c';
+        std::visit(myVisitor, var);
     }
 }
 
-int main_variadic_templates_02()
+int main_overload_pattern()
 {
-    using namespace VariadicTemplates03;
+    using namespace VariadicTemplatesOverloadPattern;
     test_01();
-    test_02();
     return 0;
 }
 

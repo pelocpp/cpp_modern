@@ -185,6 +185,8 @@
     <ClCompile Include="VariadicTemplates\VariadicTemplate01.cpp" />
     <ClCompile Include="VariadicTemplates\VariadicTemplate02.cpp" />
     <ClCompile Include="VariadicTemplates\VariadicTemplate03.cpp" />
+    <ClCompile Include="VariadicTemplates\VariadicTemplate09.cpp" />
+    <ClCompile Include="VariadicTemplates_Systematic\VariadicTemplateSystematic01.cpp" />
     <ClCompile Include="Variant\Variant.cpp" />
     <ClCompile Include="WeakPtr\WeakPtr.cpp" />
   </ItemGroup>
@@ -224,6 +226,7 @@
     <None Include="UsingNamespaceStd\Readme.md" />
     <None Include="VariadicTemplates\Readme.md" />
     <None Include="VariadicTemplates_Anwendungen\Readme.md" />
+    <None Include="VariadicTemplates_Systematic\Readme.md" />
     <None Include="Variant\Readme.md" />
     <None Include="WeakPtr\Readme.md" />
   </ItemGroup>

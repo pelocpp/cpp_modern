@@ -3,11 +3,12 @@
 // =====================================================================================
 
 #include <iostream>
-#include <map>
-#include <typeinfo>
-#include <typeindex>
+#include <string>
 
 namespace VariadicTemplates {
+
+    /* Erstes Beispiel für ein variadisches Template:
+    */
 
     // Non-recursive template part (regular template)
     template<typename T>
@@ -27,137 +28,70 @@ namespace VariadicTemplates {
         int sum = adder(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
         std::cout << "Sum from 1 up to 10: " << sum << std::endl;
 
-        std::string stringConcat = adder (
+        std::string stringConcat = adder(
             std::string("ABC"),
-            std::string("DEF"), 
-            std::string("GHI"), 
+            std::string("DEF"),
+            std::string("GHI"),
             std::string("JKL"),
             std::string("MNO")
         );
         std::cout << "String Concatenation: " << stringConcat << std::endl;
     }
 
-    template<typename ...Args>
-    void printer(Args... args) {
-        // binary left fold (init == ostream)
-        (std::cout << ... << args) << std::endl;
+    // =================================================================================
+
+    // Ein variadisches Template in zwei Realisierungsvarianten:
+    //
+    // a) Eine rekursive Template Funktion
+    // b) Eine nicht-rekursive Non-Template Funktion
+
+    void print()
+    {
     }
 
-    // demonstrating fold expressions
-    void test_02() {
-        printer(1, 2, 3, "ABC", "DEF", "GHI");
+    template<typename T, typename... Types>
+    void print(T firstArg, Types... args)
+    {
+        std::cout << firstArg << std::endl; // print first argument
+        print(args...); // call print() for remaining arguments
     }
 
-    template<typename ...Args>
-    auto anotherAdder(Args ...args) {
-        return (args + ... + 0);  // binary right fold (init == 0)
-    }
+    // Oder:
+    // a) Eine rekursive Template Funktion
+    // b) Eine nicht-rekursive Template Funktion
+    //
+    // Man beachte: Wenn sich zwei Template Funktionen nur um das Parameter Pack
+    // unterscheiden, wird - wenn möglich - die
+    // Template Funktionen ohne Parameter Pack bevorzugt:
 
-    void test_03() {
-        int sum = anotherAdder<int>(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
-        std::cout << "Sum from 1 up to 10: " << sum << std::endl;
-    }
+    //template<typename T>
+    //void print(T arg)
+    //{
+    //    std::cout << arg << std::endl; // print passed argument
+    //}
 
-    // demonstrating all four versions of folding expressions
+    //template<typename T, typename... Types>
+    //void print(T firstArg, Types... args)
+    //{
+    //    print(firstArg); // call print() for first argument
+    //    print(args...);  // call print() for remaining arguments
+    //}
 
-    template<typename ...Args>
-    auto anotherSubtracterBRF(Args ...args) {
-        return (args - ... - 0);  // binary right fold (init == 0)
-    }
+    void test_02()
+    {
+        std::string s("World");
+        print(123.456, "Hello", s);
 
-    void test_04a() {
-        // binary right fold: 1 - (2 - (3 - (4 - ( 5 - 0)))) = 3
-        int result = anotherSubtracterBRF<int>(1, 2, 3, 4, 5);
-        std::cout << "BRF: 1 - (2 - (3 - (4 - ( 5 - 0)))): " << result << std::endl;
-    }
-
-    // -----------------------------------------------------------------------
-
-    template<typename ...Args>
-    auto anotherSubtracterBLF(Args ...args) {
-        return (0 - ... - args);  // binary left fold (init == 0)
-    }
-
-    void test_04b() {
-        // binary left fold: ((((0 - 1) - 2) - 3) - 4) - 5 =  -15
-        int result = anotherSubtracterBLF<int>(1, 2, 3, 4, 5);
-        std::cout << "BLF: ((((0 - 1) - 2) - 3) - 4) - 5: " << result << std::endl;
-    }
-
-    // -----------------------------------------------------------------------
-
-    template<typename ...Args>
-    auto anotherSubtracterURF(Args ...args) {
-        return (args - ...);  // unary right fold
-    }
-
-    void test_04c() {
-        // unary right fold: 1 - (2 - (3 - (4 - 5))) = 3
-        int result = anotherSubtracterURF<int>(1, 2, 3, 4, 5);
-        std::cout << "URF: 1 - (2 - (3 - (4 - 5))): " << result << std::endl;
-    }
-
-    // ----------------------------------------------------------------------
-
-    template<typename ...Args>
-    auto anotherSubtracterULF(Args ...args) {
-        return (... - args);  // unary left fold
-    }
-
-    void test_04d() {
-        // unary left fold: ((((1 - 2) - 3) - 4) - 5 = -13
-        int result = anotherSubtracterULF<int>(1, 2, 3, 4, 5);
-        std::cout << "URF: ((((1 - 2) - 3) - 4) - 5: " << result << std::endl;
-    }
-
-    // -----------------------------------------------------------------------
-
-    // Folding over a comma (',' operator)
-
-    template <typename... Args>
-    void printerWithSeperator(Args... args) {
-        std::string sep = " ";
-        ((std::cout << args << sep), ...) << std::endl;
-    }
-
-    // demonstrating fold expressions
-    void test_05() {
-        printerWithSeperator(1, 2, 3, "ABC", "DEF", "GHI");
-    }
-
-    // -----------------------------------------------------------------------
-
-    // Folding over a comma - pack arguments can be handled by a separate function
-
-    template <typename T>
-    std::ostream& handleArg(T arg) {
-        std::cout << arg << "-";
-        return std::cout;
-    }
-
-    template <typename... Args>
-    void printerWithSeperator02(Args... args) {
-        (handleArg(args), ...) << std::endl;
-    }
-
-    // demonstrating fold expressions
-    void test_06() {
-        printerWithSeperator02(1, 2, 3, "ABC", "DEF", "GHI");
+        // same as
+        print<double, const char*, std::string>(123.456, "Hello", s);
     }
 }
 
-int main_variadic_templates()
+int main_variadic_templates_intro()
 {
     using namespace VariadicTemplates;
     test_01();
     test_02();
-    test_03();
-    test_04a();
-    test_04b();
-    test_04c();
-    test_04d();
-    test_05();
-    test_06();
     return 0;
 }
 

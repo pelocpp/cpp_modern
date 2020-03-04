@@ -114,12 +114,6 @@
     <ClCompile Include="VariadicTemplates\VariadicTemplate01.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="VariadicTemplates\VariadicTemplate03.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="VariadicTemplates\VariadicTemplate02.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Lambda\Lambda01.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -151,6 +145,18 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Literals\Literals.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VariadicTemplates\VariadicTemplate09.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VariadicTemplates\VariadicTemplate03.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VariadicTemplates\VariadicTemplate02.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VariadicTemplates_Systematic\VariadicTemplateSystematic01.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -263,7 +269,12 @@
     <None Include="VariadicTemplates_Anwendungen\Readme.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="Literals\Readme.md" />
+    <None Include="Literals\Readme.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="VariadicTemplates_Systematic\Readme.md">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Global\Dummy.h">

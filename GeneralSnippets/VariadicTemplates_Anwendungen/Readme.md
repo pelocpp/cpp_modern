@@ -1,68 +1,10 @@
 # Variadische Templates und ihre Anwendungsbeispiele
 
-## Pack expansion: Types and Values
+## Allgemeine Literaturhinweise
 
-Umwandlung Parameter Pack in ein `std::tuple`
+Einige recht gute Beispiele zu variadischen Templates findet man bei *Arne Mertz*:
 
 <https://arne-mertz.de/2016/11/modern-c-features-variadic-templates/>
-
-```cpp
-#include <iostream>
-#include <memory>
-#include <array>
-#include <string>
-#include <iostream>
-#include <functional>
-#include <tuple>
-
-// =============================================================
-// Pack expansion: Types and Values
-// =============================================================
-
-// =============================================================
-// templates
-//
-
-template <class... Args>
-auto f2(Args... args) {
-    // expand template parameter pack Args first, 
-    // then function parameter pack args
-    return std::tuple<Args...> { args... };
-}
-
-// =============================================================
-// samples
-
-void h1() {
-
-    auto tuple =  f2(123, 'A', 33.33, std::string("ABC"));
-}
-
-// =============================================================
-
-int main()
-{
-    h1();
-    return 0;
-}
-
-// =============================================================
-
-```
----
-
-## "Unpacking" a tuple to call a matching function pointer
-
-Es wird demonstriert, wie ein Parameter Pack auf einen Methodenaufruf
-(hier: Konstruktor) abgebildet werden kann.
-
-Es kommt die zentrale `forwarding`-Anweisung zum Zuge:
-
-```cpp
-T(std::forward<Args>(args)...);
-```
-
-Siehe eine detailliertere Beschreibung unter *Arne Mertz*:
 
 <https://arne-mertz.de/2016/11/modern-c-features-variadic-templates/>
 
@@ -70,20 +12,82 @@ und
 
 <https://arne-mertz.de/2015/10/new-c-features-templated-rvalue-references-and-stdforward/>
 
+Siehe auch hier:
+
+https://eli.thegreenplace.net/2014/variadic-templates-in-c/
+
+---
+
+## Template parameter pack expansion: Types and Values
+
+Umwandlung eines *parameter packs* in ein `std::tuple`
+
 ```cpp
-#include <iostream>
-#include <memory>
-#include <array>
-#include <iostream>
-#include <functional>
-
 // =============================================================
-// "Unpacking" a tuple to call a matching function pointer
+// Variadic Templates
+// Template parameter pack args vs Function parameter pack args
 // =============================================================
 
-//// Test Class - only c'tors are interesting ..
+#include <iostream>
+#include <string>
+#include <tuple>
+
+// Es wird demonstriert, wie ein variadisches Funktionstemplate
+// (hier: my_make_tuple) aus die Erzeugung eines std::tuple abgebildet
+// werden kann.
+
+template <class... Args>
+auto my_make_tuple(Args... args) {
+    // expand template parameter pack Args first, 
+    // then function parameter pack args
+    return std::tuple<Args...> { args... };
+}
+
+// =============================================================
+
+int main()
+{
+    auto tuple = my_make_tuple(123, 'A', 33.33, std::string("ABC"));
+
+    // same as
+
+    std::tuple<int, char, double, std::string> tuple2 = 
+        my_make_tuple(123, 'A', 33.33, std::string("ABC"));
+
+    return -1;
+}
+
+// =============================================================
+```
+
+---
+
+##  "Unpacking" a parameter pack to call a matching constructor
+
+Es wird demonstriert, wie ein *parameter pack* auf einen Methodenaufruf
+(hier: Konstruktor) abgebildet werden kann.
+
+Zu diesem Zweck definieren wir eine Klasse `Unknown` mit einer Reihe
+von Konstruktoren, um zu zeigen, wie das Auspacken des *parameter packs*
+dem passenden Konstruktor zugeordnet wird:
+
+Es kommt die zentrale `std::forwarding`-Anweisung zum Zuge:
+
+```cpp
+T(std::forward<Args>(args)...);
+```
+
+Nun zum Beispiel:
+
+```cpp
+// =============================================================
+// "Unpacking" a parameter pack to call a matching constructor
+// =============================================================
+
+#include <iostream>
+
+// Test Class - only c'tors are interesting ..
 //
-
 class Unknown {
 private:
     int m_var1;
@@ -91,15 +95,15 @@ private:
     int m_var3;
 
 public:
-    Unknown() : m_var1(0), m_var2(0), m_var3(0) {
+    Unknown() : m_var1(-1), m_var2(-1), m_var3(-1) {
         std::cout << "c'tor()" << std::endl;
     }
 
-    Unknown(int n) : m_var1(n), m_var2(0), m_var3(0) {
+    Unknown(int n) : m_var1(n), m_var2(-1), m_var3(-1) {
         std::cout << "c'tor(int)" << std::endl;
     }
 
-    Unknown(int n, int m) : m_var1(n), m_var2(m), m_var3(0)  {
+    Unknown(int n, int m) : m_var1(n), m_var2(m), m_var3(-1) {
         std::cout << "c'tor(int, int)" << std::endl;
     }
 
@@ -111,48 +115,52 @@ public:
 };
 
 std::ostream& operator<< (std::ostream& os, const Unknown& obj) {
-    os << "var1: " << obj.m_var1 
-       << ", var2: " << obj.m_var2 
-       << ", var3: " << obj.m_var3 << std::endl;
+    os << "var1: " << obj.m_var1
+        << ", var2: " << obj.m_var2
+        << ", var3: " << obj.m_var3 << std::endl;
     return os;
 }
 
 // =============================================================
-// templates
+// variadic template
 //
 
 template<typename T, typename... Args>
-T make_me_an_object(Args&&... args)
+T make_an_object(Args&&... args)
 {
     return T(std::forward<Args>(args)...);
-}
-
-// =============================================================
-// samples
-
-void h1() {
-    Unknown u1 = make_me_an_object<Unknown>(1, 2, 3);
-    std::cout << u1 << std::endl;
-
-    const int k = 10;
-    Unknown u2 = make_me_an_object<Unknown>(k, k+1, k+2);
-    std::cout << u2 << std::endl;
-
-    int par = 123;
-    Unknown u3 = make_me_an_object<Unknown>(par, par + 1, par + 2);
-    std::cout << u3 << std::endl;
 }
 
 // =============================================================
 
 int main()
 {
-    h1();
-    return 0;
+    Unknown u1 = make_an_object<Unknown>();
+    std::cout << u1 << std::endl;
+
+    Unknown u2 = make_an_object<Unknown>(1);
+    std::cout << u2 << std::endl;
+
+    Unknown u3 = make_an_object<Unknown>(10, 11);
+    std::cout << u3 << std::endl;
+
+    Unknown u4 = make_an_object<Unknown>(100, 101, 102);
+    std::cout << u4 << std::endl;
+
+    // doesn't compile
+    // Unknown u5 = make_an_object<Unknown>(1000, 1001, 1002, 1003);
+    // std::cout << u4 << std::endl;
+
+    int n = 50;
+    const int m = 52;
+
+    Unknown u6 = make_an_object<Unknown>(n, 51, m);
+    std::cout << u6 << std::endl;
+
+    return -1;
 }
 
 // =============================================================
-
 ```
 
 ---
@@ -594,3 +602,81 @@ int main()
 ```
 
 ---
+
+
+
+
+
+// =============================================================
+// "Unpacking" a parameter pack to call a matching constructor
+// =============================================================
+
+#include <iostream>
+
+// Test Class - only c'tors are interesting ..
+//
+class Unknown {
+private:
+    int m_var1;
+    int m_var2;
+    int m_var3;
+
+public:
+    Unknown() : m_var1(-1), m_var2(-1), m_var3(-1) {
+        std::cout << "c'tor()" << std::endl;
+    }
+
+    Unknown(int n) : m_var1(n), m_var2(-1), m_var3(-1) {
+        std::cout << "c'tor(int)" << std::endl;
+    }
+
+    Unknown(int n, int m) : m_var1(n), m_var2(m), m_var3(-1) {
+        std::cout << "c'tor(int, int)" << std::endl;
+    }
+
+    Unknown(int n, int m, int k) : m_var1(n), m_var2(m), m_var3(k) {
+        std::cout << "c'tor(int, int, int)" << std::endl;
+    }
+
+    friend std::ostream& operator<< (std::ostream&, const Unknown&);
+};
+
+std::ostream& operator<< (std::ostream& os, const Unknown& obj) {
+    os << "var1: " << obj.m_var1
+        << ", var2: " << obj.m_var2
+        << ", var3: " << obj.m_var3 << std::endl;
+    return os;
+}
+
+// =============================================================
+// variadic template
+//
+
+template<typename T, typename... Args>
+T make_an_object(Args&&... args)
+{
+    return T(std::forward<Args>(args)...);
+}
+
+// =============================================================
+
+int main()
+{
+    Unknown u1 = make_an_object<Unknown>();
+    std::cout << u1 << std::endl;
+
+    Unknown u2 = make_an_object<Unknown>(1);
+    std::cout << u2 << std::endl;
+
+    Unknown u3 = make_an_object<Unknown>(10, 11);
+    std::cout << u3 << std::endl;
+
+    Unknown u4 = make_an_object<Unknown>(100, 101, 102);
+    std::cout << u4 << std::endl;
+
+    // doesn't compile
+    // Unknown u5 = make_an_object<Unknown>(1000, 1001, 1002, 1003);
+    // std::cout << u4 << std::endl;
+
+    return -1;
+}
