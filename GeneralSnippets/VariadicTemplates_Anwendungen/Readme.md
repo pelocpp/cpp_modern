@@ -18,7 +18,7 @@ https://eli.thegreenplace.net/2014/variadic-templates-in-c/
 
 ---
 
-## Template parameter pack expansion: Types and Values
+## Template Parameter Pack Expansion: Typen und Werte
 
 Umwandlung eines *parameter packs* in ein `std::tuple`
 
@@ -33,7 +33,7 @@ Umwandlung eines *parameter packs* in ein `std::tuple`
 #include <tuple>
 
 // Es wird demonstriert, wie ein variadisches Funktionstemplate
-// (hier: my_make_tuple) aus die Erzeugung eines std::tuple abgebildet
+// (hier: my_make_tuple) auf die Erzeugung eines std::tuple abgebildet
 // werden kann.
 
 template <class... Args>

@@ -186,6 +186,7 @@
     <ClCompile Include="VariadicTemplates\VariadicTemplate02.cpp" />
     <ClCompile Include="VariadicTemplates\VariadicTemplate03.cpp" />
     <ClCompile Include="VariadicTemplates\VariadicTemplate09.cpp" />
+    <ClCompile Include="VariadicTemplates_Anwendungen\VariadicTemplate_Examples.cpp" />
     <ClCompile Include="VariadicTemplates_Systematic\VariadicTemplateSystematic01.cpp" />
     <ClCompile Include="Variant\Variant.cpp" />
     <ClCompile Include="WeakPtr\WeakPtr.cpp" />

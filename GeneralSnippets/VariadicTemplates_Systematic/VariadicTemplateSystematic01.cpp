@@ -5,10 +5,12 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <array>
+#include <type_traits>
 
 namespace VariadicTemplatesSystematic {
 
-    // Beispiele für variadische Ausdrücke
+    // Use case: Variadic Expressions / Variadische Ausdrücke
     //
 
     template<typename T>
@@ -55,7 +57,7 @@ namespace VariadicTemplatesSystematic {
         printPlusOne(1, 5, 10);
     }
 
-    // Beispiele für variadische Ausdrücke mit Indizes
+    // Use case: Variadic Expressions with Indices / Variadische Ausdrücke mit Indizes
     //
     
     template <typename T, typename ...IDX>
@@ -72,14 +74,42 @@ namespace VariadicTemplatesSystematic {
         std::string s{ "0123456789" };
         printElements(s, 8, 6, 4, 2, 0);
     }
+
+    // Use case: Compile-Time Expression with Variadic Expressions
+    //
+
+    template<typename T, typename... TREST>
+    constexpr bool isHomogeneous(T, TREST...)
+    {
+        return (std::is_same<T, TREST>::value && ...); // since C++17: folding expression !!!
+    }
+
+    void test_03()
+    {
+        bool result = isHomogeneous(43, -1, "hello");
+        std::cout << std::boolalpha << result << std::endl;
+
+        // expands to: 
+
+        result = std::is_same<int, int>::value && std::is_same<int, char const*>::value;
+        std::cout << std::boolalpha << result << std::endl;
+
+        result = isHomogeneous(123, 456, 789);
+        std::cout << std::boolalpha << result << std::endl;
+
+        // expands to: 
+
+        result = std::is_same<int, int>::value && std::is_same<int, int>::value;
+        std::cout << std::boolalpha << result << std::endl;
+    }
 }
 
-// int main_variadic_templates_intro()
-int main()
+int main_variadic_templates()
 {
     using namespace VariadicTemplatesSystematic;
-    // test_01();
+    test_01();
     test_02();
+    test_03();
     return 0;
 }
 

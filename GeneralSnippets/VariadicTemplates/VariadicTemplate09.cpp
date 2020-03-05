@@ -76,7 +76,7 @@ namespace VariadicTemplates03 {
     }
 }
 
-int main_variadic_templates_02()
+int main_variadic_templates_systematic()
 {
     using namespace VariadicTemplates03;
     test_01();

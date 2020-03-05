@@ -75,6 +75,18 @@ namespace RAIIDemo {
         std::cout << "Done." << std::endl;
     }
 
+    void test_05() {
+
+        // test RAII idiom with two encapsulated resources:
+        // Note order of destructor calls
+
+        RAII<Dummy> p1(new Dummy(1));
+
+        RAII<Dummy> p2(new Dummy(2));
+
+        std::cout << "Done." << std::endl;
+    }
+
     class RAIIContainer {
     public:
         RAIIContainer(Dummy* p) : m_rp(p) {}
@@ -83,7 +95,7 @@ namespace RAIIDemo {
         RAII<Dummy> m_rp;
     };
 
-    void test_05() {
+    void test_06() {
 
         {
             RAIIContainer cont (new Dummy(5));
@@ -101,6 +113,7 @@ int main_raii()
     test_03();
     test_04();
     test_05();
+    test_06();
     return 0;
 }
 
