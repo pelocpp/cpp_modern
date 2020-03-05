@@ -49,6 +49,8 @@ Tabelle 1. Grundlagen-Code-Snippets.
 | Tuples | Neue STL-Utility Klasse `std::tuple` |
 | TypeTraits | Typmerkmale |
 | VariadicTemplates | Templates mit variabler Argumentanzahl (Variadische Templates) und *fold expressions* |
+| VariadicTemplates_Systematic | Beispiele zu variadischen Templates im Überblick |
+| VariadicTemplates_Anwendungen | Diverses Beispiele zu variadischen Templates |
 | Variant | Neue STL-Utility Klasse `std::variant` |
 
 Tabelle 2. Spracherweiterungen C++11/C++14/C++17.
