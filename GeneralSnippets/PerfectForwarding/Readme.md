@@ -19,7 +19,7 @@ This allows rvalue arguments to be passed on as rvalues, and lvalues to be passe
 
 Man beachte, dass es bei genauerer Betrachtung hier die sogenannte Tabelle der *collapsing rules* gibt:
 
-Von Scott Meyers in Worte gefasst lauten diese Regeln, wenn gleich auch nicht einfach verständlich formuliert:
+Von *Scott Meyers* in Worte gefasst lauten diese Regeln, wenn gleich auch nicht einfach verständlich formuliert:
 
 "[given] a type TR that is a reference to a type T, an attempt to create the type “lvalue reference to cv TR” creates the type “lvalue reference to T”, while an attempt to create the type “rvalue reference to cv TR” creates the type TR."
 
@@ -32,28 +32,9 @@ Von Scott Meyers in Worte gefasst lauten diese Regeln, wenn gleich auch nicht ei
 
 Tabelle 1. *Collapsing Rules* für das *Perfect Forwarding*.
 
-
-Eine etwas leichter verständlichere Darstellung bietet folgende Abbildung:
+Ein zweiter Versuch von *Scott Meyers* bietet eine möglicherweise leichter verständlichere Darstellung
+des Sachverhalts:
 
 ![](ScottMeyers_Forward.png)
 
-Man beachte, dass zwischen den beiden Objekten des Typs `Future` und `Promise` ein Datenkanal eingerichtet wird.
-
-<img src="ScottMeyers_Forward.png" style="width:200px;"/>
-
-
-
-
-*Ausgabe des Code-Snippets*:
-
-```cpp
-initial caller passes rvalue:
-via std::forward: By rvalue
-via std::move: By rvalue
-By simple passing: By lvalue
-initial caller passes lvalue:
-via std::forward: By lvalue
-via std::move: By rvalue
-By simple passing: By lvalue
-```
-
+Abbildung 1. `std::forward`.
