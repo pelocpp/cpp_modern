@@ -57,6 +57,58 @@ namespace VariadicTemplatesSystematic {
         printPlusOne(1, 5, 10);
     }
 
+    // Use case: Variadic Base Classes and keyword 'using'
+    // Several implementations of a method (e.g. operator())
+    // can be reached from the corresponding base class 
+
+    class Customer
+    {
+    private:
+        std::string m_name;
+    public:
+        Customer(const std::string& name) : m_name(name) { }
+        std::string getName() const { return m_name; }
+    };
+
+    struct CustomerEquals {
+        bool operator() (const Customer& c1, const Customer& c2) const {
+            std::cout << "isEqual" << std::endl;
+            return c1.getName() == c2.getName();
+        }
+    };
+
+    struct CustomerHash {
+        std::size_t operator() (Customer const& c) const {
+            std::cout << "hash" << std::endl;
+            return std::hash<std::string>()(c.getName());
+        }
+    };
+
+    template<typename... RULES>
+    struct CustomerRules : RULES...
+    {
+        using RULES::operator() ... ; // C++17
+    };
+
+    void test_02()
+    {
+        using Rules = CustomerRules<CustomerEquals, CustomerHash>;
+
+        Rules rules;
+
+        Customer hans("Hans");
+        Customer sepp("Sepp");
+
+        bool result = rules(hans, sepp);
+        std::cout << "rules(hans, sepp) => " << result << std::endl;
+
+        size_t hashHans = rules(hans);
+        std::cout << "rules(hans) => " << hashHans << std::endl;
+
+        size_t hashSepp = rules(sepp);
+        std::cout << "rules(sepp) => " << hashSepp << std::endl;
+    }
+
     // Use case: Variadic Expressions with Indices / Variadische Ausdrücke mit Indizes
     //
     
@@ -66,7 +118,7 @@ namespace VariadicTemplatesSystematic {
         print(container[index] ...);
     }
     
-    void test_02()
+    void test_03()
     {
         std::vector<std::string> numbers{ "one", "two", "three", "four", "five" };
         printElements(numbers, 4, 3, 2);
@@ -84,7 +136,7 @@ namespace VariadicTemplatesSystematic {
         return (std::is_same<T, TREST>::value && ...); // since C++17: folding expression !!!
     }
 
-    void test_03()
+    void test_04()
     {
         bool result = isHomogeneous(43, -1, "hello");
         std::cout << std::boolalpha << result << std::endl;
@@ -107,9 +159,19 @@ namespace VariadicTemplatesSystematic {
 int main_variadic_templates()
 {
     using namespace VariadicTemplatesSystematic;
+
+    // Variadic Expressions
     test_01();
+
+    // Variadic Base Classes and keyword 'using'
     test_02();
+
+    // Variadic Expressions with Indices 
     test_03();
+
+    // Compile-Time Expression with Variadic Expressions
+    test_04();
+
     return 0;
 }
 
