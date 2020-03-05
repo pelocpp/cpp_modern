@@ -33,6 +33,17 @@ Von Scott Meyers in Worte gefasst lauten diese Regeln, wenn gleich auch nicht ei
 Tabelle 1. *Collapsing Rules* für das *Perfect Forwarding*.
 
 
+Eine etwas leichter verständlichere Darstellung bietet folgende Abbildung:
+
+![](ScottMeyers_Forward.png)
+
+Man beachte, dass zwischen den beiden Objekten des Typs `Future` und `Promise` ein Datenkanal eingerichtet wird.
+
+<img src="ScottMeyers_Forward.png" style="width:200px;"/>
+
+
+
+
 *Ausgabe des Code-Snippets*:
 
 ```cpp
