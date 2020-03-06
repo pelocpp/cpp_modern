@@ -275,11 +275,11 @@
     <None Include="Literals\Readme.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="VariadicTemplates_Systematic\Readme.md">
-      <Filter>Source Files</Filter>
-    </None>
     <None Include="Literatur\Readme.md">
-      <Filter>Source Files</Filter>
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="VariadicTemplates_Systematic\Readme.md">
+      <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
