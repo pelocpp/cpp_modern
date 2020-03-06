@@ -25,14 +25,22 @@ in verständlichen (englischen) Erklärungen zu führen. Großartig!
 
 Ein sehr gutes Buch für Leser, die deutschsprachige Bücher bevorzugen. Viele Beispiele, gute Erklärungen.
 
+#
+
+  * Peter Pohmann, "C++17: Praxiswissen zum neuen Standard. Von C++11 bis 17".</br> 
+    Software + Support (30. Mai 2017), 330 Seiten. Sprache: Deutsch. ISBN-10: 9783868021745, ISBN-13: 978-3868021745.
+
+    Ein kurz gehaltenes Nachschlagewerk, dass vor allem für Entwickler geeignet ist, die sich für die Neuerungen
+    der Programmiersprache C++ bzgl. C++-11, C++-14 und C++-17 interessieren. Zu jedem Sprachfeature gibt es ein
+    kleines (und vor allem auch leicht verständliches) Beispiel.
 
 ---
 
-## Design Pattern
+## Templates
 
 
   * David Vandevoorde, Nicolai M. Josuttis und Douglas Gregor: "C++ Templates: The Complete Guide (2nd Edition)".</br>
-    Addison Wesley (1. Dezember 2017), 2. Auflage, 832 Seiten. Sprache: Englisch. ISBN-10: 0321714121, ISBN-13: 978-0321714121
+    Addison Wesley (1. Dezember 2017), 2. Auflage, 832 Seiten. Sprache: Englisch. ISBN-10: 0321714121, ISBN-13: 978-0321714121.
 
 Das ultimative Buch zu Templates in C++. 
 
@@ -40,8 +48,12 @@ Das ultimative Buch zu Templates in C++.
 
 ## Design Patterns (Entwurfsmuster)
 
-  * TBD
+  * Fedor G. Pikus: "Hands-On Design Patterns with C++".</br>
+    Packt Publishing (30. Januar 2019), 512 Seiten. Sprache: Englisch. ISBN-10: 1788832566, ISBN-13: 978-1788832564.
 
+    Ein vergleichsweise anspruchsvolles Buch zu Entwurfsmustern in C++. Neben Klassikern wir *Singleton*, *Factory* und *Adapter*
+    werden moderne C++-Konzepte wie RAII, SFINAE, CRTP und Type Erasure betrachtet. Sehr gut geschrieben,
+    möglicherweise nichts für den Einsteiger in dieses Thema.
 
 ---
 
