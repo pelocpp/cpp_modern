@@ -278,6 +278,9 @@
     <None Include="VariadicTemplates_Systematic\Readme.md">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="Literatur\Readme.md">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Global\Dummy.h">

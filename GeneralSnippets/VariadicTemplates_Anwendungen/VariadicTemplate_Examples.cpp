@@ -101,6 +101,63 @@ namespace VariadicTemplatesExamples {
         std::cout << std::boolalpha << result << std::endl;
     }
 
+    /* Benutzerdefiniertes Literal mit variadischem Template
+     * hier: Suffix 'b' == binary value of arbitrary length
+     */
+
+    template <char C>
+    unsigned long long b();
+
+    template <>
+    unsigned long long b<'0'>() {
+        return 0;
+    }
+
+    template <>
+    unsigned long long b<'1'>() {
+        return 1;
+    }
+
+    // verbose version
+    //template <char C, char D, char ... REST>
+    //unsigned long long b() {
+    //    
+    //    unsigned long long digit = b<C>();
+    //    std::cout << "got " << digit << std::endl;
+    //
+    //    unsigned long long tmp = digit << (1 + sizeof... (REST));
+    //    return tmp | b<D, REST...>();
+    //};
+
+    // compact version
+    template <char C, char D, char ... REST>
+    unsigned long long b() {
+    
+        return b<C>() << (1 + sizeof... (REST)) | b<D, REST...>();
+    };
+
+    template <char... CS>
+    unsigned long long operator""  _b() { return b<CS...>(); }
+
+    void test_05() {
+        unsigned long long value;
+        
+        value = 1010_b;
+        std::cout << value << std::endl;
+
+        value = 0101_b;
+        std::cout << value << std::endl;
+
+        value = 01111111_b;
+        std::cout << value << std::endl;
+
+        value = 11111111_b;
+        std::cout << value << std::endl;
+
+        value = 100000000_b;
+        std::cout << value << std::endl;
+    }
+
     /*
      * Traversieren eines binären Baums mit 'folding expression'
      */
@@ -126,7 +183,7 @@ namespace VariadicTemplatesExamples {
         return os;
     }
 
-    void test_05() {
+    void test_06() {
 
         Example e(1);
         int Example::* pi = &Example::m_n;
@@ -138,7 +195,7 @@ namespace VariadicTemplatesExamples {
         std::cout << e << std::endl;
     }
 
-    void test_06() {
+    void test_07() {
 
         Example* ep = new Example();
         int(Example:: * pi) = &Example::m_n;
@@ -174,7 +231,7 @@ namespace VariadicTemplatesExamples {
         return (np ->* ... ->*paths); // np ->* paths1 ->* paths2 ...
     }
 
-    void test_07() {
+    void test_08() {
 
         // init binary tree structure:
         BinaryNode* root = new BinaryNode{ 0 };
@@ -199,13 +256,15 @@ int main_variadic_templates_examples()
     using namespace VariadicTemplatesExamples;
 
     // logical operations
-    //test_01();
-    //test_02();
-    //test_03();
-    //test_04();
+    test_01();
+    test_02();
+    test_03();
+    test_04();
 
-    // logical operations
+    // user defined literal
     test_05();
+
+    // binary tree traversal with 'folding expression'
     test_06();
     test_07();
 

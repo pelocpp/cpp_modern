@@ -206,6 +206,7 @@
     <None Include="InputOutputStreams\Readme.md" />
     <None Include="Lambda\Readme.md" />
     <None Include="Literals\Readme.md" />
+    <None Include="Literatur\Readme.md" />
     <None Include="MemoryLeaks\Readme.md" />
     <None Include="MetaProgramming\Readme.md" />
     <None Include="ParametersWithConstAndRef\Readme.md" />
