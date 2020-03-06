@@ -175,14 +175,11 @@ int main()
 
 #include <iostream>
 #include <memory>
-#include <array>
-#include <iostream>
-#include <functional>
 
 // =============================================================
 // templates
 
-// Test Class - only c'tors are interesting ..
+// Test Class - only c'tors (and d'tor) are important ..
 
 class Unknown {
 
@@ -202,6 +199,10 @@ public:
     Unknown(int n, int m, int k) {
         std::cout << "c'tor(int, int, int)" << std::endl;
     }
+
+    ~Unknown() {
+        std::cout << "d'tor()" << std::endl;
+    }
 };
 
 // =============================================================
@@ -214,18 +215,18 @@ std::unique_ptr<T> my_make_unique(Args&&... args)
 }
 
 // =============================================================
+
 // samples
-
-void h1() {
-
-    std::unique_ptr<Unknown> f = my_make_unique<Unknown>(1, 2, 3);
-}
-
-// =============================================================
-
 int main()
 {
-    h1();
+    std::unique_ptr<Unknown> up1 = my_make_unique<Unknown>();
+    std::unique_ptr<Unknown> up2 = my_make_unique<Unknown>(1);
+    std::unique_ptr<Unknown> up3 = my_make_unique<Unknown>(10, 11);
+    std::unique_ptr<Unknown> up4 = my_make_unique<Unknown>(100, 101, 102);
+
+    int n = 33, m = 34;
+    std::unique_ptr<Unknown> up5 = my_make_unique<Unknown>(n, m);
+
     return 0;
 }
 
@@ -253,37 +254,35 @@ befindet sich unter
 // =============================================================
 
 #include <iostream>
-#include <memory>
 #include <array>
-#include <iostream>
-#include <functional>
 
 // =============================================================
 // templates
 //
 
 template<typename... Ts>
-auto my_make_array(Ts&&... ts) -> std::array<int, sizeof...(Ts)> 
+auto my_make_array(Ts&&... ts) -> std::array<int, sizeof...(Ts)>  
 {
     return { std::forward<Ts>(ts)... };
 }
 
 // =============================================================
-// samples
-
-void h1() {
-    auto b = my_make_array(1, 2, 3);
-    std::cout << b.size() << '\n';
-    for (auto i : b)
-        std::cout << i << ' ';
-}
-
-
-// =============================================================
 
 int main()
 {
-    h1();
+    auto a = my_make_array(1, 2, 3);
+    std::cout << "Array Size: " << a.size() << std::endl;
+    for (auto i : a)
+        std::cout << i << ' ';
+    std::cout << std::endl;
+
+    auto b = my_make_array();
+    std::cout << "Array Size: " << b.size() << std::endl;
+
+    std::array<int, 1> c = my_make_array(999);
+    std::cout << "Array Size: " << c.size() << std::endl;
+    for (auto i : c)
+        std::cout << i << ' ';
 
     return 0;
 }
@@ -327,8 +326,6 @@ einer beliebigen Anzahl von Methoden demonstriert:
 
 
 ```cpp
-#include <iostream>
-#include <memory>
 #include <iostream>
 #include <functional>
 
@@ -483,12 +480,12 @@ Oder an folgendem Beispiel betrachtet:
  using namespace std;
     class B {
     public:
-        int f(int i) { cout << "f(int): "; return i+1; }
+        int f(int i) { cout << "f(int): "; return i + 1; }
         // ...
     };
     class D : public B {
     public:
-        double f(double d) { cout << "f(double): "; return d+1.3; }
+        double f(double d) { cout << "f(double): "; return d + 1.3; }
         // ...
     };
     int main()
@@ -602,81 +599,3 @@ int main()
 ```
 
 ---
-
-
-
-
-
-// =============================================================
-// "Unpacking" a parameter pack to call a matching constructor
-// =============================================================
-
-#include <iostream>
-
-// Test Class - only c'tors are interesting ..
-//
-class Unknown {
-private:
-    int m_var1;
-    int m_var2;
-    int m_var3;
-
-public:
-    Unknown() : m_var1(-1), m_var2(-1), m_var3(-1) {
-        std::cout << "c'tor()" << std::endl;
-    }
-
-    Unknown(int n) : m_var1(n), m_var2(-1), m_var3(-1) {
-        std::cout << "c'tor(int)" << std::endl;
-    }
-
-    Unknown(int n, int m) : m_var1(n), m_var2(m), m_var3(-1) {
-        std::cout << "c'tor(int, int)" << std::endl;
-    }
-
-    Unknown(int n, int m, int k) : m_var1(n), m_var2(m), m_var3(k) {
-        std::cout << "c'tor(int, int, int)" << std::endl;
-    }
-
-    friend std::ostream& operator<< (std::ostream&, const Unknown&);
-};
-
-std::ostream& operator<< (std::ostream& os, const Unknown& obj) {
-    os << "var1: " << obj.m_var1
-        << ", var2: " << obj.m_var2
-        << ", var3: " << obj.m_var3 << std::endl;
-    return os;
-}
-
-// =============================================================
-// variadic template
-//
-
-template<typename T, typename... Args>
-T make_an_object(Args&&... args)
-{
-    return T(std::forward<Args>(args)...);
-}
-
-// =============================================================
-
-int main()
-{
-    Unknown u1 = make_an_object<Unknown>();
-    std::cout << u1 << std::endl;
-
-    Unknown u2 = make_an_object<Unknown>(1);
-    std::cout << u2 << std::endl;
-
-    Unknown u3 = make_an_object<Unknown>(10, 11);
-    std::cout << u3 << std::endl;
-
-    Unknown u4 = make_an_object<Unknown>(100, 101, 102);
-    std::cout << u4 << std::endl;
-
-    // doesn't compile
-    // Unknown u5 = make_an_object<Unknown>(1000, 1001, 1002, 1003);
-    // std::cout << u4 << std::endl;
-
-    return -1;
-}
