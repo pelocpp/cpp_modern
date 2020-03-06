@@ -14,9 +14,9 @@ welche Bücher bei mir derzeit hoch im Kurs stehen und die meiner Meinung nach ab
   * Marc Gregoire, "Professional C++ (4th Edition)".</br>
     Wrox Press (17. April 2018), 1184 Seiten. Sprache: Englisch. ISBN-13: 978-1119421306, ISBN-10: 1119421306.
 
-Für mich das derzeit beste C++-Buch am Markt. Zugegeben, seht umfangreich, aber dafür versteht es der Autor,
-seine Leser mit einem jederzeit erkennbaren roten Faden durch alle Niederungen der Sprache C++ 
-in verständlichen (englischen) Erklärungen zu führen. Großartig!
+    Für mich das derzeit beste C++-Buch am Markt. Zugegeben, seht umfangreich, aber dafür versteht es der Autor,
+    seine Leser mit einem jederzeit erkennbaren roten Faden durch alle Niederungen der Sprache C++ 
+    in verständlichen (englischen) Erklärungen zu führen. Großartig!
 
 #
 
@@ -42,7 +42,7 @@ Ein sehr gutes Buch für Leser, die deutschsprachige Bücher bevorzugen. Viele Bei
   * David Vandevoorde, Nicolai M. Josuttis und Douglas Gregor: "C++ Templates: The Complete Guide (2nd Edition)".</br>
     Addison Wesley (1. Dezember 2017), 2. Auflage, 832 Seiten. Sprache: Englisch. ISBN-10: 0321714121, ISBN-13: 978-0321714121.
 
-Das ultimative Buch zu Templates in C++. 
+    Das ultimative Buch zu Templates in C++. 
 
 ---
 
@@ -54,8 +54,4 @@ Das ultimative Buch zu Templates in C++.
     Ein vergleichsweise anspruchsvolles Buch zu Entwurfsmustern in C++. Neben Klassikern wir *Singleton*, *Factory* und *Adapter*
     werden moderne C++-Konzepte wie RAII, SFINAE, CRTP und Type Erasure betrachtet. Sehr gut geschrieben,
     möglicherweise nichts für den Einsteiger in dieses Thema.
-
----
-
-
 
