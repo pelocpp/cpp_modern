@@ -36,7 +36,7 @@ creates the type “lvalue reference to T”,
 while an attempt to create the type “rvalue reference to cv TR” creates the type TR."
 
 Ein zweiter Versuch von *Scott Meyers* bietet eine möglicherweise leichter verständlichere Darstellung
-des Sachverhalts:
+des Sachverhalts an:
 
 ![](ScottMeyers_Forward.png)
 
