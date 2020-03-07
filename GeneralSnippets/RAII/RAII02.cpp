@@ -29,11 +29,11 @@ namespace RAIIDemo02 {
         // write message to file
         file << message << std::endl;
 
-        // file will be closed 1st when leaving scope (regardless of exception)
-        // mutex will be unlocked 2nd (from lock destructor) when leaving
-        // scope (regardless of exception)
+        // a) file will be closed 1st when leaving scope (regardless of exception)
+        // b) mutex will be unlocked 2nd (from lock destructor) when leaving
+        //    scope (regardless of exception)
 
-        // fstream (rsp. ofstream) is a proper RAII object,
+        // fstream (rsp. ofstream) is a proper RAII object:
         // it does close automatically at the end of the scope,
         // and there is absolutely no need whatsoever to call close manually
         // when closing at the end of the scope is sufficient.

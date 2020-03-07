@@ -5,7 +5,7 @@
 #include <iostream>
 #include <memory>
 
-namespace UniquePointer {
+namespace UniquePointerSecondExample {
 
     // Dummy Window Hierarchy
     class Component { };             
@@ -72,9 +72,9 @@ namespace UniquePointer {
 
 int main_unique_pointer()
 {
-    using namespace UniquePointer;
+    using namespace UniquePointerSecondExample;
     test_01();
-    // test_02();
+    test_02();
 
     return 0;
 }

@@ -5,7 +5,7 @@
 #include <iostream>
 #include <memory>
 
-namespace UniquePointerZwei {
+namespace UniquePointer {
 
     std::unique_ptr<int> getUniquePointer()
     {
@@ -67,7 +67,7 @@ namespace UniquePointerZwei {
 
 int main_unique_ptr()
 {
-    using namespace UniquePointerZwei;
+    using namespace UniquePointer;
     test_01();
     test_02();
 
