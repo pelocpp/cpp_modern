@@ -91,7 +91,7 @@ int main_variadic_templates_intro()
 {
     using namespace VariadicTemplates;
     test_01();
-    test_02();
+  //  test_02();
     return 0;
 }
 

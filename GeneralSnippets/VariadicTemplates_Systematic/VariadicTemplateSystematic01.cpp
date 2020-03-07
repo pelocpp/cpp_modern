@@ -8,6 +8,14 @@
 #include <array>
 #include <type_traits>
 
+// =====================================================================================
+// Inhalt:
+// - Variadic Expressions / Variadische Ausdrücke
+// - Variadische Templates mit Zugriff auf Basisklasse und 'using'
+// - Variadic Expressions with Indices / Variadische Ausdrücke mit Indizes
+// - Compile-Time Expression with Variadic Expressions
+// =====================================================================================
+
 namespace VariadicTemplatesSystematic {
 
     // Use case: Variadic Expressions / Variadische Ausdrücke
@@ -56,6 +64,9 @@ namespace VariadicTemplatesSystematic {
 
         printPlusOne(1, 5, 10);
     }
+
+    // =====================================================================================
+    // =====================================================================================
 
     // Use case: Variadic Base Classes and keyword 'using'
     // Several implementations of a method (e.g. operator())
@@ -109,6 +120,9 @@ namespace VariadicTemplatesSystematic {
         std::cout << "rules(sepp) => " << hashSepp << std::endl;
     }
 
+    // =====================================================================================
+    // =====================================================================================
+
     // Use case: Variadic Expressions with Indices / Variadische Ausdrücke mit Indizes
     //
     
@@ -155,6 +169,9 @@ namespace VariadicTemplatesSystematic {
         std::cout << std::boolalpha << result << std::endl;
     }
 }
+
+// =====================================================================================
+// =====================================================================================
 
 int main_variadic_templates()
 {

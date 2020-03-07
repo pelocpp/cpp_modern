@@ -9,6 +9,22 @@
 
 namespace Literals {
 
+    void test_01() {
+
+        // binary, octal and hexadecimal literals
+        // (including single quotation mark as separator)
+
+        long decval = 1'048'576;        // groups of three digits
+        long hexval = 0x10'0000;        // four digits
+        long octval = 00'04'00'00'00;   // two digits
+        long binval = 0b100'000000'000000'000000;   //six digits
+
+        std::cout << decval << std::endl;
+        std::cout << hexval << std::endl;
+        std::cout << octval << std::endl;
+        std::cout << binval << std::endl;
+    }
+
     class Color {
         friend std::ostream& operator<< (std::ostream&, const Color&);
 
@@ -72,12 +88,12 @@ namespace Literals {
         return {};
     }
 
-    void test_00() {
+    void test_02() {
         Color col(255, 70, 80, 90);
         std::cout << col << std::endl;
     }
 
-    void test_01() {
+    void test_03() {
         Color red = 0x00FF0000_col;
         std::cout << red << std::endl;
         Color magenta = 0x00FF00FF_col;
@@ -94,7 +110,8 @@ int main_literals()
 {
     using namespace Literals;
     test_01();
-    test_01();
+    test_02();
+    test_03();
 
     return 0;
 }
