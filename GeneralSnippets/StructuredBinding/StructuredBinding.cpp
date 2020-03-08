@@ -49,13 +49,22 @@ namespace StructuredBinding {
             << std::put_time(std::localtime(&time), "%F %T") << std::endl;
     }
 
+    void test_04() {
+
+        int arr[] = { 10, 11, 12 };
+
+        auto [ a, b, c ] = arr;
+
+        std::cout << a << " " << b << " " << c << std::endl;
+    }
+
     class Point {
     public:
         int m_x;
         int m_y;
     };
 
-    void test_04() {
+    void test_05() {
 
         // without structured binding
         Point p1 = { 1, 2 };
@@ -77,7 +86,7 @@ namespace StructuredBinding {
         unsigned phone;
     };
 
-    void test_05() {
+    void test_06() {
 
         Employee worker { 9987, "Sepp", "Engineer", 987654321 };
         Employee manager { 999, "Hans", "Manager", 123456789 };
@@ -101,6 +110,7 @@ int main_structuredbinding()
     test_03();
     test_04();
     test_05();
+    test_06();
     return 0;
 }
 
