@@ -66,4 +66,5 @@ IntegerSet& IntegerSet::operator= (IntegerSet&& set) noexcept {
 
     return *this;
 }
-```cpp
+```
+
