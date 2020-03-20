@@ -163,6 +163,7 @@
     <ClCompile Include="MetaProgramming\MetaProgramming.cpp" />
     <ClCompile Include="Optional\Optional.cpp" />
     <ClCompile Include="PerfectForwarding\PerfectForwarding.cpp" />
+    <ClCompile Include="PerfectForwarding\PerfectForwardingDummy.cpp" />
     <ClCompile Include="Program.cpp" />
     <ClCompile Include="RAII\RAII01.cpp" />
     <ClCompile Include="RAII\RAII02.cpp" />

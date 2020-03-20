@@ -162,6 +162,9 @@
     <ClCompile Include="VariadicTemplates_Anwendungen\VariadicTemplate_Examples.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PerfectForwarding\PerfectForwardingDummy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="ParametersWithConstAndRef\Readme.md">

@@ -19,50 +19,59 @@
 namespace SharedPointer {
 
     // 'shared ptr' approach
-    std::shared_ptr<int> createObject() {
+    std::shared_ptr<int> loadSharedPointer() {
         return std::shared_ptr<int>(new int);
     }
 
     // note: play with 'call-by-value' or 'call-by-reference'
-    void doSomething(const std::shared_ptr<int> ptr) {
-        std::cout << "inner use_count: " << ptr.use_count() <<  std::endl;
+    void storeSharedPointer(const std::shared_ptr<int> ptr) {
+        std::cout << "inner scope: " << ptr.use_count() <<  std::endl;
     }
 
     void test_01() {
-        std::cout << "Begin-of-program" << std::endl;
-        // 'firstShared' is a shared pointer for a new instance of an int
-        std::shared_ptr<int> firstShared = std::make_shared<int>(11);
+
+        // 'ptr1' is a shared pointer for a new instance of an int
+        std::shared_ptr<int> ptr1 = std::shared_ptr<int>(new int(123));
         // or
-        // std::shared_ptr<int> firstShared = std::shared_ptr<int>(new int(11));
+        // std::shared_ptr<int> ptr1 = std::make_shared<int>(123);
 
-        // create several smart pointers that share the same object
-        // a) copy-constructing
-        std::shared_ptr<int> secondShared(firstShared);
+        // access value behind smart pointer
+        std::cout << "ptr1:       " << *ptr1 << std::endl;
 
-        // a) assignment
-        std::shared_ptr<int> thirdShared;
-        thirdShared = firstShared;
+        // access value using raw pointer
+        int* ip1 = ptr1.get();
+        (*ip1)++;
+        std::cout << "*ip:        " << *ip1 << std::endl;
 
-        std::cout << "use_count: " << firstShared.use_count() << std::endl;
-        std::cout << "use_count: " << secondShared.use_count() << std::endl;
-        std::cout << "use_count: " << thirdShared.use_count() << std::endl;
+        // access value - again - behind smart pointer
+        std::cout << "*ptr1:      " << *ptr1 << std::endl;
 
-        // access object
-        std::cout << "current object value: " << *firstShared << std::endl;
-        std::cout << "current object value: " << *secondShared << std::endl;
-        std::cout << "current object value: " << *thirdShared << std::endl;
+        // create several smart pointers that share the same object:
+        //
+        // 1.) copy-construction
+        std::shared_ptr<int> ptr2(ptr1);
 
-        std::cout << "End-of-program" << std::endl;
+        // 2.) assignment-operator
+        std::shared_ptr<int> ptr3;
+        ptr3 = ptr1;
+
+        // retrieve number of different shared_ptr instances managing the same object
+        std::cout << "use_count:  " << ptr1.use_count() << std::endl;
+        std::cout << "use_count:  " << ptr2.use_count() << std::endl;
+        std::cout << "use_count:  " << ptr3.use_count() << std::endl;
+
+        // access object through different shared_ptr instances
+        std::cout << "value:      " << *ptr1 << std::endl;
+        std::cout << "value:      " << *ptr2 << std::endl;
+        std::cout << "value:      " << *ptr3 << std::endl;
     }
 
     void test_02() {
-        std::cout << "Begin-of-program" << std::endl;
-        std::shared_ptr<int> ptr = createObject();
-        std::cout << "outer use_count: " << ptr.use_count() << std::endl;
-        doSomething(ptr);
-        std::cout << "outer use_count: " << ptr.use_count() << std::endl;
-        // no explicit delete on Object ptr / shared ptr goes out of scope!
-        std::cout << "End-of-program" << std::endl;
+        std::shared_ptr<int> ptr = loadSharedPointer();
+        std::cout << "outer scope: " << ptr.use_count() << std::endl;
+        storeSharedPointer(ptr);
+        std::cout << "outer scope: " << ptr.use_count() << std::endl;
+        // no explicit delete on object ptr: shared ptr goes out of scope!
     }
 }
 

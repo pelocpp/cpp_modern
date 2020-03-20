@@ -47,7 +47,7 @@ namespace Literals {
         os << std::uppercase
             << std::hex << std::setw(2) << std::setfill('0') << (int) col.m_r << ":"
             << std::hex << std::setw(2) << std::setfill('0') << (int) col.m_g << ":"
-            << std::hex << std::setw(2) << std::setfill('0') << (int) col.m_b << "["
+            << std::hex << std::setw(2) << std::setfill('0') << (int) col.m_b << " ["
             << std::hex << std::setw(2) << std::setfill('0') << (int) col.m_a << "]";
 
         return os;
@@ -57,9 +57,9 @@ namespace Literals {
     Color operator"" _col (unsigned long long int value) {
 
         uint8_t a = (uint8_t) ((value & 0xFF000000) >> 24);
-        uint8_t r = (uint8_t)((value & 0x00FF0000) >> 16);
-        uint8_t g = (uint8_t)((value & 0x0000FF00) >> 8);
-        uint8_t b = (uint8_t)((value & 0xFF0000FF) >> 0);
+        uint8_t r = (uint8_t) ((value & 0x00FF0000) >> 16);
+        uint8_t g = (uint8_t) ((value & 0x0000FF00) >> 8);
+        uint8_t b = (uint8_t) ((value & 0x000000FF) >> 0);
 
         return Color(a, r, g, b);
     }
@@ -112,7 +112,6 @@ int main_literals()
     test_01();
     test_02();
     test_03();
-
     return 0;
 }
 

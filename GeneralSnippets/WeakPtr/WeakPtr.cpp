@@ -16,26 +16,28 @@ namespace WeakPointer {
         {
             std::cout << "Begin-of-Scope" << std::endl;
 
-            std::shared_ptr<int> ptr1 = std::make_shared<int>();
+            std::shared_ptr<int> ptr1 = std::make_shared<int>(123);
+            // or
+            // std::shared_ptr<int> ptr1 = std::shared_ptr<int>(new int(123));
 
-            std::cout << "Usage count shared_ptr: " << ptr1.use_count() << std::endl;
+            std::cout << "Usage count shared_ptr:     " << ptr1.use_count() << std::endl;
             weakPtr = ptr1;
-            std::cout << "Usage count shared_ptr: " << ptr1.use_count() << std::endl;
+            std::cout << "Usage count shared_ptr:     " << ptr1.use_count() << std::endl;
 
             // need shared pointer to access weak pointer
-            std::cout << "Is weak ptr expired: " << weakPtr.expired() << std::endl;
+            std::cout << "Is weak ptr expired:        " << weakPtr.expired() << std::endl;
             std::shared_ptr<int> ptr2 = weakPtr.lock();
-            std::cout << "Usage count shared_ptr: " << ptr1.use_count() << std::endl;
-            std::cout << "Usage count shared_ptr: " << ptr2.use_count() << std::endl;
+            std::cout << "Usage count shared_ptr:     " << ptr1.use_count() << std::endl;
+            std::cout << "Usage count shared_ptr:     " << ptr2.use_count() << std::endl;
 
             // access weak pointer via shared pointer
-            std::cout << "*sharedPtr: " << *ptr2 << std::endl;
+            std::cout << "*sharedPtr:                 " << *ptr2 << std::endl;
 
-            std::cout << "Is weak ptr expired: " << weakPtr.expired() << std::endl;
+            std::cout << "Is weak ptr expired:        " << weakPtr.expired() << std::endl;
             std::cout << "End-of-Scope" << std::endl;
         }
 
-        std::cout << "Is weak ptr expired: " << weakPtr.expired() << std::endl;
+        std::cout << "Is weak ptr expired:        " << weakPtr.expired() << std::endl;
 
         // Notw: C++17 initializer syntax: limited variable scope
         if (std::shared_ptr<int> ptr3; (ptr3 = weakPtr.lock()) == nullptr) {
@@ -122,8 +124,8 @@ namespace WeakPointer {
 int main_weak_pointer()
 {
     using namespace WeakPointer;
-    // test_01();
-    test_02();
+    test_01();
+    // test_02();
     return 0;
 }
 

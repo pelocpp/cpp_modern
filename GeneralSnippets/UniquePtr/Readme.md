@@ -1,20 +1,17 @@
-# Unique Pointer
+# Unique Pointer - Klasse `std::unique_ptr`
 
-Das Beispiel demonstriert `std::unique_ptr`-Objekte am Beispiel einer fiktiven Window-Klasse.
+An Hand eines Beispiels wird die Arbeitsweise der `std::unique_ptr`-Klasse demonstriert.
 
-Diese besitzt als Instanzvariablen zahlreiche graphische Steuerelemente, die dynamisch allokiert werden,
-deren raw-Zeiger aber von `std::unique_ptr`-Objekte verwaltet werden.
+Ausgabe des Code-Snippets:
 
-Damit wird für all diese Steuerelemente der Destruktor automatisch aufgerufen.
-
-Man beachte bei den verschiedenen Methoden `createDialog`, `showDialog` und `showAnotherDialog`:
-
-Diese verschieben allesamt `std::unique_ptr`-Objekte, es erfolgen keine Kopiervorgänge.
-
-Ein `std::unique_ptr`-Objekte kann per se auch nicht kopiert werden, dass wäre ein Widerspruch zu seiner Tätigkeit
-("*exklusive Verwaltung eines raw-Zeigers*").
-
-Damit kann man in Funktion showAnotherDialog einen Absturz beobachten, der zu Demonstrationszwecken eingebaut ist.
-
-An dieser Stelle wäre der Gebrauch eines `std::shared_ptr`-Objekts sinnvoller.
-
+```cpp
+*ptr1:   123
+*ip:     124
+*ptr1:   124
+*ptr2:   124
+*ptr3:   125
+*ptr4:   100
+*ptr:    100
+*ptr:    101
+*ptr4:   101
+```

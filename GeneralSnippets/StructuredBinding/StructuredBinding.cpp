@@ -80,10 +80,10 @@ namespace StructuredBinding {
 
     class Employee {
     public:
-        unsigned id;
+        unsigned int id;
         std::string name;
         std::string role;
-        unsigned phone;
+        unsigned long phone;
     };
 
     void test_06() {
@@ -93,11 +93,11 @@ namespace StructuredBinding {
 
         std::vector<Employee> employees { worker, manager };
 
-        for (const auto& [id, name, role, salary] : employees) {
+        for (const auto& [id, name, role, phone] : employees) {
             std::cout
-                << "Name: " << name
-                << "Role: " << role
-                << "Salary: " << salary << std::endl;
+                << "Name: " << name << ", "
+                << "Role: " << role << ", "
+                << "Phone: " << phone << std::endl;
         }
     }
 }
