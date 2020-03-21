@@ -165,6 +165,9 @@
     <ClCompile Include="PerfectForwarding\PerfectForwardingDummy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Allocator\AllocatorDummy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="ParametersWithConstAndRef\Readme.md">

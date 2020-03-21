@@ -143,6 +143,7 @@
   <ItemGroup>
     <ClCompile Include="Accumulate\Accumulate.cpp" />
     <ClCompile Include="Allocator\Allocator.cpp" />
+    <ClCompile Include="Allocator\AllocatorDummy.cpp" />
     <ClCompile Include="Any\Any.cpp" />
     <ClCompile Include="ArrayDecay\ArrayDecay.cpp" />
     <ClCompile Include="Array\Array.cpp" />
