@@ -224,9 +224,6 @@
     <None Include="UsingNamespaceStd\UsingNamespaceStd.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="UniquePtr\StdUniquePtr.md">
-      <Filter>Resource Files</Filter>
-    </None>
     <None Include="VariadicTemplates_Systematic\VariadicTemplates03.md">
       <Filter>Resource Files</Filter>
     </None>
@@ -291,6 +288,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="FileSystem\FileSystem.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="UniquePtr\UniquePtr.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

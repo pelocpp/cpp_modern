@@ -27,12 +27,22 @@ In den Beispiele dieses Code-Snippets werden folgende Teilaspakte des C++17 File
 
 ---
 
-## Hinweis:
+#### Hinweis:
 
 Viele der Funktionen, die auf einem `path`-Objekt arbeiten, gibt es in zwei Versionen:
 
   * Eine Version, die eine `filesystem_error`-Ausnahme im Fehlerfall auslöst.
   * Eine zweite Version, die ein `error_code`-Objekt verwaltet (systemspezifisch).
+
+---
+
+## Literatur:
+
+Offizielle C++-Referenz: [cppreference.com](https://en.cppreference.com/w/cpp/filesystem)
+
+C++17 Filesystem: [C++17 Filesystem](https://www.codingame.com/playgrounds/5659/c17-filesystem)
+
+Bartek's coding blog:  [C++17 in details: File System](https://www.bfilipek.com/2017/08/cpp17-details-filesystem.html)
 
 ---
 

@@ -4,6 +4,8 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
+#include <iterator>
 #include <filesystem>
 
 namespace FileSystemDemo {
@@ -37,7 +39,7 @@ namespace FileSystemDemo {
     void test_02() {
         // iterating over path object
 
-        // note: use of raw character notation
+        // note: use of raw character string notation
         std::filesystem::path p(R"(C:\Development\GitRepositoryCPlusPlus\Readme_Ssh.txt)");
 
         // range-based loop
@@ -76,6 +78,60 @@ namespace FileSystemDemo {
         std::cout << "Size of File: " << size << '\n';
     }
 
+    // reading contents of directory
+    void readDirectory01(const std::string& name)
+    {
+        std::filesystem::path p(name);
+        std::filesystem::directory_iterator start(p);
+        std::filesystem::directory_iterator end;
+
+        std::for_each(start, end, [i = 0](const std::filesystem::directory_entry& entry) mutable {
+            std::string s{ entry.path().filename().string() };
+            std::cout << "Entry: " << i++ << " = " << s << '\n';
+            }
+        );
+    }
+
+    void readDirectory02(const std::string& name, std::vector<std::string>& vec)
+    {
+        std::filesystem::path p(name);
+        std::filesystem::directory_iterator start(p);
+        std::filesystem::directory_iterator end;
+
+        std::transform(
+            start,
+            end,
+            std::back_inserter(vec),
+            [](const std::filesystem::directory_entry& entry) {
+                std::string s{ entry.path().filename().string() };
+                return s;
+            }
+        );
+    }
+
+    void test_04a(std::string path) {
+        readDirectory01(path);
+    }
+
+    void test_04b(std::string path) {
+
+        std::vector<std::string> dir;
+        readDirectory02(path, dir);
+
+        int i = 0;
+        for (const std::string& entry : dir) {
+            std::cout << "Entry: " << i++ << " = " << entry << '\n';
+        }
+
+        // or
+
+        std::copy(
+            dir.begin(),
+            dir.end(),
+            std::ostream_iterator<std::string>(std::cout, "\n")
+        );
+    }
+
     // traversing a directory recursively
     void displayFileInfo(const std::filesystem::directory_entry& entry, std::string& lead, const std::filesystem::path& filename)
     {
@@ -109,8 +165,8 @@ namespace FileSystemDemo {
         displayDirectoryTreeImp(p, 0);
     }
 
-    void test_04(std::string path) {
-        // examine path object
+    void test_05(std::string path) {
+        // traversing a directory recursively
         std::cout << "Examine " << path << ':' << '\n';
         std::filesystem::path current;
 
@@ -136,12 +192,15 @@ int main_filesystem()
     test_01("C:\\");
     test_01("C:\\Usersss");
 
-    // test_02();
+    test_02();
 
-    // test_03("C:\\Development\\GitRepositoryCPlusPlus\\Readme_Ssh.txt");
+    test_03("C:\\Development\\GitRepositoryCPlusPlus\\Readme_Ssh.txt");
 
-    // note: use of raw character notation
-    // test_04(R"(C:\Development\GitRepositoryCPlusPlus\Cpp_DesignPatterns\CompositePattern)");
+    test_04a(R"(C:\Development\GitRepositoryCPlusPlus\Cpp_DesignPatterns\CompositePattern)");
+    test_04b(R"(C:\Development\GitRepositoryCPlusPlus\Cpp_DesignPatterns\CompositePattern)");
+
+    // note: use of raw character string notation
+    test_05(R"(C:\Development\GitRepositoryCPlusPlus\Cpp_DesignPatterns\CompositePattern)");
     
     return 0;
 }

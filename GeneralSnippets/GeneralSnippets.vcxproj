@@ -228,7 +228,7 @@
     <None Include="TemplateTemplateParameter\TemplateTemplateParameter.md" />
     <None Include="Tuple\StdTuple.md" />
     <None Include="TypeTraits\TypeTraits.md" />
-    <None Include="UniquePtr\StdUniquePtr.md" />
+    <None Include="UniquePtr\UniquePtr.md" />
     <None Include="UsingNamespaceStd\UsingNamespaceStd.md" />
     <None Include="VariadicTemplates\VariadicTemplates.md" />
     <None Include="VariadicTemplates_Anwendungen\VariadicTemplates02.md" />
