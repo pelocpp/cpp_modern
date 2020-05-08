@@ -176,9 +176,6 @@
     <None Include="..\Readme.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="FileSystem\FileSystem.md">
-      <Filter>Source Files</Filter>
-    </None>
     <None Include="StaticAssert\StaticAssertion.md">
       <Filter>Resource Files</Filter>
     </None>
@@ -291,6 +288,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Lambda\Lambda.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="FileSystem\FileSystem.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
