@@ -168,123 +168,129 @@
     <ClCompile Include="Allocator\AllocatorDummy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="FileSystem\FileSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ParametersWithConstAndRef\Readme.md">
-      <Filter>Resource Files</Filter>
-    </None>
     <None Include="..\Readme.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="StaticAssert\Readme.md">
+    <None Include="FileSystem\FileSystem.md">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="StaticAssert\StaticAssertion.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="InitializerList\Readme.md">
+    <None Include="SharedPtr\SharedPtr.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="Lambda\Readme.md">
+    <None Include="StructuredBinding\StructuredBinding.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="StructuredBinding\Readme.md">
+    <None Include="TemplatesClassBasics\TemplatesBasics.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="MetaProgramming\Readme.md">
+    <None Include="ReferenceWrapper\ReferenceWrapper.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="ConstExpr\Readme.md">
+    <None Include="TemplateStaticPolymorphism\TemplatesStaticPolymorphism.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="ReferenceWrapper\Readme.md">
+    <None Include="TemplateConstexprIf\ConstExpr_If.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="TypeTraits\Readme.md">
+    <None Include="TemplatesFunctionBasics\TemplatesFunctions.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="VariadicTemplates\Readme.md">
+    <None Include="TemplateTemplateParameter\TemplateTemplateParameter.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="Initialization\Readme.md">
+    <None Include="RAII\RAII.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="UniquePtr\Readme.md">
+    <None Include="VariadicTemplates\VariadicTemplates.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="WeakPtr\Readme.md">
+    <None Include="WeakPtr\WeakPtr.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="SharedPtr\Readme.md">
+    <None Include="TypeTraits\TypeTraits.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="Casts\Readme.md">
+    <None Include="VariadicTemplates_Anwendungen\VariadicTemplates02.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="ConstructursOrder\Readme.md">
+    <None Include="Tuple\StdTuple.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="InputOutputStreams\Readme.md">
+    <None Include="UsingNamespaceStd\UsingNamespaceStd.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="RValueLValue\Readme.md">
+    <None Include="UniquePtr\StdUniquePtr.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="TemplateTemplateParameter\Readme.md">
+    <None Include="VariadicTemplates_Systematic\VariadicTemplates03.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="PerfectForwarding\Readme.md">
+    <None Include="Variant\StdVariant.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="MemoryLeaks\Readme.md">
+    <None Include="ArrayDecay\ArrayDecay.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="Allocator\Readme.md">
+    <None Include="Accumulate\StdAccumulate.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="TemplateStaticPolymorphism\Readme.md">
+    <None Include="Array\StdArray.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="ArrayDecay\Readme.md">
+    <None Include="ConstExpr\Constexpr.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="Any\Readme.md">
+    <None Include="RValueLValue\RValueLValue.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="Tuple\Readme.md">
+    <None Include="Allocator\StdAllocator.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="TemplateConstexprIf\Readme.md">
+    <None Include="Casts\Casts.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="TemplatesClassBasics\Readme.md">
+    <None Include="ConstructursOrder\CtorDtorOrder.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="TemplatesFunctionBasics\Readme.md">
+    <None Include="Any\StdAny.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="UsingNamespaceStd\Readme.md">
+    <None Include="Literatur\Literature.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="RAII\Readme.md">
+    <None Include="Literals\Literals.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="Accumulate\Readme.md">
+    <None Include="MemoryLeaks\MemoryLeaksDetection.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="Variant\Readme.md">
+    <None Include="MetaProgramming\Metaprogramming.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="Array\Readme.md">
+    <None Include="InitializerList\StdInitializerList.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="VariadicTemplates_Anwendungen\Readme.md">
+    <None Include="InputOutputStreams\Streams.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="Literals\Readme.md">
+    <None Include="ParametersWithConstAndRef\ConstDeclarations.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="Literatur\Readme.md">
+    <None Include="PerfectForwarding\PerfectForwarding.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="VariadicTemplates_Systematic\Readme.md">
+    <None Include="Initialization\UniformInitialization.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Lambda\Lambda.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
