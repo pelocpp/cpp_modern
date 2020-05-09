@@ -196,12 +196,15 @@ int main_filesystem()
 
     test_03("C:\\Development\\GitRepositoryCPlusPlus\\Readme_Ssh.txt");
 
-    test_04a(R"(C:\Development\GitRepositoryCPlusPlus\Cpp_DesignPatterns\CompositePattern)");
-    test_04b(R"(C:\Development\GitRepositoryCPlusPlus\Cpp_DesignPatterns\CompositePattern)");
-
     // note: use of raw character string notation
-    test_05(R"(C:\Development\GitRepositoryCPlusPlus\Cpp_DesignPatterns\CompositePattern)");
-    
+    constexpr const char* path =
+        R"(C:\Development\GitRepositoryCPlusPlus\Cpp_DesignPatterns\CompositePattern)";
+
+    test_04a(path);
+    test_04b(path);
+
+    test_05(path);
+
     return 0;
 }
 
