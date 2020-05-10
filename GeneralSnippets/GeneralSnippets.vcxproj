@@ -231,6 +231,7 @@
     <None Include="UniquePtr\UniquePtr.md" />
     <None Include="UsingNamespaceStd\UsingNamespaceStd.md" />
     <None Include="VariadicTemplates\VariadicTemplates.md" />
+    <None Include="VariadicTemplates\VariadicTemplates_Introduction.md" />
     <None Include="VariadicTemplates_Anwendungen\VariadicTemplates02.md" />
     <None Include="VariadicTemplates_Systematic\VariadicTemplates03.md" />
     <None Include="Variant\StdVariant.md" />

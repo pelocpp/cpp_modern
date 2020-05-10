@@ -293,6 +293,9 @@
     <None Include="UniquePtr\UniquePtr.md">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="VariadicTemplates\VariadicTemplates_Introduction.md">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Global\Dummy.h">
