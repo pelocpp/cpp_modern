@@ -171,6 +171,9 @@
     <ClCompile Include="FileSystem\FileSystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="VariadicTemplates\VariadicTemplate04.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -294,6 +297,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="VariadicTemplates\VariadicTemplates_Introduction.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="VariadicTemplates\VariadicTemplates_WorkingOnEveryArgument.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
