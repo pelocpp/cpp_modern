@@ -1,6 +1,11 @@
 # Variadische Templates und Fold-Ausdrücke
 
-Variadische Templates bestehen aus zwei Template-Überladungen:
+Wenn es um die Handhabung variadischer Funktionen geht, können wir nicht im klassischen
+"iterativen" C++ - Stil denken. Wir müssen solche Funktionen rekursiv schreiben - mit
+einem so genannten "Normal"-Fall und einem "rekursiven" Fall, der sich nach endlich vielen Schritten
+in einen "Normal"-Fall reduzieren lässt. 
+
+Variadische Templates bestehen deshalb aus zwei Template-Überladungen:
 
   * Einem *normalen* Template
   * Einem *rekursiven* Template, das neben einem normalen Parameter ein so genannten *Parameter Pack* besitzt (Notation mit "..."). 

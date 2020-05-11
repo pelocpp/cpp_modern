@@ -51,7 +51,8 @@ namespace VariadicTemplatesWorkingOnEveryArgument {
 int main_working_on_every_argument()
 {
     using namespace VariadicTemplatesWorkingOnEveryArgument;
-    // test_01();
+    test_01();
+    std::cout << std::endl;
     test_02();
     std::cout << std::endl;
     test_03();
