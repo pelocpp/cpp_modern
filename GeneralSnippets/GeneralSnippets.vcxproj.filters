@@ -177,6 +177,9 @@
     <ClCompile Include="VariadicTemplates\VariadicTemplate05.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="VariadicTemplates\VariadicTemplate06.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">

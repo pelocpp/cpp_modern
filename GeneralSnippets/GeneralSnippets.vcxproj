@@ -190,6 +190,7 @@
     <ClCompile Include="VariadicTemplates\VariadicTemplate03.cpp" />
     <ClCompile Include="VariadicTemplates\VariadicTemplate04.cpp" />
     <ClCompile Include="VariadicTemplates\VariadicTemplate05.cpp" />
+    <ClCompile Include="VariadicTemplates\VariadicTemplate06.cpp" />
     <ClCompile Include="VariadicTemplates\VariadicTemplate09.cpp" />
     <ClCompile Include="VariadicTemplates_Anwendungen\VariadicTemplate_Examples.cpp" />
     <ClCompile Include="VariadicTemplates_Systematic\VariadicTemplateSystematic01.cpp" />
