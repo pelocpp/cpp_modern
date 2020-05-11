@@ -39,7 +39,7 @@ das Template *parameter pack* zum Definieren von Funktionsargumenten verwendet w
 Dies sollten wir an einem Beispiel veranschaulichen:
 
 ```cpp
-template <typename... ARGS>       // ARGS is the template parameter pack
+template <typename... ARGS>    // ARGS is the template parameter pack
 void f(int i, ARGS... args) {  // args is the function parameter pack
   //...
 }
