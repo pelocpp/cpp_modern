@@ -188,9 +188,10 @@
     <ClCompile Include="VariadicTemplates\VariadicTemplate01.cpp" />
     <ClCompile Include="VariadicTemplates\VariadicTemplate02.cpp" />
     <ClCompile Include="VariadicTemplates\VariadicTemplate03.cpp" />
-    <ClCompile Include="VariadicTemplates\VariadicTemplate04.cpp" />
-    <ClCompile Include="VariadicTemplates\VariadicTemplate05.cpp" />
+    <ClCompile Include="VariadicTemplates\VariadicTemplate04_WorkingOnEveryArgument.cpp" />
+    <ClCompile Include="VariadicTemplates\VariadicTemplate05_SumOfSums.cpp" />
     <ClCompile Include="VariadicTemplates\VariadicTemplate06.cpp" />
+    <ClCompile Include="VariadicTemplates\VariadicTemplate07_Mixins.cpp" />
     <ClCompile Include="VariadicTemplates\VariadicTemplate09.cpp" />
     <ClCompile Include="VariadicTemplates_Anwendungen\VariadicTemplate_Examples.cpp" />
     <ClCompile Include="VariadicTemplates_Systematic\VariadicTemplateSystematic01.cpp" />
@@ -235,6 +236,7 @@
     <None Include="UsingNamespaceStd\UsingNamespaceStd.md" />
     <None Include="VariadicTemplates\VariadicTemplates.md" />
     <None Include="VariadicTemplates\VariadicTemplates_Introduction.md" />
+    <None Include="VariadicTemplates\VariadicTemplates_Mixins.md" />
     <None Include="VariadicTemplates\VariadicTemplates_SumOfSums.md" />
     <None Include="VariadicTemplates\VariadicTemplates_WorkingOnEveryArgument.md" />
     <None Include="VariadicTemplates_Anwendungen\VariadicTemplates02.md" />

@@ -171,13 +171,16 @@
     <ClCompile Include="FileSystem\FileSystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="VariadicTemplates\VariadicTemplate04.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="VariadicTemplates\VariadicTemplate05.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="VariadicTemplates\VariadicTemplate06.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VariadicTemplates\VariadicTemplate07_Mixins.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VariadicTemplates\VariadicTemplate05_SumOfSums.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VariadicTemplates\VariadicTemplate04_WorkingOnEveryArgument.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -305,10 +308,13 @@
     <None Include="VariadicTemplates\VariadicTemplates_Introduction.md">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="VariadicTemplates\VariadicTemplates_SumOfSums.md">
+      <Filter>Resource Files</Filter>
+    </None>
     <None Include="VariadicTemplates\VariadicTemplates_WorkingOnEveryArgument.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="VariadicTemplates\VariadicTemplates_SumOfSums.md">
+    <None Include="VariadicTemplates\VariadicTemplates_Mixins.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
