@@ -327,5 +327,11 @@
     <Image Include="Lambda\LambdaStructure.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="VariadicTemplates\cpp_snippets_mixins_01.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="VariadicTemplates\cpp_snippets_mixins_02.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

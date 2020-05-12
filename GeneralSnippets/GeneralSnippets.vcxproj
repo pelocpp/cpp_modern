@@ -249,6 +249,8 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="Lambda\LambdaStructure.png" />
+    <Image Include="VariadicTemplates\cpp_snippets_mixins_01.png" />
+    <Image Include="VariadicTemplates\cpp_snippets_mixins_02.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

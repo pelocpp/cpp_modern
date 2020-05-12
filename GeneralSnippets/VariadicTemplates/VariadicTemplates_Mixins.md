@@ -1,14 +1,10 @@
 # Variadische Templates: Mixins
 
-// https://crascit.com/2015/03/21/practical-uses-for-variadic-templates/
-
-// und
-
-// https://jguegant.github.io/blogs/tech/thread-safe-multi-type-map.html
+## Einleitung
 
 Parameter Packs können auch bei der Vererbung eingesetzt werden,
 um die Menge der Basisklassen zu definieren,
-aus denen eine Unterklasse spezialisiert werden soll. Neben dem Begriff *Mixin*
+von denen eine Unterklasse abgeleitet werden soll. Neben dem Begriff *Mixin*
 spricht man hier auch von der so genannten *variadischen Vererbung* (*"Variadic" Inheritance*).
 
 ## Mixins
@@ -21,7 +17,7 @@ class A { public: A() = default; };
 class B { public: B() = default; };
 class C { public: C() = default; };
 
-template<typename ... TS>
+template <typename ... TS>
 class X : public TS...
 {
 public:
@@ -43,15 +39,19 @@ Das Parameter Pack `TS` wird so erweitert, dass jeder darin enthaltene Typ zu ei
 Beachte jedoch, dass die Reihenfolge, in der sie angegeben werden, von Bedeutung ist,
 da das Ändern der Reihenfolge zu einem anderen Typ führt - wie unterschiedlich dieser auch sein mag.
 
+---
+
 *Hinweis*:
 
 Bei Mehrfachvererbung gilt:
 "Die Reihenfolge der Ableitung ist relevant, um die Reihenfolge der Standardinitialisierung
 durch Konstruktoren und der Bereinigung durch Destruktoren zu bestimmen".
 
+---
+
 Aus diesem Grund ist die hier vorgestellte Technik eine ziemlich fragile Methode
 zum Spezifizieren von Basisklassen. Sie kann jedoch nützlich sein,
-wenn sie als Teil einer Template-Implementierungen verwendet wird,
+wenn sie als Teil einer Template-Implementierung verwendet wird,
 die derlei Abhängigkeiten ausschließen kann.
 
 Betrachen wir den Konstruktor der Klasse X noch einmal detaillierter.
@@ -61,9 +61,9 @@ Es sind **zwei** Parameter Pack Expansionen vorhanden:
 X(const TS&... mixins) : TS(mixins)... {}
 ```
 
-Das Muster wird für jedes Argument im Parameter Pack einmal instanziiert.
+Das Muster wird für jedes Argument im Parameter Pack einmal instanziiert, also:
 Bei beiden oben genannten Erweiterungen wird `TS` durch jeden Typ aus dem Parameterpaket ersetzt,
-und `mixins` fungiert als Platzhalter für den Parameternamen.
+und `mixins` fungiert als Platzhalter für den jeweiligen Parameternamen.
 
 *Beispiel*:
 
@@ -80,186 +80,259 @@ wird effektiv erweitert zu
 X(const A& a, const B& b, const C& c) : A(a), B(b), C(c) {}
 ```
 
-*CppInsight.io*:
+Wir können uns davon auch mit dem Tool *CppInsight.io* überzeugen:
 
 ```cpp
 #ifdef INSIGHTS_USE_TEMPLATE
 template<>
 class X<A, B, C> : public A, public B, public C
 {
-  public: 
-  inline X(const A & __mixins0, const B & __mixins1, const C & __mixins2) :
-    A(__mixins0) , B(__mixins1), C(__mixins2) {}
+    public: 
+    inline X(const A & __mixins0, const B & __mixins1, const C & __mixins2) :
+        A(__mixins0) , B(__mixins1), C(__mixins2) {}
 };
 #endif
 ```
 
-Wir können also in C++ eine Klasse erstellen, die von einer beliebigen Anzahl von Basisklassen erben kann.
-Eine **class C: public T...** wird folglich in eine Klasse C wie folgt "transformiert": **class C: public A, public B**.
+Wir können also in C++ eine Klasse erstellen, die von einer beliebigen Anzahl von Basisklassen erbt.
+Eine **class C: public T...** wird folglich in eine Klasse `C` wie folgt "transformiert": **class C: public A, public B**.
 
 ## Eine Anwendung zu Mixins
 
-Als Beispiel betrachten wir eine Repository-Klasse im Sinne eines Assoziativ-Speichers.
-
+Als Beispiel betrachten wir eine *Repository*-Klasse im Sinne eines Assoziativ-Speichers. 
 Das Repository-Objekt soll über ein oder mehrere so genannte so genannte *Slots* verfügen,
-auf die mit einem Schlüssel zugegriffen werden kann. Ferner enthält ein Slot einen Wert. 
+auf die mit einem Schlüssel (*Key*) zugegriffen werden kann. Ferner enthält ein Slot einen Wert.
+
+Die genaue Intention im Aussehen eines `Repository`-Objekts entnehmen Sie bitte Abbildung 1:
+
+<img src="cpp_snippets_mixins_01.png" width="500">
+
+Abbildung 1: `Repository`-Klasse mit Schlüssel-Wert-Paaren, die via Vererbung verfügbar gemacht werden.
 
 Wir stellen im Folgenden zwei Implementierungen gegenüber:
 
   * klassischer Ansatz
   * Ansatz mit Mixins
 
-#### 
+#### Klassischer Realisierung
 
-
-
-
-// ===================== REST - Kopiervorlage
-
-Grundsätzlich gibt es zwei Möglichkeiten, um Funktionsparameterpacks zu bearbeiten:
-Verwendung der Pack-Erweiterung "im Ganzen" oder der rekursive Aufruf derselben Funktion,
-wobei diese bei jedem Aufruf ein einzelnes Argument aus dem Parameter Pack extrahiert.
-
-## Parameter Pack Expansion Trick mit Hilfe von `std::initializer_list`
-
-Manchmal möchten wir einfach für jedes Argument des Parameter Packs eine Funktion aufrufen.
-Die Pack-Expansion funktioniert jedoch nur an Stellen, an denen durch Kommas getrennte Listen zulässig sind.
-Dies ist offensichtlich keine durch Kommas getrennte Liste:
+###### Realisierung:
 
 ```cpp
-  doSomething(arg1);
-  doSomething(arg2);
-  ...
-  doSomething(argN);
-```
-
-Es verwunderert also nicht, dass das folgenden Code-Fragment nicht kompilierbar ist:
-
-```cpp
-template <class... ARGS>
-void doSomethingForAll(ARGS const&... args) {
-  doSomething(args)...;
-}
-```
-
-Mit der C++-Klasse `std::initializer_list` gibt es eine Möglichkeit,
-die Expansion des Parameter Packs in ein übersetzungsfähiges Code-Fragment zu delegieren:
-
-```cpp
-template <class... Args>
-void doSomethingForAll(Args const&... args) {
-  auto list = { doSomething(args)... };
-}
-```
-
-Dieses Fragment müssen Sie genau betrachten: Die Variable `list` wird hier als
-`std::initializer_list`-Objekt vorbelegt - mit welchen Werten
-auch immer, die von `doSomething` zurückgeliefert werden. Die Erzeugung eines 
-`std::initializer_list`-Objekt ist direkt im Quellcode nicht erkennbar,
-da dies durch die *Uniform Initialization Syntax* sehr kompakt formulierbar ist,
-also ohne Verwendung des `std::initializer_list`-Bezeichners!
-
-Wir betrachten das Funktionstemplate `doSomethingForAll` am Aufruf von
-
-```cpp
-doSomethingForAll(1, '!', 5.5);
-```
-
-und werfen einen Blick mit *CppInsight.io* auf das Cross-Compilat:
-
-```cpp
-/* First instantiated from: insights.cpp:21 */
-#ifdef INSIGHTS_USE_TEMPLATE
-template<>
-void doSomethingForAll<int, char, double>(const int & __args0, const char & __args1, const double & __args2)
+class SlotA
 {
-  std::initializer_list<int> list = std::initializer_list<int> {
-    (doSomething(__args0) , 0), 
-    (doSomething(__args1) , 0), 
-    (doSomething(__args2) , 0)
-  };
-}
-#endif
-```
+public:
+    int value;
+};
 
-Voilà - hier haben wir die `std::initializer_list`!. Ich haben den Output nur noch leicht 
-umformatiert, damit das Ganze auf einer GitHub-Seite besser dargestellt wird. Ein Beispiel
-für den Aufruf von `doSomethingForAll` mit einer konkreten `doSomething`-Funktion finden Sie
-im korrespondierenden Code-Snippet vor!
+class SlotB
+{
+public:
+    std::string value;
+};
 
-Bei genauem Hinschauen erkennen Sie, dass da jede Menge zusätzlicher Kommas vorhanden sind,
-die wir so nicht erwartet haben.
-
-Da Aufrufe von `doSomething` zu eine Mixtur unterschiedlicher Typen führen kann, bei denen auch `void` 
-zulässig ist, kann es zu Übersetzungsfehlern kommen (*cannot initialize an array element of type 'const int' with an rvalue of type 'void'*).
-Ein weiterer Trick besteht nun darin, einen Ausdruck als Erweiterungsmuster so zu erstellen,
-dass zwar immer dieselbe Funktion aufgerufen wird (egal, welchen Rückgabewert sie besitzt),
-aber immer ein ganz anderer Wert als Argument für das `std::initializer_list`-Objekt genommen wird.
-Mit dem Komma-Operator ist dies einfach:
-
-```cpp
-template <class... Args>
-void doSomethingForAll(Args const&... args) {
-  std::initializer_list<int> list = { (doSomething(args), 0)... };
-}
-```
-
-Jetzt sind die Funktionsaufrufe nur ein Nebeneffekt,
-und das Ergebnis wird `std::initializer_list<int>` ausschließlich mit Nullen füllen.
-Genau diese Schablone habe ich bei der Betrachtung mit *CppInsight.io* verwendet!
-
-## C++ 17 `constexpr if`
-
-Wir betrachten eine Variation des letzten Beispiels:
-Angenommen, wir möchten alle durch Kommas getrennten Argumente unserer Funktion mit `cout` ausgeben.
-Wir könnten den obigen Trick verwenden, mit der Funktion `doSomething`,
-die den Wert plus ein Komma ausgibt.
-Das Problem liegt dann beim letzten Argument, dem kein Komma folgen sollte,
-das aber von `doSomething` nicht erkannt werden kann.
-
-Mit C++ 17 haben wir `constexpr if` und können diese Anforderung wie folgt umsetzen:
-
-```cpp
-template <class Head, class... Tail>
-void print(const Head& head, const Tail&... tail) {
-    std::cout << head;
-    if constexpr (sizeof...(tail) > 0) {
-        std::cout << ", ";
-        print(tail...);
+// Note: private inheritance, no one can access
+// the slots other than Repository itself
+class Repository : private SlotA, private SlotB
+{
+public:
+    void setSlotA(const int& value)
+    {
+        // Access the base-class's value: since we have multiple bases
+        // with a 'value' field, we need to "force" the access to SlotA.
+        SlotA::value = value;
     }
+
+    int getSlotA() 
+    {
+        return SlotA::value;
+    }
+
+    void setSlotB(const std::string& b)
+    {
+        SlotB::value = b;
+    }
+
+    std::string getSlotB()
+    {
+        return SlotB::value;
+    }
+};
+```
+
+###### Testrahmen:
+
+```cpp
+void main() {
+    Repository repo;
+
+    repo.setSlotA(123);
+    std::cout << repo.getSlotA() << std::endl; // printing 123
+
+    repo.setSlotB(std::string("ABC"));
+    std::cout << repo.getSlotB() << std::endl; // printing "ABC"
 }
 ```
 
-Hier wird der Hauptteil des `if`-Zweiges nur kompiliert,
-wenn `tail` mindestens ein Element enthält. Ohne `constexpr if` würde
-dies zu einem Kompilierungsfehler führen,
-da der Compiler nicht die entsprechende `print`-Funktion für einen Aufruf
-mit null Argumenten findet!
+Man kann unschwer die Nachteile dieser Realisierung erkennen: Für jeden Slot muss man eine eigene Slot-Klasse
+definieren. Und zum zweiten muss man für jeden dieser Slots eine separate *getter*- und *setter*-Methode implementieren. 
+Die kann man nur als "Copy-Paste"-Programmierung bezeichnen, es muss andere Lösungswege geben.
 
-Wie immer kann jede Rekursion in eine Iteration konvertiert werden!
-Für variadischen Templates sprechen wir dann von einer Parameter Pack Expansion:
+#### Ansatz mit Mixins
 
-```cpp
-template <class Head, class... Tail>
-void print1(const Head& head, const Tail&... tail) {
-    std::cout << head;
-    (void)std::initializer_list<int>{ ((std::cout << ", " << tail), 0)... };
-}
-```
-
-Ausgabe mit *CppInsight.io*:
+###### Realisierung:
 
 ```cpp
-/* First instantiated from: insights.cpp:47 */
-#ifdef INSIGHTS_USE_TEMPLATE
-template<>
-void print1<int, char, double>(const int & head, const char & __tail1, const double & __tail2)
+template <typename T>
+class Slot
 {
-  std::cout.operator<<(head);
-  static_cast<void>(std::initializer_list<int> {
-    ((std::operator<<(std::operator<<(std::cout, ", "), __tail1)) , 0), 
-    ((std::operator<<(std::cout, ", ").operator<<(__tail2)) , 0)
-  });
-}
-#endif
+protected:
+    T& get()
+    {
+        return m_value;
+    }
+
+    void set(const T& value) // Same encapsulation.
+    {
+        m_value = value;
+    }
+
+private:
+    T m_value;
+};
+
+template <typename... Slots>
+class RepositoryEx : private Slots...  // inherit private from our slots...
+{
+public:
+    template <typename T> // select type
+    T& get()
+    {
+        return Slot<T>::get(); // select base class
+    }
+
+    template <typename T>
+    void set(const T& value)
+    {
+        Slot<T>::set(value);
+    }
+};
 ```
+
+###### Testrahmen:
+
+```cpp
+using MyRepo = RepositoryEx< Slot<int>, Slot<std::string> >;
+
+void test_04() {
+    MyRepo repo;
+
+    repo.set<std::string>("XYZ");
+    repo.set(987); // note type deduction: we pass an int, so it writes to the int slot
+
+    std::cout << repo.get<int>() << std::endl; // printing 987
+    std::cout << repo.get<std::string>() << std::endl; // printing "XYZ"
+}
+```
+
+Dieser zweite Ansatz in der Implementierung einer Klasse `RepositoryEx` nimmt Gestalt an, aber wir sind noch nicht fertig!
+Wenn Sie versuchen, zwei `int`-Slots anzulegen, wird ein Kompilierungsfehler ausgegeben:
+"*Basisklasse 'Slot' wurde mehrmals als direkte Basisklasse angegeben*".
+
+#### Verbesserung des Mixins-Ansatzes
+
+Wir müssen unsere `Slot`-Klasse um einen zusätzlichen Template Parameter erweiteren (Typ für Schlüssel mit Standardwert).
+In Abbildung 2 können wir die Modifikationen erkennen. Wollen wir zwei Slot-Einträge
+desselben Typs haben (siehe Typ `std::string` in Abbildung 2), dann sind diese beiden
+Einträge durch eine zusätzlichen Schlüsseltyp zu unterscheiden.
+
+<img src="cpp_snippets_mixins_02.png" width="600">
+
+Abbildung 2: Modifikationen am Konzept der Klasse `Slot`.
+
+Dies zieht allerdings eine Änderung der Repository-Methoden nach sich:
+
+###### Realisierung:
+
+```cpp
+struct DefaultSlotKey; // forward definition sufficient
+
+template <typename T, typename Key = DefaultSlotKey>
+class SlotEx
+{
+protected:
+    T& get()
+    {
+        return m_value;
+    }
+
+    void set(const T& value)
+    {
+        m_value = value;
+    }
+
+private:
+    T m_value;
+};
+
+template <typename... Slots>
+class RepositoryExEx : private Slots...  // inherit private from our slots...
+{
+public:
+    template <typename T, typename Key = DefaultSlotKey>
+    T& get()
+    {
+        return SlotEx<T, Key>::get(); // select base class
+    }
+
+    template <typename T, typename Key = DefaultSlotKey>
+    void set(const T& value)
+    {
+        SlotEx<T, Key>::set(value);
+    }
+};
+```
+
+###### Testrahmen:
+
+```cpp
+// again forward definition sufficient, definition not needed
+struct Key1;
+struct Key2;
+
+// repository definition with keys
+using MyRepoEx = RepositoryExEx
+    <
+    SlotEx<int>,
+    SlotEx<std::string, Key1>,
+    SlotEx<std::string, Key2>
+    >;
+
+void test_06() {
+    MyRepoEx repo;
+
+    repo.set(12345); // note type deduction: we pass an int, so it writes to the int slot
+    repo.set<std::string, Key1>("AAA");
+    repo.set<std::string, Key2>("BBB");
+
+    std::cout << repo.get<int>() << std::endl; // printing 12345
+    std::cout << repo.get<std::string, Key1>() << std::endl; // printing "AAA"
+    std::cout << repo.get<std::string, Key2>() << std::endl; // printing "BBB"
+}
+```
+
+#### Realisierung einer `emplace`-Methode
+
+
+#### Fehlerbehandlung mit static_assert
+
+
+## Literaturhinweise:
+
+Die Anregungen zu den Beispielen auf diesem Abschnitt sind entnommen aus
+
+[Practical uses for variadic templates](https://crascit.com/2015/03/21/practical-uses-for-variadic-templates/)<br>(abgerufen am 12.05.2020).
+
+und
+
+[Jean Guegant' Blog](https://jguegant.github.io/blogs/tech/thread-safe-multi-type-map.html)<br>(abgerufen am 12.05.2020).

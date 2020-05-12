@@ -41,6 +41,7 @@ namespace VariadicTemplatesMixins {
     }
 
     // ===================================================================
+    // Variant 1: "copy-paste" style 
 
     class SlotA
     {
@@ -65,7 +66,7 @@ namespace VariadicTemplatesMixins {
             SlotA::value = value;
         }
 
-        int getSlotA()
+        int getSlotA() 
         {
             return SlotA::value;
         }
@@ -82,26 +83,146 @@ namespace VariadicTemplatesMixins {
     };
 
     void test_03() {
-        Repository r;
+        Repository repo;
 
-        r.setSlotA(42);
-        std::cout << r.getSlotA() << std::endl; // Print: 42.
+        repo.setSlotA(123);
+        std::cout << repo.getSlotA() << std::endl; // printing 123
 
-        r.setSlotB(std::string("toto"));
-        std::cout << r.getSlotB() << std::endl; // Print: "toto".
+        repo.setSlotB(std::string("ABC"));
+        std::cout << repo.getSlotB() << std::endl; // printing "ABC"
     }
 
-   //  WEITER: https://jguegant.github.io/blogs/tech/thread-safe-multi-type-map.html
+    // ===================================================================
+    // Variant 2: "varidiac inheritance" style 
 
+    template <typename T>
+    class Slot
+    {
+    protected:
+        T& get()
+        {
+            return m_value;
+        }
 
+        void set(const T& value) // Same encapsulation.
+        {
+            m_value = value;
+        }
 
+    private:
+        T m_value;
+    };
+
+    template <typename... Slots>
+    class RepositoryEx : private Slots...  // inherit private from our slots...
+    {
+    public:
+        template <typename T> // select type
+        T& get()
+        {
+            return Slot<T>::get(); // select base class
+        }
+
+        template <typename T>
+        void set(const T& value)
+        {
+            Slot<T>::set(value);
+        }
+    };
+
+    using MyRepo = RepositoryEx< Slot<int>, Slot<std::string> >;
+
+    void test_04() {
+        MyRepo repo;
+
+        repo.set<std::string>("XYZ");
+        repo.set(987); // note type deduction: we pass an int, so it writes to the int slot
+
+        std::cout << repo.get<int>() << std::endl; // printing 987
+        std::cout << repo.get<std::string>() << std::endl; // printing "XYZ"
+    }
+
+    // ===================================================================
+    // Variant 3: improving variant 2: several slots with same type
+
+    void test_05() {
+        // RepositoryEx < Slot<int>, Slot<int> > repo;
+        // error: 'VariadicTemplatesMixins::Slot<int>' is already a direct base
+    }
+
+    struct DefaultSlotKey; // forward definition sufficient
+
+    template <typename T, typename Key = DefaultSlotKey>
+    class SlotEx
+    {
+    protected:
+        T& get()
+        {
+            return m_value;
+        }
+
+        void set(const T& value)
+        {
+            m_value = value;
+        }
+
+    private:
+        T m_value;
+    };
+
+    template <typename... Slots>
+    class RepositoryExEx : private Slots...  // inherit private from our slots...
+    {
+    public:
+        template <typename T, typename Key = DefaultSlotKey>
+        T& get()
+        {
+            return SlotEx<T, Key>::get(); // select base class
+        }
+
+        template <typename T, typename Key = DefaultSlotKey>
+        void set(const T& value)
+        {
+            SlotEx<T, Key>::set(value);
+        }
+    };
+
+    // again forward definition sufficient, definition not needed
+    struct Key1;
+    struct Key2;
+
+    // repository definition with keys
+    using MyRepoEx = RepositoryExEx
+        <
+        SlotEx<int>,
+        SlotEx<std::string, Key1>,
+        SlotEx<std::string, Key2>
+        >;
+
+    void test_06() {
+        MyRepoEx repo;
+
+        repo.set(12345); // note type deduction: we pass an int, so it writes to the int slot
+        repo.set<std::string, Key1>("AAA");
+        repo.set<std::string, Key2>("BBB");
+
+        std::cout << repo.get<int>() << std::endl; // printing 12345
+        std::cout << repo.get<std::string, Key1>() << std::endl; // printing "AAA"
+        std::cout << repo.get<std::string, Key2>() << std::endl; // printing "BBB"
+    }
 }
 
-int main_mixins()
+
+int main()
+// int main_mixins()
 {
     using namespace VariadicTemplatesMixins;
-    test_01();
-    test_02();
+    //test_01();
+    //test_02();
+   // test_03();
+    // test_04();
+    //test_05();  // doesn't compile
+    test_06();
     return 0;
 }
 
