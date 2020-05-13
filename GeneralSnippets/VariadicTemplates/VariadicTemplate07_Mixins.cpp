@@ -289,9 +289,7 @@ namespace VariadicTemplatesMixins {
     }
 }
 
-
-int main()
-// int main_mixins()
+int main_mixins()
 {
     using namespace VariadicTemplatesMixins;
     test_01();
