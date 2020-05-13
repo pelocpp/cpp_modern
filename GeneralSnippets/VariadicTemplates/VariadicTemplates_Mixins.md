@@ -133,7 +133,7 @@ public:
 
 // Note: private inheritance, no one can access
 // the slots other than Repository itself
-class Repository : private SlotA, private SlotB
+class MyRepository : private SlotA, private SlotB
 {
 public:
     void setSlotA(const int& value)
@@ -164,7 +164,7 @@ public:
 
 ```cpp
 void main() {
-    Repository repo;
+    MyRepository repo;
 
     repo.setSlotA(123);
     std::cout << repo.getSlotA() << std::endl; // printing 123
@@ -202,7 +202,7 @@ private:
 };
 
 template <typename... Slots>
-class RepositoryEx : private Slots...  // inherit private from our slots...
+class Repository : private Slots...  // inherit private from our slots...
 {
 public:
     template <typename T> // select type
@@ -222,7 +222,7 @@ public:
 ###### Testrahmen:
 
 ```cpp
-using MyRepo = RepositoryEx< Slot<int>, Slot<std::string> >;
+using MyRepo = Repository< Slot<int>, Slot<std::string> >;
 
 void test_04() {
     MyRepo repo;
@@ -276,7 +276,7 @@ private:
 };
 
 template <typename... Slots>
-class RepositoryExEx : private Slots...  // inherit private from our slots...
+class RepositoryEx : private Slots...  // inherit private from our slots...
 {
 public:
     template <typename T, typename Key = DefaultSlotKey>
@@ -301,7 +301,7 @@ struct Key1;
 struct Key2;
 
 // repository definition with keys
-using MyRepoEx = RepositoryExEx
+using MyRepoEx = RepositoryEx
     <
     SlotEx<int>,
     SlotEx<std::string, Key1>,
@@ -323,8 +323,110 @@ void test_06() {
 
 #### Realisierung einer `emplace`-Methode
 
+Das vorliegende Beispiel eignet sich sehr gut, um eine `emplace`-Methode zu ergänzen.
+Die `emplace`-Methode kennen wir bereits von der Container-Klasse `std::vector`:
 
-#### Fehlerbehandlung mit static_assert
+`emplace` erstellt ein Objekt an Ort und Stelle, so dass im `std::vector`-Objekt kein temporäres Hilfsobjekt
+angelegt werden muss. `emplace` wird direkt mit Argumenten für einen geeignenten Konstruktor
+des gewünschten Objekts aufgerufen. In diesem Fall vermeiden wir es also, ein unnötiges
+temporäres Objekt zu erstellen und wieder zu zerstören.
+
+Um den geigneten Konstruktor des Zielobjekts zu "finden", verwendet `emplace`
+eine variable Anzahl von Argumenten mit unterschiedlichen Typen und leitet sie an den korrespondierenden Konstruktor weiter.
+Eine variable Anzahl von Argumenten und Typen muss Sie an etwas erinnern ... variadische Templates!
+Damit stellen wir nun unsere Realisierung einer variadischen `emplace`-Methode
+sowie ihre Entsprechung in der `Slot`-Klasse vor.
+Es genügt die beiden `emplace`-Methoden zu betrachten, der Rest der Implementierung
+ändert sich nicht:
+
+###### Realisierung (Klasse `SlotEx`):
+
+```cpp
+template <typename... Args>
+void emplace(const Args&... args)
+{
+    m_value = T(args...); // assignement operator (might use move semantics)
+}
+```
+
+###### Realisierung (Klasse `RepositoryEx`):
+
+```cpp
+template <typename T, typename Key = DefaultSlotKey, typename... Args>
+void emplace(const Args&... args)
+{
+    SlotEx<T, Key>::emplace(args...);
+}
+```
+
+###### Testrahmen:
+
+```cpp
+class Person {
+private:
+    std::string m_firstName;
+    std::string m_lastName;
+    int m_age;
+public:
+    Person() : m_firstName(std::string("")), m_lastName(std::string("")), m_age(0) {}
+
+    Person(const std::string& firstName, const std::string& lastName, const int age)
+    : m_firstName(firstName), m_lastName(lastName), m_age(age) {}
+
+    Person& operator= (const Person& person) {
+        // prevent self-assignment
+        if (this == &person)
+            return *this;
+
+        // assign right side
+        m_firstName = person.m_firstName;
+        m_lastName = person.m_lastName;
+        m_age = person.m_age;
+
+        return *this;
+    }
+
+    Person& operator= (Person&& person) noexcept  { 
+        // prevent self-assignment
+        if (this == &person)
+            return *this;
+
+        // assign right side
+        m_firstName = person.m_firstName;
+        m_lastName = person.m_lastName;
+        m_age = person.m_age;
+
+        // reset source  object, ownership has been moved
+        person.m_firstName.clear();
+        person.m_lastName.clear();
+        person.m_age = 0;
+
+        return *this;
+    }
+
+    std::string operator()() { 
+    std::ostringstream oss; 
+    oss << m_firstName << " " << m_lastName << " [" << m_age << "]"; 
+    return  oss.str();
+    }
+};
+
+void test_07() {
+    using MyRepo = RepositoryEx
+    <
+    SlotEx<Person>,
+    SlotEx<std::string>
+    >;
+
+    MyRepo repo;
+
+    repo.emplace<std::string>(5, 'A');
+    std::cout << repo.get<std::string>() << std::endl; // printing "AAAAA"
+
+    repo.emplace<Person>(std::string("Hans"), std::string("Mueller"), 21);
+    std::cout << repo.get<Person>()() << std::endl; // printing "Hans Mueller [21]"
+}
+```
 
 
 ## Literaturhinweise:

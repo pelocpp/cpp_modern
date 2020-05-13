@@ -3,6 +3,7 @@
 // =====================================================================================
 
 #include <iostream>
+#include <sstream>
 #include <string>
 #include <functional>
 
@@ -56,7 +57,7 @@ namespace VariadicTemplatesMixins {
     };
 
     // Note: private inheritance, no one can access directly to the slots other than Repository itself
-    class Repository : private SlotA, private SlotB
+    class MyRepository : private SlotA, private SlotB
     {
     public:
         void setSlotA(const int& value)
@@ -83,7 +84,7 @@ namespace VariadicTemplatesMixins {
     };
 
     void test_03() {
-        Repository repo;
+        MyRepository repo;
 
         repo.setSlotA(123);
         std::cout << repo.getSlotA() << std::endl; // printing 123
@@ -114,7 +115,7 @@ namespace VariadicTemplatesMixins {
     };
 
     template <typename... Slots>
-    class RepositoryEx : private Slots...  // inherit private from our slots...
+    class Repository : private Slots...  // inherit private from our slots...
     {
     public:
         template <typename T> // select type
@@ -130,7 +131,7 @@ namespace VariadicTemplatesMixins {
         }
     };
 
-    using MyRepo = RepositoryEx< Slot<int>, Slot<std::string> >;
+    using MyRepo = Repository< Slot<int>, Slot<std::string> >;
 
     void test_04() {
         MyRepo repo;
@@ -166,12 +167,18 @@ namespace VariadicTemplatesMixins {
             m_value = value;
         }
 
+        template <typename... Args>
+        void emplace(const Args&... args)
+        {
+            m_value = T(args...); // copy-operator (might use move semantics)
+        }
+
     private:
         T m_value;
     };
 
     template <typename... Slots>
-    class RepositoryExEx : private Slots...  // inherit private from our slots...
+    class RepositoryEx : private Slots...  // inherit private from our slots...
     {
     public:
         template <typename T, typename Key = DefaultSlotKey>
@@ -185,6 +192,12 @@ namespace VariadicTemplatesMixins {
         {
             SlotEx<T, Key>::set(value);
         }
+
+        template <typename T, typename Key = DefaultSlotKey, typename... Args>
+        void emplace(const Args&... args)
+        {
+            SlotEx<T, Key>::emplace(args...);
+        }
     };
 
     // again forward definition sufficient, definition not needed
@@ -192,7 +205,7 @@ namespace VariadicTemplatesMixins {
     struct Key2;
 
     // repository definition with keys
-    using MyRepoEx = RepositoryExEx
+    using MyRepoEx = RepositoryEx
         <
         SlotEx<int>,
         SlotEx<std::string, Key1>,
@@ -210,6 +223,70 @@ namespace VariadicTemplatesMixins {
         std::cout << repo.get<std::string, Key1>() << std::endl; // printing "AAA"
         std::cout << repo.get<std::string, Key2>() << std::endl; // printing "BBB"
     }
+
+    class Person {
+    private:
+        std::string m_firstName;
+        std::string m_lastName;
+        int m_age;
+    public:
+        Person() : m_firstName(std::string("")), m_lastName(std::string("")), m_age(0) {}
+
+        Person(const std::string& firstName, const std::string& lastName, const int age)
+        : m_firstName(firstName), m_lastName(lastName), m_age(age) {}
+
+        Person& operator= (const Person& person) {
+            // prevent self-assignment
+            if (this == &person)
+                return *this;
+
+            // assign right side
+            m_firstName = person.m_firstName;
+            m_lastName = person.m_lastName;
+            m_age = person.m_age;
+
+            return *this;
+        }
+        Person& operator= (Person&& person) noexcept  { 
+            // prevent self-assignment
+            if (this == &person)
+                return *this;
+
+            // assign right side
+            m_firstName = person.m_firstName;
+            m_lastName = person.m_lastName;
+            m_age = person.m_age;
+
+            // reset source  object, ownership has been moved
+            person.m_firstName.clear();
+            person.m_lastName.clear();
+            person.m_age = 0;
+
+            return *this;
+        }
+
+        std::string operator()() { 
+        std::ostringstream oss; 
+        oss << m_firstName << " " << m_lastName << " [" << m_age << "]"; 
+        return  oss.str();
+        }
+    };
+
+    void test_07() {
+        using MyRepo = RepositoryEx
+        <
+        SlotEx<Person>,
+        SlotEx<std::string>
+        >;
+
+        MyRepo repo;
+
+        repo.emplace<std::string>(5, 'A');
+        std::cout << repo.get<std::string>() << std::endl; // printing "AAAAA"
+
+        repo.emplace<Person>(std::string("Hans"), std::string("Mueller"), 21);
+        std::cout << repo.get<Person>()() << std::endl; // printing "Hans Mueller [21]"
+    }
 }
 
 
@@ -217,12 +294,13 @@ int main()
 // int main_mixins()
 {
     using namespace VariadicTemplatesMixins;
-    //test_01();
-    //test_02();
-   // test_03();
-    // test_04();
+    test_01();
+    test_02();
+    test_03();
+    test_04();
     //test_05();  // doesn't compile
     test_06();
+    test_07();
     return 0;
 }
 
