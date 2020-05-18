@@ -1,5 +1,26 @@
 # C++ General Snippets
 
+## Überblick
+
+C++ ist eine high-level, general-purpose Programmiersprache, 
+die von Bjarne Stroustrup als Erweiterung der Programmiersprache C bzw. "C mit Klassen" erstellt wurde.
+Die Sprache hat sich im Laufe der Zeit erheblich erweitert, und modernes C++ verfügt jetzt
+über objektorientierte, generische und funktionale Funktionen sowie über Funktionen zur Low-Level Speichermanipulation.
+Es wird fast immer als kompilierte Sprache implementiert, und viele Anbieter bieten für C++ Compiler an,
+darunter die Free Software Foundation, LLVM, Microsoft, Intel, Oracle und IBM.
+Daher ist es auf vielen Plattformen verfügbar.
+
+## Literaturverzeichnis
+
+Jedes Jahr gibt es immer noch zahlreiche Neuerscheinungen zum Thema C++, die auf den Markt kommen. 
+Sich aus der Fülle an alter und neuer C++-Literatur für einen Titel zu entscheiden,
+fällt oftmals gar nicht so leicht.
+Aus diesem Grund habe ich im Folgenden eine [Liste](GeneralSnippets/Literatur/Literature.md)
+zusammengestellt,
+welche Bücher bei mir derzeit hoch im Kurs stehen und die meiner Meinung nach absolut lesenswert sind. 
+
+## Katalog aller Code-Snippets
+
 In diesem Projekt sind zahlreiche kleinere Code-Snippets abgelegt, um die diversen Features von C++ 11/14/17 demonstrieren zu können.
 
 Es folgt eine tabellarische Auflistung dieser Unterverzeichnisse.

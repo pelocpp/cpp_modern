@@ -1,20 +1,11 @@
 # Literatur
 
-Jedes Jahr gibt es immer noch zahlreiche Neuerscheinungen zum Thema C++, die auf den Markt kommen. 
-Sich aus der Fülle an alter und neuer C++-Literatur für einen Titel zu entscheiden,
-fällt oftmals gar nicht so leicht.
-Aus diesem Grund habe ich im Folgenden eine Liste zusammengestellt,
-welche Bücher bei mir derzeit hoch im Kurs stehen und die meiner Meinung nach absolut lesenswert sind. 
-
----
-
-
 ## C++
 
   * Marc Gregoire, "Professional C++ (4th Edition)".</br>
     Wrox Press (17. April 2018), 1184 Seiten. Sprache: Englisch. ISBN-13: 978-1119421306, ISBN-10: 1119421306.
 
-    Für mich das derzeit beste C++-Buch am Markt. Zugegeben, seht umfangreich, aber dafür versteht es der Autor,
+    Für mich das derzeit beste C++ -Buch am Markt. Zugegeben, seht umfangreich, aber dafür versteht es der Autor,
     seine Leser mit einem jederzeit erkennbaren roten Faden durch alle Niederungen der Sprache C++ 
     in verständlichen (englischen) Erklärungen zu führen. Großartig!
 
@@ -27,11 +18,11 @@ Ein sehr gutes Buch für Leser, die deutschsprachige Bücher bevorzugen. Viele Bei
 
 #
 
-  * Peter Pohmann, "C++17: Praxiswissen zum neuen Standard. Von C++11 bis 17".</br> 
+  * Peter Pohmann, "C++ 17: Praxiswissen zum neuen Standard. Von C++11 bis 17".</br> 
     Software + Support (30. Mai 2017), 330 Seiten. Sprache: Deutsch. ISBN-10: 9783868021745, ISBN-13: 978-3868021745.
 
     Ein kurz gehaltenes Nachschlagewerk, dass vor allem für Entwickler geeignet ist, die sich für die Neuerungen
-    der Programmiersprache C++ bzgl. C++-11, C++-14 und C++-17 interessieren. Zu jedem Sprachfeature gibt es ein
+    der Programmiersprache C++ bzgl. C++ -11, C++ -14 und C++ -17 interessieren. Zu jedem Sprachfeature gibt es ein
     kleines (und vor allem auch leicht verständliches) Beispiel.
 
 ---
