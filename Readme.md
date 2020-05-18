@@ -8,7 +8,7 @@ Einzug in die Sprache gefunden haben:
 
 | Unterverzeichnis | Thematik |
 |:-------------- |-----------------------------------------|
-| Allocator | Container und Speicher-Allokatoren |
+| [Allocator](GeneralSnippets/Allocator/StdAllocator.md) | Container und Speicher-Allokatoren |
 | ArrayDecay | Arrays und Pointer  |
 | Casts | Typumwandlungen `static_cast`, `dynamic_cast`, `const_cast` und `reinterpret_cast` |
 | ConstructursOrder | Reihenfolge der Aufrufe von Konstruktoren und Destruktoren |

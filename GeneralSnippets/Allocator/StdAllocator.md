@@ -10,3 +10,9 @@ in einen STL-Container injizieren lässt.
 
 Sehr gut lassen sich damit die beiden Methoden `push_back` und `emplace_back` in ihrer Arbeitsweise beobachten.
 Diese steht natürlich im Zusammenhang mit der reverse-Methode eines Containers.
+
+---
+
+[Zurück](../../Readme.md)
+
+---

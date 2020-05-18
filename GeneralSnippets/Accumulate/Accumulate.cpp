@@ -54,7 +54,7 @@ namespace AlgorithmAccumulate {
         return s;
     }
 
-    void test_00() {
+    void test_01() {
 
         std::vector <std::string> names;
 
@@ -66,7 +66,7 @@ namespace AlgorithmAccumulate {
         std::cout << s << std::endl;
     }
 
-    void test_01() {
+    void test_02() {
 
         std::vector <float> digits;
 
@@ -78,7 +78,7 @@ namespace AlgorithmAccumulate {
         std::cout << s << std::endl;
     }
 
-    void test_02() {
+    void test_03() {
 
         std::vector <std::string> names;
 
@@ -94,10 +94,10 @@ namespace AlgorithmAccumulate {
 int main_accumulate()
 {
     using namespace AlgorithmAccumulate;
-    test_00();
     test_01();
     test_02();
-    return 1;
+    test_03();
+    return 0;
 }
 
 // =====================================================================================
