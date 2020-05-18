@@ -15,3 +15,10 @@ Ausgabe des Code-Snippets:
 *ptr:    101
 *ptr4:   101
 ```
+
+---
+
+[Zurück](../../Readme.md)
+
+---
+

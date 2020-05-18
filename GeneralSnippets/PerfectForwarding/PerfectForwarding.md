@@ -41,3 +41,10 @@ des Sachverhalts an:
 ![](ScottMeyers_Forward.png)
 
 Abbildung 1. `std::forward`.
+
+---
+
+[Zurück](../../Readme.md)
+
+---
+

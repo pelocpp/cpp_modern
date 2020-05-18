@@ -23,3 +23,10 @@ Um diese Deklarationen verstehen zu können, liest man sie immer am besten von *r
 
   * `const int&`:</br>
   Eine Referenz für einen `int`-Wert, der als konstant (`const`) deklariert wird. Dieser Fall ist identisch zu `int const&`.
+
+
+---
+
+[Zurück](../../Readme.md)
+
+---

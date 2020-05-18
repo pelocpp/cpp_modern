@@ -51,3 +51,9 @@ C:\Development\MemoryLeaks.cpp(22) : {151} normal block at 0x00934A10, 40 bytes 
  Data: <                > CD CD CD CD CD CD CD CD CD CD CD CD CD CD CD CD 
 Object dump complete.
 ```
+
+---
+
+[Zurück](../../Readme.md)
+
+---

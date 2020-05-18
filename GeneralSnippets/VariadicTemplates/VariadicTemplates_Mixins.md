@@ -438,3 +438,10 @@ Die Anregungen zu den Beispielen auf diesem Abschnitt sind entnommen aus
 und
 
 [Jean Guegant' Blog](https://jguegant.github.io/blogs/tech/thread-safe-multi-type-map.html)<br>(abgerufen am 12.05.2020).
+
+---
+
+[Zurück](../../Readme.md)
+
+---
+

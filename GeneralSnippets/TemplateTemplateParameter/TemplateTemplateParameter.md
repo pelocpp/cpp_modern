@@ -17,3 +17,10 @@ die beide in den Template-Parametern ein Klassentemplate als Stellvertreter für 
 Ein weiteres Beispiel zum Thema *Template Template Parameter* findet sich hier:
 
 https://stackoverflow.com/questions/32351697/optional-range-check-based-on-template-parameter
+
+---
+
+[Zurück](../../Readme.md)
+
+---
+

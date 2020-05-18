@@ -51,3 +51,9 @@ d'tor LeftNode
 d'tor RightNode
 d'tor ParentNode
 ```
+
+---
+
+[Zurück](../../Readme.md)
+
+---

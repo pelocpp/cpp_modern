@@ -63,3 +63,9 @@ Siehe hierzu Abbildung 1:
 <img src="LambdaStructure.png" width="300">
 
 Abbildung 1: Besonderheiten im Aufbau einer Lambda-Funktion.
+
+---
+
+[Zurück](../../Readme.md)
+
+---

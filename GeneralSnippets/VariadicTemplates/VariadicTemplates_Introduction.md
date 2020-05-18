@@ -191,3 +191,10 @@ Einführende Artikel zum Thema der varadischen Templates finden sich zum Beispie
 und
 
 [Florian Weber Using Variadic Templates cleanly](https://florianjw.de/en/variadic_templates.html)<br>(abgerufen am 11.05.2020).
+
+---
+
+[Zurück](../../Readme.md)
+
+---
+

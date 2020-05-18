@@ -163,3 +163,7 @@ Examine C:\Development\GitRepositoryCPlusPlus\Cpp_DesignPatterns\CompositePatter
 ```
 
 ---
+
+[Zurück](../../Readme.md)
+
+---

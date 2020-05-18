@@ -106,9 +106,15 @@ int sumOfSums<
 #endif
 ```
 
-
 ## Literaturhinweise:
 
 Das Beispiel stammt aus
 
 [Florian Weber Using Variadic Templates cleanly](https://florianjw.de/en/variadic_templates.html)<br>(abgerufen am 11.05.2020).
+
+---
+
+[Zurück](../../Readme.md)
+
+---
+

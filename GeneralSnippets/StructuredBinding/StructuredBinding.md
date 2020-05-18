@@ -17,3 +17,9 @@ Der Ausdruck `<pair, tuple, struct, or array expression>` kann sein:
   * Ein Feld fester Länge
 
 Der Typ `auto` kann auch in den Variationen `auto`, `const auto`, `const auto&` oder sogar `auto&&` auftreten.
+
+---
+
+[Zurück](../../Readme.md)
+
+---

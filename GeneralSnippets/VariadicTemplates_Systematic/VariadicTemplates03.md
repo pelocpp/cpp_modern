@@ -19,4 +19,11 @@ diese übersichtsartig darzustellen:
 
 Tabelle 1. Einsatzmöglichkeiten variadischer Templates
 
+---
+
+[Zurück](../../Readme.md)
+
+---
+
+
 

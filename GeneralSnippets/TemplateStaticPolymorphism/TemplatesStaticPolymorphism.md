@@ -27,4 +27,9 @@ Gegenüberstellung "Statischer vs. dynamischer Polymorphismus in C++":
 
     Die fehlende Beschränkung auf eine Basisklasse erweitert den potentiellen Anwendungsbereich.
 
+---
+
+[Zurück](../../Readme.md)
+
+---
 

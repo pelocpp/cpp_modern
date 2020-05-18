@@ -68,3 +68,8 @@ IntegerSet& IntegerSet::operator= (IntegerSet&& set) noexcept {
 }
 ```
 
+---
+
+[Zurück](../../Readme.md)
+
+---

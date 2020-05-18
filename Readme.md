@@ -2,27 +2,30 @@
 
 In diesem Projekt sind zahlreiche kleinere Code-Snippets abgelegt, um die diversen Features von C++ 11/14/17 demonstrieren zu können.
 
-Es folgt eine tabellarische Auflistung dieser Unterverzeichnisse. Wir unterscheiden dabei Code-Snippets,
-die Grundlagen von C++ beschreiben und solche, die speziell mit den Neuerungen von C++ 11/14/17 
-Einzug in die Sprache gefunden haben:
+Es folgt eine tabellarische Auflistung dieser Unterverzeichnisse.
+In der ersten Tabelle wiederholen wir einige Grundlagen von C++. Die Neuerungen von C++ 11/14/17 
+schließen sich in Tabelle 2 an:
 
 | Unterverzeichnis | Thematik |
 |:-------------- |-----------------------------------------|
 | [Allocator](GeneralSnippets/Allocator/StdAllocator.md) | Container und Speicher-Allokatoren |
-| ArrayDecay | Arrays und Pointer  |
-| Casts | Typumwandlungen `static_cast`, `dynamic_cast`, `const_cast` und `reinterpret_cast` |
-| ConstructursOrder | Reihenfolge der Aufrufe von Konstruktoren und Destruktoren |
-| FunctionTemplatesBasics | Grundlagen zu Funktionstemplates |
-| InputOutputStreams | Streams manipulieren und formatieren |
-| MemoryLeaks | CRT (C-Runtime-Library) Memory Leak Detection |
-| ParametersWithConstAndRef | Die Deklarationen `int& const`, `int const&`, `const& int` und `const int&` im Vergleich |
+| [Array Decay](GeneralSnippets/ArrayDecay/ArrayDecay.md) | Arrays und Pointer |
+| [Casts](GeneralSnippets/Casts/Casts.md) | Typumwandlungen `static_cast`, `dynamic_cast`, `const_cast` und `reinterpret_cast` |
+| [ConstructursOrder](GeneralSnippets/ConstructursOrder/CtorDtorOrder.md)  | Reihenfolge der Aufrufe von Konstruktoren und Destruktoren |
+| [TemplatesFunctionBasics](GeneralSnippets/TemplatesFunctionBasics/TemplatesFunctions.md) | Grundlagen zu Funktionstemplates |
+| [InputOutputStreams](GeneralSnippets/InputOutputStreams/Streams.md) | Streams manipulieren und formatieren |
+| [MemoryLeaks](GeneralSnippets/MemoryLeaks/MemoryLeaksDetection.md) | CRT (C-Runtime-Library) Memory Leak Detection |
+| [ParametersWithConstAndRef](GeneralSnippets/ParametersWithConstAndRef/ConstDeclarations.md)  | Die Deklarationen `int& const`, `int const&`, `const& int` und `const int&` im Vergleich |
 
 Tabelle 1. Grundlagen-Code-Snippets.
 
+---
 
 | Unterverzeichnis | Thematik |
 |:-------------- |-----------------------------------------|
+| [Accumulate](GeneralSnippets/Accumulate/StdAccumulate.md) | STL-Algorithmus `std::accumulate` und Lambda-Funktionen in der Anwendung |
 | Accumulate | STL-Algorithmus `std::accumulate` und Lambda-Funktionen in der Anwendung |
+
 | Any | Neue STL-Utility Klasse `std::any` |
 | Array | Neue STL-Utility Klasse `std::array` |
 | ConstExpr | Methoden, die der Compiler zur Übersetzungszeit ausführt |
@@ -53,4 +56,6 @@ Tabelle 1. Grundlagen-Code-Snippets.
 | VariadicTemplates_Anwendungen | Diverses Beispiele zu variadischen Templates |
 | Variant | Neue STL-Utility Klasse `std::variant` |
 
-Tabelle 2. Spracherweiterungen C++11/C++14/C++17.
+Tabelle 2. Spracherweiterungen C++ 11/C++ 14/C++ 17.
+
+---

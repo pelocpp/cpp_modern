@@ -55,3 +55,8 @@ Ein sehr gutes Buch für Leser, die deutschsprachige Bücher bevorzugen. Viele Bei
     werden moderne C++-Konzepte wie RAII, SFINAE, CRTP und Type Erasure betrachtet. Sehr gut geschrieben,
     möglicherweise nichts für den Einsteiger in dieses Thema.
 
+---
+
+[Zurück](../../Readme.md)
+
+---

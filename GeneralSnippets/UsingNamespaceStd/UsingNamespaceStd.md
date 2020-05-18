@@ -18,3 +18,10 @@ which now offers a function called `Quux()`. Now you've got a conflict: Both Foo
 This is going to take some effort to fix, especially if the function parameters happen to match.
 
 If you had used `foo::Blah()` and `bar::Quux()`, then the introduction of `foo::Quux()` would have been a non-event.
+
+---
+
+[Zurück](../../Readme.md)
+
+---
+
