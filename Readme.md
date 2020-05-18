@@ -22,7 +22,6 @@ welche Bücher bei mir derzeit hoch im Kurs stehen und die meiner Meinung nach a
 ## Katalog aller Code-Snippets
 
 In diesem Projekt sind zahlreiche kleinere Code-Snippets abgelegt, um die diversen Features von C++ 11/14/17 demonstrieren zu können.
-
 Es folgt eine tabellarische Auflistung dieser Unterverzeichnisse.
 In der ersten Tabelle wiederholen wir einige Grundlagen von C++. Die Neuerungen von C++ 11/14/17 
 schließen sich in Tabelle 2 an:
