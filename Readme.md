@@ -24,37 +24,35 @@ Tabelle 1. Grundlagen-Code-Snippets.
 | Unterverzeichnis | Thematik |
 |:-------------- |-----------------------------------------|
 | [Accumulate](GeneralSnippets/Accumulate/StdAccumulate.md) | STL-Algorithmus `std::accumulate` und Lambda-Funktionen in der Anwendung |
-| Accumulate | STL-Algorithmus `std::accumulate` und Lambda-Funktionen in der Anwendung |
-
-| Any | Neue STL-Utility Klasse `std::any` |
-| Array | Neue STL-Utility Klasse `std::array` |
-| ConstExpr | Methoden, die der Compiler zur Übersetzungszeit ausführt |
-| Explicit | Schlüsselwort `explicit` |
-| Initialization | Einheitliches Initialisierungs-Konzept |
-| InitializerList | Klasse `std::initializer_list<T>` |
-| Lambda | Lambda-Funktionen |#
-| Literals | Benutzerdefinierte Literale |
-| MetaProgramming | Programmierung zur Übersetzungszeit |
-| Optional | Neue STL-Utility Klasse `std::optional` |
-| PerfectForwarding | Perfect Forwarding (`std::forward`) |
-| RAII | RAII-Idiom (*Resource acquisition is Initialization*) |
-| ReferenceWrapper  | Beispiele zum Einsatz eines Referenz-Wrappers |
-| RValueLValue | LValue- und RValue Referenzen |
-| UniquePointer | Klasse `std::unique_ptr<T>` |
-| SharedPointer | Klasse `std::shared_ptr<T>` |
-| WeakPointer | Klasse `std::weak_ptr<T>` |
-| StaticAssert | Compile-Time Makro `static_assert` |
-| StructuredBinding | Eine neue Möglichkeit der Rückgabe mehrerer Werte |
-| TemplateConstexprIf | Templates und bedingte Compilierung (`if constexpr`) |
-| TemplatesClassBasics | Grundlagen zu Klassentemplates |
-| TemplateStaticPolymorphism | Templates und statischer Polymorphismus |
-| TemplateTemplateParameter | Template Template Parameter |
-| Tuples | Neue STL-Utility Klasse `std::tuple` |
-| TypeTraits | Typmerkmale |
+| [Any](GeneralSnippets/Any/StdAny.md) | Neue STL-Utility Klasse `std::any` |
+| [Array](GeneralSnippets/Array/StdArray.md) | Neue STL-Utility Klasse `std::array` |
+| [ConstExpr](GeneralSnippets/ConstExpr/ConstExpr.md) | Methoden, die der Compiler zur Übersetzungszeit ausführt |
+| [Explicit](GeneralSnippets/Explicit/Explicit.md) | Schlüsselwort `explicit` |
+| [Initialization](GeneralSnippets/Initialization/UniformInitialization.md) | Einheitliches Initialisierungs-Konzept |
+| [InitializerList](GeneralSnippets/InitializerList/StdInitializerList.md) | Klasse `std::initializer_list<T>` |
+| [Lambda](GeneralSnippets/Lambda/Lambda.md) | Lambda-Funktionen |
+| [Literals](GeneralSnippets/Literals/Literals.md) | Benutzerdefinierte Literale |
+| [MetaProgramming](GeneralSnippets/MetaProgramming/MetaProgramming.md) | Programmierung zur Übersetzungszeit |
+| [Optional](GeneralSnippets/Optional/Optional.md) | Neue STL-Utility Klasse `std::optional` |
+| [PerfectForwarding](GeneralSnippets/PerfectForwarding/PerfectForwarding.md) | Perfect Forwarding (`std::forward`) |
+| [RAII](GeneralSnippets/RAII/RAII.md) | RAII-Idiom (*Resource acquisition is Initialization*) |
+| [ReferenceWrapper](GeneralSnippets/ReferenceWrapper/ReferenceWrapper.md)  | Beispiele zum Einsatz eines Referenz-Wrappers |
+| [RValueLValue](GeneralSnippets/RValueLValue/RValueLValue.md) | LValue- und RValue Referenzen |
+| [UniquePointer](GeneralSnippets/UniquePtr/UniquePtr.md) | Klasse `std::unique_ptr<T>` |
+| [SharedPointer](GeneralSnippets/SharedPtr/SharedPtr.md) | Klasse `std::shared_ptr<T>` |
+| [WeakPointer](GeneralSnippets/WeakPtr/WeakPtr.md) | Klasse `std::weak_ptr<T>` |
+| [StaticAssert](GeneralSnippets/StaticAssert/StaticAssertion.md) | Compile-Time Makro `static_assert` |
+| [StructuredBinding](GeneralSnippets/StructuredBinding/StructuredBinding.md) | Eine neue Möglichkeit der Rückgabe mehrerer Werte |
+| [TemplateConstexprIf](GeneralSnippets/TemplateConstexprIf/ConstExpr_If.md) | Templates und bedingte Compilierung (`if constexpr`) |
+| [TemplatesClassBasics](GeneralSnippets/TemplatesClassBasics/TemplatesBasics.md) | Grundlagen zu Klassentemplates |
+| [TemplateStaticPolymorphism](GeneralSnippets/TemplateStaticPolymorphism/TemplatesStaticPolymorphism.md) | Templates und statischer Polymorphismus |
+| [TemplateTemplateParameter](GeneralSnippets/TemplateTemplateParameter/TemplateTemplateParameter.md) | Template Template Parameter |
+| [Tuples](GeneralSnippets/Tuple/StdTuple.md) | Neue STL-Utility Klasse `std::tuple` |
+| [TypeTraits](GeneralSnippets/TypeTraits/TypeTraits.md) | Typmerkmale |
 | VariadicTemplates | Templates mit variabler Argumentanzahl (Variadische Templates) und *fold expressions* |
 | VariadicTemplates_Systematic | Beispiele zu variadischen Templates im Überblick |
 | VariadicTemplates_Anwendungen | Diverses Beispiele zu variadischen Templates |
-| Variant | Neue STL-Utility Klasse `std::variant` |
+| [Variant](GeneralSnippets/Variant/StdVariant.md)  | Neue STL-Utility Klasse `std::variant` |
 
 Tabelle 2. Spracherweiterungen C++ 11/C++ 14/C++ 17.
 

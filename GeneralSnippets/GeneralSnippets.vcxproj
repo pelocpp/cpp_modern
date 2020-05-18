@@ -208,6 +208,7 @@
     <None Include="Casts\Casts.md" />
     <None Include="ConstExpr\Constexpr.md" />
     <None Include="ConstructursOrder\CtorDtorOrder.md" />
+    <None Include="Explicit\Explicit.md" />
     <None Include="FileSystem\FileSystem.md" />
     <None Include="Initialization\UniformInitialization.md" />
     <None Include="InitializerList\StdInitializerList.md" />
@@ -217,6 +218,7 @@
     <None Include="Literatur\Literature.md" />
     <None Include="MemoryLeaks\MemoryLeaksDetection.md" />
     <None Include="MetaProgramming\Metaprogramming.md" />
+    <None Include="Optional\Optional.md" />
     <None Include="ParametersWithConstAndRef\ConstDeclarations.md" />
     <None Include="PerfectForwarding\PerfectForwarding.md" />
     <None Include="RAII\RAII.md" />
