@@ -46,13 +46,13 @@ Tabelle 1. Grundlagen-Code-Snippets.
 | [Accumulate](GeneralSnippets/Accumulate/StdAccumulate.md) | STL-Algorithmus `std::accumulate` und Lambda-Funktionen in der Anwendung |
 | [Any](GeneralSnippets/Any/StdAny.md) | Neue STL-Utility Klasse `std::any` |
 | [Array](GeneralSnippets/Array/StdArray.md) | Neue STL-Utility Klasse `std::array` |
-| [ConstExpr](GeneralSnippets/ConstExpr/ConstExpr.md) | Methoden, die der Compiler zur Übersetzungszeit ausführt |
+| [ConstExpr](GeneralSnippets/ConstExpr/Constexpr.md) | Methoden, die der Compiler zur Übersetzungszeit ausführt |
 | [Explicit](GeneralSnippets/Explicit/Explicit.md) | Schlüsselwort `explicit` |
 | [Initialization](GeneralSnippets/Initialization/UniformInitialization.md) | Einheitliches Initialisierungs-Konzept |
 | [InitializerList](GeneralSnippets/InitializerList/StdInitializerList.md) | Klasse `std::initializer_list<T>` |
 | [Lambda](GeneralSnippets/Lambda/Lambda.md) | Lambda-Funktionen |
 | [Literals](GeneralSnippets/Literals/Literals.md) | Benutzerdefinierte Literale |
-| [MetaProgramming](GeneralSnippets/MetaProgramming/MetaProgramming.md) | Programmierung zur Übersetzungszeit |
+| [MetaProgramming](GeneralSnippets/MetaProgramming/Metaprogramming.md) | Programmierung zur Übersetzungszeit |
 | [Optional](GeneralSnippets/Optional/Optional.md) | Neue STL-Utility Klasse `std::optional` |
 | [PerfectForwarding](GeneralSnippets/PerfectForwarding/PerfectForwarding.md) | Perfect Forwarding (`std::forward`) |
 | [RAII](GeneralSnippets/RAII/RAII.md) | RAII-Idiom (*Resource acquisition is Initialization*) |
