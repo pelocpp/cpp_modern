@@ -163,6 +163,7 @@
     <ClCompile Include="Literals\Literals.cpp" />
     <ClCompile Include="MemoryLeaks\MemoryLeaks.cpp" />
     <ClCompile Include="MetaProgramming\MetaProgramming01.cpp" />
+    <ClCompile Include="MetaProgramming\MetaProgramming02.cpp" />
     <ClCompile Include="Optional\Optional.cpp" />
     <ClCompile Include="PerfectForwarding\PerfectForwarding.cpp" />
     <ClCompile Include="PerfectForwarding\PerfectForwardingDummy.cpp" />
@@ -217,7 +218,8 @@
     <None Include="Literals\Literals.md" />
     <None Include="Literatur\Literature.md" />
     <None Include="MemoryLeaks\MemoryLeaksDetection.md" />
-    <None Include="MetaProgramming\Metaprogramming.md" />
+    <None Include="MetaProgramming\Metaprogramming01.md" />
+    <None Include="MetaProgramming\Metaprogramming02.md" />
     <None Include="Optional\Optional.md" />
     <None Include="ParametersWithConstAndRef\ConstDeclarations.md" />
     <None Include="PerfectForwarding\PerfectForwarding.md" />

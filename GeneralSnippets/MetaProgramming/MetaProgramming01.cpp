@@ -80,7 +80,7 @@ namespace Metaprogramming {
         using result = Frak<F::Num / ggt, F::Den / ggt>;
     };
 
-    void step_03() {
+    void test_03() {
         typedef Frak<16, 4> Four;
         typedef FrakNormalizedVerbose<Four>::result FourNormalized;
         std::cout << FourNormalized::Num << "/" << FourNormalized::Den << "\n";
@@ -103,7 +103,7 @@ namespace Metaprogramming {
         using result = typename FrakNormalized<Frak<Num, Den>>::result;
     };
 
-    void step_04() {
+    void test_04() {
         typedef Frak<3, 7> Frak1;
         typedef Frak<1, 7> Frak2;
         typedef Sum<Frak1, Frak2>::result Result;
@@ -124,22 +124,21 @@ namespace Metaprogramming {
         using result = Frak<1, 1>;
     };
 
-    void step_05() {
+    void test_05() {
         typedef E<8>::result X;
         std::cout << "e = " << (1.0 * X::Num / X::Den) << "\n";
         std::cout << "e = " << X::Num << "/" << X::Den << "\n";
     }
 }
 
-int main()
-// int main_metaprogramming()
+int main_metaprogramming_01()
 {
     using namespace Metaprogramming;
-    // test_01();
-    //test_02();
-    // step_03();
-    // step_04();
-    step_05();
+    test_01();
+    test_02();
+    test_03();
+    test_04();
+    test_05();
     return 0;
 }
 

@@ -183,6 +183,9 @@
     <ClCompile Include="MetaProgramming\MetaProgramming01.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MetaProgramming\MetaProgramming02.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -278,9 +281,6 @@
     <None Include="MemoryLeaks\MemoryLeaksDetection.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="MetaProgramming\Metaprogramming.md">
-      <Filter>Resource Files</Filter>
-    </None>
     <None Include="InitializerList\StdInitializerList.md">
       <Filter>Resource Files</Filter>
     </None>
@@ -321,6 +321,12 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Optional\Optional.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="MetaProgramming\Metaprogramming02.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="MetaProgramming\Metaprogramming01.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

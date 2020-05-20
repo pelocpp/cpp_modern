@@ -1,4 +1,4 @@
-# Metaprogramming
+# Metaprogrammierung
 
 ## Überblick
 
@@ -10,7 +10,7 @@ So kann man Code schreiben, der zur Übersetzungszeit ausgeführt wird. Obwohl sic
 
 ## Das klassische Beispiel
 
-[Quellcode](MetaProgramming01.cpp)
+(siehe auch [Quellcode](MetaProgramming01.cpp))
 
 ```cpp
 template <int N>
@@ -58,16 +58,20 @@ Die Ausgabe des Programms - mit Fehlern - sieht auf meinem Rechner wie folgt aus
 -288522240
 ```
 
-## Parcours durch gängige Metaprogramming Techniken
+Nach diesem einführenden Beispiel gehen wir im Folgenden auf wesentliche Techniken der Metaprogrammierung
+näher ein. In einem zweiten Dokument ([Metaprogrammierung und Listenverarbeitung](Metaprogramming02.md)) vertiefen
+wir das Thema.
 
-#### `static const`
+## Parcours durch gängige Techniken der Metaprogrammierung
+
+### `static const`
 
 Templates werden beim Übersetzen ausgewertet.
 Das bedeutet, dass der gesamte Quellcode beim Übersetzen der Quelle tatsächlich ausgeführt wird,
 also nicht zur Laufzeit. Da der Übersetzer Klassen - keine Objekte - übersetzt, können Templates
 nur auf Klassen angewendet werden, es machen also nur Klassenvariablen (`const int`) Sinn.
 
-#### Definition neuer Datentypen mit `using`
+### Definition neuer Datentypen mit `using`
 
 Wir betrachten ein weiteres Beispiel: Die klassische *"Bruchrechnung"* aus der Schulmathematik.
 Beachten Sie am folgenden Beispiel: In der Metaprogrammierung gibt es *keine* Variablen,
@@ -106,12 +110,12 @@ std::cout << Four_Sixths::Num << "/" << Four_Sixths::Den << std::endl;
 Es werden also in Schablonen neue Typen gebildet, auf die über einen Namen von außen zugegriffen werden kann!
 
 
-#### Partielle Spezialisierung von Templates
+### Partielle Spezialisierung von Templates
 
 Die partielle Spezialisierung von Templates ist zentrales Hilfsmittel in der Metaprogrammierung.
 Wenn wir dieses Feature noch mit der rekursiven Definition von Templates zusammenführen,
 lassen sich mächtige Funktionen definieren! Wir demonstrieren dies am Beispiel der Berechnung
-des größten gemeinsamen Teilers zweier natürlicher Zahlen (ggt):
+des größten gemeinsamen Teilers zweier natürlicher Zahlen (ggT):
 
 ```cpp
 template <int X, int Y>
@@ -139,7 +143,7 @@ struct FrakNormalized {
 };
 ```
 
-Betrachten Sie die Definition von GGT<X, 0> an: Dies ist eine partielle Template Spezialisierung!
+Betrachten Sie die Definition von `GGT<X, 0>` an: Dies ist eine partielle Template Spezialisierung!
 
 *Test*:
 
@@ -159,7 +163,7 @@ std::cout << EightNormalized::Num << "/" << EightNormalized::Den << "\n";
 8/1
 ```
 
-#### Erste Zusammenfassung: Wiederholungsanweisung, bedingte Anweisungen und Rückgabewerte
+### Erste Zusammenfassung: Wiederholungsanweisung, bedingte Anweisungen und Rückgabewerte
 
 In der Metaprogrammierung gelten andere Regeln als in der gewöhnlichen Programmierung. Für die klassischen
 programmiersprachlichen Konstrukte Wiederholungsanweisung, bedingte Anweisung und Rückgabewert von Funktionen
@@ -205,7 +209,7 @@ std::cout << Result::Num << "/" << Result::Den << "\n";
 4/7
 ```
 
-#### Ein Beispiel: Die Eulersche Zahl *e*
+### Ein Beispiel: Die Eulersche Zahl *e*
 
 Die Eulersche Zahl *e* lässt sich mit folgender Formel berechnen:
 
@@ -248,6 +252,8 @@ e = 109601/40320
 ```
 
 
+
+
 ---
 
 ## Literaturhinweise:
@@ -262,14 +268,3 @@ Die Anregungen zu den Beispielen aus diesem Code-Snippet finden sich unter
 [Zurück](../../Readme.md)
 
 ---
-
-
-*Test*:
-
-```cpp
-```
-
-*Ausgabe*:
-
-```cpp
-```

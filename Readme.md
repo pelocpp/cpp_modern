@@ -52,7 +52,7 @@ Tabelle 1. Grundlagen-Code-Snippets.
 | [InitializerList](GeneralSnippets/InitializerList/StdInitializerList.md) | Klasse `std::initializer_list<T>` |
 | [Lambda](GeneralSnippets/Lambda/Lambda.md) | Lambda-Funktionen |
 | [Literals](GeneralSnippets/Literals/Literals.md) | Benutzerdefinierte Literale |
-| [MetaProgramming](GeneralSnippets/MetaProgramming/Metaprogramming.md) | Programmierung zur Übersetzungszeit |
+| [MetaProgramming](GeneralSnippets/MetaProgramming/Metaprogramming01.md) | Programmierung zur Übersetzungszeit |
 | [Optional](GeneralSnippets/Optional/Optional.md) | Neue STL-Utility Klasse `std::optional` |
 | [PerfectForwarding](GeneralSnippets/PerfectForwarding/PerfectForwarding.md) | Perfect Forwarding (`std::forward`) |
 | [RAII](GeneralSnippets/RAII/RAII.md) | RAII-Idiom (*Resource acquisition is Initialization*) |
