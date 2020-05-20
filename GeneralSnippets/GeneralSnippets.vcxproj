@@ -162,7 +162,7 @@
     <ClCompile Include="Lambda\Lambda02.cpp" />
     <ClCompile Include="Literals\Literals.cpp" />
     <ClCompile Include="MemoryLeaks\MemoryLeaks.cpp" />
-    <ClCompile Include="MetaProgramming\MetaProgramming.cpp" />
+    <ClCompile Include="MetaProgramming\MetaProgramming01.cpp" />
     <ClCompile Include="Optional\Optional.cpp" />
     <ClCompile Include="PerfectForwarding\PerfectForwarding.cpp" />
     <ClCompile Include="PerfectForwarding\PerfectForwardingDummy.cpp" />
@@ -251,6 +251,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="Lambda\LambdaStructure.png" />
+    <Image Include="MetaProgramming\euler_number.png" />
     <Image Include="VariadicTemplates\cpp_snippets_mixins_01.png" />
     <Image Include="VariadicTemplates\cpp_snippets_mixins_02.png" />
   </ItemGroup>

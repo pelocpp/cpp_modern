@@ -36,9 +36,6 @@
     <ClCompile Include="InitializerList\InitializerList.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MetaProgramming\MetaProgramming.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ConstExpr\ConstExpr.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -181,6 +178,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="VariadicTemplates\VariadicTemplate04_WorkingOnEveryArgument.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MetaProgramming\MetaProgramming01.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -337,6 +337,9 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="VariadicTemplates\cpp_snippets_mixins_02.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="MetaProgramming\euler_number.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
