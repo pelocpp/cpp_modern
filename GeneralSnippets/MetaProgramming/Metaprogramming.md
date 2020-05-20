@@ -1,16 +1,30 @@
 # Metaprogramming
 
-*Allgemeines*:
+## Überblick
 
 C++ -Metaprogrammierung bezeichnet die Technik der Metaprogrammierung innerhalb der Programmiersprache C++,
 also eine Technik, um in C++ Programmcode zur Übersetzungszeit generieren zu lassen
 
 Bei der Templatemetaprogrammierung macht man sich zunutze, dass Templates während des Kompilierens ausgewertet werden.
-So kann man Code schreiben, der zur Übersetzungszeit ausgewertet wird, sodass erst dann der eigentliche Code generiert wird.
+So kann man Code schreiben, der zur Übersetzungszeit ausgeführt wird. Obwohl sich so die Dauer des Kompilierens verlängert, hat das Verfahren den Vorteil, dass es zu einer Verkürzung der Laufzeit kommen kann.
 
-Obwohl sich so die Dauer des Kompilierens verlängert, hat das Verfahren den Vorteil, dass es zu einer Verkürzung der Laufzeit kommen kann.
+## Das klassische Beispiel
 
-Hinweise:
+[Quellcode](MetaProgramming.cpp)
+
+```cpp
+template <int N>
+struct Factorial {
+
+    static int const value = N * Factorial<N - 1>::value;
+
+};
+
+template <>
+struct Factorial<1> {
+    static int const value = 1;
+};
+```
 
 In den Code-Snippets wird zum Thema "*Metaprogrammierung*" das wohl bekannteste Beispiel demontriert, die Berechnung
 der Fakultät-Funktion zur Übersetzungszeit. Dabei ist zu beachten, dass es auch sehr wohl zur Übersetzungszeit zu Fehler kommen kann.
