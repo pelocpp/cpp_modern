@@ -1,5 +1,5 @@
 // =====================================================================================
-// Metaprogramming
+// Metaprogramming: Part II
 // =====================================================================================
 
 #include <iostream>
@@ -136,72 +136,17 @@ namespace Metaprogramming {
         std::cout << Length<Append <Int<6>, List12345>::result>::result << std::endl;
         std::cout << Length<Append <Int<7>, newList>::result>::result << std::endl;
     }
-
-    // ========================================================
-
-
-
-
-    //template <typename LIST, int N>
-    //class ListPrint
-    //{
-    //    using Head = typename LIST::Head;
-    //    using Tail = typename LIST::Tail;
-
-    //public:
-    //    ListPrint(const LIST& list) {
-    //        ListPrint <Tail, N-1> lp (list);
-    //        std::cout << "Element at ..." << std::endl;
-    //    }
-    //};
-
-    //template <typename LIST>
-    //struct ListPrint<LIST, 0> {
-    //public:
-    //    ListPrint(const LIST& list) {
-    //        std::cout << "Element at NIL" << std::endl;
-    //    }
-    //};
-
-
-    // ========================================================
-
-    template <typename LIST>
-    struct LengthVerbosePrint {
-        LengthVerbosePrint() {
-            std::cout << "LengthVerbosePrint" << std::endl;
-        }
-        using Tail = typename LIST::Tail;
-        static const unsigned int tailLength = LengthVerbose<Tail>::result;
-        static const unsigned int result = 1 + tailLength;
-    };
-
-    template <>
-    struct LengthVerbosePrint<Nil> {
-        static const unsigned int result = 0;
-    };
-
-
-    // ========================================================
-
-    void test_11() {
-        using List12345 = List<Int<1>, List<Int<2>, List<Int<3>, List<Int<4>, List<Int<5>>>>>>;
-
-        std::cout << LengthVerbosePrint<List12345>::result << std::endl;
-
-    }
 }
 
-int main()
-// int main_metaprogramming_02()
+int main_metaprogramming_02()
 {
     using namespace Metaprogramming;
-    // test_06();
-    // test_07();
-   //test_08();
-    // test_09();
-    // test_10();
-    test_11();
+    test_06();
+    test_07();
+    test_08();
+    test_09();
+    test_10();
+
     return 0;
 }
 

@@ -305,15 +305,6 @@ std::cout << Length<Append <Int<7>, newList>::result>::result << std::endl;
 7
 ```
 
-## Funktionalität "Traversieren einer Liste"
-
-```cpp
-Print(e, NIL)  <- ""
-Print(e, lst)  <- Print(lst.head, Print(e, lst.tail))
-```
-
-
-
 ---
 
 ## Literaturhinweise:
@@ -322,20 +313,8 @@ Die Anregungen zu den Beispielen aus diesem Code-Snippet finden sich unter
 
 [Nico Brailovsky's blog](https://monoinfinito.wordpress.com/series/introduction-to-c-template-metaprogramming//)<br>(abgerufen am 20.05.2020).
 
-
 ---
 
 [Zurück](../../Readme.md)
 
 ---
-
-
-*Test*:
-
-```cpp
-```
-
-*Ausgabe*:
-
-```cpp
-```
