@@ -1,8 +1,12 @@
 # Variadische Templates: Mixins
 
-=> ???
+=> [Teil V: Variadische Templates: Visitor](VariadicTemplates_05_Visitor.md)
 
 <= [Teil III: Variadische Templates: Anwendungsfall "Summe von Summen"](VariadicTemplates_03_SumOfSums.md)
+
+---
+
+[Quellcode](VariadicTemplate_04_Mixins.cpp)
 
 ---
 

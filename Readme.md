@@ -71,8 +71,6 @@ Tabelle 1. Grundlagen-Code-Snippets.
 | [TypeTraits](GeneralSnippets/TypeTraits/TypeTraits.md) | Typmerkmale |
 | [VariadicTemplates](GeneralSnippets/VariadicTemplates/VariadicTemplates_01_Introduction.md) | Templates mit variabler Argumentanzahl (Variadische Templates) |
 | [VariadicTemplates](GeneralSnippets/VariadicTemplates/VariadicTemplates_10_Folding.md) | *Folding Expressions* |
-| VariadicTemplates_Systematic | Beispiele zu variadischen Templates im Überblick |
-| VariadicTemplates_Anwendungen | Diverses Beispiele zu variadischen Templates |
 | [Variant](GeneralSnippets/Variant/StdVariant.md)  | Neue STL-Utility Klasse `std::variant` |
 
 Tabelle 2. Spracherweiterungen C++ 11/C++ 14/C++ 17.

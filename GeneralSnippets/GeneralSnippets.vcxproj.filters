@@ -159,31 +159,31 @@
     <ClCompile Include="VariadicTemplates\VariadicTemplate_Folding.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="VariadicTemplates\VariadicTemplate_XX_Visitor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="VariadicTemplates\VariadicTemplate_XX_Adder.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="VariadicTemplates_Systematic\VariadicTemplateSystematic_XX_Systematic.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="VariadicTemplates_Anwendungen\VariadicTemplate_XX_Examples.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="VariadicTemplates\VariadicTemplate_XX_Else_If.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="VariadicTemplates\VariadicTemplate_04_WorkingOnEveryArgument.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="VariadicTemplates\VariadicTemplate_05_SumOfSums.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="VariadicTemplates\VariadicTemplate_07_Mixins.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="VariadicTemplates\VariadicTemplate_XX_type_index.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VariadicTemplates\VariadicTemplate_02_WorkingOnEveryArgument.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VariadicTemplates\VariadicTemplate_03_SumOfSums.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VariadicTemplates\VariadicTemplate_04_Mixins.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VariadicTemplates\VariadicTemplate_01_Adder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VariadicTemplates\VariadicTemplate_05_Visitor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VariadicTemplates_Systematic\VariadicTemplate_XX_Systematic.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -225,9 +225,6 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="TypeTraits\TypeTraits.md">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="VariadicTemplates_Anwendungen\VariadicTemplates02.md">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Tuple\StdTuple.md">
@@ -324,6 +321,12 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="VariadicTemplates\VariadicTemplates_04_Mixins.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="VariadicTemplates_Anwendungen\VariadicTemplates_XX_Verschiedenes.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="VariadicTemplates\VariadicTemplates_05_Visitor.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

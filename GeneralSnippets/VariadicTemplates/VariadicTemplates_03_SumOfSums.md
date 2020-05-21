@@ -6,6 +6,10 @@
 
 ---
 
+[Quellcode](VariadicTemplate_03_SumOfSums.cpp)
+
+---
+
 ## Anwendungsfall "Summe von Summen"
 
 Im Abschnitt "Zugriff auf jedes einzelne Argument" haben wir den

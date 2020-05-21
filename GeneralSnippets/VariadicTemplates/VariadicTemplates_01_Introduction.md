@@ -4,6 +4,10 @@
 
 ---
 
+[Quellcode](VariadicTemplate_01_Adder.cpp)
+
+---
+
 Ab C++ 11 gibt es in C++ die so genannten *variadic Templates*, 
 mit denen ein einzelnes Template definiert werden kann,
 das eine beliebige Anzahl von Parametern annehmen kann.
@@ -159,14 +163,17 @@ um eine Folge von Template Argumenten zu erzeugen.
 In der Tat können  Parameter Pack Expansionen prinzipiell überall in C ++ zum EInsatz kommen,
 wo die Grammatik eine durch Kommas getrennte Liste gestattet:
 
+| Einsatzmöglichkeiten von Parameter Pack Expansionen |
+|:-------------- |
 | In der Liste der Basisklassen |
 | In der Liste der Basisklassen Initialisierer in einem Konstruktor |
-| In einer Liste von Aufrufargumenten eines Methodenaufrufs |
-| In einer Liste von Initialisierern (z. B. in einer geschweiften Initialisiererliste - `std::initializer_list`) |
+| In der Liste von Aufrufargumenten eines Methodenaufrufs |
+| In der Liste von Initialisierern (z. B. in einer geschweiften Initialisiererliste - `std::initializer_list`) |
 | In der Template Parameterliste eines Klassen oder Funktionstemplate |
 | In der Parameterliste eines Funktionstyps |
+| Bei der Verwendung von `using`-Deklarationen |
 
-Tabelle 1. Einsatzmöglichkeiten von Parameter Pack Expansionen
+Tabelle 1. Einsatzmöglichkeiten von Parameter Pack Expansionen.
 
 ## Der sizeof… Operator
 

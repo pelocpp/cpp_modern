@@ -6,6 +6,10 @@
 
 ---
 
+[Quellcode](VariadicTemplate_02_WorkingOnEveryArgument.cpp)
+
+---
+
 Grundsätzlich gibt es zwei Möglichkeiten, um Funktionsparameterpacks zu bearbeiten:
 Verwendung der Pack-Erweiterung "im Ganzen" oder der rekursive Aufruf derselben Funktion,
 wobei diese bei jedem Aufruf ein einzelnes Argument aus dem Parameter Pack extrahiert.
