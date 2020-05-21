@@ -1,5 +1,9 @@
 # Variadische Templates und Fold-Ausdrücke
 
+[Quellcode](VariadicTemplate_Folding.cpp)
+
+---
+
 Wenn es um die Handhabung variadischer Funktionen geht, können wir nicht im klassischen
 "iterativen" C++ - Stil denken. Wir müssen solche Funktionen rekursiv schreiben - mit
 einem so genannten "Normal"-Fall und einem "rekursiven" Fall, der sich nach endlich vielen Schritten
