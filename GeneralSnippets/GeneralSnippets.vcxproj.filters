@@ -150,9 +150,6 @@
     <ClCompile Include="VariadicTemplates\VariadicTemplate03.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="VariadicTemplates\VariadicTemplate02.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="VariadicTemplates_Systematic\VariadicTemplateSystematic01.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -184,6 +181,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MetaProgramming\MetaProgramming02.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VariadicTemplates\VariadicTemplate_Folding.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -219,9 +219,6 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="RAII\RAII.md">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="VariadicTemplates\VariadicTemplates.md">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="WeakPtr\WeakPtr.md">
@@ -305,18 +302,6 @@
     <None Include="UniquePtr\UniquePtr.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="VariadicTemplates\VariadicTemplates_Introduction.md">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="VariadicTemplates\VariadicTemplates_SumOfSums.md">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="VariadicTemplates\VariadicTemplates_WorkingOnEveryArgument.md">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="VariadicTemplates\VariadicTemplates_Mixins.md">
-      <Filter>Resource Files</Filter>
-    </None>
     <None Include="Explicit\Explicit.md">
       <Filter>Resource Files</Filter>
     </None>
@@ -327,6 +312,21 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="MetaProgramming\Metaprogramming01.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="VariadicTemplates\VariadicTemplates_01_Introduction.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="VariadicTemplates\VariadicTemplates_02_WorkingOnEveryArgument.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="VariadicTemplates\VariadicTemplates_03_SumOfSums.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="VariadicTemplates\VariadicTemplates_10_Folding.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="VariadicTemplates\VariadicTemplates_04_Mixins.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

@@ -1,6 +1,4 @@
-# Variadische Templates: Summe von Summen
-
-// https://florianjw.de/en/variadic_templates.html
+# Teil III: Variadische Templates - Summe von Summen
 
 ## Anwendungsfall "Summe von Summen"
 

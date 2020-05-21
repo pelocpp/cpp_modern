@@ -1,6 +1,8 @@
-# Variadische Templates: Zugriff auf jedes einzelne Argument
+# Teil II: Variadische Templates - Zugriff auf jedes einzelne Argument
 
-// https://arne-mertz.de/2016/11/more-variadic-templates/
+[Teil III: Variadische Templates: Anwendungsfall "Summe von Summen"](VariadicTemplates_03_SumOfSums.md)
+
+---
 
 Grundsätzlich gibt es zwei Möglichkeiten, um Funktionsparameterpacks zu bearbeiten:
 Verwendung der Pack-Erweiterung "im Ganzen" oder der rekursive Aufruf derselben Funktion,
@@ -149,6 +151,12 @@ void print1<int, char, double>(const int & head, const char & __tail1, const dou
 }
 #endif
 ```
+
+## Literaturhinweise:
+
+Die Beispiele stammen aus
+
+[Arne Mertz More About Variadic Templates](https://arne-mertz.de/2016/11/more-variadic-templates/)<br>(abgerufen am 11.05.2020).
 
 ---
 

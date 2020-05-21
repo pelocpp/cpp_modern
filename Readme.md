@@ -69,7 +69,8 @@ Tabelle 1. Grundlagen-Code-Snippets.
 | [TemplateTemplateParameter](GeneralSnippets/TemplateTemplateParameter/TemplateTemplateParameter.md) | Template Template Parameter |
 | [Tuples](GeneralSnippets/Tuple/StdTuple.md) | Neue STL-Utility Klasse `std::tuple` |
 | [TypeTraits](GeneralSnippets/TypeTraits/TypeTraits.md) | Typmerkmale |
-| VariadicTemplates | Templates mit variabler Argumentanzahl (Variadische Templates) und *fold expressions* |
+| [VariadicTemplates](GeneralSnippets/VariadicTemplates/VariadicTemplates_01_Introduction.md) | Templates mit variabler Argumentanzahl (Variadische Templates) |
+| [VariadicTemplates](GeneralSnippets/VariadicTemplates/VariadicTemplates_10_Folding.md) | *Folding Expressions* |
 | VariadicTemplates_Systematic | Beispiele zu variadischen Templates im Überblick |
 | VariadicTemplates_Anwendungen | Diverses Beispiele zu variadischen Templates |
 | [Variant](GeneralSnippets/Variant/StdVariant.md)  | Neue STL-Utility Klasse `std::variant` |

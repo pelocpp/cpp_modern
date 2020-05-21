@@ -1,4 +1,8 @@
-﻿# Variadische Templates: Einführung
+﻿# Teil I: Variadische Templates - Einführung
+
+[Teil II: Variadische Templates: Zugriff auf jedes einzelne Argument](VariadicTemplates_02_WorkingOnEveryArgument.md)
+
+---
 
 Ab C++ 11 gibt es in C++ die so genannten *variadic Templates*, 
 mit denen ein einzelnes Template definiert werden kann,
