@@ -1,5 +1,11 @@
 # Variadische Templates: Mixins
 
+=> ???
+
+<= [Teil III: Variadische Templates: Anwendungsfall "Summe von Summen"](VariadicTemplates_03_SumOfSums.md)
+
+---
+
 ## Einleitung
 
 Parameter Packs können auch bei der Vererbung eingesetzt werden,

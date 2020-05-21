@@ -1,6 +1,6 @@
 ﻿# Teil I: Variadische Templates - Einführung
 
-[Teil II: Variadische Templates: Zugriff auf jedes einzelne Argument](VariadicTemplates_02_WorkingOnEveryArgument.md)
+=> [Teil II: Variadische Templates: Zugriff auf jedes einzelne Argument](VariadicTemplates_02_WorkingOnEveryArgument.md)
 
 ---
 
@@ -151,6 +151,22 @@ void f(int i /*, ignored comma before empty pack expansion */) {
   std::tuple<> argsTuple{}; 
 }
 ```
+
+## Wo können Parameter Pack Expansionen auftreten?
+
+Unsere bisherigen Beispiele haben sich auf den Gebrauch von Parameter Pack Expansionen konzentriert,
+um eine Folge von Template Argumenten zu erzeugen.
+In der Tat können  Parameter Pack Expansionen prinzipiell überall in C ++ zum EInsatz kommen,
+wo die Grammatik eine durch Kommas getrennte Liste gestattet:
+
+| In der Liste der Basisklassen |
+| In der Liste der Basisklassen Initialisierer in einem Konstruktor |
+| In einer Liste von Aufrufargumenten eines Methodenaufrufs |
+| In einer Liste von Initialisierern (z. B. in einer geschweiften Initialisiererliste - `std::initializer_list`) |
+| In der Template Parameterliste eines Klassen oder Funktionstemplate |
+| In der Parameterliste eines Funktionstyps |
+
+Tabelle 1. Einsatzmöglichkeiten von Parameter Pack Expansionen
 
 ## Der sizeof… Operator
 

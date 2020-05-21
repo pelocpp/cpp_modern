@@ -186,16 +186,16 @@
     <ClCompile Include="TypeTraits\TypeTraits.cpp" />
     <ClCompile Include="UniquePtr\UniquePtr02.cpp" />
     <ClCompile Include="UniquePtr\UniquePtr01.cpp" />
-    <ClCompile Include="VariadicTemplates\VariadicTemplate01.cpp" />
+    <ClCompile Include="VariadicTemplates\VariadicTemplate_XX_Adder.cpp" />
     <ClCompile Include="VariadicTemplates\VariadicTemplate_Folding.cpp" />
-    <ClCompile Include="VariadicTemplates\VariadicTemplate03.cpp" />
-    <ClCompile Include="VariadicTemplates\VariadicTemplate04_WorkingOnEveryArgument.cpp" />
-    <ClCompile Include="VariadicTemplates\VariadicTemplate05_SumOfSums.cpp" />
-    <ClCompile Include="VariadicTemplates\VariadicTemplate06.cpp" />
-    <ClCompile Include="VariadicTemplates\VariadicTemplate07_Mixins.cpp" />
-    <ClCompile Include="VariadicTemplates\VariadicTemplate09.cpp" />
-    <ClCompile Include="VariadicTemplates_Anwendungen\VariadicTemplate_Examples.cpp" />
-    <ClCompile Include="VariadicTemplates_Systematic\VariadicTemplateSystematic01.cpp" />
+    <ClCompile Include="VariadicTemplates\VariadicTemplate_XX_Visitor.cpp" />
+    <ClCompile Include="VariadicTemplates\VariadicTemplate_04_WorkingOnEveryArgument.cpp" />
+    <ClCompile Include="VariadicTemplates\VariadicTemplate_05_SumOfSums.cpp" />
+    <ClCompile Include="VariadicTemplates\VariadicTemplate_XX_Else_If.cpp" />
+    <ClCompile Include="VariadicTemplates\VariadicTemplate_07_Mixins.cpp" />
+    <ClCompile Include="VariadicTemplates\VariadicTemplate_XX_type_index.cpp" />
+    <ClCompile Include="VariadicTemplates_Anwendungen\VariadicTemplate_XX_Examples.cpp" />
+    <ClCompile Include="VariadicTemplates_Systematic\VariadicTemplateSystematic_XX_Systematic.cpp" />
     <ClCompile Include="Variant\Variant.cpp" />
     <ClCompile Include="WeakPtr\WeakPtr.cpp" />
   </ItemGroup>
@@ -244,7 +244,6 @@
     <None Include="VariadicTemplates\VariadicTemplates_03_SumOfSums.md" />
     <None Include="VariadicTemplates\VariadicTemplates_02_WorkingOnEveryArgument.md" />
     <None Include="VariadicTemplates_Anwendungen\VariadicTemplates02.md" />
-    <None Include="VariadicTemplates_Systematic\VariadicTemplates03.md" />
     <None Include="Variant\StdVariant.md" />
     <None Include="WeakPtr\WeakPtr.md" />
   </ItemGroup>

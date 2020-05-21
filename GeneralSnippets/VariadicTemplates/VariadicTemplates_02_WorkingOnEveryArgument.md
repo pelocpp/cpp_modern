@@ -1,6 +1,8 @@
 # Teil II: Variadische Templates - Zugriff auf jedes einzelne Argument
 
-[Teil III: Variadische Templates: Anwendungsfall "Summe von Summen"](VariadicTemplates_03_SumOfSums.md)
+=> [Teil III: Variadische Templates: Anwendungsfall "Summe von Summen"](VariadicTemplates_03_SumOfSums.md)
+
+<= [Teil I: Variadische Templates - Einführung](VariadicTemplates_01_Introduction.md)
 
 ---
 

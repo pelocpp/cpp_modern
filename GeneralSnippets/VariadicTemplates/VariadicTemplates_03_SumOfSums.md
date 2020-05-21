@@ -1,5 +1,11 @@
 # Teil III: Variadische Templates - Summe von Summen
 
+=> [Teil IV: Variadische Templates: Mixins](VariadicTemplates_04_Mixins.md)
+
+<= [Teil II: Variadische Templates: Zugriff auf jedes einzelne Argument](VariadicTemplates_02_WorkingOnEveryArgument.md)
+
+---
+
 ## Anwendungsfall "Summe von Summen"
 
 Im Abschnitt "Zugriff auf jedes einzelne Argument" haben wir den
