@@ -1,5 +1,9 @@
 # Metaprogrammierung und Listenverarbeitung
 
+[Teil I: Einführung in die Metaprogrammierung](Metaprogramming01.md)
+
+---
+
 ## Listenverarbeitung
 
 Dieser Beitrag zeigt, wie sich eine einfach verketteten Datenstruktur (*Linked List*) zur Übersetzungsszeit in C ++ realisieren lässt.

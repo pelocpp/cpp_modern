@@ -1,4 +1,8 @@
-# Metaprogrammierung
+# Einführung in die Metaprogrammierung
+
+[Teil II: Metaprogrammierung und Listenverarbeitung](Metaprogramming02.md)
+
+---
 
 ## Überblick
 
@@ -251,8 +255,9 @@ e = 2.71828
 e = 109601/40320
 ```
 
+---
 
-
+[Teil II: Metaprogrammierung und Listenverarbeitung](Metaprogramming02.md)
 
 ---
 
@@ -261,7 +266,6 @@ e = 109601/40320
 Die Anregungen zu den Beispielen aus diesem Code-Snippet finden sich unter
 
 [Nico Brailovsky's blog](https://monoinfinito.wordpress.com/series/introduction-to-c-template-metaprogramming//)<br>(abgerufen am 20.05.2020).
-
 
 ---
 
