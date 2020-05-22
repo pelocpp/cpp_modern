@@ -1,6 +1,6 @@
 # Variadische Templates: Visitor
 
-<= [Teil IV: Variadische Templates: Mixins](VariadicTemplates_04_Mixins.md)
+&#x21D0; [Teil IV: Variadische Templates: Mixins](VariadicTemplates_04_Mixins.md)
 
 ---
 
