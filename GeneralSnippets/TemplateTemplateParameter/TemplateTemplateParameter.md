@@ -1,5 +1,9 @@
 # Template Template Parameter
 
+[Quellcode](TemplateTemplateParameter_01.cpp)
+
+---
+
 Als Parameter für Templates können neben realen Typen auch wiederum Klassentemplates fungieren.
 
 Die Syntax derartiger Templates sieht dann so aus:

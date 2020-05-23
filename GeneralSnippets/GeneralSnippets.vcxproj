@@ -155,7 +155,6 @@
     <ClCompile Include="Explicit\Explicit.cpp" />
     <ClCompile Include="FileSystem\FileSystem.cpp" />
     <ClCompile Include="Global\Dummy.cpp" />
-    <ClCompile Include="Initialization\Initialization.cpp" />
     <ClCompile Include="InitializerList\InitializerList.cpp" />
     <ClCompile Include="InputOutputStreams\InputOutputStreams.cpp" />
     <ClCompile Include="Lambda\Lambda01.cpp" />
@@ -187,8 +186,8 @@
     <ClCompile Include="TemplateTemplateParameter\TemplateTemplateParameter_02.cpp" />
     <ClCompile Include="Tuple\Tuples.cpp" />
     <ClCompile Include="TypeTraits\TypeTraits.cpp" />
-    <ClCompile Include="UniquePtr\UniquePtr02.cpp" />
-    <ClCompile Include="UniquePtr\UniquePtr01.cpp" />
+    <ClCompile Include="UniformInitialization\UniformInitialization.cpp" />
+    <ClCompile Include="UniquePtr\UniquePtr.cpp" />
     <ClCompile Include="VariadicTemplates\VariadicTemplate_01_Adder.cpp" />
     <ClCompile Include="VariadicTemplates\VariadicTemplate_Folding.cpp" />
     <ClCompile Include="VariadicTemplates\VariadicTemplate_05_Visitor.cpp" />
@@ -241,6 +240,7 @@
     <None Include="TemplateTemplateParameter\TemplateTemplateParameter.md" />
     <None Include="Tuple\StdTuple.md" />
     <None Include="TypeTraits\TypeTraits.md" />
+    <None Include="UniformInitialization\UniformInitialization.md" />
     <None Include="UniquePtr\UniquePtr.md" />
     <None Include="UsingNamespaceStd\UsingNamespaceStd.md" />
     <None Include="VariadicTemplates\VariadicTemplates_05_Visitor.md" />

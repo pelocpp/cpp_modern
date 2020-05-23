@@ -1,5 +1,9 @@
 # Templates und statischer Polymorphismus
 
+[Quellcode](TemplateStaticPolymorphism.cpp)
+
+---
+
 Man kann - speziell für Programmiersprachen, die Polymorphismus unterstützen - zwei Varianten des Polymorphismus
 unterscheinden:
 

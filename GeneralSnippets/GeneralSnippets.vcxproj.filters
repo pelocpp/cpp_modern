@@ -30,9 +30,6 @@
     <ClCompile Include="TypeTraits\TypeTraits.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Initialization\Initialization.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="InitializerList\InitializerList.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -64,12 +61,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MemoryLeaks\MemoryLeaks.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="UniquePtr\UniquePtr02.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="UniquePtr\UniquePtr01.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Global\Dummy.cpp">
@@ -193,6 +184,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Optional\Optional.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UniformInitialization\UniformInitialization.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UniquePtr\UniquePtr.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -342,6 +339,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="DeclType\decltype.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="UniformInitialization\UniformInitialization.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

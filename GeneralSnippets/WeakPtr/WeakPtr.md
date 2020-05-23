@@ -1,5 +1,9 @@
 # Weak Pointer: Klasse `std::weak_ptr`
 
+[Quellcode](WeakPtr.cpp)
+
+---
+
 Die Funktionsweise der Wrapper-Klasse wird an zwei Beispielen aufgezeigt.
 
 Das erste Beispiel erläutert vor allem den Zusammenhang zwischen den beiden Klassen

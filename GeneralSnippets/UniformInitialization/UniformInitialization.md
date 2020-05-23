@@ -1,5 +1,9 @@
 # Einheitliche Initialisierung
 
+[Quellcode](Initialization.cpp)
+
+---
+
 Es lassen sich mit geschweiften Klammern alle möglichen Arten einer Variablen-Initialisierung (auch Objekte)
 mit einer einheitlichen Schreibweise initialisieren.
 

@@ -1,5 +1,9 @@
 # Static Assertion
 
+[Quellcode](StaticAssert.cpp)
+
+---
+
 ist ein compile-time Funktionsaufruf.
 
 `static_assert` verlangt einen Ausdruck und eine Zeichenkette. Der Ausdruck muss sich zur Übersetzungszeit auf `true` oder `false` evaluieren lassen.

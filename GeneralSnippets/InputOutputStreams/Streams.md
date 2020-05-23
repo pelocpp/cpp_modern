@@ -1,5 +1,9 @@
 # Streams manipulieren und formatieren
 
+[Quellcode](InputOutputStreams.cpp)
+
+---
+
 Folgende Aspekte zur Ein- und Ausgabe mit C++-Streams werden an Beispielen aufgezeigt:
 
   * Unformatierte Ausgabe mit `put` und `write`

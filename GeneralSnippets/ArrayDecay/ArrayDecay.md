@@ -1,5 +1,9 @@
 # Array Decay
 
+[Quellcode](ArrayDecay.cpp)
+
+---
+
 *Allgemeines*:
 
 Die Beispiel zu diesem Snippet sind angelehnt an

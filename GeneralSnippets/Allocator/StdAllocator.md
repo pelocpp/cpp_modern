@@ -1,5 +1,9 @@
 # Container und Speicher-Allokatoren
 
+[Quellcode](Allocator.cpp)
+
+---
+
 *Allgemeines*:
 
 Es wird zum einen auf die Klasse `std::allocator<T>` eingegangen. Sie stellt den Zugang zur

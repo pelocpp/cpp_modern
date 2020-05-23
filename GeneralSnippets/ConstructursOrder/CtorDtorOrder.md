@@ -1,5 +1,9 @@
 # Reihenfolge der Aufrufe von Konstruktoren und Destruktoren
 
+[Quellcode](ConstructorsOrder.cpp)
+
+---
+
 Im Umfeld der Vererbung sollte man sich im Klaren sein, in welcher Reihenfolge die Konstruktoren und Destruktoren
 aller beteiligten Objekte aufgerufen werden. Um das Szenario vollständig zu betrachten, bringen wir auch
 noch die Komposition bzw. Aggregation ins Spiel: Eine Klasse (besser: ein Objekt) kann auch aus Unterobjekten bestehen.

@@ -1,5 +1,9 @@
 # Unique Pointer - Klasse `std::unique_ptr`
 
+[Quellcode](UniquePtr.cpp)
+
+---
+
 An Hand eines Beispiels wird die Arbeitsweise der `std::unique_ptr`-Klasse demonstriert.
 
 Ausgabe des Code-Snippets:

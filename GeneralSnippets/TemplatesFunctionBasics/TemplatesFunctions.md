@@ -1,5 +1,9 @@
 # Funktionstemplates: Grundlagen
 
+[Quellcode](FunctionTemplatesBasics.cpp)
+
+---
+
 Es wird an einem einfachen Beispiel die Syntax zu Funktionstemplates gezeigt.
 
 **Hinweis**:

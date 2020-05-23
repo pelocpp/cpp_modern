@@ -1,5 +1,9 @@
 # constexpr - Methoden, die der Compiler zur Übersetzungszeit ausführt.
 
+[Quellcode 1](ConstExpr.cpp) und [Quellcode 2](ConstExprExtended.cpp)
+
+---
+
 *Allgemeines*:
 
 Im ersten, einfachen Beispiel zum Thema "constexpr" wird das klassische Thema von Log- bzw. Debug-Methoden betrachtet.

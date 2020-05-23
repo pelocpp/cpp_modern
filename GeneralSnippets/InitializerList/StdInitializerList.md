@@ -1,5 +1,9 @@
 # Klasse `std::initializer_list<T>`
 
+[Quellcode](InitializerList.cpp)
+
+---
+
 Um für Konstruktoren eine variable Anzahl von Parametern (desselben Typs) zu ermöglichen,
 wurde in C++ das Konzept von *Initialisierungslisten* für benutzerdefinierte Typen eingeführt.
 

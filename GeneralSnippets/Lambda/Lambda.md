@@ -1,5 +1,9 @@
 # Lambda-Funktionen
 
+[Quellcode 1](Lambda01.cpp), [Quellcode 2](Lambda02.cpp) und [Quellcode 3](Lambda03.cpp)
+
+---
+
 *Allgemeines*:
 
 Es werden folgende Überlegungen der Reihe nach betrachtet:

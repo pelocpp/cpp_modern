@@ -1,5 +1,9 @@
 # `decltype` und `std::declval`
 
+[Quellcode](Decltype.cpp)
+
+---
+
 ## `decltype`
 
 Der in C ++ 11 eingeführte `decltype`-Operator gibt, grob gesagt, den Typ eines Ausdrucks oder einer Entität wieder.

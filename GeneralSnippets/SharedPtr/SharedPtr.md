@@ -1,5 +1,9 @@
 # Shared Pointer: Klasse `std::shared_ptr`
 
+[Quellcode](SharedPtr.cpp)
+
+---
+
 An Hand von zwei Beispielen wird die Arbeitsweise der `std::shared_ptr`-Klasse demonstriert.
 
 Ausgabe des ersten Code-Snippets:

@@ -1,5 +1,9 @@
 # Structured Binding
 
+[Quellcode](StructuredBinding.cpp)
+
+---
+
 Das so genannte *Structured Binding* besitzt syntaktisch folgendes Aussehen:
 
 ```cpp
