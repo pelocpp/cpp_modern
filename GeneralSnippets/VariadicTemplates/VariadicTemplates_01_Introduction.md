@@ -146,7 +146,7 @@ Ein Parameter Pack kann prinzipiell auch keine Parameter annehmen.
 In diesen Fällen ergibt die Pack-Expansion eine leere Liste.
 In Fällen, in denen der Pack-Expansion ein Komma vorangestellt ist,
 wird dieses Komma vom Übersetzer ignoriert.
-In unserem obigen Beispiel würde der Aufruf `f(22)` eine Tempalteinstanziierung
+In unserem obigen Beispiel würde der Aufruf `f(22)` eine Templateinstanziierung
 wie folgt ergeben:
 
 ```cpp

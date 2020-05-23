@@ -186,6 +186,15 @@
     <ClCompile Include="VariadicTemplates_Systematic\VariadicTemplate_XX_Systematic.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SFINAE_EnableIf\Sfinae01.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SFINAE_EnableIf\Sfinae02.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DeclType\Decltype.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -327,6 +336,12 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="VariadicTemplates\VariadicTemplates_05_Visitor.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="SFINAE_EnableIf\Sfinae.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="DeclType\decltype.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

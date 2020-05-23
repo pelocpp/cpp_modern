@@ -151,6 +151,7 @@
     <ClCompile Include="ConstExpr\ConstExpr.cpp" />
     <ClCompile Include="ConstExpr\ConstExprExtended.cpp" />
     <ClCompile Include="ConstructursOrder\ConstructorsOrder.cpp" />
+    <ClCompile Include="DeclType\Decltype.cpp" />
     <ClCompile Include="Explicit\Explicit.cpp" />
     <ClCompile Include="FileSystem\FileSystem.cpp" />
     <ClCompile Include="Global\Dummy.cpp" />
@@ -172,6 +173,8 @@
     <ClCompile Include="RAII\RAII02.cpp" />
     <ClCompile Include="ReferenceWrapper\ReferenceWrapper.cpp" />
     <ClCompile Include="RValueLValue\RValueLValue.cpp" />
+    <ClCompile Include="SFINAE_EnableIf\Sfinae01.cpp" />
+    <ClCompile Include="SFINAE_EnableIf\Sfinae02.cpp" />
     <ClCompile Include="SharedPtr\SharedPtr.cpp" />
     <ClCompile Include="StaticAssert\StaticAssert.cpp" />
     <ClCompile Include="StructuredBinding\StructuredBinding.cpp" />
@@ -209,6 +212,7 @@
     <None Include="Casts\Casts.md" />
     <None Include="ConstExpr\Constexpr.md" />
     <None Include="ConstructursOrder\CtorDtorOrder.md" />
+    <None Include="DeclType\decltype.md" />
     <None Include="Explicit\Explicit.md" />
     <None Include="FileSystem\FileSystem.md" />
     <None Include="Initialization\UniformInitialization.md" />
@@ -226,6 +230,7 @@
     <None Include="RAII\RAII.md" />
     <None Include="ReferenceWrapper\ReferenceWrapper.md" />
     <None Include="RValueLValue\RValueLValue.md" />
+    <None Include="SFINAE_EnableIf\Sfinae.md" />
     <None Include="SharedPtr\SharedPtr.md" />
     <None Include="StaticAssert\StaticAssertion.md" />
     <None Include="StructuredBinding\StructuredBinding.md" />

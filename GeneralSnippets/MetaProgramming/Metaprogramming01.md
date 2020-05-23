@@ -265,7 +265,7 @@ e = 109601/40320
 
 Die Anregungen zu den Beispielen aus diesem Code-Snippet finden sich unter
 
-[Nico Brailovsky's blog](https://monoinfinito.wordpress.com/series/introduction-to-c-template-metaprogramming//)<br>(abgerufen am 20.05.2020).
+[Nico Brailovsky's blog](https://monoinfinito.wordpress.com/series/introduction-to-c-template-metaprogramming/)<br>(abgerufen am 20.05.2020).
 
 ---
 
