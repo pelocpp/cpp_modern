@@ -30,7 +30,7 @@ End-of-program
 
 Interessant ist der Weak-Pointer bei zyklischen Referenzen:
 
-<img src="cycle.jpg" width="500">
+<img src="cpp_snippets_cyclic_references.png" width="700">
 
 Beachten Sie die Ausgabe des zweiten Code-Snippets: Hier haben wir es mit
 einer zyklischen Referenz von Shared-Pointern zu tun. Im einen Fall werden
