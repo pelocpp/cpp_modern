@@ -1,6 +1,6 @@
 # Einheitliche Initialisierung
 
-[Quellcode](Initialization.cpp)
+[Quellcode](UniformInitialization.cpp)
 
 ---
 
