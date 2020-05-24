@@ -11,25 +11,29 @@ Mit den Neuerungen des so genannten "Modern C++" lassen sich aber auch
 einige Aspekte der "funktionalen Programmierung" in C++ darstellen.
 
 "Funktionen" ähneln Methoden. Aber anders als Methoden werden Funktionen bei der "funktionalen Programmierung" weitergereicht, beispielsweise als Argumente an Methoden oder als Return-Wert einer Methode.
-Dies ist in C++ spätestens seid Einführung der Lambda-Funktionen elegant möglich.
+Dies ist in C++ spätestens seit Einführung der Lambda-Funktionen elegant möglich.
 
-"Rein funktionale Sprachen" ("pure functional Language") wie beispielsweise Haskell sind zustandslos und Funktionen haben keinerlei Seiteneffekte. Sie ändern keine Daten, sondern können höchstens neue Daten returnieren. Das ist bei C++ anders. Hier können Funktionen durchaus Daten ändern.
+"Rein funktionale Sprachen" ("*pure functional languages*") wie beispielsweise *Haskell* sind zustandslos und Funktionen haben keinerlei Seiteneffekte. Sie ändern keine Daten, sondern können höchstens neue Daten als Resultat einer Funktion zurückliefern.
+Das ist bei natürlich C++ anders. Hier können Funktionen durchaus Daten ändern, sei es wir betrachten
+den Zustand eines Objekts oder mögen es Seiteneffekte anderen Ursprungs sein.
 
-"Rein funktionale Programmierung" eignet sich ideal zur Parallelverarbeitung sowie für mathematische Aufgaben, und steht in dem Ruf, dass so erstellte Programme weniger Fehler enthalten sollen.
-Nachteilig ist, dass sich reale Objekte und Zustandsänderungen nur schwierig abbilden lassen, was die Programmierung realer Vorgänge und Geschäftsprozesse erschwert. Dies ist mit objektorientierter zustandsbehafteter Programmierung wesentlich leichter realisierbar.
+"Rein funktionale Programmierung" eignet sich ideal zur Parallelverarbeitung sowie für mathematische Aufgaben und steht in dem Ruf,
+dass auf diese Weise erstellte Programme weniger fehleranfällig sein sollen.
+Nachteilig ist, dass sich reale Objekte und Zustandsänderungen nur schwierig abbilden lassen, was die Programmierung realer Vorgänge und Geschäftsprozesse erschwert.
+Dies ist mit objektorientierter zustandsbehafteter Programmierung wesentlich leichter realisierbar.
 
 ## Funktionen höherer Ordnung
 
-Funktionen, die entweder Funktionen als Argument annehmen oder als Ergebnis zurückgeben können, werden als
-*Funktionen höherer Ordnung* vezeichnet. Die Klassiker aus der funktionalen Prohgrammierung sind die drei
+Funktionen, die entweder Funktionen als Argument annehmen oder als Ergebnis zurückgeben, werden als
+*Funktionen höherer Ordnung* bezeichnet. Die Klassiker aus der funktionalen Prohgrammierung sind die drei
 Funktionen `map`, `filter` und `fold`. Diese drei Funktionen höherer Ordnung werden über eine Funktion parametrisiert
-und wenden diese sukzessive aus die Elemente eines Containers an. In C++ bieten sich an dieser Stelle
-speziell die Lambda-Funktionen an.
+und wenden diese sukzessive auf die Elemente eines Containers an. In C++ bieten sich an dieser Stelle
+speziell Lambda-Funktionen an.
 
   * `map` - Transformation der Elemente. Dabei entsteht eine neue Menge von Elementen (derselben Anzahl), die typischerweise
-    einen anderen Datentyp haben. So können zum Beispiel Umrechnungen, Extraktionen oder Umwandlungen durchgeführt werden.
+    einen anderen Datentyp haben. So können zum Beispiel Umrechnungen oder Umwandlungen durchgeführt werden.
   * `filter` - Filterung gewünschter Elemente aus einer Menge von Elementen (Container).
-    Der Datentyp der Elemente bleibt derselbe, aber die Menge der Elemente wird reduziert.
+    Der Datentyp der Elemente bleibt derselbe, aber die Menge der Elemente des Ursprungscontainers wird reduziert.
   * `fold` - Reduktion der Elemente eines Containers auf ein Endergebnis (Resultat). Typischerweise wird eine Lambda-Funktion
     mit zwei Argumenten auf ein Element des Containers und das vorangehende Zwischenergebnis angewendet.
 
@@ -37,7 +41,7 @@ speziell die Lambda-Funktionen an.
 ## Filter-Map-Reduce Pattern
 
 "Filter-Map-Reduce" beschreibt ein Pattern, bei dem eine Menge von Daten in einer Abfolge von bestimmten Schritten verarbeitet werden.
-Reduce ist eine andere Bezeichnung für fold, die ebenfalls gerne für diese Funktionalität herangezogen wird.
+`reduce` ist eine andere Bezeichnung für `fold`.
 
 ## Beispiele
 
