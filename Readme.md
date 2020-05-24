@@ -49,6 +49,7 @@ Tabelle 1. Grundlagen-Code-Snippets.
 | [ConstExpr](GeneralSnippets/ConstExpr/Constexpr.md) | Methoden, die der Compiler zur Übersetzungszeit ausführt |
 | [DeclType](GeneralSnippets/DeclType/decltype.md) | `decltype` und `std::declval` |
 | [Explicit](GeneralSnippets/Explicit/Explicit.md) | Schlüsselwort `explicit` |
+| [FunctionalProgramming](GeneralSnippets/FunctionalProgramming/FunctionalProgramming.md) | Funktionale Programmierung |
 | [InitializerList](GeneralSnippets/InitializerList/StdInitializerList.md) | Klasse `std::initializer_list<T>` |
 | [Lambda](GeneralSnippets/Lambda/Lambda.md) | Lambda-Funktionen |
 | [Literals](GeneralSnippets/Literals/Literals.md) | Benutzerdefinierte Literale |

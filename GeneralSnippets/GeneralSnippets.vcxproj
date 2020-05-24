@@ -154,6 +154,7 @@
     <ClCompile Include="DeclType\Decltype.cpp" />
     <ClCompile Include="Explicit\Explicit.cpp" />
     <ClCompile Include="FileSystem\FileSystem.cpp" />
+    <ClCompile Include="FunctionalProgramming\FunctionalProgramming.cpp" />
     <ClCompile Include="Global\Dummy.cpp" />
     <ClCompile Include="InitializerList\InitializerList.cpp" />
     <ClCompile Include="InputOutputStreams\InputOutputStreams.cpp" />
@@ -214,6 +215,7 @@
     <None Include="DeclType\decltype.md" />
     <None Include="Explicit\Explicit.md" />
     <None Include="FileSystem\FileSystem.md" />
+    <None Include="FunctionalProgramming\FunctionalProgramming.md" />
     <None Include="Initialization\UniformInitialization.md" />
     <None Include="InitializerList\StdInitializerList.md" />
     <None Include="InputOutputStreams\Streams.md" />

@@ -192,6 +192,9 @@
     <ClCompile Include="UniquePtr\UniquePtr.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="FunctionalProgramming\FunctionalProgramming.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -342,6 +345,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="UniformInitialization\UniformInitialization.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="FunctionalProgramming\FunctionalProgramming.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
