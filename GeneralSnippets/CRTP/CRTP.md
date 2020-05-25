@@ -65,6 +65,7 @@ Diese Technik hat einen Namen - sie heißt *Curiously Recurring Template Pattern
 
 HIer weiter !!!
 
+Und im Readme.md ergänzen !!!
 
 ---
 

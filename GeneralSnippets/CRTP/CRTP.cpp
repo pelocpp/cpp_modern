@@ -29,15 +29,10 @@ namespace CRTP {
         d.interface();  // -> "Derived implementation"
     }
 
-    // Simple C++ program to demonstrate run-time polymorphism
-// and CRTP (Curiously recurring template pattern)
-    WEITER
-#include <chrono> 
-#include <iostream> 
+    // simple C++ program to demonstrate run-time polymorphism
+    // and CRTP (Curiously Recurring Template Pattern)
 
     using Clock = std::chrono::high_resolution_clock;
-
-    // constexpr int MaxIterations = 10;
     constexpr int MaxIterations = 10000000;
 
     // dimension of an image 
@@ -55,7 +50,7 @@ namespace CRTP {
         }
     };
 
-    // base class for all image types 
+    // classical approach: base class for all image types
     class Image {
     protected:
         Dimension m_dimension;
@@ -83,8 +78,9 @@ namespace CRTP {
         }
     };
 
-    // base class for all image types. The template parameter T
-    // is used to know type of derived class pointed by pointer. 
+    // CRTP approach: base class for all image types.
+    // The template parameter T is used to specify the type
+    // of a derived class pointed to by a pointer 
     template <class T>
     class Image2 {
     protected:
@@ -123,7 +119,7 @@ namespace CRTP {
     };
 
     // driver code that calls virtual function 
-    void test_crtp_01()
+    void test_02_crtp()
     {
         Image* pImage = new TiffImage;
 
@@ -140,8 +136,8 @@ namespace CRTP {
             << " microseconds" << std::endl;
     }
 
-    // driver code that calls virtual function 
-    void test_crtp_02()
+    // driver code for CRTP benchmark
+    void test_03_crtp()
     {
         Image2<TiffImage2>* pImage = new TiffImage2;
 
@@ -157,14 +153,15 @@ namespace CRTP {
             << std::chrono::duration_cast<std::chrono::microseconds>(end - start).count()
             << " microseconds" << std::endl;
     }
-
 }
 
-// int main_crtp()
-int main()
+int main_crtp()
 {
     using namespace CRTP;
     test_01_crtp();
+    test_02_crtp();
+    test_03_crtp();
+
     return 1;
 }
 
