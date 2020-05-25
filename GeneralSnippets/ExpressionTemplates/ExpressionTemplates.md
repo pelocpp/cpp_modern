@@ -8,15 +8,15 @@
 
 Ein *Expression Template* ist eine Optimierungstechnik zur Übersetzungszeit,
 die hauptsächlich im "Scientific Computing" Anwendung findet.
-Der Hauptzweck besteht darin, unnötige Temporärvariablen, -objekte zu vermeiden und Schleifenberechnungen
-mit einem einzigen Durchgang zu optimieren (normalerweise bei Operationen mit wiederholten numerischen Operationen).
-*Expression Templates* wurden ursprünglich entwickelt, um die Ineffizienzen einer naiven Operatorüberladung bei der Implementierung
+Der Hauptzweck besteht darin, unnötige Temporärvariablen bzw. -objekte zu vermeiden und Schleifenberechnungen
+mit einem einzigen Durchgang zu optimieren (bei Operationen mit wiederholten numerischen Operationen).
+*Expression Templates* wurden ursprünglich entwickelt, um die Ineffizienzen einer naiven Operatoren-Überladung bei der Implementierung
 numerischer `Vector`- oder `Matrix`-Klassen zu umgehen.
 
 #### Klassische Vorgehensweise 
 
 Um ein besseres Verständnis für *Expression Templates* zu erlangen, versuchen wir zu verstehen,
-warum Sie sie überhaupt benötigen. Dazu betrachten wir zur Veranschaulichung eine einfache `Matrix`-Klasse:
+warum wir sie überhaupt benötigen. Dazu betrachten wir zur Veranschaulichung eine einfache `Matrix`-Klasse:
 
 ```cpp
 template <typename T, size_t COL, size_t ROW>
@@ -76,17 +76,15 @@ die die natürliche mathematische Notation für Matrizen nachahmt, um nicht zu s
 Damit ist vor allem die letzte Anweisung `result = a + b + c;` gemeint.
 
 Leider ist genau diese Anweisung im Vergleich zu einer äquivalenten, optimierten Version sehr ineffizient.
-Um zu verstehen, warum, müssen Sie überlegen, was passiert, wenn Sie einen Ausdruck wie Matrix `result = a + b + c;` schreiben.
+Um zu verstehen, warum, müssen wir uns überlegen, was passiert, wenn wir einen Ausdruck wie `Matrix result = a + b + c;` schreiben.
 Dieser lautet im Opcode tatsächlich `((a + b) + c)` oder `operator+ (operator+ (a, b), c)`.
 Mit anderen Worten, die Wiederholungsschleife innerhalb des `+`-Operators wird zweimal ausgeführt,
-während sie genauso leicht auch in einem einzigen Durchgang ausgeführbar wäre.
+während sie genauso leicht auch in einem einzigen Durchgang ausführbar wäre.
 Dies führt auch dazu, dass zwei temporäre `Matrix`-Objekte erstellt werden, was sich zwar zunächst nur auf den benötigten Speicherplatz auswirkt,
-die Rechenleistung des Programms trotzdem weiter beeinträchtigt.
+die Rechenleistung des Programms trotzdem zusätzlich beeinträchtigt.
 
-Im Prinzip haben wir durch das Hinzufügen  zur Klasse `Matrix` einer Notation in der Nähe ihres mathematischen Gegenstücks
-diese sehr ineffizient gemacht!
-
-Ohne Überladung des `+`-Operators könnten wir beispielsweise eine weitaus effizientere Summenbildung von Matrizen
+Im Prinzip haben wir die Klasse `Matrix` mit einer Notation in der Nähe ihres mathematischen Gegenstücks
+sehr ineffizient gemacht! Ohne Überladung des `+`-Operators könnten wir beispielsweise eine weitaus effizientere Summenbildung von Matrizen
 mit einem einzigen Durchlauf wie folgt implementieren:
 
 ```cpp
