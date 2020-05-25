@@ -5,10 +5,10 @@
 C++ ist eine high-level, general-purpose Programmiersprache, 
 die von Bjarne Stroustrup als Erweiterung der Programmiersprache C bzw. "C mit Klassen" erstellt wurde.
 Die Sprache hat sich im Laufe der Zeit erheblich erweitert, und modernes C++ verfügt jetzt
-über objektorientierte, generische und funktionale Funktionen sowie über Funktionen zur Low-Level Speichermanipulation.
+über objektorientierte, generische und funktionale Möglichkeiten sowie über Funktionen zur Low-Level Speichermanipulation.
 Es wird fast immer als kompilierte Sprache implementiert, und viele Anbieter bieten für C++ Compiler an,
 darunter die Free Software Foundation, LLVM, Microsoft, Intel, Oracle und IBM.
-Daher ist es auf vielen Plattformen verfügbar.
+C++ ist daher auf sehr vielen Plattformen verfügbar.
 
 ## Literaturverzeichnis
 
@@ -49,6 +49,7 @@ Tabelle 1. Grundlagen-Code-Snippets.
 | [ConstExpr](GeneralSnippets/ConstExpr/Constexpr.md) | Methoden, die der Compiler zur Übersetzungszeit ausführt |
 | [DeclType](GeneralSnippets/DeclType/decltype.md) | `decltype` und `std::declval` |
 | [Explicit](GeneralSnippets/Explicit/Explicit.md) | Schlüsselwort `explicit` |
+| [ExpressionTemplates](GeneralSnippets/ExpressionTemplates/ExpressionTemplates.md) | Expression Templates |
 | [FunctionalProgramming](GeneralSnippets/FunctionalProgramming/FunctionalProgramming.md) | Funktionale Programmierung |
 | [InitializerList](GeneralSnippets/InitializerList/StdInitializerList.md) | Klasse `std::initializer_list<T>` |
 | [Lambda](GeneralSnippets/Lambda/Lambda.md) | Lambda-Funktionen |

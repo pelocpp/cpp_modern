@@ -198,6 +198,9 @@
     <ClCompile Include="CRTP\CRTP.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ExpressionTemplates\ExpressionTemplates.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -354,6 +357,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="CRTP\CRTP.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="ExpressionTemplates\ExpressionTemplates.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
