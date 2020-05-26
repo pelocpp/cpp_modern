@@ -204,6 +204,9 @@
     <ClCompile Include="CommonType\CommonType.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Exercises\Exercises.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -366,6 +369,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="CommonType\CommonType.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Exercises\Exercises.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

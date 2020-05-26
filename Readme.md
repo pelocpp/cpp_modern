@@ -2,13 +2,18 @@
 
 ## Überblick
 
-C++ ist eine high-level, general-purpose Programmiersprache, 
-die von Bjarne Stroustrup als Erweiterung der Programmiersprache C bzw. "C mit Klassen" erstellt wurde.
+**C++** ist eine high-level, general-purpose Programmiersprache, 
+die von Bjarne Stroustrup als Erweiterung der Programmiersprache C erfunden wurde.
+*Cfront* war der ursprüngliche Compiler für C ++ (damals bekannt als "*C with Classes*") aus der Zeit um 1983,
+der C ++ in C konvertierte. Entwickelt wurde der Übersetzer von Bjarne Stroustrup bei AT&T Bell Labs.
+
 Die Sprache hat sich im Laufe der Zeit erheblich erweitert, und modernes C++ verfügt jetzt
 über objektorientierte, generische und funktionale Möglichkeiten sowie über Funktionen zur Low-Level Speichermanipulation.
 Es wird fast immer als kompilierte Sprache implementiert, und viele Anbieter bieten für C++ Compiler an,
 darunter die Free Software Foundation, LLVM, Microsoft, Intel, Oracle und IBM.
 C++ ist daher auf sehr vielen Plattformen verfügbar.
+
+---
 
 ## Literaturverzeichnis
 
@@ -18,6 +23,18 @@ fällt oftmals gar nicht so leicht.
 Aus diesem Grund habe ich im Folgenden eine [Liste](GeneralSnippets/Literatur/Literature.md)
 zusammengestellt,
 welche Bücher bei mir derzeit hoch im Kurs stehen und die meiner Meinung nach absolut lesenswert sind. 
+
+---
+
+## Übungen
+
+Einige kleinere Übungen (samt Musterlösungen) sind diesem Repository ebenfalls beigefügt.
+Sie können bei weitem nicht den gesamten Stoffumfang des *Modern C++* Sprachumfangs abdecken,
+dienen aber dem Zweck, die "graue Materie" an der einen oder anderen Stelle etwas aufzuhellen:
+
+[Zu den Übungen](GeneralSnippets/Exercises/Exercises.md)
+
+---
 
 ## Katalog aller Code-Snippets
 
