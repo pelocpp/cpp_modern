@@ -148,6 +148,7 @@
     <ClCompile Include="ArrayDecay\ArrayDecay.cpp" />
     <ClCompile Include="Array\Array.cpp" />
     <ClCompile Include="Casts\Casts.cpp" />
+    <ClCompile Include="CommonType\CommonType.cpp" />
     <ClCompile Include="ConstExpr\ConstExpr.cpp" />
     <ClCompile Include="ConstExpr\ConstExprExtended.cpp" />
     <ClCompile Include="ConstructursOrder\ConstructorsOrder.cpp" />
@@ -212,6 +213,7 @@
     <None Include="ArrayDecay\ArrayDecay.md" />
     <None Include="Array\StdArray.md" />
     <None Include="Casts\Casts.md" />
+    <None Include="CommonType\CommonType.md" />
     <None Include="ConstExpr\Constexpr.md" />
     <None Include="ConstructursOrder\CtorDtorOrder.md" />
     <None Include="CRTP\CRTP.md" />

@@ -201,6 +201,9 @@
     <ClCompile Include="ExpressionTemplates\ExpressionTemplates.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CommonType\CommonType.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -360,6 +363,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="ExpressionTemplates\ExpressionTemplates.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="CommonType\CommonType.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

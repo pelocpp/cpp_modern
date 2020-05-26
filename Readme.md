@@ -47,6 +47,7 @@ Tabelle 1. Grundlagen-Code-Snippets.
 | [Any](GeneralSnippets/Any/StdAny.md) | Neue STL-Utility Klasse `std::any` |
 | [Array](GeneralSnippets/Array/StdArray.md) | Neue STL-Utility Klasse `std::array` |
 | [ConstExpr](GeneralSnippets/ConstExpr/Constexpr.md) | Methoden, die der Compiler zur Übersetzungszeit ausführt |
+| [CommonType](GeneralSnippets/CommonType/CommonType.md) | Utility `std::common_type` |
 | [CRTP](GeneralSnippets/CRTP/CRTP.md) | Curiously Recurring Template Pattern (CRTP) |
 | [DeclType](GeneralSnippets/DeclType/decltype.md) | `decltype` und `std::declval` |
 | [Explicit](GeneralSnippets/Explicit/Explicit.md) | Schlüsselwort `explicit` |
