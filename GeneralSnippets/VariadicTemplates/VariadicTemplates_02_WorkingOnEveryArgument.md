@@ -27,7 +27,7 @@ Dies ist offensichtlich keine durch Kommas getrennte Liste:
   doSomething(argN);
 ```
 
-Es verwunderert also nicht, dass das folgenden Code-Fragment nicht kompilierbar ist:
+Es verwundert also nicht, dass folgendes Code-Fragment nicht kompilierbar ist:
 
 ```cpp
 template <class... ARGS>
@@ -49,7 +49,7 @@ void doSomethingForAll(Args const&... args) {
 Dieses Fragment müssen Sie genau betrachten: Die Variable `list` wird hier als
 `std::initializer_list`-Objekt vorbelegt - mit welchen Werten
 auch immer, die von `doSomething` zurückgeliefert werden. Die Erzeugung eines 
-`std::initializer_list`-Objekt ist direkt im Quellcode nicht erkennbar,
+`std::initializer_list`-Objekts ist direkt im Quellcode nicht erkennbar,
 da dies durch die *Uniform Initialization Syntax* sehr kompakt formulierbar ist,
 also ohne Verwendung des `std::initializer_list`-Bezeichners!
 
@@ -76,7 +76,7 @@ void doSomethingForAll<int, char, double>(const int & __args0, const char & __ar
 #endif
 ```
 
-Voilà - hier haben wir die `std::initializer_list`!. Ich haben den Output nur noch leicht 
+Voilà - hier haben wir die `std::initializer_list`!. Ich habe den Output nur noch leicht 
 umformatiert, damit das Ganze auf einer GitHub-Seite besser dargestellt wird. Ein Beispiel
 für den Aufruf von `doSomethingForAll` mit einer konkreten `doSomething`-Funktion finden Sie
 im korrespondierenden Code-Snippet vor!
@@ -84,8 +84,8 @@ im korrespondierenden Code-Snippet vor!
 Bei genauem Hinschauen erkennen Sie, dass da jede Menge zusätzlicher Kommas vorhanden sind,
 die wir so nicht erwartet haben.
 
-Da Aufrufe von `doSomething` zu eine Mixtur unterschiedlicher Typen führen kann, bei denen auch `void` 
-zulässig ist, kann es zu Übersetzungsfehlern kommen (*cannot initialize an array element of type 'const int' with an rvalue of type 'void'*).
+Da Aufrufe von `doSomething` zu einer Mixtur unterschiedlicher Typen führen können,
+bei denen auch `void` zulässig ist, kann es zu Übersetzungsfehlern kommen (*cannot initialize an array element of type 'const int' with an rvalue of type 'void'*).
 Ein weiterer Trick besteht nun darin, einen Ausdruck als Erweiterungsmuster so zu erstellen,
 dass zwar immer dieselbe Funktion aufgerufen wird (egal, welchen Rückgabewert sie besitzt),
 aber immer ein ganz anderer Wert als Argument für das `std::initializer_list`-Objekt genommen wird.
@@ -131,7 +131,7 @@ da der Compiler nicht die entsprechende `print`-Funktion für einen Aufruf
 mit null Argumenten findet!
 
 Wie immer kann jede Rekursion in eine Iteration konvertiert werden!
-Für variadischen Templates sprechen wir dann von einer Parameter Pack Expansion:
+Für variadische Templates sprechen wir dann von einer Parameter Pack Expansion:
 
 ```cpp
 template <class Head, class... Tail>

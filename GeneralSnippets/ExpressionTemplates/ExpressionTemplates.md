@@ -15,7 +15,7 @@ numerischer `Vector`- oder `Matrix`-Klassen zu umgehen.
 
 #### Klassische Vorgehensweise 
 
-Um ein besseres Verständnis für *Expression Templates* zu erlangen, versuchen wir zu verstehen,
+Um ein besseres Verständnis für *Expression Templates* zu bekommen, versuchen wir zu verstehen,
 warum wir sie überhaupt benötigen. Dazu betrachten wir zur Veranschaulichung eine einfache `Matrix`-Klasse:
 
 ```cpp
@@ -51,17 +51,18 @@ operator+(const Matrix<T, COL, ROW>& lhs, const Matrix<T, COL, ROW>& rhs)
 }
 ```
 
-Mit dieser Definition einer Klasse `Matrix` können wir nun eine Addition von Matrizen wie folgt formulieren:
+Mit dieser Definition einer Klasse `Matrix` könnten wir nun eine Addition von Matrizen
+so formulieren:
 
 ```cpp
-const std::size_t cols = 1000;
-const std::size_t rows = 1000;
+const size_t cols = 1000;
+const size_t rows = 1000;
 
 Matrix<double, cols, rows> a, b, c;
 
 // initialize a, b & c
-for (std::size_t y = 0; y != rows; ++y) {
-    for (std::size_t x = 0; x != cols; ++x) {
+for (size_t y = 0; y != rows; ++y) {
+    for (size_t x = 0; x != cols; ++x) {
         a(x, y) = 1.0;
         b(x, y) = 2.0;
         c(x, y) = 3.0;
@@ -71,7 +72,7 @@ for (std::size_t y = 0; y != rows; ++y) {
 Matrix<double, cols, rows> result = a + b + c;  // result(x, y) = 6 
 ```
 
-Durch das Überladen des `+` -Operators erlangen wir eine Schreibweise in C ++, 
+Durch das Überladen des `+` -Operators haben wir eine Schreibweise in C ++, 
 die die natürliche mathematische Notation für Matrizen nachahmt, um nicht zu sagen: kopiert.
 Damit ist vor allem die letzte Anweisung `result = a + b + c;` gemeint.
 
@@ -79,16 +80,16 @@ Leider ist genau diese Anweisung im Vergleich zu einer äquivalenten, optimierte
 Um zu verstehen, warum, müssen wir uns überlegen, was passiert, wenn wir einen Ausdruck wie `Matrix result = a + b + c;` schreiben.
 Dieser lautet im Opcode tatsächlich `((a + b) + c)` oder `operator+ (operator+ (a, b), c)`.
 Mit anderen Worten, die Wiederholungsschleife innerhalb des `+`-Operators wird zweimal ausgeführt,
-während sie genauso leicht auch in einem einzigen Durchgang ausführbar wäre.
+während sie genauso leicht in einem einzigen Durchgang ausführbar wäre.
 Dies führt auch dazu, dass zwei temporäre `Matrix`-Objekte erstellt werden, was sich zwar zunächst nur auf den benötigten Speicherplatz auswirkt,
 die Rechenleistung des Programms trotzdem zusätzlich beeinträchtigt.
 
-Im Prinzip haben wir die Klasse `Matrix` mit einer Notation in der Nähe ihres mathematischen Gegenstücks
-sehr ineffizient gemacht! Ohne Überladung des `+`-Operators könnten wir beispielsweise eine weitaus effizientere Summenbildung von Matrizen
-mit einem einzigen Durchlauf wie folgt implementieren:
+Im Prinzip haben wir die Klasse `Matrix` mit Notationen in der Nähe
+der mathematischen Realität sehr ineffizient gemacht! Ohne Überladung des `+`-Operators könnten wir beispielsweise eine weitaus effizientere Summenbildung von Matrizen
+mit einem einzigen Durchlauf auf diese Weise implementieren:
 
 ```cpp
-template<typename T, std::size_t COL, std::size_t ROW>
+template<typename T, size_t COL, size_t ROW>
 Matrix<T, COL, ROW> add3(const Matrix<T, COL, ROW>& a,
                          const Matrix<T, COL, ROW>& b,
                          const Matrix<T, COL, ROW>& c)
@@ -113,12 +114,12 @@ um eine bessere Laufzeit zu erzielen.
 Das Problem ergibt sich aus der Tatsache, dass der Ausdruck `Matrix result = a + b + c;` zu
 "eifrig" (engl.  "eagerly") ausgewertet wird, bevor der Compiler die Möglichkeit hatte,
 den gesamten Baum des arithmetischen Ausdrucks zu erstellen.
-Mit anderen Worten, was wir wirklich erreichen möchten, ist, dass `a + b + c` in einem Durchlauf berechnet wird
+Mit anderen Worten: Was wir wirklich erreichen möchten, ist, dass `a + b + c` in einem Durchlauf berechnet wird
 und der resultierende Ausdruck an `result` nur einmal zugewiesen wird.
 
 Das ist die Kernidee von "*Expression Templates*": Anstatt dass der `+`-Operator
 das Ergebnis des Addierens von zwei Matrix-Instanzen sofort bildet,
-wird statt dessen eine "Vorlage" für die zukünftige Auswertung des Teilausdrucks zurückgegeben,
+wird stattdessen eine "Vorlage" für die zukünftige Auswertung des Teilausdrucks zurückgegeben,
 sobald der gesamte Ausdrucksbaum erstellt wurde.
 
 Eine derartige Vorlage, die der Summierung von zwei `Matrix`-Objekten entspricht, könnte
@@ -151,9 +152,10 @@ MatrixSum<LHS, RHS> operator+(const LHS& lhs, const LHS& rhs) {
 }
 ```
 
-Es ist unmittelbar zu erkennen, dass der `+`-Operator nicht mehr eine "eifrige" Berechnung des Ergebnisses
-(Summe von 2 Matrixinstanzen, die eine weitere Matrixinstanz wäre) zurückliefert,
-sondern eine Ausdrucksvorlage, die die Additionsoperation "repräsentiert".
+Es ist unmittelbar zu erkennen, dass der `+`-Operator
+nicht mehr eine "eifrige" Berechnung des Ergebnisses zurückliefert
+(Summe von 2 Matrixinstanzen, Erzeugung eines weiteren `Matrix`-Objekts),
+sondern nur eine "Ausdrucksvorlage", die die Additionsoperation "repräsentiert".
 Der wichtigste zu beachtende Punkt ist, dass der Ausdruck noch nicht berechnet wurde.
 Er enthält lediglich Verweise (folglich auch keine Kopien) auf seine beiden Operanden.
 
@@ -163,8 +165,8 @@ Tatsächlich hindert uns nichts daran, ein `MatrixSum`-Objekt und damit eine Aus
 MatrixSum<Matrix<double>, Matrix<double> > sumAB(a, b);
 ```
 
-Zu einem späteren Zeitpunkt, wenn man das Ergebnis der Summe tatsächlich benötigt,
-kann man den Ausdruck `result = a + b` wie folgt auswerten:
+Zu einem späteren Zeitpunkt kann man, wenn man das Ergebnis der Summe tatsächlich benötigt,
+den Ausdruck `result = a + b` wie folgt auswerten:
 
 ```cpp
 for (size_t y = 0; y != a.rows(); ++y) {
@@ -180,30 +182,31 @@ dass die Summe von `a` und `b` in einem einzigen Durchlauf ausgewertet und dem E
 Wie sieht es bei einer Summe der Gestalt  `a + b + c` aus? Dazu benötigen wir eine Ausdrucksvorlage der Gestalt 
 
 ```cpp
-MatrixSum<Matrix<double>, Matrix<double> > sumAB(a, b);   // von oben
+MatrixSum<Matrix<double>, Matrix<double> > sumAB(a, b);
 MatrixSum<MatrixSum<Matrix<double>, Matrix<double> >, Matrix<double> > sumABC(sumAB, c);
 ```
 
 Wiederum können wir in einem einzigen Durchlauf das gewünschte Resultat berechnen:
 
 ```cpp
-for (std::size_t y = 0; y != a.rows(); ++y) {
-    for (std::size_t x = 0; x != a.cols(); ++x) {
+for (size_t y = 0; y != a.rows(); ++y) {
+    for (size_t x = 0; x != a.cols(); ++x) {
         result(x, y) = sumABC(x, y);
     }
 }
 ```
 
-Das letzte Puzzleteil besteht nun darin, die betrachtete Ausdrucksvorlage tatsächlich in die `Matrix`-Klasse einzufügen.
-Dies wird im Wesentlichen durch die Bereitstellung einer Implementierung des Wertzuweisungsoperators+
-`operator=()` erreicht, der die Ausdrucksvorlage als Argument nimmt und in einem Durchgang auswertet,
-wie Sie es zuvor schon "manuell" betrachtet haben:
+Das letzte Puzzleteil besteht nun darin, die betrachtete Ausdrucksvorlage
+in die `Matrix`-Klasse einzufügen.
+Dies wird im Wesentlichen durch die Bereitstellung einer Implementierung des Wertzuweisungsoperators
+`operator=()` erreicht, der eine Ausdrucksvorlage als Argument entgegen nimmt
+und in einem Durchgang auswertet, wie wir es zuvor schon "manuell" betrachtet haben:
 
 ```cpp
 template <typename E>
 Matrix<T, COL, ROW>& operator=(const E& expression) {
-    for (std::size_t y = 0; y != rows(); ++y) {
-        for (std::size_t x = 0; x != cols(); ++x) {
+    for (size_t y = 0; y != rows(); ++y) {
+        for (size_t x = 0; x != cols(); ++x) {
             m_values[y * COL + x] = expression(x, y);
         }
     }
@@ -266,7 +269,7 @@ Done.
 
 ## Literaturhinweise:
 
-Die Anregungen zu den Beispielen aus diesem Code-Snippet finden sich unter
+Die Anregungen zu den Beispielen dieses Code-Snippets finden sich unter
 
 [RIP Tutorial](https://riptutorial.com/cplusplus/example/19992/a-basic-example-illustrating-expression-templates/)<br>(abgerufen am 25.05.2020).
 

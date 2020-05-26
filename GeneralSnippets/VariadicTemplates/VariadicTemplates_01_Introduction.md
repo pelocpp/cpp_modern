@@ -9,7 +9,7 @@
 ---
 
 Ab C++ 11 gibt es in C++ die so genannten *variadic Templates*, 
-mit denen ein einzelnes Template definiert werden kann,
+mit denen ein Template definiert werden kann,
 das eine beliebige Anzahl von Parametern annehmen kann.
 
 Grundsätzlich werden zwei neue syntaktische Elemente
@@ -60,12 +60,12 @@ dann gilt **ARGS... args** ≙ **T1 t1, T2 t2** und **args = t1, t2**.
 
 ## Expansion des Parameter Packs
 
-Es ist nicht möglich, ein *parameter pack* zu verwenden, außer es zu erweitern.
+Es ist nicht möglich, ein *parameter pack* anders zu verwenden als es zu erweitern.
 In den meisten Fällen ergibt die Erweiterung des *parameter packs* eine durch Kommas getrennte Liste von Ausdrücken,
 die die einzelnen Elemente des packs enthalten.
 
-Die einfachste Pack-Expansion ist nur der Names des packs,
-gefolgt von der Ellipse (...), was zu einer durch komma-getrennten Liste der pack-Elemente führt:
+Die einfachste Pack-Expansion ist nur der Name des *parameter packs*,
+gefolgt von der Ellipse (`...`), was zu einer durch komma-getrennten Liste der *pack*-Elemente führt:
 
 ```cpp
 template <typename... ARGS>
@@ -98,19 +98,19 @@ void f(int i, double args_1, char const* args_2, unsigned args_3) {
 }
 ```
 
-Nur um es kurz angesprochen zu haben: Bei `std::tuple` handelt es sich evenfalls
+Nur um es kurz angesprochen zu haben: Bei `std::tuple` handelt es sich ebenfalls
 um ein variadisches Klassentemplate.
 
 ## Ein weiteres Beispiel zur Parameter Pack Expansion
 
-Die Ellipses direkt nach dem Namen des Parameter packs ist die einfachste Form der Parameter Pack Expansion.
+Die Ellipses direkt nach dem Namen des Parameter Packs ist die einfachste Form der Parameter Pack Expansion.
 Es kann jedoch sehr wohl komplizierter sein. Im Prinzip können wir jedes Muster schreiben,
 das einen Parameter Pack Namen enthält, gefolgt von einer Ellipse.
 Das Ergebnis ist eine durch Kommas getrennte Liste von Mustern, wobei in jedem Muster der Pack Name
 durch ein Mitglied des Packs ersetzt wird.
 
 Nehmen wir zum Beispiel das zuvor verwendete Tupel.
-Normalerweise möchten wir das "*perfect forwarding*" verwenden ,
+Normalerweise möchten wir das "*perfect forwarding*" verwenden,
 um das Tupel aus den Funktionsargumenten zu erstellen. Werfen wir einen Blick auf ein Beispiel:
 
 ```cpp
@@ -122,7 +122,7 @@ void f(int i, ARGS&&... args) {
 ```
 
 Wir haben hier **drei** Pack-Expansionen: `ARGS&&...` bedeutet (beachten Sie die beiden &),
-dass wir eine Liste von Vorwärtsreferenzen habeb.
+dass wir eine Liste von Vorwärtsreferenzen haben.
 Die `ARGS...` Expansion für die `std::tuple` Templateparameter hatten wir bereits in dem
 Beispiel zuvor betrachtet.
 Die dritte Erweiterung `std::forward<ARGS>(args)...` enthält **zwei** Parameter Packs:
@@ -130,12 +130,16 @@ das Template Parameter Pack `ARGS` und das Funktionsparameterpack `args`.
 Immer wenn zwei Packs im Muster für eine Pack-Erweiterung erscheinen,
 werden beide gleichzeitig erweitert und müssen daher die gleiche Anzahl von Elementen haben!
 
-Die obige Funktion im Pseudo-Template-Code nach der Pack-Erweiterung würde folgendermaßen aussehen:
+Die obige Funktion im Pseudo-Template-Code nach der Pack-Erweiterung würde so aussehen:
 
 ```cpp
 template <typename Args_1, typename Args_2, /* etc ... */>
 void f(int i, Args_1&& args_1, Args_2&& args_2, /*...*/) {
-  std::tuple<Args_1, Args_2, /*...*/> argsTuple{ std::forward<Args_1>(args_1), std::forward<Args_2>(args_2), /*...*/ }; 
+  std::tuple<Args_1, Args_2, /*...*/> argsTuple{ 
+    std::forward<Args_1>(args_1),
+    std::forward<Args_2>(args_2), 
+    /*...*/ 
+  }; 
   //...
 }
 ```
@@ -146,7 +150,7 @@ Ein Parameter Pack kann prinzipiell auch keine Parameter annehmen.
 In diesen Fällen ergibt die Pack-Expansion eine leere Liste.
 In Fällen, in denen der Pack-Expansion ein Komma vorangestellt ist,
 wird dieses Komma vom Übersetzer ignoriert.
-In unserem obigen Beispiel würde der Aufruf `f(22)` eine Templateinstanziierung
+In unserem obigen Beispiel würde der Aufruf `f(22)` eine Template-Instanziierung
 wie folgt ergeben:
 
 ```cpp
@@ -160,7 +164,7 @@ void f(int i /*, ignored comma before empty pack expansion */) {
 
 Unsere bisherigen Beispiele haben sich auf den Gebrauch von Parameter Pack Expansionen konzentriert,
 um eine Folge von Template Argumenten zu erzeugen.
-In der Tat können  Parameter Pack Expansionen prinzipiell überall in C ++ zum EInsatz kommen,
+In der Tat können  Parameter Pack Expansionen prinzipiell überall in C ++ zum Einsatz kommen,
 wo die Grammatik eine durch Kommas getrennte Liste gestattet:
 
 | Einsatzmöglichkeiten von Parameter Pack Expansionen |
@@ -179,7 +183,7 @@ Tabelle 1. Einsatzmöglichkeiten von Parameter Pack Expansionen.
 
 Der `sizeof...`-Operator ist eine spezielle Form der Parameter Pack Expansion.
 Es gibt einfach die Anzahl der Parameter Pack Elemente zurück und funktioniert
-sowohl mit *Template parameter packs* als auch mit *Function parameter packs*:
+sowohl mit *Template Parameter Packs* als auch mit *Function Parameter Packs*:
 
 ```cpp
 template <typename... Ts>

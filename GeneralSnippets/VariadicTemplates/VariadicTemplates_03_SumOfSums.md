@@ -13,16 +13,17 @@
 ## Anwendungsfall "Summe von Summen"
 
 Im Abschnitt "Zugriff auf jedes einzelne Argument" haben wir den
-Parameter Pack Expansion Trick mit Hilfe von `std::initializer_list` betrachtet.
+Parameter Pack Expansionstrick mit Hilfe von `std::initializer_list` betrachtet.
 
-In diesem Abschnitt betrachnte wir einen Anwendungsfall hierzu.
+In diesem Abschnitt gehen wir hierzu auf einen Anwendungsfall ein.
 Er besteht darin, die Summe der Summen der Elemente mehrerer Container zu berechnen.
-Der Einfachheit halber nehmen wir zunächst an, dass alle diese Container `int` Werte enthalten.
+Der Einfachheit halber nehmen wir zunächst an, dass alle diese Container `int`-Werte enthalten.
 
 ## Algorithmus `std::accumulate`
 
-Bevor wir auf das variadische Template eingehen, werfen wir einen Blick auf den C++-Algorithmus `std::accumulate`.
-Er berechnet in einem Container die Summe aller Elemente im einem Bereich `[first, last)`,
+Bevor wir auf das variadische Template eingehen, werfen wir zunächst
+einen Blick auf den C++-Algorithmus `std::accumulate`.
+Er berechnet in einem Container die Summe aller Elemente im Bereich `[first, last)`,
 um es in Iterator-Schreibweise auszudrücken. Als Startwert fungiert in der Regel `0`, es wäre
 hier auch ein anderer Wert denkbar, nur haben wir es dann beim Resultat nicht mehr mit der Summenbildung zu tun.
 

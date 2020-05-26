@@ -55,7 +55,7 @@ da das Ändern der Reihenfolge zu einem anderen Typ führt - wie unterschiedlich d
 
 Bei Mehrfachvererbung gilt:
 "Die Reihenfolge der Ableitung ist relevant, um die Reihenfolge der Standardinitialisierung
-durch Konstruktoren und der Bereinigung durch Destruktoren zu bestimmen".
+durch Konstruktoren und die Bereinigung durch den Destruktor zu bestimmen".
 
 ---
 
@@ -64,7 +64,7 @@ zum Spezifizieren von Basisklassen. Sie kann jedoch nützlich sein,
 wenn sie als Teil einer Template-Implementierung verwendet wird,
 die derlei Abhängigkeiten ausschließen kann.
 
-Betrachen wir den Konstruktor der Klasse X noch einmal detaillierter.
+Betrachten wir den Konstruktor der Klasse X noch einmal detaillierter.
 Es sind **zwei** Parameter Pack Expansionen vorhanden:
 
 ```cpp
@@ -110,10 +110,10 @@ Eine **class C: public T...** wird folglich in eine Klasse `C` wie folgt "transf
 ## Eine Anwendung zu Mixins
 
 Als Beispiel betrachten wir eine *Repository*-Klasse im Sinne eines Assoziativ-Speichers. 
-Das Repository-Objekt soll über ein oder mehrere so genannte so genannte *Slots* verfügen,
+Das Repository-Objekt soll über ein oder mehrere so genannte *Slots* verfügen,
 auf die mit einem Schlüssel (*Key*) zugegriffen werden kann. Ferner enthält ein Slot einen Wert.
 
-Die genaue Intention im Aussehen eines `Repository`-Objekts entnehmen Sie bitte Abbildung 1:
+Die genaue Intention des Aussehens eines `Repository`-Objekts entnehmen Sie bitte Abbildung 1:
 
 <img src="cpp_snippets_mixins_01.png" width="500">
 
@@ -185,8 +185,8 @@ void main() {
 ```
 
 Man kann unschwer die Nachteile dieser Realisierung erkennen: Für jeden Slot muss man eine eigene Slot-Klasse
-definieren. Und zum zweiten muss man für jeden dieser Slots eine separate *getter*- und *setter*-Methode implementieren. 
-Die kann man nur als "Copy-Paste"-Programmierung bezeichnen, es muss andere Lösungswege geben.
+definieren. Und zum Zweiten muss man für jeden dieser Slots eine separate *getter*- und *setter*-Methode implementieren. 
+Die kann man nur als "Copy-Paste"-Programmierung bezeichnen, es muss andere Lösungsmöglichkeiten geben.
 
 #### Ansatz mit Mixins
 
@@ -202,7 +202,7 @@ protected:
         return m_value;
     }
 
-    void set(const T& value) // Same encapsulation.
+    void set(const T& value) // same encapsulation
     {
         m_value = value;
     }
@@ -251,7 +251,7 @@ Wenn Sie versuchen, zwei `int`-Slots anzulegen, wird ein Kompilierungsfehler aus
 
 #### Verbesserung des Mixins-Ansatzes
 
-Wir müssen unsere `Slot`-Klasse um einen zusätzlichen Template Parameter erweiteren (Typ für Schlüssel mit Standardwert).
+Wir müssen unsere `Slot`-Klasse um einen zusätzlichen Template Parameter erweitern (Typ für Schlüssel mit Standardwert).
 In Abbildung 2 können wir die Modifikationen erkennen. Wollen wir zwei Slot-Einträge
 desselben Typs haben (siehe Typ `std::string` in Abbildung 2), dann sind diese beiden
 Einträge durch eine zusätzlichen Schlüsseltyp zu unterscheiden.
@@ -337,12 +337,13 @@ Das vorliegende Beispiel eignet sich sehr gut, um eine `emplace`-Methode zu ergä
 Die `emplace`-Methode kennen wir bereits von der Container-Klasse `std::vector`:
 
 `emplace` erstellt ein Objekt an Ort und Stelle, so dass im `std::vector`-Objekt kein temporäres Hilfsobjekt
-angelegt werden muss. `emplace` wird direkt mit Argumenten für einen geeignenten Konstruktor
+angelegt werden muss. `emplace` wird direkt mit Argumenten für einen geeigneten Konstruktor
 des gewünschten Objekts aufgerufen. In diesem Fall vermeiden wir es also, ein unnötiges
 temporäres Objekt zu erstellen und wieder zu zerstören.
 
-Um den geigneten Konstruktor des Zielobjekts zu "finden", verwendet `emplace`
-eine variable Anzahl von Argumenten mit unterschiedlichen Typen und leitet sie an den korrespondierenden Konstruktor weiter.
+Um den geeigneten Konstruktor des Zielobjekts zu "finden", verwendet `emplace`
+eine variable Anzahl von Argumenten unterschiedlichen Typs und leitet diese
+an den korrespondierenden Konstruktor weiter.
 Eine variable Anzahl von Argumenten und Typen muss Sie an etwas erinnern ... variadische Templates!
 Damit stellen wir nun unsere Realisierung einer variadischen `emplace`-Methode
 sowie ihre Entsprechung in der `Slot`-Klasse vor.

@@ -54,13 +54,13 @@ namespace SFINAE {
         using type = T;
     };
 
-    template <class T, typename enable_if<std::is_integral<T>::value, T>::type* = nullptr>
+    template <typename T, typename enable_if<std::is_integral<T>::value, T>::type* = nullptr>
     void doSomething(const T& t) {
         // an implementation for integral types (int, char, unsigned, etc.)
         std::cout << "doSomething integral type: " << t << std::endl;
     }
 
-    template <class T, typename enable_if<std::is_class<T>::value, T>::type* = nullptr>
+    template <typename T, typename enable_if<std::is_class<T>::value, T>::type* = nullptr>
     void doSomething(const T& t) {
         // an implementation for class types
         std::cout << "doSomething class type: " << t() << std::endl;
@@ -81,13 +81,13 @@ namespace SFINAE {
     template <bool B, typename T = void>
     using enable_if_t = typename enable_if<B, T>::type;
 
-    template <class T, typename enable_if_t<std::is_integral<T>::value, T>* = nullptr>
+    template <typename T, typename enable_if_t<std::is_integral<T>::value, T>* = nullptr>
     void doSomething2(const T& t) {
         // an implementation for integral types (int, char, unsigned, etc.)
         std::cout << "doSomething integral type: " << t << std::endl;
     }
 
-    template <class T, typename enable_if_t<std::is_class<T>::value, T>* = nullptr>
+    template <typename T, typename enable_if_t<std::is_class<T>::value, T>* = nullptr>
     void doSomething2(const T& t) {
         // an implementation for class types
         std::cout << "doSomething class type: " << t() << std::endl;
