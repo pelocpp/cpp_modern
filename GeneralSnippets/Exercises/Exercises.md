@@ -2,22 +2,17 @@
 
 [Lösungen](Exercises.cpp)
 
-In diesem Abschnitt finden sich einige kleinere Übungen, um den vermittelten Stoff zu vertiefen.
+In diesem Abschnitt befinden sich einige kleinere Übungen, um den vermittelten Stoff zu vertiefen.
 
-## Übung 1: Generische Funktionen `miminum` und `maximum`
+## Übung 1: Generische Funktion `miminum`
 
 #### Vorausetzungen: variadische Templates, Utility-Funktion `std::common_type`
 
-Schreiben Sie zwei Funktionen `miminum` und `maximum`, die eine beliebige Anzahl von Argumenten
-beliebigen Typs akzeptieren und das Minimum bzw. Maximum aller Werte berechnen.
+Schreiben Sie eine Funktion `miminum`, die eine beliebige Anzahl von Argumenten
+beliebigen Typs akzeptiert und das Minimum aller Werte berechnet.
 
-Sie dürfen dabei zu Grunde legen, dass für alle Werte die Funktion `std::common_type` definiert ist.
-
----
-
-*Allgemeines*:
-
-Siehe das Beispiel im korrespondieren Quellcode.
+Sie dürfen dabei die Annahme zu Grunde legen, dass für alle Argumente
+die Funktion `std::common_type` definiert ist.
 
 ---
 
