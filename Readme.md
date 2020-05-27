@@ -20,9 +20,10 @@ C++ ist daher auf sehr vielen Plattformen verfügbar.
 Jedes Jahr gibt es immer noch zahlreiche Neuerscheinungen zum Thema C++, die auf den Markt kommen. 
 Sich aus der Fülle an alter und neuer C++-Literatur für einen Titel zu entscheiden,
 fällt oftmals gar nicht so leicht.
-Aus diesem Grund habe ich im Folgenden eine [Liste](GeneralSnippets/Literatur/Literature.md)
-zusammengestellt,
-welche Bücher bei mir derzeit hoch im Kurs stehen und die meiner Meinung nach absolut lesenswert sind. 
+Aus diesem Grund habe ich im Folgenden eine Liste mit Büchern zusammengestellt,
+die bei mir derzeit hoch im Kurs stehen und meiner Meinung nach absolut lesenswert sind. 
+
+[Zum Literaturverzeichnis](GeneralSnippets/Literatur/Literature.md).
 
 ---
 
@@ -32,7 +33,7 @@ Einige kleinere Übungen (samt Musterlösungen) sind diesem Repository ebenfalls
 Sie können bei weitem nicht den gesamten Stoffumfang des *Modern C++* Sprachumfangs abdecken,
 dienen aber dem Zweck, die "graue Materie" an der einen oder anderen Stelle etwas aufzuhellen:
 
-[Zu den Übungen](GeneralSnippets/Exercises/Exercises.md)
+[Zu den Übungen](GeneralSnippets/Exercises/Exercises.md).
 
 ---
 

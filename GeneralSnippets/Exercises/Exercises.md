@@ -18,18 +18,19 @@ die Funktion `std::common_type` definiert ist.
 
 ## Übung 2: Move-Semantik
 
-#### Vorausetzungen: TBD
+#### Vorausetzungen: keine
 
 Erstellen Sie eine leeres Visual C++ Projekt,
 fügen Sie nachstehenden Quellcode dort ein und bringen Sie das Programm zum Laufen.
 Analysieren Sie das Code-Fragment: An Hand der Testausgaben sollte man erkennen,
-dass ein großes Objekt (Klasse `HugeArray`) insgesamt 5 Mal kopiert wird. Dies soll nun verhindert werden:
+dass ein großes Objekt (Klasse `HugeArray`) insgesamt 5 Mal neu angelegt oder umkopiert wird. Dies soll nun verhindert werden:
 
-  * Fügen Sie der Klasse `HugeArray` eine Definition des Move-Konstruktors und den Move-Wertzuweisungsoperators hinzu.
-    Implementieren Sie die beiden Methoden entsprechend. Wieviele echte Kopiervorgänge können Sie nun beobachten? (Anwort: 2).
+  * Fügen Sie der Klasse `HugeArray` eine Definition des Move-Konstruktors und des Move-Wertzuweisungsoperators hinzu.
+    Implementieren Sie die beiden Methoden entsprechend. Wieviele echte Kopiervorgänge können Sie nun noch beobachten? (Anwort: 2).
   * Studieren Sie die Testfunktion `testExercise` genau: Ein einer Stelle können Sie durch Einfügen eines
     `std::move`-Aufrufs einen weiteren Kopiervorgang einsparen!
-  * Vergleichen Sie die Laufzeiten der Testfunktion vor und nach dem Hinzufügen der Move-Semantik.
+  * Vergleichen Sie die Laufzeiten der Testfunktion vor und nach dem Hinzufügen der Move-Semantik. 
+    Welche Beobachtung machen Sie?
 
 *Beispielprogramm*:
 
