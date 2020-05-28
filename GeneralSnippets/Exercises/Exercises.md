@@ -2,9 +2,10 @@
 
 In diesem Abschnitt befinden sich einige kleinere Aufgaben, um den vermittelten Stoff zu vertiefen.
 
-- [Aufgabe 1](#aufgabe-1)
-- [Aufgabe 2](#aufgabe-2)
-- [Aufgabe 3](#aufgabe-3)
+- [Aufgabe 1](#aufgabe-1): Generische Funktion `miminum`
+- [Aufgabe 2](#aufgabe-2): Move-Semantik 
+- [Aufgabe 3](#aufgabe-3): Lambda-Funktionen
+- [Aufgabe 4](#aufgabe-4): Taschenrechner mit Lambda-Funktionen
 
 ---
 
@@ -16,7 +17,7 @@ In diesem Abschnitt befinden sich einige kleinere Aufgaben, um den vermittelten 
 
 #### Inhalt: Generische Funktion `miminum`
 
-#### Vorausetzungen: variadische Templates, Utility-Funktion `std::common_type`.
+#### Vorausetzungen: Variadische Templates, Utility-Funktion `std::common_type`.
 
 Schreiben Sie eine Funktion `miminum`, die eine beliebige Anzahl von Argumenten
 beliebigen Typs akzeptiert und das Minimum aller Werte berechnet.
@@ -145,6 +146,63 @@ Dabei soll der Divisor
   * durch eine Variable in der Zugriffsklausel
 
 bestimmt werden.
+
+---
+
+## Aufgabe 4
+
+#### Inhalt: Taschenrechner mit Lambda-Funktionen
+
+#### Vorausetzungen: Container `std::map`, Klasse `std::pair`
+
+Erstellen Sie ein `std::map`-Objekt vom Typ `std::map<char, std::function<double(double, double)>>`.
+Der zweite Parameter `std::function<double(double, double)>` ist so ausgelegt,
+dass er Lambda-Funktionen mit 2 `double`-Parametern und Rückgabewert `double` akzeptiert.
+Also zum Beispiel
+
+```cpp
+map.insert(std::make_pair('+', [](double a, double b) { return a + b; }));
+```
+
+oder gerne auch kompakter:
+
+```cpp
+map['+'] = [](double a, double b) { return a + b; };
+```
+
+Der erste Wert des `std::pair` Objekts ist eine `char`-Variable und spezifiert die arithmetische Operation,
+also eine Addition im vorliegenden Beispiel.
+
+Erstellen Sie ein `std::map`-Objekt, dass für die 4 Grundrechenarten
+entsprechende Lambda-Funktionen besitzt. Schreiben Sie eine C++-Konsolen-Anwendung,
+die 2 `double`-Werte von der Konsole einliest und die entsprechenden Grundrechenarten ausführt.
+Ein Testrahmen für Ihre Anwendungen könnte so aussehen:
+
+```cpp
+std::map<char, std::function<double(double, double)>> calculator = createCalculator();
+double op1, op2;
+char op;
+
+std::cout << "Enter first Operand: ";
+std::cin >> op1;
+std::cout << "Enter second Operand: ";
+std::cin >> op2;
+std::cout << "Enter operation (+, -, *, /): ";
+std::cin >> op;
+
+// do the math
+double result = calculator[op](op1, op2);
+std::cout << "Result: " << op1 << ' ' << op << ' ' << op1 << " = " << result << '.' << std::endl;
+```
+
+*Ausgabe*:
+
+```cpp
+Enter first Operand: 1.5
+Enter second Operand: 2.7
+Enter operation (+, -, *, /): +
+Result: 1.5 + 1.5 = 4.2.
+```
 
 ---
 

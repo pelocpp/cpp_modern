@@ -9,6 +9,8 @@
 #include <vector>
 #include <algorithm>
 #include <chrono>
+#include <functional>
+#include <map>
 
 namespace Exercise_01 {
 
@@ -210,17 +212,81 @@ namespace Exercise_03 {
     }
 }
 
-int main_exercices()
+namespace Exercise_04 {
+
+    std::map<char, std::function<double(double, double)>> createCalculatorEx() {
+
+        std::map<char, std::function<double(double, double)>> map;
+        map.insert(std::make_pair('+', [](double a, double b) { return a + b; }));
+        map.insert(std::make_pair('-', [](double a, double b) { return a - b; }));
+        map.insert(std::make_pair('*', [](double a, double b) { return a * b; }));
+        map.insert(std::make_pair('/', [](double a, double b) { return a / b; }));
+        return map;
+    }
+
+    // or more compact
+
+    std::map<char, std::function<double(double, double)>> createCalculator() {
+
+        std::map<char, std::function<double(double, double)>> map;
+        map['+'] = [](double a, double b) { return a + b; };
+        map['-'] = [](double a, double b) { return a - b; };
+        map['*'] = [](double a, double b) { return a * b; };
+        map['/'] = [](double a, double b) { return a / b; };
+        return map;
+    }
+
+    void testExercise01() {
+
+        std::map<char, std::function<double(double, double)>> calculator = createCalculator();
+        double op1, op2;
+        char op;
+
+        std::cout << "Enter first Operand: ";
+        std::cin >> op1;
+        std::cout << "Enter second Operand: ";
+        std::cin >> op2;
+        std::cout << "Enter operation (+, -, *, /): ";
+        std::cin >> op;
+
+        // do the math
+        double result = calculator[op](op1, op2);
+        std::cout << "Result: " << op1 << ' ' << op << ' ' << op1 << " = " << result << '.' << std::endl;
+    };
+
+    void testExercise02() {
+
+        std::map<char, std::function<double(double, double)>> calculator = createCalculator();
+
+        // do some math operations
+        std::cout << "1.5 + 2.7 = " << calculator['+'](1.5, 2.7) << std::endl;
+        std::cout << "1.5 - 2.7 = " << calculator['-'](1.5, 2.7) << std::endl;
+        std::cout << "1.5 * 2.7 = " << calculator['*'](1.5, 2.7) << std::endl;
+        std::cout << "1.5 / 2.7 = " << calculator['/'](1.5, 2.7) << std::endl;
+
+        // add a new operation
+        calculator.insert(std::make_pair('^', [](double a, double b) { return std::pow(a, b); }));
+        std::cout << "1.5 ^ 2.5 = " << calculator['^'](1.5, 2.5) << std::endl;
+    };
+}
+
+int main()
+// int main_exercices()
 {
-     //using namespace Exercise_01;
-     //testExercise();
+    //using namespace Exercise_01;
+    //testExercise();
 
-     //using namespace Exercise_02;
-     //testExercise();
+    //using namespace Exercise_02;
+    //testExercise();
 
-    using namespace Exercise_03;
-    // testExercise01();
+    //using namespace Exercise_03;
+    //testExercise01();
+    //testExercise02();
+
+    using namespace Exercise_04;
+    //testExercise01();
     testExercise02();
+
     return 1;
 }
 
