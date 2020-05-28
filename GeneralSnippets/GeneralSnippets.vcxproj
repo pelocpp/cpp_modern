@@ -267,6 +267,7 @@
     <ClInclude Include="Global\Dummy.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="Exercises\cpp_dividend_divisor.png" />
     <Image Include="Lambda\LambdaStructure.png" />
     <Image Include="MetaProgramming\euler_number.png" />
     <Image Include="VariadicTemplates\cpp_snippets_mixins_01.png" />

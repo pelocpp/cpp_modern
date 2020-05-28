@@ -113,7 +113,7 @@ namespace Exercise_02 {
         other.m_data = nullptr;  // reset source object, ownership has been moved
         other.m_len = 0;
     }
-    
+
     HugeArray& HugeArray::operator= (HugeArray&& other) noexcept { // move-assignment
         std::cout << "MOVE assignment: " << other.m_len << " assigned" << std::endl;
         if (this != &other) {
@@ -142,12 +142,85 @@ namespace Exercise_02 {
     }
 }
 
-int main()
-// int main_exercices()
+namespace Exercise_03 {
+
+    inline void even(const int val) {
+        if (!(val % 2)) {
+            std::cout << val << std::endl;
+        }
+    }
+
+    struct Even {
+        void operator()(const int val) {
+            if (!(val % 2)) {
+                std::cout << val << std::endl;
+            }
+        }
+    };
+
+    void testExercise01() {
+        std::vector<int> values(20);
+
+        std::generate(
+            std::begin(values),
+            std::end(values),
+            [count = 1]() mutable { return count++; }
+        );
+
+        // function
+        std::for_each(std::begin(values), std::end(values), even);
+
+        // lambda
+        std::for_each(std::begin(values), std::end(values), [](int val) {
+            if (!(val % 2)) {
+                std::cout << val << std::endl;
+            }   
+        });
+
+        // functor
+        std::for_each(std::begin(values), std::end(values), Even());
+    }
+
+    void testExercise02() {
+        std::vector<int> values(20);
+
+        std::generate(
+            std::begin(values),
+            std::end(values),
+            [count = 1]() mutable { return count++; }
+        );
+
+        // 'divisor' defined within capture clause 
+        std::for_each(std::begin(values), std::end(values), [divisor = 3](int val) {
+            if (!(val % divisor)) {
+                std::cout << val << std::endl;
+            }
+        });
+        std::cout << std::endl;
+
+        // or 'divisor' defined in outer context (scope) 
+        int divisor = 5;
+
+        // capture context by value (reference & would work also)
+        std::for_each(std::begin(values), std::end(values), [=](int val) {
+            if (!(val % divisor)) {
+                std::cout << val << std::endl;
+            }
+        });
+    }
+}
+
+int main_exercices()
 {
-    // using namespace Exercise_01;
-    using namespace Exercise_02;
-    testExercise();
+     //using namespace Exercise_01;
+     //testExercise();
+
+     //using namespace Exercise_02;
+     //testExercise();
+
+    using namespace Exercise_03;
+    // testExercise01();
+    testExercise02();
     return 1;
 }
 

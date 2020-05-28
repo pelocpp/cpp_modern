@@ -27,13 +27,13 @@ die bei mir derzeit hoch im Kurs stehen und meiner Meinung nach absolut lesenswe
 
 ---
 
-## Übungen
+## Aufgaben
 
-Einige kleinere Übungen (samt Musterlösungen) sind diesem Repository ebenfalls beigefügt.
+Einige kleinere Aufgaben (samt Musterlösungen) sind diesem Repository ebenfalls beigefügt.
 Sie können bei weitem nicht den gesamten Stoffumfang des *Modern C++* Sprachumfangs abdecken,
 dienen aber dem Zweck, die "graue Materie" an der einen oder anderen Stelle etwas aufzuhellen:
 
-[Zu den Übungen](GeneralSnippets/Exercises/Exercises.md).
+[Zu den Aufgaben](GeneralSnippets/Exercises/Exercises.md).
 
 ---
 

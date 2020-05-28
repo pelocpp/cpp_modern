@@ -1,12 +1,22 @@
-# Übungen
+# Aufgaben
+
+In diesem Abschnitt befinden sich einige kleinere Aufgaben, um den vermittelten Stoff zu vertiefen.
+
+- [Aufgabe 1](#aufgabe-1)
+- [Aufgabe 2](#aufgabe-2)
+- [Aufgabe 3](#aufgabe-3)
+
+---
 
 [Lösungen](Exercises.cpp)
 
-In diesem Abschnitt befinden sich einige kleinere Übungen, um den vermittelten Stoff zu vertiefen.
+---
 
-## Übung 1: Generische Funktion `miminum`
+## Aufgabe 1
 
-#### Vorausetzungen: variadische Templates, Utility-Funktion `std::common_type`
+#### Inhalt: Generische Funktion `miminum`
+
+#### Vorausetzungen: variadische Templates, Utility-Funktion `std::common_type`.
 
 Schreiben Sie eine Funktion `miminum`, die eine beliebige Anzahl von Argumenten
 beliebigen Typs akzeptiert und das Minimum aller Werte berechnet.
@@ -16,9 +26,11 @@ die Funktion `std::common_type` definiert ist.
 
 ---
 
-## Übung 2: Move-Semantik
+## Aufgabe 2
 
-#### Vorausetzungen: keine
+#### Inhalt: Move-Semantik 
+
+#### Vorausetzungen: keine.
 
 Erstellen Sie eine leeres Visual C++ Projekt,
 fügen Sie nachstehenden Quellcode dort ein und bringen Sie das Programm zum Laufen.
@@ -96,6 +108,43 @@ void testExercise() {
     std::cout << "Done [" << diff.count() << " msecs]" << std::endl;
 }
 ```
+
+---
+
+## Aufgabe 3
+
+#### Inhalt: Lambda-Funktionen 
+
+#### Vorausetzungen: Algorithmus `std::for_each`, bei Bedarf auch `std::generate`.
+
+Erstellen Sie eine leeres Visual C++ Projekt,
+fügen Sie nachstehenden Quellcode dort ein und bringen Sie das Programm zum Laufen.
+
+Ergänzen Sie das Programm um eine Lambda-Funktion, die dieselbe Funktionalität wie Funkion `even` hat,
+nur eben als Lambda-Funktion realisiert. Entwickeln Sie des weiteren eine Klasse `Even`,
+die die Funktionalität von Funkion `even` als *Funktor* repräsentiert (so genannten *ausführbares Objekt*,
+das den `()`-Operator implementiert):
+
+```cpp
+inline void even(const int val) {
+    if (!(val % 2)) {
+        std::cout << val << std::endl;
+    }
+}
+```
+
+Erweitern Sie Ihre Realisierung so, dass der Divisor (Nenner) variabel ist:
+
+<img src="cpp_dividend_divisor.png" width="300">
+
+Abbildung 1: Dividend, Divisor und Quotient.
+
+Dabei soll der Divisor
+
+  * durch eine Variable aus dem Kontext ("*scope*") 
+  * durch eine Variable in der Zugriffsklausel
+
+bestimmt werden.
 
 ---
 

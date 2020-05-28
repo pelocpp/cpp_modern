@@ -393,5 +393,8 @@
     <Image Include="MetaProgramming\euler_number.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Exercises\cpp_dividend_divisor.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
