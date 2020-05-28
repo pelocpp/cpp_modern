@@ -479,9 +479,7 @@ namespace Exercise_07 {
     }
 }
 
-
-int main()
-// int main_exercices()
+int main_exercices()
 {
     //using namespace Exercise_01;
     //testExercise();
@@ -493,19 +491,19 @@ int main()
     //testExercise01();
     //testExercise02();
 
-  //  using namespace Exercise_04;
+    //using namespace Exercise_04;
     //testExercise01();
- //   testExercise02();
+    //testExercise02();
 
- //   using namespace Exercise_05;
-   // testExercise01();
-  //  testExercise02();
+    //using namespace Exercise_05;
+    //testExercise01();
+    //testExercise02();
 
-    // using namespace Exercise_06;
+    //using namespace Exercise_06;
     //testExercise();
 
-    using namespace Exercise_07;
-    testExercise();
+    //using namespace Exercise_07;
+    //testExercise();
 
     return 1;
 }
