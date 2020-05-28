@@ -2,10 +2,13 @@
 
 In diesem Abschnitt befinden sich einige kleinere Aufgaben, um den vermittelten Stoff zu vertiefen.
 
-- [Aufgabe 1](#aufgabe-1): Generische Funktion `miminum`
-- [Aufgabe 2](#aufgabe-2): Move-Semantik 
-- [Aufgabe 3](#aufgabe-3): Lambda-Funktionen
-- [Aufgabe 4](#aufgabe-4): Taschenrechner mit Lambda-Funktionen
+- [Aufgabe 1](#aufgabe-1): Generische Funktion `miminum`.
+- [Aufgabe 2](#aufgabe-2): Move-Semantik.
+- [Aufgabe 3](#aufgabe-3): Lambda-Funktionen.
+- [Aufgabe 4](#aufgabe-4): Taschenrechner mit Lambda-Funktionen.
+- [Aufgabe 5](#aufgabe-5): `std::optional`.
+- [Aufgabe 6](#aufgabe-6): Variadische Templates.
+- [Aufgabe 7](#aufgabe-7): Metaprogramming.
 
 ---
 
@@ -203,6 +206,72 @@ Enter second Operand: 2.7
 Enter operation (+, -, *, /): +
 Result: 1.5 + 1.5 = 4.2.
 ```
+
+---
+
+## Aufgabe 5
+
+#### Inhalt: `std::optional`, `if constexpr`
+
+#### Vorausetzungen: Templates Grundlagen
+
+Schreiben Sie eine Funktion `std::optional<int> toInt(std::string)`.
+Der Rückgabewert vom Typ `std::optional<int>` darf nur dann einen gültigen `int`-Wert enthalten,
+wenn sich die Zeichenkette `s` komplett in eine ganze Zahl umwandeln lässt.
+
+Schreiben Sie eine zweite Funktion `toNumber`:
+
+```cpp
+template <typename T>
+std::optional<T> toNumber(std::string s);
+```
+
+Realisieren Sie die Funkion analog zur Funktion `toInt`. Für `T` sollen die integralen Datentypen
+`short`, `int`, `long` und `long long` als Template Argumente möglich sein.
+
+---
+
+## Aufgabe 6
+
+#### Inhalt: Variadische Templates
+
+#### Vorausetzungen: `std::tuple`.
+
+Ein `std::tuple` ist ein Objekt, das eine Sammlung von beliebigen Elementen enthalten kann.
+Jedes Element kann dabei von einem anderen Typ sein. Mit der Funktion `std::get<size_t Index>` erhält
+man eine Referenz auf das Element an der angegebenen Position `Index` im Tupel.
+
+Schreiben Sie eine generische Funktion `printTuple`, die die Elemente eines Tupels, durch Komma ',' getrennt,
+auf der Konsole ausgibt.
+
+*Beispiel*:
+
+```cpp
+auto tuple = std::make_tuple(1, std::string("Modern C++"), false, 3.14159);
+printTuple(tuple);
+```
+
+*Ausgabe*:
+
+```cpp
+[1, Modern C++, 0, 3.14159]
+```
+
+---
+
+## Aufgabe 7
+
+#### Inhalt: Metaprogramming
+
+#### Vorausetzungen: Keine.
+
+In der Mathematik bilden die *Fibonacci*-Zahlen eine Folge,
+so dass jede Zahl die Summe der beiden vorhergehenden Zahlen ist, beginnend mit 0 und 1. 
+Für die n.-te Fibonacci F<sub>n</sub> bedeutet das F<sub>n</sub> = F<sub>n-1</sub> + F<sub>n-2</sub>,
+wobei F<sub>0</sub> = 0, F<sub>1</sub> = 1 gilt.
+Die durch Fibonacci-Zahlen gebildete Sequenz wird als *Fibonacci*-*Sequenz* bezeichnet.
+
+Schreiben Sie eine Schablone `Fibonacci`, die *Fibonacci*-Zahlen zur Übersetzungszeit berechnet.
 
 ---
 
