@@ -9,6 +9,8 @@ In diesem Abschnitt befinden sich einige kleinere Aufgaben, um den vermittelten 
 - [Aufgabe 5](#aufgabe-5): `std::optional`.
 - [Aufgabe 6](#aufgabe-6): Variadische Templates.
 - [Aufgabe 7](#aufgabe-7): Metaprogramming.
+- [Aufgabe 8](#aufgabe-8): SFINAE: Eine Methode, mehrere Implementierungen (typabhängig).
+- [Aufgabe 9](#aufgabe-9): SFINAE: Detektion von Methoden in einer Klasse.
 
 ---
 
@@ -272,6 +274,55 @@ wobei F<sub>0</sub> = 0, F<sub>1</sub> = 1 gilt.
 Die durch Fibonacci-Zahlen gebildete Sequenz wird als *Fibonacci*-*Sequenz* bezeichnet.
 
 Schreiben Sie eine Schablone `Fibonacci`, die *Fibonacci*-Zahlen zur Übersetzungszeit berechnet.
+
+---
+
+## Aufgabe 8
+
+#### Inhalt: SFINAE: Eine Methode, mehrere Implementierungen (typabhängig).
+
+#### Vorausetzungen: `std::array`
+
+Arrays treten in C++ - unter anderem aus historischen Gründen - mehrfach in Erscheinung:
+Als klassisches Array im Stile von C oder als Objekte der Klasse `std::array`.
+
+Schreiben Sie eine Funktion first, die eine Referenz des ersten Arrayelements zurückliefert.
+Bei klassischen C-Arrays soll dies die Anfangsadresse des Arrays sein, bei `std::array`
+das Iterator-Objekt `begin`.
+
+## Aufgabe 9
+
+#### Inhalt: SFINAE: Detektion von Methoden in einer Klasse.
+
+#### Vorausetzungen: XXX.
+
+Das *Detection Idiom* (zu deutsch etwas "Erkennungsidiom")
+ermöglicht die Introspektion eines C++-Klassentyps zur Übersetzungszeit.
+Mithilfe dieses Idioms können wir überprüfen, ob eine bestimmte Klasse eine Methode, einen Typaliasnamen
+oder ein Element eines bestimmten Namens enthält.
+
+Schreiben Sie eine Funktionsschablobe `testGet<T>`, die `true` oder `false` in Abhängigkeit davon zurückliefert,
+ob der Klassentyp `T` eine Methode des Namens `get` besitzt oder nicht.
+
+*Hinweis*:
+Erstellen Sie eine Klasseschablone, zum Beispiel `TestMethod`.
+Fügen Sie dieser Klasse eine Deklaration der Gestalt
+
+```cpp
+static constexpr bool value = testGet<T>(int());
+```
+
+hinzu. `testGet` wird mit einer anonymen Funktion aufgerufen,
+deren Rückgabewert ein `int`-Parameter ist.
+
+
+
+ 
+
+
+und überladen Sie in der Klasse eine Methode 
+auf der Basis von SFINAE zweimal, so dass diese true zurückliefert, wenn die get-Methode vorhanden ist
+und false andernfalls. 
 
 ---
 

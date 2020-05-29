@@ -14,6 +14,7 @@
 #include <map>
 #include <optional>
 #include <tuple>
+#include <array>
 
 namespace Exercise_01 {
 
@@ -479,7 +480,96 @@ namespace Exercise_07 {
     }
 }
 
-int main_exercices()
+namespace Exercise_08 {
+
+    template <class T>
+    auto first(T& c) -> decltype(c.begin()) { 
+        std::cout << "__FUNCSIG__ = " << __FUNCSIG__ << std::endl;
+        return c.begin();
+    }
+
+    template <class T, size_t N>
+    T* first(T(&arr)[N]) {
+        std::cout << "__FUNCSIG__ = " << __FUNCSIG__ << "N = " << N << std::endl;
+        return arr;
+    }
+
+
+    void testExercise() {
+        int vals[5]{ 1, 2, 3, 4, 5 };
+        int elem = *first(vals); 
+        std::cout << elem << std::endl;
+
+        // OK: The first function template substitution fails because
+        // 'vals.begin()' is ill-formed. This is not an error! That function
+        // is just removed from consideration as a viable overload candidate,
+        // leaving us with the array overload.
+
+        std::array<int, 20> anotherArray = { 10, 11, 12 };
+        elem = *first(anotherArray);
+        std::cout << elem << std::endl;
+
+        // OK: The first function template substitution succeeds because
+        // 'vals.begin()' is well-formed
+
+        std::vector<int> anotherVector = { 100, 101, 102 };
+        elem = *first(anotherVector);
+        std::cout << elem << std::endl;
+
+        // OK: Matches too, because a std::vector has a begin method
+    }
+}
+
+namespace Exercise_09 {
+
+    // Create a single class and use expression SFINAE on the return type of methods
+    // in that class to return true if the method is detected and false if the method
+    // does not exist. In the example below, we're calling testGet with an int parameter.
+    //
+    // This causes the first testGet method, which takes an int as an argument,
+    // to be preferred over the second testGet method, which takes anything (...)
+    // as an argument. The first method will only be enabled, however,
+    // if the expression inside the decltype can resolve without errors.
+    // 
+    // The return type for both functions is bool, since decltype will return
+    // the type of the last expression (technically, this is due to the comma operator).
+
+    // https://people.eecs.berkeley.edu/~brock/blog/detection_idiom.php
+
+    template <typename T>
+    struct TestMethod {
+
+        template <typename U>
+        static constexpr
+            decltype(std::declval<U>().get(), bool())
+            testGet(int) { return true; }
+
+        template <typename U>
+        static constexpr bool testGet(...) { return false; }
+
+        static constexpr bool value = testGet<T>(int());
+    };
+
+    struct FirstStruct {
+        int get() { return 123; };
+    };
+
+    struct SecondStruct {
+        int getter() { return 456; };
+    };
+
+    void testExercise() {
+        std::cout
+            << typeid(struct FirstStruct).name() << ":  "
+            << std::boolalpha << TestMethod<FirstStruct>::value << std::endl;
+
+        std::cout 
+            << typeid(struct SecondStruct).name() << ": "
+            << std::boolalpha << TestMethod<SecondStruct>::value << std::endl;
+    };
+}
+// int main_exercices()
+int main()
 {
     //using namespace Exercise_01;
     //testExercise();
@@ -504,6 +594,12 @@ int main_exercices()
 
     //using namespace Exercise_07;
     //testExercise();
+
+    //using namespace Exercise_08;
+    //testExercise();
+
+    using namespace Exercise_09;
+    testExercise();
 
     return 1;
 }

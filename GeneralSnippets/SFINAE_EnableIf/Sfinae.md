@@ -192,6 +192,10 @@ und
 
 [Fernando García](https://medium.com/@mortificador/choose-between-different-implementations-depending-on-type-properties-at-compile-time-in-c-68e3fd5cd2f8)<br>(abgerufen am 22.05.2020).
 
+Eine weitere Empfehlung:
+
+[Jean Guegant](http://jguegant.github.io/blogs/tech/sfinae-introduction.html)<br>(abgerufen am 29.05.2020).
+
 ---
 
 [Zurück](../../Readme.md)
