@@ -294,7 +294,7 @@ das Iterator-Objekt `begin`.
 
 #### Inhalt: SFINAE: Detektion von Methoden in einer Klasse.
 
-#### Vorausetzungen: XXX.
+#### Vorausetzungen: Templates.
 
 Das *Detection Idiom* (zu deutsch etwas "Erkennungsidiom")
 ermöglicht die Introspektion eines C++-Klassentyps zur Übersetzungszeit.
