@@ -568,8 +568,8 @@ namespace Exercise_09 {
             << std::boolalpha << TestMethod<SecondStruct>::value << std::endl;
     };
 }
-// int main_exercices()
-int main()
+
+int main_exercices()
 {
     //using namespace Exercise_01;
     //testExercise();
@@ -598,10 +598,10 @@ int main()
     //using namespace Exercise_08;
     //testExercise();
 
-    using namespace Exercise_09;
-    testExercise();
+    //using namespace Exercise_09;
+    //testExercise();
 
-    return 1;
+    return 0;
 }
 
 // =====================================================================================
