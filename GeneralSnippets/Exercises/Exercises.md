@@ -315,15 +315,6 @@ static constexpr bool value = testGet<T>(int());
 hinzu. `testGet` wird mit einer anonymen Funktion aufgerufen,
 deren Rückgabewert ein `int`-Parameter ist.
 
-
-
- 
-
-
-und überladen Sie in der Klasse eine Methode 
-auf der Basis von SFINAE zweimal, so dass diese true zurückliefert, wenn die get-Methode vorhanden ist
-und false andernfalls. 
-
 ---
 
 [Zurück](../../Readme.md)
