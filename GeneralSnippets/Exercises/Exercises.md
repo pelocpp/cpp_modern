@@ -2,16 +2,19 @@
 
 In diesem Abschnitt befinden sich einige kleinere Aufgaben, um den vermittelten Stoff zu vertiefen.
 
-- [Aufgabe 1](#aufgabe-1): Generische Funktion `miminum`.
-- [Aufgabe 2](#aufgabe-2): Move-Semantik.
-- [Aufgabe 3](#aufgabe-3): Lambda-Funktionen.
-- [Aufgabe 4](#aufgabe-4): Taschenrechner mit Lambda-Funktionen.
-- [Aufgabe 5](#aufgabe-5): `std::optional`.
-- [Aufgabe 6](#aufgabe-6): Variadische Templates.
-- [Aufgabe 7](#aufgabe-7): Metaprogramming.
-- [Aufgabe 8](#aufgabe-8): SFINAE: Eine Methode, mehrere Implementierungen (typabhängig).
-- [Aufgabe 9](#aufgabe-9): SFINAE: Detektion von Methoden in einer Klasse.
-- [Aufgabe 10](#aufgabe-10): Einheitliche Initialisierung (*Uniform Initialization*).
+- [Aufgabe 1](#aufgabe-1): Generische Funktion `miminum`
+- [Aufgabe 2](#aufgabe-2): Move-Semantik
+- [Aufgabe 3](#aufgabe-3): Lambda-Funktionen
+- [Aufgabe 4](#aufgabe-4): Taschenrechner mit Lambda-Funktionen
+- [Aufgabe 5](#aufgabe-5): `std::optional`
+- [Aufgabe 6](#aufgabe-6): Variadische Templates: Ausgabe eines `std::tuple` Objekts
+- [Aufgabe 7](#aufgabe-7): Metaprogramming
+- [Aufgabe 8](#aufgabe-8): SFINAE: Eine Methode, mehrere Implementierungen (typabhängig)
+- [Aufgabe 9](#aufgabe-9): SFINAE: Detektion von Methoden in einer Klasse
+- [Aufgabe 10](#aufgabe-10): Einheitliche Initialisierung (*Uniform Initialization*)
+- [Aufgabe 11](#aufgabe-11): Variadische Templates: Logische Operationen mit beliebig vielen Operanden
+- [Aufgabe 12](#aufgabe-12): Folding Expressions: Logische Operationen mit beliebig vielen Operanden
+
 ---
 
 [Lösungen](Exercises.cpp)
@@ -22,7 +25,7 @@ In diesem Abschnitt befinden sich einige kleinere Aufgaben, um den vermittelten 
 
 #### Inhalt: Generische Funktion `miminum`
 
-#### Vorausetzungen: Variadische Templates, Utility-Funktion `std::common_type`.
+#### Vorausetzungen: Variadische Templates, Utility-Funktion `std::common_type`
 
 Schreiben Sie eine Funktion `miminum`, die eine beliebige Anzahl von Argumenten
 beliebigen Typs akzeptiert und das Minimum aller Werte berechnet.
@@ -36,7 +39,7 @@ die Funktion `std::common_type` definiert ist.
 
 #### Inhalt: Move-Semantik 
 
-#### Vorausetzungen: keine.
+#### Vorausetzungen: keine
 
 Erstellen Sie eine leeres Visual C++ Projekt,
 fügen Sie nachstehenden Quellcode dort ein und bringen Sie das Programm zum Laufen.
@@ -121,7 +124,7 @@ void testExercise() {
 
 #### Inhalt: Lambda-Funktionen 
 
-#### Vorausetzungen: Algorithmus `std::for_each`, bei Bedarf auch `std::generate`.
+#### Vorausetzungen: Algorithmus `std::for_each`, bei Bedarf auch `std::generate`
 
 Erstellen Sie eine leeres Visual C++ Projekt,
 fügen Sie nachstehenden Quellcode dort ein und bringen Sie das Programm zum Laufen.
@@ -235,9 +238,9 @@ Realisieren Sie die Funkion analog zur Funktion `toInt`. Für `T` sollen die int
 
 ## Aufgabe 6
 
-#### Inhalt: Variadische Templates
+#### Inhalt: Variadische Templates: Ausgabe eines `std::tuple` Objekts
 
-#### Vorausetzungen: `std::tuple`.
+#### Vorausetzungen: `std::tuple`
 
 Ein `std::tuple` ist ein Objekt, das eine Sammlung von beliebigen Elementen enthalten kann.
 Jedes Element kann dabei von einem anderen Typ sein. Mit der Funktion `std::get<size_t Index>` erhält
@@ -265,7 +268,7 @@ printTuple(tuple);
 
 #### Inhalt: Metaprogramming
 
-#### Vorausetzungen: Keine.
+#### Vorausetzungen: Keine
 
 In der Mathematik bilden die *Fibonacci*-Zahlen eine Folge,
 so dass jede Zahl die Summe der beiden vorhergehenden Zahlen ist, beginnend mit 0 und 1. 
@@ -292,9 +295,9 @@ das Iterator-Objekt `begin`.
 
 ## Aufgabe 9
 
-#### Inhalt: SFINAE: Detektion von Methoden in einer Klasse.
+#### Inhalt: SFINAE: Detektion von Methoden in einer Klasse
 
-#### Vorausetzungen: Templates.
+#### Vorausetzungen: Templates
 
 Das *Detection Idiom* (zu deutsch etwas "Erkennungsidiom")
 ermöglicht die Introspektion eines C++-Klassentyps zur Übersetzungszeit.
@@ -380,6 +383,42 @@ Prüfen Sie nun, welche Instanziierung welchen Konstruktor aufruft:
 
 Entfernen Sie nun nach und nach Konstruktoren, damit Sie erkennen, welche dieser Konstruktoren
 auch auf andere Konstruktoren ausweichen können!
+
+---
+
+## Aufgabe 11
+
+#### Inhalt: Variadische Templates: Logische Operationen mit beliebig vielen Operanden
+
+#### Vorausetzungen: Variadische Templates
+
+Schreiben Sie zwei Funktionen `andAll` und `orAll`, die eine variable Anzahl von `bool`-Parametern
+logisch UND oder logisch ODER verknüpfen. Mögliche Testbeispiele können so aussehen:
+
+```cpp
+bool result = andAll(true, false, true);
+std::cout << std::boolalpha << result << std::endl;
+
+result = andAll(true, true, true, true, true, true, true, true, true, true);
+std::cout << std::boolalpha << result << std::endl;
+```
+
+*Ausgabe*:
+
+```cpp
+false
+true
+```
+
+---
+
+## Aufgabe 12
+
+#### Inhalt: Folding Expressions: Logische Operationen mit beliebig vielen Operanden
+
+#### Vorausetzungen: Variadische Templates
+
+Die Aufgabenstellung ist identisch zur letzten Aufgabe: Setzen Sie zur Lösung dieses Mal *Folding Expressions* ein.
 
 ---
 

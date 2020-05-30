@@ -635,6 +635,115 @@ namespace Exercise_10 {
     }
 }
 
+namespace Exercise_11 {
+
+    // =============================================================
+    // Logical And - with variadic templates
+
+    template<typename T>
+    bool andAll(T cond) {
+        return cond;
+    }
+
+    template<typename T, typename... Ts>
+    bool andAll(T cond, Ts... conds) {
+        return cond && andAll(conds...);
+    }
+
+    // or
+
+    //bool andAll() {
+    //    return true;
+    //}
+    //
+    //template<typename T, typename... Ts>
+    //bool andAll(T cond, Ts... conds) {
+    //    return cond && andAll(conds...);
+    //}
+
+    void testExercise01() {
+
+        bool result = andAll(true, false, true);
+        std::cout << std::boolalpha << result << std::endl;
+
+        result = andAll(true, (1 > 2), true);
+        std::cout << std::boolalpha << result << std::endl;
+
+        result = andAll(true, true, true, true, true, true, true, true, true, true);
+        std::cout << std::boolalpha << result << std::endl;
+    }
+
+    // =============================================================
+    // Logical Or - with variadic templates
+
+    //template<typename T>
+    //bool orAll(T cond) {
+    //    return cond;
+    //}
+
+    //template<typename T, typename... Ts>
+    //bool orAll(T cond, Ts... conds) {
+    //    return cond || orAll(conds...);
+    //}
+
+    // or
+
+    bool orAll() {
+        return false;
+    }
+    
+    template<typename T, typename... Ts>
+    bool orAll(T cond, Ts... conds) {
+        return cond && andAll(conds...);
+    }
+
+    void testExercise02() {
+
+        bool result = orAll(false, true, false);
+        std::cout << std::boolalpha << result << std::endl;
+
+        result = orAll(false, false, false, false, false, false, false, false, false, false);
+        std::cout << std::boolalpha << result << std::endl;
+    }
+}
+
+namespace Exercise_12 {
+
+    // =============================================================
+// Logical And - with folding expression
+
+    template<typename ...Args>
+    bool andAll(Args ...args) {
+        return (args && ... && true);  // binary right fold (init == true)
+    }
+
+    void testExercise01() {
+
+        bool result = andAll(true, (1 > 2), true);
+        std::cout << std::boolalpha << result << std::endl;
+
+        result = andAll(true, true, true);
+        std::cout << std::boolalpha << result << std::endl;
+    }
+
+    // =============================================================
+    // Logical Or - with folding expression
+
+    template<typename ...Args>
+    bool orAll(Args ...args) {
+        return (args || ...);  // unary right fold
+    }
+
+    void testExercise02() {
+
+        bool result = orAll(false, false, true);
+        std::cout << std::boolalpha << result << std::endl;
+
+        result = orAll(false, false, false, false, false);
+        std::cout << std::boolalpha << result << std::endl;
+    }
+}
+
 int main_exercices()
 {
     //using namespace Exercise_01;
@@ -669,6 +778,14 @@ int main_exercices()
 
     //using namespace Exercise_10;
     //testExercise();
+
+    //using namespace Exercise_11;
+    //testExercise01();
+    //testExercise02();
+
+    //using namespace Exercise_12;
+    //testExercise01();
+    //testExercise02();
 
     return 0;
 }

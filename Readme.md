@@ -2,9 +2,11 @@
 
 ###### Preamble
 
+*Herb Sutter*
+
 *"The world is built on C++ (and its C subset)"*
 
-<div style="text-align: right;  font-style: italic;">Herb Sutter</div>
+---
 
 ## Überblick
 

@@ -141,32 +141,54 @@ namespace VariadicTemplatesSystematic {
         printElements(s, 8, 6, 4, 2, 0);
     }
 
+    // =====================================================================================
+    // =====================================================================================
+
     // Use case: Compile-Time Expression with Variadic Expressions
     //
 
-    template<typename T, typename... TREST>
-    constexpr bool isHomogeneous(T, TREST...)
+    //template<typename T, typename... TREST>
+    //constexpr bool isSameType(T, TREST...)
+    //{
+    //    return (std::is_same<T, TREST>::value && ...); // since C++17: folding expression !!!
+    //}
+
+    //template<typename T, typename... TREST>
+    //constexpr bool isSameType(T, TREST...)
+    //{
+    //    return (std::is_same<decltype(T), decltype(TREST)>::value && ...); // since C++17: folding expression !!!
+    //}
+
+    template<typename T1, typename T2>
+    void isSameType(T1 arg)
     {
-        return (std::is_same<T, TREST>::value && ...); // since C++17: folding expression !!!
+        return std::is_same<decltype(T1), decltype(T2)>::value;
     }
+
+    template<typename T1, typename... TREST>
+    void isSameType(T1 firstArg, TREST... args)
+    {
+        return (std::is_same<T1, TREST>::value && ...);
+    }
+
 
     void test_04()
     {
-        bool result = isHomogeneous(43, -1, "hello");
-        std::cout << std::boolalpha << result << std::endl;
+        //bool result = isSameType(43, false, "hello");
+        //std::cout << std::boolalpha << result << std::endl;
 
         // expands to: 
 
-        result = std::is_same<int, int>::value && std::is_same<int, char const*>::value;
-        std::cout << std::boolalpha << result << std::endl;
+        //result = std::is_same<int, int>::value && std::is_same<int, char const*>::value;
+        //std::cout << std::boolalpha << result << std::endl;
 
-        result = isHomogeneous(123, 456, 789);
-        std::cout << std::boolalpha << result << std::endl;
+        //result = isSameType(123, 456, 789);
+        //std::cout << std::boolalpha << result << std::endl;
 
-        // expands to: 
+        //// expands to: 
 
-        result = std::is_same<int, int>::value && std::is_same<int, int>::value;
-        std::cout << std::boolalpha << result << std::endl;
+        //result = std::is_same<int, int>::value && std::is_same<int, int>::value;
+        //std::cout << std::boolalpha << result << std::endl;
     }
 }
 
