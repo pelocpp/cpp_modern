@@ -11,7 +11,7 @@ In diesem Abschnitt befinden sich einige kleinere Aufgaben, um den vermittelten 
 - [Aufgabe 7](#aufgabe-7): Metaprogramming.
 - [Aufgabe 8](#aufgabe-8): SFINAE: Eine Methode, mehrere Implementierungen (typabhängig).
 - [Aufgabe 9](#aufgabe-9): SFINAE: Detektion von Methoden in einer Klasse.
-
+- [Aufgabe 10](#aufgabe-10): Einheitliche Initialisierung (*Uniform Initialization*).
 ---
 
 [Lösungen](Exercises.cpp)
@@ -314,6 +314,72 @@ static constexpr bool value = testGet<T>(int());
 
 hinzu. `testGet` wird mit einer anonymen Funktion aufgerufen,
 deren Rückgabewert ein `int`-Parameter ist.
+
+---
+
+## Aufgabe 10
+
+#### Inhalt: Einheitliche Initialisierung (*Uniform Initialization*)
+
+#### Vorausetzungen: Templates, `std::vector`, `std::map`
+
+Erstellen Sie eine leeres Visual C++ Projekt,
+fügen Sie nachstehenden Quellcode dort ein und bringen Sie das Programm zum Laufen:
+
+```cpp
+template <typename T>
+class MyContainer {
+private:
+    std::vector<T> m_data;
+
+public:
+    void operator()() {
+        std::cout << "  [";
+        for (auto data : m_data) {
+            std::cout << data << ' ';
+        }
+        std::cout << ']' << std::endl;
+    }
+};
+
+int main () {
+
+    // using initializer list for a string
+    std::string cppInventor = { "Bjarne Stroustrup" };
+    std::cout << "Name of Cpp Inventor: " << cppInventor << std::endl;
+
+    // using initializer list for a std::map and std::pair
+    std::cout << "List of Persons: " << std::endl;
+    std::map<std::string, std::string> phonebook{
+        { "Hans Meier" , "123456789"},
+        { "Hubert Mueller", "987654321"},
+        { "Franz Schneider", "1231231230"}
+    };
+
+    for (auto mapIt = phonebook.begin(); mapIt != phonebook.end(); ++mapIt) {
+        std::cout << mapIt->first << ": " << mapIt->second << std::endl;
+    }
+
+    return 0;
+}
+```
+
+Ergänzen Sie die Klasse `MyContainer` in der Weise,
+dass Sie folgende Konstruktoren zur Verfügung haben:
+
+  * Standardkonstruktor
+  * Konstruktor mit zwei Argumenten des Typs `T`
+  * Konstruktor mit Initialisierungsliste
+
+Prüfen Sie nun, welche Instanziierung welchen Konstruktor aufruft:
+
+  * Instanz `i1;`
+  * Instanz `i2{ };`
+  * Instanz `i3(1, 2);`
+  * Instanz `i4{1, 2};`
+
+Entfernen Sie nun nach und nach Konstruktoren, damit Sie erkennen, welche dieser Konstruktoren
+auch auf andere Konstruktoren ausweichen können!
 
 ---
 

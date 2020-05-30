@@ -569,6 +569,72 @@ namespace Exercise_09 {
     };
 }
 
+namespace Exercise_10 {
+
+    template <typename T>
+    class MyContainer {
+    private:
+        std::vector<T> m_data;
+
+    public:
+        MyContainer() = default;
+
+        MyContainer(const T& d1, const T& d2) {
+            std::cout << "c'tor (const T&, const T&)" << std::endl;
+            m_data.push_back(d1);
+            m_data.push_back(d2);
+        }
+
+        MyContainer(std::initializer_list<T> data) : m_data(data) {
+            std::cout << "c'tor (std::initializer_list<T>)" << std::endl;
+        }
+
+        void operator()() {
+            std::cout << "  [";
+            for (auto data : m_data) {
+                std::cout << data << ' ';
+            }
+            std::cout << ']' << std::endl;
+        }
+    };
+
+    void testExercise() {
+
+        // using initializer list for a string
+        std::string cppInventor = { "Bjarne Stroustrup" };
+        std::cout << "Name of Cpp Inventor: " << cppInventor;
+
+        // using initializer list for a std::map and std::pair
+        std::cout << "List of Persons: " << std::endl;
+        std::map<std::string, std::string> phonebook{
+            { "Hans Meier" , "123456789"},
+            { "Hubert Mueller", "987654321"},
+            { "Franz Schneider", "1231231230"}
+        };
+
+        for (auto mapIt = phonebook.begin(); mapIt != phonebook.end(); ++mapIt) {
+            std::cout << mapIt->first << ": " << mapIt->second << std::endl;
+        }
+
+        // using MyContainer with int
+        MyContainer<int> i{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        i();
+
+        // using MyContainer with std::string
+        MyContainer<std::string> myStringContainer{ "Range","based","for","loop" };
+        myStringContainer();
+
+        MyContainer<int> i1;
+        i1();
+        MyContainer<int> i2{};
+        i2();
+        MyContainer<int> i3(1, 2);
+        i3();
+        MyContainer<int> i4{ 1, 2 };
+        i4();
+    }
+}
+
 int main_exercices()
 {
     //using namespace Exercise_01;
@@ -599,6 +665,9 @@ int main_exercices()
     //testExercise();
 
     //using namespace Exercise_09;
+    //testExercise();
+
+    //using namespace Exercise_10;
     //testExercise();
 
     return 0;
