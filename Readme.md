@@ -2,9 +2,7 @@
 
 ###### Preamble
 
-*Herb Sutter*
-
-*"The world is built on C++ (and its C subset)"*
+*Herb Sutter*: *"The world is built on C++ (and its C subset)"*
 
 ---
 
