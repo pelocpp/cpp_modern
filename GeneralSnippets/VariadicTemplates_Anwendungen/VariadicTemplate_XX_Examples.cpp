@@ -13,10 +13,6 @@
 // - Benutzerdefiniertes Literal - mit Einzelhochkomma als Trennzeichen
 // =====================================================================================
 
-/*
- * Logische Operationen für beliebig viele Operanden
- */
-
 namespace VariadicTemplatesExamples {
 
     // =====================================================================================

@@ -9,11 +9,13 @@ In diesem Abschnitt befinden sich einige kleinere Aufgaben, um den vermittelten 
 - [Aufgabe 5](#aufgabe-5): `std::optional`
 - [Aufgabe 6](#aufgabe-6): Variadische Templates: Ausgabe eines `std::tuple` Objekts
 - [Aufgabe 7](#aufgabe-7): Metaprogramming
-- [Aufgabe 8](#aufgabe-8): SFINAE: Eine Methode, mehrere Implementierungen (typabhängig)
+- [Aufgabe 8](#aufgabe-8): SFINAE: Eine Methode, mehrere Implementierungen
 - [Aufgabe 9](#aufgabe-9): SFINAE: Detektion von Methoden in einer Klasse
 - [Aufgabe 10](#aufgabe-10): Einheitliche Initialisierung (*Uniform Initialization*)
 - [Aufgabe 11](#aufgabe-11): Variadische Templates: Logische Operationen mit beliebig vielen Operanden
 - [Aufgabe 12](#aufgabe-12): Folding Expressions: Logische Operationen mit beliebig vielen Operanden
+- [Aufgabe 13](#aufgabe-13): Variadische Templates, `decltype` und Type-Traits am Beispiel von `sameType`
+- [Aufgabe 14](#aufgabe-14): Folding Expressions, `decltype` und Type-Traits am Beispiel von `sameType`
 
 ---
 
@@ -282,7 +284,7 @@ Schreiben Sie eine Schablone `Fibonacci`, die *Fibonacci*-Zahlen zur Übersetzun
 
 ## Aufgabe 8
 
-#### Inhalt: SFINAE: Eine Methode, mehrere Implementierungen (typabhängig).
+#### Inhalt: SFINAE: Eine Methode, mehrere Implementierungen
 
 #### Vorausetzungen: `std::array`
 
@@ -419,6 +421,59 @@ true
 #### Vorausetzungen: Variadische Templates
 
 Die Aufgabenstellung ist identisch zur letzten Aufgabe: Setzen Sie zur Lösung dieses Mal *Folding Expressions* ein.
+
+---
+
+## Aufgabe 13
+
+#### Inhalt: Variadische Templates, `decltype` und Type-Traits am Beispiel von `sameType`
+
+#### Vorausetzungen: Templates
+
+Schreiben Sie eine Funktionsschablone `sameType`, die eine beliebige Anzahl von Argumenten
+beliebigen Typs akzeptiert. Der Rückgabewert vom Typ `bool` ist `true`, wenn alle Argumente vom selben Typ
+sind, andernfalls `false`.
+ 
+*Beispiel*:
+
+```cpp
+int main() {
+    bool result;
+    result = sameType(1, 2, 3, 4, 5, 6, 7, 8, 9);
+    std::cout << std::boolalpha << result << std::endl;
+
+    result = sameType(1, 2, 3, 4, '?', 5, 6, 7, 8, 9);
+    std::cout << std::boolalpha << result << std::endl;
+    return 1;
+}
+```
+
+*Ausgabe*:
+
+```cpp
+true
+false
+```
+
+**Zusatzaufgabe**:
+
+Für die logischen Operationen `&&` (`And`) und `||` (`Or`) gibt es in höheren Programmiersprachen (C, C++, Java und andere)
+das Feature der so genannten "*Short-Circuit-Evaluation*": Ist in dem Ausdruck *condition1 || condition2*
+bereits Bedingung *condition1* wahr, so ist der gesamte Ausdruck wahr. Ebenso ist der Ausdruck *condition1 && condition2*
+falsch, wenn Bedingung *condition1* falsch ist. Das Programm führt dann nicht mehr die Bewertung des gesamten Ausdrucks durch.
+
+Können Sie das Feature "*Short-Circuit-Evaluation*" in Ihrer Realisierung der Funktion `sameType` anwenden?
+
+---
+
+## Aufgabe 14
+
+#### Inhalt: Folding Expressions, `decltype` und Type-Traits am Beispiel von `sameType`
+
+#### Vorausetzungen: Templates
+
+Die Aufgabenstellung ist identisch zur letzten Aufgabe (ohne Zusatzaufgabe):
+Setzen Sie zur Lösung dieses Mal *Folding Expressions* ein.
 
 ---
 

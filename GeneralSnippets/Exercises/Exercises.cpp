@@ -744,6 +744,75 @@ namespace Exercise_12 {
     }
 }
 
+namespace Exercise_13 {
+
+    template<typename T1, typename T2>
+    bool sameType(T1 arg1, T2 arg2)
+    {
+        std::cout << " # " << arg1 << ": " << typeid(arg1).name();
+        std::cout << " - " << arg2 << ": " << typeid(arg2).name() << std::endl;
+
+        return std::is_same<decltype(arg1), decltype(arg2)>::value;
+    }
+
+    template<typename T1, typename T2, typename... TREST>
+    bool sameType(T1 arg1, T2 arg2, TREST... args)
+    {
+        std::cout << " > " << arg1 << ": " << typeid(arg1).name();
+        std::cout << " - " << arg2 << ": " << typeid(arg2).name() << std::endl;
+
+        // Note: short-circuit-evaluation is considered !
+        // Study output of program execution
+        return std::is_same<decltype(arg1), decltype(arg2)>::value && sameType(arg2, args...);
+
+        // Note: Due to order of expression evaluation short-circuit-evaluation cannot be considered !
+        // Study output of program execution
+        // return sameType(arg2, args...) && std::is_same<decltype(arg1), decltype(arg2)>::value;
+    }
+
+    void testExercise01() {
+
+        bool result;
+        result = sameType(43, false, "hello");
+        std::cout << std::boolalpha << result << std::endl;
+
+        result = sameType(1, 2, 3, 4, 5, 6, 7, 8, 9);
+        std::cout << std::boolalpha << result << std::endl;
+
+        result = sameType(1, 2, 3, 4, '?', 5, 6, 7, 8, 9);
+        std::cout << std::boolalpha << result << std::endl;
+
+        result = sameType("123", std::string("456"), "789", "111", "999");
+        std::cout << std::boolalpha << result << std::endl;
+    }
+}
+
+namespace Exercise_14 {
+
+    template<typename T, typename... TREST>
+    constexpr bool sameType(T arg, TREST... args)
+    {
+        // since C++17: folding expression !
+        return (std::is_same<decltype(arg), decltype(args)>::value && ...);
+    }
+
+    void testExercise01() {
+
+        bool result;
+        result = sameType(43, false, "hello");
+        std::cout << std::boolalpha << result << std::endl;
+
+        result = sameType(1, 2, 3, 4, 5, 6, 7, 8, 9);
+        std::cout << std::boolalpha << result << std::endl;
+
+        result = sameType(1, 2, 3, 4, '?', 5, 6, 7, 8, 9);
+        std::cout << std::boolalpha << result << std::endl;
+
+        result = sameType("123", std::string("456"), "789", "111", "999");
+        std::cout << std::boolalpha << result << std::endl;
+    }
+}
+
 int main_exercices()
 {
     //using namespace Exercise_01;
@@ -785,7 +854,13 @@ int main_exercices()
 
     //using namespace Exercise_12;
     //testExercise01();
-    //testExercise02();
+    // testExercise02();
+
+    //using namespace Exercise_13;
+    //testExercise01();
+
+    //using namespace Exercise_14;
+    //testExercise01();
 
     return 0;
 }
