@@ -193,7 +193,7 @@
     <ClCompile Include="TypeTraits\TypeTraits.cpp" />
     <ClCompile Include="UniformInitialization\UniformInitialization.cpp" />
     <ClCompile Include="UniquePtr\UniquePtr.cpp" />
-    <ClCompile Include="VariadicTemplates\VariadicTemplate_01_Adder.cpp" />
+    <ClCompile Include="VariadicTemplates\VariadicTemplate_01_Introduction.cpp" />
     <ClCompile Include="VariadicTemplates\VariadicTemplate_Folding.cpp" />
     <ClCompile Include="VariadicTemplates\VariadicTemplate_05_Visitor.cpp" />
     <ClCompile Include="VariadicTemplates\VariadicTemplate_02_WorkingOnEveryArgument.cpp" />

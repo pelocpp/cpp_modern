@@ -165,9 +165,6 @@
     <ClCompile Include="VariadicTemplates\VariadicTemplate_04_Mixins.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="VariadicTemplates\VariadicTemplate_01_Adder.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="VariadicTemplates\VariadicTemplate_05_Visitor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -205,6 +202,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="VariadicTemplates_Systematic\VariadicTemplate_XX_MoreExamples.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VariadicTemplates\VariadicTemplate_01_Introduction.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

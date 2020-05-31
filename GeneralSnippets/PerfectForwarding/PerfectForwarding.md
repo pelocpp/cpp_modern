@@ -46,9 +46,15 @@ des Sachverhalts an:
 
 Abbildung 1. `std::forward`.
 
+
+## Literaturhinweise:
+
+Eine sehr gute Beschreibung zu diesem Thema befindet sich unter
+
+[Arne Mertz Blog](https://arne-mertz.de/2015/10/new-c-features-templated-rvalue-references-and-stdforward//)<br>(abgerufen am 31.05.2020).
+
 ---
 
 [Zurück](../../Readme.md)
 
 ---
-

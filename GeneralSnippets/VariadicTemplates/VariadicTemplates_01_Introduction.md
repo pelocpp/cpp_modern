@@ -4,7 +4,7 @@
 
 ---
 
-[Quellcode](VariadicTemplate_01_Adder.cpp)
+[Quellcode](VariadicTemplate_01_Introduction.cpp)
 
 ---
 
@@ -205,6 +205,26 @@ printCount(22, std::optional{0}, "!");
 ```cpp
 3 3
 ```
+
+## Ein erstes Anwendungsbeispiel: Abbildung eines *Parameter Packs* auf einen Methodenaufruf
+
+Es wird demonstriert, wie ein *parameter pack* auf einen Methodenaufruf
+(hier: Konstruktor) abgebildet werden kann 
+("*Unpacking a parameter pack to call a matching constructor*").
+
+Zu diesem Zweck definieren wir eine Klasse `Unknown` mit einer Reihe
+von Konstruktoren, um zu zeigen, wie das Auspacken des *parameter packs*
+dem passenden Konstruktor zugeordnet wird:
+
+Es kommt die zentrale `std::forwarding`-Anweisung zum Zuge:
+
+```cpp
+T(std::forward<Args>(args)...);
+```
+
+## Ein zweites Anwendungsbeispiel: Verwendung eines Parameter Packs bei Smart Pointern (hier: Unique Pointern)
+
+Siehe hierzu den [Quellcode](VariadicTemplate_01_Introduction.cpp).
 
 
 ## Literaturhinweise:
