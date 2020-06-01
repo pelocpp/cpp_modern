@@ -10,7 +10,7 @@ namespace MoveSemantics {
     public:
         // c'tors and d'tor
         BigData();
-        BigData(size_t);
+        BigData(size_t, int);
         ~BigData();
 
         // copy semantics
@@ -25,6 +25,7 @@ namespace MoveSemantics {
         // private helper methods
         void cleanup() noexcept;
         void moveFrom(BigData& set) noexcept;
+        void swap(BigData&, BigData&) noexcept;  // 'swap idiom'
 
     public:
         // getter

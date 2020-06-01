@@ -4,7 +4,7 @@
 
 ---
 
-*Allgemeines*:
+## Allgemeines
 
 Die Erweiterung einer Klasse von der Copy-Konstruktion (dies schließt den Kopier-Konstruktor und
 den Wertzuweisungsoperator ein) hin zur Verschiebe-Konstruktion (dies wiederum 
@@ -13,11 +13,46 @@ die Verschiebe-Wertzuweisung ein) kann dem dazugehörigen Quellcode entnommen we
 
 Prinzipiell kann die Move-Semantik auf dreierlei Weisen realisiert werden:
 
-  * manuell
-  * mit zwei Hilfsmethoden `cleanup` und `moveFrom` (*Primitiven*) 
+  * *straight*-*forward*, also Realisierung ohne direktes Entwurfsmuster
+  * mit zwei Hilfsmethoden `cleanup` und `moveFrom` (*Primitiven*) / minimalistisches Entwurfsmuster
   * auf Basis des *Swap*-Idioms
 
- 
+## Rule of Three, Rule of Five(Six), Rule of Zero
+
+*Allgemeines*:
+
+  * Default constructor: `X()`
+  * Copy constructor: `X(const X&)`
+  * Copy assignment: `operator=(const X&)`
+  * Move constructor: `X(X&&) noexcept`
+  * Move assignment: `operator=(X&&) noexcept`
+  * Destructor: `~X()`
+
+*Rule of Three*:
+
+  * Copy constructor: `X(const X&)`
+  * Copy assignment: `operator=(const X&)`
+  * Destructor: `~X()`
+
+*Rule of Five*:
+
+  * Copy constructor: `X(const X&)`
+  * Copy assignment: `operator=(const X&)`
+  * Move constructor: `X(X&&) noexcept`
+  * Move assignment: `operator=(X&&) noexcept`
+  * Destructor: `~X()`
+
+*Rule of Zero*:
+
+Vermeiden Sie Pointer, die mit `new` allokiert wurden.
+Verwenden Sie Container der STL
+Verwenden Sie *Smart Pointer*
+
+In diesen Fällen benötige ich keine Realisierung der *Rule of Three* oder *Rule of Five*,
+da der Compiler an Hand der Standardklassen die für diese Klassen passenden Kopier- und Verschiebeoperationen
+generiert.
+
+Deklarieren oder defineren Sie dann keine Operationen der  *Rule of Three* oder *Rule of Five* für Ihre Klasse.
 
 ---
 
