@@ -15,6 +15,7 @@
 #include <optional>
 #include <tuple>
 #include <array>
+#include <variant>
 
 namespace Exercise_01 {
 
@@ -813,6 +814,141 @@ namespace Exercise_14 {
     }
 }
 
+namespace Exercise_15 {
+
+    // https://gieseanw.wordpress.com/2017/05/03/a-true-heterogeneous-container-in-c/
+
+    void testExercise01()
+    {
+        std::variant<int, std::string> myVariant;
+        myVariant = 123;
+        std::cout << std::get<int>(myVariant) << std::endl;
+        myVariant = std::string("456");
+        std::cout << std::get<std::string>(myVariant) << std::endl;
+    }
+
+    struct MyPrintVisitor
+    {
+        void operator()(const int& value) { std::cout << "int: " << value << std::endl; }
+        void operator()(const std::string& value) { std::cout << "std::string: " << value << std::endl; }
+    };
+
+    // oder
+
+    struct AllInOneVisitor
+    {
+        template <class T>
+        void operator()(const T& value) { std::cout << value << std::endl; }
+    };
+
+    // oder
+
+    struct MyModifyingVisitor
+    {
+        template <class T>
+        void operator()(T& value) { value += value; }
+    };
+
+    auto lambdaAllInOneVisitor = [](auto& value) { std::cout << value << std::endl; };
+
+    void testExercise02()
+    {
+        std::variant<int, std::string> myVariant;
+        myVariant = 123;
+        std::visit(MyPrintVisitor{}, myVariant);
+        myVariant = std::string("456");
+        std::visit(MyPrintVisitor{}, myVariant);
+
+        myVariant = 123;
+        std::visit(AllInOneVisitor{}, myVariant);
+        myVariant = std::string("456");
+        std::visit(AllInOneVisitor{}, myVariant);
+
+        myVariant = 123;
+        std::visit(lambdaAllInOneVisitor, myVariant);
+        myVariant = std::string("456");
+        std::visit(lambdaAllInOneVisitor, myVariant);
+
+        myVariant = 123;
+        std::visit(MyModifyingVisitor{}, myVariant);
+        std::visit(MyPrintVisitor{}, myVariant);
+        myVariant = std::string("456");
+        std::visit(MyModifyingVisitor{}, myVariant);
+        std::visit(MyPrintVisitor{}, myVariant);
+    }
+
+    void testExercise03()
+    {
+        std::vector<std::variant<int, std::string>> hetVec;
+
+        hetVec.emplace_back(12);
+        hetVec.emplace_back(std::string("34"));
+        hetVec.emplace_back(56);
+        hetVec.emplace_back(std::string("78"));
+
+        // print them
+        for (const auto& var : hetVec) {
+            std::visit(MyPrintVisitor{}, var);
+        }
+
+        // modify them
+        for (auto& var : hetVec) {
+            std::visit(MyModifyingVisitor{}, var);
+        }
+
+        // print them again
+        for (const auto& var : hetVec) {
+            std::visit(MyPrintVisitor{}, var);
+        }
+    }
+
+    template <class... T>
+    class HeterogeneousContainer
+    {
+    private:
+        // ausführlich:
+        //using value_type = std::variant<T...>;
+        //std::vector<value_type> m_values;
+
+        std::vector<std::variant<T...>> m_values;
+
+    public:
+        // visitor
+        template <class V>
+        void visit(V&& visitor) {
+            for (auto& value : m_values) {
+                std::visit(visitor, value);
+            }
+        }
+
+        // accessor
+        std::vector<std::variant<T...>>& Values() {
+            return m_values;
+        };
+    };
+
+    void testExercise04()
+    {
+        HeterogeneousContainer<int, std::string> hetCont;
+
+        hetCont.Values().emplace_back(12);
+        hetCont.Values().emplace_back(std::string("34"));
+        hetCont.Values().emplace_back(56);
+        hetCont.Values().emplace_back(std::string("78"));
+
+        // print them
+        hetCont.visit(lambdaAllInOneVisitor);
+        std::cout << std::endl;
+
+        // modify them
+        hetCont.visit(MyModifyingVisitor{});
+
+        // print again
+        hetCont.visit(lambdaAllInOneVisitor);
+        std::cout << std::endl;
+    }
+}
+
 int main_exercices()
 {
     //using namespace Exercise_01;
@@ -861,6 +997,12 @@ int main_exercices()
 
     //using namespace Exercise_14;
     //testExercise01();
+
+    //using namespace Exercise_15;
+    //testExercise01();
+    //testExercise02();
+    //testExercise03();
+    //testExercise04();
 
     return 0;
 }

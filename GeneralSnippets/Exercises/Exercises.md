@@ -16,6 +16,7 @@ In diesem Abschnitt befinden sich einige kleinere Aufgaben, um den vermittelten 
 - [Aufgabe 12](#aufgabe-12): Folding Expressions: Logische Operationen mit beliebig vielen Operanden
 - [Aufgabe 13](#aufgabe-13): Variadische Templates, `decltype` und Type-Traits am Beispiel von `sameType`
 - [Aufgabe 14](#aufgabe-14): Folding Expressions, `decltype` und Type-Traits am Beispiel von `sameType`
+- [Aufgabe 15](#aufgabe-15): Heterogener Container
 
 ---
 
@@ -474,6 +475,91 @@ Können Sie das Feature "*Short-Circuit-Evaluation*" in Ihrer Realisierung der F
 
 Die Aufgabenstellung ist identisch zur letzten Aufgabe (ohne Zusatzaufgabe):
 Setzen Sie zur Lösung dieses Mal *Folding Expressions* ein.
+
+---
+
+## Aufgabe 15
+
+#### Inhalt: Heterogener Container
+
+#### Vorausetzungen: `std::variant`, `std::visit`, `std::vector`
+
+Für STL-Container in C++ gilt prinzipiell die Anwort auf die Frage "Kann ich einen `std::vector` so verwenden,
+dass er Variablen mehr als einen Typs enthält?": Nein!
+
+Diese Aussage ist mit Erscheinen der Klasse `std::variant` etwas in Wanken geraten.
+Ein Variant ist in C++ eine Datenstruktur, die zur Laufzeit Variablen unterschiedlichen Typs aufnehmen kann:
+
+```cpp
+std::variant<int, double, std::string> myVariant;
+```
+
+Also zum Beispiel
+
+```cpp
+myVariant = 1; // initially it's an integer
+```
+
+Um wiederum zur Laufzeit ermitteln zu können, welche Variable welchen Typs sich in einem Variant befindet,
+gibt es die so genannten *Besucher*- / *Visitor*-Objekte:
+
+Ein generischer, nicht-modifizierender Besucher, der das Variant-Objekt nicht verändert, könnte so definiert werden:
+
+```cpp
+struct AllInOneVisitor
+{
+    template <class T>
+    void operator()(const T& value) { std::cout << value << std::endl; }
+};
+```
+
+Um nun ein Variant-Objekt besuchen zu können, gibt es die Standard-Methode `std::visit`:
+
+```cpp
+std::variant<int, std::string> myVariant;
+myVariant = 123;
+std::visit(MyPrintVisitor{}, myVariant);
+```
+
+Mit diesem Code-Fragment erhalten wir die Ausgabe `123`.
+
+Versuchen Sie, mit diesen Vorüberlegungen das Code-Fragment
+
+```cpp
+std::vector<std::variant<int, std::string>> heterogeneousVec;
+
+heterogeneousVec.emplace_back(12);
+heterogeneousVec.emplace_back(std::string("34"));
+heterogeneousVec.emplace_back(56);
+heterogeneousVec.emplace_back(std::string("78"));
+
+// print them
+for (const auto& var : heterogeneousVec) {
+    std::visit(MyPrintVisitor{}, var);
+}
+```
+
+zum Laufen zu bringen.
+
+In einem weiteren Schritt wollen wir diesen Vektor in einer Klasse als Member-Variable ablegen.
+Erstellen Sie eine Klasse `HeterogeneousContainer`.
+
+```cpp
+HeterogeneousContainer<int, std::string> heterogeneousCont;
+
+heterogeneousCont.Values().emplace_back(12);
+heterogeneousCont.Values().emplace_back(std::string("34"));
+heterogeneousCont.Values().emplace_back(56);
+heterogeneousCont.Values().emplace_back(std::string("78"));
+
+// print them
+heterogeneousCont.visit(lambdaAllInOneVisitor);
+std::cout << std::endl;
+```
+
+Versuchen nun wiederum, dieses Code-Fragment zum Laufen zu bekommen.
+Die Methoden `Values` liefert eine Referenz des in der Klasse `HeterogeneousContainer`
+gekapselten `std::vector<std::variant<...>`-Objekts zurück.
 
 ---
 
