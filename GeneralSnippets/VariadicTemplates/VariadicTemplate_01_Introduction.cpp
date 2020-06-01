@@ -224,16 +224,15 @@ namespace VariadicTemplates_03 {
     }
 }
 
-int main()
-// int main_variadic_templates_intro()
+int main_variadic_templates_intro()
 {
-    // using namespace VariadicTemplates_01;
-    // test_01();
-    // test_02();
+     using namespace VariadicTemplates_01;
+     test_01();
+     test_02();
 
     // using namespace VariadicTemplates_02;
-    using namespace VariadicTemplates_03;
-    test_01();
+    //using namespace VariadicTemplates_03;
+    //test_01();
     return 0;
 }
 

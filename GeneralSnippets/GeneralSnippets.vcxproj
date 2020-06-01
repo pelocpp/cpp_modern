@@ -169,6 +169,7 @@
     <ClCompile Include="MemoryLeaks\MemoryLeaks.cpp" />
     <ClCompile Include="MetaProgramming\MetaProgramming01.cpp" />
     <ClCompile Include="MetaProgramming\MetaProgramming02.cpp" />
+    <ClCompile Include="MoveSemantics\MoveSemantics.cpp" />
     <ClCompile Include="Optional\Optional.cpp" />
     <ClCompile Include="PerfectForwarding\PerfectForwarding.cpp" />
     <ClCompile Include="PerfectForwarding\PerfectForwardingDummy.cpp" />
@@ -233,6 +234,7 @@
     <None Include="MemoryLeaks\MemoryLeaksDetection.md" />
     <None Include="MetaProgramming\Metaprogramming01.md" />
     <None Include="MetaProgramming\Metaprogramming02.md" />
+    <None Include="MoveSemantics\MoveSemantics.md" />
     <None Include="Optional\Optional.md" />
     <None Include="ParametersWithConstAndRef\ConstDeclarations.md" />
     <None Include="PerfectForwarding\PerfectForwarding.md" />
@@ -265,6 +267,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Global\Dummy.h" />
+    <ClInclude Include="MoveSemantics\MoveSemantics.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Exercises\cpp_dividend_divisor.png" />

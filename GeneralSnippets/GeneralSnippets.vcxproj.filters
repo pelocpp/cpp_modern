@@ -207,6 +207,9 @@
     <ClCompile Include="VariadicTemplates\VariadicTemplate_01_Introduction.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MoveSemantics\MoveSemantics.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -374,10 +377,16 @@
     <None Include="Exercises\Exercises.md">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="MoveSemantics\MoveSemantics.md">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Global\Dummy.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MoveSemantics\MoveSemantics.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
