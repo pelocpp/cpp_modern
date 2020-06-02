@@ -38,8 +38,8 @@ namespace Literals {
         Color()
             : m_a{}, m_r{}, m_g{}, m_b{} {}
 
-        Color(uint8_t a, uint8_t r, uint8_t g, uint8_t b) 
-            : m_a(a), m_r(r), m_g(g), m_b(b) {}
+        Color(uint8_t a, uint8_t r, uint8_t g, uint8_t b)
+            : m_a{ a }, m_r{ r }, m_g{ g }, m_b{ b } {}
     };
 
     std::ostream& operator<< (std::ostream& os, const Color& col) { 

@@ -8,21 +8,21 @@
 
 ---
 
-Ab C++ 11 gibt es in C++ die so genannten *variadic Templates*, 
+Ab C++ 11 gibt es in C++ die so genannten *Variadic Templates*, 
 mit denen ein Template definiert werden kann,
 das eine beliebige Anzahl von Parametern annehmen kann.
 
 Grundsätzlich werden zwei neue syntaktische Elemente
 für die Definition derartiger Templates benötigt:
-Zum einen das so genannte *parameter pack* zur Deklaration des Templates,
-zum anderen die *Expansion* des *parameter packs* in der Definition des Templates.
+Zum einen das so genannte *Parameter Pack* zur Deklaration des Templates,
+zum anderen die *Expansion* des *Parameter Packs* in der Definition des Templates.
 
 ## Parameter Pack
 
 Ein *Parameter Pack* ist einfach ein Name,
 der einer Liste von Templateparametern anstelle eines einzelnen Parameters
 zugewiesen wird. Es gibt drei Arten von Templateparametern
-und damit drei Möglichkeiten, *parameter packs* anzuwenden:
+und damit drei Möglichkeiten, *Parameter Packs* anzuwenden:
 
 ```cpp
 template <typename... TS>        // TS is a list of type parameters
@@ -33,17 +33,17 @@ template <template <typename T>... typename US>  // US is a list of template tem
 Der erste Fall tritt in der Praxis am häufigsten auf.
 Wie bei „normalen“ Vorlagen können variadische Templates Funktionstemplates
 oder Klassentemplates sein.
-Wir können auch einzelne Parameter und *parameter packs* mischen,
-mit der Einschränkung, dass es nur eine einzige *parameter pack* Definition geben kann
+Wir können auch einzelne Parameter und *Parameter Packs* mischen,
+mit der Einschränkung, dass es nur eine einzige *Parameter Pack* Definition geben kann
 und diese am Ende der Parameterliste stehen muss:
 
 ```cpp
 template <typename T, int N, typename... TS>
 ```
 
-Zusätzlich zu Template *parameter packs* haben wir *function parameter packs*.
+Zusätzlich zu *Template Parameter Packs* haben wir *Function Parameter Packs*.
 Sie kommen zum Einsatz, wenn in einem variadischen Funktionstemplate
-das Template *parameter pack* zum Definieren von Funktionsargumenten verwendet wird.
+das *Template Parameter Pack* zum Definieren von Funktionsargumenten verwendet wird.
 Dies sollten wir an einem Beispiel veranschaulichen:
 
 ```cpp
@@ -54,9 +54,8 @@ void f(int i, ARGS... args) {  // args is the function parameter pack
 ```
 
 Noch etwas formale Formulierungen gewünscht? Bitte schön: 
-
 Wenn in Betrachtung der Funktionsschablone `f` **ARGS** ≙ **T1, T2** ist,
-dann gilt **ARGS... args** ≙ **T1 t1, T2 t2** und **args = t1, t2**.
+dann gilt **ARGS... args** ≙ **T1 t1, T2 t2** und **args... = t1, t2**.
 
 ## Expansion des Parameter Packs
 
@@ -84,7 +83,7 @@ f(21, 54.3, "foo", 47u);
 ```
 
 In dem Funktionsaufruf von `f` ist `21` der `int`-Parameter, und die anderen drei Parameter
-definieren **zwei** *parameter packs*. Das Template *parameter pack* `ARGS` ist die Liste der Typen
+definieren **zwei** *Parameter Packs*. Das *Template Parameter Pack* `ARGS` ist die Liste der Typen
 `double`, `char const*` und `unsigned`,
 während das *function parameter pack* `args` die Liste mit den Werte ist `54.3`, `"foo"` und `47u` ist.
 
