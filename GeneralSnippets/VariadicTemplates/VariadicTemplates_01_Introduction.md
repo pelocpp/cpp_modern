@@ -221,6 +221,9 @@ Es kommt die zentrale `std::forwarding`-Anweisung zum Zuge:
 T(std::forward<Args>(args)...);
 ```
 
+Siehe hierzu den [Quellcode](VariadicTemplate_01_Introduction.cpp).
+
+
 ## Ein zweites Anwendungsbeispiel: Verwendung eines Parameter Packs bei Smart Pointern (hier: Unique Pointern)
 
 Siehe hierzu den [Quellcode](VariadicTemplate_01_Introduction.cpp).

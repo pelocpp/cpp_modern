@@ -39,7 +39,7 @@ namespace StructuredBinding {
             std::chrono::system_clock::now();
         std::time_t current_time =
             std::chrono::system_clock::to_time_t(now);
-        return std::make_tuple<>("INTC", current_time, 49.99F);
+        return std::make_tuple("INTC", current_time, 49.99F);
     }
 
     void test_03() {
@@ -50,11 +50,8 @@ namespace StructuredBinding {
     }
 
     void test_04() {
-
         int arr[] = { 10, 11, 12 };
-
         auto [ a, b, c ] = arr;
-
         std::cout << a << " " << b << " " << c << std::endl;
     }
 

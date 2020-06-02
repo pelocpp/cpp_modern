@@ -1,6 +1,6 @@
 # `decltype` und `std::declval`
 
-[Quellcode](Decltype.cpp)
+[Quellcode](decltype.cpp)
 
 ---
 

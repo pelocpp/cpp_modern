@@ -39,7 +39,7 @@ namespace WeakPointer {
 
         std::cout << "Is weak ptr expired:        " << weakPtr.expired() << std::endl;
 
-        // Notw: C++17 initializer syntax: limited variable scope
+        // Note: C++17 initializer syntax: limited variable scope
         if (std::shared_ptr<int> ptr3; (ptr3 = weakPtr.lock()) == nullptr) {
             std::cout << "Don't get the resource!" << std::endl;
         }
