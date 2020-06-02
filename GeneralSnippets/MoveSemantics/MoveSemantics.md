@@ -17,7 +17,7 @@ Prinzipiell kann die Move-Semantik auf dreierlei Weisen realisiert werden:
   * mit zwei Hilfsmethoden `cleanup` und `moveFrom` (*Primitiven*) / minimalistisches Entwurfsmuster
   * auf Basis des *Swap*-Idioms
 
-## Rule of Three, Rule of Five(Six), Rule of Zero
+## Rule of Three (Four), Rule of Five (Six), Rule of Zero
 
 *Allgemeines*:
 

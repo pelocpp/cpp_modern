@@ -7,13 +7,22 @@
 #include <map>
 #include <algorithm>
 
-// =====================================================================================
-// https://www.grimm-jaud.de/index.php/blog/initialisierung
-// und
-// "Peter Pohmann" // Kapitel 2.15
-// =====================================================================================
-
 namespace UniformInitialization {
+
+    void test_00() {
+        // defaut initialization of miscellaneous variables rsp. objects   
+        int n{};                 // n equals 0
+        float f{};               // f equals 0.0
+        double d{};              // d equals 0.0
+        std::string s{};         // s equals ""
+        std::vector<float> v{};  // v equals an empty vector
+
+        std::cout << "n: " << n << std::endl;
+        std::cout << "f: " << f << std::endl;
+        std::cout << "d: " << d << std::endl;
+        std::cout << "s: " << s << std::endl;
+        std::cout << "v.size(): " << v.size() << std::endl;
+    }
 
     void test_01() {
 
@@ -36,67 +45,75 @@ namespace UniformInitialization {
         std::vector<int> myArray { 1, 2, 3, 4, 5 };
         std::map<std::string, int> myMap { { "Hans", 1958 }, { "Sepp", 1956 } };
 
-        std::for_each(std::begin(myArray), std::end(myArray), [](int value) {
+        std::for_each(std::begin(myArray), std::end(myArray), [] (int value) {
             std::cout << value << ", ";
-            });
+            }
+        );
         std::cout << std::endl;
 
-        std::for_each(std::begin(myMap), std::end(myMap), [](std::pair<std::string, int> value) {
-            std::cout << value.first << " - " << value.second << std::endl;
-            });
+        std::for_each(
+            std::begin(myMap), 
+            std::end(myMap),
+            [] (std::pair<std::string, int> value) {
+                std::cout << value.first << " - " << value.second << std::endl;
+            }
+        );
     }
 
     class MyDataClass {
     public:
-        int x;
-        double y;
+        int m_x;
+        double m_y;
 
-        void print() { std::cout << "x: " << x << ", y: " << y << std::endl; }
+        void operator()() {
+            std::cout << "x: " << m_x << ", y: " << m_y << std::endl;
+        }
     };
 
     void test_03() {
-
         // initialization of public attributes of an arbitrary object
         MyDataClass obj1 { 111, 1.23 };
         MyDataClass obj2 { 123, 99.9 };
-
-        obj1.print();
-        obj2.print();
+        obj1();
+        obj2();
     }
 
     class MyAnotherClass {
-    public:
-        MyAnotherClass() : m_data { 10, 20, 30, 40, 50 }, m_n(0) {}
-        MyAnotherClass(int a, int b, int c, int d, int e) : m_data{ a, b, c, d, e }, m_n(0) {}
     private:
         int m_data[5];
         int m_n;
+
     public:
-        void print() {
-            for (int i{ 0 }; i < 5; ++i) {
+        MyAnotherClass() : m_data{ 10, 20, 30, 40, 50 }, m_n{ 98 } {}
+        MyAnotherClass(int a, int b, int c, int d, int e)
+            : m_data{ a, b, c, d, e }, m_n{ 99 } {}
+
+    public:
+        void operator()() {
+            std::cout << "m_n: " << m_n << std::endl;
+            for (size_t i{ 0 }; i < 5; ++i) {
                 std::cout << i << ": " << m_data[i] << std::endl;
             }
         }
     };
 
     void test_04() {
-
-        // initialization of public attributes of an arbitrary object
+        // delegating parameters of memberwise initialization list
         MyAnotherClass obj1;
-        obj1.print();
-
-        MyAnotherClass obj2 (11, 12, 13, 14, 15);
-        obj2.print();
+        MyAnotherClass obj2{ 11, 12, 13, 14, 15 };
+        obj1();
+        obj2();
     }
 
     class MyYetAnotherClass {
-    public:
-        MyYetAnotherClass() : m_vec{ 100, 200, 300 } {}
     private:
-        std::vector<int> m_vec;
+    std::vector<int> m_vec;
 
     public:
-        void print() {
+        MyYetAnotherClass() : m_vec{ 100, 200, 300 } {}
+
+    public:
+        void operator()() {
             for (size_t i{ 0 }; i < m_vec.size(); ++i) {
                 std::cout << i << ": " << m_vec[i] << std::endl;
             }
@@ -104,24 +121,8 @@ namespace UniformInitialization {
     };
 
     void test_05() {
-
-        MyYetAnotherClass obj;
-        obj.print();
-    }
-
-    void test_default() {
-
-        // defaut initialization of miscellaneous variables rsp. objects   
-        int n{};                 // n equals 0
-        float f{};               // f equals 0.0
-        double d{};              // d equals 0.0
-        std::string s{};         // s equals ""
-        std::vector<float> v{};  // v equals an empty vector
-
-        std::cout << "n: " << n << std::endl;
-        std::cout << "f: " << f << std::endl;
-        std::cout << "d: " << d << std::endl;
-        std::cout << "s: " << s << std::endl;
+        MyYetAnotherClass obj{};
+        obj();
     }
 }
 
@@ -129,12 +130,12 @@ int main_uniform_initialization()
 {
     using namespace UniformInitialization;
 
+    test_00();
     test_01(); 
     test_02();
     test_03();
     test_04();
     test_05();
-    test_default();
 
     return 0;
 }

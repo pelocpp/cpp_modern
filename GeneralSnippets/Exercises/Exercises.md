@@ -132,9 +132,9 @@ void testExercise() {
 Erstellen Sie eine leeres Visual C++ Projekt,
 fügen Sie nachstehenden Quellcode dort ein und bringen Sie das Programm zum Laufen.
 
-Ergänzen Sie das Programm um eine Lambda-Funktion, die dieselbe Funktionalität wie Funkion `even` hat,
+Ergänzen Sie das Programm um eine Lambda-Funktion, die dieselbe Funktionalität wie Funktion `even` hat,
 nur eben als Lambda-Funktion realisiert. Entwickeln Sie des weiteren eine Klasse `Even`,
-die die Funktionalität von Funkion `even` als *Funktor* repräsentiert (so genannten *ausführbares Objekt*,
+die die Funktionalität von Funktion `even` als *Funktor* repräsentiert (so genannten *ausführbares Objekt*,
 das den `()`-Operator implementiert):
 
 ```cpp
@@ -234,7 +234,7 @@ template <typename T>
 std::optional<T> toNumber(std::string s);
 ```
 
-Realisieren Sie die Funkion analog zur Funktion `toInt`. Für `T` sollen die integralen Datentypen
+Realisieren Sie die Funktion analog zur Funktion `toInt`. Für `T` sollen die integralen Datentypen
 `short`, `int`, `long` und `long long` als Template Argumente möglich sein.
 
 ---

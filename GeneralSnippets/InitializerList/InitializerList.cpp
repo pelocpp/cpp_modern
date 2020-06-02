@@ -8,12 +8,9 @@
 #include <vector>
 #include <algorithm>
 
-// =====================================================================================
-// "Peter Pohmann" // Kapitel 2.14
-// =====================================================================================
-
 namespace InitializerList {
 
+    // delegating std::initializer_list to std::for_each
     int myIntAdderFunction(std::initializer_list<int> list) {
 
         int result{0};
@@ -26,6 +23,7 @@ namespace InitializerList {
         return result;
     }
 
+    // delegating templated std::initializer_list to range based loop
     template<typename T>
     void printMe(std::initializer_list<T> list) {
         for (const auto& value : list) {
@@ -34,6 +32,7 @@ namespace InitializerList {
         std::cout << std::endl;
     }
 
+    // delegating templated std::initializer_list to range std::for_each with lambda
     template<typename T>
     void printMeToo(std::initializer_list<T> list) {
         std::cout << "Begin of list: ";
@@ -46,36 +45,31 @@ namespace InitializerList {
         std::cout << " End of list." << std::endl;
     }
 
+    // delegating std::initializer_list to std::vector
     class MyPeople {
-        friend std::ostream& operator<<(std::ostream&, const MyPeople&);
-
+    private:
+        std::vector<std::string> m_names;
     public:
         MyPeople(std::initializer_list<std::string> names) : m_names(names) {}
 
-    private:
-        std::vector<std::string> m_names;
-    };
+        void operator()() {
+            if (m_names.size() == 0) {
+                return;
+            }
 
-    std::ostream& operator<<(std::ostream& os, const MyPeople& people) {
+            std::for_each(
+                std::begin(m_names),
+                std::prev(std::end(m_names)),
+                [](const std::string& elem) {
+                    std::cout << elem << " - ";
+                });
 
-        if (people.m_names.size() == 0) {
-            return os;
+            // prevent output of " - " after last element :-)
+            std::vector<std::string>::const_iterator last = m_names.end();
+            --last;
+            std::cout << *last;
         }
-
-        std::for_each(
-            std::begin(people.m_names),
-            std::prev(std::end(people.m_names)),
-            [](const std::string& elem) {
-                std::cout << elem << " - ";
-            });
-
-        // prevent output of " - " after last element :-)
-        std::vector<std::string>::const_iterator last = people.m_names.end();
-        --last;
-        std::cout << *last;
-
-        return os;
-    }
+    };
 
     void test_01() {
         // testing functions expecting lists in function call
@@ -108,27 +102,25 @@ namespace InitializerList {
         // testing functions expecting lists as parameter
 
         MyPeople people({ "Hans", "Sepp", "Franz" });
-        std::cout << people << std::endl;
+        people();
 
         MyPeople noFriends({ });
-        std::cout << noFriends << std::endl;
+        noFriends();
 
         MyPeople manyFriends({ 
             "James", "John", "Robert", "Michael", "William",
             "David", "Richard", "Joseph", "Thomas"
             });
-        std::cout << manyFriends << std::endl;
+        manyFriends();
     }
 }
 
 int main_initializer_list()
 {
     using namespace InitializerList;
-
     test_01(); 
     test_02();
     test_03();
-
     return 0;
 }
 

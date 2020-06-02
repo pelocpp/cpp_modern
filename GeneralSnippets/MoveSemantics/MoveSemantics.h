@@ -24,7 +24,7 @@ namespace MoveSemantics {
     private:
         // private helper methods
         void cleanup() noexcept;
-        void moveFrom(BigData& set) noexcept;
+        void moveFrom(BigData&) noexcept;
         void swap(BigData&, BigData&) noexcept;  // 'swap idiom'
 
     public:
