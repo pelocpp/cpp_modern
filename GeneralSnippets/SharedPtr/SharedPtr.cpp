@@ -20,7 +20,9 @@ namespace SharedPointer {
 
     // 'shared ptr' approach
     std::shared_ptr<int> loadSharedPointer() {
-        return std::shared_ptr<int>(new int);
+       // return std::shared_ptr<int>(new int);
+        std::shared_ptr<int> tmp = std::make_shared<int>(456);
+        return tmp;
     }
 
     // note: play with 'call-by-value' or 'call-by-reference'
@@ -31,7 +33,7 @@ namespace SharedPointer {
     void test_01() {
 
         // 'ptr1' is a shared pointer for a new instance of an int
-        std::shared_ptr<int> ptr1 = std::shared_ptr<int>(new int(123));
+        std::shared_ptr<int> ptr1 = std::shared_ptr<int>(new int{ 123 });
         // or
         // std::shared_ptr<int> ptr1 = std::make_shared<int>(123);
 
@@ -75,7 +77,8 @@ namespace SharedPointer {
     }
 }
 
-int main_shared_ptr()
+int main()
+// int main_shared_ptr()
 {
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
     using namespace SharedPointer;

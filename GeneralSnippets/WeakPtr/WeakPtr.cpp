@@ -18,7 +18,7 @@ namespace WeakPointer {
 
             std::shared_ptr<int> ptr1 = std::make_shared<int>(123);
             // or
-            // std::shared_ptr<int> ptr1 = std::shared_ptr<int>(new int(123));
+            // std::shared_ptr<int> ptr1 = std::shared_ptr<int>(new int{ 123 });
 
             std::cout << "Usage count shared_ptr:     " << ptr1.use_count() << std::endl;
             weakPtr = ptr1;

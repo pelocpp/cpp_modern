@@ -107,10 +107,9 @@ int sumOfSums<
       std::accumulate(std::begin(__conts2), std::end(__conts2), 0)
   };
   return std::accumulate(
-      std::begin(
-          std::initializer_list<int>(sums)),
-          std::end(std::initializer_list<int>(sums)), 
-          0);
+      std::begin(std::initializer_list<int>(sums)),
+      std::end(std::initializer_list<int>(sums)), 
+      0);
 }
 #endif
 ```

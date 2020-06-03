@@ -67,19 +67,23 @@ z.B. weil ihre Klassen nur private oder geschützte Konstruktoren haben.
 Betrachten wir das Beispiel einer Funktion `f`. `decltype(f(11))` besagt 
 "Welchen Typ bekomme ich, wenn ich `f` mit `11` aufrufe?".
 Was wir eigentlich meinen, ist "Welchen Typ bekomme ich, wenn ich `f` mit einem `int` aufrufe?".
-Im Fall von `int` könnten wir nur ein standardmäßig initialisiertes `int` verwenden.
+Im Fall von `int` könnten wir ein standardmäßig initialisiertes `int` verwenden.
 Der Standardkonstruktor ist jedoch nicht immer verfügbar.
 
 Für solche Fälle ist `std::declval` konzipiert.
-Es ist eine Funktionsschablinbe, die eine *r*-Value-Referenz auf alles zurückgibt,
+Sie ist eine Funktionsschabone, die eine *r*-Value-Referenz auf alles zurückgibt,
 was an sie übergeben wird. 
-Auf diese Weise müssen nicht eine Funktion künstlich deklarieren,
-um etwas zu haben, das wir in unserem `decltype`-Argument verwenden können:
+Auf diese Weise müssen wir nicht eine Funktion künstlich deklarieren,
+um etwas zu haben, das wir im `decltype`-Argument verwenden können:
 
 ```cpp
-decltype(f(std::declval<int>()))
+double f(int);
+float f(int, int);
+using some_type1 = decltype(f(std::declval<int>()));
+using some_type2 = decltype(f(std::declval<int>(), std::declval<int>()));
 ```
 
+In diesem Fall entspricht `some_type1` dem Datentyp `double` und `some_type2` `float`.
 Dies ist besonders praktisch,
 wenn man sich in einem Template-Kontext befindet und der Wert, den man erhalten möchte,
 von einem Template-Parameter abhängt. Siehe zum Beispiel:
@@ -90,6 +94,17 @@ using sum_t = decltype(std::declval<T>() + std::declval<U>());
 ```
 
 Dies ist zu lesen in der Form: "`sum_t` ist der Typ, den ich bekomme, wenn ich zu *einem U* *ein T* hinzufüge."
+
+*Beachte*:
+
+Eine kürzere `using`-Anweisung der Gestalt
+
+```cpp
+template<typename T, typename U>
+using sum_t = decltype(T + U);
+```
+
+ist nicht übersetzungsfähig! Zwei Typen lassen sich nicht "addieren"!
 
 ## Literaturhinweise:
 

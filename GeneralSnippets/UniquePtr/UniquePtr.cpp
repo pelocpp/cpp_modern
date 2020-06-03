@@ -26,7 +26,7 @@ namespace UniquePointer {
     void test_01() {
 
         // create a unique_ptr to an int with value 123
-        std::unique_ptr<int> ptr1 = std::unique_ptr<int>(new int(123));
+        std::unique_ptr<int> ptr1 = std::unique_ptr<int>(new int{ 123 });
         // or
         // std::unique_ptr<int> ptr1 = std::make_unique<int>(123);
 

@@ -21,13 +21,12 @@ zum anderen die *Expansion* des *Parameter Packs* in der Definition des Template
 
 Ein *Parameter Pack* ist einfach ein Name,
 der einer Liste von Templateparametern anstelle eines einzelnen Parameters
-zugewiesen wird. Es gibt drei Arten von Templateparametern
-und damit drei Möglichkeiten, *Parameter Packs* anzuwenden:
+zugewiesen wird. Die häufigsten zwei Arten von Templateparametern
+und damit Möglichkeiten, *Parameter Packs* anzuwenden lauten:
 
 ```cpp
-template <typename... TS>        // TS is a list of type parameters
-template <unsigned... NS>        // NS is a list of non-type parameters (unsigned)
-template <template <typename T>... typename US>  // US is a list of template template parameters
+template <typename... TS>    // TS is a list of type parameters
+template <unsigned... NS>    // NS is a list of non-type parameters (unsigned)
 ```
 
 Der erste Fall tritt in der Praxis am häufigsten auf.

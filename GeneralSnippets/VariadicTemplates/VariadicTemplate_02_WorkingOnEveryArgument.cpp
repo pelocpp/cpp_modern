@@ -20,6 +20,12 @@ namespace VariadicTemplatesWorkingOnEveryArgument {
         std::initializer_list<int> list = { (doSomething(args), 0)... };
     }
 
+    // doesn't compile
+    //template <class... ARGS>
+    //void doSomethingForAll(ARGS const&... args) {
+    //    doSomething(args)...;
+    //}
+
     void test_01() {
         doSomethingForAll(1, '!', std::string("ABC"), 5.5);
     }
