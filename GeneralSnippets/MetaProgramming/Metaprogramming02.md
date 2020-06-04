@@ -6,7 +6,7 @@
 
 ## Listenverarbeitung
 
-Dieser Beitrag zeigt, wie sich eine einfach verketteten Datenstruktur (*Linked List*) zur Übersetzungsszeit in C ++ realisieren lässt.
+Dieser Beitrag zeigt, wie sich eine einfach verkettete Datenstruktur (*Linked List*) zur Übersetzungsszeit in C ++ realisieren lässt.
 Häufige Operationen wie das Erstellen einer Liste, zusätzliche Elemente einfügen, Länge einer Liste berechnen etc. werden betrachtet.
 
 ## Einstieg
