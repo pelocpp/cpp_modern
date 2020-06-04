@@ -6,8 +6,8 @@
 
 ## Einleitung
 
-Es gibt ein interessantes Problem, das es bei der gleichzeitigen Verwendung von Funktionsüberladungen
-mit Templates zu berücksichtigen gilt. Das Problem besteht darin, dass Templates in ihrem Gebrauch (Instanziierung)
+Wir betrachten ein Problem, das bei der gleichzeitigen Verwendung von Funktionsüberladungen
+mit Templates auftritt. Es besteht darin, dass Templates in ihrem Gebrauch (bei der Instanziierung)
 normalerweise zu allgemein gehalten sind.
 Wenn Templates mit Überladungen gemischt werden, kann das Ergebnis überraschend sein:
 
@@ -23,7 +23,12 @@ void foo(const T& t) {
 ```
 
 Welche der beiden Funktionen `foo` wird Ihrer Meinung nach beim Aufruf von `foo(123);` verwendet?
-Die Antwort lautet: Es ist die Funktions-Template Variante, die Ausgabe lautet folglich "`template 123`".
+
+```cpp
+foo(123);
+```
+
+Die Antwort lautet: Es ist die Funktionstemplate Variante, die Ausgabe lautet folglich "`template 123`".
 Der Grund dafür ist, dass ganzzahlige Literale (wie zum Beispiel `123`) standardmäßig `signed` sind
 (sie werden nur mit dem Suffix `U` vorzeichenlos). Wenn der Compiler die Überladungs-Kandidaten untersucht,
 aus denen er für diesen Aufruf auswählen kann, stellt er fest, dass die erste Funktion eine Konvertierung benötigt,
@@ -65,8 +70,8 @@ die genau erklärt, wie sich ein Compiler verhalten soll:
 
 ## SFINAE
 
-Um es nicht zu formal werden zu lassen: Wenn ein Substitutionsfehler wie der oben gezeigte auftritt, schlägt die "type deduction" für diesen Typ fehl -
-was aber nicht einen Übersetzungsfehler nach sich zieht:
+Um es nicht zu formal werden zu lassen: Wenn ein Substitutionsfehler wie der oben gezeigte auftritt, schlägt die "*type deduction*" für diesen Typ fehl -
+was aber **nicht** einen Übersetzungsfehler nach sich zieht:
 Der Compiler ignoriert diesen Kandidaten einfach und sieht sich die anderen Möglichkeiten an.
 
 Im C ++ Sprachjargon bezeichnet man diese Regel als **SFINAE**: "**Substitution Failure Is Not An Error**".
@@ -85,8 +90,9 @@ wird aufgrund des vorliegenden Ausdrucks `T::value_type` im Rumpf der Funktion t
 Die Moral von der Geschichte ist: Wenn wir ein Template schreiben wollen, das nur für einige Typen sinnvoll ist,
 dann müssen wir dafür Sorge tragen, dass der Mechanismus der "*Type Deduction*" bereits in der *Deklaration*
 für ungültige Typen fehlschlägt, um auf diese Weise einen Substitutionsfehler zu verursachen.
-Wenn sich der ungültige Typ in die Übersetzungsphase *nach* der Auswahl der Überladungskandidaten schleicht,
-also in den eigentlichen Rumpf der Übersetzungseinheit, wird das Programm nicht kompiliert:
+Wenn sich der ungültige Typ in die Übersetzungsphase *nach* der Auswahl der Überladungskandidaten einschleicht,
+also in den eigentlichen Rumpf der Übersetzungseinheit, wird die Übersetzung des Programms auf Grund eines 
+Syntaxfehlers abgebrochen:
 
 ```cpp
 negate(123);
@@ -159,7 +165,7 @@ doSomething integral type: 123
 doSomething class type: SomeClass object
 ```
 
-**Beachte**: Die Strukturen `enable_if` sind auch in der C++-Klassenbibliothek definiert (`inlude`-Datei `<type_traits>`),
+**Beachte**: Die Strukturen `enable_if` sind auch in der C++-Klassenbibliothek definiert (`#include`-Datei `<type_traits>`),
 Sie müssen diese also nicht selbst definieren.
 
 Die beiden Templates `doSomething` sind in ihrer Definition etwas schwerfällig geraten. Mit der zusätzlichen

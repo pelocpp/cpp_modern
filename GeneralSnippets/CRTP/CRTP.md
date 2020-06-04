@@ -12,7 +12,8 @@ im Gegensatz zum *Early-Binding* - Übersetzungszeitpunkt) genannt,
 da die tatsächlich aufzurufende Funktion zur Laufzeit ermittelt wird.
 Implementiert ist dieser Mechanismus in der Regel dadurch, indem jedem Objekt einer Klasse mit virtuellen Funktionen
 ein versteckter Zeiger hinzugefügt wird (so genannter *vtptr* - *vtable pointer*).
-Dieser Zeiger zeigt für ein bestimmtes Objekt auf eine Tabelle mit Funktionszeigern, um diese bei Bedarf (indirekt (!)) aufzurufen.
+Dieser Zeiger zeigt für ein bestimmtes Objekt auf eine Tabelle mit Funktionszeigern (pro Klasse eine Tabelle),
+um diese bei Bedarf (indirekt (!)) aufzurufen.
 
 Das Problem des dynamischen Polymorphismus kann höhere Laufzeit bedeuten:
 
@@ -56,15 +57,15 @@ void test() {
 
 Der Schlüssel zu dieser Technik ist der seltsame Trick mit Templates,
 der verwendet wird: Beachten Sie, dass die Klasse `Derived` von `Base<Derived>` erbt.
-Was bedeutet das? Die Idee ist, den realen Typ der abgeleiteten Klasse zur Kompilierungszeit in die Basis zu "injizieren",
-damit der `static_cast` davon in der Schnittstelle das gewünschte Ergebnis erzeugt.
+Was bedeutet das? Die Idee ist, den realen Typ der abgeleiteten Klasse zur Kompilierungszeit in die Basis zu "injizieren".
+Der `static_cast` in Methode `interface` erzeugt dann das gewünschte Ergebnis.
 
 Diese Technik hat einen Namen - sie heißt *Curiously Recurring Template Pattern* oder eben kurz *CRTP*.
 
 ## Eine Anwendung: Mixins
 
-Ein Anwendungsfall für das *Curiously Recurring Template Pattern* sind die so genannten Mixins.
-Die ich diese in der von mir gewählten Umsetzung mit variadischen Templates realisiert habe,
+Ein Anwendungsfall für das *Curiously Recurring Template Pattern* sind die so genannten *Mixins*.
+Da ich diese in der von mir gewählten Umsetzung mit variadischen Templates realisiert habe,
 finden wir eine Beschreigung unter
 
 [Variadische Templates: Mixins](../../GeneralSnippets/VariadicTemplates/VariadicTemplates_04_Mixins.md)

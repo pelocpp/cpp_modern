@@ -72,7 +72,7 @@ X(const TS&... mixins) : TS(mixins)... {}
 ```
 
 Das Muster wird für jedes Argument im Parameter Pack einmal instanziiert, also:
-Bei beiden oben genannten Erweiterungen wird `TS` durch jeden Typ aus dem Parameterpaket ersetzt,
+Bei beiden oben genannten Erweiterungen wird `TS` durch jeden Typ aus dem Parameter Pack ersetzt,
 und `mixins` fungiert als Platzhalter für den jeweiligen Parameternamen.
 
 *Beispiel*:
@@ -254,13 +254,13 @@ Wenn Sie versuchen, zwei `int`-Slots anzulegen, wird ein Kompilierungsfehler aus
 Wir müssen unsere `Slot`-Klasse um einen zusätzlichen Template Parameter erweitern (Typ für Schlüssel mit Standardwert).
 In Abbildung 2 können wir die Modifikationen erkennen. Wollen wir zwei Slot-Einträge
 desselben Typs haben (siehe Typ `std::string` in Abbildung 2), dann sind diese beiden
-Einträge durch eine zusätzlichen Schlüsseltyp zu unterscheiden.
+Einträge durch einen zusätzlichen Schlüsseltyp zu unterscheiden.
 
 <img src="cpp_snippets_mixins_02.png" width="600">
 
 Abbildung 2: Modifikationen am Konzept der Klasse `Slot`.
 
-Dies zieht allerdings eine Änderung der Repository-Methoden nach sich:
+Dies zieht allerdings Änderungen an den Repository-Methoden nach sich:
 
 ###### Realisierung:
 
@@ -338,7 +338,7 @@ Die `emplace`-Methode kennen wir bereits von der Container-Klasse `std::vector`:
 
 `emplace` erstellt ein Objekt an Ort und Stelle, so dass im `std::vector`-Objekt kein temporäres Hilfsobjekt
 angelegt werden muss. `emplace` wird direkt mit Argumenten für einen geeigneten Konstruktor
-des gewünschten Objekts aufgerufen. In diesem Fall vermeiden wir es also, ein unnötiges
+des gewünschten Objekts aufgerufen. In diesem Fall vermeiden wir es, ein unnötiges
 temporäres Objekt zu erstellen und wieder zu zerstören.
 
 Um den geeigneten Konstruktor des Zielobjekts zu "finden", verwendet `emplace`
@@ -356,7 +356,7 @@ Es genügt die beiden `emplace`-Methoden zu betrachten, der Rest der Implementier
 template <typename... Args>
 void emplace(const Args&... args)
 {
-    m_value = T(args...); // assignement operator (might use move semantics)
+    m_value = T(args...); // assignment operator (might use move semantics)
 }
 ```
 
@@ -416,17 +416,17 @@ public:
     }
 
     std::string operator()() { 
-    std::ostringstream oss; 
-    oss << m_firstName << " " << m_lastName << " [" << m_age << "]"; 
-    return  oss.str();
+        std::ostringstream oss; 
+        oss << m_firstName << " " << m_lastName << " [" << m_age << "]"; 
+        return  oss.str();
     }
 };
 
 void test_07() {
     using MyRepo = RepositoryEx
     <
-    SlotEx<Person>,
-    SlotEx<std::string>
+        SlotEx<Person>,
+        SlotEx<std::string>
     >;
 
     MyRepo repo;

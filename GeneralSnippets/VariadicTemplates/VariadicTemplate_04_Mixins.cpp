@@ -266,9 +266,9 @@ namespace VariadicTemplatesMixins {
         }
 
         std::string operator()() { 
-        std::ostringstream oss; 
-        oss << m_firstName << " " << m_lastName << " [" << m_age << "]"; 
-        return  oss.str();
+            std::ostringstream oss; 
+            oss << m_firstName << " " << m_lastName << " [" << m_age << "]"; 
+            return  oss.str();
         }
     };
 

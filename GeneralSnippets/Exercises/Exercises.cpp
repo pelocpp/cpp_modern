@@ -495,10 +495,9 @@ namespace Exercise_08 {
         return arr;
     }
 
-
     void testExercise() {
         int vals[5]{ 1, 2, 3, 4, 5 };
-        int elem = *first(vals); 
+        int elem = *(first(vals)); 
         std::cout << elem << std::endl;
 
         // OK: The first function template substitution fails because

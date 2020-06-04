@@ -292,8 +292,8 @@ Schreiben Sie eine Schablone `Fibonacci`, die *Fibonacci*-Zahlen zur Übersetzun
 Arrays treten in C++ - unter anderem aus historischen Gründen - mehrfach in Erscheinung:
 Als klassisches Array im Stile von C oder als Objekte der Klasse `std::array`.
 
-Schreiben Sie eine Funktion first, die eine Referenz des ersten Arrayelements zurückliefert.
-Bei klassischen C-Arrays soll dies die Anfangsadresse des Arrays sein, bei `std::array`
+Schreiben Sie eine Funktion `first`, die eine Referenz des ersten Arrayelements zurückliefert.
+Bei klassischen C-Arrays sollte dies die Anfangsadresse des Arrays sein, bei `std::array`
 das Iterator-Objekt `begin`.
 
 ## Aufgabe 9
@@ -302,16 +302,31 @@ das Iterator-Objekt `begin`.
 
 #### Vorausetzungen: Templates
 
-Das *Detection Idiom* (zu deutsch etwas "Erkennungsidiom")
+Das *Detection Idiom* (zu deutsch etwa "Erkennungsidiom")
 ermöglicht die Introspektion eines C++-Klassentyps zur Übersetzungszeit.
-Mithilfe dieses Idioms können wir überprüfen, ob eine bestimmte Klasse eine Methode, einen Typaliasnamen
+Mithilfe dieses Idioms können wir überprüfen, ob eine Klasse eine bestimmte Methodeo
 oder ein Element eines bestimmten Namens enthält.
 
 Schreiben Sie eine Funktionsschablobe `testGet<T>`, die `true` oder `false` in Abhängigkeit davon zurückliefert,
 ob der Klassentyp `T` eine Methode des Namens `get` besitzt oder nicht.
 
-*Hinweis*:
-Erstellen Sie eine Klasseschablone, zum Beispiel `TestMethod`.
+*Beispiel*:
+
+Im folgenden sind zwei Klassen `FirstStruct` und `SecondStruct` definiert,
+die unterschiedliche Methoden haben (`get` bzw. `getter`):
+
+```cpp
+
+struct FirstStruct {
+    int get() { return 123; };
+};
+
+struct SecondStruct {
+    int getter() { return 456; };
+};
+```
+
+Erstellen Sie eine Klassenschablone, zum Beispiel `TestMethod`.
 Fügen Sie dieser Klasse eine Deklaration der Gestalt
 
 ```cpp
@@ -319,7 +334,25 @@ static constexpr bool value = testGet<T>(int());
 ```
 
 hinzu. `testGet` wird mit einer anonymen Funktion aufgerufen,
-deren Rückgabewert ein `int`-Parameter ist.
+deren Rückgabewert ein `int`-Parameter ist. Damit hätten wir alle Bausteine erwähnt,
+um folgendes Beispielprogramm auszuführen:
+
+```cpp
+std::cout
+    << typeid(struct FirstStruct).name() << ":  "
+    << std::boolalpha << TestMethod<FirstStruct>::value << std::endl;
+
+std::cout 
+    << typeid(struct SecondStruct).name() << ": "
+    << std::boolalpha << TestMethod<SecondStruct>::value << std::endl;
+```
+
+*Ausgabe*:
+
+```cpp
+struct Exercise_09::FirstStruct:  true
+struct Exercise_09::SecondStruct: false
+```
 
 ---
 
