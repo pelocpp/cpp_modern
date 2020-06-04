@@ -20,7 +20,6 @@ namespace SharedPointer {
 
     // 'shared ptr' approach
     std::shared_ptr<int> loadSharedPointer() {
-       // return std::shared_ptr<int>(new int);
         std::shared_ptr<int> tmp = std::make_shared<int>(456);
         return tmp;
     }
@@ -77,8 +76,7 @@ namespace SharedPointer {
     }
 }
 
-int main()
-// int main_shared_ptr()
+int main_shared_ptr()
 {
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
     using namespace SharedPointer;

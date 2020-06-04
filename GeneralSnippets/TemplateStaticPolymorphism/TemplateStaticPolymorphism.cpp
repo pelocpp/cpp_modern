@@ -37,21 +37,21 @@ namespace TemplatesClassicPolymorphism {
     // concrete geometric object class Circle - derived from GeoObj
     class Circle : public GeoObj {
     public:
-        virtual void draw() const override {
+        void draw() const override {
             std::cout << "drawing a circle" << std::endl;
         };
 
-        virtual Coord center_of_gravity() const override { return Coord(); };
+        Coord center_of_gravity() const override { return Coord(); };
     };
 
     // concrete geometric object class Line - derived from GeoObj
     class Line : public GeoObj {
     public:
-        virtual void draw() const override {
+        void draw() const override {
             std::cout << "drawing a line" << std::endl;
         };
 
-        virtual Coord center_of_gravity() const override { return Coord(); };
+        Coord center_of_gravity() const override { return Coord(); };
     };
 
     // draw any GeoObj
@@ -145,17 +145,17 @@ namespace TemplatesStaticPolymorphism {
         Circle c3;
         Coord  coord;
                                         // Note: Type Deduction
-        myDraw(line);                   // myDraw<Line>(GeoObj&) => Line::draw()
-        myDraw(c1);                     // myDraw<Circle>(GeoObj&) => Circle::draw()
+        myDraw(line);                   // myDraw<Line>(Line&) => Line::draw()
+        myDraw(c1);                     // myDraw<Circle>(Circle&) => Circle::draw()
                                         
-        coord = distance(c2, c3);       // distance<Circle,Circle>(GeoObj1&,GeoObj2&)
-        coord =distance(line, c1);      // distance<Line,Circle>(GeoObj1&,GeoObj2&)
+        coord = distance(c2, c3);       // distance<Circle,Circle>(Circle&,Circle&)
+        coord =distance(line, c1);      // distance<Line,Circle>(Line&,Circle&)
 
         // std::vector<GeoObj*> coll;   // ERROR: no heterogeneous collection possible
         std::vector<Circle> vec;        // OK: homogeneous collection possible
         vec.push_back(c1);              // insert circle
-        vec.push_back(c1);              // insert circle
-        vec.push_back(c1);              // insert circle
+        vec.push_back(c2);              // insert circle
+        vec.push_back(c3);              // insert circle
         drawElems(vec);                 // draw all circle
     }
 }

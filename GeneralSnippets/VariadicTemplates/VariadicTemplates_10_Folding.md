@@ -7,16 +7,16 @@
 Wenn es um die Handhabung variadischer Funktionen geht, können wir nicht im klassischen
 "iterativen" C++ - Stil denken. Wir müssen solche Funktionen rekursiv schreiben - mit
 einem so genannten "Normal"-Fall und einem "rekursiven" Fall, der sich nach endlich vielen Schritten
-in einen "Normal"-Fall reduzieren lässt. 
+auf einen "Normal"-Fall reduzieren lässt. 
 
 Variadische Templates bestehen deshalb aus zwei Template-Überladungen:
 
   * Einem *normalen* Template
-  * Einem *rekursiven* Template, das neben einem normalen Parameter ein so genannten *Parameter Pack* besitzt (Notation mit "..."). 
-    Diese drei Punkte können sowohl links vom Argument (Parameter-Deklaration) als auch rechts stehen (Entpacken des Parameter Packs).
+  * Einem *rekursiven* Template, das neben einem normalen Parameter ein so genanntes *Parameter Pack* besitzt (Notation mit "..."). 
+    Diese drei Punkte können sowohl links vom Argument (Parameter-Pack-Deklaration) als auch rechts stehen (Entpacken des Parameter Packs).
 
-Ab C++ 17 kann man die zwei Templates eines variadischen Templates auch auf eines reduzieren. 
-Dies erfolgt mit Hilfe eines sogenannten "*Fold-Ausdrucks*".
+Ab C++ 17 kann man die zwei Templates eines variadischen Templates auch auf Eines reduzieren. 
+Dies erfolgt mit Hilfe eines sogenannten "*Folding-Ausdrucks*".
 
 *Folding-Expressions* lassen sich in 4 Kategorien einteilen, wie folgende Tabelle 
 darstellt:

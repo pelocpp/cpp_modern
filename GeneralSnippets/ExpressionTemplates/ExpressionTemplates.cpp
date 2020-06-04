@@ -278,7 +278,8 @@ namespace ExpressionTemplates {
     }
 }
 
-int main_expression_templates()
+int main()
+// int main_expression_templates()
 {
     using namespace ExpressionTemplates;
     test_01();
