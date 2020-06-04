@@ -200,8 +200,8 @@ namespace ExpressionTemplates {
         }
 
         // adding 3 matrices
-        MatrixSum<Matrix<double, cols, rows>, Matrix<double, cols, rows>> sumAB(a, b);
-        MatrixSum<MatrixSum<Matrix<double, cols, rows>, Matrix<double, cols, rows>>, Matrix<double, cols, rows>> sumABC(sumAB, c);
+        MatrixSum<Matrix<double, cols, rows>, Matrix<double, cols, rows>> sumAB{ a, b };
+        MatrixSum<MatrixSum<Matrix<double, cols, rows>, Matrix<double, cols, rows>>, Matrix<double, cols, rows>> sumABC{ sumAB, c };
 
         result = sumABC;
     }
@@ -236,10 +236,10 @@ namespace ExpressionTemplates {
         const Matrix<double>& a5)
     {
         // adding 5 matrices with expression template approach
-        MatrixSum<Matrix<double>, Matrix<double>> sumAB(a1, a2);
-        MatrixSum<MatrixSum<Matrix<double>, Matrix<double>>, Matrix<double>> sumABC(sumAB, a3);
-        MatrixSum<MatrixSum<MatrixSum<Matrix<double>, Matrix<double>>, Matrix<double>>, Matrix<double>> sumABCD(sumABC, a4);
-        MatrixSum<MatrixSum<MatrixSum<MatrixSum<Matrix<double>, Matrix<double>>, Matrix<double>>, Matrix<double>>, Matrix<double>> sumABCDE(sumABCD, a5);
+        MatrixSum<Matrix<double>, Matrix<double>> sumAB{ a1, a2 };
+        MatrixSum<MatrixSum<Matrix<double>, Matrix<double>>, Matrix<double>> sumABC{ sumAB, a3 };
+        MatrixSum<MatrixSum<MatrixSum<Matrix<double>, Matrix<double>>, Matrix<double>>, Matrix<double>> sumABCD{ sumABC, a4 };
+        MatrixSum<MatrixSum<MatrixSum<MatrixSum<Matrix<double>, Matrix<double>>, Matrix<double>>, Matrix<double>>, Matrix<double>> sumABCDE{ sumABCD, a5 };
 
         auto start = std::chrono::high_resolution_clock::now();
         for (int i = 0; i < iterations; ++i) {
