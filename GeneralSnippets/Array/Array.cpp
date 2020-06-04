@@ -23,13 +23,23 @@ namespace StdArray {
         // myArray = { 1, 2, 3, 4, 5 };
 
         // also doesn't compile
+        // int n = 5;
+        // std::array <int, n> myArray;
+
+        const int n = 5;
+        std::array<int, n> myArray4;
+
+        constexpr int m = 5;
+        std::array<int, m> myArray5;
+
+        // also doesn't compile
         // std::array<int> myArray = { 1, 2, 3, 4, 5 };
 
         // type is deduced to std::array<int, 5>
-        std::array myArray4{ 9, 7, 5, 3, 1 };
+        std::array myArray6{ 9, 7, 5, 3, 1 };
 
         // type is deduced to std::array<double, 2>
-        std::array myArray5{ 9.7, 7.31 };
+        std::array myArray7{ 9.7, 7.31 };
     }
 
     void test_02() {

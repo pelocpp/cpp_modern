@@ -7,7 +7,7 @@
 ## Einführung in Expression Templates 
 
 Ein *Expression Template* ist eine Optimierungstechnik zur Übersetzungszeit,
-die hauptsächlich im "Scientific Computing" Anwendung findet.
+die hauptsächlich im "Numerical Computing" Anwendung findet.
 Der Hauptzweck besteht darin, unnötige Temporärvariablen bzw. -objekte zu vermeiden und Schleifenberechnungen
 mit einem einzigen Durchgang zu optimieren (bei Operationen mit wiederholten numerischen Operationen).
 *Expression Templates* wurden ursprünglich entwickelt, um die Ineffizienzen einer naiven Operatoren-Überladung bei der Implementierung
@@ -275,11 +275,11 @@ Die Anregungen zu den Beispielen dieses Code-Snippets finden sich unter
 
 Zwei sehr interessante Artikel zu diesem Thema stammen von
 
-[Angelika Langer](http://www.angelikalanger.com/Articles/Cuj/ExpressionTemplates/ExpressionTemplates.htm/)<br>(abgerufen am 25.05.2020).
+[Angelika Langer](http://www.angelikalanger.com/Articles/Cuj/ExpressionTemplates/ExpressionTemplates.htm)<br>(abgerufen am 25.05.2020).
 
 und
 
-[Arindam Mukherjee](http://shoddykid.blogspot.com/2008/07/expression-templates-demystified.html/)<br>(abgerufen am 25.05.2020).
+[Arindam Mukherjee](http://shoddykid.blogspot.com/2008/07/expression-templates-demystified.html)<br>(abgerufen am 25.05.2020).
 
 Eine kürzere Fassung des Artikels von Angelika Langer ist im *Dr. Dobbs Journal* zu finden:
 
