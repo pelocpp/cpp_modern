@@ -44,7 +44,7 @@ namespace Decltype {
         // decltype(foo()) yields the type of whatever foo() returns,
         // in this case, float:
         float foo();
-        decltype(foo()) b;
+        [[maybe_unused]] decltype(foo()) b;
 
         //decltype yields void, so this is the same as void bar();
         std::vector<int> vec;

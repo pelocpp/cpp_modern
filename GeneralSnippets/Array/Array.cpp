@@ -12,7 +12,7 @@ namespace StdArray {
     void test_01() {
 
         // initialization variants
-        std::array<int, 5> myArray1;
+        [[maybe_unused]] std::array<int, 5> myArray1;
 
         std::array<int, 5> myArray2 = { 1, 2, 3, 4, 5 }; //  initializer list
 
@@ -27,10 +27,10 @@ namespace StdArray {
         // std::array <int, n> myArray;
 
         const int n = 5;
-        std::array<int, n> myArray4;
+        [[maybe_unused]] std::array<int, n> myArray4;
 
         constexpr int m = 5;
-        std::array<int, m> myArray5;
+        [[maybe_unused]] std::array<int, m> myArray5;
 
         // also doesn't compile
         // std::array<int> myArray = { 1, 2, 3, 4, 5 };
@@ -154,10 +154,8 @@ namespace StdArray {
 
     void test_07() {
 
-        // Passing a multidimensional std::array to another function
-
+        // passing a multidimensional std::array to another function
         std::array<std::array<int, 3>, 3> array{ {{11,12,13},{14,15,16},{17,18,19}} };
-
         display(array);
     }
 
@@ -167,6 +165,8 @@ namespace StdArray {
         std::string name;
         std::string role;
         unsigned phone;
+    public:
+        Employee() = default;
     };
 
     void test_08() {

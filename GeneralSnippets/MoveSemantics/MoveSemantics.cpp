@@ -110,7 +110,7 @@ namespace MoveSemantics {
     //}
 
     // getter
-    int BigData::size() const {
+    size_t BigData::size() const {
         return m_size;
     }
 

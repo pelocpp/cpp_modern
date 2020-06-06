@@ -29,7 +29,7 @@ namespace MoveSemantics {
 
     public:
         // getter
-        int size() const;
+        size_t size() const;
         bool isEmpty() const;
 
         // output operator

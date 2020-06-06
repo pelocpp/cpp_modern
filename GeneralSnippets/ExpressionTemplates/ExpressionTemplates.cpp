@@ -122,7 +122,7 @@ namespace ExpressionTemplates {
 
         friend MatrixSum<LHS, RHS> operator+(const LHS& lhs, const LHS& rhs);
 
-        value_type operator() (int x, int y) const {
+        value_type operator() (size_t x, size_t y) const {
             return lhs(x, y) + rhs(x, y);
         }
     private:
