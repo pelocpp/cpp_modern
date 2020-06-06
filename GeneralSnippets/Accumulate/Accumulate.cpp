@@ -19,7 +19,7 @@ namespace AlgorithmAccumulate {
             std::string(""), // first element
             [counter = 0](const std::string& first, const auto& next) mutable {
             counter++;
-            std::stringstream ss;
+            std::ostringstream ss;
             ss << std::setfill('0') << std::setw(2) << counter
                 << ": " << std::setfill(' ') << std::setw(10)
                 << std::right << next << std::endl;
@@ -42,7 +42,7 @@ namespace AlgorithmAccumulate {
             std::string(""), // first element
             [counter = 0](const std::string& first, const T& next) mutable {
             counter++;
-            std::stringstream ss;
+            std::ostringstream ss;
             ss << std::setfill('0') << std::setw(2) << counter
                 << ": " << std::setfill(' ') << std::setw(10)
                 << std::right << next << std::endl;

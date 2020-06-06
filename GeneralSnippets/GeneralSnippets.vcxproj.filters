@@ -153,9 +153,6 @@
     <ClCompile Include="VariadicTemplates\VariadicTemplate_XX_Else_If.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="VariadicTemplates\VariadicTemplate_XX_type_index.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="VariadicTemplates\VariadicTemplate_02_WorkingOnEveryArgument.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

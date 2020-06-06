@@ -7,7 +7,7 @@
 
 namespace CommonType {
 
-    template <class T>
+    template <typename T>
     class Number {
     private:
         T m_value;
@@ -21,7 +21,7 @@ namespace CommonType {
         }
     };
 
-    template <class T, class U>
+    template <typename T, typename U>
     Number<typename std::common_type<T, U>::type> operator+ (
         const Number<T>& lhs,
         const Number<U>& rhs)

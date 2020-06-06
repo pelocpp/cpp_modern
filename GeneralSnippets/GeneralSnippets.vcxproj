@@ -201,7 +201,6 @@
     <ClCompile Include="VariadicTemplates\VariadicTemplate_03_SumOfSums.cpp" />
     <ClCompile Include="VariadicTemplates\VariadicTemplate_XX_Else_If.cpp" />
     <ClCompile Include="VariadicTemplates\VariadicTemplate_04_Mixins.cpp" />
-    <ClCompile Include="VariadicTemplates\VariadicTemplate_XX_type_index.cpp" />
     <ClCompile Include="VariadicTemplates_Anwendungen\VariadicTemplate_XX_Examples.cpp" />
     <ClCompile Include="VariadicTemplates_Systematic\VariadicTemplate_XX_MoreExamples.cpp" />
     <ClCompile Include="Variant\Variant.cpp" />

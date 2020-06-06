@@ -6,6 +6,10 @@
 #include <string>
 #include <chrono> 
 
+/*
+ * NOTE: Performance Comparison should be executed in RELEASE MODE !!!
+ */
+
 namespace CRTP {
 
     template <typename Child>
@@ -54,14 +58,17 @@ namespace CRTP {
     class Image {
     protected:
         Dimension m_dimension;
+        long long m_numPixels;
 
     public:
         // c'tor
-        Image(int x, int y) : m_dimension{ 200, 200 } {}
+        Image(int x, int y) : m_dimension{ 200, 200 }, m_numPixels{ 0 } {}
 
         // public interface
         virtual void draw() = 0;
-        virtual Dimension GetDimensionInPixels() = 0;
+        virtual Dimension getDimensionInPixels() = 0;
+        virtual void incNumPixels() = 0;
+        virtual long long getNumPixels() = 0;
     };
 
     class TiffImage : public Image {
@@ -69,12 +76,21 @@ namespace CRTP {
         TiffImage() : Image{ 200, 200 } {}
 
         void draw() override {
-            // just for testing
-            Dimension d = GetDimensionInPixels();
+            // just to prevent optimizer to optimize "too much"
+            Dimension d = getDimensionInPixels();
+            incNumPixels();
         }
 
-        Dimension GetDimensionInPixels() override {
+        Dimension getDimensionInPixels() override {
             return m_dimension;
+        }
+
+        void incNumPixels() override {
+            m_numPixels++;
+        }
+
+        long long getNumPixels() override {
+            return m_numPixels;
         }
     };
 
@@ -85,19 +101,27 @@ namespace CRTP {
     class Image2 {
     protected:
         Dimension m_dimension;
+        long long m_numPixels;
 
     public:
         // c'tor
-        Image2(int x, int y) : m_dimension{ 200, 200 } {}
+        Image2(int x, int y) : m_dimension{ 200, 200 }, m_numPixels{ 0 } {}
 
         void draw() {
             // dispatch call to exact type 
             static_cast<T*>(this)->draw();
         }
 
-        Dimension GetDimensionInPixels() {
-            // dispatch call to exact type 
-            return static_cast<T*>(this)->GetDimensionInPixels();
+        Dimension getDimensionInPixels() {
+            return static_cast<T*>(this)->getDimensionInPixels();
+        }
+
+        void incNumPixels() {
+            static_cast<T*>(this)->incNumPixels();
+        }
+
+        long long getNumPixels() {
+            return static_cast<T*>(this)->getNumPixels();
         }
     };
 
@@ -106,15 +130,21 @@ namespace CRTP {
         TiffImage2() : Image2{ 200, 200 } {}
 
         void draw() {
-            // just to make sure that this method is invoked 
-            // std::cout << "TiffImage2::draw() called" << std::endl;
-
-            // just for testing
-            Dimension d = GetDimensionInPixels();
+            // just to prevent optimizer to optimize "too much"
+            Dimension d = getDimensionInPixels();
+            incNumPixels();
         }
 
-        Dimension GetDimensionInPixels() {
+        Dimension getDimensionInPixels() {
             return m_dimension;
+        }
+
+        void incNumPixels() {
+            m_numPixels++;
+        }
+
+        long long getNumPixels() {
+            return m_numPixels;
         }
     };
 
@@ -129,6 +159,9 @@ namespace CRTP {
         for (int i = 0; i < MaxIterations; ++i) {
             pImage->draw();
         }
+
+        long long pixels = pImage->getNumPixels();
+        std::cout << "pixels: " << pixels << std::endl;
 
         auto end = Clock::now();
         std::cout << "Time taken: "
@@ -147,6 +180,9 @@ namespace CRTP {
         for (int i = 0; i < MaxIterations; ++i) {
             pImage->draw();
         }
+
+        long long pixels = pImage->getNumPixels();
+        std::cout << "pixels: " << pixels << std::endl;
 
         auto end = Clock::now();
         std::cout << "Time taken: "

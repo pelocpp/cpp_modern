@@ -17,7 +17,7 @@ um diese bei Bedarf (indirekt (!)) aufzurufen.
 
 Das Problem des dynamischen Polymorphismus kann höhere Laufzeit bedeuten:
 
-  * Zusätzliche Indirektionsstrufe (Zeiger-Dereferenzierung) für jeden Aufruf einer virtuellen Methode.
+  * Zusätzliche Indirektionsstufe (Zeiger-Dereferenzierung) für jeden Aufruf einer virtuellen Methode.
   * Virtuelle Methoden können normalerweise nicht als `inline` aufgerufen werden, was für Methoden mit wenigen Anweisungen
     ein erhebliches Laufzeitproblem darstellen kann.
   * Zusätzlicher Zeiger pro Objekt: Auf 64-Bit-Systemen, die heutzutage vorherrschen, sind dies 8 Bytes pro Objekt.
@@ -27,6 +27,13 @@ Es stellt sich heraus, dass C ++ mithilfe von Templates eine alternative Möglic
 Polymorphismus ohne zusätzliche Kosten zu implementieren. Es gibt natürlich einen Haken:
 Die Datentypen dieser Objekte müssen vom Compiler zum Übersetzungszeitpunkt aufgelöst werden.
 Dies wird als *statischer Polymorphismus* (oder auch als "simuliertes dynamisches Binden") bezeichnet.
+
+#### *Hinweis*:
+
+Beim Vergleich der Programmlaufzeiten dieses Beispiels ist strikt darauf zu achten,
+dass in den Projekt-Einstellungen der "**Release**"-Modus eingestellt ist!
+Die Unterschiede bzgl. der Laufzeiten zwischen "*Debug*"-Modus und "*Release*"-Modus sind exorbitant groß!
+
 
 ## Beispiel
 
@@ -62,7 +69,19 @@ Der `static_cast` in Methode `interface` erzeugt dann das gewünschte Ergebnis.
 
 Diese Technik hat einen Namen - sie heißt *Curiously Recurring Template Pattern* oder eben kurz *CRTP*.
 
-## Eine Anwendung: Mixins
+## Ein zweites Beispiel
+
+Ein weiteres Beispiel zur Technik des CRTP finden Sie im Quellcode vor.
+Die Laufzeiten der beiden Varianten (*klassischer* versus *statischer* Polymorphismus) sieht auf meinem Rechner so aus:
+
+```cpp
+Time taken: 53401 microseconds
+Time taken: 16082 microseconds
+```
+
+Man erkennt unschwer, dass die Variante des "*statischen* Polymorphismus" ca. um den Faktor 3 schneller ist.
+
+## Eine weitere Anwendung: Mixins
 
 Ein Anwendungsfall für das *Curiously Recurring Template Pattern* sind die so genannten *Mixins*.
 Da ich diese in der von mir gewählten Umsetzung mit variadischen Templates realisiert habe,

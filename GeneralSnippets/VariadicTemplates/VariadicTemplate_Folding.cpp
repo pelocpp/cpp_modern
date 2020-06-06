@@ -89,17 +89,25 @@ namespace VariadicTemplatesFolding {
 
     // -----------------------------------------------------------------------
 
-    // Folding over a comma (',' operator)
+    // Folding over a comma: ',' operator
+    // (left or right folding is the same in this case)
 
     template <typename... Args>
-    void printerWithSeperator(Args... args) {
+    void printerWithSeperatorRight(Args... args) {
         std::string sep = " ";
         ((std::cout << args << sep), ...) << std::endl;
     }
 
+    template <typename... Args>
+    void printerWithSeperatorLeft(Args... args) {
+        std::string sep = " ";
+        (... , (std::cout << args << sep)) << std::endl;
+    }
+
     // demonstrating fold expressions
     void test_04() {
-        printerWithSeperator(1, 2, 3, "ABC", "DEF", "GHI");
+        printerWithSeperatorRight(1, 2, 3, "ABC", "DEF", "GHI");
+        printerWithSeperatorLeft (1, 2, 3, "ABC", "DEF", "GHI");
     }
 
     // -----------------------------------------------------------------------
@@ -113,13 +121,13 @@ namespace VariadicTemplatesFolding {
     }
 
     template <typename... Args>
-    void printerWithSeperator02(Args... args) {
+    void printerWithSeperator(Args... args) {
         (handleArg(args), ...) << std::endl;
     }
 
     // demonstrating fold expressions
     void test_05() {
-        printerWithSeperator02(1, 2, 3, "ABC", "DEF", "GHI");
+        printerWithSeperator(1, 2, 3, "ABC", "DEF", "GHI");
     }
 }
 

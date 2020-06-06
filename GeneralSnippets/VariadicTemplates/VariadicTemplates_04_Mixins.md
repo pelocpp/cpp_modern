@@ -132,13 +132,13 @@ Wir stellen im Folgenden zwei Implementierungen gegenüber:
 class SlotA
 {
 public:
-    int value;
+    int m_value;
 };
 
 class SlotB
 {
 public:
-    std::string value;
+    std::string m_value;
 };
 
 // Note: private inheritance, no one can access
@@ -150,22 +150,22 @@ public:
     {
         // Access the base-class's value: since we have multiple bases
         // with a 'value' field, we need to "force" the access to SlotA.
-        SlotA::value = value;
+        SlotA::m_value = value;
     }
 
     int getSlotA() 
     {
-        return SlotA::value;
+        return SlotA::m_value;
     }
 
-    void setSlotB(const std::string& b)
+    void setSlotB(const std::string& value)
     {
-        SlotB::value = b;
+        SlotB::m_value = value;
     }
 
     std::string getSlotB()
     {
-        return SlotB::value;
+        return SlotB::m_value;
     }
 };
 ```

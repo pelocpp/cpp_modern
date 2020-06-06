@@ -792,6 +792,7 @@ namespace Exercise_14 {
     template<typename T, typename... TREST>
     constexpr bool sameType(T arg, TREST... args)
     {
+        std::cout << "compare: " << arg << " with " << std::endl;
         // since C++17: folding expression !
         return (std::is_same<decltype(arg), decltype(args)>::value && ...);
     }
@@ -799,6 +800,9 @@ namespace Exercise_14 {
     void testExercise01() {
 
         bool result;
+        result = sameType(1, 2, 3, 4, '?', 6, 7, 8, 9);
+        std::cout << std::boolalpha << result << std::endl;
+        
         result = sameType(43, false, "hello");
         std::cout << std::boolalpha << result << std::endl;
 
@@ -848,7 +852,9 @@ namespace Exercise_15 {
         void operator()(T& value) { value += value; }
     };
 
-    auto lambdaAllInOneVisitor = [](auto& value) { std::cout << value << std::endl; };
+    auto lambdaAllInOneVisitor = [](const auto& value) {
+        std::cout << value << std::endl;
+    };
 
     void testExercise02()
     {
@@ -905,10 +911,6 @@ namespace Exercise_15 {
     class HeterogeneousContainer
     {
     private:
-        // ausführlich:
-        //using value_type = std::variant<T...>;
-        //std::vector<value_type> m_values;
-
         std::vector<std::variant<T...>> m_values;
 
     public:
@@ -948,7 +950,8 @@ namespace Exercise_15 {
     }
 }
 
-int main_exercices()
+int main()
+// int main_exercices()
 {
     //using namespace Exercise_01;
     //testExercise();
@@ -994,8 +997,8 @@ int main_exercices()
     //using namespace Exercise_13;
     //testExercise01();
 
-    //using namespace Exercise_14;
-    //testExercise01();
+    using namespace Exercise_14;
+    testExercise01();
 
     //using namespace Exercise_15;
     //testExercise01();
