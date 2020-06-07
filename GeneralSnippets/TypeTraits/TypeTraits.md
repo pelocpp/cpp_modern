@@ -6,8 +6,9 @@
 
 *Allgemeines*:
 
-C++ TypeTraits, zu deutsch etwa Typmerkmale, sind eine Sammlung von Metafunktionen.
-Siehe das Beispiel im korrespondieren Quellcode.
+C++ TypeTraits, zu deutsch etwa *Typmerkmale*, sind eine Sammlung von Metafunktionen.
+Siehe das Beispiel im korrespondieren Quellcode in Bezug auf Iterator-Kategorien
+wie `std::bidirectional_iterator_tag` und `std::random_access_iterator_tag`.
 
 ---
 

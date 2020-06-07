@@ -3,109 +3,52 @@
 // =====================================================================================
 
 #include <iostream>
-#include <string>
+#include <vector>
+#include <list>
+#include <iterator>
 
-namespace MyTypeTraits {
+namespace MyTypeTraitsDemo {
 
-    template <typename T>
-    class Kind {
-        static_assert(std::is_class<T>::value, "class expected.");
-        static_assert(std::is_array<T>::value, "array expected.");
-    };
+    template <typename Iterator>
+    using ValueType = typename Iterator::value_type;
 
-    template <typename T>
-    class AnotherKind {
-        static_assert(std::is_pointer<T>::value, "pointer type expected.");
-    };
-
-#if defined (DEMO)
-    template <typename T>
-    bool isEqual(T a, T b);
-
-    template <typename T>
-    bool isEqual<int>(int a, int b) {
-        return a == b;
-    }
-
-    template <typename T>
-    bool isEqual<int>(int a, int b) {
-        return std::abs(a - b) < 0.0001;
-    }
-#endif
-
-    template <typename T>
-    bool isEqual(T a, T b) {
-        if (std::integral_constant<T>::value)
-            return a == b;
-        else
-            return std::abs(a - b) < 0.0001;
-    }
-
-    template <typename T1, typename T2>
-    bool isEqual(T1 a, T2 b) {
-        if (std::integral_constant<T1>::value && std::integral_constant<T2>::value)
-            return a == b;
-        else
-            return std::abs(a - b) < 0.0001;
-    }
-
-    void test_01() {
-        // Kind<int> aKind;  // doesn't compile
-        // Kind<std::string> anotherKind;  // depends
-        // Kind<std::string[]> anotherKind;  // depends
-    }
-
-    void test_02() {
-        // AnotherKind<const int*> anotherKind;  // compiles
-    }
-
-    // =====================================================================================
-
-    template <typename T>
-    struct ReferenceType
+    template <typename Iterator>
+    typename ValueType<Iterator> getMidst(Iterator it, size_t size, std::bidirectional_iterator_tag)
     {
-        typedef T type;
-    };
-
-    template <typename T>
-    struct ReferenceType<T&>
-    {
-        typedef T& type;
-    };
-
-    template <typename T>
-    void checkReference()
-    {
-        if (std::is_reference<T>::value == true) {
-            std::cout << "reference " << std::endl;
-        }
-        else {
-            std::cout << "not reference" << std::endl;
-        }
+        std::cout << "[Bidirectional Access] ";
+        Iterator pos = it;
+        for (unsigned i = 0u; i < size / 2; ++i)
+            ++pos;
+        return *pos;
     }
 
-    void test_03() {
+    template <typename Iterator>
+    typename ValueType<Iterator> getMidst(Iterator it, size_t size, std::random_access_iterator_tag)
+    {
+        std::cout << "[Random Access] ";
+        Iterator pos = it + size / 2;
+        return *pos;
+    }
 
-        std::cout << "int: ";
-        checkReference<int>();
-
-        std::cout << "int&: ";
-        checkReference<int&>();
-
-        std::cout << "ReferenceType<int>::type > ";
-        checkReference< ReferenceType<int>::type >();
-
-        std::cout << "ReferenceTypeint&>::type > : ";
-        checkReference< ReferenceType<int&>::type >();
+    template <typename Iterator>
+    typename ValueType<Iterator> getMidst(Iterator it, size_t size)
+    {
+        typename std::iterator_traits<Iterator>::iterator_category category;
+        return getMidst(it, size, category);
     }
 }
 
 void main_type_traits()
 {
-    using namespace MyTypeTraits;
-    test_01();
-    test_02();
-    test_03();
+    using namespace MyTypeTraitsDemo;
+
+    std::list<int> anyList{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+    int value = getMidst(anyList.begin(), anyList.size());
+    std::cout << "Midst of List: " << value << std::endl;
+
+    std::vector<int> anyVector{ 10, 20, 30, 40, 50, 60, 70, 80, 90, 100 };
+    value = getMidst(anyVector.begin(), anyVector.size());
+    std::cout << "Midst of Vector: " << value << std::endl;
 }
 
 // =====================================================================================
