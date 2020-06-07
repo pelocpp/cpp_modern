@@ -1,5 +1,5 @@
 // =====================================================================================
-// std::any
+// std::array
 // =====================================================================================
 
 #include <iostream>
@@ -43,7 +43,6 @@ namespace StdArray {
     }
 
     void test_02() {
-
         // assignment with initializer list!
         std::array<int, 5> myArray;
         myArray = { 0, 1, 2, 3, 4 }; // okay
@@ -52,7 +51,6 @@ namespace StdArray {
     }
 
     void test_03() {
-
         // General Hint:
         // 'at' does bounds checking, is therefore slower - but safer.
         // subscript operator [] does not do any bounds-checking.
@@ -96,7 +94,6 @@ namespace StdArray {
     }
 
     void test_04() {
-
         // General Hint:
         // There is no 'array decay' when passing an std::array to a function
         std::array<int, 5> myArray = { 1, 2, 3, 4, 5 };
@@ -104,9 +101,7 @@ namespace StdArray {
     }
 
     void test_05() {
-
         std::array<int, 5> myArray = { 1, 2, 3, 4, 5 };
-
         for (int elem : myArray) {
             std::cout << elem << ' ';
         }
@@ -125,9 +120,7 @@ namespace StdArray {
     }
 
     void test_06() {
-
-        // Multidimensional std::array
-
+        // multidimensional std::array
         std::array<std::array<int, 3>, 3> myArray{
             {
                 {1, 2, 3}, {4, 5, 6}, {7, 8, 9}
@@ -153,7 +146,6 @@ namespace StdArray {
     }
 
     void test_07() {
-
         // passing a multidimensional std::array to another function
         std::array<std::array<int, 3>, 3> array{ {{11,12,13},{14,15,16},{17,18,19}} };
         display(array);
@@ -161,20 +153,16 @@ namespace StdArray {
 
     class Employee {
     public:
-        unsigned id;
-        std::string name;
-        std::string role;
-        unsigned phone;
-    public:
-        Employee() = default;
+        unsigned m_id = 0;
+        std::string m_name;
+        std::string m_role;
+        unsigned m_phone = 0;
     };
 
     void test_08() {
 
-        // Arrays of objects
-
+        // arrays of objects
         std::array<Employee, 2> employees{};
-
         employees[0] = { 9987, "Sepp", "Engineer", 987654321 };
         employees[1] = { 999, "Hans", "Manager", 123456789 };
 
@@ -184,14 +172,12 @@ namespace StdArray {
                 << "Role: " << role
                 << "Salary: " << salary << std::endl;
         }
-
     }
 }
 
-int main_array()
+void main_array()
 {
     using namespace StdArray;
-
     test_01();
     test_02();
     test_03();
@@ -200,7 +186,6 @@ int main_array()
     test_06();
     test_07();
     test_08();
-    return 0;
 }
 
 // =====================================================================================

@@ -98,13 +98,12 @@ namespace AllocatorWithObject {
     }
 }
 
-int main_allocator_with_object()
+void main_allocator_classtype()
 {
     using namespace AllocatorWithObject;
     test_01a_allocator();
     test_01b_allocator();
     test_01c_allocator();
-    return 0;
 }
 
 // =====================================================================================

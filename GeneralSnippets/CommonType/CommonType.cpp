@@ -73,12 +73,11 @@ namespace CommonType {
     }
 }
 
-int main_commontype()
+void main_common_type()
 {
     using namespace CommonType;
     test_commontype_01();
     test_commontype_02();
-    return 1;
 }
 
 // =====================================================================================

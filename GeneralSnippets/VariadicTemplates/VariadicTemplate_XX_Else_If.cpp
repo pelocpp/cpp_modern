@@ -106,11 +106,10 @@ namespace VariadicTemplatesElseIf {
     }
 }
 
-int main_variadic_else_if()
+void main_variadic_else_if()
 {
     using namespace VariadicTemplatesElseIf;
     test_01();
-    return 0;
 }
 
 // =====================================================================================

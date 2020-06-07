@@ -1,12 +1,12 @@
 // =====================================================================================
-// Variadic Templates - Overload Pattern
+// Variadic Templates - std::variant und Visitor
 // =====================================================================================
 
 #include <iostream>
 #include <variant>
 #include <string>
 
-namespace VariadicTemplatesOverloadPattern {
+namespace VariadicTemplatesVisitor {
 
     // https://pabloariasal.github.io/2018/06/26/std-variant/
     // or
@@ -67,11 +67,10 @@ namespace VariadicTemplatesOverloadPattern {
     }
 }
 
-int main_overload_pattern()
+void main_variadic_templates_visitor()
 {
-    using namespace VariadicTemplatesOverloadPattern;
+    using namespace VariadicTemplatesVisitor;
     test_01();
-    return 0;
 }
 
 // =====================================================================================

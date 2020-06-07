@@ -1,5 +1,5 @@
 // =====================================================================================
-// Shared Pointer
+// std::shared_ptr
 // =====================================================================================
 
 #define _CRTDBG_MAP_ALLOC
@@ -76,13 +76,12 @@ namespace SharedPointer {
     }
 }
 
-int main_shared_ptr()
+void main_shared_ptr()
 {
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
     using namespace SharedPointer;
     test_01();
     test_02();
-    return 0;
 }
 
 // =====================================================================================

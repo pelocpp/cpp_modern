@@ -1,5 +1,5 @@
 // =====================================================================================
-// Weak Pointer
+// Order Constructor Invocations
 // =====================================================================================
 
 #include <iostream>
@@ -40,11 +40,10 @@ namespace OrderConstructorInvocations {
     }
 }
 
-int main_order_constructor_invocations()
+void main_constructor_invocations()
 {
     using namespace OrderConstructorInvocations;
     test_01();
-    return 0;
 }
 
 // =====================================================================================

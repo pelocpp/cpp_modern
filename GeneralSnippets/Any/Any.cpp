@@ -111,13 +111,11 @@ namespace AnySamples {
     }
 }
 
-int main_any()
+void main_any()
 {
     using namespace AnySamples;
     test_01_any();
     test_02_any();
-
-    return 0;
 }
 
 // =====================================================================================

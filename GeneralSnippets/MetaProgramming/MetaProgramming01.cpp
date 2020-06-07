@@ -131,7 +131,7 @@ namespace Metaprogramming {
     }
 }
 
-int main_metaprogramming_01()
+void main_metaprogramming_01()
 {
     using namespace Metaprogramming;
     test_01();
@@ -139,7 +139,6 @@ int main_metaprogramming_01()
     test_03();
     test_04();
     test_05();
-    return 0;
 }
 
 // =====================================================================================

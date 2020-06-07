@@ -24,15 +24,10 @@ namespace MemoryLeaksDetection {
     }
 }
 
-int main_memory_leaks() {
-
+void main_memory_leaks() {
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-
     using namespace MemoryLeaksDetection;
-
     test_01();
-
-    return 0;
 }
 
 // =====================================================================================

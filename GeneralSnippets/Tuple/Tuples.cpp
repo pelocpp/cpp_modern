@@ -71,12 +71,11 @@ namespace TupleSamples {
     }
 }
 
-int main_tuples()
+void main_tuples()
 {
     using namespace TupleSamples;
     test_01();
     test_02();
-    return 0;
 }
 
 // =====================================================================================

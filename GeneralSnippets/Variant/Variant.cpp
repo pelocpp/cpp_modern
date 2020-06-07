@@ -8,7 +8,7 @@
 #include <numeric>
 #include <variant>
 
-namespace Variant {
+namespace VariantDemo {
 
     void test_01() {
 
@@ -108,12 +108,11 @@ namespace Variant {
     }
 }
 
-int main_variant()
+void main_variant()
 {
-    using namespace Variant;
+    using namespace VariantDemo;
     test_01();
     test_02();
-    return 1;
 }
 
 // =====================================================================================

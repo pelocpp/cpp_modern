@@ -28,6 +28,7 @@ namespace VariadicTemplatesWorkingOnEveryArgument {
 
     void test_01() {
         doSomethingForAll(1, '!', std::string("ABC"), 5.5);
+        std::cout << std::endl;
     }
 
     template <class Head, class... Tail>
@@ -41,6 +42,7 @@ namespace VariadicTemplatesWorkingOnEveryArgument {
 
     void test_02() {
         print(1, '!', std::string("ABC"), 5.5);
+        std::cout << std::endl;
     }
 
     template <class Head, class... Tail>
@@ -51,18 +53,16 @@ namespace VariadicTemplatesWorkingOnEveryArgument {
 
     void test_03() {
         print1(1, '!', std::string("ABC"), 5.5);
+        std::cout << std::endl;
     }
 }
 
-int main_working_on_every_argument()
+void main_variadic_templates_working_on_every_argument()
 {
     using namespace VariadicTemplatesWorkingOnEveryArgument;
     test_01();
-    std::cout << std::endl;
     test_02();
-    std::cout << std::endl;
     test_03();
-    return 0;
 }
 
 // =====================================================================================

@@ -91,13 +91,12 @@ namespace AlgorithmAccumulate {
     }
 }
 
-int main_accumulate()
+void main_accumulate()
 {
     using namespace AlgorithmAccumulate;
     test_01();
     test_02();
     test_03();
-    return 0;
 }
 
 // =====================================================================================

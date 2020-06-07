@@ -290,7 +290,7 @@ namespace VariadicTemplatesMixins {
     }
 }
 
-int main_mixins()
+void main_variadic_templates_mixins()
 {
     using namespace VariadicTemplatesMixins;
     test_01();
@@ -300,7 +300,6 @@ int main_mixins()
     //test_05();  // doesn't compile
     test_06();
     test_07();
-    return 0;
 }
 
 // =====================================================================================

@@ -37,12 +37,11 @@ namespace LambdaAndClosure {
     }
 }
 
-int main_lambdaandclosure()
+void main_lambda_and_closure()
 {
     using namespace LambdaAndClosure;
     test_01();
     test_02();
-    return 0;
 }
 
 // =====================================================================================

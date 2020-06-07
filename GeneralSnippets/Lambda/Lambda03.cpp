@@ -47,11 +47,10 @@ namespace LambdaAndVisitor {
     }
 }
 
-int main_lambd_and_visitor()
+void main_lambda_and_visitor()
 {
     using namespace LambdaAndVisitor;
     test_01();
-    return 0;
 }
 
 // =====================================================================================

@@ -105,7 +105,7 @@ namespace RAIIDemo {
     }
 }
 
-int main_raii()
+void main_raii()
 {
     using namespace RAIIDemo;
     test_01();
@@ -114,7 +114,6 @@ int main_raii()
     test_04();
     test_05();
     test_06();
-    return 0;
 }
 
 // =====================================================================================

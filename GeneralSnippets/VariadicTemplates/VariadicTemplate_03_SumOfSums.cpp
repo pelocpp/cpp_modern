@@ -35,13 +35,11 @@ namespace VariadicTemplatesSumofSums {
     }
 }
 
-int main_variadic_sum_of_sums()
+void main_variadic_templates_sum_of_sums()
 {
     using namespace VariadicTemplatesSumofSums;
     test_01();
-    std::cout << std::endl;
     test_02();
-    return 0;
 }
 
 // =====================================================================================

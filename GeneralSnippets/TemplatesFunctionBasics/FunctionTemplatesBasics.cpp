@@ -1,5 +1,5 @@
 // =====================================================================================
-// Funktionstemplates
+// Function Templates
 // =====================================================================================
 
 #include <iostream>
@@ -38,15 +38,12 @@ namespace FunctionTemplatesBasics {
     }
 }
 
-int main_function_templates_basics()
+void main_function_templates_basics()
 {
     using namespace FunctionTemplatesBasics;
-
     test_01();
     test_02();
     test_03();
-
-    return 0;
 }
 
 // =====================================================================================

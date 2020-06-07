@@ -126,18 +126,15 @@ namespace UniformInitialization {
     }
 }
 
-int main_uniform_initialization()
+void main_uniform_initialization()
 {
     using namespace UniformInitialization;
-
     test_00();
     test_01(); 
     test_02();
     test_03();
     test_04();
     test_05();
-
-    return 0;
 }
 
 // =====================================================================================

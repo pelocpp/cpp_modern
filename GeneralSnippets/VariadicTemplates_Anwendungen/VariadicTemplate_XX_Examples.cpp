@@ -265,7 +265,7 @@ namespace VariadicTemplatesExamples {
 // =====================================================================================
 // =====================================================================================
 
-int main_variadic_templates_examples()
+void main_variadic_templates_examples()
 {
     using namespace VariadicTemplatesExamples;
 
@@ -281,8 +281,6 @@ int main_variadic_templates_examples()
 
     // user defined literal - including quotation marks
     test_09();
-
-    return 0;
 }
 
 // =====================================================================================

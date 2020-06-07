@@ -237,7 +237,7 @@ namespace Lambda {
     }
 }
 
-int main_lambdas()
+void main_lambdas()
 {
     using namespace Lambda;
     test_01();
@@ -248,8 +248,6 @@ int main_lambdas()
     test_06();
     test_07();
     test_08();
-
-    return 0;
 }
 
 // =====================================================================================

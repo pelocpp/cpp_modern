@@ -99,14 +99,13 @@ namespace SFINAE {
     }
 }
 
-int main_sfinae()
+void main_sfinae()
 {
     using namespace SFINAE;
     test_01();
     test_02();
     test_04();
     test_05();
-    return 1;
 }
 
 // =====================================================================================

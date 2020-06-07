@@ -195,7 +195,7 @@ namespace VariadicTemplatesSystematic {
 // =====================================================================================
 // =====================================================================================
 
-int main_variadic_templates()
+void main_variadic_templates_more_examples()
 {
     using namespace VariadicTemplatesSystematic;
 
@@ -210,8 +210,6 @@ int main_variadic_templates()
 
     // Compile-Time Expression with Variadic Expressions
     test_04();
-
-    return 0;
 }
 
 // =====================================================================================

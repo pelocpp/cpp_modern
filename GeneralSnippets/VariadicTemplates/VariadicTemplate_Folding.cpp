@@ -131,7 +131,7 @@ namespace VariadicTemplatesFolding {
     }
 }
 
-int main_variadic_templates_folding()
+void main_variadic_templates_folding()
 {
     using namespace VariadicTemplatesFolding;
     test_01();
@@ -142,7 +142,6 @@ int main_variadic_templates_folding()
     test_03d();
     test_04();
     test_05();
-    return 0;
 }
 
 // =====================================================================================

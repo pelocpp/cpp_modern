@@ -6,7 +6,7 @@
 #include <string>
 #include <memory>
 
-namespace VariadicTemplates_01 {
+namespace VariadicTemplatesIntro {
 
     /* Erstes Beispiel für ein variadisches Template:
     */
@@ -85,10 +85,6 @@ namespace VariadicTemplates_01 {
         // same as
         print<double, const char*, std::string>(123.456, "Hello", s);
     }
-}
-
-
-namespace VariadicTemplates_02 {
 
     // =============================================================
     // "Unpacking" a parameter pack to call a matching constructor
@@ -132,18 +128,13 @@ namespace VariadicTemplates_02 {
         return os;
     }
 
-    // =============================================================
-    // variadic template
-
     template<typename T, typename... Args>
     T make_an_object(Args&&... args)
     {
         return T(std::forward<Args>(args)...);
     }
 
-    // =============================================================
-
-    void test_01()
+    void test_03()
     {
         Unknown u1 = make_an_object<Unknown>();
         std::cout << u1 << std::endl;
@@ -167,42 +158,10 @@ namespace VariadicTemplates_02 {
         Unknown u6 = make_an_object<Unknown>(n, 51, m);
         std::cout << u6 << std::endl;
     }
-}
-
-namespace VariadicTemplates_03 {
 
     // =============================================================
     // Anwendungsfall bei std::unique_ptr
     // =============================================================
-
-    // Test Class - only c'tors (and d'tor) are important ..
-
-    class Unknown {
-
-    public:
-        Unknown() {
-            std::cout << "c'tor()" << std::endl;
-        }
-
-        Unknown(int n) {
-            std::cout << "c'tor(int)" << std::endl;
-        }
-
-        Unknown(int n, int m) {
-            std::cout << "c'tor(int, int)" << std::endl;
-        }
-
-        Unknown(int n, int m, int k) {
-            std::cout << "c'tor(int, int, int)" << std::endl;
-        }
-
-        ~Unknown() {
-            std::cout << "d'tor()" << std::endl;
-        }
-    };
-
-    // =============================================================
-    //  variadic template
 
     template<typename T, typename... Args>
     std::unique_ptr<T> my_make_unique(Args&&... args)
@@ -210,9 +169,7 @@ namespace VariadicTemplates_03 {
         return std::unique_ptr<T>(new T(std::forward<Args>(args)...));
     }
 
-    // =============================================================
-
-    void test_01()
+    void test_04()
     {
         std::unique_ptr<Unknown> up1 = my_make_unique<Unknown>();
         std::unique_ptr<Unknown> up2 = my_make_unique<Unknown>(1);
@@ -224,16 +181,13 @@ namespace VariadicTemplates_03 {
     }
 }
 
-int main_variadic_templates_intro()
+void main_variadic_templates_intro()
 {
-     using namespace VariadicTemplates_01;
-     test_01();
-     test_02();
-
-    // using namespace VariadicTemplates_02;
-    //using namespace VariadicTemplates_03;
-    //test_01();
-    return 0;
+    using namespace VariadicTemplatesIntro;
+    test_01();
+    test_02();
+    test_03();
+    test_04();
 }
 
 // =====================================================================================

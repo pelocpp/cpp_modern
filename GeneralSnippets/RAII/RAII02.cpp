@@ -44,11 +44,10 @@ namespace RAIIDemo02 {
     }
 }
 
-int main_raii_02()
+void main_raii_02()
 {
     using namespace RAIIDemo02;
     test_01();
-    return 0;
 }
 
 // =====================================================================================

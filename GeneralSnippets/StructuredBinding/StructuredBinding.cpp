@@ -99,7 +99,7 @@ namespace StructuredBinding {
     }
 }
 
-int main_structuredbinding()
+void main_structured_binding()
 {
     using namespace StructuredBinding;
     test_01();
@@ -108,7 +108,6 @@ int main_structuredbinding()
     test_04();
     test_05();
     test_06();
-    return 0;
 }
 
 // =====================================================================================

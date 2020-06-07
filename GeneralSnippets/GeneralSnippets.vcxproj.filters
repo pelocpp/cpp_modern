@@ -57,9 +57,6 @@
     <ClCompile Include="RValueLValue\RValueLValue.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PerfectForwarding\PerfectForwarding.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="MemoryLeaks\MemoryLeaks.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -73,9 +70,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TemplateTemplateParameter\TemplateTemplateParameter_01.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Allocator\Allocator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ArrayDecay\ArrayDecay.cpp">
@@ -127,9 +121,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Literals\Literals.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PerfectForwarding\PerfectForwardingDummy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Allocator\AllocatorDummy.cpp">
@@ -205,6 +196,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MoveSemantics\MoveSemantics.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Allocator\AllocatorSimple.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PerfectForwarding\PerfectForwarding01.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PerfectForwarding\PerfectForwarding02.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

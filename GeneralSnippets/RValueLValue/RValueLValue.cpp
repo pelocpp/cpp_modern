@@ -70,18 +70,13 @@ namespace LValueRValue {
     }
 }
 
-
-
-int main_rvalue_lvalue() {
-
+void main_rvalue_lvalue()
+{
     using namespace LValueRValue;
-
     test01();
     test02();
     test03();
     test04();
-
-    return 0;
 }
 
 // =====================================================================================

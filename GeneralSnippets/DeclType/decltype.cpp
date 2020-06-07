@@ -66,14 +66,13 @@ namespace Decltype {
     }
 }
 
-int main_decltype()
+void main_decltype()
 {
     using namespace Decltype;
     test_decltype_01();
     test_decltype_02();
     test_decltype_03();
     test_decltype_04();
-    return 1;
 }
 
 // =====================================================================================

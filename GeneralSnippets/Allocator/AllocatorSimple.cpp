@@ -94,12 +94,11 @@ namespace Allocator {
     }
 }
 
-int main_allocator()
+void main_allocator_integral ()
 {
     using namespace Allocator;
     test_01_allocator();
     test_02_allocator();
-    return 0;
 }
 
 // =====================================================================================

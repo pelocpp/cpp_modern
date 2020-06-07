@@ -72,11 +72,10 @@ namespace Optional {
     }
 }
 
-int main_optional()
+void main_optional()
 {
     using namespace Optional;
     test_01_optional();
-    return 1;
 }
 
 // =====================================================================================

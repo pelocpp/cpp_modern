@@ -41,11 +41,10 @@ namespace ArrayDecay {
     }
 }
 
-int main_array_decay()
+void main_array_decay()
 {
     using namespace ArrayDecay;
     test_01();
-    return 0;
 }
 
 // =====================================================================================

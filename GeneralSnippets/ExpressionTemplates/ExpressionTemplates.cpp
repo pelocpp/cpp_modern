@@ -278,14 +278,13 @@ namespace ExpressionTemplates {
     }
 }
 
-int main_expression_templates()
+void main_expression_templates()
 {
     using namespace ExpressionTemplates;
     test_01();
     test_02();
     test_03();
     test_04_benchmark();
-    return 1;
 }
 
 // =====================================================================================

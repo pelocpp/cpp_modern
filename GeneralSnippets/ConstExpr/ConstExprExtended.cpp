@@ -191,11 +191,10 @@ namespace ConstExprExtended {
     }
 }
 
-int main_constexpr_extended()
+void main_constexpr_extended()
 {
     using namespace ConstExprExtended;
     test_01();
-    return 0;
 }
 
 // =====================================================================================

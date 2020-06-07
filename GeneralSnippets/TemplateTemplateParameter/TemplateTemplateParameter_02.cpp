@@ -1,5 +1,5 @@
 // =====================================================================================
-// LValue / RValue
+// Template Template Parameter 02
 // =====================================================================================
 
 #include <iostream>
@@ -78,19 +78,17 @@ namespace TemplateTemplateParameter_02 {
     };
 
 
-    void _test_01_template_template_parameter() {
+    void test_01() {
 
         Range<long, 1, 5, MaxCheck> range1;
         Range<long, 1, 5, NoMaxCheck> range2;
     }
 }
 
-int main_template_template_parameter_02() {
+void main_template_template_parameter_02() {
 
     using namespace TemplateTemplateParameter_02;
-
-    _test_01_template_template_parameter();
-    return 0;
+    test_01();
 }
 
 // =====================================================================================

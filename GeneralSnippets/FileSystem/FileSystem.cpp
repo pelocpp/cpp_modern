@@ -183,7 +183,7 @@ namespace FileSystemDemo {
     }
 }
 
-int main_filesystem()
+void main_filesystem()
 {
     using namespace FileSystemDemo;
 
@@ -204,8 +204,6 @@ int main_filesystem()
     test_04b(path);
 
     test_05(path);
-
-    return 0;
 }
 
 // =====================================================================================

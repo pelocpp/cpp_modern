@@ -26,11 +26,10 @@ namespace KeywordExplicit {
     }
 }
 
-int main_keyword_explicit()
+void main_keyword_explicit()
 {
     using namespace KeywordExplicit;
     test_01();
-    return 1;
 }
 
 // =====================================================================================

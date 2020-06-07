@@ -191,14 +191,12 @@ namespace CRTP {
     }
 }
 
-int main_crtp()
+void main_crtp()
 {
     using namespace CRTP;
     test_01_crtp();
     test_02_crtp();
     test_03_crtp();
-
-    return 1;
 }
 
 // =====================================================================================

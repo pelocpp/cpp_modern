@@ -207,12 +207,11 @@ namespace MoveSemantics {
     }
 }
 
-int main_move_semantics()
+void main_move_semantics()
 {
     using namespace MoveSemantics;
     test_01_move_semantics();
     test_02_move_semantics();
-    return 1;
 }
 
 // =====================================================================================

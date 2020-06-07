@@ -1,5 +1,5 @@
 // ===============================================================================
-// Unique Pointer - Einleitendes Beispiel
+// std::unique_ptr
 // ===============================================================================
 
 #include <iostream>
@@ -70,13 +70,11 @@ namespace UniquePointer {
     }
 }
 
-int main_unique_ptr()
+void main_unique_ptr()
 {
     using namespace UniquePointer;
-    // test_01();
+    test_01();
     test_02();
-
-    return 0;
 }
 
 // =================================================================================

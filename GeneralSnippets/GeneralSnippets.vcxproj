@@ -144,7 +144,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Accumulate\Accumulate.cpp" />
-    <ClCompile Include="Allocator\Allocator.cpp" />
+    <ClCompile Include="Allocator\AllocatorSimple.cpp" />
     <ClCompile Include="Allocator\AllocatorDummy.cpp" />
     <ClCompile Include="Any\Any.cpp" />
     <ClCompile Include="ArrayDecay\ArrayDecay.cpp" />
@@ -173,8 +173,8 @@
     <ClCompile Include="MetaProgramming\MetaProgramming02.cpp" />
     <ClCompile Include="MoveSemantics\MoveSemantics.cpp" />
     <ClCompile Include="Optional\Optional.cpp" />
-    <ClCompile Include="PerfectForwarding\PerfectForwarding.cpp" />
-    <ClCompile Include="PerfectForwarding\PerfectForwardingDummy.cpp" />
+    <ClCompile Include="PerfectForwarding\PerfectForwarding01.cpp" />
+    <ClCompile Include="PerfectForwarding\PerfectForwarding02.cpp" />
     <ClCompile Include="Program.cpp" />
     <ClCompile Include="RAII\RAII01.cpp" />
     <ClCompile Include="RAII\RAII02.cpp" />

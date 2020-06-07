@@ -340,7 +340,7 @@ namespace FunctionalProgramming {
     }
 }
 
-int main_functional_programming()
+void main_functional_programming()
 {
     using namespace FunctionalProgramming;
 
@@ -358,8 +358,6 @@ int main_functional_programming()
     test_functional_04a();
     test_functional_04b();
     test_functional_04c();
-
-    return 1;
 }
 
 // =====================================================================================

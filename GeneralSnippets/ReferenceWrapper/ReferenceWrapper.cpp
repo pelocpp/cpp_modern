@@ -2,10 +2,6 @@
 // Reference Wrapper
 // =====================================================================================
 
-// =====================================================================================
-// Aus "Peter Pohmann" // Kapitel 3.11
-// =====================================================================================
-
 #include <iostream>
 #include <string>
 #include <vector>
@@ -63,16 +59,11 @@ namespace MyReferenceWrapper {
     }
 }
 
-using namespace MyReferenceWrapper;
-
-int main_reference_wrapper ()
+void main_reference_wrapper ()
 {
-    std::cout << "Reference Wrapper" << std::endl;
-
-    // test_01();
-    test_02();
-
-    return 0;
+    using namespace MyReferenceWrapper;
+    test_01();
+    //test_02();  // fails at runtime, corrupts ostream library
 }
 
 // =====================================================================================

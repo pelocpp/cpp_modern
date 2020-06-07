@@ -1,10 +1,10 @@
-#include <iostream>
-#include <fstream>
-#include <iomanip> 
-
 // =====================================================================================
 // Input/Output Streams
 // =====================================================================================
+
+#include <iostream>
+#include <fstream>
+#include <iomanip> 
 
 namespace InputOutputStreams {
 
@@ -203,13 +203,13 @@ namespace InputOutputStreams {
 
 }
 
-int main_input_output_streams()
+void main_input_output_streams()
 {
     using namespace InputOutputStreams;
 
-    test_01();
+    // test_01();   // needs console input
     test_02();
-    test_03();
+    // test_03();   // needs console input
     test_04();
     test_05();
     test_06();
@@ -217,8 +217,6 @@ int main_input_output_streams()
     test_08();
     test_09();
     test_10();
-
-    return 0;
 }
 
 // =====================================================================================

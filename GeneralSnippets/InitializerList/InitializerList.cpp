@@ -1,5 +1,5 @@
 // =====================================================================================
-// Initialisierungsliste
+// std::initializer_list
 // =====================================================================================
 
 #include <iostream>
@@ -115,13 +115,12 @@ namespace InitializerList {
     }
 }
 
-int main_initializer_list()
+void main_initializer_list()
 {
     using namespace InitializerList;
     test_01(); 
     test_02();
     test_03();
-    return 0;
 }
 
 // =====================================================================================

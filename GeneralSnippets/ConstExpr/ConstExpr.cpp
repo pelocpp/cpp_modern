@@ -51,11 +51,10 @@ namespace ConstExpr {
     }
 }
 
-int main_constexpr()
+void main_constexpr()
 {
     using namespace ConstExpr;
     test_01();
-    return 0;
 }
 
 // =====================================================================================
