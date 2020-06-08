@@ -99,16 +99,33 @@ namespace Lambda {
 
         // inline-definition and invocation of lambda funtion
         std::cout << [] (auto l, auto r) { return l + r; } (11, 12) << std::endl;
+    }
 
-        // closure with variable definition
-        auto counter = [count = 50]() mutable { ++count; return count; };
+    void test_04() {
+        // Defining new variables in the lambda capture:
+        // we can declare a new variable that is only visible in the scope of the lambda.
+        // we do so by defining a variable in the lambda-capture without specifying its type
+
+        // lambda with variable definition
+        auto lambda = [variable = 10]() { return variable; };
+        std::cout << lambda() << std::endl;
+
+        // Captures default to 'const value':
+        // The mutable keyword removes the 'const' qualification from all captured variables
+
+        // lambda with variable definition 
+        auto counter = [count = 50]() mutable { 
+            ++count; 
+            return count;
+        };
+
         for (size_t i{ 0 }; i < 5; ++i) {
             std::cout << counter() << " ";
         }
         std::cout << std::endl;
     }
 
-    void test_04() {
+    void test_05() {
 
         int n = 1;
         int m = 2;
@@ -133,7 +150,7 @@ namespace Lambda {
         l3();
     }
 
-    auto test_05_helper_a() {
+    auto test_06_helper_a() {
 
         int n = 1;
         int m = 2;
@@ -145,7 +162,7 @@ namespace Lambda {
         return lambda;
     }
 
-    auto test_05_helper_b() {
+    auto test_06_helper_b() {
 
         int n = 1;
         int m = 2;
@@ -157,10 +174,10 @@ namespace Lambda {
         return lambda;  // I would't do this never ever :-)
     }
 
-    void test_05() {
+    void test_06() {
 
-        auto outerLambda1 = test_05_helper_a();
-        auto outerLambda2 = test_05_helper_b();
+        auto outerLambda1 = test_06_helper_a();
+        auto outerLambda2 = test_06_helper_b();
         outerLambda1();
         outerLambda2();
     }
@@ -169,7 +186,7 @@ namespace Lambda {
         std::function<void(std::string const&)>, 
         std::function<void(std::string const&)>
     > 
-    test_06_helper_a() {
+    test_07_helper_a() {
 
         int n = 1;
         int m = 2;
@@ -187,19 +204,19 @@ namespace Lambda {
             std::function<void(std::string const&)>>(lambda1, lambda2);
     }
 
-    void test_06_helper_b(std::function<void(std::string const&)> lambda) {
+    void test_07_helper_b(std::function<void(std::string const&)> lambda) {
         lambda("in test_helper ");
     }
 
-    void test_06() {
+    void test_07() {
 
-        auto [lambda1, lambda2] = test_06_helper_a();
+        auto [lambda1, lambda2] = test_07_helper_a();
 
-        lambda1("in test_05     ");
-        test_06_helper_b(lambda1);
+        lambda1("in test_07     ");
+        test_07_helper_b(lambda1);
 
         lambda2("in test_05     ");
-        test_06_helper_b(lambda2);
+        test_07_helper_b(lambda2);
     }
 
     // decltype may modify type deduction, e.g. in generic lamdas
@@ -207,7 +224,7 @@ namespace Lambda {
     template <typename T, typename U>
     auto add(const T& t, const U& u) -> decltype (t + u) { return t + u; }
 
-    void test_07() {
+    void test_08() {
          
         int n = 1;
         double d = 2.7;
@@ -217,7 +234,7 @@ namespace Lambda {
         std::cout << result << std::endl;
     }
 
-    void test_08() {
+    void test_09() {
 
         // Example demonstrating so called 'Currying':
         // This means that we take a function that can accept some parameters
@@ -248,6 +265,7 @@ void main_lambdas()
     test_06();
     test_07();
     test_08();
+    test_09();
 }
 
 // =====================================================================================

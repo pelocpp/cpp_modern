@@ -6,17 +6,20 @@ In diesem Abschnitt befinden sich einige kleinere Aufgaben, um den vermittelten 
 - [Aufgabe 2](#aufgabe-2): Move-Semantik
 - [Aufgabe 3](#aufgabe-3): Lambda-Funktionen
 - [Aufgabe 4](#aufgabe-4): Taschenrechner mit Lambda-Funktionen
-- [Aufgabe 5](#aufgabe-5): `std::optional`
-- [Aufgabe 6](#aufgabe-6): Variadische Templates: Ausgabe eines `std::tuple` Objekts
-- [Aufgabe 7](#aufgabe-7): Metaprogramming
-- [Aufgabe 8](#aufgabe-8): SFINAE: Eine Methode, mehrere Implementierungen
-- [Aufgabe 9](#aufgabe-9): SFINAE: Detektion von Methoden in einer Klasse
-- [Aufgabe 10](#aufgabe-10): Einheitliche Initialisierung (*Uniform Initialization*)
-- [Aufgabe 11](#aufgabe-11): Variadische Templates: Logische Operationen mit beliebig vielen Operanden
-- [Aufgabe 12](#aufgabe-12): Folding Expressions: Logische Operationen mit beliebig vielen Operanden
-- [Aufgabe 13](#aufgabe-13): Variadische Templates, `decltype` und Type-Traits am Beispiel von `sameType`
-- [Aufgabe 14](#aufgabe-14): Folding Expressions, `decltype` und Type-Traits am Beispiel von `sameType`
-- [Aufgabe 15](#aufgabe-15): Heterogener Container
+
+- [Aufgabe 5](#aufgabe-5): Quiz mit Lambda-Funktionen
+- 
+- [Aufgabe 6](#aufgabe-6): `std::optional`
+- [Aufgabe 7](#aufgabe-7): Variadische Templates: Ausgabe eines `std::tuple` Objekts
+- [Aufgabe 8](#aufgabe-8): Metaprogramming
+- [Aufgabe 9](#aufgabe-9): SFINAE: Eine Methode, mehrere Implementierungen
+- [Aufgabe 10](#aufgabe-10): SFINAE: Detektion von Methoden in einer Klasse
+- [Aufgabe 11](#aufgabe-11): Einheitliche Initialisierung (*Uniform Initialization*)
+- [Aufgabe 12](#aufgabe-12): Variadische Templates: Logische Operationen mit beliebig vielen Operanden
+- [Aufgabe 13](#aufgabe-13): Folding Expressions: Logische Operationen mit beliebig vielen Operanden
+- [Aufgabe 14](#aufgabe-14): Variadische Templates, `decltype` und Type-Traits am Beispiel von `sameType`
+- [Aufgabe 15](#aufgabe-15): Folding Expressions, `decltype` und Type-Traits am Beispiel von `sameType`
+- [Aufgabe 16](#aufgabe-16): Heterogener Container
 
 ---
 
@@ -219,6 +222,81 @@ Result: 1.5 + 1.5 = 4.2.
 
 ## Aufgabe 5
 
+#### Inhalt: Quiz mit Lambda-Funktionen
+
+#### Vorausetzungen: Keine.
+
+Betrachten Sie die drei Methoden `test_01`, `test_02` und `test_03`: Erraten Sie die Ausgabe?
+Begründen Sie Ihre Antworten.
+
+*Quiz 1*:
+
+```cpp
+void test_01()
+{
+    int variable{ 1 };
+
+    auto lambda{ [variable]() mutable {
+        std::cout << "Variable: " << variable << std::endl;
+        variable++;
+        }
+    };
+
+    // invoke lambda three times
+    lambda();
+    lambda();
+    lambda();
+
+    std::cout << "Variable: " << variable << std::endl;
+}
+```
+
+*Quiz 2*:
+
+```cpp
+void test_02()
+{
+    int i{ 0 };
+    
+    // create a lambda named 'count'
+    auto count{ [i]() mutable { std::cout << ++i << std::endl; } };
+    
+    // invoke lambda
+    count();
+    
+    // create a copy of lambda 'count'
+    auto otherCount{ count };
+    
+    // invoke both lambda 'count' and the copy
+    count();
+    otherCount();
+}
+```
+
+*Quiz 3*:
+
+```cpp
+void invoke(const std::function<void(void)>& fn)
+{
+    fn();
+}
+
+void test_03()
+{
+    int i{ 0 };
+
+    auto count{ [i]() mutable { std::cout << ++i << std::endl; } };
+
+    invoke(count);
+    invoke(count);
+    invoke(count);
+}
+```
+
+---
+
+## Aufgabe 6
+
 #### Inhalt: `std::optional`, `if constexpr`
 
 #### Vorausetzungen: Templates Grundlagen
@@ -239,7 +317,7 @@ Realisieren Sie die Funktion analog zur Funktion `toInt`. Für `T` sollen die in
 
 ---
 
-## Aufgabe 6
+## Aufgabe 7
 
 #### Inhalt: Variadische Templates: Ausgabe eines `std::tuple` Objekts
 
@@ -267,7 +345,7 @@ printTuple(tuple);
 
 ---
 
-## Aufgabe 7
+## Aufgabe 8
 
 #### Inhalt: Metaprogramming
 
@@ -283,7 +361,7 @@ Schreiben Sie eine Schablone `Fibonacci`, die *Fibonacci*-Zahlen zur Übersetzun
 
 ---
 
-## Aufgabe 8
+## Aufgabe 9
 
 #### Inhalt: SFINAE: Eine Methode, mehrere Implementierungen
 
@@ -296,7 +374,7 @@ Schreiben Sie eine Funktion `first`, die eine Referenz des ersten Arrayelements 
 Bei klassischen C-Arrays sollte dies die Anfangsadresse des Arrays sein, bei `std::array`
 das Iterator-Objekt `begin`.
 
-## Aufgabe 9
+## Aufgabe 10
 
 #### Inhalt: SFINAE: Detektion von Methoden in einer Klasse
 
@@ -356,7 +434,7 @@ struct Exercise_09::SecondStruct: false
 
 ---
 
-## Aufgabe 10
+## Aufgabe 11
 
 #### Inhalt: Einheitliche Initialisierung (*Uniform Initialization*)
 
@@ -422,7 +500,7 @@ auch auf andere Konstruktoren ausweichen können!
 
 ---
 
-## Aufgabe 11
+## Aufgabe 12
 
 #### Inhalt: Variadische Templates: Logische Operationen mit beliebig vielen Operanden
 
@@ -448,7 +526,7 @@ true
 
 ---
 
-## Aufgabe 12
+## Aufgabe 13
 
 #### Inhalt: Folding Expressions: Logische Operationen mit beliebig vielen Operanden
 
@@ -458,7 +536,7 @@ Die Aufgabenstellung ist identisch zur letzten Aufgabe: Setzen Sie zur Lösung d
 
 ---
 
-## Aufgabe 13
+## Aufgabe 14
 
 #### Inhalt: Variadische Templates, `decltype` und Type-Traits am Beispiel von `sameType`
 
@@ -501,7 +579,7 @@ Können Sie das Feature "*Short-Circuit-Evaluation*" in Ihrer Realisierung der F
 
 ---
 
-## Aufgabe 14
+## Aufgabe 15
 
 #### Inhalt: Folding Expressions, `decltype` und Type-Traits am Beispiel von `sameType`
 
@@ -512,7 +590,7 @@ Setzen Sie zur Lösung dieses Mal *Folding Expressions* ein.
 
 ---
 
-## Aufgabe 15
+## Aufgabe 16
 
 #### Inhalt: Heterogener Container
 

@@ -279,6 +279,93 @@ namespace Exercises {
 
     namespace Exercise_05 {
 
+        void testExercise_05a()
+        {
+            // Output:
+            // Variable: 1
+            // Variable: 2
+            // Variable: 3
+            // Variable: 1
+
+            // When the lambda is called, the lambda captures a copy of @variable.
+            // When the lambda decrements @variable from 1 to 2 and 3, it decrements its own copy, not the original value.
+            // But: The original value of @variable is preserved across calls to the lambda!
+
+            int variable{ 1 };
+
+            auto lambda{ [variable]() mutable {
+                std::cout << "Variable: " << variable << std::endl;
+                variable++;
+                }
+            };
+
+            // invoke lambda three times
+            lambda();
+            lambda();
+            lambda();
+
+            std::cout << "Variable: " << variable << std::endl << std::endl;
+        }
+
+        void testExercise_05b()
+        {
+            // Output:
+            // 1
+            // 2
+            // 2
+
+            // Rather than printing 1, 2, 3, the code prints 2 twice. When we created @otherCount as a copy of @count,
+            // we created a copy of @count in its current state. @count‘s i was 1, so @otherCount‘s i is 1 as well.
+            // Since @otherCount is a copy of @count, they each have their own @i.
+
+            int i{ 0 };
+
+            // create a lambda named 'count'
+            auto count{ [i]() mutable { std::cout << ++i << std::endl; } };
+
+            // invoke lambda
+            count();
+
+            // create a copy of lambda 'count'
+            auto otherCount{ count };
+
+            // invoke both lambda 'count' and the copy
+            count();
+            otherCount();
+            std::cout << std::endl;
+        }
+
+        void invoke(const std::function<void(void)>& fn)
+        {
+            fn();
+        }
+
+        void testExercise_05c()
+        {
+            // Output:
+            // 1
+            // 1
+            // 1
+
+            // This exhibits the same problem as the prior example in a more obscure form:
+            // When std::function is created with a lambda, 
+            // the std::function internally makes a copy of the lambda object.
+            // Thus, the call to fn() is actually being executed on the copy of our lambda, not the actual lambda.
+
+            int i{ 0 };
+
+            // increments and prints its local copy of @i
+            auto count{ [i]() mutable { std::cout << ++i << std::endl; } };
+
+            invoke(count);
+            invoke(count);
+            invoke(count);
+            std::cout << std::endl;
+        }
+    }
+
+    namespace Exercise_06 {
+
         std::optional<int> toInt(std::string s) {
             std::optional<int> result;
             try
@@ -347,7 +434,7 @@ namespace Exercises {
             return result;
         }
 
-        void testExercise_05a() {
+        void testExercise_06a() {
             std::optional<int> i1 = toInt("123");
             if (i1.has_value()) {
                 std::cerr << i1.value() << std::endl;
@@ -369,7 +456,7 @@ namespace Exercises {
             }
         }
 
-        void testExercise_05b() {
+        void testExercise_06b() {
 
             std::optional<short> i1 = toNumber<short>("32767");
             if (i1.has_value()) {
@@ -393,7 +480,7 @@ namespace Exercises {
         }
     }
 
-    namespace Exercise_06 {
+    namespace Exercise_07 {
 
         template<typename Tuple, std::size_t N>
         struct ShowTupleImpl {
@@ -428,7 +515,7 @@ namespace Exercises {
             std::cout << "]" << std::endl;
         }
 
-        void testExercise_06() {
+        void testExercise_07() {
             auto tuple1 = std::make_tuple(1, std::string("Modern C++"), false, 3.14159);
             auto tuple2 = std::make_tuple(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
             auto tuple3 = std::make_tuple(12345);
@@ -443,7 +530,7 @@ namespace Exercises {
         }
     }
 
-    namespace Exercise_07 {
+    namespace Exercise_08 {
 
         template<long long n>
         struct FibImpl {
@@ -467,7 +554,7 @@ namespace Exercises {
             static constexpr long long value = FibImpl<n>::value;
         };
 
-        void testExercise_07() {
+        void testExercise_08() {
             std::cout << 1 << ":  " << Fibonacci<1>::value << std::endl;
             std::cout << 2 << ":  " << Fibonacci<2>::value << std::endl;
             std::cout << 10 << ": " << Fibonacci<10>::value << std::endl;
@@ -483,7 +570,7 @@ namespace Exercises {
         }
     }
 
-    namespace Exercise_08 {
+    namespace Exercise_09 {
 
         template <class T>
         auto first(T& c) -> decltype(c.begin()) {
@@ -497,7 +584,7 @@ namespace Exercises {
             return arr;
         }
 
-        void testExercise_08() {
+        void testExercise_09() {
             int vals[5]{ 1, 2, 3, 4, 5 };
             int elem = *(first(vals));
             std::cout << elem << std::endl;
@@ -522,7 +609,7 @@ namespace Exercises {
         }
     }
 
-    namespace Exercise_09 {
+    namespace Exercise_10 {
 
         // Create a single class and use expression SFINAE on the return type of methods
         // in that class to return true if the method is detected and false if the method
@@ -560,7 +647,7 @@ namespace Exercises {
             int getter() { return 456; };
         };
 
-        void testExercise_09() {
+        void testExercise_10() {
             std::cout
                 << typeid(struct FirstStruct).name() << ":  "
                 << std::boolalpha << TestMethod<FirstStruct>::value << std::endl;
@@ -571,7 +658,7 @@ namespace Exercises {
         };
     }
 
-    namespace Exercise_10 {
+    namespace Exercise_11 {
 
         template <typename T>
         class MyContainer {
@@ -600,7 +687,7 @@ namespace Exercises {
             }
         };
 
-        void testExercise_10() {
+        void testExercise_11() {
 
             // using initializer list for a string
             std::string cppInventor = { "Bjarne Stroustrup" };
@@ -637,7 +724,7 @@ namespace Exercises {
         }
     }
 
-    namespace Exercise_11 {
+    namespace Exercise_12 {
 
         // =============================================================
         // Logical And - with variadic templates
@@ -663,7 +750,7 @@ namespace Exercises {
         //    return cond && andAll(conds...);
         //}
 
-        void testExercise_11a() {
+        void testExercise_12a() {
 
             bool result = andAll(true, false, true);
             std::cout << std::boolalpha << result << std::endl;
@@ -699,7 +786,7 @@ namespace Exercises {
             return cond && andAll(conds...);
         }
 
-        void testExercise_11b() {
+        void testExercise_12b() {
 
             bool result = orAll(false, true, false);
             std::cout << std::boolalpha << result << std::endl;
@@ -709,7 +796,7 @@ namespace Exercises {
         }
     }
 
-    namespace Exercise_12 {
+    namespace Exercise_13 {
 
         // =============================================================
     // Logical And - with folding expression
@@ -719,7 +806,7 @@ namespace Exercises {
             return (args && ... && true);  // binary right fold (init == true)
         }
 
-        void testExercise_12a() {
+        void testExercise_13a() {
 
             bool result = andAll(true, (1 > 2), true);
             std::cout << std::boolalpha << result << std::endl;
@@ -736,7 +823,7 @@ namespace Exercises {
             return (args || ...);  // unary right fold
         }
 
-        void testExercise_12b() {
+        void testExercise_13b() {
 
             bool result = orAll(false, false, true);
             std::cout << std::boolalpha << result << std::endl;
@@ -746,7 +833,7 @@ namespace Exercises {
         }
     }
 
-    namespace Exercise_13 {
+    namespace Exercise_14 {
 
         template<typename T1, typename T2>
         bool sameType(T1 arg1, T2 arg2)
@@ -772,7 +859,7 @@ namespace Exercises {
             // return sameType(arg2, args...) && std::is_same<decltype(arg1), decltype(arg2)>::value;
         }
 
-        void testExercise_13() {
+        void testExercise_14() {
 
             bool result;
             result = sameType(43, false, "hello");
@@ -789,7 +876,7 @@ namespace Exercises {
         }
     }
 
-    namespace Exercise_14 {
+    namespace Exercise_15 {
 
         template<typename T, typename... TREST>
         constexpr bool sameType(T arg, TREST... args)
@@ -799,7 +886,7 @@ namespace Exercises {
             return (std::is_same<decltype(arg), decltype(args)>::value && ...);
         }
 
-        void testExercise_14() {
+        void testExercise_15() {
 
             bool result;
             result = sameType(1, 2, 3, 4, '?', 6, 7, 8, 9);
@@ -819,11 +906,11 @@ namespace Exercises {
         }
     }
 
-    namespace Exercise_15 {
+    namespace Exercise_16 {
 
         // https://gieseanw.wordpress.com/2017/05/03/a-true-heterogeneous-container-in-c/
 
-        void testExercise_15a()
+        void testExercise_16a()
         {
             std::variant<int, std::string> myVariant;
             myVariant = 123;
@@ -858,7 +945,7 @@ namespace Exercises {
             std::cout << value << std::endl;
         };
 
-        void testExercise_15b()
+        void testExercise_16b()
         {
             std::variant<int, std::string> myVariant;
             myVariant = 123;
@@ -884,7 +971,7 @@ namespace Exercises {
             std::visit(MyPrintVisitor{}, myVariant);
         }
 
-        void testExercise_15c()
+        void testExercise_16c()
         {
             std::vector<std::variant<int, std::string>> hetVec;
 
@@ -930,7 +1017,7 @@ namespace Exercises {
             };
         };
 
-        void testExercise_15d()
+        void testExercise_16d()
         {
             HeterogeneousContainer<int, std::string> hetCont;
 
@@ -953,7 +1040,6 @@ namespace Exercises {
     }
 }
 
-
 void main_exercices()
 {
     using namespace Exercises::Exercise_01;
@@ -971,6 +1057,7 @@ void main_exercices()
     using namespace Exercises::Exercise_13;
     using namespace Exercises::Exercise_14;
     using namespace Exercises::Exercise_15;
+    using namespace Exercises::Exercise_16;
 
     testExercise_01();
 
@@ -984,8 +1071,10 @@ void main_exercices()
     
     testExercise_05a();
     testExercise_05b();
-    
-    testExercise_06();
+    testExercise_05c();
+
+    testExercise_06a();
+    testExercise_06b();
     
     testExercise_07();
     
@@ -995,20 +1084,22 @@ void main_exercices()
     
     testExercise_10();
     
-    testExercise_11a();
-    testExercise_11b();
-     
+    testExercise_11();
+    
     testExercise_12a();
     testExercise_12b();
-    
-    testExercise_13();
+     
+    testExercise_13a();
+    testExercise_13b();
     
     testExercise_14();
     
-    testExercise_15a();
-    testExercise_15b();
-    testExercise_15c();
-    testExercise_15d();
+    testExercise_15();
+    
+    testExercise_16a();
+    testExercise_16b();
+    testExercise_16c();
+    testExercise_16d();
 }
 
 // =====================================================================================
