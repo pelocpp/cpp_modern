@@ -6,9 +6,7 @@ In diesem Abschnitt befinden sich einige kleinere Aufgaben, um den vermittelten 
 - [Aufgabe 2](#aufgabe-2): Move-Semantik
 - [Aufgabe 3](#aufgabe-3): Lambda-Funktionen
 - [Aufgabe 4](#aufgabe-4): Taschenrechner mit Lambda-Funktionen
-
 - [Aufgabe 5](#aufgabe-5): Quiz mit Lambda-Funktionen
-- 
 - [Aufgabe 6](#aufgabe-6): `std::optional`
 - [Aufgabe 7](#aufgabe-7): Variadische Templates: Ausgabe eines `std::tuple` Objekts
 - [Aufgabe 8](#aufgabe-8): Metaprogramming
