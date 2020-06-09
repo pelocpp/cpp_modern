@@ -251,7 +251,7 @@ MatrixSum<MatrixSum<MatrixSum<Matrix<double>, Matrix<double>>, Matrix<double>>, 
 MatrixSum<MatrixSum<MatrixSum<MatrixSum<Matrix<double>, Matrix<double>>, Matrix<double>>, Matrix<double>>, Matrix<double>> sumABCDE(sumABCD, a5);
 
 for (int i = 0; i < iterations; ++i) {
-    result = sumABC;
+    result = sumABCD;
 }
 ```
 
