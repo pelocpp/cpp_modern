@@ -76,6 +76,7 @@ Tabelle 1. Grundlagen-Code-Snippets.
 | [DeclType](GeneralSnippets/DeclType/decltype.md) | `decltype` und `std::declval` |
 | [Explicit](GeneralSnippets/Explicit/Explicit.md) | Schlüsselwort `explicit` |
 | [ExpressionTemplates](GeneralSnippets/ExpressionTemplates/ExpressionTemplates.md) | Expression Templates |
+| [FileSystem](GeneralSnippets/FileSystem/FileSystem.md) | C++ 17 FileSystem Library |
 | [FunctionalProgramming](GeneralSnippets/FunctionalProgramming/FunctionalProgramming.md) | Funktionale Programmierung |
 | [InitializerList](GeneralSnippets/InitializerList/StdInitializerList.md) | Klasse `std::initializer_list<T>` |
 | [Lambda](GeneralSnippets/Lambda/Lambda.md) | Lambda-Funktionen |
