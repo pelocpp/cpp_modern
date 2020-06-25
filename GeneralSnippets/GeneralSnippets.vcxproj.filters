@@ -207,6 +207,9 @@
     <ClCompile Include="PerfectForwarding\PerfectForwarding02.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Random\Random.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -375,6 +378,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="MoveSemantics\MoveSemantics.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Random\Random.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

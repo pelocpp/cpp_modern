@@ -39,8 +39,10 @@ void main_move_semantics();
 void main_optional();
 void main_perfect_forwarding();
 void main_perfect_forwarding_object();
+
 void main_raii();
-void main_raii_02();
+void main_raii_02(); 
+void main_random();
 void main_reference_wrapper();
 void main_rvalue_lvalue();
 void main_sfinae();
@@ -112,6 +114,7 @@ int main()
         //main_perfect_forwarding_object();
         //main_raii();
         //main_raii_02();
+        //main_random();
         //main_reference_wrapper();
         //main_rvalue_lvalue();
         //main_sfinae();
