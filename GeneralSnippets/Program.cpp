@@ -39,7 +39,6 @@ void main_move_semantics();
 void main_optional();
 void main_perfect_forwarding();
 void main_perfect_forwarding_object();
-
 void main_raii();
 void main_raii_02(); 
 void main_random();

@@ -100,8 +100,8 @@ namespace FunctionalProgramming {
         std::cout << std::endl;
 
         std::vector<int> result = filter(
-            vec.begin(),
-            vec.end(),
+            std::begin(vec), 
+            std::end(vec),
             [](unsigned i) { return i % 2 == 0; }
         );
 
@@ -125,8 +125,8 @@ namespace FunctionalProgramming {
         std::cout << std::endl;
 
         std::vector<int> result = map(
-            vec.begin(),
-            vec.end(),
+            std::begin(vec),
+            std::end(vec),
             [](int i) { return i * 2; }
         );
 
@@ -146,8 +146,8 @@ namespace FunctionalProgramming {
         std::cout << std::endl;
 
         auto result = map(
-            vec.begin(),
-            vec.end(),
+            std::begin(vec),
+            std::end(vec),
             [](std::string s) { return std::stoi(s); }  // convert strings to int
         );
 
@@ -167,8 +167,8 @@ namespace FunctionalProgramming {
         std::cout << std::endl;
 
         auto result = map(
-            vec.begin(),
-            vec.end(),
+            std::begin(vec),
+            std::end(vec),
             [](float f) { return std::to_string(f); }  // convert float to string
         );
 
@@ -188,8 +188,8 @@ namespace FunctionalProgramming {
         std::cout << std::endl;
 
         auto result = fold<std::string>(
-            list.begin(),
-            list.end(),
+            std::begin(list),
+            std::end(list),
             [](std::string a, std::string b) { return a + std::string(":") + b; }
         );
 
@@ -218,20 +218,20 @@ namespace FunctionalProgramming {
         // c) reduce to result string, e.g. comma seperated list
 
         auto result1 = filter(
-            booksList.begin(),
-            booksList.end(),
+            std::begin(booksList),
+            std::end(booksList),
             [](const Book& book) { return book.m_year >= 1990; }
         );
 
         auto result2 = map(
-            result1.begin(),
-            result1.end(),
+            std::begin(result1),
+            std::end(result1),
             [](const Book& book) { return book.m_title; }  // convert float to string
         );
 
         auto result3 = fold<std::string>(
-            result2.begin(),
-            result2.end(),
+            std::begin(result2),
+            std::end(result2),
             [](std::string a, std::string b) {
                 std::ostringstream oss;
                 if (a.empty()) {
@@ -267,20 +267,20 @@ namespace FunctionalProgramming {
         // c) reduce to result string, e.g. comma separated list
 
         auto result1 = filter(
-            booksList.begin(),
-            booksList.end(),
+            std::begin(booksList),
+            std::end(booksList),
             [](const Book& book) { return book.m_year >= 1990; }
         );
 
         auto result2 = map(
-            result1.begin(),
-            result1.end(),
+            std::begin(result1),
+            std::end(result1),
             [](const Book& book) { return SearchResult{ book.m_title, book.m_author }; }
         );
 
         auto result3 = fold<std::string>(
-            result2.begin(),
-            result2.end(),
+            std::begin(result2),
+            std::end(result2),
             [](std::string a, SearchResult b) -> std::string {
                 std::ostringstream oss;
                 if (a.empty()) {
@@ -310,20 +310,20 @@ namespace FunctionalProgramming {
         // c) reduce to result string, e.g. comma separated list
 
         auto result1 = filter(
-            booksList.begin(),
-            booksList.end(),
+            std::begin(booksList),
+            std::end(booksList),
             [](const Book& book) { return book.m_year >= 1990; }
         );
 
         auto result2 = map(
-            result1.begin(),
-            result1.end(),
+            std::begin(result1),
+            std::end(result1),
             [](const Book& book) { return std::make_pair(book.m_title, book.m_author); }
         );
 
         auto result3 = fold<std::string>(
-            result2.begin(),
-            result2.end(),
+            std::begin(result2),
+            std::end(result2),
             [](std::string a, std::pair<std::string, std::string> b) -> std::string {
                 std::ostringstream oss;
                 if (a.empty()) {
