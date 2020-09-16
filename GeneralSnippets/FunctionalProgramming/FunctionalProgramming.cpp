@@ -12,6 +12,8 @@
 #include <list>
 #include <sstream>
 
+// std::forward<TFunctor>(lambda)
+
 namespace FunctionalProgramming {
 
     template <typename TReturn, typename InputIterator, typename TFunctor>
@@ -20,7 +22,7 @@ namespace FunctionalProgramming {
         -> TReturn
     {
         TReturn init{};
-        return std::accumulate(begin, end, init, lambda);
+        return std::accumulate(begin, end, init, std::forward<TFunctor>(lambda));
     }
 
     // =================================================================================
@@ -36,7 +38,7 @@ namespace FunctionalProgramming {
     {
         std::vector<ValueType<InputIterator>> result;
         result.reserve(std::distance(begin, end));
-        std::copy_if(begin, end, std::back_inserter(result), lambda);
+        std::copy_if(begin, end, std::back_inserter(result), std::forward<TFunctor>(lambda));
         return result;
     }
 
@@ -50,7 +52,7 @@ namespace FunctionalProgramming {
 
         std::vector<ValueType> result;
         result.reserve(std::distance(begin, end));
-        std::copy_if(begin, end, std::back_inserter(result), lambda);
+        std::copy_if(begin, end, std::back_inserter(result), std::forward<TFunctor>(lambda));
         return result;
     }
 
@@ -65,7 +67,7 @@ namespace FunctionalProgramming {
 
         std::vector<FunctorValueType> result;
         result.reserve(unsigned(std::distance(begin, end)));
-        std::transform(begin, end, std::back_inserter(result), lambda);
+        std::transform(begin, end, std::back_inserter(result), std::forward<TFunctor>(lambda));
         return result;
     }
 
@@ -80,7 +82,7 @@ namespace FunctionalProgramming {
 
         std::vector<FunctorValueType> result;
         result.reserve(unsigned(std::distance(begin, end)));
-        std::transform(begin, end, std::back_inserter(result), lambda);
+        std::transform(begin, end, std::back_inserter(result), std::forward<TFunctor>(lambda));
         return result;
     }
 
