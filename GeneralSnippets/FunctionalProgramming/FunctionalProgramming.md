@@ -56,13 +56,7 @@ Die Anregungen zu den Beispielen aus diesem Code-Snippet stammen teilweise aus
 
 und 
 
-[Funktionale Programmierung](https://www.torsten-horn.de/techdocs/java-lambdas.htm/)<br>(abgerufen am 24.05.2020).
-
-
-
-
-
-
+[Funktionale Programmierung](https://www.torsten-horn.de/techdocs/java-lambdas.htm)<br>(abgerufen am 24.05.2020).
 
 ---
 
