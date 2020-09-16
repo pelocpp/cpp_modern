@@ -12,8 +12,6 @@
 #include <list>
 #include <sstream>
 
-// std::forward<TFunctor>(lambda)
-
 namespace FunctionalProgramming {
 
     template <typename TReturn, typename InputIterator, typename TFunctor>
