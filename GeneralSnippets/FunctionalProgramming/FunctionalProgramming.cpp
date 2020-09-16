@@ -15,7 +15,7 @@
 namespace FunctionalProgramming {
 
     template <typename TReturn, typename InputIterator, typename TFunctor>
-    auto fold(InputIterator begin, InputIterator end, TFunctor lambda)
+    auto fold(InputIterator begin, InputIterator end, TFunctor&& lambda)
         // not needed, just for demonstration purposes
         -> TReturn
     {
@@ -30,7 +30,7 @@ namespace FunctionalProgramming {
     using ValueType = typename std::iterator_traits<T>::value_type;
 
     template <typename InputIterator, typename TFunctor>
-    auto filter(InputIterator begin, InputIterator end, TFunctor lambda)
+    auto filter(InputIterator begin, InputIterator end, TFunctor&& lambda)
         // not needed, just for demonstration purposes
         -> std::vector<ValueType<InputIterator>>
     {
@@ -42,7 +42,7 @@ namespace FunctionalProgramming {
 
     // without alias template
     template <typename InputIterator, typename TFunctor>
-    auto filterEx(InputIterator begin, InputIterator end, TFunctor lambda)
+    auto filterEx(InputIterator begin, InputIterator end, TFunctor&& lambda)
         // not needed, just for demonstration purposes
         -> std::vector<typename std::iterator_traits<InputIterator>::value_type>
     {
@@ -57,7 +57,7 @@ namespace FunctionalProgramming {
     // =================================================================================
 
     template <typename InputIterator, typename TFunctor>
-    auto map(InputIterator begin, InputIterator end, TFunctor lambda)
+    auto map(InputIterator begin, InputIterator end, TFunctor&& lambda)
         // not needed, just for demonstration purposes
         -> std::vector<decltype(std::declval<TFunctor>()(std::declval<typename std::iterator_traits<InputIterator>::value_type>()))>
     {
@@ -71,7 +71,7 @@ namespace FunctionalProgramming {
 
     // without alias template
     template <typename InputIterator, typename TFunctor>
-    auto mapEx(InputIterator begin, InputIterator end, TFunctor lambda)
+    auto mapEx(InputIterator begin, InputIterator end, TFunctor&& lambda)
         // not needed, just for demonstration purposes
         -> std::vector<decltype(std::declval<TFunctor>()(std::declval<typename std::iterator_traits<InputIterator>::value_type>()))>
     {
