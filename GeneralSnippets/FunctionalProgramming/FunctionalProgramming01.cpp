@@ -1,5 +1,5 @@
 // =====================================================================================
-// Functional Programming
+// Functional Programming - Variante 1
 // =====================================================================================
 
 #include <iostream>
@@ -12,7 +12,9 @@
 #include <list>
 #include <sstream>
 
-namespace FunctionalProgramming {
+namespace FunctionalProgramming_01 {
+
+    // =================================================================================
 
     template <typename TReturn, typename InputIterator, typename TFunctor>
     auto fold(InputIterator begin, InputIterator end, TFunctor&& lambda)
@@ -85,9 +87,9 @@ namespace FunctionalProgramming {
     }
 
     // =================================================================================
+    // testing 'filter'
 
-    // test 'filter'
-    void test_functional_01() {
+    void test_functional_filter_01() {
         std::vector<int> vec(20);
         std::generate(std::begin(vec), std::end(vec), [value = 0]() mutable {
             return ++value;
@@ -111,8 +113,32 @@ namespace FunctionalProgramming {
         std::cout << std::endl;
     }
 
-    // test 'map'
-    void test_functional_02a() {
+    // =================================================================================
+    // testing 'map'
+
+    // mapping both negative and positive values to a new vector
+    // with only positive values
+    void test_functional_map_02a()
+    {
+        std::vector<int> numbers = std::vector<int>{ 0, 2, -3, 5, -1, 6, 8, -4, 9 };
+
+        for (int i : numbers) {
+            std::cout << "  " << i;
+        }
+        std::cout << std::endl;
+
+        std::vector<int> result = map(
+            std::begin(numbers),
+            std::end(numbers),
+            [](int const i) { return std::abs(i); }
+        );
+
+        for (int i : result) {
+            std::cout << "  " << i;
+        }
+    }
+
+    void test_functional_map_02b() {
         std::vector<int> vec(20);
         std::generate(std::begin(vec), std::end(vec), [value = 0]() mutable {
             return ++value;
@@ -137,8 +163,7 @@ namespace FunctionalProgramming {
         std::cout << std::endl;
     }
 
-    // test 'map'
-    void test_functional_02b() {
+    void test_functional_map_02c() {
         std::vector<std::string> vec = { "1", "2", "3", "4", "5", "6", "7" , "8", "9", "10" };
         std::for_each(std::begin(vec), std::end(vec), [](std::string s) {
             std::cout << s << ' ';
@@ -158,8 +183,7 @@ namespace FunctionalProgramming {
         std::cout << std::endl;
     }
 
-    // test 'map'
-    void test_functional_02c() {
+    void test_functional_map_02d() {
         std::vector<float> vec = { 1.F, 2.f, 3.f, 4.f, 5.f };
         std::for_each(std::begin(vec), std::end(vec), [](float value) {
             std::cout << value << ' ';
@@ -179,21 +203,103 @@ namespace FunctionalProgramming {
         std::cout << std::endl;
     }
 
-    // test 'fold'
-    void test_functional_03a() {
-        std::list<std::string> list = { "Implementing", "fold", "with", "Modern", "C++" };
-        std::for_each(std::begin(list), std::end(list), [](std::string s) {
-            std::cout << s << ' ';
+    // =================================================================================
+    // testing 'fold'
+
+    // adding the values of a vector of integers
+    void test_functional_fold_03a()
+    {
+        std::vector<int> numbers = std::vector <int>{ 0, 2, -3, 5, -1, 6, 8, -4, 9 };
+
+        int sum1 = fold<int>(
+            std::begin(numbers),
+            std::end(numbers),
+            [](const int n, const int m) {return n + m; }
+        );
+
+        std::cout << sum1 << std::endl;
+    }
+
+    // concatenating a list of strings into a single string
+    void test_functional_fold_03b() {
+        std::list<std::string> words = { "Implementing", "fold", "with", "Modern", "C++" };
+        std::for_each(std::begin(words), std::end(words), [](std::string s) {
+            std::cout << s;
             });
         std::cout << std::endl;
 
-        auto result = fold<std::string>(
-            std::begin(list),
-            std::end(list),
-            [](std::string a, std::string b) { return a + std::string(":") + b; }
+        // testing left fold
+        auto result1 = fold<std::string>(
+            std::begin(words),
+            std::end(words),
+            [](std::string a, std::string b) { return a + b; }
         );
 
-        std::cout << result << std::endl;
+        std::cout << result1 << std::endl;
+
+        // testing right fold - note usage of reverse iterators
+        auto result2 = fold<std::string>(
+            std::rbegin(words),
+            std::rend(words),
+            [](std::string a, std::string b) { return a + b; }
+        );
+
+        std::cout << result2 << std::endl;
+    }
+
+    // concatenating an array of characters into a string
+    void test_functional_fold_03c()
+    {
+        char chars[] = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j' };
+
+        auto txt1 = fold<std::string>(
+            std::begin(chars),
+            std::end(chars),
+            std::plus<>()); 
+        std::cout << txt1 << std::endl; // abcdefghij
+
+        auto txt2 = fold<std::string>(
+            std::rbegin(chars),
+            std::rend(chars),
+            std::plus<>());
+        std::cout << txt2 << std::endl; // jihgfedcba
+    }
+
+    // =================================================================================
+
+    void test_functional_fmr_pattern_04a()
+    {
+        auto numbers = std::vector<int>{ 0, 2, -3, 5, -1, 6, 8, -4, 9 };
+
+        std::vector<int> result = map(
+            std::begin(numbers),
+            std::end(numbers),
+            [](int i) { return std::abs(i); }
+        );
+
+        for (int i : result) {
+            std::cout << "  " << i;
+        }
+        std::cout << std::endl;
+
+        std::vector<int> result2 = map(
+            std::begin(numbers),
+            std::end(numbers),
+            [](int i) { return i * i; }
+        );
+
+        for (int i : result2) {
+            std::cout << "  " << i;
+        }
+        std::cout << std::endl;
+
+        int sum = fold<int>(
+            std::begin(result2),
+            std::end(result2),
+            [](int n, int m) {return n + m; }
+        );
+
+        std::cout << sum << std::endl;;
     }
 
     // testing 'Filter-Map-Reduce' Pattern
@@ -205,7 +311,7 @@ namespace FunctionalProgramming {
         double m_price;
     };
 
-    void test_functional_04a() {
+    void test_functional_fmr_pattern_04b() {
         std::list<Book> booksList{
             {"C", "Dennis Ritchie", 1972, 11.99 } ,
             {"Java", "James Gosling", 1995, 19.99 },
@@ -254,7 +360,7 @@ namespace FunctionalProgramming {
         std::string m_author;
     };
 
-    void test_functional_04b() {
+    void test_functional_fmr_pattern_04c() {
         std::list<Book> booksList{
             {"C", "Dennis Ritchie", 1972, 11.99 } ,
             {"Java", "James Gosling", 1995, 19.99 },
@@ -297,7 +403,7 @@ namespace FunctionalProgramming {
     }
 
     // same query, using 'std::pair' utility class
-    void test_functional_04c() {
+    void test_functional_fmr_pattern_04d() {
         std::list<Book> booksList{
             {"C", "Dennis Ritchie", 1972, 11.99 } ,
             {"Java", "James Gosling", 1995, 19.99 },
@@ -342,22 +448,26 @@ namespace FunctionalProgramming {
 
 void main_functional_programming()
 {
-    using namespace FunctionalProgramming;
+    using namespace FunctionalProgramming_01;
 
     // test 'filter'
-    test_functional_01();
+    test_functional_filter_01();
 
     // test 'map'
-    test_functional_02a();
-    test_functional_02b();
-    test_functional_02c();
+    test_functional_map_02a();
+    test_functional_map_02b();
+    test_functional_map_02c();
+    test_functional_map_02d();
 
     // test 'fold'
-    test_functional_03a();
+    test_functional_fold_03a();
+    test_functional_fold_03b();
+    test_functional_fold_03c();
 
-    test_functional_04a();
-    test_functional_04b();
-    test_functional_04c();
+    test_functional_fmr_pattern_04a();
+    test_functional_fmr_pattern_04b();
+    test_functional_fmr_pattern_04c();
+    test_functional_fmr_pattern_04d();
 }
 
 // =====================================================================================

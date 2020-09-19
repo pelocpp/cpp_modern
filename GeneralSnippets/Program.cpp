@@ -24,6 +24,7 @@ void main_expression_templates();
 void main_filesystem();
 void main_filesystem();
 void main_functional_programming();
+void main_functional_programming_alternate();
 void main_function_templates_basics();
 void main_initializer_list();
 void main_input_output_streams();
@@ -96,6 +97,7 @@ int main()
         //main_filesystem();
         //main_filesystem();
         //main_functional_programming();
+        main_functional_programming_alternate();
         //main_function_templates_basics();
         //main_initializer_list();
         //main_input_output_streams();

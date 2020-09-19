@@ -1,6 +1,8 @@
 # Funktionale Programmierung
 
-[Quellcode](FunctionalProgramming.cpp)
+[Quellcode zu Variante 1](FunctionalProgramming01.cpp)
+
+[Quellcode zu Variante 2](FunctionalProgramming02.cpp)
 
 ---
 
@@ -38,15 +40,30 @@ speziell Lambda-Funktionen an.
     mit zwei Argumenten auf ein Element des Containers und das vorangehende Zwischenergebnis angewendet.
 
 
+###### *Hinweis*:
+
+Da die Reihenfolge in der Verarbeitung der Elemente eines Containers entscheidend sein kann, gibt es von der Funktion `fold`
+normalerweise zwei Versionen - eine Funktion `foldleft`, die die Elemente
+von links nach rechts verarbeitet und eine Funktion  `foldright`, die die Elemente von rechts nach links kombiniert.
+Beachten Sie die Hinweise im Quellcode hierzu.
+
+
 ## Filter-Map-Reduce Pattern
 
 "Filter-Map-Reduce" beschreibt ein Pattern, bei dem eine Menge von Daten in einer Abfolge
-von bestimmten Schritten verarbeitet wird.
-`reduce` ist eine andere Bezeichnung für `fold`.
+von bestimmten Schritten verarbeitet wird. Dabei ist `reduce` eine andere Bezeichnung für `fold`.
+
+Offensichtlich ist die Reihenfolge
+
+  * *Filter*: Filterung gewünschter Elemente aus einer Menge von Elementen. Die Element-Typen bleiben dieselben, aber die Menge der Elemente wird reduziert.
+  * *Map*: Transformation der Elemente. Dabei ändert sich die Menge der Elemente nicht, aber oft ändert sich der Element-Typ. Beispielsweise können Berechnungen, Extraktionen oder Umwandlungen durchgeführt werden.
+  * *Reduce*: Reduktion auf ein Endergebnis.
+
+Im Quellcode zu diesem Snippet gibt es Beispiel zum *Filter-Map-Reduce* Pattern.
 
 ## Beispiele
 
-Siehe den dazugehörigen [Quellcode](FunctionalProgramming.cpp).
+Siehe den dazugehörigen [Quellcode zu Variante 1](FunctionalProgramming01.cpp) und [Quellcode zu Variante 2](FunctionalProgramming02.cpp).
 
 ## Literaturhinweise:
 
