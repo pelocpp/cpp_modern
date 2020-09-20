@@ -253,6 +253,58 @@ namespace FunctionalProgramming_02 {
     // =================================================================================
     // testing 'Filter-Map-Reduce' Pattern
 
+    void test_functional_fmr_pattern_04a()
+    {
+        auto numbers = std::vector<int>{ 0, 2, -3, 5, -1, 6, 8, -4, 9 };
+
+        std::vector<int> result = map(
+            numbers,
+            [](int i) { return std::abs(i); }
+        );
+
+        for (int i : result) {
+            std::cout << "  " << i;
+        }
+        std::cout << std::endl;
+
+        std::vector<int> result2 = map(
+            result,
+            [](int i) { return i * i; }
+        );
+
+        for (int i : result2) {
+            std::cout << "  " << i;
+        }
+        std::cout << std::endl;
+
+        int sum = foldLeft(
+            result2,
+            0,
+            [](int n, int m) {return n + m; }
+        );
+
+        std::cout << sum << std::endl;
+    }
+
+    void test_functional_fmr_pattern_04a_compact() {
+
+        std::vector<int> numbers = std::vector<int>{ 0, 2, -3, 5, -1, 6, 8, -4, 9 };
+
+        int sum = foldLeft(
+            map(
+                map(
+                    numbers,
+                    [](int i) { return std::abs(i); }
+                ),
+                [](int i) { return i * i; }
+            ),
+            0,
+            [](int n, int m) {return n + m; }
+        );
+
+        std::cout << sum << std::endl;
+    }
+
     class Book {
     public:
         std::string m_title;
@@ -261,7 +313,8 @@ namespace FunctionalProgramming_02 {
         double m_price;
     };
 
-    void test_functional_04a() {
+    void test_functional_fmr_pattern_04b() {
+
         std::vector<Book> booksList{
             {"C", "Dennis Ritchie", 1972, 11.99 } ,
             {"Java", "James Gosling", 1995, 19.99 },
@@ -301,7 +354,8 @@ namespace FunctionalProgramming_02 {
         std::cout << result3 << std::endl;
     }
 
-    void test_functional_04a_compact() {
+    void test_functional_fmr_pattern_04b_compact() {
+
         std::vector<Book> booksList{
             {"C", "Dennis Ritchie", 1972, 11.99 } ,
             {"Java", "James Gosling", 1995, 19.99 },
@@ -336,125 +390,199 @@ namespace FunctionalProgramming_02 {
 
         std::cout << result << std::endl;
     }
-//
-//    // helper class
-//    class SearchResult {
-//    public:
-//        std::string m_title;
-//        std::string m_author;
-//    };
-//
-//    void test_functional_04b() {
-//        std::list<Book> booksList{
-//            {"C", "Dennis Ritchie", 1972, 11.99 } ,
-//            {"Java", "James Gosling", 1995, 19.99 },
-//            {"C++", "Bjarne Stroustrup", 1985, 20.00 },
-//            {"C#", "Anders Hejlsberg", 2000, 29.99 }
-//        };
-//
-//        // a) filter books which appeared past 1990
-//        // b) extract book title and authors name
-//        // c) reduce to result string, e.g. comma separated list
-//
-//        auto result1 = filter(
-//            std::begin(booksList),
-//            std::end(booksList),
-//            [](const Book& book) { return book.m_year >= 1990; }
-//        );
-//
-//        auto result2 = map(
-//            std::begin(result1),
-//            std::end(result1),
-//            [](const Book& book) { return SearchResult{ book.m_title, book.m_author }; }
-//        );
-//
-//        auto result3 = fold<std::string>(
-//            std::begin(result2),
-//            std::end(result2),
-//            [](std::string a, SearchResult b) -> std::string {
-//                std::ostringstream oss;
-//                if (a.empty()) {
-//                    oss << b.m_title << " [" << b.m_author << ']';
-//                }
-//                else {
-//                    oss << a << " | " << b.m_title << " [" << b.m_author << ']';
-//                }
-//                return oss.str();
-//            }
-//        );
-//
-//        std::cout << result3 << std::endl;
-//    }
-//
-//    // same query, using 'std::pair' utility class
-//    void test_functional_04c() {
-//        std::list<Book> booksList{
-//            {"C", "Dennis Ritchie", 1972, 11.99 } ,
-//            {"Java", "James Gosling", 1995, 19.99 },
-//            {"C++", "Bjarne Stroustrup", 1985, 20.00 },
-//            {"C#", "Anders Hejlsberg", 2000, 29.99 }
-//        };
-//
-//        // a) filter books which appeared past 1990
-//        // b) extract book title and authors name
-//        // c) reduce to result string, e.g. comma separated list
-//
-//        auto result1 = filter(
-//            std::begin(booksList),
-//            std::end(booksList),
-//            [](const Book& book) { return book.m_year >= 1990; }
-//        );
-//
-//        auto result2 = map(
-//            std::begin(result1),
-//            std::end(result1),
-//            [](const Book& book) { return std::make_pair(book.m_title, book.m_author); }
-//        );
-//
-//        auto result3 = fold<std::string>(
-//            std::begin(result2),
-//            std::end(result2),
-//            [](std::string a, std::pair<std::string, std::string> b) -> std::string {
-//                std::ostringstream oss;
-//                if (a.empty()) {
-//                    oss << b.first << " [" << b.second << ']';
-//                }
-//                else {
-//                    oss << a << " | " << b.first << " [" << b.second << ']';
-//                }
-//                return oss.str();
-//            }
-//        );
-//
-//        std::cout << result3 << std::endl;
-//    }
 
+    // helper class
+    class SearchResult {
+    public:
+        std::string m_title;
+        std::string m_author;
+    };
 
+    void test_functional_fmr_pattern_04c() {
 
+        std::vector<Book> booksList{
+            {"C", "Dennis Ritchie", 1972, 11.99 } ,
+            {"Java", "James Gosling", 1995, 19.99 },
+            {"C++", "Bjarne Stroustrup", 1985, 20.00 },
+            {"C#", "Anders Hejlsberg", 2000, 29.99 }
+        };
+
+        // a) filter books which appeared past 1990
+        // b) extract book title and authors name
+        // c) reduce to result string, e.g. comma separated list
+
+        auto result1 = filter(
+            booksList,
+            [](const Book& book) { return book.m_year >= 1990; }
+        );
+
+        auto result2 = map(
+            result1,
+            [](const Book& book) { return SearchResult{ book.m_title, book.m_author }; }
+        );
+
+        std::string result3 = foldLeft(
+            result2,
+            std::string(""),
+            [](std::string a, SearchResult b) -> std::string {
+                std::ostringstream oss;
+                if (a.empty()) {
+                    oss << b.m_title << " [" << b.m_author << ']';
+                }
+                else {
+                    oss << a << " | " << b.m_title << " [" << b.m_author << ']';
+                }
+                return oss.str();
+            }
+        );
+
+        std::cout << result3 << std::endl;
+    }
+
+    void test_functional_fmr_pattern_04c_compact() {
+
+        std::vector<Book> booksList{
+            {"C", "Dennis Ritchie", 1972, 11.99 } ,
+            {"Java", "James Gosling", 1995, 19.99 },
+            {"C++", "Bjarne Stroustrup", 1985, 20.00 },
+            {"C#", "Anders Hejlsberg", 2000, 29.99 }
+        };
+
+        // a) filter books which appeared past 1990
+        // b) extract book title and authors name
+        // c) reduce to result string, e.g. comma separated list
+
+        std::string result = foldLeft(
+            map(
+                filter(
+                    booksList,
+                    [](const Book& book) { return book.m_year >= 1990; }
+                ),
+                [](const Book& book) { return SearchResult{ book.m_title, book.m_author }; }
+            ),
+            std::string(""),
+            [](std::string a, SearchResult b) -> std::string {
+                std::ostringstream oss;
+                if (a.empty()) {
+                    oss << b.m_title << " [" << b.m_author << ']';
+                }
+                else {
+                    oss << a << " | " << b.m_title << " [" << b.m_author << ']';
+                }
+                return oss.str();
+            }
+        );
+
+        std::cout << result << std::endl;
+    }
+
+    // same query, using 'std::pair' utility class
+    void test_functional_fmr_pattern_04d() {
+
+        std::vector<Book> booksList{
+            {"C", "Dennis Ritchie", 1972, 11.99 } ,
+            {"Java", "James Gosling", 1995, 19.99 },
+            {"C++", "Bjarne Stroustrup", 1985, 20.00 },
+            {"C#", "Anders Hejlsberg", 2000, 29.99 }
+        };
+
+        // a) filter books which appeared past 1990
+        // b) extract book title and authors name
+        // c) reduce to result string, e.g. comma separated list
+
+        auto result1 = filter(
+            booksList,
+            [](const Book& book) { return book.m_year >= 1990; }
+        );
+
+        auto result2 = map(
+            result1,
+            [](const Book& book) { return std::make_pair(book.m_title, book.m_author); }
+        );
+
+        auto result3 = foldLeft(
+            result2,
+            std::string(""),
+            [](std::string a, std::pair<std::string, std::string> b) -> std::string {
+                std::ostringstream oss;
+                if (a.empty()) {
+                    oss << b.first << " [" << b.second << ']';
+                }
+                else {
+                    oss << a << " | " << b.first << " [" << b.second << ']';
+                }
+                return oss.str();
+            }
+        );
+
+        std::cout << result3 << std::endl;
+    }
+
+    void test_functional_fmr_pattern_04d_compact() {
+
+        std::vector<Book> booksList{
+            {"C", "Dennis Ritchie", 1972, 11.99 } ,
+            {"Java", "James Gosling", 1995, 19.99 },
+            {"C++", "Bjarne Stroustrup", 1985, 20.00 },
+            {"C#", "Anders Hejlsberg", 2000, 29.99 }
+        };
+
+        // a) filter books which appeared past 1990
+        // b) extract book title and authors name
+        // c) reduce to result string, e.g. comma separated list
+
+        std::string result = foldLeft(
+            map(
+                filter(
+                    booksList,
+                    [](const Book& book) { return book.m_year >= 1990; }
+                ),
+                [](const Book& book) { return std::make_pair(book.m_title, book.m_author); }
+            ),
+            std::string(""),
+            [](std::string a, std::pair<std::string, std::string> b) -> std::string {
+                std::ostringstream oss;
+                if (a.empty()) {
+                    oss << b.first << " [" << b.second << ']';
+                }
+                else {
+                    oss << a << " | " << b.first << " [" << b.second << ']';
+                }
+                return oss.str();
+            }
+        );
+
+        std::cout << result << std::endl;
+    }
 }
 
 void main_functional_programming_alternate()
 {
     using namespace FunctionalProgramming_02;
 
-    // test 'filter'
+    // testing 'filter'
     test_functional_filter_01();
 
-    // test 'map'
-    //test_functional_map_02a();
-    //test_functional_map_02b();
-    //test_functional_map_02c();
-    //test_functional_map_02d();
+    // testing 'map'
+    test_functional_map_02a();
+    test_functional_map_02b();
+    test_functional_map_02c();
+    test_functional_map_02d();
 
-    //// test 'fold'
-    //test_functional_fold_03a();
-    //test_functional_fold_03b();
+    // testing 'fold'
+    test_functional_fold_03a();
+    test_functional_fold_03b();
     test_functional_fold_03c();
 
-    test_functional_04a();
-    test_functional_04a_compact();
-    //test_functional_04b();
-    //test_functional_04c();
+    // testing 'fold-map-reduce' pattern
+    test_functional_fmr_pattern_04a();
+    test_functional_fmr_pattern_04a_compact();
+    test_functional_fmr_pattern_04b();
+    test_functional_fmr_pattern_04b_compact();
+    test_functional_fmr_pattern_04c();
+    test_functional_fmr_pattern_04c_compact();
+    test_functional_fmr_pattern_04d();
+    test_functional_fmr_pattern_04d_compact();
 }
 
 // =====================================================================================

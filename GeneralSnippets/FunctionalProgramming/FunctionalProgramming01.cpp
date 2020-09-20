@@ -232,7 +232,7 @@ namespace FunctionalProgramming_01 {
         auto result1 = fold<std::string>(
             std::begin(words),
             std::end(words),
-            [](std::string a, std::string b) { return a + b; }
+            [](std::string a, std::string b) { return a + std::string(":") + b; }
         );
 
         std::cout << result1 << std::endl;
@@ -241,7 +241,7 @@ namespace FunctionalProgramming_01 {
         auto result2 = fold<std::string>(
             std::rbegin(words),
             std::rend(words),
-            [](std::string a, std::string b) { return a + b; }
+            [](std::string a, std::string b) { return a + std::string(":") + b; }
         );
 
         std::cout << result2 << std::endl;
@@ -312,6 +312,7 @@ namespace FunctionalProgramming_01 {
     };
 
     void test_functional_fmr_pattern_04b() {
+
         std::list<Book> booksList{
             {"C", "Dennis Ritchie", 1972, 11.99 } ,
             {"Java", "James Gosling", 1995, 19.99 },
@@ -361,6 +362,7 @@ namespace FunctionalProgramming_01 {
     };
 
     void test_functional_fmr_pattern_04c() {
+
         std::list<Book> booksList{
             {"C", "Dennis Ritchie", 1972, 11.99 } ,
             {"Java", "James Gosling", 1995, 19.99 },
@@ -404,6 +406,7 @@ namespace FunctionalProgramming_01 {
 
     // same query, using 'std::pair' utility class
     void test_functional_fmr_pattern_04d() {
+
         std::list<Book> booksList{
             {"C", "Dennis Ritchie", 1972, 11.99 } ,
             {"Java", "James Gosling", 1995, 19.99 },
@@ -450,20 +453,21 @@ void main_functional_programming()
 {
     using namespace FunctionalProgramming_01;
 
-    // test 'filter'
+    // testing 'filter'
     test_functional_filter_01();
 
-    // test 'map'
+    // testing 'map'
     test_functional_map_02a();
     test_functional_map_02b();
     test_functional_map_02c();
     test_functional_map_02d();
 
-    // test 'fold'
+    // testing 'fold'
     test_functional_fold_03a();
     test_functional_fold_03b();
     test_functional_fold_03c();
 
+    // testing 'fold-map-reduce' pattern
     test_functional_fmr_pattern_04a();
     test_functional_fmr_pattern_04b();
     test_functional_fmr_pattern_04c();
