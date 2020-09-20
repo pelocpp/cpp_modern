@@ -75,6 +75,15 @@ und
 
 [Funktionale Programmierung](https://www.torsten-horn.de/techdocs/java-lambdas.htm)<br>(abgerufen am 24.05.2020).
 
+Prinzipiell ist diese Materie nicht ganz einfach zu durchdringen.
+Zwei Artikel im Netz beschäftigen sich sehr intensiv mit diesem Themenkreis:
+
+[How to Use Class Template Argument Deduction](https://devblogs.microsoft.com/cppblog/how-to-use-class-template-argument-deduction/)
+
+und
+
+[Effective Modern C++ by Scott Meyers: Chapter 1. Deducing Types](https://www.oreilly.com/library/view/effective-modern-c/9781491908419/ch01.html)
+
 ---
 
 [Zurück](../../Readme.md)
