@@ -265,29 +265,6 @@ namespace FunctionalProgramming_01 {
         std::cout << txt2 << std::endl; // jihgfedcba
     }
 
-    void test_functional_fold_03d()
-    {
-        //std::vector<int> numbers { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-
-        //auto concatenated = fold<std::string>(
-        //    std::begin(numbers),
-        //    std::end(numbers),
-        //    [](int n, int m) { return std::to_string(n) + std::to_string(m); }
-        //);
-
-        //std::cout << concatenated << std::endl;
-
-        //std::vector<int> numbers = std::vector <int>{ 0, 2, -3, 5, -1, 6, 8, -4, 9 };
-
-        //int sum1 = fold<int>(
-        //    std::begin(numbers),
-        //    std::end(numbers),
-        //    [](const int n, const int m) {return n + m; }
-        //);
-
-        //std::cout << sum1 << std::endl;
-    }
-
     // =================================================================================
 
     void test_functional_fmr_pattern_04a()
