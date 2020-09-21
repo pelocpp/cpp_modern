@@ -1181,49 +1181,49 @@ void main_exercices()
     using namespace Exercises::Exercise_17;
     using namespace Exercises::Exercise_18;
 
-    //testExercise_01();
+    testExercise_01();
 
-    //testExercise_02();
-    //
-    //testExercise_03a();
-    //testExercise_03b();
+    testExercise_02();
+    
+    testExercise_03a();
+    testExercise_03b();
     
     // testExercise_04a();  // needs console input
-    //testExercise_04b();
-    //
-    //testExercise_05a();
-    //testExercise_05b();
-    //testExercise_05c();
-
-    //testExercise_06a();
-    //testExercise_06b();
-    //
-    //testExercise_07();
-    //
-    //testExercise_08();
-    //
-    //testExercise_09();
-    //
-    //testExercise_10();
-    //
-    //testExercise_11();
-    //
-    //testExercise_12a();
-    //testExercise_12b();
-    // 
-    //testExercise_13a();
-    //testExercise_13b();
-    //
-    //testExercise_14();
-    //
-    //testExercise_15();
-
-    //testExercise_17();
+    testExercise_04b();
     
-    //testExercise_18a();
-    //testExercise_18b();
-    //testExercise_18c();
-    //testExercise_18d();
+    testExercise_05a();
+    testExercise_05b();
+    testExercise_05c();
+
+    testExercise_06a();
+    testExercise_06b();
+    
+    testExercise_07();
+    
+    testExercise_08();
+    
+    testExercise_09();
+    
+    testExercise_10();
+    
+    testExercise_11();
+    
+    testExercise_12a();
+    testExercise_12b();
+     
+    testExercise_13a();
+    testExercise_13b();
+    
+    testExercise_14();
+    
+    testExercise_15();
+
+    testExercise_17();
+    
+    testExercise_18a();
+    testExercise_18b();
+    testExercise_18c();
+    testExercise_18d();
 }
 
 // =====================================================================================
