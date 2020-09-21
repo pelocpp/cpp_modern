@@ -16,6 +16,8 @@
 #include <tuple>
 #include <array>
 #include <variant>
+#include <numeric>
+#include <iterator>
 
 namespace Exercises {
 
@@ -908,9 +910,80 @@ namespace Exercises {
 
     namespace Exercise_16 {
 
+        template <typename TReturn, typename InputIterator, typename TFunctor>
+        auto fold(InputIterator begin, InputIterator end, TFunctor&& lambda)
+            // not needed, just for demonstration purposes
+            -> TReturn
+        {
+            TReturn init{};
+
+            return std::accumulate(begin, end, init, std::forward<TFunctor>(lambda));
+        }
+
+        template <typename InputIterator, typename TFunctor>
+        auto foldEx(InputIterator begin, InputIterator end, TFunctor&& lambda)
+            // REQUIRED
+            -> decltype(lambda(
+                std::declval<typename std::iterator_traits<InputIterator>::value_type >(),
+                std::declval<typename std::iterator_traits<InputIterator>::value_type >()))
+        {
+            using TReturn = 
+                decltype(lambda(
+                    std::declval<typename std::iterator_traits<InputIterator>::value_type >(),
+                    std::declval<typename std::iterator_traits<InputIterator>::value_type >())
+                    );
+
+            TReturn init{};
+
+            return std::accumulate(begin, end, init, std::forward<TFunctor>(lambda));
+        }
+
+        void test_fold_01()
+        {
+            std::vector<int> numbers { 1, 2, 3, 4, 5, 6, 7, 8 };
+
+            std::string concatenated = fold<std::string>(
+                std::begin(numbers),
+                std::end(numbers),
+                [](std::string s, int n) -> std::string {
+                    return s + std::to_string(n); 
+                }
+
+                // oder 
+                // [](auto n, auto m) -> std::string {
+                //    return n + std::to_string(m);
+                // }
+            );
+
+            std::cout << concatenated << std::endl;
+        }
+
+        void test_fold_02()
+        {
+            std::vector<int> numbers{ 8, 7, 6, 5, 4, 3, 2, 1 };
+
+            std::string concatenated = foldEx(
+                std::begin(numbers),
+                std::end(numbers),
+                [](auto n, int m) -> std::string {
+                    return n + std::to_string(m);
+                }
+            );
+
+            std::cout << concatenated << std::endl;
+        }
+
+        void testExercise_16() {
+            test_fold_01();
+            test_fold_02();
+        }
+    }
+
+    namespace Exercise_17 {
+
         // https://gieseanw.wordpress.com/2017/05/03/a-true-heterogeneous-container-in-c/
 
-        void testExercise_16a()
+        void testExercise_17a()
         {
             std::variant<int, std::string> myVariant;
             myVariant = 123;
@@ -945,7 +1018,7 @@ namespace Exercises {
             std::cout << value << std::endl;
         };
 
-        void testExercise_16b()
+        void testExercise_17b()
         {
             std::variant<int, std::string> myVariant;
             myVariant = 123;
@@ -971,7 +1044,7 @@ namespace Exercises {
             std::visit(MyPrintVisitor{}, myVariant);
         }
 
-        void testExercise_16c()
+        void testExercise_17c()
         {
             std::vector<std::variant<int, std::string>> hetVec;
 
@@ -1017,7 +1090,7 @@ namespace Exercises {
             };
         };
 
-        void testExercise_16d()
+        void testExercise_17d()
         {
             HeterogeneousContainer<int, std::string> hetCont;
 
@@ -1058,48 +1131,51 @@ void main_exercices()
     using namespace Exercises::Exercise_14;
     using namespace Exercises::Exercise_15;
     using namespace Exercises::Exercise_16;
+    using namespace Exercises::Exercise_17;
 
-    testExercise_01();
+    //testExercise_01();
 
-    testExercise_02();
-    
-    testExercise_03a();
-    testExercise_03b();
+    //testExercise_02();
+    //
+    //testExercise_03a();
+    //testExercise_03b();
     
     // testExercise_04a();  // needs console input
-    testExercise_04b();
-    
-    testExercise_05a();
-    testExercise_05b();
-    testExercise_05c();
+    //testExercise_04b();
+    //
+    //testExercise_05a();
+    //testExercise_05b();
+    //testExercise_05c();
 
-    testExercise_06a();
-    testExercise_06b();
+    //testExercise_06a();
+    //testExercise_06b();
+    //
+    //testExercise_07();
+    //
+    //testExercise_08();
+    //
+    //testExercise_09();
+    //
+    //testExercise_10();
+    //
+    //testExercise_11();
+    //
+    //testExercise_12a();
+    //testExercise_12b();
+    // 
+    //testExercise_13a();
+    //testExercise_13b();
+    //
+    //testExercise_14();
+    //
+    //testExercise_15();
+
+    //testExercise_16();
     
-    testExercise_07();
-    
-    testExercise_08();
-    
-    testExercise_09();
-    
-    testExercise_10();
-    
-    testExercise_11();
-    
-    testExercise_12a();
-    testExercise_12b();
-     
-    testExercise_13a();
-    testExercise_13b();
-    
-    testExercise_14();
-    
-    testExercise_15();
-    
-    testExercise_16a();
-    testExercise_16b();
-    testExercise_16c();
-    testExercise_16d();
+    //testExercise_17a();
+    //testExercise_17b();
+    //testExercise_17c();
+    //testExercise_17d();
 }
 
 // =====================================================================================

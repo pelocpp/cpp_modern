@@ -17,7 +17,16 @@ In diesem Abschnitt befinden sich einige kleinere Aufgaben, um den vermittelten 
 - [Aufgabe 13](#aufgabe-13): Folding Expressions: Logische Operationen mit beliebig vielen Operanden
 - [Aufgabe 14](#aufgabe-14): Variadische Templates, `decltype` und Type-Traits am Beispiel von `sameType`
 - [Aufgabe 15](#aufgabe-15): Folding Expressions, `decltype` und Type-Traits am Beispiel von `sameType`
-- [Aufgabe 16](#aufgabe-16): Heterogener Container
+- [Aufgabe 16](#aufgabe-16): `decltype`, `declval` und nachlaufender Rückgabetyp in der Praxis / Funktionale Programmierung
+- [Aufgabe 17](#aufgabe-17): Heterogener Container
+
+
+
+
+
+---
+
+[Zurück](../../Readme.md)
 
 ---
 
@@ -43,7 +52,7 @@ die Funktion `std::common_type` definiert ist.
 
 #### Inhalt: Move-Semantik 
 
-#### Vorausetzungen: keine
+#### Vorausetzungen: Siehe Inhalt
 
 Erstellen Sie eine leeres Visual C++ Projekt,
 fügen Sie nachstehenden Quellcode dort ein und bringen Sie das Programm zum Laufen.
@@ -222,7 +231,7 @@ Result: 1.5 + 1.5 = 4.2.
 
 #### Inhalt: Quiz mit Lambda-Funktionen
 
-#### Vorausetzungen: Keine.
+#### Vorausetzungen: Lambda-Funktionen.
 
 Betrachten Sie die drei Methoden `test_01`, `test_02` und `test_03`: Erraten Sie die Ausgabe?
 Begründen Sie Ihre Antworten.
@@ -347,7 +356,7 @@ printTuple(tuple);
 
 #### Inhalt: Metaprogramming
 
-#### Vorausetzungen: Keine
+#### Vorausetzungen: Siehe Inhalt
 
 In der Mathematik bilden die *Fibonacci*-Zahlen eine Folge,
 so dass jede Zahl die Summe der beiden vorhergehenden Zahlen ist, beginnend mit 0 und 1. 
@@ -589,6 +598,74 @@ Setzen Sie zur Lösung dieses Mal *Folding Expressions* ein.
 ---
 
 ## Aufgabe 16
+
+#### Inhalt: `decltype`, `declval` und nachlaufender Rückgabetyp in der Praxis / Funktionale Programmierung
+
+#### Vorausetzungen: Kenntnisse von `decltype` und `declval`
+
+Im Code-Snippet zu *Funktionaler Programmierung* haben wir die Funktion höherer Ordnung `fold` betrachtet:
+
+```cpp
+template <typename TReturn, typename InputIterator, typename TFunctor>
+auto fold(InputIterator begin, InputIterator end, TFunctor&& lambda)
+    // not needed, just for demonstration purposes
+    -> TReturn
+{
+    TReturn init{};
+    return std::accumulate(begin, end, init, std::forward<TFunctor>(lambda));
+}
+```
+
+Die `fold`-Funktion wendet
+eine Lambda-Funktion mit zwei Argumenten der Reihe nach auf alle Elemente eines Containers an und
+reduziert auf diese Weise die Elemente des Containers auf ein Endergebnis ("Resultat").
+
+Interessant dabei ist, dass der Typ dieses Endergebnisses nicht gleich dem Typ der einzelnen Elemente des Containers sein muss.
+
+**Teilaufgabe 1**:
+
+Wenden Sie die `fold`-Funktion auf einen Vektor mit `int`-Elementen an. Das Ergebnis soll
+eine Zeichenkette sein, die alle `int`-Werte des Vektors einzeln in eine Zeichenkette umwandelt und diese miteinander konkateniert.
+
+*Beispiel*:
+
+```cpp
+std::vector<int> numbers { 1, 2, 3 } ==> "123"
+```
+
+Wie muss die dazugehörige Lambda-Funktion aussehen?
+
+**Teilaufgabe 2**:
+
+C++-Puristen werden bei Betrachtung der `fold`-Funktion eine kleine Redundanz erkannt haben:
+Der erste Template-Parameter `TReturn` ist bei strenger Betrachung überflüssig:
+Es handelt sich dabei um den Datentyp des Ergebnisses der `fold`-Operation,
+aber dieser ist eigentlich an anderer Stelle bereits vorgegeben bzw. bekannt.
+Richtig erkannt, der dritte Parameter der `fold`-Funktion ist eine Lambda-Funktion,
+deren Rückgabewert identisch mit dem Ergebnistyp der `fold`-Operation ist.
+
+Schreiben Sie mit dieser Erkenntnis eine neue Version der `fold`-Funktion.
+Diese muss nun den Rückgabewert an Hand der Template-Parameter berechnen.
+Der Rumpf der `fold`-Funktion ist in folgedessen auch kleinen Änderungen unterworfen.
+
+```cpp
+template <typename InputIterator, typename TFunctor>
+auto foldEx(InputIterator begin, InputIterator end, TFunctor&& lambda)
+    // REQUIRED
+    -> ???
+{
+   ...
+}
+```
+
+*Hinweis*: Diese Teilaufgabe ist wahrlich nicht einfach, mit `decltype` und `declval` erreichen Sie das Ziel!
+
+---
+
+
+
+
+## Aufgabe 17
 
 #### Inhalt: Heterogener Container
 
