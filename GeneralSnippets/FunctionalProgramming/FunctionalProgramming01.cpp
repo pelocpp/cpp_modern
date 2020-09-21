@@ -203,6 +203,36 @@ namespace FunctionalProgramming_01 {
         std::cout << std::endl;
     }
 
+    void test_functional_map_02e() {
+
+        std::vector<std::string> words = {
+            std::string("one"),
+            std::string("two"),
+            std::string("three")
+        };
+
+        std::for_each(std::begin(words), std::end(words), [](const std::string& word) {
+            std::cout << word << ' ';
+            });
+        std::cout << std::endl;
+
+        auto result = map(
+            std::begin(words),
+            std::end(words),
+            [](std::string word) {
+                // convert std::string to upper case
+                std::transform(std::begin(word), std::end(word), std::begin(word), std::toupper);
+                return word;
+            }
+        );
+
+        std::for_each(std::begin(result), std::end(result), [](std::string s) {
+            std::cout << s << ' ';
+            }
+        );
+        std::cout << std::endl;
+    }
+
     // =================================================================================
     // testing 'fold'
 
@@ -461,6 +491,7 @@ void main_functional_programming()
     test_functional_map_02b();
     test_functional_map_02c();
     test_functional_map_02d();
+    test_functional_map_02e();
 
     // testing 'fold'
     test_functional_fold_03a();

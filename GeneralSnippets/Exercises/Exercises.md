@@ -17,8 +17,9 @@ In diesem Abschnitt befinden sich einige kleinere Aufgaben, um den vermittelten 
 - [Aufgabe 13](#aufgabe-13): Folding Expressions: Logische Operationen mit beliebig vielen Operanden
 - [Aufgabe 14](#aufgabe-14): Variadische Templates, `decltype` und Type-Traits am Beispiel von `sameType`
 - [Aufgabe 15](#aufgabe-15): Folding Expressions, `decltype` und Type-Traits am Beispiel von `sameType`
-- [Aufgabe 16](#aufgabe-16): `decltype`, `declval` und nachlaufender Rückgabetyp in der Praxis / Funktionale Programmierung
-- [Aufgabe 17](#aufgabe-17): Heterogener Container
+- [Aufgabe 16](#aufgabe-16): Funktionale Programmierung
+- [Aufgabe 17](#aufgabe-17): `decltype`, `declval` und nachlaufender Rückgabetyp in der Praxis / Funktionale Programmierung
+- [Aufgabe 18](#aufgabe-18): Heterogener Container
 
 
 
@@ -599,6 +600,46 @@ Setzen Sie zur Lösung dieses Mal *Folding Expressions* ein.
 
 ## Aufgabe 16
 
+#### Inhalt: Funktionale Programmierung
+
+#### Vorausetzungen: Templates, Lambda-Funktionen
+
+In den beiden Dateien
+
+[FunctionalProgramming01.cpp](../FunctionalProgramming/FunctionalProgramming01.cpp)
+
+und
+
+[FunctionalProgramming02.cpp](../FunctionalProgramming/FunctionalProgramming02.cpp)
+
+finden Sie zwei alternative Implementierungen der drei Funktionen `map`, `filter` und `fold` vor.
+
+**Teilaufgabe 1**:
+
+Studieren Sie den Quellcode der beiden Realisierungen.
+Welche prinzipiellen Unterschieden liegen in der Implementierung vor?
+
+**Teilaufgabe 2**:
+
+Es wird ein Vektor mit Zeichenketten betrachtet:
+
+```cpp
+std::vector<std::string> words = { 
+    std::string("one"),
+    std::string("two"),
+    std::string("three")
+};
+```
+
+Mit einer geeigneten Funktion der *funktionalen Programmierung* sollen
+die einzelnen Zeichen aller Zeichenketten dieses Vektors in Großbuchstaben umgewandelt werden.
+Welche Funktion höherer Ordnung benötigen Sie hierzu?
+Schreiben Sie eine Testfunktion, die ihre Realisierung testet. 
+
+---
+
+## Aufgabe 17
+
 #### Inhalt: `decltype`, `declval` und nachlaufender Rückgabetyp in der Praxis / Funktionale Programmierung
 
 #### Vorausetzungen: Kenntnisse von `decltype` und `declval`
@@ -665,7 +706,7 @@ auto foldEx(InputIterator begin, InputIterator end, TFunctor&& lambda)
 
 
 
-## Aufgabe 17
+## Aufgabe 18
 
 #### Inhalt: Heterogener Container
 

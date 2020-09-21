@@ -910,6 +910,53 @@ namespace Exercises {
 
     namespace Exercise_16 {
 
+        // -------------------------------------------------------------------------------------
+        // Teilaufgabe 1:
+        // -------------------------------------------------------------------------------------
+        // a) Es werden entweder Iteratoren oder Container an die Funktionen übergeben
+        // b) Beim sogenannten "Pipe-Lining", also verschachteltetem Aufrufen der jeweiligen Funktionen
+        //    ist man bei der zweiten Variante etwas flexibler
+
+        // -------------------------------------------------------------------------------------
+        // Teilaufgabe 2:
+        // -------------------------------------------------------------------------------------
+        // Zu Beispiel wie folgt:
+        // Der übersetzungsfähige Quellcode stammt aus der Datei 'FunctionalProgramming01.cpp':
+        // Hier sind alle 'include'-Dateien und Definitionen der 'map'-Funktion vorhanden.
+
+        //void test_functional_map_02e() {
+
+        //    std::vector<std::string> words = {
+        //        std::string("one"),
+        //        std::string("two"),
+        //        std::string("three")
+        //    };
+
+        //    std::for_each(std::begin(words), std::end(words), [](const std::string& word) {
+        //        std::cout << word << ' ';
+        //        });
+        //    std::cout << std::endl;
+
+        //    auto result = map(
+        //        std::begin(words),
+        //        std::end(words),
+        //        [](std::string word) {
+        //            // convert std::string to upper case
+        //            std::transform(std::begin(word), std::end(word), std::begin(word), std::toupper);
+        //            return word;
+        //        }
+        //    );
+
+        //    std::for_each(std::begin(result), std::end(result), [](std::string s) {
+        //        std::cout << s << ' ';
+        //        }
+        //    );
+        //    std::cout << std::endl;
+        //}
+    }
+
+    namespace Exercise_17 {
+
         template <typename TReturn, typename InputIterator, typename TFunctor>
         auto fold(InputIterator begin, InputIterator end, TFunctor&& lambda)
             // not needed, just for demonstration purposes
@@ -973,17 +1020,17 @@ namespace Exercises {
             std::cout << concatenated << std::endl;
         }
 
-        void testExercise_16() {
+        void testExercise_17() {
             test_fold_01();
             test_fold_02();
         }
     }
 
-    namespace Exercise_17 {
+    namespace Exercise_18 {
 
         // https://gieseanw.wordpress.com/2017/05/03/a-true-heterogeneous-container-in-c/
 
-        void testExercise_17a()
+        void testExercise_18a()
         {
             std::variant<int, std::string> myVariant;
             myVariant = 123;
@@ -1018,7 +1065,7 @@ namespace Exercises {
             std::cout << value << std::endl;
         };
 
-        void testExercise_17b()
+        void testExercise_18b()
         {
             std::variant<int, std::string> myVariant;
             myVariant = 123;
@@ -1044,7 +1091,7 @@ namespace Exercises {
             std::visit(MyPrintVisitor{}, myVariant);
         }
 
-        void testExercise_17c()
+        void testExercise_18c()
         {
             std::vector<std::variant<int, std::string>> hetVec;
 
@@ -1090,7 +1137,7 @@ namespace Exercises {
             };
         };
 
-        void testExercise_17d()
+        void testExercise_18d()
         {
             HeterogeneousContainer<int, std::string> hetCont;
 
@@ -1132,6 +1179,7 @@ void main_exercices()
     using namespace Exercises::Exercise_15;
     using namespace Exercises::Exercise_16;
     using namespace Exercises::Exercise_17;
+    using namespace Exercises::Exercise_18;
 
     //testExercise_01();
 
@@ -1170,12 +1218,12 @@ void main_exercices()
     //
     //testExercise_15();
 
-    //testExercise_16();
+    //testExercise_17();
     
-    //testExercise_17a();
-    //testExercise_17b();
-    //testExercise_17c();
-    //testExercise_17d();
+    //testExercise_18a();
+    //testExercise_18b();
+    //testExercise_18c();
+    //testExercise_18d();
 }
 
 // =====================================================================================
