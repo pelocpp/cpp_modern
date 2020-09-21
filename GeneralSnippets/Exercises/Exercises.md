@@ -646,7 +646,7 @@ deren Rückgabewert identisch mit dem Ergebnistyp der `fold`-Operation ist.
 
 Schreiben Sie mit dieser Erkenntnis eine neue Version der `fold`-Funktion.
 Diese muss nun den Rückgabewert an Hand der Template-Parameter berechnen.
-Der Rumpf der `fold`-Funktion ist in folgedessen auch kleinen Änderungen unterworfen.
+Der Rumpf der `fold`-Funktion ist infolgedessen auch kleinen Änderungen unterworfen.
 
 ```cpp
 template <typename InputIterator, typename TFunctor>
