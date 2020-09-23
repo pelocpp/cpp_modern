@@ -58,7 +58,7 @@ Damit erklären sich die vielen `using`-Anweisungen in dem Lösungsvorschlag.
 
 ## Literaturhinweise:
 
-Die Anregungen zu den Beispielen auf diesem Abschnitt sind entnommen aus
+Die Anregungen zu den Beispielen aus diesem Abschnitt sind entnommen aus
 
 [std::variant doesn't Let Me Sleep](https://pabloariasal.github.io/2018/06/26/std-variant/)<br>(abgerufen am 22.05.2020).
 

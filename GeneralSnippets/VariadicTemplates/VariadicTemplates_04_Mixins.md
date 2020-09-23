@@ -442,7 +442,7 @@ void test_07() {
 
 ## Literaturhinweise:
 
-Die Anregungen zu den Beispielen auf diesem Abschnitt sind entnommen aus
+Die Anregungen zu den Beispielen aus diesem Abschnitt sind entnommen aus
 
 [Practical uses for variadic templates](https://crascit.com/2015/03/21/practical-uses-for-variadic-templates/)<br>(abgerufen am 12.05.2020).
 
