@@ -35,8 +35,8 @@ die eine Simulation des auf virtuellen Methoden basierenden Polymorphismus zur K
 In einem Satz formuliert kann man sagen:
 "Das CRTP leitet Klassen aus einer Basisklassenvorlage ab, die mit der abgeleiteten Klasse zu parametrisieren ist".
 Diese Technik ist nicht ganz neu, sie wird in einigen Bibliotheken
-wie der Microsoft’s Active Template Library (ATL) and Windows
-Template Library (WTL) intensiv eingesetzt.
+wie der Microsofts *Active Template Library* (ATL) und *Windows Template Library* (WTL)
+intensiv eingesetzt.
 
 Um zu demonstrieren, wie das CRTP funktioniert, betrachten wir ein Beispiel,
 das eine Reihe von graphischen 'Control'-Klassen definiert.
@@ -199,7 +199,7 @@ private:
 };
 ```
 
-Diese Variante der Klasse `public` hingegen ist übersetzungsfähig:
+Diese Variante der Klasse `Button` hingegen ist übersetzungsfähig:
 
 ```cpp
 class ButtonEx : public Control<ButtonEx>
@@ -228,7 +228,8 @@ private:
    muss die Basisklassenschablone ihrerseits von einer weiteren Klasse abgeleitet sein.
    Diese Klasse wiederum muss entsprechende abstrakte Methoden (*pure virtual*) und einen
    virtuellen Basisklassendestruktor aufweisen.
-   Um dies an der `Control`-Klasse zu veranschaulichen, sind folgende Änderungen erforderlich:
+   Um dies an der `Control`-Klasse zu veranschaulichen, sind folgende Änderungen bzw.
+   Erweiterungen erforderlich:
 
 ```cpp
 class ControlBase 
@@ -251,7 +252,7 @@ public:
 ```
 
 An den abgeleiteten Klassen selbst sind keine Änderungen erforderlich,
-wie zum Beispiel `Button` und `Checkbox`.
+wie zum Beispiel an den Klassen `Button` und `Checkbox`.
 Nun lassen sich Zeiger auf die abstrakte Basisklasse (hier: `ControlBase`) 
 wie folgt in einem Container abspeichern:
 
@@ -293,7 +294,7 @@ Die Unterschiede bzgl. der Laufzeiten zwischen "*Debug*"-Modus und "*Release*"-M
 
 Ein Anwendungsfall für das *Curiously Recurring Template Pattern* sind die so genannten *Mixins*.
 Da ich diese in der von mir gewählten Umsetzung mit variadischen Templates realisiert habe,
-finden wir eine Beschreigung unter
+finden wir eine Beschreibung unter
 
 [Variadische Templates: Mixins](../../GeneralSnippets/VariadicTemplates/VariadicTemplates_04_Mixins.md)
 

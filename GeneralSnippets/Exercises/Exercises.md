@@ -789,7 +789,7 @@ gekapselten `std::vector<std::variant<...>`-Objekts zurück.
 
 #### Inhalt: Ein *kurioser* Polymorphismus (CRTP)
 
-#### Vorausetzungen: Polymorphismus, Templates
+#### Voraussetzungen: Polymorphismus, Templates
 
 Polymorphismus ist die Fähigkeit, mehrere Implementierungen für dieselbe Schnittstelle zu unterstützen.
 Virtuelle Methoden ermöglichen es abgeleiteten Klassen, Implementierungen aus einer Basisklasse überschreiben.
@@ -830,7 +830,7 @@ Gegebenenfalls müssen Sie die Konstante `MaxIterations` anpassen, damit Sie auf
 eine adäquate Laufzeit erzielen.
 
 Realisieren Sie anschließend zwei Klassen `ImageCRTP` und `PngImageCRTP` unter Beachtung
-des CRTP-Patterns. Vergleichen Sie die Laufzeiten der beiden Programme. Welche Beobqchtung machen Sie?
+des CRTP-Patterns. Vergleichen Sie die Laufzeiten der beiden Programme. Welche Beobachtung machen Sie?
 
 
 ```cpp
