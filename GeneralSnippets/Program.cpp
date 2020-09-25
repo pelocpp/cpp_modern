@@ -89,9 +89,9 @@ int main()
         //main_constructor_invocations();
         //main_constexpr_extended();
         //main_constexpr();
-        main_crtp();
+        //main_crtp();
         //main_decltype();
-        //main_exercices();
+        main_exercices();
         //main_keyword_explicit();
         //main_expression_templates();
         //main_filesystem();

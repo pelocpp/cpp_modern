@@ -4,190 +4,116 @@
 
 #include <iostream>
 #include <string>
-#include <chrono> 
-
-/*
- * NOTE: Performance Comparison should be executed in RELEASE MODE !!!
- */
+#include <vector>
 
 namespace CRTP {
 
-    template <typename Child>
-    struct Base
+    class ControlBase
     {
-        void interface() {
-            static_cast<Child*>(this)->implementation();
+    public:
+        virtual void draw() = 0;
+        virtual ~ControlBase() {}
+    };
+
+    template <class T>
+    class Control : public ControlBase  // inheritance needed for 'container' example
+    {
+    public:
+        void draw()
+        {
+            static_cast<T*>(this)->eraseBackground();
+            static_cast<T*>(this)->paint();
         }
     };
 
-    struct Derived : Base<Derived>
+    template <class T>
+    class ControlEx : public ControlBase
     {
-        void implementation() {
-            std::cout << "Derived implementation" << std::endl;
+    public:
+        void draw()
+        {
+            derived()->erase_background();
+            derived()->paint();
+        }
+
+    private:
+        T* derived() { return static_cast<T*>(this); }
+    };
+
+    class Button : public Control<Button>
+    {
+    public:
+        void eraseBackground()
+        {
+            std::cout << "erasing button background ..." << std::endl;
+        }
+
+        void paint()
+        {
+            std::cout << "painting button ..." << std::endl;
         }
     };
 
-    void test_01_crtp() {
+    class ButtonEx : public Control<ButtonEx>
+    {
+        friend class Control<ButtonEx>;
 
-        Derived d;
-        d.interface();  // -> "Derived implementation"
+    private:
+        void eraseBackground()
+        {
+            std::cout << "erasing button background ..." << std::endl;
+        }
+
+        void paint()
+        {
+            std::cout << "painting button ..." << std::endl;
+        }
+    };
+
+    class Checkbox : public Control<Checkbox>
+    {
+    public:
+        void eraseBackground()
+        {
+            std::cout << "erasing checkbox background ..." << std::endl;
+        }
+
+        void paint()
+        {
+            std::cout << "painting checkbox ..." << std::endl;
+        }
+    };
+
+    template <class T>
+    void drawControl(Control<T>& c)
+    {
+        c.draw();
     }
 
-    // simple C++ program to demonstrate run-time polymorphism
-    // and CRTP (Curiously Recurring Template Pattern)
+    void test_01_crtp()
+    {
+        Button b;
+        drawControl(b);
 
-    using Clock = std::chrono::high_resolution_clock;
-    constexpr int MaxIterations = 10000000;
+        Checkbox c;
+        drawControl(c);
+    }
 
-    // dimension of an image 
-    class Dimension {
-    private:
-        int m_x;
-        int m_y;
+    void drawControls(std::vector<std::shared_ptr<ControlBase>>& controls) {
 
-    public:
-        Dimension() = default;
-
-        Dimension(int x, int y) {
-            m_x = x;
-            m_y = y;
+        for (auto& control : controls) {
+            control->draw();
         }
-    };
+    }
 
-    // classical approach: base class for all image types
-    class Image {
-    protected:
-        Dimension m_dimension;
-        long long m_numPixels;
-
-    public:
-        // c'tor
-        Image(int x, int y) : m_dimension{ 200, 200 }, m_numPixels{ 0 } {}
-
-        // public interface
-        virtual void draw() = 0;
-        virtual Dimension getDimensionInPixels() = 0;
-        virtual void incNumPixels() = 0;
-        virtual long long getNumPixels() = 0;
-    };
-
-    class TiffImage : public Image {
-    public:
-        TiffImage() : Image{ 200, 200 } {}
-
-        void draw() override {
-            // just to prevent optimizer to optimize "too much"
-            Dimension d = getDimensionInPixels();
-            incNumPixels();
-        }
-
-        Dimension getDimensionInPixels() override {
-            return m_dimension;
-        }
-
-        void incNumPixels() override {
-            m_numPixels++;
-        }
-
-        long long getNumPixels() override {
-            return m_numPixels;
-        }
-    };
-
-    // CRTP approach: base class for all image types.
-    // The template parameter T is used to specify the type
-    // of a derived class pointed to by a pointer 
-    template <class T>
-    class Image2 {
-    protected:
-        Dimension m_dimension;
-        long long m_numPixels;
-
-    public:
-        // c'tor
-        Image2(int x, int y) : m_dimension{ 200, 200 }, m_numPixels{ 0 } {}
-
-        void draw() {
-            // dispatch call to exact type 
-            static_cast<T*>(this)->draw();
-        }
-
-        Dimension getDimensionInPixels() {
-            return static_cast<T*>(this)->getDimensionInPixels();
-        }
-
-        void incNumPixels() {
-            static_cast<T*>(this)->incNumPixels();
-        }
-
-        long long getNumPixels() {
-            return static_cast<T*>(this)->getNumPixels();
-        }
-    };
-
-    class TiffImage2 : public Image2<TiffImage2> {
-    public:
-        TiffImage2() : Image2{ 200, 200 } {}
-
-        void draw() {
-            // just to prevent optimizer to optimize "too much"
-            Dimension d = getDimensionInPixels();
-            incNumPixels();
-        }
-
-        Dimension getDimensionInPixels() {
-            return m_dimension;
-        }
-
-        void incNumPixels() {
-            m_numPixels++;
-        }
-
-        long long getNumPixels() {
-            return m_numPixels;
-        }
-    };
-
-    // driver code that calls virtual function 
     void test_02_crtp()
     {
-        Image* pImage = new TiffImage;
+        std::vector<std::shared_ptr<ControlBase>> vector;
 
-        auto start = Clock::now();
+        vector.emplace_back(std::make_shared<Checkbox>());
+        vector.emplace_back(std::make_shared<Button>());
 
-        // call draw several times to make sure performance is visible 
-        for (int i = 0; i < MaxIterations; ++i) {
-            pImage->draw();
-        }
-
-        long long pixels = pImage->getNumPixels();
-        std::cout << "pixels: " << pixels << std::endl;
-
-        auto end = Clock::now();
-        std::cout << "Time taken: "
-            << std::chrono::duration_cast<std::chrono::microseconds>(end - start).count()
-            << " microseconds" << std::endl;
-    }
-
-    // driver code for CRTP benchmark
-    void test_03_crtp()
-    {
-        Image2<TiffImage2>* pImage = new TiffImage2;
-
-        auto start = Clock::now();
-
-        // call draw several times to make sure performance is visible 
-        for (int i = 0; i < MaxIterations; ++i) {
-            pImage->draw();
-        }
-
-        long long pixels = pImage->getNumPixels();
-        std::cout << "pixels: " << pixels << std::endl;
-
-        auto end = Clock::now();
-        std::cout << "Time taken: "
-            << std::chrono::duration_cast<std::chrono::microseconds>(end - start).count()
-            << " microseconds" << std::endl;
+        drawControls(vector);
     }
 }
 
@@ -196,7 +122,6 @@ void main_crtp()
     using namespace CRTP;
     test_01_crtp();
     test_02_crtp();
-    test_03_crtp();
 }
 
 // =====================================================================================

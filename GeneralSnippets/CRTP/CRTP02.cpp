@@ -10,7 +10,7 @@
  * NOTE: Performance Comparison should be executed in RELEASE MODE !!!
  */
 
-namespace CRTP {
+namespace CRTP_02 {
 
     template <typename Child>
     struct Base
@@ -191,9 +191,9 @@ namespace CRTP {
     }
 }
 
-void main_crtp()
+void main_crtp_02()
 {
-    using namespace CRTP;
+    using namespace CRTP_02;
     test_01_crtp();
     test_02_crtp();
     test_03_crtp();
