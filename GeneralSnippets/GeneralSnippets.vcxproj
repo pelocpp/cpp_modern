@@ -154,8 +154,7 @@
     <ClCompile Include="ConstExpr\ConstExpr.cpp" />
     <ClCompile Include="ConstExpr\ConstExprExtended.cpp" />
     <ClCompile Include="ConstructursOrder\ConstructorsOrder.cpp" />
-    <ClCompile Include="CRTP\CRTP01.cpp" />
-    <ClCompile Include="CRTP\CRTP02.cpp" />
+    <ClCompile Include="CRTP\CRTP.cpp" />
     <ClCompile Include="DeclType\Decltype.cpp" />
     <ClCompile Include="Exercises\Exercises.cpp" />
     <ClCompile Include="Explicit\Explicit.cpp" />

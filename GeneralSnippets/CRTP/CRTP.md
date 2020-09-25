@@ -1,6 +1,6 @@
 # Curiously Recurring Template Pattern (CRTP)
 
-[Quellcode](CRTP01.cpp)
+[Quellcode](CRTP.cpp)
 
 ---
 
