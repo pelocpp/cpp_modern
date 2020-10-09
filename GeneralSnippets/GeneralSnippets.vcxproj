@@ -208,6 +208,7 @@
     <ClCompile Include="VariadicTemplates_Anwendungen\VariadicTemplate_XX_Examples.cpp" />
     <ClCompile Include="VariadicTemplates_Systematic\VariadicTemplate_XX_MoreExamples.cpp" />
     <ClCompile Include="Variant\Variant.cpp" />
+    <ClCompile Include="VirtualBaseClassDestructor\VirtualBaseClassDestructor.cpp" />
     <ClCompile Include="WeakPtr\WeakPtr.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -267,6 +268,7 @@
     <None Include="VariadicTemplates\VariadicTemplates_02_WorkingOnEveryArgument.md" />
     <None Include="VariadicTemplates_Anwendungen\VariadicTemplates_XX_Verschiedenes.md" />
     <None Include="Variant\StdVariant.md" />
+    <None Include="VirtualBaseClassDestructor\VirtualBaseClassDestructor.md" />
     <None Include="WeakPtr\WeakPtr.md" />
   </ItemGroup>
   <ItemGroup>

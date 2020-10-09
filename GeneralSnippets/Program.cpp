@@ -70,6 +70,7 @@ void main_variadic_else_if();
 void main_variadic_templates_examples();
 void main_variadic_templates_more_examples();
 void main_variant();
+void main_virtual_destructor();
 void main_weak_pointer();
 
 int main()
@@ -143,6 +144,7 @@ int main()
         //main_variadic_templates_examples();
         //main_variadic_templates_more_examples();
         //main_variant();
+        //main_virtual_destructor();
         //main_weak_pointer();
     }
     catch (const std::exception& ex) {

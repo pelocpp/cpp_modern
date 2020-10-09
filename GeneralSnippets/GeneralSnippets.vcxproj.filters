@@ -213,6 +213,9 @@
     <ClCompile Include="CRTP\CRTP.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="VirtualBaseClassDestructor\VirtualBaseClassDestructor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -384,6 +387,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Random\Random.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="VirtualBaseClassDestructor\VirtualBaseClassDestructor.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

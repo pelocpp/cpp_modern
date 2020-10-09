@@ -53,13 +53,14 @@ schließen sich in Tabelle 2 an:
 | Unterverzeichnis | Thematik |
 |:-------------- |-----------------------------------------|
 | [Allocator](GeneralSnippets/Allocator/StdAllocator.md) | Container und Speicher-Allokatoren |
-| [Array Decay](GeneralSnippets/ArrayDecay/ArrayDecay.md) | Arrays und Pointer |
+| [ArrayDecay](GeneralSnippets/ArrayDecay/ArrayDecay.md) | Arrays und Pointer |
 | [Casts](GeneralSnippets/Casts/Casts.md) | Typumwandlungen `static_cast`, `dynamic_cast`, `const_cast` und `reinterpret_cast` |
 | [ConstructursOrder](GeneralSnippets/ConstructursOrder/CtorDtorOrder.md)  | Reihenfolge der Aufrufe von Konstruktoren und Destruktoren |
 | [TemplatesFunctionBasics](GeneralSnippets/TemplatesFunctionBasics/TemplatesFunctions.md) | Grundlagen zu Funktionstemplates |
 | [InputOutputStreams](GeneralSnippets/InputOutputStreams/Streams.md) | Streams manipulieren und formatieren |
 | [MemoryLeaks](GeneralSnippets/MemoryLeaks/MemoryLeaksDetection.md) | CRT (C-Runtime-Library) Memory Leak Detection |
 | [ParametersWithConstAndRef](GeneralSnippets/ParametersWithConstAndRef/ConstDeclarations.md)  | Die Deklarationen `int& const`, `int const&`, `const& int` und `const int&` im Vergleich |
+| [VirtualBaseClassDestructor](GeneralSnippets/VirtualBaseClassDestructor/VirtualBaseClassDestructor.md) | Virtuelle Destruktoren (einer Basisklasse) |
 
 Tabelle 1. Grundlagen-Code-Snippets.
 
