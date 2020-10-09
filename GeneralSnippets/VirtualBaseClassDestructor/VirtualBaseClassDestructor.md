@@ -57,7 +57,7 @@ jedoch nicht der der abgeleiteten Klasse, was zu Ressourcenleaks führen kann!
 Zusammenfassend lässt sich sagen, dass Destruktoren einer Basisklasse immer virtuell deklariert sein sollten,
 wenn sie auf Grund eines polymorphen Szenarios aufgerufen werden sollten.
 
-Wenn Sie in unserem Beispiel des Destruktor von `Base` in 
+Wenn Sie in unserem Beispiel den Destruktor von `Base` in 
 
 ```
 virtual ~Base()
@@ -67,7 +67,7 @@ virtual ~Base()
 }
 ```
 
-lautet die Programmausgabe wie gewünscht
+abändern, also nur das Schlüsselwort `virtual` hinzufügen, lautet die Programmausgabe wie gewünscht
 
 ```
 d'tor Derived
