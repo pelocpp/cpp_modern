@@ -142,7 +142,7 @@ fügen Sie nachstehenden Quellcode dort ein und bringen Sie das Programm zum Lau
 
 Ergänzen Sie das Programm um eine Lambda-Funktion, die dieselbe Funktionalität wie Funktion `even` hat,
 nur eben als Lambda-Funktion realisiert. Entwickeln Sie des weiteren eine Klasse `Even`,
-die die Funktionalität von Funktion `even` als *Funktor* repräsentiert (so genannten *ausführbares Objekt*,
+die die Funktionalität von Funktion `even` als *Funktor* repräsentiert (so genanntes *ausführbares Objekt*,
 das den `()`-Operator implementiert):
 
 ```cpp
