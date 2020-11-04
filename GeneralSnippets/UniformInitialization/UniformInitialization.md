@@ -22,7 +22,7 @@ std::string s2 = "test";  // copy initialization
 ```
 
 Diese beiden Varianten gibt es auch bei der *Uniform Initialization*, 
-man spricht dann syntaktisch von der so genannten "*Direct List*" bzw. "*Copy List*" Initialisierung.
+man spricht dann syntaktisch von der so genannten "*Direct List*" bzw. "*Copy List*" Initialisierung:
 
 ```cpp
 T object {other};     // direct list initialization
@@ -43,16 +43,14 @@ Am besten studiert man die einzelnen Möglichkeiten an Hand der folgenden Systema
   * Dynamisch allokierte Felder.
   * Statisch allokierte (bzw. definierte) Felder.
   * Benutzerdefinierte Objekte (C++ Klassen).
-  * Benutzerdefinierte Variable zu einem POD Typ (Struktur, 'Plain-Old-Data')
-  * Kombinationen dieser Regeln
+  * Benutzerdefinierte Variable eines POD Typs (Struktur, 'Plain-Old-Data').
+  * Kombinationen dieser Regeln.
 
 ---
 
 *Bemerkung*:
 
-Ein POD-Datentyp ist in C++ vereinfacht ausgedrückt ein Strukturtyp. 
-
-Etwas ausführlicher betrachtet gilt folgende Definition:
+Ein POD-Datentyp ist in C++ vereinfacht ausgedrückt ein Strukturtyp. Etwas ausführlicher betrachtet gilt folgende Definition:
 
 "*In C++ ist ein POD-Datentyp entweder ein skalarer Datentyp oder eine POD-Klasse. Eine POD-Klasse hat keinen benutzerdefinierten Kopier-Zuweisungs-Operator,
 keinen benutzerdefinierten Konstruktor und keine nicht-statischen Attribute, die nicht selbst PODs sind.
