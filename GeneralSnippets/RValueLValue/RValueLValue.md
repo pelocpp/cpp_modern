@@ -22,12 +22,17 @@ foo(x);         // argument is lvalue: calls foo(X&)
 foo(foobar());  // argument is rvalue: calls foo(X&&)
 ```
 
-Siehe weiteres dazu im korrespondieren Quellcode.
+Eine der Kernaussagen bei RValue Referenzen / LValue Referenzen lautet also:
+ 
+Mit *Rvalue*-Referenzen kann eine Funktion zur Übersetzungszeit (mittels Überladung)
+unter der Bedingung "*Werde ich für einen L-Wert oder einen R-Wert aufgerufen?*" verzweigen.
 
-[Quellcode](RValueLValue.cpp)
+Siehe weiteres dazu im korrespondieren [Quellcode](RValueLValue.cpp).
 
 ---
 
 [Zurück](../../Readme.md)
 
 ---
+
+

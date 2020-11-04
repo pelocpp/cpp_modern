@@ -1,12 +1,14 @@
 # Move Semantics
 
-[Quellcode](MoveSemantics.cpp)
+[Quellcode / Klasse `BigData` - Header-Datei](MoveSemantics.h)
+
+[Quellcode / Klasse `BigData` - Implementierungs-Datei](MoveSemantics.cpp)
 
 ---
 
 ## Allgemeines
 
-Die Erweiterung einer Klasse von der Copy-Konstruktion (dies schließt den Kopier-Konstruktor und
+Die Erweiterung einer Klasse von der Kopier-Konstruktion (dies schließt den Kopier-Konstruktor und
 den Wertzuweisungsoperator ein) hin zur Verschiebe-Konstruktion (dies wiederum 
 schließt den Verschiebe-Konstruktor und
 die Verschiebe-Wertzuweisung ein) kann dem dazugehörigen Quellcode entnommen werden.
@@ -14,7 +16,7 @@ die Verschiebe-Wertzuweisung ein) kann dem dazugehörigen Quellcode entnommen we
 Prinzipiell kann die Move-Semantik auf dreierlei Weisen realisiert werden:
 
   * *straight*-*forward*, also Realisierung ohne direktes Entwurfsmuster
-  * mit zwei Hilfsmethoden `cleanup` und `moveFrom` (*Primitiven*) / minimalistisches Entwurfsmuster
+  * mit zwei Hilfsmethoden `cleanup` und `moveFrom` - so genannte *Primitive* / minimalistisches Entwurfsmuster
   * auf Basis des *Swap*-Idioms
 
 ## Rule of Three (Four), Rule of Five (Six), Rule of Zero

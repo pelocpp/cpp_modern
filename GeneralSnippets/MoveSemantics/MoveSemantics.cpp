@@ -192,19 +192,6 @@ namespace MoveSemantics {
         BigData data11;
         data11 = std::move(data1);
     }
-
-    void test_03_move_semantics() {
-
-        BigData data1(5, 1);
-        std::cout << data1 << std::endl;
-
-        BigData data2;
-        data2 = data1;
-        std::cout << data2 << std::endl;
-
-        BigData data3 = data1;
-        std::cout << data3 << std::endl;
-    }
 }
 
 void main_move_semantics()
