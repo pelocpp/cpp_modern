@@ -314,9 +314,6 @@
     <None Include="PerfectForwarding\PerfectForwarding.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="Initialization\UniformInitialization.md">
-      <Filter>Resource Files</Filter>
-    </None>
     <None Include="Lambda\Lambda.md">
       <Filter>Resource Files</Filter>
     </None>

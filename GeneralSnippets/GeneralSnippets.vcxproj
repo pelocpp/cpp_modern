@@ -229,7 +229,6 @@
     <None Include="ExpressionTemplates\ExpressionTemplates.md" />
     <None Include="FileSystem\FileSystem.md" />
     <None Include="FunctionalProgramming\FunctionalProgramming.md" />
-    <None Include="Initialization\UniformInitialization.md" />
     <None Include="InitializerList\StdInitializerList.md" />
     <None Include="InputOutputStreams\Streams.md" />
     <None Include="Lambda\Lambda.md" />
