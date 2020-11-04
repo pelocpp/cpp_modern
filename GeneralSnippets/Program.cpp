@@ -132,7 +132,7 @@ int main()
         //main_template_template_parameter_02();
         //main_tuples();
         //main_type_traits();
-        main_uniform_initialization();
+        //main_uniform_initialization();
         //main_unique_ptr();
         //main_variadic_templates_intro();
         //main_variadic_templates_working_on_every_argument();
