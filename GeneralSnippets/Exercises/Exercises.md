@@ -1,6 +1,20 @@
 # Aufgaben
 
 In diesem Abschnitt befinden sich einige kleinere Aufgaben, um den vermittelten Stoff zu vertiefen.
+Folgende Themen werden angesprochen:
+
+  * Einheitliche Initialisierung (Uniform Initialization)
+  * Move-Semantik
+  * Lambda Funktionen
+  * Variadische Templates
+  * Metaprogrammierung
+  * Folding
+  * Neue Utility-Klassen
+  * SFINAE
+  * CRTP
+  * Funktionale Programmierung
+
+---
 
 - [Aufgabe 1](#aufgabe-1): Generische Funktion `miminum`
 - [Aufgabe 2](#aufgabe-2): Move-Semantik
@@ -12,7 +26,7 @@ In diesem Abschnitt befinden sich einige kleinere Aufgaben, um den vermittelten 
 - [Aufgabe 8](#aufgabe-8): Metaprogramming
 - [Aufgabe 9](#aufgabe-9): SFINAE: Eine Methode, mehrere Implementierungen
 - [Aufgabe 10](#aufgabe-10): SFINAE: Detektion von Methoden in einer Klasse
-- [Aufgabe 11](#aufgabe-11): Einheitliche Initialisierung (*Uniform Initialization*)
+- [Aufgabe 11](#aufgabe-11): Initialisierungliste (`std::initializer_list<T>`)
 - [Aufgabe 12](#aufgabe-12): Variadische Templates: Logische Operationen mit beliebig vielen Operanden
 - [Aufgabe 13](#aufgabe-13): Folding Expressions: Logische Operationen mit beliebig vielen Operanden
 - [Aufgabe 14](#aufgabe-14): Variadische Templates, `decltype` und Type-Traits am Beispiel von `sameType`
