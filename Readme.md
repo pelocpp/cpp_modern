@@ -80,6 +80,7 @@ Tabelle 1. Grundlagen-Code-Snippets.
 | [FileSystem](GeneralSnippets/FileSystem/FileSystem.md) | C++ 17 FileSystem Library |
 | [FunctionalProgramming](GeneralSnippets/FunctionalProgramming/FunctionalProgramming.md) | Funktionale Programmierung |
 | [InitializerList](GeneralSnippets/InitializerList/StdInitializerList.md) | Klasse `std::initializer_list<T>` |
+| [Invoke](GeneralSnippets/Invoke/StdInvoke.md) | `std::invoke`: "*Uniformly invoking anything callable*" |
 | [Lambda](GeneralSnippets/Lambda/Lambda.md) | Lambda-Funktionen |
 | [Literals](GeneralSnippets/Literals/Literals.md) | Benutzerdefinierte Literale |
 | [MetaProgramming](GeneralSnippets/MetaProgramming/Metaprogramming01.md) | Programmierung zur Übersetzungszeit |
@@ -108,5 +109,10 @@ Tabelle 1. Grundlagen-Code-Snippets.
 | [WeakPointer](GeneralSnippets/WeakPtr/WeakPtr.md) | Klasse `std::weak_ptr<T>` |
 
 Tabelle 2. Spracherweiterungen C++ 11/C++ 14/C++ 17.
+
+
+
+
+
 
 ---

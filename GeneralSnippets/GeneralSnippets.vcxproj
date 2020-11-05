@@ -165,6 +165,7 @@
     <ClCompile Include="Global\Dummy.cpp" />
     <ClCompile Include="InitializerList\InitializerList.cpp" />
     <ClCompile Include="InputOutputStreams\InputOutputStreams.cpp" />
+    <ClCompile Include="Invoke\Invoke.cpp" />
     <ClCompile Include="Lambda\Lambda01.cpp" />
     <ClCompile Include="Lambda\Lambda03.cpp" />
     <ClCompile Include="Lambda\Lambda02.cpp" />
@@ -231,6 +232,7 @@
     <None Include="FunctionalProgramming\FunctionalProgramming.md" />
     <None Include="InitializerList\StdInitializerList.md" />
     <None Include="InputOutputStreams\Streams.md" />
+    <None Include="Invoke\StdInvoke.md" />
     <None Include="Lambda\Lambda.md" />
     <None Include="Literals\Literals.md" />
     <None Include="Literatur\Literature.md" />

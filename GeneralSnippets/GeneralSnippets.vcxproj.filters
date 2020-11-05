@@ -216,6 +216,9 @@
     <ClCompile Include="VirtualBaseClassDestructor\VirtualBaseClassDestructor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Invoke\Invoke.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -387,6 +390,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="VirtualBaseClassDestructor\VirtualBaseClassDestructor.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Invoke\StdInvoke.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
