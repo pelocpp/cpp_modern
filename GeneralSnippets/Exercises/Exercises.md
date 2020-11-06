@@ -36,6 +36,8 @@ Folgende Themen werden angesprochen:
 - [Aufgabe 18](#aufgabe-18): Heterogener Container
 - [Aufgabe 19](#aufgabe-19): Ein *kurioser* Polymorphismus (CRTP)
 
+- [Aufgabe 20](#aufgabe-20): Variadische Templates zum Einstieg: Mehrere Summen, ein Ergebnis
+
 ---
 
 [Zurück](../../Readme.md)
@@ -954,6 +956,35 @@ Pixels: 160000
 Time taken: 402634 microseconds
 [Done.]
 ```
+
+---
+
+## Aufgabe 20
+
+#### Inhalt: Variadische Templates zum Einstieg: Mehrere Summen, ein Ergebnis
+
+#### Voraussetzungen: Variadische Templates
+
+Ziel dieser Übung ist es, mehrere Möglichkeiten
+in der Definition variadischer Templates (Klassenschablone, Funktionsschablone)
+zu erlernen. Dazu betrachten wir die Summation einer beliebigen Anzahl von Summanden
+auf der Basis von variadischen Templates in mehreren Varianten.
+
+Betrachten Sie die folgenden drei Anweisung genau:
+
+```cpp
+int result1 = sum1<1, 2, 3, 4, 5>::result;
+int result2 = sum2(1, 2, 3, 4, 5);
+int result3 = sum3<1, 2, 3, 4, 5>();
+```
+
+Bei genauem Hinsehen erkennen Sie, ob es sich bei `sum1`, `sum2` und `sum3` um eine
+Klassen- oder Funktionsschablone handelt!
+Wie könnte eine Realisierung aussehen, um die Anweisungen zu implementieren?
+
+Betrachten Sie Ihre Realisierung mit dem Tool [cppinsights.io](https://cppinsights.io/).
+Ziehen Sie die jeweiligen Umsetzung der Anweisung `sumX(1, 2, 3, 4, 5)`
+in C++-Anweisungen *ohne* variadische Templates nach!
 
 ---
 

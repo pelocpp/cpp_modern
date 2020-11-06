@@ -1348,6 +1348,87 @@ namespace Exercises {
                 << " microseconds" << std::endl;
         }
     }
+
+    namespace Exercise_20 {
+
+        // =============================================================
+        // a) 
+        // Klassenschablone:
+        // Unter Verwendung von non-type Parametern und von partieller Spezialisierung
+
+        template <int...>
+        class sum1;
+
+        template <>
+        class sum1<>
+        {
+        public:
+            static const long result = 0;
+        };
+
+        // ODER
+
+        template <int n>
+        class sum1<n>
+        {
+        public:
+            static const long result = n;
+        };
+
+        template <int n, int ... rest>
+        class sum1<n, rest ...>
+        {
+        public:
+            static const long result = n + sum1<rest ...>::result;
+        };
+
+        // =============================================================
+        // b) 
+        // Funktionsschablone:
+        // Die Funktion hat einen oder mehrere Parameter.
+        // Die Parameter werden über die Parameter Pack Expansion an
+        // eine(mehrere) Funktion(en) übergeben, die vom Compiler generiert wird(werden).
+
+        template <typename T>
+        T sum2(T n)
+        {
+            return n;
+        }
+
+        template <typename T, typename  ... TREST>
+        T sum2(T n, TREST ... r)
+        {
+            return n + sum2(r ...);
+        }
+
+        // =============================================================
+        // b) 
+        // Funktionsschablone:
+        // Die Funktion hat keinen Parameter.
+        // Dafür hat die Funktionsschablone einen oder mehrere Template Parameter.
+
+        template<int X>
+        int sum3()
+        {
+            return X;
+        }
+
+        template<int X, int Y, int...Z>
+        int sum3()
+        {
+            return X + sum3<Y, Z...>();
+        }
+
+        void testExercise_20() {
+            int result1 = sum1<1, 2, 3, 4, 5>::result;
+            int result2 = sum2(1, 2, 3, 4, 5);
+            int result3 = sum3<1, 2, 3, 4, 5>();
+
+            std::cout << result1 << std::endl;
+            std::cout << result2 << std::endl;
+            std::cout << result3 << std::endl;
+        }
+    }
 }
 
 void main_exercices()
@@ -1371,6 +1452,7 @@ void main_exercices()
     using namespace Exercises::Exercise_17;
     using namespace Exercises::Exercise_18;
     using namespace Exercises::Exercise_19;
+    using namespace Exercises::Exercise_20;
 
     testExercise_01();
 
@@ -1418,6 +1500,8 @@ void main_exercices()
 
     testExercise_19a_classic_benchmark();
     testExercise_19a_crtp_benchmark();
+
+    testExercise_20();
 }
 
 // =====================================================================================

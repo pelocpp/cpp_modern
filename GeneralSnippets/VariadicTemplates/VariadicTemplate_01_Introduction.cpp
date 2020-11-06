@@ -13,23 +13,23 @@ namespace VariadicTemplatesIntro {
 
     // Non-recursive template part (regular template)
     template<typename T>
-    T adder(T v) {
+    T add(T v) {
         return v;
     }
 
     // Recursive template part
     // Note: ... specifies a so called 'parameter pack')
     template<typename T, typename ...Args>
-    T adder(T first, Args... args) {
-        return first + adder(args...);
+    T add(T first, Args... args) {
+        return first + add(args...);
     }
 
     void test_01() {
 
-        int sum = adder(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        int sum = add(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
         std::cout << "Sum from 1 up to 10: " << sum << std::endl;
 
-        std::string stringConcat = adder(
+        std::string stringConcat = add(
             std::string("ABC"),
             std::string("DEF"),
             std::string("GHI"),

@@ -175,7 +175,7 @@ lauten die Äquivalente in der Metaprogrammierung:
  
   * **Wiederholungsanweisung**: Rekursive Template-Definition 
   * **bedingte Anweisung**: Partielle Template Spezialisierung
-  * **Rückgabewert von Funktionen**: `using`-Anweisung (oder `typdef` Anweisung)
+  * **Rückgabewert von Funktionen**: `using`-Anweisung (oder `typedef` Anweisung)
 
 Wir betrachten hierzu ein "komplexeres" Beispiel, in dem alle drei Mechanismen angewendet werden:
 
