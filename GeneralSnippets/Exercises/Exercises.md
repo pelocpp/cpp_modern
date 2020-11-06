@@ -35,8 +35,9 @@ Folgende Themen werden angesprochen:
 - [Aufgabe 17](#aufgabe-17): `decltype`, `declval` und nachlaufender Rückgabetyp in der Praxis / Funktionale Programmierung
 - [Aufgabe 18](#aufgabe-18): Heterogener Container
 - [Aufgabe 19](#aufgabe-19): Ein *kurioser* Polymorphismus (CRTP)
-
 - [Aufgabe 20](#aufgabe-20): Variadische Templates zum Einstieg: Mehrere Summen, ein Ergebnis
+
+- [Aufgabe 21](#aufgabe-21): Variadische Templates und Vererbung
 
 ---
 
@@ -988,7 +989,50 @@ in C++-Anweisungen *ohne* variadische Templates nach!
 
 ---
 
-[Zurück](../../Readme.md)
+## Aufgabe 21
+
+#### Inhalt: Variadische Templates und Vererbung
+
+#### Voraussetzungen: Variadische Templates, Vererbung
+
+Der Mechanismus variadischer Templates ist auch auf die Vererbung anwendbar.
+Studieren Sie dazu folgende Definition einer Klasse `X`:
+
+```cpp
+template <typename ... Bases>
+class X : public Bases ...
+{
+public:
+    X(const Bases& ... b) : Bases(b)...  {}
+};
+```
+
+In der nachfolgenden Testmethode finden Sie drei Instanziierungen der Klasse `X` vor:
+
+```cpp
+void test()
+{
+    X o1;
+
+    X<std::string> o2("ABCDEF");
+    std::cout << o2.size() << std::endl;  // size is same as length
+
+    X<std::string, std::vector<std::string>> o3("ABCDEF", { "123", "456" });
+
+    std::cout << o3.length() << std::endl;
+    std::cout << o3.std::vector<std::string>::size() << std::endl;     // (1)
+    std::cout << o3.std::string::size() << std::endl;                  // (2)
+    // std::cout << o3.size() << std::endl;  // ambiguous access of 'size'
+}
+```
+
+  * Welche Ausgaben erwarten Sie  bei Ausführung der Testmethode?
+  * Betrachten Sie die Übersetzung der Testmethode mit dem Tool [cppinsights.io](https://cppinsights.io/).
+  * Warum ist die in Kommentar gesetzte Anweisung nicht übersetzungsfähig?
+  * Erläutern Sie die Syntax der beiden Anweisungen mit den Kommentaren (1) und (2)
 
 ---
 
+[Zurück](../../Readme.md)
+
+---

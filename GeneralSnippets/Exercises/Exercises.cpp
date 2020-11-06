@@ -1429,6 +1429,36 @@ namespace Exercises {
             std::cout << result3 << std::endl;
         }
     }
+
+    namespace Exercise_21 {
+
+        template <typename ... Bases>
+        class X : public Bases ...
+        {
+        public:
+            X(const Bases& ... b) : Bases(b)...  {}
+        };
+
+        void testExercise_21() {
+            X o1;
+
+            X<std::string> o2("ABCDEF");
+            std::cout << o2.size() << std::endl;  // size is same as length
+
+            X<std::string, std::vector<std::string>> o3("ABCDEF", { "123", "456" });
+
+            std::cout << o3.length() << std::endl;
+            std::cout << o3.std::vector<std::string>::size() << std::endl;        // (1)
+            std::cout << o3.std::string::size() << std::endl;                     // (2)
+            // std::cout << o3.size() << std::endl;        // ambiguous access of 'size'
+        }
+
+        // Output:
+        // 6
+        // 6
+        // 2
+        // 6
+    }
 }
 
 void main_exercices()
@@ -1453,6 +1483,7 @@ void main_exercices()
     using namespace Exercises::Exercise_18;
     using namespace Exercises::Exercise_19;
     using namespace Exercises::Exercise_20;
+    using namespace Exercises::Exercise_21;
 
     testExercise_01();
 
@@ -1502,6 +1533,8 @@ void main_exercices()
     testExercise_19a_crtp_benchmark();
 
     testExercise_20();
+
+    testExercise_21();
 }
 
 // =====================================================================================
