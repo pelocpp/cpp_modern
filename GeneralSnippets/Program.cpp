@@ -100,7 +100,7 @@ int main()
         //main_filesystem();
         //main_functional_programming();
         //main_functional_programming_alternate();
-        main_function_templates_basics();
+        //main_function_templates_basics();
         //main_initializer_list();
         //main_input_output_streams();
         //main_invoke();
@@ -131,7 +131,7 @@ int main()
         //main_templates_static_polymorphism();
         //main_template_template_parameter();
         //main_template_template_parameter_02();
-        main_template_specialization();
+        //main_template_specialization();
         //main_tuples();
         //main_type_traits();
         //main_uniform_initialization();
