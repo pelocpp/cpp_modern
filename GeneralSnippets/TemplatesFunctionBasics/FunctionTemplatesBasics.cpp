@@ -3,20 +3,20 @@
 // =====================================================================================
 
 #include <iostream>
-#include <memory>
 
 namespace FunctionTemplatesBasics {
 
     template <typename T>
     void printValue(T const& t)
     {
-        std::cerr << "Value: " << t << std::endl;
+        std::cout << "Value: " << t << std::endl;
     }
 
+    // put this template into comments if type deduction is going to be demonstrated
     template <>
     void printValue<bool>(bool const& b)
     {
-        std::cerr << "Value: " << (b ? "true" : "false") << std::endl;
+        std::cout << std::boolalpha << "Value: " << b << std::endl;
     }
 
     void test_01() {
