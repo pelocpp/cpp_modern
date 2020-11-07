@@ -219,6 +219,9 @@
     <ClCompile Include="Invoke\Invoke.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TemplateSpecialization\TemplateSpecialization.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -393,6 +396,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Invoke\StdInvoke.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="TemplateSpecialization\TemplateSpecialization.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

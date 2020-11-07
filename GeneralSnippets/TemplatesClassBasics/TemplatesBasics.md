@@ -16,7 +16,7 @@ Es werden grundlegende Aspekte von Klassentemplates aufgezeigt:
 
 *Hinweis*:
 
-Die vorgestellte Klasse `Optional` in den ersten Code-Snippets ist an Hand einer gleichnamigen Stanrdardklasse entstenden,
+Die vorgestellte Klasse `Optional` in den ersten Code-Snippets ist an Hand einer gleichnamigen Standardklasse entstenden,
 die ab dem Standard C++ 17 auch (mit dem gleichen Namen) in der Standardklassenbibliothek vorhanden ist.
 Um sie zu verwenden, bedarf es der `#include`-Anweisung
 
