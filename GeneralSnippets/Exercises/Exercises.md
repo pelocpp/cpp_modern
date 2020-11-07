@@ -3,7 +3,7 @@
 In diesem Abschnitt befinden sich einige kleinere Aufgaben, um den vermittelten Stoff zu vertiefen.
 Folgende Themen werden angesprochen:
 
-  * Einheitliche Initialisierung (Uniform Initialization)
+  * Initialisierungliste
   * Move-Semantik
   * Lambda Funktionen
   * Variadische Templates
@@ -13,6 +13,7 @@ Folgende Themen werden angesprochen:
   * SFINAE
   * CRTP
   * Funktionale Programmierung
+  * *Perfect Forwarding*
 
 ---
 
@@ -37,6 +38,7 @@ Folgende Themen werden angesprochen:
 - [Aufgabe 19](#aufgabe-19): Ein *kurioser* Polymorphismus (CRTP)
 - [Aufgabe 20](#aufgabe-20): Variadische Templates zum Einstieg: Mehrere Summen, ein Ergebnis
 - [Aufgabe 21](#aufgabe-21): Variadische Templates und Vererbung
+- [Aufgabe 22](#aufgabe-22): Einfaches Beispiel zu variadischen Templates und *Perfect Forwarding*
 
 ---
 
@@ -1029,6 +1031,53 @@ void test()
   * Betrachten Sie die Übersetzung der Testmethode mit dem Tool [cppinsights.io](https://cppinsights.io/).
   * Warum ist die in Kommentar gesetzte Anweisung nicht übersetzungsfähig?
   * Erläutern Sie die Syntax der beiden Anweisungen mit den Kommentaren (1) und (2)
+
+---
+
+## Aufgabe 22
+
+#### Inhalt: Einfaches Beispiel zu variadischen Templates und *Perfect Forwarding*
+
+#### Voraussetzungen: Variadische Templates, *Perfect Forwarding*
+
+Schreiben Sie eine Funktion `list`, die eine variable Anzahl Parameter unterschiedlichen Typs besitzt.
+Ein Aufruf der `list`-Funktion gibt jeden Parameter auf der Konsole mit einem anschließenden Zeilenumbruch aus.
+
+*Beispiel*:
+
+```cpp
+int n = 123;
+const double pi = 3.14;
+
+list(10, "abc", n, pi, 2.4, std::string("ABC"), 99.99f);
+```
+
+*Ausgabe*:
+
+```cpp
+10
+abc
+123
+3.14
+2.4
+ABC
+99.99
+```
+
+*Ergänzung*:
+
+Wie müssen Sie Ihre Realisierung ändern, so dass die Ausgabe von `list` im letzten Beispiel so aussieht:
+
+
+```cpp
+1: 10
+2: abc
+3: 123
+4: 3.14
+5: 2.4
+6: ABC
+7: 99.99
+```
 
 ---
 

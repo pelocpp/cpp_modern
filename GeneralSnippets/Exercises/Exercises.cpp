@@ -14,6 +14,7 @@
 #include <optional>
 #include <tuple>
 #include <array>
+#include <complex>
 #include <variant>
 #include <numeric>
 #include <iterator>
@@ -1459,6 +1460,75 @@ namespace Exercises {
         // 2
         // 6
     }
+
+    namespace Exercise_22 {
+
+        template <typename T>
+        void list(T&& value)
+        {
+            std::cout << std::forward<T>(value) << std::endl;
+        }
+
+        template <typename T, typename ... R>
+        void list(T&& f, R&& ... r)
+        {
+            std::cout << std::forward<T>(f) << std::endl;
+            list(std::forward<R>(r)...);
+        }
+
+        void test_01() {
+            int n = 123;
+            const double pi = 3.14;
+
+            list(10, "abc", n, pi, 2.4, std::string("ABC"), 99.99f);
+        }
+
+        struct Point
+        {
+            int x, y;
+        };
+
+        std::ostream& operator<< (std::ostream& os, const Point& p)
+        {
+            os << '(' << p.x << ',' << p.y << ')';
+            return os;
+        }
+
+        void test_02() {
+            Point p{ 11, 12 };
+            Point* pp = new Point{ 3, 4 };
+            std::complex<double> c(2.5, 2.5);
+            list(c, 10, "abc", p, *pp, 2.4, Point{ 1, 2 });
+        }
+
+        void testExercise_22() {
+            test_01();
+            test_02();
+        }
+
+        // Lösung zur Ergänzungsaufgabe:
+        template <typename T>
+        void list_internal(int index, T&& value)
+        {
+            std::cout << index << ": " << std::forward<T>(value) << std::endl;
+        }
+
+        template <typename T, typename ... R>
+        void list_internal(int index, T&& f, R&& ... r)
+        {
+            index++;
+            std::cout << index << ": " << std::forward<T>(f) << std::endl;
+            list_internal(index, std::forward<R>(r)...);
+        }
+
+        template <typename T, typename ... R>
+        void listEx(T&& f, R&& ... r)
+        {
+            int n = 1;
+            std::cout << n << ": " << std::forward<T>(f) << std::endl;
+            list_internal(n, std::forward<R>(r)...);
+        }
+    }
 }
 
 void main_exercices()
@@ -1484,6 +1554,7 @@ void main_exercices()
     using namespace Exercises::Exercise_19;
     using namespace Exercises::Exercise_20;
     using namespace Exercises::Exercise_21;
+    using namespace Exercises::Exercise_22;
 
     testExercise_01();
 
@@ -1535,6 +1606,8 @@ void main_exercices()
     testExercise_20();
 
     testExercise_21();
+
+    testExercise_22();
 }
 
 // =====================================================================================

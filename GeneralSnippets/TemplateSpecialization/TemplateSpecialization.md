@@ -124,7 +124,11 @@ A<int*, int*, 2> a5;  // ambiguous:
                       // matches #3 and #5
 ```
 
+---
 
+Die Anregungen zu den Beispielen dieses Code Snippets stammen aus
+
+[Template Specialization and Overloading](http://www.gotw.ca/gotw/049.htm)
 
 ---
 
