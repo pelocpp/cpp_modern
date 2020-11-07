@@ -36,7 +36,6 @@ Folgende Themen werden angesprochen:
 - [Aufgabe 18](#aufgabe-18): Heterogener Container
 - [Aufgabe 19](#aufgabe-19): Ein *kurioser* Polymorphismus (CRTP)
 - [Aufgabe 20](#aufgabe-20): Variadische Templates zum Einstieg: Mehrere Summen, ein Ergebnis
-
 - [Aufgabe 21](#aufgabe-21): Variadische Templates und Vererbung
 
 ---
@@ -971,7 +970,7 @@ in der Definition variadischer Templates (Klassenschablone, Funktionsschablone)
 zu erlernen. Dazu betrachten wir die Summation einer beliebigen Anzahl von Summanden
 auf der Basis von variadischen Templates in mehreren Varianten.
 
-Betrachten Sie die folgenden drei Anweisung genau:
+Betrachten Sie die folgenden drei Anweisungen genau:
 
 ```cpp
 int result1 = sum1<1, 2, 3, 4, 5>::result;

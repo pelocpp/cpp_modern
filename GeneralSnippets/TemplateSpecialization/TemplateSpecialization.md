@@ -7,7 +7,7 @@
 ## Template Spezialisierung
 
 Unter Template Spezialisierung (Template Specialization) versteht mal die Möglichkeit,
-das eine Schablone (ein Template) Sonderfälle behandelt.
+dass eine Schablone (ein Template) Sonderfälle behandelt.
 Manchmal könnte ein generischer Algorithmus für eine bestimmte Art von Sequenz (Container) viel effizienter arbeiten
 (z.B. wenn man Iteratoren mit wahlfreiem Zugriff - *random-access* - verwendet).
 Daher ist es sinnvoll, den Algorithmus und damit das Template auf diesen Fall zu spezialisieren,
