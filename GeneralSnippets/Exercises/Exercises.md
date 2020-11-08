@@ -65,6 +65,10 @@ die Funktion `std::common_type` definiert ist.
 
 ---
 
+[An den Anfang](#aufgaben)
+
+---
+
 ## Aufgabe 2
 
 #### Inhalt: Move-Semantik 
@@ -150,6 +154,10 @@ void testExercise() {
 
 ---
 
+[An den Anfang](#aufgaben)
+
+---
+
 ## Aufgabe 3
 
 #### Inhalt: Lambda-Funktionen 
@@ -184,6 +192,10 @@ Dabei soll der Divisor
   * durch eine Variable in der Zugriffsklausel
 
 bestimmt werden.
+
+---
+
+[An den Anfang](#aufgaben)
 
 ---
 
@@ -241,6 +253,10 @@ Enter second Operand: 2.7
 Enter operation (+, -, *, /): +
 Result: 1.5 + 1.5 = 4.2.
 ```
+
+---
+
+[An den Anfang](#aufgaben)
 
 ---
 
@@ -319,6 +335,10 @@ void test_03()
 
 ---
 
+[An den Anfang](#aufgaben)
+
+---
+
 ## Aufgabe 6
 
 #### Inhalt: `std::optional`, `if constexpr`
@@ -338,6 +358,10 @@ std::optional<T> toNumber(std::string s);
 
 Realisieren Sie die Funktion analog zur Funktion `toInt`. Für `T` sollen die integralen Datentypen
 `short`, `int`, `long` und `long long` als Template Argumente möglich sein.
+
+---
+
+[An den Anfang](#aufgaben)
 
 ---
 
@@ -369,6 +393,10 @@ printTuple(tuple);
 
 ---
 
+[An den Anfang](#aufgaben)
+
+---
+
 ## Aufgabe 8
 
 #### Inhalt: Metaprogramming
@@ -385,6 +413,10 @@ Schreiben Sie eine Schablone `Fibonacci`, die *Fibonacci*-Zahlen zur Übersetzun
 
 ---
 
+[An den Anfang](#aufgaben)
+
+---
+
 ## Aufgabe 9
 
 #### Inhalt: SFINAE: Eine Methode, mehrere Implementierungen
@@ -397,6 +429,12 @@ Als klassisches Array im Stile von C oder als Objekte der Klasse `std::array`.
 Schreiben Sie eine Funktion `first`, die eine Referenz des ersten Arrayelements zurückliefert.
 Bei klassischen C-Arrays sollte dies die Anfangsadresse des Arrays sein, bei `std::array`
 das Iterator-Objekt `begin`.
+
+---
+
+[An den Anfang](#aufgaben)
+
+---
 
 ## Aufgabe 10
 
@@ -455,6 +493,10 @@ std::cout
 struct Exercise_09::FirstStruct:  true
 struct Exercise_09::SecondStruct: false
 ```
+
+---
+
+[An den Anfang](#aufgaben)
 
 ---
 
@@ -524,6 +566,10 @@ auch auf andere Konstruktoren ausweichen können!
 
 ---
 
+[An den Anfang](#aufgaben)
+
+---
+
 ## Aufgabe 12
 
 #### Inhalt: Variadische Templates: Logische Operationen mit beliebig vielen Operanden
@@ -550,6 +596,10 @@ true
 
 ---
 
+[An den Anfang](#aufgaben)
+
+---
+
 ## Aufgabe 13
 
 #### Inhalt: Folding Expressions: Logische Operationen mit beliebig vielen Operanden
@@ -557,6 +607,10 @@ true
 #### Vorausetzungen: Variadische Templates
 
 Die Aufgabenstellung ist identisch zur letzten Aufgabe: Setzen Sie zur Lösung dieses Mal *Folding Expressions* ein.
+
+---
+
+[An den Anfang](#aufgaben)
 
 ---
 
@@ -603,6 +657,10 @@ Können Sie das Feature "*Short-Circuit-Evaluation*" in Ihrer Realisierung der F
 
 ---
 
+[An den Anfang](#aufgaben)
+
+---
+
 ## Aufgabe 15
 
 #### Inhalt: Folding Expressions, `decltype` und Type-Traits am Beispiel von `sameType`
@@ -611,6 +669,10 @@ Können Sie das Feature "*Short-Circuit-Evaluation*" in Ihrer Realisierung der F
 
 Die Aufgabenstellung ist identisch zur letzten Aufgabe (ohne Zusatzaufgabe):
 Setzen Sie zur Lösung dieses Mal *Folding Expressions* ein.
+
+---
+
+[An den Anfang](#aufgaben)
 
 ---
 
@@ -651,6 +713,10 @@ Mit einer geeigneten Funktion der *funktionalen Programmierung* sollen
 die einzelnen Zeichen aller Zeichenketten dieses Vektors in Großbuchstaben umgewandelt werden.
 Welche Funktion höherer Ordnung benötigen Sie hierzu?
 Schreiben Sie eine Testfunktion, die ihre Realisierung testet. 
+
+---
+
+[An den Anfang](#aufgaben)
 
 ---
 
@@ -716,6 +782,10 @@ auto foldEx(InputIterator begin, InputIterator end, TFunctor&& lambda)
 ```
 
 *Hinweis*: Diese Teilaufgabe ist wahrlich nicht einfach, mit `decltype` und `declval` erreichen Sie das Ziel!
+
+---
+
+[An den Anfang](#aufgaben)
 
 ---
 
@@ -801,6 +871,10 @@ std::cout << std::endl;
 Versuchen nun wiederum, dieses Code-Fragment zum Laufen zu bekommen.
 Die Methoden `Values` liefert eine Referenz des in der Klasse `HeterogeneousContainer`
 gekapselten `std::vector<std::variant<...>`-Objekts zurück.
+
+---
+
+[An den Anfang](#aufgaben)
 
 ---
 
@@ -962,6 +1036,10 @@ Time taken: 402634 microseconds
 
 ---
 
+[An den Anfang](#aufgaben)
+
+---
+
 ## Aufgabe 20
 
 #### Inhalt: Variadische Templates zum Einstieg: Mehrere Summen, ein Ergebnis
@@ -988,6 +1066,10 @@ Wie könnte eine Realisierung aussehen, um die Anweisungen zu implementieren?
 Betrachten Sie Ihre Realisierung mit dem Tool [cppinsights.io](https://cppinsights.io/).
 Ziehen Sie die jeweiligen Umsetzung der Anweisung `sumX(1, 2, 3, 4, 5)`
 in C++-Anweisungen *ohne* variadische Templates nach!
+
+---
+
+[An den Anfang](#aufgaben)
 
 ---
 
@@ -1035,6 +1117,10 @@ void test()
 
 ---
 
+[An den Anfang](#aufgaben)
+
+---
+
 ## Aufgabe 22
 
 #### Inhalt: Einfaches Beispiel zu variadischen Templates und *Perfect Forwarding*
@@ -1079,6 +1165,10 @@ Wie müssen Sie Ihre Realisierung ändern, so dass die Ausgabe von `list` im let
 6: ABC
 7: 99.99
 ```
+
+---
+
+[An den Anfang](#aufgaben)
 
 ---
 
@@ -1139,6 +1229,10 @@ void main()
 
 Die Klasse `ExecutionTimer` mit einer statischen Methode `duration` führt in diesem Beispiel die Funktion `g` aus
 und misst ihre Ausführungszeit.
+
+---
+
+[An den Anfang](#aufgaben)
 
 ---
 
