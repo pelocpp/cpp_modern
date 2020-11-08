@@ -9,7 +9,7 @@ Folgende Themen werden angesprochen:
   * Variadische Templates
   * Metaprogrammierung
   * Folding
-  * Neue Utility-Klassen
+  * Neue Utility-Klassen und -Funktionen (`std::optional`, `std::variant`, `std::invoke`, `std::visit`)
   * SFINAE
   * CRTP
   * Funktionale Programmierung
@@ -39,6 +39,7 @@ Folgende Themen werden angesprochen:
 - [Aufgabe 20](#aufgabe-20): Variadische Templates zum Einstieg: Mehrere Summen, ein Ergebnis
 - [Aufgabe 21](#aufgabe-21): Variadische Templates und Vererbung
 - [Aufgabe 22](#aufgabe-22): Einfaches Beispiel zu variadischen Templates und *Perfect Forwarding*
+- [Aufgabe 23](#aufgabe-23): Ausführungszeit einer Funktion (`std::invoke`, variadische Templates und *Perfect Forwarding*)
 
 ---
 
@@ -994,7 +995,7 @@ in C++-Anweisungen *ohne* variadische Templates nach!
 
 #### Inhalt: Variadische Templates und Vererbung
 
-#### Voraussetzungen: Variadische Templates, Vererbung
+#### Voraussetzungen: Siehe Inhalt
 
 Der Mechanismus variadischer Templates ist auch auf die Vererbung anwendbar.
 Studieren Sie dazu folgende Definition einer Klasse `X`:
@@ -1038,7 +1039,7 @@ void test()
 
 #### Inhalt: Einfaches Beispiel zu variadischen Templates und *Perfect Forwarding*
 
-#### Voraussetzungen: Variadische Templates, *Perfect Forwarding*
+#### Voraussetzungen: Siehe Inhalt
 
 Schreiben Sie eine Funktion `list`, die eine variable Anzahl Parameter unterschiedlichen Typs besitzt.
 Ein Aufruf der `list`-Funktion gibt jeden Parameter auf der Konsole mit einem anschließenden Zeilenumbruch aus.
@@ -1078,6 +1079,66 @@ Wie müssen Sie Ihre Realisierung ändern, so dass die Ausgabe von `list` im let
 6: ABC
 7: 99.99
 ```
+
+---
+
+## Aufgabe 23
+
+#### Inhalt: Ausführungszeit einer Funktion (`std::invoke`, variadische Templates und *Perfect Forwarding*)
+
+#### Voraussetzungen: Siehe Inhalt
+
+Schreiben Sie eine Funktion, die die Ausführungszeit einer weiteren Funktion messen kann.
+Diese Funktion soll dabei eine beliebige Anzahl von Formalparametern haben können.
+
+Die Zeitdauer messen wir im einfachsten Fall in Millisekunden.
+In einer etwas anspruchsvolleren Lösung ist es auch denkbar, die Zeitmessung in unterschiedlichen Zeitformaten
+durchführen zu können (z.B. Sekunden, Millisekunden, Mikrosekunden usw.).
+
+*Hinweise*:
+
+Um die Ausführungszeit einer Funktion zu messen, benötigen wir zunächst die aktuelle Zeit vor dem Aufruf der
+Funktion. Führen Sie nach dieser ersten Zeitmessung die eigentliche Funktion aus,
+rufen Sie dann die aktuelle Uhrzeit erneut ab und bestimmen Sie die Differenz von den beiden Zeitpunkten.
+
+Einen aktuellen Zeitpunkt können Sie mit der Klasse `std::chrono::high_resolution_clock` ermitteln:
+
+```cpp
+std::chrono::steady_clock::time_point start = std::chrono::high_resolution_clock::now();
+```
+
+Für die Differenzbildung zweier Zeitwerte müssen wir die größtmögliche Auflösung `std::chrono::nanoseconds` zugrunde legen,
+zum Beispiel:
+
+```cpp
+std::chrono::nanoseconds diff = end - start;
+```
+
+Um dann wieder zur gewünschten Maßeinheit zurückzugelangen, gibt es die `std::chrono::duration_cast` Methode:
+
+```cpp
+std::chrono::duration_cast<std::chrono::milliseconds>(diff);
+```
+
+Das Hauptprogramm für diese Übung könnte so aussehen:
+
+```cpp
+void g(int a, double b)
+{
+    // simulate some work (function with parameters)
+    std::cout << "calling g with parameters " << a << " and " << b << std::endl;
+    std::this_thread::sleep_for(std::chrono::seconds(2));
+}
+
+void main() 
+{
+    std::chrono::milliseconds time = ExecutionTimer::duration(g, 10, 20.0);
+    std::cout << time.count() << " msecs." << std::endl;
+}
+```
+
+Die Klasse `ExecutionTimer` mit einer statischen Methode `duration` führt in diesem Beispiel die Funktion `g` aus
+und misst ihre Ausführungszeit.
 
 ---
 
