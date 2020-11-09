@@ -195,12 +195,6 @@
     <ClCompile Include="Allocator\AllocatorSimple.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PerfectForwarding\PerfectForwarding01.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PerfectForwarding\PerfectForwarding02.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Random\Random.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -220,6 +214,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TemplateSpecialization\TemplateSpecialization.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PerfectForwarding\PerfectForwarding03.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PerfectForwarding\PerfectForwarding02.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PerfectForwarding\PerfectForwarding01.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
