@@ -38,6 +38,7 @@ void main_metaprogramming_01();
 void main_metaprogramming_02();
 void main_move_semantics();
 void main_optional();
+void main_perfect_forwarding_motivation();
 void main_perfect_forwarding();
 void main_perfect_forwarding_object();
 void main_raii();
@@ -113,7 +114,9 @@ int main()
         //main_metaprogramming_02();
         //main_move_semantics();
         //main_optional();
+        main_perfect_forwarding_motivation();
         //main_perfect_forwarding();
+        //main_perfect_forwarding_object();
         //main_perfect_forwarding_object();
         //main_raii();
         //main_raii_02();
