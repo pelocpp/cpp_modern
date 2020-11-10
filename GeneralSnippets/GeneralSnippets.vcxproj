@@ -235,6 +235,7 @@
     <None Include="InitializerList\StdInitializerList.md" />
     <None Include="InputOutputStreams\Streams.md" />
     <None Include="Invoke\StdInvoke.md" />
+    <None Include="Lambda\cpp_snippets_lambda.svg" />
     <None Include="Lambda\Lambda.md" />
     <None Include="Literals\Literals.md" />
     <None Include="Literatur\Literature.md" />
@@ -281,7 +282,6 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="Exercises\cpp_dividend_divisor.png" />
-    <Image Include="Lambda\LambdaStructure.png" />
     <Image Include="MetaProgramming\euler_number.png" />
     <Image Include="VariadicTemplates\cpp_snippets_mixins_01.png" />
     <Image Include="VariadicTemplates\cpp_snippets_mixins_02.png" />

@@ -1,6 +1,10 @@
 # Lambda-Funktionen
 
-[Quellcode 1](Lambda01.cpp), [Quellcode 2](Lambda02.cpp) und [Quellcode 3](Lambda03.cpp)
+[Quellcode 1 / Motivation, allgemeine Beispiele](Lambda01.cpp)
+
+[Quellcode 2 / Lambda und Closure](Lambda02.cpp)
+
+[Quellcode 3 / Lambda und das Visitor-Pattern](Lambda03.cpp)
 
 ---
 
@@ -64,7 +68,7 @@ Tabelle 1: Liste aller Optionen für die Lambda-Zugriffsklausel.
 Neben der Zugriffsklausel kann eine Lambda-Funktion mit zahlreichen Schlüsselwörtern *garniert* werden.
 Siehe hierzu Abbildung 1:
 
-<img src="LambdaStructure.png" width="300">
+<img src="cpp_snippets_lambda.svg" width="300">
 
 Abbildung 1: Besonderheiten im Aufbau einer Lambda-Funktion.
 

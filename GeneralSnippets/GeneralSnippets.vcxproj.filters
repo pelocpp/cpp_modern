@@ -404,6 +404,9 @@
     <None Include="TemplateSpecialization\TemplateSpecialization.md">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="Lambda\cpp_snippets_lambda.svg">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Global\Dummy.h">
@@ -414,9 +417,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Lambda\LambdaStructure.png">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="VariadicTemplates\cpp_snippets_mixins_01.png">
       <Filter>Resource Files</Filter>
     </Image>
