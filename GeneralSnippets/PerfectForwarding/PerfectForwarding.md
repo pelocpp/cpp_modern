@@ -112,7 +112,7 @@ Da es ab C++ 11 neben der "einfachen" Referenz `&` noch die Referenz `&&` gibt,
 wurde ein Regelwerk definiert, wenn mehrere Referenzen aufeinander treffen.
 
 Es gilt die sogenannte Tabelle der *collapsing rules* 
-(zu deutsch etwa: *Zusammenfassungsregeln*):
+(zu Deutsch etwa: *Zusammenfassungsregeln*):
 
 | Formaler Typ | Beschreibung | Resultattyp | Beschreibung|
 |:------ |:----------|:----------|:----------|
