@@ -51,8 +51,8 @@ TCLASS Factory(TARG& a)
 ```
 
 Hmmm, eigentlich gut gedacht, aber auf einmal sind die beiden letzten Beispiele
-nicht mehr übersetzungsfähig (unter der Vorraussetzung, das die `Factory`-Funktionsschablone
-mit *copy-by-value*-Parameterübergabemechanismus nicht mehr zur Verfügung steht) ?!?
+nicht mehr übersetzungsfähig (unter der Voraussetzung, das die `Factory`-Funktionsschablone
+mit *copy-by-value*-Parameterübergabemechanismus nicht mehr zur Verfügung steht)?!?
 
 Eine triviale Lösung besteht darin, dass man die Beispiele - und damit den Aufruf der `Factory`-Funktion - 
 geringfügig ändert:
@@ -69,7 +69,7 @@ auto obj = Factory<AnyClass>(arg);
 std::cout << obj << std::endl;
 ```
 
-Nichtsdestrotrotz ist diese Lösung unschön, da das direkte Versorgen der Konstruktors mit
+Nichtsdestotrotz ist diese Lösung unschön, da das direkte Versorgen der Konstruktors mit
 Konstanten nicht möglich ist. Dies wiederum könnten wir allerdings mit einer weiteren Überladung
 der `Factory`-Funktion lösen:
 
@@ -87,8 +87,8 @@ gezeigten Beispiele!
 Jetzt könnten wir eigentlich unseren Konstruktor mit einem zweiten Parameter ... oder gar gleich
 mit einem dritten Parameter ausstatten. Aha, Problem möglicherweise erkannt:
 Es genügt nicht eine Überladung hinzuzufügen, sondern wir müssen auch `const&` und `&` überladen!
-Bei 2 Parameters sind dies dann 4 Überladungen, bei 3 Parametern 8 Überladungen etc.
-In der Tat ergbit das für *n* Argumente 2<sup>*n*</sup> Überladungen!
+Bei 2 Parametern sind dies dann 4 Überladungen, bei 3 Parametern 8 Überladungen etc.
+In der Tat ergibt das für *n* Argumente 2<sup>*n*</sup> Überladungen!
 
 Damit kommen wir auf C++ 11 zu sprechen, und einem neuen Referenz-Typ der passt: Der *RValue*-Referenz
 Als Argument in einer Template-Funktion passt sich der Typ dem tatsächlichen Argument an!
@@ -103,16 +103,16 @@ TCLASS FactoryEx(TARG&& a)
 ```
 
 Um das *Perfect Forwarding* umfassend zu verstehen, müssen wir uns vergegenwärtigen, was passiert,
-wenn mehrere Referenzen `&` und `&&` sich aneinanderreihen würden.
-
+wenn mehrere Referenzen `&` und `&&` sich aneinanderreihen.
 Damit sind wir beim so genannten *Reference Collapsing* angekommen:
 
 ## Reference Collapsing Rules
 
-WEITER: Das letzte Beispiel mit & und && !!!
+Da es ab C++ 11 neben der "einfachen" Referenz `&` noch die Referenz `&&` gibt,
+wurde ein Regelwerk definiert, wenn mehrere Referenzen aufeinander treffen.
 
-Man beachte, dass es bei genauerer Betrachtung hier die sogenannte Tabelle der *collapsing rules* 
-(zu deutsch etwa: *Zusammenfassungsregeln*) gibt:
+Es gilt die sogenannte Tabelle der *collapsing rules* 
+(zu deutsch etwa: *Zusammenfassungsregeln*):
 
 | Formaler Typ | Beschreibung | Resultattyp | Beschreibung|
 |:------ |:----------|:----------|:----------|
