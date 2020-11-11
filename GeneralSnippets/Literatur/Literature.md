@@ -5,7 +5,7 @@
   * Marc Gregoire, "Professional C++ (4th Edition)".</br>
     Wrox Press (17. April 2018), 1184 Seiten. Sprache: Englisch. ISBN-13: 978-1119421306, ISBN-10: 1119421306.
 
-    Für mich das derzeit beste C++ -Buch am Markt. Zugegeben, seht umfangreich, aber dafür versteht es der Autor,
+    Für mich das derzeit beste C++ -Buch am Markt. Zugegeben, sehr umfangreich, aber dafür versteht es der Autor,
     seine Leser mit einem jederzeit erkennbaren roten Faden durch alle Niederungen der Sprache C++ 
     in verständlichen (englischen) Erklärungen zu führen. Großartig!
 

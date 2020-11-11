@@ -46,15 +46,13 @@ Prinzipiell kann die Move-Semantik auf dreierlei Weisen realisiert werden:
 
 *Rule of Zero*:
 
-Vermeiden Sie Pointer, die mit `new` allokiert wurden.
-Verwenden Sie Container der STL
-Verwenden Sie *Smart Pointer*
+  * Vermeiden Sie Pointer, die mit `new` allokiert wurden.
+  * Verwenden Sie Container der STL.
+  * Verwenden Sie *Smart Pointer*.
 
-In diesen Fällen benötige ich keine Realisierung der *Rule of Three* oder *Rule of Five*,
+In diesen Fällen benötigt man keine Realisierung der *Rule of Three* oder *Rule of Five*,
 da der Compiler an Hand der Standardklassen die für diese Klassen passenden Kopier- und Verschiebeoperationen
-generiert.
-
-Deklarieren oder defineren Sie dann keine Operationen der  *Rule of Three* oder *Rule of Five* für Ihre Klasse.
+generiert. Deklarieren oder defineren Sie dann keine Operationen der *Rule of Three* oder *Rule of Five* für Ihre Klasse.
 
 ---
 
