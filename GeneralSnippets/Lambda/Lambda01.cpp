@@ -96,8 +96,9 @@ namespace Lambda {
         auto plus = [] (auto l, auto r) { return l + r; };
         std::cout << plus(1, 2) << std::endl;
         std::cout << plus(std::string{ "a" }, "b") << std::endl;
+        std::cout << plus(itsOne(), itsTwo()) << std::endl;
 
-        // inline-definition and invocation of lambda funtion
+        // inline-definition and direct invocation of lambda funtion
         std::cout << [] (auto l, auto r) { return l + r; } (11, 12) << std::endl;
     }
 
@@ -112,8 +113,6 @@ namespace Lambda {
 
         // Captures default to 'const value':
         // The mutable keyword removes the 'const' qualification from all captured variables
-
-        // lambda with variable definition 
         auto counter = [count = 50]() mutable { 
             ++count; 
             return count;
@@ -237,20 +236,26 @@ namespace Lambda {
     void test_09() {
 
         // Example demonstrating so called 'Currying':
-        // This means that we take a function that can accept some parameters
-        // and store it in another function object, which accepts fewer parameters.
 
-        // In our example, we store the 'plus' function and only accept one parameter,
-        // which we forward to the 'plus' function.The other parameter is the
-        // value 10, which we save in the function object. This way, we get a function,
-        // which we call 'plusTen' because it can add that value
-        // to the single parameter it accepts :
+        // This means that we take a function that can accept some parameters
+        // and store it in another function object, which accepts *fewer* parameters.
+
+        // In our example, we define a 'plusTen' function which accepts a single parameter.
+        // This parameter is forwarded to the 'plus' function. The second parameter equals 10,
+        // which is being saved in the function object:
 
         auto plus = [](auto l, auto r) { return l + r; };
 
         auto plusTen = [plus](int x) { return plus(10, x); };
 
         std::cout << plusTen(5) << std::endl;
+    }
+
+    void test_10() {
+
+        auto itsOne([] () noexcept { return 1; });
+        auto itsTwo = [] () noexcept { return 2; };
+        std::cout << itsOne() << ", " << itsTwo() << std::endl;
     }
 }
 
@@ -266,6 +271,7 @@ void main_lambdas()
     test_07();
     test_08();
     test_09();
+    test_10();
 }
 
 // =====================================================================================
