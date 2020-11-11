@@ -32,7 +32,7 @@ namespace InitializerList {
         std::cout << std::endl;
     }
 
-    // delegating templated std::initializer_list to range std::for_each with lambda
+    // delegating templated std::initializer_list to std::for_each with lambda
     template<typename T>
     void printMeToo(std::initializer_list<T> list) {
         std::cout << "Begin of list: ";
@@ -49,6 +49,7 @@ namespace InitializerList {
     class MyPeople {
     private:
         std::vector<std::string> m_names;
+
     public:
         MyPeople(std::initializer_list<std::string> names) : m_names(names) {}
 

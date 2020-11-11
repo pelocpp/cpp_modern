@@ -2,14 +2,9 @@
 // Structured Binding
 // =====================================================================================
 
-#define  _CRT_SECURE_NO_WARNINGS 
 #include <iostream>
-#include <tuple>
 #include <vector>
 #include <string>
-#include <chrono>
-#include <ctime>
-#include <iomanip>
 
 namespace StructuredBinding {
 
@@ -33,26 +28,21 @@ namespace StructuredBinding {
             << remainder << std::endl;
     }
 
-    std::tuple<std::string, std::time_t, float>
-    stock_info(const std::string& name) {
-        std::chrono::system_clock::time_point now = 
-            std::chrono::system_clock::now();
-        std::time_t current_time =
-            std::chrono::system_clock::to_time_t(now);
-        return std::make_tuple("INTC", current_time, 49.99F);
-    }
-
     void test_03() {
-        const auto [name, time, price] = stock_info("INTC");
-        std::cout << name << ": "
-            << price << " at "
-            << std::put_time(std::localtime(&time), "%F %T") << std::endl;
-    }
-
-    void test_04() {
         int arr[] = { 10, 11, 12 };
         auto [ a, b, c ] = arr;
-        std::cout << a << " " << b << " " << c << std::endl;
+        std::cout << a << ", " << b << ", " << c << std::endl;
+    }
+
+    void test_03_a() {
+        int arr[] = { 10, 11, 12 };
+        auto& [a, b, c] = arr;
+        std::cout << a << ", " << b << ", " << c << std::endl;
+
+        b = 111;
+
+        auto& [d, e, f] = arr;
+        std::cout << d << ", " << e << ", " << f << std::endl;
     }
 
     class Point {
@@ -61,7 +51,7 @@ namespace StructuredBinding {
         int m_y;
     };
 
-    void test_05() {
+    void test_04() {
 
         // without structured binding
         Point p1 = { 1, 2 };
@@ -75,6 +65,19 @@ namespace StructuredBinding {
         std::cout << "Y Coordinate : " << y << std::endl;
     }
 
+    void test_04_a() {
+
+        Point p = { 10, 20 };
+        auto& [x, y] = p;
+        std::cout << "X Coordinate : " << x << std::endl;
+        std::cout << "Y Coordinate : " << y << std::endl;
+
+        x = 100;
+        y = 200;
+        std::cout << "X Coordinate : " << p.m_x << std::endl;
+        std::cout << "Y Coordinate : " << p.m_y << std::endl;
+    }
+
     class Employee {
     public:
         unsigned int id;
@@ -83,7 +86,7 @@ namespace StructuredBinding {
         unsigned long phone;
     };
 
-    void test_06() {
+    void test_05() {
 
         Employee worker { 9987, "Sepp", "Engineer", 987654321 };
         Employee manager { 999, "Hans", "Manager", 123456789 };
@@ -105,9 +108,10 @@ void main_structured_binding()
     test_01();
     test_02();
     test_03();
+    test_03_a();
     test_04();
+    test_04_a();
     test_05();
-    test_06();
 }
 
 // =====================================================================================
