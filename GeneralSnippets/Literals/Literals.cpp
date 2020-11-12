@@ -54,7 +54,7 @@ namespace Literals {
     }
 
     // literal operator ("cooked" version)
-    Color operator"" _col (unsigned long long int value) {
+    Color operator"" _color (unsigned long long int value) {
 
         uint8_t a = (uint8_t) ((value & 0xFF000000) >> 24);
         uint8_t r = (uint8_t) ((value & 0x00FF0000) >> 16);
@@ -65,7 +65,7 @@ namespace Literals {
     }
 
     // literal operator ("raw" version)
-    Color operator"" _col(const char*  literal) {
+    Color operator"" _color(const char*  literal) {
 
         /* tiny implementation - just parsing hexadecimal format
         */
@@ -82,8 +82,16 @@ namespace Literals {
             int g = std::stoi(gs, nullptr, 16);
             int b = std::stoi(bs, nullptr, 16);
 
+            // Note: braced-init-list syntax: 
+            // "return an object of the function's return type initialized with an corresponding c'tor":
+            // Short hand for a new instance of the methods return type
+
             return { (uint8_t) a, (uint8_t) r, (uint8_t) g, (uint8_t) b };
         }
+
+        // Note: braced-init-list syntax: 
+        // "return an object of the function's return type initialized with default c'tor"
+        // Short hand for a new instance of the methods return type
 
         return {};
     }
@@ -94,14 +102,14 @@ namespace Literals {
     }
 
     void test_03() {
-        Color red = 0x00FF0000_col;
+        Color red = 0x00FF0000_color;
         std::cout << red << std::endl;
-        Color magenta = 0x00FF00FF_col;
+        Color magenta = 0x00FF00FF_color;
         std::cout << magenta << std::endl;
-        Color yellow = 0x00FFFF00_col;
+        Color yellow = 0x00FFFF00_color;
         std::cout << yellow << std::endl;
 
-        Color unknown = 12345_col;
+        Color unknown = 12345_color;
         std::cout << unknown << std::endl;
     }
 }

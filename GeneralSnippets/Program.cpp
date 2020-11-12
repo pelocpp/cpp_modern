@@ -94,7 +94,7 @@ int main()
         //main_constexpr();
         //main_crtp();
         //main_decltype();
-        main_exercices();
+        //main_exercices();
         //main_keyword_explicit();
         //main_expression_templates();
         //main_filesystem();
@@ -108,7 +108,7 @@ int main()
         //main_lambdas();
         //main_lambda_and_closure();
         //main_lambda_and_visitor();
-        //main_literals();
+        main_literals();
         //main_memory_leaks();
         //main_metaprogramming_01();
         //main_metaprogramming_02();
@@ -150,7 +150,7 @@ int main()
         //main_variadic_templates_more_examples();
         //main_variant();
         //main_virtual_destructor();
-        main_weak_pointer();
+        //main_weak_pointer();
     }
     catch (const std::exception& ex) {
         std::cout << "Exception: " << ex.what() << std::endl;

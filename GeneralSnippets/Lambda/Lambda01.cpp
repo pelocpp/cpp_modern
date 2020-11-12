@@ -92,6 +92,9 @@ namespace Lambda {
         auto itsFive = [] { return 5; };
         std::cout << itsFour() << ", " << itsFive() << std::endl;
 
+        // notation without 'auto'
+        std::function<int(int, int, int)> itsThree([] (int x, int y, int z){ return 3; });
+
         // works with anything that defines the plus 'operator+'
         auto plus = [] (auto l, auto r) { return l + r; };
         std::cout << plus(1, 2) << std::endl;
@@ -103,7 +106,7 @@ namespace Lambda {
     }
 
     void test_04() {
-        // Defining new variables in the lambda capture:
+        // defining new variables in the lambda capture:
         // we can declare a new variable that is only visible in the scope of the lambda.
         // we do so by defining a variable in the lambda-capture without specifying its type
 
