@@ -182,7 +182,7 @@ inline void even(const int val) {
 
 Erweitern Sie Ihre Realisierung so, dass der Divisor (Nenner) variabel ist:
 
-<img src="cpp_dividend_divisor.png" width="300">
+<img src="cpp_dividend_divisor.svg" width="300">
 
 Abbildung 1: Dividend, Divisor und Quotient.
 

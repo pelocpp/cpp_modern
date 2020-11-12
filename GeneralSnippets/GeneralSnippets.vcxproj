@@ -228,6 +228,7 @@
     <None Include="ConstructursOrder\CtorDtorOrder.md" />
     <None Include="CRTP\CRTP.md" />
     <None Include="DeclType\decltype.md" />
+    <None Include="Exercises\cpp_dividend_divisor.svg" />
     <None Include="Exercises\Exercises.md" />
     <None Include="Explicit\Explicit.md" />
     <None Include="ExpressionTemplates\ExpressionTemplates.md" />
@@ -266,6 +267,8 @@
     <None Include="UniformInitialization\UniformInitialization.md" />
     <None Include="UniquePtr\UniquePtr.md" />
     <None Include="UsingNamespaceStd\UsingNamespaceStd.md" />
+    <None Include="VariadicTemplates\cpp_snippets_mixins_01.svg" />
+    <None Include="VariadicTemplates\cpp_snippets_mixins_02.svg" />
     <None Include="VariadicTemplates\VariadicTemplates_05_Visitor.md" />
     <None Include="VariadicTemplates\VariadicTemplates_10_Folding.md" />
     <None Include="VariadicTemplates\VariadicTemplates_01_Introduction.md" />
@@ -275,6 +278,7 @@
     <None Include="VariadicTemplates_Anwendungen\VariadicTemplates_XX_Verschiedenes.md" />
     <None Include="Variant\StdVariant.md" />
     <None Include="VirtualBaseClassDestructor\VirtualBaseClassDestructor.md" />
+    <None Include="WeakPtr\cpp_snippets_cyclic_references.svg" />
     <None Include="WeakPtr\WeakPtr.md" />
   </ItemGroup>
   <ItemGroup>

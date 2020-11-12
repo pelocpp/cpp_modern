@@ -407,6 +407,18 @@
     <None Include="Lambda\cpp_snippets_lambda.svg">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="VariadicTemplates\cpp_snippets_mixins_01.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="VariadicTemplates\cpp_snippets_mixins_02.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="WeakPtr\cpp_snippets_cyclic_references.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Exercises\cpp_dividend_divisor.svg">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Global\Dummy.h">

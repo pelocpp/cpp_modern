@@ -115,7 +115,7 @@ auf die mit einem Schlüssel (*Key*) zugegriffen werden kann. Ferner enthält ein 
 
 Die genaue Intention des Aussehens eines `Repository`-Objekts entnehmen Sie bitte Abbildung 1:
 
-<img src="cpp_snippets_mixins_01.png" width="500">
+<img src="cpp_snippets_mixins_01.svg" width="600">
 
 Abbildung 1: `Repository`-Klasse mit Schlüssel-Wert-Paaren, die via Vererbung verfügbar gemacht werden.
 
@@ -256,7 +256,7 @@ In Abbildung 2 können wir die Modifikationen erkennen. Wollen wir zwei Slot-Eint
 desselben Typs haben (siehe Typ `std::string` in Abbildung 2), dann sind diese beiden
 Einträge durch einen zusätzlichen Schlüsseltyp zu unterscheiden.
 
-<img src="cpp_snippets_mixins_02.png" width="600">
+<img src="cpp_snippets_mixins_02.svg" width="700">
 
 Abbildung 2: Modifikationen am Konzept der Klasse `Slot`.
 

@@ -150,7 +150,7 @@ int main()
         //main_variadic_templates_more_examples();
         //main_variant();
         //main_virtual_destructor();
-        //main_weak_pointer();
+        main_weak_pointer();
     }
     catch (const std::exception& ex) {
         std::cout << "Exception: " << ex.what() << std::endl;
