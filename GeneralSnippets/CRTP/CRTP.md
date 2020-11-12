@@ -50,12 +50,12 @@ Im Folgenden stellen wir nun eine Art Gebrauchsanweisung vor,
 wie Sie das *Curiously Recurring Template Pattern* in der Praxis anwenden können:
 
 1. Definieren Sie eine Klassenschablone, die eine Basisklasse für andere Klassen darstellt,
-   die zur Übersetzungszeit polymorph zu behandelt sind.
+   die zur Übersetzungszeit polymorph zu behandeln sind.
    Polymorphe Methoden werden von dieser Klasse aufgerufen:
 
 ```cpp
 template <class T> 
-class Control : public ControlBase
+class Control
 {
 public:
     void draw()
@@ -131,8 +131,8 @@ painting checkbox ...
 
 ## Funktionsweise von CRTP
 
-Klasse virtuelle Methoden können ein Performanceproblem aufweisen,
-wenn sie klein sind und mehrmals in einer Wiederholungsschleife aufgerufen werden.
+Virtuelle Methoden können ein Performanceproblem aufweisen,
+wenn sie wenige Anweisungen enthalten und häufig in einer Wiederholungsschleife aufgerufen werden.
 Moderne Hardware verdeckt viele dieser Situationen,
 aber es gibt dennoch einige Kategorien von Anwendungen,
 für die Performance kritisch ist und die Leistungssteigerungen zu schätzen wissen.

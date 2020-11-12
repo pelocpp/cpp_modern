@@ -111,6 +111,7 @@ Der Compiler wählt dann die entsprechende Vorlage aus:
 
 ```cpp
 A<int, int, 1>   a1;  // uses #1
+
 A<int, int*, 1>  a2;  // uses #2, T is int,
                       //          I is 1
 
