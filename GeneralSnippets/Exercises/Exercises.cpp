@@ -184,11 +184,15 @@ namespace Exercises {
             std::for_each(std::begin(values), std::end(values), even);
 
             // lambda
-            std::for_each(std::begin(values), std::end(values), [](int val) {
-                if (!(val % 2)) {
-                    std::cout << val << std::endl;
+            std::for_each(
+                std::begin(values), 
+                std::end(values), 
+                [](int val) {
+                    if (!(val % 2)) {
+                        std::cout << val << std::endl;
+                    }
                 }
-                });
+            );
 
             // functor
             std::for_each(std::begin(values), std::end(values), Even());
@@ -204,22 +208,30 @@ namespace Exercises {
             );
 
             // 'divisor' defined within capture clause 
-            std::for_each(std::begin(values), std::end(values), [divisor = 3](int val) {
-                if (!(val % divisor)) {
-                    std::cout << val << std::endl;
+            std::for_each(
+                std::begin(values), 
+                std::end(values),
+                [divisor = 3](int val) {
+                    if (!(val % divisor)) {
+                        std::cout << val << std::endl;
+                    }
                 }
-            });
+            );
             std::cout << std::endl;
 
             // or 'divisor' defined in outer context (scope) 
             int divisor = 5;
 
             // capture context by value (reference & would work also)
-            std::for_each(std::begin(values), std::end(values), [=](int val) {
-                if (!(val % divisor)) {
-                    std::cout << val << std::endl;
+            std::for_each(
+                std::begin(values),
+                std::end(values),
+                [=](int val) {
+                    if (!(val % divisor)) {
+                        std::cout << val << std::endl;
+                    }
                 }
-                });
+            );
         }
     }
 
