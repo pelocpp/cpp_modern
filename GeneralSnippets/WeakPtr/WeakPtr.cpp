@@ -26,12 +26,16 @@ namespace WeakPointer {
 
             // need shared pointer to access weak pointer
             std::cout << "Is weak ptr expired:        " << weakPtr.expired() << std::endl;
-            std::shared_ptr<int> ptr2 = weakPtr.lock();
-            std::cout << "Usage count shared_ptr:     " << ptr1.use_count() << std::endl;
-            std::cout << "Usage count shared_ptr:     " << ptr2.use_count() << std::endl;
 
-            // access weak pointer via shared pointer
-            std::cout << "*sharedPtr:                 " << *ptr2 << std::endl;
+            std::shared_ptr<int> ptr2 = weakPtr.lock();
+            if (ptr2 != nullptr) {
+
+                std::cout << "Usage count shared_ptr:     " << ptr1.use_count() << std::endl;
+                std::cout << "Usage count shared_ptr:     " << ptr2.use_count() << std::endl;
+
+                // access weak pointer via shared pointer
+                std::cout << "*sharedPtr:                 " << *ptr2 << std::endl;
+            }
 
             std::cout << "Is weak ptr expired:        " << weakPtr.expired() << std::endl;
             std::cout << "End-of-Scope" << std::endl;
@@ -52,6 +56,13 @@ namespace WeakPointer {
     class ParentNode;
     class RightNode;
     class LeftNode;
+
+    /**
+     * Spoiler Alarm: Don't read this :-)
+     * a) Both smart pointers are std::shared_ptr's ==> No d'tor at all will be called
+     * b) One smart pointer is a std::shared_ptr    ==> One d'tor is called
+     * c) Both smart pointers are std::weak_ptr's   ==> All d'tors are called
+     */
 
     class ParentNode {
     private:
