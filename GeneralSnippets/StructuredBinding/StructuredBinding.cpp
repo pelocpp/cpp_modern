@@ -22,9 +22,9 @@ namespace StructuredBinding {
     }
 
     void test_02() {
-        auto [fraction, remainder] = divide_remainder(20, 3);
+        auto [quotient, remainder] = divide_remainder(20, 3);
         std::cout << "20 / 3 is "
-            << fraction << " with a remainder of "
+            << quotient << " with a remainder of "
             << remainder << std::endl;
     }
 
@@ -40,9 +40,7 @@ namespace StructuredBinding {
         std::cout << a << ", " << b << ", " << c << std::endl;
 
         b = 111;
-
-        auto& [d, e, f] = arr;
-        std::cout << d << ", " << e << ", " << f << std::endl;
+        std::cout << arr[0] << ", " << arr[1] << ", " << arr[2] << std::endl;
     }
 
     class Point {
@@ -89,12 +87,13 @@ namespace StructuredBinding {
     void test_05() {
 
         Employee worker { 9987, "Sepp", "Engineer", 987654321 };
-        Employee manager { 999, "Hans", "Manager", 123456789 };
+        Employee manager { 9999, "Hans", "Manager", 123456789 };
 
         std::vector<Employee> employees { worker, manager };
 
         for (const auto& [id, name, role, phone] : employees) {
             std::cout
+                << "Id: "   << id << ", "
                 << "Name: " << name << ", "
                 << "Role: " << role << ", "
                 << "Phone: " << phone << std::endl;
