@@ -11,7 +11,7 @@
 Zur Motivation des Perfect Forwarding betrachten wir folgendes Szenario
 mit einer Template Funktion.
 
-Angenommen, wir wollen eine Funktion schreiben, die ein oder mehrere Parameter beliebigen
+Angenommen, wir wollen eine Funktion schreiben, die ein oder mehrere Parameter hat
 Typs bekommt und diese an einen Konstruktor weiterleitet. In der Praxis könnte es sich
 um eine Umsetzung des Factory-Patterns handeln:
 
@@ -19,7 +19,7 @@ um eine Umsetzung des Factory-Patterns handeln:
 template<typename TCLASS, typename TARG>
 TCLASS Factory(TARG a)
 {
-	return TCLASS(a);
+    return TCLASS(a);
 }
 ```
 
@@ -27,11 +27,11 @@ Nun können wir diese Fabrik schon einsetzen, sowohl für `int`-Werte als auch für
 
 ```cpp
 // first example
-auto n = FactoryEx<int>(123);
+auto n = Factory<int>(123);
 std::cout << n << std::endl;
 
 // second example
-auto obj = FactoryEx<AnyClass>(1.5);
+auto obj = Factory<AnyClass>(1.5);
 std::cout << obj << std::endl;
 ```
 
@@ -46,13 +46,13 @@ Parameter als Referenz-Typ deklariert sein:
 template<typename TCLASS, typename TARG>
 TCLASS Factory(TARG& a)
 {
-	return TCLASS(a);
+    return TCLASS(a);
 }
 ```
 
 Hmmm, eigentlich gut gedacht, aber auf einmal sind die beiden letzten Beispiele
 nicht mehr übersetzungsfähig (unter der Voraussetzung, das die `Factory`-Funktionsschablone
-mit *copy-by-value*-Parameterübergabemechanismus nicht mehr zur Verfügung steht)?!?
+mit *copy-by-value*-Parameterübergabemechanismus nicht mehr zur Verfügung steht).
 
 Eine triviale Lösung besteht darin, dass man die Beispiele - und damit den Aufruf der `Factory`-Funktion - 
 geringfügig ändert:
@@ -69,15 +69,15 @@ auto obj = Factory<AnyClass>(arg);
 std::cout << obj << std::endl;
 ```
 
-Nichtsdestotrotz ist diese Lösung unschön, da das direkte Versorgen der Konstruktors mit
-Konstanten nicht möglich ist. Dies wiederum könnten wir allerdings mit einer weiteren Überladung
+Nichtsdestotrotz ist diese Lösung unschön, da das direkte Versorgen der Konstruktoren mit
+Konstanten nicht mehr möglich ist. Dies wiederum könnten wir allerdings mit einer weiteren Überladung
 der `Factory`-Funktion lösen:
 
 ```cpp
 template<typename TCLASS, typename TARG>
 TCLASS Factory(const TARG& a)
 {
-	return TCLASS(a);
+    return TCLASS(a);
 }
 ```
 
@@ -90,7 +90,7 @@ Es genügt nicht eine Überladung hinzuzufügen, sondern wir müssen auch `const&` u
 Bei 2 Parametern sind dies dann 4 Überladungen, bei 3 Parametern 8 Überladungen etc.
 In der Tat ergibt das für *n* Argumente 2<sup>*n*</sup> Überladungen!
 
-Damit kommen wir auf C++ 11 zu sprechen, und einem neuen Referenz-Typ der passt: Der *RValue*-Referenz
+Damit kommen wir auf C++ 11 zu sprechen, und einem neuen Referenz-Typ, der passt: Der *RValue*-Referenz.
 Als Argument in einer Template-Funktion passt sich der Typ dem tatsächlichen Argument an!
 Das Ergebnis verwendet die &&-Notation und die Standard-Funktion `std::forward`:
 
@@ -98,7 +98,7 @@ Das Ergebnis verwendet die &&-Notation und die Standard-Funktion `std::forward`:
 template<typename TCLASS, typename TARG>
 TCLASS FactoryEx(TARG&& a)
 {
-	return TCLASS(std::forward<TCLASS>(a));
+    return TCLASS(std::forward<TCLASS>(a));
 }
 ```
 
@@ -111,7 +111,7 @@ Damit sind wir beim so genannten *Reference Collapsing* angekommen:
 Da es ab C++ 11 neben der "einfachen" Referenz `&` noch die Referenz `&&` gibt,
 wurde ein Regelwerk definiert, wenn mehrere Referenzen aufeinander treffen.
 
-Es gilt die sogenannte Tabelle der *collapsing rules* 
+Es gilt die sogenannte Tabelle der *Reference Collapsing Rules* 
 (zu Deutsch etwa: *Zusammenfassungsregeln*):
 
 | Formaler Typ | Beschreibung | Resultattyp | Beschreibung|

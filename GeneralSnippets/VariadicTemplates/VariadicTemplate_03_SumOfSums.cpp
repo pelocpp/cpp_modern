@@ -11,10 +11,10 @@
 
 namespace VariadicTemplatesSumofSums {
 
-    template<typename... CONTAINERS>
-    int sumOfSums(const CONTAINERS&... conts) {
+    template<typename... TCONTAINER>
+    int sumOfSums(const TCONTAINER&... conts) {
         const auto sums = std::initializer_list<int>{
-            std::accumulate(std::begin(conts),  std::end(conts), 0) ...
+            std::accumulate(std::begin(conts), std::end(conts), 0) ...
         };
         return std::accumulate(std::begin(sums), std::end(sums), 0);
     }
@@ -27,10 +27,10 @@ namespace VariadicTemplatesSumofSums {
 
     void test_02() {
         std::vector<int> vec1{ 1, 2, 3, 4, 5 };
-        std::vector<int> vec2{ 6, 7, 8, 9, 10 };
-        std::deque<int> queue { 11, 12, 13, 14, 15 };
+        std::deque<int> queue { 6, 7, 8, 9, 10 };
+        std::vector<int> vec2{ 11, 12, 13, 14, 15 };
 
-        int totalSum = sumOfSums(vec1, vec2, queue);
+        int totalSum = sumOfSums(vec1, queue, vec2);
         std::cout << "totalSum: " << totalSum << std::endl;
     }
 }

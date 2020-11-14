@@ -14,17 +14,17 @@ Grundsätzlich gibt es zwei Möglichkeiten, um Funktionsparameterpacks zu bearbeit
 Verwendung der Pack-Erweiterung "im Ganzen" oder der rekursive Aufruf derselben Funktion,
 wobei diese bei jedem Aufruf ein einzelnes Argument aus dem Parameter Pack extrahiert.
 
-## Parameter Pack Expansion Trick mit Hilfe von `std::initializer_list`
+## Parameter Pack Expansions Trick mit Hilfe von `std::initializer_list`
 
 Manchmal möchten wir einfach für jedes Argument des Parameter Packs eine Funktion aufrufen.
 Die Pack-Expansion funktioniert jedoch nur an Stellen, an denen durch Kommas getrennte Listen zulässig sind.
 Dies ist offensichtlich keine durch Kommas getrennte Liste:
 
 ```cpp
-  doSomething(arg1);
-  doSomething(arg2);
-  ...
-  doSomething(argN);
+doSomething(arg1);
+doSomething(arg2);
+...
+doSomething(argN);
 ```
 
 Es verwundert also nicht, dass folgendes Code-Fragment nicht kompilierbar ist:
@@ -105,7 +105,7 @@ Genau diese Schablone habe ich bei der Betrachtung mit *CppInsight.io* verwendet
 ## C++ 17 `constexpr if`
 
 Wir betrachten eine Variation des letzten Beispiels:
-Angenommen, wir möchten alle durch Kommas getrennten Argumente unserer Funktion mit `cout` ausgeben.
+Angenommen, wir möchten alle durch Kommas getrennten Argumente unserer Funktion mit `std::cout` ausgeben.
 Wir könnten den obigen Trick verwenden, mit der Funktion `doSomething`,
 die den Wert plus ein Komma ausgibt.
 Das Problem liegt dann beim letzten Argument, dem kein Komma folgen sollte,
@@ -130,33 +130,6 @@ dies zu einem Kompilierungsfehler führen,
 da der Compiler nicht die entsprechende `print`-Funktion für einen Aufruf
 mit null Argumenten findet!
 
-Wie immer kann jede Rekursion in eine Iteration konvertiert werden!
-Für variadische Templates sprechen wir dann von einer Parameter Pack Expansion:
-
-```cpp
-template <class Head, class... Tail>
-void print1(const Head& head, const Tail&... tail) {
-    std::cout << head;
-    (void)std::initializer_list<int>{ ((std::cout << ", " << tail), 0)... };
-}
-```
-
-Ausgabe mit *CppInsight.io*:
-
-```cpp
-/* First instantiated from: insights.cpp:47 */
-#ifdef INSIGHTS_USE_TEMPLATE
-template<>
-void print1<int, char, double>(const int & head, const char & __tail1, const double & __tail2)
-{
-  std::cout.operator<<(head);
-  static_cast<void>(std::initializer_list<int> {
-    ((std::operator<<(std::operator<<(std::cout, ", "), __tail1)) , 0), 
-    ((std::operator<<(std::cout, ", ").operator<<(__tail2)) , 0)
-  });
-}
-#endif
-```
 
 ## Literaturhinweise:
 

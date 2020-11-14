@@ -8,8 +8,9 @@
 
 namespace VariadicTemplatesIntro {
 
-    /* Erstes Beispiel für ein variadisches Template:
-    */
+    // ========================================================================
+    // Erstes Beispiel für ein variadisches Template
+    // ========================================================================
 
     // Non-recursive template part (regular template)
     template<typename T>
@@ -40,11 +41,11 @@ namespace VariadicTemplatesIntro {
     }
 
     // =================================================================================
-
-    // Ein variadisches Template in zwei Realisierungsvarianten:
+    // Ein variadisches Template in zwei Realisierungsvarianten
     //
     // a) Eine rekursive Template Funktion
     // b) Eine nicht-rekursive Non-Template Funktion
+    // =================================================================================
 
     void print()
     {
@@ -86,12 +87,10 @@ namespace VariadicTemplatesIntro {
         print<double, const char*, std::string>(123.456, "Hello", s);
     }
 
-    // =============================================================
+    // =================================================================================
+    // Anwendungsfall:
     // "Unpacking" a parameter pack to call a matching constructor
-    // =============================================================
-
-    /* Zweites Beispiel für ein variadisches Template:
-    */
+    // =================================================================================
 
     // Test Class - only c'tors are interesting ..
     //
@@ -102,19 +101,19 @@ namespace VariadicTemplatesIntro {
         int m_var3;
 
     public:
-        Unknown() : m_var1(-1), m_var2(-1), m_var3(-1) {
+        Unknown() : m_var1{ -1 }, m_var2{ - 1}, m_var3{ - 1} {
             std::cout << "c'tor()" << std::endl;
         }
 
-        Unknown(int n) : m_var1(n), m_var2(-1), m_var3(-1) {
+        Unknown(int n) : m_var1{ n }, m_var2{ -1 }, m_var3{ -1 } {
             std::cout << "c'tor(int)" << std::endl;
         }
 
-        Unknown(int n, int m) : m_var1(n), m_var2(m), m_var3(-1) {
+        Unknown(int n, int m) : m_var1{ n }, m_var2{ m }, m_var3{ -1 } {
             std::cout << "c'tor(int, int)" << std::endl;
         }
 
-        Unknown(int n, int m, int k) : m_var1(n), m_var2(m), m_var3(k) {
+        Unknown(int n, int m, int k) : m_var1{n}, m_var2{m}, m_var3{k} {
             std::cout << "c'tor(int, int, int)" << std::endl;
         }
 
@@ -160,7 +159,8 @@ namespace VariadicTemplatesIntro {
     }
 
     // =============================================================
-    // Anwendungsfall bei std::unique_ptr
+    // Anwendungsfall:
+    // std::unique_ptr
     // =============================================================
 
     template<typename T, typename... Args>

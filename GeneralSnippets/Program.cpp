@@ -135,13 +135,13 @@ int main()
         //main_template_template_parameter();
         //main_template_template_parameter_02();
         //main_template_specialization();
-        main_tuples();
+        //main_tuples();
         //main_type_traits();
         //main_uniform_initialization();
         //main_unique_ptr();
         //main_variadic_templates_intro();
         //main_variadic_templates_working_on_every_argument();
-        //main_variadic_templates_sum_of_sums();
+        main_variadic_templates_sum_of_sums();
         //main_variadic_templates_mixins();
         //main_variadic_templates_visitor();
         //main_variadic_templates_folding();

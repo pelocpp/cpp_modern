@@ -44,17 +44,6 @@ namespace VariadicTemplatesWorkingOnEveryArgument {
         print(1, '!', std::string("ABC"), 5.5);
         std::cout << std::endl;
     }
-
-    template <class Head, class... Tail>
-    void print1(const Head& head, const Tail&... tail) {
-        std::cout << head;
-        (void)std::initializer_list<int>{ ((std::cout << ", " << tail), 0)... };
-    }
-
-    void test_03() {
-        print1(1, '!', std::string("ABC"), 5.5);
-        std::cout << std::endl;
-    }
 }
 
 void main_variadic_templates_working_on_every_argument()
@@ -62,7 +51,6 @@ void main_variadic_templates_working_on_every_argument()
     using namespace VariadicTemplatesWorkingOnEveryArgument;
     test_01();
     test_02();
-    test_03();
 }
 
 // =====================================================================================
