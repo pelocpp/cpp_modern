@@ -296,6 +296,25 @@ void test_01()
 ```cpp
 void test_02()
 {
+    auto L = [val = 10]() mutable { std::cout << val++ << std::endl; };
+    L();
+    L();
+    L();
+    L();
+    L();
+    auto LC = L;
+    LC();
+    LC();
+    LC();
+    L();
+}
+```
+
+*Quiz 3*:
+
+```cpp
+void test_03()
+{
     int i{ 0 };
     
     // create a lambda named 'count'
@@ -313,7 +332,7 @@ void test_02()
 }
 ```
 
-*Quiz 3*:
+*Quiz 4*:
 
 ```cpp
 void invoke(const std::function<void(void)>& fn)
@@ -321,7 +340,7 @@ void invoke(const std::function<void(void)>& fn)
     fn();
 }
 
-void test_03()
+void test_04()
 {
     int i{ 0 };
 

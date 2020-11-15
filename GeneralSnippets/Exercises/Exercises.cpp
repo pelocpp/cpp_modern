@@ -326,6 +326,32 @@ namespace Exercises {
         void testExercise_05b()
         {
             // Output:
+            // 10
+            // 11
+            // 12
+            // 13
+            // 14
+            // 15
+            // 16
+            // 17
+            // 15
+
+            auto L = [val = 10]() mutable { std::cout << val++ << std::endl; };
+            L();
+            L();
+            L();
+            L();
+            L();
+            auto LC = L;
+            LC();
+            LC();
+            LC();
+            L();
+        }
+
+        void testExercise_05c()
+        {
+            // Output:
             // 1
             // 2
             // 2
@@ -356,7 +382,7 @@ namespace Exercises {
             fn();
         }
 
-        void testExercise_05c()
+        void testExercise_05d()
         {
             // Output:
             // 1
@@ -368,6 +394,9 @@ namespace Exercises {
             // the std::function internally makes a copy of the lambda object.
             // Thus, the call to fn() is actually being executed on the copy of our lambda, not the actual lambda.
 
+            // See also:
+            // https://stackoverflow.com/questions/23515058/creating-stdfunction-with-lambda-causes-superfluous-copying-of-the-lambda-obje
+
             int i{ 0 };
 
             // increments and prints its local copy of @i
@@ -377,6 +406,14 @@ namespace Exercises {
             invoke(count);
             invoke(count);
             std::cout << std::endl;
+        }
+
+        void testExercise_05()
+        {
+            testExercise_05a();
+            testExercise_05b();
+            testExercise_05c();
+            testExercise_05d();
         }
     }
 
@@ -1674,9 +1711,7 @@ void main_exercices()
     // testExercise_04a();  // needs console input
     testExercise_04b();
     
-    testExercise_05a();
-    testExercise_05b();
-    testExercise_05c();
+    testExercise_05();
 
     testExercise_06a();
     testExercise_06b();
