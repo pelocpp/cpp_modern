@@ -11,7 +11,7 @@ Es ist nicht von der Hand zu weisen, dass der `decltype`-Operator Gemeinsamkeite
 `typeof`-Operator hat. Vermutlich auf Grund vorhandener, inkompatibler Erweiterungen
 dieses Namens in vielen Compilern wurde stattdessen `decltype` gewählt.
 
-`decltype` gibt einen Typ zurück. Es kann grundsätzlich überall dort eingesetzt werden, wo ein Typ benötigt wird:
+`decltype` gibt einen Typ zurück. Der Operator kann grundsätzlich überall dort eingesetzt werden, wo ein Typ benötigt wird:
 
 ```cpp
 // decltype may modify type deduction, e.g. in generic lamdas
@@ -33,20 +33,18 @@ Weitere Beispiele:
 std::vector<int> vec;
 
 // decltype(vec) yields std::vector<int>,
-// so the next line is equivalent to 'std::vector<int> v2;'
+// so the next line is equivalent to 'std::vector<int> v2;':
 decltype(vec) vec2;
 
 // foo returns the type of f, in this case float,
-// so this is equivalent to float foo(int b);
+// so this is equivalent to 'float foo(int b);':
 float f;
 auto foo(int b) -> decltype(f);
 ```
 
-und
+und `decltype` mit Ausdrücken:
 
 ```cpp
-// demonstrating decltype with expressions:
-
 // decltype(foo()) yields the type of whatever foo() returns,
 // in this case, float:
 float foo();
@@ -71,7 +69,7 @@ Im Fall von `int` könnten wir ein standardmäßig initialisiertes `int` verwenden.
 Der Standardkonstruktor ist jedoch nicht immer verfügbar.
 
 Für solche Fälle ist `std::declval` konzipiert.
-Sie ist eine Funktionsschabone, die eine *r*-Value-Referenz auf alles zurückgibt,
+Es handelt sich um eine Funktionsschabone, die eine *r*-Value-Referenz auf alles zurückgibt,
 was an sie übergeben wird. 
 Auf diese Weise müssen wir nicht eine Funktion künstlich deklarieren,
 um etwas zu haben, das wir im `decltype`-Argument verwenden können:
