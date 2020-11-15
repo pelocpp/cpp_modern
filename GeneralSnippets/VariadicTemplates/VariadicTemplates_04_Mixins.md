@@ -112,7 +112,6 @@ Eine **class C: public T...** wird folglich in eine Klasse `C` wie folgt "transf
 Als Beispiel betrachten wir eine *Repository*-Klasse im Sinne eines Assoziativ-Speichers. 
 Das Repository-Objekt soll über ein oder mehrere so genannte *Slots* verfügen,
 auf die mit einem Schlüssel (*Key*) zugegriffen werden kann. Ferner enthält ein Slot einen Wert.
-
 Die genaue Intention des Aussehens eines `Repository`-Objekts entnehmen Sie bitte Abbildung 1:
 
 <img src="cpp_snippets_mixins_01.svg" width="600">
@@ -124,7 +123,7 @@ Wir stellen im Folgenden zwei Implementierungen gegenüber:
   * klassischer Ansatz
   * Ansatz mit Mixins
 
-#### Klassischer Realisierung
+#### Klassische Realisierung
 
 ###### Realisierung:
 
@@ -184,9 +183,9 @@ void main() {
 }
 ```
 
-Man kann unschwer die Nachteile dieser Realisierung erkennen: Für jeden Slot muss man eine eigene Slot-Klasse
+Man kann unschwer die Nachteile dieser Realisierung erkennen: Für jeden Slot muss man eine eigene *Slot*-Klasse
 definieren. Und zum Zweiten muss man für jeden dieser Slots eine separate *getter*- und *setter*-Methode implementieren. 
-Die kann man nur als "Copy-Paste"-Programmierung bezeichnen, es muss andere Lösungsmöglichkeiten geben.
+Dies kann man nur als "Copy-Paste"-Programmierung bezeichnen, es muss andere Lösungsmöglichkeiten geben.
 
 #### Ansatz mit Mixins
 
@@ -232,7 +231,7 @@ public:
 ###### Testrahmen:
 
 ```cpp
-using MyRepo = Repository< Slot<int>, Slot<std::string> >;
+using MyRepo = Repository<Slot<int>, Slot<std::string>>;
 
 void test_04() {
     MyRepo repo;
@@ -252,7 +251,7 @@ Wenn Sie versuchen, zwei `int`-Slots anzulegen, wird ein Kompilierungsfehler aus
 #### Verbesserung des Mixins-Ansatzes
 
 Wir müssen unsere `Slot`-Klasse um einen zusätzlichen Template Parameter erweitern (Typ für Schlüssel mit Standardwert).
-In Abbildung 2 können wir die Modifikationen erkennen. Wollen wir zwei Slot-Einträge
+In Abbildung 2 können wir die Modifikationen erkennen. Wollten wir zwei Slot-Einträge
 desselben Typs haben (siehe Typ `std::string` in Abbildung 2), dann sind diese beiden
 Einträge durch einen zusätzlichen Schlüsseltyp zu unterscheiden.
 
@@ -306,7 +305,7 @@ public:
 ###### Testrahmen:
 
 ```cpp
-// again forward definition sufficient, definition not needed
+// again forward definition sufficient, definitions not needed
 struct Key1;
 struct Key2;
 

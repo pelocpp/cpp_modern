@@ -33,14 +33,6 @@ namespace VariadicTemplatesMixins {
         X<A, B, C>  xabc(a, b, c);
     }
 
-    void test_02() {
-        A a;
-        B b;
-        C c;
-
-        X<A, B, C>  xabc(a, b, c);
-    }
-
     // ===================================================================
     // Variant 1: "copy-paste" style 
 
@@ -83,7 +75,7 @@ namespace VariadicTemplatesMixins {
         }
     };
 
-    void test_03() {
+    void test_02() {
         MyRepository repo;
 
         repo.setSlotA(123);
@@ -131,9 +123,9 @@ namespace VariadicTemplatesMixins {
         }
     };
 
-    using MyRepo = Repository< Slot<int>, Slot<std::string> >;
+    using MyRepo = Repository<Slot<int>, Slot<std::string>>;
 
-    void test_04() {
+    void test_03() {
         MyRepo repo;
 
         repo.set<std::string>("XYZ");
@@ -146,7 +138,7 @@ namespace VariadicTemplatesMixins {
     // ===================================================================
     // Variant 3: improving variant 2: several slots with same type
 
-    void test_05() {
+    void test_04() {
         // RepositoryEx < Slot<int>, Slot<int> > repo;
         // error: 'VariadicTemplatesMixins::Slot<int>' is already a direct base
     }
@@ -200,7 +192,7 @@ namespace VariadicTemplatesMixins {
         }
     };
 
-    // again forward definition sufficient, definition not needed
+    // again forward definition sufficient, definitions not needed
     struct Key1;
     struct Key2;
 
@@ -212,7 +204,7 @@ namespace VariadicTemplatesMixins {
         SlotEx<std::string, Key2>
         >;
 
-    void test_06() {
+    void test_05() {
         MyRepoEx repo;
 
         repo.set(12345); // note type deduction: we pass an int, so it writes to the int slot
@@ -235,6 +227,7 @@ namespace VariadicTemplatesMixins {
         Person(const std::string& firstName, const std::string& lastName, const int age)
         : m_firstName(firstName), m_lastName(lastName), m_age(age) {}
 
+        // just for testing: if move-assignment is available, copy-assignment is ignored!
         Person& operator= (const Person& person) {
             // prevent self-assignment
             if (this == &person)
@@ -273,7 +266,7 @@ namespace VariadicTemplatesMixins {
         }
     };
 
-    void test_07() {
+    void test_06() {
         using MyRepo = RepositoryEx
         <
         SlotEx<Person>,
@@ -297,9 +290,8 @@ void main_variadic_templates_mixins()
     test_02();
     test_03();
     test_04();
-    //test_05();  // doesn't compile
+    test_05();
     test_06();
-    test_07();
 }
 
 // =====================================================================================
