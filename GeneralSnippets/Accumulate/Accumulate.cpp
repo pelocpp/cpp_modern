@@ -18,21 +18,21 @@ namespace AlgorithmAccumulate {
             std::end(vec),
             std::string(""), // first element
             [counter = 0](const std::string& first, const auto& next) mutable {
-            counter++;
-            std::ostringstream ss;
-            ss << std::setfill('0') << std::setw(2) << counter
-                << ": " << std::setfill(' ') << std::setw(10)
-                << std::right << next << std::endl;
+                counter++;
+                std::ostringstream ss;
+                ss << std::setfill('0') << std::setw(2) << counter
+                    << ": " << std::setfill(' ') << std::setw(10)
+                    << std::right << next << std::endl;
 
-            return first + ss.str();
-        }
+                return first + ss.str();
+            }
         );
 
         return s;
     }
 
     template <typename T>
-    std::string toString2(std::vector <T> vec) {
+    std::string toString2(std::vector<T> vec) {
 
         int counter = 0;
 
@@ -41,14 +41,14 @@ namespace AlgorithmAccumulate {
             std::end(vec),
             std::string(""), // first element
             [counter = 0](const std::string& first, const T& next) mutable {
-            counter++;
-            std::ostringstream ss;
-            ss << std::setfill('0') << std::setw(2) << counter
-                << ": " << std::setfill(' ') << std::setw(10)
-                << std::right << next << std::endl;
+                counter++;
+                std::ostringstream ss;
+                ss << std::setfill('0') << std::setw(2) << counter
+                    << ": " << std::setfill(' ') << std::setw(10)
+                    << std::right << next << std::endl;
 
-            return first + ss.str();
-        }
+                return first + ss.str();
+            }
         );
 
         return s;

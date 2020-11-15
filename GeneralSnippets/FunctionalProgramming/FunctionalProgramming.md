@@ -48,16 +48,28 @@ von links nach rechts verarbeitet und eine Funktion  `foldright`, die die Elemen
 Beachten Sie die Hinweise im Quellcode hierzu.
 
 
+## Umsetzung in C++
+
+In einer ersten Näherung finden wir die drei Funktionen höherer Ordnung auch in C++
+bei genauem Hinsehen in den STL-Algorithmen vor:
+
+  * `map` - ähnlich zu `std::transform`.
+  * `filter` - ähnlich zu `std::copy_if`.
+  * `fold` - ähnlich zu `std::accumulate`.
+
+Im Beispielcode zu diesem Snippet ergänzen wir diese STL-Standardfunktionen mit einer adäquaten Hülle,
+so dass ihr Bezug zur funktionalen Programmierung deutlicher wird.
+
 ## Filter-Map-Reduce Pattern
 
 "Filter-Map-Reduce" beschreibt ein Pattern, bei dem eine Menge von Daten in einer Abfolge
 von bestimmten Schritten verarbeitet wird. Dabei ist `reduce` eine andere Bezeichnung für `fold`.
 
-Offensichtlich ist die Reihenfolge
+Offensichtlich ist die Reihenfolge dabei wichtig:
 
-  * *Filter*: Filterung gewünschter Elemente aus einer Menge von Elementen. Die Element-Typen bleiben dieselben, aber die Menge der Elemente wird reduziert.
-  * *Map*: Transformation der Elemente. Dabei ändert sich die Menge der Elemente nicht, aber oft ändert sich der Element-Typ. Beispielsweise können Berechnungen, Extraktionen oder Umwandlungen durchgeführt werden.
-  * *Reduce*: Reduktion auf ein Endergebnis.
+  * *Filter*: Zunächst findet eine Filterung der Elemente aus einer bestimmten Menge von Elementen statt.
+  * *Map*: Danach erfolgt eine Transformation der noch vorhandenen Elemente in einen neuen Datentyp.
+  * *Reduce*: Schließlich wird das Zwischenergebnis, eine modifizierte Teilmenge der Ausgangsmenge, auf ein Endergebnis reduziert.
 
 Im Quellcode zu diesem Snippet gibt es Beispiel zum *Filter-Map-Reduce* Pattern.
 

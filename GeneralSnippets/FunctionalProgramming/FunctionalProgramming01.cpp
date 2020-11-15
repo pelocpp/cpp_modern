@@ -363,7 +363,7 @@ namespace FunctionalProgramming_01 {
         auto result2 = map(
             std::begin(result1),
             std::end(result1),
-            [](const Book& book) { return book.m_title; }  // convert float to string
+            [](const Book& book) { return book.m_title; }  // convert Book to string
         );
 
         auto result3 = fold<std::string>(

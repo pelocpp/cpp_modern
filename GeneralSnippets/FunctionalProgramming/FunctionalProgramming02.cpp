@@ -46,10 +46,10 @@ namespace FunctionalProgramming_02 {
         // not needed, just for demonstration purposes
         ->std::vector<typename std::remove_reference<decltype (cont[0])>::type >
     {
-        using ValueType1 = decltype (cont[0]);  // retrieve type of single container element
-        using ValueType2 = typename std::remove_reference<ValueType1>::type;  
+        using ValueType0 = decltype (cont[0]);  // retrieve type of single container element
+        using ValueType = typename std::remove_reference<ValueType0>::type;  
 
-        std::vector<ValueType2 > result;
+        std::vector<ValueType> result;
         result.reserve(std::distance(std::begin(cont), std::end(cont)));
         std::copy_if(
             std::begin(cont),
@@ -362,7 +362,7 @@ namespace FunctionalProgramming_02 {
 
         std::vector<std::string> result2 = map(
             result1,
-            [](const Book& book) { return book.m_title; }  // convert float to string
+            [](const Book& book) { return book.m_title; }  // convert Book to string
         );
 
         std::string result3 = foldLeft(
@@ -402,7 +402,7 @@ namespace FunctionalProgramming_02 {
                     booksList,
                     [] (const Book& book) { return book.m_year >= 1990; }
                 ),
-                [] (const Book& book) { return book.m_title; }  // convert float to string
+                [] (const Book& book) { return book.m_title; }  // convert Book to string
             ),
             std::string(""),
             [] (std::string a, std::string b) {
@@ -589,30 +589,30 @@ void main_functional_programming_alternate()
 {
     using namespace FunctionalProgramming_02;
 
-    //// testing 'filter'
-    //test_functional_filter_01();
+    // testing 'filter'
+    test_functional_filter_01();
 
-    //// testing 'map'
-    //test_functional_map_02a();
-    //test_functional_map_02b();
-    //test_functional_map_02c();
-    //test_functional_map_02d();
+    // testing 'map'
+    test_functional_map_02a();
+    test_functional_map_02b();
+    test_functional_map_02c();
+    test_functional_map_02d();
     test_functional_map_02e();
 
-    //// testing 'fold'
-    //test_functional_fold_03a();
-    //test_functional_fold_03b();
-    //test_functional_fold_03c();
+    // testing 'fold'
+    test_functional_fold_03a();
+    test_functional_fold_03b();
+    test_functional_fold_03c();
 
-    //// testing 'fold-map-reduce' pattern
-    //test_functional_fmr_pattern_04a();
-    //test_functional_fmr_pattern_04a_compact();
-    //test_functional_fmr_pattern_04b();
-    //test_functional_fmr_pattern_04b_compact();
-    //test_functional_fmr_pattern_04c();
-    //test_functional_fmr_pattern_04c_compact();
-    //test_functional_fmr_pattern_04d();
-    //test_functional_fmr_pattern_04d_compact();
+    // testing 'fold-map-reduce' pattern
+    test_functional_fmr_pattern_04a();
+    test_functional_fmr_pattern_04a_compact();
+    test_functional_fmr_pattern_04b();
+    test_functional_fmr_pattern_04b_compact();
+    test_functional_fmr_pattern_04c();
+    test_functional_fmr_pattern_04c_compact();
+    test_functional_fmr_pattern_04d();
+    test_functional_fmr_pattern_04d_compact();
 }
 
 // =====================================================================================
