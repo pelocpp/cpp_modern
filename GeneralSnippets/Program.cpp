@@ -144,7 +144,7 @@ int main()
         //main_variadic_templates_sum_of_sums();
         //main_variadic_templates_mixins();
         //main_variadic_templates_visitor();
-        //main_variadic_templates_folding();
+        main_variadic_templates_folding();
         //main_variadic_else_if();
         //main_variadic_templates_examples();
         //main_variadic_templates_more_examples();

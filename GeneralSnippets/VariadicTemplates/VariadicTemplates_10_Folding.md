@@ -38,41 +38,16 @@ Diese wären `+`, `-`, `*`, `/`, `%`, `^`, `&`, `|`, `=`, `<`, `>`, `<<`, `>>`, `
 Ein Sonderfall des Foldings ist das sogenannte *"Folding über einem Komma"*.
 Dieses wird ebenfalls an mehreren Beispielen veranschaulicht.
 
-Ausgabe der Code-Snippets zu variadischen Templates:
-
-```cpp
-Sum from 1 up to 10: 55
-String Concatenation: ABCDEFGHIJKLMNO
-
-Value: char
-Value: short
-Value: int
-Value: long
-Value: float
-Value: double
-Value: const char*
-Value: bool
-
-double - value: 3.1415
-short - value: 123
-int - value: 123
-long - value: 123
-float - value: 3.14
-double - value: 3.14
-char - value: A
-const char* - value: ABC
-bool - value: 0
-```
-
 Ausgabe der Code-Snippets zu *fold expressions*:
 
 ```cpp
-123ABCDEFGHI
 Sum from 1 up to 10: 55
+123ABCDEFGHI
 BRF: 1 - (2 - (3 - (4 - ( 5 - 0)))): 3
 BLF: ((((0 - 1) - 2) - 3) - 4) - 5: -15
 URF: 1 - (2 - (3 - (4 - 5))): 3
 URF: ((((1 - 2) - 3) - 4) - 5: -13
+1 2 3 ABC DEF GHI
 1 2 3 ABC DEF GHI
 1-2-3-ABC-DEF-GHI-
 ```
