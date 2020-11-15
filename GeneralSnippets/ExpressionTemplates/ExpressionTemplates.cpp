@@ -346,9 +346,9 @@ namespace ExpressionTemplates {
 void main_expression_templates()
 {
     using namespace ExpressionTemplates;
-    //test_01();                  // <== classical approach
-    //test_02();
-    //test_03();                  // <== expression templates approach
+    test_01();                  // <== classical approach
+    test_02();
+    test_03();                  // <== expression templates approach
     test_04_benchmark();        // <== benchmark
 }
 

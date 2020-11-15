@@ -96,7 +96,7 @@ int main()
         //main_decltype();
         //main_exercices();
         //main_keyword_explicit();
-        main_expression_templates();
+        //main_expression_templates();
         //main_filesystem();
         //main_filesystem();
         //main_functional_programming();
