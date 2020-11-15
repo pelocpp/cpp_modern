@@ -96,7 +96,7 @@ int main()
         //main_decltype();
         //main_exercices();
         //main_keyword_explicit();
-        //main_expression_templates();
+        main_expression_templates();
         //main_filesystem();
         //main_filesystem();
         //main_functional_programming();
@@ -142,7 +142,7 @@ int main()
         //main_variadic_templates_intro();
         //main_variadic_templates_working_on_every_argument();
         //main_variadic_templates_sum_of_sums();
-        main_variadic_templates_mixins();
+        //main_variadic_templates_mixins();
         //main_variadic_templates_visitor();
         //main_variadic_templates_folding();
         //main_variadic_else_if();

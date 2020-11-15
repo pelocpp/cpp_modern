@@ -9,11 +9,11 @@
 
 namespace ExpressionTemplates {
 
-    constexpr bool Verbose = true;
+    constexpr bool Verbose = false;
 
     // default sizes
-    constexpr size_t DefaultCols = 5;
-    constexpr size_t DefaultRows = 5;
+    constexpr size_t DefaultCols = 3;
+    constexpr size_t DefaultRows = 3;
 
     // benchmark sizes
     constexpr int Iterations = 10;
@@ -52,17 +52,17 @@ namespace ExpressionTemplates {
 
     template <typename T>
     const T& Matrix<T>::operator()(size_t x, size_t y) const {
-        if constexpr (Verbose) {
-            std::cout << "Matrix::operator() const => " << x << ',' << y << std::endl;
-        }
+    //    if constexpr (Verbose) {
+    //        std::cout << "Matrix::operator() const => " << x << ',' << y << std::endl;
+    //    }
         return m_values[y * getCols() + x];
     }
 
     template <typename T>
     T& Matrix<T>::operator()(size_t x, size_t y) {
-        if constexpr (Verbose) {
-            std::cout << "Matrix::operator() => [" << x << ',' << y << ']' << std::endl;
-        }
+        //if constexpr (Verbose) {
+        //    std::cout << "Matrix::operator() => [" << x << ',' << y << ']' << std::endl;
+        //}
         return m_values[y * getCols() + x];
     }
 
@@ -173,11 +173,12 @@ namespace ExpressionTemplates {
 
     void test_01()
     {
-        std::cout << "Expression Template 01:" << std::endl;
+        std::cout << "Expression Template 01: Classical Approach" << std::endl;
 
         Matrix<double> a;
         Matrix<double> b;
         Matrix<double> c;
+        Matrix<double> d;
 
         // initialize matrices
         for (size_t y = 0; y != a.getRows(); ++y) {
@@ -185,10 +186,11 @@ namespace ExpressionTemplates {
                 a(x, y) = 1.0;
                 b(x, y) = 2.0;
                 c(x, y) = 3.0;
+                d(x, y) = 4.0;
             }
         }
 
-        Matrix<double> result = a + b + c;  // result(x, y) = 6 
+        Matrix<double> result = a + b + c + d;  // result(x, y) = 10 
     }
 
     void test_02()
@@ -238,11 +240,12 @@ namespace ExpressionTemplates {
 
     void test_03()
     {
-        std::cout << "Expression Template 03:" << std::endl;
+        std::cout << "Expression Template 03: Expression Templates Approach" << std::endl;
 
         Matrix<double> a;
         Matrix<double> b;
         Matrix<double> c;
+        Matrix<double> d;
         Matrix<double> result;
 
         // initialize matrices
@@ -251,14 +254,16 @@ namespace ExpressionTemplates {
                 a(x, y) = 1.0;
                 b(x, y) = 2.0;
                 c(x, y) = 3.0;
+                d(x, y) = 4.0;
             }
         }
 
-        // adding 3 matrices using modified operator=
+        // adding 4 matrices using modified operator=
         MatrixSum<Matrix<double>, Matrix<double>> sumAB{ a, b };
         MatrixSum<MatrixSum<Matrix<double>, Matrix<double>>, Matrix<double>> sumABC{ sumAB, c };
+        MatrixSum<MatrixSum<MatrixSum<Matrix<double>, Matrix<double>>, Matrix<double>>, Matrix<double>> sumABCD{ sumABC, d };
 
-        result = sumABC;
+        result = sumABCD;
     }
 
     // =====================================================================================
@@ -341,10 +346,10 @@ namespace ExpressionTemplates {
 void main_expression_templates()
 {
     using namespace ExpressionTemplates;
-    test_01();
-    test_02();
-    test_03();
-    test_04_benchmark();
+    //test_01();                  // <== classical approach
+    //test_02();
+    //test_03();                  // <== expression templates approach
+    test_04_benchmark();        // <== benchmark
 }
 
 // =====================================================================================

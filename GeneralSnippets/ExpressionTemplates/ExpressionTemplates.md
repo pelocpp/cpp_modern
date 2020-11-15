@@ -7,7 +7,7 @@
 ## Einführung in Expression Templates 
 
 Ein *Expression Template* ist eine Optimierungstechnik zur Übersetzungszeit,
-die hauptsächlich im "Numerical Computing" Anwendung findet.
+die hauptsächlich im "*Numerical Computing*" Anwendung findet.
 Der Hauptzweck besteht darin, unnötige Temporärvariablen bzw. -objekte zu vermeiden und Schleifenberechnungen
 mit einem einzigen Durchgang zu optimieren (bei Operationen mit wiederholten numerischen Operationen).
 *Expression Templates* wurden ursprünglich entwickelt, um die Ineffizienzen einer naiven Operatoren-Überladung bei der Implementierung
@@ -24,7 +24,7 @@ class Matrix {
 public:
     using value_type = T;
 
-    Matrix() : m_values(COL * ROW) {}
+    Matrix() : m_values(COL * ROW) {}  // constructs container with 'count' celements 
 
     static size_t cols() { return COL; }
     static size_t rows() { return ROW; }
@@ -112,7 +112,7 @@ Wir gehen einen Schritt zurück und überlegen uns, wie wir die Überladung des 
 um eine bessere Laufzeit zu erzielen.
 
 Das Problem ergibt sich aus der Tatsache, dass der Ausdruck `Matrix result = a + b + c;` zu
-"eifrig" (engl.  "eagerly") ausgewertet wird, bevor der Compiler die Möglichkeit hatte,
+"eifrig" (engl. "*eager*") ausgewertet wird, bevor der Compiler die Möglichkeit hat,
 den gesamten Baum des arithmetischen Ausdrucks zu erstellen.
 Mit anderen Worten: Was wir wirklich erreichen möchten, ist, dass `a + b + c` in einem Durchlauf berechnet wird
 und der resultierende Ausdruck an `result` nur einmal zugewiesen wird.
