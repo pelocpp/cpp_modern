@@ -43,14 +43,18 @@ namespace StdArray {
     }
 
     void test_02() {
-        // assignment with initializer list!
+
         std::array<int, 5> myArray;
-        myArray = { 0, 1, 2, 3, 4 }; // okay
-        myArray = { 9, 8, 7 }; // okay, elements 3 and 4 are set to zero!
+
+        myArray = { 0, 1, 2, 3, 4 };       // assignment with initializer list: okay
+
+        myArray = { 9, 8, 7 };             // okay, elements 3 and 4 are set to zero!
+
         // myArray = { 0, 1, 2, 3, 4, 5 }; // doesn't compile, too many elements in initializer list!
     }
 
     void test_03() {
+
         // General Hint:
         // 'at' does bounds checking, is therefore slower - but safer.
         // subscript operator [] does not do any bounds-checking.
@@ -146,6 +150,7 @@ namespace StdArray {
     }
 
     void test_07() {
+
         // passing a multidimensional std::array to another function
         std::array<std::array<int, 3>, 3> array{ {{11,12,13},{14,15,16},{17,18,19}} };
         display(array);
@@ -166,11 +171,12 @@ namespace StdArray {
         employees[0] = { 9987, "Sepp", "Engineer", 987654321 };
         employees[1] = { 999, "Hans", "Manager", 123456789 };
 
-        for (const auto& [id, name, role, salary] : employees) {
+        for (const auto& [id, name, role, phone] : employees) {
             std::cout
-                << "Name: " << name
-                << "Role: " << role
-                << "Salary: " << salary << std::endl;
+                << "Id: " << id << ", "
+                << "Name: " << name << ", "
+                << "Role: " << role << ", "
+                << "Phone: " << phone << std::endl;
         }
     }
 }

@@ -85,10 +85,10 @@ int main()
         //main_allocator_classtype();
         //main_allocator_integral();
         //main_any();
-        //main_array();
+        main_array();
         //main_array_decay();
         //main_casts();
-        main_common_type();
+        //main_common_type();
         //main_constructor_invocations();
         //main_constexpr();
         //main_constexpr_extended();
