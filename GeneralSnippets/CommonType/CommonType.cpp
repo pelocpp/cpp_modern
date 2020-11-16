@@ -16,7 +16,7 @@ namespace CommonType {
         Number() : m_value(T{}) {}
         Number(T value) : m_value(value) {}
 
-        T operator()() const { // functor
+        T operator()() const {
             return m_value;
         }
     };
@@ -46,29 +46,30 @@ namespace CommonType {
         result = intNumber() + longNumber();
         std::cout << result() << std::endl;
 
-        Number<double> doublenumber(123.456);
-        std::cout << doublenumber() << std::endl;
-
         Number<short> shortNumber(321);
         std::cout << shortNumber() << std::endl;
 
-        Number<std::common_type<double, long>::type> anotherResult = shortNumber() + doublenumber();
+        Number<double> doubleNumber(123.456);
+        std::cout << doubleNumber() << std::endl;
+
+        Number<std::common_type<short, double>::type> anotherResult = shortNumber() + doubleNumber();
         std::cout << anotherResult() << std::endl;
     }
 
     // do you notice the difference using operator+ between these two examples?
+    // (hint: the debugger may help ...)
     void test_commontype_02()
     {
         std::cout << "More std::common_type demonstration:" << std::endl;
 
-        Number<double> number(123.456);
-        std::cout << number() << std::endl;
+        Number<double> doubleNumber(123.456);
+        std::cout << doubleNumber() << std::endl;
 
         Number<long> longNumber(321);
         std::cout << longNumber() << std::endl;
 
         Number<std::common_type<double, long>::type> result;
-        result = number + longNumber;
+        result = doubleNumber + longNumber;
         std::cout << result() << std::endl;
     }
 }
