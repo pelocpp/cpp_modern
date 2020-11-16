@@ -6,7 +6,7 @@
 
 namespace ConstExpr {
 
-    constexpr bool DEBUG_ENABLED = false;
+    constexpr bool DEBUG_ENABLED = true;
 
     enum class LogLevel
     {
@@ -35,7 +35,7 @@ namespace ConstExpr {
     }
 
     template <LogLevel level, typename TContent>
-    inline void log(TContent const& content)
+    inline void log(const TContent& content)
     {
         if constexpr (DEBUG_ENABLED || level > LogLevel::DEBUG)
         {

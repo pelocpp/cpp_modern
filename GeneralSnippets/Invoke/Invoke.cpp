@@ -60,7 +60,7 @@ namespace StdInvoke {
         result = std::invoke(&Incrementer::m_x, inc);
         std::cout << "result: " << result << std::endl;
 
-        // function objects:
+        // (nested) function objects:
         Incrementer inc2(10);
         result = std::invoke(std::plus<>(), std::invoke(&Incrementer::m_x, inc2), 3);
         std::cout << "result: " << result << std::endl;

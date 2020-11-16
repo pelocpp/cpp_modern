@@ -13,6 +13,7 @@ namespace TemplateConstExprIf {
     {
     private:
         T m_val;
+
     public:
         Adder(T v) : m_val{ v } {}
 
@@ -33,6 +34,7 @@ namespace TemplateConstExprIf {
             return vecCopy;
         }
 
+        // template member function
         template <typename U>
         T add(U x) const {
             if constexpr (std::is_same_v<T, std::vector<U>>) {
