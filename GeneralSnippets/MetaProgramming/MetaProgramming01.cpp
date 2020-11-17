@@ -8,9 +8,7 @@ namespace Metaprogramming {
 
     template <int N>
     struct Factorial {
-
         static const int result = N * Factorial<N - 1>::result;
-
     };
 
     template <>
@@ -81,11 +79,11 @@ namespace Metaprogramming {
     };
 
     void test_03() {
-        typedef Frak<16, 4> Four;
-        typedef FrakNormalizedVerbose<Four>::result FourNormalized;
+        using Four = Frak<16, 4>;
+        using FourNormalized = FrakNormalizedVerbose<Four>::result;
         std::cout << FourNormalized::Num << "/" << FourNormalized::Den << "\n";
-        typedef Frak<32, 4> Eight;
-        typedef FrakNormalized<Eight>::result EightNormalized;
+        using Eight = Frak<32, 4>;
+        using EightNormalized = FrakNormalized<Eight>::result;
         std::cout << EightNormalized::Num << "/" << EightNormalized::Den << "\n";
     }
 
@@ -104,9 +102,9 @@ namespace Metaprogramming {
     };
 
     void test_04() {
-        typedef Frak<3, 7> Frak1;
-        typedef Frak<1, 7> Frak2;
-        typedef Sum<Frak1, Frak2>::result Result;
+        using Frak1 = Frak<3, 7>;
+        using Frak2 = Frak<1, 7>;
+        using Result = Sum<Frak1, Frak2>::result;
         std::cout << Result::Num << "/" << Result::Den << "\n";
     }
 
@@ -125,7 +123,7 @@ namespace Metaprogramming {
     };
 
     void test_05() {
-        typedef E<8>::result X;
+        using X = E<8>::result;
         std::cout << "e = " << (1.0 * X::Num / X::Den) << "\n";
         std::cout << "e = " << X::Num << "/" << X::Den << "\n";
     }

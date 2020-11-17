@@ -73,7 +73,7 @@ wir das Thema.
 Templates werden beim Übersetzen ausgewertet.
 Das bedeutet, dass der gesamte Quellcode beim Übersetzen der Quelle tatsächlich ausgeführt wird,
 also nicht zur Laufzeit. Da der Übersetzer Klassen - keine Objekte - übersetzt, können Templates
-nur auf Klassen angewendet werden, es machen also nur Klassenvariablen (`const int`) Sinn.
+nur auf Klassen angewendet werden, es machen also nur Klassenvariablen (`static const`) Sinn.
 
 ### Definition neuer Datentypen mit `using`
 
