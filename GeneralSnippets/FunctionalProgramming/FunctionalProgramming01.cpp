@@ -66,7 +66,7 @@ namespace FunctionalProgramming_01 {
         using FunctorValueType = decltype(std::declval<TFunctor>()(std::declval<ValueType<InputIterator>>()));
 
         std::vector<FunctorValueType> result;
-        result.reserve(unsigned(std::distance(begin, end)));
+        result.reserve(std::distance(begin, end));
         std::transform(begin, end, std::back_inserter(result), std::forward<TFunctor>(lambda));
         return result;
     }
@@ -81,7 +81,7 @@ namespace FunctionalProgramming_01 {
         using FunctorValueType = decltype(std::declval<TFunctor>()(std::declval<ValueType>()));
 
         std::vector<FunctorValueType> result;
-        result.reserve(unsigned(std::distance(begin, end)));
+        result.reserve(std::distance(begin, end));
         std::transform(begin, end, std::back_inserter(result), std::forward<TFunctor>(lambda));
         return result;
     }
@@ -89,7 +89,9 @@ namespace FunctionalProgramming_01 {
     // =================================================================================
     // testing 'filter'
 
+    // filtering even numbers in a list of numbers
     void test_functional_filter_01() {
+
         std::vector<int> vec(20);
         std::generate(std::begin(vec), std::end(vec), [value = 0]() mutable {
             return ++value;
@@ -138,6 +140,7 @@ namespace FunctionalProgramming_01 {
         }
     }
 
+    // mapping list of numbers to new list with each number multiplied by 2 
     void test_functional_map_02b() {
         std::vector<int> vec(20);
         std::generate(std::begin(vec), std::end(vec), [value = 0]() mutable {
@@ -163,6 +166,7 @@ namespace FunctionalProgramming_01 {
         std::cout << std::endl;
     }
 
+    // mapping list of strings to new list with integers 
     void test_functional_map_02c() {
         std::vector<std::string> vec = { "1", "2", "3", "4", "5", "6", "7" , "8", "9", "10" };
         std::for_each(std::begin(vec), std::end(vec), [](std::string s) {

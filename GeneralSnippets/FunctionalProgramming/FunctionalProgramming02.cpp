@@ -29,7 +29,7 @@ namespace FunctionalProgramming_02 {
     }
 
     template <typename TContainer, typename TResult, typename TFunctor>
-    TResult foldRight(TContainer cont, TResult init, TFunctor&& lambda)
+    TResult foldRight(TContainer cont, TResult&& init, TFunctor&& lambda)
     {
         return std::accumulate(
             std::rbegin(cont),
