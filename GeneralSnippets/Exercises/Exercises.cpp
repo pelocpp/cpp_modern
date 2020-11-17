@@ -1636,7 +1636,7 @@ namespace Exercises {
         {
         public:
             template <typename F, typename... Args>
-            static Time duration(F&& f, Args... args)
+            static Time duration(F&& f, Args&&... args)
             {
                 std::chrono::time_point start = TClock::now();
                 std::invoke(std::forward<F>(f), std::forward<Args>(args)...);
