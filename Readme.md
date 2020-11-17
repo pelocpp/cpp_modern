@@ -54,6 +54,7 @@ schließen sich in Tabelle 2 an:
 |:-------------- |-----------------------------------------|
 | [Allocator](GeneralSnippets/Allocator/StdAllocator.md) | Container und Speicher-Allokatoren |
 | [ArrayDecay](GeneralSnippets/ArrayDecay/ArrayDecay.md) | Arrays und Pointer |
+| [BackInserter](GeneralSnippets/BackInserter/BackInserter.md) | `std::back_inserter` Iterator |
 | [Casts](GeneralSnippets/Casts/Casts.md) | Typumwandlungen `static_cast`, `dynamic_cast`, `const_cast` und `reinterpret_cast` |
 | [ConstructursOrder](GeneralSnippets/ConstructursOrder/CtorDtorOrder.md)  | Reihenfolge der Aufrufe von Konstruktoren und Destruktoren |
 | [TemplatesFunctionBasics](GeneralSnippets/TemplatesFunctionBasics/TemplatesFunctions.md) | Grundlagen zu Funktionstemplates |

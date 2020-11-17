@@ -150,6 +150,7 @@
     <ClCompile Include="Any\Any.cpp" />
     <ClCompile Include="ArrayDecay\ArrayDecay.cpp" />
     <ClCompile Include="Array\Array.cpp" />
+    <ClCompile Include="BackInserter\BackInserter.cpp" />
     <ClCompile Include="Casts\Casts.cpp" />
     <ClCompile Include="CommonType\CommonType.cpp" />
     <ClCompile Include="ConstExpr\ConstExpr.cpp" />
@@ -222,6 +223,7 @@
     <None Include="Any\StdAny.md" />
     <None Include="ArrayDecay\ArrayDecay.md" />
     <None Include="Array\StdArray.md" />
+    <None Include="BackInserter\BackInserter.md" />
     <None Include="Casts\Casts.md" />
     <None Include="CommonType\CommonType.md" />
     <None Include="ConstExpr\Constexpr.md" />

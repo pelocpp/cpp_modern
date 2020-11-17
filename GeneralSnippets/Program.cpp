@@ -11,6 +11,7 @@ void main_allocator_integral();
 void main_any();
 void main_array();
 void main_array_decay();
+void main_back_inserter();
 void main_casts();
 void main_common_type();
 void main_constructor_invocations();
@@ -87,6 +88,7 @@ int main()
         //main_any();
         //main_array();
         //main_array_decay();
+        //main_back_inserter();
         //main_casts();
         //main_common_type();
         //main_constructor_invocations();

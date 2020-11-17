@@ -225,6 +225,9 @@
     <ClCompile Include="PerfectForwarding\PerfectForwarding01.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="BackInserter\BackInserter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -417,6 +420,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Exercises\cpp_dividend_divisor.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="BackInserter\BackInserter.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
