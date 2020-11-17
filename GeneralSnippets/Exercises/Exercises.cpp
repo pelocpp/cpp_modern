@@ -818,26 +818,26 @@ namespace Exercises {
         // =============================================================
         // Logical Or - with variadic templates
 
-        //template<typename T>
-        //bool orAll(T cond) {
-        //    return cond;
+        template<typename T>
+        bool orAll(T cond) {
+            return cond;
+        }
+
+        template<typename T, typename... Ts>
+        bool orAll(T cond, Ts... conds) {
+            return cond || orAll(conds...);
+        }
+
+        // or
+
+        //bool orAll() {
+        //    return false;
         //}
 
         //template<typename T, typename... Ts>
         //bool orAll(T cond, Ts... conds) {
         //    return cond || orAll(conds...);
         //}
-
-        // or
-
-        bool orAll() {
-            return false;
-        }
-
-        template<typename T, typename... Ts>
-        bool orAll(T cond, Ts... conds) {
-            return cond && andAll(conds...);
-        }
 
         void testExercise_12b() {
 
@@ -852,7 +852,7 @@ namespace Exercises {
     namespace Exercise_13 {
 
         // =============================================================
-    // Logical And - with folding expression
+        // Logical And - with folding expression
 
         template<typename ...Args>
         bool andAll(Args ...args) {
@@ -895,6 +895,8 @@ namespace Exercises {
             std::cout << " - " << arg2 << ": " << typeid(arg2).name() << std::endl;
 
             return std::is_same<decltype(arg1), decltype(arg2)>::value;
+            // or
+            // return std::is_same<T1, T2>::value;
         }
 
         template<typename T1, typename T2, typename... TREST>

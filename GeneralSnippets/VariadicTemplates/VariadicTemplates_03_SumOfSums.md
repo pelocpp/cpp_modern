@@ -48,10 +48,10 @@ sum: 15
 Auf der Basis variadischer Templates lässt sich eine Summe von Summen so berechnen:
 
 ```cpp
-template<typename... CONTAINERS>
-int sumOfSums(const CONTAINERS&... conts) {
-    const auto sums = std::initializer_list<int>{
-        std::accumulate(std::begin(conts),  std::end(conts), 0) ...
+template<typename ... TCONTAINER>
+int sumOfSums(const TCONTAINER& ... conts) {
+    const auto sums = std::initializer_list<int> {
+        std::accumulate(std::begin(conts), std::end(conts), 0) ...
     };
     return std::accumulate(std::begin(sums), std::end(sums), 0);
 }
@@ -65,7 +65,8 @@ Man hätte zur Aufsummierung der einzelnen Resultatwerte auch einen Container
 wie etwa `std::vector` verwenden können,
 aber warum dieser Overhead, wenn ein  `std::initializer_list`-Objekt
 ohnehin erstellt werden muss und dies vollkommen ausreicht?
-Beachten Sie außerdem, dass wir keine Kontrollstrukturen benötigen, die immer mit einer erhöhten Wahrscheinlichkeit von Fehlern verbunden sind.
+Beachten Sie außerdem, dass wir keine Kontrollstrukturen benötigen,
+die immer mit einer erhöhten Wahrscheinlichkeit von Fehlern verbunden sind.
 
 *Beispiel*:
 

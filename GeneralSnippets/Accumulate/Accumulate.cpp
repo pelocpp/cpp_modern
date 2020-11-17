@@ -56,36 +56,22 @@ namespace AlgorithmAccumulate {
 
     void test_01() {
 
-        std::vector <std::string> names;
-
-        names.push_back("Hans");
-        names.push_back("Sepp");
-        names.push_back("Georg");
-
+        std::vector <std::string> names = {"Hans", "Sepp", "Georg"};
         std::string s = toString(names);
         std::cout << s << std::endl;
     }
 
     void test_02() {
 
-        std::vector <float> digits;
-
-        digits.push_back(10.5);
-        digits.push_back(11.5);
-        digits.push_back(12.5);
-
+        std::vector <float> digits = { 10.5f, 11.5f, 12.5f, 13.5f, 14.5f, 15.5f };
         std::string s = toString2(digits);
         std::cout << s << std::endl;
     }
 
     void test_03() {
 
-        std::vector <std::string> names;
-
-        names.push_back("Hans");
-        names.push_back("Sepp");
-        names.push_back("Georg");
-
+        // using template version of toString2
+        std::vector <std::string> names = { "Hans", "Sepp", "Georg" };
         std::string s = toString2(names);
         std::cout << s << std::endl;
     }
