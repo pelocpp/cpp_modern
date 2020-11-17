@@ -1169,7 +1169,7 @@ namespace Exercises {
             }
         }
 
-        template <class... T>
+        template <typename... T>
         class HeterogeneousContainer
         {
         private:

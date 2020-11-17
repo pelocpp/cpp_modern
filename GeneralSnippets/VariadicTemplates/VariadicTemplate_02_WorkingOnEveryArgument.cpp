@@ -15,14 +15,14 @@ namespace VariadicTemplatesWorkingOnEveryArgument {
         std::cout << "got value " << value << std::endl;
     }
 
-    template <class... ARGS>
-    void doSomethingForAll(ARGS const&... args) {
+    template <typename... TARGS>
+    void doSomethingForAll(const TARGS& ... args) {
         std::initializer_list<int> list = { (doSomething(args), 0)... };
     }
 
     // doesn't compile
-    //template <class... ARGS>
-    //void doSomethingForAll(ARGS const&... args) {
+    //template <typename... TARGS>
+    //void doSomethingForAll(const TARGS& ... args) {
     //    doSomething(args)...;
     //}
 
@@ -31,8 +31,8 @@ namespace VariadicTemplatesWorkingOnEveryArgument {
         std::cout << std::endl;
     }
 
-    template <class Head, class... Tail>
-    void print(const Head& head, const Tail&... tail) {
+    template <typename HEAD, typename... TAIL>
+    void print(const HEAD& head, const TAIL&... tail) {
         std::cout << head;
         if constexpr (sizeof...(tail) > 0) {
             std::cout << ", ";

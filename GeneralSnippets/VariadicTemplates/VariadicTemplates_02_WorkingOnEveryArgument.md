@@ -30,9 +30,9 @@ doSomething(argN);
 Es verwundert also nicht, dass folgendes Code-Fragment nicht kompilierbar ist:
 
 ```cpp
-template <class... ARGS>
-void doSomethingForAll(ARGS const&... args) {
-  doSomething(args)...;
+template <typename... TARGS>
+void doSomethingForAll(TARGS const&... args) {
+    doSomething(args)...;
 }
 ```
 
@@ -40,7 +40,7 @@ Mit der C++-Klasse `std::initializer_list` gibt es eine Möglichkeit,
 die Expansion des Parameter Packs in ein übersetzungsfähiges Code-Fragment zu delegieren:
 
 ```cpp
-template <class... Args>
+template <typename... Args>
 void doSomethingForAll(Args const&... args) {
   auto list = { doSomething(args)... };
 }
@@ -92,9 +92,9 @@ aber immer ein ganz anderer Wert als Argument für das `std::initializer_list`-Ob
 Mit dem Komma-Operator ist dies einfach:
 
 ```cpp
-template <class... Args>
-void doSomethingForAll(Args const&... args) {
-  std::initializer_list<int> list = { (doSomething(args), 0)... };
+template <typename... TARGS>
+void doSomethingForAll(const TARGS& ... args) {
+    std::initializer_list<int> list = { (doSomething(args), 0)... };
 }
 ```
 
@@ -114,8 +114,8 @@ das aber von `doSomething` nicht erkannt werden kann.
 Mit C++ 17 haben wir `constexpr if` und können diese Anforderung wie folgt umsetzen:
 
 ```cpp
-template <class Head, class... Tail>
-void print(const Head& head, const Tail&... tail) {
+template <typename HEAD, typename... TAIL>
+void print(const HEAD& head, const TAIL&... tail) {
     std::cout << head;
     if constexpr (sizeof...(tail) > 0) {
         std::cout << ", ";
