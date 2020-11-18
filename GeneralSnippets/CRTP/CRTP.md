@@ -156,7 +156,7 @@ so dass Methodenaufrufe wie `Button::eraseBackground()` und `button::paint()` ü
 
 Um Methoden aus der abgeleiteten Klasse aufzurufen, müssen wir zuerst
 einen Zeiger auf die abgeleitete Klasse haben.
-Dies erfolgt mit einer static_cast-Konvertierung, wie wir am Beispiel von 
+Dies erfolgt mit einer `static_cast`-Konvertierung, wie wir am Beispiel von 
 `static_cast<T*>(this)->eraseBackground()` sehen können.
 Sollten Sie diese Anweisungen in ihrem Quellcode häufig benötigen,
 dann könnten Sie ihren Quellcode auch mit einer privaten Hilfsmethode vereinfachen:
