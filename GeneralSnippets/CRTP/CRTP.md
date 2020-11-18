@@ -284,21 +284,25 @@ erasing button background ...
 painting button ...
 ```
 
+## Ein zweites Beispiel
+
+Ein zweites Beispiel zur Technik des CRTP finden Sie im Aufgabenteil vor.
+Die Laufzeiten der beiden Varianten (*klassischer* versus *statischer* Polymorphismus) sieht auf meinem Rechner so aus:
+
+```cpp
+Time taken: 53401 microseconds
+Time taken: 16082 microseconds
+```
+
+Man erkennt unschwer, dass die Variante des "*statischen* Polymorphismus" ca. um den Faktor 3 schneller ist.
+
+
+
 #### *Hinweis*:
 
 Beim Vergleich der Programmlaufzeiten dieses Beispiels ist strikt darauf zu achten,
 dass in den Projekt-Einstellungen der "**Release**"-Modus eingestellt ist!
 Die Unterschiede bzgl. der Laufzeiten zwischen "*Debug*"-Modus und "*Release*"-Modus sind exorbitant groß!
-
-## Eine weitere Anwendung: Mixins
-
-Ein Anwendungsfall für das *Curiously Recurring Template Pattern* sind die so genannten *Mixins*.
-Da ich diese in der von mir gewählten Umsetzung mit variadischen Templates realisiert habe,
-finden wir eine Beschreibung unter
-
-[Variadische Templates: Mixins](../../GeneralSnippets/VariadicTemplates/VariadicTemplates_04_Mixins.md)
-
-vor.
 
 
 ## Literaturhinweise:
@@ -322,69 +326,3 @@ und
 [Zurück](../../Readme.md)
 
 ---
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## ALT
-
-## Beispiel
-
-Hier ein einfaches Codebeispiel, um diese Technik zu demonstrieren:
-
-```cpp
-template <typename Child>
-struct Base
-{
-    void interface() {
-        static_cast<Child*>(this)->implementation();
-    }
-};
-
-struct Derived : Base<Derived>
-{
-    void implementation() {
-        std::cout << "Derived implementation" << std::endl;
-    }
-};
-
-void test() {
-
-    Derived d;
-    d.interface();  // -> "Derived implementation"
-}
-```
-
-Der Schlüssel zu dieser Technik ist der seltsame Trick mit Templates,
-der verwendet wird: Beachten Sie, dass die Klasse `Derived` von `Base<Derived>` erbt.
-Was bedeutet das? Die Idee ist, den realen Typ der abgeleiteten Klasse zur Kompilierungszeit in die Basis zu "injizieren".
-Der `static_cast` in Methode `interface` erzeugt dann das gewünschte Ergebnis.
-
-Diese Technik hat einen Namen - sie heißt *Curiously Recurring Template Pattern* oder eben kurz *CRTP*.
-
-## Ein zweites Beispiel
-
-Ein weiteres Beispiel zur Technik des CRTP finden Sie im Quellcode vor.
-Die Laufzeiten der beiden Varianten (*klassischer* versus *statischer* Polymorphismus) sieht auf meinem Rechner so aus:
-
-```cpp
-Time taken: 53401 microseconds
-Time taken: 16082 microseconds
-```
-
-Man erkennt unschwer, dass die Variante des "*statischen* Polymorphismus" ca. um den Faktor 3 schneller ist.
-
