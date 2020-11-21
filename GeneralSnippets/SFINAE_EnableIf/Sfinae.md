@@ -1,4 +1,4 @@
-# SFINAE and enable_if
+# SFINAE and `std::enable_if`
 
 [Quellcode 1](Sfinae01.cpp) und [Quellcode 2](Sfinae02.cpp)
 
@@ -79,6 +79,7 @@ Im C ++ Sprachjargon bezeichnet man diese Regel als **SFINAE**: "**Substitution 
 Hierbei gilt es für den Programmierer aber Folgendes zu beachten - siehe dazu das nächste Beispiel:
 
 ```cpp
+// not interested in returning a value, just want to negate a number
 template <typename T>
 void negate(const T& t) {
   typename T::value_type n = -t();
