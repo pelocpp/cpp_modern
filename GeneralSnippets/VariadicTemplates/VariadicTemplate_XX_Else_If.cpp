@@ -32,7 +32,7 @@ namespace VariadicTemplatesElseIf {
     };
 
     template<typename MainBranch, typename... SecondaryBranches>
-    void normally(MainBranch&& mainBranch, SecondaryBranches&&... secondaryBranches)
+    void normally(MainBranch&& mainBranch, SecondaryBranches&& ... secondaryBranches)
     {
         auto considerBranch = ConsiderBranch{};
         auto resultOfConsideringSecondaryBranches = for_each_arg(considerBranch, secondaryBranches...);
@@ -68,8 +68,32 @@ namespace VariadicTemplatesElseIf {
         bool condition_;
     };
 
-
     void test_01() {
+        bool edgeCase1 = false;
+        bool edgeCase2 = false;
+        std::string text;
+
+        normally
+        ([&text]()
+            {
+                text = "normal case\n";
+            },
+            unless(edgeCase1)
+                ([&text]()
+                    {
+                        text = "edge case 1\n";
+                    }
+                    ),
+                unless(edgeCase2)
+                        ([&text]()
+                            {
+                                text = "edge case 2";
+                            }
+                    )
+         );
+    }
+
+    void test_02 () {
 
         bool edgeCase1 = true;
         bool edgeCase2 = false;
