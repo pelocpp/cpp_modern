@@ -18,7 +18,7 @@ namespace VariadicTemplatesFolding {
     }
 
     void test_01() {
-        int sum = anotherAdder<int>(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        int sum = anotherAdder(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
         std::cout << "Sum from 1 up to 10: " << sum << std::endl;
     }
 
@@ -44,7 +44,7 @@ namespace VariadicTemplatesFolding {
 
     void test_03a() {
         // binary right fold: 1 - (2 - (3 - (4 - ( 5 - 0)))) = 3
-        int result = anotherSubtracterBRF<int>(1, 2, 3, 4, 5);
+        int result = anotherSubtracterBRF(1, 2, 3, 4, 5);
         std::cout << "BRF: 1 - (2 - (3 - (4 - ( 5 - 0)))): " << result << std::endl;
     }
 
@@ -57,7 +57,7 @@ namespace VariadicTemplatesFolding {
 
     void test_03b() {
         // binary left fold: ((((0 - 1) - 2) - 3) - 4) - 5 =  -15
-        int result = anotherSubtracterBLF<int>(1, 2, 3, 4, 5);
+        int result = anotherSubtracterBLF(1, 2, 3, 4, 5);
         std::cout << "BLF: ((((0 - 1) - 2) - 3) - 4) - 5: " << result << std::endl;
     }
 
@@ -70,7 +70,7 @@ namespace VariadicTemplatesFolding {
 
     void test_03c() {
         // unary right fold: 1 - (2 - (3 - (4 - 5))) = 3
-        int result = anotherSubtracterURF<int>(1, 2, 3, 4, 5);
+        int result = anotherSubtracterURF(1, 2, 3, 4, 5);
         std::cout << "URF: 1 - (2 - (3 - (4 - 5))): " << result << std::endl;
     }
 
@@ -83,7 +83,7 @@ namespace VariadicTemplatesFolding {
 
     void test_03d() {
         // unary left fold: ((((1 - 2) - 3) - 4) - 5 = -13
-        int result = anotherSubtracterULF<int>(1, 2, 3, 4, 5);
+        int result = anotherSubtracterULF(1, 2, 3, 4, 5);
         std::cout << "URF: ((((1 - 2) - 3) - 4) - 5: " << result << std::endl;
     }
 
