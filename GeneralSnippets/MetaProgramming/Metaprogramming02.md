@@ -180,8 +180,8 @@ Ein erster - unvollständiger - Ansatz in C++ könnte so aussehen:
 ```cpp
 template <class Elm, class LST>
     struct Contains {
-    typedef typename LST::Head Head;
-    typedef typename LST::Tail Tail;
+    using Head = typename LIST::Head;
+    using Tail = typename LIST::Tail;
  
     static const bool found = (Elm == Head);
     ...

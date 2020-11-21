@@ -81,10 +81,10 @@ namespace Metaprogramming {
     void test_03() {
         using Four = Frak<16, 4>;
         using FourNormalized = FrakNormalizedVerbose<Four>::result;
-        std::cout << FourNormalized::Num << "/" << FourNormalized::Den << "\n";
+        std::cout << FourNormalized::Num << "/" << FourNormalized::Den << std::endl;
         using Eight = Frak<32, 4>;
         using EightNormalized = FrakNormalized<Eight>::result;
-        std::cout << EightNormalized::Num << "/" << EightNormalized::Den << "\n";
+        std::cout << EightNormalized::Num << "/" << EightNormalized::Den << std::endl;
     }
 
     template <typename X1, typename Y1>
@@ -105,7 +105,7 @@ namespace Metaprogramming {
         using Frak1 = Frak<3, 7>;
         using Frak2 = Frak<1, 7>;
         using Result = Sum<Frak1, Frak2>::result;
-        std::cout << Result::Num << "/" << Result::Den << "\n";
+        std::cout << Result::Num << "/" << Result::Den << std::endl;
     }
 
     template <int N>
@@ -124,8 +124,8 @@ namespace Metaprogramming {
 
     void test_05() {
         using X = E<8>::result;
-        std::cout << "e = " << (1.0 * X::Num / X::Den) << "\n";
-        std::cout << "e = " << X::Num << "/" << X::Den << "\n";
+        std::cout << "e = " << (1.0 * X::Num / X::Den) << std::endl;
+        std::cout << "e = " << X::Num << "/" << X::Den << std::endl;
     }
 }
 
