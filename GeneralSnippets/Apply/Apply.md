@@ -146,7 +146,7 @@ void test()
 ```
 
 Okay, diese Vorarbeiten hätten wir nicht zwingend erbringen müssen: In der C++-Standardbibliothek
-gibt es die Funktion tuple_call bereits schon in Gestalt von std::apply:
+gibt es die Funktion `tuple_call` bereits schon in Gestalt von `std::apply`:
 
 ```cpp
 void test()

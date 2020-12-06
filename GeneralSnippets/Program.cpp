@@ -87,7 +87,7 @@ int main()
         //main_allocator_classtype();
         //main_allocator_integral();
         //main_any();
-        main_apply_integer_sequence();
+        //main_apply_integer_sequence();
         //main_array();
         //main_array_decay();
         //main_back_inserter();

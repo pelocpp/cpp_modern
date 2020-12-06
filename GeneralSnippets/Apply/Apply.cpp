@@ -120,7 +120,6 @@ namespace ApplyIntegerSequence {
 
     // https://stackoverflow.com/questions/24109737/what-are-some-uses-of-decltypeauto
 
-
     int g(double, std::string, int, char);
 
     int g(double x, std::string y, int z, char ch)
