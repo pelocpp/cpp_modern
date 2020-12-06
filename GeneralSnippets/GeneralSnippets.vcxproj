@@ -148,6 +148,7 @@
     <ClCompile Include="Allocator\AllocatorSimple.cpp" />
     <ClCompile Include="Allocator\AllocatorDummy.cpp" />
     <ClCompile Include="Any\Any.cpp" />
+    <ClCompile Include="Apply\Apply.cpp" />
     <ClCompile Include="ArrayDecay\ArrayDecay.cpp" />
     <ClCompile Include="Array\Array.cpp" />
     <ClCompile Include="BackInserter\BackInserter.cpp" />
@@ -221,6 +222,7 @@
     <None Include="Accumulate\StdAccumulate.md" />
     <None Include="Allocator\StdAllocator.md" />
     <None Include="Any\StdAny.md" />
+    <None Include="Apply\Apply.md" />
     <None Include="ArrayDecay\ArrayDecay.md" />
     <None Include="Array\StdArray.md" />
     <None Include="BackInserter\BackInserter.md" />

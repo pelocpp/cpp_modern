@@ -72,6 +72,7 @@ Tabelle 1. Grundlagen-Code-Snippets.
 |:-------------- |-----------------------------------------|
 | [Accumulate](GeneralSnippets/Accumulate/StdAccumulate.md) | STL-Algorithmus `std::accumulate` und Lambda-Funktionen in der Anwendung |
 | [Any](GeneralSnippets/Any/StdAny.md) | Neue STL-Utility Klasse `std::any` |
+| [Apply](GeneralSnippets/Apply/Apply.md) | `std::apply`, `std::integer_sequence` und `std::make_integer_sequence` |
 | [Array](GeneralSnippets/Array/StdArray.md) | Neue STL-Utility Klasse `std::array` |
 | [ConstExpr](GeneralSnippets/ConstExpr/Constexpr.md) | Methoden, die der Compiler zur Übersetzungszeit ausführt |
 | [CommonType](GeneralSnippets/CommonType/CommonType.md) | Utility `std::common_type` |

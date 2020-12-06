@@ -9,6 +9,7 @@ void main_accumulate();
 void main_allocator_classtype();
 void main_allocator_integral();
 void main_any();
+void main_apply_integer_sequence();
 void main_array();
 void main_array_decay();
 void main_back_inserter();
@@ -86,6 +87,7 @@ int main()
         //main_allocator_classtype();
         //main_allocator_integral();
         //main_any();
+        main_apply_integer_sequence();
         //main_array();
         //main_array_decay();
         //main_back_inserter();

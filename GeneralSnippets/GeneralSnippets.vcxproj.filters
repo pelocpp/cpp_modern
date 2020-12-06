@@ -228,6 +228,9 @@
     <ClCompile Include="BackInserter\BackInserter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Apply\Apply.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -423,6 +426,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="BackInserter\BackInserter.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Apply\Apply.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
