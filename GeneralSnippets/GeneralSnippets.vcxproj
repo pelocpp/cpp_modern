@@ -215,6 +215,7 @@
     <ClCompile Include="VariadicTemplates_Systematic\VariadicTemplate_XX_MoreExamples.cpp" />
     <ClCompile Include="Variant\Variant.cpp" />
     <ClCompile Include="VirtualBaseClassDestructor\VirtualBaseClassDestructor.cpp" />
+    <ClCompile Include="VirtualOverrideFinal\VirtualOverrideFinal.cpp" />
     <ClCompile Include="WeakPtr\WeakPtr.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -282,6 +283,7 @@
     <None Include="VariadicTemplates_Anwendungen\VariadicTemplates_XX_Verschiedenes.md" />
     <None Include="Variant\StdVariant.md" />
     <None Include="VirtualBaseClassDestructor\VirtualBaseClassDestructor.md" />
+    <None Include="VirtualOverrideFinal\VirtualOverrideFinal.md" />
     <None Include="WeakPtr\cpp_snippets_cyclic_references.svg" />
     <None Include="WeakPtr\WeakPtr.md" />
   </ItemGroup>

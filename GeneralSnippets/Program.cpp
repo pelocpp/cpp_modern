@@ -75,6 +75,7 @@ void main_variadic_templates_examples();
 void main_variadic_templates_more_examples();
 void main_variant();
 void main_virtual_destructor();
+void main_virtual_override_final();
 void main_weak_pointer();
 
 int main()
@@ -154,6 +155,7 @@ int main()
         //main_variadic_templates_more_examples();
         //main_variant();
         //main_virtual_destructor();
+        //main_virtual_override_final();
         //main_weak_pointer();
     }
     catch (const std::exception& ex) {

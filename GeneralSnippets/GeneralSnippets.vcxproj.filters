@@ -231,6 +231,9 @@
     <ClCompile Include="Apply\Apply.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="VirtualOverrideFinal\VirtualOverrideFinal.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -429,6 +432,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Apply\Apply.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="VirtualOverrideFinal\VirtualOverrideFinal.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
