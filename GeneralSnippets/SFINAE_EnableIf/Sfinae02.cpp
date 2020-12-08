@@ -95,7 +95,7 @@ namespace SFINAE_02 {
     typename enable_if_c<is_vector<T>::value, typename Magnitude<T>::type>::type
         norm(const T& v)
     {
-        Magnitude_t<T> sum{ 0 };
+        Magnitude_t<T> sum{};
         for (unsigned r = 0; r < size(v); r++)
             sum += std::abs(v[r]);
         return sum;

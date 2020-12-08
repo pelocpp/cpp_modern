@@ -83,6 +83,9 @@ namespace UniformInitialization {
             std::cout << pd[i] << ", ";
         }
         std::cout << std::endl;
+
+        delete[] pi;
+        delete[] pd;
     }
 
     // =================================================================================
@@ -108,8 +111,8 @@ namespace UniformInitialization {
         double m_b;
 
     public:
-        SomeClass() : m_a(0), m_b(0) {}
-        SomeClass(int a, double b = 0.0) : m_a(a), m_b(b) {}
+        SomeClass() : m_a{ }, m_b{ } {}
+        SomeClass(int a, double b = 0.0) : m_a{ a }, m_b{ b } {}
 
         void operator() () { std::cout << "a: " << m_a << ", b: " << m_b << std::endl; }
     };
@@ -175,7 +178,7 @@ namespace UniformInitialization {
     public:
         void operator()() {
             std::cout << "m_n: " << m_n << std::endl;
-            for (size_t i{ 0 }; i < 5; i++) {
+            for (size_t i{ }; i < 5; i++) {
                 std::cout << i << ": " << m_data[i] << std::endl;
             }
         }
@@ -191,7 +194,7 @@ namespace UniformInitialization {
     public:
         void operator()() 
         {
-            for (size_t i{ 0 }; i < m_vec.size(); i++) {
+            for (size_t i{ }; i < m_vec.size(); i++) {
                 std::cout << i << ": " << m_vec[i] << std::endl;
             }
         }

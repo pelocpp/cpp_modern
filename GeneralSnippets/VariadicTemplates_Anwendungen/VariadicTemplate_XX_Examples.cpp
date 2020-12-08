@@ -154,7 +154,7 @@ namespace VariadicTemplatesExamples {
     void test_08() {
 
         // init binary tree structure:
-        BinaryNode* root = new BinaryNode{ 0 };
+        BinaryNode* root = new BinaryNode{ };
         root->m_left = new BinaryNode{ 1 };
         root->m_left->m_right = new BinaryNode{ 2 };
         root->m_left->m_right->m_left = new BinaryNode{ 3 };

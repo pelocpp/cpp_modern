@@ -121,7 +121,7 @@ namespace Lambda {
             return count;
         };
 
-        for (size_t i{ 0 }; i < 5; ++i) {
+        for (size_t i{}; i < 5; ++i) {
             std::cout << counter() << " ";
         }
         std::cout << std::endl;

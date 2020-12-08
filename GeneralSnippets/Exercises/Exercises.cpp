@@ -360,7 +360,7 @@ namespace Exercises {
             // we created a copy of @count in its current state. @count‘s i was 1, so @otherCount‘s i is 1 as well.
             // Since @otherCount is a copy of @count, they each have their own @i.
 
-            int i{ 0 };
+            int i{ };
 
             // create a lambda named 'count'
             auto count{ [i]() mutable { std::cout << ++i << std::endl; } };
@@ -397,7 +397,7 @@ namespace Exercises {
             // See also:
             // https://stackoverflow.com/questions/23515058/creating-stdfunction-with-lambda-causes-superfluous-copying-of-the-lambda-obje
 
-            int i{ 0 };
+            int i{ };
 
             // increments and prints its local copy of @i
             auto count{ [i]() mutable { std::cout << ++i << std::endl; } };

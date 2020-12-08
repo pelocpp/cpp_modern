@@ -315,7 +315,7 @@ void test_02()
 ```cpp
 void test_03()
 {
-    int i{ 0 };
+    int i{ };
     
     // create a lambda named 'count'
     auto count{ [i]() mutable { std::cout << ++i << std::endl; } };
@@ -342,7 +342,7 @@ void invoke(const std::function<void(void)>& fn)
 
 void test_04()
 {
-    int i{ 0 };
+    int i{ };
 
     auto count{ [i]() mutable { std::cout << ++i << std::endl; } };
 
