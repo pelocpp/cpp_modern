@@ -23,6 +23,7 @@ public:
 
 void Base::func(int n)
 {
+public:
     std::cout << "Base::func [" << n << "]" << std::endl;
 }
 
@@ -51,6 +52,23 @@ die nicht mehr überschrieben werden dürfen
 ### Ein Beispiel
 
 ```cpp
+class Driver
+{
+public:
+    virtual void send(int) {};
+};
+
+class KeyboardDriver : public Driver
+{
+public:
+    void send(int) final {};  // cannot be overriden anymore
+};
+
+class MouseDriver final : public Driver // cannot be used as base class anymore
+{
+public:
+    void send(int) {};  // cannot be overriden anymore
+};
 ```
 
 ### Beispiele bezüglich der Verwendung von `final`

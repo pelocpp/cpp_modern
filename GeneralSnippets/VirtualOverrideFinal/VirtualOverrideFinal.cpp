@@ -33,18 +33,19 @@ namespace VirtualOverrideFinal{
     class Driver
     {
     public:
-        virtual void send(int);
+        virtual void send(int) {};
     };
 
     class KeyboardDriver : public Driver
     {
     public:
-        void send(int) final;  // cannot be overriden anymore
+        void send(int) final {};  // cannot be overriden anymore
     };
 
     class MouseDriver final : public Driver // cannot be used as base class anymore
     {
-        void send(int);  // cannot be overriden anymore
+    public:
+        void send(int) {};  // cannot be overriden anymore
     };
 
     //class TrackballDriver : public MouseDriver
