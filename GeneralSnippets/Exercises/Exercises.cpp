@@ -490,22 +490,22 @@ namespace Exercises {
         void testExercise_06a() {
             std::optional<int> i1 = toInt("123");
             if (i1.has_value()) {
-                std::cerr << i1.value() << std::endl;
+                std::cout << i1.value() << std::endl;
             }
 
             std::optional<int> i2 = toInt("-987654321");
             if (i2.has_value()) {
-                std::cerr << i2.value() << std::endl;
+                std::cout << i2.value() << std::endl;
             }
 
             std::optional<int> i3 = toInt("123ABC");
             if (i3.has_value()) {
-                std::cerr << i3.value() << std::endl;
+                std::cout << i3.value() << std::endl;
             }
 
             std::optional<int> i4 = toInt("ABC123");
             if (i4.has_value()) {
-                std::cerr << i4.value() << std::endl;
+                std::cout << i4.value() << std::endl;
             }
         }
 
@@ -513,22 +513,22 @@ namespace Exercises {
 
             std::optional<short> i1 = toNumber<short>("32767");
             if (i1.has_value()) {
-                std::cerr << i1.value() << std::endl;
+                std::cout << i1.value() << std::endl;
             }
 
             std::optional<int> i2 = toNumber<int>("2147483647");
             if (i2.has_value()) {
-                std::cerr << i2.value() << std::endl;
+                std::cout << i2.value() << std::endl;
             }
 
             std::optional<long int> i3 = toNumber<long int>("2147483647");
             if (i3.has_value()) {
-                std::cerr << i3.value() << std::endl;
+                std::cout << i3.value() << std::endl;
             }
 
             std::optional<long long> i4 = toNumber<long long>("9223372036854775807");
             if (i4.has_value()) {
-                std::cerr << i4.value() << std::endl;
+                std::cout << i4.value() << std::endl;
             }
         }
     }

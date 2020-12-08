@@ -133,15 +133,15 @@ namespace Lambda {
         int m = 2;
 
         auto l1 = [=] () {
-            std::cerr << "Copy:      " << n << " " << m << std::endl;
+            std::cout << "Copy:      " << n << " " << m << std::endl;
         };
 
         auto l2 = [&] {
-            std::cerr << "Reference: " << n << " " << m << std::endl;
+            std::cout << "Reference: " << n << " " << m << std::endl;
         };
 
         auto l3 = [&n, m] {
-            std::cerr << "Both:      " << n << " " << m << std::endl;
+            std::cout << "Both:      " << n << " " << m << std::endl;
         };
 
         n = 3;
@@ -158,7 +158,7 @@ namespace Lambda {
         int m = 2;
 
         auto lambda = [=] {
-            std::cerr << "Copy:      " << n << " " << m << std::endl;
+            std::cout << "Copy:      " << n << " " << m << std::endl;
         };
 
         return lambda;
@@ -170,7 +170,7 @@ namespace Lambda {
         int m = 2;
 
         auto lambda = [&] {
-            std::cerr << "Reference: " << n << " " << m << std::endl;
+            std::cout << "Reference: " << n << " " << m << std::endl;
         };
 
         return lambda;  // I would't do this never ever :-)
@@ -194,11 +194,11 @@ namespace Lambda {
         int m = 2;
 
         std::function<void(std::string const&)> lambda1 = [=](std::string const& info) {
-            std::cerr << info << "Copy:      " << n << " " << m << std::endl;
+            std::cout << info << "Copy:      " << n << " " << m << std::endl;
         };
 
         std::function<void(std::string const&)> lambda2 = [&](std::string const& info) {
-            std::cerr << info << "Reference: " << n << " " << m << std::endl;
+            std::cout << info << "Reference: " << n << " " << m << std::endl;
         };
 
         return std::pair<
