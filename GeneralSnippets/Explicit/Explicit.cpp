@@ -12,8 +12,8 @@ namespace KeywordExplicit {
         String(char* p); // initialize String object with char pointer
     };
 
-    String::String(int n) {}
-    String::String(char* p) {}
+    String::String([[ maybe_unused]] int n) {}
+    String::String([[ maybe_unused]] char* p) {}
 
     void test_01() {
 
