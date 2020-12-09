@@ -2,7 +2,7 @@
 
 *Hinweis*:
 
-Siehe dazu auch die Spracherweiterung [*Uniform Initialization*](../../GeneralSnippets/UniformInitialization/UniformInitialization.md)
+Siehe dazu auch die Spracherweiterung [*Uniform Initialization*](../../GeneralSnippets/UniformInitialization/UniformInitialization.md).
 
 ---
 

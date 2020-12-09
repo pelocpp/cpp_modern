@@ -2,7 +2,7 @@
 
 *Hinweis*:
 
-Siehe dazu auch die Spracherweiterung [Default-Initialisierung für Member-Variablen](../../GeneralSnippets/DefaultInitialization/DefaultInitialization.md)
+Siehe dazu auch das Sprachfeature [Default-Initialisierung für Member-Variablen](../../GeneralSnippets/DefaultInitialization/DefaultInitialization.md).
 
 ---
 
