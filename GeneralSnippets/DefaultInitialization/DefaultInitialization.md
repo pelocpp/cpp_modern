@@ -8,15 +8,15 @@ Siehe dazu auch die Spracherweiterung [*Uniform Initialization*](../../GeneralSn
 
 # Default-Initialisierung für Member-Variablen
 
-Eines der weniger bekannten, aber dennoch nützlichen Funktionen
+Eines der weniger bekannten, aber dennoch nützlichen Features
 ab C++ 11 ist die Möglichkeit, Initialisierungen für Instanzvariablen
-direkt in der Klassendefinition bereitzustellen.
+direkt in der Klassendefinition (und damit typischerweise im Header-File) bereitzustellen.
 
 ## Wie funktioniert es 
 
 Man kann einfach einen Vorbelegungswert angeben,
 indem man diesen Wert nach seiner Deklaration in der Klassendefinition
-hinzufügt. Sowohl Initialisierungen sind mit geschweiften Klammern (siehe "*Uniform Initialization*")
+hinzufügt. Sowohl Initialisierungen mit geschweiften Klammern (siehe "*Uniform Initialization*")
 als auch in Gestalt 
 einer Wertzuweisung sind zulässig - sie werden daher im C++-Standard als
 "*Brace-or-Equal-Initializer*" bezeichnet:
@@ -30,18 +30,21 @@ class X
 ```
 
 Diese Initialisierungswerte werden dann implizit in jedem Konstruktor verwendet,
-es sei denn, Sie initialisieren die Instanzvariablen explizit in der
-"*Member Initialization List*" eines Konstruktors, siehe zum Beispiel:
+es sei denn, Sie initialisieren die Instanzvariablen **explizit** in der
+"*Member Initialization List*" eines Konstruktors, wie zum Beispiel:
 
 ```cpp
-X::X(int): m_i{ 3 }
-{}
+X::X(int value) : m_i{ 3 }
+{
+  ...
+}
 ```
 
 In diesem Fall wird `m_i` mit 3 initialisiert,
-während `m_j` mit 2 initialisiert wird, da dies in dieser "*Member Initialization List*" nicht explizit erwähnt wurde.
+während `m_j` mit 2 initialisiert wird, da diese Variable
+in dieser "*Member Initialization List*" nicht explizit erwähnt wurde.
 
-Der "*Brace-or-Equal-Initializer*" für Instanzvariablen ist nicht auf Literale beschränkt.
+Die "*Brace-or-Equal*"-Initialisierung für Instanzvariablen ist nicht auf Literale beschränkt.
 Sie können auch Funktionen aufrufen oder andere Ausdrücke verwenden.
 
 # Default-Wert für Instanzvariablen bereitstellen
@@ -61,8 +64,10 @@ deklarieren Sie ihn als `default` und Sie sind fertig:
 ```cpp
 class X 
 {
+private:
   int m_i = 4;
   int m_j {5};
+
 public:
   X(int a) : m_i{ a } {}  // initializes m_i with a and m_j with 5
   X() = default;          // initializes m_i with 4 and m_j with 5
@@ -71,13 +76,15 @@ public:
 
 Insbesondere wenn Sie mehrere Konstruktoren haben und alle oder die meisten von ihnen
 ihre Membervariablen mit demselben Wert initialisieren,
-kann der Klammer-oder-Gleich-Initialisierer für Membervariablen
+kann der "*Brace-or-Equal*"-Initialisierer für Membervariablen
 nicht nur das Hinzufügen dieser Variablen in die *Member Initialization List*
-dieser Konstruktoren ersparen, sondern es versieht jedes Element dieser Liste mit einem expliziten Hinweis darauf,
+des Konstruktors ersparen, sondern es versieht jedes Element dieser Liste mit einem expliziten Hinweis darauf,
 dass dieses Element eine Initialisierung besitzt,
 die nicht dem Standardwert entspricht.
 
-Betrachten Sie die Verwendung von "*Brace-or-Equal-*"-Initialisierungen als Mittel,
+*Fazit*:
+
+Betrachten Sie die Verwendung von "*Brace-or-Equal*"-Initialisierungen als Mittel,
 um Standardwerte für Membervariablen bereitzustellen und um
 *Member Initialization* in Konstruktoren weniger länglich und dafür
 umso aussagekräftiger zu gestalten.
