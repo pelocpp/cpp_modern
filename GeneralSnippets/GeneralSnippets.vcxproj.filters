@@ -437,6 +437,9 @@
     <None Include="VirtualOverrideFinal\VirtualOverrideFinal.md">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="DefaultInitialization\DefaultInitialization.md">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Global\Dummy.h">

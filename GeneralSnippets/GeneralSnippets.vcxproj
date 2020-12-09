@@ -233,6 +233,7 @@
     <None Include="ConstructursOrder\CtorDtorOrder.md" />
     <None Include="CRTP\CRTP.md" />
     <None Include="DeclType\decltype.md" />
+    <None Include="DefaultInitialization\DefaultInitialization.md" />
     <None Include="Exercises\cpp_dividend_divisor.svg" />
     <None Include="Exercises\Exercises.md" />
     <None Include="Explicit\Explicit.md" />

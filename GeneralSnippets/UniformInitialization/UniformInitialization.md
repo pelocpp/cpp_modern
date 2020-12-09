@@ -1,5 +1,11 @@
 # Einheitliche Initialisierung
 
+*Hinweis*:
+
+Siehe dazu auch die Spracherweiterung [Default-Initialisierung für Member-Variablen](../../GeneralSnippets/DefaultInitialization/DefaultInitialization.md)
+
+---
+
 [Quellcode](UniformInitialization.cpp)
 
 ---
