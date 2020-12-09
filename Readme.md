@@ -78,7 +78,7 @@ Tabelle 1. Grundlagen-Code-Snippets.
 | [CommonType](GeneralSnippets/CommonType/CommonType.md) | Utility `std::common_type` |
 | [CRTP](GeneralSnippets/CRTP/CRTP.md) | Curiously Recurring Template Pattern (CRTP) |
 | [DeclType](GeneralSnippets/DeclType/decltype.md) | `decltype` und `std::declval` |
-| [Default-Initialisierung für Member-Variablen](GeneralSnippets/DefaultInitialization/DefaultInitialization.md)
+| [DefaultInitialization](GeneralSnippets/DefaultInitialization/DefaultInitialization.md)| Default-Initialisierung für Member-Variablen |
 | [Explicit](GeneralSnippets/Explicit/Explicit.md) | Schlüsselwort `explicit` |
 | [ExpressionTemplates](GeneralSnippets/ExpressionTemplates/ExpressionTemplates.md) | Expression Templates |
 | [FileSystem](GeneralSnippets/FileSystem/FileSystem.md) | C++ 17 FileSystem Library |
