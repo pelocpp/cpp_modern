@@ -24,8 +24,12 @@ einer Wertzuweisung sind zulässig - sie werden daher im C++-Standard als
 ```cpp
 class X 
 {
-   int m_i = 1;
-   int m_j {2};
+private:
+  int m_i = 1;
+  int m_j {2};
+
+public:
+  X(int);
 };
 ```
 
@@ -86,7 +90,7 @@ die nicht dem Standardwert entspricht.
 
 Betrachten Sie die Verwendung von "*Brace-or-Equal*"-Initialisierungen als Mittel,
 um Standardwerte für Membervariablen bereitzustellen und um
-*Member Initialization* in Konstruktoren weniger länglich und dafür
+*Member Initialization* Listen in Konstruktoren weniger länglich und dafür
 umso aussagekräftiger zu gestalten.
 
 ---
