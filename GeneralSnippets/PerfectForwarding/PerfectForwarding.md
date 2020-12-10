@@ -11,8 +11,9 @@
 Zur Motivation des Perfect Forwarding betrachten wir folgendes Szenario
 mit einer Template Funktion.
 
-Angenommen, wir wollen eine Funktion schreiben, die ein oder mehrere Parameter hat
-Typs bekommt und diese an einen Konstruktor weiterleitet. In der Praxis könnte es sich
+Angenommen, wir wollen eine Funktion schreiben,
+die ein oder mehrere Parameter (möglicherweise unterschiedlichen Typs) hat
+und diese an einen Konstruktor weiterleitet. In der Praxis könnte es sich
 um eine Umsetzung des Factory-Patterns handeln:
 
 ```cpp
