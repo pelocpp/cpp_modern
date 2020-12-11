@@ -34,8 +34,6 @@ namespace AlgorithmAccumulate {
     template <typename T>
     std::string toString2(std::vector<T> vec) {
 
-        int counter = 0;
-
         std::string s = std::accumulate(
             std::begin(vec),
             std::end(vec),

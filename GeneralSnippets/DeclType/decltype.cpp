@@ -15,36 +15,37 @@ namespace Decltype {
         return t + u;
     }
 
-    void test_decltype_01() {
-
-        int n = 1;
-        double d = 2.7;
+    void test_01()
+    {
+        int n{ 1 };
+        double d{ 2.7 };
 
         auto result = add(n, d);
         std::cout << result << std::endl;
     }
 
     // demonstrating decltype with entities / instances of types:
-    void test_decltype_02() {
-
+    void test_02()
+    {
         std::vector<int> vec;
 
         // decltype(vec) yields std::vector<int>,
-        // so the next line is equivalent to 'std::vector<int> v2;'
+        // so the next line is equivalent to 'std::vector<int> vec2;'
         decltype(vec) vec2;
 
         // foo returns the type of f, in this case float,
         // so this is equivalent to float foo(int b);
-        float f;
+        float f = 0.0;
         auto foo(int b) -> decltype(f);
     }
 
     // demonstrating decltype with expressions:
-    void test_decltype_03() {
-        // decltype(foo()) yields the type of whatever foo() returns,
-        // in this case, float:
+    void test_03()
+    {
+        // decltype(foo()) yields the type of 
+        // whatever foo() returns, in this case: float:
         float foo();
-        [[maybe_unused]] decltype(foo()) b;
+        [[maybe_unused]] decltype(foo()) b = decltype(foo()){};
 
         //decltype yields void, so this is the same as void bar();
         std::vector<int> vec;
@@ -60,7 +61,7 @@ namespace Decltype {
         return a + b;
     }
 
-    void test_decltype_04() {
+    void test_04() {
         sum_t<int, float> result = summe(123, 123.99F);
         std::cout << result << std::endl;
     }
@@ -69,10 +70,10 @@ namespace Decltype {
 void main_decltype()
 {
     using namespace Decltype;
-    test_decltype_01();
-    test_decltype_02();
-    test_decltype_03();
-    test_decltype_04();
+    test_01();
+    test_02();
+    test_03();
+    test_04();
 }
 
 // =====================================================================================
