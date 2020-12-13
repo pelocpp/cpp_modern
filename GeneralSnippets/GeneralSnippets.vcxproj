@@ -181,6 +181,7 @@
     <ClCompile Include="PerfectForwarding\PerfectForwarding01.cpp" />
     <ClCompile Include="PerfectForwarding\PerfectForwarding02.cpp" />
     <ClCompile Include="PerfectForwarding\PerfectForwarding03.cpp" />
+    <ClCompile Include="PerfectForwarding\PerfectForwarding04.cpp" />
     <ClCompile Include="Program.cpp" />
     <ClCompile Include="RAII\RAII01.cpp" />
     <ClCompile Include="RAII\RAII02.cpp" />
@@ -253,7 +254,8 @@
     <None Include="MoveSemantics\MoveSemantics.md" />
     <None Include="Optional\Optional.md" />
     <None Include="ParametersWithConstAndRef\ConstDeclarations.md" />
-    <None Include="PerfectForwarding\PerfectForwarding.md" />
+    <None Include="PerfectForwarding\PerfectForwarding_01.md" />
+    <None Include="PerfectForwarding\PerfectForwarding_02.md" />
     <None Include="RAII\RAII.md" />
     <None Include="Random\Random.md" />
     <None Include="ReferenceWrapper\ReferenceWrapper.md" />

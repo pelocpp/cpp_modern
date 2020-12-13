@@ -44,6 +44,7 @@ void main_optional();
 void main_perfect_forwarding_motivation();
 void main_perfect_forwarding();
 void main_perfect_forwarding_object();
+void main_perfect_remove_reference_demo();
 void main_raii();
 void main_raii_02(); 
 void main_random();
@@ -123,7 +124,7 @@ int main()
         //main_perfect_forwarding_motivation();
         //main_perfect_forwarding();
         //main_perfect_forwarding_object();
-        //main_perfect_forwarding_object();
+        //main_perfect_remove_reference_demo();
         //main_raii();
         //main_raii_02();
         //main_random();
