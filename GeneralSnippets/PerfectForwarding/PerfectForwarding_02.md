@@ -2,7 +2,7 @@
 
 ## Ein klassischer Übersetzungsfehler
 
-&#x21D0; [Teil I: Grundlagen](PerfectForwarding_01.md)
+&#x21D0; [Teil I: Grundlagen zu Perfect Forwarding](PerfectForwarding_01.md)
 
 ---
 
@@ -13,8 +13,7 @@
 ## Motivation
 
 Um das Vorhandensein eines Werts in einem STL-Container zu überprüfen,
-verwenden wir typischerweise den STL-Algorithmus `std::find`.
-
+wenden wir typischerweise den STL-Algorithmus `std::find` an.
 `std::find` gibt einen Iterator zurück, der auf diesen Wert verweist,
 wenn er sich im Container befindet, und `std::end`, wenn dies nicht der Fall ist:
 
@@ -42,7 +41,7 @@ verwendet wird, falls dies der Fall ist.
 
 Aber manchmal wollen wir nur wissen, ob sich der Wert in der Sammlung befindet.
 Und in diesem Fall ist der obige Code ziemlich länglich.
-Es wäre schöner, eine `contains`-Funktion zu haben, die die Frage mit
+Es wäre schöner, eine `contains`-Funktion zu haben, die diese Frage mit
 einem `bool`-Wert beantwortet:
 
 ```cpp
@@ -54,7 +53,7 @@ if (contains(container, 42))
 
 Von dieser Funktion `contains` könnten verschiedene Arten von STL-Containerklassen profitieren,
 darunter `std::vector`, `std::array` und benutzerdefinierte Container.
-Also werden diese Funktion als Funktionsschablone schreiben mit einem generischen 
+Also werden wir diese Funktion als Funktionsschablone schreiben mit einem generischen 
 Containertyp.
 
 Damit müssen wir auch den Wert, nach dem wir suchen, generisch betrachten.
@@ -99,12 +98,11 @@ Message 'TCONTAINER=std::vector<int,std::allocator<int>> &'
 
 Das Kleingedruckte muss man genau lesen.
 Der Container ist nicht `std::vector<int>`. Er ist `std::vector<int>&`.
-Beachten Sie das `&`. Das sagen die letzten Zeilen der Übersetzungssfehler.
-
+Beachten Sie das `&`. Das sagen die letzten Zeilen des Übersetzungsfehlers.
 Dies ist ein völlig anderer Typ. `std::vector<int>` hat einen Werttyp
 (zur Erinnerung: `std::vector<int>::value_type`),
 aber `std::vector<int>&` hat wie `int&` oder ein anderer Referenztyp keinen derartigen Alias.
-Daher der Übersetzungssfehler!
+Daher der Übersetzungsfehler!
 
 Wenn wir das Problem erkannt haben, ist es nicht mehr schwer,
 dieses zu beheben.
@@ -136,6 +134,10 @@ void test() {
     std::cout << std::boolalpha << found << std::endl;
 }
 ```
+
+In beiden `using`-Anweisungen `ValueType` und `Iterator` gelangt
+`std::remove_reference` zur Anwendung,
+die `contains`-Funktion arbeitet nun einwandfrei!
 
 ## Literaturhinweis:
 
