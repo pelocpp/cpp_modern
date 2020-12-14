@@ -7,7 +7,7 @@
 ## Überblick
 
 C++ -Metaprogrammierung bezeichnet die Technik der Metaprogrammierung innerhalb der Programmiersprache C++,
-also eine Technik, um in C++ Programmcode zur Übersetzungszeit generieren zu lassen
+also eine Technik, um in C++ Programmcode zur Übersetzungszeit generieren zu lassen.
 
 Bei der Templatemetaprogrammierung macht man sich zunutze, dass Templates während des Kompilierens ausgewertet werden.
 So kann man Code schreiben, der zur Übersetzungszeit ausgeführt wird. Obwohl sich so die Dauer des Kompilierens verlängert, hat das Verfahren den Vorteil, dass es zu einer Verkürzung der Laufzeit kommen kann.
