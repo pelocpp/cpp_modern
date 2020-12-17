@@ -8,10 +8,9 @@
 
 Eine Instanz von `std::string_view` ist eine *Sicht* auf eine Zeichenkette,
 die nicht verändert werden kann.
-
 Man kann die Klasse `std::string_view` als eine Schnittstelle für die Kasse `std::string` ansehen,
 die nur alle lesenden Methoden enthält.
-Als Parameter verhält sich damit der `std::string_view` Datentyp weitesgehend
+Als Parameter verhält sich damit der `std::string_view`-Datentyp weitestgehend
 wie eine konstante String-Referenz (`const std::string&`).
 
 Der Zweck der beiden Alternativen (`std::string_view` versus `const std::string&`) besteht
@@ -117,7 +116,7 @@ public:
 
 Ein `std::string_view`-Parameter akzeptiert jede Art von Zeichenfolge,
 z.B. ein klassisches C++-`std::string`-Objekt, eine `const char*` Zeichenfolge im C-Stil
-und ein Zeichenfolgenliteral, alles ohne Kopieren!
+oder ein Zeichenkettenliteral, alles ohne Kopieren!
 
 ---
 
