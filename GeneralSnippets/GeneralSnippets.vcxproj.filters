@@ -240,6 +240,9 @@
     <ClCompile Include="StringView\StdStringView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="StandardLibrarySTL\StandardLibrarySTL.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -450,6 +453,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="StringView\StdStringView.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="StandardLibrarySTL\StandardLibrarySTL.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

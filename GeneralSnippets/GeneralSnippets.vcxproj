@@ -191,6 +191,7 @@
     <ClCompile Include="SFINAE_EnableIf\Sfinae01.cpp" />
     <ClCompile Include="SFINAE_EnableIf\Sfinae02.cpp" />
     <ClCompile Include="SharedPtr\SharedPtr.cpp" />
+    <ClCompile Include="StandardLibrarySTL\StandardLibrarySTL.cpp" />
     <ClCompile Include="StaticAssert\StaticAssert.cpp" />
     <ClCompile Include="StringView\StdStringView.cpp" />
     <ClCompile Include="StructuredBinding\StructuredBinding.cpp" />
@@ -263,6 +264,7 @@
     <None Include="RValueLValue\RValueLValue.md" />
     <None Include="SFINAE_EnableIf\Sfinae.md" />
     <None Include="SharedPtr\SharedPtr.md" />
+    <None Include="StandardLibrarySTL\StandardLibrarySTL.md" />
     <None Include="StaticAssert\StaticAssertion.md" />
     <None Include="StringView\StdStringView.md" />
     <None Include="StructuredBinding\StructuredBinding.md" />

@@ -97,6 +97,7 @@ Tabelle 1. Grundlagen-Code-Snippets.
 | [RValueLValue](GeneralSnippets/RValueLValue/RValueLValue.md) | LValue- und RValue Referenzen |
 | [SFINAE_EnableIf](GeneralSnippets/SFINAE_EnableIf/Sfinae.md) | SFINAE und `std::enable_if` |
 | [SharedPointer](GeneralSnippets/SharedPtr/SharedPtr.md) | Klasse `std::shared_ptr<T>` |
+| [StandardLibrarySTL](GeneralSnippets/StandardLibrarySTL/StandardLibrarySTL.md) | Die C++ Standard Template Library (STL): Ergänzungen |
 | [StaticAssert](GeneralSnippets/StaticAssert/StaticAssertion.md) | Compile-Time Makro `static_assert` |
 | [StringView](GeneralSnippets/StringView/StdStringView.md) | Klasse `std::string_view` |
 | [StructuredBinding](GeneralSnippets/StructuredBinding/StructuredBinding.md) | Eine neue Möglichkeit der Rückgabe mehrerer Werte |
@@ -117,3 +118,7 @@ Tabelle 1. Grundlagen-Code-Snippets.
 Tabelle 2. Spracherweiterungen C++ 11/C++ 14/C++ 17.
 
 ---
+
+
+StandardLibrarySTL
+
