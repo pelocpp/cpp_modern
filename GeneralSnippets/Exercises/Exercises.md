@@ -14,6 +14,7 @@ Folgende Themen werden angesprochen:
   * CRTP
   * Funktionale Programmierung
   * *Perfect Forwarding*
+  * Funktione `std::accumulate`
 
 ---
 
@@ -40,6 +41,7 @@ Folgende Themen werden angesprochen:
 - [Aufgabe 21](#aufgabe-21): Variadische Templates und Vererbung
 - [Aufgabe 22](#aufgabe-22): Einfaches Beispiel zu variadischen Templates und *Perfect Forwarding*
 - [Aufgabe 23](#aufgabe-23): Ausführungszeit einer Funktion (`std::invoke`, variadische Templates und *Perfect Forwarding*)
+- [Aufgabe 24](#aufgabe-24): Die Funktion `std::accumulate` in der Anwendung
 
 ---
 
@@ -1251,6 +1253,33 @@ und misst ihre Ausführungszeit.
 
 ---
 
+## Aufgabe 24
+
+#### Inhalt: Die Funktion `std::accumulate` in der Anwendung
+
+#### Voraussetzungen: `std::accumulate`
+
+Schreiben Sie zwei Funktionen `andAll` und `orAll`, die eine variable Anzahl von `bool`-Parametern
+logisch UND oder logisch ODER verknüpfen. Mögliche Testbeispiele können so aussehen:
+
+```cpp
+bool result = andAll(true, false, true);
+std::cout << std::boolalpha << result << std::endl;
+
+result = andAll(true, true, true, true, true, true, true, true, true, true);
+std::cout << std::boolalpha << result << std::endl;
+```
+
+Setzen zur Lösung der Aufgabe den STL-Algorithmus `std::accumulate` ein!
+
+*Ausgabe*:
+
+```cpp
+false
+true
+```
+---
+
 [An den Anfang](#aufgaben)
 
 ---
@@ -1258,3 +1287,7 @@ und misst ihre Ausführungszeit.
 [Zurück](../../Readme.md)
 
 ---
+
+
+- [Aufgabe 24](#aufgabe-24): Die Funktion `std::accumulate`in der Anwendung
+

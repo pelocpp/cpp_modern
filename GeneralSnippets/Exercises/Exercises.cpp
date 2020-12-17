@@ -1675,6 +1675,52 @@ namespace Exercises {
             test_06();
         }
     }
+
+    namespace Exercise_24 {
+
+        bool andAll(std::initializer_list<bool> vec) {
+
+            return std::accumulate(
+                std::begin(vec),
+                std::end(vec),
+                true, // first element
+                [](bool first, bool next) { return first and next; }
+            );
+        }
+
+        bool orAll(std::initializer_list<bool> vec) {
+
+            return std::accumulate(
+                std::begin(vec),
+                std::end(vec),
+                false, // first element
+                [](bool first, bool next) { return first or next; }
+            );
+        }
+
+
+        void testExercise_24a() {
+            bool result = andAll({ true, false, true });
+            std::cout << std::boolalpha << result << std::endl;
+
+            result = andAll({ true, true, true, true, true, true, true, true, true, true });
+            std::cout << std::boolalpha << result << std::endl;
+        }
+
+        void testExercise_24b() {
+
+            bool result = orAll({ false, true, false });
+            std::cout << std::boolalpha << result << std::endl;
+
+            result = orAll({ false, false, false, false, false, false, false, false, false, false });
+            std::cout << std::boolalpha << result << std::endl;
+        }
+
+        void testExercise_24() {
+            testExercise_24a();
+            testExercise_24b();
+        }
+    }
 }
 
 void main_exercices()
@@ -1702,6 +1748,7 @@ void main_exercices()
     using namespace Exercises::Exercise_21;
     using namespace Exercises::Exercise_22;
     using namespace Exercises::Exercise_23;
+    using namespace Exercises::Exercise_24;
 
     testExercise_01();
 
@@ -1755,6 +1802,8 @@ void main_exercices()
     testExercise_22();
 
     testExercise_23();
+
+    testExercise_24();
 }
 
 // =====================================================================================
