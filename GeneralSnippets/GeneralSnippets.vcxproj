@@ -192,6 +192,7 @@
     <ClCompile Include="SFINAE_EnableIf\Sfinae02.cpp" />
     <ClCompile Include="SharedPtr\SharedPtr.cpp" />
     <ClCompile Include="StaticAssert\StaticAssert.cpp" />
+    <ClCompile Include="StringView\StdStringView.cpp" />
     <ClCompile Include="StructuredBinding\StructuredBinding.cpp" />
     <ClCompile Include="TemplateConstexprIf\Template_ConstExpr_If.cpp" />
     <ClCompile Include="TemplatesClassBasics\TemplatesClassBasics01.cpp" />
@@ -263,6 +264,7 @@
     <None Include="SFINAE_EnableIf\Sfinae.md" />
     <None Include="SharedPtr\SharedPtr.md" />
     <None Include="StaticAssert\StaticAssertion.md" />
+    <None Include="StringView\StdStringView.md" />
     <None Include="StructuredBinding\StructuredBinding.md" />
     <None Include="TemplateConstexprIf\ConstExpr_If.md" />
     <None Include="TemplatesClassBasics\TemplatesBasics.md" />

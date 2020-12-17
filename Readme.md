@@ -98,6 +98,7 @@ Tabelle 1. Grundlagen-Code-Snippets.
 | [SFINAE_EnableIf](GeneralSnippets/SFINAE_EnableIf/Sfinae.md) | SFINAE und `std::enable_if` |
 | [SharedPointer](GeneralSnippets/SharedPtr/SharedPtr.md) | Klasse `std::shared_ptr<T>` |
 | [StaticAssert](GeneralSnippets/StaticAssert/StaticAssertion.md) | Compile-Time Makro `static_assert` |
+| [StringView](GeneralSnippets/StringView/StdStringView.md) | Klasse `std::string_view` |
 | [StructuredBinding](GeneralSnippets/StructuredBinding/StructuredBinding.md) | Eine neue Möglichkeit der Rückgabe mehrerer Werte |
 | [TemplateConstexprIf](GeneralSnippets/TemplateConstexprIf/ConstExpr_If.md) | Templates und bedingte Compilierung (`if constexpr`) |
 | [TemplatesClassBasics](GeneralSnippets/TemplatesClassBasics/TemplatesBasics.md) | Grundlagen zu Klassentemplates |
@@ -114,10 +115,5 @@ Tabelle 1. Grundlagen-Code-Snippets.
 | [WeakPointer](GeneralSnippets/WeakPtr/WeakPtr.md) | Klasse `std::weak_ptr<T>` |
 
 Tabelle 2. Spracherweiterungen C++ 11/C++ 14/C++ 17.
-
-
-
-
-
 
 ---

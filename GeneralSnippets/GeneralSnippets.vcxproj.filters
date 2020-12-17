@@ -237,6 +237,9 @@
     <ClCompile Include="PerfectForwarding\PerfectForwarding04.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="StringView\StdStringView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -444,6 +447,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="PerfectForwarding\PerfectForwarding_01.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="StringView\StdStringView.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

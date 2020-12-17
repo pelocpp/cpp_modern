@@ -54,6 +54,7 @@ void main_sfinae();
 void main_sfinae_02();
 void main_shared_ptr();
 void main_static_assert();
+void main_string_view();
 void main_structured_binding();
 void main_class_templates_basics_01();
 void main_class_templates_basics_02();
@@ -134,6 +135,7 @@ int main()
         //main_sfinae_02();
         //main_shared_ptr();
         //main_static_assert();
+        //main_string_view();
         //main_structured_binding();
         //main_class_templates_basics_01();
         //main_class_templates_basics_02();
