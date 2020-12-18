@@ -233,6 +233,11 @@ namespace Exercises {
                 }
             );
         }
+
+        void testExercise_03() {
+            testExercise_03a();
+            testExercise_03b();
+        }
     }
 
     namespace Exercise_04 {
@@ -291,6 +296,11 @@ namespace Exercises {
             calculator.insert(std::make_pair('^', [](double a, double b) { return std::pow(a, b); }));
             std::cout << "1.5 ^ 2.5 = " << calculator['^'](1.5, 2.5) << std::endl;
         };
+
+        void testExercise_04() {
+            // testExercise_04a();  // needs console input
+            testExercise_04b();
+        }
     }
 
     namespace Exercise_05 {
@@ -530,6 +540,11 @@ namespace Exercises {
             if (i4.has_value()) {
                 std::cout << i4.value() << std::endl;
             }
+        }
+
+        void testExercise_06() {
+            testExercise_06a();
+            testExercise_06b();
         }
     }
 
@@ -847,6 +862,11 @@ namespace Exercises {
             result = orAll(false, false, false, false, false, false, false, false, false, false);
             std::cout << std::boolalpha << result << std::endl;
         }
+
+        void testExercise_12() {
+            testExercise_12a();
+            testExercise_12b();
+        }
     }
 
     namespace Exercise_13 {
@@ -883,6 +903,11 @@ namespace Exercises {
 
             result = orAll(false, false, false, false, false);
             std::cout << std::boolalpha << result << std::endl;
+        }
+
+        void testExercise_13() {
+            testExercise_13a();
+            testExercise_13b();
         }
     }
 
@@ -1210,6 +1235,13 @@ namespace Exercises {
             hetCont.visit(lambdaAllInOneVisitor);
             std::cout << std::endl;
         }
+
+        void testExercise_18() {
+            testExercise_18a();
+            testExercise_18b();
+            testExercise_18c();
+            testExercise_18d();
+        }
     }
 
     namespace Exercise_19 {
@@ -1399,6 +1431,11 @@ namespace Exercises {
             std::cout << "Time taken: "
                 << std::chrono::duration_cast<std::chrono::microseconds>(end - start).count()
                 << " microseconds" << std::endl;
+        }
+
+        void testExercise_19() {
+            testExercise_19a_classic_benchmark();
+            testExercise_19a_crtp_benchmark();
         }
     }
 
@@ -1698,7 +1735,6 @@ namespace Exercises {
             );
         }
 
-
         void testExercise_24a() {
             bool result = andAll({ true, false, true });
             std::cout << std::boolalpha << result << std::endl;
@@ -1708,7 +1744,6 @@ namespace Exercises {
         }
 
         void testExercise_24b() {
-
             bool result = orAll({ false, true, false });
             std::cout << std::boolalpha << result << std::endl;
 
@@ -1751,58 +1786,27 @@ void main_exercices()
     using namespace Exercises::Exercise_24;
 
     testExercise_01();
-
     testExercise_02();
-    
-    testExercise_03a();
-    testExercise_03b();
-    
-    // testExercise_04a();  // needs console input
-    testExercise_04b();
-    
+    testExercise_03();
+    testExercise_04();  
     testExercise_05();
-
-    testExercise_06a();
-    testExercise_06b();
-    
+    testExercise_06();
     testExercise_07();
-    
     testExercise_08();
-    
     testExercise_09();
-    
     testExercise_10();
-    
     testExercise_11();
-    
-    testExercise_12a();
-    testExercise_12b();
-     
-    testExercise_13a();
-    testExercise_13b();
-    
+    testExercise_12();
+    testExercise_13();
     testExercise_14();
-    
     testExercise_15();
-
     testExercise_17();
-    
-    testExercise_18a();
-    testExercise_18b();
-    testExercise_18c();
-    testExercise_18d();
-
-    testExercise_19a_classic_benchmark();
-    testExercise_19a_crtp_benchmark();
-
+    testExercise_18();
+    testExercise_19();
     testExercise_20();
-
     testExercise_21();
-
     testExercise_22();
-
     testExercise_23();
-
     testExercise_24();
 }
 

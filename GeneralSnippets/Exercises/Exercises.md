@@ -14,7 +14,7 @@ Folgende Themen werden angesprochen:
   * CRTP
   * Funktionale Programmierung
   * *Perfect Forwarding*
-  * Funktione `std::accumulate`
+  * STL-Algorithmus `std::accumulate`
 
 ---
 
@@ -1287,7 +1287,3 @@ true
 [Zurück](../../Readme.md)
 
 ---
-
-
-- [Aufgabe 24](#aufgabe-24): Die Funktion `std::accumulate`in der Anwendung
-
