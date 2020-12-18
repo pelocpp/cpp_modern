@@ -691,6 +691,10 @@ Können Sie das Feature "*Short-Circuit-Evaluation*" in Ihrer Realisierung der F
 Die Aufgabenstellung ist identisch zur letzten Aufgabe (ohne Zusatzaufgabe):
 Setzen Sie zur Lösung dieses Mal *Folding Expressions* ein.
 
+*Zusatzfrage*:
+Welchen prinzipiellen Unterschied beobachten Sie im Lösungsansatz
+von Aufgabe 13 und 15?
+
 ---
 
 [An den Anfang](#aufgaben)

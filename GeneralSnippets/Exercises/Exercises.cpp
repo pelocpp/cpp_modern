@@ -921,6 +921,8 @@ namespace Exercises {
 
             return std::is_same<decltype(arg1), decltype(arg2)>::value;
             // or
+            // return std::is_same_v<decltype(arg1), decltype(arg2)>;
+            // or
             // return std::is_same<T1, T2>::value;
         }
 
@@ -958,12 +960,17 @@ namespace Exercises {
 
     namespace Exercise_15 {
 
+        // Beachte:
+        // Bei Anwendung eines Folding Expression wird nach der "Ausrollen" des Folding Ausdrucks
+        // das 1. mit dem 2., das 1. mit dem 3., das 1. mit dem 4. Element usw. verglichen. 
+        // Beim Lösungsansatz mit variadischen Templates wird
+        // das 1. mit dem 2., das 2. mit dem 3., das 3. mit dem 4. Element usw. verglichen!
+
         template<typename T, typename... TREST>
         constexpr bool sameType(T arg, TREST... args)
         {
-            std::cout << "compare: " << arg << " with " << std::endl;
             // since C++17: folding expression !
-            return (std::is_same<decltype(arg), decltype(args)>::value && ...);
+            return (std::is_same_v<decltype(arg), decltype(args)> && ...);
         }
 
         void testExercise_15() {
