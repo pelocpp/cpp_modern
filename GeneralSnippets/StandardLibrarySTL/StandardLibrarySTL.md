@@ -200,7 +200,7 @@ Tabelle 1. Konvertierungsfunktionen.
 
 Die herkömmlichen Konvertierungsfunktionen weisen einige Probleme auf:
 
-  * Das Verhalten von `atoi` ist undefiniert, wenn der Argument keine gültige Zahl darstellt.
+  * Das Verhalten von `atoi` ist undefiniert, wenn das Argument keine gültige Zahl darstellt.
   * `strtol` liefert 0 zurück, wenn die Zeichenkette nicht in eine Zahl konvertiert werden kann. Das lässt sich aber nicht unterscheiden von dem Fall, wenn die Zeichenkette tatsächlich die 0 repräsentiert.
   * `itoa` kann in ihrer herkömmlichen Implementierung Pufferüberläufe verursachen.
   * `sprintf` ist umständlich und prüft die Datentypen der Argumente nicht (Formatspezifizierer in der Formatzeichenkette).
