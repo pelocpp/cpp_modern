@@ -1,10 +1,12 @@
 # Lambda-Funktionen
 
-[Quellcode 1 / Motivation, allgemeine Beispiele](Lambda01.cpp)
+[Quellcode 1 - Motivation, allgemeine Beispiele](Lambda01.cpp)
 
-[Quellcode 2 / Lambda und Closure](Lambda02.cpp)
+[Quellcode 2 - Lambda und Closure](Lambda02.cpp)
 
-[Quellcode 3 / Lambda und das Visitor-Pattern](Lambda03.cpp)
+[Quellcode 3 - Lambda und Closure: Spezialfall `this`](Lambda03.cpp)
+
+[Quellcode 4 - Lambda und das Visitor-Pattern](Lambda04.cpp)
 
 ---
 
@@ -12,17 +14,22 @@
 
 Es werden folgende Überlegungen der Reihe nach betrachtet:
 
-  * Betrachtung 1:</br>Sortieren eines Vektors mit einem Funktionsobjekt (also ohne Lambda-Methode):</br>
+  * Betrachtung 1:</br>Sortieren eines Vektors mit einer globalen Funktion.</br>
+
+  * Betrachtung 2:</br>Sortieren eines Vektors mit einem Funktionsobjekt (also ohne Lambda-Methode):</br>
     Man erkennt, dass es im Prinzip einer zusätzlichen Klasse (Struktur) bedarf, um
-    den std::sort-Methodenaufruf mit einer Vergleichsmethode aufrufen zu können.
+    `std::sort` mit einer Vergleichsmethode aufrufen zu können.
 
-  * Betrachtung 2:</br>Sortieren eines Vektors mit Lambda-Methode:</br>
-    Er werden die Vereinfachungen bzgl. der ersten Variante vorgestellt.
+  * Betrachtung 3:</br>Wie Betrachtung 2, nur mit einer lokalen Struktur:</br>
+    Es wird gezeigt, dass Strukturdefinitionen auch lokal in einer Funktion möglich sind.
 
-  * Betrachtung 3:</br>Blick auf die *Capture Clause*: / Zugriffsklausel</br>
+  * Betrachtung 4:</br>Sortieren eines Vektors mit Lambda-Methode:</br>
+    Es wird eine einfache Lambda-Methode vorgestellt.
+
+  * Betrachtung 5:</br>Blick auf die *Capture Clause*: / Zugriffsklausel</br>
     Es wird auf die Lambda-Zugriffsklausel (engl.: *Capture Clause*) eingegangen.
 
-* Betrachtung 4:</br>`std::function`<> Methode:</br>
+  * Betrachtung 6:</br>`std::function`<> Methode:</br>
     Der generische Wrapper `std::function` wird eingeführt.
 
 

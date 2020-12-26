@@ -1,55 +1,59 @@
 // =====================================================================================
-// Lambda and Visitor
+// Lambda Methods
 // =====================================================================================
 
 #include <iostream>
-#include <functional>
 
-namespace LambdaAndVisitor {
+namespace LambdaAndThisClosure {
 
-    class BinaryTreeNode {
-    public:
-        BinaryTreeNode(
-            int value,
-            BinaryTreeNode* left,
-            BinaryTreeNode* right)
-            : m_value(value), m_left(left), m_right(right) {
-        }
+    class Class {
+
+        friend std::ostream& operator << (std::ostream&, const Class&);
 
     private:
         int m_value;
-        BinaryTreeNode* m_left;
-        BinaryTreeNode* m_right;
 
     public:
-        void accept(std::function<void(BinaryTreeNode & node)> visitor) {
-            visitor(*this);
-            if (m_left != nullptr) m_left->accept(visitor);
-            if (m_right != nullptr) m_right->accept(visitor);
+        Class() : m_value{ 1 } {}
+
+        // just for demonstration purposes / observe, when copy c'tor is called !!!
+        Class(const Class& obj) {
+            std::cout << "copy c'tor called ..." << std::endl;
+            m_value = obj.m_value;
         }
 
-        int value() const { return m_value; }
+        void incValue() {
+            ++m_value;
+        }
+
+        void doSomething() {
+
+            auto lambda = [this]() mutable {  // use [*this] to work on a copy
+                incValue();
+                return m_value;
+            };
+
+            lambda();
+        }
     };
 
-    void test_01() {
-
-        BinaryTreeNode tree(1,
-            new BinaryTreeNode(2,
-                new BinaryTreeNode(3, nullptr, nullptr),
-                new BinaryTreeNode(4, nullptr, nullptr)),
-            new BinaryTreeNode(2, nullptr, nullptr)
-        );
-
-        tree.accept([](BinaryTreeNode& visit) {
-            std::cout << visit.value() << std::endl;
-            }
-        );
+    std::ostream& operator << (std::ostream& os, const Class& obj) {
+        os << "m_value = " << obj.m_value;
+        return os;
     }
+
+    void test_01() {
+        Class object;
+        std::cout << object << std::endl;
+        object.doSomething();
+        std::cout << object << std::endl;
+    }
+
 }
 
-void main_lambda_and_visitor()
+void main_lambdas_this_closure()
 {
-    using namespace LambdaAndVisitor;
+    using namespace LambdaAndThisClosure;
     test_01();
 }
 

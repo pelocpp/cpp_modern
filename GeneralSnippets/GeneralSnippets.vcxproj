@@ -171,6 +171,7 @@
     <ClCompile Include="Invoke\Invoke.cpp" />
     <ClCompile Include="Lambda\Lambda01.cpp" />
     <ClCompile Include="Lambda\Lambda03.cpp" />
+    <ClCompile Include="Lambda\Lambda04.cpp" />
     <ClCompile Include="Lambda\Lambda02.cpp" />
     <ClCompile Include="Literals\Literals.cpp" />
     <ClCompile Include="MemoryLeaks\MemoryLeaks.cpp" />

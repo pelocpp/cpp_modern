@@ -34,6 +34,7 @@ void main_input_output_streams();
 void main_invoke();
 void main_lambdas();
 void main_lambda_and_closure();
+void main_lambdas_this_closure();
 void main_lambda_and_visitor();
 void main_literals();
 void main_memory_leaks();
@@ -116,6 +117,7 @@ int main()
         //main_invoke();
         //main_lambdas();
         //main_lambda_and_closure();
+        //main_lambdas_this_closure();
         //main_lambda_and_visitor();
         //main_literals();
         //main_memory_leaks();

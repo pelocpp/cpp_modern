@@ -108,9 +108,6 @@
     <ClCompile Include="Array\Array.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Lambda\Lambda03.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Lambda\Lambda02.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -241,6 +238,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="StandardLibrarySTL\StandardLibrarySTL.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Lambda\Lambda04.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Lambda\Lambda03.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
