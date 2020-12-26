@@ -33,6 +33,18 @@ namespace CommonType {
         return result;
     }
 
+    // or with trailing return type notation:
+    //template <typename T, typename U>
+    //auto operator+ (
+    //    const Number<T>& lhs,
+    //    const Number<U>& rhs) -> Number<typename std::common_type<T, U>::type>
+    //{
+    //    using result_type = typename std::common_type<T, U>::type;
+    //    result_type result;
+    //    result = lhs() + rhs();
+    //    return result;
+    //}
+
     void test_commontype_01()
     {
         std::cout << "std::common_type demonstration:" << std::endl;
