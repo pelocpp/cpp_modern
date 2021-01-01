@@ -84,7 +84,7 @@ void main_weak_pointer();
 
 int main()
 {
-    std::cout << "[Collection of C++-Code Snippets - Copyright (C) 2019-2020 Peter Loos]" << std::endl;
+    std::cout << "[Collection of C++-Code Snippets - Copyright (C) 2019-2021 Peter Loos]" << std::endl;
 
     try
     {
