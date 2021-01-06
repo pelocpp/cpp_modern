@@ -359,6 +359,18 @@ void emplace(const Args&... args)
 }
 ```
 
+oder noch besser mit *Perfect Forwarding*:
+
+```cpp
+template <typename... Args>
+void emplace(Args&& ... args)
+{
+    m_value = T(args...); // copy-operator (might use move semantics)
+}
+```
+
+
+
 ###### Realisierung (Klasse `RepositoryEx`):
 
 ```cpp
@@ -368,6 +380,17 @@ void emplace(const Args&... args)
     SlotEx<T, Key>::emplace(args...);
 }
 ```
+
+oder noch besser mit *Perfect Forwarding*:
+
+```cpp
+template <typename T, typename Key = DefaultSlotKey, typename... Args>
+void emplace(Args&& ... args)
+{
+    SlotEx<T, Key>::emplace(args...);
+}
+```
+
 
 ###### Testrahmen:
 

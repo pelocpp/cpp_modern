@@ -159,8 +159,15 @@ namespace VariadicTemplatesMixins {
             m_value = value;
         }
 
+        //template <typename... Args>
+        //void emplace(const Args&... args)
+        //{
+        //    m_value = T(args...); // copy-operator (might use move semantics)
+        //}
+
+        // using "Perfect Forwarding":
         template <typename... Args>
-        void emplace(const Args&... args)
+        void emplace(Args&& ... args)
         {
             m_value = T(args...); // copy-operator (might use move semantics)
         }
@@ -185,8 +192,15 @@ namespace VariadicTemplatesMixins {
             SlotEx<T, Key>::set(value);
         }
 
+        //template <typename T, typename Key = DefaultSlotKey, typename... Args>
+        //void emplace(const Args&... args)
+        //{
+        //    SlotEx<T, Key>::emplace(args...);
+        //}
+
+        // using "Perfect Forwarding":
         template <typename T, typename Key = DefaultSlotKey, typename... Args>
-        void emplace(const Args&... args)
+        void emplace(Args&& ... args)
         {
             SlotEx<T, Key>::emplace(args...);
         }
