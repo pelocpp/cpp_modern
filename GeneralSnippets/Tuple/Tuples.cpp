@@ -128,6 +128,10 @@ namespace TupleSamples {
         using MyTuple = std::tuple<char, int, double>;
         std::cout << "std::tuple size: ";
         std::cout << std::tuple_size<MyTuple>::value << std::endl;
+
+        // or
+        std::cout << "std::tuple size: ";
+        std::cout << std::tuple_size<std::tuple<char, int, double>>::value << std::endl;
     }
 }
 
