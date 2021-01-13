@@ -88,12 +88,12 @@ namespace PerfectForwardingMotivation {
 
 		// fourth example
 		AnyClass arg1(2.5);
-		auto obj2 = Factory<AnyClass>(arg1);
+		auto obj2 = FactoryEx<AnyClass>(arg1);
 		std::cout << obj2 << std::endl;
 
 		// fifth example
 		AnyClass& arg2 = arg1;
-		auto obj3 = Factory<AnyClass>(arg2);
+		auto obj3 = FactoryEx<AnyClass>(arg2);
 		std::cout << obj3 << std::endl;
 	}
 }

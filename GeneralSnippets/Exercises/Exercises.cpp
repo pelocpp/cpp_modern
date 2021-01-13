@@ -1649,7 +1649,7 @@ namespace Exercises {
         {
         public:
             template <typename F, typename... Args>
-            static std::chrono::milliseconds duration(F&& f, Args... args)
+            static std::chrono::milliseconds duration(F&& f, Args&&... args)
             {
                 std::chrono::steady_clock::time_point start = std::chrono::high_resolution_clock::now();
                 std::invoke(std::forward<F>(f), std::forward<Args>(args)...);
