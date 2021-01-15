@@ -148,25 +148,25 @@ namespace ExpressionTemplates {
     public:
         using value_type = typename LHS::value_type;
 
-        MatrixSum(const LHS& lhs, const RHS& rhs) : rhs(rhs), lhs(lhs) {}
+        MatrixSum(const LHS& lhs, const RHS& rhs) : m_rhs(rhs), m_lhs(lhs) {}
 
         value_type operator() (size_t x, size_t y) const {
 
             if constexpr (Verbose) {
-                value_type l = lhs(x, y);
-                value_type r = rhs(x, y);
+                value_type l = m_lhs(x, y);
+                value_type r = m_rhs(x, y);
                 std::cout << "MatrixSum:: adding " << l << '+' << r << std::endl;
                 value_type tmp = l + r;
                 return tmp;
             }
             else {
-                return lhs(x, y) + rhs(x, y);
+                return m_lhs(x, y) + m_rhs(x, y);
             }
         }
 
     private:
-        const LHS& lhs;
-        const RHS& rhs;
+        const LHS& m_lhs;
+        const RHS& m_rhs;
     };
 
     // ========================================================================

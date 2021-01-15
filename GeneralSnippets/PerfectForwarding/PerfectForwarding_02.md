@@ -92,8 +92,8 @@ bool found = containsEx(vec, 6);
 Die Fehlermeldung lautet:
 
 ```
-Failed to specialize function template 'bool containsEx(TCONTAINER &&,const TCONTAINER::value_type &)'	
-Message 'TCONTAINER=std::vector<int,std::allocator<int>> &'		
+Failed to specialize function template 'bool containsEx(TCONTAINER &&,const TCONTAINER::value_type &)' 
+Message 'TCONTAINER=std::vector<int,std::allocator<int>> &'  
 ```
 
 Das Kleingedruckte muss man genau lesen.
