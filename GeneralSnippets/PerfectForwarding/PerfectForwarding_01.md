@@ -181,6 +181,10 @@ Eine sehr gute Beschreibung zu diesem Thema befindet sich unter
 
 [Arne Mertz Blog](https://arne-mertz.de/2015/10/new-c-features-templated-rvalue-references-and-stdforward//)<br>(abgerufen am 31.05.2020).
 
+oder
+
+[Eli Bendersky's website: Perfect forwarding and universal references in C++](https://eli.thegreenplace.net/2014/perfect-forwarding-and-universal-references-in-c//)<br>(abgerufen am 15.01.2021).
+
 ---
 
 [Zurück](../../Readme.md)
