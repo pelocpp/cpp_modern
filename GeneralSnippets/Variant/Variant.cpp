@@ -164,8 +164,8 @@ namespace VariantDemo {
         std::common_type<int, long, long long, float, double>::type res{};
         std::cout << "Type of Sum: " << typeid(res).name() << std::endl;
 
-        for (auto& var : vec) {
-            std::visit([&res](auto& arg) {res += arg; }, var);
+        for (const auto& var : vec) {
+            std::visit([&res](const auto& arg) {res += arg; }, var);
         }
         std::cout << "Sum:         " << res << std::endl;
 
@@ -173,7 +173,7 @@ namespace VariantDemo {
         std::cout << "Values:      ";
         for (auto& var : vec) {
             std::visit([](auto& arg) { arg *= 2; }, var);
-            std::visit([](auto& arg) { std::cout << arg << " "; }, var);
+            std::visit([](const auto& arg) { std::cout << arg << " "; }, var);
         }
         std::cout << std::endl;
     }
