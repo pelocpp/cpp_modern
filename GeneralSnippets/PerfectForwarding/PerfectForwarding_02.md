@@ -61,7 +61,7 @@ STL-Container haben dafür einen Alias `value_type`,
 und benutzerdefinierte Container sollten auch diesen Alias haben,
 da benutzerdefinierte Container den Konventionen der STL folgen sollten.
 
-Damit könnte eine erste Version einer Funktion `contains` so aussehen:
+Damit könnte eine erste Version einer Funktion `contains_0` so aussehen:
 
 ```cpp
 template<typename TCONTAINER>
@@ -71,7 +71,7 @@ template<typename TCONTAINER>
 using IteratorEx = typename TCONTAINER::iterator;
 
 template<typename TCONTAINER>
-bool containsEx(TCONTAINER&& cont, ValueTypeEx<TCONTAINER> const& value)
+bool contains_0(TCONTAINER&& cont, ValueTypeEx<TCONTAINER> const& value)
 {
     IteratorEx<TCONTAINER> it = std::find(std::begin(cont), std::end(cont), value);
     return (it != std::end(cont)) ? true : false;
@@ -86,7 +86,7 @@ Wir schaffen es trotzdem nicht, diese beiden Anweisungen fehlerfrei
 
 ```cpp
 std::vector<int> vec{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-bool found = containsEx(vec, 6);
+bool found = contains_0(vec, 6);
 ```
 
 Die Fehlermeldung lautet:

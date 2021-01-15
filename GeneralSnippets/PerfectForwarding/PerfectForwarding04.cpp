@@ -39,17 +39,16 @@ namespace PerfectForwardingRemoveReferenceDemo {
     using IteratorEx = typename TCONTAINER::iterator;
 
     template<typename TCONTAINER>
-    bool containsEx(TCONTAINER&& cont, ValueTypeEx<TCONTAINER> const& value)
+    bool contains_0(TCONTAINER&& cont, ValueTypeEx<TCONTAINER> const& value)
     {
         IteratorEx<TCONTAINER> it = std::find(std::begin(cont), std::end(cont), value);
         return (it != std::end(cont)) ? true : false;
     }
 
-    //void test_02() {
-
-    //    std::vector<int> vec{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-    //    bool found = containsEx(vec, 6);  // doesn't compile
-    //}
+    void test_02() {
+        std::vector<int> vec{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        // bool found = contains_0(vec, 6);  // doesn't compile
+    }
 
     // ====================================================================
     // using a container indirectly - in a template function
@@ -68,7 +67,6 @@ namespace PerfectForwardingRemoveReferenceDemo {
     }
 
     void test_03() {
-
         std::vector<int> vec{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
         bool found = contains(vec, 6);
         std::cout << std::boolalpha << found << std::endl;
@@ -79,7 +77,7 @@ void main_perfect_remove_reference_demo() {
 
     using namespace PerfectForwardingRemoveReferenceDemo;
     test_01();
-    //test_02();
+    test_02();
     test_03();
 }
 
