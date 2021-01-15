@@ -22,7 +22,7 @@ das aufrufbare Objekt als erstes Argument entgegennimmt und anschließend eine va
 Anzahl von Argumenten, die an den Aufruf übergeben werden.
 
 Der Sinn und Zweck von `std::invoke` ist es nicht,
-den direkten Anrufe zu ersetzen,
+den direkten Aufrufe zu ersetzen,
 aber `std::invoke` kann nützlich sein bei der Programmierung von
 Templates und allgemein gehaltenen Bibliotheksfunktionen.
 

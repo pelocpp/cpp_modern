@@ -53,7 +53,7 @@ namespace StdInvoke {
         // member function through pointer to member function:
         Incrementer inc;
         std::invoke(&Incrementer::incrementBy, &inc, 5);
-        inc();
+        inc();  // output
         // => 5
 
         // invoke (access) a (public) data member (!):
