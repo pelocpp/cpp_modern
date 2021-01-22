@@ -118,7 +118,3 @@ Tabelle 1. Grundlagen-Code-Snippets.
 Tabelle 2. Spracherweiterungen C++ 11/C++ 14/C++ 17.
 
 ---
-
-
-StandardLibrarySTL
-
