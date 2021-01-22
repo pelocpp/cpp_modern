@@ -13,6 +13,10 @@ Siehe dazu auch das Sprachfeature [Default-Initialisierung für Member-Variablen]
 Die Initialisierung mit geschweiften Klammern '{' und '}' ist ab der Version C++ 11 eine einheitliche Methode zum Initialisieren von Daten.
 Sie wird auch als "*Uniform Initialization*" bezeichnet.
 
+<img src="cpp_init.gif" width="400">
+
+Abbildung 1: C++ und Initialisierung: *Relax*!
+
 ---
 
 *Vorbemerkung*:

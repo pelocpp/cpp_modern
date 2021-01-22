@@ -483,5 +483,8 @@
     <Image Include="Exercises\cpp_dividend_divisor.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="UniformInitialization\cpp_init.gif">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

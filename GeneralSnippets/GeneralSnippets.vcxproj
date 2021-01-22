@@ -302,6 +302,7 @@
   <ItemGroup>
     <Image Include="Exercises\cpp_dividend_divisor.png" />
     <Image Include="MetaProgramming\euler_number.png" />
+    <Image Include="UniformInitialization\cpp_init.gif" />
     <Image Include="VariadicTemplates\cpp_snippets_mixins_01.png" />
     <Image Include="VariadicTemplates\cpp_snippets_mixins_02.png" />
   </ItemGroup>
