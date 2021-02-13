@@ -23,7 +23,7 @@
     <ProjectGuid>{7B6D68B9-7F45-4160-BC1C-9000B1BDFDC7}</ProjectGuid>
     <RootNamespace>GeneralSnippets</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>Cpp_GeneralSnippets</ProjectName>
+    <ProjectName>Cpp_ModernCppSnippets</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
