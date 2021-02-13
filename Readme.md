@@ -1,4 +1,4 @@
-# C++ General Snippets
+# Modern C++ Snippets
 
 ###### Preamble
 

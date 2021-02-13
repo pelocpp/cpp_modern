@@ -9,14 +9,41 @@
     seine Leser mit einem jederzeit erkennbaren roten Faden durch alle Niederungen der Sprache C++ 
     in verständlichen (englischen) Erklärungen zu führen. Großartig!
 
-#
+---
 
   * Torsten T. Will, "C++: Das umfassende Handbuch zu Modern C++ - aktuell zu C++17".</br> 
     Rheinwerk Computing (27. Dezember 2017), 1067 Seiten. Sprache: Deutsch. ISBN-10: 3836243601, ISBN-13: 978-3836243605.
 
-Ein sehr gutes Buch für Leser, die deutschsprachige Bücher bevorzugen. Viele Beispiele, gute Erklärungen.
+    Ein sehr gutes Buch für Leser, die deutschsprachige Bücher bevorzugen. Viele Beispiele, gute Erklärungen.
 
-#
+    Es folgen zwei Autoren &ndash; *Marius Bancila* und *Jacek Galowicz* &ndash;, deren Bücher sich stark
+    mit den so genannten &ldquo;Modern C++&rdquo; Sprachergänzungen 
+    beschäftigen. Beides absolut empfehlenswerte Bücher, aber nicht unbedingt für den C++-Einsteiger zu empfehlen:
+
+---
+
+  * Bancila, Marius, "Modern C++ Programming Cookbook".</br> 
+    Packt Publishing (11. September 2020, 2. Auflage), 750 Seiten. Sprache: Englisch. ISBN-10: 1800208987, ISBN-13: 978-1800208988.
+
+---
+
+  * Bancila, Marius, "The Modern C++ Challenge".</br> 
+    Packt Publishing (23. Mai 2018, 1. Auflage), 328 Seiten. Sprache: Englisch. ISBN-10: 1788993861, ISBN-13: 978-1788993869.
+
+---
+
+  * Galowicz, Jacek, "C++17 STL Cookbook".</br> 
+    Packt Publishing (28. Juni 2017), 532 Seiten. Sprache: Englisch. ISBN-10: 178712049X, ISBN-13: 978-1787120495.
+
+---
+
+  * Fertig, Andreas, "Tips and Tricks with Templates".</br> 
+    Fertig Publications (20. Januar 2021), 102 Seiten. Sprache: Englisch. ISBN-10: 3949323007, ISBN-13: 978-3949323003.
+
+    Der Autor von [C++ Insights](https://cppinsights.io/), einem Analysetool für &ldquo;Modern C++&rdquo; Spracherweiterungen,
+    wartet mit einem kleinen, aber feinen Werk auf: Viele Tipps und Tricks im Umfeld der Templates werden vorgestellt.
+
+---
 
   * Peter Pohmann, "C++ 17: Praxiswissen zum neuen Standard. Von C++11 bis 17".</br> 
     Software + Support (30. Mai 2017), 330 Seiten. Sprache: Deutsch. ISBN-10: 9783868021745, ISBN-13: 978-3868021745.
