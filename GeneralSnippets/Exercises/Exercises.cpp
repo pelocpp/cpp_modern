@@ -26,26 +26,30 @@ namespace Exercises {
     namespace Exercise_01 {
 
         template <typename T>
-        inline T minimum(const T& t) { return t; }
-
-        template <typename T, typename ...P>
-        inline typename std::common_type<T, P...>::type
-            minimum(const T& t, const P& ...p)
-        {
-            typedef typename std::common_type<T, P...>::type res_type;
-            return std::min(res_type(t), res_type(minimum(p...)));
+        inline T minimum(const T& t) { 
+            return t;
         }
+
+        template <typename T, typename ... TARGS>
+        inline typename std::common_type<T, TARGS...>::type
+            minimum(const T& t, const TARGS& ...p)
+        {
+            using result_type = typename std::common_type<T, TARGS...>::type;
+            return std::min(static_cast<result_type>(t), static_cast<result_type>(minimum(p...)));
+        } 
 
         // oder etwas knapper
 
         //template <typename T>
-        //inline T minimum(const T& t) { return t; }
+        //inline T minimum(const T& t) { 
+        //    return t; 
+        //}
 
-        //template <typename T, typename ...P>
-        //inline auto minimum(const T& t, const P& ...p)
+        //template <typename T, typename ... TARGS>
+        //inline auto minimum(const T& t, const TARGS& ... p)
         //{
-        //    using res_type = std::common_type_t<T, P...>;
-        //    return std::min(res_type(t), res_type(minimum(p...)));
+        //    using result_type = std::common_type_t<T, TARGS ...>;
+        //    return std::min(static_cast<result_type>(t), static_cast<result_type>(minimum(p...)));
         //}
 
         void testExercise_01() {
@@ -550,34 +554,32 @@ namespace Exercises {
 
     namespace Exercise_07 {
 
-        template<typename Tuple, std::size_t N>
+        template<typename TUPLE, std::size_t N>
         struct ShowTupleImpl {
-            static void print(const Tuple& t) {
-                ShowTupleImpl<Tuple, N - 1>::print(t);
+            static void print(const TUPLE& t) {
+                ShowTupleImpl<TUPLE, N - 1>::print(t);
                 std::cout << ", " << std::get<N - 1>(t);
             }
         };
 
-        template<typename Tuple>
-        struct ShowTupleImpl<Tuple, 1> {
-            static void print(const Tuple& t) {
+        template<typename TUPLE>
+        struct ShowTupleImpl<TUPLE, 1> {
+            static void print(const TUPLE& t) {
                 std::cout << std::get<0>(t);
             }
         };
 
-        template<typename ... args>
-        void printTuple(const std::tuple<args...>& t) {
-            using tuple_type = const std::tuple<args...>&;
-            static const int tuple_size = sizeof...(args);
+        template<typename ... TARGS>
+        void printTuple(const std::tuple<TARGS ...>& t) {
             std::cout << "[";
-            ShowTupleImpl<const std::tuple<args...>&, tuple_size>::print(t);
+            ShowTupleImpl<const std::tuple<TARGS...>&, sizeof...(TARGS)>::print(t);
             std::cout << "]" << std::endl;
         }
 
-        template<typename ... args>
-        void printTupleEx(const std::tuple<args...>& t) {
-            using tuple_type = const std::tuple<args...>&;
-            static const int tuple_size = sizeof...(args);
+        template<typename ... TARGS>
+        void printTupleEx(const std::tuple<TARGS ...>& t) {
+            using tuple_type = const std::tuple<TARGS ...>&;
+            static const int tuple_size = sizeof...(TARGS);
             std::cout << "[";
             ShowTupleImpl<tuple_type, tuple_size>::print(t);
             std::cout << "]" << std::endl;
@@ -756,39 +758,22 @@ namespace Exercises {
         };
 
         void testExercise_11() {
-
-            // using initializer list for a string
-            std::string cppInventor = { "Bjarne Stroustrup" };
-            std::cout << "Name of Cpp Inventor: " << cppInventor;
-
-            // using initializer list for a std::map and std::pair
-            std::cout << "List of Persons: " << std::endl;
-            std::map<std::string, std::string> phonebook{
-                { "Hans Meier" , "123456789"},
-                { "Hubert Mueller", "987654321"},
-                { "Franz Schneider", "1231231230"}
-            };
-
-            for (auto mapIt = phonebook.begin(); mapIt != phonebook.end(); ++mapIt) {
-                std::cout << mapIt->first << ": " << mapIt->second << std::endl;
-            }
-
             // using MyContainer with int
-            MyContainer<int> i{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-            i();
+            MyContainer<int> container1{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            container1();
 
             // using MyContainer with std::string
-            MyContainer<std::string> myStringContainer{ "Range","based","for","loop" };
-            myStringContainer();
+            MyContainer<std::string> container2{ "range", "-", "based", "for", "loop" };
+            container2();
 
-            MyContainer<int> i1;
-            i1();
-            MyContainer<int> i2{};
-            i2();
-            MyContainer<int> i3(1, 2);
-            i3();
-            MyContainer<int> i4{ 1, 2 };
-            i4();
+            MyContainer<int> container3;
+            container3();
+            MyContainer<int> container4{};
+            container4();
+            MyContainer<int> container5(1, 2);
+            container5();
+            MyContainer<int> container6{ 1, 2 };
+            container6();
         }
     }
 
@@ -961,7 +946,7 @@ namespace Exercises {
     namespace Exercise_15 {
 
         // Beachte:
-        // Bei Anwendung eines Folding Expression wird nach der "Ausrollen" des Folding Ausdrucks
+        // Bei Anwendung eines Folding Expression wird nach dem "Ausrollen" des Folding Ausdrucks
         // das 1. mit dem 2., das 1. mit dem 3., das 1. mit dem 4. Element usw. verglichen. 
         // Beim Lösungsansatz mit variadischen Templates wird
         // das 1. mit dem 2., das 2. mit dem 3., das 3. mit dem 4. Element usw. verglichen!
@@ -1449,9 +1434,9 @@ namespace Exercises {
     namespace Exercise_20 {
 
         // =============================================================
-        // a) 
-        // Klassenschablone:
-        // Unter Verwendung von non-type Parametern und von partieller Spezialisierung
+        // a)
+        // Als Klassenschablone:
+        // Unter Verwendung von Non-Type Parametern und von partieller Spezialisierung
 
         template <int...>
         class sum1;
@@ -1465,23 +1450,23 @@ namespace Exercises {
 
         // ODER
 
-        template <int n>
-        class sum1<n>
+        template <int N>
+        class sum1<N>
         {
         public:
-            static const long result = n;
+            static const long result = N;
         };
 
-        template <int n, int ... rest>
-        class sum1<n, rest ...>
+        template <int N, int ... REST>
+        class sum1<N, REST ...>
         {
         public:
-            static const long result = n + sum1<rest ...>::result;
+            static const long result = N + sum1<REST ...>::result;
         };
 
         // =============================================================
         // b) 
-        // Funktionsschablone:
+        // Als Funktionsschablone:
         // Die Funktion hat einen oder mehrere Parameter.
         // Die Parameter werden über die Parameter Pack Expansion an
         // eine(mehrere) Funktion(en) übergeben, die vom Compiler generiert wird(werden).
@@ -1499,9 +1484,9 @@ namespace Exercises {
         }
 
         // =============================================================
-        // b) 
-        // Funktionsschablone:
-        // Die Funktion hat keinen Parameter.
+        // c) 
+        // Als Funktionsschablone:
+        // Die Funktion hat *keinen* Parameter.
         // Dafür hat die Funktionsschablone einen oder mehrere Template Parameter.
 
         template<int X>
@@ -1763,6 +1748,67 @@ namespace Exercises {
             testExercise_24b();
         }
     }
+
+    namespace Exercise_25 {
+
+        template <typename T, typename ... TARGS>
+        auto minimum(const T& x, const T& y, const TARGS& ... args)
+        {
+            auto m = (x < y) ? x : y;
+
+            if (sizeof ... (args) > 0) {
+
+                auto helper = [&](const auto& value) {
+                    if (value < m) {
+                        m = value;
+                    }
+                };
+
+                (..., helper(args));
+            }
+
+            return m;
+        }
+
+        template <typename T, typename ... TARGS>
+        auto maximum(const T& x, const T& y, const TARGS& ... args)
+        {
+            auto m = (x > y) ? x : y;
+
+            if (sizeof ... (args) > 0) {
+
+                auto helper = [&](const auto& value) {
+                    if (value > m) {
+                        m = value;
+                    }
+                };
+
+                (..., helper(args));
+            }
+
+            return m;
+        }
+
+        void testExercise_25a() {
+            std::cout << minimum(1, 2) << std::endl;
+            std::cout << minimum(2, 3, 4) << std::endl;
+            std::cout << minimum(4, 3, 2, 1) << std::endl;
+            std::cout << minimum(6, 2, 5, 7, 4, 3) << std::endl;
+            std::cout << std::endl;
+        }
+
+        void testExercise_25b() {
+            std::cout << maximum(1, 2) << std::endl;
+            std::cout << maximum(2, 3, 4) << std::endl;
+            std::cout << maximum(4, 3, 2, 1) << std::endl;
+            std::cout << maximum(6, 1, 5, 2, 4, 3) << std::endl;
+        }
+
+        void testExercise_25() {
+            testExercise_25a();
+            testExercise_25b();
+        }
+    }
 }
 
 void main_exercices()
@@ -1791,30 +1837,32 @@ void main_exercices()
     using namespace Exercises::Exercise_22;
     using namespace Exercises::Exercise_23;
     using namespace Exercises::Exercise_24;
+    using namespace Exercises::Exercise_25;
 
-    testExercise_01();
-    testExercise_02();
-    testExercise_03();
-    testExercise_04();  
-    testExercise_05();
-    testExercise_06();
-    testExercise_07();
-    testExercise_08();
-    testExercise_09();
-    testExercise_10();
+    //testExercise_01();
+    //testExercise_02();
+    //testExercise_03();
+    //testExercise_04();  
+    //testExercise_05();
+    //testExercise_06();
+    //testExercise_07();
+    //testExercise_08();
+    //testExercise_09();
+    //testExercise_10();
     testExercise_11();
-    testExercise_12();
-    testExercise_13();
-    testExercise_14();
-    testExercise_15();
-    testExercise_17();
-    testExercise_18();
-    testExercise_19();
-    testExercise_20();
-    testExercise_21();
-    testExercise_22();
-    testExercise_23();
-    testExercise_24();
+    //testExercise_12();
+    //testExercise_13();
+    //testExercise_14();
+    //testExercise_15();
+    //testExercise_17();
+    //testExercise_18();
+    //testExercise_19();
+    //testExercise_20();
+    //testExercise_21();
+    //testExercise_22();
+    //testExercise_23();
+    //testExercise_24();
+    //testExercise_25();
 }
 
 // =====================================================================================

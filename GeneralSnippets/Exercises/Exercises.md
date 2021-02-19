@@ -3,12 +3,12 @@
 In diesem Abschnitt befinden sich einige kleinere Aufgaben, um den vermittelten Stoff zu vertiefen.
 Folgende Themen werden angesprochen:
 
-  * Initialisierungliste
+  * Einheitliche Initialisierung und Initialisierungliste
   * Move-Semantik
   * Lambda Funktionen
   * Variadische Templates
-  * Metaprogrammierung
   * Folding
+  * Metaprogrammierung
   * Neue Utility-Klassen und -Funktionen (`std::optional`, `std::variant`, `std::invoke`, `std::visit`)
   * SFINAE
   * CRTP
@@ -18,30 +18,54 @@ Folgende Themen werden angesprochen:
 
 ---
 
+###### {#tabelle_1_exercises}
+
+Es folgt eine tabellarische Zusammenstellung aller Themenbereiche und Aufgaben:
+
+| Themenbereich | Aufgaben |
+| :--- | :--- |
+| Move-Semantik | [Aufgabe 2](#aufgabe-2): Betrachtungen einer Klasse `HugeArray` |
+| Initialisierung | [Aufgabe 11](#aufgabe-11): Einheitliche Initialisierung (*Uniform Initialization*) und Initialisierungliste (`std::initializer_list<>`) |
+| Lambda-Funktionen | [Aufgabe 3](#aufgabe-3): Einfache Realisierung einer Lambda-Funktionen<br/>[Aufgabe 4](#aufgabe-4): Taschenrechner mit Lambda-Funktionen<br/>[Aufgabe 5](#aufgabe-5): Quiz mit Lambda-Funktionen |
+| Variadische Templates | [Aufgabe 1](#aufgabe-1): Generische Funktion `miminum`<br/>[Aufgabe 7](#aufgabe-7): Variadische Templates: Ausgabe eines `std::tuple` Objekts<br/>[Aufgabe 12](#aufgabe-12): Logische Operationen mit beliebig vielen Operanden<br/>[Aufgabe 14](#aufgabe-14): `decltype` und Type-Traits am Beispiel von `sameType`<br/>[Aufgabe 20](#aufgabe-20): Mehrere Summen, ein Ergebnis<br/>[Aufgabe 21](#aufgabe-21): Variadische Templates und Vererbung |
+| Folding Expressions | [Aufgabe 13](#aufgabe-13): Logische Operationen mit beliebig vielen Operanden<br/>[Aufgabe 15](#aufgabe-15): `decltype` und Type-Traits am Beispiel von `sameType`. |
+| `std::optional` | [Aufgabe 6](#aufgabe-6): Umwandlung von Zeichenketten in ganze Zahlen |
+| `std::variant` | [Aufgabe 18](#aufgabe-18): Ein heterogener Container mit `std::variant` |
+| `std::accumulate` | [Aufgabe 24](#aufgabe-24): Die Funktion `std::accumulate` in der Anwendung |
+| Metaprogrammierung | [Aufgabe 8](#aufgabe-8): *Fibonacci*-Zahlen |
+| *Perfect Forwarding* | [Aufgabe 22](#aufgabe-22): Einfaches Beispiel zu variadischen Templates und *Perfect Forwarding*<br/>[Aufgabe 23](#aufgabe-23): Ausführungszeit einer Funktion (`std::invoke`, variadische Templates und *Perfect Forwarding*) |
+| SFINAE | [Aufgabe 9](#aufgabe-9): Eine Methode, mehrere Implementierungen<br/>[Aufgabe 10](#aufgabe-10): Detektion von Methoden in einer Klasse |
+| CRTP | [Aufgabe 19](#aufgabe-19): Der *kuriose* Polymorphismus (CRTP) an einem Beispiel betrachtet |
+
+*Tabelle* 1: Zusammenstellung aller Aufgaben.
+
+---
+
 - [Aufgabe 1](#aufgabe-1): Generische Funktion `miminum`
-- [Aufgabe 2](#aufgabe-2): Move-Semantik
-- [Aufgabe 3](#aufgabe-3): Lambda-Funktionen
+- [Aufgabe 2](#aufgabe-2): Move-Semantik: Betrachtungen einer Klasse `HugeArray`
+- [Aufgabe 3](#aufgabe-3): Einfache Realisierung einer Lambda-Funktionen
 - [Aufgabe 4](#aufgabe-4): Taschenrechner mit Lambda-Funktionen
 - [Aufgabe 5](#aufgabe-5): Quiz mit Lambda-Funktionen
-- [Aufgabe 6](#aufgabe-6): `std::optional`
+- [Aufgabe 6](#aufgabe-6): `std::optional`: Umwandlung von Zeichenketten in ganze Zahlen
 - [Aufgabe 7](#aufgabe-7): Variadische Templates: Ausgabe eines `std::tuple` Objekts
-- [Aufgabe 8](#aufgabe-8): Metaprogramming
+- [Aufgabe 8](#aufgabe-8): Metaprogramming: *Fibonacci*-Zahlen
 - [Aufgabe 9](#aufgabe-9): SFINAE: Eine Methode, mehrere Implementierungen
 - [Aufgabe 10](#aufgabe-10): SFINAE: Detektion von Methoden in einer Klasse
-- [Aufgabe 11](#aufgabe-11): Initialisierungliste (`std::initializer_list<T>`)
+- [Aufgabe 11](#aufgabe-11): Einheitliche Initialisierung (*Uniform Initialization*) und Initialisierungliste (`std::initializer_list<>`)
 - [Aufgabe 12](#aufgabe-12): Variadische Templates: Logische Operationen mit beliebig vielen Operanden
 - [Aufgabe 13](#aufgabe-13): Folding Expressions: Logische Operationen mit beliebig vielen Operanden
 - [Aufgabe 14](#aufgabe-14): Variadische Templates, `decltype` und Type-Traits am Beispiel von `sameType`
 - [Aufgabe 15](#aufgabe-15): Folding Expressions, `decltype` und Type-Traits am Beispiel von `sameType`
 - [Aufgabe 16](#aufgabe-16): Funktionale Programmierung
 - [Aufgabe 17](#aufgabe-17): `decltype`, `declval` und nachlaufender Rückgabetyp in der Praxis / Funktionale Programmierung
-- [Aufgabe 18](#aufgabe-18): Heterogener Container
-- [Aufgabe 19](#aufgabe-19): Ein *kurioser* Polymorphismus (CRTP)
-- [Aufgabe 20](#aufgabe-20): Variadische Templates zum Einstieg: Mehrere Summen, ein Ergebnis
+- [Aufgabe 18](#aufgabe-18): `std::variant`: Ein heterogener Container
+- [Aufgabe 19](#aufgabe-19): Der *kuriose* Polymorphismus (CRTP) an einem Beispiel betrachtet
+- [Aufgabe 20](#aufgabe-20): Variadische Templates: Mehrere Summen, ein Ergebnis
 - [Aufgabe 21](#aufgabe-21): Variadische Templates und Vererbung
 - [Aufgabe 22](#aufgabe-22): Einfaches Beispiel zu variadischen Templates und *Perfect Forwarding*
 - [Aufgabe 23](#aufgabe-23): Ausführungszeit einer Funktion (`std::invoke`, variadische Templates und *Perfect Forwarding*)
 - [Aufgabe 24](#aufgabe-24): Die Funktion `std::accumulate` in der Anwendung
+- [Aufgabe 25](#aufgabe-25): Folding Expressions: &ldquo;*Folding over a Comma*&rdquo; am Beispiel zweier Funktionen `minimum` und `maximum`
 
 ---
 
@@ -390,13 +414,13 @@ Realisieren Sie die Funktion analog zur Funktion `toInt`. Für `T` sollen die in
 
 #### Inhalt: Variadische Templates: Ausgabe eines `std::tuple` Objekts
 
-#### Vorausetzungen: `std::tuple`
+#### Vorausetzungen: `std::tuple<>`, Non-Type Template Parameter
 
 Ein `std::tuple` ist ein Objekt, das eine Sammlung von beliebigen Elementen enthalten kann.
-Jedes Element kann dabei von einem anderen Typ sein. Mit der Funktion `std::get<size_t Index>` erhält
-man eine Referenz auf das Element an der angegebenen Position `Index` im Tupel.
+Jedes Element kann dabei von einem anderen Typ sein. Mit der Funktion `std::get<size_t index>()` erhält
+man eine Referenz auf das Element an der angegebenen Position `index` im Tupel.
 
-Schreiben Sie eine generische Funktion `printTuple`, die die Elemente eines Tupels, durch Komma ',' getrennt,
+Schreiben Sie eine generische Funktion `printTuple`, die die Elemente eines Tupels, durch Komma `','` getrennt,
 auf der Konsole ausgibt.
 
 *Beispiel*:
@@ -430,7 +454,7 @@ Für die n.-te Fibonacci F<sub>n</sub> bedeutet das F<sub>n</sub> = F<sub>n-1</s
 wobei F<sub>0</sub> = 0, F<sub>1</sub> = 1 gilt.
 Die durch Fibonacci-Zahlen gebildete Sequenz wird als *Fibonacci*-*Sequenz* bezeichnet.
 
-Schreiben Sie eine Schablone `Fibonacci`, die *Fibonacci*-Zahlen zur Übersetzungszeit berechnet.
+Schreiben Sie eine Funktionsschablone `Fibonacci`, die *Fibonacci*-Zahlen zur Übersetzungszeit berechnet.
 
 ---
 
@@ -523,9 +547,9 @@ struct Exercise_09::SecondStruct: false
 
 ## Aufgabe 11
 
-#### Inhalt: Einheitliche Initialisierung (*Uniform Initialization*)
+#### Inhalt: Einheitliche Initialisierung (*Uniform Initialization*) und Initialisierungliste (`std::initializer_list<>`)
 
-#### Vorausetzungen: Templates, `std::vector`, `std::map`
+#### Vorausetzungen: Templates, `std::vector<>`, `std::map<>`
 
 Erstellen Sie eine leeres Visual C++ Projekt,
 fügen Sie nachstehenden Quellcode dort ein und bringen Sie das Programm zum Laufen:
@@ -547,23 +571,6 @@ public:
 };
 
 int main () {
-
-    // using initializer list for a string
-    std::string cppInventor = { "Bjarne Stroustrup" };
-    std::cout << "Name of Cpp Inventor: " << cppInventor << std::endl;
-
-    // using initializer list for a std::map and std::pair
-    std::cout << "List of Persons: " << std::endl;
-    std::map<std::string, std::string> phonebook{
-        { "Hans Meier" , "123456789"},
-        { "Hubert Mueller", "987654321"},
-        { "Franz Schneider", "1231231230"}
-    };
-
-    for (auto mapIt = phonebook.begin(); mapIt != phonebook.end(); ++mapIt) {
-        std::cout << mapIt->first << ": " << mapIt->second << std::endl;
-    }
-
     return 0;
 }
 ```
@@ -573,17 +580,29 @@ dass Sie folgende Konstruktoren zur Verfügung haben:
 
   * Standardkonstruktor
   * Konstruktor mit zwei Argumenten des Typs `T`
-  * Konstruktor mit Initialisierungsliste
+  * Konstruktor mit Initialisierungsliste des Typs `T`
+
+Testen Sie Ihre Realisierung mit folgenden Anweisungen:
+
+```cpp
+// using MyContainer with int
+MyContainer<int> container1{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+container1();
+
+// using MyContainer with std::string
+MyContainer<std::string> container2{ "range", "-", "based", "for", "loop" };
+container2();
+```
 
 Prüfen Sie nun, welche Instanziierung welchen Konstruktor aufruft:
 
-  * Instanz `i1;`
-  * Instanz `i2{ };`
-  * Instanz `i3(1, 2);`
-  * Instanz `i4{1, 2};`
+  * Instanz `MyContainer<int> container3;`
+  * Instanz `MyContainer<int> container4{ };`
+  * Instanz `MyContainer<int> container5(1, 2);`
+  * Instanz `MyContainer<int> container6{1, 2};`
 
-Entfernen Sie nun nach und nach Konstruktoren, damit Sie erkennen, welche dieser Konstruktoren
-auch auf andere Konstruktoren ausweichen können!
+Entfernen Sie nun nach und nach einen Konstruktor, um auf diese Weise zu erkennen,
+welche dieser Konstruktoren auch auf andere Konstruktoren ausweichen können!
 
 ---
 
@@ -905,7 +924,7 @@ gekapselten `std::vector<std::variant<...>`-Objekts zurück.
 
 ## Aufgabe 19
 
-#### Inhalt: Ein *kurioser* Polymorphismus (CRTP)
+#### Inhalt:  Der *kuriose* Polymorphismus (CRTP) an einem Beispiel betrachtet
 
 #### Voraussetzungen: Polymorphismus, Templates
 
@@ -1067,7 +1086,7 @@ Time taken: 402634 microseconds
 
 ## Aufgabe 20
 
-#### Inhalt: Variadische Templates zum Einstieg: Mehrere Summen, ein Ergebnis
+#### Inhalt: Variadische Templates: Mehrere Summen, ein Ergebnis
 
 #### Voraussetzungen: Variadische Templates
 
@@ -1089,7 +1108,7 @@ Klassen- oder Funktionsschablone handelt!
 Wie könnte eine Realisierung aussehen, um die Anweisungen zu implementieren?
 
 Betrachten Sie Ihre Realisierung mit dem Tool [cppinsights.io](https://cppinsights.io/).
-Ziehen Sie die jeweiligen Umsetzung der Anweisung `sumX(1, 2, 3, 4, 5)`
+Vollziehen Sie die jeweiligen Umsetzung der Anweisung `sumX(1, 2, 3, 4, 5)`
 in C++-Anweisungen *ohne* variadische Templates nach!
 
 ---
@@ -1282,6 +1301,46 @@ Setzen zur Lösung der Aufgabe den STL-Algorithmus `std::accumulate` ein!
 false
 true
 ```
+
+## Aufgabe 25
+
+#### Inhalt: &ldquo;*Folding over a Comma*&rdquo; am Beispiel zweier Funktionen `minimum` und `maximum`
+
+#### Voraussetzungen: Folding Expressions, Lambda Funktionen
+
+Der Zugriff auf die einzelnen Werte eines Parameter Packs ist nicht ganz einfach.
+Eine übliche Vorgehensweise ist das so genannte &ldquo;*Folding over a Comma*&rdquo;.
+Hierbei handelt es sich um einen *Folding*-Ausdruck, der mit dem Komma-Operator &ndash; gebildet wird.
+Der Komma-Operator bewirkt in diesem Fall einzig und allein, dass alle Werte des Parameter Packs sequentiell aufgelistet werden.
+
+Betrachten Sie das nachfolgende Beispiel einer Implementierung der Funktion `minimum`:
+Die Funktion kann eine variabel lange Liste von Parametern (mindestens zwei) entgegennehmen und liefert den minimalen Wert zurück.
+Erklären Sie die Funktionsweise ihrer Realisierung. Welche Rolle spielt Zeile 14?
+
+```cpp
+01: template <typename T, typename ... TARGS>
+02: auto minimum(const T& x, const T& y, const TARGS& ... args)
+03: {
+04:     auto m = (x < y) ? x : y;
+05: 
+06:     if (sizeof ... (args) > 0) {
+07: 
+08:         auto helper = [&](const auto& value) {
+09:             if (value < m) {
+10:                 m = value;
+11:             }
+12:         };
+13: 
+14:         (..., helper(args));
+15:     }
+16: 
+17:     return m;
+18: }
+```
+
+  * Testen Sie die Korrektheit der Funktion `minimum` mit einigen Testbeispielen.
+  * Schreiben Sie eine zweite Funktion `maximum`, die das Maximum aller Parameter bestimmt.
+
 ---
 
 [An den Anfang](#aufgaben)
