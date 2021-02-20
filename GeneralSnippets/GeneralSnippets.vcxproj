@@ -204,6 +204,7 @@
     <ClCompile Include="TemplateStaticPolymorphism\TemplateStaticPolymorphism.cpp" />
     <ClCompile Include="TemplateTemplateParameter\TemplateTemplateParameter_01.cpp" />
     <ClCompile Include="TemplateTemplateParameter\TemplateTemplateParameter_02.cpp" />
+    <ClCompile Include="Transform\Transform.cpp" />
     <ClCompile Include="Tuple\Tuples.cpp" />
     <ClCompile Include="TypeTraits\TypeTraits.cpp" />
     <ClCompile Include="UniformInitialization\UniformInitialization.cpp" />
@@ -275,6 +276,9 @@
     <None Include="TemplateSpecialization\TemplateSpecialization.md" />
     <None Include="TemplateStaticPolymorphism\TemplatesStaticPolymorphism.md" />
     <None Include="TemplateTemplateParameter\TemplateTemplateParameter.md" />
+    <None Include="Transform\cpp_snippet_transform_01.svg" />
+    <None Include="Transform\cpp_snippet_transform_02.svg" />
+    <None Include="Transform\Transform.md" />
     <None Include="Tuple\StdTuple.md" />
     <None Include="TypeTraits\TypeTraits.md" />
     <None Include="UniformInitialization\UniformInitialization.md" />

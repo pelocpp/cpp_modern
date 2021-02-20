@@ -64,6 +64,7 @@ void main_templates_static_polymorphism();
 void main_template_template_parameter();
 void main_template_template_parameter_02();
 void main_template_specialization();
+void main_transform();
 void main_tuples();
 void main_type_traits();
 void main_uniform_initialization();
@@ -147,6 +148,7 @@ int main()
         //main_template_template_parameter();
         //main_template_template_parameter_02();
         //main_template_specialization();
+        main_transform();
         //main_tuples();
         //main_type_traits();
         //main_uniform_initialization();

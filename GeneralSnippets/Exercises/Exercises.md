@@ -211,7 +211,7 @@ Erweitern Sie Ihre Realisierung so, dass der Divisor (Nenner) variabel ist:
 
 <img src="cpp_dividend_divisor.svg" width="300">
 
-Abbildung 1: Dividend, Divisor und Quotient.
+*Abbildung* 1: Dividend, Divisor und Quotient.
 
 Dabei soll der Divisor
 

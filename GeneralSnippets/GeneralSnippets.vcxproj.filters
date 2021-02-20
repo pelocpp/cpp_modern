@@ -246,6 +246,9 @@
     <ClCompile Include="Lambda\Lambda03.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Transform\Transform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -459,6 +462,15 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="StandardLibrarySTL\StandardLibrarySTL.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Transform\cpp_snippet_transform_01.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Transform\cpp_snippet_transform_02.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Transform\Transform.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
