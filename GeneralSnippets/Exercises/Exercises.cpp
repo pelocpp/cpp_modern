@@ -1849,7 +1849,7 @@ void main_exercices()
     //testExercise_08();
     //testExercise_09();
     //testExercise_10();
-    testExercise_11();
+    //testExercise_11();
     //testExercise_12();
     //testExercise_13();
     //testExercise_14();

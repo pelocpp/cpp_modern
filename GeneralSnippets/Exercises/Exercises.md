@@ -18,8 +18,6 @@ Folgende Themen werden angesprochen:
 
 ---
 
-###### {#tabelle_1_exercises}
-
 Es folgt eine tabellarische Zusammenstellung aller Themenbereiche und Aufgaben:
 
 | Themenbereich | Aufgaben |
@@ -28,11 +26,12 @@ Es folgt eine tabellarische Zusammenstellung aller Themenbereiche und Aufgaben:
 | Initialisierung | [Aufgabe 11](#aufgabe-11): Einheitliche Initialisierung (*Uniform Initialization*) und Initialisierungliste (`std::initializer_list<>`) |
 | Lambda-Funktionen | [Aufgabe 3](#aufgabe-3): Einfache Realisierung einer Lambda-Funktionen<br/>[Aufgabe 4](#aufgabe-4): Taschenrechner mit Lambda-Funktionen<br/>[Aufgabe 5](#aufgabe-5): Quiz mit Lambda-Funktionen |
 | Variadische Templates | [Aufgabe 1](#aufgabe-1): Generische Funktion `miminum`<br/>[Aufgabe 7](#aufgabe-7): Variadische Templates: Ausgabe eines `std::tuple` Objekts<br/>[Aufgabe 12](#aufgabe-12): Logische Operationen mit beliebig vielen Operanden<br/>[Aufgabe 14](#aufgabe-14): `decltype` und Type-Traits am Beispiel von `sameType`<br/>[Aufgabe 20](#aufgabe-20): Mehrere Summen, ein Ergebnis<br/>[Aufgabe 21](#aufgabe-21): Variadische Templates und Vererbung |
-| Folding Expressions | [Aufgabe 13](#aufgabe-13): Logische Operationen mit beliebig vielen Operanden<br/>[Aufgabe 15](#aufgabe-15): `decltype` und Type-Traits am Beispiel von `sameType`. |
+| Folding Expressions | [Aufgabe 13](#aufgabe-13): Logische Operationen mit beliebig vielen Operanden<br/>[Aufgabe 15](#aufgabe-15): `decltype` und Type-Traits am Beispiel von `sameType`<br/>[Aufgabe 25](#aufgabe-25): &ldquo;*Folding over a Comma*&rdquo; am Beispiel zweier Funktionen `minimum` und `maximum` |
 | `std::optional` | [Aufgabe 6](#aufgabe-6): Umwandlung von Zeichenketten in ganze Zahlen |
 | `std::variant` | [Aufgabe 18](#aufgabe-18): Ein heterogener Container mit `std::variant` |
 | `std::accumulate` | [Aufgabe 24](#aufgabe-24): Die Funktion `std::accumulate` in der Anwendung |
 | Metaprogrammierung | [Aufgabe 8](#aufgabe-8): *Fibonacci*-Zahlen |
+| Funktionale Programmierung | [Aufgabe 16](#aufgabe-16): Umwandlung von Zeichenketten eines `std::vector`-Objekts von Klein- in Großbuchstaben<br/>[Aufgabe 17](#aufgabe-17): `decltype`, `declval` und nachlaufender Rückgabetyp in der Praxis |
 | *Perfect Forwarding* | [Aufgabe 22](#aufgabe-22): Einfaches Beispiel zu variadischen Templates und *Perfect Forwarding*<br/>[Aufgabe 23](#aufgabe-23): Ausführungszeit einer Funktion (`std::invoke`, variadische Templates und *Perfect Forwarding*) |
 | SFINAE | [Aufgabe 9](#aufgabe-9): Eine Methode, mehrere Implementierungen<br/>[Aufgabe 10](#aufgabe-10): Detektion von Methoden in einer Klasse |
 | CRTP | [Aufgabe 19](#aufgabe-19): Der *kuriose* Polymorphismus (CRTP) an einem Beispiel betrachtet |
@@ -40,6 +39,8 @@ Es folgt eine tabellarische Zusammenstellung aller Themenbereiche und Aufgaben:
 *Tabelle* 1: Zusammenstellung aller Aufgaben.
 
 ---
+
+Und alle Aufgaben noch einmal der Reihe nach:
 
 - [Aufgabe 1](#aufgabe-1): Generische Funktion `miminum`
 - [Aufgabe 2](#aufgabe-2): Move-Semantik: Betrachtungen einer Klasse `HugeArray`
@@ -56,9 +57,8 @@ Es folgt eine tabellarische Zusammenstellung aller Themenbereiche und Aufgaben:
 - [Aufgabe 13](#aufgabe-13): Folding Expressions: Logische Operationen mit beliebig vielen Operanden
 - [Aufgabe 14](#aufgabe-14): Variadische Templates, `decltype` und Type-Traits am Beispiel von `sameType`
 - [Aufgabe 15](#aufgabe-15): Folding Expressions, `decltype` und Type-Traits am Beispiel von `sameType`
-- [Aufgabe 16](#aufgabe-16): Funktionale Programmierung
-- [Aufgabe 17](#aufgabe-17): `decltype`, `declval` und nachlaufender Rückgabetyp in der Praxis / Funktionale Programmierung
-- [Aufgabe 18](#aufgabe-18): `std::variant`: Ein heterogener Container
+- [Aufgabe 16](#aufgabe-16): Funktionale Programmierung: Umwandlung von Zeichenketten eines `std::vector`-Objekts von Klein- in Großbuchstaben
+- [Aufgabe 17](#aufgabe-17): Funktionale Programmierung: `decltype`, `declval` und nachlaufender Rückgabetyp in der Praxis- [Aufgabe 18](#aufgabe-18): `std::variant`: Ein heterogener Container
 - [Aufgabe 19](#aufgabe-19): Der *kuriose* Polymorphismus (CRTP) an einem Beispiel betrachtet
 - [Aufgabe 20](#aufgabe-20): Variadische Templates: Mehrere Summen, ein Ergebnis
 - [Aufgabe 21](#aufgabe-21): Variadische Templates und Vererbung
@@ -722,7 +722,7 @@ von Aufgabe 13 und 15?
 
 ## Aufgabe 16
 
-#### Inhalt: Funktionale Programmierung
+#### Inhalt: Funktionale Programmierung &ndash; Umwandlung von Zeichenketten eines `std::vector`-Objekts von Klein- in Großbuchstaben
 
 #### Vorausetzungen: Templates, Lambda-Funktionen
 
@@ -766,7 +766,7 @@ Schreiben Sie eine Testfunktion, die ihre Realisierung testet.
 
 ## Aufgabe 17
 
-#### Inhalt: `decltype`, `declval` und nachlaufender Rückgabetyp in der Praxis / Funktionale Programmierung
+#### Inhalt: Funktionale Programmierung &ndash; `decltype`, `declval` und nachlaufender Rückgabetyp in der Praxis
 
 #### Vorausetzungen: Kenntnisse von `decltype` und `declval`
 
