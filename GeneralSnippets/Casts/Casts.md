@@ -4,6 +4,9 @@
 
 ---
 
+[Zurück](../../Readme.md)
+
+---
 Er wird an mehreren Beispielen die Funktionsweise folgender C++-Typumwandlungen gezeigt:
 
   * `static_cast`

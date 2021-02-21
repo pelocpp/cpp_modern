@@ -1,5 +1,9 @@
 # Why is "using namespace std;" considered bad practice?
 
+[Zurück](../../Readme.md)
+
+---
+
 Siehe
 
 https://stackoverflow.com/questions/1452721/why-is-using-namespace-std-considered-bad-practice

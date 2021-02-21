@@ -1,5 +1,9 @@
 # Template Spezialisierung (Template Specialization)
 
+[Zurück](../../Readme.md)
+
+---
+
 [Quellcode](TemplateSpecialization.cpp)
 
 ---

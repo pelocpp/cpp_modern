@@ -1,5 +1,9 @@
 ﻿# Teil I: Variadische Templates - Einführung
 
+[Zurück](../../Readme.md)
+
+---
+
 &#x21D2; [Teil II: Variadische Templates: Zugriff auf jedes einzelne Argument](VariadicTemplates_02_WorkingOnEveryArgument.md)
 
 ---

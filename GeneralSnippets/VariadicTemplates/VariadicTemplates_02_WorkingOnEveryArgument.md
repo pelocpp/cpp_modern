@@ -1,5 +1,9 @@
 # Teil II: Variadische Templates - Zugriff auf jedes einzelne Argument
 
+[Zurück](../../Readme.md)
+
+---
+
 &#x21D2; [Teil III: Variadische Templates: Anwendungsfall "Summe von Summen"](VariadicTemplates_03_SumOfSums.md)
 
 &#x21D0; [Teil I: Variadische Templates - Einführung](VariadicTemplates_01_Introduction.md)

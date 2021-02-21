@@ -1,5 +1,9 @@
 # Shared Pointer: Klasse `std::shared_ptr`
 
+[Zurück](../../Readme.md)
+
+---
+
 [Quellcode](SharedPtr.cpp)
 
 ---

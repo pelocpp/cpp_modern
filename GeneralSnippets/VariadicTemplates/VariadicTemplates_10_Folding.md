@@ -1,5 +1,9 @@
 # Variadische Templates und Fold-Ausdrücke
 
+[Zurück](../../Readme.md)
+
+---
+
 [Quellcode](VariadicTemplate_Folding.cpp)
 
 ---

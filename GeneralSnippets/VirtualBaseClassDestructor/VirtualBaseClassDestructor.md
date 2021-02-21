@@ -1,5 +1,9 @@
 # Virtueller Destruktor
 
+[Zurück](../../Readme.md)
+
+---
+
 *Allgemeines*:
 
 Virtuelle Destruktoren sind nützlich, wenn Sie möglicherweise eine Instanz einer abgeleiteten Klasse

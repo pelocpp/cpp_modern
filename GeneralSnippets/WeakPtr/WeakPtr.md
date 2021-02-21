@@ -1,5 +1,9 @@
 # Weak Pointer: Klasse `std::weak_ptr`
 
+[Zurück](../../Readme.md)
+
+---
+
 [Quellcode](WeakPtr.cpp)
 
 ---

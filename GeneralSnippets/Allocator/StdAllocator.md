@@ -1,6 +1,6 @@
 # Container und Speicher-Allokatoren
 
-[Quellcode](Allocator.cpp)
+[Quellcode](AllocatorDummy.cpp) und [Quellcode](AllocatorSimple.cpp)
 
 ---
 
@@ -13,7 +13,7 @@ Danach wird am Beispiel des STL-Containers `std::vector` gezeigt, wie sich ein s
 in einen STL-Container injizieren lässt.
 
 Sehr gut lassen sich damit die beiden Methoden `push_back` und `emplace_back` in ihrer Arbeitsweise beobachten.
-Diese steht natürlich im Zusammenhang mit der reverse-Methode eines Containers.
+Diese steht natürlich im Zusammenhang mit der `reverse`-Methode eines Containers.
 
 ---
 

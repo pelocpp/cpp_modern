@@ -1,5 +1,9 @@
 # Streams manipulieren und formatieren
 
+[Zurück](../../Readme.md)
+
+---
+
 [Quellcode](InputOutputStreams.cpp)
 
 ---

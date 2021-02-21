@@ -1,5 +1,9 @@
 # Einheitliche Initialisierung
 
+[Zurück](../../Readme.md)
+
+---
+
 *Hinweis*:
 
 Siehe dazu auch das Sprachfeature [Default-Initialisierung für Member-Variablen](../../GeneralSnippets/DefaultInitialization/DefaultInitialization.md).

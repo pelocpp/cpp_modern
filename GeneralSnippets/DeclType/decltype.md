@@ -1,5 +1,9 @@
 # `decltype` und `std::declval`
 
+[Zurück](../../Readme.md)
+
+---
+
 [Quellcode](decltype.cpp)
 
 ---

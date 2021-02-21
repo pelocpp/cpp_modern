@@ -8,6 +8,10 @@ Oder auch
 
 ---
 
+[Zurück](../../Readme.md)
+
+---
+
 In einigen Situationen kann es nützlich sein, zur Übersetzungszeit Folgen ganzer Zahlen zu generieren.
 In diesem Beispiel zeigen wir auf, wie dies in C++ geht und geben ein Beispiel für deren Verwendung.
 

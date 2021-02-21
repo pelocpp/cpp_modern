@@ -1,5 +1,9 @@
 # Memory Leaks Detection
 
+[Zurück](../../Readme.md)
+
+---
+
 Ein einfacher Memory Leak Detektor ist in der *C Run-time Library* (*CRT*) integriert.
 
 Details seiner Funktionsweise sind hier beschrieben:

@@ -1,5 +1,9 @@
 # Templates und statischer Polymorphismus
 
+[Zurück](../../Readme.md)
+
+---
+
 [Quellcode](TemplateStaticPolymorphism.cpp)
 
 ---
