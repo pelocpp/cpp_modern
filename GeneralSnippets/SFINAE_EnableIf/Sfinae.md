@@ -121,13 +121,13 @@ struct enable_if<true, T> {
 Damit lassen sich nun Funktionen (genauer gesagt: Funktionsschablonen) in der folgenden Art und Weise definieren:
 
 ```cpp
-template <typename T, typename enable_if<std::is_integral<T>::value, T>::type* = nullptr>
+template <typename T, typename enable_if<std::is_integral<T>::value, T>::type* U = nullptr>
 void doSomething(const T& t) {
     // an implementation for integral types (int, char, unsigned, etc.)
     std::cout << "doSomething integral type: " << t << std::endl;
 }
 
-template <typename T, typename enable_if<std::is_class<T>::value, T>::type* = nullptr>
+template <typename T, typename enable_if<std::is_class<T>::value, T>::type* U = nullptr>
 void doSomething(const T& t) {
     // an implementation for class types
     std::cout << "doSomething class type: " << t() << std::endl;
@@ -166,6 +166,20 @@ doSomething integral type: 123
 doSomething class type: SomeClass object
 ```
 
+*Hinweis*:
+In den Funktionsschablonen von `doSomething` werden zwei Template Parameter `T` und `U` definiert, zum Beispiel:
+
+```cpp
+template <typename T, typename enable_if<std::is_integral<T>::value, T>::type* U = nullptr>
+```
+
+Da der zweite Template Parameter `U` nirgends explizit verwendet wird, kann man den Bezeichner `U` auch einfach weglassen.
+Die folgende Zeile ist damit ebenso korrekt übersetzungsfähig:
+ 
+```cpp
+template <typename T, typename enable_if<std::is_integral<T>::value, T>::type* = nullptr>
+```
+
 **Beachte**: Die Strukturen `enable_if` sind auch in der C++-Klassenbibliothek definiert (`#include`-Datei `<type_traits>`),
 Sie müssen diese also nicht selbst definieren.
 
@@ -176,16 +190,103 @@ Schablone `enable_if_t` kann man diese etwas vereinfachen:
 template <bool B, typename T = void>
 using enable_if_t = typename enable_if<B, T>::type;
 
-template <typename T, typename enable_if_t<std::is_integral<T>::value, T>* = nullptr>
+template <typename T, enable_if_t<std::is_integral<T>::value, T>* U = nullptr>
 void doSomething2(const T& t) {
     // an implementation for integral types (int, char, unsigned, etc.)
     std::cout << "doSomething integral type: " << t << std::endl;
 }
 
-template <typename T, typename enable_if_t<std::is_class<T>::value, T>* = nullptr>
+template <typename T, enable_if_t<std::is_class<T>::value, T>* U = nullptr>
 void doSomething2(const T& t) {
     // an implementation for class types
     std::cout << "doSomething class type: " << t() << std::endl;
+}
+```
+
+## Platzierungsmöglichkeiten von `std::enable_if`
+
+Syntaktisch gesehen gibt es für die Anwendung des **SFINAE** Patterns &ndash; und damit für die Platzierung von `std::enable_if` &ndash; drei Möglichkeiten:
+
+  * Im Kopf des Templates in der Definition eines zusätzlichen Template Parameters mit Default-Wert
+  * In der Liste der Funktionsparameter mit einem zusätzlichen Parameter mit Default-Wert
+  * In der Definition des Rückgabetyps des Funktion
+
+Wir betrachten die drei Möglichkeiten jeweils an einem Beispiel:
+
+```cpp
+template<typename T, typename U = std::enable_if_t<std::is_integral_v<T>>>
+void negate1(T& value)
+{
+    value = -value;
+}
+
+template<typename T>
+void negate2(T& value, std::enable_if_t<std::is_integral_v<T>>* dummy = nullptr)
+{
+    value = -value;
+}
+
+template<typename T>
+std::enable_if_t<std::is_integral_v<T>>
+negate3(T& value)
+{
+    value = -value;
+}
+
+template<typename T>
+auto negate4(T& value) -> std::enable_if_t<std::is_integral_v<T>>
+{
+    value = -value;
+}
+```
+
+*Hinweis*: Für die Variante &ldquo;*In der Definition des Rückgabetyps*&rdquo; habe ich das Beispiel zweimal formuliert:
+Zum einen mit einem regulären Rückgabetyp und zum zweiten mit `auto` und einem nachgestellten Rückgabetyp.
+
+Um es ausdrücklich zu betonen: Für die reine Arbeitsweise der Funktion `negate` bräuchte man in den ersten beiden Varianten
+den zusätzlichen Parameter (Template bzw. Funktionsparameter) *nicht*. Man könnte deshalb die in den Beispielen
+benutzten Parameterbezeichner (hier: `U` bzw. `dummy`) auch einfach weglassen. Der Compiler akzeptiert dies:
+
+```cpp
+template<typename T, typename = std::enable_if_t<std::is_integral_v<T>>>
+...
+
+template<typename T>
+void negate2(T& value, std::enable_if_t<std::is_integral_v<T>>* = nullptr)
+...
+```
+
+*Hinweis*: In den Beispielen zur `negate`-Funktion wurden die Schablonen `std::enable_if_t` und `std::is_integral_v` eingesetzt.
+Beide Schablonen ermöglichen es dem Programmierer mit weniger Schreibarbeit auszukommen,
+dafür erschweren sie &ndash; zumindest auf den ersten Blick &ndash; das Verständnis,
+da sie den Blick auf die &ldquo;*versteckten*&rdquo; Alias-Definitionen verbergen:
+Die &ldquo;*Langschreibweise*&rdquo; dieser Beispiele (mit den Schablonen `std::enable_if` und `std::is_integral`)
+würde so aussehen:
+
+```cpp
+template<typename T, typename U = typename std::enable_if<std::is_integral<T>::value>::type>
+void negate10(T& value)
+{
+    value = -value;
+}
+
+template<typename T>
+void negate11(T& value, typename std::enable_if<std::is_integral<T>::value>::type* dummy = nullptr)
+{
+    value = -value;
+}
+
+template<typename T>
+typename std::enable_if<std::is_integral<T>::value>::type
+negate12(T& value)
+{
+    value = -value;
+}
+
+template<typename T>
+auto negate13(T& value) -> typename std::enable_if<std::is_integral<T>::value>::type
+{
+    value = -value;
 }
 ```
 

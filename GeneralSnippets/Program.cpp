@@ -148,7 +148,7 @@ int main()
         //main_template_template_parameter();
         //main_template_template_parameter_02();
         //main_template_specialization();
-        main_transform();
+        //main_transform();
         //main_tuples();
         //main_type_traits();
         //main_uniform_initialization();
