@@ -207,9 +207,9 @@ void doSomething2(const T& t) {
 
 Syntaktisch gesehen gibt es für die Anwendung des **SFINAE** Patterns &ndash; und damit für die Platzierung von `std::enable_if` &ndash; drei Möglichkeiten:
 
-  * Im Kopf des Templates in der Definition eines zusätzlichen Template Parameters mit Default-Wert
-  * In der Liste der Funktionsparameter mit einem zusätzlichen Parameter mit Default-Wert
-  * In der Definition des Rückgabetyps des Funktion
+  * Im Kopf des Templates in der Definition eines zusätzlichen Template Parameters mit Default-Wert,
+  * in der Liste der Funktionsparameter mit einem zusätzlichen Parameter mit Default-Wert oder
+  * in der Definition des Rückgabetyps desr Funktion
 
 Wir betrachten die drei Möglichkeiten jeweils an einem Beispiel:
 
