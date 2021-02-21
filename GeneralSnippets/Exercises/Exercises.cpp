@@ -681,32 +681,29 @@ namespace Exercises {
 
     namespace Exercise_10 {
 
-        // Create a single class and use expression SFINAE on the return type of methods
-        // in that class to return true if the method is detected and false if the method
-        // does not exist. In the example below, we're calling testGet with an int parameter.
-        //
-        // This causes the first testGet method, which takes an int as an argument,
-        // to be preferred over the second testGet method, which takes anything (...)
-        // as an argument. The first method will only be enabled, however,
-        // if the expression inside the decltype can resolve without errors.
-        // 
-        // The return type for both functions is bool, since decltype will return
-        // the type of the last expression (technically, this is due to the comma operator).
-
         // https://people.eecs.berkeley.edu/~brock/blog/detection_idiom.php
 
         template <typename T>
-        struct TestMethod {
+        struct MethodDetector {
 
             template <typename U>
-            static constexpr
-                decltype(std::declval<U>().get(), bool())
-                testGet(int) { return true; }
+            static constexpr decltype(std::declval<U>().get(), bool{ }) detect() {
+                return true;
+            }
+
+            // oder
+
+            //template <typename U>
+            //static constexpr auto detect() -> decltype(std::declval<U>().get(), bool{ }) {
+            //    return true;
+            //}
 
             template <typename U>
-            static constexpr bool testGet(...) { return false; }
+            static constexpr bool detect(...) {
+                return false;
+            }
 
-            static constexpr bool value = testGet<T>(int());
+            static constexpr bool value = MethodDetector::detect<T>();
         };
 
         struct FirstStruct {
@@ -717,15 +714,71 @@ namespace Exercises {
             int getter() { return 456; };
         };
 
-        void testExercise_10() {
-            std::cout
-                << typeid(struct FirstStruct).name() << ":  "
-                << std::boolalpha << TestMethod<FirstStruct>::value << std::endl;
+        void testExercise_10_a() {
 
             std::cout
-                << typeid(struct SecondStruct).name() << ": "
-                << std::boolalpha << TestMethod<SecondStruct>::value << std::endl;
+                << "FirstStruct:  "
+                << std::boolalpha
+                << MethodDetector<FirstStruct>::value
+                << std::endl;
+
+            std::cout
+                << "SecondStruct: "
+                << std::boolalpha
+                << MethodDetector<SecondStruct>::value
+                << std::endl;
         };
+
+        template <typename T>
+        struct MethodDetectorEx {
+
+            template <typename U>
+            static constexpr decltype(std::declval<U>().get(std::declval<int>(), std::declval<int>()), bool{ }) detect() {
+                return true;
+            }
+
+            // oder
+
+            //template <typename U>
+            //static constexpr auto detect() -> decltype(std::declval<U>().get(std::declval<int>(), std::declval<int>()), bool{ }) {
+            //    return true;
+            //}
+
+            template <typename U>
+            static constexpr bool detect(...) {
+                return false;
+            }
+
+            static constexpr bool value = MethodDetectorEx::detect<T>();
+        };
+
+        struct ThirdStruct {
+            int get(int value) { return 2 * value; };
+        };
+
+        struct FourthStruct {
+            int get(int value1, int value2) { return value1 * value2; };
+        };
+
+        void testExercise_10_b() {
+
+            std::cout
+                << "ThirdStruct:  "
+                << std::boolalpha
+                << MethodDetectorEx<ThirdStruct>::value
+                << std::endl;
+
+            std::cout
+                << "FourthStruct: "
+                << std::boolalpha
+                << MethodDetectorEx<FourthStruct>::value
+                << std::endl;
+        };
+
+        void testExercise_10() {
+            testExercise_10_a();
+            testExercise_10_b();
+        }
     }
 
     namespace Exercise_11 {

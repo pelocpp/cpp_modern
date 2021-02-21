@@ -486,23 +486,52 @@ das Iterator-Objekt `begin`.
 
 #### Inhalt: SFINAE: Detektion von Methoden in einer Klasse
 
-#### Vorausetzungen: Templates
+#### Vorausetzungen: Templates, `decltype` und `std::declval`
 
-Das *Detection Idiom* (zu deutsch etwa "Erkennungsidiom")
+Das *Detection Idiom* (zu deutsch etwa &ldquo;Erkennungsidiom&rdquo;)
 ermöglicht die Introspektion eines C++-Klassentyps zur Übersetzungszeit.
-Mithilfe dieses Idioms können wir überprüfen, ob eine Klasse eine bestimmte Methodeo
-oder ein Element eines bestimmten Namens enthält.
+Einfacher ausgedrückt: Mithilfe dieses Idioms können wir überprüfen, ob eine Klasse eine bestimmte Methode
+oder ein Element eines bestimmten Namens enthält &ndash; und das zur Übersetzungszeit.
 
-Schreiben Sie eine Funktionsschablobe `testGet<T>`, die `true` oder `false` in Abhängigkeit davon zurückliefert,
-ob der Klassentyp `T` eine Methode des Namens `get` besitzt oder nicht.
+Studieren Sie hierzu das folgende Klassentemplate `MethodDetector`:
+Welchen Namen hat die Methode, die hier offensichtlich gesucht wird?
+Welche Rolle spielen `decltype` und `std::declval` bei der Suche?
 
-*Beispiel*:
+```cpp
+01: template <typename T>
+02: struct MethodDetector {
+03: 
+04:     template <typename U>
+05:     static constexpr auto detect() -> decltype(std::declval<U>().get(), bool{ }) {
+06:         return true;
+07:     }
+08: 
+09:     template <typename U>
+10:     static constexpr bool detect(...) { 
+11:         return false;
+12:     }
+13: 
+14:     static constexpr bool value = MethodDetector::detect<T>();
+15: };
+```
+
+Es folgen einige Hinweise:<br/>
+Im Klassentemplate gibt es zwei Methoden namens `detect`: Die zweite Überladung akzeptiert bzgl. der aktuellen Parameter &ldquo;alles&rdquo;,
+was durch das Symbol der Ellipses `'...'` zum Ausdruck gebracht wird.
+Die erste Überladung kommt nur dann in die engere Auswahl, wenn der Ausdruck innerhalb von `decltype` fehlerfrei aufgelöst werden kann.
+Der Rückgabewert ist in beiden Fällen `bool`! In der zweiten Überladung ist dies offensichtlich.
+In der ersten Überladung beachte man, dass der Ausdruck innerhalb von `decltype` eine Sequenz ist (siehe den Komma-Operator `','`),
+der Typ des Ausdrucks ist damit gleich dem des letzten Elements in der Sequenz und damit ebenfalls gleich `bool`.
+
+Je nachdem für welche Überladung der Übersetzer sich entscheidet, liefert `detect` den Wert `true` oder `false` zurück,
+die Klassenvariable `value` in Zeile 14 nimmt diesen Wert an.
+
+**Aufgabe**:
 
 Im folgenden sind zwei Klassen `FirstStruct` und `SecondStruct` definiert,
 die unterschiedliche Methoden haben (`get` bzw. `getter`):
 
 ```cpp
-
 struct FirstStruct {
     int get() { return 123; };
 };
@@ -512,33 +541,39 @@ struct SecondStruct {
 };
 ```
 
-Erstellen Sie eine Klassenschablone, zum Beispiel `TestMethod`.
-Fügen Sie dieser Klasse eine Deklaration der Gestalt
-
-```cpp
-static constexpr bool value = testGet<T>(int());
-```
-
-hinzu. `testGet` wird mit einer anonymen Funktion aufgerufen,
-deren Rückgabewert ein `int`-Parameter ist. Damit hätten wir alle Bausteine erwähnt,
-um folgendes Beispielprogramm auszuführen:
+  * Welche Ausgabe erwarten Sie bei der Ausführung der folgenden beiden Anweisungen?
+  * Erklären Sie detailliert, warum sich das Programm so verhält?
+  * Welche Regel gilt bei der Auflösung von Funktionsschablonen im Falle von Mehrdeutigkeiten?
 
 ```cpp
 std::cout
-    << typeid(struct FirstStruct).name() << ":  "
-    << std::boolalpha << TestMethod<FirstStruct>::value << std::endl;
+    << "FirstStruct:  "
+    << std::boolalpha
+    << MethodDetector<FirstStruct>::value
+    << std::endl;
 
-std::cout 
-    << typeid(struct SecondStruct).name() << ": "
-    << std::boolalpha << TestMethod<SecondStruct>::value << std::endl;
+std::cout
+    << "SecondStruct: "
+    << std::boolalpha
+    << MethodDetector<SecondStruct>::value
+    << std::endl;
 ```
 
 *Ausgabe*:
 
 ```cpp
-struct Exercise_09::FirstStruct:  true
-struct Exercise_09::SecondStruct: false
+FirstStruct:  true
+SecondStruct: false
 ```
+
+**Zusatzaufgabe**:
+
+Wie müsste eine Klasse `MethodDetectorEx` implementiert werden,
+die eine Klasse überprüfen kann, ob sie  eine Methode namens `get` mit zwei Parametern des Typs `int` besitzt?
+Realisieren und testen Sie eine entsprechende Klasse `MethodDetectorEx`.
+
+*Abschließender Hinweis*: Die Anregungen zu dieser Aufgabe stammen teilweise aus
+[C++ Detection Idiom Through the Years](https://people.eecs.berkeley.edu/~brock/blog/detection_idiom.php).
 
 ---
 
