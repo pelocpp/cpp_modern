@@ -209,7 +209,7 @@ Syntaktisch gesehen gibt es für die Anwendung des **SFINAE** Patterns &ndash; un
 
   * Im Kopf des Templates in der Definition eines zusätzlichen Template Parameters mit Default-Wert,
   * in der Liste der Funktionsparameter mit einem zusätzlichen Parameter mit Default-Wert oder
-  * in der Definition des Rückgabetyps desr Funktion
+  * in der Definition des Rückgabetyps der Funktion
 
 Wir betrachten die drei Möglichkeiten jeweils an einem Beispiel:
 
