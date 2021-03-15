@@ -32,7 +32,7 @@ namespace UniformInitialization {
 
     void test_02()
     {
-        int n{ 1};                 // n equals 1
+        int n{ 1 };                // n equals 1
         float f{ 1.5f };           // f equals 1.5
         double d{ 2.5 };           // d equals 2.5
         std::string s{ "123" };    // s equals "123"
