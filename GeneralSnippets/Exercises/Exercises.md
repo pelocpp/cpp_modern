@@ -1326,10 +1326,10 @@ Schreiben Sie zwei Funktionen `andAll` und `orAll`, die eine variable Anzahl von
 logisch UND oder logisch ODER verknüpfen. Mögliche Testbeispiele können so aussehen:
 
 ```cpp
-bool result = andAll(true, false, true);
+bool result = andAll({ true, false, true });
 std::cout << std::boolalpha << result << std::endl;
 
-result = andAll(true, true, true, true, true, true, true, true, true, true);
+result = orAll({ false, false, false, false, false, false, false, false, false, true });
 std::cout << std::boolalpha << result << std::endl;
 ```
 

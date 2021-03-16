@@ -1765,8 +1765,10 @@ namespace Exercises {
             return std::accumulate(
                 std::begin(vec),
                 std::end(vec),
-                true, // first element
-                [](bool first, bool next) { return first and next; }
+                true, // starting value
+                [](bool first, bool next) {
+                    return first and next;
+                }
             );
         }
 
@@ -1775,8 +1777,10 @@ namespace Exercises {
             return std::accumulate(
                 std::begin(vec),
                 std::end(vec),
-                false, // first element
-                [](bool first, bool next) { return first or next; }
+                false, // starting value
+                [](bool first, bool next) {
+                    return first or next;
+                }
             );
         }
 
