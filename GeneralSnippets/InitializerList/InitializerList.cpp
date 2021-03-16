@@ -13,7 +13,7 @@ namespace InitializerList {
     // delegating std::initializer_list to std::for_each
     int myIntAdderFunction(std::initializer_list<int> list) {
 
-        int result{0};
+        int result{};
         std::for_each(
             std::begin(list),
             std::end(list),
@@ -51,7 +51,7 @@ namespace InitializerList {
         std::vector<std::string> m_names;
 
     public:
-        MyPeople(std::initializer_list<std::string> names) : m_names(names) {}
+        MyPeople(std::initializer_list<std::string> names) : m_names{ names } {}
 
         void operator()() {
             if (m_names.size() == 0) {
@@ -68,7 +68,7 @@ namespace InitializerList {
             // prevent output of " - " after last element :-)
             std::vector<std::string>::const_iterator last = m_names.end();
             --last;
-            std::cout << *last;
+            std::cout << *last << std::endl;;
         }
     };
 
