@@ -97,6 +97,14 @@ namespace StdArray {
         std::cout << "Length: " << myArray.size() << std::endl;
     }
 
+    // or
+
+    template<typename T>
+    void printLength(const T& myArray)
+    {
+        std::cout << "Length: " << myArray.size() << std::endl;
+    }
+
     void test_04() {
         // General Hint:
         // There is no 'array decay' when passing an std::array to a function

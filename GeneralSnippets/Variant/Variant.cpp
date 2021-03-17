@@ -20,7 +20,7 @@ namespace VariantDemo {
             << std::get<float>(var)
             << std::endl;
 
-        var = std::string("Hello"); // we're now a string
+        var = std::string{ "Hello" }; // we're now a string
 
         std::cout
             << var.index()
@@ -104,14 +104,16 @@ namespace VariantDemo {
         std::variant<int, float, std::string> var{ 3.5f };
 
         // using a generic visitor (matching all types in the variant)
-        auto visitor = [](auto const& elem) { std::cout << elem << std::endl; };
+        auto visitor = [](auto const& elem) {
+            std::cout << elem << std::endl;
+        };
 
         std::visit(visitor, var);
 
         var = 10;
         std::visit(visitor, var);
 
-        var = std::string("Hello");
+        var = std::string{ "Hello" };
         std::visit(visitor, var);
     }
 
@@ -149,14 +151,14 @@ namespace VariantDemo {
         // display each value
         std::cout << "Values:      ";
         for (const auto& var : vec) {
-            std::visit([](auto& n) {std::cout << n << " "; }, var);
+            std::visit([](auto& n) { std::cout << n << " "; }, var);
         }
         std::cout << std::endl;
 
         // display each type
         std::cout << "Types:       ";
         for (const auto& var : vec) {
-            std::visit([](auto& arg) {std::cout << typeid(arg).name() << " "; }, var);
+            std::visit([](auto& arg) { std::cout << typeid(arg).name() << " "; }, var);
         }
         std::cout << std::endl;
 
@@ -165,7 +167,7 @@ namespace VariantDemo {
         std::cout << "Type of Sum: " << typeid(res).name() << std::endl;
 
         for (const auto& var : vec) {
-            std::visit([&res](const auto& arg) {res += arg; }, var);
+            std::visit([&res](const auto& arg) { res += arg; }, var);
         }
         std::cout << "Sum:         " << res << std::endl;
 

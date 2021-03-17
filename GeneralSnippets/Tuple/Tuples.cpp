@@ -104,6 +104,7 @@ namespace TupleSamples {
             << "Name:  " << name << std::endl;
 
         for (const auto& [id, abbr, val, name] : mySheet) {
+
             std::cout 
                 << "Id:    " << id << std::endl
                 << "Abbr:  " << abbr << std::endl
@@ -118,11 +119,11 @@ namespace TupleSamples {
     void test_04()
     {
         // declaring tuple 
-        std::tuple <char, int, double> values{ 'A', 10, 15.5 };
+        std::tuple <char, int, double> tuple { 'A', 10, 15.5 };
 
         // retrieve number of elements with std::tuple_size
         std::cout << "std::tuple size: ";
-        std::cout << std::tuple_size<decltype(values)>::value << std::endl;
+        std::cout << std::tuple_size<decltype(tuple)>::value << std::endl;
 
         // or
         using MyTuple = std::tuple<char, int, double>;
