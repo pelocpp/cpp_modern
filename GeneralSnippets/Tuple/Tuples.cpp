@@ -21,7 +21,7 @@ namespace TupleSamples {
         values = std::make_tuple('A', 10, 15.5);
 
         // just in one statement
-        std::tuple <char, int, double> moreValues('Z', 100, 99.99);
+        std::tuple <char, int, double> moreValues{ 'Z', 100, 99.99 };
 
         // accessing tuple values using std::get 
         std::cout << "The values of tuple are : ";
@@ -118,7 +118,7 @@ namespace TupleSamples {
     void test_04()
     {
         // declaring tuple 
-        std::tuple <char, int, double> values('A', 10, 15.5);
+        std::tuple <char, int, double> values{ 'A', 10, 15.5 };
 
         // retrieve number of elements with std::tuple_size
         std::cout << "std::tuple size: ";

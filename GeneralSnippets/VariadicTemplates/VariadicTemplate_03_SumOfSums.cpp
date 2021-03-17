@@ -6,6 +6,7 @@
 #include <string>
 #include <vector>
 #include <deque>
+#include <list>
 #include <algorithm>
 #include <numeric>
 
@@ -26,11 +27,11 @@ namespace VariadicTemplatesSumofSums {
     }
 
     void test_02() {
-        std::vector<int> vec1{ 1, 2, 3, 4, 5 };
+        std::vector<int> vec{ 1, 2, 3, 4, 5 };
         std::deque<int> queue { 6, 7, 8, 9, 10 };
-        std::vector<int> vec2{ 11, 12, 13, 14, 15 };
+        std::list<int> list{ 11, 12, 13, 14, 15 };
 
-        int totalSum = sumOfSums(vec1, queue, vec2);
+        int totalSum = sumOfSums(vec, queue, list);
         std::cout << "totalSum: " << totalSum << std::endl;
     }
 }

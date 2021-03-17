@@ -36,7 +36,7 @@ namespace VariantDemo {
             << std::get<int>(var)
             << std::endl;
 
-        var.emplace<2>(std::string("Hello")); // we're now a string again
+        var.emplace<2>(std::string{ "Hello" }); // we're now a string again
 
         std::cout
             << var.index()
@@ -46,7 +46,7 @@ namespace VariantDemo {
 
         // std::get returns a reference, so you can change the value:
 
-        std::get<std::string>(var) += std::string(" World");
+        std::get<std::string>(var) += std::string{ " World" };
 
         std::cout
             << var.index()
@@ -69,7 +69,7 @@ namespace VariantDemo {
 
         // accessing a variant
 
-        std::variant<int, float, std::string> var{ std::string("Hello") };
+        std::variant<int, float, std::string> var{ std::string{ "Hello" } };
 
         std::cout
             << var.index()

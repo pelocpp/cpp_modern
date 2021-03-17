@@ -33,7 +33,7 @@ Es folgt eine tabellarische Zusammenstellung aller Themenbereiche und Aufgaben:
 | Folding Expressions | [Aufgabe 13](#aufgabe-13): Logische Operationen mit beliebig vielen Operanden<br/>[Aufgabe 15](#aufgabe-15): `decltype` und Type-Traits am Beispiel von `sameType`<br/>[Aufgabe 25](#aufgabe-25): &ldquo;*Folding over a Comma*&rdquo; am Beispiel zweier Funktionen `minimum` und `maximum` |
 | `std::optional` | [Aufgabe 6](#aufgabe-6): Umwandlung von Zeichenketten in ganze Zahlen |
 | `std::variant` | [Aufgabe 18](#aufgabe-18): Ein heterogener Container mit `std::variant` |
-| `std::accumulate` | [Aufgabe 24](#aufgabe-24): Die Funktion `std::accumulate` in der Anwendung |
+| `std::accumulate` | [Aufgabe 24](#aufgabe-24): Die Funktion `std::accumulate` in der Anwendung (mit Initialisierungliste) |
 | Metaprogrammierung | [Aufgabe 8](#aufgabe-8): *Fibonacci*-Zahlen |
 | Funktionale Programmierung | [Aufgabe 16](#aufgabe-16): Umwandlung von Zeichenketten eines `std::vector`-Objekts von Klein- in Großbuchstaben<br/>[Aufgabe 17](#aufgabe-17): `decltype`, `declval` und nachlaufender Rückgabetyp in der Praxis |
 | *Perfect Forwarding* | [Aufgabe 22](#aufgabe-22): Einfaches Beispiel zu variadischen Templates und *Perfect Forwarding*<br/>[Aufgabe 23](#aufgabe-23): Ausführungszeit einer Funktion (`std::invoke`, variadische Templates und *Perfect Forwarding*) |
@@ -1318,7 +1318,7 @@ und misst ihre Ausführungszeit.
 
 ## Aufgabe 24
 
-#### Inhalt: Die Funktion `std::accumulate` in der Anwendung
+#### Inhalt: Die Funktion `std::accumulate` in der Anwendung (Initialisierungliste)
 
 #### Voraussetzungen: `std::accumulate`
 

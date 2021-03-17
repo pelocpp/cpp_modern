@@ -15,7 +15,7 @@ namespace CommonType {
 
     public:
         Number() : m_value(T{}) {}
-        Number(T value) : m_value(value) {}
+        Number(T value) : m_value{ value } {}
 
         T operator()() const {
             return m_value;

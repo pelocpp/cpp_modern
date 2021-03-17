@@ -2,6 +2,17 @@
 // std::weak_ptr
 // =====================================================================================
 
+#define _CRTDBG_MAP_ALLOC
+#include <cstdlib>
+#include <crtdbg.h>
+
+#ifdef _DEBUG
+#ifndef DBG_NEW
+#define DBG_NEW new ( _NORMAL_BLOCK , __FILE__ , __LINE__ )
+#define new DBG_NEW
+#endif
+
+#endif  // _DEBUG
 #include <iostream>
 #include <memory>
 
@@ -59,6 +70,7 @@ namespace WeakPointer {
 
     /**
      * Spoiler Alarm: Don't read this :-)
+     * Note: there are 2 cycles!
      * a) Both smart pointers are std::shared_ptr's ==> No d'tor at all will be called
      * b) One smart pointer is a std::shared_ptr    ==> One d'tor is called
      * c) Both smart pointers are std::weak_ptr's   ==> All d'tors are called
@@ -67,7 +79,7 @@ namespace WeakPointer {
     class ParentNode {
     private:
         std::shared_ptr<const RightNode> m_rightNode;   // <== shared or weak ?
-        std::weak_ptr<const LeftNode> m_leftNode;
+        std::shared_ptr<const LeftNode> m_leftNode;       // <== shared or weak ?
 
     public:
         ParentNode() {
@@ -134,6 +146,7 @@ namespace WeakPointer {
 
 void main_weak_pointer()
 {
+    _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
     using namespace WeakPointer;
     test_01();
     test_02();

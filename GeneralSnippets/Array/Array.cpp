@@ -169,7 +169,7 @@ namespace StdArray {
         // arrays of objects
         std::array<Employee, 2> employees{};
         employees[0] = { 9987, "Sepp", "Engineer", 987654321 };
-        employees[1] = { 999, "Hans", "Manager", 123456789 };
+        employees[1] = { 9988, "Hans", "Manager",  123456789 };
 
         for (const auto& [id, name, role, phone] : employees) {
             std::cout
