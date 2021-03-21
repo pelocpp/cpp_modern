@@ -24,7 +24,6 @@ void main_decltype();
 void main_exercices();
 void main_keyword_explicit();
 void main_expression_templates();
-void main_expression_templates_02();
 void main_filesystem();
 void main_filesystem();
 void main_functional_programming();
@@ -109,7 +108,6 @@ int main()
         //main_exercices();
         //main_keyword_explicit();
         //main_expression_templates();
-        main_expression_templates_02();
         //main_filesystem();
         //main_filesystem();
         //main_functional_programming();

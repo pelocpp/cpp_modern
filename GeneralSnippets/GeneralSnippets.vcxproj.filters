@@ -171,9 +171,6 @@
     <ClCompile Include="UniquePtr\UniquePtr.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ExpressionTemplates\ExpressionTemplates01.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="CommonType\CommonType.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -249,7 +246,7 @@
     <ClCompile Include="Transform\Transform.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ExpressionTemplates\ExpressionTemplates02.cpp">
+    <ClCompile Include="ExpressionTemplates\ExpressionTemplates.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -161,8 +161,7 @@
     <ClCompile Include="DeclType\Decltype.cpp" />
     <ClCompile Include="Exercises\Exercises.cpp" />
     <ClCompile Include="Explicit\Explicit.cpp" />
-    <ClCompile Include="ExpressionTemplates\ExpressionTemplates01.cpp" />
-    <ClCompile Include="ExpressionTemplates\ExpressionTemplates02.cpp" />
+    <ClCompile Include="ExpressionTemplates\ExpressionTemplates.cpp" />
     <ClCompile Include="FileSystem\FileSystem.cpp" />
     <ClCompile Include="FunctionalProgramming\FunctionalProgramming01.cpp" />
     <ClCompile Include="FunctionalProgramming\FunctionalProgramming02.cpp" />

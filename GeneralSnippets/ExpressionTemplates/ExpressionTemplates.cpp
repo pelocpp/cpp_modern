@@ -9,57 +9,60 @@
 
 namespace ExpressionTemplates {
 
-    constexpr bool Verbose = false;
+    constexpr bool Verbose{ false };
 
     // default sizes
-    constexpr size_t DefaultCols = 3;
-    constexpr size_t DefaultRows = 3;
+    constexpr size_t DefaultCols{ 3 };
+    constexpr size_t DefaultRows{ 3 };
 
     // benchmark sizes
-    constexpr int Iterations = 10;
-    constexpr size_t BenchmarkRows = 2000;
-    constexpr size_t BenchmarkCols = 1000;
+    constexpr int Iterations{ 10 };
+    constexpr size_t BenchmarkRows { 1000 };
+    constexpr size_t BenchmarkCols { 1000 };
 
-    template <typename T>
+    // actual sizes
+    constexpr size_t Cols{ BenchmarkRows };  // <== modify values here
+    constexpr size_t Rows{ BenchmarkRows };  // <== modify values here
+
     class Matrix {
     private:
         size_t m_cols;
         size_t m_rows;
-        std::vector<T> m_values;
+        std::vector<double> m_values;
 
     public:
-        using value_type = T;
+        // c'tor(s)
+        Matrix() : Matrix(Cols, Rows) {}
 
-        // c'tor
-        Matrix(size_t cols = DefaultCols, size_t rows = DefaultRows)
-            : m_cols(cols), m_rows(rows), m_values(cols* rows) {}
+        Matrix(size_t cols, size_t rows) : m_cols{ cols }, m_rows{ rows }
+        {
+            m_values.resize(cols*rows);
+        }
 
         // getter
         size_t inline getCols() const { return m_cols; };
         size_t inline getRows() const { return m_rows; };
 
         // functor - representing index operator
-        const T& operator()(size_t x, size_t y) const;
-        T& operator()(size_t x, size_t y);
+        const double& operator()(size_t x, size_t y) const;
+        double& operator()(size_t x, size_t y);
 
         // operator= --> classical definition
-        Matrix<T>& operator=(const Matrix<T>& rhs);
+        Matrix& operator=(const Matrix& rhs);
 
         // operator= --> expression template approach (template member method)
         template <typename TEXPR>
-        Matrix<T>& operator=(const TEXPR& expression);
+        Matrix& operator=(const TEXPR& expression);
     };
 
-    template <typename T>
-    const T& Matrix<T>::operator()(size_t x, size_t y) const {
-    //    if constexpr (Verbose) {
-    //        std::cout << "Matrix::operator() const => " << x << ',' << y << std::endl;
-    //    }
+    const double& Matrix::operator()(size_t x, size_t y) const {
+        //if constexpr (Verbose) {
+        //    std::cout << "Matrix::operator() => [" << x << ',' << y << ']' << std::endl;
+        //}
         return m_values[y * getCols() + x];
     }
 
-    template <typename T>
-    T& Matrix<T>::operator()(size_t x, size_t y) {
+    double& Matrix::operator()(size_t x, size_t y) {
         //if constexpr (Verbose) {
         //    std::cout << "Matrix::operator() => [" << x << ',' << y << ']' << std::endl;
         //}
@@ -67,19 +70,18 @@ namespace ExpressionTemplates {
     }
 
     // classical operator+ definition
-    template <typename T>
-    Matrix<T> operator+(const Matrix<T>& lhs, const Matrix<T>& rhs)
+    Matrix operator+(const Matrix& lhs, const Matrix& rhs)
     {
-        Matrix<T> result(lhs.getCols(), lhs.getRows());
-        for (size_t y = 0; y != lhs.getRows(); ++y) {
-            for (size_t x = 0; x != lhs.getCols(); ++x) {
-                // result(x, y) = lhs(x, y) + rhs(x, y);
+        Matrix result{ lhs.getCols(), lhs.getRows() };
+
+        for (size_t y{}; y != lhs.getRows(); ++y) {
+            for (size_t x{}; x != lhs.getCols(); ++x) {
 
                 if constexpr (Verbose) {
-                    T l = lhs(x, y);
-                    T r = rhs(x, y);
+                    double l {lhs(x, y)};
+                    double r {rhs(x, y)};
                     std::cout << "Matrix:: adding " << l << '+' << r << std::endl;
-                    T tmp = l + r;
+                    double tmp{ l + r };
                     std::cout << "Matrix:: assigning result " << tmp << std::endl;
                     result(x, y) = tmp;
                 }
@@ -87,36 +89,34 @@ namespace ExpressionTemplates {
                     result(x, y) = lhs(x, y) + rhs(x, y);
                 }
             }
-
         }
         return result;
     }
 
     // classical operator= implementation
-    template <typename T>
-    Matrix<T>& Matrix<T>::operator=(const Matrix<T>& rhs) {
+    Matrix& Matrix::operator=(const Matrix& rhs) {
 
         // prevent self-assignment
         if (this != &rhs) {
             m_values = rhs.m_values;
         }
+
         return *this;
     }
 
     // expression template approach: operator=
-    template <typename T>
     template <typename TEXPR>
-    Matrix<T>& Matrix<T>::operator=(const TEXPR& expression) {
-        for (size_t y = 0; y != getRows(); ++y) {
-            for (size_t x = 0; x != getCols(); ++x) {
+    Matrix& Matrix::operator=(const TEXPR& expr) {
+        for (size_t y{}; y != getRows(); ++y) {
+            for (size_t x{}; x != getCols(); ++x) {
 
                 if constexpr (Verbose) {
-                    T sum = expression(x, y);
+                    double sum{ expr(x, y) };
                     std::cout << "Matrix::    assigning expression result " << sum << std::endl;
                     m_values[y * getCols() + x] = sum;
                 }
                 else {
-                    m_values[y * getCols() + x] = expression(x, y);
+                    m_values[y * getCols() + x] = expr(x, y);
                 }
             }
         }
@@ -125,13 +125,9 @@ namespace ExpressionTemplates {
 
     // ========================================================================
 
-    template<typename T>
-    Matrix<T> add3(
-        const Matrix<T>& a,
-        const Matrix<T>& b,
-        const Matrix<T>& c)
+    Matrix add3(const Matrix& a, const Matrix& b, const Matrix& c)
     {
-        Matrix<T> result;
+        Matrix result{ a.getCols(), a.getRows() };
         for (size_t y = 0; y != a.getRows(); ++y) {
             for (size_t x = 0; x != a.getCols(); ++x) {
                 result(x, y) = a(x, y) + b(x, y) + c(x, y);
@@ -143,31 +139,34 @@ namespace ExpressionTemplates {
     // ========================================================================
 
     template <typename LHS, typename RHS>
-    class MatrixSum
+    class MatrixExpr
     {
+    private:
+        const LHS& m_lhs;
+        const RHS& m_rhs;
+
     public:
-        using value_type = typename LHS::value_type;
+        MatrixExpr(const LHS& lhs, const RHS& rhs) : m_rhs{ rhs }, m_lhs{ lhs } {}
 
-        MatrixSum(const LHS& lhs, const RHS& rhs) : m_rhs(rhs), m_lhs(lhs) {}
-
-        value_type operator() (size_t x, size_t y) const {
+        double operator() (size_t x, size_t y) const {
 
             if constexpr (Verbose) {
-                value_type l = m_lhs(x, y);
-                value_type r = m_rhs(x, y);
-                std::cout << "MatrixSum:: adding " << l << '+' << r << std::endl;
-                value_type tmp = l + r;
+                double l { m_lhs(x, y) };
+                double r { m_rhs(x, y) };
+                std::cout << "MatrixExpr:: adding " << l << '+' << r << std::endl;
+                double tmp{ l + r };
                 return tmp;
             }
             else {
                 return m_lhs(x, y) + m_rhs(x, y);
             }
         }
-
-    private:
-        const LHS& m_lhs;
-        const RHS& m_rhs;
     };
+
+    template <typename LHS, typename RHS>
+    MatrixExpr<LHS, RHS> operator+(const LHS& lhs, const LHS& rhs) {
+        return MatrixExpr<LHS, RHS>(lhs, rhs);
+    }
 
     // ========================================================================
 
@@ -175,10 +174,7 @@ namespace ExpressionTemplates {
     {
         std::cout << "Expression Template 01: Classical Approach" << std::endl;
 
-        Matrix<double> a;
-        Matrix<double> b;
-        Matrix<double> c;
-        Matrix<double> d;
+        Matrix a{}, b{}, c{}, d{};
 
         // initialize matrices
         for (size_t y = 0; y != a.getRows(); ++y) {
@@ -190,18 +186,15 @@ namespace ExpressionTemplates {
             }
         }
 
-        Matrix<double> result = a + b + c + d;  // result(x, y) = 10 
+        Matrix result = a + b + c + d;  // result(x, y) = 10 
     }
 
     void test_02()
     {
         std::cout << "Expression Template 02:" << std::endl;
 
-        Matrix<double> a;
-        Matrix<double> b;
-        Matrix<double> c;
-        Matrix<double> d;
-        Matrix<double> result;
+        Matrix a{}, b{}, c{}, d{};
+        Matrix result{};
 
         // initialize matrices
         for (size_t y = 0; y != a.getRows(); ++y) {
@@ -214,7 +207,7 @@ namespace ExpressionTemplates {
         }
 
         // adding 2 matrices
-        MatrixSum<Matrix<double>, Matrix<double>> sumAB(a, b);
+        MatrixExpr<Matrix, Matrix> sumAB(a, b);
         for (size_t y = 0; y != a.getRows(); ++y) {
             for (size_t x = 0; x != a.getCols(); ++x) {
                 result(x, y) = sumAB(x, y);
@@ -222,7 +215,7 @@ namespace ExpressionTemplates {
         }
 
         // adding 3 matrices
-        MatrixSum<MatrixSum<Matrix<double>, Matrix<double>>, Matrix<double>> sumABC(sumAB, c);
+        MatrixExpr<MatrixExpr<Matrix, Matrix>, Matrix> sumABC(sumAB, c);
         for (size_t y = 0; y != a.getRows(); ++y) {
             for (size_t x = 0; x != a.getCols(); ++x) {
                 result(x, y) = sumABC(x, y);
@@ -230,7 +223,7 @@ namespace ExpressionTemplates {
         }
 
         // adding 4 matrices
-        MatrixSum<MatrixSum<MatrixSum<Matrix<double>, Matrix<double>>, Matrix<double>>, Matrix<double>> sumABCD{ sumABC, d };
+        MatrixExpr<MatrixExpr<MatrixExpr<Matrix, Matrix>, Matrix>, Matrix> sumABCD{ sumABC, d };
         for (size_t y = 0; y != a.getRows(); ++y) {
             for (size_t x = 0; x != a.getCols(); ++x) {
                 result(x, y) = sumABCD(x, y);
@@ -242,11 +235,8 @@ namespace ExpressionTemplates {
     {
         std::cout << "Expression Template 03: Expression Templates Approach" << std::endl;
 
-        Matrix<double> a;
-        Matrix<double> b;
-        Matrix<double> c;
-        Matrix<double> d;
-        Matrix<double> result;
+        Matrix a{}, b{}, c{}, d{};
+        Matrix result{};
 
         // initialize matrices
         for (size_t y = 0; y != a.getRows(); ++y) {
@@ -259,9 +249,9 @@ namespace ExpressionTemplates {
         }
 
         // adding 4 matrices using modified operator=
-        MatrixSum<Matrix<double>, Matrix<double>> sumAB{ a, b };
-        MatrixSum<MatrixSum<Matrix<double>, Matrix<double>>, Matrix<double>> sumABC{ sumAB, c };
-        MatrixSum<MatrixSum<MatrixSum<Matrix<double>, Matrix<double>>, Matrix<double>>, Matrix<double>> sumABCD{ sumABC, d };
+        MatrixExpr<Matrix, Matrix> sumAB{ a, b };
+        MatrixExpr<MatrixExpr<Matrix, Matrix>, Matrix> sumABC{ sumAB, c };
+        MatrixExpr<MatrixExpr<MatrixExpr<Matrix, Matrix>, Matrix>, Matrix> sumABCD{ sumABC, d };
 
         result = sumABCD;
     }
@@ -270,12 +260,12 @@ namespace ExpressionTemplates {
 
     void test_04a_benchmark(
         int iterations,
-        Matrix<double>& result,
-        const Matrix<double>& a1,
-        const Matrix<double>& a2,
-        const Matrix<double>& a3,
-        const Matrix<double>& a4,
-        const Matrix<double>& a5)
+        Matrix& result,
+        const Matrix& a1,
+        const Matrix& a2,
+        const Matrix& a3,
+        const Matrix& a4,
+        const Matrix& a5)
     {
         auto start = std::chrono::high_resolution_clock::now();
         for (int i = 0; i < iterations; ++i) {
@@ -290,18 +280,18 @@ namespace ExpressionTemplates {
 
     void test_04b_benchmark(
         int iterations,
-        Matrix<double>& result,
-        const Matrix<double>& a1,
-        const Matrix<double>& a2,
-        const Matrix<double>& a3,
-        const Matrix<double>& a4,
-        const Matrix<double>& a5)
+        Matrix& result,
+        const Matrix& a1,
+        const Matrix& a2,
+        const Matrix& a3,
+        const Matrix& a4,
+        const Matrix& a5)
     {
         // adding 5 matrices with expression template approach
-        MatrixSum<Matrix<double>, Matrix<double>> sumAB{ a1, a2 };
-        MatrixSum<MatrixSum<Matrix<double>, Matrix<double>>, Matrix<double>> sumABC{ sumAB, a3 };
-        MatrixSum<MatrixSum<MatrixSum<Matrix<double>, Matrix<double>>, Matrix<double>>, Matrix<double>> sumABCD{ sumABC, a4 };
-        MatrixSum<MatrixSum<MatrixSum<MatrixSum<Matrix<double>, Matrix<double>>, Matrix<double>>, Matrix<double>>, Matrix<double>> sumABCDE{ sumABCD, a5 };
+        MatrixExpr<Matrix, Matrix> sumAB{ a1, a2 };
+        MatrixExpr<MatrixExpr<Matrix, Matrix>, Matrix> sumABC{ sumAB, a3 };
+        MatrixExpr<MatrixExpr<MatrixExpr<Matrix, Matrix>, Matrix>, Matrix> sumABCD{ sumABC, a4 };
+        MatrixExpr<MatrixExpr<MatrixExpr<MatrixExpr<Matrix, Matrix>, Matrix>, Matrix>, Matrix> sumABCDE{ sumABCD, a5 };
 
         auto start = std::chrono::high_resolution_clock::now();
         for (int i = 0; i < iterations; ++i) {
@@ -318,12 +308,8 @@ namespace ExpressionTemplates {
     {
         std::cout << "Expression Templates 04 (Benchmark):" << std::endl;
 
-        Matrix<double> a(BenchmarkCols, BenchmarkRows);
-        Matrix<double> b(BenchmarkCols, BenchmarkRows);
-        Matrix<double> c(BenchmarkCols, BenchmarkRows);
-        Matrix<double> d(BenchmarkCols, BenchmarkRows);
-        Matrix<double> e(BenchmarkCols, BenchmarkRows);
-        Matrix<double> result(BenchmarkCols, BenchmarkRows);
+        Matrix a{}, b{}, c{}, d{}, e{};
+        Matrix result{};
 
         // initialize matrices
         for (size_t y = 0; y != a.getRows(); ++y) {
@@ -346,10 +332,10 @@ namespace ExpressionTemplates {
 void main_expression_templates()
 {
     using namespace ExpressionTemplates;
-    test_01();                  // <== classical approach
-    test_02();
-    test_03();                  // <== expression templates approach
-    test_04_benchmark();        // <== benchmark
+    test_01();            // <== classical approach
+    test_02();            // <== expression templates approach
+    test_03();            // <== expression templates approach using modified operator=
+    test_04_benchmark();  // <== benchmark
 }
 
 // =====================================================================================
