@@ -128,7 +128,7 @@ int main()
         //main_metaprogramming_02();
         //main_move_semantics();
         //main_optional();
-        main_perfect_forwarding_motivation();
+        //main_perfect_forwarding_motivation();
         //main_perfect_forwarding();
         //main_perfect_forwarding_object();
         //main_perfect_remove_reference_demo();
