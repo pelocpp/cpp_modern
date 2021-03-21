@@ -15,7 +15,7 @@ namespace PerfectForwardingMotivation {
         double m_value;
 
     public:
-        AnyClass(double value) : m_value(value) {}
+        AnyClass(double value) : m_value{ value } {}
     };
 
     std::ostream& operator<< (std::ostream& os, const AnyClass& obj)
@@ -28,19 +28,19 @@ namespace PerfectForwardingMotivation {
     //template<typename TCLASS, typename TARG>
     //TCLASS Factory(TARG a)
     //{
-    //    return TCLASS(a);
+    //    return TCLASS{ a };
     //}
 
     template<typename TCLASS, typename TARG>
     TCLASS Factory(TARG& a)
     {
-        return TCLASS(a);
+        return TCLASS{ a };
     }
 
     template<typename TCLASS, typename TARG>
     TCLASS Factory(const TARG& a)
     {
-        return TCLASS(a);
+        return TCLASS{ a };
     }
 
     void test_01() {
@@ -68,7 +68,7 @@ namespace PerfectForwardingMotivation {
     template<typename TCLASS, typename TARG>
     TCLASS FactoryEx(TARG&& a)
     {
-        return TCLASS(std::forward<TCLASS>(a));
+        return TCLASS(std::forward<TARG>(a));
     }
 
     void test_03()
@@ -100,9 +100,9 @@ namespace PerfectForwardingMotivation {
 
 void main_perfect_forwarding_motivation() {
     using namespace PerfectForwardingMotivation;
-    //test_01();
+    test_01();
     //test_02();
-    test_03();
+    //test_03();
 }
 
 // =====================================================================================

@@ -42,13 +42,13 @@ es sei denn, Sie initialisieren die Instanzvariablen **explizit** in der
 "*Member Initialization List*" eines Konstruktors, wie zum Beispiel:
 
 ```cpp
-X::X(int value) : m_i{ 3 }
+X::X(int value) : m_i{ value }
 {
   ...
 }
 ```
 
-In diesem Fall wird `m_i` mit 3 initialisiert,
+In diesem Fall wird `m_i` mit dem Wert von `value` initialisiert,
 während `m_j` mit 2 initialisiert wird, da diese Variable
 in dieser "*Member Initialization List*" nicht explizit erwähnt wurde.
 

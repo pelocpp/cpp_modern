@@ -43,12 +43,12 @@ dienen aber dem Zweck, die "graue Materie" an der einen oder anderen Stelle etwa
 
 ---
 
-## Katalog aller Code-Snippets
+## Katalog aller Grundlagen-Code-Snippets
 
 In diesem Projekt sind zahlreiche kleinere Code-Snippets abgelegt, um die diversen Features von C++ 11/14/17 demonstrieren zu können.
 Es folgt eine tabellarische Auflistung dieser Unterverzeichnisse.
-In der ersten Tabelle wiederholen wir einige Grundlagen von C++. Die Neuerungen von C++ 11/14/17 
-schließen sich in Tabelle 2 an:
+In der ersten Tabelle wiederholen wir einige Grundlagen von C++, die immer wieder 
+zu Fragen führen:
 
 | Unterverzeichnis | Thematik |
 |:-------------- |-----------------------------------------|
@@ -66,7 +66,9 @@ schließen sich in Tabelle 2 an:
 
 Tabelle 1. Grundlagen-Code-Snippets.
 
----
+## Katalog aller Modern-C++-Code-Snippets
+
+In der folgenden Tabelle sind alle Neuerungen von C++ 11/14/17 aufgeführt:
 
 | Unterverzeichnis | Thematik |
 |:-------------- |-----------------------------------------|

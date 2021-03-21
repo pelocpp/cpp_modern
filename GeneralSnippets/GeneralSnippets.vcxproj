@@ -159,6 +159,7 @@
     <ClCompile Include="ConstructursOrder\ConstructorsOrder.cpp" />
     <ClCompile Include="CRTP\CRTP.cpp" />
     <ClCompile Include="DeclType\Decltype.cpp" />
+    <ClCompile Include="DefaultInitialization\DefaultInitialization.cpp" />
     <ClCompile Include="Exercises\Exercises.cpp" />
     <ClCompile Include="Explicit\Explicit.cpp" />
     <ClCompile Include="ExpressionTemplates\ExpressionTemplates.cpp" />

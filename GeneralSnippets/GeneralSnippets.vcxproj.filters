@@ -249,6 +249,9 @@
     <ClCompile Include="ExpressionTemplates\ExpressionTemplates.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DefaultInitialization\DefaultInitialization.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">

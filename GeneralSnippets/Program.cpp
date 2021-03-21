@@ -21,6 +21,7 @@ void main_constexpr_extended();
 void main_constexpr_if();
 void main_crtp();
 void main_decltype();
+void main_default_initialization();
 void main_exercices();
 void main_keyword_explicit();
 void main_expression_templates();
@@ -105,6 +106,7 @@ int main()
         //main_constexpr_if();
         //main_crtp();
         //main_decltype();
+        //main_default_initialization();
         //main_exercices();
         //main_keyword_explicit();
         //main_expression_templates();
@@ -126,7 +128,7 @@ int main()
         //main_metaprogramming_02();
         //main_move_semantics();
         //main_optional();
-        //main_perfect_forwarding_motivation();
+        main_perfect_forwarding_motivation();
         //main_perfect_forwarding();
         //main_perfect_forwarding_object();
         //main_perfect_remove_reference_demo();

@@ -109,7 +109,7 @@ Das Ergebnis verwendet die &&-Notation und die Standard-Funktion `std::forward`:
 template<typename TCLASS, typename TARG>
 TCLASS FactoryEx(TARG&& a)
 {
-    return TCLASS(std::forward<TCLASS>(a));
+    return TCLASS(std::forward<TARG>(a));
 }
 ```
 
