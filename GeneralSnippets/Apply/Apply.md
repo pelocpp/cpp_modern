@@ -59,11 +59,11 @@ Dies ist wichtig, da diese Klasse in einigen Anwendungsfällen instanziiert wird.
 
 Die Klasse `sequence_helper` wird verwendet, um eine ganzzahlige Sequenz rekursiv zu generieren.
 Betrachten wir die Abbildung vom Schritt `N` auf den Schritt `N-1` etwas genauer:
-Von der Zahlenfolge NS ... wird die erste Zahl "entnommen" und dekrementiert (`N-1`).
+Von der Zahlenfolge `NS...` wird die erste Zahl "entnommen" und dekrementiert (`N-1`).
 Danach wird ihr Wert zweimal verwendet:
 
   * Der erste Wert geht in die rekursive Template Klassendefinition ein, damit die irgendwann zur Rekursions Abbruchbedingung führt. 
-  * Der zweite Wert wird in die Sequent aufgenommen.
+  * Der zweite Wert wird in die Sequenz aufgenommen.
 
 `make_index_sequence` schließlich ist eine `using`-Klausel, die einen Typ definieriert,
 der quasi als Schnittstelle für den Endbenutzer fungiert.

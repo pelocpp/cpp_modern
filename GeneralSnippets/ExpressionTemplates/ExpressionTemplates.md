@@ -23,31 +23,44 @@ Um ein besseres Verständnis für *Expression Templates* zu bekommen, versuchen 
 warum wir sie überhaupt benötigen. Dazu betrachten wir zur Veranschaulichung eine einfache `Matrix`-Klasse:
 
 ```cpp
-template <typename T, size_t COL, size_t ROW>
 class Matrix {
-public:
-    using value_type = T;
-
-    Matrix() : m_values(COL * ROW) {}  // constructs container with 'count' celements 
-
-    static size_t cols() { return COL; }
-    static size_t rows() { return ROW; }
-
-    const T& operator()(size_t x, size_t y) const { return m_values[y * COL + x]; }
-    T& operator()(size_t x, size_t y) { return m_values[y * COL + x]; }
-
 private:
-    std::vector<T> m_values;
+    size_t m_cols;
+    size_t m_rows;
+    std::vector<double> m_values;
+
+public:
+    // c'tor(s)
+    Matrix() : Matrix(Cols, Rows) {}
+
+    Matrix(size_t cols, size_t rows) : m_cols{ cols }, m_rows{ rows }
+    {
+        m_values.resize(cols*rows);
+    }
+
+    // getter
+    size_t inline getCols() const { return m_cols; };
+    size_t inline getRows() const { return m_rows; };
+
+    // functor - representing index operator
+    const double& operator()(size_t x, size_t y) const;
+    double& operator()(size_t x, size_t y);
+
+    // operator= --> classical definition
+    Matrix& operator=(const Matrix& rhs);
+
+    // operator= --> expression template approach (template member method)
+    template <typename TEXPR>
+    Matrix& operator=(const TEXPR& expression);
 };
 
-template <typename T, size_t COL, size_t ROW>
-Matrix<T, COL, ROW>
-operator+(const Matrix<T, COL, ROW>& lhs, const Matrix<T, COL, ROW>& rhs)
+// classical operator+ definition
+Matrix operator+(const Matrix& lhs, const Matrix& rhs)
 {
-    Matrix<T, COL, ROW> result;
+    Matrix result{ lhs.getCols(), lhs.getRows() };
 
-    for (size_t y = 0; y != lhs.rows(); ++y) {
-        for (size_t x = 0; x != lhs.cols(); ++x) {
+    for (size_t y{}; y != lhs.getRows(); ++y) {
+        for (size_t x{}; x != lhs.getCols(); ++x) {
             result(x, y) = lhs(x, y) + rhs(x, y);
         }
     }
@@ -59,21 +72,18 @@ Mit dieser Definition einer Klasse `Matrix` könnten wir nun eine Addition von M
 so formulieren:
 
 ```cpp
-const size_t cols = 1000;
-const size_t rows = 1000;
-
-Matrix<double, cols, rows> a, b, c;
+Matrix a, b, c;
 
 // initialize a, b & c
-for (size_t y = 0; y != rows; ++y) {
-    for (size_t x = 0; x != cols; ++x) {
+for (size_t y = 0; y != a.getRows(); ++y) {
+    for (size_t x = 0; x != a.getCols(); ++x) {
         a(x, y) = 1.0;
         b(x, y) = 2.0;
         c(x, y) = 3.0;
     }
 }  
 
-Matrix<double, cols, rows> result = a + b + c;  // result(x, y) = 6 
+Matrix result = a + b + c;  // result(x, y) = 6 
 ```
 
 Durch das Überladen des `+` -Operators haben wir eine Schreibweise in C ++, 
@@ -93,14 +103,11 @@ der mathematischen Realität sehr ineffizient gemacht! Ohne Überladung des `+`-
 mit einem einzigen Durchlauf auf diese Weise implementieren:
 
 ```cpp
-template<typename T, size_t COL, size_t ROW>
-Matrix<T, COL, ROW> add3(const Matrix<T, COL, ROW>& a,
-                         const Matrix<T, COL, ROW>& b,
-                         const Matrix<T, COL, ROW>& c)
+Matrix add3(const Matrix& a, const Matrix& b, const Matrix& c)
 {
-    Matrix<T, COL, ROW> result;
-    for (size_t y = 0; y != ROW; ++y) {
-        for (size_t x = 0; x != COL; ++x) {
+    Matrix result{ a.getCols(), a.getRows() };
+    for (size_t y = 0; y != a.getRows(); ++y) {
+        for (size_t x = 0; x != a.getCols(); ++x) {
             result(x, y) = a(x, y) + b(x, y) + c(x, y);
         }
     }
@@ -131,19 +138,18 @@ so aussehen:
 
 ```cpp
 template <typename LHS, typename RHS>
-class MatrixSum
+class MatrixExpr
 {
-public:
-    using value_type = typename LHS::value_type;
-
-    MatrixSum(const LHS& lhs, const RHS& rhs) : rhs(rhs), lhs(lhs) {}
-    
-    value_type operator() (int x, int y) const  {
-        return lhs(x, y) + rhs(x, y);
-    }
 private:
-    const LHS& lhs;
-    const RHS& rhs;
+    const LHS& m_lhs;
+    const RHS& m_rhs;
+
+public:
+    MatrixExpr(const LHS& lhs, const RHS& rhs) : m_rhs{ rhs }, m_lhs{ lhs } {}
+
+    double operator() (size_t x, size_t y) const {
+        return m_lhs(x, y) + m_rhs(x, y);
+    }
 };
 ```
 
@@ -151,8 +157,8 @@ Eine aktualisierte Version des `+`-Operators sieht nun so aus:
 
 ```cpp
 template <typename LHS, typename RHS>
-MatrixSum<LHS, RHS> operator+(const LHS& lhs, const LHS& rhs) {
-    return MatrixSum<LHS, RHS>(lhs, rhs);
+MatrixExpr<LHS, RHS> operator+(const LHS& lhs, const LHS& rhs) {
+    return MatrixExpr<LHS, RHS>(lhs, rhs);
 }
 ```
 
@@ -163,10 +169,10 @@ sondern nur eine "Ausdrucksvorlage", die die Additionsoperation "repräsentiert"
 Der wichtigste zu beachtende Punkt ist, dass der Ausdruck noch nicht berechnet wurde.
 Er enthält lediglich Verweise (folglich auch keine Kopien) auf seine beiden Operanden.
 
-Tatsächlich hindert uns nichts daran, ein `MatrixSum`-Objekt und damit eine Ausdrucksvorlage wie folgt zu instanziieren:
+Tatsächlich hindert uns nichts daran, ein `MatrixExpr`-Objekt und damit eine Ausdrucksvorlage wie folgt zu instanziieren:
 
 ```cpp
-MatrixSum<Matrix<double>, Matrix<double> > sumAB(a, b);
+MatrixExpr<Matrix, Matrix> sumAB(a, b);
 ```
 
 Zu einem späteren Zeitpunkt kann man, wenn man das Ergebnis der Summe tatsächlich benötigt,
@@ -186,8 +192,8 @@ dass die Summe von `a` und `b` in einem einzigen Durchlauf ausgewertet und dem E
 Wie sieht es bei einer Summe der Gestalt  `a + b + c` aus? Dazu benötigen wir eine Ausdrucksvorlage der Gestalt 
 
 ```cpp
-MatrixSum<Matrix<double>, Matrix<double> > sumAB(a, b);
-MatrixSum<MatrixSum<Matrix<double>, Matrix<double> >, Matrix<double> > sumABC(sumAB, c);
+MatrixExpr<Matrix, Matrix> sumAB(a, b);
+MatrixExpr<MatrixExpr<Matrix, Matrix>, Matrix> sumABC(sumAB, c);
 ```
 
 Wiederum können wir in einem einzigen Durchlauf das gewünschte Resultat berechnen:
@@ -207,11 +213,12 @@ Dies wird im Wesentlichen durch die Bereitstellung einer Implementierung des Wer
 und in einem Durchgang auswertet, wie wir es zuvor schon "manuell" betrachtet haben:
 
 ```cpp
-template <typename E>
-Matrix<T, COL, ROW>& operator=(const E& expression) {
-    for (size_t y = 0; y != rows(); ++y) {
-        for (size_t x = 0; x != cols(); ++x) {
-            m_values[y * COL + x] = expression(x, y);
+// expression template approach: operator=
+template <typename TEXPR>
+Matrix& Matrix::operator=(const TEXPR& expr) {
+    for (size_t y{}; y != getRows(); ++y) {
+        for (size_t x{}; x != getCols(); ++x) {
+            m_values[y * getCols() + x] = expr(x, y);
         }
     }
     return *this;
@@ -249,14 +256,12 @@ Anzahl der temporären `Matrix`-Objekte lässt sich erahnen!
 Im Vergleich dazu die Quellcode-Gestaltung mit "*Expression Templates*":
 
 ```cpp
-MatrixSum<Matrix<double>, Matrix<double>> sumAB(a1, a2);
-MatrixSum<MatrixSum<Matrix<double>, Matrix<double>>, Matrix<double>> sumABC(sumAB, a3);
-MatrixSum<MatrixSum<MatrixSum<Matrix<double>, Matrix<double>>, Matrix<double>>, Matrix<double>> sumABCD(sumABC, a4);
-MatrixSum<MatrixSum<MatrixSum<MatrixSum<Matrix<double>, Matrix<double>>, Matrix<double>>, Matrix<double>>, Matrix<double>> sumABCDE(sumABCD, a5);
+// adding 4 matrices using modified operator=
+MatrixExpr<Matrix, Matrix> sumAB{ a, b };
+MatrixExpr<MatrixExpr<Matrix, Matrix>, Matrix> sumABC{ sumAB, c };
+MatrixExpr<MatrixExpr<MatrixExpr<Matrix, Matrix>, Matrix>, Matrix> sumABCD{ sumABC, d };
 
-for (int i = 0; i < iterations; ++i) {
-    result = sumABCD;
-}
+result = sumABCD;
 ```
 
 Das sieht zunächst einmal etwas aufwendiger aus - die  "*Expression Templates*" sind für alle 5 `Matrix`-Objekte zu erstellen.
