@@ -8,6 +8,31 @@
 
 ---
 
+*Hinweis*:
+
+Die beiden Varianten, ein `std::shared_ptr`-Objekt anzulegen, sind nicht
+ganz identisch:
+
+  * `std::shared_ptr` und expliziter `new` Aufruf
+  * `std::make_shared` Aufruf
+
+Ein `std::shared_ptr`-Objekt verwaltet zwei Speicherbereiche:
+
+  * einen so genannten `Control-Block` (speichert Metadaten wie Referenz-Zähler, den *Deleter* für das Objekt usw.)
+  * das zu allokierende Objekt selbst
+
+Ein Aufruf von `std::make_shared` löst eine einzige Heap-Speicherplatzanforderung aus,
+die den `Controlblock` und den für die Daten erforderlichen Speicherplatz umfasst.
+
+Im anderen Fall bewirkt `new Obj ("foo")` eine Heap-Speicherplatzanforderung für die zu verwaltenden Daten,
+und der Konstruktor von `std::shared_ptr` führt die zweite Anforderung
+für den Kontrollblock aus.
+
+Man kann damit zusammenfassen, dass die Verwendung der `std::make_shared`-Funktion
+effienter ist.
+
+---
+
 An Hand von zwei Beispielen wird die Arbeitsweise der `std::shared_ptr`-Klasse demonstriert.
 
 Ausgabe des ersten Code-Snippets:
