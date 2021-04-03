@@ -271,6 +271,10 @@ Die Anregungen zu den Beispielen aus diesem Code-Snippet finden sich unter
 
 [Nico Brailovsky's blog](https://monoinfinito.wordpress.com/series/introduction-to-c-template-metaprogramming/)<br>(abgerufen am 20.05.2020).
 
+Eine sehr gute Einführung in diese Thematik findet man bei
+
+[C++ Meta-Programming](http://www.mario-konrad.ch/blog/programming/cpp_metaprogramming.html)<br>(abgerufen am 03.04.2021).
+
 ---
 
 [Zurück](../../Readme.md)
