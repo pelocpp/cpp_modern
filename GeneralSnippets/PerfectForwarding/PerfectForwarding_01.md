@@ -18,7 +18,7 @@
 
 ## Motivation / Überblick
 
-Betrachten Sie das folgende Code-Fragement:
+Betrachten Sie das folgende Code-Fragment:
 
 ```cpp
 template <typename T>
@@ -27,7 +27,7 @@ T* Clone(const T& src) {
 }
 ```
 
-In diesem Code-Fragement ist `src` keine *RValue*-Referenz, eben weil die
+In diesem Code-Fragment ist `src` keine *RValue*-Referenz, eben weil die
 Referenz einen Namen hat. Um trotzdem die `Clone`-Methode mit der 
 Verschiebesemantik verwenden zu können, gibt es die Funktion `std::forward`:
 
@@ -150,7 +150,7 @@ T* Clone(T&& src) {
 }
 ```
 
-Auf den ersten Blick könnte man meinen, das `src` jetzt immer eine *RValue*-Referenz ist, aber dem ist nicht so!
+Auf den ersten Blick könnte man meinen, dass `src` jetzt immer eine *RValue*-Referenz ist, aber dem ist nicht so!
 Es gibt nämlich spezielle Regeln zum Auflösen von Template-Parametertypen, wenn *RValue*-Referenzen beteiligt sind:
 
   * Wird `Clone` für einen *LValue*-Parameter vom Typ `X` aufgerufen, dann wird der Template-Parameter `T` an `X&` gebunden. Folglich ist `src` vom Typ `X& &&`.
@@ -164,17 +164,17 @@ int& && n;  // Error: reference to reference is not allowed
 ```
 
 Beim Zuordnen (&ldquo;Binden&rdquo;, &ldquo;Auflösen&rdquo;) von aktuellen Parametertypen zu Template-Parametern können
-währden des Übersetzens solche Kombinationen auftreten, wie das Beispiel gezeigt hat.
+während des Übersetzens solche Kombinationen auftreten, wie das Beispiel gezeigt hat.
 Aus diesem Grund hat man in der C++&ndash;Sprachdefinition die so genannten *Zusammenfassungsregeln* (engl. *Reference Collapsing Rules*)
 definiert:
 
 
 | Formaler Typ | Beschreibung | Resultat-Typ | Beschreibung|
 |:------ |:----------|:----------|:----------|
-| T& &   | LValue-Referenz auf eine LValue-Referenz | T&  | LValue-Referenz |
-| T&& &  | LValue-Referenz auf eine RValue-Referenz | T&  | LValue-Referenz |
-| T& &&  | RValue-Referenz auf eine LValue-Referenz | T&  | LValue-Referenz |
-| T&& && | RValue-Referenz auf eine RValue-Referenz | T&& | RValue-Referenz |
+| T& &   | *LValue*-Referenz auf eine *LValue*-Referenz | T&  | *LValue*-Referenz |
+| T&& &  | *LValue*-Referenz auf eine *RValue*-Referenz | T&  | *LValue*-Referenz |
+| T& &&  | *RValue*-Referenz auf eine *LValue*-Referenz | T&  | *LValue*-Referenz |
+| T&& && | *RValue*-Referenz auf eine *RValue*-Referenz | T&& | *RValue*-Referenz |
 
 Tabelle 1. *Zusammenfassungsregeln*/*Collapsing Rules* für das *Perfect Forwarding*.
 
@@ -270,7 +270,8 @@ Letzen Endes haben wir zwei Werkzeuge aus dem &ldquo;Modern&ndash;C++&rdquo; Bau
   * Rückgabewert `auto` &ndash; der Compiler leitet den Rückgabedatentyp anhand der `return`-Anweisung ab
   * Definition des Rückgabedatentyps mit `std::remove_reference<T>` und `using` 
 
-Da es in diesem Umfeld der Modern C++&ndash;Programmierung mehrere Möglichgkeiten gibt, die `Clone`-Funktion korrekt zu implementieren,
+Da es in diesem Umfeld der Modern C++&ndash;Programmierung mehrere Möglichkeiten gibt,
+die `Clone`-Funktion korrekt zu implementieren,
 stellen wir nachfolgend fünf Variationen des Lösungsansatzes vor:
 
 ```cpp
@@ -468,7 +469,7 @@ das Argument in einen *RValue* zu konvertieren:
 
 Das oben verwendete Bespiel stammt im Großen und Ganzen aus
 
-  * Peter Pohmann, "C++ 17: Praxiswissen zum neuen Standard. Von C++11 bis 17" (siehe das [Literaturverzeichnis](../Literatur/Literature.md))
+> Peter Pohmann, "C++ 17: Praxiswissen zum neuen Standard. Von C++11 bis 17" (siehe das [Literaturverzeichnis](../Literatur/Literature.md)).
 
 Weitere gute Beschreibungen zu diesem Thema befinden sich unter
 
