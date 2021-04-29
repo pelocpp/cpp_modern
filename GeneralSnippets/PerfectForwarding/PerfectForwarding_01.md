@@ -253,7 +253,7 @@ Es ist also eine Referenz `&` zu viel!
 Dieser Fehler tritt in der Template-Programmierung des Öfteren auf, aus diesem Grund
 gibt es eine C++&ndash;Template-Funktion namens `std::remove_reference<T>`:
 
-> *If the type T is a reference type, std::remove_reference provides the member typedef type which is the type referred to by T. Otherwise type is T.*
+> *If the type T is a reference type, std::remove_reference provides the member typedef type<br/>which is the type referred to by T. Otherwise type is T.*
 
 Jetzt haben wir eine Möglichkeit, den Übersetzungsfehler zu beheben, zum Beispiel auf diese Weise:
 
@@ -421,7 +421,7 @@ die Weiterleitung ist &ldquo;perfekt&ldquo;.
 
 ### `std::forward`:
 
-Natürlich müssen Sie die vorgestellte Implementierung von  `my_forward`  in Ihrem Programm nicht abtippen,
+Natürlich müssen Sie die vorgestellte Implementierung von `my_forward` in Ihrem Programm nicht abtippen,
 sie in Gestalt der Template-Funktion `std::forward` in der C++&ndash;Standardbibliothek enthalten:
 
 ```cpp
@@ -442,6 +442,17 @@ AnyClass* obj92{ Clone99(std::move(*obj91)) };  // move c'tor invoked (!!!)
 ```
 copy c'tor
 move c'tor
+```
+
+*Bemerkung*:
+Wir sind mit unserer exemplarischen Implementierung der `my_forward`-Funktion nicht weit vom Original (`std::forward`) entfernt:
+
+```
+template <class _Ty>
+_NODISCARD constexpr _Ty&& forward(
+    remove_reference_t<_Ty>& _Arg) noexcept { // forward an lvalue as either an lvalue or an rvalue
+    return static_cast<_Ty&&>(_Arg);
+}
 ```
 
 ## Zusammenfassung:
