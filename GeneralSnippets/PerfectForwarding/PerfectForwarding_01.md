@@ -10,6 +10,12 @@
 
 ---
 
+[Quellcode zur Beschreibung](PerfectForwarding01.cpp)
+
+[Quellcode im Vergleich](PerfectForwarding03.cpp)
+
+---
+
 ## Motivation / Überblick
 
 Betrachten Sie das folgende Code-Fragement:
@@ -201,7 +207,7 @@ Wir sind leider noch nicht am Ziel angekommen:
 ### Ein unerwarteter Übersetzungsfehler
 
 Wenn wir die Erkenntnisse aus dem letzten Abschnitt versuchen, in die Tat umzusetzen,
-werden wir mit einem &ndash; aus Sicht vieler C++&ndash;Entwickler &ndash; Übersetzungsfehler konfrontiert:
+werden wir mit einem &ndash; aus Sicht vieler C++&ndash;Entwickler &ndash; unerwarteten Übersetzungsfehler konfrontiert:
 
 ```cpp
 template <typename T>
