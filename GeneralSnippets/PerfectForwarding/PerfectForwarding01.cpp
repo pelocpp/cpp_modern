@@ -4,106 +4,164 @@
 
 #include <iostream>
 
-namespace PerfectForwardingMotivation {
+namespace PerfectForwarding {
 
-    // util class
+    // utility class
     class AnyClass
     {
-        friend std::ostream& operator<< (std::ostream&, const AnyClass&);
-
-    private:
-        double m_value;
-
     public:
-        AnyClass(double value) : m_value{ value } {}
+        AnyClass() = default;
+        ~AnyClass() = default;
+
+        AnyClass(const AnyClass&) {
+            std::cout << "copy c'tor" << std::endl;
+        }
+
+        AnyClass(AnyClass&&) noexcept {
+            std::cout << "move c'tor" << std::endl;
+        }
     };
 
-    std::ostream& operator<< (std::ostream& os, const AnyClass& obj)
-    {
-        os << '(' << obj.m_value << ')';
-        return os;
+    // ----
+
+    template <typename T>
+    T* Clone(const T& src) {
+        return new T{ src };
     }
 
-    // put into comment, if template function with copy-by-reference is available
-    //template<typename TCLASS, typename TARG>
-    //TCLASS Factory(TARG a)
-    //{
-    //    return TCLASS{ a };
+    // NICHT ÜBERSETZUNGSFÄHIG - Siehe https://cppinsights.io/ !!!
+    //template <typename T>
+    //T* Clone2(T&& src) {
+    //    return new T{ src };
     //}
 
-    template<typename TCLASS, typename TARG>
-    TCLASS Factory(TARG& a)
-    {
-        return TCLASS{ a };
+    template <typename T>
+    auto Clone2a(T&& src) {
+        using TT = typename std::remove_reference<T>::type;
+        return new TT{ src };
     }
 
-    template<typename TCLASS, typename TARG>
-    TCLASS Factory(const TARG& a)
-    {
-        return TCLASS{ a };
+    template <typename T>
+    auto Clone2b(T&& src) -> typename std::remove_reference<T>::type* {
+        using TT = typename std::remove_reference<T>::type;
+        return new TT{ src };
     }
 
-    void test_01() {
-        // first example
-        auto n = Factory<int>(123);
-        std::cout << n << std::endl;
-
-        // second example
-        auto obj = Factory<AnyClass>(1.5);
-        std::cout << obj << std::endl;
+    template <typename T>
+    auto Clone2c(T&& src) -> typename std::remove_reference<T>::type* {
+        return new typename std::remove_reference<T>::type{ src };
     }
 
-    void test_02() {
-        // first example
-        int value = 123;
-        auto n = Factory<int>(value);
-        std::cout << n << std::endl;
-
-        // second example
-        AnyClass arg(1.5);
-        auto obj = Factory<AnyClass>(arg);
-        std::cout << obj << std::endl;
+    template <typename T>
+    auto Clone2d(T&& src) {
+        return new typename std::remove_reference<T>::type{ src };
     }
 
-    template<typename TCLASS, typename TARG>
-    TCLASS FactoryEx(TARG&& a)
-    {
-        return TCLASS(std::forward<TARG>(a));
+    template <typename T>
+    typename std::remove_reference<T>::type* Clone2e(T&& src) {
+        return new typename std::remove_reference<T>::type{ src };
     }
 
-    void test_03()
-    {
-        // first example
-        auto n = FactoryEx<int>(123);
-        std::cout << n << std::endl;
+    // ----
 
-        // second example
-        auto obj = FactoryEx<AnyClass>(1.5);
-        std::cout << obj << std::endl;
+    //template <typename T>
+    //auto Clone3(T&& src) {
+    //    using TT = typename std::remove_reference<T>::type;
+    //    return new TT{ std::move(src) };
+    //}
 
-        // third example
-        int someValue = 987;
-        auto m = FactoryEx<int>(someValue);
-        std::cout << m << std::endl;
+    // ----
 
-        // fourth example
-        AnyClass arg1(2.5);
-        auto obj2 = FactoryEx<AnyClass>(arg1);
-        std::cout << obj2 << std::endl;
+    template <typename F>
+    F&& my_forward(typename std::remove_reference<F>::type& t) noexcept {
+        return static_cast<F&&>(t);
+    }
 
-        // fifth example
-        AnyClass& arg2 = arg1;
-        auto obj3 = FactoryEx<AnyClass>(arg2);
-        std::cout << obj3 << std::endl;
+    template <typename F>
+    F&& my_forward(typename std::remove_reference<F>::type&& t) noexcept {
+        return static_cast<F&&>(t);
+    }
+
+    // ----
+
+    template <typename T>
+    auto Clone98(T&& src) {
+        return new typename std::remove_reference<T>::type(my_forward<T>(src));
+    }
+
+    // ----
+
+    template <typename T>
+    auto Clone99(T&& src) {
+        return new typename std::remove_reference<T>::type(std::forward<T>(src));
     }
 }
 
-void main_perfect_forwarding_motivation() {
-    using namespace PerfectForwardingMotivation;
-    test_01();
-    //test_02();
-    //test_03();
+void main_perfect_forwarding()
+{
+    using namespace PerfectForwarding;
+
+    // a)
+    AnyClass obj1;
+    AnyClass* obj2{ new AnyClass(obj1) };               // copy c'tor invoked
+    AnyClass* obj3{ new AnyClass(std::move(*obj2)) };   // move c'tor invoked
+
+    // b)
+    //AnyClass obj10;
+    //AnyClass* obj11{ Clone(obj10) };                    // copy c'tor invoked
+    //AnyClass* obj12{ Clone(std::move(*obj11)) };        // copy c'tor invoked (???)
+
+    // c)
+    // NICHT ÜBERSETZUNGSFÄHIG
+    //AnyClass obj10;
+    //AnyClass* obj11{ Clone2(obj10) };                    // copy c'tor invoked
+    //AnyClass* obj12{ Clone2(std::move(*obj11)) };        // copy c'tor invoked (???)
+
+    //// d1)
+    //AnyClass obj20;
+    //AnyClass* obj21{ Clone2a(obj20) };
+    //AnyClass* obj22{ Clone2a(std::move(*obj21)) };
+
+    //// d2)
+    //AnyClass obj30;
+    //AnyClass* obj31{ Clone2b(obj30) };
+    //AnyClass* obj32{ Clone2b(std::move(*obj31)) };
+
+    //// d3)
+    //AnyClass obj40;
+    //AnyClass* obj41{ Clone2c(obj40) };
+    //AnyClass* obj42{ Clone2c(std::move(*obj41)) };
+
+    //// d4)
+    //AnyClass obj50;
+    //AnyClass* obj51{ Clone2d(obj50) };
+    //AnyClass* obj52{ Clone2d(std::move(*obj51)) };
+
+    //// d5)
+    //AnyClass obj60;
+    //AnyClass* obj61{ Clone2e(obj60) };
+    //AnyClass* obj62{ Clone2e(std::move(*obj61)) };
+
+    //// ======
+
+    //// i)
+    //AnyClass obj70;
+    //AnyClass* obj71{ Clone3(obj70) };
+    //AnyClass* obj72{ Clone3(std::move(*obj71)) };
+
+    //// ======
+
+    // y)
+    //AnyClass obj80;
+    //AnyClass* obj81{ Clone98(obj80) };              // copy c'tor invoked
+    //AnyClass* obj82{ Clone98(std::move(*obj81)) };  // move c'tor invoked (!!!)
+
+    //// z)
+    //AnyClass obj90;
+    //AnyClass* obj91{ Clone99(obj90) };              // copy c'tor invoked
+    //AnyClass* obj92{ Clone99(std::move(*obj91)) };  // move c'tor invoked (!!!)
 }
+
 
 // =====================================================================================
 // End-of-File

@@ -4,44 +4,106 @@
 
 #include <iostream>
 
-namespace PerfectForwarding {
+namespace PerfectForwardingMotivation {
 
-    void overloaded(int& arg) {
-        std::cout << "By lvalue" << std::endl;
+    // util class
+    class AnyClass
+    {
+        friend std::ostream& operator<< (std::ostream&, const AnyClass&);
+
+    private:
+        double m_value;
+
+    public:
+        AnyClass(double value) : m_value{ value } {}
+    };
+
+    std::ostream& operator<< (std::ostream& os, const AnyClass& obj)
+    {
+        os << '(' << obj.m_value << ')';
+        return os;
     }
 
-    void overloaded(int&& arg) { 
-        std::cout << "By rvalue" << std::endl;
+    // put into comment, if template function with copy-by-reference is available
+    //template<typename TCLASS, typename TARG>
+    //TCLASS Factory(TARG a)
+    //{
+    //    return TCLASS{ a };
+    //}
+
+    template<typename TCLASS, typename TARG>
+    TCLASS Factory(TARG& a)
+    {
+        return TCLASS{ a };
     }
 
-    /*
-     * Note: "T&&" with "T" being template param is special:
-     *       It adjusts "T" to be (for example) "int&" or non-ref "int" so std::forward knows what to do.
-     */
-
-    template <typename T>
-    void forwarding(T&& arg) {
-        std::cout << "By simple passing: ";
-        overloaded(arg);
-        std::cout << "Via std::move: ";
-        overloaded(std::move(arg));  // conceptually this would invalidate arg
-        std::cout << "Via std::forward: ";
-        overloaded(std::forward<T>(arg));
+    template<typename TCLASS, typename TARG>
+    TCLASS Factory(const TARG& a)
+    {
+        return TCLASS{ a };
     }
 
     void test_01() {
-        std::cout << "Caller passes rvalue:" << std::endl;
-        forwarding(5);
-        std::cout << "----------------------------" << std::endl;
-        std::cout << "Caller passes lvalue:" << std::endl;
-        int x = 5;
-        forwarding(x);
+        // first example
+        auto n = Factory<int>(123);
+        std::cout << n << std::endl;
+
+        // second example
+        auto obj = Factory<AnyClass>(1.5);
+        std::cout << obj << std::endl;
+    }
+
+    void test_02() {
+        // first example
+        int value = 123;
+        auto n = Factory<int>(value);
+        std::cout << n << std::endl;
+
+        // second example
+        AnyClass arg(1.5);
+        auto obj = Factory<AnyClass>(arg);
+        std::cout << obj << std::endl;
+    }
+
+    template<typename TCLASS, typename TARG>
+    TCLASS FactoryEx(TARG&& a)
+    {
+        return TCLASS(std::forward<TARG>(a));
+    }
+
+    void test_03()
+    {
+        // first example
+        auto n = FactoryEx<int>(123);
+        std::cout << n << std::endl;
+
+        // second example
+        auto obj = FactoryEx<AnyClass>(1.5);
+        std::cout << obj << std::endl;
+
+        // third example
+        int someValue = 987;
+        auto m = FactoryEx<int>(someValue);
+        std::cout << m << std::endl;
+
+        // fourth example
+        AnyClass arg1(2.5);
+        auto obj2 = FactoryEx<AnyClass>(arg1);
+        std::cout << obj2 << std::endl;
+
+        // fifth example
+        AnyClass& arg2 = arg1;
+        auto obj3 = FactoryEx<AnyClass>(arg2);
+        std::cout << obj3 << std::endl;
     }
 }
 
-void main_perfect_forwarding() {
-    using namespace PerfectForwarding;
+void main_perfect_forwarding_motivation()
+{
+    using namespace PerfectForwardingMotivation;
     test_01();
+    //test_02();
+    //test_03();
 }
 
 // =====================================================================================

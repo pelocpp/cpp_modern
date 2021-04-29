@@ -4,152 +4,194 @@
 
 ---
 
-## Ein klassischer Übersetzungsfehler
+## Grundlagen
 
-&#x21D0; [Teil I: Grundlagen zu Perfect Forwarding](PerfectForwarding_01.md)
-
----
-
-[Quellcode](PerfectForwarding04.cpp): Democode
+&#x21D2; [Teil II: Ein klassischer Übersetzungsfehler](PerfectForwarding_02.md)
 
 ---
 
-## Motivation
+[Quellcode 1](PerfectForwarding02.cpp): Motivation
 
-Um das Vorhandensein eines Werts in einem STL-Container zu überprüfen,
-wenden wir typischerweise den STL-Algorithmus `std::find` an.
-`std::find` gibt einen Iterator zurück, der auf diesen Wert verweist,
-wenn er sich im Container befindet, und `std::end`, wenn dies nicht der Fall ist:
+[Quellcode 2](PerfectForwarding03.cpp): Elementarer Datentyp (`int`)
 
-```cpp
-std::vector<int> vec{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+[Quellcode 3](PerfectForwarding04.cpp): Benutzerdefinierter Datentyp (`class`)
 
-using Iterator = std::vector<int>::iterator;
-using ValueType = std::vector<int>::value_type;
+## Motivation zu Perfect Forwarding
 
-ValueType value = 5;
-Iterator it = std::find(std::begin(vec), std::end(vec), value);
+Zur Motivation des Perfect Forwarding betrachten wir folgendes Szenario
+mit einer Template Funktion.
 
-if (it != std::end(vec)) {
-    std::cout << "Found value " << value << std::endl;
-}
-else {
-    std::cout << "Value " << value << " not found!" << std::endl;
-}
-```
-
-Oft benötigt der Code dann den von `std::find` zurückgegebenen Iterator,
-sodass der Rückgabewert von `std::find` sowohl zum Überprüfen,
-ob sich der Wert in der Auflistung befindet, als auch zum Zugriff auf diesen Wert
-verwendet wird, falls dies der Fall ist.
-
-Aber manchmal wollen wir nur wissen, ob sich der Wert in der Sammlung befindet.
-Und in diesem Fall ist der obige Code ziemlich länglich.
-Es wäre schöner, eine `contains`-Funktion zu haben, die diese Frage mit
-einem `bool`-Wert beantwortet:
+Angenommen, wir wollen eine Funktion schreiben,
+die ein oder mehrere Parameter (möglicherweise unterschiedlichen Typs) hat
+und diese an einen Konstruktor weiterleitet. In der Praxis könnte es sich
+um eine Umsetzung des Factory-Patterns handeln:
 
 ```cpp
-if (contains(container, 42))
+template<typename TCLASS, typename TARG>
+TCLASS Factory(TARG a)
 {
-    // container contains 42
+    return TCLASS(a);
 }
 ```
 
-Von dieser Funktion `contains` könnten verschiedene Arten von STL-Containerklassen profitieren,
-darunter `std::vector`, `std::array` und benutzerdefinierte Container.
-Also werden wir diese Funktion als Funktionsschablone schreiben mit einem generischen 
-Containertyp.
-
-Damit müssen wir auch den Wert, nach dem wir suchen, generisch betrachten.
-STL-Container haben dafür einen Alias `value_type`,
-und benutzerdefinierte Container sollten auch diesen Alias haben,
-da benutzerdefinierte Container den Konventionen der STL folgen sollten.
-
-Damit könnte eine erste Version einer Funktion `contains_0` so aussehen:
+Nun können wir diese Fabrik schon einsetzen, sowohl für `int`-Werte als auch für `AnyClass`-Objekte:
 
 ```cpp
-template<typename TCONTAINER>
-using ValueTypeEx = typename TCONTAINER::value_type;
+// first example
+auto n = Factory<int>(123);
+std::cout << n << std::endl;
 
-template<typename TCONTAINER>
-using IteratorEx = typename TCONTAINER::iterator;
+// second example
+auto obj = Factory<AnyClass>(1.5);
+std::cout << obj << std::endl;
+```
 
-template<typename TCONTAINER>
-bool contains_0(TCONTAINER&& cont, ValueTypeEx<TCONTAINER> const& value)
+`AnyClass` ist hier ein Stellvertreter
+einer beliebigen benutzerdefinierten C++-Klasse, die einen Konstruktor mit einem Parameter besitzt.
+
+So weit, so gut, nur ist an diesem einfachen Vorgehen unschön, dass der aktuelle Parameter `a`
+stets als Kopie an den Konstruktor weitergereicht wird. Eigentlich sollte dieser
+Parameter als Referenz-Typ deklariert sein:
+
+```cpp
+template<typename TCLASS, typename TARG>
+TCLASS Factory(TARG& a)
 {
-    IteratorEx<TCONTAINER> it = std::find(std::begin(cont), std::end(cont), value);
-    return (it != std::end(cont)) ? true : false;
+    return TCLASS(a);
 }
 ```
 
-Die Funktion erfasst den Container über eine *Perfect Forwarding Reference*,
-da auf diese Weise Algorithmen für Bereiche (*Ranges*) zu entwerfen sind.
+Hmmm, eigentlich gut gedacht, aber auf einmal sind die beiden letzten Beispiele
+nicht mehr übersetzungsfähig (unter der Voraussetzung, das die `Factory`-Funktionsschablone
+mit *copy-by-value*-Parameterübergabemechanismus nicht mehr zur Verfügung steht).
 
-Wir schaffen es trotzdem nicht, diese beiden Anweisungen fehlerfrei
-übersetzen zu können:
-
-```cpp
-std::vector<int> vec{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-bool found = contains_0(vec, 6);
-```
-
-Die Fehlermeldung lautet:
-
-```
-Failed to specialize function template 'bool containsEx(TCONTAINER &&,const TCONTAINER::value_type &)' 
-Message 'TCONTAINER=std::vector<int,std::allocator<int>> &'  
-```
-
-Das Kleingedruckte muss man genau lesen.
-Der Container ist nicht `std::vector<int>`. Er ist `std::vector<int>&`.
-Beachten Sie das `&`. Das sagen die letzten Zeilen des Übersetzungsfehlers.
-Dies ist ein völlig anderer Typ. `std::vector<int>` hat einen Werttyp
-(zur Erinnerung: `std::vector<int>::value_type`),
-aber `std::vector<int>&` hat wie `int&` oder ein anderer Referenztyp keinen derartigen Alias.
-Daher der Übersetzungsfehler!
-
-Wenn wir das Problem erkannt haben, ist es nicht mehr schwer,
-dieses zu beheben.
-
-Wir müssen nur die Referenz entfernen.
-Dazu können wir in C++ 11 `std::remove_reference` oder in C++ 14 das bequemere
-`std::remove_reference_t` verwenden.
-Da ich bisweilen Quellcode bevorzuge, der ausführlicher (und damit hoffentlich auch verständlicher) gehalten ist,
-folgt nun eine C++ 11 Variante mit der Behebung des Fehlers:
+Eine triviale Lösung besteht darin, dass man die Beispiele - und damit den Aufruf der `Factory`-Funktion - 
+geringfügig ändert:
 
 ```cpp
-template<typename TCONTAINER>
-using ValueType = typename std::remove_reference<TCONTAINER>::type::value_type;
+// first example
+int value = 123;
+auto n = Factory<int>(value);
+std::cout << n << std::endl;
 
-template<typename TCONTAINER>
-using Iterator = typename std::remove_reference<TCONTAINER>::type::iterator;
+// second example
+AnyClass arg(1.5);
+auto obj = Factory<AnyClass>(arg);
+std::cout << obj << std::endl;
+```
 
-template<typename TCONTAINER>
-bool contains(TCONTAINER&& cont, ValueType<TCONTAINER> const& value)
+Nichtsdestotrotz ist diese Lösung unschön, da das direkte Versorgen der Konstruktoren mit
+Konstanten nicht mehr möglich ist. Dies wiederum könnten wir allerdings mit einer weiteren Überladung
+der `Factory`-Funktion lösen:
+
+```cpp
+template<typename TCLASS, typename TARG>
+TCLASS Factory(const TARG& a)
 {
-    Iterator<TCONTAINER> it = std::find(std::begin(cont), std::end(cont), value);
-    return (it != std::end(cont)) ? true : false;
-}
-
-void test() {
-
-    std::vector<int> vec{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-    bool found = contains(vec, 6);
-    std::cout << std::boolalpha << found << std::endl;
+    return TCLASS(a);
 }
 ```
 
-In beiden `using`-Anweisungen `ValueType` und `Iterator` gelangt
-`std::remove_reference` zur Anwendung,
-die `contains`-Funktion arbeitet nun einwandfrei!
+Das `const`-Schlüsselwort (*const reference*) bewirkt nun die Übersetzungsfähigkeit aller bislang
+gezeigten Beispiele!
 
-## Literaturhinweis:
+Jetzt könnten wir eigentlich unseren Konstruktor mit einem zweiten Parameter ... oder gar gleich
+mit einem dritten Parameter ausstatten. Aha, Problem möglicherweise erkannt:
+Es genügt nicht eine Überladung hinzuzufügen, sondern wir müssen auch `const&` und `&` überladen!
+Bei 2 Parametern sind dies dann 4 Überladungen, bei 3 Parametern 8 Überladungen etc.
+In der Tat ergibt das für *n* Argumente 2<sup>*n*</sup> Überladungen!
 
-Das Beispiel stammt aus dem C++ Blog von *Jonathan Boccara* und ist unter
+Damit kommen wir auf C++ 11 zu sprechen, und einem neuen Referenz-Typ, der passt: Der *RValue*-Referenz.
+Als Argument in einer Template-Funktion passt sich der Typ dem tatsächlichen Argument an!
+Das Ergebnis verwendet die &&-Notation und die Standard-Funktion `std::forward`:
 
-[A Classic Compilation Error with Dependent Types](https://www.fluentcpp.com/2020/12/11/a-classic-compilation-error-with-dependent-types/)<br>(abgerufen am 13.12.2020).
+```cpp
+template<typename TCLASS, typename TARG>
+TCLASS FactoryEx(TARG&& a)
+{
+    return TCLASS(std::forward<TARG>(a));
+}
+```
 
-zu finden.
+Um das *Perfect Forwarding* umfassend zu verstehen, müssen wir uns vergegenwärtigen, was passiert,
+wenn mehrere Referenzen `&` und `&&` sich aneinanderreihen.
+Damit sind wir beim so genannten *Reference Collapsing* angekommen:
+
+## Reference Collapsing Rules
+
+Da es ab C++ 11 neben der "einfachen" Referenz `&` noch die Referenz `&&` gibt,
+wurde ein Regelwerk definiert, wenn mehrere Referenzen aufeinander treffen.
+
+Es gilt die sogenannte Tabelle der *Reference Collapsing Rules* 
+(zu Deutsch etwa: *Zusammenfassungsregeln*):
+
+| Formaler Typ | Beschreibung | Resultattyp | Beschreibung|
+|:------ |:----------|:----------|:----------|
+| T& &   | LValue-Referenz auf eine LValue-Referenz | T&  | LValue-Referenz |
+| T&& &  | LValue-Referenz auf eine RValue-Referenz | T&  | LValue-Referenz |
+| T& &&  | RValue-Referenz auf eine LValue-Referenz | T&  | LValue-Referenz |
+| T&& && | RValue-Referenz auf eine RValue-Referenz | T&& | RValue-Referenz |
+
+Tabelle 1. *Zusammenfassungsregeln*/*Collapsing Rules* für das *Perfect Forwarding*.
+
+Von *Scott Meyers* in Worte gefasst lauten diese Regeln, wenn gleich auch nicht einfach verständlich formuliert:
+
+"[given] a type TR that is a reference to a type T, an attempt to create the type “lvalue reference to cv TR”
+creates the type “lvalue reference to T”,
+while an attempt to create the type “rvalue reference to cv TR” creates the type TR."
+
+Ein zweiter Versuch von *Scott Meyers* bietet eine möglicherweise leichter verständlichere Darstellung
+des Sachverhalts an:
+
+![](ScottMeyers_Forward.png)
+
+Abbildung 1. `std::forward`.
+
+
+## Zum Abschuss: *What’s the difference between `std::move` and `std::forward`*?
+
+Ein einfaches Beispiel findet sich unter
+
+https://isocpp.org/blog/2018/02/quick-q-whats-the-difference-between-stdmove-and-stdforward
+
+Eine Antwort in SO (*Stackoverflow*) lautet:
+
+`std::move` takes an object and allows you to treat it as a temporary (an *rvalue*). Although it isn’t a semantic requirement,
+typically a function accepting a reference to an *rvalue* will invalidate it.
+When you see `std::move`, it indicates that the value of the object should not be used afterwards.
+
+`std::forward` has a single use case: to cast a templated function parameter (inside the function)
+to the value category (*lvalue* or *rvalue*) the caller used to pass it.
+This allows *rvalue* arguments to be passed on as *rvalues*, and *lvalues* to be passed on as *lvalues*,
+a scheme called “perfect forwarding.”
+
+Zu deutsch etwa:
+
+`std :: move` nimmt ein Objekt und ermöglicht es, diese als Temporärobjekt (als *rvalue*) zu behandeln.
+Obwohl dies keine semantische Anforderung ist, macht in der Regel eine Funktion,
+die einen Verweis auf einen *rvalue* akzeptiert, diesen ungültig.
+Wenn Sie `std::move` sehen, bedeutet dies, dass der Wert des Objekts danach nicht mehr verwendet werden sollte.
+
+`std :: forward` hat einen einzigen Anwendungsfall: 
+einen Parameter einer Templatefunktion (innerhalb der Funktion) in die *Value* Kategorie
+(*lvalue* oder *rvalue*) umzuwandeln, mit der der Aufrufer sie übergeben hat.
+Auf diese Weise können *rvalue*-Argumente als *rvalues* und *lvalue*-Argumente als *lvalues* weitergegeben werden,
+ein Schema, das als “perfekte Weiterleitung” (“perfect forwarding”) bezeichnet wird.
+
+
+## Literaturhinweise:
+
+Eine sehr gute Beschreibung zu diesem Thema befindet sich unter
+
+[Arne Mertz Blog](https://arne-mertz.de/2015/10/new-c-features-templated-rvalue-references-and-stdforward//)<br>(abgerufen am 31.05.2020).
+
+oder
+
+[Eli Bendersky's website: Perfect forwarding and universal references in C++](https://eli.thegreenplace.net/2014/perfect-forwarding-and-universal-references-in-c//)<br>(abgerufen am 15.01.2021).
+
+oder auch
+
+[C++11: Perfect forwarding](https://oopscenities.net/2014/02/01/c11-perfect-forwarding//)<br>(abgerufen am 14.03.2021).
 
 ---
 

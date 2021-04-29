@@ -3,82 +3,48 @@
 // =====================================================================================
 
 #include <iostream>
-#include <vector>
-#include <string>
+#include "../Global/Dummy.h"
 
-namespace PerfectForwardingRemoveReferenceDemo {
+namespace PerfectForwardingObject {
 
-    // ====================================================================
-    // using a container directly
+    void overloaded(const Dummy& arg) {
+        std::cout << "By lvalue" << std::endl;
+    }
+
+    void overloaded(Dummy&& arg) {
+        // move-semantics should be applied here
+        std::cout << "By rvalue" << std::endl;
+    }
+
+    /*
+     * Note: "T&&" with "T" being template param is special:
+     *       It adjusts "T" to be (for example) "int&" or non-ref "int" so std::forward knows what to do.
+     */
+
+    template <typename T>
+    void forwarding(T&& arg) {
+        std::cout << "By simple passing: ";
+        overloaded(arg);
+        std::cout << "Via std::move: ";
+        overloaded(std::move(arg));  // conceptually this would invalidate arg
+        std::cout << "Via std::forward: ";
+        overloaded(std::forward<T>(arg));
+    }
 
     void test_01() {
-
-        std::vector<int> vec{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-
-        using Iterator = std::vector<int>::iterator;
-        using ValueType = std::vector<int>::value_type;
-
-        ValueType value = 5;
-        Iterator it = std::find(std::begin(vec), std::end(vec), value);
-
-        if (it != std::end(vec)) {
-            std::cout << "Found value " << value << std::endl;
-        }
-        else {
-            std::cout << "Value " << value << " not found!" << std::endl;
-        }
-    }
-
-    // ====================================================================
-    // using a container indirectly - in a template function - first try
-
-    template<typename TCONTAINER>
-    using ValueTypeEx = typename TCONTAINER::value_type;
-
-    template<typename TCONTAINER>
-    using IteratorEx = typename TCONTAINER::iterator;
-
-    template<typename TCONTAINER>
-    bool contains_0(TCONTAINER&& cont, ValueTypeEx<TCONTAINER> const& value)
-    {
-        IteratorEx<TCONTAINER> it = std::find(std::begin(cont), std::end(cont), value);
-        return (it != std::end(cont)) ? true : false;
-    }
-
-    void test_02() {
-        std::vector<int> vec{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-        // bool found = contains_0(vec, 6);  // doesn't compile
-    }
-
-    // ====================================================================
-    // using a container indirectly - in a template function
-
-    template<typename TCONTAINER>
-    using ValueType = typename std::remove_reference<TCONTAINER>::type::value_type;
-
-    template<typename TCONTAINER>
-    using Iterator = typename std::remove_reference<TCONTAINER>::type::iterator;
-
-    template<typename TCONTAINER>
-    bool contains(TCONTAINER&& cont, ValueType<TCONTAINER> const& value)
-    {
-        Iterator<TCONTAINER> it = std::find(std::begin(cont), std::end(cont), value);
-        return (it != std::end(cont)) ? true : false;
-    }
-
-    void test_03() {
-        std::vector<int> vec{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-        bool found = contains(vec, 6);
-        std::cout << std::boolalpha << found << std::endl;
+        std::cout << "Caller passes rvalue:" << std::endl;
+        forwarding(Dummy(1));
+        std::cout << "----------------------------" << std::endl;
+        std::cout << "Caller passes lvalue:" << std::endl;
+        Dummy dummy(1);
+        forwarding(dummy);
     }
 }
 
-void main_perfect_remove_reference_demo() {
-
-    using namespace PerfectForwardingRemoveReferenceDemo;
+void main_perfect_forwarding_object()
+{
+    using namespace PerfectForwardingObject;
     test_01();
-    test_02();
-    test_03();
 }
 
 // =====================================================================================

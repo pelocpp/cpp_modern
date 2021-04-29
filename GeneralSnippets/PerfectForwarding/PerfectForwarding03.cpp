@@ -3,16 +3,14 @@
 // =====================================================================================
 
 #include <iostream>
-#include "../Global/Dummy.h"
 
-namespace PerfectForwardingObject {
+namespace PerfectForwardingDemo {
 
-    void overloaded(const Dummy& arg) {
+    void overloaded(int& arg) {
         std::cout << "By lvalue" << std::endl;
     }
 
-    void overloaded(Dummy&& arg) {
-        // move-semantics should be applied here
+    void overloaded(int&& arg) { 
         std::cout << "By rvalue" << std::endl;
     }
 
@@ -33,16 +31,17 @@ namespace PerfectForwardingObject {
 
     void test_01() {
         std::cout << "Caller passes rvalue:" << std::endl;
-        forwarding(Dummy(1));
+        forwarding(5);
         std::cout << "----------------------------" << std::endl;
         std::cout << "Caller passes lvalue:" << std::endl;
-        Dummy dummy(1);
-        forwarding(dummy);
+        int x = 5;
+        forwarding(x);
     }
 }
 
-void main_perfect_forwarding_object() {
-    using namespace PerfectForwardingObject;
+void main_perfect_forwarding_demo()
+{
+    using namespace PerfectForwardingDemo;
     test_01();
 }
 

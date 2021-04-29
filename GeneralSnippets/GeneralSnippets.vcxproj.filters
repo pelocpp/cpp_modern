@@ -210,13 +210,13 @@
     <ClCompile Include="TemplateSpecialization\TemplateSpecialization.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PerfectForwarding\PerfectForwarding04.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="PerfectForwarding\PerfectForwarding03.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="PerfectForwarding\PerfectForwarding02.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PerfectForwarding\PerfectForwarding01.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="BackInserter\BackInserter.cpp">
@@ -228,7 +228,7 @@
     <ClCompile Include="VirtualOverrideFinal\VirtualOverrideFinal.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PerfectForwarding\PerfectForwarding04.cpp">
+    <ClCompile Include="PerfectForwarding\PerfectForwarding05.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="StringView\StdStringView.cpp">
@@ -250,6 +250,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="DefaultInitialization\DefaultInitialization.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PerfectForwarding\PerfectForwarding01.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -455,10 +458,10 @@
     <None Include="DefaultInitialization\DefaultInitialization.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="PerfectForwarding\PerfectForwarding_02.md">
+    <None Include="PerfectForwarding\PerfectForwarding_03.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="PerfectForwarding\PerfectForwarding_01.md">
+    <None Include="PerfectForwarding\PerfectForwarding_02.md">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="StringView\StdStringView.md">
@@ -474,6 +477,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Transform\Transform.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="PerfectForwarding\PerfectForwarding_01.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
