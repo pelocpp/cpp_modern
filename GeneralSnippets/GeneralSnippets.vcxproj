@@ -102,7 +102,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -134,7 +134,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -155,6 +155,7 @@
     <ClCompile Include="Casts\Casts.cpp" />
     <ClCompile Include="CommonType\CommonType.cpp" />
     <ClCompile Include="ConstExpr\ConstExpr.cpp" />
+    <ClCompile Include="ConstExpr\ConstExpr02.cpp" />
     <ClCompile Include="ConstExpr\ConstExprExtended.cpp" />
     <ClCompile Include="ConstructursOrder\ConstructorsOrder.cpp" />
     <ClCompile Include="CRTP\CRTP.cpp" />
@@ -236,7 +237,8 @@
     <None Include="BackInserter\BackInserter.md" />
     <None Include="Casts\Casts.md" />
     <None Include="CommonType\CommonType.md" />
-    <None Include="ConstExpr\Constexpr.md" />
+    <None Include="ConstExpr\ConstExpr.md" />
+    <None Include="ConstExpr\Constexpr_02.md" />
     <None Include="ConstructursOrder\CtorDtorOrder.md" />
     <None Include="CRTP\CRTP.md" />
     <None Include="DeclType\decltype.md" />
@@ -307,6 +309,9 @@
     <ClInclude Include="MoveSemantics\MoveSemantics.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="ConstExpr\ConstExpr01.png" />
+    <Image Include="ConstExpr\ConstExpr02.png" />
+    <Image Include="ConstExpr\ConstExpr03.png" />
     <Image Include="Exercises\cpp_dividend_divisor.png" />
     <Image Include="MetaProgramming\euler_number.png" />
     <Image Include="UniformInitialization\cpp_init.gif" />

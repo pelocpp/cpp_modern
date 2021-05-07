@@ -33,7 +33,7 @@
     <ClCompile Include="InitializerList\InitializerList.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ConstExpr\ConstExpr.cpp">
+    <ClCompile Include="ConstExpr\ConstExpr02.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ConstExpr\ConstExprExtended.cpp">
@@ -255,6 +255,9 @@
     <ClCompile Include="PerfectForwarding\PerfectForwarding01.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ConstExpr\ConstExpr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -314,7 +317,7 @@
     <None Include="Array\StdArray.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="ConstExpr\Constexpr.md">
+    <None Include="ConstExpr\Constexpr_02.md">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="RValueLValue\RValueLValue.md">
@@ -482,6 +485,9 @@
     <None Include="PerfectForwarding\PerfectForwarding_01.md">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="ConstExpr\ConstExpr.md">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Global\Dummy.h">
@@ -505,6 +511,15 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="UniformInitialization\cpp_init.gif">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="ConstExpr\ConstExpr01.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="ConstExpr\ConstExpr02.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="ConstExpr\ConstExpr03.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
