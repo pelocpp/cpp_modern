@@ -258,15 +258,13 @@ namespace Literals_Color_CompileTime {
     }
 
     // throws errors at compile time
-    //void test_03_with_errors() {
-    //    // value outside rgb range
-    //    constexpr Color col1 = 0x1FFFFFF_rgb;
-    //    std::cout << col1 << std::endl;
+    void test_03_with_errors() {
+        // value outside rgb range
+        // constexpr Color col1 = 0x1FFFFFF_rgb;
 
-    //    // illegal hexadecimal digit
-    //    constexpr Color col2 = "0x00GG00"_rgb;
-    //    std::cout << col2 << std::endl;
-    //}
+        // illegal hexadecimal digit
+        // constexpr Color col2 = "0x00GG00"_rgb;
+    }
 }
 
 void main_literals()
@@ -280,7 +278,7 @@ void main_literals()
 
     using namespace Literals_Color_CompileTime;
     test_03();
-    // test_03_with_errors();    // throws errors at compile time
+    test_03_with_errors();    // throws errors at compile time
 }
 
 // =====================================================================================
