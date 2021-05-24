@@ -52,6 +52,7 @@ void main_raii();
 void main_raii_02(); 
 void main_random();
 void main_reference_wrapper();
+void main_regular_expressions();
 void main_rvalue_lvalue();
 void main_sfinae();
 void main_sfinae_02();
@@ -138,6 +139,7 @@ int main()
         //main_raii_02();
         //main_random();
         //main_reference_wrapper();
+        //main_regular_expressions();
         //main_rvalue_lvalue();
         //main_sfinae();
         //main_sfinae_02();

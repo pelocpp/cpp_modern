@@ -23,7 +23,7 @@
     <ProjectGuid>{7B6D68B9-7F45-4160-BC1C-9000B1BDFDC7}</ProjectGuid>
     <RootNamespace>GeneralSnippets</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>Cpp_ModernCppSnippets</ProjectName>
+    <ProjectName>Cpp_ModernSnippets</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -191,6 +191,7 @@
     <ClCompile Include="RAII\RAII02.cpp" />
     <ClCompile Include="Random\Random.cpp" />
     <ClCompile Include="ReferenceWrapper\ReferenceWrapper.cpp" />
+    <ClCompile Include="RegExpr\RegExpr.cpp" />
     <ClCompile Include="RValueLValue\RValueLValue.cpp" />
     <ClCompile Include="SFINAE_EnableIf\Sfinae01.cpp" />
     <ClCompile Include="SFINAE_EnableIf\Sfinae02.cpp" />
@@ -268,6 +269,7 @@
     <None Include="RAII\RAII.md" />
     <None Include="Random\Random.md" />
     <None Include="ReferenceWrapper\ReferenceWrapper.md" />
+    <None Include="RegExpr\RegExpr.md" />
     <None Include="RValueLValue\RValueLValue.md" />
     <None Include="SFINAE_EnableIf\Sfinae.md" />
     <None Include="SharedPtr\SharedPtr.md" />

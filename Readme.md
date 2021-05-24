@@ -96,6 +96,7 @@ In der folgenden Tabelle sind alle Neuerungen von C++ 11/14/17 aufgeführt:
 | [RAII](GeneralSnippets/RAII/RAII.md) | RAII-Idiom (*Resource acquisition is Initialization*) |
 | [Random](GeneralSnippets/Random/Random.md) | Generierung von Zufallszahlen |
 | [ReferenceWrapper](GeneralSnippets/ReferenceWrapper/ReferenceWrapper.md)  | Beispiele zum Einsatz eines Referenz-Wrappers |
+| [RegExpr](GeneralSnippets/RegExpr/RegExpr.md) | Reguläre Ausdrücke |
 | [RValueLValue](GeneralSnippets/RValueLValue/RValueLValue.md) | LValue- und RValue Referenzen |
 | [SFINAE_EnableIf](GeneralSnippets/SFINAE_EnableIf/Sfinae.md) | SFINAE und `std::enable_if` |
 | [SharedPointer](GeneralSnippets/SharedPtr/SharedPtr.md) | Klasse `std::shared_ptr<T>` |

@@ -606,7 +606,7 @@ Die Anregungen zu diesem Artikel stammen aus einem Aufsatz aus der Zeitschrift *
 Petrautzki, Dirk. &ldquo;Nachschlagewerk: C++-Metaprogrammierung mit Templates für eingebettete Systeme&rdquo;.
 *iX* Magazin für professionelle Informationstechnik, Mai 2021, S. 134 - 137.
 
-Materialien in elektronischer Form: https://github.com/Fraunhofer-IIS-ARC-WST
+Materialien in elektronischer Form: [Fraunhofer Applied Research Center for Wireless Sensor Technology](https://github.com/Fraunhofer-IIS-ARC-WST)
 
 An die Stelle der *Collatz*-Zahlenfolge werden hier Lookup-Tabellen für CRC8-Berechnungen zur Übersetzungszeit untersucht.
 

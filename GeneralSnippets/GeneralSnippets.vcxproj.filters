@@ -258,6 +258,9 @@
     <ClCompile Include="ConstExpr\ConstExpr.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="RegExpr\RegExpr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -486,6 +489,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="ConstExpr\ConstExpr.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="RegExpr\RegExpr.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
