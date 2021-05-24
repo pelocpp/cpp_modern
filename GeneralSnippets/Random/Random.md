@@ -30,7 +30,7 @@ Sequenzen von 32-Bit-Ganzzahlen mit einer sehr langen Periode von 2<sup>19937</s
 d.h. die Sequenz wiederholt sich erst, nachdem 2<sup>19937</sup> - 1 Zahlen erzeugt worden
 sind - eine in der Tat sehr große Zahl!
 
-Siehe dazu die Beispiele im korrespondieren Quellcode.
+Siehe dazu die Beispiele im korrespondierenden Quellcode.
 
 ---
 

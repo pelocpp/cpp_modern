@@ -7,7 +7,7 @@
 *Allgemeines*:
 
 RAII steht für *Resource Acquisition is Initialization*.
-Alles weitere siehe im Beispiel des korrespondieren Quellcodes.
+Alles weitere siehe im Beispiel des korrespondierenden Quellcodes.
 
 ---
 

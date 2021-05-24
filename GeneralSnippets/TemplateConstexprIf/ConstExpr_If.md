@@ -31,7 +31,7 @@ Möglichkeiten mit `if constexpr()`.
 
 *Allgemeines*:
 
-Siehe das Beispiel im korrespondieren Quellcode.
+Siehe das Beispiel im korrespondierenden Quellcode.
 
 ---
 

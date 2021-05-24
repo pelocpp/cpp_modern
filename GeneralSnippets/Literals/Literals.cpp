@@ -7,16 +7,16 @@
 #include <cstdint>
 #include <iomanip>
 
-namespace Literals {
+namespace Literals_With_Separators {
 
     void test_01() {
 
         // binary, octal and hexadecimal literals
         // (including single quotation mark as separator)
 
-        long decval = 1'048'576;        // groups of three digits
-        long hexval = 0x10'0000;        // four digits
-        long octval = 00'04'00'00'00;   // two digits
+        long decval = 1'048'576;       // groups of three digits
+        long hexval = 0x10'0000;       // four digits
+        long octval = 00'04'00'00'00;  // two digits
         long binval = 0b100'000000'000000'000000;   //six digits
 
         std::cout << decval << std::endl;
@@ -24,102 +24,263 @@ namespace Literals {
         std::cout << octval << std::endl;
         std::cout << binval << std::endl;
     }
+}
+
+namespace Literals_Color_Runtime {
 
     class Color {
         friend std::ostream& operator<< (std::ostream&, const Color&);
 
     private:
-        uint8_t m_a;
         uint8_t m_r;
         uint8_t m_g;
         uint8_t m_b;
 
     public:
-        Color()
-            : m_a{}, m_r{}, m_g{}, m_b{} {}
+        Color() : m_r{}, m_g{}, m_b{} {}
 
-        Color(uint8_t a, uint8_t r, uint8_t g, uint8_t b)
-            : m_a{ a }, m_r{ r }, m_g{ g }, m_b{ b } {}
+        Color(uint8_t r, uint8_t g, uint8_t b)
+            : m_r{ r }, m_g{ g }, m_b{ b } {}
     };
 
-    std::ostream& operator<< (std::ostream& os, const Color& col) { 
+    std::ostream& operator<< (std::ostream& os, const Color& col) {
 
         os << std::uppercase
-            << std::hex << std::setw(2) << std::setfill('0') << (int) col.m_r << ":"
-            << std::hex << std::setw(2) << std::setfill('0') << (int) col.m_g << ":"
-            << std::hex << std::setw(2) << std::setfill('0') << (int) col.m_b << " ["
-            << std::hex << std::setw(2) << std::setfill('0') << (int) col.m_a << "]";
+            << std::hex << std::setw(2) << std::setfill('0') << (int)col.m_r << ":"
+            << std::hex << std::setw(2) << std::setfill('0') << (int)col.m_g << ":"
+            << std::hex << std::setw(2) << std::setfill('0') << (int)col.m_b;
 
         return os;
     }
 
     // literal operator ("cooked" version)
-    Color operator"" _color (unsigned long long int value) {
+    Color operator"" _rgb(unsigned long long int value) {
 
-        uint8_t a = (uint8_t) ((value & 0xFF000000) >> 24);
-        uint8_t r = (uint8_t) ((value & 0x00FF0000) >> 16);
-        uint8_t g = (uint8_t) ((value & 0x0000FF00) >> 8);
-        uint8_t b = (uint8_t) ((value & 0x000000FF) >> 0);
+        if (value > 0xFFFFFF) {
+            throw std::runtime_error("literal too large");
+        }
 
-        return Color(a, r, g, b);
+        uint8_t r = (uint8_t)((value & 0x00FF0000) >> 16);
+        uint8_t g = (uint8_t)((value & 0x0000FF00) >> 8);
+        uint8_t b = (uint8_t)((value & 0x000000FF) >> 0);
+
+        return Color(r, g, b);
     }
 
     // literal operator ("raw" version)
-    Color operator"" _color(const char*  literal) {
+    Color operator"" _rgb(const char* literal, size_t) {
 
-        /* tiny implementation - just parsing hexadecimal format
-        */
+        // tiny implementation - just parsing hexadecimal format
         std::string arg(literal);
-        if (arg.size() == 2 /* 0x */  + 8 /* FF FF FF FF */) {
+        if (arg.size() == 2 /* 0x */ + 6 /* FF FF FF */) {
 
-            std::string as = arg.substr(2, 2);
-            std::string rs = arg.substr(4, 2);
-            std::string gs = arg.substr(6, 2);
-            std::string bs = arg.substr(8, 2);
+            std::string rs { arg.substr(2, 2) };
+            std::string gs { arg.substr(4, 2) };
+            std::string bs { arg.substr(6, 2) };
 
-            int a = std::stoi(as, nullptr, 16);
-            int r = std::stoi(rs, nullptr, 16);
-            int g = std::stoi(gs, nullptr, 16);
-            int b = std::stoi(bs, nullptr, 16);
+            uint8_t r { static_cast<uint8_t>(std::stoi(rs, nullptr, 16)) };
+            uint8_t g { static_cast<uint8_t>(std::stoi(gs, nullptr, 16)) };
+            uint8_t b { static_cast<uint8_t>(std::stoi(bs, nullptr, 16)) };
 
-            // Note: braced-init-list syntax: 
-            // "return an object of the function's return type initialized with an corresponding c'tor":
-            // Short hand for a new instance of the methods return type
-
-            return { (uint8_t) a, (uint8_t) r, (uint8_t) g, (uint8_t) b };
+            // note: braced-init-list syntax: 
+            return { r, g, b };
         }
 
-        // Note: braced-init-list syntax: 
-        // "return an object of the function's return type initialized with default c'tor"
-        // Short hand for a new instance of the methods return type
-
+        // note: braced-init-list syntax: 
         return {};
     }
 
     void test_02() {
-        Color col(255, 70, 80, 90);
-        std::cout << col << std::endl;
+        Color red = 0xFF0000_rgb;
+        std::cout << red << std::endl;
+        Color magenta = 0xFF00FF_rgb;
+        std::cout << magenta << std::endl;
+        Color yellow = 0xFFFF00_rgb;
+        std::cout << yellow << std::endl;
+
+        Color unknown = 12345_rgb;
+        std::cout << unknown << std::endl;
+    }
+
+    void test_02_with_errors() {
+        // value outside rgb range
+        Color col1 = 0x1FFFFFF_rgb;
+        std::cout << col1 << std::endl;
+
+        // illegal hexadecimal digit
+        Color col2 = "0x00GG00"_rgb;
+        std::cout << col2 << std::endl;
+    }
+}
+
+namespace Literals_Color_CompileTime {
+
+    class Color {
+        friend std::ostream& operator<< (std::ostream&, const Color&);
+
+    private:
+        uint8_t m_r;
+        uint8_t m_g;
+        uint8_t m_b;
+
+    public:
+        constexpr Color() : m_r{}, m_g{}, m_b{} {}
+
+        constexpr Color(uint8_t r, uint8_t g, uint8_t b)
+            : m_r{ r }, m_g{ g }, m_b{ b } {}
+    };
+
+    std::ostream& operator<< (std::ostream& os, const Color& col) {
+
+        os << std::uppercase
+            << std::hex << std::setw(2) << std::setfill('0') << (int)col.m_r << ":"
+            << std::hex << std::setw(2) << std::setfill('0') << (int)col.m_g << ":"
+            << std::hex << std::setw(2) << std::setfill('0') << (int)col.m_b;
+
+        return os;
+    }
+
+    // literal operator ("cooked" version)
+    constexpr Color operator"" _rgb(unsigned long long int value) {
+
+        if (value > 0xFFFFFF) {
+            throw std::runtime_error("literal too large");
+        }
+
+        uint8_t r{ (uint8_t)((value & 0xFF0000) >> 16) };
+        uint8_t g{ (uint8_t)((value & 0x00FF00) >> 8) };
+        uint8_t b{ (uint8_t)((value & 0x0000FF) >> 0) };
+
+        return Color{ r, g, b };
+    }
+
+    // C++ 14 (recursive function)
+    constexpr size_t length_(const char* str, size_t current_len = 0)
+    {
+        return *str == '\0' 
+            ? current_len  // end of recursion
+            : length_(str + 1, current_len + 1);
+    }
+
+    constexpr size_t length(const char* str)
+    {
+        int len{};
+        while (*str++ != '\0') {
+            ++len;
+        }
+        return len;
+    }
+
+    constexpr bool isHex(char ch)
+    {
+        if ((ch >= '0' && ch <= '9') || (ch >= 'A' && ch <= 'F') || (ch >= 'a' && ch <= 'f')) {
+            return true;
+        }
+
+        return false;
+    }
+
+    constexpr uint8_t hex2int(char ch)
+    {
+        if (! isHex(ch)) {
+            throw std::runtime_error("illegal hexadecimal digit");
+        }
+
+        // transform hex character to 4-bit equivalent number
+        uint8_t byte = ch;
+        if (byte >= '0' and byte <= '9') {
+            // byte = byte - '0';
+            byte -= '0';
+        }
+        else if (byte >= 'a' and byte <= 'f') {
+            // byte = byte - 'a' + 10;
+            byte -= ('a' - 10);
+        }
+        else if (byte >= 'A' and byte <= 'F') {
+            //byte = byte - 'A' + 10;
+            byte -= ('A' - 10);
+        }
+        return byte;
+    }
+
+    constexpr size_t hexstoi(const char* str)
+    {
+        int value{};
+        while (*str != '\0') {
+            // get current character, then increment
+            uint8_t byte = hex2int(*str);
+            ++str;
+
+            // shift 4 to make space for new digit, and add the 4 bits of the new digit 
+            value = (value << 4) | (byte & 0xF);
+        }
+        return value;
+    }
+
+    // literal operator ("raw" version)
+    constexpr Color operator"" _rgb(const char* literal, size_t) {
+
+        // tiny implementation - just parsing hexadecimal format
+        size_t len{ length(literal) };
+        if (len == 2 /* 0x */ + 6 /* FF FF FF */) {
+
+            char ar[3] = {};
+            char ag[3] = {};
+            char ab[3] = {};
+
+            ar[0] = literal[2];
+            ar[1] = literal[3];
+            ag[0] = literal[4];
+            ag[1] = literal[5];
+            ab[0] = literal[6];
+            ab[1] = literal[7];
+
+            uint8_t r = static_cast<uint8_t>(hexstoi(ar));
+            uint8_t g = static_cast<uint8_t>(hexstoi(ag));
+            uint8_t b = static_cast<uint8_t>(hexstoi(ab));
+
+            return { r, g, b };
+        }
+
+        return {};
     }
 
     void test_03() {
-        Color red = 0x00FF0000_color;
+        constexpr Color red = 0xFF0000_rgb;
         std::cout << red << std::endl;
-        Color magenta = 0x00FF00FF_color;
+        constexpr Color magenta = 0xFF00FF_rgb;
         std::cout << magenta << std::endl;
-        Color yellow = 0x00FFFF00_color;
+        constexpr Color yellow = 0xFFFF00_rgb;
         std::cout << yellow << std::endl;
 
-        Color unknown = 12345_color;
+        constexpr Color unknown = 12345_rgb;
         std::cout << unknown << std::endl;
     }
+
+    // throws errors at compile time
+    //void test_03_with_errors() {
+    //    // value outside rgb range
+    //    constexpr Color col1 = 0x1FFFFFF_rgb;
+    //    std::cout << col1 << std::endl;
+
+    //    // illegal hexadecimal digit
+    //    constexpr Color col2 = "0x00GG00"_rgb;
+    //    std::cout << col2 << std::endl;
+    //}
 }
 
 void main_literals()
 {
-    using namespace Literals;
-    test_01();
+    using namespace Literals_With_Separators;
+    //test_01();
+
+    using namespace Literals_Color_Runtime;
     test_02();
+    // test_02_with_errors();   // throws exceptions at runtime
+
+    using namespace Literals_Color_CompileTime;
     test_03();
+    // test_03_with_errors();    // throws errors at compile time
 }
 
 // =====================================================================================

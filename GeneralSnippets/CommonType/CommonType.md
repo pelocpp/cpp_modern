@@ -14,7 +14,7 @@ der für den ternären Operator `?:` geltenden Kernsprachregeln festlegt.
 
 *Allgemeines*:
 
-Siehe das Beispiel im korrespondieren Quellcode.
+Siehe das Beispiel im korrespondierenden Quellcode.
 
 ---
 
