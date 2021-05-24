@@ -25,7 +25,7 @@ In der folgenden Tabelle finden Sie &ndash; in einem gekürzten Umfang &ndash; di
 | Ausdruck | Bedeutung |
 | :---- | :---- | 
 | `ab` | `a` gefolgt von `b` |
-| `a|b` | Alternative: `a` oder `b` |
+| ```a|b``` | Alternative: `a` oder `b` |
 | . | beliebiges Zeichen |
 | `a?` | 0 oder 1 mal `a` |
 | `a*` | 0 oder mehr mal `a` |
