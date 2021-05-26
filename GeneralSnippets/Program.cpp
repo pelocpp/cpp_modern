@@ -124,7 +124,7 @@ int main()
         //main_lambda_and_closure();
         //main_lambdas_this_closure();
         //main_lambda_and_visitor();
-        main_literals();
+        //main_literals();
         //main_memory_leaks();
         //main_metaprogramming_01();
         //main_metaprogramming_02();
