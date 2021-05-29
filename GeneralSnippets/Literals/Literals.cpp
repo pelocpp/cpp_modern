@@ -64,7 +64,7 @@ namespace Literals_Color_Runtime {
         uint8_t g = (uint8_t)((value & 0x0000FF00) >> 8);
         uint8_t b = (uint8_t)((value & 0x000000FF) >> 0);
 
-        return Color(r, g, b);
+        return { r, g, b };
     }
 
     // literal operator ("raw" version)
@@ -82,11 +82,11 @@ namespace Literals_Color_Runtime {
             uint8_t g { static_cast<uint8_t>(std::stoi(gs, nullptr, 16)) };
             uint8_t b { static_cast<uint8_t>(std::stoi(bs, nullptr, 16)) };
 
-            // note: braced-init-list syntax: 
+            // note: braced-init-list syntax
             return { r, g, b };
         }
 
-        // note: braced-init-list syntax: 
+        // note: braced-init-list syntax
         return {};
     }
 
@@ -151,7 +151,7 @@ namespace Literals_Color_CompileTime {
         uint8_t g{ (uint8_t)((value & 0x00FF00) >> 8) };
         uint8_t b{ (uint8_t)((value & 0x0000FF) >> 0) };
 
-        return Color{ r, g, b };
+        return { r, g, b };
     }
 
     // C++ 14 (recursive function)
@@ -189,15 +189,12 @@ namespace Literals_Color_CompileTime {
         // transform hex character to 4-bit equivalent number
         uint8_t byte = ch;
         if (byte >= '0' and byte <= '9') {
-            // byte = byte - '0';
             byte -= '0';
         }
         else if (byte >= 'a' and byte <= 'f') {
-            // byte = byte - 'a' + 10;
             byte -= ('a' - 10);
         }
         else if (byte >= 'A' and byte <= 'F') {
-            //byte = byte - 'A' + 10;
             byte -= ('A' - 10);
         }
         return byte;

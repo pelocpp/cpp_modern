@@ -13,7 +13,7 @@
 
 ## Allgemeines:
 
-Die Berechnung von Ausdrücken zur Übersetzungszeit wurde mit in C++&ndash;17 auf ein neues Niveau angehoben.
+Die Berechnung von Ausdrücken zur Übersetzungszeit wurde mit C++&ndash;17 auf ein neues Niveau angehoben.
 Längst haben wir es nicht mehr mit nur konstanten Literalen oder einfachen Ausdrücken,
 bestehend aus einer Summation oder Multiplikation, zu tun.
 In C++&ndash;17 können zur Übersetzungszeit Variablen, Funktionen und auch ganze Klassen bzw. deren Objekte mit entsprechenden Konstruktoren
