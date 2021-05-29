@@ -118,7 +118,7 @@ Wertebereich auf allen Plattformen.
 
 *Hinweis*:
 Plattformabhängig können diese neuen Datentypen natürlich auf die herkömmlichen
-Datentypen abgebildet werden. Nur findet diese Abbdildung eben auf jedem System
+Datentypen abgebildet werden. Nur findet diese Abbildung eben auf jedem System
 mit den oben aufgeführten Randbedingen statt (exakte Größe).
 Auf meinem Rechner sehen diese Abbildungen so aus:
 

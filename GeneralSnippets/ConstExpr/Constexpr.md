@@ -14,7 +14,8 @@
 ## Allgemeines:
 
 Die Berechnung von Ausdrücken zur Übersetzungszeit wurde mit in C++&ndash;17 auf ein neues Niveau angehoben.
-Längst haben wir es nicht mehr mit nur konstanten Literalen oder einfachen Ausdrücken, bestehend aus einer Summation oder Multiklikation, zu tun.
+Längst haben wir es nicht mehr mit nur konstanten Literalen oder einfachen Ausdrücken,
+bestehend aus einer Summation oder Multiplikation, zu tun.
 In C++&ndash;17 können zur Übersetzungszeit Variablen, Funktionen und auch ganze Klassen bzw. deren Objekte mit entsprechenden Konstruktoren
 zur Übersetzungszeit ausgeführt bzw. erzeugt werden.
 
@@ -26,7 +27,7 @@ Die syntaktischen Einsatzmöglichkeiten konstanter Ausdrücke mit `constexpr` sind
 Wir stellen einige signifikante Beispiele vor:
 
   * Variablen,
-  * Klassen / benutzerdefinerte Datentypen mit `constexpr` Konstruktoren,
+  * Klassen / benutzerdefinierte Datentypen mit `constexpr` Konstruktoren,
   * Klassentemplates mit `constexpr` Konstruktoren,
   * `constexpr`-Funktionen und `constexpr`-Lambda-Funktionen und
   * Konstante `std::array<>`-Objekte, initialisiert mit variadischen Templates 
@@ -90,7 +91,7 @@ zur Übersetzungszeit unterstützt:
 
 *Listing* 1: Klasse `Complex` mit `constexpr` Konstruktoren.
 
-Mit folgenden Code-Fragment können wir die Klasse `Complex` testen und `Complex`-Objekte anlegen,
+Mit folgendem Code-Fragment können wir die Klasse `Complex` testen und `Complex`-Objekte anlegen,
 die vom Übersetzer erzeugt wurden:
 
 ```cpp
@@ -264,7 +265,7 @@ Um es an einem Beispiel zu betrachten. Ein Aufruf der `sumUpPowerTable`-Funktion
 und einer Tabellengröße gleich 5 die Summe von 1 + 16 + 81 + 256 + 625 = 979 zurückliefern.
 Diesen (konstanten) Wert müssten wir im OpCode des Programms vorfinden:
 
-In Abbildung 2 &ndash; und bei Bedarf mit dem Calculator &ndash; können wir uns davon überzeugen:
+In Abbildung 2 &ndash; und bei Bedarf mit dem *Calculator* &ndash; können wir uns davon überzeugen:
 Der hexadezimale Wert `3D3h` tritt in einer `MOV`-Instruktion auf, der Übersetzer hat tatsächlich alle Berechnungen zur 
 Übersetzungszeit vorgenommen:
 
@@ -512,7 +513,7 @@ schaffen wir es jetzt, die Templateparameter zur Initialisierung eines `std::arr
 
 ## `std::array`-Objekte und variadische Templates: Ein alternativer Ansatz
 
-Die rekursive Templatedefinition aus dem letzen Beispiel fußte auf dem Trick,
+Die rekursive Templatedefinition aus dem letzten Beispiel fußte auf dem Trick,
 die Definition eines Klassentemplates in Abhängigkeit von einem anderen Klassentemplate zu formulieren.
 Diese Vorgehensweise kann man auch mittels Vererbung praktizieren.
 Ein Beispiel gefällig?
