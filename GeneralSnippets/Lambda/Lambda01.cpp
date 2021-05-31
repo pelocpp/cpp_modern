@@ -221,31 +221,19 @@ namespace Lambda {
         test_07_helper_b(lambda2);
     }
 
-    // decltype may modify type deduction, e.g. in generic lamdas
-    // (decltype (t + u), decltype (t) or decltype (u) are valid)
     template <typename T, typename U>
-    auto add(const T& t, const U& u) -> decltype (t + u)
-    { 
-        return t + u; 
-    }
-
-    // or without trailing return type:
-
-    template <typename T, typename U>
-    decltype (std::declval<T>() + std::declval<U>())
-    add2(const T& t, const U& u)
+    auto add = [](const T& t, const U& u) -> decltype (t + u)
     {
         return t + u;
-    }
+    };
 
     void test_08() {
          
         int n = 1;
         double d = 2.7;
 
-        auto result = add(n, d);
-
-        std::cout << result << std::endl;
+        auto result1 = add<int, double>(n, d);
+        std::cout << result1 << std::endl;
     }
 
     void test_09() {

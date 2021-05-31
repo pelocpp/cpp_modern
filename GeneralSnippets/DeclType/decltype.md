@@ -18,7 +18,7 @@ dieses Namens in vielen Compilern wurde stattdessen `decltype` gewählt.
 `decltype` gibt einen Typ zurück. Der Operator kann grundsätzlich überall dort eingesetzt werden, wo ein Typ benötigt wird:
 
 ```cpp
-// decltype may modify type deduction, e.g. in generic lamdas
+// decltype may modify type deduction, e.g. in generic lambdas
 // (decltype (t + u), decltype (t) or decltype (u) are valid)
 template <typename T, typename U>
 auto add(const T& t, const U& u) -> decltype (t + u) 
