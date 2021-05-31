@@ -308,7 +308,15 @@ Valid date:   0001/1/1 ==> 1-1-1
 
 ## Literatur
 
-Zum Thema der *Capturing Groups* findet man Hinweise hier:
+Zum Testen von regulären Ausdrücken gibt es zwei empehlenswerte Seiten:
+
+&ldquo;[RegExr is an online tool to learn, build, & test Regular Expressions](https://regexr.com/)&rdquo;
+
+und
+
+&ldquo;[Free PCRE-based regular expression debugger with real time explanation, error detection and highlighting](https://regex101.com/)&rdquo;
+
+Das Thema der *Capturing Groups* findet man Hinweise hier:
 
 [What is a non-capturing group in regular expressions?](https://stackoverflow.com/questions/3512471/what-is-a-non-capturing-group-in-regular-expressions)
 
