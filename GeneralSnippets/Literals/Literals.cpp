@@ -60,9 +60,9 @@ namespace Literals_Color_Runtime {
             throw std::runtime_error("literal too large");
         }
 
-        uint8_t r = (uint8_t)((value & 0x00FF0000) >> 16);
-        uint8_t g = (uint8_t)((value & 0x0000FF00) >> 8);
-        uint8_t b = (uint8_t)((value & 0x000000FF) >> 0);
+        uint8_t r{ static_cast<uint8_t>((value & 0x00FF0000) >> 16) };
+        uint8_t g{ static_cast<uint8_t>((value & 0x0000FF00) >> 8) };
+        uint8_t b{ static_cast<uint8_t>((value & 0x000000FF) >> 0) };
 
         return { r, g, b };
     }
@@ -147,9 +147,9 @@ namespace Literals_Color_CompileTime {
             throw std::runtime_error("literal too large");
         }
 
-        uint8_t r{ (uint8_t)((value & 0xFF0000) >> 16) };
-        uint8_t g{ (uint8_t)((value & 0x00FF00) >> 8) };
-        uint8_t b{ (uint8_t)((value & 0x0000FF) >> 0) };
+        uint8_t r{ static_cast<uint8_t>((value & 0x00FF0000) >> 16) };
+        uint8_t g{ static_cast<uint8_t>((value & 0x0000FF00) >> 8) };
+        uint8_t b{ static_cast<uint8_t>((value & 0x000000FF) >> 0) };
 
         return { r, g, b };
     }

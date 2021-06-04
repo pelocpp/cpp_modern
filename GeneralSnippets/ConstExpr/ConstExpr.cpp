@@ -8,7 +8,7 @@
 
 namespace ConstExprComplex {
 
-    struct Complex
+    class Complex
     {
     private:
         double m_real;
@@ -55,7 +55,7 @@ namespace ConstExprComplex {
 namespace ConstExprComplexTemplate {
 
     template <typename T>
-    struct Complex
+    class Complex
     {
     private:
         T m_real;
