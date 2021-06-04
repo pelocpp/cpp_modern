@@ -173,11 +173,11 @@ namespace VariadicTemplatesMixins {
             m_value = value;
         }
 
-        template <typename... Args>
-        void emplace(const Args&... args)
-        {
-            m_value = T{ args... }; // copy-operator (might use move semantics)
-        }
+        //template <typename... Args>
+        //void emplace(const Args&... args)
+        //{
+        //    m_value = T{ args... }; // copy-operator (might use move semantics)
+        //}
 
         // or
 
@@ -208,11 +208,11 @@ namespace VariadicTemplatesMixins {
             SlotEx<T, Key>::set(value);
         }
 
-        template <typename T, typename Key = DefaultSlotKey, typename... Args>
-        void emplace(const Args&... args)
-        {
-            SlotEx<T, Key>::emplace(args...);
-        }
+        //template <typename T, typename Key = DefaultSlotKey, typename... Args>
+        //void emplace(const Args&... args)
+        //{
+        //    SlotEx<T, Key>::emplace(args...);
+        //}
 
         // or
 
