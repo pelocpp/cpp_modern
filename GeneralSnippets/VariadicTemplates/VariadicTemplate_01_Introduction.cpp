@@ -20,12 +20,17 @@ namespace VariadicTemplatesIntro {
 
     // Recursive template part
     // Note: ... specifies a so called 'parameter pack')
-    template<typename T, typename ...Args>
-    T add(T first, Args... args) {
-        return first + add(args...);
+    template<typename T, typename ... ARGS>
+    T add(T first, ARGS... args) {
+        return first + add<ARGS ...>(args...);
     }
 
     void test_01() {
+        int sum = add<int, int, int, int, int>(1, 2, 3, 4, 5);
+        std::cout << "Sum from 1 up to 5: " << sum << std::endl;
+    }
+
+    void test_02() {
 
         int sum = add(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
         std::cout << "Sum from 1 up to 10: " << sum << std::endl;
@@ -78,7 +83,7 @@ namespace VariadicTemplatesIntro {
     //    print(args...);  // call print() for remaining arguments
     //}
 
-    void test_02()
+    void test_03()
     {
         std::string s("World");
         print(123.456, "Hello", s);
@@ -133,7 +138,7 @@ namespace VariadicTemplatesIntro {
         return T(std::forward<Args>(args)...);
     }
 
-    void test_03()
+    void test_04()
     {
         Unknown u1 = make_an_object<Unknown>();
         std::cout << u1 << std::endl;
@@ -169,7 +174,7 @@ namespace VariadicTemplatesIntro {
         return std::unique_ptr<T>(new T(std::forward<Args>(args)...));
     }
 
-    void test_04()
+    void test_05()
     {
         std::unique_ptr<Unknown> up1 = my_make_unique<Unknown>();
         std::unique_ptr<Unknown> up2 = my_make_unique<Unknown>(1);
@@ -188,6 +193,7 @@ void main_variadic_templates_intro()
     test_02();
     test_03();
     test_04();
+    test_05();
 }
 
 // =====================================================================================
