@@ -38,18 +38,18 @@ namespace Metaprogramming {
     }
 
     template <int N, int D>
-    struct Frak {
+    struct Frac {
         static const long Num = N;
         static const long Den = D;
     };
 
     template <int N, typename F>
     struct ScalarMultiplication {
-        using result = Frak<N * F::Num, N * F::Den>;
+        using result = Frac<N * F::Num, N * F::Den>;
     };
 
     void test_02() {
-        using TwoThirds = Frak< 2, 3 >;
+        using TwoThirds = Frac< 2, 3 >;
         using Four_Sixths = ScalarMultiplication< 2, TwoThirds >::result;
         std::cout << Four_Sixths::Num << "/" << Four_Sixths::Den << std::endl;
     }
@@ -65,25 +65,25 @@ namespace Metaprogramming {
     };
 
     template <class F>
-    struct FrakNormalizedVerbose {
+    struct FracNormalizedVerbose {
         static const long ggt = GGT<F::Num, F::Den>::result;
         static const long newNum = F::Num / ggt;
         static const long newDen = F::Den / ggt;
-        using result = Frak<newNum, newDen>;
+        using result = Frac<newNum, newDen>;
     };
 
     template <class F>
-    struct FrakNormalized {
+    struct FracNormalized {
         static const long ggt = GGT<F::Num, F::Den>::result;
-        using result = Frak<F::Num / ggt, F::Den / ggt>;
+        using result = Frac<F::Num / ggt, F::Den / ggt>;
     };
 
     void test_03() {
-        using Four = Frak<16, 4>;
-        using FourNormalized = FrakNormalizedVerbose<Four>::result;
+        using Four = Frac<16, 4>;
+        using FourNormalized = FracNormalizedVerbose<Four>::result;
         std::cout << FourNormalized::Num << "/" << FourNormalized::Den << std::endl;
-        using Eight = Frak<32, 4>;
-        using EightNormalized = FrakNormalized<Eight>::result;
+        using Eight = Frac<32, 4>;
+        using EightNormalized = FracNormalized<Eight>::result;
         std::cout << EightNormalized::Num << "/" << EightNormalized::Den << std::endl;
     }
 
@@ -98,13 +98,13 @@ namespace Metaprogramming {
         using BASE = SameBase<X, Y>;
         static const long Num = BASE::X::Num + BASE::Y::Num;
         static const long Den = BASE::Y::Den; // same as BASE::X::Den
-        using result = typename FrakNormalized<Frak<Num, Den>>::result;
+        using result = typename FracNormalized<Frac<Num, Den>>::result;
     };
 
     void test_04() {
-        using Frak1 = Frak<3, 7>;
-        using Frak2 = Frak<1, 7>;
-        using Result = Sum<Frak1, Frak2>::result;
+        using Frac1 = Frac<3, 7>;
+        using Frac2 = Frac<1, 7>;
+        using Result = Sum<Frac1, Frac2>::result;
         std::cout << Result::Num << "/" << Result::Den << std::endl;
     }
 
@@ -112,14 +112,14 @@ namespace Metaprogramming {
     struct E {
         // e = 1/0! + 1/1! + 1/2! + ...
         static const long Den = Factorial<N>::result;
-        using Term = Frak<1, Den>;
+        using Term = Frac<1, Den>;
         using NextTerm = typename E<N - 1>::result;
         using result = typename Sum<Term, NextTerm>::result;
     };
 
     template <>
     struct E<0> {
-        using result = Frak<1, 1>;
+        using result = Frac<1, 1>;
     };
 
     void test_05() {
