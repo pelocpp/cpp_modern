@@ -297,7 +297,7 @@ Result: 1.5 + 1.5 = 4.2.
 
 #### Vorausetzungen: Lambda-Funktionen.
 
-Betrachten Sie die drei Methoden `test_01`, `test_02`, `test_03` und `test_04`:
+Betrachten Sie die vier Methoden `test_01`, `test_02`, `test_03` und `test_04`:
 Erraten Sie die Ausgabe? Begründen Sie Ihre Antworten.
 
 *Quiz 1*:
