@@ -13,24 +13,39 @@ Die Funktionsweise der Wrapper-Klasse wird an zwei Beispielen aufgezeigt.
 Das erste Beispiel erläutert vor allem den Zusammenhang zwischen den beiden Klassen
 `std::weak_ptr` und `std::shared_ptr`.
 
-Ausgabe des Code-Fragments:
+*Hinweis*:
+
+Man beachte den Unterschied in der Anwendung der beiden Anweisungen
 
 ```cpp
-Begin-of-program
-Begin-of-Scope
-Usage count shared_ptr:     1
-Usage count shared_ptr:     1
-Is weak ptr expired:        false
-Usage count shared_ptr:     2
-Usage count shared_ptr:     2
-*sharedPtr:                 123
-Is weak ptr expired:        false
-End-of-Scope
-Is weak ptr expired:        true
-Don't get the resource!
-End-of-program
+std::shared_ptr<int> ptr1 = std::make_shared<int>(123);
 ```
 
+oder
+
+```cpp
+std::shared_ptr<int> ptr1 = std::shared_ptr<int>(new int{ 123 });
+```
+
+Im ersten Fall wird für den dynamischen Speicherbereich *und* den Control-Block
+*ein* gemeinsamer Speicherbereich angelegt &ndash; im zweiten Fall sind dies zwei getrennte Speicherbereiche.
+
+Dies kann man im Debugger beobachten, die Freigabezeitpunkte der Speicherbereiche sind unterschiedlich:
+
+<img src="WeakPointer_01.png" width="500">
+
+*Abbildung* 1: Der Control-Block enthält beide Speicherbereiche.
+
+<img src="WeakPointer_02.png" width="400">
+
+*Abbildung* 2: Der Control-Block enthält nicht das eigentlich dynamisch angelegte Objekt. 
+
+In *Abbildung* 1 erkennt man, dass trotz eigentlich erfolgter Freigabe des dynamisch angelegte Objekts
+dieses noch vom Debugger angezeigt wird. Die tatsächliche Freigabe erfolgt zu einem späteren Zeitpunkt.
+
+
+
+## Zyklischen Referenzen
 
 Interessant ist der Weak-Pointer bei zyklischen Referenzen:
 

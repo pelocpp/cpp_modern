@@ -528,5 +528,11 @@
     <Image Include="ConstExpr\ConstExpr03.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="WeakPtr\WeakPointer_01.PNG">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="WeakPtr\WeakPointer_02.PNG">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
