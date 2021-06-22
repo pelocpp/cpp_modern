@@ -115,6 +115,9 @@ dass ein großes Objekt (Klasse `HugeArray`) insgesamt 5 Mal neu angelegt oder u
     Implementieren Sie die beiden Methoden entsprechend. Wieviele echte Kopiervorgänge können Sie nun noch beobachten? (Anwort: 2).
   * Studieren Sie die Testfunktion `testExercise` genau: Ein einer Stelle können Sie durch Einfügen eines
     `std::move`-Aufrufs einen weiteren Kopiervorgang einsparen!
+  * Betrachten Sie die Testfunktion `testExercise` ein zweites Mal genau:
+    An einer anderen Stelle lässt sich noch ein Kopiervorgang einsparen, allerdings nicht mit einem `std::move`-Aufruf,
+    sondern mit einer anderen Laufzeit-Optimierungstechnik!
   * Vergleichen Sie die Laufzeiten der Testfunktion vor und nach dem Hinzufügen der Move-Semantik. 
     Welche Beobachtung machen Sie?
 
@@ -273,7 +276,7 @@ std::cin >> op;
 
 // do the math
 double result = calculator[op](op1, op2);
-std::cout << "Result: " << op1 << ' ' << op << ' ' << op1 << " = " << result << '.' << std::endl;
+std::cout << "Result: " << op1 << ' ' << op << ' ' << op2 << " = " << result << '.' << std::endl;
 ```
 
 *Ausgabe*:

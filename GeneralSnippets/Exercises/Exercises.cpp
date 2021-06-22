@@ -152,7 +152,7 @@ namespace Exercises {
             HugeArray bArray2(bArray);
             myVec.push_back(bArray);   // <== std::move
             bArray = HugeArray(20000000);
-            myVec.push_back(HugeArray(30000000));
+            myVec.push_back(HugeArray(30000000));  // <== emplace_back (30000000)
             auto end = std::chrono::high_resolution_clock::now();
             auto diff = std::chrono::duration_cast<std::chrono::milliseconds> (end - start);
             std::cout << "Done [" << diff.count() << " msecs]" << std::endl;
@@ -246,7 +246,7 @@ namespace Exercises {
 
     namespace Exercise_04 {
 
-        std::map<char, std::function<double(double, double)>> createCalculatorEx() {
+        std::map<char, std::function<double(double, double)>> createCalculator() {
 
             std::map<char, std::function<double(double, double)>> map;
             map.insert(std::make_pair('+', [](double a, double b) { return a + b; }));
@@ -258,7 +258,7 @@ namespace Exercises {
 
         // or more compact
 
-        std::map<char, std::function<double(double, double)>> createCalculator() {
+        std::map<char, std::function<double(double, double)>> createCalculatorEx() {
 
             std::map<char, std::function<double(double, double)>> map;
             map['+'] = [](double a, double b) { return a + b; };
@@ -266,6 +266,18 @@ namespace Exercises {
             map['*'] = [](double a, double b) { return a * b; };
             map['/'] = [](double a, double b) { return a / b; };
             return map;
+        }
+
+        // or still more compact
+
+        std::map<char, std::function<double(double, double)>> createCalculatorExEx()
+        {
+            return {
+                { '+', [](double a, double b) {return a + b; } },
+                { '-', [](double a, double b) {return a - b; } },
+                { '*', [](double a, double b) {return a * b; } },
+                { '/', [](double a, double b) {return a / b; } }
+            };
         }
 
         void testExercise_04a() {
@@ -283,7 +295,7 @@ namespace Exercises {
 
             // do the math
             double result = calculator[op](op1, op2);
-            std::cout << "Result: " << op1 << ' ' << op << ' ' << op1 << " = " << result << '.' << std::endl;
+            std::cout << "Result: " << op1 << ' ' << op << ' ' << op2 << " = " << result << '.' << std::endl;
         };
 
         void testExercise_04b() {
