@@ -29,7 +29,7 @@ und der Konstruktor von `std::shared_ptr` führt die zweite Anforderung
 für den Kontrollblock aus.
 
 Man kann damit zusammenfassen, dass die Verwendung der `std::make_shared`-Funktion
-effienter ist.
+effizienter ist.
 
 ---
 
