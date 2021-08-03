@@ -51,8 +51,11 @@ namespace UniformInitialization {
         std::vector<int> myArray{ 1, 2, 3, 4, 5 };
         std::map<std::string, int> myMap{ { "Hans", 1958 }, { "Sepp", 1956 } };
 
-        std::for_each(std::begin(myArray), std::end(myArray), [](int value) {
-            std::cout << value << ", ";
+        std::for_each(
+            std::begin(myArray), 
+            std::end(myArray),
+            [](int value) {
+                std::cout << value << ", ";
             }
         );
         std::cout << std::endl;
@@ -60,7 +63,16 @@ namespace UniformInitialization {
         std::for_each(
             std::begin(myMap),
             std::end(myMap),
-            [](std::pair<std::string, int> value) {
+            [](const std::pair<std::string, int>& value) {
+                std::cout << value.first << " - " << value.second << std::endl;
+            }
+        );
+
+        // or shorter
+        std::for_each(
+            std::begin(myMap),
+            std::end(myMap),
+            [](const auto& value) {
                 std::cout << value.first << " - " << value.second << std::endl;
             }
         );
