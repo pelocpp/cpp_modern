@@ -51,7 +51,7 @@ Verwendung von `override` nun neuerdings darauf aufmerksam machen:
 ## Schlüsselwort `final`
 
 Mit dem neuen Schlüsselwort `final` lassen sich Methoden und Klassen markieren,
-die nicht mehr überschrieben werden dürfen
+die nicht mehr überschrieben werden dürfen.
 
 ### Ein Beispiel
 
