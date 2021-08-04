@@ -27,9 +27,9 @@ namespace WeakPointer {
         {
             std::cout << "Begin-of-Scope" << std::endl;
 
-            //std::shared_ptr<int> ptr1 = std::make_shared<int>(123);
+            std::shared_ptr<int> ptr1{ std::make_shared<int>(123) };
             // or
-            std::shared_ptr<int> ptr1 = std::shared_ptr<int>(new int{ 123 });
+            // std::shared_ptr<int> ptr1{ std::shared_ptr<int>(new int{ 123 }) };
 
             std::cout << "Usage count shared_ptr:     " << ptr1.use_count() << std::endl;
             weakPtr = ptr1;
@@ -38,7 +38,7 @@ namespace WeakPointer {
             // need shared pointer to access weak pointer
             std::cout << "Is weak ptr expired:        " << weakPtr.expired() << std::endl;
 
-            std::shared_ptr<int> ptr2 = weakPtr.lock();
+            std::shared_ptr<int> ptr2{ weakPtr.lock() };
             if (ptr2 != nullptr) {
 
                 std::cout << "Usage count shared_ptr:     " << ptr1.use_count() << std::endl;
@@ -132,11 +132,11 @@ namespace WeakPointer {
             };
 
             std::shared_ptr<RightNode> rightNode {
-                std::shared_ptr<RightNode>{ new RightNode{parent} }
+                std::shared_ptr<RightNode>{ new RightNode{ parent } }
             };
 
             std::shared_ptr<LeftNode> leftNode{
-                std::shared_ptr<LeftNode>{ new LeftNode{parent} }
+                std::shared_ptr<LeftNode>{ new LeftNode{ parent } }
             };
 
             parent->setRightNode(rightNode);

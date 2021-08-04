@@ -148,6 +148,7 @@ namespace ConstExprPow {
 
     void testPower_02()
     {
+        // C++ 20 syntax
         for (int index = 0; size_t elem : powerTable<Factor>) {
             std::cout << "    " << ++index << ": " << elem << std::endl;
         }

@@ -20,7 +20,7 @@ namespace SharedPointer {
 
     // 'shared ptr' approach
     std::shared_ptr<int> loadSharedPointer() {
-        std::shared_ptr<int> tmp = std::make_shared<int>(456);
+        std::shared_ptr<int> tmp{ std::make_shared<int>(456) };
         return tmp;
     }
 
@@ -32,15 +32,15 @@ namespace SharedPointer {
     void test_01() {
 
         // 'ptr1' is a shared pointer for a new instance of an int
-        std::shared_ptr<int> ptr1 = std::shared_ptr<int>(new int{ 123 });
+        std::shared_ptr<int> ptr1{ std::shared_ptr<int>(new int{ 123 }) };
         // or
-        // std::shared_ptr<int> ptr1 = std::make_shared<int>(123);
+        // std::shared_ptr<int> ptr1{ std::make_shared<int>(123) };
 
         // access value behind smart pointer
         std::cout << "ptr1:       " << *ptr1 << std::endl;
 
         // access value using raw pointer
-        int* ip1 = ptr1.get();
+        int* ip1{ ptr1.get() };
         (*ip1)++;
         std::cout << "*ip:        " << *ip1 << std::endl;
 
@@ -50,7 +50,7 @@ namespace SharedPointer {
         // create several smart pointers that share the same object:
         //
         // 1.) copy-construction
-        std::shared_ptr<int> ptr2(ptr1);
+        std::shared_ptr<int> ptr2{ ptr1 };
 
         // 2.) assignment-operator
         std::shared_ptr<int> ptr3;
@@ -68,7 +68,7 @@ namespace SharedPointer {
     }
 
     void test_02() {
-        std::shared_ptr<int> ptr = loadSharedPointer();
+        std::shared_ptr<int> ptr{ loadSharedPointer() };
         std::cout << "outer scope: " << ptr.use_count() << std::endl;
         storeSharedPointer(ptr);
         std::cout << "outer scope: " << ptr.use_count() << std::endl;

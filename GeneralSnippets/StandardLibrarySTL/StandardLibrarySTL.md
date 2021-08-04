@@ -97,8 +97,8 @@ dafür aber `empty`.
 
 ## Integrale Typen mit fester Länge
 
-Herkömmliche Datentypen wie int oder auch long sind in ihrer exakten Größe 
-im Standard nicht festgelegt, sodern mit der Formulierung "maschinenabhängig" umschrieben.
+Herkömmliche Datentypen wie `int` oder auch `long` sind in ihrer exakten Größe 
+im Standard nicht festgelegt, sodern mit der Formulierung &ldquo;maschinenabhängig&rdquo; umschrieben.
 
 Eine Reihe neuer Datentypen
 
