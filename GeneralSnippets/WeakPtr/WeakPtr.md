@@ -32,11 +32,11 @@ Im ersten Fall wird für den dynamischen Speicherbereich *und* den Control-Block
 
 Dies kann man im Debugger beobachten, die Freigabezeitpunkte der Speicherbereiche sind unterschiedlich:
 
-<img src="WeakPointer_01.png" width="500">
+<img src="WeakPointer_01.PNG" width="500">
 
 *Abbildung* 1: Der Control-Block enthält beide Speicherbereiche.
 
-<img src="WeakPointer_02.png" width="400">
+<img src="WeakPointer_02.PNG" width="400">
 
 *Abbildung* 2: Der Control-Block enthält nicht das eigentlich dynamisch angelegte Objekt. 
 
