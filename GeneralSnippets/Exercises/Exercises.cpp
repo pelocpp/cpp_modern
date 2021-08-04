@@ -1647,11 +1647,6 @@ namespace Exercises {
             list(c, 10, "abc", p, *pp, 2.4, Point{ 1, 2 });
         }
 
-        void testExercise_22() {
-            test_01();
-            test_02();
-        }
-
         // Lösung zur Ergänzungsaufgabe:
         template <typename T>
         void list_internal(int index, T&& value)
@@ -1664,6 +1659,7 @@ namespace Exercises {
         {
             index++;
             std::cout << index << ": " << std::forward<T>(f) << std::endl;
+            // list_internal(index, std::forward<T>(f));
             list_internal(index, std::forward<R>(r)...);
         }
 
@@ -1673,6 +1669,33 @@ namespace Exercises {
             int n = 1;
             std::cout << n << ": " << std::forward<T>(f) << std::endl;
             list_internal(n, std::forward<R>(r)...);
+        }
+
+        void test_03() {
+            int n = 123;
+            const double pi = 3.14;
+
+            listEx(10, "abc", n, pi, 2.4, std::string("ABC"), 99.99f);
+        }
+
+        void test_04() {
+            Point p{ 11, 12 };
+            Point* pp = new Point{ 3, 4 };
+            std::complex<double> c(2.5, 2.5);
+            listEx(c, 10, "abc", p, *pp, 2.4, Point{ 1, 2 });
+        }
+
+
+        void test_05() {
+            listEx(10, 11, 12, 13, 14);
+        }
+
+        void testExercise_22() {
+            test_01();
+            test_02();
+            test_03();
+            test_04();
+            test_05();
         }
     }
 

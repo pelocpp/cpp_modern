@@ -730,7 +730,7 @@ false
 
 **Zusatzaufgabe**:
 
-Für die logischen Operationen `&&` (`And`) und `||` (`Or`) gibt es in höheren Programmiersprachen (C, C++, Java und andere)
+Für die logischen Operationen `&&` (`and`) und `||` (`or`) gibt es in höheren Programmiersprachen (C, C++, Java und andere)
 das Feature der so genannten "*Short-Circuit-Evaluation*": Ist in dem Ausdruck *condition1 || condition2*
 bereits Bedingung *condition1* wahr, so ist der gesamte Ausdruck wahr. Ebenso ist der Ausdruck *condition1 && condition2*
 falsch, wenn Bedingung *condition1* falsch ist.
