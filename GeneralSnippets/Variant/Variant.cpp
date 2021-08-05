@@ -36,7 +36,7 @@ namespace VariantDemo {
             << std::get<int>(var)
             << std::endl;
 
-        var.emplace<2>(std::string{ "Hello" }); // we're now a string again
+        var.emplace<2>("Hello again"); // we're now a string again
 
         std::cout
             << var.index()
@@ -151,14 +151,14 @@ namespace VariantDemo {
         // display each value
         std::cout << "Values:      ";
         for (const auto& var : vec) {
-            std::visit([](auto& n) { std::cout << n << " "; }, var);
+            std::visit([](const auto& n) { std::cout << n << " "; }, var);
         }
         std::cout << std::endl;
 
         // display each type
         std::cout << "Types:       ";
         for (const auto& var : vec) {
-            std::visit([](auto& arg) { std::cout << typeid(arg).name() << " "; }, var);
+            std::visit([](const auto& arg) { std::cout << typeid(arg).name() << " "; }, var);
         }
         std::cout << std::endl;
 
