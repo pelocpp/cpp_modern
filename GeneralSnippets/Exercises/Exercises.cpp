@@ -1654,6 +1654,8 @@ namespace Exercises {
             std::cout << index << ": " << std::forward<T>(value) << std::endl;
         }
 
+        // if constexpr (sizeof...(tail) > 0) ... das könnte die Lösung sein
+
         template <typename T, typename ... R>
         void list_internal(int index, T&& f, R&& ... r)
         {
@@ -1667,6 +1669,7 @@ namespace Exercises {
         void listEx(T&& f, R&& ... r)
         {
             int n = 1;
+            // list_internal(index, std::forward<T>(f));
             std::cout << n << ": " << std::forward<T>(f) << std::endl;
             list_internal(n, std::forward<R>(r)...);
         }
