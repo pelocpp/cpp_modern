@@ -17,6 +17,12 @@ um mit den Rückgabewerten dieser Funktion einen neuen Container zu füllen:
 
 *Abbildung* 1: `std::transform` auf einem Bereich.
 
+*Hinweis*: Für das Befüllen des neuen Containers (das Ergebnis der &ldquo;Transformation&rdquo;)
+benötigt man in jedem Fall eine Komfortfunktion, um mit den anfänglich leeren Containern 
+richtig umzugehen! Für `std::vector`-Objekte bietet sich die `std::back_inserter`-Funktion an,
+für `std::map`-Objekte die `std::inserter` Funktion,
+siehe hierzu auch den [Quellcode](Transform.cpp) des Beispiels.
+
 Die Funktion `std::transform` hat eine zweite Überladung, die zwei Bereiche entgegennimmt und
 auf jedes Paar von zwei Elementen, die aus den beiden Eingabebereichen stammen, eine Funktion anwendet,
 um mit dem Resultatwert wiederum einen weiteren Container zu befüllen:
@@ -25,14 +31,8 @@ um mit dem Resultatwert wiederum einen weiteren Container zu befüllen:
 
 *Abbildung* 2: `std::transform` auf zwei Bereichen.
 
-*Hinweis*: Für das Befüllen des neuen Containers (das Ergebnis der &ldquo;Transformation&rdquo;)
-benötigt man in jedem Fall eine Komfortfunktion, um mit den anfänglich leeren Containern 
-richtig umzugehen! Für `std::vector`-Objekte bietet sich die `std::back_inserter`-Funktion an,
-für `std::map`-Objekte die `std::inserter` Funktion, siehe hierzu auch den [Quellcode](Transform.cpp) des Beispiels.
-
 ---
 
 [Zurück](../../Readme.md)
 
 ---
-

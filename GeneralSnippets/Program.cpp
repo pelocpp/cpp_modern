@@ -160,7 +160,7 @@ int main()
         //main_uniform_initialization();
         //main_unique_ptr();
         //main_variadic_templates_intro();
-        main_variadic_templates_working_on_every_argument();
+        //main_variadic_templates_working_on_every_argument();
         //main_variadic_templates_sum_of_sums();
         //main_variadic_templates_mixins();
         //main_variadic_templates_visitor();

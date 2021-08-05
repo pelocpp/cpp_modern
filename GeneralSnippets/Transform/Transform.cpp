@@ -25,14 +25,14 @@ namespace AlgorithmTransform {
             std::cout << name << ": " << number << std::endl;
         }
 
-        std::vector<std::string> names{};
+        std::vector<std::string> names(phonebook.size());  // set size of vector (!)
 
         // std::transform on a single range - retrieve names from phonebook
         std::transform(
             std::begin(phonebook),
             std::end(phonebook),
-            std::back_inserter(names),
-            [](std::pair<std::string, size_t> entry) {
+            std::begin(names),                             // beginning of the destination range
+            [](const std::pair<std::string, size_t>& entry) {
                 return std::get<0>(entry);
             }
         );
@@ -44,6 +44,39 @@ namespace AlgorithmTransform {
     }
 
     void test_02()
+    {
+        // very simple phone book
+        std::cout << "List of Entries: " << std::endl;
+
+        std::map<std::string, size_t> phonebook{
+            { "Hans Meier" , 12345678},
+            { "Hubert Mueller", 87654321},
+            { "Franz Schneider", 81726354}
+        };
+
+        for (const auto& [name, number] : phonebook) {
+            std::cout << name << ": " << number << std::endl;
+        }
+
+        std::vector<std::string> names{};    // empty vector (!)
+
+        // std::transform on a single range - retrieve names from phonebook
+        std::transform(
+            std::begin(phonebook),
+            std::end(phonebook),
+            std::back_inserter(names),       // back_inserter needed (!)
+            [](const std::pair<std::string, size_t>& entry) {
+                return std::get<0>(entry);
+            }
+        );
+
+        std::cout << "List of Persons: " << std::endl;
+        for (const auto& name : names) {
+            std::cout << name << std::endl;
+        }
+    }
+
+    void test_03()
     {
         std::vector<std::string> persons{
             std::string{ "Hans Meier" },
@@ -78,6 +111,7 @@ void main_transform()
     using namespace AlgorithmTransform;
     test_01();
     test_02();
+    test_03();
 }
 
 // =====================================================================================
