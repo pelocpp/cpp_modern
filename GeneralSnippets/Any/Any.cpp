@@ -52,27 +52,34 @@ namespace AnySamples {
     using Row = std::tuple<std::any, std::any, std::any>;
 
     // helper method (forward declaration)
-    std::string anyToString(const std::any&);
+    std::string to_string(const std::any&);
 
     void test_02_any() {
 
-        Row row1 = std::tuple<int, int, int>{
-            1,
-            2,
-            3 
-        };
+        Row row1 = std::tuple<int, int, int>{ 1, 2, 3 };
+        Row row2 = std::tuple<char, std::string, double>{ '1',  std::string("ABC"), 99.99 };
+        Row row3 = std::tuple<bool, int, bool>{ true, 123, false };
 
-        Row row2 = std::tuple<char, std::string, double>{ 
-            '1', 
-            std::string("ABC"),
-            99.99
-        };
-        
-        Row row3 = std::tuple<bool, bool, int>{
-            true,
-            false,
-            123 
-        };
+        std::vector<Row> mySheet;
+
+        // note: conversion to base class 'std::tuple<std::any, std::any, std::any>'
+        mySheet.push_back(row1);
+        mySheet.push_back(row2);
+        mySheet.push_back(row3);
+
+        for (const auto& [val1, val2, val3] : mySheet) {
+            std::cout
+                << "Val1:    " << to_string(val1) << std::endl
+                << "Val2:    " << to_string(val2) << std::endl
+                << "Val3:    " << to_string(val3) << std::endl;
+        }
+    }
+
+    void test_03_any() {
+
+        Row row1 = std::tuple<std::any, std::any, std::any>{ 1, 2, 3 };
+        Row row2 = std::tuple<std::any, std::any, std::any>{ '1',  std::string("ABC"), 99.99 };
+        Row row3 = std::tuple<std::any, std::any, std::any>{ true, 123, false };
 
         std::vector<Row> mySheet;
 
@@ -82,13 +89,13 @@ namespace AnySamples {
 
         for (const auto& [val1, val2, val3] : mySheet) {
             std::cout
-                << "Val1:    " << anyToString(val1) << std::endl
-                << "Val2:    " << anyToString(val2) << std::endl
-                << "Val3:    " << anyToString(val3) << std::endl;
+                << "Val1:    " << to_string(val1) << std::endl
+                << "Val2:    " << to_string(val2) << std::endl
+                << "Val3:    " << to_string(val3) << std::endl;
         }
     }
 
-    std::string anyToString(const std::any& var) {
+    std::string to_string(const std::any& var) {
 
         if (var.type() == typeid (int)) {
             return std::to_string(std::any_cast<int>(var));
@@ -114,8 +121,9 @@ namespace AnySamples {
 void main_any()
 {
     using namespace AnySamples;
-    test_01_any();
+    //test_01_any();
     test_02_any();
+    test_03_any();
 }
 
 // =====================================================================================
