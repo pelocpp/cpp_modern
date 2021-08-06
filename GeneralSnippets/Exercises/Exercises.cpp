@@ -699,14 +699,14 @@ namespace Exercises {
         struct MethodDetector {
 
             template <typename U>
-            static constexpr decltype(std::declval<U>().get(), bool{ }) detect() {
+            static constexpr decltype(std::declval<U>().get(), false) detect() {
                 return true;
             }
 
             // oder
 
             //template <typename U>
-            //static constexpr auto detect() -> decltype(std::declval<U>().get(), bool{ }) {
+            //static constexpr auto detect() -> decltype(std::declval<U>().get(), false) {
             //    return true;
             //}
 
