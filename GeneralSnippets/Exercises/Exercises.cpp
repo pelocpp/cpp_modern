@@ -698,15 +698,17 @@ namespace Exercises {
         template <typename T>
         struct MethodDetector {
 
-            template <typename U>
-            static constexpr decltype(std::declval<U>().get(), false) detect() {
+            // SFINAE: template parameter definition
+            template <typename U, typename TEST = decltype(std::declval<U>().get())>
+            static constexpr bool detect(int) {
                 return true;
             }
 
             // oder
 
+            // SFINAE: return type definition
             //template <typename U>
-            //static constexpr auto detect() -> decltype(std::declval<U>().get(), false) {
+            //static constexpr auto detect(int) -> decltype(std::declval<U>().get(), bool{}) {
             //    return true;
             //}
 
@@ -715,7 +717,7 @@ namespace Exercises {
                 return false;
             }
 
-            static constexpr bool value = MethodDetector::detect<T>();
+            static constexpr bool value = MethodDetector::detect<T>(int{});
         };
 
         struct FirstStruct {
@@ -789,7 +791,7 @@ namespace Exercises {
 
         void testExercise_10() {
             testExercise_10_a();
-            testExercise_10_b();
+          //  testExercise_10_b();
         }
     }
 
@@ -1943,7 +1945,7 @@ void main_exercices()
     //testExercise_07();
     //testExercise_08();
     //testExercise_09();
-    //testExercise_10();
+    testExercise_10();
     //testExercise_11();
     //testExercise_12();
     //testExercise_13();

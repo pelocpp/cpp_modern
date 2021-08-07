@@ -109,7 +109,7 @@ int main()
         //main_crtp();
         //main_decltype();
         //main_default_initialization();
-        //main_exercices();
+        main_exercices();
         //main_keyword_explicit();
         //main_expression_templates();
         //main_filesystem();

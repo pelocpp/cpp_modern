@@ -508,30 +508,35 @@ Welche Rolle spielen `decltype` und `std::declval` bei der Suche?
 01: template <typename T>
 02: struct MethodDetector {
 03: 
-04:     template <typename U>
-05:     static constexpr auto detect() -> decltype(std::declval<U>().get(), bool{ }) {
+04:     template <typename U, typename TEST = decltype(std::declval<U>().get())>
+05:     static constexpr bool detect(int) {
 06:         return true;
 07:     }
 08: 
 09:     template <typename U>
-10:     static constexpr bool detect(...) { 
+10:     static constexpr bool detect(...) {
 11:         return false;
 12:     }
 13: 
-14:     static constexpr bool value = MethodDetector::detect<T>();
+14:     static constexpr bool value = MethodDetector::detect<T>(int{});
 15: };
 ```
 
 Es folgen einige Hinweise:<br/>
-Im Klassentemplate gibt es zwei Methoden namens `detect`: Die zweite Überladung akzeptiert bzgl. der aktuellen Parameter &ldquo;alles&rdquo;,
-was durch das Symbol der Ellipses `'...'` zum Ausdruck gebracht wird.
-Die erste Überladung kommt nur dann in die engere Auswahl, wenn der Ausdruck innerhalb von `decltype` fehlerfrei aufgelöst werden kann.
-Der Rückgabewert ist in beiden Fällen `bool`! In der zweiten Überladung ist dies offensichtlich.
-In der ersten Überladung beachte man, dass der Ausdruck innerhalb von `decltype` eine Sequenz ist (siehe den Komma-Operator `','`),
-der Typ des Ausdrucks ist damit gleich dem des letzten Elements in der Sequenz und damit ebenfalls gleich `bool`.
 
-Je nachdem für welche Überladung der Übersetzer sich entscheidet, liefert `detect` den Wert `true` oder `false` zurück,
-die Klassenvariable `value` in Zeile 14 nimmt diesen Wert an.
+  * Im Klassentemplate gibt es zwei Methoden namens `detect`:
+    Der Rückgabewert ist in beiden Fällen `bool`! 
+    Die zweite Überladung akzeptiert bzgl. der aktuellen Parameter &ldquo;alles&rdquo;,
+    was durch das Symbol der Ellipses `'...'` zum Ausdruck gebracht wird.
+
+  * Die erste `detect`-Methode besitzt einen `int`-Parameter.
+    Dies führt dazu, dass die erste `detect`-Methode gegenüber der zweiten `detect`-Methode,
+    die &ldquo;alles&rdquo; als Argument akzeptiert, bevorzugt wird, wenn sie mit einem `int`-Wert aufgerufen wird.
+    Diese Überladung kommt aber nur dann in die engere Auswahl,
+    wenn der Ausdruck innerhalb von `decltype` fehlerfrei aufgelöst werden kann.
+
+  * Je nachdem für welche Überladung der Übersetzer sich entscheidet, liefert `detect` den Wert `true` oder `false` zurück,
+    die Klassenvariable `value` in Zeile 14 nimmt diesen Wert an.
 
 **Aufgabe**:
 
@@ -573,7 +578,17 @@ FirstStruct:  true
 SecondStruct: false
 ```
 
-**Zusatzaufgabe**:
+**Zusatzaufgabe 1**:
+
+Im Lösungsteil finden Sie eine Variation in der Definition der ersten `detect`-Methode vor.
+Beschreiben Sie ihre Funktionsweise!
+
+*Antwort*:
+In der ersten Überladung der Variation beachte man,
+dass der Ausdruck innerhalb von `decltype` eine Sequenz ist (siehe den Komma-Operator `','`)!
+Der Typ des Ausdrucks ist damit gleich dem des letzten Elements in der Sequenz und damit ebenfalls gleich `bool`.
+
+**Zusatzaufgabe 2**:
 
 Wie müsste eine Klasse `MethodDetectorEx` implementiert werden,
 die eine Klasse überprüfen kann, ob sie  eine Methode namens `get` mit zwei Parametern des Typs `int` besitzt?
