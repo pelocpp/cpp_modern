@@ -533,10 +533,11 @@ Es folgen einige Hinweise:<br/>
     Dies führt dazu, dass die erste `detect`-Methode gegenüber der zweiten `detect`-Methode,
     die &ldquo;alles&rdquo; als Argument akzeptiert, bevorzugt wird, wenn sie mit einem `int`-Wert aufgerufen wird.
     Diese Überladung kommt aber nur dann in die engere Auswahl,
-    wenn der Ausdruck innerhalb von `decltype` fehlerfrei aufgelöst werden kann.
+    wenn der Ausdruck innerhalb von `decltype`, also die Berechnung des zweiten Template-Parameters `TEST`,
+    fehlerfrei aufgelöst werden kann.
 
-  * Je nachdem für welche Überladung der Übersetzer sich entscheidet, liefert `detect` den Wert `true` oder `false` zurück,
-    die Klassenvariable `value` in Zeile 14 nimmt diesen Wert an.
+  * Je nachdem, für welche Überladung der Übersetzer sich entscheidet, liefert `detect` den Wert `true` oder `false` zurück.
+    Die Klassenvariable `value` in Zeile 14 nimmt diesen Wert an.
 
 **Aufgabe**:
 
@@ -583,7 +584,7 @@ SecondStruct: false
 Im Lösungsteil finden Sie eine Variation in der Definition der ersten `detect`-Methode vor.
 Beschreiben Sie ihre Funktionsweise!
 
-*Antwort*:
+*Antwort*:<br/>
 In der ersten Überladung der Variation beachte man,
 dass der Ausdruck innerhalb von `decltype` eine Sequenz ist (siehe den Komma-Operator `','`)!
 Der Typ des Ausdrucks ist damit gleich dem des letzten Elements in der Sequenz und damit ebenfalls gleich `bool`.
