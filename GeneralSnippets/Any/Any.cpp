@@ -9,12 +9,14 @@
 
 namespace AnySamples {
 
-    void test_01_any() {
-
-        std::any a = 1;
+    void test_01_any() 
+    {
+        std::any a{ 1 };
         std::cout << a.type().name() << ": " << std::any_cast<int>(a) << std::endl;
+
         a = 3.14;
         std::cout << a.type().name() << ": " << std::any_cast<double>(a) << std::endl;
+
         a = true;
         std::cout << a.type().name() << ": " << std::any_cast<bool>(a) << std::endl;
 
@@ -54,11 +56,11 @@ namespace AnySamples {
     // helper method (forward declaration)
     std::string to_string(const std::any&);
 
-    void test_02_any() {
-
-        Row row1 = std::tuple<int, int, int>{ 1, 2, 3 };
-        Row row2 = std::tuple<char, std::string, double>{ '1',  std::string("ABC"), 99.99 };
-        Row row3 = std::tuple<bool, int, bool>{ true, 123, false };
+    void test_02_any() 
+    {
+        Row row1{ std::tuple<int, int, int>{ 1, 2, 3 } };
+        Row row2 { std::tuple<char, std::string, double>{ '1',  std::string("ABC"), 99.99 } };
+        Row row3 { std::tuple<bool, int, bool>{ true, 123, false } };
 
         std::vector<Row> mySheet;
 
@@ -75,11 +77,11 @@ namespace AnySamples {
         }
     }
 
-    void test_03_any() {
-
-        Row row1 = std::tuple<std::any, std::any, std::any>{ 1, 2, 3 };
-        Row row2 = std::tuple<std::any, std::any, std::any>{ '1',  std::string("ABC"), 99.99 };
-        Row row3 = std::tuple<std::any, std::any, std::any>{ true, 123, false };
+    void test_03_any() 
+    {
+        Row row1{ std::tuple<std::any, std::any, std::any>{ 1, 2, 3 } };
+        Row row2 {std::tuple<std::any, std::any, std::any>{ '1',  std::string("ABC"), 99.99 } };
+        Row row3 {std::tuple<std::any, std::any, std::any>{ true, 123, false } };
 
         std::vector<Row> mySheet;
 
@@ -95,8 +97,8 @@ namespace AnySamples {
         }
     }
 
-    std::string to_string(const std::any& var) {
-
+    std::string to_string(const std::any& var) 
+    {
         if (var.type() == typeid (int)) {
             return std::to_string(std::any_cast<int>(var));
         }
@@ -121,7 +123,7 @@ namespace AnySamples {
 void main_any()
 {
     using namespace AnySamples;
-    //test_01_any();
+    test_01_any();
     test_02_any();
     test_03_any();
 }

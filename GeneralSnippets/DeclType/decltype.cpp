@@ -44,7 +44,7 @@ namespace Decltype {
 
         // foo returns the type of f, in this case float,
         // so this is equivalent to float foo(int b);
-        float f = 0.0;
+        float f{};
         auto foo(int b) -> decltype(f);
     }
 
@@ -70,8 +70,9 @@ namespace Decltype {
         return a + b;
     }
 
-    void test_04() {
-        sum_t<int, float> result = summe(123, 123.99F);
+    void test_04() 
+    {
+        sum_t<int, float> result{ summe(123, 123.99F) };
         std::cout << result << std::endl;
     }
 }
