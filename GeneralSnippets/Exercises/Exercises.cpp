@@ -1510,7 +1510,7 @@ namespace Exercises {
         class sum1<>
         {
         public:
-            static const long result = 0;
+            static constexpr long result = 0;
         };
 
         // ODER
@@ -1519,14 +1519,14 @@ namespace Exercises {
         class sum1<N>
         {
         public:
-            static const long result = N;
+            static constexpr long result = N;
         };
 
         template <int N, int ... REST>
         class sum1<N, REST ...>
         {
         public:
-            static const long result = N + sum1<REST ...>::result;
+            static constexpr long result = N + sum1<REST ...>::result;
         };
 
         // =============================================================
@@ -1587,12 +1587,12 @@ namespace Exercises {
         };
 
         void testExercise_21() {
-            X o1;
+            X o1{};
 
-            X<std::string> o2("ABCDEF");
+            X<std::string> o2{ "ABCDEF" };
             std::cout << o2.size() << std::endl;  // size is same as length
 
-            X<std::string, std::vector<std::string>> o3("ABCDEF", { "123", "456" });
+            X<std::string, std::vector<std::string>> o3{ "ABCDEF", { "123", "456" } };
 
             std::cout << o3.length() << std::endl;
             std::cout << o3.std::vector<std::string>::size() << std::endl;        // (1)
@@ -1615,63 +1615,64 @@ namespace Exercises {
             std::cout << std::forward<T>(value) << std::endl;
         }
 
-        template <typename T, typename ... R>
-        void list(T&& f, R&& ... r)
+        template <typename T, typename ... TREST>
+        void list(T&& first, TREST&& ... rest)
         {
-            std::cout << std::forward<T>(f) << std::endl;
-            list(std::forward<R>(r)...);
+            std::cout << std::forward<T>(first) << std::endl;
+            list(std::forward<TREST>(rest)...);
         }
 
-        void test_01() {
-            int n = 123;
-            const double pi = 3.14;
+        void test_01() 
+        {
+            int n{ 123 };
+            const double Pi{ 3.14 };
 
-            list(10, "abc", n, pi, 2.4, std::string("ABC"), 99.99f);
+            list(10, "abc", n, Pi, 2.4, std::string{ "ABC" }, 99.99f);
         }
 
         struct Point
         {
-            int x, y;
+            int m_x;
+            int m_y;
         };
 
         std::ostream& operator<< (std::ostream& os, const Point& p)
         {
-            os << '(' << p.x << ',' << p.y << ')';
+            os << '[' << p.m_x << ',' << p.m_y << ']';
             return os;
         }
 
-        void test_02() {
+        void test_02() 
+        {
             Point p{ 11, 12 };
             Point* pp = new Point{ 3, 4 };
-            std::complex<double> c(2.5, 2.5);
+            std::complex<double> c{ 2.5, 3.5 };
             list(c, 10, "abc", p, *pp, 2.4, Point{ 1, 2 });
         }
 
         // Lösung zur Ergänzungsaufgabe:
         template <typename T>
-        void list_internal(int index, T&& value)
+        void print(int index, T&& value)
         {
             std::cout << index << ": " << std::forward<T>(value) << std::endl;
         }
 
-        // if constexpr (sizeof...(tail) > 0) ... das könnte die Lösung sein
-
-        template <typename T, typename ... R>
-        void list_internal(int index, T&& f, R&& ... r)
+        template <typename T, typename ... TREST>
+        void list_internal(int index, T&& first, TREST&& ... rest)
         {
             index++;
-            std::cout << index << ": " << std::forward<T>(f) << std::endl;
-            // list_internal(index, std::forward<T>(f));
-            list_internal(index, std::forward<R>(r)...);
+            print(index, std::forward<T>(first));
+            if constexpr (sizeof...(rest) > 0) {
+                list_internal(index, std::forward<TREST>(rest)...);
+            }
         }
 
-        template <typename T, typename ... R>
-        void listEx(T&& f, R&& ... r)
+        template <typename T, typename ... TREST>
+        void listEx(T&& first, TREST&& ... rest)
         {
-            int n = 1;
-            // list_internal(index, std::forward<T>(f));
-            std::cout << n << ": " << std::forward<T>(f) << std::endl;
-            list_internal(n, std::forward<R>(r)...);
+            int index = 1;
+            print(index, std::forward<T>(first));
+            list_internal(index, std::forward<TREST>(rest)...);
         }
 
         void test_03() {
@@ -1687,7 +1688,6 @@ namespace Exercises {
             std::complex<double> c(2.5, 2.5);
             listEx(c, 10, "abc", p, *pp, 2.4, Point{ 1, 2 });
         }
-
 
         void test_05() {
             listEx(10, 11, 12, 13, 14);

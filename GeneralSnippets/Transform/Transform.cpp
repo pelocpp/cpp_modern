@@ -15,10 +15,11 @@ namespace AlgorithmTransform {
         // very simple phone book
         std::cout << "List of Entries: " << std::endl;
 
-        std::map<std::string, size_t> phonebook{
-            { "Hans Meier" , 12345678},
-            { "Hubert Mueller", 87654321},
-            { "Franz Schneider", 81726354}
+        std::map<std::string, size_t> phonebook
+        {
+            { "Hans Meier" , 12345678 },
+            { "Hubert Mueller", 87654321 },
+            { "Franz Schneider", 81726354 }
         };
 
         for (const auto& [name, number] : phonebook) {
@@ -31,7 +32,7 @@ namespace AlgorithmTransform {
         std::transform(
             std::begin(phonebook),
             std::end(phonebook),
-            std::begin(names),                             // beginning of the destination range
+            std::begin(names),    // beginning of the destination range
             [](const std::pair<std::string, size_t>& entry) {
                 return std::get<0>(entry);
             }
@@ -48,10 +49,11 @@ namespace AlgorithmTransform {
         // very simple phone book
         std::cout << "List of Entries: " << std::endl;
 
-        std::map<std::string, size_t> phonebook{
-            { "Hans Meier" , 12345678},
-            { "Hubert Mueller", 87654321},
-            { "Franz Schneider", 81726354}
+        std::map<std::string, size_t> phonebook
+        {
+            { "Hans Meier" , 12345678 },
+            { "Hubert Mueller", 87654321 },
+            { "Franz Schneider", 81726354 }
         };
 
         for (const auto& [name, number] : phonebook) {
@@ -64,7 +66,7 @@ namespace AlgorithmTransform {
         std::transform(
             std::begin(phonebook),
             std::end(phonebook),
-            std::back_inserter(names),       // back_inserter needed (!)
+            std::back_inserter(names),   // back_inserter needed (!)
             [](const std::pair<std::string, size_t>& entry) {
                 return std::get<0>(entry);
             }
@@ -78,7 +80,8 @@ namespace AlgorithmTransform {
 
     void test_03()
     {
-        std::vector<std::string> persons{
+        std::vector<std::string> persons
+        {
             std::string{ "Hans Meier" },
             std::string{ "Hubert Mueller" },
             std::string{ "Franz Schneider" }
@@ -94,7 +97,7 @@ namespace AlgorithmTransform {
             std::end(persons),
             std::begin(numbers),
             std::inserter(contacts, std::end(contacts)),
-            [](std::string person, size_t number) {
+            [](const std::string& person, size_t number) {
                 return std::pair<std::string, size_t>(person, number);
             }
         );
