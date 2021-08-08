@@ -32,7 +32,7 @@ namespace Exercises {
 
         template <typename T, typename ... TARGS>
         inline typename std::common_type<T, TARGS...>::type
-            minimum(const T& t, const TARGS& ...p)
+        minimum(const T& t, const TARGS& ...p)
         {
             using result_type = typename std::common_type<T, TARGS...>::type;
             return std::min(static_cast<result_type>(t), static_cast<result_type>(minimum(p...)));
@@ -1697,12 +1697,45 @@ namespace Exercises {
             listEx(10, 11, 12, 13, 14);
         }
 
+        // NEU
+
+        template <typename ... T>
+        void listExEx0(T&& ... args)
+        {
+            std::initializer_list<int> { (std::cout << std::forward<T>(args) << std::endl, int{})... };
+        }
+
+        template <typename ... T>
+        void listExEx1(T&& ... args)
+        {
+            size_t count{};
+
+            std::initializer_list<int> { (std::cout << ++count << ": " << std::forward<T>(args) << std::endl, int{})... };
+        }
+
+        void test_06() {
+            listExEx0(100, 101, 102, 103, 104, 105);
+            listExEx1(100, 101, 102, 103, 104, 105);
+        }
+
+        void test_07() {
+            Point p{ 11, 12 };
+            Point* pp = new Point{ 3, 4 };
+            std::complex<double> c(2.5, 2.5);
+            listExEx0(c, 10, "abc", p, *pp, 2.4, Point{ 1, 2 });
+            listExEx1(c, 10, "abc", p, *pp, 2.4, Point{ 1, 2 });
+        }
+
+
         void testExercise_22() {
-            test_01();
-            test_02();
-            test_03();
-            test_04();
-            test_05();
+            //test_01();
+            //test_02();
+            //test_03();
+            //test_04();
+            //test_05();
+
+            //test_06();
+            test_07();
         }
     }
 
