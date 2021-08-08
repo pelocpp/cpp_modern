@@ -530,8 +530,8 @@ Es folgen einige Hinweise:<br/>
     was durch das Symbol der Ellipses `'...'` zum Ausdruck gebracht wird.
 
   * Die erste `detect`-Methode besitzt einen `int`-Parameter.
-    Dies führt dazu, dass die erste `detect`-Methode gegenüber der zweiten `detect`-Methode,
-    die &ldquo;alles&rdquo; als Argument akzeptiert, bevorzugt wird, wenn sie mit einem `int`-Wert aufgerufen wird.
+    Dies führt dazu, dass die erste `detect`-Methode gegenüber der zweiten `detect`-Methode, bevorzugt wird,
+    wenn sie mit einem `int`-Wert aufgerufen wird.
     Diese Überladung kommt aber nur dann in die engere Auswahl,
     wenn der Ausdruck innerhalb von `decltype`, also die Berechnung des zweiten Template-Parameters `TEST`,
     fehlerfrei aufgelöst werden kann.

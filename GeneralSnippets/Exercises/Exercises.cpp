@@ -746,15 +746,17 @@ namespace Exercises {
         template <typename T>
         struct MethodDetectorEx {
 
-            template <typename U>
-            static constexpr decltype(std::declval<U>().get(std::declval<int>(), std::declval<int>()), bool{ }) detect() {
+            // SFINAE: template parameter definition
+            template <typename U, typename TEST = decltype(std::declval<U>().get(std::declval<int>(), std::declval<int>()))>
+            static constexpr bool detect(int) {
                 return true;
             }
 
             // oder
 
+            // SFINAE: return type definition
             //template <typename U>
-            //static constexpr auto detect() -> decltype(std::declval<U>().get(std::declval<int>(), std::declval<int>()), bool{ }) {
+            //static constexpr auto detect(int) -> decltype(std::declval<U>().get(std::declval<int>(), std::declval<int>()), bool{ }) {
             //    return true;
             //}
 
@@ -763,7 +765,7 @@ namespace Exercises {
                 return false;
             }
 
-            static constexpr bool value = MethodDetectorEx::detect<T>();
+            static constexpr bool value = MethodDetectorEx::detect<T>(int{});
         };
 
         struct ThirdStruct {
@@ -791,7 +793,7 @@ namespace Exercises {
 
         void testExercise_10() {
             testExercise_10_a();
-          //  testExercise_10_b();
+            testExercise_10_b();
         }
     }
 
@@ -1945,7 +1947,7 @@ void main_exercices()
     //testExercise_07();
     //testExercise_08();
     //testExercise_09();
-    testExercise_10();
+    //testExercise_10();
     //testExercise_11();
     //testExercise_12();
     //testExercise_13();
