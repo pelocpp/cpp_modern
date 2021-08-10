@@ -162,6 +162,10 @@
     <ClCompile Include="DeclType\Decltype.cpp" />
     <ClCompile Include="DefaultInitialization\DefaultInitialization.cpp" />
     <ClCompile Include="Exercises\Exercises.cpp" />
+    <ClCompile Include="Exercises\Exercises_01_MoveSemantics.cpp" />
+    <ClCompile Include="Exercises\Exercises_02_Lambdas.cpp" />
+    <ClCompile Include="Exercises\Exercises_11_StdInitializerList.cpp" />
+    <ClCompile Include="Exercises\Exercises_Ex.cpp" />
     <ClCompile Include="Explicit\Explicit.cpp" />
     <ClCompile Include="ExpressionTemplates\ExpressionTemplates.cpp" />
     <ClCompile Include="FileSystem\FileSystem.cpp" />
@@ -248,6 +252,15 @@
     <None Include="Exercises\Exercises.md" />
     <None Include="Exercises\Exercises_01_MoveSemantics.md" />
     <None Include="Exercises\Exercises_02_Lambdas.md" />
+    <None Include="Exercises\Exercises_03_Algorithms.md" />
+    <None Include="Exercises\Exercises_04_UtilityClasses.md" />
+    <None Include="Exercises\Exercises_05_VariadicTemplates.md" />
+    <None Include="Exercises\Exercises_06_Folding.md" />
+    <None Include="Exercises\Exercises_07_Metaprogramming.md" />
+    <None Include="Exercises\Exercises_08_ExpressionTemplates.md" />
+    <None Include="Exercises\Exercises_09_SFINAE.md" />
+    <None Include="Exercises\Exercises_10_CRTP.md" />
+    <None Include="Exercises\Exercises_11_StdInitializerList.md" />
     <None Include="Exercises\Exercises_Ex.md" />
     <None Include="Explicit\Explicit.md" />
     <None Include="ExpressionTemplates\ExpressionTemplates.md" />

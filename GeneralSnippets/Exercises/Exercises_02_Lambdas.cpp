@@ -1,0 +1,309 @@
+// =====================================================================================
+// Exercices
+// =====================================================================================
+
+#include <iostream>
+#include <string>
+#include <algorithm>
+#include <vector>
+#include <functional>
+#include <map>
+
+namespace Exercises_Lambdas {
+
+    namespace Exercise_01 {
+
+        inline void even(const int val) {
+            if (!(val % 2)) {
+                std::cout << val << std::endl;
+            }
+        }
+
+        struct Even {
+            void operator()(const int val) {
+                if (!(val % 2)) {
+                    std::cout << val << std::endl;
+                }
+            }
+        };
+
+        void testExercise_01a() {
+            std::vector<int> values(20);
+
+            std::generate(
+                std::begin(values),
+                std::end(values),
+                [count = 1]() mutable { return count++; }
+            );
+
+            // function
+            std::for_each(std::begin(values), std::end(values), even);
+
+            // lambda
+            std::for_each(
+                std::begin(values), 
+                std::end(values), 
+                [](int val) {
+                    if (!(val % 2)) {
+                        std::cout << val << std::endl;
+                    }
+                }
+            );
+
+            // functor
+            std::for_each(std::begin(values), std::end(values), Even());
+        }
+
+        void testExercise_01b() {
+            std::vector<int> values(20);
+
+            std::generate(
+                std::begin(values),
+                std::end(values),
+                [count = 1]() mutable { return count++; }
+            );
+
+            // 'divisor' defined within capture clause 
+            std::for_each(
+                std::begin(values), 
+                std::end(values),
+                [divisor = 3](int val) {
+                    if (!(val % divisor)) {
+                        std::cout << val << std::endl;
+                    }
+                }
+            );
+            std::cout << std::endl;
+
+            // or 'divisor' defined in outer context (scope) 
+            int divisor = 5;
+
+            // capture context by value (reference & would work also)
+            std::for_each(
+                std::begin(values),
+                std::end(values),
+                [=](int val) {
+                    if (!(val % divisor)) {
+                        std::cout << val << std::endl;
+                    }
+                }
+            );
+        }
+
+        void testExercise_01() {
+            testExercise_01a();
+            testExercise_01b();
+        }
+    }
+
+    namespace Exercise_02 {
+
+        std::map<char, std::function<double(double, double)>> createCalculator() {
+
+            std::map<char, std::function<double(double, double)>> map;
+            map.insert(std::make_pair('+', [](double a, double b) { return a + b; }));
+            map.insert(std::make_pair('-', [](double a, double b) { return a - b; }));
+            map.insert(std::make_pair('*', [](double a, double b) { return a * b; }));
+            map.insert(std::make_pair('/', [](double a, double b) { return a / b; }));
+            return map;
+        }
+
+        // or more compact
+
+        std::map<char, std::function<double(double, double)>> createCalculatorEx() {
+
+            std::map<char, std::function<double(double, double)>> map;
+            map['+'] = [](double a, double b) { return a + b; };
+            map['-'] = [](double a, double b) { return a - b; };
+            map['*'] = [](double a, double b) { return a * b; };
+            map['/'] = [](double a, double b) { return a / b; };
+            return map;
+        }
+
+        // or still more compact
+
+        std::map<char, std::function<double(double, double)>> createCalculatorExEx()
+        {
+            return {
+                { '+', [](double a, double b) {return a + b; } },
+                { '-', [](double a, double b) {return a - b; } },
+                { '*', [](double a, double b) {return a * b; } },
+                { '/', [](double a, double b) {return a / b; } }
+            };
+        }
+
+        void testExercise_02a() {
+
+            std::map<char, std::function<double(double, double)>> calculator = createCalculator();
+            double op1, op2;
+            char op;
+
+            std::cout << "Enter first Operand: ";
+            std::cin >> op1;
+            std::cout << "Enter second Operand: ";
+            std::cin >> op2;
+            std::cout << "Enter operation (+, -, *, /): ";
+            std::cin >> op;
+
+            // do the math
+            double result = calculator[op](op1, op2);
+            std::cout << "Result: " << op1 << ' ' << op << ' ' << op2 << " = " << result << '.' << std::endl;
+        };
+
+        void testExercise_02b() {
+
+            std::map<char, std::function<double(double, double)>> calculator = createCalculator();
+
+            // do some math operations
+            std::cout << "1.5 + 2.7 = " << calculator['+'](1.5, 2.7) << std::endl;
+            std::cout << "1.5 - 2.7 = " << calculator['-'](1.5, 2.7) << std::endl;
+            std::cout << "1.5 * 2.7 = " << calculator['*'](1.5, 2.7) << std::endl;
+            std::cout << "1.5 / 2.7 = " << calculator['/'](1.5, 2.7) << std::endl;
+
+            // add a new operation
+            calculator.insert(std::make_pair('^', [](double a, double b) { return std::pow(a, b); }));
+            std::cout << "1.5 ^ 2.5 = " << calculator['^'](1.5, 2.5) << std::endl;
+        };
+
+        void testExercise_02() {
+            // testExercise_02a();  // needs console input
+            testExercise_02b();
+        }
+    }
+
+    namespace Exercise_03 {
+
+        void testExercise_03a()
+        {
+            // Output:
+            // Variable: 1
+            // Variable: 2
+            // Variable: 3
+            // Variable: 1
+
+            // When the lambda is called, the lambda captures a copy of @variable.
+            // When the lambda decrements @variable from 1 to 2 and 3, it decrements its own copy, not the original value.
+            // But: The original value of @variable is preserved across calls to the lambda!
+
+            int variable{ 1 };
+
+            auto lambda{ [variable]() mutable {
+                std::cout << "Variable: " << variable << std::endl;
+                variable++;
+                }
+            };
+
+            // invoke lambda three times
+            lambda();
+            lambda();
+            lambda();
+
+            std::cout << "Variable: " << variable << std::endl << std::endl;
+        }
+
+        void testExercise_03b()
+        {
+            // Output:
+            // 10
+            // 11
+            // 12
+            // 13
+            // 14
+            // 15
+            // 16
+            // 17
+            // 15
+
+            auto L = [val = 10]() mutable { std::cout << val++ << std::endl; };
+            L();
+            L();
+            L();
+            L();
+            L();
+            auto LC = L;
+            LC();
+            LC();
+            LC();
+            L();
+        }
+
+        void testExercise_03c()
+        {
+            // Output:
+            // 1
+            // 2
+            // 2
+
+            // Rather than printing 1, 2, 3, the code prints 2 twice. When we created @otherCount as a copy of @count,
+            // we created a copy of @count in its current state. @count‘s i was 1, so @otherCount‘s i is 1 as well.
+            // Since @otherCount is a copy of @count, they each have their own @i.
+
+            int i{ };
+
+            // create a lambda named 'count'
+            auto count{ [i]() mutable { std::cout << ++i << std::endl; } };
+
+            // invoke lambda
+            count();
+
+            // create a copy of lambda 'count'
+            auto otherCount{ count };
+
+            // invoke both lambda 'count' and the copy
+            count();
+            otherCount();
+            std::cout << std::endl;
+        }
+
+        void invoke(const std::function<void(void)>& fn)
+        {
+            fn();
+        }
+
+        void testExercise_03d()
+        {
+            // Output:
+            // 1
+            // 1
+            // 1
+
+            // This exhibits the same problem as the prior example in a more obscure form:
+            // When std::function is created with a lambda, 
+            // the std::function internally makes a copy of the lambda object.
+            // Thus, the call to fn() is actually being executed on the copy of our lambda, not the actual lambda.
+
+            // See also:
+            // https://stackoverflow.com/questions/23515058/creating-stdfunction-with-lambda-causes-superfluous-copying-of-the-lambda-obje
+
+            int i{ };
+
+            // increments and prints its local copy of @i
+            auto count{ [i]() mutable { std::cout << ++i << std::endl; } };
+
+            invoke(count);
+            invoke(count);
+            invoke(count);
+            std::cout << std::endl;
+        }
+
+        void testExercise_03()
+        {
+            testExercise_03a();
+            testExercise_03b();
+            testExercise_03c();
+            testExercise_03d();
+        }
+    }
+}
+
+void test_exercices_lambdas()
+{
+    using namespace Exercises_Lambdas;
+    Exercise_01::testExercise_01();
+    Exercise_02::testExercise_02();
+    Exercise_03::testExercise_03();
+}
+
+// =====================================================================================
+// End-of-File
+// =====================================================================================

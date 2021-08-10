@@ -23,6 +23,7 @@ void main_crtp();
 void main_decltype();
 void main_default_initialization();
 void main_exercices();
+void main_exercices_ex();
 void main_keyword_explicit();
 void main_expression_templates();
 void main_filesystem();
@@ -110,6 +111,7 @@ int main()
         //main_decltype();
         //main_default_initialization();
         //main_exercices();
+        main_exercices_ex();
         //main_keyword_explicit();
         //main_expression_templates();
         //main_filesystem();
