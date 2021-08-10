@@ -28,7 +28,7 @@ Auch das Studium eines Lösungsvorschlag kann hilfreich sein, um den Zugang zu e
 
 | Themenbereich | Aufgaben |
 | :--- | :--- |
-| [Aufgabe 1](Exercises_01_MoveSemantics.md#Aufgabe-1) | Betrachtungen einer Klasse `HugeArray` |
+| [Aufgabe 1](Exercises_01_MoveSemantics.md# Aufgabe-1) | Betrachtungen einer Klasse `HugeArray` |
 
 *Tabelle* 1: Aufgaben zur Move-Semantik.
 

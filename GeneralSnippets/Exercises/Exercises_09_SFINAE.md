@@ -1,4 +1,4 @@
-# Aufgaben
+# Aufgaben zu SFINAE
 
 [Zurück](Exercises_Ex.md)
 
@@ -134,7 +134,7 @@ Realisieren und testen Sie eine entsprechende Klasse `MethodDetectorEx`.
 
 ---
 
-[An den Anfang](#Aufgaben-zu-Lambda-Funktionen)
+[An den Anfang](#Aufgaben-zu-SFINAE)
 
 ---
 
