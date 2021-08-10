@@ -494,6 +494,15 @@
     <None Include="RegExpr\RegExpr.md">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="Exercises\Exercises_01_MoveSemantics.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Exercises\Exercises_02_Lambdas.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Exercises\Exercises_Ex.md">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Global\Dummy.h">

@@ -28,7 +28,7 @@ Es folgt eine tabellarische Zusammenstellung aller Themenbereiche und Aufgaben:
 | :--- | :--- |
 | Move-Semantik | [Aufgabe 2](#aufgabe-2): Betrachtungen einer Klasse `HugeArray` |
 | Initialisierung | [Aufgabe 11](#aufgabe-11): Einheitliche Initialisierung und Initialisierungliste (`std::initializer_list<>`) |
-| Lambda-Funktionen | [Aufgabe 3](#aufgabe-3): Einfache Realisierung einer Lambda-Funktion<br/>[Aufgabe 4](#aufgabe-4): Taschenrechner mit Lambda-Funktionen<br/>[Aufgabe 5](#aufgabe-5): Quiz mit Lambda-Funktionen |
+| Lambda-Funktionen | [Aufgabe 3](#aufgabe-3): Einfache Realisierung einer Lambda-Funktionen<br/>[Aufgabe 4](#aufgabe-4): Taschenrechner mit Lambda-Funktionen<br/>[Aufgabe 5](#aufgabe-5): Quiz mit Lambda-Funktionen |
 | Variadische Templates | [Aufgabe 1](#aufgabe-1): Generische Funktion `miminum`<br/>[Aufgabe 7](#aufgabe-7): Variadische Templates: Ausgabe eines `std::tuple` Objekts<br/>[Aufgabe 12](#aufgabe-12): Logische Operationen mit beliebig vielen Operanden<br/>[Aufgabe 14](#aufgabe-14): `decltype` und Type-Traits am Beispiel von `sameType`<br/>[Aufgabe 20](#aufgabe-20): Mehrere Summen, ein Ergebnis<br/>[Aufgabe 21](#aufgabe-21): Variadische Templates und Vererbung |
 | Folding Expressions | [Aufgabe 13](#aufgabe-13): Logische Operationen mit beliebig vielen Operanden<br/>[Aufgabe 15](#aufgabe-15): `decltype` und Type-Traits am Beispiel von `sameType`<br/>[Aufgabe 25](#aufgabe-25): &ldquo;*Folding over a Comma*&rdquo; am Beispiel zweier Funktionen `minimum` und `maximum` |
 | `std::optional` | [Aufgabe 6](#aufgabe-6): Umwandlung von Zeichenketten in ganze Zahlen |
