@@ -17,20 +17,24 @@ Auch das Studium eines Lösungsvorschlag kann hilfreich sein, um den Zugang zu e
   * #### [Lambda Funktionen](#Lambda-Funktionen)
 
   * #### [STL-Algorithmen](#STL-Algorithmen)
+    
+  * #### [SFINAE](#SFINAE)
+    
+  * #### [CRTP](#CRTP)
 
 ---
 
-#### Move-Semantik
+### Move-Semantik
 
 | Themenbereich | Aufgaben |
 | :--- | :--- |
-| [Aufgabe 1](Exercises_01_MoveSemantics.md#Aufgabe-1:-Betrachtungen-einer-Klasse-HugeArray) | Betrachtungen einer Klasse `HugeArray` |
+| [Aufgabe 1](Exercises_01_MoveSemantics.md#Aufgabe-1) | Betrachtungen einer Klasse `HugeArray` |
 
 *Tabelle* 1: Aufgaben zur Move-Semantik.
 
 ---
 
-#### Lambda-Funktionen
+### Lambda-Funktionen
 
 | Themenbereich | Aufgaben |
 | :--- | :--- |
@@ -42,7 +46,7 @@ Auch das Studium eines Lösungsvorschlag kann hilfreich sein, um den Zugang zu e
 
 ---
 
-#### STL-Algorithmen
+### STL-Algorithmen
 
 | Themenbereich | Aufgaben |
 | :--- | :--- |
@@ -52,7 +56,7 @@ Auch das Studium eines Lösungsvorschlag kann hilfreich sein, um den Zugang zu e
 
 ---
 
-#### SFINAE
+### SFINAE
 
 | Themenbereich | Aufgaben |
 | :--- | :--- |
@@ -64,7 +68,7 @@ Auch das Studium eines Lösungsvorschlag kann hilfreich sein, um den Zugang zu e
 
 ---
 
-#### CRTP
+### CRTP
 
 | Themenbereich | Aufgaben |
 | :--- | :--- |
