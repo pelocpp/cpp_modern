@@ -261,6 +261,8 @@
     <None Include="Exercises\Exercises_09_SFINAE.md" />
     <None Include="Exercises\Exercises_10_CRTP.md" />
     <None Include="Exercises\Exercises_11_StdInitializerList.md" />
+    <None Include="Exercises\Exercises_12_PerfectForwarding.md" />
+    <None Include="Exercises\Exercises_13_FunctionalProgramming.md" />
     <None Include="Exercises\Exercises_Ex.md" />
     <None Include="Explicit\Explicit.md" />
     <None Include="ExpressionTemplates\ExpressionTemplates.md" />

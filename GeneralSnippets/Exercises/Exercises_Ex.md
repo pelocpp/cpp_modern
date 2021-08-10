@@ -4,9 +4,10 @@
 
 ---
 
-In diesem Abschnitt befindet sich eine Reihe kleinerer Aufgaben, um den vermittelten Stoff zu vertiefen.
+In diesem Abschnitt finden Sie eine Reihe kleinerer Aufgaben, um den vermittelten Stoff zu vertiefen.
 Es wurde Wert darauf gelegt, die Aufgaben &ndash; soweit wie möglich &ndash; in ihrem Umfang klein zu gestalten,
-um auf diese Weise die möglichen Einstiegshürden so niedrig wie möglich zu halten.
+um auf diese Weise die mögliche Einstiegshürde so niedrig wie möglich zu halten.
+
 Zusätzlich gibt es zu jeder Aufgabe einen Lösungsvorschlag, manchmal sogar mehrere.
 Auch das Studium eines Lösungsvorschlag kann hilfreich sein, um den Zugang zu einer neuen Materie zu finden!
 
@@ -17,18 +18,30 @@ Auch das Studium eines Lösungsvorschlag kann hilfreich sein, um den Zugang zu e
   * #### [Lambda Funktionen](#Lambda-Funktionen)
 
   * #### [STL-Algorithmen](#STL-Algorithmen)
+
+  * #### [Variadische Templates](#Variadische-Templates)
+    
+  * #### [Folding](#Folding)
+    
+  * #### [Utility Klassen](#Utility-Klassen)
+    
+  * #### [Metaprogrammierung](#Metaprogrammierung)
+    
+  * #### [*Perfect Forwarding*]
+    
+  * #### [Funktionale Programmierung](#Funktionale-Programmierung)
     
   * #### [SFINAE](#SFINAE)
     
   * #### [CRTP](#CRTP)
-
+    
 ---
 
 ### Move-Semantik
 
-| Themenbereich | Aufgaben |
-| :--- | :--- |
-| [Aufgabe 1](Exercises_01_MoveSemantics.md# Aufgabe-1) | Betrachtungen einer Klasse `HugeArray` |
+| Aufgabe | Beschreibung |
+| :- | :- |
+| [Aufgabe 1](Exercises_01_MoveSemantics.md) | Betrachtungen einer Klasse `HugeArray` |
 
 *Tabelle* 1: Aufgaben zur Move-Semantik.
 
@@ -36,11 +49,11 @@ Auch das Studium eines Lösungsvorschlag kann hilfreich sein, um den Zugang zu e
 
 ### Lambda-Funktionen
 
-| Themenbereich | Aufgaben |
-| :--- | :--- |
-| [Aufgabe 1](Exercises_02_Lambdas.md#Aufgabe-1) | Einfache Realisierung einer Lambda-Funktion |
-| [Aufgabe 2](Exercises_02_Lambdas.md#Aufgabe-2) | Taschenrechner mit Lambda-Funktionen | 
-| [Aufgabe 3](Exercises_02_Lambdas.md#Aufgabe-3) | Quiz mit Lambda-Funktionen |
+| Aufgabe | Beschreibung |
+| :- | :- |
+| [Aufgabe 1](Exercises_02_Lambdas.md) | Einfache Realisierung einer Lambda-Funktion |
+| [Aufgabe 2](Exercises_02_Lambdas.md) | Taschenrechner mit Lambda-Funktionen | 
+| [Aufgabe 3](Exercises_02_Lambdas.md) | Quiz mit Lambda-Funktionen |
 
 *Tabelle* 2: Aufgaben zu Lambda-Funktionen.
 
@@ -48,33 +61,102 @@ Auch das Studium eines Lösungsvorschlag kann hilfreich sein, um den Zugang zu e
 
 ### STL-Algorithmen
 
-| Themenbereich | Aufgaben |
-| :--- | :--- |
-| [Aufgabe 1](Exercises_03_Algorithms.md#Aufgabe-1) | Die Funktion `std::accumulate` in der Anwendung (mit Initialisierungliste) |
+| Aufgabe | Beschreibung |
+| :- | :- |
+| [Aufgabe 1](Exercises_03_Algorithms.md) | Die Funktion `std::accumulate` in der Anwendung (mit Initialisierungliste) |
 
 *Tabelle* 3: Aufgaben zu STL-Algorithmen.
 
 ---
 
+### Variadische Templates
+
+| Aufgabe | Beschreibung |
+| :- | :- |
+| [Aufgabe 1](Exercises_05_VariadicTemplates.md) | Logische Operationen mit beliebig vielen Operanden |
+| [Aufgabe 2](Exercises_05_VariadicTemplates.md) | `decltype` und Type-Traits am Beispiel von `sameType` |
+| [Aufgabe 3](Exercises_05_VariadicTemplates.md) | Generische Funktion `miminum` |
+| [Aufgabe 4](Exercises_05_VariadicTemplates.md) | Ausgabe eines `std::tuple` Objekts |
+| [Aufgabe 5](Exercises_05_VariadicTemplates.md) | Mehrere Summen, ein Ergebnis |
+| [Aufgabe 6](Exercises_05_VariadicTemplates.md) | Variadische Templates und Vererbung |
+
+*Tabelle* XX: Aufgaben zu variadischen Templates.
+
+---
+
+### Folding
+
+| Aufgabe | Beschreibung |
+| :- | :- |
+| [Aufgabe 1](Exercises_06_Folding.md) | Logische Operationen mit beliebig vielen Operanden |
+| [Aufgabe 2](Exercises_06_Folding.md) | `decltype` und Type-Traits am Beispiel von `sameType` |
+| [Aufgabe 3](Exercises_06_Folding.md) | &ldquo;Folding over a Comma&rdquo; am Beispiel zweier Funktionen `minimum` und `maximum` |
+
+*Tabelle* XX: Aufgaben zu Folding.
+
+---
+
+### Utility Klassen
+
+| Aufgabe | Beschreibung |
+| :- | :- |
+| [Aufgabe 1](Exercises_04_UtilityClasses.md) | `std::optional`: Umwandlung von Zeichenketten in ganze Zahlen |
+| [Aufgabe 2](Exercises_04_UtilityClasses.md) | `std::variant`: Ein heterogener Container |
+
+*Tabelle* XX: Aufgaben zu Utility Klassen.
+
+---
+
+### Metaprogrammierung
+
+| Aufgabe | Beschreibung |
+| :- | :- |
+| [Aufgabe 1](Exercises_07_Metaprogramming.md) | *Fibonacci*-Zahlen |
+
+*Tabelle* XX: Aufgaben zur Metaprogrammierung.
+
+---
+
+### *Perfect Forwarding*
+
+| Aufgabe | Beschreibung |
+| :- | :- |
+| [Aufgabe 1](Exercises_07_Metaprogramming.md) | Einfaches Beispiel zu variadischen Templates und *Perfect Forwarding* |
+| [Aufgabe 2](Exercises_07_Metaprogramming.md) | Ausführungszeit einer Funktion (`std::invoke`, variadische Templates und *Perfect Forwarding*) |
+
+*Tabelle* XX: Aufgaben zum *Perfect Forwarding*.
+
+---
+
+### Funktionale Programmierung
+
+| Aufgabe | Beschreibung |
+| :- | :- |
+| [Aufgabe 1](Exercises_13_FunctionalProgramming.md) | Umwandlung von Zeichenketten eines `std::vector`-Objekts von Klein- in Großbuchstaben |
+| [Aufgabe 2](Exercises_13_FunctionalProgramming.md) | `decltype`, `declval` und nachlaufender Rückgabetyp in der Praxis |
+
+*Tabelle* XX: Aufgaben zum funktionaler Programmierung.
+
+---
+
 ### SFINAE
 
-| Themenbereich | Aufgaben |
-| :--- | :--- |
-| [Aufgabe 1](Exercises_09_SFINAE.md#Aufgabe-1) | Eine Methode, mehrere Implementierungen |
-| [Aufgabe 2](Exercises_09_SFINAE.md#Aufgabe-2) | Detektion von Methoden in einer Klasse |
+| Aufgabe | Beschreibung |
+| :- | :- |
+| [Aufgabe 1](Exercises_09_SFINAE.md) | Eine Methode, mehrere Implementierungen |
+| [Aufgabe 2](Exercises_09_SFINAE.md) | Detektion von Methoden in einer Klasse |
 
 *Tabelle* XX: Aufgaben zu SFINAE.
-
 
 ---
 
 ### CRTP
 
-| Themenbereich | Aufgaben |
-| :--- | :--- |
-| [Aufgabe 1](Exercises_10_CRTP.md#Aufgabe-1:-Der-kuriose-Polymorphismus-(CRTP)-an-einem-Beispiel-betrachtet) | Der *kuriose* Polymorphismus (CRTP) an einem Beispiel betrachtet  |
+| Aufgabe | Beschreibung |
+| :- | :- |
+| [Aufgabe 1](Exercises_10_CRTP.md) | Der *kuriose* Polymorphismus (CRTP) an einem Beispiel betrachtet  |
 
-*Tabelle* XX: Aufgaben zu STL-Algorithmen.
+*Tabelle* XX: Aufgaben zu CRTP.
 
 ---
 

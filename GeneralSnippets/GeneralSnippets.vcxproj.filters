@@ -542,6 +542,12 @@
     <None Include="Exercises\Exercises_11_StdInitializerList.md">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="Exercises\Exercises_12_PerfectForwarding.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Exercises\Exercises_13_FunctionalProgramming.md">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Global\Dummy.h">
