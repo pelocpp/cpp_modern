@@ -38,9 +38,9 @@ Auch das Studium eines Lösungsvorschlag kann hilfreich sein, um den Zugang zu e
 
 | Themenbereich | Aufgaben |
 | :--- | :--- |
-| [Aufgabe 1](Exercises_02_Lambdas.md#Aufgabe-1:-Einfache-Realisierung-einer-Lambda-Funktion) | Einfache Realisierung einer Lambda-Funktion |
-| [Aufgabe 2](Exercises_02_Lambdas.md#Aufgabe-2:-Taschenrechner-mit-Lambda-Funktionen) | Taschenrechner mit Lambda-Funktionen | 
-| [Aufgabe 3](Exercises_02_Lambdas.md#Aufgabe-3:-Quiz-mit-Lambda-Funktionen) | Quiz mit Lambda-Funktionen |
+| [Aufgabe 1](Exercises_02_Lambdas.md#Aufgabe-1) | Einfache Realisierung einer Lambda-Funktion |
+| [Aufgabe 2](Exercises_02_Lambdas.md#Aufgabe-2) | Taschenrechner mit Lambda-Funktionen | 
+| [Aufgabe 3](Exercises_02_Lambdas.md#Aufgabe-3) | Quiz mit Lambda-Funktionen |
 
 *Tabelle* 2: Aufgaben zu Lambda-Funktionen.
 
@@ -50,7 +50,7 @@ Auch das Studium eines Lösungsvorschlag kann hilfreich sein, um den Zugang zu e
 
 | Themenbereich | Aufgaben |
 | :--- | :--- |
-| [Aufgabe 1](Exercises_03_Algorithms.md#Aufgabe-1:-Die-Funktion-std::accumulate-in-der-Anwendung (mit Initialisierungliste)) | Die Funktion `std::accumulate` in der Anwendung (mit Initialisierungliste) |
+| [Aufgabe 1](Exercises_03_Algorithms.md#Aufgabe-1) | Die Funktion `std::accumulate` in der Anwendung (mit Initialisierungliste) |
 
 *Tabelle* 3: Aufgaben zu STL-Algorithmen.
 
@@ -60,8 +60,8 @@ Auch das Studium eines Lösungsvorschlag kann hilfreich sein, um den Zugang zu e
 
 | Themenbereich | Aufgaben |
 | :--- | :--- |
-| [Aufgabe 1](Exercises_09_SFINAE.md#Aufgabe-1:-Eine-Methode,-mehrere-Implementierungen) | Eine Methode, mehrere Implementierungen |
-| [Aufgabe 2](Exercises_09_SFINAE.md#Aufgabe-2:-Detektion-von-Methoden-in-einer-Klasse) | Detektion von Methoden in einer Klasse |
+| [Aufgabe 1](Exercises_09_SFINAE.md#Aufgabe-1) | Eine Methode, mehrere Implementierungen |
+| [Aufgabe 2](Exercises_09_SFINAE.md#Aufgabe-2) | Detektion von Methoden in einer Klasse |
 
 *Tabelle* XX: Aufgaben zu SFINAE.
 
