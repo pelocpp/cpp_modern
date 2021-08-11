@@ -105,7 +105,7 @@ namespace Exercises_MoveSemantics {
     }
 }
 
-void test_exercices_move_semantics()
+void test_exercises_move_semantics()
 {
     using namespace Exercises_MoveSemantics;
     Exercise_01::testExercise_01();

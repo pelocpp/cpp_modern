@@ -59,7 +59,7 @@ namespace Exercises_Initialization {
     }
 }
 
-void test_exercices_move_semantics()
+void test_exercises_initialization()
 {
     using namespace Exercises_Initialization;
     Exercise_01::testExercise_01();

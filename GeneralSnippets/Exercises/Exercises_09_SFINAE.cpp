@@ -4,22 +4,8 @@
 
 #include <iostream>
 #include <string>
-#include <algorithm>
-#include <typeinfo>
-#include <type_traits>
 #include <vector>
-#include <algorithm>
-#include <functional>
-#include <map>
-#include <optional>
-#include <tuple>
 #include <array>
-#include <complex>
-#include <variant>
-#include <numeric>
-#include <iterator>
-#include <chrono>
-#include <thread>
 
 namespace Exercises_SFINAE {
 
@@ -169,7 +155,7 @@ namespace Exercises_SFINAE {
     }
 }
 
-void main_exercices()
+void test_exercices_sfinae()
 {
     using namespace Exercises_SFINAE;
     Exercise_01::testExercise_01();

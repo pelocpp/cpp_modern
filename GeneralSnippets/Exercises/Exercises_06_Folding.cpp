@@ -4,22 +4,7 @@
 
 #include <iostream>
 #include <string>
-#include <algorithm>
-#include <typeinfo>
 #include <type_traits>
-#include <vector>
-#include <algorithm>
-#include <functional>
-#include <map>
-#include <optional>
-#include <tuple>
-#include <array>
-#include <complex>
-#include <variant>
-#include <numeric>
-#include <iterator>
-#include <chrono>
-#include <thread>
 
 namespace Exercises_Folding {
 
@@ -162,7 +147,7 @@ namespace Exercises_Folding {
     }
 }
 
-void test_exercices()
+void test_exercises_folding()
 {
     using namespace Exercises_Folding;
     Exercise_01::testExercise_01();

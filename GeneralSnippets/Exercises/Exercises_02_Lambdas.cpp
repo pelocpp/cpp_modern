@@ -296,7 +296,7 @@ namespace Exercises_Lambdas {
     }
 }
 
-void test_exercices_lambdas()
+void test_exercises_lambdas()
 {
     using namespace Exercises_Lambdas;
     Exercise_01::testExercise_01();

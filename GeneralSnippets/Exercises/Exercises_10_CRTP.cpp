@@ -4,22 +4,7 @@
 
 #include <iostream>
 #include <string>
-#include <algorithm>
-#include <typeinfo>
-#include <type_traits>
-#include <vector>
-#include <algorithm>
-#include <functional>
-#include <map>
-#include <optional>
-#include <tuple>
-#include <array>
-#include <complex>
-#include <variant>
-#include <numeric>
-#include <iterator>
 #include <chrono>
-#include <thread>
 
 namespace Exercises_CRTP {
 
@@ -219,7 +204,7 @@ namespace Exercises_CRTP {
     }
 }
 
-void main_exercices()
+void test_exercices_crtp()
 {
     using namespace Exercises_CRTP;
     Exercise_01::testExercise_01();

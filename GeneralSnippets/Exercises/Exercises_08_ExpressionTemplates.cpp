@@ -5,7 +5,7 @@
 namespace Exercises_ExpressionTemplates {
 }
 
-void main_exercices()
+void test_exercices_expression_templates()
 {
     using namespace Exercises_ExpressionTemplates;
 }

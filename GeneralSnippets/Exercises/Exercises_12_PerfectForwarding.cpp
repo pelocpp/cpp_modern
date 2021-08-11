@@ -4,20 +4,7 @@
 
 #include <iostream>
 #include <string>
-#include <algorithm>
-#include <typeinfo>
-#include <type_traits>
-#include <vector>
-#include <algorithm>
-#include <functional>
-#include <map>
-#include <optional>
-#include <tuple>
-#include <array>
 #include <complex>
-#include <variant>
-#include <numeric>
-#include <iterator>
 #include <chrono>
 #include <thread>
 
@@ -246,7 +233,7 @@ namespace Exercises_PerfectForwarding {
     }
 }
 
-void main_exercices_perfect_forwarding()
+void test_exercices_perfect_forwarding()
 {
     using namespace Exercises_PerfectForwarding;
     Exercise_01::testExercise_01();
