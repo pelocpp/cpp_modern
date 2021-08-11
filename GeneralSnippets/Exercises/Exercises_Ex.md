@@ -67,7 +67,7 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 
 | Aufgabe | Beschreibung |
 | :- | :- |
-| [Aufgabe 1](Exercises_11_Initialization.md) | Einheitliche Initialisierung (*Uniform Initialization*) und Initialisierungliste (`std::initializer_list<>`)<br/>(Vorausetzungen: Templates, `std::vector<>`) |
+| [Aufgabe 1](Exercises_11_Initialization.md) | Einheitliche Initialisierung (*Uniform Initialization*) und Initialisierungliste<br/>(Vorausetzungen: Templates, `std::vector<>`, `std::initializer_list<>`) |
 
 *Tabelle* 3: Aufgaben zur Initialisierung.
 
@@ -90,7 +90,7 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 | [Aufgabe 1](Exercises_05_VariadicTemplates.md) | Logische Operationen mit beliebig vielen Operanden |
 | [Aufgabe 2](Exercises_05_VariadicTemplates.md) | `decltype` und Type-Traits am Beispiel von `sameType`<br/>(Vorausetzungen: `std::is_same`) |
 | [Aufgabe 3](Exercises_05_VariadicTemplates.md) | Generische Funktion `miminum`<br/>(Vorausetzungen: Utility-Funktion `std::common_type`) |
-| [Aufgabe 4](Exercises_05_VariadicTemplates.md) | Ausgabe eines `std::tuple` Objekts<br/>(Vorausetzungen: `std::tuple<T>`, Non-Type Template Parameter) |
+| [Aufgabe 4](Exercises_05_VariadicTemplates.md) | Ausgabe eines `std::tuple` Objekts<br/>(Vorausetzungen: `std::tuple`, Non-Type Template Parameter) |
 | [Aufgabe 5](Exercises_05_VariadicTemplates.md) | Mehrere Summen, ein Ergebnis |
 | [Aufgabe 6](Exercises_05_VariadicTemplates.md) | Variadische Templates und Vererbung |
 
@@ -125,7 +125,8 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 
 | Aufgabe | Beschreibung |
 | :- | :- |
-| [Aufgabe 1](Exercises_07_Metaprogramming.md) | *Fibonacci*-Zahlen |
+| [Aufgabe 1](Exercises_07_Metaprogramming.md) | Konvertierung binärer Zahlen in das Dezimalsystem |
+| [Aufgabe 2](Exercises_07_Metaprogramming.md) | *Fibonacci*-Zahlen |
 
 *Tabelle* 8: Aufgaben zur Metaprogrammierung.
 

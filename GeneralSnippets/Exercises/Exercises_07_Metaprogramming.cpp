@@ -9,32 +9,132 @@ namespace Exercises_Metaprogramming {
 
     namespace Exercise_01 {
 
-        template<long long n>
+        // runtime versions
+        size_t convert1(size_t number)
+        {
+            // prepend higher bits to lowest bit
+            return (number == 0) ? 0 : (number % 10) | (convert1(number / 10) << 1);
+        }
+
+        size_t convert2(size_t number)
+        {
+            return number == 0 ? 0 : number % 10 + 2 * convert2(number / 10);
+        }
+
+        // compile-time versions
+        template <size_t N>
+        struct Binary
+        {
+            static constexpr size_t value = Binary<N / 10>::value << 1 | N % 10;
+        };
+
+        // explicit template specialization
+        template <>
+        struct Binary<0>
+        {
+            static unsigned const value = 0;
+        };
+
+        // compile-time versions
+        template <size_t N>
+        struct BinaryEx
+        {
+            static constexpr size_t value = N % 10 + 2 * BinaryEx<N / 10>::value;
+        };
+
+        // explicit template specialization
+        template <>
+        struct BinaryEx<0>
+        {
+            static unsigned const value = 0;
+        };
+
+        void testExercise_01a() {
+            size_t number{ 11111111 };
+            size_t result{};
+            result = convert1(number);
+            std::cout << result << std::endl;
+            result = convert2(number);
+            std::cout << result << std::endl;
+
+            number = 1001;
+            result = convert1(number);
+            std::cout << result << std::endl;
+            result = convert2(number);
+            std::cout << result << std::endl;
+        }
+
+        void testExercise_01b() {
+
+            constexpr size_t one = Binary<1>::value;
+            constexpr size_t three = Binary<11>::value;
+            constexpr size_t five = Binary<101>::value;
+            constexpr size_t seven = Binary<111>::value;
+            constexpr size_t nine = Binary<1001>::value;
+            constexpr size_t big = Binary<1000'0010'0011'0101>::value;
+            
+            std::cout << one << std::endl;
+            std::cout << three << std::endl;
+            std::cout << five << std::endl;
+            std::cout << seven << std::endl;
+            std::cout << nine << std::endl;
+            std::cout << big << std::endl;
+        }
+
+        void testExercise_01c() {
+
+            constexpr size_t one = BinaryEx<1>::value;
+            constexpr size_t three = BinaryEx<11>::value;
+            constexpr size_t five = BinaryEx<101>::value;
+            constexpr size_t seven = BinaryEx<111>::value;
+            constexpr size_t nine = BinaryEx<1001>::value;
+            constexpr size_t big = BinaryEx<1000'0010'0011'0101>::value;
+
+            std::cout << one << std::endl;
+            std::cout << three << std::endl;
+            std::cout << five << std::endl;
+            std::cout << seven << std::endl;
+            std::cout << nine << std::endl;
+            std::cout << big << std::endl;
+        }
+
+        void testExercise_01() {
+            testExercise_01a();
+            testExercise_01b();
+            testExercise_01c();
+        }
+    }
+
+    namespace Exercise_02 {
+
+        template<size_t n>
         struct FibImpl {
-            static constexpr long long value =
+            static constexpr size_t value =
                 FibImpl<n - 1>::value + FibImpl<n - 2>::value;
         };
 
         template<>
         struct FibImpl<1> {
-            static constexpr long long value = 1;
+            static constexpr size_t value = 1;
         };
 
         template<>
         struct FibImpl<0> {
-            static constexpr long long value = 0;
+            static constexpr size_t value = 0;
         };
 
-        template<long long n>
+        template<size_t n>
         struct Fibonacci {
             static_assert(n >= 0, "Error: Fibonacci can't be called with a negative integer");
-            static constexpr long long value = FibImpl<n>::value;
+            static constexpr size_t value = FibImpl<n>::value;
         };
 
-        void testExercise_01() {
+        void testExercise_02() {
             std::cout << 1 << ":  " << Fibonacci<1>::value << std::endl;
             std::cout << 2 << ":  " << Fibonacci<2>::value << std::endl;
+            std::cout << 5 << ":  " << Fibonacci<5>::value << std::endl;
             std::cout << 10 << ": " << Fibonacci<10>::value << std::endl;
+            std::cout << 15 << ": " << Fibonacci<15>::value << std::endl;
             std::cout << 20 << ": " << Fibonacci<20>::value << std::endl;
             std::cout << 30 << ": " << Fibonacci<30>::value << std::endl;
             std::cout << 40 << ": " << Fibonacci<40>::value << std::endl;
@@ -52,6 +152,7 @@ void main_exercices_metaprogramming()
 {
     using namespace Exercises_Metaprogramming;
     Exercise_01::testExercise_01();
+    Exercise_02::testExercise_02();
 }
 
 // =====================================================================================
