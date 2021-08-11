@@ -4,6 +4,10 @@
 
 ---
 
+[Lösungen](Exercises_02_Lambdas.cpp)
+
+---
+
 ## Aufgabe 1: Einfache Realisierung einer Lambda-Funktion
 
 #### Vorausetzungen: Algorithmus `std::for_each`, bei Bedarf auch `std::generate`
@@ -192,7 +196,7 @@ void test_04()
 
 ---
 
-[Lösungen](Exercises.cpp)
+[Lösungen](Exercises_02_Lambdas.cpp)
 
 ---
 

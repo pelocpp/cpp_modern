@@ -4,6 +4,10 @@
 
 ---
 
+[Lösungen](Exercises_10_CRTP.cpp)
+
+---
+
 ## Aufgabe 1: Der *kuriose* Polymorphismus (CRTP) an einem Beispiel betrachtet
 
 #### Voraussetzungen: Polymorphismus, Templates
@@ -160,7 +164,7 @@ Time taken: 402634 microseconds
 
 ---
 
-[Lösungen](Exercises.cpp)
+[Lösungen](Exercises_10_CRTP.cpp)
 
 ---
 

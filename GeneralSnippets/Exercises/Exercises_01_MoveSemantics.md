@@ -4,6 +4,10 @@
 
 ---
 
+[Lösungen](Exercises_01_MoveSemantics.cpp)
+
+---
+
 ## Aufgabe 1: Betrachtungen einer Klasse `HugeArray`
 
 Erstellen Sie eine leeres Visual C++ Projekt,
@@ -88,7 +92,7 @@ void testExercise() {
 
 ---
 
-[Lösungen](Exercises.cpp)
+[Lösungen](Exercises_01_MoveSemantics.cpp)
 
 ---
 

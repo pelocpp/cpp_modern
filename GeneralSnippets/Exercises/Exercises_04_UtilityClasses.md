@@ -4,6 +4,10 @@
 
 ---
 
+[Lösungen](Exercises_04_UtilityClasses.cpp)
+
+---
+
 ## Aufgabe 1: `std::optional`: Umwandlung von Zeichenketten in ganze Zahlen
 
 #### Vorausetzungen: Templates Grundlagen, `std::optional`, `if constexpr`
@@ -109,10 +113,9 @@ Versuchen nun wiederum, dieses Code-Fragment zum Laufen zu bekommen.
 Die Methoden `Values` liefert eine Referenz des in der Klasse `HeterogeneousContainer`
 gekapselten `std::vector<std::variant<...>`-Objekts zurück.
 
-
 ---
 
-[Lösungen](Exercises.cpp)
+[Lösungen](Exercises_04_UtilityClasses.cpp)
 
 ---
 

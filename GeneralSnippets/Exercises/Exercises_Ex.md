@@ -9,7 +9,7 @@ Es wurde Wert darauf gelegt, die Übungen &ndash; soweit möglich &ndash; in ihr
 um auf diese Weise die Einstiegshürde so niedrig wie machbar zu halten.
 
 Zusätzlich gibt es zu jeder Aufgabe einen Lösungsvorschlag, manchmal sogar mehrere.
-Auch das Studium eines [Lösungsvorschlags](Exercises.cpp) kann hilfreich sein, um den Zugang zu einer neuen Thematik zu finden!
+Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu einer neuen Thematik zu finden!
 
 ---
 

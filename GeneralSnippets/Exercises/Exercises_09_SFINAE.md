@@ -4,6 +4,10 @@
 
 ---
 
+[Lösungen](Exercises_09_SFINAE.cpp)
+
+---
+
 ## Aufgabe 1: Eine Methode, mehrere Implementierungen
 
 #### Vorausetzungen: `std::array`
@@ -130,7 +134,7 @@ Realisieren und testen Sie eine entsprechende Klasse `MethodDetectorEx`.
 
 ---
 
-[Lösungen](Exercises.cpp)
+[Lösungen](Exercises_09_SFINAE.cpp)
 
 ---
 

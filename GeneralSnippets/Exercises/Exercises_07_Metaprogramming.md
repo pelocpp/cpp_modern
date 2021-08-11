@@ -4,7 +4,11 @@
 
 ---
 
-## Aufgabe 8: *Fibonacci*-Zahlen
+[Lösungen](Exercises_07_Metaprogramming.cpp)
+
+---
+
+## Aufgabe 1: *Fibonacci*-Zahlen
 
 In der Mathematik bilden die *Fibonacci*-Zahlen eine Folge,
 so dass jede Zahl die Summe der beiden vorhergehenden Zahlen ist, beginnend mit 0 und 1. 
@@ -16,7 +20,7 @@ Schreiben Sie eine Funktionsschablone `Fibonacci`, die *Fibonacci*-Zahlen zur Ü
 
 ---
 
-[Lösungen](Exercises.cpp)
+[Lösungen](Exercises_07_Metaprogramming.cpp)
 
 ---
 

@@ -4,6 +4,10 @@
 
 ---
 
+[Lösungen](Exercises_12_PerfectForwarding.cpp)
+
+---
+
 ## Aufgabe 1: Einfaches Beispiel zu variadischen Templates und *Perfect Forwarding*
 
 Schreiben Sie eine Funktion `list`, die eine variable Anzahl Parameter unterschiedlichen Typs besitzt.
@@ -109,7 +113,7 @@ und misst ihre Ausführungszeit.
 
 ---
 
-[Lösungen](Exercises.cpp)
+[Lösungen](Exercises_12_PerfectForwarding.cpp)
 
 ---
 

@@ -4,6 +4,10 @@
 
 ---
 
+[Lösungen](Exercises_06_Folding.cpp)
+
+---
+
 ## Aufgabe 1: Logische Operationen mit beliebig vielen Operanden
 
 Die Aufgabenstellung ist identisch zur letzten Aufgabe: Setzen Sie zur Lösung dieses Mal *Folding Expressions* ein.
@@ -64,7 +68,7 @@ Erklären Sie die Funktionsweise ihrer Realisierung. Welche Rolle spielt Zeile 1
 
 ---
 
-[Lösungen](Exercises.cpp)
+[Lösungen](Exercises_06_Folding.cpp)
 
 ---
 

@@ -4,6 +4,10 @@
 
 ---
 
+[Lösungen](Exercises_11_Initialization.cpp)
+
+---
+
 ## Aufgabe 1: Einheitliche Initialisierung (*Uniform Initialization*) und Initialisierungliste (`std::initializer_list<>`)
 
 #### Vorausetzungen: Templates, `std::vector<>`
@@ -63,7 +67,7 @@ welche dieser Konstruktoren auch auf andere Konstruktoren ausweichen können!
 
 ---
 
-[Lösungen](Exercises.cpp)
+[Lösungen](Exercises_11_Initialization.cpp)
 
 ---
 

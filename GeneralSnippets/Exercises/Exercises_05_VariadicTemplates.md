@@ -4,6 +4,10 @@
 
 ---
 
+[Lösungen](Exercises_05_VariadicTemplates.cpp)
+
+---
+
 ## Aufgabe 1: Logische Operationen mit beliebig vielen Operanden
 
 Schreiben Sie zwei Funktionen `andAll` und `orAll`, die eine variable Anzahl von `bool`-Parametern
@@ -190,7 +194,7 @@ void test()
 
 ---
 
-[Lösungen](Exercises.cpp)
+[Lösungen](Exercises_05_VariadicTemplates.cpp)
 
 ---
 

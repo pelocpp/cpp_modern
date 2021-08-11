@@ -4,6 +4,10 @@
 
 ---
 
+[Lösungen](Exercises_03_Algorithms.cpp)
+
+---
+
 ## Aufgabe 1: Die Funktion `std::accumulate` in der Anwendung (Initialisierungliste)
 
 #### Voraussetzungen: `std::accumulate`, `std::initializer_list`
@@ -30,7 +34,7 @@ true
 
 ---
 
-[Lösungen](Exercises.cpp)
+[Lösungen](Exercises_03_Algorithms.cpp)
 
 ---
 

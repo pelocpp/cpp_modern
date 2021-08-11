@@ -4,6 +4,10 @@
 
 ---
 
+[Lösungen](Exercises_13_FunctionalProgramming.cpp)
+
+---
+
 ## Aufgabe 1: Umwandlung von Zeichenketten eines `std::vector`-Objekts von Klein- in Großbuchstaben
 
 #### Vorausetzungen: Templates, Lambda-Funktionen
@@ -111,7 +115,7 @@ auto foldEx(InputIterator begin, InputIterator end, TFunctor&& lambda)
 
 ---
 
-[Lösungen](Exercises.cpp)
+[Lösungen](Exercises_13_FunctionalProgramming.cpp)
 
 ---
 
