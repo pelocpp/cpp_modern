@@ -11,96 +11,50 @@ namespace Exercises_Initialization {
 
     namespace Exercise_01 {
 
-#define SOLUTION 
-
-        class HugeArray {
+        template <typename T>
+        class MyContainer {
         private:
-            size_t m_len;
-            int* m_data;
+            std::vector<T> m_data;
 
         public:
-            HugeArray();        // default c'tor
-            HugeArray(size_t);  // user-defined c'tor
-            ~HugeArray();       // d'tor
+            MyContainer() = default;
 
-            // copy semantics
-            HugeArray(const HugeArray&);  // copy c'tor
-            HugeArray& operator=(const HugeArray&);  // copy assignment
+            MyContainer(const T& d1, const T& d2) {
+                std::cout << "c'tor (const T&, const T&)" << std::endl;
+                m_data.push_back(d1);
+                m_data.push_back(d2);
+            }
 
-#if defined (SOLUTION)
-        // move semantics
-            HugeArray(HugeArray&&) noexcept;  // move c'tor
-            HugeArray& operator= (HugeArray&&) noexcept; // move assignment
-#endif
+            MyContainer(std::initializer_list<T> data) : m_data(data) {
+                std::cout << "c'tor (std::initializer_list<T>)" << std::endl;
+            }
+
+            void operator()() {
+                std::cout << "  [";
+                for (auto data : m_data) {
+                    std::cout << data << ' ';
+                }
+                std::cout << ']' << std::endl;
+            }
         };
 
-        HugeArray::HugeArray() : m_len(0), m_data(nullptr) {
-            std::cout << "default c'tor" << std::endl;
-        }
-
-        HugeArray::HugeArray(size_t len) : m_len(len), m_data(new int[len]) {
-            std::cout << "c'tor (size_t):  " << len << " allocated" << std::endl;
-        }
-
-        HugeArray::~HugeArray() {
-            std::cout << "d'tor:           " << m_len << " relased" << std::endl;
-            delete[] m_data;
-        }
-
-        // copy semantics
-        HugeArray::HugeArray(const HugeArray& other) {
-            std::cout << "COPY c'tor:      " << other.m_len << " allocated" << std::endl;
-            m_len = other.m_len;
-            m_data = new int[other.m_len];
-            std::copy(other.m_data, other.m_data + m_len, m_data);
-        }
-
-        HugeArray& HugeArray::operator=(const HugeArray& other) {
-            std::cout << "COPY assignment: " << other.m_len << " assigned" << std::endl;
-            if (this != &other) {
-                delete[] m_data;
-                m_len = other.m_len;
-                m_data = new int[m_len];
-                std::copy(other.m_data, other.m_data + m_len, m_data);
-            }
-            return *this;
-        }
-
-#if defined (SOLUTION)
-        // move semantics
-        HugeArray::HugeArray(HugeArray&& other) noexcept {  // move c'tor
-            std::cout << "MOVE c'tor:      " << other.m_len << " allocated" << std::endl;
-            m_data = other.m_data;   // shallow copy
-            m_len = other.m_len;
-            other.m_data = nullptr;  // reset source object, ownership has been moved
-            other.m_len = 0;
-        }
-
-        HugeArray& HugeArray::operator= (HugeArray&& other) noexcept { // move-assignment
-            std::cout << "MOVE assignment: " << other.m_len << " assigned" << std::endl;
-            if (this != &other) {
-                delete[] m_data;         // release left side
-                m_data = other.m_data;   // shallow copy
-                m_len = other.m_len;
-                other.m_data = nullptr;  // reset source object, ownership has been moved
-                other.m_len = 0;
-            }
-            return *this;
-        }
-#endif
-
         void testExercise_01() {
-            std::cout << "Start:" << std::endl;
-            auto start = std::chrono::high_resolution_clock::now();
-            std::vector<HugeArray> myVec;
-            HugeArray bArray(10000000);
-            HugeArray bArray2(bArray);
-            myVec.push_back(bArray);   // <== std::move
-            bArray = HugeArray(20000000);
-            myVec.push_back(HugeArray(30000000));  // <== emplace_back (30000000)
-            auto end = std::chrono::high_resolution_clock::now();
-            auto diff = std::chrono::duration_cast<std::chrono::milliseconds> (end - start);
-            std::cout << "Done [" << diff.count() << " msecs]" << std::endl;
+            // using MyContainer with int
+            MyContainer<int> container1{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            container1();
+
+            // using MyContainer with std::string
+            MyContainer<std::string> container2{ "range", "-", "based", "for", "loop" };
+            container2();
+
+            MyContainer<int> container3;
+            container3();
+            MyContainer<int> container4{};
+            container4();
+            MyContainer<int> container5(1, 2);
+            container5();
+            MyContainer<int> container6{ 1, 2 };
+            container6();
         }
     }
 }

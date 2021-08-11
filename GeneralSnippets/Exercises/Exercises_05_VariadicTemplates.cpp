@@ -348,7 +348,7 @@ namespace Exercises_VariadicTemplates {
     }
 }
 
-void main_exercices()
+void test_exercices_variadic_templates()
 {
     using namespace Exercises_VariadicTemplates;
     Exercise_01::testExercise_01();

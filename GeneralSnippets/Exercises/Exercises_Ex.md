@@ -13,35 +13,33 @@ Auch das Studium eines [Lösungsvorschlags](Exercises.cpp) kann hilfreich sein, 
 
 ---
 
+  * ### [Move-Semantik](#Aufgaben-zur-Move-Semantik)
 
+  * ### [Lambda Funktionen](#Aufgaben-zu-Lambda-Funktionen)
 
-  * ### [Move-Semantik](#section_crtp)
+  * ### [Initialisierung](#Aufgaben-zur-Initialisierung)
 
-  * ### [Lambda Funktionen](#Lambda-Funktionen)
+  * ### [STL-Algorithmen](#Aufgaben-zu-STL-Algorithmen)
 
-  * ### [Initialisierung](#Initialisierung)
-
-  * ### [STL-Algorithmen](#STL-Algorithmen)
-
-  * ### [Variadische Templates](#Variadische-Templates)
+  * ### [Variadische Templates](#Aufgaben-zu-variadischen-Templates)
     
-  * ### [Folding](#Folding)
+  * ### [Folding](#Aufgaben-zu-Folding)
     
-  * ### [Utility Klassen](#Utility-Klassen)
+  * ### [Utility Klassen](#Aufgaben-zu-Utility-Klassen)
     
-  * ### [Metaprogrammierung](#Metaprogrammierung)
+  * ### [Metaprogrammierung](#Aufgaben-zur-Metaprogrammierung)
     
-  * ### [*Perfect Forwarding*](#Perfect-Forwarding)
+  * ### [*Perfect Forwarding*](#Aufgaben-zu-Perfect-Forwarding)
     
-  * ### [Funktionale Programmierung](#Funktionale-Programmierung)
+  * ### [Funktionale Programmierung](#Aufgaben-zur-funktionalen-Programmierung)
     
-  * ### [SFINAE](#SFINAE)
+  * ### [SFINAE](#Aufgaben-zu-SFINAE)
     
-  * ### [CRTP](#CRTP)
+  * ### [CRTP](#Aufgaben-zu-CRTP)
     
 ---
 
-### Move-Semantik
+### Aufgaben zur Move-Semantik
 
 | Aufgabe | Beschreibung |
 | :- | :- |
@@ -51,7 +49,7 @@ Auch das Studium eines [Lösungsvorschlags](Exercises.cpp) kann hilfreich sein, 
 
 ---
 
-### Lambda-Funktionen
+### Aufgaben zu Lambda-Funktionen
 
 | Aufgabe | Beschreibung |
 | :- | :- |
@@ -63,7 +61,7 @@ Auch das Studium eines [Lösungsvorschlags](Exercises.cpp) kann hilfreich sein, 
 
 ---
 
-### Initialisierung
+### Aufgaben zur Initialisierung
 
 | Aufgabe | Beschreibung |
 | :- | :- |
@@ -73,7 +71,7 @@ Auch das Studium eines [Lösungsvorschlags](Exercises.cpp) kann hilfreich sein, 
 
 ---
 
-### STL-Algorithmen
+### Aufgaben zu STL-Algorithmen
 
 | Aufgabe | Beschreibung |
 | :- | :- |
@@ -83,10 +81,7 @@ Auch das Studium eines [Lösungsvorschlags](Exercises.cpp) kann hilfreich sein, 
 
 ---
 
-
-std::is_same
-
-### Variadische Templates
+### Aufgaben zu variadischen Templates
 
 | Aufgabe | Beschreibung |
 | :- | :- |
@@ -101,7 +96,7 @@ std::is_same
 
 ---
 
-### Folding
+### Aufgaben zu Folding
 
 | Aufgabe | Beschreibung |
 | :- | :- |
@@ -113,7 +108,7 @@ std::is_same
 
 ---
 
-### Utility Klassen
+### Aufgaben zu Utility Klassen
 
 | Aufgabe | Beschreibung |
 | :- | :- |
@@ -124,7 +119,7 @@ std::is_same
 
 ---
 
-### Metaprogrammierung
+### Aufgaben zur Metaprogrammierung
 
 | Aufgabe | Beschreibung |
 | :- | :- |
@@ -134,7 +129,7 @@ std::is_same
 
 ---
 
-### *Perfect Forwarding*
+### Aufgaben zu *Perfect Forwarding*
 
 | Aufgabe | Beschreibung |
 | :- | :- |
@@ -145,7 +140,7 @@ std::is_same
 
 ---
 
-### Funktionale Programmierung
+### Aufgaben zur funktionalen Programmierung
 
 | Aufgabe | Beschreibung |
 | :- | :- |
@@ -156,7 +151,7 @@ std::is_same
 
 ---
 
-### SFINAE
+### Aufgaben zu SFINAE
 
 | Aufgabe | Beschreibung |
 | :- | :- |
@@ -169,7 +164,7 @@ std::is_same
 
 
 
-### CRTP{#section_crtp}
+### Aufgaben zu CRTP
 
 | Aufgabe | Beschreibung |
 | :- | :- |
@@ -190,8 +185,3 @@ std::is_same
 [Zurück](../../Readme.md)
 
 ---
-
-<!-- Links Definitions -->
-
-[Listing 1]: #section_crtp
-[Listing 2]: #listing_02_josephus_interface

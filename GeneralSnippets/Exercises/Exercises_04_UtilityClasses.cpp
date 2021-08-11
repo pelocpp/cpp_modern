@@ -285,7 +285,7 @@ namespace Exercises_UtilityClasses {
     }
 }
 
-void main_exercices()
+void test_exercices_utility_classes()
 {
     using namespace Exercises_UtilityClasses;
     Exercise_01::testExercise_01();
