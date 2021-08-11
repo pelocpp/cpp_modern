@@ -13,6 +13,8 @@ Auch das Studium eines [Lösungsvorschlags](Exercises.cpp) kann hilfreich sein, 
 
 ---
 
+
+
   * ### [Move-Semantik](#section_crtp)
 
   * ### [Lambda Funktionen](#Lambda-Funktionen)
@@ -164,6 +166,8 @@ std::is_same
 *Tabelle* 11: Aufgaben zu SFINAE.
 
 ---
+
+
 
 ### CRTP{#section_crtp}
 
