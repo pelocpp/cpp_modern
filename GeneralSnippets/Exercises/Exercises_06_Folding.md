@@ -10,7 +10,7 @@ Die Aufgabenstellung ist identisch zur letzten Aufgabe: Setzen Sie zur Lösung d
 
 ## Aufgabe 2: Folding Expressions, `decltype` und Type-Traits am Beispiel von `sameType`
 
-#### Vorausetzungen: Templates
+#### Vorausetzungen: `std::is_same`
 
 Die Aufgabenstellung ist identisch zur letzten Aufgabe (ohne Zusatzaufgabe):
 Setzen Sie zur Lösung dieses Mal *Folding Expressions* ein.

@@ -53,7 +53,7 @@ Wie müssen Sie Ihre Realisierung ändern, so dass die Ausgabe von `list` im let
 
 ## Aufgabe 2: Ausführungszeit einer Funktion
 
-#### Voraussetzungen: `std::invoke`, variadische Templates und *Perfect Forwarding*
+#### Voraussetzungen: `std::invoke`, variadische Templates
 
 Schreiben Sie eine Funktion, die die Ausführungszeit einer weiteren Funktion messen kann.
 Diese Funktion soll dabei eine beliebige Anzahl von Formalparametern haben können.

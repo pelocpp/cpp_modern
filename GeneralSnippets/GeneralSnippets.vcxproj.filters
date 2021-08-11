@@ -539,7 +539,7 @@
     <None Include="Exercises\Exercises_10_CRTP.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="Exercises\Exercises_11_StdInitializerList.md">
+    <None Include="Exercises\Exercises_11_Initialization.md">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Exercises\Exercises_12_PerfectForwarding.md">

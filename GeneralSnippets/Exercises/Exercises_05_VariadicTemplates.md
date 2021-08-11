@@ -32,6 +32,8 @@ true
 
 ## Aufgabe 2: Variadische Templates, `decltype` und Type-Traits am Beispiel von `sameType`
 
+#### Vorausetzungen: `std::is_same`
+
 Schreiben Sie eine Funktionsschablone `sameType`, die eine beliebige Anzahl von Argumenten
 beliebigen Typs akzeptiert. Der Rückgabewert vom Typ `bool` ist `true`, wenn alle Argumente vom selben Typ
 sind, andernfalls `false`.
