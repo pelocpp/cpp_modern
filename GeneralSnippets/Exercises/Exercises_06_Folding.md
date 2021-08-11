@@ -72,6 +72,3 @@ Erklären Sie die Funktionsweise ihrer Realisierung. Welche Rolle spielt Zeile 1
 
 ---
 
-[Zurück](Exercises_Ex.md)
-
----

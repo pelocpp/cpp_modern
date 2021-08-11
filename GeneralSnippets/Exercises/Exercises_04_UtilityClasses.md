@@ -119,7 +119,3 @@ gekapselten `std::vector<std::variant<...>`-Objekts zurück.
 [An den Anfang](#Aufgaben-zu-Utility-Klassen)
 
 ---
-
-[Zurück](Exercises_Ex.md)
-
----

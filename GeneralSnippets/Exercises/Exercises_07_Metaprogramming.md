@@ -23,7 +23,3 @@ Schreiben Sie eine Funktionsschablone `Fibonacci`, die *Fibonacci*-Zahlen zur Ü
 [An den Anfang](#Aufgaben-zur-Metaprogrammierung)
 
 ---
-
-[Zurück](Exercises_Ex.md)
-
----

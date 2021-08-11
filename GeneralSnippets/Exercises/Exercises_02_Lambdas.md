@@ -199,7 +199,3 @@ void test_04()
 [An den Anfang](#Aufgaben-zu-Lambda-Funktionen)
 
 ---
-
-[Zurück](Exercises_Ex.md)
-
----

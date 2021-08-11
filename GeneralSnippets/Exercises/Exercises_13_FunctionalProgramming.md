@@ -118,7 +118,3 @@ auto foldEx(InputIterator begin, InputIterator end, TFunctor&& lambda)
 [An den Anfang](#Aufgaben-zur-funktionalen-Programmierung)
 
 ---
-
-[Zurück](Exercises_Ex.md)
-
----

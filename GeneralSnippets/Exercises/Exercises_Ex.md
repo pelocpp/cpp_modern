@@ -13,29 +13,29 @@ Auch das Studium eines [Lösungsvorschlags](Exercises.cpp) kann hilfreich sein, 
 
 ---
 
-  * #### [Move-Semantik](#Move-Semantik)
+  * ### [Move-Semantik](#section_crtp)
 
-  * #### [Lambda Funktionen](#Lambda-Funktionen)
+  * ### [Lambda Funktionen](#Lambda-Funktionen)
 
-  * #### [Initialisierung](#Initialisierung)
+  * ### [Initialisierung](#Initialisierung)
 
-  * #### [STL-Algorithmen](#STL-Algorithmen)
+  * ### [STL-Algorithmen](#STL-Algorithmen)
 
-  * #### [Variadische Templates](#Variadische-Templates)
+  * ### [Variadische Templates](#Variadische-Templates)
     
-  * #### [Folding](#Folding)
+  * ### [Folding](#Folding)
     
-  * #### [Utility Klassen](#Utility-Klassen)
+  * ### [Utility Klassen](#Utility-Klassen)
     
-  * #### [Metaprogrammierung](#Metaprogrammierung)
+  * ### [Metaprogrammierung](#Metaprogrammierung)
     
-  * #### [*Perfect Forwarding*](#Perfect-Forwarding)
+  * ### [*Perfect Forwarding*](#Perfect-Forwarding)
     
-  * #### [Funktionale Programmierung](#Funktionale-Programmierung)
+  * ### [Funktionale Programmierung](#Funktionale-Programmierung)
     
-  * #### [SFINAE](#SFINAE)
+  * ### [SFINAE](#SFINAE)
     
-  * #### [CRTP](#CRTP)
+  * ### [CRTP](#CRTP)
     
 ---
 
@@ -165,7 +165,7 @@ std::is_same
 
 ---
 
-### CRTP
+### CRTP{#section_crtp}
 
 | Aufgabe | Beschreibung |
 | :- | :- |
@@ -186,3 +186,8 @@ std::is_same
 [Zurück](../../Readme.md)
 
 ---
+
+<!-- Links Definitions -->
+
+[Listing 1]: #section_crtp
+[Listing 2]: #listing_02_josephus_interface

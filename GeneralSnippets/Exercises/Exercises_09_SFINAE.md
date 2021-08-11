@@ -137,7 +137,3 @@ Realisieren und testen Sie eine entsprechende Klasse `MethodDetectorEx`.
 [An den Anfang](#Aufgaben-zu-SFINAE)
 
 ---
-
-[Zurück](Exercises_Ex.md)
-
----

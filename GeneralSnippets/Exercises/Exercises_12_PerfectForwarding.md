@@ -116,7 +116,3 @@ und misst ihre Ausführungszeit.
 [An den Anfang](#Aufgaben-zum-Perfect-Forwarding)
 
 ---
-
-[Zurück](Exercises_Ex.md)
-
----

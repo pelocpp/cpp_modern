@@ -95,7 +95,3 @@ void testExercise() {
 [An den Anfang](#Aufgaben-zur-Move-Semantik)
 
 ---
-
-[Zurück](Exercises_Ex.md)
-
----

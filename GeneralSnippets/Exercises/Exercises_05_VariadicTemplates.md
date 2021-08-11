@@ -197,7 +197,3 @@ void test()
 [An den Anfang](#Aufgaben-zu-variadischen-Templates)
 
 ---
-
-[Zurück](Exercises_Ex.md)
-
----

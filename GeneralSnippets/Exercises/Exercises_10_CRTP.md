@@ -167,7 +167,3 @@ Time taken: 402634 microseconds
 [An den Anfang](#Aufgaben-zu-CRTP)
 
 ---
-
-[Zurück](Exercises_Ex.md)
-
----

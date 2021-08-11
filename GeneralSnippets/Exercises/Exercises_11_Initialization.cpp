@@ -7,7 +7,7 @@
 #include <vector>
 #include <chrono>
 
-namespace Exercises_MoveSemantics {
+namespace Exercises_Initialization {
 
     namespace Exercise_01 {
 
@@ -107,7 +107,7 @@ namespace Exercises_MoveSemantics {
 
 void test_exercices_move_semantics()
 {
-    using namespace Exercises_MoveSemantics;
+    using namespace Exercises_Initialization;
     Exercise_01::testExercise_01();
 }
 

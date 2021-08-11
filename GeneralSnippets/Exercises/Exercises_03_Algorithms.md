@@ -37,7 +37,3 @@ true
 [An den Anfang](#Aufgaben-zu-STL-Algorithmen)
 
 ---
-
-[Zurück](Exercises_Ex.md)
-
----

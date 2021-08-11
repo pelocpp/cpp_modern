@@ -70,7 +70,3 @@ welche dieser Konstruktoren auch auf andere Konstruktoren ausweichen können!
 [An den Anfang](#Aufgaben-zur-Initialisierung)
 
 ---
-
-[Zurück](Exercises_Ex.md)
-
----
