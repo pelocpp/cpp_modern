@@ -44,7 +44,7 @@ constexpr size_t nine = Binary<1001>::value;
 rekursiv implementiert ist! Nun ist es kein weiter Weg mehr, diese C-Funktion in ein C++-Klassentemplate umzuwandeln!
 
 *Zusatzaufgabe*: In einer einfachen Realisierung werden Sie vermutlich keine Betrachtung von Fehlern
-vorgenommen haben. Wie kann man &ndash; auf sehr einfache Weise &ndash; erreichen,  
+vorgenommen haben. Wie kann man &ndash; auf sehr einfache Weise &ndash; erreichen,
 dass `Binary`-Instanziierungen der Gestalt
 
 ```
