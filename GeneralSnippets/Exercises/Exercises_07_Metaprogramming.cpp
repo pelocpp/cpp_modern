@@ -74,6 +74,8 @@ namespace Exercises_Metaprogramming {
             constexpr size_t seven = Binary<111>::value;
             constexpr size_t nine = Binary<1001>::value;
             constexpr size_t big = Binary<1000'0010'0011'0101>::value;
+            //constexpr size_t wrong1 = Binary<2>::value;
+            //constexpr size_t wrong2 = Binary<12345>::value;
             
             std::cout << one << std::endl;
             std::cout << three << std::endl;
@@ -91,6 +93,8 @@ namespace Exercises_Metaprogramming {
             constexpr size_t seven = BinaryEx<111>::value;
             constexpr size_t nine = BinaryEx<1001>::value;
             constexpr size_t big = BinaryEx<1000'0010'0011'0101>::value;
+            //constexpr size_t wrong1 = BinaryEx<2>::value;
+            //constexpr size_t wrong2 = BinaryEx<12345>::value;
 
             std::cout << one << std::endl;
             std::cout << three << std::endl;
@@ -101,8 +105,8 @@ namespace Exercises_Metaprogramming {
         }
 
         void testExercise_01() {
-            //testExercise_01a();
-            //testExercise_01b();
+            testExercise_01a();
+            testExercise_01b();
             testExercise_01c();
         }
     }

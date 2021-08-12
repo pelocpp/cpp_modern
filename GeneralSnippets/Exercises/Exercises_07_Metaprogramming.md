@@ -28,6 +28,7 @@ constexpr size_t three = Binary<11>::value;
 constexpr size_t five = Binary<101>::value;
 constexpr size_t seven = Binary<111>::value;
 constexpr size_t nine = Binary<1001>::value;
+constexpr size_t big = Binary<1000'0010'0011'0101>::value;
 ```
 
 *Ausgabe*:
@@ -38,6 +39,7 @@ constexpr size_t nine = Binary<1001>::value;
 5
 7
 9
+33333
 ```
 
 *Hinweis*: Erstellen Sie zunächst eine reguläre C-Funktion, die die gewünschte Umwandlung durchführt und
