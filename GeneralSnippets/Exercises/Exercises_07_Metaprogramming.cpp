@@ -25,6 +25,7 @@ namespace Exercises_Metaprogramming {
         template <size_t N>
         struct Binary
         {
+            static_assert((N % 10) == 0 || (N % 10) == 1);
             static constexpr size_t value = Binary<N / 10>::value << 1 | N % 10;
         };
 
@@ -39,6 +40,7 @@ namespace Exercises_Metaprogramming {
         template <size_t N>
         struct BinaryEx
         {
+            static_assert((N % 10) == 0 || (N % 10) == 1);
             static constexpr size_t value = N % 10 + 2 * BinaryEx<N / 10>::value;
         };
 
@@ -99,8 +101,8 @@ namespace Exercises_Metaprogramming {
         }
 
         void testExercise_01() {
-            testExercise_01a();
-            testExercise_01b();
+            //testExercise_01a();
+            //testExercise_01b();
             testExercise_01c();
         }
     }
@@ -152,7 +154,7 @@ void main_exercices_metaprogramming()
 {
     using namespace Exercises_Metaprogramming;
     Exercise_01::testExercise_01();
-    Exercise_02::testExercise_02();
+   // Exercise_02::testExercise_02();
 }
 
 // =====================================================================================

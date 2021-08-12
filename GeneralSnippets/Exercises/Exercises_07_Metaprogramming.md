@@ -8,14 +8,14 @@
 
 ---
 
-## Aufgabe 1: Konvertierung binärer Zahlen in natürliche Zahlen.
+## Aufgabe 1: Konvertierung binärer Zahlen in Dezimalzahlen.
 
 Das Binärsystem, auch Dual- oder Zweiersystem genannt, ist ein Zahlensystem, das nur zwei verschiedene
-Ziffern &ndash; in der Regel 0 und 1 &ndash; zur Darstellung von Zahlen benutzt. Die Ziffernfolge 1101 zum
+Ziffern &ndash; in der Regel `0` und `1` &ndash; zur Darstellung von Zahlen kennt. Die Ziffernfolge `1101` zum
 Beispiel stellt nicht wie im Dezimalsystem die Tausendeinhunderteins dar, sondern die Dreizehn, denn
 im Binärsystem berechnet sich der Wert durch
 
-1101<sub>2</sub> = 1 &times; 2<sup>3</sup> + 1 &times; 2<sup>2</sup> + 0 &times; 2<sup>1</sup> + 1 &times; 2<sup>0</sup> = 13<sub>10</sub>
+1101<sub>2</sub> = 1 &times; 2<sup>3</sup> + 1 &times; 2<sup>2</sup> + 0 &times; 2<sup>1</sup> + 1 &times; 2<sup>0</sup> = 13<sub>10</sub>.
 
 Schreiben Sie eine Funktionsschablone `Binary`, die den Wert einer ganzen Zahl in Binärdarstellung in
 das Dezimalsystem konvertiert.
@@ -41,7 +41,18 @@ constexpr size_t nine = Binary<1001>::value;
 ```
 
 *Hinweis*: Erstellen Sie zunächst eine reguläre C-Funktion, die die gewünschte Umwandlung durchführt und
-rekursiv implementiert ist! Nun ist ein einfaches, diese C-Funktion in ein C++-Klassentemplate umzuwandeln!
+rekursiv implementiert ist! Nun ist es kein weiter Weg mehr, diese C-Funktion in ein C++-Klassentemplate umzuwandeln!
+
+*Zusatzaufgabe*: In einer einfachen Realisierung werden Sie vermutlich keine Betrachtung von Fehlern
+vorgenommen haben. Wie kann man &ndash; auf sehr einfache Weise &ndash; erreichen,  
+dass `Binary`-Instanziierungen der Gestalt
+
+```
+constexpr size_t wrong1 = Binary<2>::value;
+constexpr size_t wrong2 = Binary<12345>::value;
+```
+
+vom Übersetzer abgewiesen werden?
 
 ---
 

@@ -125,7 +125,7 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 
 | Aufgabe | Beschreibung |
 | :- | :- |
-| [Aufgabe 1](Exercises_07_Metaprogramming.md) | Konvertierung binärer Zahlen in das Dezimalsystem |
+| [Aufgabe 1](Exercises_07_Metaprogramming.md) | Konvertierung binärer Zahlen in Dezimalzahlen |
 | [Aufgabe 2](Exercises_07_Metaprogramming.md) | *Fibonacci*-Zahlen |
 
 *Tabelle* 8: Aufgaben zur Metaprogrammierung.
