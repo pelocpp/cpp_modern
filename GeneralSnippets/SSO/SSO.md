@@ -8,7 +8,7 @@
 
 ---
 
-In vielen C++ -Implementierungen werden Objekte der STL-String-Klasse `std::string`
+In vielen C++ -Implementierungen werden Objekte der STL-Klasse `std::string`
 durch eine interessante Optimierung unterstützt: Die *Small String Optimization* (*SSO*).
 Dies bedeutet, dass kurze Zeichenketten eine besondere Behandlung erfahren:
 Es gibt einen Unterschied, wie Zeichenketten wie `"ABC"`, `"Jack"` oder eben `"Modern C++ has a lot of some awesome features that every developer should know"`
@@ -21,12 +21,13 @@ der gerade bei sehr kurzen Zeichenketten nicht unbedingt sein muss.
 
 In vielen C++Implementierungen reserviert eine Anforderung für sehr kurze Zeichenketten einen kleinen kleinen Pufferbereich,
 der im `std::string`-Objekt eingebettet ist.
-Ist eine Zeichenkette kurz genug, kommt es dann zur *Small String Optimization* (SSO): Die Zeichenkette wird in diesem Puffer aufbewahrt,
+Ist eine Zeichenkette kurz genug, kommt es dann zur *Small String Optimization* (SSO):
+Die Zeichenkette wird in diesem Puffer aufbewahrt,
 ohne eine dynamische Speicheranforderung auszulösen. 
 
 Damit stehen wir vor der Frage, wie &ldquo;kurz&rdquo; müssen Zeichenketten sine, um die SSO auszulösen?
 Batrachten Sie dazu das folgende Code-Fragment: Die Methode `capacity` eines leeren `std::string`-Objekts gibt an,
-wie groß der in einem `std::string`-Objekt interne Datenbereich ist,
+wie groß der in einem `std::string`-Objekt vorhandene interne Datenbereich ist,
 um die Zeichenkette aufzunehmen und damit die Heap-Anforderung zu umgehen:
 
 ```cpp
