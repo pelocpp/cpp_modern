@@ -11,9 +11,9 @@
 ## Aufgabe 1: Verschiebe-Semantik am Beispiel einer benutzerdefinierten Klasse
 
 Die Verschiebe-Semantik erfordert für Klassen, die sie unterstützen wollen,
-eine Implementiering des *Move*-Konstruktors (Verschiebe-Konstruktors) und der *Move*-Wertzuweisung (Verschiebe-Wertzuweisung).
+eine Implementiering des *Move*-Konstruktors (Verschiebe-Konstruktor) und der *Move*-Wertzuweisung (Verschiebe-Wertzuweisung).
 Standard-Klassen aus der STL bringen diese beiden Methoden bereits mit
-und damit die Fähigkeit des so genannten *Verschiebens*.
+und damit eben die Fähigkeit des *Verschiebens*.
 Wir wollen diese Eigenschaft an einem Beispiel näher unter die Lupe nehmen.
 Bringen Sie dazu das folgende Beispiel zum Laufen:
 

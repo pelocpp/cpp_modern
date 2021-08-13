@@ -156,7 +156,7 @@ void test_exercises_move_semantics()
 {
     using namespace Exercises_MoveSemantics;
     Exercise_01::testExercise_01();
-    //Exercise_02::testExercise_02();
+    Exercise_02::testExercise_02();
 }
 
 // =====================================================================================

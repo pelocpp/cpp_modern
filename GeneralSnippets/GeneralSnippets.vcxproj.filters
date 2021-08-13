@@ -174,7 +174,7 @@
     <ClCompile Include="CommonType\CommonType.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Exercises\Exercises.cpp">
+    <ClCompile Include="Exercises\Exercises_Legacy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="VariadicTemplates_Systematic\VariadicTemplate_XX_MoreExamples.cpp">
@@ -267,7 +267,7 @@
     <ClCompile Include="Exercises\Exercises_02_Lambdas.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Exercises\Exercises_Ex.cpp">
+    <ClCompile Include="Exercises\Exercises.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Exercises\Exercises_11_Initialization.cpp">
@@ -461,7 +461,7 @@
     <None Include="CommonType\CommonType.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="Exercises\Exercises.md">
+    <None Include="Exercises\Exercises_Legacy.md">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="MoveSemantics\MoveSemantics.md">
@@ -542,7 +542,7 @@
     <None Include="Exercises\Exercises_02_Lambdas.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="Exercises\Exercises_Ex.md">
+    <None Include="Exercises\Exercises.md">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Exercises\Exercises_03_Algorithms.md">
