@@ -8,27 +8,26 @@
 
 ---
 
-In vielen C++Implementierungen werden Objekte der STL-String-Klasse `std::string`
+In vielen C++ -Implementierungen werden Objekte der STL-String-Klasse `std::string`
 durch eine interessante Optimierung unterstützt: Die *Small String Optimization* (*SSO*).
-
-Dies bedeutet, dass kurze Zeichenketten eine besondere Behandlung erfahren.
-In anderen Worten, es gibt einen Unterschied, wie Zeichenketten wie "ABC", "Jack" oder "Modern C++ has a lot of some awesome features that every developer should know"
+Dies bedeutet, dass kurze Zeichenketten eine besondere Behandlung erfahren:
+Es gibt einen Unterschied, wie Zeichenketten wie `"ABC"`, `"Jack"` oder eben `"Modern C++ has a lot of some awesome features that every developer should know"`
 in einem `std::string-Objekt` gespeichert werden.
 
 Im Allgemeinen weist eine typische String-Klasse den Speicherplatz für den Text des Strings dynamisch aus dem Heap zu,
 indem der `new`-Operator verwendet wird.
-Die Quintessenz ist, dass die dynamische Speicherzuweisung mit new[] immer einen gewissen Overhead mit sich bringt,
+Die Quintessenz ist, dass die dynamische Speicherzuweisung mit `new` immer einen gewissen Overhead mit sich bringt,
 der gerade bei sehr kurzen Zeichenketten nicht unbedingt sein muss.
 
 In vielen C++Implementierungen reserviert eine Anforderung für sehr kurze Zeichenketten einen kleinen kleinen Pufferbereich,
 der im `std::string`-Objekt eingebettet ist.
-Ist eine Zeichenkette kurz genug, kommt es zur *Small String Optimization* (SSO): Die Zeichenkette wird in diesem Puffer aufbewahrt,
+Ist eine Zeichenkette kurz genug, kommt es dann zur *Small String Optimization* (SSO): Die Zeichenkette wird in diesem Puffer aufbewahrt,
 ohne eine dynamische Speicheranforderung auszulösen. 
 
-Damit stehen wir vor der Frage, wie "kurz" müssen Zeichenketten sind, um die SSO auszulösen?
+Damit stehen wir vor der Frage, wie &ldquo;kurz&rdquo; müssen Zeichenketten sine, um die SSO auszulösen?
 Batrachten Sie dazu das folgende Code-Fragment: Die Methode `capacity` eines leeren `std::string`-Objekts gibt an,
 wie groß der in einem `std::string`-Objekt interne Datenbereich ist,
-um die Zeichenkette aufzunehmen und damit die Heap-Anforderung umgangen wird:
+um die Zeichenkette aufzunehmen und damit die Heap-Anforderung zu umgehen:
 
 ```cpp
 auto size = sizeof(std::string);

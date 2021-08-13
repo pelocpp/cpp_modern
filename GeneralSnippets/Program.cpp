@@ -147,7 +147,7 @@ int main()
         //main_sfinae();
         //main_sfinae_02();
         //main_shared_ptr();
-        main_sso();
+        //main_sso();
         //main_standard_library_STL();
         //main_static_assert();
         //main_string_view();
