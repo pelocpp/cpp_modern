@@ -1,6 +1,6 @@
 # Aufgaben zur funktionalen Programmierung
 
-[Zurück](Exercises_Ex.md)
+[Zurück](Exercises.md)
 
 ---
 

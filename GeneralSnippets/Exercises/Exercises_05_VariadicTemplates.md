@@ -1,6 +1,6 @@
 # Aufgaben zu variadischen Templates
 
-[Zurück](Exercises_Ex.md)
+[Zurück](Exercises.md)
 
 ---
 

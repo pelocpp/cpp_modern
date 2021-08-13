@@ -1,6 +1,6 @@
 # Aufgaben zur Move-Semantik
 
-[Zurück](Exercises_Ex.md)
+[Zurück](Exercises.md)
 
 ---
 
@@ -79,7 +79,7 @@ Demonstrieren Sie diese Aussage, indem Sie die Klasse `Person` geeignet um eine 
 
 ---
 
-[An den Anfang](#aufgaben)
+[An den Anfang](#Aufgaben-zur-Move-Semantik)
 
 ---
 

@@ -1,6 +1,6 @@
 # Aufgaben zu Lambda-Funktionen
 
-[Zurück](Exercises_Ex.md)
+[Zurück](Exercises.md)
 
 ---
 
@@ -43,7 +43,7 @@ bestimmt werden.
 
 ---
 
-[An den Anfang](#aufgaben)
+[An den Anfang](#Aufgaben-zu-Lambda-Funktionen)
 
 ---
 
@@ -102,7 +102,7 @@ Result: 1.5 + 1.5 = 4.2.
 
 ---
 
-[An den Anfang](#aufgaben)
+[An den Anfang](#Aufgaben-zu-Lambda-Funktionen)
 
 ---
 

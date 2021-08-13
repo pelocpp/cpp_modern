@@ -1,6 +1,6 @@
 # Aufgaben zur Metaprogrammierung
 
-[Zurück](Exercises_Ex.md)
+[Zurück](Exercises.md)
 
 ---
 

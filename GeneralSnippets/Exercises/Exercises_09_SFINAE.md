@@ -1,6 +1,6 @@
 # Aufgaben zu SFINAE
 
-[Zurück](Exercises_Ex.md)
+[Zurück](Exercises.md)
 
 ---
 
@@ -21,7 +21,7 @@ das Iterator-Objekt `begin`.
 
 ---
 
-[An den Anfang](#aufgaben)
+[An den Anfang](#Aufgaben-zu-SFINAE)
 
 ---
 

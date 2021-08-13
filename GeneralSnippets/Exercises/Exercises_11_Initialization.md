@@ -1,6 +1,6 @@
 # Aufgaben zur Initialisierung
 
-[Zurück](Exercises_Ex.md)
+[Zurück](Exercises.md)
 
 ---
 

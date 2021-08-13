@@ -1,6 +1,6 @@
 # Aufgaben zum *Perfect Forwarding*
 
-[Zurück](Exercises_Ex.md)
+[Zurück](Exercises.md)
 
 ---
 
@@ -51,7 +51,7 @@ Wie müssen Sie Ihre Realisierung ändern, so dass die Ausgabe von `list` im let
 
 ---
 
-[An den Anfang](#aufgaben)
+[An den Anfang](#Aufgaben-zum-Perfect-Forwarding)
 
 ---
 
