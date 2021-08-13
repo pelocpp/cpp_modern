@@ -185,10 +185,6 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 
 ---
 
-[Lösungen](Exercises.cpp)
-
----
-
 [An den Anfang](#aufgaben)
 
 ---

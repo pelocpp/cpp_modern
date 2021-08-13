@@ -303,6 +303,9 @@
     <ClCompile Include="Exercises\Exercises_03_Algorithms.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SSO\SSO.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -576,6 +579,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Exercises\Exercises_13_FunctionalProgramming.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="SSO\SSO.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

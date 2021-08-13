@@ -100,6 +100,7 @@ In der folgenden Tabelle sind alle Neuerungen von C++ 11/14/17 aufgeführt:
 | [RValueLValue](GeneralSnippets/RValueLValue/RValueLValue.md) | LValue- und RValue Referenzen |
 | [SFINAE_EnableIf](GeneralSnippets/SFINAE_EnableIf/Sfinae.md) | SFINAE und `std::enable_if` |
 | [SharedPointer](GeneralSnippets/SharedPtr/SharedPtr.md) | Klasse `std::shared_ptr<T>` |
+| [SSO](GeneralSnippets/SSO/SSO.md) | *Small String Optimization* |
 | [StandardLibrarySTL](GeneralSnippets/StandardLibrarySTL/StandardLibrarySTL.md) | Die C++ Standard Template Library (STL): Ergänzungen |
 | [StaticAssert](GeneralSnippets/StaticAssert/StaticAssertion.md) | Compile-Time Makro `static_assert` |
 | [StringView](GeneralSnippets/StringView/StdStringView.md) | Klasse `std::string_view` |

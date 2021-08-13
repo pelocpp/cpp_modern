@@ -6,7 +6,7 @@
 
 ## C++
 
-  * Marc Gregoire, "Professional C++ (4th Edition)".</br>
+  * Marc Gregoire, &ldquo;*Professional C++ (4th Edition)*&rdquo;.</br>
     Wrox Press (17. April 2018), 1184 Seiten. Sprache: Englisch. ISBN-13: 978-1119421306, ISBN-10: 1119421306.
 
     Für mich das derzeit beste C++ -Buch am Markt. Zugegeben, sehr umfangreich, aber dafür versteht es der Autor,
@@ -15,7 +15,7 @@
 
 ---
 
-  * Torsten T. Will, "C++: Das umfassende Handbuch zu Modern C++ - aktuell zu C++17".</br> 
+  * Torsten T. Will, &ldquo;*C++: Das umfassende Handbuch zu Modern C++ - aktuell zu C++17*&rdquo;.</br> 
     Rheinwerk Computing (27. Dezember 2017), 1067 Seiten. Sprache: Deutsch. ISBN-10: 3836243601, ISBN-13: 978-3836243605.
 
     Ein sehr gutes Buch für Leser, die deutschsprachige Bücher bevorzugen. Viele Beispiele, gute Erklärungen.
@@ -26,22 +26,27 @@
 
 ---
 
-  * Bancila, Marius, "Modern C++ Programming Cookbook".</br> 
+  * Bancila, Marius, &ldquo;*Modern C++ Programming Cookbook*&rdquo;.</br> 
     Packt Publishing (11. September 2020, 2. Auflage), 750 Seiten. Sprache: Englisch. ISBN-10: 1800208987, ISBN-13: 978-1800208988.
 
 ---
 
-  * Bancila, Marius, "The Modern C++ Challenge".</br> 
+  * Bancila, Marius, &ldquo;*The Modern C++ Challenge*&rdquo;.</br> 
     Packt Publishing (23. Mai 2018, 1. Auflage), 328 Seiten. Sprache: Englisch. ISBN-10: 1788993861, ISBN-13: 978-1788993869.
 
 ---
 
-  * Galowicz, Jacek, "C++17 STL Cookbook".</br> 
+  * Galowicz, Jacek, &ldquo;*C++17 STL Cookbook*&rdquo;.</br> 
     Packt Publishing (28. Juni 2017), 532 Seiten. Sprache: Englisch. ISBN-10: 178712049X, ISBN-13: 978-1787120495.
 
 ---
 
-  * Fertig, Andreas, "Tips and Tricks with Templates".</br> 
+  * Josuttis, Nicolai M., &ldquo;*C++ Move Semantics &ndash; The Complete Guide*&rdquo;.</br> 
+    NicoJosuttis (30. August 2020), 262 Seiten. Sprache: Englisch. ISBN-10: 3967309002, ISBN-13: 978-3967309003.
+
+---
+
+  * Fertig, Andreas, &ldquo;*Tips and Tricks with Templates*&rdquo;.</br> 
     Fertig Publications (20. Januar 2021), 102 Seiten. Sprache: Englisch. ISBN-10: 3949323007, ISBN-13: 978-3949323003.
 
     Der Autor von [C++ Insights](https://cppinsights.io/), einem Analysetool für &ldquo;Modern C++&rdquo; Spracherweiterungen,
@@ -49,7 +54,7 @@
 
 ---
 
-  * Peter Pohmann, "C++ 17: Praxiswissen zum neuen Standard. Von C++11 bis 17".</br> 
+  * Peter Pohmann, &ldquo;*C++ 17: Praxiswissen zum neuen Standard. Von C++11 bis 17*&rdquo;.</br> 
     Software + Support (30. Mai 2017), 330 Seiten. Sprache: Deutsch. ISBN-10: 9783868021745, ISBN-13: 978-3868021745.
 
     Ein kurz gehaltenes Nachschlagewerk, dass vor allem für Entwickler geeignet ist, die sich für die Neuerungen
@@ -61,7 +66,7 @@
 ## Templates
 
 
-  * David Vandevoorde, Nicolai M. Josuttis und Douglas Gregor: "C++ Templates: The Complete Guide (2nd Edition)".</br>
+  * David Vandevoorde, Nicolai M. Josuttis und Douglas Gregor: &ldquo;*C++ Templates: The Complete Guide (2nd Edition)*&rdquo;.</br>
     Addison Wesley (1. Dezember 2017), 2. Auflage, 832 Seiten. Sprache: Englisch. ISBN-10: 0321714121, ISBN-13: 978-0321714121.
 
     Das ultimative Buch zu Templates in C++. 
@@ -70,7 +75,7 @@
 
 ## Design Patterns (Entwurfsmuster)
 
-  * Fedor G. Pikus: "Hands-On Design Patterns with C++".</br>
+  * Fedor G. Pikus: &ldquo;*Hands-On Design Patterns with C++*&rdquo;.</br>
     Packt Publishing (30. Januar 2019), 512 Seiten. Sprache: Englisch. ISBN-10: 1788832566, ISBN-13: 978-1788832564.
 
     Ein vergleichsweise anspruchsvolles Buch zu Entwurfsmustern in C++. Neben Klassikern wir *Singleton*, *Factory* und *Adapter*
