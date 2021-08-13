@@ -8,7 +8,82 @@
 
 ---
 
-## Aufgabe 1: Betrachtungen einer Klasse `HugeArray`
+## Aufgabe 1: Verschiebe-Semantik am Beispiel einer benutzerdefinierten Klasse
+
+Die Verschiebe-Semantik erfordert für Klassen, die sie unterstützen wollen,
+eine Implementiering des *Move*-Konstruktors (Verschiebe-Konstruktors) und der *Move*-Wertzuweisung (Verschiebe-Wertzuweisung).
+Standard-Klassen aus der STL bringen diese beiden Methoden bereits mit
+und damit die Fähigkeit des so genannten *Verschiebens*.
+Wir wollen diese Eigenschaft an einem Beispiel näher unter die Lupe nehmen.
+Bringen Sie dazu das folgende Beispiel zum Laufen:
+
+```cpp
+class Person {
+private:
+    std::string m_name;         // name of person
+    std::vector<int> m_values;  // some arbitrary person values
+
+public:
+    Person() : m_name{} {}
+    Person(const std::string& name) : m_name{ name } {}
+
+    void addValue(int value) {
+        m_values.push_back(value);
+    }
+
+    friend std::ostream& operator<< (std::ostream& os, const Person& cust) {
+        os << "{ " << cust.m_name << ": ";
+        for (auto val : cust.m_values) {
+            os << val << ' ';
+        }
+        os << "}";
+        return os;
+    }
+};
+
+int main() {
+
+    // create a person with some initial values
+    Person donald{ "Donald Fauntleroy Duck" };
+    for (int value : { 1, 2, 3, 4, 5, 6, 7, 8, 9 }) {
+        donald.addValue(value);
+    }
+
+    // print person
+    std::cout << "Person: " << donald << std::endl;
+
+    // insert person into a collection
+    std::vector<Person> persons;
+    persons.push_back(donald);
+
+    // print person again
+    std::cout << "Person: " << donald << std::endl;
+
+    return 0;
+}
+```
+
+Der Ausgabe-Operator `<<` der Klasse `Person` wird in dem Beispiel-Codefragment zweimal aufgerufen.
+Betrachten Sie die Ausgaben im Detail.
+
+Offensichtlich wird von der Instanz `donald` im Container-Objekt `persons` durch den Aufruf von `push_back`
+eine Kopie angelegt.
+Wie könnten Sie bewirken, dass die vorliegende `donald`-Instanz in das Container-Objekt *verschoben* wird?
+Es ist zu diesem Zweck nur eine einzige Zeile des vorliegenden Quellcodes abzuändern!
+Welche Auswirkung auf das `donald`-Objekt können Sie jetzt bei Ausführung des Programms beobachten?
+
+*Zusatzaufgabe*:
+Die Verschiebe-Semantik wird von benutzerdefinierten Klassen nur *automatisch* bereitgestellt,
+wenn keine der &ldquo;Big-Five&rdquo;-Methoden in der Klasse explizit vorhanden ist.
+Demonstrieren Sie diese Aussage, indem Sie die Klasse `Person` geeignet um eine einzige Quellcodezeile ergänzen.
+
+---
+
+[An den Anfang](#aufgaben)
+
+---
+
+## Aufgabe 2: Verschiebe-Semantik am Beispiel einer Klasse `HugeArray` betrachtet
 
 Erstellen Sie eine leeres Visual C++ Projekt,
 fügen Sie nachstehenden Quellcode dort ein und bringen Sie das Programm zum Laufen.

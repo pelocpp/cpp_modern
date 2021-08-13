@@ -11,6 +11,53 @@ namespace Exercises_MoveSemantics {
 
     namespace Exercise_01 {
 
+        class Person {
+        private:
+            std::string m_name;         // name of person
+            std::vector<int> m_values;  // some arbitrary person values
+
+        public:
+            Person() : m_name{} {}
+            Person(const std::string& name) : m_name{ name } {}
+            ~Person() {}
+
+            void addValue(int value) {
+                m_values.push_back(value);
+            }
+
+            friend std::ostream& operator<< (std::ostream& os, const Person& cust) {
+                os << "{ " << cust.m_name << ": ";
+                for (auto val : cust.m_values) {
+                    os << val << ' ';
+                }
+                os << "}";
+                return os;
+            }
+        };
+
+        void testExercise_01() {
+
+            // create a person with some initial values
+            Person donald{ "Donald Fauntleroy Duck" };
+            for (int value : { 1, 2, 3, 4, 5, 6, 7, 8, 9 }) {
+                donald.addValue(value);
+            }
+
+            // print person
+            std::cout << "Person: " << donald << std::endl;
+
+            // insert person into a collection
+            std::vector<Person> persons;
+            persons.push_back(donald);
+            persons.push_back(std::move(donald));
+
+            // print person again
+            std::cout << "Person: " << donald << std::endl;
+        }
+    }
+
+    namespace Exercise_02 {
+
 #define SOLUTION 
 
         class HugeArray {
@@ -89,7 +136,7 @@ namespace Exercises_MoveSemantics {
         }
 #endif
 
-        void testExercise_01() {
+        void testExercise_02() {
             std::cout << "Start:" << std::endl;
             auto start = std::chrono::high_resolution_clock::now();
             std::vector<HugeArray> myVec;
@@ -109,6 +156,7 @@ void test_exercises_move_semantics()
 {
     using namespace Exercises_MoveSemantics;
     Exercise_01::testExercise_01();
+    //Exercise_02::testExercise_02();
 }
 
 // =====================================================================================

@@ -45,7 +45,8 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 
 | Aufgabe | Beschreibung |
 | :- | :- |
-| [Aufgabe 1](Exercises_01_MoveSemantics.md) | Betrachtungen einer Klasse `HugeArray` |
+| [Aufgabe 1](Exercises_01_MoveSemantics.md) | Verschiebe-Semantik am Beispiel einer benutzerdefinierten Klasse |
+| [Aufgabe 2](Exercises_01_MoveSemantics.md) | Verschiebe-Semantik am Beispiel einer Klasse `HugeArray` betrachtet |
 
 *Tabelle* 1: Aufgaben zur Move-Semantik.
 
