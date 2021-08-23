@@ -40,7 +40,7 @@ true
 
 ## Aufgabe 2: *Fibonacci*-Zahlen
 
-#### Vorausetzungen: Algorithmen `std::generate`, `std::for_each`, Lambda-Funktionen
+#### Vorausetzungen: Algorithmen `std::generate`, `std::for_each`, Lambda-Funktionen, Structured Binding
 
 In der Mathematik bilden die *Fibonacci*-Zahlen eine Folge,
 so dass jede Zahl die Summe der beiden vorhergehenden Zahlen ist, beginnend mit 0 und 1. 

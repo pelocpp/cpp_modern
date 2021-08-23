@@ -79,7 +79,7 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 | Aufgabe | Beschreibung |
 | :- | :- |
 | [Aufgabe 1](Exercises_03_Algorithms.md) | Die Funktion `std::accumulate` in der Anwendung (mit Initialisierungliste)<br/>(Voraussetzungen: `std::accumulate`, `std::initializer_list`) |
-| [Aufgabe 2](Exercises_03_Algorithms.md) | *Fibonacci*-Zahlen<br/>(Voraussetzungen: Algorithmen `std::generate`, `std::for_each`, Lambda-Funktionen) |
+| [Aufgabe 2](Exercises_03_Algorithms.md) | *Fibonacci*-Zahlen<br/>(Voraussetzungen: Algorithmen `std::generate`, `std::for_each`, Lambda-Funktionen, Structured Binding) |
 
 *Tabelle* 4: Aufgaben zu STL-Algorithmen.
 
