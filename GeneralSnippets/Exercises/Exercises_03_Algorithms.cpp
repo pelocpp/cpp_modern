@@ -5,6 +5,8 @@
 #include <iostream>
 #include <string>
 #include <numeric>
+#include <vector>
+#include <algorithm>
 
 namespace Exercises_Algorithms {
 
@@ -55,12 +57,42 @@ namespace Exercises_Algorithms {
             testExercise_01b();
         }
     }
+
+    namespace Exercise_02 {
+
+        void testExercise_02() {
+
+            std::vector<int> numbers(20);
+
+            auto fibo = [p = std::pair{ 0, 1 }]() mutable {
+                auto [a, b] = p;
+                p = { b, a + b };
+                return a;
+            };
+
+            std::generate(
+                std::begin(numbers),
+                std::end(numbers),
+                fibo
+            );
+
+            std::for_each(
+                std::begin(numbers),
+                std::end(numbers),
+                [](const auto& n) {
+                    std::cout << n << ' ';
+                }
+            );
+            std::cout << std::endl;
+        }
+    }
 }
 
 void test_exercises_algorithms()
 {
     using namespace Exercises_Algorithms;
     Exercise_01::testExercise_01();
+    Exercise_02::testExercise_02();
 }
 
 // =====================================================================================

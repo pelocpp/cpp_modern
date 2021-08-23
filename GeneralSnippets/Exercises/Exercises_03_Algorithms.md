@@ -34,6 +34,41 @@ true
 
 ---
 
+[An den Anfang](#Aufgaben-zu-Lambda-Funktionen)
+
+---
+
+## Aufgabe 2: *Fibonacci*-Zahlen
+
+#### Vorausetzungen: Algorithmen `std::generate`, `std::for_each`, Lambda-Funktionen
+
+In der Mathematik bilden die *Fibonacci*-Zahlen eine Folge,
+so dass jede Zahl die Summe der beiden vorhergehenden Zahlen ist, beginnend mit 0 und 1. 
+Für die *n*.-te Fibonacci F<sub>*n*</sub> bedeutet das F<sub>*n*</sub> = F<sub>*n*-1</sub> + F<sub>*n*-2</sub>,
+wobei F<sub>0</sub> = 0 und F<sub>1</sub> = 1 gelten.
+Die durch Fibonacci-Zahlen gebildete Sequenz wird als *Fibonacci*-*Sequenz* bezeichnet.
+
+Verwenden Sie in dieser Aufgabe den Algorithmus `std::generate` mit einer geeigneten Lambda-Funktion,
+um die *Fibonacci*-Zahlen zu berechnen. Die Größe des Containers, der an `std::generate` 
+in den ersten beiden Parametern übergeben wird (Start- und Ende-Iterator), entscheidet, 
+wieviele *Fibonacci*-Zahlen berechnet werden.
+
+Die ersten zwei Werte 0 und 1 der Zahlenfolge können Sie in einem `std::pair`-Objekt ablegen: `std::pair{0,1}`.
+Von Aufruf zu Aufruf der Lambda-Funktion können Sie dieses Objekt geeignet modifizieren:
+
+  * Das erste Element des neuen Paares ist das zweite Element des alten Paares.
+  * Das zweite Element des neuen Paares ist die Summe der beiden Elemente des alten Paares.
+
+Wie müssen Sie diese Lambda-Funktion definieren, so dass das `std::pair`-Objekt veränderbar ist?
+
+*Hinweis*: Die ersten 20 *Fibonacci*-Zahlen lauten
+
+```
+0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181
+```
+
+---
+
 [Lösungen](Exercises_03_Algorithms.cpp)
 
 ---
