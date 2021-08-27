@@ -34,7 +34,7 @@ true
 
 ---
 
-[An den Anfang](#Aufgaben-zu-Lambda-Funktionen)
+[An den Anfang](#Aufgaben-zu-STL-Algorithmen)
 
 ---
 
