@@ -22,6 +22,7 @@ void main_constexpr_if();
 void main_crtp();
 void main_decltype();
 void main_default_initialization();
+void main_erase_remove_idiom();
 void main_exercises_legacy();
 void main_exercises();
 void main_keyword_explicit();
@@ -111,6 +112,7 @@ int main()
         //main_crtp();
         //main_decltype();
         //main_default_initialization();
+        main_erase_remove_idiom();
         //main_exercises_legacy();
         //main_exercises();
         //main_keyword_explicit();

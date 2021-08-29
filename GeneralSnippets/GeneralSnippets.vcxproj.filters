@@ -306,6 +306,9 @@
     <ClCompile Include="SSO\SSO.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="EraseRemoveIdiom\EraseRemoveIdiom.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -582,6 +585,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="SSO\SSO.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="EraseRemoveIdiom\EraseRemoveIdiom.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
