@@ -112,7 +112,7 @@ int main()
         //main_crtp();
         //main_decltype();
         //main_default_initialization();
-        main_erase_remove_idiom();
+        //main_erase_remove_idiom();
         //main_exercises_legacy();
         //main_exercises();
         //main_keyword_explicit();

@@ -1,5 +1,5 @@
 // =====================================================================================
-// Erase Remove Idiom
+// EraseRemoveIdiom.cpp
 // =====================================================================================
 
 #include <iostream>
@@ -20,32 +20,32 @@ namespace EraseRemoveIdiom
 
     void test_01()
     {
-        std::vector<int> v = { 0, 1, 2, 5, 4, 5, 6, 5, 8, 9 };
-        print(v);
+        std::vector<int> vec = { 0, 1, 2, 5, 4, 5, 6, 5, 8, 9 };
+        print(vec);
 
         // remove all '5' elements
-        auto it = std::remove(v.begin(), v.end(), 5);
-        std::cout << "Position of iterator: " << std::distance(v.begin(), it) << std::endl;
-        print(v);
+        auto it = std::remove(vec.begin(), vec.end(), 5);
+        std::cout << "Position of iterator: " << std::distance(vec.begin(), it) << std::endl;
+        print(vec);
 
         // erase the unspecified values and reduce the physical size
         // of the container to match its new logical size
-        v.erase(it, v.end());
-        print(v);
+        vec.erase(it, vec.end());
+        print(vec);
     }
 
     void test_02()
     {
-        std::vector<int> v = { 0, 1, 2, 5, 4, 5, 6, 5, 8, 9 };
-        print(v);
+        std::vector<int> vec = { 0, 1, 2, 5, 4, 5, 6, 5, 8, 9 };
+        print(vec);
 
         // remove all elements with the value 5
-        v.erase(std::remove(v.begin(), v.end(), 5), v.end());
-        print(v);
+        vec.erase(std::remove(vec.begin(), vec.end(), 5), vec.end());
+        print(vec);
 
         // request the container to reduce its capacity to fit its size
-        v.shrink_to_fit();
-        print(v);
+        vec.shrink_to_fit();
+        print(vec);
     }
 }
 
@@ -53,7 +53,7 @@ void main_erase_remove_idiom()
 {
     using namespace EraseRemoveIdiom;
     test_01();
-    // test_02();
+    test_02();
 }
 
 // =====================================================================================

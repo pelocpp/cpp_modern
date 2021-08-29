@@ -4,28 +4,28 @@
 
 ---
 
-*Allgemeines*:
+### *Allgemeines*:
 
 Das Idiom *Erase-Remove* ist eine C++-Technik, um Elemente aus einem Container zu entfernen, die ein bestimmtes Kriterium erfüllen.
 Natürlich wäre es möglich, Elemente eines STL-Containers mit traditionellen, herkömmlichen Techniken zu eliminieren,
-aber das *Erase-Remove* Idiom hat mehrere Vorteile.
+aber das *Erase-Remove* Idiom hat mehrere Vorteile, die sich vor allem auf die Laufzeit des Programms auswirken.
 
-STL-Algorithmus `std::remove`, `std::remove_if`:
+  * STL-Algorithmus `std::remove`, `std::remove_if`:
+    Das Entfernen der betroffenen Elemente erfolgt durch Verschieben der Elemente im Container so,
+    dass die Elemente, die nicht entfernt werden sollen, am Anfang erscheinen.
+    Dies hat zur Folge, dass sich im hinteren Teil des Containers diejenigen Elemente ansammeln,
+    die eigentlich nicht mehr zum Container gehören.
+    Die physische Größe des Containers bleibt bei dieser Methode unverändert,
+    es werden faktisch nur Elemente im Container verschoben.
 
-Das Entfernen der betroffenen Elemente erfolgt durch Verschieben der Elemente im Container so,
-dass die Elemente, die nicht entfernt werden sollen, am Anfang erscheinen.
+    Welche Elemente eigentlich nicht mehr zum Conainer gehören, wird durch den Rückgabewert der Methode zum 
+    Ausdruck gebracht: Dies ist ein Iterator-Objekt, das auf das erste, nicht mehr dazugehörige Element im Container zeigt.
 
-Dies hat zur Folge, dass in hinteren Teil des Containers sich diejenigen Elemente ansammeln,
-die eigentlich nicht mehr zum Container gehören. Die physische Größe des Containers bleibt bei dieser Methoden jedoch unverändert,
-es werden faktisch nur Elemente im Container verschoben.
+  * STL-Algorithmus `std::erase`:
+    Mit dieser Methoden lassen sich Elemente eines STL-Containers entfernen (ein einzelnes Element oder ein Bereich von Elementen).
+    Die Methode verringert die Größe des Containers entsprechend.
 
-Welche Elemente eigentlich nicht mehr zum Conainer gehören, wird durch den Rückgabewert der Methode zum 
-Ausdruck gebracht: Dies ist ein Iterator-Objekt, das auf das erste nicht mehr dazugehörige Element zeigt.
-
-STL-Algorithmus `std::erase`:
-
-Mit dieser Methoden lassen sich Elemente eines STL-Containers entfernen (ein einzelnes Element oder aber ein Bereich von Elementen).
-Die Methode verringert die Größe des Containers entsprechend.
+### Das *Erase-Remove* Idiom
 
 Mit einer Kombination von `std::remove` / `std::remove_if` und `std::erase` ist Code zum Löschen und Entfernen von Elementen nicht nur ausdrucksvoller, sondern auch effizienter.
 
@@ -34,7 +34,8 @@ an den Anfang des Bereichs zu verschieben, wobei die relative Reihenfolge der El
 Danach löscht ein einziger Aufruf von `std::erase` alle verbleibenden, aber nicht mehr zum Container gehörenden Elemente,
 am Ende des Bereichs.
 
-Siehe das Beispiel im korrespondierenden Quellcode. Man betrachte die Ausgaben des Beispiels genau:
+Man kann dies in der Regel in einer einzigen Programmzeile formulieren,
+siehe dazu das Beispiel im korrespondierenden Quellcode. Man betrachte die Ausgaben des Beispiels genau:
 
 ```
 Length:   10
