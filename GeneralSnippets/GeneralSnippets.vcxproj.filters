@@ -590,6 +590,9 @@
     <None Include="EraseRemoveIdiom\EraseRemoveIdiom.md">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="Agenda\Agenda.md">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Global\Dummy.h">

@@ -33,6 +33,17 @@ die bei mir derzeit hoch im Kurs stehen und meiner Meinung nach absolut lesenswe
 
 ---
 
+## Inhaltsverzeichnis
+
+Es ist nicht einfach, bei der Menge an Ergänzungen und Neuerungen der Sprache C++ den Überblick
+zu behalten. Das von mir zusammengestellte Inhaltsverzeichnis unternimmt zumindest den Versuch,
+den größten Teil dieser Sprachergänzungen nach gewissen systematischen und methodischen Gesichtspunkten
+zu gliedern und zusammenzufassen.
+
+[Zum Inhaltsverzeichnis](GeneralSnippets/Agenda/Agenda.md).
+
+---
+
 ## Aufgaben
 
 Einige kleinere Aufgaben (samt Musterlösungen) sind diesem Repository ebenfalls beigefügt.
@@ -45,7 +56,7 @@ dienen aber dem Zweck, die "graue Materie" an der einen oder anderen Stelle etwa
 
 ## Katalog aller Grundlagen-Code-Snippets
 
-In diesem Projekt sind zahlreiche kleinere Code-Snippets abgelegt, um die diversen Features von C++ 11/14/17 demonstrieren zu können.
+In diesem Projekt sind zahlreiche kleinere Code-Snippets abgelegt, um die diversen Features von C++&ndash;11/14/17 demonstrieren zu können.
 Es folgt eine tabellarische Auflistung dieser Unterverzeichnisse.
 In der ersten Tabelle wiederholen wir einige Grundlagen von C++, die immer wieder 
 zu Fragen führen:
@@ -69,7 +80,7 @@ Tabelle 1. Grundlagen-Code-Snippets.
 
 ## Katalog aller Modern-C++-Code-Snippets
 
-In der folgenden Tabelle sind alle Neuerungen von C++ 11/14/17 aufgeführt:
+In der folgenden Tabelle sind alle Neuerungen von C++&ndash;11/14/17 aufgeführt:
 
 | Unterverzeichnis | Thematik |
 |:-------------- |-----------------------------------------|
@@ -121,6 +132,6 @@ In der folgenden Tabelle sind alle Neuerungen von C++ 11/14/17 aufgeführt:
 | [VirtualOverrideFinal](GeneralSnippets/VirtualOverrideFinal/VirtualOverrideFinal.md) | Neue Schlüsselwörter `override` und `final` |
 | [WeakPointer](GeneralSnippets/WeakPtr/WeakPtr.md) | Klasse `std::weak_ptr<T>` |
 
-Tabelle 2. Spracherweiterungen C++ 11/C++ 14/C++ 17.
+Tabelle 2. Spracherweiterungen C++&ndash;11/14/17.
 
 ---
