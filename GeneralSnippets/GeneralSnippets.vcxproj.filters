@@ -132,9 +132,6 @@
     <ClCompile Include="MetaProgramming\MetaProgramming02.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="VariadicTemplates\VariadicTemplate_Folding.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="VariadicTemplates_Anwendungen\VariadicTemplate_XX_Examples.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -309,6 +306,9 @@
     <ClCompile Include="EraseRemoveIdiom\EraseRemoveIdiom.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Folding\VariadicTemplatesFolding.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -432,9 +432,6 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="VariadicTemplates\VariadicTemplates_03_SumOfSums.md">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="VariadicTemplates\VariadicTemplates_10_Folding.md">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="VariadicTemplates\VariadicTemplates_04_Mixins.md">
@@ -591,6 +588,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Agenda\Agenda.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Folding\VariadicTemplatesFolding.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

@@ -180,6 +180,7 @@
     <ClCompile Include="Explicit\Explicit.cpp" />
     <ClCompile Include="ExpressionTemplates\ExpressionTemplates.cpp" />
     <ClCompile Include="FileSystem\FileSystem.cpp" />
+    <ClCompile Include="Folding\VariadicTemplatesFolding.cpp" />
     <ClCompile Include="FunctionalProgramming\FunctionalProgramming01.cpp" />
     <ClCompile Include="FunctionalProgramming\FunctionalProgramming02.cpp" />
     <ClCompile Include="Global\Dummy.cpp" />
@@ -230,7 +231,6 @@
     <ClCompile Include="UniformInitialization\UniformInitialization.cpp" />
     <ClCompile Include="UniquePtr\UniquePtr.cpp" />
     <ClCompile Include="VariadicTemplates\VariadicTemplate_01_Introduction.cpp" />
-    <ClCompile Include="VariadicTemplates\VariadicTemplate_Folding.cpp" />
     <ClCompile Include="VariadicTemplates\VariadicTemplate_05_Visitor.cpp" />
     <ClCompile Include="VariadicTemplates\VariadicTemplate_02_WorkingOnEveryArgument.cpp" />
     <ClCompile Include="VariadicTemplates\VariadicTemplate_03_SumOfSums.cpp" />
@@ -281,6 +281,7 @@
     <None Include="Explicit\Explicit.md" />
     <None Include="ExpressionTemplates\ExpressionTemplates.md" />
     <None Include="FileSystem\FileSystem.md" />
+    <None Include="Folding\VariadicTemplatesFolding.md" />
     <None Include="FunctionalProgramming\FunctionalProgramming.md" />
     <None Include="InitializerList\StdInitializerList.md" />
     <None Include="InputOutputStreams\Streams.md" />
@@ -327,7 +328,6 @@
     <None Include="VariadicTemplates\cpp_snippets_mixins_01.svg" />
     <None Include="VariadicTemplates\cpp_snippets_mixins_02.svg" />
     <None Include="VariadicTemplates\VariadicTemplates_05_Visitor.md" />
-    <None Include="VariadicTemplates\VariadicTemplates_10_Folding.md" />
     <None Include="VariadicTemplates\VariadicTemplates_01_Introduction.md" />
     <None Include="VariadicTemplates\VariadicTemplates_04_Mixins.md" />
     <None Include="VariadicTemplates\VariadicTemplates_03_SumOfSums.md" />

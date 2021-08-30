@@ -96,6 +96,7 @@ In der folgenden Tabelle sind alle Neuerungen von C++&ndash;11/14/17 aufgeführt
 | [Explicit](GeneralSnippets/Explicit/Explicit.md) | Schlüsselwort `explicit` |
 | [ExpressionTemplates](GeneralSnippets/ExpressionTemplates/ExpressionTemplates.md) | Expression Templates |
 | [FileSystem](GeneralSnippets/FileSystem/FileSystem.md) | C++ 17 FileSystem Library |
+| [Folding](GeneralSnippets/Folding/VariadicTemplatesFolding.md) | *Folding Expressions* |
 | [FunctionalProgramming](GeneralSnippets/FunctionalProgramming/FunctionalProgramming.md) | Funktionale Programmierung |
 | [InitializerList](GeneralSnippets/InitializerList/StdInitializerList.md) | Klasse `std::initializer_list<T>` |
 | [Invoke](GeneralSnippets/Invoke/StdInvoke.md) | `std::invoke`: "*Uniformly invoking anything callable*" |
@@ -127,7 +128,6 @@ In der folgenden Tabelle sind alle Neuerungen von C++&ndash;11/14/17 aufgeführt
 | [UniformInitialization](GeneralSnippets/UniformInitialization/UniformInitialization.md) | Einheitliches Initialisierungs-Konzept |
 | [UniquePointer](GeneralSnippets/UniquePtr/UniquePtr.md) | Klasse `std::unique_ptr<T>` |
 | [VariadicTemplates](GeneralSnippets/VariadicTemplates/VariadicTemplates_01_Introduction.md) | Templates mit variabler Argumentanzahl (Variadische Templates) |
-| [Folding](GeneralSnippets/VariadicTemplates/VariadicTemplates_10_Folding.md) | *Folding Expressions* |
 | [Variant](GeneralSnippets/Variant/StdVariant.md)  | Neue STL-Utility Klasse `std::variant` |
 | [VirtualOverrideFinal](GeneralSnippets/VirtualOverrideFinal/VirtualOverrideFinal.md) | Neue Schlüsselwörter `override` und `final` |
 | [WeakPointer](GeneralSnippets/WeakPtr/WeakPtr.md) | Klasse `std::weak_ptr<T>` |

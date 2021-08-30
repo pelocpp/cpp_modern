@@ -1,10 +1,10 @@
-# Variadische Templates und Fold-Ausdrücke
+# Variadische Templates: Fold-Ausdrücke
 
 [Zurück](../../Readme.md)
 
 ---
 
-[Quellcode](VariadicTemplate_Folding.cpp)
+[Quellcode](VariadicTemplatesFolding.cpp)
 
 ---
 
