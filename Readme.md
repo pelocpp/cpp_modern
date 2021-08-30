@@ -35,10 +35,10 @@ die bei mir derzeit hoch im Kurs stehen und meiner Meinung nach absolut lesenswe
 
 ## Inhaltsverzeichnis
 
-Es ist nicht einfach, bei der Menge an Ergänzungen und Neuerungen der Sprache C++ den Überblick
+Es ist nicht einfach, bei der Menge an Ergänzungen, Erweiterungen und Neuerungen der Sprache C++ den Überblick
 zu behalten. Das von mir zusammengestellte Inhaltsverzeichnis unternimmt zumindest den Versuch,
 den größten Teil dieser Sprachergänzungen nach gewissen systematischen und methodischen Gesichtspunkten
-zu gliedern und zusammenzufassen.
+so zu gliedern und zusammenzufassen, um bei deren Betrachtung den &ldquo;roten Faden&rdquo; nicht zu verlieren. 
 
 [Zum Inhaltsverzeichnis](GeneralSnippets/Agenda/Agenda.md).
 

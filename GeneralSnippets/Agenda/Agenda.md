@@ -4,9 +4,6 @@
 
 ---
 
-## Literatur
-
-
 ## Aufbau einer Klasse
   * Parameter&uuml;bergabemechanismus (*call-by-value* / *call-by-reference*)
   * Big-Three
@@ -14,50 +11,50 @@
   * Klassenvariablen/-methoden (`static`)
 
 
-## Move-Semantics:
-  * Big-Three   
-  * RValue/LValue   
-  * Big-Five   
-  * Rule of Zero   
+## Move-Semantik:
+  * &ldquo;Big-Three&rdquo;
+  * RValue/LValue
+  * &ldquo;Big-Five&rdquo;
+  * &ldquo;Rule of Zero&rdquo; 
   * Memory Leaks Detection
 
 
 ## Lambdas
-  * Funktoren   
-  * Zugriffsklauseln   
-  * Closure von Lambdas   
+  * Funktoren
+  * Zugriffsklauseln
+  * Closure von Lambdas
   * STL-Algorithmen mit Lambda-Ausdr&uuml;cken
 
 
-## Vererbung:
+## Vererbung
   * `override`, `virtual`, `final`
-  * Polymorphismus   
-  * Interface / Schnittstellen   
-  * Abstrakte Klassen   
+  * Polymorphismus
+  * Interface / Schnittstellen
+  * Abstrakte Klassen
   * Mehrfachvererbung (Schnittstellen)
 
 
 ## Standard Template Library (STL)
-  * Template Klassen (Container)   
-  * Iteratoren   
+  * Template Klassen (Container)
+  * Iteratoren
   * Algorithmen
-  * Neuerungen ab C++11/14/17
+  * Neuerungen ab C++&ndash;11/14/17
 
 
-## Verschiedenes:
+## Verschiedenes
   * Initialisierung (&ldquo;Uniform Initialization&ldquo;)
   * Default-Initialisierung f&uuml;r Member-Variablen
   * Initialisierungslisten (`std::initializer_list`)
-  * Schl&uuml;sselwort `auto`   
-  * Schl&uuml;sselwort `explicit` 
-  * Structured Binding   
+  * Schl&uuml;sselwort `auto`
+  * Structured Binding
   * Range-based Loop
+  * Schl&uuml;sselwort `explicit`
 
 
 ## Smart Pointer
-  * Unique Pointer   
-  * Shared Pointer   
-  * Weak Pointer 
+  * Unique Pointer
+  * Shared Pointer
+  * Weak Pointer
 
 
 ## `constexpr`
@@ -74,10 +71,10 @@
 
 ## Template-Funktionen und Klassen
   * Allgemeines / einf&uuml;hrendes Beispiel
-  * Value Templates 
-  * Member Function Template (Method Template)   
-  * Explizite Template Spezialisierung   
-  * Partielle Template Spezialisierung   
+  * Value Templates
+  * Member Function Template (Method Template)
+  * Explizite Template Spezialisierung
+  * Partielle Template Spezialisierung
 
 
 ## STL-Algorithmen
@@ -99,28 +96,30 @@
   * `constexpr_if`
   * `std::apply`
   * `std::invoke`
-  * Template Template Parameter   
-  * Static Polymorphism   
-  * `decltype` und `std::declval`   
+  * Template Template Parameter
+  * Static Polymorphism
+  * `decltype` und `std::declval`
   * Automatischer R&uuml;ckgabetyp (Trailing Return Type Deduction)
 
 
 ## Folding
   * Grundlagen
+  * Folding &ldquo;über einem Komma&rdquo;
 
 
 ## Metaprogramming
-  * Basics   
+  * Grundlagen
+  * Wiederholungsanweisung, bedingte Anweisung und Rückgabewert
   * List Processing
 
 
 ## Expression Templates
-  * Allgemeines   
+  * Allgemeines
   * Beispiel Klasse `Matrix`
 
 
 ## Functional Programming
-  * Allgemeines   
+  * Allgemeines
   * Funktionen h&ouml;herer Ordnung `filter`, `map` und `fold`
 
 
@@ -130,7 +129,7 @@
 
 
 ## Reguläre Ausdrücke
-  * Allgemeines   
+  * Allgemeines
   * Klasse `std::regex`
 
 
@@ -165,17 +164,17 @@
 ## Multithreading
   * RAII (Allgemeines / Beispiel `ofstream`/ Beispiel *Clipboard*)
   * `std::thread` (&ldquo;Simple Threading&rdquo;)
-  * Atomare Operationen   
+  * Atomare Operationen
   * Mutual Exclusion / Locks (ScopedLock, UniqueLock und Condition_Variable)
   * Async (`std::async`)
-  * Future & Promise   
-  * PackagedTask   
+  * Future & Promise (`std::promise` und `std::future`)
+  * Die Klasse `std::std::packaged_task`
   * Exception Forwarding
-  * C++ 20: Latsches und Barries
-  * C++ 20: Parallelisierung von STL-Algorithmen
+  * C++&ndash;20: Verriegelungen (*Latches*) und Barrieren (*Barriers*)
+  * C++&ndash;20: Parallelisierung von STL-Algorithmen
 
 
-## C++ 20: Ausblick
+## C++&ndash;20: Ausblick
   * Concepts
   * Ranges
   * Coroutines
