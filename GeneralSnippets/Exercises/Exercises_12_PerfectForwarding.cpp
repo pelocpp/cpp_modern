@@ -151,7 +151,7 @@ namespace Exercises_PerfectForwarding {
         {
             // simulate some work (function with parameters)
             std::cout << "calling g with parameters " << a << " and " << b << std::endl;
-            std::this_thread::sleep_for(std::chrono::seconds(2));
+            std::this_thread::sleep_for(std::chrono::seconds(3));
         }
 
         // ===============================================================
@@ -163,11 +163,13 @@ namespace Exercises_PerfectForwarding {
             template <typename F, typename... Args>
             static std::chrono::milliseconds duration(F&& f, Args&&... args)
             {
-                std::chrono::steady_clock::time_point start = std::chrono::high_resolution_clock::now();
+                std::chrono::system_clock::time_point start = std::chrono::system_clock::now();
+                auto tpStart = std::chrono::time_point_cast<std::chrono::milliseconds>(start);
                 std::invoke(std::forward<F>(f), std::forward<Args>(args)...);
-                std::chrono::steady_clock::time_point end = std::chrono::high_resolution_clock::now();
-                std::chrono::nanoseconds diff = end - start;
-                return std::chrono::duration_cast<std::chrono::milliseconds>(diff);
+                std::chrono::system_clock::time_point end = std::chrono::system_clock::now();
+                auto tpEnd = std::chrono::time_point_cast<std::chrono::milliseconds>(end);
+                std::chrono::milliseconds diff = tpEnd - tpStart;
+                return diff;
             }
         };
 
@@ -181,54 +183,9 @@ namespace Exercises_PerfectForwarding {
             std::cout << time.count() << " msecs." << std::endl;
         }
 
-        // ===============================================================
-        // Zweite Variante: Zeitmessung via Template Parameter einstellbar
-
-        template <
-            typename Time = std::chrono::microseconds,
-            typename TClock = std::chrono::high_resolution_clock
-        >
-        class ExecutionTimerEx
-        {
-        public:
-            template <typename F, typename... Args>
-            static Time duration(F&& f, Args&&... args)
-            {
-                std::chrono::time_point start = TClock::now();
-                std::invoke(std::forward<F>(f), std::forward<Args>(args)...);
-                std::chrono::time_point end = TClock::now();
-                auto diff = end - start;
-                return std::chrono::duration_cast<Time>(diff);
-            }
-        };
-
-        void test_03() {
-            auto time = ExecutionTimerEx<>::duration(g, 10, 20.0);
-            std::cout << time.count() << " microseconds." << std::endl;
-        }
-
-        void test_04() {
-            auto time = ExecutionTimerEx<std::chrono::milliseconds>::duration(g, 20, 30.0);
-            std::cout << time.count() << " milliseconds." << std::endl;
-        }
-
-        void test_05() {
-            auto time = ExecutionTimerEx<std::chrono::microseconds>::duration(g, 30, 40.0);
-            std::cout << time.count() << " microseconds." << std::endl;
-        }
-
-        void test_06() {
-            auto time = ExecutionTimerEx<std::chrono::nanoseconds>::duration(g, 40, 50.0);
-            std::cout << time.count() << " nanoseconds." << std::endl;
-        }
-
         void testExercise_02() {
             test_01();
             test_02();
-            test_03();
-            test_04();
-            test_05();
-            test_06();
         }
     }
 }
