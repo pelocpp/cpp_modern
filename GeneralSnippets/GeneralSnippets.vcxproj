@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -294,6 +294,7 @@
     <None Include="MetaProgramming\Metaprogramming01.md" />
     <None Include="MetaProgramming\Metaprogramming02.md" />
     <None Include="MoveSemantics\MoveSemantics.md" />
+    <None Include="OnlineCppCompilers\OnlineCppCompilers.md" />
     <None Include="Optional\Optional.md" />
     <None Include="ParametersWithConstAndRef\ConstDeclarations.md" />
     <None Include="PerfectForwarding\PerfectForwarding_01.md" />
@@ -349,6 +350,7 @@
     <Image Include="ConstExpr\ConstExpr03.png" />
     <Image Include="Exercises\cpp_dividend_divisor.png" />
     <Image Include="MetaProgramming\euler_number.png" />
+    <Image Include="OnlineCppCompilers\Wandbox.png" />
     <Image Include="UniformInitialization\cpp_init.gif" />
     <Image Include="VariadicTemplates\cpp_snippets_mixins_01.png" />
     <Image Include="VariadicTemplates\cpp_snippets_mixins_02.png" />

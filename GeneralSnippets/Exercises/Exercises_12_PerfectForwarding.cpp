@@ -6,6 +6,7 @@
 #include <string>
 #include <complex>
 #include <chrono>
+#include <functional>
 #include <thread>
 
 namespace Exercises_PerfectForwarding {
