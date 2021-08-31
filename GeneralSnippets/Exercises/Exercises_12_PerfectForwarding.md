@@ -72,26 +72,27 @@ Um die Ausführungszeit einer Funktion zu messen, benötigen wir zunächst die a
 Funktion. Führen Sie nach dieser ersten Zeitmessung die eigentliche Funktion aus,
 rufen Sie dann die aktuelle Uhrzeit erneut ab und bestimmen Sie die Differenz von den beiden Zeitpunkten.
 
-Einen aktuellen Zeitpunkt können Sie mit der Klasse `std::chrono::high_resolution_clock` ermitteln:
+Einen aktuellen Zeitpunkt können Sie mit der Klasse `std::chrono::system_clock` ermitteln:
 
 ```cpp
-std::chrono::steady_clock::time_point start = std::chrono::high_resolution_clock::now();
+std::chrono::system_clock::time_point start = std::chrono::system_clock::now();
 ```
 
-Für die Differenzbildung zweier Zeitwerte müssen wir die größtmögliche Auflösung `std::chrono::nanoseconds` zugrunde legen,
+Die Differenzbildung zweier Zeitwerte kann man mit `std::chrono::time_point_cast`-Objekten durchführen,
 zum Beispiel:
 
 ```cpp
-std::chrono::nanoseconds diff = end - start;
+std::chrono::milliseconds diff = tpEnd - tpStart;
 ```
 
-Um dann wieder zur gewünschten Maßeinheit zurückzugelangen, gibt es die `std::chrono::duration_cast` Methode:
+wenn `tpStart` und `tpEnd` als
 
 ```cpp
-std::chrono::duration_cast<std::chrono::milliseconds>(diff);
+auto tpStart = std::chrono::time_point_cast<std::chrono::milliseconds>(start);
+auto tpEnd = std::chrono::time_point_cast<std::chrono::milliseconds>(end);
 ```
 
-Das Hauptprogramm für diese Übung könnte so aussehen:
+definiert sind. Das Hauptprogramm für diese Übung könnte so aussehen:
 
 ```cpp
 void g(int a, double b)

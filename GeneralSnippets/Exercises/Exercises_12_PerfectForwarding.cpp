@@ -154,15 +154,13 @@ namespace Exercises_PerfectForwarding {
             std::this_thread::sleep_for(std::chrono::seconds(3));
         }
 
-        // ===============================================================
-        // Erste Variante: Zeitmessung in Millisekunden
-
         class ExecutionTimer
         {
         public:
             template <typename F, typename... Args>
             static std::chrono::milliseconds duration(F&& f, Args&&... args)
             {
+                // Zeitmessung in Millisekunden
                 std::chrono::system_clock::time_point start = std::chrono::system_clock::now();
                 auto tpStart = std::chrono::time_point_cast<std::chrono::milliseconds>(start);
                 std::invoke(std::forward<F>(f), std::forward<Args>(args)...);
