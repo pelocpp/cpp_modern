@@ -44,28 +44,14 @@ so zu gliedern und zusammenzufassen, um bei deren Betrachtung den &ldquo;roten F
 
 ---
 
-## Online C++ Compiler
+## Online C++ Compiler 
 
-Online-C++&ndash;Compiler können nützliche Werkzeuge sein, um schnell ein Code-Snippet zu kompilieren,
-ohne einen C++ Compiler installieren zu müssen.
-Sie können besonders nützlich sein, um mit den neuesten Sprachfeatures zu spielen, Code-Snippets online zu verteilen
-oder auch um verschiedene Compiler zu vergleichen.
+Online C++ Compiler können nützliche Werkzeuge sein, um schnell ein Code-Snippet zu kompilieren und auszuführen,
+ohne hierfür einen C++ Compiler installieren zu müssen.
+Besonders nützlich können sie sein, um mit den neuesten Sprachfeatures zu spielen
+oder auch um verschiedene Compiler vergleichen zu können.
 
-Unter 
-
-[List of Online C++ Compilers](https://arnemertz.github.io/online-compilers/)
-
-findet man eine Liste mit Informationen zu verfügbaren Online-Compilern und ihren wichtigsten Funktionen vor.
-Auch unterstützen viele dieser WebSites andere Sprachen als C++,
-war für unsere Zwecke nicht weiter relevant ist.
-Je nach Version des verwendeten Compilers unterstützt dieser unterschiedliche Versionen des C++-Standards.
-
-Neben der bloßen Kompilierung führen die meisten Online-Compiler auch das kompilierte Programm aus.
-Die Möglichkeiten, die Kompilierung über Compiler-Flags zu parametrisieren,
-Kommandozeilen-/Laufzeitparameter an das ausgeführte Programm zu übergeben und Eingaben für Standardeingaben bereitzustellen,
-variieren zwischen den verschiedenen WebSites.
-
-[Einge Online C++ Compiler im Überblick](GeneralSnippets/OnlineCppCompilers/OnlineCppCompilers.md).
+[Einige weitere Details](GeneralSnippets/OnlineCppCompilers/OnlineCppCompilers.md)
 
 ---
 

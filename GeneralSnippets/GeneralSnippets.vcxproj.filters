@@ -593,7 +593,9 @@
     <None Include="Folding\VariadicTemplatesFolding.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="OnlineCppCompilers\OnlineCppCompilers.md" />
+    <None Include="OnlineCppCompilers\OnlineCppCompilers.md">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Global\Dummy.h">
@@ -635,6 +637,12 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="OnlineCppCompilers\Wandbox.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="OnlineCppCompilers\CompilerExplorer.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="OnlineCppCompilers\Cppinsights.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
