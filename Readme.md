@@ -35,10 +35,10 @@ die bei mir derzeit hoch im Kurs stehen und meiner Meinung nach absolut lesenswe
 
 ## Inhaltsverzeichnis
 
-Es ist nicht einfach, bei der Menge an Ergänzungen, Erweiterungen und Neuerungen der Sprache C++ den Überblick
-zu behalten. Das von mir zusammengestellte Inhaltsverzeichnis unternimmt zumindest den Versuch,
-den größten Teil dieser Sprachergänzungen nach gewissen systematischen und methodischen Gesichtspunkten
-so zu gliedern und zusammenzufassen, um bei deren Betrachtung den &ldquo;roten Faden&rdquo; nicht zu verlieren. 
+Es ist nicht einfach, bei der Menge an sprachlichen Ergänzungen, Erweiterungen und Neuerungen von C++ den Überblick
+zu behalten. Das von mir zusammengestellte Inhaltsverzeichnis unternimmt den Versuch,
+den größten Teil dieser Weiterentwicklung zumindest nach gewissen systematischen und methodischen Gesichtspunkten
+so zu gliedern und zusammenzufassen, dass bei deren Betrachtung der &ldquo;rote Faden&rdquo; nicht verloren geht. 
 
 [Zum Inhaltsverzeichnis](GeneralSnippets/Agenda/Agenda.md).
 
@@ -46,9 +46,9 @@ so zu gliedern und zusammenzufassen, um bei deren Betrachtung den &ldquo;roten F
 
 ## Online C++ Compiler 
 
-Online C++ Compiler können nützliche Werkzeuge sein, um schnell ein Code-Snippet zu kompilieren und auszuführen,
-ohne hierfür einen C++ Compiler installieren zu müssen.
-Besonders nützlich können sie sein, um mit den neuesten Sprachfeatures zu spielen
+Online C++ Compiler können nützliche Werkzeuge sein, um ein Code-Snippet schnell kompilieren und/oder ausführen zu können,
+ohne hierfür extra einen C++ Compiler installieren zu müssen.
+Besonders nützlich können Online Compiler sein, um mit den neuesten Sprachfeatures zu spielen
 oder auch um verschiedene Compiler vergleichen zu können.
 
 [Einige weitere Details](GeneralSnippets/OnlineCppCompilers/OnlineCppCompilers.md)
