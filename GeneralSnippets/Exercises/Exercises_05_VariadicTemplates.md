@@ -196,9 +196,9 @@ void test()
 
 ## Aufgabe 7: Berechnung der Gesamtlänge beliebig vieler Zeichenketten
 
-Schreiben Sie eine Funkion `totalLength`, die eine variable Anzahl von `std::string`-Parametern
-entgegennehmen kann. Als Rückgabewert liefert sie die Gesamtlänge aller Zeichenketten zurück.
-Mögliche Testbeispiele können so aussehen:
+Schreiben Sie eine Funkion `totalLength`, die eine variable Anzahl von `std::string`-Parametern besitzt.
+Als Rückgabewert liefert sie die Gesamtlänge aller Zeichenketten zurück.
+Ein mögliches Testbeispiel sieht so aus:
 
 ```cpp
 const std::string s1{ "111" };
