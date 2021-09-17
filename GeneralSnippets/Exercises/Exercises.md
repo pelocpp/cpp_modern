@@ -95,6 +95,7 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 | [Aufgabe 4](Exercises_05_VariadicTemplates.md) | Ausgabe eines `std::tuple` Objekts<br/>(Vorausetzungen: `std::tuple`, Non-Type Template Parameter) |
 | [Aufgabe 5](Exercises_05_VariadicTemplates.md) | Mehrere Summen, ein Ergebnis |
 | [Aufgabe 6](Exercises_05_VariadicTemplates.md) | Variadische Templates und Vererbung |
+| [Aufgabe 7](Exercises_05_VariadicTemplates.md) | Berechnung der Gesamtlänge beliebig vieler Zeichenketten<br/>(Vorausetzungen: `std::initializer_list`) |
 
 *Tabelle* 5: Aufgaben zu variadischen Templates.
 
