@@ -10,7 +10,7 @@
 
 **C++** ist eine high-level, general-purpose Programmiersprache, 
 die von Bjarne Stroustrup als Erweiterung der Programmiersprache C erfunden wurde.
-*Cfront* war der ursprüngliche Compiler für C ++ (damals bekannt als "*C with Classes*") aus der Zeit um 1983,
+*Cfront* war der ursprüngliche Compiler für C ++ &ndash; damals bekannt als &ldquo;*C with Classes*&rdquo; &ndash; aus der Zeit um 1983,
 der C ++ in C konvertierte. Entwickelt wurde der Übersetzer von Bjarne Stroustrup bei AT&T Bell Labs.
 
 Die Sprache hat sich im Laufe der Zeit erheblich erweitert, und modernes C++ verfügt jetzt
@@ -59,7 +59,7 @@ oder auch um verschiedene Compiler vergleichen zu können.
 
 Einige kleinere Aufgaben (samt Musterlösungen) sind diesem Repository ebenfalls beigefügt.
 Sie können bei weitem nicht den gesamten Stoffumfang des *Modern C++* Sprachumfangs abdecken,
-dienen aber dem Zweck, die "graue Materie" an der einen oder anderen Stelle etwas aufzuhellen:
+dienen aber dem Zweck, die &ldquo;graue Materie&rdquo; an der einen oder anderen Stelle etwas aufzuhellen:
 
 [Zu den Aufgaben](GeneralSnippets/Exercises/Exercises.md).
 
