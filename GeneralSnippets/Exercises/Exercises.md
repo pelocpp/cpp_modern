@@ -93,7 +93,7 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 | [Aufgabe 2](Exercises_05_VariadicTemplates.md) | `decltype` und Type-Traits am Beispiel von `sameType`<br/>(Vorausetzungen: `std::is_same`) |
 | [Aufgabe 3](Exercises_05_VariadicTemplates.md) | Generische Funktion `miminum`<br/>(Vorausetzungen: Utility-Funktion `std::common_type`) |
 | [Aufgabe 4](Exercises_05_VariadicTemplates.md) | Ausgabe eines `std::tuple` Objekts<br/>(Vorausetzungen: `std::tuple`, Non-Type Template Parameter) |
-| [Aufgabe 5](Exercises_05_VariadicTemplates.md) | Mehrere Summen, ein Ergebnis |
+| [Aufgabe 5](Exercises_05_VariadicTemplates.md) | Viele Wege führen zum gleichen Ergebnis: Summenbildung natürlicher Zahlen |
 | [Aufgabe 6](Exercises_05_VariadicTemplates.md) | Variadische Templates und Vererbung |
 | [Aufgabe 7](Exercises_05_VariadicTemplates.md) | Berechnung der Gesamtlänge beliebig vieler Zeichenketten<br/>(Vorausetzungen: `std::initializer_list`) |
 

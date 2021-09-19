@@ -1,5 +1,5 @@
 // =====================================================================================
-// Metaprogramming: Part II
+// MetaProgramming02.cpp // Metaprogramming: Part II
 // =====================================================================================
 
 #include <iostream>
@@ -18,7 +18,7 @@ namespace Metaprogramming {
     };
 
     template <int N>
-    struct Int { static const int result = N; };
+    struct Int { static constexpr int result = N; };
 
     void test_06() {
         // List(1, List(2, List(3, Nil)))
@@ -28,25 +28,25 @@ namespace Metaprogramming {
     template <typename LIST>
     struct LengthVerbose {
         using Tail = typename LIST::Tail;
-        static const unsigned int tailLength = LengthVerbose<Tail>::result;
-        static const unsigned int result = 1 + tailLength;
+        static constexpr unsigned int tailLength = LengthVerbose<Tail>::result;
+        static constexpr unsigned int result = 1 + tailLength;
     };
 
     template <>
     struct LengthVerbose<Nil> {
-        static const unsigned int result = 0;
+        static constexpr unsigned int result = 0;
     };
 
     // or 
 
     template <typename LIST>
     struct Length {
-        static const unsigned int result = 1 + Length<typename LIST::Tail>::result;
+        static constexpr unsigned int result = 1 + Length<typename LIST::Tail>::result;
     };
 
     template <>
     struct Length<Nil> {
-        static const unsigned int result = 0;
+        static constexpr unsigned int result = 0;
     };
 
     void test_07() {
@@ -78,26 +78,26 @@ namespace Metaprogramming {
     }
 
     template <typename X, typename Y>
-    struct Equals { static const bool result = false; };
+    struct Equals { static constexpr bool result = false; };
 
     template <typename X>
-    struct Equals<X, X> { static const bool result = true; };
+    struct Equals<X, X> { static constexpr bool result = true; };
 
     template <typename Elm, typename LIST>
     struct Contains {
         using Head = typename LIST::Head;
         using Tail = typename LIST::Tail;
 
-        static const bool result = Equals<Elm, Head>::result || Contains<Elm, Tail>::result;
+        static constexpr bool result = Equals<Elm, Head>::result || Contains<Elm, Tail>::result;
 
         // shorter
-        // static const bool result = Equals<Elm, typename LIST::Head>::result ||
+        // static constexpr bool result = Equals<Elm, typename LIST::Head>::result ||
         //    Contains<Elm, typename LIST::Tail>::result;
     };
 
     template <typename Elm>
     struct Contains<Elm, Nil> {
-        static const bool result = false;
+        static constexpr bool result = false;
     };
 
     void test_09() {

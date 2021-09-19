@@ -44,6 +44,16 @@ so zu gliedern und zusammenzufassen, dass bei deren Betrachtung der &ldquo;rote 
 
 ---
 
+## Aufgaben
+
+Einige kleinere Aufgaben (samt Musterlösungen) sind diesem Repository ebenfalls beigefügt.
+Sie können bei weitem nicht den gesamten Stoffumfang des *Modern C++* Sprachumfangs abdecken,
+dienen aber dem Zweck, die &ldquo;graue Materie&rdquo; an der einen oder anderen Stelle etwas aufzuhellen:
+
+[Zu den Aufgaben](GeneralSnippets/Exercises/Exercises.md).
+
+---
+
 ## Online C++ Compiler 
 
 Online C++ Compiler können nützliche Werkzeuge sein, um ein Code-Snippet schnell kompilieren und/oder ausführen zu können,
@@ -52,16 +62,6 @@ Besonders nützlich können Online Compiler sein, um mit den neuesten Sprachfeat
 oder auch um verschiedene Compiler vergleichen zu können.
 
 [Einige weitere Details](GeneralSnippets/OnlineCppCompilers/OnlineCppCompilers.md).
-
----
-
-## Aufgaben
-
-Einige kleinere Aufgaben (samt Musterlösungen) sind diesem Repository ebenfalls beigefügt.
-Sie können bei weitem nicht den gesamten Stoffumfang des *Modern C++* Sprachumfangs abdecken,
-dienen aber dem Zweck, die &ldquo;graue Materie&rdquo; an der einen oder anderen Stelle etwas aufzuhellen:
-
-[Zu den Aufgaben](GeneralSnippets/Exercises/Exercises.md).
 
 ---
 

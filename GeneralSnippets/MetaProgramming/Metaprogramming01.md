@@ -24,13 +24,13 @@ So kann man Code schreiben, der zur Übersetzungszeit ausgeführt wird. Obwohl sic
 template <int N>
 struct Factorial {
 
-    static const int result = N * Factorial<N - 1>::result;
+    static constexpr int result = N * Factorial<N - 1>::result;
 
 };
 
 template <>
 struct Factorial<1> {
-    static const int result = 1;
+    static constexpr int result = 1;
 };
 ```
 
@@ -72,12 +72,12 @@ wir das Thema.
 
 ## Parcours durch gängige Techniken der Metaprogrammierung
 
-### `static const`
+### `static constexpr`
 
 Templates werden beim Übersetzen ausgewertet.
 Das bedeutet, dass der gesamte Quellcode beim Übersetzen der Quelle tatsächlich ausgeführt wird,
 also nicht zur Laufzeit. Da der Übersetzer Klassen - keine Objekte - übersetzt, können Templates
-nur auf Klassen angewendet werden, es machen also nur Klassenvariablen (`static const`) Sinn.
+nur auf Klassen angewendet werden, es machen also nur Klassenvariablen (`static constexpr`) Sinn.
 
 ### Definition neuer Datentypen mit `using`
 
@@ -91,8 +91,8 @@ siehe dazu die Schablone `ScalarMultiplication`:
 ```cpp
 template <int N, int D>
 struct Frac {
-    static const long Num = N;
-    static const long Den = D;
+    static constexpr long Num = N;
+    static constexpr long Den = D;
 };
 
 template <int N, typename F>
@@ -128,25 +128,25 @@ des größten gemeinsamen Teilers zweier natürlicher Zahlen (ggT):
 ```cpp
 template <int X, int Y>
 struct GGT {
-    static const long result = GGT<Y, X % Y>::result;
+    static constexpr long result = GGT<Y, X % Y>::result;
 };
 
 template <int X>
 struct GGT<X, 0> {
-    static const long result = X;
+    static constexpr long result = X;
 };
 
 template <class F>
 struct FracNormalizedVerbose {
-    static const long ggt = GGT<F::Num, F::Den>::result;
-    static const long newNum = F::Num / ggt;
-    static const long newDen = F::Den / ggt;
+    static constexpr long ggt = GGT<F::Num, F::Den>::result;
+    static constexpr long newNum = F::Num / ggt;
+    static constexpr long newDen = F::Den / ggt;
     using result = Frac<newNum, newDen>;
 };
 
 template <class F>
 struct FracNormalized {
-    static const long ggt = GGT<F::Num, F::Den>::result;
+    static constexpr long ggt = GGT<F::Num, F::Den>::result;
     using result = Frac<F::Num / ggt, F::Den / ggt>;
 };
 ```
@@ -193,8 +193,8 @@ struct SameBase {
 template <typename X, typename Y>
 struct Sum {
     using BASE = SameBase<X, Y>;
-    static const long Num = BASE::X::Num + BASE::Y::Num;
-    static const long Den = BASE::Y::Den; // same as BASE::X::Den
+    static constexpr long Num = BASE::X::Num + BASE::Y::Num;
+    static constexpr long Den = BASE::Y::Den; // same as BASE::X::Den
     using result = typename FracNormalized<Frac<Num, Den>>::result;
 };
 ```
@@ -232,7 +232,7 @@ formuliert werden, fällt uns eine Implementierung nicht schwer:
 template <int N>
 struct E {
     // e = 1/0! + 1/1! + 1/2! + ...
-    static const long Den = Factorial<N>::result;
+    static constexpr long Den = Factorial<N>::result;
     using Term = Frac<1, Den>;
     using NextTerm = typename E<N - 1>::result;
     using result = typename Sum<Term, NextTerm>::result;

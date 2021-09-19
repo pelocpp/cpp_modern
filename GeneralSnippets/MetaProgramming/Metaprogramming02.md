@@ -22,7 +22,7 @@ Es gibt eine Möglichkeit, den Compiler dazu zu bringen, einen Typ aus einem ganz
 ```cpp
 template <int N>
 struct Int {
-    static const int value = N;
+    static constexpr int value = N;
 };
 ```
 
@@ -86,25 +86,25 @@ mit dem Sonderfall der Länge des `Nil`-Objekts, die immer 0 sein sollte. Damit i
 template <typename LIST>
 struct LengthVerbose {
     using Tail = typename LIST::Tail;
-    static const unsigned int tailLength = LengthVerbose<Tail>::result;
-    static const unsigned int result = 1 + tailLength;
+    static constexpr unsigned int tailLength = LengthVerbose<Tail>::result;
+    static constexpr unsigned int result = 1 + tailLength;
 };
 
 template <>
 struct LengthVerbose<Nil> {
-    static const unsigned int result = 0;
+    static constexpr unsigned int result = 0;
 };
 
 // oder 
 
 template <typename LIST>
 struct Length {
-    static const unsigned int result = 1 + Length<typename LIST::Tail>::result;
+    static constexpr unsigned int result = 1 + Length<typename LIST::Tail>::result;
 };
 
 template <>
 struct Length<Nil> {
-    static const unsigned int result = 0;
+    static constexpr unsigned int result = 0;
 };
 ```
 
@@ -187,13 +187,13 @@ template <class Elm, class LST>
     using Head = typename LIST::Head;
     using Tail = typename LIST::Tail;
  
-    static const bool found = (Elm == Head);
+    static constexpr bool found = (Elm == Head);
     ...
 };
  
 template <class Elm>
     struct Contains <Elm, NIL> {
-    static const bool result = false;
+    static constexpr bool result = false;
 };
 ```
 
@@ -204,10 +204,10 @@ Die partielle Spezialisierung von Templates kommt uns - wieder Mal - zur Hilfe:
 
 ```cpp
 template <class X, class Y>
-struct Equals { static const bool result = false; };
+struct Equals { static constexpr bool result = false; };
 
 template <class X>
-struct Equals<X, X> { static const bool result = true; };
+struct Equals<X, X> { static constexpr bool result = true; };
 ```
 
 Damit können wir eine Klasse `Contains` wie folgt definieren:
@@ -218,16 +218,16 @@ struct Contains {
     using Head = typename LIST::Head;
     using Tail = typename LIST::Tail ;
 
-    static const bool result = Equals<Elm, Head>::result || Contains<Elm, Tail>::result;
+    static constexpr bool result = Equals<Elm, Head>::result || Contains<Elm, Tail>::result;
 
     // shorter
-    // static const bool result = Equals<Elm, typename LIST::Head>::result ||
+    // static constexpr bool result = Equals<Elm, typename LIST::Head>::result ||
     //    Contains<Elm, typename LIST::Tail>::result;
 };
 
 template <class Elm>
 struct Contains<Elm, Nil> {
-    static const bool result = false;
+    static constexpr bool result = false;
 };
 ```
 

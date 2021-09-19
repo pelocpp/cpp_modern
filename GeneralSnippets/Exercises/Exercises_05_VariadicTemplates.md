@@ -125,22 +125,32 @@ printTuple(tuple);
 
 ---
 
-## Aufgabe 5: Mehrere Summen, ein Ergebnis
+## Aufgabe 5: Viele Wege führen zum gleichen Ergebnis: Summenbildung natürlicher Zahlen
 
 Ziel dieser Übung ist es, mehrere Möglichkeiten
 in der Definition variadischer Templates (Klassenschablone, Funktionsschablone)
 zu erlernen. Dazu betrachten wir die Summation einer beliebigen Anzahl von Summanden
-auf der Basis von variadischen Templates in mehreren Varianten.
+auf Basis variadischer Templates in mehreren Varianten.
 
-Betrachten Sie die folgenden drei Anweisungen genau:
+Studieren Sie die folgenden vier Anweisungen genau:
 
 ```cpp
 int result1 = sum1<1, 2, 3, 4, 5>::result;
 int result2 = sum2(1, 2, 3, 4, 5);
 int result3 = sum3<1, 2, 3, 4, 5>();
+int result4 = sum4<1, 2, 3, 4, 5>{};
 ```
 
-Bei genauem Hinsehen erkennen Sie, ob es sich bei `sum1`, `sum2` und `sum3` um eine
+*Ausgabe*:
+
+```
+15
+15
+15
+15
+```
+
+Bei genauem Hinsehen erkennen Sie zunächst, ob es sich bei `sum1`, `sum2`, `sum3`  und `sum4` um eine
 Klassen- oder Funktionsschablone handelt!
 Wie könnte eine Realisierung aussehen, um die Anweisungen zu implementieren?
 

@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <numeric>
 
 namespace Exercises_VariadicTemplates {
 
@@ -235,7 +236,7 @@ namespace Exercises_VariadicTemplates {
         class sum1<>
         {
         public:
-            static constexpr long result = 0;
+            static constexpr int result = 0;
         };
 
         // ODER
@@ -244,14 +245,14 @@ namespace Exercises_VariadicTemplates {
         class sum1<N>
         {
         public:
-            static constexpr long result = N;
+            static constexpr int result = N;
         };
 
         template <int N, int ... REST>
         class sum1<N, REST ...>
         {
         public:
-            static constexpr long result = N + sum1<REST ...>::result;
+            static constexpr int result = N + sum1<REST ...>::result;
         };
 
         // =============================================================
@@ -291,14 +292,48 @@ namespace Exercises_VariadicTemplates {
             return X + sum3<Y, Z...>();
         }
 
+        // =============================================================
+        // d)
+        // Zwei weitere Realisierungen als Klassenschablone:
+        // 
+        // Unter Verwendung von Non-Type Parametern und ohne partielle Spezialisierung,
+        // die Realisierung erzeugt ein 'std::initializer_list<>'-Objekt mit einem
+        // anschlieﬂenden Aufruf von 'std::accumulate':
+
+        template <int... ARGS>
+        class sum4
+        {
+        public:
+            // 'std::accumulate' cannot be called in an 'constexpr' context,
+            // therefore applying type conversion operator
+            operator int() const { 
+                std::initializer_list<int> args = { ARGS ... };
+                return std::accumulate(std::begin(args), std::end(args), 0);
+            }
+        };
+
+        // =============================================================
+        // Mit einem Folding-Konstrukt:
+
+        template <int... ARGS>
+        class sum5
+        {
+        public:
+            static constexpr int result = ( ... + ARGS);
+        };
+
         void testExercise_05() {
             int result1 = sum1<1, 2, 3, 4, 5>::result;
             int result2 = sum2(1, 2, 3, 4, 5);
             int result3 = sum3<1, 2, 3, 4, 5>();
+            int result4 = sum4<1, 2, 3, 4, 5>{};
+            int result5 = sum5<1, 2, 3, 4, 5>::result;
 
             std::cout << result1 << std::endl;
             std::cout << result2 << std::endl;
             std::cout << result3 << std::endl;
+            std::cout << result4 << std::endl;
+            std::cout << result5 << std::endl;
         }
     }
 
