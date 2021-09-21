@@ -80,6 +80,8 @@
 ## STL-Algorithmen
   * `std::accumulate`
   * `std::transform`
+  * Das *Erase-Remove*-Idiom
+  * `std::find_if`, `erase` und `base` (Beispiel `trim`)
 
 
 ## Variadische Templates

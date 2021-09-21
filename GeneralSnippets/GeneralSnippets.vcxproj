@@ -226,6 +226,7 @@
     <ClCompile Include="TemplateTemplateParameter\TemplateTemplateParameter_01.cpp" />
     <ClCompile Include="TemplateTemplateParameter\TemplateTemplateParameter_02.cpp" />
     <ClCompile Include="Transform\Transform.cpp" />
+    <ClCompile Include="Trim\Trim.cpp" />
     <ClCompile Include="Tuple\Tuples.cpp" />
     <ClCompile Include="TypeTraits\TypeTraits.cpp" />
     <ClCompile Include="UniformInitialization\UniformInitialization.cpp" />
@@ -321,6 +322,7 @@
     <None Include="Transform\cpp_snippet_transform_01.svg" />
     <None Include="Transform\cpp_snippet_transform_02.svg" />
     <None Include="Transform\Transform.md" />
+    <None Include="Trim\Trim.md" />
     <None Include="Tuple\StdTuple.md" />
     <None Include="TypeTraits\TypeTraits.md" />
     <None Include="UniformInitialization\UniformInitialization.md" />
@@ -353,6 +355,7 @@
     <Image Include="OnlineCppCompilers\CompilerExplorer.png" />
     <Image Include="OnlineCppCompilers\Cppinsights.png" />
     <Image Include="OnlineCppCompilers\Wandbox.png" />
+    <Image Include="Trim\stl_base.png" />
     <Image Include="UniformInitialization\cpp_init.gif" />
     <Image Include="VariadicTemplates\cpp_snippets_mixins_01.png" />
     <Image Include="VariadicTemplates\cpp_snippets_mixins_02.png" />
