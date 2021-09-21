@@ -1,5 +1,9 @@
 # Erase Remove Idiom
 
+[Zurück](../../Readme.md)
+
+---
+
 [Quellcode](EraseRemoveIdiom.cpp)
 
 ---

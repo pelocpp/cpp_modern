@@ -1,5 +1,9 @@
 # std::accumulate
 
+[Zurück](../../Readme.md)
+
+---
+
 [Quellcode](Accumulate.cpp)
 
 ---

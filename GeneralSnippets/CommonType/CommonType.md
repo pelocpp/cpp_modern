@@ -1,5 +1,9 @@
 # `std::common_type`
 
+[Zurück](../../Readme.md)
+
+---
+
 [Quellcode](CommonType.cpp)
 
 ---

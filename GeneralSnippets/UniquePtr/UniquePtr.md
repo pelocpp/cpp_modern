@@ -1,5 +1,9 @@
 # Unique Pointer - Klasse `std::unique_ptr`
 
+[Zurück](../../Readme.md)
+
+---
+
 [Quellcode](UniquePtr.cpp)
 
 ---

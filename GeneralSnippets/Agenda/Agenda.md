@@ -83,7 +83,7 @@
 
 
 ## Variadische Templates
-  * `std::tuple` (Vorrausetzung)
+  * `std::tuple` (Vorausetzung)
   * Allgemeines / einf&uuml;hrende Beispiele
   * Zugriff auf jedes einzelne Argument
   * Anwendungsfall &ldquo;Summe von Summen&rdquo;

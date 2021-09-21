@@ -1,13 +1,14 @@
 # Typumwandlungen
 
+[Zurück](../../Readme.md)
+
+---
+
 [Quellcode](Casts.cpp)
 
 ---
 
-[Zurück](../../Readme.md)
-
----
-Er wird an mehreren Beispielen die Funktionsweise folgender C++-Typumwandlungen gezeigt:
+Es wird an mehreren Beispielen die Funktionsweise folgender C++-Typumwandlungen gezeigt:
 
   * `static_cast`
   * `dynamic_cast`

@@ -1,5 +1,9 @@
 ﻿# Generierung von Zufallszahlen
 
+[Zurück](../../Readme.md)
+
+---
+
 [Quellcode](Random.cpp)
 
 ---

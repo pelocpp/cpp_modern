@@ -1,5 +1,9 @@
 # Static Assertion
 
+[Zurück](../../Readme.md)
+
+---
+
 [Quellcode](StaticAssert.cpp)
 
 ---

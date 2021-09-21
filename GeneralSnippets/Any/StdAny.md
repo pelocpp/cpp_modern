@@ -1,5 +1,9 @@
 # std::any
 
+[Zurück](../../Readme.md)
+
+---
+
 [Quellcode](Any.cpp)
 
 ---

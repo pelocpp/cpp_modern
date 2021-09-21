@@ -1,5 +1,9 @@
 # Array Decay
 
+[Zurück](../../Readme.md)
+
+---
+
 [Quellcode](ArrayDecay.cpp)
 
 ---

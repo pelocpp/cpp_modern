@@ -1,5 +1,9 @@
 # Klasse `std::initializer_list<T>`
 
+[Zurück](../../Readme.md)
+
+---
+
 [Quellcode](InitializerList.cpp)
 
 ---

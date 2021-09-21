@@ -1,5 +1,9 @@
 # Lambda-Funktionen
 
+[Zurück](../../Readme.md)
+
+---
+
 [Quellcode 1 - Motivation, allgemeine Beispiele](Lambda01.cpp)
 
 [Quellcode 2 - Lambda und Closure](Lambda02.cpp)
