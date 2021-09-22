@@ -134,7 +134,7 @@ In der folgenden Tabelle sind alle Neuerungen von C++&ndash;11/14/17 aufgeführt
 | [TemplateStaticPolymorphism](GeneralSnippets/TemplateStaticPolymorphism/TemplatesStaticPolymorphism.md) | Templates und statischer Polymorphismus |
 | [TemplateTemplateParameter](GeneralSnippets/TemplateTemplateParameter/TemplateTemplateParameter.md) | Template Template Parameter |
 | [Transform](GeneralSnippets/Transform/Transform.md) | STL-Algorithmus `std::transform` und Lambda-Funktionen in der Anwendung |
-| [TrimmingStrings](GeneralSnippets/Trim/Trim.md) | Leerzeichen am Anfang und Ende einer Zeichenkette entfernen<br/>(`std::find_if`, `erase` und `base`) |
+| [TrimmingStrings](GeneralSnippets/Trim/Trim.md) | Leerzeichen am Anfang und Ende einer Zeichenkette entfernen |
 | [Tuples](GeneralSnippets/Tuple/StdTuple.md) | Neue STL-Utility Klasse `std::tuple` |
 | [TypeTraits](GeneralSnippets/TypeTraits/TypeTraits.md) | Typmerkmale |
 | [UniformInitialization](GeneralSnippets/UniformInitialization/UniformInitialization.md) | Einheitliches Initialisierungs-Konzept |
