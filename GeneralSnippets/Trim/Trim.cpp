@@ -85,7 +85,6 @@ namespace TrimExample {
         std::cout << '[' << s << ']' << std::endl;
     }
 
-    // https://stackoverflow.com/questions/16609041/c-stl-what-does-base-do
     void test_03()
     {
         std::vector<int> vec{ 1, 2, 3, 4, 5 };
@@ -93,18 +92,17 @@ namespace TrimExample {
         std::vector<int>::iterator it = std::find(
             std::begin(vec),
             std::end(vec),
-            2
+            3
         );
 
         std::cout << *it << std::endl;  // prints '2'
 
-        std::reverse_iterator<std::vector<int>::iterator> rit(it);
+        std::reverse_iterator<std::vector<int>::iterator> rit{ it };
         std::cout << *rit << std::endl; // prints '1'
 
         std::vector<int>::iterator i2 = rit.base();
         std::cout << *i2 << std::endl;  // prints '2'
     }
-
 }
 
 void main_trim()

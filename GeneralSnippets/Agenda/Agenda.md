@@ -81,7 +81,6 @@
   * `std::accumulate`
   * `std::transform`
   * Das *Erase-Remove*-Idiom
-  * `std::find_if`, `erase` und `base` (Beispiel `trim`)
 
 
 ## Variadische Templates
@@ -138,6 +137,7 @@
 ## Ergänzungen zu Zeichenketten
   * `std::string_view`
   * SSO (Small String Optimization)
+  * Leerzeichen am Anfang und Ende einer Zeichenkette entfernen (`std::find_if`, `erase` und `base`)
 
 
 ## Neue Utility Klassen

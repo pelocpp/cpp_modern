@@ -602,6 +602,12 @@
     <None Include="Trim\Trim.md">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="Trim\cpp_snippet_base_02.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Trim\cpp_snippet_base_01.svg">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Global\Dummy.h">

@@ -322,6 +322,8 @@
     <None Include="Transform\cpp_snippet_transform_01.svg" />
     <None Include="Transform\cpp_snippet_transform_02.svg" />
     <None Include="Transform\Transform.md" />
+    <None Include="Trim\cpp_snippet_base_01.svg" />
+    <None Include="Trim\cpp_snippet_base_02.svg" />
     <None Include="Trim\Trim.md" />
     <None Include="Tuple\StdTuple.md" />
     <None Include="TypeTraits\TypeTraits.md" />
