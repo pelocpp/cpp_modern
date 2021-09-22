@@ -25,7 +25,7 @@ Dabei gilt zwischen `rit` und `it` die folgende &ndash; auf den ersten Blick nic
 
 Siehe dazu auch die folgenden Abbildung:
 
-<img src="cpp_snippet_base_02.svg" width="400">
+<img src="cpp_snippet_base_02.svg" width="350">
 
 *Abbildung* 1: Vorwärts- und Rückwärts-Iteratoren im Vergleich.
 
@@ -44,7 +44,7 @@ Dies bedeutet, dass das Element, auf das er physisch zeigt, und das Element, auf
 
 Im folgenden Diagramm ist `it` ein Vorwärts-Iterator und `rit` ein Rückwärts-Iterator, der sich auf `it` bezieht:
 
-<img src="cpp_snippet_base_01.svg" width="400">
+<img src="cpp_snippet_base_01.svg" width="350">
 
 *Abbildung* 2: Zusammenhang von Vorwärts- und Rückwärts-Iterator.
 
