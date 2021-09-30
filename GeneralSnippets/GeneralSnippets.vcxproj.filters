@@ -605,7 +605,7 @@
     <None Include="Trim\cpp_snippet_base_01.svg">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="ConstExpr\ConstExpr.md">
+    <None Include="ConstExpr\Constexpr.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
