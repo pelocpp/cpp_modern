@@ -536,9 +536,6 @@
     <None Include="PerfectForwarding\PerfectForwarding_01.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="ConstExpr\ConstExpr.md">
-      <Filter>Resource Files</Filter>
-    </None>
     <None Include="RegExpr\RegExpr.md">
       <Filter>Resource Files</Filter>
     </None>
@@ -606,6 +603,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Trim\cpp_snippet_base_01.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="ConstExpr\ConstExpr.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
