@@ -9,12 +9,12 @@
 
 namespace Lambda {
 
-    bool myCompare (const int n1, const int n2) {
+    bool myCompare (int n1, int n2) {
         return n1 < n2;
     }
 
     struct MyComparer {
-        bool operator() (const int n1, const int n2) {
+        bool operator() (int n1, int n2) {
             return n1 < n2;
         }
     };
@@ -23,7 +23,7 @@ namespace Lambda {
 
         // local class within function possible
         struct MyInternalComparer {
-            bool operator() (const int n1, const int n2) {
+            bool operator() (int n1, int n2) {
                 return n1 < n2;
             }
         };
@@ -68,7 +68,7 @@ namespace Lambda {
         std::cout << std::endl;
 
         std::sort(std::begin(myVector), std::end(myVector),
-            [] (const int n1, const int n2) { return n1 < n2; }
+            [] (int n1, int n2) { return n1 < n2; }
         );
 
         for (int n : myVector) {
