@@ -82,7 +82,6 @@ namespace Exercises_PerfectForwarding {
         void test_03() {
             int n = 123;
             const double pi = 3.14;
-
             listEx(10, "abc", n, pi, 2.4, std::string("ABC"), 99.99f);
         }
 
@@ -97,35 +96,38 @@ namespace Exercises_PerfectForwarding {
             listEx(10, 11, 12, 13, 14);
         }
 
-        // NEU
+        // Lösung zur Ergänzungsaufgabe:
+        // Zweite alternative Realisierung mit std::initializer_list<T>
 
         template <typename ... T>
-        void listExEx0(T&& ... args)
+        void listExEx(T&& ... args)
         {
-            std::initializer_list<int> { (std::cout << std::forward<T>(args) << std::endl, int{})... };
+            std::initializer_list<int> { 
+                (std::cout << std::forward<T>(args) << std::endl, int{}) ...
+            };
         }
 
         template <typename ... T>
-        void listExEx1(T&& ... args)
+        void listExExEx(T&& ... args)
         {
             size_t count{};
-
-            std::initializer_list<int> { (std::cout << ++count << ": " << std::forward<T>(args) << std::endl, int{})... };
+            std::initializer_list<int> {
+                (std::cout << ++count << ": " << std::forward<T>(args) << std::endl, int{}) ... 
+            };
         }
 
         void test_06() {
-            listExEx0(100, 101, 102, 103, 104, 105);
-            listExEx1(100, 101, 102, 103, 104, 105);
+            listExEx(100, 101, 102, 103, 104, 105);
+            listExExEx(100, 101, 102, 103, 104, 105);
         }
 
         void test_07() {
             Point p{ 11, 12 };
             Point* pp = new Point{ 3, 4 };
             std::complex<double> c(2.5, 2.5);
-            listExEx0(c, 10, "abc", p, *pp, 2.4, Point{ 1, 2 });
-            listExEx1(c, 10, "abc", p, *pp, 2.4, Point{ 1, 2 });
+            listExEx(c, 10, "abc", p, *pp, 2.4, Point{ 1, 2 });
+            listExExEx(c, 10, "abc", p, *pp, 2.4, Point{ 1, 2 });
         }
-
 
         void testExercise_01() {
             //test_01();
@@ -133,7 +135,6 @@ namespace Exercises_PerfectForwarding {
             //test_03();
             //test_04();
             //test_05();
-
             //test_06();
             test_07();
         }
