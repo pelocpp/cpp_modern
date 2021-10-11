@@ -312,6 +312,9 @@
     <ClCompile Include="Trim\Trim.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Exercises\Exercises_14_ConstExpr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -606,6 +609,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="ConstExpr\Constexpr.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Exercises\Exercises_14_ConstExpr.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

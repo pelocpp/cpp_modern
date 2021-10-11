@@ -25,6 +25,8 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
     
   * ### [Folding](#Aufgaben-zu-Folding)
     
+  * ### [constexpr](#Aufgaben-zu-constexpr)
+    
   * ### [Utility Klassen](#Aufgaben-zu-Utility-Klassen)
     
   * ### [Metaprogrammierung](#Aufgaben-zur-Metaprogrammierung)
@@ -38,7 +40,7 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
   * ### [SFINAE](#Aufgaben-zu-SFINAE)
     
   * ### [CRTP](#Aufgaben-zu-CRTP)
-    
+      
 ---
 
 ### Aufgaben zur Move-Semantik
@@ -113,6 +115,16 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 
 ---
 
+### Aufgaben zu `constexpr`
+
+| Aufgabe | Beschreibung |
+| :- | :- |
+| [Aufgabe 1](Exercises_14_ConstExpr.md) | Auswertung von variadische Templates, `decltype` und Type-Traits am Beispiel von `sameType` zur Übersetzungszeit<br/>(Voraussetzungen: `decltype`, `std::is_same`) |
+
+*Tabelle* 7: Aufgaben zu `constexpr`.
+
+---
+
 ### Aufgaben zu Utility Klassen
 
 | Aufgabe | Beschreibung |
@@ -120,7 +132,7 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 | [Aufgabe 1](Exercises_04_UtilityClasses.md) | `std::optional`: Umwandlung von Zeichenketten in ganze Zahlen<br/>(Vorausetzungen: Templates Grundlagen, `std::optional`, `if constexpr`) |
 | [Aufgabe 2](Exercises_04_UtilityClasses.md) | `std::variant`: Ein heterogener Container<br/>(Vorausetzungen: `std::variant`, `std::visit`, `std::vector`) |
 
-*Tabelle* 7: Aufgaben zu Utility Klassen.
+*Tabelle* 8: Aufgaben zu Utility Klassen.
 
 ---
 
@@ -131,7 +143,7 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 | [Aufgabe 1](Exercises_07_Metaprogramming.md) | Konvertierung binärer Zahlen in Dezimalzahlen |
 | [Aufgabe 2](Exercises_07_Metaprogramming.md) | *Fibonacci*-Zahlen |
 
-*Tabelle* 8: Aufgaben zur Metaprogrammierung.
+*Tabelle* 9: Aufgaben zur Metaprogrammierung.
 
 ---
 
@@ -140,7 +152,7 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 | Aufgabe | Beschreibung |
 | :- | :- |
 
-*Tabelle* 9: Aufgaben zu Expression Templates.
+*Tabelle* 10: Aufgaben zu Expression Templates.
 
 ---
 
@@ -151,7 +163,7 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 | [Aufgabe 1](Exercises_12_PerfectForwarding.md) | Einfaches Beispiel zu variadischen Templates und *Perfect Forwarding* |
 | [Aufgabe 2](Exercises_12_PerfectForwarding.md) | Ausführungszeit einer Funktion<br/>(Voraussetzungen: `std::invoke`, variadische Templates und *Perfect Forwarding*) |
 
-*Tabelle* 10: Aufgaben zum *Perfect Forwarding*.
+*Tabelle* 11: Aufgaben zum *Perfect Forwarding*.
 
 ---
 
@@ -162,7 +174,7 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 | [Aufgabe 1](Exercises_13_FunctionalProgramming.md) | Umwandlung von Zeichenketten eines `std::vector`-Objekts von Klein- in Großbuchstaben<br/>(Vorausetzungen: Templates, Lambda-Funktionen) |
 | [Aufgabe 2](Exercises_13_FunctionalProgramming.md) | `decltype`, `declval` und nachlaufender Rückgabetyp in der Praxis<br/>(Vorausetzungen: Kenntnisse von `decltype` und `declval`) |
 
-*Tabelle* 11: Aufgaben zum funktionaler Programmierung.
+*Tabelle* 12: Aufgaben zum funktionaler Programmierung.
 
 ---
 
@@ -173,7 +185,7 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 | [Aufgabe 1](Exercises_09_SFINAE.md) | Eine Methode, mehrere Implementierungen<br/>(Vorausetzungen: `std::array`) |
 | [Aufgabe 2](Exercises_09_SFINAE.md) | Detektion von Methoden in einer Klasse<br/>(Vorausetzungen: Templates, `decltype` und `std::declval`) |
 
-*Tabelle* 12: Aufgaben zu SFINAE.
+*Tabelle* 13: Aufgaben zu SFINAE.
 
 ---
 
@@ -183,7 +195,7 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 | :- | :- |
 | [Aufgabe 1](Exercises_10_CRTP.md) | Der *kuriose* Polymorphismus (CRTP) an einem Beispiel betrachtet<br/>(Voraussetzungen: Polymorphismus, Templates)  |
 
-*Tabelle* 13: Aufgaben zu CRTP.
+*Tabelle* 14: Aufgaben zu CRTP.
 
 ---
 
