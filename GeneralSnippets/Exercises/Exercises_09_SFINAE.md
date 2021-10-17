@@ -8,7 +8,41 @@
 
 ---
 
-## Aufgabe 1: Eine Methode, mehrere Implementierungen
+## Aufgabe 1: Eine Funktion mit ausgewählten Parametertypen
+
+Wir betrachen folgende Funktion `distance`, die den Abstand zweier Punkte in der Ebene berechnet:
+
+```cpp
+template <typename T>
+T distance(T a1, T a2, T b1, T b2)
+{
+    T tmp1 = a1 - b1;
+    T tmp2 = a2 - b2;
+    return std::sqrt(tmp1 * tmp1 + tmp2 * tmp2);
+}
+```
+
+Auf die Schnelle erkennen wir ein Problem:
+
+  * Prinzipiell ist die `distance`-Funktion für Argumente beliebigen Typs definiert, da es sich um eine Template Funktion handelt.
+  * Im Rumpf von `distance` wird die Bibliotheksfunktion `std::sqrt` aufgerufen.
+    Diese Funktion ist (C++ 17) aber nur für die drei Datentypen `float`, `double` und `long double` definiert.
+
+Wollten wir `distance` mit einem anderen Template Parameter spezialisieren, z.B. `int`,
+müssen wir mit Warnungen oder Fehlermeldungen des Übersetzers rechnen.
+Für nicht-integrale Datentypen wiederum ergibt eine Spezialisierung von `distance` überhaupt keinen Sinn.
+
+**Aufgabe**: Realisieren Sie eine Funktion `distanceEx`, so dass diese nur mit Argumenten
+des Typs `float` oder `double` aufgerufen werden kann.
+Verwenden Sie hierzu die SFINAE-Technik!
+
+---
+
+[An den Anfang](#Aufgaben-zu-SFINAE)
+
+---
+
+## Aufgabe 2: Eine Methode, mehrere Implementierungen
 
 #### Vorausetzungen: `std::array`
 
@@ -25,7 +59,7 @@ das Iterator-Objekt `begin`.
 
 ---
 
-## Aufgabe 2: Detektion von Methoden in einer Klasse
+## Aufgabe 3: Detektion von Methoden in einer Klasse
 
 #### Vorausetzungen: Templates, `decltype` und `std::declval`
 

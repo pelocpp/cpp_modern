@@ -6,10 +6,62 @@
 #include <string>
 #include <vector>
 #include <array>
+#include <cmath>
 
 namespace Exercises_SFINAE {
 
     namespace Exercise_01 {
+
+        template <typename T>
+        T distance(T a1, T a2, T b1, T b2)
+        {
+            T tmp1 = a1 - b1;
+            T tmp2 = a2 - b2;
+            return std::sqrt(tmp1 * tmp1 + tmp2 * tmp2);
+        }
+
+        // primary template
+        template <typename T>
+        struct TypeRestrictor {};
+
+        // partial (explicit) template specialization
+        template<>
+        struct TypeRestrictor<float>
+        {
+            using result = float;
+        };
+
+        // partial (explicit) template specialization
+        template<>
+        struct TypeRestrictor<double>
+        {
+            using result = double;
+        };
+
+        template <typename T>
+        typename TypeRestrictor<T>::result
+            distanceEx(T a1, T a2, T b1, T b2)
+        {
+            T tmp1 = a1 - b1;
+            T tmp2 = a2 - b2;
+            return std::sqrt(tmp1 * tmp1 + tmp2 * tmp2);
+        }
+
+        void testExercise_01() {
+
+            double result1 = distanceEx<double>(2.0, 2.0, 1.0, 1.0);
+            std::cout << result1 << std::endl;
+
+            float result2 = distanceEx<float>(3.0F, 3.0F, 2.0F, 2.0F);
+            std::cout << result2 << std::endl;
+
+            //int result3 = distanceEx<int>(2, 2, 1, 1);
+            //std::cout << result1 << std::endl;
+        };
+    }
+
+
+    namespace Exercise_02 {
 
         template <class T>
         auto first(T& c) -> decltype(c.begin()) {
@@ -23,7 +75,7 @@ namespace Exercises_SFINAE {
             return arr;
         }
 
-        void testExercise_01() {
+        void testExercise_02() {
             int vals[5]{ 1, 2, 3, 4, 5 };
             int elem = *(first(vals));
             std::cout << elem << std::endl;
@@ -48,7 +100,7 @@ namespace Exercises_SFINAE {
         }
     }
 
-    namespace Exercise_02 {
+    namespace Exercise_03 {
 
         // https://people.eecs.berkeley.edu/~brock/blog/detection_idiom.php
 
@@ -85,7 +137,7 @@ namespace Exercises_SFINAE {
             int getter() { return 456; };
         };
 
-        void testExercise_02a() {
+        void testExercise_03a() {
 
             std::cout
                 << "FirstStruct:  "
@@ -133,7 +185,7 @@ namespace Exercises_SFINAE {
             int get(int value1, int value2) { return value1 * value2; };
         };
 
-        void testExercise_02b() {
+        void testExercise_03b() {
 
             std::cout
                 << "ThirdStruct:  "
@@ -148,9 +200,9 @@ namespace Exercises_SFINAE {
                 << std::endl;
         };
 
-        void testExercise_02() {
-            testExercise_02a();
-            testExercise_02b();
+        void testExercise_03() {
+            testExercise_03a();
+            testExercise_03b();
         }
     }
 }
@@ -160,6 +212,7 @@ void test_exercices_sfinae()
     using namespace Exercises_SFINAE;
     Exercise_01::testExercise_01();
     Exercise_02::testExercise_02();
+    Exercise_03::testExercise_03();
 }
 
 // =====================================================================================
