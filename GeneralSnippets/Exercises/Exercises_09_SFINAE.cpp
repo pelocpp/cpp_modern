@@ -2,11 +2,15 @@
 // Exercises_09_SFINAE.cpp
 // =====================================================================================
 
+#define _CRT_SECURE_NO_WARNINGS  
+
 #include <iostream>
 #include <string>
 #include <vector>
 #include <array>
 #include <cmath>
+#include <chrono>
+#include <ctime>
 
 namespace Exercises_SFINAE {
 
@@ -60,44 +64,147 @@ namespace Exercises_SFINAE {
         };
     }
 
-
     namespace Exercise_02 {
 
-        template <class T>
-        auto first(T& c) -> decltype(c.begin()) {
-            std::cout << "__FUNCSIG__ = " << __FUNCSIG__ << std::endl;
-            return c.begin();
+        char* printTimeStamp(const std::time_t& ttp)
+        {
+            char* cp{ std::ctime(&ttp) };
+            size_t len{ strlen(cp) };
+            cp[len - 1] = '\0';
+            return cp;
         }
 
-        template <class T, size_t N>
-        T* first(T(&arr)[N]) {
-            std::cout << "__FUNCSIG__ = " << __FUNCSIG__ << "N = " << N << std::endl;
-            return arr;
+        // Augangsfunktion - ist ein Kommentar gesetzt, da weiter unter das SFINAE-Prinzip angewendet wird
+        //template<typename T>
+        //void print(const T& arg) {
+        //    std::chrono::system_clock::time_point time_point = std::chrono::system_clock::now();
+        //    std::time_t ttp = std::chrono::system_clock::to_time_t(time_point);
+        //    std::cout << "[" << printTimeStamp(ttp) << "] " << arg << std::endl;
+        //}
+        
+        // Error: function template has already been defined
+        //template<typename T>
+        //void print(const T& arg) {
+        //    arg.log();
+        //}
+
+        class AnyClass
+        {
+            friend std::ostream& operator << (std::ostream& out, const AnyClass& m);
+
+        public:
+            AnyClass() : AnyClass{ 0 } {};
+            AnyClass(int n) : m_i{ n } {};
+
+            virtual void log() const {
+                std::cout << "AnyClass: m_i=";
+                std::cout << *this << std::endl;
+            }
+
+        protected:
+            int m_i;
+        };
+
+        std::ostream& operator<<(std::ostream& os, const AnyClass& m) {
+            return os << m.m_i;
+        }
+
+        /*
+         * Beachte:
+         * Die Platzierung des SFINAE Patterns findet in der Definition des Rückgabetyps der Funktion statt.
+         * Der zweite, nicht vorhandene Template Parameter von 'std::enable_if' ist per default
+         * auf 'void' gesetzt
+         */
+
+        template <typename T>
+        typename std::enable_if<!std::is_same<T, AnyClass>::value>::type
+            print(const T& arg) {
+            std::chrono::system_clock::time_point time_point = std::chrono::system_clock::now();
+            std::time_t ttp = std::chrono::system_clock::to_time_t(time_point);
+            std::cout << "[" << printTimeStamp(ttp) << "] " << arg << std::endl;
+        }
+
+        template <typename T>
+        typename std::enable_if<std::is_same<T, AnyClass>::value>::type
+            print(const T& arg) {
+            arg.log();
+        }
+
+        // Zusatzaufgabe:
+        template <typename, typename = void>
+        struct hasLogMessage : std::false_type {};
+
+        template <typename T>
+        struct hasLogMessage<T, decltype(std::declval<T>().log())> : std::true_type {};
+
+        template <typename T>
+        typename std::enable_if<hasLogMessage<T>::value>::type
+            print2(const T& arg) {
+            arg.log();
+        }
+
+        template <typename T>
+        typename std::enable_if<!hasLogMessage<T>::value>::type
+            print2(const T& arg) {
+            std::chrono::system_clock::time_point time_point = std::chrono::system_clock::now();
+            std::time_t ttp = std::chrono::system_clock::to_time_t(time_point);
+            std::cout << "[" << printTimeStamp(ttp) << "] " << arg << std::endl;
+        }
+
+        class AnotherClass : public AnyClass
+        {
+        public:
+            AnotherClass() : AnyClass{ } {};
+            AnotherClass(int n) : AnyClass{ n } {};
+
+            virtual void log() const override {
+                std::cout << "AnotherClass [m_i=";
+                std::cout << *this << "]" << std::endl;
+            }
+        };
+
+        void test_02a()
+        {
+            int n{ 123 };
+            print(n);
+
+            std::string s{ "a string" };
+            print(s);
+        }
+
+        void test_02b()
+        {
+            AnyClass obj{ 456 };
+            print(obj);
+        }
+
+        void test_02c()
+        {
+            char ch{ '!' };
+            print(ch);
+
+            AnyClass obj{ 123456 };
+            print(obj);
+        }
+
+        void test_02d()
+        {
+            int n{ 123 };
+            print2(n);
+
+            AnyClass obj1{ 456 };
+            print2(obj1);
+
+            AnotherClass obj2{ 789 };
+            print2(obj2);
         }
 
         void testExercise_02() {
-            int vals[5]{ 1, 2, 3, 4, 5 };
-            int elem = *(first(vals));
-            std::cout << elem << std::endl;
-
-            // OK: The first function template substitution fails because
-            // 'vals.begin()' is ill-formed. This is not an error! That function
-            // is just removed from consideration as a viable overload candidate,
-            // leaving us with the array overload.
-
-            std::array<int, 20> anotherArray = { 10, 11, 12 };
-            elem = *first(anotherArray);
-            std::cout << elem << std::endl;
-
-            // OK: The first function template substitution succeeds because
-            // 'vals.begin()' is well-formed
-
-            std::vector<int> anotherVector = { 100, 101, 102 };
-            elem = *first(anotherVector);
-            std::cout << elem << std::endl;
-
-            // OK: Matches too, because a std::vector has a begin method
-        }
+            test_02a();
+            test_02b();
+            test_02c();
+            test_02d();
+        };
     }
 
     namespace Exercise_03 {
@@ -205,6 +312,45 @@ namespace Exercises_SFINAE {
             testExercise_03b();
         }
     }
+
+    namespace Exercise_04 {
+
+        template <class T>
+        auto first(T& c) -> decltype(c.begin()) {
+            std::cout << "__FUNCSIG__ = " << __FUNCSIG__ << std::endl;
+            return c.begin();
+        }
+
+        template <class T, size_t N>
+        T* first(T(&arr)[N]) {
+            std::cout << "__FUNCSIG__ = " << __FUNCSIG__ << "N = " << N << std::endl;
+            return arr;
+        }
+
+        void testExercise_04() {
+            int vals[5]{ 1, 2, 3, 4, 5 };
+            int elem = *(first(vals));
+            std::cout << elem << std::endl;
+
+            // OK: The first function template substitution fails because
+            // 'vals.begin()' is ill-formed. This is not an error! That function
+            // is just removed from consideration as a viable overload candidate,
+            // leaving us with the array overload.
+
+            std::array<int, 20> anotherArray = { 10, 11, 12 };
+            elem = *first(anotherArray);
+            std::cout << elem << std::endl;
+
+            // OK: The first function template substitution succeeds because
+            // 'vals.begin()' is well-formed
+
+            std::vector<int> anotherVector = { 100, 101, 102 };
+            elem = *first(anotherVector);
+            std::cout << elem << std::endl;
+
+            // OK: Matches too, because a std::vector has a begin method
+        }
+    }
 }
 
 void test_exercices_sfinae()
@@ -213,6 +359,7 @@ void test_exercices_sfinae()
     Exercise_01::testExercise_01();
     Exercise_02::testExercise_02();
     Exercise_03::testExercise_03();
+    Exercise_04::testExercise_04();
 }
 
 // =====================================================================================

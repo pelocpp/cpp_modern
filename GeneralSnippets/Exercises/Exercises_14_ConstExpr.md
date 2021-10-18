@@ -15,7 +15,7 @@
 Schreiben Sie eine Funktionsschablone `sameType`, die eine beliebige Anzahl von Argumenten
 beliebigen Typs akzeptiert. Der Rückgabewert vom Typ `bool` ist `true`, wenn alle Argumente vom selben Typ
 sind, andernfalls `false` *und* ist zur Übersetzungszeit zu berechnen.
- 
+
 *Beispiel*:
 
 ```cpp

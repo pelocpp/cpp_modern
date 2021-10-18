@@ -182,9 +182,10 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 
 | Aufgabe | Beschreibung |
 | :- | :- |
-| [Aufgabe 1](Exercises_09_SFINAE.md) | Eine Funktion mit ausgewählten Parametertypen |
-| [Aufgabe 2](Exercises_09_SFINAE.md) | Eine Methode, mehrere Implementierungen<br/>(Vorausetzungen: `std::array`) |
+| [Aufgabe 1](Exercises_09_SFINAE.md) | Eine Funktion mit bestimmten Parametertypen |
+| [Aufgabe 2](Exercises_09_SFINAE.md) | Eine Methode, unterschiedliche Implementierungen<br/>(Vorausetzungen: Templates, `decltype` und `std::declval`) |
 | [Aufgabe 3](Exercises_09_SFINAE.md) | Detektion von Methoden in einer Klasse<br/>(Vorausetzungen: Templates, `decltype` und `std::declval`) |
+| [Aufgabe 4](Exercises_09_SFINAE.md) | Eine Methode, unterschiedliche Implementierungen zum Zweiten<br/>(Vorausetzungen: `std::array`) |
 
 *Tabelle* 13: Aufgaben zu SFINAE.
 
