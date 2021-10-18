@@ -11,6 +11,7 @@
 #include <cmath>
 #include <chrono>
 #include <ctime>
+#include <cstring>
 
 namespace Exercises_SFINAE {
 
@@ -69,7 +70,7 @@ namespace Exercises_SFINAE {
         char* printTimeStamp(const std::time_t& ttp)
         {
             char* cp{ std::ctime(&ttp) };
-            size_t len{ strlen(cp) };
+            size_t len{ std::strlen(cp) };
             cp[len - 1] = '\0';
             return cp;
         }

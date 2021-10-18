@@ -51,6 +51,7 @@ In dieser Aufgabe betrachten wir eine Template Funktion `print`:
 #include <string>
 #include <chrono>
 #include <ctime>
+#include <cstring>
 
 template<class T>
 void print(const T& arg) {
@@ -85,7 +86,7 @@ der folgenden Hilfsfunktion `printTimeStamp` zugreifen:
 char* printTimeStamp(const std::time_t& ttp)
 {
     char* cp{ std::ctime(&ttp) };
-    size_t len{ strlen(cp) };
+    size_t len{ std::strlen(cp) };
     cp[len - 1] = '\0';
     return cp;
 }
@@ -138,7 +139,8 @@ führt zum erwarteten Ergbnis:
 
 Nun kommen wir auf das eigentliche Thema dieser Aufgabe zu sprechen: Bei Objekten des Typs `AnyClass` 
 soll von der `print`-Funktion nicht der Ausgabe-Operator `<<` angewendet werden,
-sondern eine spezifische Methode der Klasse `AnyClass`, nennen wir sie beispielsweise `log`:
+sondern eine spezifische Methode der Klasse `AnyClass` &ndash; nennen wir sie beispielsweise `log` &ndash; 
+aufgerufen werden:
 
 <pre><b>virtual void log() const {
     std::cout << "AnyClass: m_i=";
@@ -147,8 +149,8 @@ sondern eine spezifische Methode der Klasse `AnyClass`, nennen wir sie beispiels
 
 Nun bräuchten wir eigentlich zwei unterschiedliche Implementierungen der `print`-Funktion:
 Eine, die bei Template Parametern des Typs `AnyClass` die `log`-Methode aufruft,
-und eine zweite, die bei allen anderen Template Parametern auf die ursprüngliche Implementierung von `print` verzweigt.
-Ein zweite Implementierung der `print`-Funktion &ndash; speziell für Klasse `AnyClass` &ndash; könnte so aussehen:
+und eine zweite, die bei allen anderen Template Parametern auf die ursprüngliche Implementierung von `print` zugreift.
+Eine zweite Implementierung der `print`-Funktion &ndash; speziell für Klasse `AnyClass` &ndash; könnte so aussehen:
 
 ```cpp
 template<typename T>
@@ -168,8 +170,9 @@ quittieren!
 
 **Aufgabe**:
 
+Bringen Sie an Hand der vorgestellten Code-Fragmente das Programm prinzipiell zum Laufen.
 Wenden Sie auf die beiden Realisierungen der `print`-Funktion das SFINAE-Prinzip an!
-Das folgende Code-Fragent sollte ausführbar sein:
+Das folgende Code-Fragent sollte nun ausführbar sein:
 
 ```cpp
 char ch{ '!' };
@@ -185,20 +188,20 @@ print(obj);
 AnyClass: m_i=123456
 ```
 
-## Zusatzaufgabe:
+**Zusatzaufgabe**:
 
 Die im Lösungsteil vorgestellte Realisierung löst die Aufgabenstellung,
 aber sie lässt sich schwer erweitern. Wie gehen wir vor, wenn wir beispielsweise 
 eine weitere Klasse `AnotherClass` haben, die ebenfalls eine `log`-Methode besitzt.
 Auf einmal wird der Lösungsansatz unattraktiv,
-weil wir die `print`-Funktion für jede weitere Klasse wiederholt implementieren müssen,
+weil wir die `print`-Funktion für jede weitere Klasse wiederholt implementieren müssten,
 die eine `log`-Methode hat.
 
-Versuchen Sie, einen anderen Ansatz zu finden,
-der eine von zwei vorhandenen `print` Template Funktionen in Abhängigkeit
+Versuchen Sie, einen anderen Ansatz zu wählen,
+der die gewünschte `print`&ndash;Templatefunktion in Abhängigkeit
 von einem Template Argument auswählt.
 
-*Hinweis*: Studieren Sie die folgenden Template Klassen Definitionen:
+*Hinweis*: Studieren Sie das folgende Code-Fragment:
 
 ```cpp
 template <typename, typename = void>
@@ -208,7 +211,7 @@ template <typename T>
 struct hasLogMessage<T, decltype(std::declval<T>().log())> : std::true_type {};
 ```
 
-Wir finden das *primäre* Klassentemplate und eine partielle Templatespezialisierung vor.
+Wir finden ein *primäres* Klassentemplate und eine partielle Templatespezialisierung vor.
 Der zweite Template Parameter besitzt einen Voreinstellungswert.
 In der partiellen Templatespezialisierung besitzt der zweite Template Parameter den Wert
 
@@ -226,7 +229,6 @@ Die beiden Klassentypen `std::true_type` und `std::false_type` besitzen eine Kla
 
 Damit können wir festhalten, dass bei einer Instanziierung von `hasLogMessage` in jedem Fall
 durch die Vererbung eine Klassenvariable mit dem Namen `value` zur Verfügung steht!
-
 Mit diesen Hilfestellungen sollten Sie nun in der Lage sein,
 den zweiten Lösungsansatz sowohl zu verstehen als auch anwenden zu können.
 
