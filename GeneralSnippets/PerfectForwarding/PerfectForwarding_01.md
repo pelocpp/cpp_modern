@@ -4,6 +4,22 @@
 
 ---
 
+## Zusammenfassung
+
+Voraussetzung für das &ldquo;Perfect Forwarding&rdquo; ist das Vorhandensein eines
+Funktionstemplate, das im Rumpf weitere unterlagerte Funktionen aufruft:
+
+ > Werden die Argumente des Funktionstemplate &ldquo;identisch&ldquo;
+   &ndash;
+   darunter verstehen wir in diesem Kontext: die *LValue* oder *RValue* Charakteristik bleibt erhalten 
+   &ndash;
+   weitergereicht, so sprechen wir von  &ldquo;Perfect Forwarding&rdquo;.
+
+Zu den Begriffen *LValue* oder *RValue* siehe auch
+[RValue Referenzen / LValue Referenzen](../RValueLValue/RValueLValue.md)
+
+---
+
 ## Vertiefung zu &ldquo;Perfect Forwarding&rdquo;
 
 &#x21D2; [Teil II: Ein klassischer Übersetzungsfehler](PerfectForwarding_03.md)

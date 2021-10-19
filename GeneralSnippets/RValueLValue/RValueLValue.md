@@ -4,6 +4,33 @@
 
 ---
 
+*Vorab*:
+
+Unter einem *RValue* verstehen wir
+
+  * Konstante
+  * temporäre Objekte
+  * Objekte ohne Namen
+
+```cpp
+// 123 ist ein RValue
+int n = 123;
+
+// std::string{ "ABC"} ist ein Objekt ohne Namen:
+std::string s = std::string{ "ABC"};
+
+// std::string{ "ABC"} + std::string{ "DEF"} ist ein temporäres Objekt:
+std::string a = std::string{ "ABC"} + std::string{ "DEF"};
+```
+
+Unter einem *LValue* verstehen wir
+
+  * einen Ausdruck, der eine Referenz eines Objekts beschreibt.
+    Beispiele sind zum Beispiel Objekte mit Namen oder auch Objekte,
+    die in einem Array über einen Index erreichbar sind.
+
+---
+
 *Allgemeines*:
 
 Wenn `X` ein Typ ist, wird `X&&` als *RValue* Referenz auf `X` bezeichnet.
