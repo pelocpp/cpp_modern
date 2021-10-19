@@ -23,7 +23,8 @@ namespace VariadicTemplatesWorkingOnEveryArgument {
 
     template <typename... TARGS>
     void doSomethingForAll(const TARGS& ... args) {
-        std::initializer_list<int> list = { (doSomething(args), 0)... };
+        // std::initializer_list<int> list = { (doSomething(args), 0)... };
+        std::initializer_list<int> { (doSomething(args), 0)... };
     }
 
     void test_01() {

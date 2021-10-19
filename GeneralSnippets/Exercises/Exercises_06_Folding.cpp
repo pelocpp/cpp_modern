@@ -203,9 +203,7 @@ namespace Exercises_Folding {
         template <typename T, typename ... ARGS>
         void pushBackAll_03(std::vector<T>& vec, ARGS&&... args)
         {
-            std::initializer_list<int> list = {
-                (vec.push_back(std::forward<ARGS>(args)), 0)...
-            };
+            std::initializer_list<int> { (vec.push_back(std::forward<ARGS>(args)), 0) ... };
         }
 
         void testExercise_04c()
