@@ -11,12 +11,12 @@ Funktionstemplate, das im Rumpf weitere unterlagerte Funktionen aufruft:
 
  > Werden die Argumente des Funktionstemplate &ldquo;identisch&ldquo;
    &ndash;
-   darunter verstehen wir in diesem Kontext: die *LValue* oder *RValue* Charakteristik bleibt erhalten 
+   darunter verstehen wir in diesem Kontext: die *LValue*- oder *RValue*-Eigenschaft bleibt erhalten 
    &ndash;
    weitergereicht, so sprechen wir von  &ldquo;Perfect Forwarding&rdquo;.
 
 Zu den Begriffen *LValue* oder *RValue* siehe auch
-[RValue Referenzen / LValue Referenzen](../RValueLValue/RValueLValue.md)
+[RValue Referenzen / LValue Referenzen](../RValueLValue/RValueLValue.md).
 
 ---
 

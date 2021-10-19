@@ -68,6 +68,45 @@ Erklären Sie die Funktionsweise ihrer Realisierung. Welche Rolle spielt Zeile 1
 
 ---
 
+[An den Anfang](#aufgaben-zu-folding)
+
+---
+
+## Aufgabe 4: Beliebig viele Werte zu einem `std::vector`-Objekt hinzufügen
+
+#### Voraussetzungen: Folding Expressions
+
+Sowohl variadische Templates als auch mit Folding kann man ein elegantes Funktionstemplate
+`pushBackAll<T>` schreiben, dass eine beliebige Anzahl von Parametern mit `push_back`
+in ein `std::vector`-Objekt hinzufügt.
+Da diese Aufgabe in den Übungen zum Thema *Folding* enthalten ist,
+realisieren Sie das Funktionstemplate mit einem *Folding* Ausdruck.
+
+Das folgende (hoffentlich intuitive) Beispiel sollte ausführbar sein:
+
+```cpp
+std::vector<double> values;
+pushBackAll<double>(values, 30.0, 31.0, 32.0);
+std::for_each(std::begin(values), std::end(values), [](auto elem) {
+    std::cout << elem << ' ';
+    }
+);
+```
+
+*Ausgabe*:
+
+```
+30 31 32
+```
+
+*Zusatzaufgabe*:
+Man könnte das Funktionstemplate `pushBackAll<T>` auch mit variadischen Templates 
+oder auch dem Trick mit einer Initialisierungsliste
+und wiederum Folding (dieses Mal &ldquo;über einem Komma&rdquo;) realisieren.
+Implementieren Sie die weiteren Varianten.
+
+---
+
 [Lösungen](Exercises_06_Folding.cpp)
 
 ---

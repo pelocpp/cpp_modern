@@ -110,6 +110,7 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 | [Aufgabe 1](Exercises_06_Folding.md) | Logische Operationen mit beliebig vielen Operanden |
 | [Aufgabe 2](Exercises_06_Folding.md) | `decltype` und Type-Traits am Beispiel von `sameType`<br/>(Vorausetzungen: `std::is_same`) |
 | [Aufgabe 3](Exercises_06_Folding.md) | &ldquo;Folding over a Comma&rdquo; am Beispiel zweier Funktionen `minimum` und `maximum`<br/>(Voraussetzungen: Folding Expressions, Lambda Funktionen) |
+| [Aufgabe 4](Exercises_06_Folding.md) | &ldquo;Beliebig viele Werte zu einem `std::vector`-Objekt hinzufügen<br/>(Voraussetzungen: Folding Expressions) |
 
 *Tabelle* 6: Aufgaben zu Folding.
 

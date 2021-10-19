@@ -744,7 +744,7 @@ true
 false
 ```
 
-**Zusatzaufgabe**:
+*Zusatzaufgabe*:
 
 Für die logischen Operationen `&&` (`and`) und `||` (`or`) gibt es in höheren Programmiersprachen (C, C++, Java und andere)
 das Feature der so genannten "*Short-Circuit-Evaluation*": Ist in dem Ausdruck *condition1 || condition2*

@@ -5,6 +5,8 @@
 #include <iostream>
 #include <string>
 #include <type_traits>
+#include <algorithm>
+#include <vector>
 
 namespace Exercises_Folding {
 
@@ -145,6 +147,84 @@ namespace Exercises_Folding {
             testExercise_03b();
         }
     }
+
+    namespace Exercise_04 {
+
+        // ===================================================================
+        // folding
+        template <typename T, typename ... ARGS>
+        void pushBackAll_01(std::vector<T>& vec, ARGS&&... args)
+        {
+            (vec.push_back(args), ...);  // unary right fold or
+            (..., vec.push_back(args));  // unary left fold
+        }
+
+        void testExercise_04a()
+        {
+            std::vector<double> values;
+            pushBackAll_01<double>(values, 30.0, 31.0, 32.0);
+            std::for_each(std::begin(values), std::end(values), [](auto elem) {
+                std::cout << elem << ' ';
+                }
+            );
+            std::cout << std::endl;
+        }
+
+        // ===================================================================
+        // variadic templates
+
+        template <typename T, typename ARG>
+        void pushBackAll_02(std::vector<T>& vec, ARG&& arg)
+        {
+            vec.push_back(std::forward<ARG>(arg));
+        }
+
+        template <typename T, typename ARG, typename ... ARGS>
+        void pushBackAll_02(std::vector<T>& vec, ARG&& arg, ARGS&&... args)
+        {
+            vec.push_back(std::forward<ARG>(arg));
+            pushBackAll_02(vec, std::forward<ARGS>(args) ...);
+        }
+
+        void testExercise_04b()
+        {
+            std::vector<double> values;
+            pushBackAll_02<double>(values, 20.0, 21.0, 22.0);
+            std::for_each(std::begin(values), std::end(values), [](auto elem) {
+                std::cout << elem << ' ';
+                }
+            );
+            std::cout << std::endl;
+        }
+
+        // ===================================================================
+        // initializer list
+
+        template <typename T, typename ... ARGS>
+        void pushBackAll_03(std::vector<T>& vec, ARGS&&... args)
+        {
+            std::initializer_list<int> list = {
+                (vec.push_back(std::forward<ARGS>(args)), 0)...
+            };
+        }
+
+        void testExercise_04c()
+        {
+            std::vector<double> values;
+            pushBackAll_03<double>(values, 10.0, 11.0, 12.0);
+            std::for_each(std::begin(values), std::end(values), [](auto elem) {
+                std::cout << elem << ' ';
+                }
+            );
+            std::cout << std::endl;
+        }
+
+        void testExercise_04() {
+            testExercise_04a();
+            testExercise_04b();
+            testExercise_04c();
+        }
+    }
 }
 
 void test_exercises_folding()
@@ -153,6 +233,7 @@ void test_exercises_folding()
     Exercise_01::testExercise_01();
     Exercise_02::testExercise_02();
     Exercise_03::testExercise_03();
+    Exercise_04::testExercise_04();
 }
 
 // =====================================================================================

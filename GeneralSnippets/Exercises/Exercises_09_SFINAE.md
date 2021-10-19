@@ -188,7 +188,7 @@ print(obj);
 AnyClass: m_i=123456
 ```
 
-**Zusatzaufgabe**:
+*Zusatzaufgabe*:
 
 Die im Lösungsteil vorgestellte Realisierung löst die Aufgabenstellung,
 aber sie lässt sich schwer erweitern. Wie gehen wir vor, wenn wir beispielsweise 
