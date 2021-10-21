@@ -6,8 +6,8 @@
 
 ## C++
 
-  * Marc Gregoire, &ldquo;*Professional C++ (4th Edition)*&rdquo;.</br>
-    Wrox Press (17. April 2018), 1184 Seiten. Sprache: Englisch. ISBN-13: 978-1119421306, ISBN-10: 1119421306.
+  * Marc Gregoire, &ldquo;*Professional C++ (5th Edition)*&rdquo;.</br>
+    Wrox Press (22. März 2021), 1312 Seiten. Sprache: Englisch. ISBN-13: 978-1119695400, ISBN-10: 1119695406.
 
     Für mich das derzeit beste C++ -Buch am Markt. Zugegeben, sehr umfangreich, aber dafür versteht es der Autor,
     seine Leser mit einem jederzeit erkennbaren roten Faden durch alle Niederungen der Sprache C++ 
