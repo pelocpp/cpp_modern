@@ -666,5 +666,11 @@
     <Image Include="Trim\stl_base.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="ConstExpr\constexpr_lambda_01.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="ConstExpr\constexpr_lambda_02.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

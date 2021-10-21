@@ -354,6 +354,8 @@
     <Image Include="ConstExpr\ConstExpr01.png" />
     <Image Include="ConstExpr\ConstExpr02.png" />
     <Image Include="ConstExpr\ConstExpr03.png" />
+    <Image Include="ConstExpr\constexpr_lambda_01.png" />
+    <Image Include="ConstExpr\constexpr_lambda_02.png" />
     <Image Include="Exercises\cpp_dividend_divisor.png" />
     <Image Include="MetaProgramming\euler_number.png" />
     <Image Include="OnlineCppCompilers\CompilerExplorer.png" />

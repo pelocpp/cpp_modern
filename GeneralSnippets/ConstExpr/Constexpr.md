@@ -66,23 +66,23 @@ zur Übersetzungszeit unterstützt:
 01: struct Complex
 02: {
 03: private:
-04:     double m_real;
-05:     double m_imag;
+04:     float m_real;
+05:     float m_imag;
 06: 
 07: public:
 08:     // c'tors
 09:     constexpr Complex() : m_real{ }, m_imag{ } {}
-10:     constexpr Complex(double real, double imag) : m_real{ real }, m_imag{ imag } {}
+10:     constexpr Complex(float real, float imag) : m_real{ real }, m_imag{ imag } {}
 11: 
 12:     // getter
-13:     constexpr double real() const { return m_real; }
-14:     constexpr double imag() const { return m_imag; }
+13:     constexpr float real() const { return m_real; }
+14:     constexpr float imag() const { return m_imag; }
 15: 
 16:     // operators
 17:     friend constexpr Complex operator+(const Complex& x, const Complex& y)
 18:     {
-19:         double real = x.real() + y.real();
-20:         double imag = x.imag() + y.imag();
+19:         float real = x.real() + y.real();
+20:         float imag = x.imag() + y.imag();
 21:         return Complex{ real, imag };
 22:     }
 23: };
@@ -98,9 +98,9 @@ die vom Übersetzer erzeugt wurden:
 02: constexpr Complex c1{ 1.0, 2.0 };
 03: constexpr Complex c2{ 3.0, 3.0 };
 04: 
-05: constexpr double r1 = c1.real();
+05: constexpr float r1 = c1.real();
 06: constexpr Complex c3 = c1 + c2;
-07: constexpr double r2 = c3.real();
+07: constexpr float r2 = c3.real();
 08:         
 09: std::cout << "Real: " << c3.real() << std::endl;
 10: std::cout << "Imag: " << c3.imag() << std::endl;
@@ -122,9 +122,34 @@ Mit einer ruhigen Hand und der Betrachtung von Tooltips kann man die Arbeit des 
 Mit dem *Visual Studio* sieht, um wiederum beim letzten Beispiel zu verweilen,
 das Objekt `c3` so aus:
 
-<img src="ConstExpr01.png" width="800">
+<img src="ConstExpr01.png" width="700">
 
 *Abbildung* 1: Ein `Complex`-Objekt, erzeugt vom Übersetzer.
+
+Eine dritte Möglichkeit besteht in der Analyse des Assembler-Codes:
+
+<img src="constexpr_lambda_01.png" width="800">
+
+*Abbildung* 2: Der Wert des Realteils von Objekt `c1` im Maschinencode.
+
+*Hinweis*: Der OpCode `movss` steht für *Move or Merge Scalar Single-Precision Floating-Point Value*.
+
+Der Wert des Realteils von Objekt `c1` ist vom Typ `float`,
+dies stellt uns in der Betrachtung des Maschinencodes vor ein kleines,
+aber nicht unlösbares Problem.
+Mit Hilfe eines IEEE nach `float` Konvertierers
+(siehe [IEEE 754 Converter](https://www.h-schmidt.net/FloatConverter/IEEE754de.html))
+können wir wiederum
+bestätigen, dass der Wert `1.0` &ndash; und damit `0x3f800000`
+bereits zur Übersetzungszeit im Maschinencode abgelegt ist.
+Es kommt also definitiv nicht zur Laufzeit zum
+Aufruf der *getter*-Methode `real()`!
+
+<img src="constexpr_lambda_02.png" width="800">
+
+*Abbildung* 3: IEEE-754 Konverter für Fließkommazahlen.
+
+
 
 ## Klassentemplate mit `constexpr` Konstruktoren
 

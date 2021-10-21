@@ -11,23 +11,23 @@ namespace ConstExprComplex {
     class Complex
     {
     private:
-        double m_real;
-        double m_imag;
+        float m_real;
+        float m_imag;
 
     public:
         // c'tors
         constexpr Complex() : m_real{ }, m_imag{ } {}
-        constexpr Complex(double real, double imag) : m_real{ real }, m_imag{ imag } {}
+        constexpr Complex(float real, float imag) : m_real{ real }, m_imag{ imag } {}
 
         // getter
-        constexpr double real() const { return m_real; }
-        constexpr double imag() const { return m_imag; }
+        constexpr float real() const { return m_real; }
+        constexpr float imag() const { return m_imag; }
 
         // operators
         friend constexpr Complex operator+(const Complex& x, const Complex& y)
         {
-            double real = x.real() + y.real();
-            double imag = x.imag() + y.imag();
+            float real = x.real() + y.real();
+            float imag = x.imag() + y.imag();
             return Complex{ real, imag };
         }
     };
@@ -38,9 +38,12 @@ namespace ConstExprComplex {
         constexpr Complex c1{ 1.0, 2.0 };
         constexpr Complex c2{ 3.0, 3.0 };
 
-        constexpr double r1 = c1.real();
+        constexpr float r1 = c1.real();
         constexpr Complex c3 = c1 + c2;
-        constexpr double r2 = c3.real();
+        constexpr float r2 = c3.real();
+
+        // verify 'constness' with the help of disassembly and
+        // https://www.h-schmidt.net/FloatConverter/IEEE754de.html
         
         std::cout << "Real: " << c3.real() << std::endl;
         std::cout << "Imag: " << c3.imag() << std::endl;
@@ -79,13 +82,13 @@ namespace ConstExprComplexTemplate {
 
     void testComplexTemplate()
     {
-        constexpr Complex<double> c0{ };
-        constexpr Complex<double> c1{ 10.0, 20.0 };
-        constexpr Complex<double> c2{ 30.0, 30.0 };
+        constexpr Complex<float> c0{ };
+        constexpr Complex<float> c1{ 10.0, 20.0 };
+        constexpr Complex<float> c2{ 30.0, 30.0 };
 
-        constexpr double r1 = c1.real();
-        constexpr Complex<double> c3 = c1 + c2;
-        constexpr double r2 = c3.real();
+        constexpr float r1 = c1.real();
+        constexpr Complex<float> c3 = c1 + c2;
+        constexpr float r2 = c3.real();
 
         std::cout << "Real: " << c3.real() << std::endl;
         std::cout << "Imag: " << c3.imag() << std::endl;
