@@ -115,20 +115,20 @@ die vom Übersetzer erzeugt wurden:
 
 Den Nachweis, dass der Übersetzer tatsächlich `Complex`-Objekte zur Übersetzungszeit anlegt,
 und dies mit korrekten Werten, nehmen wir mit `static_assert`-Deklarationen vor,
-siehe die Zeilen 13 bis 15. Eine `static_assert`-Deklarationen erwartet einen booleschen Ausdruck und eine Zeichenkette.
+siehe die Zeilen 13 bis 15 von *Listing* 2. Eine `static_assert`-Deklaration erwartet einen booleschen Ausdruck und eine Zeichenkette.
 Evaluiert der boolesche Ausdruck zu `false`, wird die Zeichenkette als Fehlermeldung ausgegeben und die Übersetzung abgebrochen.
 
 Mit einer ruhigen Hand und der Betrachtung von Tooltips kann man die Arbeit des Übersetzers auch von der Entwicklungsumgebung aus betrachten.
 Mit dem *Visual Studio* sieht, um wiederum beim letzten Beispiel zu verweilen,
 das Objekt `c3` so aus:
 
-<img src="ConstExpr01.png" width="700">
+<img src="ConstExpr01.png" width="800">
 
 *Abbildung* 1: Ein `Complex`-Objekt, erzeugt vom Übersetzer.
 
 Eine dritte Möglichkeit besteht in der Analyse des Assembler-Codes:
 
-<img src="constexpr_lambda_01.png" width="800">
+<img src="constexpr_lambda_01.png" width="700">
 
 *Abbildung* 2: Der Wert des Realteils von Objekt `c1` im Maschinencode.
 
@@ -140,15 +140,14 @@ aber nicht unlösbares Problem.
 Mit Hilfe eines IEEE nach `float` Konvertierers
 (siehe [IEEE 754 Converter](https://www.h-schmidt.net/FloatConverter/IEEE754de.html))
 können wir wiederum
-bestätigen, dass der Wert `1.0` &ndash; und damit `0x3f800000`
+bestätigen, dass der Wert `1.0` &ndash; und damit `0x3f800000` &ndash;
 bereits zur Übersetzungszeit im Maschinencode abgelegt ist.
 Es kommt also definitiv nicht zur Laufzeit zum
 Aufruf der *getter*-Methode `real()`!
 
-<img src="constexpr_lambda_02.png" width="800">
+<img src="constexpr_lambda_02.png" width="700">
 
 *Abbildung* 3: IEEE-754 Konverter für Fließkommazahlen.
-
 
 
 ## Klassentemplate mit `constexpr` Konstruktoren
