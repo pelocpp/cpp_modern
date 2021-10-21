@@ -26,7 +26,7 @@ std::string a = std::string{ "ABC"} + std::string{ "DEF"};
 Unter einem *LValue* verstehen wir
 
   * einen Ausdruck, der eine Referenz eines Objekts beschreibt.
-    Beispiele sind zum Beispiel Objekte mit Namen oder auch Objekte,
+    Zum Beispiel Objekte mit Namen oder auch Objekte,
     die in einem Array über einen Index erreichbar sind.
 
 ---
