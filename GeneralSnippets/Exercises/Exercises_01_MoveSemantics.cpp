@@ -35,6 +35,14 @@ namespace Exercises_MoveSemantics {
             }
         };
 
+        /*
+        * When passing an object to a function, or returning an object from a function, 
+        * it's possible to do a move (rather than a copy) if:
+        * 
+        * = the object is an rvalue
+        * = the object's class defines the special member move functions
+        */
+
         void testExercise_01() {
 
             // create a person with some initial values
