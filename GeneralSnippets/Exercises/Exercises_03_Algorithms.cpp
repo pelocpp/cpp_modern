@@ -64,11 +64,20 @@ namespace Exercises_Algorithms {
 
             std::vector<int> numbers(20);
 
+            // uses structured binding
             auto fibo = [p = std::pair{ 0, 1 }]() mutable {
                 auto [a, b] = p;
                 p = { b, a + b };
                 return a;
             };
+
+            // without structured binding
+            // auto fibo = [p = std::pair{ 0, 1 }]() mutable {
+            //    int n1 = p.first;
+            //    int n2 = p.second;
+            //    p = { n2, n1 + n2 };
+            //    return n1;
+            // };
 
             std::generate(
                 std::begin(numbers),

@@ -51,7 +51,7 @@ namespace Exercises_Lambdas {
             );
 
             // functor
-            std::for_each(std::begin(values), std::end(values), Even());
+            std::for_each(std::begin(values), std::end(values), Even{});
         }
 
         void testExercise_01b() {
