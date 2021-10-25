@@ -152,15 +152,17 @@ namespace VariadicTemplatesIntro {
         Unknown u4 = make_an_object<Unknown>(100, 101, 102);
         std::cout << u4 << std::endl;
 
-        // doesn't compile
-        // Unknown u5 = make_an_object<Unknown>(1000, 1001, 1002, 1003);
-        // std::cout << u4 << std::endl;
-
-        int n = 50;
-        const int m = 52;
+        int n = 100;
+        const int m = 101;
+        Unknown u5 = make_an_object<Unknown, int, int&, const int&>(100, n, m);
+        std::cout << u5 << std::endl;
 
         Unknown u6 = make_an_object<Unknown>(n, 51, m);
         std::cout << u6 << std::endl;
+
+        // doesn't compile
+        // Unknown u7 = make_an_object<Unknown>(1000, 1001, 1002, 1003);
+        // std::cout << u7 << std::endl;
     }
 
     // =============================================================
