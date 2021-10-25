@@ -69,21 +69,17 @@ namespace Exercises_Folding {
 
         void testExercise_02() {
 
-            bool result;
-            result = sameType(1, 2, 3, 4, '?', 6, 7, 8, 9);
-            std::cout << std::boolalpha << result << std::endl;
+            constexpr bool result1 = sameType(1, 2, 3, 4, '?', 6, 7, 8, 9);
+            std::cout << std::boolalpha << result1 << std::endl;
 
-            result = sameType(43, false, "hello");
-            std::cout << std::boolalpha << result << std::endl;
+            constexpr bool result2 = sameType(43, false, "hello");
+            std::cout << std::boolalpha << result2 << std::endl;
 
-            result = sameType(1, 2, 3, 4, 5, 6, 7, 8, 9);
-            std::cout << std::boolalpha << result << std::endl;
+            constexpr bool result3 = sameType(1, 2, 3, 4, 5, 6, 7, 8, 9);
+            std::cout << std::boolalpha << result3 << std::endl;
 
-            result = sameType(1, 2, 3, 4, '?', 5, 6, 7, 8, 9);
-            std::cout << std::boolalpha << result << std::endl;
-
-            result = sameType("123", std::string("456"), "789", "111", "999");
-            std::cout << std::boolalpha << result << std::endl;
+            constexpr bool result4 = sameType(1, 2, 3, 4, '?', 5, 6, 7, 8, 9);
+            std::cout << std::boolalpha << result4 << std::endl;
         }
     }
 
