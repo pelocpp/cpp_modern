@@ -33,8 +33,41 @@ namespace Decltype {
         std::cout << result << std::endl;
     }
 
-    // demonstrating decltype with entities / instances of types:
     void test_02()
+    {
+         /* decltype in combination with metaprogramming techiques
+         */
+
+        std::vector<int> vec;
+
+        // yiedling a lvalue reference
+        vec[0] = 123;
+
+        std::vector<int>::value_type value = 123;
+
+        // doesn't compile !!! type is int&, not int
+        // decltype (vec[0]) anotherValue = 123;
+
+        // int&
+        decltype (vec[0]) anotherValue = value;
+
+        // retrieve value type from vector
+        using ValueType = std::remove_reference <decltype (vec[0])>::type;
+        ValueType yetAnotherValue = 123;
+
+        // same as:
+        using AnotherValueType = std::remove_reference<int&>::type;
+        AnotherValueType oneMoreValue = 123;
+
+        // using std::vector's reference type
+        std::vector<int>::reference refWert = value;
+
+        // doesn't compile !!! type is int&, not int
+        // std::vector<int>::reference refWert = 123;
+    }
+
+    // demonstrating decltype with entities / instances of types:
+    void test_03()
     {
         std::vector<int> vec;
 
@@ -49,7 +82,7 @@ namespace Decltype {
     }
 
     // demonstrating decltype with expressions:
-    void test_03()
+    void test_04()
     {
         // decltype(foo()) yields the type of 
         // whatever foo() returns, in this case: float:
@@ -70,7 +103,7 @@ namespace Decltype {
         return a + b;
     }
 
-    void test_04() 
+    void test_05() 
     {
         sum_t<int, float> result{ summe(123, 123.99F) };
         std::cout << result << std::endl;
@@ -84,6 +117,7 @@ void main_decltype()
     test_02();
     test_03();
     test_04();
+    test_05();
 }
 
 // =====================================================================================
