@@ -151,6 +151,7 @@
     <ClCompile Include="Apply\Apply.cpp" />
     <ClCompile Include="ArrayDecay\ArrayDecay.cpp" />
     <ClCompile Include="Array\Array.cpp" />
+    <ClCompile Include="Auto\Auto.cpp" />
     <ClCompile Include="BackInserter\BackInserter.cpp" />
     <ClCompile Include="Casts\Casts.cpp" />
     <ClCompile Include="CommonType\CommonType.cpp" />
@@ -254,6 +255,7 @@
     <None Include="Apply\Apply.md" />
     <None Include="ArrayDecay\ArrayDecay.md" />
     <None Include="Array\StdArray.md" />
+    <None Include="Auto\Auto.md" />
     <None Include="BackInserter\BackInserter.md" />
     <None Include="Casts\Casts.md" />
     <None Include="CommonType\CommonType.md" />
@@ -351,6 +353,9 @@
     <ClInclude Include="MoveSemantics\MoveSemantics.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="Auto\auto_no_const_reference.png" />
+    <Image Include="Auto\decltype_auto_01.png" />
+    <Image Include="Auto\decltype_auto_02.png" />
     <Image Include="ConstExpr\ConstExpr01.png" />
     <Image Include="ConstExpr\ConstExpr02.png" />
     <Image Include="ConstExpr\ConstExpr03.png" />

@@ -315,6 +315,9 @@
     <ClCompile Include="Exercises\Exercises_14_ConstExpr.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Auto\Auto.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -614,6 +617,9 @@
     <None Include="Exercises\Exercises_14_ConstExpr.md">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="Auto\Auto.md">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Global\Dummy.h">
@@ -670,6 +676,15 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="ConstExpr\constexpr_lambda_02.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Auto\auto_no_const_reference.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Auto\decltype_auto_01.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Auto\decltype_auto_02.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
