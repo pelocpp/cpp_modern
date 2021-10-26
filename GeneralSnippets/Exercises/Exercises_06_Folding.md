@@ -76,9 +76,9 @@ Erklären Sie die Funktionsweise ihrer Realisierung. Welche Rolle spielt Zeile 1
 
 #### Voraussetzungen: Folding Expressions
 
-Sowohl variadische Templates als auch mit Folding kann man ein elegantes Funktionstemplate
-`pushBackAll<T>` schreiben, dass eine beliebige Anzahl von Parametern mit `push_back`
-in ein `std::vector`-Objekt hinzufügt.
+Sowohl mit variadischen Templates als auch mit Folding lässt sich ein elegantes Funktionstemplate
+`pushBackAll<T>` schreiben, das eine beliebige Anzahl von Parametern mit `push_back`
+einem `std::vector`-Objekt hinzufügt.
 Da diese Aufgabe in den Übungen zum Thema *Folding* enthalten ist,
 realisieren Sie das Funktionstemplate mit einem *Folding* Ausdruck.
 
