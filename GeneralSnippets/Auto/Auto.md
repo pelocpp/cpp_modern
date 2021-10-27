@@ -10,27 +10,28 @@
 
 WEITER: Den Quellcode und den Text Korrekturlesen
 
-WEITER: 3 Bilder im Markdwon integrieren
-
-WEITER: auto als Snipper ergänzen
+WEITER: auto als Snippet ergänzen
 
 WEITER: auto im Inhaltsverzeichnis ergänzen
 
 ---
 
+Das Schlüsselwort `auto` besitzt mehrere, völlig unterschiedliche Einsatzmöglichkeiten:
 
-Das Schlüsselwort `auto` besitzt mehrere, völlig unterschiedliche Einsatzmöglichkeiten.
+  * Vereinbarung von Variablen / Automatic Type Deduction
+  * Neuartige Möglichkeit in der Definition von Funktionen / *Function Return Type Deduction*
+  * Funktionsdefinition mit *Trailing Return Type*
+  * Verlust von `const` und `&` (Referenz) bei `auto`
+  * Generische Lambda Ausdrücke
+  * Typableitung bei Template Parametern / *Template Parameter Type Deduction*
+  * `decltype(auto)`
 
 *Hinweis*: Das Schlüsselwort `auto` fällt in der C++&ndash;Sprachbeschreibung in die Kategorie der 
 so genannten *Type Inference*. Hierzu zählen die beiden Schlüsselwörter `auto` und `decltype`.
 
-
-TODO: Derselbe Satz auch bei `decltype` hinzu.
-
-
 ---
 
-## Vereinbarung von Variablen / Automatic Type Deduction
+## Vereinbarung von Variablen / *Automatic Type Deduction*
 
 Mit `auto` lassen sich Variablen definieren. Der Typ der Variablen leitet sich in diesem Fall
 aus dem Vorbelegungswert der Variablen ab:
@@ -48,17 +49,17 @@ auto result = getFunction();
 
 Hier gewinnt man zwei Vorteile:
 
-  * Ist der Rückgabetyp von `getFunction` längerer Natur, dann spart man mit `auto` Tipparbeit
+  * Ist der Rückgabetyp von `getFunction` länglich zum Hinschreiben, dann spart man mit `auto` Tipparbeit
     (z.B. an Stelle von `std::map<int, std::string>`).
   * Ändert sich der Rückgabetyp von `getFunction`, so muss man den Quellcode an all den Stellen,
-    an denen ein Aufruf von `getFunction` steht, nicht nachgezogen werden.
+    an denen ein Aufruf von `getFunction` in Verbindung mit `auto` steht, nicht nachgezogen werden.
 
-## Neuartige Möglichkeit in der Definition von Funktionen / Function Return Type Deduction
+## Neuartige Möglichkeit in der Definition von Funktionen / *Function Return Type Deduction*
 
 Ab C++ 14 ist es möglich, dass der Rückgabetyp einer Funktion vom Compiler automatisch bestimmt wird.
 Zu diesem Zweck
 
-  * verwendet man das Schlüsselwort `auto` als Rückgabetyp in der Funktionsdefinition
+  * verwendet man das Schlüsselwort `auto` als Rückgabetyp in der Funktionsdefinition.
   * muss der Compiler auf Grund einer oder auch mehrerer `return`-Anweisungen eindeutig in der Lage sein,
     den Rückgabetyp zu ermitteln.
 
@@ -98,20 +99,20 @@ public:
 
 Oder etwa an folgendem realen Beispiel:
 
-```cpp
+<pre>
 template <typename Type, typename ...Args>
-auto make_unique(Args&&... args) // no return type
+<b>auto</b> make_unique(Args&&... args) // no return type
 {
     return std::unique_ptr<Type>(new Type(std::forward<Args>(args)...));
 }
-```
+</pre>
 
 **Beachte**:
 
-Das &ldquo;Automatic Return Type Deduction&rdquo; zieht einen interessanten Anwendungsfall nach sich:
-Es ist möglich, den Rückgabetyp einer Funktion lokal in dieser zu definieren und
+&ldquo;Automatic Return Type Deduction&rdquo; zieht einen interessanten Anwendungsfall nach sich:
+Es ist möglich, den Rückgabetyp einer Funktion **lokal** in dieser zu definieren und
 den Aufruf dieser Funktion mit &ldquo;Automatic Return Type Deduction&rdquo; durchzuführen.
-Hierzu das folgende Beispiel:
+Auch zu dieser skuril anmutenden Vorgehensweise ein Beispiel:
 
 ```cpp
 auto make_planet()
@@ -222,9 +223,11 @@ auto msg = getMessage();   // msg has type 'std::string'
 Die Variable `msg` hat den Typ `std::string` &ndash; und damit nicht den Typ `const std::string&`!
 
 *Hinweis*:
-Der Visual C++ Compiler weißt in einem Tooltip darauf hin:
+Der Visual C++ Compiler weißt in einem Tooltip darauf hin (*Abbildung* 1):
 
-BILD: >!!!!!
+<img src="auto_no_const_reference.png" width="700">
+
+*Abbildung* 1: *auto* doesn't deduce references.
 
 Man kann dies natürlich dadurch verhindern, dass man die Variable vom Typ `auto&` oder `const auto&` deklariert!
 
@@ -394,11 +397,19 @@ decltype(auto) ch2 = getFirstCharacter2(std::string{ "ABC" });
 ```
 
 Variable `ch1` ist vom Typ `char`, `ch2` hingegen vom Typ `const char&`,
-siehe hierzu auch XX und XXXX:
+siehe hierzu auch *Abbildung* 2 und *Abbildung* 3:
 
-BILD 
 
-BILD
+<img src="decltype_auto_01.png" width="700">
+
+*Abbildung* 2: XXX
+
+
+
+<img src="decltype_auto_01.png" width="750">
+
+*Abbildung* 3: YYY
+
 
 ## Perfect Forwarding mit generischen Lambdas
 

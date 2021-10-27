@@ -10,6 +10,9 @@
 
 ## `decltype`
 
+*Hinweis*: Das Schlüsselwort `decltype` fällt in der C++&ndash;Sprachbeschreibung in die Kategorie der 
+so genannten *Type Inference*. Hierzu zählen die beiden Schlüsselwörter `auto` und `decltype`.
+
 Der in C ++ 11 eingeführte `decltype`-Operator gibt, grob gesagt, den Typ eines Ausdrucks oder einer Entität wieder.
 Es ist nicht von der Hand zu weisen, dass der `decltype`-Operator Gemeinsamkeiten mit dem
 `typeof`-Operator hat. Vermutlich auf Grund vorhandener, inkompatibler Erweiterungen
