@@ -10,13 +10,18 @@
 
 ## Aufgabe 1: Logische Operationen mit beliebig vielen Operanden
 
-Die Aufgabenstellung ist identisch zur letzten Aufgabe: Setzen Sie zur Lösung dieses Mal *Folding Expressions* ein.
+Die Aufgabenstellung ist identisch zur ersten Aufgabe
+&ldquo;Logische Operationen mit beliebig vielen Operanden&rdquo;
+aus dem Abschnitt [Variadische Templates](#Aufgaben-zu-variadischen-Templates):
+Setzen Sie zur Lösung dieses Mal *Folding Expressions* ein.
 
 ## Aufgabe 2: Folding Expressions, `decltype` und Type-Traits am Beispiel von `sameType`
 
 #### Vorausetzungen: `std::is_same`
 
-Die Aufgabenstellung ist identisch zur letzten Aufgabe (ohne Zusatzaufgabe):
+Die Aufgabenstellung ist identisch zur zweiten Aufgabe
+&ldquo;Logische Operationen mit beliebig vielen Operanden&rdquo;
+aus dem Abschnitt [Variadische Templates](#Aufgaben-zu-variadischen-Templates)(ohne Zusatzaufgabe):
 Setzen Sie zur Lösung dieses Mal *Folding Expressions* ein.
 
 *Zusatzfrage*:

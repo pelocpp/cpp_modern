@@ -99,7 +99,7 @@ namespace VariadicTemplatesElseIf {
         bool edgeCase2 = false;
         std::string text;
 
-        const auto lambda1 = [&text]() { text = "normal case\n"; };
+        auto lambda1 = [&text]() { text = "normal case\n"; };
         const auto lambda2 = [&text]() { text = "edge case 1\n"; };
         const auto lambda3 = [&text]() { text = "edge case 2"; };
 

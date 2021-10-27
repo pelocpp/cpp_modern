@@ -249,9 +249,14 @@ namespace ExpressionTemplates {
         }
 
         // adding 4 matrices using modified operator=
-        MatrixExpr<Matrix, Matrix> sumAB{ a, b };
-        MatrixExpr<MatrixExpr<Matrix, Matrix>, Matrix> sumABC{ sumAB, c };
-        MatrixExpr<MatrixExpr<MatrixExpr<Matrix, Matrix>, Matrix>, Matrix> sumABCD{ sumABC, d };
+        //MatrixExpr<Matrix, Matrix> sumAB{ a, b };
+        //MatrixExpr<MatrixExpr<Matrix, Matrix>, Matrix> sumABC{ sumAB, c };
+        //MatrixExpr<MatrixExpr<MatrixExpr<Matrix, Matrix>, Matrix>, Matrix> sumABCD{ sumABC, d };
+
+        // or - using template argument type deduction:
+        MatrixExpr sumAB{ a, b };
+        MatrixExpr sumABC{ sumAB, c };
+        MatrixExpr sumABCD{ sumABC, d };
 
         result = sumABCD;
     }
@@ -288,10 +293,16 @@ namespace ExpressionTemplates {
         const Matrix& a5)
     {
         // adding 5 matrices with expression template approach
-        MatrixExpr<Matrix, Matrix> sumAB{ a1, a2 };
-        MatrixExpr<MatrixExpr<Matrix, Matrix>, Matrix> sumABC{ sumAB, a3 };
-        MatrixExpr<MatrixExpr<MatrixExpr<Matrix, Matrix>, Matrix>, Matrix> sumABCD{ sumABC, a4 };
-        MatrixExpr<MatrixExpr<MatrixExpr<MatrixExpr<Matrix, Matrix>, Matrix>, Matrix>, Matrix> sumABCDE{ sumABCD, a5 };
+        //MatrixExpr<Matrix, Matrix> sumAB{ a1, a2 };
+        //MatrixExpr<MatrixExpr<Matrix, Matrix>, Matrix> sumABC{ sumAB, a3 };
+        //MatrixExpr<MatrixExpr<MatrixExpr<Matrix, Matrix>, Matrix>, Matrix> sumABCD{ sumABC, a4 };
+        //MatrixExpr<MatrixExpr<MatrixExpr<MatrixExpr<Matrix, Matrix>, Matrix>, Matrix>, Matrix> sumABCDE{ sumABCD, a5 };
+
+        // or - using template argument type deduction:
+        MatrixExpr sumAB{ a1, a2 };
+        MatrixExpr sumABC{ sumAB, a3 };
+        MatrixExpr sumABCD{ sumABC, a4 };
+        MatrixExpr sumABCDE{ sumABCD, a5 };
 
         auto start = std::chrono::high_resolution_clock::now();
         for (int i = 0; i < iterations; ++i) {

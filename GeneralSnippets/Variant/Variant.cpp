@@ -95,7 +95,7 @@ namespace VariantDemo {
             << std::get<int>(var)
             << std::endl;
 
-        if (const auto intPtr = std::get_if<0>(&var))
+        if (auto intPtr = std::get_if<0>(&var))
             std::cout << "int! => " << *intPtr << std::endl;
     }
 

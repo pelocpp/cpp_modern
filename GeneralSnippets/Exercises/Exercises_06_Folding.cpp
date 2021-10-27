@@ -16,7 +16,7 @@ namespace Exercises_Folding {
         // Logical And - with folding expression
 
         template<typename ...Args>
-        bool andAll(Args ...args) {
+        bool andAll(const Args ...args) {
             return (args && ... && true);  // binary right fold (init == true)
         }
 
@@ -33,7 +33,7 @@ namespace Exercises_Folding {
         // Logical Or - with folding expression
 
         template<typename ...Args>
-        bool orAll(Args ...args) {
+        bool orAll(const Args ...args) {
             return (args || ...);  // unary right fold
         }
 
@@ -64,7 +64,9 @@ namespace Exercises_Folding {
         constexpr bool sameType(T arg, TREST... args)
         {
             // since C++17: folding expression !
-            return (std::is_same_v<decltype(arg), decltype(args)> && ...);
+            return (std::is_same_v<T, TREST> && ...);
+            // or
+            // return (std::is_same_v<decltype(arg), decltype(args)> && ...);
         }
 
         void testExercise_02() {
@@ -148,12 +150,23 @@ namespace Exercises_Folding {
 
         // ===================================================================
         // folding
+
         template <typename T, typename ... ARGS>
-        void pushBackAll_01(std::vector<T>& vec, ARGS&&... args)
+        void pushBackAll_01(std::vector<T>& vec, const ARGS&... args)
         {
-            (vec.push_back(args), ...);  // unary right fold or
-            (..., vec.push_back(args));  // unary left fold
+            (vec.push_back(args) , ...);  // unary right fold or
+            (... , vec.push_back(args));  // unary left fold
         }
+
+        // or better - using perfect forwarding:
+
+        //template <typename T, typename ... ARGS>
+        //void pushBackAll_01(std::vector<T>& vec, ARGS&&... args)
+        //{
+        //    (vec.push_back(std::forward<ARGS>(args)) , ...);  // unary right fold or
+        //    (..., vec.push_back(std::forward<ARGS>(args)));   // unary left fold
+        //}
+
 
         void testExercise_04a()
         {

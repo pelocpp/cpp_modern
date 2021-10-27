@@ -14,7 +14,7 @@ namespace VariadicTemplatesSumofSums {
 
     template<typename ... TCONTAINER>
     int sumOfSums(const TCONTAINER& ... conts) {
-        const auto sums = std::initializer_list<int> {
+        auto sums = std::initializer_list<int> {
             std::accumulate(std::begin(conts), std::end(conts), 0) ...
         };
         return std::accumulate(std::begin(sums), std::end(sums), 0);

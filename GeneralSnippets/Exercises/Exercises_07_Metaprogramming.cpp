@@ -21,37 +21,42 @@ namespace Exercises_Metaprogramming {
             return number == 0 ? 0 : number % 10 + 2 * convert2(number / 10);
         }
 
-        // compile-time versions
+        // compile time version - no error handling
         template <size_t N>
         struct Binary
         {
-            static_assert((N % 10) == 0 || (N % 10) == 1);
             static constexpr size_t value = Binary<N / 10>::value << 1 | N % 10;
+            // or
+            // static constexpr size_t value = N % 10 + 2 * Binary<N / 10>::value;
         };
 
         // explicit template specialization
         template <>
         struct Binary<0>
         {
-            static unsigned const value = 0;
+            static constexpr size_t value = 0;
         };
 
-        // compile-time versions
+        // compile time version - with error handling
         template <size_t N>
         struct BinaryEx
         {
             static_assert((N % 10) == 0 || (N % 10) == 1);
-            static constexpr size_t value = N % 10 + 2 * BinaryEx<N / 10>::value;
+
+            static constexpr size_t value = BinaryEx<N / 10>::value << 1 | N % 10;
+            // or
+            // static constexpr size_t value = N % 10 + 2 * BinaryEx<N / 10>::value;
         };
 
         // explicit template specialization
         template <>
         struct BinaryEx<0>
         {
-            static unsigned const value = 0;
+            static constexpr size_t value = 0;
         };
 
         void testExercise_01a() {
+
             size_t number{ 11111111 };
             size_t result{};
             result = convert1(number);
@@ -74,8 +79,8 @@ namespace Exercises_Metaprogramming {
             constexpr size_t seven = Binary<111>::value;
             constexpr size_t nine = Binary<1001>::value;
             constexpr size_t big = Binary<1000'0010'0011'0101>::value;
-            //constexpr size_t wrong1 = Binary<2>::value;
-            //constexpr size_t wrong2 = Binary<12345>::value;
+            constexpr size_t wrong1 = Binary<2>::value;
+            constexpr size_t wrong2 = Binary<12345>::value;
             
             std::cout << one << std::endl;
             std::cout << three << std::endl;
@@ -83,6 +88,8 @@ namespace Exercises_Metaprogramming {
             std::cout << seven << std::endl;
             std::cout << nine << std::endl;
             std::cout << big << std::endl;
+            std::cout << wrong1 << std::endl;
+            std::cout << wrong2 << std::endl;
         }
 
         void testExercise_01c() {
@@ -93,8 +100,8 @@ namespace Exercises_Metaprogramming {
             constexpr size_t seven = BinaryEx<111>::value;
             constexpr size_t nine = BinaryEx<1001>::value;
             constexpr size_t big = BinaryEx<1000'0010'0011'0101>::value;
-            //constexpr size_t wrong1 = BinaryEx<2>::value;
-            //constexpr size_t wrong2 = BinaryEx<12345>::value;
+            //constexpr size_t wrong1 = BinaryEx<2>::value;       // doesn't compile
+            //constexpr size_t wrong2 = BinaryEx<12345>::value;   // doesn't compile
 
             std::cout << one << std::endl;
             std::cout << three << std::endl;
@@ -158,7 +165,7 @@ void main_exercices_metaprogramming()
 {
     using namespace Exercises_Metaprogramming;
     Exercise_01::testExercise_01();
-   // Exercise_02::testExercise_02();
+    Exercise_02::testExercise_02();
 }
 
 // =====================================================================================

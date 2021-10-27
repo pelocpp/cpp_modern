@@ -263,13 +263,13 @@ namespace Exercises_VariadicTemplates {
         // eine(mehrere) Funktion(en) übergeben, die vom Compiler generiert wird(werden).
 
         template <typename T>
-        T sum2(T n)
+        constexpr T sum2(T n)
         {
             return n;
         }
 
         template <typename T, typename  ... TREST>
-        T sum2(T n, TREST ... r)
+        constexpr T sum2(T n, TREST ... r)
         {
             return n + sum2(r ...);
         }
@@ -281,13 +281,13 @@ namespace Exercises_VariadicTemplates {
         // Dafür hat die Funktionsschablone einen oder mehrere Template Parameter.
 
         template<int X>
-        int sum3()
+        constexpr int sum3()
         {
             return X;
         }
 
         template<int X, int Y, int...Z>
-        int sum3()
+        constexpr int sum3()
         {
             return X + sum3<Y, Z...>();
         }
@@ -306,7 +306,13 @@ namespace Exercises_VariadicTemplates {
         public:
             // 'std::accumulate' cannot be called in an 'constexpr' context,
             // therefore applying type conversion operator
-            operator int() const { 
+            // 
+            // Note: Since C++20 std::accumulate is defined as follows:
+            //   template< class InputIt, class T >
+            //   constexpr T accumulate(InputIt first, InputIt last, T init);
+
+            constexpr operator int() const
+            {
                 std::initializer_list<int> args = { ARGS ... };
                 return std::accumulate(std::begin(args), std::end(args), 0);
             }
@@ -323,11 +329,11 @@ namespace Exercises_VariadicTemplates {
         };
 
         void testExercise_05() {
-            int result1 = sum1<1, 2, 3, 4, 5>::result;
-            int result2 = sum2(1, 2, 3, 4, 5);
-            int result3 = sum3<1, 2, 3, 4, 5>();
-            int result4 = sum4<1, 2, 3, 4, 5>{};
-            int result5 = sum5<1, 2, 3, 4, 5>::result;
+            constexpr int result1 = sum1<1, 2, 3, 4, 5>::result;
+            constexpr int result2 = sum2(1, 2, 3, 4, 5);
+            constexpr int result3 = sum3<1, 2, 3, 4, 5>();
+            constexpr int result4 = sum4<1, 2, 3, 4, 5>{};
+            constexpr int result5 = sum5<1, 2, 3, 4, 5>::result;
 
             std::cout << result1 << std::endl;
             std::cout << result2 << std::endl;

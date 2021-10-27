@@ -264,8 +264,21 @@ MatrixExpr<MatrixExpr<MatrixExpr<Matrix, Matrix>, Matrix>, Matrix> sumABCD{ sumA
 result = sumABCD;
 ```
 
+oder - mit dem Feature der *Template Argument Type Deduction* geschrieben:
+
+```cpp
+MatrixExpr sumAB{ a, b };
+MatrixExpr sumABC{ sumAB, c };
+MatrixExpr sumABCD{ sumABC, d };
+
+result = sumABCD;
+```
+
 Das sieht zunächst einmal etwas aufwendiger aus - die  "*Expression Templates*" sind für alle 5 `Matrix`-Objekte zu erstellen.
 Das Resultat überzeugt uns, dass der Aufwand die Mühe wert war:
+
+
+
 
 ```
 Start:

@@ -154,7 +154,11 @@ Bei genauem Hinsehen erkennen Sie zunächst, ob es sich bei `sum1`, `sum2`, `sum
 Klassen- oder Funktionsschablone handelt!
 Wie könnte eine Realisierung aussehen, um die Anweisungen zu implementieren?
 
-Betrachten Sie Ihre Realisierung mit dem Tool [cppinsights.io](https://cppinsights.io/).
+*Zusatzaufgabe* 1: Betrachten Sie die einzelnen Realisierungen und überlegen Sie,
+welche davon `constexpr`-fähig sind!
+
+*Zusatzaufgabe* 1: Betrachten Sie Ihre Realisierung mit dem
+Tool [cppinsights.io](https://cppinsights.io/).
 Vollziehen Sie die jeweiligen Umsetzung der Anweisung `sumX(1, 2, 3, 4, 5)`
 in C++-Anweisungen *ohne* variadische Templates nach!
 

@@ -15,7 +15,7 @@ namespace StructuredBinding {
     }
 
     void test_01() {
-        const auto result = divide_remainder(16, 3);
+        auto result = divide_remainder(16, 3);
         std::cout << "16 / 3 is "
             << result.first << " with a remainder of "
             << result.second << std::endl;
@@ -43,8 +43,8 @@ namespace StructuredBinding {
         std::cout << arr[0] << ", " << arr[1] << ", " << arr[2] << std::endl;
     }
 
-    class Point {
-    public:
+    struct Point 
+    {
         int m_x;
         int m_y;
     };
@@ -76,8 +76,8 @@ namespace StructuredBinding {
         std::cout << "Y Coordinate : " << p.m_y << std::endl;
     }
 
-    class Employee {
-    public:
+    struct Employee 
+    {
         unsigned int id;
         std::string name;
         std::string role;
