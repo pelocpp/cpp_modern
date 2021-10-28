@@ -32,7 +32,7 @@ Wollten wir `distance` mit einem anderen Template Parameter spezialisieren, z.B.
 müssen wir mit Warnungen oder Fehlermeldungen des Übersetzers rechnen.
 Für nicht-integrale Datentypen wiederum ergibt eine Spezialisierung von `distance` überhaupt keinen Sinn.
 
-**Aufgabe**: Realisieren Sie eine Funktion `distanceEx`, so dass diese nur mit Argumenten
+**Aufgabe**: Realisieren Sie eine Funktion `distance`, so dass diese nur mit Argumenten
 des Typs `float` oder `double` aufgerufen werden kann.
 Verwenden Sie hierzu die SFINAE-Technik!
 
