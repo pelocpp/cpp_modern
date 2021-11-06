@@ -138,7 +138,7 @@ namespace Auto_Examples {
     {
         std::vector<int> intValues{ 44, 65, 22, 77, 2 };
 
-        // use function template with a vector of integers
+        // use template function with a vector of integers
         auto it1 = std::find_if(std::begin(intValues), std::end(intValues), isGreaterThanFiftyEx<int>);
         if (it1 != std::end(intValues)) {
             std::cout << "Found a value: " << *it1 << std::endl;
@@ -146,7 +146,7 @@ namespace Auto_Examples {
 
         std::vector<double> doubleValues{ 24.0, 75.0, 12.0, 87.0, 12.0 };
 
-        // use exactly the *same* function template with another specialization with a vector of doubles
+        // use exactly the *same* template function with another specialization with a vector of doubles
         auto it2 = std::find_if(std::begin(doubleValues), std::end(doubleValues), isGreaterThanFiftyEx<double>);
         if (it2 != std::end(doubleValues)) {
             std::cout << "Found a value: " << *it2 << std::endl;

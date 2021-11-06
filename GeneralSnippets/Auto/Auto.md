@@ -18,7 +18,7 @@ WEITER: auto im Inhaltsverzeichnis ergänzen
 
 Das Schlüsselwort `auto` besitzt mehrere, völlig unterschiedliche Einsatzmöglichkeiten:
 
-  * Vereinbarung von Variablen / Automatic Type Deduction
+  * Vereinbarung von Variablen / *Automatic Type Deduction*
   * Neuartige Möglichkeit in der Definition von Funktionen / *Function Return Type Deduction*
   * Funktionsdefinition mit *Trailing Return Type*
   * Verlust von `const` und `&` (Referenz) bei `auto`
@@ -50,7 +50,7 @@ auto result = getFunction();
 Hier gewinnt man zwei Vorteile:
 
   * Ist der Rückgabetyp von `getFunction` länglich zum Hinschreiben, dann spart man mit `auto` Tipparbeit
-    (z.B. an Stelle von `std::map<int, std::string>`).
+    (z.B. eben `auto` an Stelle von `std::map<int, std::string>`).
   * Ändert sich der Rückgabetyp von `getFunction`, so muss man den Quellcode an all den Stellen,
     an denen ein Aufruf von `getFunction` in Verbindung mit `auto` steht, nicht nachgezogen werden.
 
@@ -61,9 +61,7 @@ Zu diesem Zweck
 
   * verwendet man das Schlüsselwort `auto` als Rückgabetyp in der Funktionsdefinition.
   * muss der Compiler auf Grund einer oder auch mehrerer `return`-Anweisungen eindeutig in der Lage sein,
-    den Rückgabetyp zu ermitteln.
-
-Man sagt auch, dass es sich hierbei um einen &ldquo;optionalen Rückgabetyp&rdquo; handelt.
+    den Rückgabetyp ermitteln zu können.
 
 *Beispiel*:
 
@@ -80,8 +78,8 @@ auto sum(float f1, float f2)
 auto result = sum(1.0, 2.0);  // float
 ```
 
-Häufig kann man die Beobachtung machen, dass der Umstieg auf &ldquo;Function Return Type Deduction&rdquo;
-(auch: &ldquo;Automatic Return Type Deduction&rdquo;) zu leichter lesbarem Quellcode führt:
+Häufig kann man die Beobachtung machen, dass der Umstieg auf *Function Return Type Deduction*
+(auch: *Automatic Return Type Deduction*) zu leichter lesbarem Quellcode führt:
 
 *Beispiel*:
 
@@ -109,9 +107,9 @@ template <typename Type, typename ...Args>
 
 **Beachte**:
 
-&ldquo;Automatic Return Type Deduction&rdquo; zieht einen interessanten Anwendungsfall nach sich:
+*Automatic Return Type Deduction* zieht einen interessanten Anwendungsfall nach sich:
 Es ist möglich, den Rückgabetyp einer Funktion **lokal** in dieser zu definieren und
-den Aufruf dieser Funktion mit &ldquo;Automatic Return Type Deduction&rdquo; durchzuführen.
+den Aufruf dieser Funktion mit *Automatic Return Type Deduction* durchzuführen.
 Auch zu dieser skuril anmutenden Vorgehensweise ein Beispiel:
 
 ```cpp
@@ -143,8 +141,8 @@ std::cout
     << has_rings << std::endl;
 ```
 
-Im letzten Code-Fragment finden Sie noch eine Kombination der &ldquo;Automatic Return Type Deduction&rdquo; und dem
-&ldquo;Structured Binding&rdquo; vor!
+Im letzten Code-Fragment finden Sie noch eine Kombination der *Automatic Return Type Deduction* und dem
+*Structured Binding* vor!
 
 
 ## Funktionsdefinition mit *Trailing Return Type*
@@ -164,13 +162,14 @@ auto toString(int value) -> std::string;
 ```
 
 Eine Funktionsdefinition mit *Trailing Return Type* bietet sich dann an,
-wenn es Funktionen in der Schreibweise &ldquo;Function Return Type Deduction&rdquo; bei mehreren `return`-Anweisungen
-zu Mehrdeutigkeiten kommt:
+wenn es bei Funktionen in der Schreibweise *Function Return Type Deduction*
+mit mehreren `return`-Anweisungen zu Mehrdeutigkeiten kommt:
 
 *Beispiel*:
 
 ```cpp
-// error: "'double': all return expressions must deduce to the same type:
+// Error:
+// "'double': all return expressions must deduce to the same type:
 // previously it was 'char'"
 auto foo(bool flag, char ch, double d)
 {
@@ -225,9 +224,9 @@ Die Variable `msg` hat den Typ `std::string` &ndash; und damit nicht den Typ `co
 *Hinweis*:
 Der Visual C++ Compiler weißt in einem Tooltip darauf hin (*Abbildung* 1):
 
-<img src="auto_no_const_reference.png" width="700">
+<img src="auto_no_const_reference.png" width="500">
 
-*Abbildung* 1: *auto* doesn't deduce references.
+*Abbildung* 1: Fehlermeldung *auto* doesn't deduce references.
 
 Man kann dies natürlich dadurch verhindern, dass man die Variable vom Typ `auto&` oder `const auto&` deklariert!
 
@@ -237,22 +236,23 @@ Hierzu darf man nicht `auto` einsetzen, sondern muss mit `decltype` arbeiten:
 
 ```cpp
 decltype(getMessage()) msg3 = getMessage();  // msg3 has type `const std::string&`
+
 std::cout << "Message: " << msg3 << std::endl;
 ```
 
 Ein letzter Schönheitsfehler verbleibt: Es kommt quasi zu einer Dopplung des Ausdrucks, in unserem Beispiel `getMessage()`.
-Auch das beheben wir noch, siehe weiter unten den Abschnitt [XXX](decltype(auto)).
-
-// TODO: Wie definiere ich einen lokalen Markdown Link !!!!
+Auch das beheben wir noch, siehe weiter unten den Abschnitt [decltype(auto)](#decltype(auto)).
 
 ## Generische Lambda Ausdrücke
 
-Das Feature der &ldquo;Automatic Type Deduction&rdquo; lässt sich auch bei Lambda-Funktionen anwenden,
+Das Feature der *Automatic Type Deduction* lässt sich auch bei Lambda-Funktionen anwenden,
 und zwar sowohl beim Rückgabetyp als auch bei den Parametern der Lambda-Funktion.
-Um &ldquo;Automatic Type Deduction&rdquo; für Parameter anwenden zu können, müssen diese als `auto` deklariert werden.
-Auch hierzu ein Beispiel:
+Um *Automatic Type Deduction* für Parameter anwenden zu können, müssen diese als `auto` deklariert werden:
 
 ```cpp
+// define a generic lambda
+auto isGreaterThanFifty = [](const auto& n) { return n > 50; };
+
 std::vector<int> intValues { 44, 65, 22, 77, 2 };
 
 // use generic lambda with a vector of integers
@@ -294,7 +294,7 @@ Damit sehen die Aufrufe von `std::find_if` so aus:
 ```cpp
 std::vector<int> intValues{ 44, 65, 22, 77, 2 };
 
-// use template function with a vector of integers
+// use function template with a vector of integers
 auto it1 = std::find_if(std::begin(intValues), std::end(intValues), isGreaterThanFiftyEx<int>);
 if (it1 != std::end(intValues)) {
     std::cout << "Found a value: " << *it1 << std::endl;
@@ -302,14 +302,14 @@ if (it1 != std::end(intValues)) {
 
 std::vector<double> doubleValues{ 24.0, 75.0, 12.0, 87.0, 12.0 };
 
-// use exactly the *same* template function with another specialization with a vector of doubles
+// use exactly the *same* function template with another specialization with a vector of doubles
 auto it2 = std::find_if(std::begin(doubleValues), std::end(doubleValues), isGreaterThanFiftyEx<double>);
 if (it2 != std::end(doubleValues)) {
     std::cout << "Found a value: " << *it2 << std::endl;
 }
 ```
 
-## Typableitung bei Template Parametern (Template Parameter Type Deduction)
+## Typableitung bei Template Parametern (*Template Parameter Type Deduction*)
 
 Der Typ von Template Parametern wird vom Übersetzer an Hand der Argumente aufgelöst,
 mit denen ein Funktionstemplate aufgerufen wird. Template Parameter, die sich aus den Argumenten nicht erschließen lassen,
@@ -317,7 +317,13 @@ müssen folglich explizit angegeben werden.
 
 Wir betrachten ein Funktionstemplate mit drei Template Parametern:
 
-TEMPALTE
+```cpp
+template <typename RetType, typename T1, typename T2>
+RetType add(const T1& t1, const T2& t2)
+{
+    return t1 + t2;
+}
+```
 
 Ein Aufruf mit allen drei Template Parametern sieht so aus:
 
@@ -349,7 +355,7 @@ RetType add2(const T1& t1, const T2& t2)
 besitzt diese Eigenschaft nicht.
 
 *Hinweis*: Ist man auf der Suche nach einer Funktionstemplate Definition, die bei Bedarf ohne jegliche
-Spezifikationen von Datentypen beim Aufruf auskommt, so kann man mit Default Werten für die Template Parameter arbeiten:
+Spezifikationen von Datentypen beim Aufruf auskommt, so könnte man mit Default Werten für die Template Parameter arbeiten:
 
 ```cpp
 template <typename RetType = long, typename T1, typename T2>
@@ -369,10 +375,10 @@ auto result = add(10, 20);
 
 ## `decltype(auto)`
 
-`decltype(auto)` wird genau benutzt wie `auto`, nur sind die Regeln zum Ableiten des Typ (*type deduction*)
-unterschiedlich.
+`decltype(auto)` wird genauso benutzt wie `auto`, nur sind die Regeln zum Ableiten des Typ (*Type Deduction*)
+unterschiedlich:
 
-  * Bei `auto` gehen mögliche Qualifizierer wie `const` und `&` (Referenz) verloren.
+  * Bei `auto` gehen mögliche Qualifizierer wie `const`, `volatile` und `&` (Referenz) verloren.
   * Bei `decltype(auto)` gehen diese Qualifizierer **nicht** verloren.
 
 Wir betrachten dazu ein Beispiel:
@@ -393,29 +399,27 @@ Wenn wir diese beiden Funktionen aufrufen, erkennen wir den Unterschied:
 
 ```cpp
 auto ch1 = getFirstCharacter1(std::string{ "ABC" });
+
 decltype(auto) ch2 = getFirstCharacter2(std::string{ "ABC" });
 ```
 
-Variable `ch1` ist vom Typ `char`, `ch2` hingegen vom Typ `const char&`,
+Variable `ch1` ist vom Typ `char`, Variable `ch2` hingegen vom Typ `const char&`,
 siehe hierzu auch *Abbildung* 2 und *Abbildung* 3:
 
+<img src="decltype_auto_01.png" width="500">
 
-<img src="decltype_auto_01.png" width="700">
+*Abbildung* 2: Variablendeklaration mit `auto`.
 
-*Abbildung* 2: XXX
+<img src="decltype_auto_02.png" width="550">
 
-
-
-<img src="decltype_auto_01.png" width="750">
-
-*Abbildung* 3: YYY
+*Abbildung* 3: Variablendeklaration mit `decltype(auto)`.
 
 
-## Perfect Forwarding mit generischen Lambdas
+## *Perfect Forwarding* mit generischen Lambdas
 
-Das Prinzip des &ldquo;prefekten Weiterleitens&rdquo; gibt es auch für generische Lambdas
+Das Prinzip des &ldquo;perfekteb Weiterleitens&rdquo; gibt es auch für generische Lambdas.
 Definiert man einen Parameter eines generischen Lambdas vom Typ `auto&&`, also als so genannte *Universal Reference*,
-so lassen sich die Argumente beim Aufruf &ldquo;prefekt&rdquo; Weiterleiten:
+so lassen sich die Argumente beim Aufruf &ldquo;perfekt&rdquo; Weiterleiten:
 
 ```cpp
 void foo(const std::string& s) {
@@ -432,7 +436,8 @@ auto callingFoo = [](auto&& s) {
 };
 ```
 
-Wir rufen die Lambda-Funktion mit zwei unterschiedlichen Argumenten auf. Studieren Sie die Ausgabe sorgfältig:
+Wir rufen die Lambda-Funktion `callingFoo` mit zwei unterschiedlichen Argumenten auf.
+Studieren Sie die Ausgabe sorgfältig:
 
 ```cpp
 const std::string str{ "Hello World with LValue" };
@@ -448,51 +453,52 @@ Calling foo(): Hello World with RValueSignature: &&
 ```
 
 
-## Automatic Type Deduction im Vergleich: `auto`, `auto&`, `const auto&`, `auto&&` und `decltype(auto)`
+## Automatic Type Deduction im Vergleich für `auto`
 
-### `auto`
+Wir wollen einen kurzen und prägnanten Vergleich in der Möglichkeit des Gebrauchs von `auto` geben:
+
+#### `auto`
 
 Steht für eine Kopie eines Elements.
 
-### `auto&`
+#### `auto&`
 
 Steht für eine Referenz eines Elements mit der Intention, dieses zu ändern.
 
-### `const auto&`
+#### `const auto&`
 
 Steht für eine Referenz eines Elements mit der Intention, dieses **nicht** zu ändern.
 
-### `auto&&`
+#### `auto&&`
 
-Steht für eine *Universal Referenz* eines Elements im Kontext von generischen Code (Template, generisches Lambda).
+Steht für eine *Universal Referenz* eines Elements im Kontext von generischem Code (Template, generisches Lambda).
 `auto&&` bezeichnet man auch als *Vorwärtsreferenz*, dies bedeutet:
 
   * Wenn `auto&&` mit einem *LValue* initialisiert wird, verhält sich die Referenz wie eine *LValue* Referenz.
   * Wenn `auto&&` mit einem *RValue* initialisiert wird, verhält sich die Referenz wie eine *RValue* Referenz.
 
-### `decltype(auto)`
+#### `decltype(auto)`
 
 `decltype(auto)` verhält sich im Prinzip wie `auto`, nur werden `const`, `volatile` und `&` beibehalten.
-
----
 
 Zusammenfassend kann man sagen:
 
   * Verwende `auto`, wenn man zum Beispiel in einer *range-based loop* mit einer Kopie arbeiten möchte.
   * Verwende `auto&`, wenn man zum Beispiel in einer *range-based loop* die Elemente verändern möchte.
-  * Verwende `auto&&`, wenn man zum Beispiel in einer *range-based loop* im Kontext von generischen Code die Elemente verändern möchte.
+  * Verwende `auto&&`, wenn man zum Beispiel in einer *range-based loop* im Kontext von generischem Code die Elemente verändern möchte.
   * Verwende `const auto&`, wenn man zum Beispiel in einer *range-based loop* auf die Elemente nur mit lesendem Zugriff zugreifen möchte (auch im Kontext von generischen Code).
 
 ---
 
 ## Literaturhinweise:
 
-Die Anregungen zu diesem Code-Snippet finden sich unter anderem unter
+Die Anregungen zu diesem Code-Snippet finden sich unter anderem in
 
-[Modern C++ Features](https://arne-mertz.de/2017/01/decltype-declval/)<br>(abgerufen am 23.05.2020).
+[Modern C++ Features](https://arne-mertz.de/2017/01/decltype-declval/)<br>(abgerufen am 06.11.2021)
 
-https://blog.petrzemek.net/2016/08/17/auto-type-deduction-in-range-based-for-loops/
+oder in
 
+[Auto Type Deduction in Range-Based For Loops](https://blog.petrzemek.net/2016/08/17/auto-type-deduction-in-range-based-for-loops/)<br>(abgerufen am 06.11.2021).
 
 ---
 
