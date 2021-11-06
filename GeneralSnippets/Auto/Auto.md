@@ -8,14 +8,6 @@
 
 ---
 
-WEITER: Den Quellcode und den Text Korrekturlesen
-
-WEITER: auto als Snippet ergänzen
-
-WEITER: auto im Inhaltsverzeichnis ergänzen
-
----
-
 Das Schlüsselwort `auto` besitzt mehrere, völlig unterschiedliche Einsatzmöglichkeiten:
 
   * Vereinbarung von Variablen / *Automatic Type Deduction*
@@ -241,7 +233,7 @@ std::cout << "Message: " << msg3 << std::endl;
 ```
 
 Ein letzter Schönheitsfehler verbleibt: Es kommt quasi zu einer Dopplung des Ausdrucks, in unserem Beispiel `getMessage()`.
-Auch das beheben wir noch, siehe weiter unten den Abschnitt [decltype(auto)](#decltype(auto)).
+Auch das beheben wir noch, siehe weiter unten den Abschnitt zu `decltype(auto)`.
 
 ## Generische Lambda Ausdrücke
 
@@ -373,7 +365,7 @@ auto result = add(10, 20);
 
 übersetzungsfähig.
 
-## `decltype(auto)`
+## decltype(auto)
 
 `decltype(auto)` wird genauso benutzt wie `auto`, nur sind die Regeln zum Ableiten des Typ (*Type Deduction*)
 unterschiedlich:

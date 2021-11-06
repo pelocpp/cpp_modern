@@ -1,13 +1,13 @@
-# Agenda &ldquo;C++&ndash;Seminar f&uuml;r Fortgeschrittene&rdquo;
+# Agenda &ldquo;C++&ndash;Seminar für Fortgeschrittene&rdquo;
 
 [Zurück](../../Readme.md)
 
 ---
 
 ## Aufbau einer Klasse
-  * Parameter&uuml;bergabemechanismus (*call-by-value* / *call-by-reference*)
+  * Parameterübergabemechanismus (*call-by-value* / *call-by-reference*)
   * Big-Three
-  * &Uuml;berladen von Operatoren
+  * Überladen von Operatoren
   * Klassenvariablen/-methoden (`static`)
 
 
@@ -19,11 +19,21 @@
   * Memory Leaks Detection
 
 
+## `auto`
+  * Vereinbarung von Variablen / *Automatic Type Deduction*
+  * Neuartige Möglichkeit in der Definition von Funktionen / *Function Return Type Deduction*
+  * Funktionsdefinition mit *Trailing Return Type*
+  * Verlust von `const` und `&` (Referenz) bei `auto`
+  * Typableitung bei Template Parametern / *Template Parameter Type Deduction*
+  * `decltype(auto)`
+
+
 ## Lambdas
-  * Funktoren
-  * Zugriffsklauseln
-  * Closure von Lambdas
-  * STL-Algorithmen mit Lambda-Ausdr&uuml;cken
+  * Historische Betrachtung (Funktionen, Funktoren, Lambdas)
+  * *Capture*-Klausel
+  * *Closure* von Lambdas
+  * STL-Algorithmen mit Lambda-Ausdrücken
+  * Generische Lambdas
 
 
 ## Vererbung
@@ -43,12 +53,12 @@
 
 ## Verschiedenes
   * Initialisierung (&ldquo;Uniform Initialization&ldquo;)
-  * Default-Initialisierung f&uuml;r Member-Variablen
+  * Default-Initialisierung für Member-Variablen
   * Initialisierungslisten (`std::initializer_list`)
-  * Schl&uuml;sselwort `auto`
+  * Schlüsselwort `auto`
   * Structured Binding
   * Range-based Loop
-  * Schl&uuml;sselwort `explicit`
+  * Schlüsselwort `explicit`
 
 
 ## Smart Pointer
@@ -70,7 +80,7 @@
 
 
 ## Template-Funktionen und Klassen
-  * Allgemeines / einf&uuml;hrendes Beispiel
+  * Allgemeines / einführendes Beispiel
   * Value Templates
   * Member Function Template (Method Template)
   * Explizite Template Spezialisierung
@@ -85,7 +95,7 @@
 
 ## Variadische Templates
   * `std::tuple` (Vorausetzung)
-  * Allgemeines / einf&uuml;hrende Beispiele
+  * Allgemeines / einführende Beispiele
   * Zugriff auf jedes einzelne Argument
   * Anwendungsfall &ldquo;Summe von Summen&rdquo;
   * Mixins
@@ -100,7 +110,7 @@
   * Template Template Parameter
   * Static Polymorphism
   * `decltype` und `std::declval`
-  * Automatischer R&uuml;ckgabetyp (Trailing Return Type Deduction)
+  * Automatischer Rückgabetyp (Trailing Return Type Deduction)
 
 
 ## Folding
@@ -121,7 +131,7 @@
 
 ## Functional Programming
   * Allgemeines
-  * Funktionen h&ouml;herer Ordnung `filter`, `map` und `fold`
+  * Funktionen höherer Ordnung `filter`, `map` und `fold`
 
 
 ## FileSystem Library

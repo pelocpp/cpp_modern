@@ -98,6 +98,7 @@ In der folgenden Tabelle sind alle Neuerungen von C++&ndash;11/14/17 aufgeführt
 | [Any](GeneralSnippets/Any/StdAny.md) | Neue STL-Utility Klasse `std::any` |
 | [Apply](GeneralSnippets/Apply/Apply.md) | `std::apply`, `std::integer_sequence` und `std::make_integer_sequence` |
 | [Array](GeneralSnippets/Array/StdArray.md) | Neue STL-Utility Klasse `std::array` |
+| [Auto](GeneralSnippets/Auto/Auto.md) | `auto` |
 | [ConstExpr](GeneralSnippets/ConstExpr/Constexpr.md) | Methoden, die der Compiler zur Übersetzungszeit ausführt |
 | [CommonType](GeneralSnippets/CommonType/CommonType.md) | Utility `std::common_type` |
 | [CRTP](GeneralSnippets/CRTP/CRTP.md) | Curiously Recurring Template Pattern (CRTP) |
