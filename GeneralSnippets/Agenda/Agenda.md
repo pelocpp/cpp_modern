@@ -44,21 +44,12 @@
   * Mehrfachvererbung (Schnittstellen)
 
 
-## Standard Template Library (STL)
-  * Template Klassen (Container)
-  * Iteratoren
-  * Algorithmen
-  * Neuerungen ab C++&ndash;11/14/17
-
-
 ## Verschiedenes
   * Initialisierung (&ldquo;Uniform Initialization&ldquo;)
   * Default-Initialisierung für Member-Variablen
   * Initialisierungslisten (`std::initializer_list`)
-  * Schlüsselwort `auto`
   * Structured Binding
   * Range-based Loop
-  * Schlüsselwort `explicit`
 
 
 ## Smart Pointer
@@ -79,12 +70,19 @@
   * Benutzerdefinierte Literale und `constexpr`
 
 
-## Template-Funktionen und Klassen
-  * Allgemeines / einführendes Beispiel
-  * Value Templates
+## Klassentemplates und Funktionstemplates
+  * Allgemeines / einführende Beispiele
+  * Type Parameter / Value Parameter
   * Member Function Template (Method Template)
-  * Explizite Template Spezialisierung
-  * Partielle Template Spezialisierung
+  * Partielle und explizite Template Spezialisierung
+
+
+## Standard Template Library (STL)
+  * Container
+  * Iteratoren
+  * Algorithmen
+  * Funktionen, Funktoren und Lambdas
+  * Neuerungen ab C++&ndash;11/14/17
 
 
 ## STL-Algorithmen
