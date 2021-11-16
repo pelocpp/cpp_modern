@@ -29,7 +29,7 @@ namespace WeakPointer {
 
             std::shared_ptr<int> ptr1{ std::make_shared<int>(123) };
             // or
-            // std::shared_ptr<int> ptr1{ std::shared_ptr<int>(new int{ 123 }) };
+            // std::shared_ptr<int> ptr1{ new int{ 123 } };
 
             std::cout << "Usage count shared_ptr:     " << ptr1.use_count() << std::endl;
             weakPtr = ptr1;
@@ -128,15 +128,15 @@ namespace WeakPointer {
         std::cout << std::endl;
         {
             std::shared_ptr<ParentNode> parent {
-                std::shared_ptr<ParentNode>{ new ParentNode{} }
+                 new ParentNode{}
             };
 
             std::shared_ptr<RightNode> rightNode {
-                std::shared_ptr<RightNode>{ new RightNode{ parent } }
+                new RightNode{ parent }
             };
 
             std::shared_ptr<LeftNode> leftNode{
-                std::shared_ptr<LeftNode>{ new LeftNode{ parent } }
+                new LeftNode{ parent }
             };
 
             parent->setRightNode(rightNode);
