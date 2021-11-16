@@ -13,7 +13,7 @@ namespace Auto_Examples {
 
     std::map<int, std::string> getFunction() { return {}; };
 
-    void test_03_a() {
+    void test_01_a() {
 
         auto n = 123;    // n is type of int
 
@@ -36,7 +36,7 @@ namespace Auto_Examples {
         }
     }
 
-    void test_03_b() {
+    void test_01_b() {
 
         auto result = sum(1.0, 2.0);  // float
 
@@ -66,7 +66,7 @@ namespace Auto_Examples {
         return message;
     }
 
-    void test_03_c() {
+    void test_01_c() {
 
         auto msg = getMessage();
         std::cout << "Message: " << msg << std::endl;
@@ -87,7 +87,7 @@ namespace Auto_Examples {
         return Planet{ "Saturn", 82, true };
     }
 
-    void test_03_d() {
+    void test_01_d() {
 
         // using automatic return type deduction
         auto planet = make_planet();
@@ -109,7 +109,7 @@ namespace Auto_Examples {
     // define a generic lambda
     auto isGreaterThanFifty = [](const auto& n) { return n > 50; };
 
-    void test_03_e_01()
+    void test_01_e_01()
     {
         std::vector<int> intValues{ 44, 65, 22, 77, 2 };
 
@@ -134,7 +134,7 @@ namespace Auto_Examples {
         return n > 50;
     };
 
-    void test_03_e_02()
+    void test_01_e_02()
     {
         std::vector<int> intValues{ 44, 65, 22, 77, 2 };
 
@@ -171,7 +171,7 @@ namespace Auto_Examples {
         return t1 + t2;
     }
 
-    void test_03_f()
+    void test_01_f()
     {
         // works - specifying all template parameters
         auto result = add<long, int, int>(10, 20);
@@ -193,7 +193,7 @@ namespace Auto_Examples {
         return s[0];
     }
 
-    void test_03_g()
+    void test_01_g()
     {
         auto ch1 = getFirstCharacter1(std::string{ "ABC" });
         decltype(auto) ch2 = getFirstCharacter2(std::string{ "ABC" });
@@ -212,7 +212,7 @@ namespace Auto_Examples {
         foo(std::forward<decltype(s)>(s));
     };
 
-    void test_03_h()
+    void test_01_h()
     {
         const std::string str{ "Hello World with LValue" };
         callingFoo(str);
@@ -223,13 +223,13 @@ namespace Auto_Examples {
 void main_auto()
 {
     using namespace Auto_Examples;
-    test_03_a();
-    test_03_b();
-    test_03_c();
-    test_03_d();
-    test_03_e_01();
-    test_03_e_02();
-    test_03_h();
+    test_01_a();
+    test_01_b();
+    test_01_c();
+    test_01_d();
+    test_01_e_01();
+    test_01_e_02();
+    test_01_h();
 }
 
 // =====================================================================================

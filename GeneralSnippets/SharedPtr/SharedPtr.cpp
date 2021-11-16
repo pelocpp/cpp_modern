@@ -32,7 +32,7 @@ namespace SharedPointer {
     void test_01() {
 
         // 'ptr1' is a shared pointer for a new instance of an int
-        std::shared_ptr<int> ptr1{ std::shared_ptr<int>(new int{ 123 }) };
+        std::shared_ptr<int> ptr1{ new int{ 123 } };
         // or
         // std::shared_ptr<int> ptr1{ std::make_shared<int>(123) };
 
