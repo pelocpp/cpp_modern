@@ -6,6 +6,7 @@
 #include <string>
 #include <vector>
 #include <numeric>
+#include <algorithm>
 
 namespace Exercises_VariadicTemplates {
 

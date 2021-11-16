@@ -11,6 +11,7 @@
 #include <vector>
 #include <list>
 #include <sstream>
+#include <cctype>
 
 namespace FunctionalProgramming_01 {
 

@@ -6,6 +6,7 @@
 #include <vector>
 #include <tuple>
 #include <string>
+#include <cctype>
 
 namespace TrimExample {
 
