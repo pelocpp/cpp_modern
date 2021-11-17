@@ -8,8 +8,6 @@
 
 namespace VariadicTemplatesWorkingOnEveryArgument {
 
-    // https://arne-mertz.de/2016/11/more-variadic-templates/
-
     template <typename T>
     void doSomething(const T& value) {
         std::cout << "got value " << value << std::endl;
