@@ -183,20 +183,15 @@ namespace Auto_Examples {
         auto result2 = add3(10, 20);
     }
 
-    decltype(auto) getFirstCharacter1(const std::string& s)
-    {
-        return s[0];
-    }
-
-    decltype(auto) getFirstCharacter2(const std::string& s)
+    decltype(auto) getFirstCharacter(const std::string& s)
     {
         return s[0];
     }
 
     void test_01_g()
     {
-        auto ch1 = getFirstCharacter1(std::string{ "ABC" });
-        decltype(auto) ch2 = getFirstCharacter2(std::string{ "ABC" });
+        auto ch1 = getFirstCharacter(std::string{ "ABC" });
+        decltype(auto) ch2 = getFirstCharacter(std::string{ "ABC" });
     }
 
     void foo(const std::string& s) {
@@ -229,6 +224,8 @@ void main_auto()
     test_01_d();
     test_01_e_01();
     test_01_e_02();
+    test_01_f();
+    test_01_g();
     test_01_h();
 }
 

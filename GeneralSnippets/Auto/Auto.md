@@ -376,23 +376,19 @@ unterschiedlich:
 Wir betrachten dazu ein Beispiel:
 
 ```cpp
-decltype(auto) getFirstCharacter1(const std::string& s)
-{
-    return s[0];
-}
-
-decltype(auto) getFirstCharacter2(const std::string& s)
+decltype(auto) getFirstCharacter(const std::string& s)
 {
     return s[0];
 }
 ```
 
-Wenn wir diese beiden Funktionen aufrufen, erkennen wir den Unterschied:
+Wenn wir diese Funktion zweimal aufrufen,
+erkennen wir den Unterschied:
 
 ```cpp
-auto ch1 = getFirstCharacter1(std::string{ "ABC" });
+auto ch1 = getFirstCharacter(std::string{ "ABC" });
 
-decltype(auto) ch2 = getFirstCharacter2(std::string{ "ABC" });
+decltype(auto) ch2 = getFirstCharacter(std::string{ "ABC" });
 ```
 
 Variable `ch1` ist vom Typ `char`, Variable `ch2` hingegen vom Typ `const char&`,
