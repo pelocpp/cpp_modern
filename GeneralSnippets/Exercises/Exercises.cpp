@@ -9,7 +9,7 @@ void test_exercises_algorithms();
 void test_exercises_variadic_templates();
 void test_exercises_folding();
 void test_exercises_utility_classes(); 
-void main_exercices_metaprogramming();
+void test_exercices_metaprogramming();
 void test_exercices_expression_templates();
 void test_exercices_perfect_forwarding();
 void test_exercises_functional_programming();
@@ -26,7 +26,7 @@ void main_exercises()
     test_exercises_variadic_templates();
     test_exercises_folding();
     test_exercises_utility_classes();
-    main_exercices_metaprogramming();
+    test_exercices_metaprogramming();
     test_exercices_expression_templates();
     test_exercices_perfect_forwarding();
     test_exercises_functional_programming();

@@ -161,7 +161,7 @@ namespace Exercises_Metaprogramming {
     }
 }
 
-void main_exercices_metaprogramming()
+void test_exercices_metaprogramming()
 {
     using namespace Exercises_Metaprogramming;
     Exercise_01::testExercise_01();

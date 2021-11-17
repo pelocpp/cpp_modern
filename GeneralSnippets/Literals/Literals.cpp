@@ -144,7 +144,7 @@ namespace Literals_Color_CompileTime {
     constexpr Color operator"" _rgb(unsigned long long int value) {
 
         if (value > 0xFFFFFF) {
-            throw std::runtime_error("literal too large");
+            throw std::logic_error("literal too large");
         }
 
         uint8_t r{ static_cast<uint8_t>((value & 0x00FF0000) >> 16) };
@@ -183,7 +183,7 @@ namespace Literals_Color_CompileTime {
     constexpr uint8_t hex2int(char ch)
     {
         if (! isHex(ch)) {
-            throw std::runtime_error("illegal hexadecimal digit");
+            throw std::logic_error("illegal hexadecimal digit");
         }
 
         // transform hex character to 4-bit equivalent number
