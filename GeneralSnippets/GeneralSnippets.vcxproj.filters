@@ -687,5 +687,8 @@
     <Image Include="Auto\decltype_auto_02.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="..\Horse_Cpp.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

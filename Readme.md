@@ -21,6 +21,20 @@ C++ ist daher auf sehr vielen Plattformen verfügbar.
 
 ---
 
+## Bevor es losgeht ...
+
+Modern C++ mag möglicherweise für den einen oder anderen Entwickler durch seine Komplexität abschreckend wirken.
+Aus der systemnahen Programmierung ist diese Programmiersprache allerdings nicht mehr wegzudenken.
+Dieses Seminar erhebt den Anspruch, die Einstiegshürden zu überwinden ... :)
+
+<img src="Horse_Cpp.png" width="600">
+
+Abbildung 1: Modern C++ &ndash; *Relax*!
+
+([How To Build A Horse With Programming](https://toggl.com/blog/build-horse-programming))
+
+---
+
 ## Literaturverzeichnis
 
 Jedes Jahr gibt es immer noch zahlreiche Neuerscheinungen zum Thema C++, die auf den Markt kommen. 
