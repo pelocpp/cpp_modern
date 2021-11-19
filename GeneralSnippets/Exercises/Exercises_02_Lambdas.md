@@ -36,8 +36,8 @@ Erweitern Sie Ihre Realisierung so, dass der Divisor (Nenner) variabel ist:
 
 Dabei soll der Divisor
 
-  * durch eine Variable aus dem Kontext ("*scope*") 
-  * durch eine Variable in der Zugriffsklausel
+  * durch eine Variable aus dem Kontext ("*Closure*") 
+  * durch eine Variable in der Zugriffsklausel ("*Capture Clause*") 
 
 bestimmt werden.
 
