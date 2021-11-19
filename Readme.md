@@ -6,6 +6,20 @@
 
 ---
 
+## Bevor es losgeht ...
+
+*Modern C++* mag möglicherweise für den einen oder anderen Entwickler durch seine Komplexität abschreckend wirken.
+Aus der systemnahen Programmierung ist diese Programmiersprache allerdings nicht mehr wegzudenken.
+Dieses Seminar erhebt den Anspruch, die Einstiegshürden zu überwinden ... :)
+
+<img src="Horse_Cpp.png" width="600">
+
+Abbildung 1: Modern C++ &ndash; *Relax*!
+
+([How To Build A Horse With Programming](https://toggl.com/blog/build-horse-programming))
+
+---
+
 ## Überblick
 
 **C++** ist eine high-level, general-purpose Programmiersprache, 
@@ -18,20 +32,6 @@ Die Sprache hat sich im Laufe der Zeit erheblich erweitert, und modernes C++ ver
 Es wird fast immer als kompilierte Sprache implementiert, und viele Anbieter bieten für C++ Compiler an,
 darunter die Free Software Foundation, LLVM, Microsoft, Intel, Oracle und IBM.
 C++ ist daher auf sehr vielen Plattformen verfügbar.
-
----
-
-## Bevor es losgeht ...
-
-Modern C++ mag möglicherweise für den einen oder anderen Entwickler durch seine Komplexität abschreckend wirken.
-Aus der systemnahen Programmierung ist diese Programmiersprache allerdings nicht mehr wegzudenken.
-Dieses Seminar erhebt den Anspruch, die Einstiegshürden zu überwinden ... :)
-
-<img src="Horse_Cpp.png" width="600">
-
-Abbildung 1: Modern C++ &ndash; *Relax*!
-
-([How To Build A Horse With Programming](https://toggl.com/blog/build-horse-programming))
 
 ---
 
