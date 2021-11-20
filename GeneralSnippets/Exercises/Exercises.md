@@ -19,6 +19,8 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 
   * ### [Initialisierung](#Aufgaben-zur-Initialisierung)
 
+  * ### [Smart Pointers](#Aufgaben-zu-Smart-Pointers)
+
   * ### [STL-Algorithmen](#Aufgaben-zu-STL-Algorithmen)
 
   * ### [Variadische Templates](#Aufgaben-zu-variadischen-Templates)
@@ -73,6 +75,18 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 | [Aufgabe 1](Exercises_11_Initialization.md) | Einheitliche Initialisierung (*Uniform Initialization*) und Initialisierungliste<br/>(Vorausetzungen: Templates, `std::vector<>`, `std::initializer_list<>`) |
 
 *Tabelle* 3: Aufgaben zur Initialisierung.
+
+---
+
+### Aufgaben zu Smart Pointers
+
+| Aufgabe | Beschreibung |
+| :- | :- |
+| [Aufgabe 1](Exercises_15_SmartPointers.md) | Quiz zu Smart Pointers<br/>(Vorausetzungen: `std::shared_ptr`) |
+| [Aufgabe 2](Exercises_15_SmartPointers.md) | Noch ein Quiz zu Smart Pointers<br/>(Vorausetzungen: `std::shared_ptr`) |
+| [Aufgabe 3](Exercises_15_SmartPointers.md) | Betrachtung eines &ldquo;nicht besitzenden&rdquo; Zeigers<br/>(Vorausetzungen: `std::shared_ptr`, `std::weak_ptr`) |
+
+*Tabelle* 3: Aufgaben zu Smart Pointers.
 
 ---
 

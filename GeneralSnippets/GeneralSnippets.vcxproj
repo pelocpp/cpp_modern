@@ -164,6 +164,7 @@
     <ClCompile Include="DefaultInitialization\DefaultInitialization.cpp" />
     <ClCompile Include="EraseRemoveIdiom\EraseRemoveIdiom.cpp" />
     <ClCompile Include="Exercises\Exercises_14_ConstExpr.cpp" />
+    <ClCompile Include="Exercises\Exercises_15_SmartPointers.cpp" />
     <ClCompile Include="Exercises\Exercises_Legacy.cpp" />
     <ClCompile Include="Exercises\Exercises_01_MoveSemantics.cpp" />
     <ClCompile Include="Exercises\Exercises_02_Lambdas.cpp" />
@@ -268,6 +269,7 @@
     <None Include="EraseRemoveIdiom\EraseRemoveIdiom.md" />
     <None Include="Exercises\cpp_dividend_divisor.svg" />
     <None Include="Exercises\Exercises_14_ConstExpr.md" />
+    <None Include="Exercises\Exercises_15_SmartPointers.md" />
     <None Include="Exercises\Exercises_Legacy.md" />
     <None Include="Exercises\Exercises_01_MoveSemantics.md" />
     <None Include="Exercises\Exercises_02_Lambdas.md" />

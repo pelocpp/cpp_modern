@@ -318,6 +318,9 @@
     <ClCompile Include="Auto\Auto.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Exercises\Exercises_15_SmartPointers.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -618,6 +621,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Auto\Auto.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Exercises\Exercises_15_SmartPointers.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
