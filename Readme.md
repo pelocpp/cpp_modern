@@ -12,7 +12,7 @@
 Nichtsdestotrotz ist diese Programmiersprache aus der systemnahen Software-Entwicklung und vielen anderen
 Einsatzbereichen nicht mehr wegzudenken.
 C++ zählt zu den Programmiersprachen, die ein etwas tieferes Verständnis erfordern.
-Ziel dieses Repositories ist es, auf die größten Hürden beim Erlernen von *Modern C++* einzugehen!
+Ziel dieses Seminars/Repositories ist es, auf die größten Hürden beim Erlernen von *Modern C++* einzugehen!
 
 <img src="Horse_Cpp.png" width="600">
 

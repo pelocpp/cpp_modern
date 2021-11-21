@@ -19,7 +19,7 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 
   * ### [Initialisierung](#Aufgaben-zur-Initialisierung)
 
-  * ### [Smart Pointers](#Aufgaben-zu-Smart-Pointers)
+  * ### [Smart Pointer](#Aufgaben-zu-Smart-Pointer)
 
   * ### [STL-Algorithmen](#Aufgaben-zu-STL-Algorithmen)
 
@@ -78,15 +78,15 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 
 ---
 
-### Aufgaben zu Smart Pointers
+### Aufgaben zu Smart Pointer
 
 | Aufgabe | Beschreibung |
 | :- | :- |
-| [Aufgabe 1](Exercises_15_SmartPointers.md) | Quiz zu Smart Pointers<br/>(Vorausetzungen: `std::shared_ptr`) |
-| [Aufgabe 2](Exercises_15_SmartPointers.md) | Noch ein Quiz zu Smart Pointers<br/>(Vorausetzungen: `std::shared_ptr`) |
-| [Aufgabe 3](Exercises_15_SmartPointers.md) | Betrachtung eines &ldquo;nicht besitzenden&rdquo; Zeigers<br/>(Vorausetzungen: `std::shared_ptr`, `std::weak_ptr`) |
+| [Aufgabe 1](Exercises_15_SmartPointers.md) | Quiz zu Smart Pointer<br/>(Vorausetzungen: `std::shared_ptr<>`) |
+| [Aufgabe 2](Exercises_15_SmartPointers.md) | Noch ein Quiz zu Smart Pointer<br/>(Vorausetzungen: `std::shared_ptr<>`) |
+| [Aufgabe 3](Exercises_15_SmartPointers.md) | Betrachtungen eines &ldquo;nicht besitzenden&rdquo; Zeigers<br/>(Vorausetzungen: `std::shared_ptr<>`, `std::weak_ptr<>`) |
 
-*Tabelle* 3: Aufgaben zu Smart Pointers.
+*Tabelle* 3: Aufgaben zu Smart Pointer.
 
 ---
 

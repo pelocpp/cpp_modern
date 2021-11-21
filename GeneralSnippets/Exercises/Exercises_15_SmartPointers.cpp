@@ -22,15 +22,22 @@ namespace Exercises_SmartPointers {
             std::shared_ptr<X> pB;
             std::shared_ptr<X> pC;
 
-            pA = std::make_shared<X>();  // use-count always starts at 1
+            pA = std::make_shared<X>();     // use-count always starts at 1
+            assert(pA.use_count() == 1);
 
-            pB = pA;  // make a copy of the pointer; use-count is now 2
+            pB = pA;                        // make a copy of the pointer; use-count is now 2
+            assert(pA.use_count() == 2);
+            assert(pB.use_count() == 2);
 
-            pC = std::move(pA);  // moving the pointer keeps the use-count at 2
+            pC = std::move(pA);             // moving the pointer keeps the use-count at 2
             assert(pA == nullptr);
+            assert(pB.use_count() == 2);
+            assert(pC.use_count() == 2);
 
-            pB = nullptr;  // decrement the use-count back to 1
+            pB = nullptr;                   // decrement the use-count back to 1
 
+            assert(pA == nullptr);
+            assert(pB == nullptr);
             assert(pC.use_count() == 1);
         }
     }
@@ -52,23 +59,31 @@ namespace Exercises_SmartPointers {
                 int m_value;
             };
 
-            std::shared_ptr<X> pA{ new X{} };  // use-count always starts at 1
+            std::shared_ptr<X> pA{ new X{} };    // use-count always starts at 1
             std::shared_ptr<X> pB;
             std::shared_ptr<X> pC;
+            assert(pA.use_count() == 1);
 
-            pB = pA;     // make a copy of the pointer; use-count is now 2
+            pB = pA;           // make a copy of the pointer; use-count is now 2
+            assert(pA.use_count() == 2);
+            assert(pB.use_count() == 2);
 
-            pC = std::shared_ptr<X>(pB.get()); // WRONG! Don't double-manage a raw pointer
-            // give the same pointer to shared_ptr again,
-            // which tells shared_ptr to manage it -- twice!
+            pC = std::shared_ptr<X>(pB.get());
+            // ERROR! Don't double-manage a raw pointer!
+            // Give never the same pointer to a shared_ptr object again,
+            // which would tell this shared_ptr to manage it -- twice!
+            assert(pA.use_count() == 2);
             assert(pB.use_count() == 2);
             assert(pC.use_count() == 1);
 
-            pC = nullptr;  // or pC.reset();
-            // pc's use-count drops to zero and shared_ptr
-            // calls "delete" on the X object
+            pC = nullptr;   // or pC.reset();
+            // pC's use-count drops to zero,
+            // shared_ptr calls "delete" on the X object
+            assert(pA.use_count() == 2);
+            assert(pB.use_count() == 2);
+            assert(pC == nullptr);
 
-            int value = (*pB).getValue(); // accessing the freed object yields undefined behavior
+            int value = (*pB).getValue();     // accessing the freed object yields undefined behavior
             std::cout << "Value: " << value << std::endl;
         }
     }
@@ -96,8 +111,8 @@ namespace Exercises_SmartPointers {
             }
         };
 
-        void testExercise_03a() {
-
+        void testExercise_03a()
+        {
             UnsafeWatcher watcher;
 
             {
@@ -127,7 +142,8 @@ namespace Exercises_SmartPointers {
             }
         };
 
-        void testExercise_03b() {
+        void testExercise_03b()
+        {
             HeavyAndSafeWatcher watcher;
 
             {
@@ -188,12 +204,12 @@ namespace Exercises_SmartPointers {
     }
 }
 
-void test_exercises_folding()
+void test_exercises_smartpointer()
 {
     using namespace Exercises_SmartPointers;
-    Exercise_01::testExercise_01();
+    //Exercise_01::testExercise_01();
     Exercise_02::testExercise_02();
-    Exercise_03::testExercise_03();
+    //Exercise_03::testExercise_03();
 }
 
 // =====================================================================================

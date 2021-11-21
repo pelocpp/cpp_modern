@@ -5,6 +5,7 @@
 void test_exercises_move_semantics();
 void test_exercises_lambdas();
 void test_exercises_initialization();
+void test_exercises_smartpointer();
 void test_exercises_algorithms();
 void test_exercises_variadic_templates();
 void test_exercises_folding();
@@ -22,6 +23,7 @@ void main_exercises()
     test_exercises_move_semantics();
     test_exercises_lambdas();
     test_exercises_initialization();
+    test_exercises_smartpointer();
     test_exercises_algorithms();
     test_exercises_variadic_templates();
     test_exercises_folding();
