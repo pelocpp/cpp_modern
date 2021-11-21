@@ -26,6 +26,7 @@ void main_default_initialization();
 void main_erase_remove_idiom();
 void main_exercises_legacy();
 void main_exercises();
+void main_generate();
 void main_keyword_explicit();
 void main_expression_templates();
 void main_filesystem();
@@ -117,6 +118,7 @@ int main()
         //main_default_initialization();
         //main_erase_remove_idiom();
         //main_exercises();
+        //main_generate();
         //main_keyword_explicit();
         //main_expression_templates();
         //main_filesystem();

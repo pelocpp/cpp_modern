@@ -321,6 +321,9 @@
     <ClCompile Include="Exercises\Exercises_15_SmartPointers.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Generate\Generate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -624,6 +627,12 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Exercises\Exercises_15_SmartPointers.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Generate\Generate.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Generate\cpp_generate.svg">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

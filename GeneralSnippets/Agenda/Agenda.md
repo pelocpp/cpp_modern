@@ -86,6 +86,7 @@
 
 
 ## STL-Algorithmen
+  * `std::generate`
   * `std::accumulate`
   * `std::transform`
   * Das *Erase-Remove*-Idiom
