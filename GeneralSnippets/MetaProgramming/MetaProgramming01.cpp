@@ -45,7 +45,7 @@ namespace Metaprogramming {
 
     template <int N, typename F>
     struct ScalarMultiplication {
-        using result = Frac<N * F::Num, N * F::Den>;
+        using result = Frac<N * F::Num, F::Den>;
     };
 
     void test_02() {
@@ -95,15 +95,15 @@ namespace Metaprogramming {
 
     template <typename X, typename Y>
     struct Sum {
-        using BASE = SameBase<X, Y>;
-        static constexpr long Num = BASE::X::Num + BASE::Y::Num;
-        static constexpr long Den = BASE::Y::Den; // same as BASE::X::Den
+        using Base = SameBase<X, Y>;
+        static constexpr long Num = Base::X::Num + Base::Y::Num;
+        static constexpr long Den = Base::X::Den * Base::Y::Den;
         using result = typename FracNormalized<Frac<Num, Den>>::result;
     };
 
     void test_04() {
-        using Frac1 = Frac<3, 7>;
-        using Frac2 = Frac<1, 7>;
+        using Frac1 = Frac<1, 3>;
+        using Frac2 = Frac<4, 7>;
         using Result = Sum<Frac1, Frac2>::result;
         std::cout << Result::Num << "/" << Result::Den << std::endl;
     }
