@@ -125,9 +125,8 @@ void printer(ARGS ...args) {
 ```
 
 Das Folding findet hier mit dem `<<`-Operator statt (genauer: *Binary Left Folding*),
-die Argumente werden ohne jegliches Trennzeichen in das `std::cout`-Objekt geschoben:
-
-*Ausgabe*:
+die Argumente werden ohne jegliches Trennzeichen in das `std::cout`-Objekt geschoben.
+Eine Anweisung der Gestalt `printer(1, "ABC", 2, "DEF", 3, "GHI");` führt zur Ausgabe
 
 ```
 1ABC2DEF3GHI
@@ -150,6 +149,12 @@ void printer(ARGS ...args) {
 
 ```
 1, ABC, 2, DEF, 3, GHI,
+```
+
+bei Ausführung der Anweisung
+
+```cpp
+printer(1, "ABC", 2, "DEF", 3, "GHI");
 ```
 
 Wenn Sie die letzte Ausgabe genau betrachten, können Sie ein störendes Trennzeichen am Zeilenende beobachten.
