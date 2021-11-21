@@ -232,6 +232,39 @@ namespace Exercises_Folding {
             testExercise_04c();
         }
     }
+
+    namespace Exercise_05 {
+
+        template <typename ...ARGS>
+        void printer1(ARGS ...args) {
+            (std::cout << ... << args);
+            std::cout << std::endl;
+        }
+
+        template <typename ...ARGS>
+        void printer2(ARGS ...args) {
+            ((std::cout << args << ", "), ...);
+            std::cout << std::endl;
+        }
+
+        template <typename T, typename ...ARGS>
+        void printer3(T first, ARGS ...rest) {
+            std::cout << first;
+            ((std::cout << ", " << rest), ...);
+            std::cout << std::endl;
+        }
+
+        /* The solution uses a template argument for the first parameter and then
+           a variadic parameter list for the rest. We print then the first element
+           and then add a separator before all other entries.
+        */
+
+        void testExercise_05() {
+            printer1(1, "ABC", 2, "DEF", 3, "GHI");
+            printer2(1, "ABC", 2, "DEF", 3, "GHI");
+            printer3(1, "ABC", 2, "DEF", 3, "GHI");
+        }
+    }
 }
 
 void test_exercises_folding()
@@ -241,6 +274,7 @@ void test_exercises_folding()
     Exercise_02::testExercise_02();
     Exercise_03::testExercise_03();
     Exercise_04::testExercise_04();
+    Exercise_05::testExercise_05();
 }
 
 // =====================================================================================

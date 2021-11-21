@@ -36,7 +36,7 @@ von Aufgabe 1 und 2?
 
 ## Aufgabe 3: &ldquo;*Folding over a Comma*&rdquo; am Beispiel zweier Funktionen `minimum` und `maximum`
 
-#### Voraussetzungen: Folding Expressions, Lambda Funktionen
+#### Voraussetzungen: Lambda Funktionen
 
 Der Zugriff auf die einzelnen Werte eines Parameter Packs ist nicht ganz einfach.
 Eine übliche Vorgehensweise ist das so genannte &ldquo;*Folding over a Comma*&rdquo;.
@@ -79,8 +79,6 @@ Erklären Sie die Funktionsweise ihrer Realisierung. Welche Rolle spielt Zeile 1
 
 ## Aufgabe 4: Beliebig viele Werte zu einem `std::vector`-Objekt hinzufügen
 
-#### Voraussetzungen: Folding Expressions
-
 Sowohl mit variadischen Templates als auch mit Folding lässt sich ein elegantes Funktionstemplate
 `pushBackAll<T>` schreiben, das eine beliebige Anzahl von Parametern mit `push_back`
 einem `std::vector`-Objekt hinzufügt.
@@ -109,6 +107,55 @@ Man könnte das Funktionstemplate `pushBackAll<T>` auch mit variadischen Templat
 oder auch dem Trick mit einer Initialisierungsliste
 und wiederum Folding (dieses Mal &ldquo;über einem Komma&rdquo;) realisieren.
 Implementieren Sie die weiteren Varianten.
+
+---
+
+## Aufgabe 5: Störende Trennzeichen am Ende eines Folding-Ausdrucks
+
+Betrachten Sie die nachfolgende Funktion `printer`.
+Mit Hilfe von variadischen Templates kann die Funktion eine beliebige Anzahl von Parametern entgegennehmen
+und diese mit Hilfe eines Folding-Ausdrucks auf der Konsole ausgeben:
+
+```cpp
+template <typename ...ARGS>
+void printer(ARGS ...args) {
+    (std::cout << ... << args);
+    std::cout << std::endl;
+}
+```
+
+Das Folding findet hier mit dem `<<`-Operator statt (genauer: *Binary Left Folding*),
+die Argumente werden ohne jegliches Trennzeichen in das `std::cout`-Objekt geschoben:
+
+*Ausgabe*:
+
+```
+1ABC2DEF3GHI
+```
+
+Möchte man die einzelnen Argumente von `printer` mit Trennzeichen auszugeben,
+dürfen wir das Folding nicht mit dem `<<`-Operator durchführen.
+Das so genannte &ldquo;*Folding over a Comma*&ldquo; hilft jetzt weiter,
+es kommt ein *Unary Right Folding*&ndash;Ausdruck zum Einsatz:
+
+```cpp
+template <typename ...ARGS>
+void printer(ARGS ...args) {
+    ((std::cout << args << ", ") , ...);
+    std::cout << std::endl;
+}
+```
+
+*Ausgabe*:
+
+```
+1, ABC, 2, DEF, 3, GHI,
+```
+
+Wenn Sie die letzte Ausgabe genau betrachten, können Sie ein störendes Trennzeichen am Zeilenende beobachten.
+
+*Aufgabe*:
+Schreiben Sie Funktion `printer` so um, dass das letzte Trennzeichen nicht mehr ausgegen wird!
 
 ---
 

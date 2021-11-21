@@ -143,7 +143,7 @@ Auch dies wollen wir mit einem Beispiel untermauern:
 16:     }
 17: };
 18: 
-19: void testExercise_03b()
+19: void test()
 20: {
 21:     HeavyAndSafeWatcher watcher;
 22: 
