@@ -26,7 +26,7 @@ Die Zeichenkette wird in diesem Puffer aufbewahrt,
 ohne eine dynamische Speicheranforderung auszulösen. 
 
 Damit stehen wir vor der Frage, wie &ldquo;kurz&rdquo; müssen Zeichenketten sein, um die SSO auszulösen?
-Batrachten Sie dazu das folgende Code-Fragment: Die Methode `capacity` eines leeren `std::string`-Objekts gibt an,
+Betrachten Sie dazu das folgende Code-Fragment: Die Methode `capacity` eines leeren `std::string`-Objekts gibt an,
 wie groß der in einem `std::string`-Objekt vorhandene, interne Datenbereich ist,
 um die Zeichenkette aufzunehmen und damit die Heap-Anforderung zu umgehen:
 

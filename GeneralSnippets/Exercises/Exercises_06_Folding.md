@@ -160,7 +160,7 @@ printer(1, "ABC", 2, "DEF", 3, "GHI");
 Wenn Sie die letzte Ausgabe genau betrachten, können Sie ein störendes Trennzeichen am Zeilenende beobachten.
 
 *Aufgabe*:
-Schreiben Sie Funktion `printer` so um, dass das letzte Trennzeichen nicht mehr ausgegen wird!
+Schreiben Sie Funktion `printer` so um, dass das letzte Trennzeichen nicht mehr ausgegeben wird!
 
 ---
 
