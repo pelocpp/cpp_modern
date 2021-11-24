@@ -166,9 +166,9 @@ Auch dies wollen wir mit einem Beispiel untermauern:
 
 *Hinweis*: 
 
-Die gesuchte primitive Operation ist *atomar* (&ldquo;multithreading sicher&rdquo;) in dem Sinne,
-dass sie eine besitzende Referenz (`std::shared_ptr`-Variable) auf das
-referenzierte Objekt zurückliefert, wenn dieses noch existiert, oder andernfalls einen Fehler anzeigt.
+Die gesuchte primitive Operation ist *multithreading sicher*!
+Sie liefert eine besitzende Referenz (`std::shared_ptr`-Variable) auf das
+referenzierte Objekt zurück, wenn dieses noch existiert, oder zeigt andernfalls einen Fehler an.
 
 Man könnte auch die Formulierung wählen, dass wir auf der Suche nach einer &ldquo;Fahrkarte&rdquo;
 für ein `std::shared_ptr`-Objekt sind.

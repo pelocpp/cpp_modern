@@ -164,7 +164,6 @@ namespace Exercises_SmartPointers {
 
             void watch(const std::shared_ptr<int>& sp)
             {
-                // m_ptr = std::weak_ptr<int>(sp);
                 m_ptr = sp;
             }
 
@@ -207,9 +206,9 @@ namespace Exercises_SmartPointers {
 void test_exercises_smartpointer()
 {
     using namespace Exercises_SmartPointers;
-    //Exercise_01::testExercise_01();
+    Exercise_01::testExercise_01();
     Exercise_02::testExercise_02();
-    //Exercise_03::testExercise_03();
+    Exercise_03::testExercise_03();
 }
 
 // =====================================================================================

@@ -6,10 +6,63 @@
 #include <string>
 #include <memory>
 
-namespace VariadicTemplatesIntro {
+namespace VariadicTemplatesIntro_01 {
 
     // ========================================================================
     // Erstes Beispiel für ein variadisches Template
+    // ========================================================================
+
+    void print(int value) {
+        std::cout << value << " ";
+    }
+
+    void print(double value) {
+        std::cout << value << " ";
+    }
+
+    void print(char value) {
+        std::cout << value << " ";
+    }
+
+    // template function
+    template <typename T>
+    void print(T value) {
+        std::cout << value << " ";
+    }
+
+    // explicit template specialization
+    template <>
+    void print<bool>(bool value) {
+        std::cout << std::boolalpha << value << " ";
+    }
+
+    // ========================================================================
+
+    // termination
+    template <typename T>
+    void printAll(T value)
+    {
+        std::cout << value << " ";
+    }
+
+    // primary template
+    template <typename T, typename ... TREST>
+    void printAll(T n, TREST ... rest)
+    {
+        printAll<T>(n);
+        printAll<TREST ...>(rest ...);
+    }
+
+    void test_printer() 
+    {
+       printAll<int, int, int, int, int>(1, 2, 3, 4, 5);
+    }
+}
+
+namespace VariadicTemplatesIntro_02 {
+
+    // ========================================================================
+    // Zweites Beispiel für ein variadisches Template
     // ========================================================================
 
     // Non-recursive template part (regular template)
@@ -25,12 +78,12 @@ namespace VariadicTemplatesIntro {
         return first + add<ARGS ...>(args...);
     }
 
-    void test_01() {
+    void test_adder_01() {
         int sum = add<int, int, int, int, int>(1, 2, 3, 4, 5);
         std::cout << "Sum from 1 up to 5: " << sum << std::endl;
     }
 
-    void test_02() {
+    void test_adder_02() {
 
         int sum = add(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
         std::cout << "Sum from 1 up to 10: " << sum << std::endl;
@@ -44,6 +97,9 @@ namespace VariadicTemplatesIntro {
         );
         std::cout << "String Concatenation: " << stringConcat << std::endl;
     }
+}
+
+namespace VariadicTemplatesIntro_03 {
 
     // =================================================================================
     // Ein variadisches Template in zwei Realisierungsvarianten
@@ -83,7 +139,7 @@ namespace VariadicTemplatesIntro {
     //    print(args...);  // call print() for remaining arguments
     //}
 
-    void test_03()
+    void test_printer_02()
     {
         std::string s("World");
         print(123.456, "Hello", s);
@@ -91,6 +147,9 @@ namespace VariadicTemplatesIntro {
         // same as
         print<double, const char*, std::string>(123.456, "Hello", s);
     }
+}
+
+namespace VariadicTemplatesIntro_04 {
 
     // =================================================================================
     // Anwendungsfall:
@@ -106,7 +165,7 @@ namespace VariadicTemplatesIntro {
         int m_var3;
 
     public:
-        Unknown() : m_var1{ -1 }, m_var2{ - 1}, m_var3{ - 1} {
+        Unknown() : m_var1{ -1 }, m_var2{ -1 }, m_var3{ -1 } {
             std::cout << "c'tor()" << std::endl;
         }
 
@@ -118,7 +177,7 @@ namespace VariadicTemplatesIntro {
             std::cout << "c'tor(int, int)" << std::endl;
         }
 
-        Unknown(int n, int m, int k) : m_var1{n}, m_var2{m}, m_var3{k} {
+        Unknown(int n, int m, int k) : m_var1{ n }, m_var2{ m }, m_var3{ k } {
             std::cout << "c'tor(int, int, int)" << std::endl;
         }
 
@@ -138,7 +197,7 @@ namespace VariadicTemplatesIntro {
         return T(std::forward<Args>(args)...);
     }
 
-    void test_04()
+    void test_make_an_object()
     {
         Unknown u1 = make_an_object<Unknown>();
         std::cout << u1 << std::endl;
@@ -164,11 +223,16 @@ namespace VariadicTemplatesIntro {
         // Unknown u7 = make_an_object<Unknown>(1000, 1001, 1002, 1003);
         // std::cout << u7 << std::endl;
     }
+}
+
+namespace VariadicTemplatesIntro_05 {
 
     // =============================================================
     // Anwendungsfall:
     // std::unique_ptr
     // =============================================================
+
+    using namespace VariadicTemplatesIntro_04;
 
     template<typename T, typename... Args>
     std::unique_ptr<T> my_make_unique(Args&&... args)
@@ -176,7 +240,7 @@ namespace VariadicTemplatesIntro {
         return std::unique_ptr<T>(new T(std::forward<Args>(args)...));
     }
 
-    void test_05()
+    void test_my_make_unique()
     {
         std::unique_ptr<Unknown> up1 = my_make_unique<Unknown>();
         std::unique_ptr<Unknown> up2 = my_make_unique<Unknown>(1);
@@ -190,12 +254,21 @@ namespace VariadicTemplatesIntro {
 
 void main_variadic_templates_intro()
 {
-    using namespace VariadicTemplatesIntro;
-    test_01();
-    test_02();
-    test_03();
-    test_04();
-    test_05();
+    using namespace VariadicTemplatesIntro_01;
+    test_printer();
+
+    using namespace VariadicTemplatesIntro_02;
+    test_adder_01();
+    test_adder_02();
+
+    using namespace VariadicTemplatesIntro_03;
+    test_printer_02();
+
+    using namespace VariadicTemplatesIntro_04;
+    test_make_an_object();
+
+    using namespace VariadicTemplatesIntro_05;
+    test_my_make_unique();
 }
 
 // =====================================================================================

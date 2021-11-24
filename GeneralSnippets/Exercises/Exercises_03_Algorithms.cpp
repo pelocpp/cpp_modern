@@ -72,12 +72,21 @@ namespace Exercises_Algorithms {
             };
 
             // without structured binding
-            // auto fibo = [p = std::pair{ 0, 1 }]() mutable {
-            //    int n1 = p.first;
-            //    int n2 = p.second;
-            //    p = { n2, n1 + n2 };
-            //    return n1;
-            // };
+            auto fibo2 = [p = std::pair{ 0, 1 }]() mutable {
+                int n1 = p.first;
+                int n2 = p.second;
+                p = { n2, n1 + n2 };
+                return n1;
+            };
+
+            // using a 'state' variable in the scope
+            auto pLocal = std::pair<int, int>{ 0, 1 };
+            auto fibo3 = [&] {
+                int n1 = pLocal.first;
+                int n2 = pLocal.second;
+                pLocal = { n2, n1 + n2 };
+                return n1;
+            };
 
             std::generate(
                 std::begin(numbers),
