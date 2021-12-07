@@ -85,14 +85,17 @@ einem `std::vector`-Objekt hinzufügt.
 Da diese Aufgabe in den Übungen zum Thema *Folding* enthalten ist,
 realisieren Sie das Funktionstemplate mit einem *Folding* Ausdruck.
 
-Das folgende (hoffentlich intuitive) Beispiel sollte ausführbar sein:
+Das folgende &ndash; hoffentlich intuitive &ndash; Beispiel sollte ausführbar sein:
 
 ```cpp
 std::vector<double> values;
+
 pushBackAll<double>(values, 30.0, 31.0, 32.0);
-std::for_each(std::begin(values), std::end(values), [](auto elem) {
-    std::cout << elem << ' ';
-    }
+
+std::copy(
+    std::begin(values),
+    std::end(values),
+    std::ostream_iterator<double>(std::cout, " ")
 );
 ```
 

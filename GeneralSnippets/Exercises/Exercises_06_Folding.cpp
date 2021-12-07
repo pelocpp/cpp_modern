@@ -171,11 +171,15 @@ namespace Exercises_Folding {
         void testExercise_04a()
         {
             std::vector<double> values;
+
             pushBackAll_01<double>(values, 30.0, 31.0, 32.0);
-            std::for_each(std::begin(values), std::end(values), [](auto elem) {
-                std::cout << elem << ' ';
-                }
+
+            std::copy(
+                std::begin(values),
+                std::end(values),
+                std::ostream_iterator<double>(std::cout, " ")
             );
+
             std::cout << std::endl;
         }
 
@@ -198,11 +202,15 @@ namespace Exercises_Folding {
         void testExercise_04b()
         {
             std::vector<double> values;
+
             pushBackAll_02<double>(values, 20.0, 21.0, 22.0);
-            std::for_each(std::begin(values), std::end(values), [](auto elem) {
-                std::cout << elem << ' ';
-                }
+
+            std::copy(
+                std::begin(values),
+                std::end(values),
+                std::ostream_iterator<double>(std::cout, " ")
             );
+
             std::cout << std::endl;
         }
 
@@ -218,11 +226,15 @@ namespace Exercises_Folding {
         void testExercise_04c()
         {
             std::vector<double> values;
+
             pushBackAll_03<double>(values, 10.0, 11.0, 12.0);
-            std::for_each(std::begin(values), std::end(values), [](auto elem) {
-                std::cout << elem << ' ';
-                }
+
+            std::copy(
+                std::begin(values),
+                std::end(values),
+                std::ostream_iterator<double>(std::cout, " ")
             );
+
             std::cout << std::endl;
         }
 

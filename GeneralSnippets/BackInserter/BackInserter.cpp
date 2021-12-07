@@ -18,24 +18,32 @@ namespace BackInserter {
         std::vector<int> vec2 = { 4, 5, 6 };
 
         // using std::back_inserter inside std::copy 
-        std::copy(vec1.begin(), vec1.end(), std::back_inserter(vec2));
+        std::copy(
+            vec1.begin(),
+            vec1.end(), 
+            std::back_inserter(vec2)
+        );
 
         std::cout << "vec1 = ";
-        std::for_each(std::begin(vec1), std::end(vec1), [] (int value) {
-            std::cout << value << ' ';
-            });
+        std::copy(
+            std::begin(vec1),
+            std::end(vec1),
+            std::ostream_iterator<int>(std::cout, " ")
+        );
         std::cout << std::endl;
 
         std::cout << "vec2 = ";
-        std::for_each(std::begin(vec2), std::end(vec2), [] (int value) {
-            std::cout << value << ' ';
-            });
+        std::copy(
+            std::begin(vec2),
+            std::end(vec2),
+            std::ostream_iterator<int>(std::cout, " ")
+        );
         std::cout << std::endl;
     }
 
     void test_02() {
 
-        // No prior Knowledge of size of container required : 
+        // No prior knowledge of size of container required : 
         // One of the scenario where such a function can be extremely helpful is
         // when we don’t know the size of the container, i.e., how many elements
         // will be inserted into it, so one way is to make that container
@@ -50,20 +58,28 @@ namespace BackInserter {
         std::vector<int> vec2;
 
         // using std::back_inserter inside std::copy 
-        std::copy(vec1.begin(), vec1.end(), std::back_inserter(vec2));
+        std::copy(
+            vec1.begin(),
+            vec1.end(),
+            std::back_inserter(vec2)
+        );
         // v2 now contains 1 2 3 
 
         // displaying v1 and v2 
         std::cout << "vec1 = ";
-        std::for_each(std::begin(vec1), std::end(vec1), [](int value) {
-            std::cout << value << ' ';
-            });
+        std::copy(
+            std::begin(vec1),
+            std::end(vec1),
+            std::ostream_iterator<int>(std::cout, " ")
+        );
         std::cout << std::endl;
 
         std::cout << "vec2 = ";
-        std::for_each(std::begin(vec2), std::end(vec2), [](int value) {
-            std::cout << value << ' ';
-            });
+        std::copy(
+            std::begin(vec2),
+            std::end(vec2),
+            std::ostream_iterator<int>(std::cout, " ")
+        );
         std::cout << std::endl;
     }
 }

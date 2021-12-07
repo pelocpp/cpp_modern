@@ -45,6 +45,18 @@ namespace InitializerList {
         std::cout << " End of list." << std::endl;
     }
 
+    // delegating templated std::initializer_list to std::copy with std::ostream_iterator<T>
+    template<typename T>
+    void printMeOneMoreToo(std::initializer_list<T> list) {
+        std::cout << "Begin of list: ";
+        std::copy(
+            std::begin(list),
+            std::end(list),
+            std::ostream_iterator<T>(std::cout, " - ")
+        );
+        std::cout << " End of list." << std::endl;
+    }
+
     // delegating std::initializer_list to std::vector
     class MyPeople {
     private:
@@ -58,12 +70,11 @@ namespace InitializerList {
                 return;
             }
 
-            std::for_each(
+            std::copy(
                 std::begin(m_names),
                 std::prev(std::end(m_names)),
-                [](const std::string& elem) {
-                    std::cout << elem << " - ";
-                });
+                std::ostream_iterator<std::string>(std::cout, " - ")
+            );
 
             // prevent output of " - " after last element :-)
             std::vector<std::string>::const_iterator last = m_names.end();
@@ -97,6 +108,15 @@ namespace InitializerList {
         printMeToo({ "ABC", "DEF", "GHI" });
         printMeToo<std::string>({ "ABC", "DEF", "GHI" });
         printMeToo<std::string>({ std::string("RST"), std::string("UVW"), std::string("XYZ") });
+
+        std::cout << "--------------------------------" << std::endl;
+
+        printMeOneMoreToo({ 'a', 'b', 'c' });        // template argument T can be deduced automatically
+        printMeOneMoreToo<char>({ 'a','b', 'c' });   // template argument T specified explicitly
+        printMeOneMoreToo<int>({ 'A', 'B', 'C' });
+        printMeOneMoreToo({ "ABC", "DEF", "GHI" });
+        printMeOneMoreToo<std::string>({ "ABC", "DEF", "GHI" });
+        printMeOneMoreToo<std::string>({ std::string("RST"), std::string("UVW"), std::string("XYZ") });
     }
 
     void test_03() {
@@ -111,7 +131,7 @@ namespace InitializerList {
         MyPeople manyFriends({ 
             "James", "John", "Robert", "Michael", "William",
             "David", "Richard", "Joseph", "Thomas"
-            });
+        });
         manyFriends();
     }
 }
