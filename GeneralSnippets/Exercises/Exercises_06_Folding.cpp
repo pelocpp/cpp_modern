@@ -17,7 +17,7 @@ namespace Exercises_Folding {
 
         template<typename ...Args>
         bool andAll(const Args ...args) {
-            return (args && ... && true);  // binary right fold (init == true)
+            return (... && args);  // unary left fold
         }
 
         void testExercise_01a() {
