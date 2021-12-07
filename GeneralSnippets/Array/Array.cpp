@@ -99,8 +99,7 @@ namespace StdArray {
 
     // or
 
-    template<typename T>
-    void printLength(const T& myArray)
+    void printLength(const auto& myArray)
     {
         std::cout << "Length: " << myArray.size() << std::endl;
     }
