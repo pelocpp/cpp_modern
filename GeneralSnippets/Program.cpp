@@ -126,7 +126,7 @@ int main()
         //main_functional_programming();
         //main_functional_programming_alternate();
         //main_function_templates_basics();
-        main_initializer_list();
+        //main_initializer_list();
         //main_input_output_streams();
         //main_invoke();
         //main_lambdas();
