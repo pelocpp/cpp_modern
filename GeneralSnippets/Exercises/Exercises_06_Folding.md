@@ -53,7 +53,7 @@ Erklären Sie die Funktionsweise ihrer Realisierung. Welche Rolle spielt Zeile 1
 03: {
 04:     auto m = (x < y) ? x : y;
 05: 
-06:     if (sizeof ... (args) > 0) {
+06:     if constexpr (sizeof ... (args) > 0) {
 07: 
 08:         auto helper = [&](const auto& value) {
 09:             if (value < m) {

@@ -92,7 +92,7 @@ namespace Exercises_Folding {
         {
             auto m = (x < y) ? x : y;
 
-            if (sizeof ... (args) > 0) {
+            if constexpr (sizeof ... (args) > 0) {
 
                 auto helper = [&](const auto& value) {
                     if (value < m) {
@@ -111,7 +111,7 @@ namespace Exercises_Folding {
         {
             auto m = (x > y) ? x : y;
 
-            if (sizeof ... (args) > 0) {
+            if constexpr (sizeof ... (args) > 0) {
 
                 auto helper = [&](const auto& value) {
                     if (value > m) {
