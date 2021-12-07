@@ -380,7 +380,7 @@ namespace Exercises_VariadicTemplates {
         size_t totalLength(const ARGS& ... args)
         {
             size_t len{};
-            for (auto s : { args ... }) {
+            for (const auto& s : { args ... }) {
                 len += s.size();
             }
             return len;
