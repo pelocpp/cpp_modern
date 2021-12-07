@@ -19,13 +19,15 @@
 namespace SharedPointer {
 
     // 'shared ptr' approach
-    std::shared_ptr<int> loadSharedPointer() {
+    std::shared_ptr<int> loadSharedPointer() 
+    {
         std::shared_ptr<int> tmp{ std::make_shared<int>(456) };
         return tmp;
     }
 
     // note: play with 'call-by-value' or 'call-by-reference'
-    void storeSharedPointer(const std::shared_ptr<int> ptr) {
+    void storeSharedPointer(const std::shared_ptr<int> ptr) 
+    {
         std::cout << "inner scope: " << ptr.use_count() <<  std::endl;
     }
 
@@ -67,12 +69,25 @@ namespace SharedPointer {
         std::cout << "value:      " << *ptr3 << std::endl;
     }
 
-    void test_02() {
+    void test_02() 
+    {
         std::shared_ptr<int> ptr{ loadSharedPointer() };
         std::cout << "outer scope: " << ptr.use_count() << std::endl;
         storeSharedPointer(ptr);
         std::cout << "outer scope: " << ptr.use_count() << std::endl;
         // no explicit delete on object ptr: shared ptr goes out of scope!
+    }
+
+    void test_03()
+    {
+        // can create a const shared pointer from a non-const pointer 
+        std::shared_ptr<int> ptr1{ new int{ 123 } };
+        const std::shared_ptr<const int> ptr2 = ptr1;
+
+        // *ptr2 = 456;  // error: 'ptr2': you cannot assign to a variable that is const
+
+        int dummy = *ptr2;
+        const int* ip = ptr2.get();
     }
 }
 
@@ -82,6 +97,7 @@ void main_shared_ptr()
     using namespace SharedPointer;
     test_01();
     test_02();
+    test_03();
 }
 
 // =====================================================================================
