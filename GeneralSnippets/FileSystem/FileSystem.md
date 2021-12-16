@@ -13,7 +13,7 @@
 Die Bibliothek für das C++17 File System befindet sich in der Header-Datei `<filesystem>`.
 Es wird der Namensraum `std::filesystem` verwendet.
 
-Im wesentlichen werden in dieser Bibliothek die folgenden Kernaskekte eines Dateihandlings abgedeckt:
+Im wesentlichen werden in dieser Bibliothek die folgenden Kernaspekte eines Dateihandlings abgedeckt:
 
   * Die `path` Klasse
   * Die `directory_entry` Klasse
