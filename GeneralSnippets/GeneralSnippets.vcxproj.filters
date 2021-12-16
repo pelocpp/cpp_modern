@@ -324,6 +324,9 @@
     <ClCompile Include="Generate\Generate.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="RangeBasedForLoop\RangeBasedForLoop.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -633,6 +636,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Generate\cpp_generate.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="RangeBasedForLoop\RangeBasedForLoop.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

@@ -210,6 +210,7 @@
     <ClCompile Include="RAII\RAII01.cpp" />
     <ClCompile Include="RAII\RAII02.cpp" />
     <ClCompile Include="Random\Random.cpp" />
+    <ClCompile Include="RangeBasedForLoop\RangeBasedForLoop.cpp" />
     <ClCompile Include="ReferenceWrapper\ReferenceWrapper.cpp" />
     <ClCompile Include="RegExpr\RegExpr.cpp" />
     <ClCompile Include="RValueLValue\RValueLValue.cpp" />
@@ -312,6 +313,7 @@
     <None Include="PerfectForwarding\PerfectForwarding_03.md" />
     <None Include="RAII\RAII.md" />
     <None Include="Random\Random.md" />
+    <None Include="RangeBasedForLoop\RangeBasedForLoop.md" />
     <None Include="ReferenceWrapper\ReferenceWrapper.md" />
     <None Include="RegExpr\RegExpr.md" />
     <None Include="RValueLValue\RValueLValue.md" />
