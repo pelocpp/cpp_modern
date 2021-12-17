@@ -4,13 +4,6 @@
 
 ---
 
-## Aufbau einer Klasse
-  * Parameterübergabemechanismus (*call-by-value* / *call-by-reference*)
-  * Big-Three
-  * Überladen von Operatoren
-  * Klassenvariablen/-methoden (`static`)
-
-
 ## Move-Semantik:
   * &ldquo;Big-Three&rdquo;
   * RValue/LValue
@@ -37,19 +30,23 @@
 
 
 ## Vererbung
-  * `override`, `virtual`, `final`
-  * Polymorphismus
-  * Interface / Schnittstellen
+  * Virtueller Methodenaufrufmechanismus
+  * Interface- / Schnittstellen-Konzept
   * Abstrakte Klassen
+  * Polymorphismus
+  * Schlüsselwörter `override`, `virtual`, `final`
   * Mehrfachvererbung (Schnittstellen)
 
 
-## Verschiedenes
+## Initialisierung
   * Initialisierung (&ldquo;Uniform Initialization&ldquo;)
   * Default-Initialisierung für Member-Variablen
   * Initialisierungslisten (`std::initializer_list`)
+
+
+## Verschiedenes
   * Structured Binding
-  * Range-based Loop
+  * Range-based `for` Loop
 
 
 ## Smart Pointer
@@ -59,7 +56,7 @@
 
 
 ## `constexpr`
-  * Variablen
+  * `constexpr` Variablen
   * Klassen / benutzerdefinerte Datentypen mit `constexpr` Konstruktoren
   * `constexpr`-Funktionen und `constexpr`-Lambda-Funktionen
   * Konstante `std::array<>`-Objekte, initialisiert mit variadischen Templates
@@ -85,6 +82,10 @@
   * Neuerungen ab C++&ndash;11/14/17
 
 
+## Type-Traits
+  * `decltype` und `std::declval`
+
+
 ## STL-Algorithmen
   * `std::generate`
   * `std::accumulate`
@@ -93,23 +94,20 @@
 
 
 ## Variadische Templates
-  * `std::tuple` (Vorausetzung)
   * Allgemeines / einführende Beispiele
-  * Zugriff auf jedes einzelne Argument
-  * Anwendungsfall &ldquo;Summe von Summen&rdquo;
-  * Mixins
-  * Emplace-Technik
+  * Anwendungsfall: Zugriff auf jedes einzelne Argument
+  * Anwendungsfall: &ldquo;Summe von Summen&rdquo;
+  * Anwendungsfall: Mixins
+  * Anwendungsfall: *emplace*-Technik
 
 
-## Vertiefungen zu Templates
-  * Perfect Forwarding (Universal Reference)
+## Vertiefungen zu (variadischen) Templates
+  * *Perfect Forwarding* (*Universal Reference*)
   * `constexpr_if`
   * `std::apply`
   * `std::invoke`
   * Template Template Parameter
   * Static Polymorphism
-  * `decltype` und `std::declval`
-  * Automatischer Rückgabetyp (Trailing Return Type Deduction)
 
 
 ## Folding
