@@ -99,7 +99,7 @@
     <ClCompile Include="Accumulate\Accumulate.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Variant\Variant.cpp">
+    <ClCompile Include="Variant\StdVariant.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Explicit\Explicit.cpp">
@@ -159,7 +159,7 @@
     <ClCompile Include="DeclType\Decltype.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Optional\Optional.cpp">
+    <ClCompile Include="Optional\StdOptional.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="UniformInitialization\UniformInitialization.cpp">
@@ -434,7 +434,7 @@
     <None Include="Explicit\Explicit.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="Optional\Optional.md">
+    <None Include="Optional\StdOptional.md">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="MetaProgramming\Metaprogramming02.md">

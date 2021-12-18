@@ -200,7 +200,7 @@
     <ClCompile Include="MetaProgramming\MetaProgramming01.cpp" />
     <ClCompile Include="MetaProgramming\MetaProgramming02.cpp" />
     <ClCompile Include="MoveSemantics\MoveSemantics.cpp" />
-    <ClCompile Include="Optional\Optional.cpp" />
+    <ClCompile Include="Optional\StdOptional.cpp" />
     <ClCompile Include="PerfectForwarding\PerfectForwarding01.cpp" />
     <ClCompile Include="PerfectForwarding\PerfectForwarding02.cpp" />
     <ClCompile Include="PerfectForwarding\PerfectForwarding03.cpp" />
@@ -244,7 +244,7 @@
     <ClCompile Include="VariadicTemplates\VariadicTemplate_04_Mixins.cpp" />
     <ClCompile Include="VariadicTemplates_Anwendungen\VariadicTemplate_XX_Examples.cpp" />
     <ClCompile Include="VariadicTemplates_Systematic\VariadicTemplate_XX_MoreExamples.cpp" />
-    <ClCompile Include="Variant\Variant.cpp" />
+    <ClCompile Include="Variant\StdVariant.cpp" />
     <ClCompile Include="VirtualBaseClassDestructor\VirtualBaseClassDestructor.cpp" />
     <ClCompile Include="VirtualOverrideFinal\VirtualOverrideFinal.cpp" />
     <ClCompile Include="WeakPtr\WeakPtr.cpp" />
@@ -306,7 +306,7 @@
     <None Include="MetaProgramming\Metaprogramming02.md" />
     <None Include="MoveSemantics\MoveSemantics.md" />
     <None Include="OnlineCppCompilers\OnlineCppCompilers.md" />
-    <None Include="Optional\Optional.md" />
+    <None Include="Optional\StdOptional.md" />
     <None Include="ParametersWithConstAndRef\ConstDeclarations.md" />
     <None Include="PerfectForwarding\PerfectForwarding_01.md" />
     <None Include="PerfectForwarding\PerfectForwarding_02.md" />
