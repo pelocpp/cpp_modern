@@ -1,4 +1,4 @@
-﻿# `std::generate`
+﻿# Algorithmus `std::generate`
 
 [Zurück](../../Readme.md)
 

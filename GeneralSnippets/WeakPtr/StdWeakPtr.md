@@ -4,7 +4,17 @@
 
 ---
 
-[Quellcode](WeakPtr.cpp)
+[Quellcode](StdWeakPtr.cpp)
+
+---
+
+## &ldquo;It's about ownership&rdquo;
+
+###### Exklusiver Besitz: `std::unique_ptr<T>`
+
+###### Geteilter Besitz: `std::shared_ptr<T>`
+
+#### Temporärer Besitz: `std::weak_ptr<T>`
 
 ---
 
@@ -43,9 +53,7 @@ Dies kann man im Debugger beobachten, die Freigabezeitpunkte der Speicherbereich
 In *Abbildung* 1 erkennt man, dass trotz eigentlich erfolgter Freigabe des dynamisch angelegte Objekts
 dieses noch vom Debugger angezeigt wird. Die tatsächliche Freigabe erfolgt zu einem späteren Zeitpunkt.
 
-
-
-## Zyklischen Referenzen
+## Zyklische Referenzen
 
 Interessant ist der Weak-Pointer bei zyklischen Referenzen:
 

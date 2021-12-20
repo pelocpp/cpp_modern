@@ -1,4 +1,4 @@
-# std::any
+# Klasse `std::any`
 
 [Zurück](../../Readme.md)
 

@@ -1,4 +1,4 @@
-# std::array
+# Klasse `std::array`
 
 [Zurück](../../Readme.md)
 

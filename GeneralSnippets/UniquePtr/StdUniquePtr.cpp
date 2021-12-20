@@ -5,7 +5,7 @@
 #include <iostream>
 #include <memory>
 
-namespace UniquePointer {
+namespace UniquePointerGeneral {
 
     std::unique_ptr<int> loadUniquePointer()
     {
@@ -75,12 +75,42 @@ namespace UniquePointer {
     }
 }
 
+namespace UniquePointer_SourceSinkPattern
+{
+    std::unique_ptr<int> createResource(int value)
+    {
+        std::unique_ptr<int> ptr{ std::make_unique<int>(value) };
+        return ptr;
+    }
+
+    void consumeResource(std::unique_ptr<int> ptr)  // call by-value (!)
+    {
+        std::cout << "*ptr:    " << *ptr << std::endl;
+        // now *ptr is deleted 
+    }
+
+    void test_04()
+    {
+        // creating a unique pointer with the help of a creator function
+        std::unique_ptr<int> ptr{ createResource(123) };
+        std::cout << "*ptr:   " << *ptr << std::endl;
+
+        // Pass unique pointer to another function:
+        // No need for explicit std::move, temporary is captured as R-Value reference
+        // so the std::unique_ptr's move constructor is automatically invoked
+        consumeResource(createResource(456));
+    }
+}
+
 void main_unique_ptr()
 {
-    using namespace UniquePointer;
+    using namespace UniquePointerGeneral;
     test_01();
     test_02();
     test_03();
+
+    using namespace UniquePointer_SourceSinkPattern;
+    test_04();
 }
 
 // =================================================================================

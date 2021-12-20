@@ -1,4 +1,4 @@
-# std::tuple
+# Klasse `std::tuple`
 
 [Zurück](../../Readme.md)
 

@@ -1,4 +1,4 @@
-# `std::variant`
+# Klasse `std::variant`
 
 [Zurück](../../Readme.md)
 

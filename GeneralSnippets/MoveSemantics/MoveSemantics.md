@@ -1,4 +1,4 @@
-# Move Semantics
+# Verschiebe-Semantik / *Move Semantics*
 
 [Zurück](../../Readme.md)
 

@@ -39,10 +39,10 @@
     <ClCompile Include="ConstExpr\ConstExprExtended.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SharedPtr\SharedPtr.cpp">
+    <ClCompile Include="SharedPtr\StdSharedPtr.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="WeakPtr\WeakPtr.cpp">
+    <ClCompile Include="WeakPtr\StdWeakPtr.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Casts\Casts.cpp">
@@ -165,7 +165,7 @@
     <ClCompile Include="UniformInitialization\UniformInitialization.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="UniquePtr\UniquePtr.cpp">
+    <ClCompile Include="UniquePtr\StdUniquePtr.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CommonType\CommonType.cpp">
@@ -335,7 +335,7 @@
     <None Include="StaticAssert\StaticAssertion.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="SharedPtr\SharedPtr.md">
+    <None Include="SharedPtr\StdSharedPtr.md">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="StructuredBinding\StructuredBinding.md">
@@ -362,7 +362,7 @@
     <None Include="RAII\RAII.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="WeakPtr\WeakPtr.md">
+    <None Include="WeakPtr\StdWeakPtr.md">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="TypeTraits\TypeTraits.md">
@@ -428,7 +428,7 @@
     <None Include="FileSystem\FileSystem.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="UniquePtr\UniquePtr.md">
+    <None Include="UniquePtr\StdUniquePtr.md">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Explicit\Explicit.md">

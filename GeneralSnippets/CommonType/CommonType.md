@@ -1,4 +1,4 @@
-# `std::common_type`
+# Klasse `std::common_type`
 
 [Zurück](../../Readme.md)
 

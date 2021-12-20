@@ -142,7 +142,7 @@ In der folgenden Tabelle sind alle Neuerungen von C++&ndash;11/14/17 aufgeführt
 | [RegExpr](GeneralSnippets/RegExpr/RegExpr.md) | Reguläre Ausdrücke |
 | [RValueLValue](GeneralSnippets/RValueLValue/RValueLValue.md) | LValue- und RValue Referenzen |
 | [SFINAE_EnableIf](GeneralSnippets/SFINAE_EnableIf/Sfinae.md) | SFINAE und `std::enable_if` |
-| [SharedPointer](GeneralSnippets/SharedPtr/SharedPtr.md) | Klasse `std::shared_ptr<T>` |
+| [SharedPointer](GeneralSnippets/SharedPtr/StdSharedPtr.md) | Klasse `std::shared_ptr<T>` |
 | [SSO](GeneralSnippets/SSO/SSO.md) | *Small String Optimization* |
 | [StandardLibrarySTL](GeneralSnippets/StandardLibrarySTL/StandardLibrarySTL.md) | Die C++ Standard Template Library (STL): Ergänzungen |
 | [StaticAssert](GeneralSnippets/StaticAssert/StaticAssertion.md) | Compile-Time Makro `static_assert` |
@@ -157,18 +157,12 @@ In der folgenden Tabelle sind alle Neuerungen von C++&ndash;11/14/17 aufgeführt
 | [Tuples](GeneralSnippets/Tuple/StdTuple.md) | Neue STL-Utility Klasse `std::tuple` |
 | [TypeTraits](GeneralSnippets/TypeTraits/TypeTraits.md) | Typmerkmale |
 | [UniformInitialization](GeneralSnippets/UniformInitialization/UniformInitialization.md) | Einheitliches Initialisierungs-Konzept |
-| [UniquePointer](GeneralSnippets/UniquePtr/UniquePtr.md) | Klasse `std::unique_ptr<T>` |
+| [UniquePointer](GeneralSnippets/UniquePtr/StdUniquePtr.md) | Klasse `std::unique_ptr<T>` |
 | [VariadicTemplates](GeneralSnippets/VariadicTemplates/VariadicTemplates_01_Introduction.md) | Templates mit variabler Argumentanzahl (Variadische Templates) |
 | [Variant](GeneralSnippets/Variant/StdVariant.md)  | Neue STL-Utility Klasse `std::variant` |
 | [VirtualOverrideFinal](GeneralSnippets/VirtualOverrideFinal/VirtualOverrideFinal.md) | Neue Schlüsselwörter `override` und `final` |
-| [WeakPointer](GeneralSnippets/WeakPtr/WeakPtr.md) | Klasse `std::weak_ptr<T>` |
+| [WeakPointer](GeneralSnippets/WeakPtr/StdWeakPtr.md) | Klasse `std::weak_ptr<T>` |
 
-Tabelle 2. Spracherweiterungen C++&ndash;11/14/17.
+Tabelle 2. Spracherweiterungen C++&ndash;11/14/17/20.
 
 ---
-
-
-
-
-
-

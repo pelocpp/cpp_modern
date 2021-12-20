@@ -1,4 +1,4 @@
-# std::accumulate
+# Algorithmus `std::accumulate`
 
 [Zurück](../../Readme.md)
 

@@ -216,7 +216,7 @@
     <ClCompile Include="RValueLValue\RValueLValue.cpp" />
     <ClCompile Include="SFINAE_EnableIf\Sfinae01.cpp" />
     <ClCompile Include="SFINAE_EnableIf\Sfinae02.cpp" />
-    <ClCompile Include="SharedPtr\SharedPtr.cpp" />
+    <ClCompile Include="SharedPtr\StdSharedPtr.cpp" />
     <ClCompile Include="SSO\SSO.cpp" />
     <ClCompile Include="StandardLibrarySTL\StandardLibrarySTL.cpp" />
     <ClCompile Include="StaticAssert\StaticAssert.cpp" />
@@ -235,7 +235,7 @@
     <ClCompile Include="Tuple\Tuples.cpp" />
     <ClCompile Include="TypeTraits\TypeTraits.cpp" />
     <ClCompile Include="UniformInitialization\UniformInitialization.cpp" />
-    <ClCompile Include="UniquePtr\UniquePtr.cpp" />
+    <ClCompile Include="UniquePtr\StdUniquePtr.cpp" />
     <ClCompile Include="VariadicTemplates\VariadicTemplate_01_Introduction.cpp" />
     <ClCompile Include="VariadicTemplates\VariadicTemplate_05_Visitor.cpp" />
     <ClCompile Include="VariadicTemplates\VariadicTemplate_02_WorkingOnEveryArgument.cpp" />
@@ -247,7 +247,7 @@
     <ClCompile Include="Variant\StdVariant.cpp" />
     <ClCompile Include="VirtualBaseClassDestructor\VirtualBaseClassDestructor.cpp" />
     <ClCompile Include="VirtualOverrideFinal\VirtualOverrideFinal.cpp" />
-    <ClCompile Include="WeakPtr\WeakPtr.cpp" />
+    <ClCompile Include="WeakPtr\StdWeakPtr.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md" />
@@ -318,7 +318,7 @@
     <None Include="RegExpr\RegExpr.md" />
     <None Include="RValueLValue\RValueLValue.md" />
     <None Include="SFINAE_EnableIf\Sfinae.md" />
-    <None Include="SharedPtr\SharedPtr.md" />
+    <None Include="SharedPtr\StdSharedPtr.md" />
     <None Include="SSO\SSO.md" />
     <None Include="StandardLibrarySTL\StandardLibrarySTL.md" />
     <None Include="StaticAssert\StaticAssertion.md" />
@@ -339,7 +339,7 @@
     <None Include="Tuple\StdTuple.md" />
     <None Include="TypeTraits\TypeTraits.md" />
     <None Include="UniformInitialization\UniformInitialization.md" />
-    <None Include="UniquePtr\UniquePtr.md" />
+    <None Include="UniquePtr\StdUniquePtr.md" />
     <None Include="UsingNamespaceStd\UsingNamespaceStd.md" />
     <None Include="VariadicTemplates\cpp_snippets_mixins_01.svg" />
     <None Include="VariadicTemplates\cpp_snippets_mixins_02.svg" />
@@ -353,7 +353,7 @@
     <None Include="VirtualBaseClassDestructor\VirtualBaseClassDestructor.md" />
     <None Include="VirtualOverrideFinal\VirtualOverrideFinal.md" />
     <None Include="WeakPtr\cpp_snippets_cyclic_references.svg" />
-    <None Include="WeakPtr\WeakPtr.md" />
+    <None Include="WeakPtr\StdWeakPtr.md" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Global\Dummy.h" />

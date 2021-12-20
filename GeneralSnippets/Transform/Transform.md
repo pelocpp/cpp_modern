@@ -1,4 +1,4 @@
-﻿# `std::stransform`
+﻿# Algorithmus `std::stransform`
 
 [Zurück](../../Readme.md)
 

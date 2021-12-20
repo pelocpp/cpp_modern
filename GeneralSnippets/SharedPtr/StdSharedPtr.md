@@ -4,7 +4,17 @@
 
 ---
 
-[Quellcode](SharedPtr.cpp)
+[Quellcode](StdSharedPtr.cpp)
+
+---
+
+## &ldquo;It's about ownership&rdquo;
+
+###### Exklusiver Besitz: `std::unique_ptr<T>`
+
+#### Geteilter Besitz: `std::shared_ptr<T>`
+
+###### Temporärer Besitz: `std::weak_ptr<T>`
 
 ---
 
@@ -30,32 +40,6 @@ für den Kontrollblock aus.
 
 Man kann damit zusammenfassen, dass die Verwendung der `std::make_shared`-Funktion
 effizienter ist.
-
----
-
-An Hand von zwei Beispielen wird die Arbeitsweise der `std::shared_ptr`-Klasse demonstriert.
-
-Ausgabe des ersten Code-Snippets:
-
-```cpp
-ptr1:       123
-*ip:        124
-*ptr1:      124
-use_count:  3
-use_count:  3
-use_count:  3
-value:      124
-value:      124
-value:      124
-```
-
-Ausgabe des zweiten Code-Snippets:
-
-```cpp
-outer scope: 1
-inner scope: 2
-outer scope: 1
-```
 
 ---
 
