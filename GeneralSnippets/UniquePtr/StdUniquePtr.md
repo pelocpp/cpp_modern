@@ -36,10 +36,23 @@ Sie muss in diesem Beispiel nur nicht explizit formuliert werden,
 da der Rückgabewert des Erzeugers ein temporäres Objekt ist und infolgedessen der
 Verschiebe-Konstruktor automatisch aufgerufen wird.
 
-Im [Quellcode](UniquePtr.cpp) finden Sie hierzu ein Beispiel vor.
+Im [Quellcode](StdUniquePtr.cpp) finden Sie hierzu ein Beispiel vor.
+
+---
+
+## Literaturhinweise:
+
+Ein interessanter Artikel zum Thema &ldquo;Smart Pointer&rdquo; findet sich unter
+
+[unique_ptr, shared_ptr, weak_ptr, or reference_wrapper for class relationships](https://www.nextptr.com/tutorial/ta1450413058/unique_ptr-shared_ptr-weak_ptr-or-reference_wrapper-for-class-relationships)<br>(abgerufen am 20.12.2021).
 
 ---
 
 [Zurück](../../Readme.md)
 
 ---
+
+
+
+
+
