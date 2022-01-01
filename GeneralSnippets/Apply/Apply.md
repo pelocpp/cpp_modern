@@ -2,7 +2,7 @@
 
 Oder auch
 
-## "*Generierung von Integer-Sequenzen zur Kompilierungszeit*"
+## &ldquo;*Generierung von Integer-Sequenzen zur Kompilierungszeit*&rdquo;
 
 [Zurück](../../Readme.md)
 
@@ -36,10 +36,10 @@ template <int ... NS>
 struct sequence_helper;
 
 // helper class template: recursion case
-template <int I, int ... NS>
-struct sequence_helper<I, NS...>
+template <int N, int ... NS>
+struct sequence_helper<N, NS...>
 {
-    using type = typename sequence_helper<I - 1, I - 1, NS...>::type;
+    using type = typename sequence_helper<N-1, N-1, NS...>::type;
 };
 
 // recursion termination
@@ -53,19 +53,19 @@ template <int N>
 using make_index_sequence = typename sequence_helper<N>::type;
 ```
 
-Der Zweck in der Definition von `struct sequence` besteht ausschließlich darin, Zahlenfolgen zu "tragen".
+Der Zweck in der Definition von `struct sequence` besteht ausschließlich darin, Zahlenfolgen zu &ldquo;tragen&rdquo;.
 Beachten Sie, dass es sich um eine leere Klasse handelt, die tatsächlich definiert ist (da sie einen leeren Definitionskörper `{}`  hat).
 Dies ist wichtig, da diese Klasse in einigen Anwendungsfällen instanziiert wird.
 
 Die Klasse `sequence_helper` wird verwendet, um eine ganzzahlige Sequenz rekursiv zu generieren.
 Betrachten wir die Abbildung vom Schritt `N` auf den Schritt `N-1` etwas genauer:
-Von der Zahlenfolge `NS...` wird die erste Zahl "entnommen" und dekrementiert (`N-1`).
+Von der Zahlenfolge `NS...` wird die erste Zahl &ldquo;entnommen&rdquo; und dekrementiert (`N-1`).
 Danach wird ihr Wert zweimal verwendet:
 
-  * Der erste Wert geht in die rekursive Template Klassendefinition ein, damit die irgendwann zur Rekursions Abbruchbedingung führt. 
+  * Der erste Wert geht in die rekursive Template Klassendefinition ein, damit die irgendwann zum Abbruch der Rekursion führt. 
   * Der zweite Wert wird in die Sequenz aufgenommen.
 
-`make_index_sequence` schließlich ist eine `using`-Klausel, die einen Typ definieriert,
+`make_index_sequence` schließlich ist eine `using`-Klausel, die einen `sequence`-Typ definiert,
 der quasi als Schnittstelle für den Endbenutzer fungiert.
 
 Am besten betrachten wir das Ganze am Beispiel von
@@ -116,8 +116,6 @@ unpack_and_call(f, someTuple);
 Schauen wir uns an, wie dies mit *Compile Time* `int` Zahlenfolgen umgesetzt werden kann:
 
 ```cpp
-void f(double, std::string, int);
-
 void f(double x, std::string y, int z) 
 {
     std::cout << x << std::endl;

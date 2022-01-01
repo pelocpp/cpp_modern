@@ -23,7 +23,7 @@ namespace ApplyIntegerSequence {
     template <int N, int ... NS>
     struct sequence_helper<N, NS ...>
     {
-        using type = typename sequence_helper<N - 1, N - 1, NS ...>::type;
+        using type = typename sequence_helper<N-1, N-1, NS ...>::type;
     };
 
     // recursion termination
@@ -76,8 +76,6 @@ namespace ApplyIntegerSequence {
 
     // demonstrating mapping a function call to arguments of a tuple
     // with the help of an int sequence:
-
-    void f(double, std::string, int);
 
     void f(double x, std::string y, int z)
     {
