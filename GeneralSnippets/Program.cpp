@@ -95,7 +95,7 @@ void main_weak_pointer();
 
 int main()
 {
-    std::cout << "[Collection of Modern C++-Code Snippets - Copyright (C) 2019-2021 Peter Loos]" << std::endl;
+    std::cout << "[Collection of Modern C++-Code Snippets - Copyright (C) 2019-2022 Peter Loos]" << std::endl;
 
     try
     {
