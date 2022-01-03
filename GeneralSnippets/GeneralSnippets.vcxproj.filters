@@ -75,7 +75,7 @@
     <ClCompile Include="ArrayDecay\ArrayDecay.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Any\Any.cpp">
+    <ClCompile Include="Any\StdAny.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Tuple\Tuples.cpp">
@@ -639,6 +639,15 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="RangeBasedForLoop\RangeBasedForLoop.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Any\cpp_std_any.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Variant\cpp_std_variant.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Optional\cpp_std_optional.svg">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

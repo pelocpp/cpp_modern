@@ -10,6 +10,8 @@
 
 *Allgemeines*:
 
+<img src="cpp_std_optional.svg" width="700">
+
 Siehe das Beispiel im korrespondierenden Quellcode.
 
 ---

@@ -6,6 +6,7 @@
 #include <vector>
 #include <string>
 #include <any>
+#include <complex>
 
 namespace AnySamples {
 
@@ -48,7 +49,16 @@ namespace AnySamples {
         // pointer to contained data
         a = 1;
         int* i = std::any_cast<int>(&a);
-        std::cout << *i << "\n";
+        std::cout << *i << std::endl;
+    }
+
+    void test_02_any()
+    {
+        std::any a1 = std::make_any<std::string>("Hello, std::any!");
+        std::any a2 = std::make_any<std::complex<double>>(1.5, 2.5);
+
+        std::cout << std::any_cast<std::string&>(a1) << std::endl;
+        std::cout << std::any_cast<std::complex<double>&>(a2) << std::endl;
     }
 
     using Row = std::tuple<std::any, std::any, std::any>;
@@ -56,7 +66,7 @@ namespace AnySamples {
     // helper method (forward declaration)
     std::string to_string(const std::any&);
 
-    void test_02_any() 
+    void test_03_any() 
     {
         Row row1{ std::tuple<int, int, int>{ 1, 2, 3 } };
         Row row2 { std::tuple<char, std::string, double>{ '1',  std::string("ABC"), 99.99 } };
@@ -77,7 +87,7 @@ namespace AnySamples {
         }
     }
 
-    void test_03_any() 
+    void test_04_any() 
     {
         Row row1{ std::tuple<std::any, std::any, std::any>{ 1, 2, 3 } };
         Row row2 {std::tuple<std::any, std::any, std::any>{ '1',  std::string("ABC"), 99.99 } };
@@ -126,6 +136,7 @@ void main_any()
     test_01_any();
     test_02_any();
     test_03_any();
+    test_04_any();
 }
 
 // =====================================================================================

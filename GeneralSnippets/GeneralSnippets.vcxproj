@@ -147,7 +147,7 @@
     <ClCompile Include="Accumulate\Accumulate.cpp" />
     <ClCompile Include="Allocator\AllocatorSimple.cpp" />
     <ClCompile Include="Allocator\AllocatorDummy.cpp" />
-    <ClCompile Include="Any\Any.cpp" />
+    <ClCompile Include="Any\StdAny.cpp" />
     <ClCompile Include="Apply\Apply.cpp" />
     <ClCompile Include="ArrayDecay\ArrayDecay.cpp" />
     <ClCompile Include="Array\Array.cpp" />
@@ -254,6 +254,7 @@
     <None Include="Accumulate\StdAccumulate.md" />
     <None Include="Agenda\Agenda.md" />
     <None Include="Allocator\StdAllocator.md" />
+    <None Include="Any\cpp_std_any.svg" />
     <None Include="Any\StdAny.md" />
     <None Include="Apply\Apply.md" />
     <None Include="ArrayDecay\ArrayDecay.md" />
@@ -306,6 +307,7 @@
     <None Include="MetaProgramming\Metaprogramming02.md" />
     <None Include="MoveSemantics\MoveSemantics.md" />
     <None Include="OnlineCppCompilers\OnlineCppCompilers.md" />
+    <None Include="Optional\cpp_std_optional.svg" />
     <None Include="Optional\StdOptional.md" />
     <None Include="ParametersWithConstAndRef\ConstDeclarations.md" />
     <None Include="PerfectForwarding\PerfectForwarding_01.md" />
@@ -349,6 +351,7 @@
     <None Include="VariadicTemplates\VariadicTemplates_03_SumOfSums.md" />
     <None Include="VariadicTemplates\VariadicTemplates_02_WorkingOnEveryArgument.md" />
     <None Include="VariadicTemplates_Anwendungen\VariadicTemplates_XX_Verschiedenes.md" />
+    <None Include="Variant\cpp_std_variant.svg" />
     <None Include="Variant\StdVariant.md" />
     <None Include="VirtualBaseClassDestructor\VirtualBaseClassDestructor.md" />
     <None Include="VirtualOverrideFinal\VirtualOverrideFinal.md" />

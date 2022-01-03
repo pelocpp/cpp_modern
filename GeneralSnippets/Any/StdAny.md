@@ -4,11 +4,13 @@
 
 ---
 
-[Quellcode](Any.cpp)
+[Quellcode](StdAny.cpp)
 
 ---
 
 *Allgemeines*:
+
+<img src="cpp_std_any.svg" width="700">
 
 Siehe das Beispiel im korrespondierenden Quellcode.
 

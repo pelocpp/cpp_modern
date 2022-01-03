@@ -8,6 +8,10 @@
 
 ---
 
+*Allgemeines*:
+
+<img src="cpp_std_variant.svg" width="700">
+
 Neben der Klasse `std::variant` wird im Beispiel 
 auch auf das *Visitor*-Konzept eingegangen.
 
