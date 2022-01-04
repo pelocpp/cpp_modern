@@ -121,10 +121,10 @@
   * List Processing
 
 
-## Expression Templates
+## Expression Templates / Lazy Evaluation
   * Allgemeines
   * Beispiel Klasse `Matrix`
-
+  * Beispiel &ldquo;Konkatenation von Zeichenketten&rdquo;
 
 ## Functional Programming
   * Allgemeines

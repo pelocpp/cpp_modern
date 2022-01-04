@@ -84,15 +84,6 @@
     <ClCompile Include="TemplateConstexprIf\Template_ConstExpr_If.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TemplatesFunctionBasics\FunctionTemplatesBasics.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TemplatesClassBasics\TemplatesClassBasics01.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TemplatesClassBasics\TemplatesClassBasics02.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Lambda\Lambda01.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -327,6 +318,15 @@
     <ClCompile Include="RangeBasedForLoop\RangeBasedForLoop.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TemplateFunctionBasics\TemplatesFunctionBasics.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TemplateClassBasics\TemplatesClassBasics01.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TemplateClassBasics\TemplatesClassBasics02.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -341,9 +341,6 @@
     <None Include="StructuredBinding\StructuredBinding.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="TemplatesClassBasics\TemplatesBasics.md">
-      <Filter>Resource Files</Filter>
-    </None>
     <None Include="ReferenceWrapper\ReferenceWrapper.md">
       <Filter>Resource Files</Filter>
     </None>
@@ -351,9 +348,6 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="TemplateConstexprIf\ConstExpr_If.md">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="TemplatesFunctionBasics\TemplatesFunctions.md">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="TemplateTemplateParameter\TemplateTemplateParameter.md">
@@ -648,6 +642,12 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Optional\cpp_std_optional.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="TemplateClassBasics\TemplatesClassBasics.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="TemplateFunctionBasics\TemplatesFunctionBasics.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

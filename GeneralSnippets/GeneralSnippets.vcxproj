@@ -222,10 +222,10 @@
     <ClCompile Include="StaticAssert\StaticAssert.cpp" />
     <ClCompile Include="StringView\StdStringView.cpp" />
     <ClCompile Include="StructuredBinding\StructuredBinding.cpp" />
+    <ClCompile Include="TemplateClassBasics\TemplatesClassBasics01.cpp" />
+    <ClCompile Include="TemplateClassBasics\TemplatesClassBasics02.cpp" />
     <ClCompile Include="TemplateConstexprIf\Template_ConstExpr_If.cpp" />
-    <ClCompile Include="TemplatesClassBasics\TemplatesClassBasics01.cpp" />
-    <ClCompile Include="TemplatesClassBasics\TemplatesClassBasics02.cpp" />
-    <ClCompile Include="TemplatesFunctionBasics\FunctionTemplatesBasics.cpp" />
+    <ClCompile Include="TemplateFunctionBasics\TemplatesFunctionBasics.cpp" />
     <ClCompile Include="TemplateSpecialization\TemplateSpecialization.cpp" />
     <ClCompile Include="TemplateStaticPolymorphism\TemplateStaticPolymorphism.cpp" />
     <ClCompile Include="TemplateTemplateParameter\TemplateTemplateParameter_01.cpp" />
@@ -326,9 +326,9 @@
     <None Include="StaticAssert\StaticAssertion.md" />
     <None Include="StringView\StdStringView.md" />
     <None Include="StructuredBinding\StructuredBinding.md" />
+    <None Include="TemplateClassBasics\TemplatesClassBasics.md" />
     <None Include="TemplateConstexprIf\ConstExpr_If.md" />
-    <None Include="TemplatesClassBasics\TemplatesBasics.md" />
-    <None Include="TemplatesFunctionBasics\TemplatesFunctions.md" />
+    <None Include="TemplateFunctionBasics\TemplatesFunctionBasics.md" />
     <None Include="TemplateSpecialization\TemplateSpecialization.md" />
     <None Include="TemplateStaticPolymorphism\TemplatesStaticPolymorphism.md" />
     <None Include="TemplateTemplateParameter\TemplateTemplateParameter.md" />

@@ -1,11 +1,66 @@
 // =====================================================================================
-// Class Templates Basics
+// Template Class Basics
 // =====================================================================================
 
 #include <iostream>
 #include <string>
+#include <complex>
 
 namespace ClassTemplatesBasics {
+
+    namespace SimpleTemplateCalculator {
+
+        // primary templyte
+        template <typename T>
+        class Calculator
+        {
+        public:
+            T add(T x, T y) { return x + y; }
+            T sub(T x, T y) { return x - y; }
+            T mul(T x, T y) { return x * y; }
+            T div(T x, T y) { return x / y; }
+        };
+
+        // explicit specialization of template Calculator<T> for T = int
+        template <>
+        class Calculator<int>
+        {
+        public:
+            int add(int x, int y) { return x + y; }
+            int sub(int x, int y) { return x - y; }
+            int mul(int x, int y) { return x * y; }
+            int div(int x, int y) { 
+                return static_cast<int>(
+                    static_cast<double>(x) / (y + 0.5)
+                );
+            }
+        };
+
+        void test_01() {
+
+            // just verifying template concept: is this assignment allowed?
+            Calculator<int> calc10;
+            Calculator<int> calc11;
+            calc10 = calc11;
+
+            // T = double
+            Calculator<double> calc;
+            double result = calc.add(1.0, 2.0);
+
+            // T = int
+            using MyType = int;
+            Calculator<MyType> calc2;
+            MyType result2 = calc2.add(10, 11);
+            result2 = calc2.div(4, 10);
+
+            // T = std::complex<double>
+            using namespace std::complex_literals;
+            Calculator<std::complex<double>> calc3;
+            std::complex<double> z1 = 1. + 2i;
+            std::complex<double> z2 = 1. - 2i;
+            std::complex<double> result3 = calc3.add(z1, z2);
+        }
+    }
 
     namespace SimpleTemplateDefinition {
 
@@ -27,7 +82,7 @@ namespace ClassTemplatesBasics {
             D m_denom;
         };
 
-        void test_01() {
+        void test_02() {
             Ratio <int, double> ratio1;
             Ratio <int, double> ratio2(1, 5.0);
             Ratio ratio3(3, 4.0);  // explicit type deduction
@@ -75,7 +130,7 @@ namespace ClassTemplatesBasics {
         template <>
         Ratio<float, float>::operator double() const { return m_num / m_denom; }
 
-        void test_02() {
+        void test_03() {
 
             Ratio <double, double> ratio(1, 5.0);
             double value = static_cast<double>(ratio);
@@ -138,7 +193,7 @@ namespace ClassTemplatesBasics {
             double m_value;
         };
 
-        void test_03() {
+        void test_04() {
 
             Ratio <double, int> ratio1(1.0, 2);
             Ratio <int, double> ratio2(1, 2.0);
@@ -165,7 +220,7 @@ namespace ClassTemplatesBasics {
             }
         };
 
-        void test_04() {
+        void test_05() {
 
             Printer normalPrinter(std::cout);
             normalPrinter.print(100).print(" --> ").print(123.456).print("\n");
@@ -178,6 +233,7 @@ namespace ClassTemplatesBasics {
 
 void main_class_templates_basics_01()
 {
+    using namespace ClassTemplatesBasics::SimpleTemplateCalculator;
     using namespace ClassTemplatesBasics::SimpleTemplateDefinition;
     using namespace ClassTemplatesBasics::TemplateExplicitSpecialization;
     using namespace ClassTemplatesBasics::TemplatePartialSpecialization;
@@ -187,6 +243,7 @@ void main_class_templates_basics_01()
     test_02();
     test_03();
     test_04();
+    test_05();
 }
 
 // =====================================================================================
