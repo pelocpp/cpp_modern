@@ -110,6 +110,58 @@ namespace Decltype {
     }
 }
 
+namespace Decltype_Auto_Vs_Templates {
+
+    // a) using auto, no trailing return type deduction
+    auto mimimum1(auto n, auto m) // -> decltype (n + m)
+    {
+        decltype (n + m) result;
+
+        result = (n < m) ? n : m;
+
+        return result;
+    }
+
+    // b) using auto and trailing return type deduction
+    // Kurios - geht nur im Template Kontext (siehe unten),
+    // mimimum2 ist NICHT übersetzungsfähig
+    auto mimimum2(auto n, auto m) -> decltype (n + m)
+    {
+        if (n < m)
+            return n;
+        else
+            return m;
+    }
+
+    template <typename T, typename U>
+    auto mimimum3(T n, U m) -> decltype (n + m)
+    {
+        if (n < m)
+            return n;
+        else
+            return m;
+    }
+
+    // c) *Not* using auto and *not* using trailing return type deduction
+    //    dmonstrating how return data type can be 'computed'
+    template <typename T, typename U>
+    decltype (std::declval<T>() + std::declval<U>()) mimimum4(T n, U m)
+    {
+        if (n < m)
+            return n;
+        else
+            return m;
+    }
+
+    void test_06() {
+
+        auto result1 = mimimum1(100.0, 200l);
+        // auto result2 = mimimum2(100.0, 200l);
+        auto result3 = mimimum3(100.0, 200l);
+        auto result4 = mimimum4(100.0, 200l);
+    }
+}
+
 void main_decltype()
 {
     using namespace Decltype;
@@ -118,6 +170,9 @@ void main_decltype()
     test_03();
     test_04();
     test_05();
+
+    using namespace Decltype_Auto_Vs_Templates;
+    test_06();
 }
 
 // =====================================================================================
