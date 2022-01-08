@@ -167,6 +167,7 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 
 | Aufgabe | Beschreibung |
 | :- | :- |
+| [Aufgabe 1](Exercises_08_ExpressionTemplates.md) | Das Skalarprodukt zweier Vektoren |
 
 *Tabelle* 10: Aufgaben zu Expression Templates.
 
