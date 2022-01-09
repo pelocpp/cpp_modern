@@ -118,7 +118,7 @@ namespace VariadicTemplatesExamples {
     void test_07() {
 
         Example* ep = new Example();
-        int(Example:: * pi) = &Example::m_n;
+        int Example:: * pi = &Example::m_n;
 
         ep->m_n = 123;
         std::cout << *ep << std::endl;
@@ -191,18 +191,18 @@ namespace VariadicTemplatesExamples {
         }
 
     public:
-
-        template <>
-        static unsigned long long bin<char>(char ch) {
-
+        // non function template definition (end of recursion)
+        static unsigned long long bin(char ch)
+        {
             // right-most char cannot be a quotation mark
             assert(ch == '0' || ch == '1');
             return (unsigned long long) (ch) - '0';
         }
 
+        // function template definition
         template <typename T, typename ... REST>
-        static unsigned long long bin(T ch, REST... rest) {
-
+        static unsigned long long bin(T ch, REST... rest)
+        {
             m_exp = 0;  // reset exponent
 
             assert(ch == '0' || ch == '1' || ch == '\'');
@@ -210,7 +210,8 @@ namespace VariadicTemplatesExamples {
 
             unsigned long long begin = bin(rest...);
 
-            if (digit == -1) {
+            if (ch == '\'')   // cannot compare unsigned long long with -1
+            {
                 return begin;  // ignore single quotation mark
             }
             else {

@@ -13,7 +13,6 @@
 // - Variadic Expressions / Variadische Ausdrücke
 // - Variadische Templates mit Zugriff auf Basisklasse und 'using'
 // - Variadic Expressions with Indices / Variadische Ausdrücke mit Indizes
-// - Compile-Time Expression with Variadic Expressions
 // =====================================================================================
 
 namespace VariadicTemplatesSystematic {
@@ -59,9 +58,7 @@ namespace VariadicTemplatesSystematic {
     void test_01()
     {
         printDoubled(7.5);
-
         printFiveTimes(1, 2, 3, 4, 5);
-
         printPlusOne(1, 5, 10);
     }
 
@@ -140,76 +137,15 @@ namespace VariadicTemplatesSystematic {
         std::string s{ "0123456789" };
         printElements(s, 8, 6, 4, 2, 0);
     }
-
-    // =====================================================================================
-    // =====================================================================================
-
-    // Use case: Compile-Time Expression with Variadic Expressions
-    //
-
-    //template<typename T, typename... TREST>
-    //constexpr bool isSameType(T, TREST...)
-    //{
-    //    return (std::is_same<T, TREST>::value && ...); // since C++17: folding expression !!!
-    //}
-
-    //template<typename T, typename... TREST>
-    //constexpr bool isSameType(T, TREST...)
-    //{
-    //    return (std::is_same<decltype(T), decltype(TREST)>::value && ...); // since C++17: folding expression !!!
-    //}
-
-    template<typename T1, typename T2>
-    void isSameType(T1 arg)
-    {
-        return std::is_same<decltype(T1), decltype(T2)>::value;
-    }
-
-    template<typename T1, typename... TREST>
-    void isSameType(T1 firstArg, TREST... args)
-    {
-        return (std::is_same<T1, TREST>::value && ...);
-    }
-
-
-    void test_04()
-    {
-        //bool result = isSameType(43, false, "hello");
-        //std::cout << std::boolalpha << result << std::endl;
-
-        // expands to: 
-
-        //result = std::is_same<int, int>::value && std::is_same<int, char const*>::value;
-        //std::cout << std::boolalpha << result << std::endl;
-
-        //result = isSameType(123, 456, 789);
-        //std::cout << std::boolalpha << result << std::endl;
-
-        //// expands to: 
-
-        //result = std::is_same<int, int>::value && std::is_same<int, int>::value;
-        //std::cout << std::boolalpha << result << std::endl;
-    }
 }
-
-// =====================================================================================
-// =====================================================================================
 
 void main_variadic_templates_more_examples()
 {
     using namespace VariadicTemplatesSystematic;
 
-    // Variadic Expressions
-    test_01();
-
-    // Variadic Base Classes and keyword 'using'
-    test_02();
-
-    // Variadic Expressions with Indices 
-    test_03();
-
-    // Compile-Time Expression with Variadic Expressions
-    test_04();
+    test_01();  // Variadic Expressions
+    test_02();  // Variadic Base Classes and keyword 'using'
+    test_03();  // Variadic Expressions with Indices 
 }
 
 // =====================================================================================
