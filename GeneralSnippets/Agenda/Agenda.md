@@ -46,14 +46,14 @@
 
 ## Verschiedenes
   * Structured Binding
-  * Range-based `for` Loop
-  * C++ Standard Attribute
+  * Range-based `for`&ndash;Loop
+  * C++ Standard-Attribute
 
 
-## Smart Pointer
-  * Unique Pointer
-  * Shared Pointer
-  * Weak Pointer
+## Intelligente Zeiger (*Smart Pointer*)
+  * Zeiger mit einem Besitzer: `std::unique_ptr`
+  * Intelligenter Zeiger mit Referenzzählung: `std::shared_ptr`
+  * Spezieller intelligenter Zeiger in Verbindung mit `std::shared_ptr`: `std::weak_ptr`
 
 
 ## `constexpr`

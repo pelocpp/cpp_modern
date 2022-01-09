@@ -23,7 +23,7 @@ Die bekanntesten Attribute sind in der folgenden Tabelle aufgeführt:
 
 Tabelle: Einige C++ Standard Attribute.
 
-Daneben gibt es noch weitere, recht spezielle Attribute, wie zu, Beispiel `carries_dependency`,
+Daneben gibt es noch weitere, recht spezielle Attribute, wie zum Beispiel `carries_dependency`,
 `likely`, `unlikely` oder `no_unique_address`.
 
 ---
