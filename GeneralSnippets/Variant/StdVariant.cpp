@@ -122,15 +122,15 @@ namespace VariantDemo {
     public:
         MyVisitor() = default;
 
-        void operator() (int const& a) {
+        void operator() (int const&) {
             std::cout << "type is int" << std::endl;
         }
 
-        void operator() (float const& a) {
+        void operator() (float const&) {
             std::cout << "type is float" << std::endl;
         }
 
-        void operator() (std::string const& ) {
+        void operator() (std::string const&) {
             std::cout << "type is std::string" << std::endl;
         }
     };

@@ -35,27 +35,28 @@ namespace TemplateTemplateParameter_02 {
     struct MaxCheck
     {
     public:
-        MaxCheck() : mMin(T{}), mMax() {}
-        MaxCheck(T value1, T value2) : mMin(value1) , mMax(value2) {}
+        MaxCheck() : m_min{ T{} }, m_max{} {}
+
+        MaxCheck(T value1, T value2) : m_min{ value1 }, m_max{ value2 } {}
 
         void check1() const noexcept {
             std::cout << "check1" << std::endl;
         }
 
         template<typename U>
-        void check2( U u) const noexcept {
+        void check2(U) const noexcept {
             std::cout << "check1" << std::endl;
 
         }
 
         template<typename U>
-        void check3(U u1,U u2) const noexcept {
+        void check3(U, U) const noexcept {
             std::cout << "check"    << std::endl;
         }
 
     private:
-        T mMax;
-        T mMin;
+        T m_max;
+        T m_min;
     };
 
     template <typename T, int Low, int High, template <typename> class CheckPolicy>
@@ -66,9 +67,9 @@ namespace TemplateTemplateParameter_02 {
         CheckPolicy<NoMaxCheck<T>> m_policy;
 
     public:
-        Range() : m_low(Low), m_high(High) {
-
-            m_policy.check2( m_low);
+        Range() : m_low{ Low }, m_high{ High }
+        {
+            m_policy.check2(m_low);
             m_policy.check3(m_low, m_high);
         }
 
@@ -77,7 +78,6 @@ namespace TemplateTemplateParameter_02 {
         T getHigh() { return m_high; }
     };
 
-
     void test_01() {
 
         Range<long, 1, 5, MaxCheck> range1;
@@ -85,8 +85,8 @@ namespace TemplateTemplateParameter_02 {
     }
 }
 
-void main_template_template_parameter_02() {
-
+void main_template_template_parameter_02()
+{
     using namespace TemplateTemplateParameter_02;
     test_01();
 }

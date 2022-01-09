@@ -6,11 +6,11 @@
 
 namespace PerfectForwardingDemo {
 
-    void overloaded(int& arg) {
+    void overloaded([[maybe_unused]] int& arg) {
         std::cout << "By lvalue" << std::endl;
     }
 
-    void overloaded(int&& arg) { 
+    void overloaded([[maybe_unused]] int&& arg) {
         std::cout << "By rvalue" << std::endl;
     }
 

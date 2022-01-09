@@ -14,9 +14,9 @@ namespace StdArray {
         // initialization variants
         [[maybe_unused]] std::array<int, 5> myArray1{};
 
-        std::array<int, 5> myArray2 = { 1, 2, 3, 4, 5 }; //  initializer list
+        [[maybe_unused]] std::array<int, 5> myArray2 = { 1, 2, 3, 4, 5 }; //  initializer list
 
-        std::array<int, 5> myArray3{ 1, 2, 3, 4, 5 }; // uniform initialization
+        [[maybe_unused]] std::array<int, 5> myArray3{ 1, 2, 3, 4, 5 }; // uniform initialization
 
         // doesn't compile
         // std::array myArray;
@@ -36,10 +36,10 @@ namespace StdArray {
         // std::array<int> myArray = { 1, 2, 3, 4, 5 };
 
         // type is deduced to std::array<int, 5>
-        std::array myArray6{ 9, 7, 5, 3, 1 };
+        [[maybe_unused]] std::array myArray6{ 9, 7, 5, 3, 1 };
 
         // type is deduced to std::array<double, 2>
-        std::array myArray7{ 9.7, 7.31 };
+        [[maybe_unused]] std::array myArray7{ 9.7, 7.31 };
     }
 
     void test_02() {

@@ -208,7 +208,7 @@ namespace FunctionalProgramming_02 {
             words,
             [](std::string word) {
                 // convert std::string to upper case
-                std::transform(std::begin(word), std::end(word), std::begin(word), std::toupper);
+                std::transform(std::begin(word), std::end(word), std::begin(word), ::toupper);
                 return word;
             }
         );

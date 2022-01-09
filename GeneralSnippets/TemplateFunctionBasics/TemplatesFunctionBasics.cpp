@@ -60,11 +60,11 @@ namespace FunctionTemplateMinimum {
 
     // explicit function template specialization: allowed (!)
     template <>
-    void function<double, int>(double a, int b) {}
+    void function<double, int>(double, int) {}
 
     void test_01()
     {
-        bool result;
+        [[maybe_unused]] bool result;
         result = minimum(10, 20);
         result = minimum(10.0, 20.0);
         result = minimum(Point<double>{ 1, 2 }, Point<double>{ 3, 4 });

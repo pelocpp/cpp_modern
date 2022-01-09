@@ -86,8 +86,8 @@ namespace SharedPointer {
 
         // *ptr2 = 456;  // error: 'ptr2': you cannot assign to a variable that is const
 
-        int dummy = *ptr2;
-        const int* ip = ptr2.get();
+        [[maybe_unused]] int dummy = *ptr2;
+        [[maybe_unused]] const int* ip = ptr2.get();
     }
 }
 

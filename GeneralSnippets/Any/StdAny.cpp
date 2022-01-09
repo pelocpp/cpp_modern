@@ -7,6 +7,7 @@
 #include <string>
 #include <any>
 #include <complex>
+#include <tuple>
 
 namespace AnySamples {
 
@@ -68,33 +69,13 @@ namespace AnySamples {
 
     void test_03_any() 
     {
-        Row row1{ std::tuple<int, int, int>{ 1, 2, 3 } };
-        Row row2 { std::tuple<char, std::string, double>{ '1',  std::string("ABC"), 99.99 } };
-        Row row3 { std::tuple<bool, int, bool>{ true, 123, false } };
+        Row row1{ 1, 2, 3  };
+        Row row2{ '1',  std::string("ABC"), 99.99  };
+        Row row3{  true, 123, false  };
 
         std::vector<Row> mySheet;
 
         // note: conversion to base class 'std::tuple<std::any, std::any, std::any>'
-        mySheet.push_back(row1);
-        mySheet.push_back(row2);
-        mySheet.push_back(row3);
-
-        for (const auto& [val1, val2, val3] : mySheet) {
-            std::cout
-                << "Val1:    " << to_string(val1) << std::endl
-                << "Val2:    " << to_string(val2) << std::endl
-                << "Val3:    " << to_string(val3) << std::endl;
-        }
-    }
-
-    void test_04_any() 
-    {
-        Row row1{ std::tuple<std::any, std::any, std::any>{ 1, 2, 3 } };
-        Row row2 {std::tuple<std::any, std::any, std::any>{ '1',  std::string("ABC"), 99.99 } };
-        Row row3 {std::tuple<std::any, std::any, std::any>{ true, 123, false } };
-
-        std::vector<Row> mySheet;
-
         mySheet.push_back(row1);
         mySheet.push_back(row2);
         mySheet.push_back(row3);
@@ -136,7 +117,6 @@ void main_any()
     test_01_any();
     test_02_any();
     test_03_any();
-    test_04_any();
 }
 
 // =====================================================================================

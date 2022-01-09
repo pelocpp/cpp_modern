@@ -77,7 +77,7 @@ ohne hierfür extra einen C++ Compiler installieren zu müssen.
 Besonders nützlich können Online Compiler sein, um mit den neuesten Sprachfeatures zu spielen
 oder auch um verschiedene Compiler vergleichen zu können.
 
-[Einige weitere Details](GeneralSnippets/OnlineCppCompilers/OnlineCppCompilers.md).
+[Weitere Details](GeneralSnippets/OnlineCppCompilers/OnlineCppCompilers.md).
 
 ---
 

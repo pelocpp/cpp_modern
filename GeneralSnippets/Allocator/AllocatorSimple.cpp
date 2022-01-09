@@ -9,6 +9,11 @@
 #include <memory>
 #include <string>
 
+// GCC support
+#ifndef __FUNCSIG__
+#define __FUNCSIG__ __PRETTY_FUNCTION__
+#endif
+
 namespace Allocator {
 
     void test_01_allocator() {

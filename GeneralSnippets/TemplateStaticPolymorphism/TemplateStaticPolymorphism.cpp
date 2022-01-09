@@ -163,7 +163,8 @@ namespace TemplatesStaticPolymorphism {
     }
 }
 
-void main_templates_static_polymorphism() {
+void main_templates_static_polymorphism()
+{
 
     using namespace TemplatesStaticPolymorphism::ClassicPolymorphism;
     using namespace TemplatesStaticPolymorphism::StaticPolymorphism;

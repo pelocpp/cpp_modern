@@ -3,6 +3,7 @@
 // =====================================================================================
 
 #include <iostream>
+#include <functional>
 
 namespace StdInvoke {
 

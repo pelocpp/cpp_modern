@@ -45,12 +45,12 @@ namespace ClassTemplatesBasics {
 
             // T = double
             Calculator<double> calc;
-            double result = calc.add(1.0, 2.0);
+            [[maybe_unused]] double result = calc.add(1.0, 2.0);
 
             // T = int
             using MyType = int;
             Calculator<MyType> calc2;
-            MyType result2 = calc2.add(10, 11);
+            [[maybe_unused]] MyType result2 = calc2.add(10, 11);
             result2 = calc2.div(4, 10);
 
             // T = std::complex<double>
@@ -58,7 +58,7 @@ namespace ClassTemplatesBasics {
             Calculator<std::complex<double>> calc3;
             std::complex<double> z1 = 1. + 2i;
             std::complex<double> z2 = 1. - 2i;
-            std::complex<double> result3 = calc3.add(z1, z2);
+            [[maybe_unused]] std::complex<double> result3 = calc3.add(z1, z2);
         }
     }
 

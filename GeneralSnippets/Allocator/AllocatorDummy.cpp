@@ -9,6 +9,11 @@
 #include <memory>
 #include <string>
 
+// GCC support
+#ifndef __FUNCSIG__
+#define __FUNCSIG__ __PRETTY_FUNCTION__
+#endif
+
 #include "../Global/Dummy.h"
 
 namespace AllocatorWithObject {

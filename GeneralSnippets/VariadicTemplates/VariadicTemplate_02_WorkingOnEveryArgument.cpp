@@ -64,7 +64,7 @@ namespace VariadicTemplatesWorkingOnEveryArgument {
 void main_variadic_templates_working_on_every_argument()
 {
     using namespace VariadicTemplatesWorkingOnEveryArgument;
-   //test_01();
+    test_01();
     test_02();
     test_03();
 }

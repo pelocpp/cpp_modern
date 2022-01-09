@@ -8,6 +8,7 @@
 #include <vector>
 #include <functional>
 #include <map>
+#include <cmath>
 
 namespace Exercises_Lambdas {
 

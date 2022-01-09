@@ -21,8 +21,8 @@ namespace KeywordExplicit {
         // and the String(int) constructor will be called:
         // Did you intend this?
 
-        String s1 = 'x';
-        String s2 (10);
+        [[maybe_unused]] String s1 = 'x';
+        [[maybe_unused]] String s2 (10);
     }
 }
 

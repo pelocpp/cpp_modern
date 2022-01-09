@@ -102,8 +102,8 @@ void main_perfect_forwarding_motivation()
 {
     using namespace PerfectForwardingMotivation;
     test_01();
-    //test_02();
-    //test_03();
+    test_02();
+    test_03();
 }
 
 // =====================================================================================

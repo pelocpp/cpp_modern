@@ -76,7 +76,9 @@ namespace TupleSamples {
         double d = std::get<2>(row);
         std::string s = std::get<3>(row);
 
-        return "Id: " + std::to_string(n) + ", " + std::to_string(ch) + ", " + s;
+        return "Id: " + 
+            std::to_string(n) + ", " + std::to_string(ch) + ", " + 
+            std::to_string(d) + ", " + s;
     }
 
     // =======================================================

@@ -90,8 +90,8 @@ namespace TemplateTemplateParameter {
     }
 }
 
-void main_template_template_parameter () {
-
+void main_template_template_parameter ()
+{
     using namespace TemplateTemplateParameter::TemplateTemplateParameterFunction;
     using namespace TemplateTemplateParameter::TemplateTemplateParameterClass;
     test_01();

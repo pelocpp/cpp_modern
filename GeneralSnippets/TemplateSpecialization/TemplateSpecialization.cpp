@@ -15,7 +15,7 @@ namespace TemplateSpecialization {
     class GenericSorter
     {
     public:
-        static void sort(std::vector<T>& values)
+        static void sort(std::vector<T>&)
         {
             /* ... */
         };
@@ -25,7 +25,7 @@ namespace TemplateSpecialization {
     class GenericSorter<char>
     {
     public:
-        static void sort(std::vector<char>& values)
+        static void sort(std::vector<char>&)
         {
             /* ... */
         };
