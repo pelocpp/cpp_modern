@@ -167,7 +167,7 @@ int main()
         //main_transform();
         //main_trim();
         //main_tuples();
-        main_type_traits();
+        //main_type_traits();
         //main_uniform_initialization();
         //main_unique_ptr();
         //main_variadic_templates_intro();

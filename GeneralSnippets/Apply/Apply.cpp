@@ -8,8 +8,6 @@
 
 namespace ApplyIntegerSequence {
 
-    // ===========================================================
-
     // class definition (type which holds sequences)
     template <int ... NS>
     struct sequence
@@ -40,8 +38,8 @@ namespace ApplyIntegerSequence {
 
     void test01()
     {
-        auto seq = make_index_sequence<4>{};
-        sequence<0, 1, 2, 3> seq2 = make_index_sequence<4>{};
+        [[maybe_unused]] auto seq = make_index_sequence<4>{};
+        [[maybe_unused]] sequence<0, 1, 2, 3> seq2 = make_index_sequence<4>{};
     }
 
     // ===========================================================
@@ -68,8 +66,8 @@ namespace ApplyIntegerSequence {
 
     void test02()
     {
-        auto seq = make_index_sequence_ex<4U>{};
-        sequence_ex<0U, 1U, 2U, 3U> seq2 = make_index_sequence_ex<4U>{};
+        [[maybe_unused]] auto seq = make_index_sequence_ex<4U>{};
+        [[maybe_unused]] sequence_ex<0U, 1U, 2U, 3U> seq2 = make_index_sequence_ex<4U>{};
     }
 
     // ===========================================================
@@ -118,8 +116,6 @@ namespace ApplyIntegerSequence {
 
     // https://stackoverflow.com/questions/24109737/what-are-some-uses-of-decltypeauto
 
-    int g(double, std::string, int, char);
-
     int g(double x, std::string y, int z, char ch)
     {
         std::cout << x << std::endl;
@@ -130,7 +126,8 @@ namespace ApplyIntegerSequence {
         return 999;
     }
 
-    namespace detail {
+    namespace detail
+    {
         template <class F, class Tuple, std::size_t... Is>
         decltype(auto) apply_impl(F&& f, Tuple&& tpl, std::index_sequence<Is...>) {
             return std::forward<F>(f)(std::get<Is>(std::forward<Tuple>(tpl))...);
@@ -142,17 +139,21 @@ namespace ApplyIntegerSequence {
         }
     }
 
-    namespace pelo {
+#if ! defined(__GNUC__)
+    namespace pelo
+    {
         template <class F, class Tuple>
         decltype(auto) apply(F&& f, Tuple&& tpl) {
-            return detail::apply_impl(std::forward<F>(f),
+            return detail::apply_impl(
+                std::forward<F>(f),
                 std::forward<Tuple>(tpl),
                 std::make_index_sequence<std::tuple_size<std::decay_t<Tuple>>::value>{});
         }
 
         template <class F, class Tuple>
         decltype(auto) apply_ex(F&& f, Tuple&& tpl) {
-            return detail::apply_impl_ex(std::forward<F>(f),
+            return detail::apply_impl_ex(
+                std::forward<F>(f),
                 std::forward<Tuple>(tpl),
                 make_index_sequence<std::tuple_size<std::decay_t<Tuple>>::value>{});
         }
@@ -160,16 +161,15 @@ namespace ApplyIntegerSequence {
 
     void test05()
     {
-        auto some_args = std::make_tuple(43.43, "ABCD", 123, '?');
+        auto some_args = std::make_tuple(43.43, std::string{ "ABCD" }, 123, '?');
         auto result = pelo::apply(g, some_args); // calls g(43.43, "ABCD", 123, '?')
         std::cout << result << std::endl;
 
-        auto some_args_ex = std::make_tuple(43.43, "ABCD", 123, '?');
+        auto some_args_ex = std::make_tuple(43.43, std::string{ "ABCD" }, 123, '?');
         auto result_ex = pelo::apply_ex(g, some_args); // calls g(43.43, "ABCD", 123, '?')
         std::cout << result_ex << std::endl;
     }
-
-    // ===========================================================
+#endif
 }
 
 void main_apply_integer_sequence()
@@ -179,7 +179,10 @@ void main_apply_integer_sequence()
     test02();
     test03();
     test04();
+
+#if ! defined(__GNUC__)
     test05();
+#endif
 }
 
 // =====================================================================================
