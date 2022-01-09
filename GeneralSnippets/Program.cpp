@@ -12,6 +12,7 @@ void main_any();
 void main_apply_integer_sequence();
 void main_array();
 void main_array_decay();
+void main_attributes();
 void main_auto();
 void main_back_inserter();
 void main_casts();
@@ -105,6 +106,7 @@ int main()
         //main_apply_integer_sequence();
         //main_array();
         //main_array_decay();
+        //main_attributes();
         //main_auto();
         //main_back_inserter();
         //main_casts();

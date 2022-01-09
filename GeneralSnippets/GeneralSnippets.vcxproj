@@ -151,6 +151,7 @@
     <ClCompile Include="Apply\Apply.cpp" />
     <ClCompile Include="ArrayDecay\ArrayDecay.cpp" />
     <ClCompile Include="Array\Array.cpp" />
+    <ClCompile Include="Attributes\Attributes.cpp" />
     <ClCompile Include="Auto\Auto.cpp" />
     <ClCompile Include="BackInserter\BackInserter.cpp" />
     <ClCompile Include="Casts\Casts.cpp" />
@@ -259,6 +260,7 @@
     <None Include="Apply\Apply.md" />
     <None Include="ArrayDecay\ArrayDecay.md" />
     <None Include="Array\StdArray.md" />
+    <None Include="Attributes\Attributes.md" />
     <None Include="Auto\Auto.md" />
     <None Include="BackInserter\BackInserter.md" />
     <None Include="Casts\Casts.md" />

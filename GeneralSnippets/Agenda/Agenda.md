@@ -47,6 +47,7 @@
 ## Verschiedenes
   * Structured Binding
   * Range-based `for` Loop
+  * C++ Standard Attribute
 
 
 ## Smart Pointer
