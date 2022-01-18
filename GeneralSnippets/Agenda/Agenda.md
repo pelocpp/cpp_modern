@@ -73,6 +73,7 @@
   * Type Parameter / Value Parameter
   * Member Function Template (Method Template)
   * Partielle und explizite Template Spezialisierung
+  * Two-Phase Name Lookup
 
 
 ## Standard Template Library (STL)

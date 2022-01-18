@@ -231,6 +231,7 @@
     <ClCompile Include="TemplateStaticPolymorphism\TemplateStaticPolymorphism.cpp" />
     <ClCompile Include="TemplateTemplateParameter\TemplateTemplateParameter_01.cpp" />
     <ClCompile Include="TemplateTemplateParameter\TemplateTemplateParameter_02.cpp" />
+    <ClCompile Include="TemplateTwoPhaseLookup\TemplateTwoPhaseLookup.cpp" />
     <ClCompile Include="Transform\Transform.cpp" />
     <ClCompile Include="Trim\Trim.cpp" />
     <ClCompile Include="Tuple\Tuples.cpp" />
@@ -334,6 +335,7 @@
     <None Include="TemplateSpecialization\TemplateSpecialization.md" />
     <None Include="TemplateStaticPolymorphism\TemplatesStaticPolymorphism.md" />
     <None Include="TemplateTemplateParameter\TemplateTemplateParameter.md" />
+    <None Include="TemplateTwoPhaseLookup\TemplateTwoPhaseLookup.md" />
     <None Include="Transform\cpp_snippet_transform_01.svg" />
     <None Include="Transform\cpp_snippet_transform_02.svg" />
     <None Include="Transform\Transform.md" />

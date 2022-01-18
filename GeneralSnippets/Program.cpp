@@ -72,6 +72,7 @@ void main_class_templates_basics_02();
 void main_templates_static_polymorphism();
 void main_template_template_parameter();
 void main_template_template_parameter_02();
+void main_templates_two_phase_name_lookup();
 void main_template_specialization();
 void main_transform();
 void main_trim();
@@ -165,6 +166,7 @@ int main()
         //main_templates_static_polymorphism();
         //main_template_template_parameter();
         //main_template_template_parameter_02();
+        //main_templates_two_phase_name_lookup();
         //main_template_specialization();
         //main_transform();
         //main_trim();

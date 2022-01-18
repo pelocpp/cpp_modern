@@ -68,13 +68,12 @@ namespace ClassTemplatesBasics {
         template <typename N, typename D>
         class Ratio {
         public:
-            Ratio() : m_num(N{}), m_denom(D{ 1 }) {}
+            Ratio() : m_num{ N{} }, m_denom{ D{ 1 } } {}
 
-            Ratio(const N& num, const D& denom)
-                : m_num(num), m_denom(denom) {}
+            Ratio(const N& num, const D& denom) : m_num{ num }, m_denom{ denom } {}
 
             explicit operator double() const {
-                return (double)m_num / (double)m_denom;
+                return static_cast<double>(m_num) / static_cast<double>(m_denom);
             }
 
         private:
@@ -96,13 +95,12 @@ namespace ClassTemplatesBasics {
         template <typename N, typename D>
         class Ratio {
         public:
-            Ratio() : m_num(N{}), m_denom(D{ 1 }) {}
+            Ratio() : m_num{ N{} }, m_denom{ D{ 1 } } {}
 
-            Ratio(const N& num, const D& denom)
-                : m_num(num), m_denom(denom) {}
+            Ratio(const N& num, const D& denom) : m_num{ num }, m_denom{ denom } {}
 
             explicit operator double() const {
-                return (double)m_num / (double)m_denom;
+                return static_cast<double>(m_num) / static_cast<double>(m_denom);
             }
 
         private:
