@@ -8,21 +8,22 @@
 
 ---
 
-
 ## Two-Phase Name Lookup
 
 Klassen- und Funktions-Templates  werden vom C++-Compiler (mindestens) zweimal übersetzt:
 
-  * Zum Ersten ohne eigentliche Instanziierung des Template Quellcodes. Es wird nur die Syntax überprüft,
+  * Zum Ersten ohne eigentliche Instanziierung des Template Quellcodes. Es wird nur grob die Syntax überprüft,
     also ob zum Beispiel Syntaxfehler wie ein fehlendes `;` etc. vorhanden sind.
 
-  * Zum Zeitpunkt der Instanziierung (wenn der genaue Template Parametertyp `T` bekannt ist) wird der Template Quellcode erneut überprüft,
+  * Zum Zeitpunkt der Instanziierung (also wenn der genaue Template Parametertyp `T` bekannt ist) wird der Template Quellcode erneut überprüft,
     um sicherzustellen, dass alle Aufrufe für diesen bestimmten Typ gültig sind.
 
-*Beispiel*: Im Template Quellcode können Aufrufe von Funktionen bzw. Zugriffe auf öffentlich deklarierte Instanzvariablen
-vorhanden sein, die für diesen bestimmten Parametertyp `T` möglicherweise nicht existieren.
+*Beispiel*: Im Quellcode des Templates können Aufrufe von Funktionen bzw. Zugriffe auf öffentlich deklarierte Instanzvariablen
+vorhanden sein, die für einen konkreten Parametertyp `T` möglicherweise nicht existieren.
 
-*Hinweis*: Einige Compiler unterstützen die erste Phase nicht vollständig und verzögern stattdessen fast die gesamte Arbeit, bis sie auf den Punkt der Instanziierung stoßen.
+*Hinweis*: Einige Compiler unterstützen die erste Phase nicht vollständig und verzögern stattdessen
+fast die gesamte Arbeit auf die zweite Phase,
+bis eine Instanziierung des Templates stattfindet.
 
 
 ## Ein Beispiel
@@ -58,7 +59,7 @@ Die Aussage *none of the arguments depend on a template parameter*
 aus der Fehlermeldung gibt einen ersten Hinweis. `doSomething` ist ein so genannter *nicht-abhängiger* Name,
 da sein Name **nicht** vom Template-Parameter `T` abhängt.
 *Nicht-abhängige* Namen werden zum Zeitpunkt der Template-Definition gesucht und aufgelöst.
-Folglich sucht der Compiler nicht in der von `T` abhängigen Basisklasse `Base<T>`.
+Folglich sucht der Compiler *nicht* in der von `T` abhängigen Basisklasse `Base<T>`.
 Da außer in der Basisklasse kein weiterer Bezeichner `doSomething` 
 verfügbar ist, kommt es zu einer Fehlermeldung!
 
