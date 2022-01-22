@@ -149,6 +149,7 @@
     <ClCompile Include="Allocator\AllocatorDummy.cpp" />
     <ClCompile Include="Any\StdAny.cpp" />
     <ClCompile Include="Apply\Apply.cpp" />
+    <ClCompile Include="ArgumentDependentNameLookup\ArgumentDependentNameLookup.cpp" />
     <ClCompile Include="ArrayDecay\ArrayDecay.cpp" />
     <ClCompile Include="Array\Array.cpp" />
     <ClCompile Include="Attributes\Attributes.cpp" />
@@ -259,6 +260,7 @@
     <None Include="Any\cpp_std_any.svg" />
     <None Include="Any\StdAny.md" />
     <None Include="Apply\Apply.md" />
+    <None Include="ArgumentDependentNameLookup\ArgumentDependentNameLookup.md" />
     <None Include="ArrayDecay\ArrayDecay.md" />
     <None Include="Array\StdArray.md" />
     <None Include="Attributes\Attributes.md" />

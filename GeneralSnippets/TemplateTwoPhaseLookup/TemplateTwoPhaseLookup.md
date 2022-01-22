@@ -15,8 +15,8 @@ Klassen- und Funktions-Templates  werden vom C++-Compiler (mindestens) zweimal ü
   * Zum Ersten ohne eigentliche Instanziierung des Template Quellcodes. Es wird nur grob die Syntax überprüft,
     also ob zum Beispiel Syntaxfehler wie ein fehlendes `;` etc. vorhanden sind.
 
-  * Zum Zeitpunkt der Instanziierung (also wenn der genaue Template Parametertyp `T` bekannt ist) wird der Template Quellcode erneut überprüft,
-    um sicherzustellen, dass alle Aufrufe für diesen bestimmten Typ gültig sind.
+  * Zum Zeitpunkt der Instanziierung (also wenn der Template Parametertyp `T` bekannt ist) wird der Template Quellcode erneut überprüft,
+    um sicherzustellen, dass alle Aufrufe für diesen bestimmten Typ `T` gültig sind.
 
 *Beispiel*: Im Quellcode des Templates können Aufrufe von Funktionen bzw. Zugriffe auf öffentlich deklarierte Instanzvariablen
 vorhanden sein, die für einen konkreten Parametertyp `T` möglicherweise nicht existieren.
@@ -44,7 +44,7 @@ template <typename T>
 class Derived : public Base<T> {
 public:
     void callBase() {
-        doSomething();
+        doSomething();  // doesn't compile !
     }
 };
 ```
@@ -63,12 +63,12 @@ Folglich sucht der Compiler *nicht* in der von `T` abhängigen Basisklasse `Base<
 Da außer in der Basisklasse kein weiterer Bezeichner `doSomething` 
 verfügbar ist, kommt es zu einer Fehlermeldung!
 
-Nur *abhängige* Namen werden zum Zeitpunkt der Template-Instanziierung aufgelöst.
+*Abhängige* Namen werden zum Zeitpunkt der Template-Instanziierung aufgelöst.
 
 Damit wären wir wieder beim Thema des *Two-Phase Name Lookups* angekommen:
 
-  * Die erste Phase ist für das Auflösen *nicht-abhängiger* Namen zuständig
-  * Die zweite Phase ist für das Auflösen *abhängiger* Namen verantwortlich. 
+  * Die erste Phase ist für das Auflösen *nicht-abhängiger* Namen zuständig.
+  * Die zweite Phase ist für das Auflösen *abhängiger* Namen verantwortlich.
 
 Es gibt drei Möglichkeiten, um im vorliegenden Fall die Suche nach einem Bezeichner
 auf die abhängige Basisklasse zu erweitern, also um die nicht sinnvolle

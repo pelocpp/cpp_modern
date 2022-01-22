@@ -333,6 +333,9 @@
     <ClCompile Include="TemplateTwoPhaseLookup\TemplateTwoPhaseLookup.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ArgumentDependentNameLookup\ArgumentDependentNameLookup.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -660,6 +663,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="TemplateTwoPhaseLookup\TemplateTwoPhaseLookup.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="ArgumentDependentNameLookup\ArgumentDependentNameLookup.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

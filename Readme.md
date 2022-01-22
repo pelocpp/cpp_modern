@@ -114,6 +114,7 @@ In der folgenden Tabelle sind alle Neuerungen von C++&ndash;11/14/17 aufgeführt
 | [Accumulate](GeneralSnippets/Accumulate/StdAccumulate.md) | STL-Algorithmus `std::accumulate` und Lambda-Funktionen in der Anwendung |
 | [Any](GeneralSnippets/Any/StdAny.md) | Neue STL-Utility Klasse `std::any` |
 | [Apply](GeneralSnippets/Apply/Apply.md) | `std::apply`, `std::integer_sequence` und `std::make_integer_sequence` |
+| [ArgumentDependentNameLookup](GeneralSnippets/ArgumentDependentNameLookup/ArgumentDependentNameLookup.md) | Argument-Dependent Name Lookup (ADL) / *Koenig*-Lookup |
 | [Array](GeneralSnippets/Array/StdArray.md) | Neue STL-Utility Klasse `std::array` |
 | [Attributes](GeneralSnippets/Attributes/Attributes.md) | C++ Standard Attribute |
 | [Auto](GeneralSnippets/Auto/Auto.md) | `auto` |

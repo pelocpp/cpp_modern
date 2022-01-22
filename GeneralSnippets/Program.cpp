@@ -10,6 +10,7 @@ void main_allocator_classtype();
 void main_allocator_integral();
 void main_any();
 void main_apply_integer_sequence();
+void main_argument_dependent_name_lookup();
 void main_array();
 void main_array_decay();
 void main_attributes();
@@ -105,6 +106,7 @@ int main()
         //main_allocator_integral();
         //main_any();
         //main_apply_integer_sequence();
+        //main_argument_dependent_name_lookup();
         //main_array();
         //main_array_decay();
         //main_attributes();
