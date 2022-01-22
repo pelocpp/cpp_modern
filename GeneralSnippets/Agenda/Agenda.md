@@ -190,6 +190,7 @@
   * Concepts
   * Ranges
   * Coroutines
+  * `std::format`
 
 ---
 
