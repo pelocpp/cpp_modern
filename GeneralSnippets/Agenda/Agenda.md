@@ -48,7 +48,7 @@
   * Structured Binding
   * Range-based `for`&ndash;Loop
   * C++ Standard-Attribute
-  * Argument-Dependent Lookup (ADL) / Koenig-Lookup
+  * Argument-Dependent Name Lookup (ADL) / *Koenig*-Lookup
 
 
 ## Intelligente Zeiger (*Smart Pointer*)
