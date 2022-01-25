@@ -1,4 +1,4 @@
-# Agenda &ldquo;C++&ndash;Seminar für Fortgeschrittene&rdquo;
+# Agenda Seminar &ldquo;Modern C++&rdquo;
 
 [Zurück](../../Readme.md)
 
