@@ -56,7 +56,7 @@ void main_perfect_remove_reference_demo();
 void main_raii();
 void main_raii_02(); 
 void main_random();
-void main_range_based_foor_loop();
+void main_range_based_for_loop();
 void main_reference_wrapper();
 void main_regular_expressions();
 void main_rvalue_lvalue();
@@ -151,7 +151,7 @@ int main()
         //main_raii();
         //main_raii_02();
         //main_random();
-        //main_range_based_foor_loop();
+        //main_range_based_for_loop();
         //main_reference_wrapper();
         //main_regular_expressions();
         //main_rvalue_lvalue();

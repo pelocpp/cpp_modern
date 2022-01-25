@@ -139,7 +139,7 @@ namespace RangeBasedForLoop {
     }
 }
 
-void main_range_based_foor_loop()
+void main_range_based_for_loop()
 {
     using namespace RangeBasedForLoop;
     test_01(); 

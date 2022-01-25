@@ -165,6 +165,10 @@ namespace UniformInitialization {
         MyDataStruct s{ 42, 1.2 };
         std::cout << "a: " << s.m_a << ", b: " << s.m_b << std::endl;
 
+        // or - using C++ designated initializers:
+        MyDataStruct s2{ .m_a = 43, .m_b = 1.3 };
+        std::cout << "a: " << s2.m_a << ", b: " << s2.m_b << std::endl;
+
         // initialization of public attributes of an arbitrary object
         MyDataClass obj1{ 111, 1.23 };
         MyDataClass obj2{ 123, 99.9 };

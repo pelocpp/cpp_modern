@@ -191,6 +191,7 @@
   * Ranges
   * Coroutines
   * `std::format`
+  * Spaceship Operator `<=>`
 
 ---
 
