@@ -85,7 +85,8 @@
   * Neuerungen ab C++&ndash;11/14/17
 
 
-## Type-Traits
+## Eigenschaften von Datentypen zur Übersetzungszeit betrachten
+  * &ldquo;Type Traits&rdquo;
   * `decltype` und `std::declval`
   * `Iterator::value_type` und `Iterator::iterator_category`
   * `std::remove_reference`
