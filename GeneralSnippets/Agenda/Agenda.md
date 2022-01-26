@@ -87,6 +87,8 @@
 
 ## Type-Traits
   * `decltype` und `std::declval`
+  * `Iterator::value_type` und `Iterator::iterator_category`
+  * `std::remove_reference`
 
 
 ## STL-Algorithmen
