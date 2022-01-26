@@ -6,45 +6,44 @@
 #include <vector>
 #include <list>
 #include <forward_list>
-// #include <iterator>
 
 namespace MyTypeTraitsDemo {
 
-    template <typename Iter>
-    using ValueType = typename Iter::value_type;
+    template <typename ITER>
+    using ValueType = typename ITER::value_type;
 
-    template <typename Iter>
-    ValueType<Iter> getMidst(Iter it, size_t size, std::forward_iterator_tag)
+    template <typename ITER>
+    ValueType<ITER> getMidst(ITER it, size_t size, std::forward_iterator_tag)
     {
         std::cout << "[Forward Iterator] ";
-        Iter pos = it;
+        ITER pos = it;
         for (unsigned i = 0u; i < size / 2; ++i)
             ++pos;
         return *pos;
     }
 
-    template <typename Iter>
-    ValueType<Iter> getMidst(Iter it, size_t size, std::bidirectional_iterator_tag)
+    template <typename ITER>
+    ValueType<ITER> getMidst(ITER it, size_t size, std::bidirectional_iterator_tag)
     {
         std::cout << "[Bidirectional Access] ";
-        Iter pos = it;
+        ITER pos = it;
         for (unsigned i = 0u; i < size / 2; ++i)
             ++pos;
         return *pos;
     }
 
-    template <typename Iter>
-    ValueType<Iter> getMidst(Iter it, size_t size, std::random_access_iterator_tag)
+    template <typename ITER>
+    ValueType<ITER> getMidst(ITER it, size_t size, std::random_access_iterator_tag)
     {
         std::cout << "[Random Access] ";
-        Iter pos = it + size / 2;
+        ITER pos = it + size / 2;
         return *pos;
     }
 
-    template <typename Iter>
-    ValueType<Iter> getMidst(Iter it, size_t size)
+    template <typename ITER>
+    ValueType<ITER> getMidst(ITER it, size_t size)
     {
-        typename std::iterator_traits<Iter>::iterator_category category{};
+        typename std::iterator_traits<ITER>::iterator_category category{};
         return getMidst(it, size, category);
     }
 }

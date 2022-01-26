@@ -4,7 +4,7 @@
 
 #include <iostream>
 
-// #define DEMONSTATE_WARNINGS_AND_ERRORS 1
+// #define DEMONSTRATE_WARNINGS_AND_ERRORS   1
 
 namespace StandardAttributes {
 
@@ -41,7 +41,7 @@ namespace StandardAttributes {
         char mg_brk = 'D';
     }
 
-#if defined (DEMONSTATE_WARNINGS_AND_ERRORS)
+#if defined (DEMONSTRATE_WARNINGS_AND_ERRORS)
 
     // for class/struct/union
     struct [[ deprecated ]] Struct {};

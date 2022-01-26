@@ -19,8 +19,8 @@ namespace BackInserter {
 
         // using std::back_inserter inside std::copy 
         std::copy(
-            vec1.begin(),
-            vec1.end(), 
+            std::begin(vec1),
+            std::end(vec1), 
             std::back_inserter(vec2)
         );
 
@@ -59,8 +59,8 @@ namespace BackInserter {
 
         // using std::back_inserter inside std::copy 
         std::copy(
-            vec1.begin(),
-            vec1.end(),
+            std::begin(vec1),
+            std::end(vec1),
             std::back_inserter(vec2)
         );
         // v2 now contains 1 2 3 

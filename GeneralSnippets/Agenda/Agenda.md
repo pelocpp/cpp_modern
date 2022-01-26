@@ -93,6 +93,7 @@
   * `std::generate`
   * `std::accumulate`
   * `std::transform`
+  * `std::back_inserter` (Iterator)
   * Das *Erase-Remove*-Idiom
 
 

@@ -183,7 +183,7 @@ namespace Exercises_Lambdas {
             // Variable: 1
 
             // When the lambda is called, the lambda captures a copy of @variable.
-            // When the lambda decrements @variable from 1 to 2 and 3, it decrements its own copy, not the original value.
+            // When the lambda increments @variable from 1 to 2 and 3, it increments its own copy, not the original value.
             // But: The original value of @variable is preserved across calls to the lambda!
 
             int variable{ 1 };

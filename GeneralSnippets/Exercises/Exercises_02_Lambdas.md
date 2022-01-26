@@ -49,7 +49,7 @@ bestimmt werden.
 
 ## Aufgabe 2: Taschenrechner mit Lambda-Funktionen
 
-#### Vorausetzungen: Container `std::map`, Klasse `std::pair`
+#### Vorausetzungen: Container `std::map`, Klasse `std::pair`, Klasse `std::function`
 
 Erstellen Sie ein `std::map`-Objekt vom Typ `std::map<char, std::function<double(double, double)>>`.
 Der zweite Parameter `std::function<double(double, double)>` ist so ausgelegt,
