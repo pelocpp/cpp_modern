@@ -79,8 +79,8 @@ namespace Exercises_Algorithms {
                 return n1;
             };
 
-            // using a 'state' variable in the scope
-            auto pLocal = std::pair<int, int>{ 0, 1 };
+            // using a 'state' variable in the scope / "closure"
+            auto pLocal = std::pair{ 0, 1 };
             auto fibo3 = [&] {
                 int n1 = pLocal.first;
                 int n2 = pLocal.second;
@@ -91,7 +91,7 @@ namespace Exercises_Algorithms {
             std::generate(
                 std::begin(numbers),
                 std::end(numbers),
-                fibo
+                fibo3
             );
 
             std::copy(
@@ -108,7 +108,7 @@ namespace Exercises_Algorithms {
 void test_exercises_algorithms()
 {
     using namespace Exercises_Algorithms;
-    Exercise_01::testExercise_01();
+    //Exercise_01::testExercise_01();
     Exercise_02::testExercise_02();
 }
 

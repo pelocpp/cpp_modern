@@ -154,6 +154,37 @@ namespace Literals_Color_CompileTime {
         return { r, g, b };
     }
 
+    constexpr size_t length(const char*);
+    constexpr size_t hexstoi(const char*);
+
+    // literal operator ("raw" version)
+    constexpr Color operator"" _rgb(const char* literal, size_t) {
+
+        // tiny implementation - just parsing hexadecimal format
+        size_t len{ length(literal) };
+        if (len == 2 /* 0x */ + 6 /* FF FF FF */) {
+
+            char ar[3] = {};
+            char ag[3] = {};
+            char ab[3] = {};
+
+            ar[0] = literal[2];
+            ar[1] = literal[3];
+            ag[0] = literal[4];
+            ag[1] = literal[5];
+            ab[0] = literal[6];
+            ab[1] = literal[7];
+
+            uint8_t r = static_cast<uint8_t>(hexstoi(ar));
+            uint8_t g = static_cast<uint8_t>(hexstoi(ag));
+            uint8_t b = static_cast<uint8_t>(hexstoi(ab));
+
+            return { r, g, b };
+        }
+
+        return {};
+    }
+
     // C++ 14 (recursive function)
     constexpr size_t length_(const char* str, size_t current_len = 0)
     {
@@ -162,6 +193,7 @@ namespace Literals_Color_CompileTime {
             : length_(str + 1, current_len + 1);
     }
 
+    // C++ 17
     constexpr size_t length(const char* str)
     {
         int len{};
@@ -214,34 +246,6 @@ namespace Literals_Color_CompileTime {
         return value;
     }
 
-    // literal operator ("raw" version)
-    constexpr Color operator"" _rgb(const char* literal, size_t) {
-
-        // tiny implementation - just parsing hexadecimal format
-        size_t len{ length(literal) };
-        if (len == 2 /* 0x */ + 6 /* FF FF FF */) {
-
-            char ar[3] = {};
-            char ag[3] = {};
-            char ab[3] = {};
-
-            ar[0] = literal[2];
-            ar[1] = literal[3];
-            ag[0] = literal[4];
-            ag[1] = literal[5];
-            ab[0] = literal[6];
-            ab[1] = literal[7];
-
-            uint8_t r = static_cast<uint8_t>(hexstoi(ar));
-            uint8_t g = static_cast<uint8_t>(hexstoi(ag));
-            uint8_t b = static_cast<uint8_t>(hexstoi(ab));
-
-            return { r, g, b };
-        }
-
-        return {};
-    }
-
     void test_03() {
         constexpr Color red = 0xFF0000_rgb;
         std::cout << red << std::endl;
@@ -275,7 +279,7 @@ void main_literals()
 
     using namespace Literals_Color_CompileTime;
     test_03();
-    test_03_with_errors();    // throws errors at compile time
+    test_03_with_errors();      // throws errors at compile time
 }
 
 // =====================================================================================
