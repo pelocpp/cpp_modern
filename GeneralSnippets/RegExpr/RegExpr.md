@@ -235,7 +235,7 @@ Da es sich bei den Teilausdrücken stets um *Non-Capturing Groups* handelt, werde
 von `std::regex_match` nicht in das Resultat-Objekt (`std::smatch`) aufgenommen.
 Damit wollen wir eine zweite Variante betrachten:
 
-*Variante* 1:
+*Variante* 2:
 
 <pre>
 <b>(\\d{4})/(0?[1-9]|1[0-2])/(0?[1-9]|[1-2][0-9]|3[0-1])</b>
