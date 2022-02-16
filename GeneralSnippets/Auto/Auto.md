@@ -17,6 +17,8 @@ Das Schlüsselwort `auto` besitzt mehrere, völlig unterschiedliche Einsatzmöglich
   * Generische Lambda Ausdrücke
   * Typableitung bei Template Parametern / *Template Parameter Type Deduction*
   * `decltype(auto)`
+  * *Perfect Forwarding* mit generischen Lambdas
+  * Möglichkeiten des Gebrauchs von `auto` im Vergleich
 
 *Hinweis*: Das Schlüsselwort `auto` fällt in der C++&ndash;Sprachbeschreibung in die Kategorie der 
 so genannten *Type Inference*. Hierzu zählen die beiden Schlüsselwörter `auto` und `decltype`.
@@ -441,7 +443,7 @@ Calling foo(): Hello World with RValueSignature: &&
 ```
 
 
-## Automatic Type Deduction im Vergleich für `auto`
+## Möglichkeiten des Gebrauchs von `auto` im Vergleich
 
 Wir wollen einen kurzen und prägnanten Vergleich in der Möglichkeit des Gebrauchs von `auto` geben:
 
