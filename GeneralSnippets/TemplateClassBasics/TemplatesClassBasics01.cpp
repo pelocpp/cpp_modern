@@ -15,10 +15,10 @@ namespace ClassTemplatesBasics {
         class Calculator
         {
         public:
-            T add(T x, T y) { return x + y; }
-            T sub(T x, T y) { return x - y; }
-            T mul(T x, T y) { return x * y; }
-            T div(T x, T y) { return x / y; }
+            static T add(T x, T y) { return x + y; }
+            static T sub(T x, T y) { return x - y; }
+            static T mul(T x, T y) { return x * y; }
+            static T div(T x, T y) { return x / y; }
         };
 
         // explicit specialization of template Calculator<T> for T = int
@@ -26,10 +26,10 @@ namespace ClassTemplatesBasics {
         class Calculator<int>
         {
         public:
-            int add(int x, int y) { return x + y; }
-            int sub(int x, int y) { return x - y; }
-            int mul(int x, int y) { return x * y; }
-            int div(int x, int y) { 
+            static int add(int x, int y) { return x + y; }
+            static int sub(int x, int y) { return x - y; }
+            static int mul(int x, int y) { return x * y; }
+            static int div(int x, int y) { 
                 return static_cast<int>(
                     static_cast<double>(x) / (y + 0.5)
                 );
