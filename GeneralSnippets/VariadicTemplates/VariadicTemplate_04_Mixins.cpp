@@ -176,7 +176,7 @@ namespace VariadicTemplatesMixins {
         //template <typename... Args>
         //void emplace(const Args&... args)
         //{
-        //    m_value = T{ args... }; // copy-operator (might use move semantics)
+        //    m_value = T{ args... }; // assigment (might use move semantics)
         //}
 
         // or
@@ -185,7 +185,7 @@ namespace VariadicTemplatesMixins {
         template <typename... Args>
         void emplace(Args&& ... args)
         {
-            m_value = T{ std::forward<Args>(args) ... }; // copy-operator (might use move semantics)
+            m_value = T{ std::forward<Args>(args) ... }; // assigment (might use move semantics)
         }
 
     private:
