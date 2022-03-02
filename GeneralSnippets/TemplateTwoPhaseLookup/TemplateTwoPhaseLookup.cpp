@@ -34,7 +34,7 @@ namespace Templates_TwoPhaseNameLookup
     template <typename T>
     class DerivedEx : public BaseEx<T> {
     public:
-        // using Base<T>::doSomething;
+        // using BaseEx<T>::doSomething;
         void callBase() {
             // doSomething();      // <=== remove comment: 
             this->doSomething();

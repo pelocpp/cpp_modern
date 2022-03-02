@@ -38,7 +38,7 @@ namespace SFINAE_Examples {
 
     template <typename T>
     void negate2(const T& t) {
-        typename T::value_type n = -t();
+        typename T::value_type n = -t;
     }
 
     //void test_03() {
