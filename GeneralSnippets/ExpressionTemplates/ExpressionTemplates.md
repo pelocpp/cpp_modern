@@ -72,17 +72,7 @@ Mit dieser Definition einer Klasse `Matrix` könnten wir nun eine Addition von M
 so formulieren:
 
 ```cpp
-Matrix a, b, c;
-
-// initialize a, b & c
-for (size_t y = 0; y != a.getRows(); ++y) {
-    for (size_t x = 0; x != a.getCols(); ++x) {
-        a(x, y) = 1.0;
-        b(x, y) = 2.0;
-        c(x, y) = 3.0;
-    }
-}  
-
+Matrix a{ 1.0 }, b{ 2.0 }, c{ 3.0 };
 Matrix result = a + b + c;  // result(x, y) = 6 
 ```
 
@@ -204,6 +194,14 @@ for (size_t y = 0; y != a.rows(); ++y) {
         result(x, y) = sumABC(x, y);
     }
 }
+```
+
+*Hinweis*:
+Betrachten Sie in dem letzten Ausschnitt den Ausdruck `sumABC(x, y)`: Wir können diesen
+gedanklich so umformulieren:
+
+```
+sumABC(x, y) = sumAB(a, b) + c(x, y) = a(x, y) + b(x, y) + c(x, y);
 ```
 
 Das letzte Puzzleteil besteht nun darin, die betrachtete Ausdrucksvorlage

@@ -31,7 +31,7 @@ namespace Exercises_SFINAE {
         }
 
         // primary template
-        template <typename T>
+        template <typename>
         struct TypeRestrictor {};
 
         // partial (explicit) template specialization
@@ -49,7 +49,7 @@ namespace Exercises_SFINAE {
         };
 
         template <typename T>
-        typename TypeRestrictor<T>::result
+        TypeRestrictor<T>::result
             distanceEx(T a1, T a2, T b1, T b2)
         {
             T tmp1 = a1 - b1;

@@ -39,6 +39,15 @@ namespace ExpressionTemplates {
             m_values.resize(cols*rows);
         }
 
+        Matrix(double fill) : Matrix(Cols, Rows)
+        {
+            std::fill(
+                std::begin(m_values),
+                std::end(m_values),
+                fill
+            );
+        }
+
         // getter
         size_t inline getCols() const { return m_cols; };
         size_t inline getRows() const { return m_rows; };
@@ -174,18 +183,7 @@ namespace ExpressionTemplates {
     {
         std::cout << "Expression Template 01: Classical Approach" << std::endl;
 
-        Matrix a{}, b{}, c{}, d{};
-
-        // initialize matrices
-        for (size_t y = 0; y != a.getRows(); ++y) {
-            for (size_t x = 0; x != a.getCols(); ++x) {
-                a(x, y) = 1.0;
-                b(x, y) = 2.0;
-                c(x, y) = 3.0;
-                d(x, y) = 4.0;
-            }
-        }
-
+        Matrix a{ 1.0 }, b{ 2.0 }, c{ 3.0 }, d{ 4.0 };
         Matrix result = a + b + c + d;  // result(x, y) = 10 
     }
 
@@ -193,18 +191,8 @@ namespace ExpressionTemplates {
     {
         std::cout << "Expression Template 02:" << std::endl;
 
-        Matrix a{}, b{}, c{}, d{};
+        Matrix a{ 1.0 }, b{ 2.0 }, c{ 3.0 }, d{ 4.0 };
         Matrix result{};
-
-        // initialize matrices
-        for (size_t y = 0; y != a.getRows(); ++y) {
-            for (size_t x = 0; x != a.getCols(); ++x) {
-                a(x, y) = 1.0;
-                b(x, y) = 2.0;
-                c(x, y) = 3.0;
-                d(x, y) = 4.0;
-            }
-        }
 
         // adding 2 matrices
         MatrixExpr<Matrix, Matrix> sumAB(a, b);
@@ -235,23 +223,13 @@ namespace ExpressionTemplates {
     {
         std::cout << "Expression Template 03: Expression Templates Approach" << std::endl;
 
-        Matrix a{}, b{}, c{}, d{};
+        Matrix a{ 1.0 }, b{ 2.0 }, c{ 3.0 }, d{ 4.0 };
         Matrix result{};
 
-        // initialize matrices
-        for (size_t y = 0; y != a.getRows(); ++y) {
-            for (size_t x = 0; x != a.getCols(); ++x) {
-                a(x, y) = 1.0;
-                b(x, y) = 2.0;
-                c(x, y) = 3.0;
-                d(x, y) = 4.0;
-            }
-        }
-
         // adding 4 matrices using modified operator=
-        //MatrixExpr<Matrix, Matrix> sumAB{ a, b };
-        //MatrixExpr<MatrixExpr<Matrix, Matrix>, Matrix> sumABC{ sumAB, c };
-        //MatrixExpr<MatrixExpr<MatrixExpr<Matrix, Matrix>, Matrix>, Matrix> sumABCD{ sumABC, d };
+        // MatrixExpr<Matrix, Matrix> sumAB{ a, b };
+        // MatrixExpr<MatrixExpr<Matrix, Matrix>, Matrix> sumABC{ sumAB, c };
+        // MatrixExpr<MatrixExpr<MatrixExpr<Matrix, Matrix>, Matrix>, Matrix> sumABCD{ sumABC, d };
 
         // or - using template argument type deduction:
         MatrixExpr sumAB{ a, b };
@@ -319,19 +297,8 @@ namespace ExpressionTemplates {
     {
         std::cout << "Expression Templates 04 (Benchmark):" << std::endl;
 
-        Matrix a{}, b{}, c{}, d{}, e{};
+        Matrix a{ 1.0 }, b{ 2.0 }, c{ 3.0 }, d{ 4.0 }, e{ 5.0 };
         Matrix result{};
-
-        // initialize matrices
-        for (size_t y = 0; y != a.getRows(); ++y) {
-            for (size_t x = 0; x != a.getCols(); ++x) {
-                a(x, y) = 1.0;
-                b(x, y) = 2.0;
-                c(x, y) = 3.0;
-                d(x, y) = 4.0;
-                e(x, y) = 5.0;
-            }
-        }
 
         std::cout << "Start:" << std::endl;
         test_04a_benchmark(Iterations, result, a, b, c, d, e);
