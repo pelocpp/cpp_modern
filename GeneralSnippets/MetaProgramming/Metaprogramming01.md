@@ -104,9 +104,9 @@ struct ScalarMultiplication {
 *Test*:
 
 ```cpp
-using TwoThirds = Frac< 2, 3 >;
-using Four_Sixths = ScalarMultiplication< 2, TwoThirds >::result;
-std::cout << Four_Sixths::Num << "/" << Four_Sixths::Den << std::endl;
+using TwoThirds = Frac<2, 3>;
+using FourThirds = ScalarMultiplication<2, TwoThirds>::result;
+std::cout << FourThirds::Num << "/" << FourThirds::Den << std::endl;
 ```
 
 *Ausgabe*:

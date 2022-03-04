@@ -49,9 +49,9 @@ namespace Metaprogramming {
     };
 
     void test_02() {
-        using TwoThirds = Frac< 2, 3 >;
-        using Four_Sixths = ScalarMultiplication< 2, TwoThirds >::result;
-        std::cout << Four_Sixths::Num << "/" << Four_Sixths::Den << std::endl;
+        using TwoThirds = Frac<2, 3>;
+        using FourThirds = ScalarMultiplication<2, TwoThirds>::result;
+        std::cout << FourThirds::Num << "/" << FourThirds::Den << std::endl;
     }
 
     template <int X, int Y>

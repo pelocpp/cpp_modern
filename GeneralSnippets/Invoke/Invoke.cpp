@@ -46,7 +46,7 @@ namespace StdInvoke {
         std::cout << "result: " << result << std::endl;
         // => 7
 
-        int(*fadd) (int const, int const) = &add;
+        int(*fadd) (int, int) = &add;
         result = std::invoke(fadd, 5, 6);
         std::cout << "result: " << result << std::endl;
         // => 11
@@ -58,6 +58,7 @@ namespace StdInvoke {
         // => 5
 
         // invoke (access) a (public) data member (!):
+        // C++20: useful for 'projections'
         result = std::invoke(&Incrementer::m_x, &inc);
         std::cout << "result: " << result << std::endl;
 
