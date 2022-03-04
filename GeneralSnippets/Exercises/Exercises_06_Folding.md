@@ -12,7 +12,7 @@
 
 Die Aufgabenstellung ist identisch zur ersten Aufgabe
 &ldquo;Logische Operationen mit beliebig vielen Operanden&rdquo;
-aus dem Abschnitt [Variadische Templates](#Exercises_05_VariadicTemplates.md):
+aus dem Abschnitt [Variadische Templates](Exercises_05_VariadicTemplates.md):
 Setzen Sie zur Lösung dieses Mal *Folding Expressions* ein.
 
 ## Aufgabe 2: Folding Expressions, `decltype` und Type-Traits am Beispiel von `sameType`
@@ -21,7 +21,7 @@ Setzen Sie zur Lösung dieses Mal *Folding Expressions* ein.
 
 Die Aufgabenstellung ist identisch zur zweiten Aufgabe
 &ldquo;Logische Operationen mit beliebig vielen Operanden&rdquo;
-aus dem Abschnitt [Variadische Templates](#Exercises_05_VariadicTemplates.md)(ohne Zusatzaufgabe):
+aus dem Abschnitt [Variadische Templates](Exercises_05_VariadicTemplates.md)(ohne Zusatzaufgabe):
 Setzen Sie zur Lösung dieses Mal *Folding Expressions* ein.
 
 *Zusatzfrage*:
