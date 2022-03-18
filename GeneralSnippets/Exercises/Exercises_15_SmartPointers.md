@@ -28,7 +28,7 @@ Welchen Wert hat der Referenzzähler des Objekts `pC` in der letzten Zeile?
 10: pB = nullptr;
 ```
 
-## Aufgabe 2: Noch ein Quiz zu Smart Pointers
+## Aufgabe 2: Noch ein Quiz zu Smart Pointer
 
 #### Vorausetzungen: `std::shared_ptr<>`
 
