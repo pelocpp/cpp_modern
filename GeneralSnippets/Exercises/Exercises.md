@@ -108,7 +108,7 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 | [Aufgabe 1](./Exercises_05_VariadicTemplates.md#aufgabe-1-logische-operationen-mit-beliebig-vielen-operanden) | Logische Operationen mit beliebig vielen Operanden |
 | [Aufgabe 2](./Exercises_05_VariadicTemplates.md#aufgabe-2-decltype-und-type-traits-am-beispiel-von-sametype) | `decltype` und Type-Traits am Beispiel von `sameType`<br/>(Vorausetzungen: `std::is_same`) |
 | [Aufgabe 3](./Exercises_05_VariadicTemplates.md#aufgabe-3-generische-funktion-miminum) | Generische Funktion `miminum`<br/>(Vorausetzungen: Utility-Funktion `std::common_type`) |
-| [Aufgabe 4](./Exercises_05_VariadicTemplates.md#aufgabe-4-ausgabe-eines-tuple-objekts) | Ausgabe eines `tuple` Objekts<br/>(Vorausetzungen: `std::tuple`, Non-Type Template Parameter) |
+| [Aufgabe 4](./Exercises_05_VariadicTemplates.md#aufgabe-4-ausgabe-eines-stdtuple-objekts) | Ausgabe eines `tuple` Objekts<br/>(Vorausetzungen: `std::tuple`, Non-Type Template Parameter) |
 | [Aufgabe 5](./Exercises_05_VariadicTemplates.md#aufgabe-5-viele-wege-führen-zum-gleichen-ergebnis-summenbildung-natürlicher-zahlen) | Viele Wege führen zum gleichen Ergebnis: Summenbildung natürlicher Zahlen |
 | [Aufgabe 6](./Exercises_05_VariadicTemplates.md#aufgabe-6-variadische-templates-und-vererbung) | Variadische Templates und Vererbung |
 | [Aufgabe 7](./Exercises_05_VariadicTemplates.md#aufgabe-7-berechnung-der-gesamtlänge-beliebig-vieler-zeichenketten) | Berechnung der Gesamtlänge beliebig vieler Zeichenketten<br/>(Vorausetzungen: `std::initializer_list`) |

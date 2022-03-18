@@ -34,7 +34,7 @@ true
 
 ---
 
-## Aufgabe 2: Variadische Templates, `decltype` und Type-Traits am Beispiel von `sameType`
+## Aufgabe 2: `decltype` und Type-Traits am Beispiel von `sameType`
 
 #### Vorausetzungen: `std::is_same`
 
@@ -95,7 +95,7 @@ die Funktion `std::common_type` definiert ist.
 
 ---
 
-## Aufgabe 4: Ausgabe eines `tuple` Objekts
+## Aufgabe 4: Ausgabe eines `std::tuple` Objekts
 
 #### Vorausetzungen: `std::tuple<T>`, Non-Type Template Parameter
 
