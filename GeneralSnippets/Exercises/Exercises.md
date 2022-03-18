@@ -122,9 +122,9 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 | Aufgabe | Beschreibung |
 | :- | :- |
 | [Aufgabe 1](./Exercises_06_Folding.md#aufgabe-1-logische-operationen-mit-beliebig-vielen-operanden) | Logische Operationen mit beliebig vielen Operanden |
-| [Aufgabe 2](./Exercises_06_Folding.md#aufgabe-2-folding-expressions,-decltype-und-Type-Traits-am-Beispiel-von-sameType) | `decltype` und Type-Traits am Beispiel von `sameType`<br/>(Vorausetzungen: `std::is_same`) |
+| [Aufgabe 2](./Exercises_06_Folding.md#aufgabe-2-folding-expressions-decltype-und-type-traits-am-beispiel-von-sameType) | `decltype` und Type-Traits am Beispiel von `sameType`<br/>(Vorausetzungen: `std::is_same`) |
 | [Aufgabe 3](./Exercises_06_Folding.md#aufgabe-3-folding-over-a-comma-am-beispiel-zweier-funktionen-minimum-und-maximum) | &ldquo;Folding over a Comma&rdquo; am Beispiel zweier Funktionen `minimum` und `maximum`<br/>(Voraussetzungen: Lambda Funktionen) |
-| [Aufgabe 4](./Exercises_06_Folding.md#aufgabe-4-beliebig-viele-Werte-zu-einem-std::vector-objekt-hinzufügen) | Beliebig viele Werte zu einem `std::vector`-Objekt hinzufügen |
+| [Aufgabe 4](./Exercises_06_Folding.md#aufgabe-4-beliebig-viele-Werte-zu-einem-std-vector-objekt-hinzufügen) | Beliebig viele Werte zu einem `std::vector`-Objekt hinzufügen |
 | [Aufgabe 5](./Exercises_06_Folding.md#aufgabe-5-störende-trennzeichen-am-ende-eines-folding-ausdrucks) | Störende Trennzeichen am Ende eines Folding-Ausdrucks |
 
 *Tabelle* 6: Aufgaben zu Folding.
