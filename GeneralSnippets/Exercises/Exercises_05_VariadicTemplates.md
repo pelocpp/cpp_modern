@@ -95,7 +95,7 @@ die Funktion `std::common_type` definiert ist.
 
 ---
 
-## Aufgabe 4: Ausgabe eines `std::tuple` Objekts
+## Aufgabe 4: Ausgabe eines `tuple` Objekts
 
 #### Vorausetzungen: `std::tuple<T>`, Non-Type Template Parameter
 
