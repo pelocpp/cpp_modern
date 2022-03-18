@@ -8,9 +8,9 @@
 
 ---
 
-## Aufgabe 1: Die Funktion `std::accumulate` in der Anwendung (Initialisierungliste)
+## Aufgabe 1: Der Algorithmus `accumulate` in der Anwendung
 
-#### Voraussetzungen: `std::accumulate`, `std::initializer_list`
+#### Voraussetzungen: `std::accumulate`, `std::initializer_list` (Initialisierungliste)
 
 Schreiben Sie zwei Funktionen `andAll` und `orAll`, die eine variable Anzahl von `bool`-Parametern
 logisch UND oder logisch ODER verknüpfen. Mögliche Testbeispiele können so aussehen:
