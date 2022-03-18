@@ -8,9 +8,9 @@
 
 ---
 
-## Aufgabe 1: Einheitliche Initialisierung (*Uniform Initialization*) und Initialisierungliste (`std::initializer_list<>`)
+## Aufgabe 1: Einheitliche Initialisierung (*Uniform Initialization*) und Initialisierungliste
 
-#### Vorausetzungen: Templates, `std::vector<>`
+#### Vorausetzungen: Templates, `std::vector<>`, `std::initializer_list<>`
 
 Erstellen Sie eine leeres Visual C++ Projekt,
 fügen Sie nachstehenden Quellcode dort ein und bringen Sie das Programm zum Laufen:

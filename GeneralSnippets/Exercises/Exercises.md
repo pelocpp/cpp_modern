@@ -49,8 +49,8 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 
 | Aufgabe | Beschreibung |
 | :- | :- |
-| [Aufgabe 1](Exercises_01_MoveSemantics.md) | Verschiebe-Semantik am Beispiel einer benutzerdefinierten Klasse |
-| [Aufgabe 2](Exercises_01_MoveSemantics.md) | Verschiebe-Semantik am Beispiel einer Klasse `HugeArray` betrachtet |
+| [Aufgabe 1](./Exercises_01_MoveSemantics.md#aufgabe-1-verschiebe-semantik-am-beispiel-einer-benutzerdefinierten-klasse) | Verschiebe-Semantik am Beispiel einer benutzerdefinierten Klasse |
+| [Aufgabe 2](./Exercises_01_MoveSemantics.md#aufgabe-2-verschiebe-semantik-am-beispiel-einer-klasse-hugearray) | Verschiebe-Semantik am Beispiel einer Klasse `HugeArray` betrachtet |
 
 *Tabelle* 1: Aufgaben zur Move-Semantik.
 
@@ -60,9 +60,9 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 
 | Aufgabe | Beschreibung |
 | :- | :- |
-| [Aufgabe 1](Exercises_02_Lambdas.md) | Einfache Realisierung einer Lambda-Funktion<br/>(Vorausetzungen: Algorithmus `std::for_each`, bei Bedarf auch `std::generate`) |
-| [Aufgabe 2](Exercises_02_Lambdas.md) | Taschenrechner mit Lambda-Funktionen<br/>(Vorausetzungen: Container `std::map`, Klasse `std::pair`) | 
-| [Aufgabe 3](Exercises_02_Lambdas.md) | Quiz mit Lambda-Funktionen |
+| [Aufgabe 1](./Exercises_02_Lambdas.md#aufgabe-1-einfache-realisierung-einer-lambda-funktion) | Einfache Realisierung einer Lambda-Funktion<br/>(Vorausetzungen: Algorithmus `std::for_each`, bei Bedarf auch `std::generate`) |
+| [Aufgabe 2](./Exercises_02_Lambdas.md#aufgabe-2-taschenrechner-mit-lambda-funktionen) | Taschenrechner mit Lambda-Funktionen<br/>(Vorausetzungen: Container `std::map`, Klasse `std::pair`) | 
+| [Aufgabe 3](./Exercises_02_Lambdas.md#aufgabe-3-quiz-mit-lambda-funktionen) | Quiz mit Lambda-Funktionen |
 
 *Tabelle* 2: Aufgaben zu Lambda-Funktionen.
 
@@ -72,7 +72,7 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 
 | Aufgabe | Beschreibung |
 | :- | :- |
-| [Aufgabe 1](Exercises_11_Initialization.md) | Einheitliche Initialisierung (*Uniform Initialization*) und Initialisierungliste<br/>(Vorausetzungen: Templates, `std::vector<>`, `std::initializer_list<>`) |
+| [Aufgabe 1](./Exercises_11_Initialization.md#aufgabe-1-einheitliche-initialisierung-(uniform-initialization)-und-initialisierungliste) | Einheitliche Initialisierung (*Uniform Initialization*) und Initialisierungliste<br/>(Vorausetzungen: Templates, `std::vector<>`, `std::initializer_list<>`) |
 
 *Tabelle* 3: Aufgaben zur Initialisierung.
 
