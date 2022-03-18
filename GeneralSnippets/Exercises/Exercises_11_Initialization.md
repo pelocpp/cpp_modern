@@ -8,7 +8,7 @@
 
 ---
 
-## Aufgabe 1: Einheitliche Initialisierung (*Uniform Initialization*) und Initialisierungliste
+## Aufgabe 1: *Uniform Initialization* und Initialisierungliste
 
 #### Vorausetzungen: Templates, `std::vector<>`, `std::initializer_list<>`
 

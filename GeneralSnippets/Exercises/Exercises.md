@@ -50,7 +50,7 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 | Aufgabe | Beschreibung |
 | :- | :- |
 | [Aufgabe 1](./Exercises_01_MoveSemantics.md#aufgabe-1-verschiebe-semantik-am-beispiel-einer-benutzerdefinierten-klasse) | Verschiebe-Semantik am Beispiel einer benutzerdefinierten Klasse |
-| [Aufgabe 2](./Exercises_01_MoveSemantics.md#aufgabe-2-verschiebe-semantik-am-beispiel-einer-klasse-hugearray) | Verschiebe-Semantik am Beispiel einer Klasse `HugeArray` betrachtet |
+| [Aufgabe 2](./Exercises_01_MoveSemantics.md#aufgabe-2-verschiebe-semantik-am-beispiel-einer-klasse-hugearray-betrachtet) | Verschiebe-Semantik am Beispiel einer Klasse `HugeArray` betrachtet |
 
 *Tabelle* 1: Aufgaben zur Move-Semantik.
 
@@ -72,7 +72,7 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 
 | Aufgabe | Beschreibung |
 | :- | :- |
-| [Aufgabe 1](./Exercises_11_Initialization.md#aufgabe-1-einheitliche-initialisierung-(uniform-initialization)-und-initialisierungliste) | Einheitliche Initialisierung (*Uniform Initialization*) und Initialisierungliste<br/>(Vorausetzungen: Templates, `std::vector<>`, `std::initializer_list<>`) |
+| [Aufgabe 1](./Exercises_11_Initialization.md#aufgabe-1-uniform-initialization-und-initialisierungliste) | *Uniform Initialization* und Initialisierungliste<br/>(Vorausetzungen: Templates, `std::vector<>`, `std::initializer_list<>`) |
 
 *Tabelle* 3: Aufgaben zur Initialisierung.
 
