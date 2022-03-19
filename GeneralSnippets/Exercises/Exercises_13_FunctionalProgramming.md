@@ -50,9 +50,7 @@ Schreiben Sie eine Testfunktion, die ihre Realisierung testet.
 
 ---
 
-## Aufgabe 2
-
-#### `decltype`, `declval` und nachlaufender Rückgabetyp in der Praxis
+## Aufgabe 2: `decltype`, `declval` und nachlaufender Rückgabetyp in der Praxis
 
 #### Vorausetzungen: Kenntnisse von `decltype` und `declval`
 

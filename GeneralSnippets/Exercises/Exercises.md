@@ -184,7 +184,7 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 
 ---
 
-###-Aufgaben zur funktionalen Programmierung
+### Aufgaben zur funktionalen Programmierung
 
 | Aufgabe | Beschreibung |
 | :- | :- |
