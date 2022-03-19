@@ -184,14 +184,11 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 
 ---
 
-
-
-
 ###-Aufgaben zur funktionalen Programmierung
 
 | Aufgabe | Beschreibung |
 | :- | :- |
-| [Aufgabe 1](./Exercises_13_FunctionalProgramming.md#aufgabe-1-umwandlung-von-zeichenketten-eines-stdvector-objekts) | Umwandlung von Zeichenketten eines `std::vector`-Objekts von Klein- in Großbuchstaben<br/>(Vorausetzungen: Templates, Lambda-Funktionen) |
+| [Aufgabe 1](./Exercises_13_FunctionalProgramming.md#aufgabe-1-umwandlung-von-zeichenketten-eines-stdvector-objekts) | Umwandlung von Zeichenketten eines `std::vector`-Objekts<br/>(Vorausetzungen: Templates, Lambda-Funktionen) |
 | [Aufgabe 2](./Exercises_13_FunctionalProgramming.md#aufgabe-2-decltype-declval-und-nachlaufender-rückgabetyp-in-der-praxis) | `decltype`, `declval` und nachlaufender Rückgabetyp in der Praxis<br/>(Vorausetzungen: Kenntnisse von `decltype` und `declval`) |
 
 *Tabelle* 12: Aufgaben zum funktionaler Programmierung.
