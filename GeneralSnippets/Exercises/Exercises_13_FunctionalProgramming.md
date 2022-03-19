@@ -8,7 +8,7 @@
 
 ---
 
-## Aufgabe 1: Umwandlung von Zeichenketten eines `std::vector`-Objekts von Klein- in Großbuchstaben
+## Aufgabe 1: Umwandlung von Zeichenketten eines `std::vector`-Objekts
 
 #### Vorausetzungen: Templates, Lambda-Funktionen
 
@@ -52,7 +52,7 @@ Schreiben Sie eine Testfunktion, die ihre Realisierung testet.
 
 ## Aufgabe 2
 
-#### Inhalt: `decltype`, `declval` und nachlaufender Rückgabetyp in der Praxis
+#### `decltype`, `declval` und nachlaufender Rückgabetyp in der Praxis
 
 #### Vorausetzungen: Kenntnisse von `decltype` und `declval`
 
