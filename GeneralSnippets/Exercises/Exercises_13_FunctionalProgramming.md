@@ -52,7 +52,7 @@ Schreiben Sie eine Testfunktion, die ihre Realisierung testet.
 
 ## Aufgabe 2
 
-#### Inhalt: Funktionale Programmierung &ndash; `decltype`, `declval` und nachlaufender Rückgabetyp in der Praxis
+#### Inhalt: `decltype`, `declval` und nachlaufender Rückgabetyp in der Praxis
 
 #### Vorausetzungen: Kenntnisse von `decltype` und `declval`
 
