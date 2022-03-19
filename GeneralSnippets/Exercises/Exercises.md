@@ -94,7 +94,7 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 
 | Aufgabe | Beschreibung |
 | :- | :- |
-| [Aufgabe 1](./Exercises_03_Algorithms.md#aufgabe-1-der-algorithmus-accumulate-in-der-anwendung) | Der Algorithmus `accumulate` in der Anwendung<br/>(Voraussetzungen: `std::accumulate`, `std::initializer_list`) |
+| [Aufgabe 1](./Exercises_03_Algorithms.md#aufgabe-1-der-algorithmus-stdaccumulate-in-der-anwendung) | Der Algorithmus `std::accumulate` in der Anwendung<br/>(Voraussetzungen: `std::accumulate`, `std::initializer_list`) |
 | [Aufgabe 2](./Exercises_03_Algorithms.md#aufgabe-2-fibonacci-zahlen) | *Fibonacci*-Zahlen<br/>(Voraussetzungen: Algorithmen `std::generate`, `std::for_each`, Lambda-Funktionen, Structured Binding) |
 
 *Tabelle* 4: Aufgaben zu STL-Algorithmen.
@@ -108,7 +108,7 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 | [Aufgabe 1](./Exercises_05_VariadicTemplates.md#aufgabe-1-logische-operationen-mit-beliebig-vielen-operanden) | Logische Operationen mit beliebig vielen Operanden |
 | [Aufgabe 2](./Exercises_05_VariadicTemplates.md#aufgabe-2-decltype-und-type-traits-am-beispiel-von-sametype) | `decltype` und Type-Traits am Beispiel von `sameType`<br/>(Vorausetzungen: `std::is_same`) |
 | [Aufgabe 3](./Exercises_05_VariadicTemplates.md#aufgabe-3-generische-funktion-miminum) | Generische Funktion `miminum`<br/>(Vorausetzungen: Utility-Funktion `std::common_type`) |
-| [Aufgabe 4](./Exercises_05_VariadicTemplates.md#aufgabe-4-ausgabe-eines-stdtuple-objekts) | Ausgabe eines `tuple` Objekts<br/>(Vorausetzungen: `std::tuple`, Non-Type Template Parameter) |
+| [Aufgabe 4](./Exercises_05_VariadicTemplates.md#aufgabe-4-ausgabe-eines-stdtuple-objekts) | Ausgabe eines `std::tuple` Objekts<br/>(Vorausetzungen: `std::tuple`, Non-Type Template Parameter) |
 | [Aufgabe 5](./Exercises_05_VariadicTemplates.md#aufgabe-5-viele-wege-führen-zum-gleichen-ergebnis-summenbildung-natürlicher-zahlen) | Viele Wege führen zum gleichen Ergebnis: Summenbildung natürlicher Zahlen |
 | [Aufgabe 6](./Exercises_05_VariadicTemplates.md#aufgabe-6-variadische-templates-und-vererbung) | Variadische Templates und Vererbung |
 | [Aufgabe 7](./Exercises_05_VariadicTemplates.md#aufgabe-7-berechnung-der-gesamtlänge-beliebig-vieler-zeichenketten) | Berechnung der Gesamtlänge beliebig vieler Zeichenketten<br/>(Vorausetzungen: `std::initializer_list`) |
@@ -124,7 +124,7 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 | [Aufgabe 1](./Exercises_06_Folding.md#aufgabe-1-logische-operationen-mit-beliebig-vielen-operanden) | Logische Operationen mit beliebig vielen Operanden |
 | [Aufgabe 2](./Exercises_06_Folding.md#aufgabe-2-folding-expressions-decltype-und-type-traits-am-beispiel-von-sameType) | `decltype` und Type-Traits am Beispiel von `sameType`<br/>(Vorausetzungen: `std::is_same`) |
 | [Aufgabe 3](./Exercises_06_Folding.md#aufgabe-3-folding-over-a-comma-am-beispiel-zweier-funktionen-minimum-und-maximum) | &ldquo;Folding over a Comma&rdquo; am Beispiel zweier Funktionen `minimum` und `maximum`<br/>(Voraussetzungen: Lambda Funktionen) |
-| [Aufgabe 4](./Exercises_06_Folding.md#aufgabe-4-beliebig-viele-Werte-zu-einem-std-vector-objekt-hinzufügen) | Beliebig viele Werte zu einem `std::vector`-Objekt hinzufügen |
+| [Aufgabe 4](./Exercises_06_Folding.md#aufgabe-4-beliebig-viele-Werte-zu-einem-stdvector-objekt-hinzufügen) | Beliebig viele Werte zu einem `std::vector`-Objekt hinzufügen |
 | [Aufgabe 5](./Exercises_06_Folding.md#aufgabe-5-störende-trennzeichen-am-ende-eines-folding-ausdrucks) | Störende Trennzeichen am Ende eines Folding-Ausdrucks |
 
 *Tabelle* 6: Aufgaben zu Folding.
@@ -135,7 +135,7 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 
 | Aufgabe | Beschreibung |
 | :- | :- |
-| [Aufgabe 1](Exercises_14_ConstExpr.md) | Auswertung von variadische Templates, `decltype` und Type-Traits am Beispiel von `sameType` zur Übersetzungszeit<br/>(Voraussetzungen: `decltype`, `std::is_same`) |
+| [Aufgabe 1](./Exercises_14_ConstExpr.md#aufgabe-1-auswertung-von-variadische-templates-decltype-und-type-traits-am-beispiel-von-sametype-zur-übersetzungszeit) | Auswertung von variadische Templates, `decltype` und Type-Traits am Beispiel von `sameType` zur Übersetzungszeit<br/>(Voraussetzungen: `decltype`, `std::is_same`) |
 
 *Tabelle* 7: Aufgaben zu `constexpr`.
 
@@ -145,8 +145,8 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 
 | Aufgabe | Beschreibung |
 | :- | :- |
-| [Aufgabe 1](Exercises_04_UtilityClasses.md) | `std::optional`: Umwandlung von Zeichenketten in ganze Zahlen<br/>(Vorausetzungen: Templates Grundlagen, `std::optional`, `if constexpr`) |
-| [Aufgabe 2](Exercises_04_UtilityClasses.md) | `std::variant`: Ein heterogener Container<br/>(Vorausetzungen: `std::variant`, `std::visit`, `std::vector`) |
+| [Aufgabe 1](./Exercises_04_UtilityClasses.md#aufgabe-1-stdoptional-umwandlung-von-zeichenketten-in-ganze-zahlen) | `std::optional`: Umwandlung von Zeichenketten in ganze Zahlen<br/>(Vorausetzungen: Templates Grundlagen, `std::optional`, `if constexpr`) |
+| [Aufgabe 2](./Exercises_04_UtilityClasses.md#aufgabe-2-stdvariant-ein-heterogener-container) | `std::variant`: Ein heterogener Container<br/>(Vorausetzungen: `std::variant`, `std::visit`, `std::vector`) |
 
 *Tabelle* 8: Aufgaben zu Utility Klassen.
 
@@ -156,8 +156,8 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 
 | Aufgabe | Beschreibung |
 | :- | :- |
-| [Aufgabe 1](Exercises_07_Metaprogramming.md) | Konvertierung binärer Zahlen in Dezimalzahlen |
-| [Aufgabe 2](Exercises_07_Metaprogramming.md) | *Fibonacci*-Zahlen |
+| [Aufgabe 1](./Exercises_07_Metaprogramming.md#aufgabe-1-konvertierung-binärer-zahlen-in-dezimalzahlen) | Konvertierung binärer Zahlen in Dezimalzahlen |
+| [Aufgabe 2](./Exercises_07_Metaprogramming.md#aufgabe-2-fibonacci-zahlen) | *Fibonacci*-Zahlen |
 
 *Tabelle* 9: Aufgaben zur Metaprogrammierung.
 
@@ -167,7 +167,7 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 
 | Aufgabe | Beschreibung |
 | :- | :- |
-| [Aufgabe 1](Exercises_08_ExpressionTemplates.md) | Das Skalarprodukt zweier Vektoren |
+| [Aufgabe 1](./Exercises_08_ExpressionTemplates.md#aufgabe-1-das-skalarprodukt-zweier-vektoren) | Das Skalarprodukt zweier Vektoren |
 
 *Tabelle* 10: Aufgaben zu Expression Templates.
 
@@ -177,8 +177,8 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 
 | Aufgabe | Beschreibung |
 | :- | :- |
-| [Aufgabe 1](Exercises_12_PerfectForwarding.md) | Einfaches Beispiel zu variadischen Templates und *Perfect Forwarding* |
-| [Aufgabe 2](Exercises_12_PerfectForwarding.md) | Ausführungszeit einer Funktion<br/>(Voraussetzungen: `std::invoke`, variadische Templates und *Perfect Forwarding*) |
+| [Aufgabe 1](./Exercises_12_PerfectForwarding.md#aufgabe-1-einfaches-beispiel-zu-variadischen-templates-und-perfect-forwarding) | Einfaches Beispiel zu variadischen Templates und *Perfect Forwarding* |
+| [Aufgabe 2](./Exercises_12_PerfectForwarding.md#aufgabe-2-ausführungszeit-einer-Funktion) | Ausführungszeit einer Funktion<br/>(Voraussetzungen: `std::invoke`, variadische Templates und *Perfect Forwarding*) |
 
 *Tabelle* 11: Aufgaben zum *Perfect Forwarding*.
 
@@ -188,8 +188,8 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 
 | Aufgabe | Beschreibung |
 | :- | :- |
-| [Aufgabe 1](Exercises_13_FunctionalProgramming.md) | Umwandlung von Zeichenketten eines `std::vector`-Objekts von Klein- in Großbuchstaben<br/>(Vorausetzungen: Templates, Lambda-Funktionen) |
-| [Aufgabe 2](Exercises_13_FunctionalProgramming.md) | `decltype`, `declval` und nachlaufender Rückgabetyp in der Praxis<br/>(Vorausetzungen: Kenntnisse von `decltype` und `declval`) |
+| [Aufgabe 1](./Exercises_13_FunctionalProgramming.md#aufgabe-1-umwandlung-von-zeichenketten-eines-stdvector-objekts-von-klein-in-großbuchstaben) | Umwandlung von Zeichenketten eines `std::vector`-Objekts von Klein- in Großbuchstaben<br/>(Vorausetzungen: Templates, Lambda-Funktionen) |
+| [Aufgabe 2](./Exercises_13_FunctionalProgramming.md#aufgabe-2-decltype-declval-und-nachlaufender-rückgabetyp-in-der-praxis) | `decltype`, `declval` und nachlaufender Rückgabetyp in der Praxis<br/>(Vorausetzungen: Kenntnisse von `decltype` und `declval`) |
 
 *Tabelle* 12: Aufgaben zum funktionaler Programmierung.
 
@@ -199,10 +199,10 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 
 | Aufgabe | Beschreibung |
 | :- | :- |
-| [Aufgabe 1](Exercises_09_SFINAE.md) | Eine Funktion mit bestimmten Parametertypen |
-| [Aufgabe 2](Exercises_09_SFINAE.md) | Eine Methode, unterschiedliche Implementierungen<br/>(Vorausetzungen: Templates, `decltype` und `std::declval`) |
-| [Aufgabe 3](Exercises_09_SFINAE.md) | Detektion von Methoden in einer Klasse<br/>(Vorausetzungen: Templates, `decltype` und `std::declval`) |
-| [Aufgabe 4](Exercises_09_SFINAE.md) | Eine Methode, unterschiedliche Implementierungen zum Zweiten<br/>(Vorausetzungen: `std::array`) |
+| [Aufgabe 1](./Exercises_09_SFINAE.md#aufgabe-1-eine-funktion-mit-bestimmten-parametertypen) | Eine Funktion mit bestimmten Parametertypen |
+| [Aufgabe 2](./Exercises_09_SFINAE.md#aufgabe-2-eine-methode-unterschiedliche-implementierungen) | Eine Methode, unterschiedliche Implementierungen<br/>(Vorausetzungen: Templates, `decltype` und `std::declval`) |
+| [Aufgabe 3](./Exercises_09_SFINAE.md#aufgabe-3-detektion-von-methoden-in-einer-klasse) | Detektion von Methoden in einer Klasse<br/>(Vorausetzungen: Templates, `decltype` und `std::declval`) |
+| [Aufgabe 4](./Exercises_09_SFINAE.md#aufgabe-4-eine-methode-unterschiedliche-implementierungen-zum-zweiten) | Eine Methode, unterschiedliche Implementierungen zum Zweiten<br/>(Vorausetzungen: `std::array`) |
 
 *Tabelle* 13: Aufgaben zu SFINAE.
 
@@ -212,7 +212,7 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 
 | Aufgabe | Beschreibung |
 | :- | :- |
-| [Aufgabe 1](Exercises_10_CRTP.md) | Der *kuriose* Polymorphismus (CRTP) an einem Beispiel betrachtet<br/>(Voraussetzungen: Polymorphismus, Templates)  |
+| [Aufgabe 1](./Exercises_10_CRTP.md#aufgabe-1-der-kuriose-polymorphismus-crtp-an-einem-beispiel-betrachtet) | Der *kuriose* Polymorphismus (CRTP) an einem Beispiel betrachtet<br/>(Voraussetzungen: Polymorphismus, Templates)  |
 
 *Tabelle* 14: Aufgaben zu CRTP.
 

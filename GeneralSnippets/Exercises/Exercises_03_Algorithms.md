@@ -8,7 +8,7 @@
 
 ---
 
-## Aufgabe 1: Der Algorithmus `accumulate` in der Anwendung
+## Aufgabe 1: Der Algorithmus `std::accumulate` in der Anwendung
 
 #### Voraussetzungen: `std::accumulate`, `std::initializer_list` (Initialisierungliste)
 
