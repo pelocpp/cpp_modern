@@ -14,14 +14,14 @@ namespace Exercises_Lambdas {
 
     namespace Exercise_01 {
 
-        inline void even(const int val) {
+        void even(int val) {
             if (!(val % 2)) {
                 std::cout << val << std::endl;
             }
         }
 
         struct Even {
-            void operator()(const int val) {
+            void operator()(int val) {
                 if (!(val % 2)) {
                     std::cout << val << std::endl;
                 }
@@ -52,7 +52,11 @@ namespace Exercises_Lambdas {
             );
 
             // functor
-            std::for_each(std::begin(values), std::end(values), Even{});
+            std::for_each(
+                std::begin(values),
+                std::end(values),
+                Even{}
+            );
         }
 
         void testExercise_01b() {

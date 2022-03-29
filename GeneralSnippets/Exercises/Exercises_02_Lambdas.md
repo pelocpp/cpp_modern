@@ -21,7 +21,7 @@ die die Funktionalität von Funktion `even` als *Funktor* repräsentiert (so gen
 das den `()`-Operator implementiert):
 
 ```cpp
-inline void even(const int val) {
+void even(int val) {
     if (!(val % 2)) {
         std::cout << val << std::endl;
     }

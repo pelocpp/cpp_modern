@@ -78,8 +78,8 @@ namespace WeakPointer {
 
     class ParentNode {
     private:
-        std::shared_ptr<const RightNode> m_rightNode;   // <== shared or weak ?
-        std::shared_ptr<const LeftNode> m_leftNode;     // <== shared or weak ?
+        std::shared_ptr<RightNode> m_rightNode;   // <== shared or weak ?
+        std::shared_ptr<LeftNode> m_leftNode;     // <== shared or weak ?
 
     public:
         ParentNode() {
@@ -98,7 +98,8 @@ namespace WeakPointer {
 
     class RightNode {
     private:
-        std::shared_ptr<const ParentNode> m_parentNode;
+        std::shared_ptr<ParentNode> m_parentNode;
+
     public:
         RightNode(std::shared_ptr<ParentNode> parent)
             : m_parentNode{ parent } {
@@ -112,7 +113,8 @@ namespace WeakPointer {
 
     class LeftNode {
     private:
-        std::shared_ptr<const ParentNode> m_parentNode;
+        std::shared_ptr<ParentNode> m_parentNode;
+
     public:
         LeftNode(std::shared_ptr<ParentNode> parent)
             : m_parentNode{ parent } {
