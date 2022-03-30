@@ -50,7 +50,7 @@ Dies kann man im Debugger beobachten, die Freigabezeitpunkte der Speicherbereich
 
 *Abbildung* 2: Der Control-Block enthält nicht das eigentlich dynamisch angelegte Objekt. 
 
-In *Abbildung* 1 erkennt man, dass trotz eigentlich erfolgter Freigabe des dynamisch angelegte Objekts
+In *Abbildung* 1 erkennt man, dass trotz eigentlich erfolgter Freigabe des dynamisch angelegten Objekts
 dieses noch vom Debugger angezeigt wird. Die tatsächliche Freigabe erfolgt zu einem späteren Zeitpunkt.
 
 ## Zyklische Referenzen
