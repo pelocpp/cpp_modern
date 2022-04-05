@@ -77,7 +77,8 @@ einen Anspruch auf Eigentum erheben.
 Natürlich könnten wir einen klassischen &ldquo;raw&rdquo; Zeiger verwenden,
 um die Idee eines &ldquo;nicht besitzenden&rdquo; Zeigers auszudrücken,
 aber in Zeiten von *Modern C++* ist das keine opportune Lösung.
-Außerdem bestünde dann die Gefahr, dass der tatsächliche Eigentümer des referenzierten Objekts beschließen könnten, dieses freizugeben.
+Außerdem bestünde dann die Gefahr, dass der tatsächliche Eigentümer des referenzierten Objekts beschließen könnte,
+dieses freizugeben.
 Wenn wir dann den &ldquo;nicht besitzenden&rdquo; Zeiger dereferenzieren, käme es zu einem Absturz.
 
 Studieren Sie vor dem geschilderten Hintergrund das folgende Szenario:
