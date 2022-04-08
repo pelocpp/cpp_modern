@@ -15,11 +15,15 @@ namespace StandardAttributes {
 
     void test_01()
     {
+#if defined (DEMONSTRATE_WARNINGS_AND_ERRORS)
+
         int result = discard_test();
 
         // another call to discard_test:
         // 'warning: discarding return value of function with 'nodiscard' attribute'
         discard_test();
+
+#endif
     }
 
     [[ noreturn ]] void criticalFunction() {

@@ -21,16 +21,16 @@ So kann man Code schreiben, der zur Übersetzungszeit ausgeführt wird. Obwohl sic
 (siehe auch [Quellcode](MetaProgramming01.cpp))
 
 ```cpp
-template <int N>
+template <long N>
 struct Factorial {
 
-    static constexpr int result = N * Factorial<N - 1>::result;
+    static constexpr long result = N * Factorial<N - 1>::result;
 
 };
 
 template <>
 struct Factorial<1> {
-    static constexpr int result = 1;
+    static constexpr long result = 1;
 };
 ```
 
@@ -89,13 +89,13 @@ Binden wir diesen Typ mit `using` an einen Namen, können wir diesen neuen Typen 
 siehe dazu die Schablone `ScalarMultiplication`:
 
 ```cpp
-template <int N, int D>
+template <size_t N, size_t D>
 struct Frac {
     static constexpr long Num = N;
     static constexpr long Den = D;
 };
 
-template <int N, typename F>
+template <size_t N, typename F>
 struct ScalarMultiplication {
     using result = Frac<N * F::Num, F::Den>;
 };
@@ -126,12 +126,12 @@ lassen sich mächtige Funktionen definieren! Wir demonstrieren dies am Beispiel d
 des größten gemeinsamen Teilers zweier natürlicher Zahlen (ggT):
 
 ```cpp
-template <int X, int Y>
+template <size_t X, size_t Y>
 struct GGT {
     static constexpr long result = GGT<Y, X % Y>::result;
 };
 
-template <int X>
+template <size_t X>
 struct GGT<X, 0> {
     static constexpr long result = X;
 };

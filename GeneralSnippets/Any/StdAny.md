@@ -16,7 +16,14 @@ Siehe das Beispiel im korrespondierenden Quellcode.
 
 ---
 
-[Zurück](../../Readme.md)
+## Literaturhinweise:
+
+Ein interessanter Vergleich der beiden Klassen `std::any` und `std::variant` findet sich in *stackoverflow*:
+
+["C++ `std::variant` versus `std::any`"](https://stackoverflow.com/questions/56303939/c-stdvariant-vs-stdany/)
 
 ---
 
+[Zurück](../../Readme.md)
+
+---

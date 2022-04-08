@@ -23,6 +23,16 @@ namespace UniquePointerGeneral {
         // std::unique_ptr<int> ptr2{ std::move(ptr) };
     }
 
+    void storeUniquePointerAlternate(int* ptr)
+    {
+        std::cout << "*ptr:    " << *ptr << std::endl;
+        (*ptr)++;
+        std::cout << "*ptr:    " << *ptr << std::endl;
+
+        // take ownership right now: MAKES NO SENSE
+        // std::unique_ptr<int> ptr2{ std::move(ptr) };
+    }
+
     void test_01() 
     {
         // create a unique_ptr to an int with value 123
@@ -63,6 +73,9 @@ namespace UniquePointerGeneral {
 
         // provide a function with a unique pointer: who owns the pointer now?
         storeUniquePointer(ptr);
+
+        // C++ Core Guidelines
+        storeUniquePointerAlternate(ptr.get());
 
         // does this work?
         std::cout << "*ptr:   " << *ptr << std::endl;

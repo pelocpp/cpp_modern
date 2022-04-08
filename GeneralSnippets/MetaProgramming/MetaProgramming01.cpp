@@ -6,14 +6,14 @@
 
 namespace Metaprogramming {
 
-    template <int N>
+    template <long N>
     struct Factorial {
-        static constexpr int result = N * Factorial<N - 1>::result;
+        static constexpr long result = N * Factorial<N - 1>::result;
     };
 
     template <>
     struct Factorial<1> {
-        static constexpr int result = 1;
+        static constexpr long result = 1;
     };
 
     void test_01() {
@@ -28,8 +28,8 @@ namespace Metaprogramming {
         std::cout << Factorial<8>::result << std::endl;
         std::cout << Factorial<9>::result << std::endl;
         std::cout << Factorial<10>::result << std::endl;
-        //std::cout << Factorial<11>::result << std::endl;
-        //std::cout << Factorial<12>::result << std::endl;
+        std::cout << Factorial<11>::result << std::endl;
+        std::cout << Factorial<12>::result << std::endl;
         //std::cout << Factorial<13>::result << std::endl;
         //std::cout << Factorial<14>::result << std::endl;
         //std::cout << Factorial<15>::result << std::endl;
@@ -37,15 +37,17 @@ namespace Metaprogramming {
         //std::cout << Factorial<17>::result << std::endl;
     }
 
-    template <int N, int D>
+    // =================================================================================
+
+    template <size_t N, size_t D>
     struct Frac {
-        static constexpr long Num = N;
-        static constexpr long Den = D;
+        static constexpr size_t Num = N;
+        static constexpr size_t Den = D;
     };
 
-    template <int N, typename F>
+    template <size_t N, typename F>
     struct ScalarMultiplication {
-        using result = Frac<N * F::Num, F::Den>;
+        using result = Frac<N* F::Num, F::Den>;
     };
 
     void test_02() {
@@ -54,27 +56,27 @@ namespace Metaprogramming {
         std::cout << FourThirds::Num << "/" << FourThirds::Den << std::endl;
     }
 
-    template <int X, int Y>
+    template <size_t X, size_t Y>
     struct GGT {
-        static constexpr long result = GGT<Y, X % Y>::result;
+        static constexpr size_t result = GGT<Y, X % Y>::result;
     };
 
-    template <int X>
+    template <size_t X>
     struct GGT<X, 0> {
-        static constexpr long result = X;
+        static constexpr size_t result = X;
     };
 
     template <class F>
     struct FracNormalizedVerbose {
-        static constexpr long ggt = GGT<F::Num, F::Den>::result;
-        static constexpr long newNum = F::Num / ggt;
-        static constexpr long newDen = F::Den / ggt;
+        static constexpr size_t ggt = GGT<F::Num, F::Den>::result;
+        static constexpr size_t newNum = F::Num / ggt;
+        static constexpr size_t newDen = F::Den / ggt;
         using result = Frac<newNum, newDen>;
     };
 
     template <class F>
     struct FracNormalized {
-        static constexpr long ggt = GGT<F::Num, F::Den>::result;
+        static constexpr size_t ggt = GGT<F::Num, F::Den>::result;
         using result = Frac<F::Num / ggt, F::Den / ggt>;
     };
 
@@ -96,8 +98,8 @@ namespace Metaprogramming {
     template <typename X, typename Y>
     struct Sum {
         using Base = SameBase<X, Y>;
-        static constexpr long Num = Base::X::Num + Base::Y::Num;
-        static constexpr long Den = Base::X::Den * Base::Y::Den;
+        static constexpr size_t Num = Base::X::Num + Base::Y::Num;
+        static constexpr size_t Den = Base::X::Den * Base::Y::Den;
         using result = typename FracNormalized<Frac<Num, Den>>::result;
     };
 
@@ -108,7 +110,9 @@ namespace Metaprogramming {
         std::cout << Result::Num << "/" << Result::Den << std::endl;
     }
 
-    template <int N>
+    // =================================================================================
+
+    template <long N>
     struct E {
         // e = 1/0! + 1/1! + 1/2! + ...
         static constexpr long Den = Factorial<N>::result;

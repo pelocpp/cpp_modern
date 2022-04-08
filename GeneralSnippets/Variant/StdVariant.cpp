@@ -122,25 +122,28 @@ namespace VariantDemo {
     public:
         MyVisitor() = default;
 
-        void operator() (int const&) {
-            std::cout << "type is int" << std::endl;
+        void operator() (int n) {
+            std::cout << "int: " << n << std::endl;
         }
 
-        void operator() (float const&) {
-            std::cout << "type is float" << std::endl;
+        void operator() (float& f) {
+            std::cout << "float: " << f << std::endl;
         }
 
-        void operator() (std::string const&) {
-            std::cout << "type is std::string" << std::endl;
+        void operator() (std::string& s) {
+            std::cout << "std::string: " << s << std::endl;
         }
     };
 
     void test_04() {
 
         std::variant<int, float, std::string> var{ 3.5f };
-        std::visit(MyVisitor{}, var);
+        MyVisitor visitor{};
+
+        std::visit(visitor, var);
+        
         var = 10;
-        std::visit(MyVisitor{}, var);
+        std::visit(visitor, var);
     }
 
     void test_05() {

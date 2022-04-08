@@ -17,7 +17,7 @@ namespace Literals_With_Separators {
         long decval = 1'048'576;       // groups of three digits
         long hexval = 0x10'0000;       // four digits
         long octval = 00'04'00'00'00;  // two digits
-        long binval = 0b100'000000'000000'000000;   //six digits
+        long binval = 0b1'00000000'00000000'00000000;  // eight digits
 
         std::cout << decval << std::endl;
         std::cout << hexval << std::endl;
@@ -104,12 +104,12 @@ namespace Literals_Color_Runtime {
 
     void test_02_with_errors() {
         // value outside rgb range
-        Color col1 = 0x1FFFFFF_rgb;
-        std::cout << col1 << std::endl;
+        // Color col1 = 0x1FFFFFF_rgb;
+        // std::cout << col1 << std::endl;
 
         // illegal hexadecimal digit
-        Color col2 = "0x00GG00"_rgb;
-        std::cout << col2 << std::endl;
+        // Color col2 = "0x00GG00"_rgb;
+        // std::cout << col2 << std::endl;
     }
 }
 
@@ -271,15 +271,15 @@ namespace Literals_Color_CompileTime {
 void main_literals()
 {
     using namespace Literals_With_Separators;
-    //test_01();
+    // test_01();
 
     using namespace Literals_Color_Runtime;
     test_02();
-    // test_02_with_errors();   // throws exceptions at runtime
+    test_02_with_errors();   // throws exceptions at runtime
 
     using namespace Literals_Color_CompileTime;
     test_03();
-    test_03_with_errors();      // throws errors at compile time
+    test_03_with_errors();   // throws errors at compile time
 }
 
 // =====================================================================================
