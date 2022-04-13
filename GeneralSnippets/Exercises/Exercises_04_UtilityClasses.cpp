@@ -8,10 +8,70 @@
 #include <optional>
 #include <variant>
 
-
 namespace Exercises_UtilityClasses {
 
     namespace Exercise_01 {
+
+        // generic visitor (matching all types in the variant)
+        auto visitor = [](auto const& elem) {
+            std::cout << elem << std::endl;
+        };
+
+        void testExercise_01a() {
+
+            std::variant<int, double, std::string> var{ 123.456 };
+
+            std::visit(visitor, var);
+
+            var = 10;
+            std::visit(visitor, var);
+
+            var = std::string{ "ABCDE" };
+            std::visit(visitor, var);
+        }
+
+        // improved generic visitor
+        auto improvedVisitor = [](auto const& elem) {
+
+            using T = std::remove_reference<decltype(elem)>::type;
+
+            if constexpr (std::is_scalar<T>::value)
+            {
+                    if constexpr (std::is_same<int, std::remove_cvref<T>::type> ::value)
+                    {
+                        std::cout << "int: " << elem << std::endl;
+                    }
+                    else if constexpr (std::is_same<double, std::remove_cvref<T>::type> ::value)
+                    {
+                        std::cout << "double: " << elem << std::endl;
+                    }
+            }
+            else
+            {
+                std::cout << "std:string: " << elem << std::endl;
+            }
+        };
+
+        void testExercise_01b() {
+
+            std::variant<int, double, std::string> var{ 123.456 };
+
+            std::visit(improvedVisitor, var);
+
+            var = 10;
+            std::visit(improvedVisitor, var);
+
+            var = std::string{ "ABCDE" };
+            std::visit(improvedVisitor, var);
+        }
+
+        void testExercise_01() {
+            testExercise_01a();
+            testExercise_01b();
+        }
+    }
+
+    namespace Exercise_02 {
 
         std::optional<int> toInt(std::string s) {
             std::optional<int> result;
@@ -132,11 +192,11 @@ namespace Exercises_UtilityClasses {
         }
     }
 
-    namespace Exercise_02 {
+    namespace Exercise_03 {
 
         // https://gieseanw.wordpress.com/2017/05/03/a-true-heterogeneous-container-in-c/
 
-        void testExercise_02a()
+        void testExercise_01a()
         {
             std::variant<int, std::string> myVariant;
             myVariant = 123;
@@ -171,7 +231,7 @@ namespace Exercises_UtilityClasses {
             std::cout << value << std::endl;
         };
 
-        void testExercise_02b()
+        void testExercise_01b()
         {
             std::variant<int, std::string> myVariant;
             myVariant = 123;
@@ -197,7 +257,7 @@ namespace Exercises_UtilityClasses {
             std::visit(MyPrintVisitor{}, myVariant);
         }
 
-        void testExercise_02c()
+        void testExercise_01c()
         {
             std::vector<std::variant<int, std::string>> hetVec;
 
@@ -243,7 +303,7 @@ namespace Exercises_UtilityClasses {
             };
         };
 
-        void testExercise_02d()
+        void testExercise_01d()
         {
             HeterogeneousContainer<int, std::string> hetCont;
 
@@ -264,11 +324,11 @@ namespace Exercises_UtilityClasses {
             std::cout << std::endl;
         }
 
-        void testExercise_02() {
-            testExercise_02a();
-            testExercise_02b();
-            testExercise_02c();
-            testExercise_02d();
+        void testExercise_01() {
+            testExercise_01a();
+            testExercise_01b();
+            testExercise_01c();
+            testExercise_01d();
         }
     }
 }
@@ -277,7 +337,8 @@ void test_exercises_utility_classes()
 {
     using namespace Exercises_UtilityClasses;
     Exercise_01::testExercise_01();
-    Exercise_02::testExercise_02();
+    //Exercise_02::testExercise_01();
+    //Exercise_03::testExercise_01();
 }
 
 // =====================================================================================

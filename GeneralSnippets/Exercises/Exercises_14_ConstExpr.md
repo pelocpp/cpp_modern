@@ -8,7 +8,70 @@
 
 ---
 
-## Aufgabe 1: Auswertung von variadische Templates, `decltype` und Type-Traits am Beispiel von `sameType` zur Übersetzungszeit
+## Aufgabe 1: *Return Type Resolver*
+
+#### Vorausetzungen: Templates, `std::is_same` und `constexpr`
+
+Betrachten Sie die beiden folgenden Quellcodezeilen:
+
+```cpp
+int from_string(const char* str) { return std::stoi(str); }
+float from_string(const char* str) { return std::stof(str); } // compile error
+```
+
+Erklären Sie, warum und welchen Übersetzungsfehler Sie enthalten?
+
+Wir sind im Abschnitt &ldquo;Überladung von Methoden/Operatoren&rdquo; angekommen
+und hier beim Spezialfall &ldquo;Eine Überladung einer Funktion kann sich nicht nur durch ihren Rückgabetyp von einer anderen Funktion unterscheiden.&rdquo;
+
+Unter dem Stichwort *Return Type Resolver* findet sich eine Lösung dieses Problems &nadash;
+natürlich mit einem anderen Realisierungsansatz. Schreiben Sie eine Klasse `FromString`,
+die auf geschickte Weise den Typkonvertierungsoperator `operator()` überlädt,
+um so das folgende Codefragment übersetzen zu können:
+
+```cpp
+int n{ FromString("123") };
+float f{ FromString("45.67f") };
+double d{ FromString("890.123") };
+
+std::cout << n << std::endl;
+std::cout << f << std::endl;
+std::cout << d << std::endl;
+```
+
+*Ausgabe*:
+
+```
+123
+45.67
+890.123
+```
+
+*Hilfestellung*:
+In der Lösung kommt ein Klassentemplate, *Type Traits* und `constexpr` zum Einsatz.
+
+
+###### 1. Zusatzfrage:
+
+Testen Sie die Lösung an folgendem, zweiten Codefragment:
+
+```cpp
+auto n1{ FromString("123") };
+auto f1{ FromString("45.67f") };
+auto d1{ FromString("890.123") };
+```
+
+  * Ist dieses Codefragment übersetzungsfähig?
+  * Wenn ja, wie erklären Sie sich die Ausführung des Programm?
+  * Warum ist eine Anweisung der Gestalt `std::cout << n1` nicht übersetzungsfähig?
+
+###### 2. Zusatzfrage:
+
+Wie ließe sich das letze Codefragment umformulieren, um das gewünschte Ziel zu erreichen?
+
+---
+
+## Aufgabe 2: Auswertung von variadische Templates, `decltype` und Type-Traits am Beispiel von `sameType` zur Übersetzungszeit
 
 #### Vorausetzungen: `std::is_same`
 

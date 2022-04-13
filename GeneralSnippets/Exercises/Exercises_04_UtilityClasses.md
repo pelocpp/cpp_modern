@@ -8,7 +8,46 @@
 
 ---
 
-## Aufgabe 1: `std::optional`: Umwandlung von Zeichenketten in ganze Zahlen
+## Aufgabe 1: `std::visit` und generische Lambdas
+
+#### Vorausetzungen: `if constexpr`, `decltype`, `std::variant`, `std::visit`, Type Traits, `std::remove_reference`, `std::is_scalar`, `std::is_same` und `std::remove_cvref`
+
+Für `std::variant`-Objekte gibt es eine *Visitor*-Unterstützung in Gestalt der Funktion `std::visit`.
+
+Diese benötigt nebem einem `std::variant`-Objekt ein so genanntes *Callable*-Objekt,
+das jede mögliche Alternative im `std::variant`-Objekt aufrufen kann.
+Eine sehr elegante wie auch kurze Lösung ist ein *Callable* in Gestalt eines generischen Lambdas,
+siehe dazu folgendes Beispiel:
+
+```cpp
+// generic visitor (matching all types in the variant)
+auto visitor = [](auto const& elem) {
+    std::cout << elem << std::endl;
+};
+
+void test() {
+
+    std::variant<int, double, std::string> var{ 123.456 };
+    std::visit(visitor, var);
+
+    var = 10;
+    std::visit(visitor, var);
+
+    var = std::string{ "ABCDE" };
+    std::visit(visitor, var);
+}
+```
+
+Einziger Wermutstropfen bei dieser Realisierung ist der Umstand,
+dass es in dieser kurzen Fassung des Lambdas nicht möglich ist,
+auf unterschiedliche Parametertypen zu reagieren.
+
+Wie könnte &ndash; an dem gezeigten Beispiel &ndash; eine erweiterte Realisierung aussehen,
+die eine Unterscheidung der drei Datentypen `int`, `double` und `std::string` vornimmt?
+
+---
+
+## Aufgabe 2: `std::optional`: Umwandlung von Zeichenketten in ganze Zahlen
 
 #### Vorausetzungen: Templates Grundlagen, `std::optional`, `if constexpr`
 
@@ -32,7 +71,7 @@ Realisieren Sie die Funktion analog zur Funktion `toInt`. Für `T` sollen die in
 
 ---
 
-## Aufgabe 2: `std::variant`: Ein heterogener Container
+## Aufgabe 3: `std::variant`: Ein heterogener Container
 
 #### Vorausetzungen: `std::variant`, `std::visit`, `std::vector`
 

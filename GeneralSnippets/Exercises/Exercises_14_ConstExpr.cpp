@@ -6,10 +6,71 @@
 #include <string>
 #include <vector>
 #include <numeric>
+#include <type_traits>
 
 namespace Exercises_ConstExpr {
 
     namespace Exercise_01 {
+
+        // int fromString(const char* str) { return 0; }
+        // double fromString(const char* str) { return 0.0; } 
+        // 
+        // Error: overloaded function differs only by return type 
+        // from 'int fromString(const char *)'
+
+        class FromString
+        {
+        private:
+            std::string m_str;
+
+        public:
+            FromString(const char* str) : m_str(str) {}
+
+            template <typename T>
+            operator T()
+            {
+                if constexpr (std::is_same<T, int>::value)
+                {
+                    return std::stoi(m_str);
+                }
+                else if constexpr (std::is_same<T, float>::value)
+                {
+                    return std::stof(m_str);
+                }
+                else if constexpr (std::is_same<T, double>::value)
+                {
+                    return std::stod(m_str);
+                }
+            }
+        };
+
+        void testExercise_01() {
+
+            using namespace Exercises_ConstExpr;
+
+            int n{ FromString("123") };
+            float f{ FromString("45.67f") };
+            double d{ FromString("890.123") };
+
+            std::cout << n << std::endl;
+            std::cout << f << std::endl;
+            std::cout << d << std::endl;
+
+            auto n1{ FromString("123") };
+            auto f1{ FromString("45.67f") };
+            auto d1{ FromString("890.123") };
+
+            auto na{ FromString("123").operator int() };
+            auto fa{ FromString("45.67f").operator float() };
+            auto da{ FromString("890.123").operator double() };
+
+            std::cout << na << std::endl;
+            std::cout << fa << std::endl;
+            std::cout << da << std::endl;
+        }
+    }
+
+    namespace Exercise_02 {
 
         template<typename T1, typename T2>
         constexpr bool sameType(T1 arg1, T2 arg2)
@@ -38,6 +99,7 @@ void test_exercises_constexpr()
 {
     using namespace Exercises_ConstExpr;
     Exercise_01::testExercise_01();
+  //  Exercise_02::testExercise_01();
 }
 
 // =====================================================================================
