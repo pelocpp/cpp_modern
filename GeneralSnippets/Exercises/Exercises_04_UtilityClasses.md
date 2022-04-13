@@ -10,12 +10,11 @@
 
 ## Aufgabe 1: `std::visit` und generische Lambdas
 
-#### Vorausetzungen: `if constexpr`, `decltype`, `std::variant`, `std::visit`, Type Traits, `std::remove_reference`, `std::is_scalar`, `std::is_same` und `std::remove_cvref`
+#### Vorausetzungen: `if constexpr`, `decltype`, `std::variant`, `std::visit`, Type Traits, `std::remove_reference`,<br/>`std::is_scalar`, `std::is_same` und `std::remove_cvref`
 
 Für `std::variant`-Objekte gibt es eine *Visitor*-Unterstützung in Gestalt der Funktion `std::visit`.
-
 Diese benötigt nebem einem `std::variant`-Objekt ein so genanntes *Callable*-Objekt,
-das jede mögliche Alternative im `std::variant`-Objekt aufrufen kann.
+das jede mögliche Alternative im `std::variant`-Objekt besuchen kann.
 Eine sehr elegante wie auch kurze Lösung ist ein *Callable* in Gestalt eines generischen Lambdas,
 siehe dazu folgendes Beispiel:
 
@@ -41,9 +40,13 @@ void test() {
 Einziger Wermutstropfen bei dieser Realisierung ist der Umstand,
 dass es in dieser kurzen Fassung des Lambdas nicht möglich ist,
 auf unterschiedliche Parametertypen zu reagieren.
+Anders formliliert: Es ist per Quellcode nicht möglich, auf unterschiedliche Parametertypen
+unterschiedliche Aktionen auszuführen.
 
-Wie könnte &ndash; an dem gezeigten Beispiel &ndash; eine erweiterte Realisierung aussehen,
-die eine Unterscheidung der drei Datentypen `int`, `double` und `std::string` vornimmt?
+Wie könnte eine erweiterte Realisierung aussehen,
+die &ndash; an dem gezeigten Beispiel &ndash; eine Unterscheidung der drei Datentypen `int`, `double` und `std::string` vornimmt?
+
+*Hinweis*: Funktionen aus dem *Type Traits* Umfeld stellen eine große Hilfe dar.
 
 ---
 

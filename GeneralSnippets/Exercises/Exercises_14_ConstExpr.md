@@ -10,23 +10,23 @@
 
 ## Aufgabe 1: *Return Type Resolver*
 
-#### Vorausetzungen: Templates, `std::is_same` und `constexpr`
+#### Vorausetzungen: Templates, `std::is_same`, `auto` und `constexpr`
 
 Betrachten Sie die beiden folgenden Quellcodezeilen:
 
 ```cpp
-int from_string(const char* str) { return std::stoi(str); }
-float from_string(const char* str) { return std::stof(str); } // compile error
+int   from_string(const char* str) { return std::stoi(str); }
+float from_string(const char* str) { return std::stof(str); }
 ```
 
 Erklären Sie, warum und welchen Übersetzungsfehler Sie enthalten?
 
-Wir sind im Abschnitt &ldquo;Überladung von Methoden/Operatoren&rdquo; angekommen
-und hier beim Spezialfall &ldquo;Eine Überladung einer Funktion kann sich nicht nur durch ihren Rückgabetyp von einer anderen Funktion unterscheiden.&rdquo;
+Wir sind im Abschnitt &ldquo;Überladung von Methoden/Operatoren&rdquo; angekommen und hier
+beim Spezialfall &ldquo;Eine Überladung einer Funktion kann sich nicht nur durch ihren Rückgabetyp von einer anderen Funktion unterscheiden.&rdquo; angekommen.
 
-Unter dem Stichwort *Return Type Resolver* findet sich eine Lösung dieses Problems &nadash;
-natürlich mit einem anderen Realisierungsansatz. Schreiben Sie eine Klasse `FromString`,
-die auf geschickte Weise den Typkonvertierungsoperator `operator()` überlädt,
+Unter dem Stichwort *Return Type Resolver* findet sich eine Lösung dieses Problems &ndash;
+natürlich mit einem anderen Realisierungsansatz als dem des fälschlichen Überladens einer Funktion.
+Schreiben Sie eine Klasse `FromString`, die auf geschickte Weise den Typkonvertierungsoperator `operator()` überlädt,
 um so das folgende Codefragment übersetzen zu können:
 
 ```cpp
@@ -48,10 +48,10 @@ std::cout << d << std::endl;
 ```
 
 *Hilfestellung*:
-In der Lösung kommt ein Klassentemplate, *Type Traits* und `constexpr` zum Einsatz.
+In der Lösung kommen ein Klassentemplate, *Type Traits* und `constexpr` zum Einsatz.
 
 
-###### 1. Zusatzfrage:
+##### 1. Zusatzfrage:
 
 Testen Sie die Lösung an folgendem, zweiten Codefragment:
 
@@ -65,7 +65,7 @@ auto d1{ FromString("890.123") };
   * Wenn ja, wie erklären Sie sich die Ausführung des Programm?
   * Warum ist eine Anweisung der Gestalt `std::cout << n1` nicht übersetzungsfähig?
 
-###### 2. Zusatzfrage:
+##### 2. Zusatzfrage:
 
 Wie ließe sich das letze Codefragment umformulieren, um das gewünschte Ziel zu erreichen?
 
