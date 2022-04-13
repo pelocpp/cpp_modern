@@ -99,7 +99,7 @@ void test_exercises_constexpr()
 {
     using namespace Exercises_ConstExpr;
     Exercise_01::testExercise_01();
-  //  Exercise_02::testExercise_01();
+    Exercise_02::testExercise_01();
 }
 
 // =====================================================================================

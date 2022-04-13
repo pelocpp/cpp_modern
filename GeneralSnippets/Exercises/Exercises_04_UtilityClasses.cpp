@@ -337,8 +337,8 @@ void test_exercises_utility_classes()
 {
     using namespace Exercises_UtilityClasses;
     Exercise_01::testExercise_01();
-    //Exercise_02::testExercise_01();
-    //Exercise_03::testExercise_01();
+    Exercise_02::testExercise_01();
+    Exercise_03::testExercise_01();
 }
 
 // =====================================================================================

@@ -108,7 +108,7 @@ namespace Exercises_Algorithms {
 void test_exercises_algorithms()
 {
     using namespace Exercises_Algorithms;
-    //Exercise_01::testExercise_01();
+    Exercise_01::testExercise_01();
     Exercise_02::testExercise_02();
 }
 
