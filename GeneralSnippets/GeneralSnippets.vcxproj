@@ -320,6 +320,7 @@
     <None Include="PerfectForwarding\PerfectForwarding_03.md" />
     <None Include="RAII\RAII.md" />
     <None Include="Random\Random.md" />
+    <None Include="RangeBasedForLoop\cpp_range_based_loop.svg" />
     <None Include="RangeBasedForLoop\RangeBasedForLoop.md" />
     <None Include="ReferenceWrapper\ReferenceWrapper.md" />
     <None Include="RegExpr\RegExpr.md" />

@@ -668,6 +668,9 @@
     <None Include="ArgumentDependentNameLookup\ArgumentDependentNameLookup.md">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="RangeBasedForLoop\cpp_range_based_loop.svg">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Global\Dummy.h">

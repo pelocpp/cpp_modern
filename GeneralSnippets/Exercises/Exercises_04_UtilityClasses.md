@@ -80,7 +80,6 @@ Realisieren Sie die Funktion analog zur Funktion `toInt`. Für `T` sollen die in
 
 Für STL-Container in C++ gilt prinzipiell die Anwort auf die Frage "Kann ich einen `std::vector` so verwenden,
 dass er Variablen mehr als einen Typs enthält?": Nein!
-
 Diese Aussage ist mit Erscheinen der Klasse `std::variant` etwas in Wanken geraten.
 Ein Variant ist in C++ eine Datenstruktur, die zur Laufzeit Variablen unterschiedlichen Typs aufnehmen kann:
 

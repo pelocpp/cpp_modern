@@ -4,6 +4,12 @@
 
 ---
 
+*Allgemeines*:
+
+<img src="cpp_range_based_loop.svg" width="500">
+
+---
+
 [Quellcode](RangeBasedForLoop.cpp)
 
 ---

@@ -73,8 +73,10 @@ namespace Exercises_UtilityClasses {
 
     namespace Exercise_02 {
 
-        std::optional<int> toInt(std::string s) {
-            std::optional<int> result;
+        std::optional<int> toInt(std::string s)
+        {
+            std::optional<int> result{ std::nullopt };
+            
             try
             {
                 int i = std::stoi(s);
@@ -87,11 +89,11 @@ namespace Exercises_UtilityClasses {
 
                 result.emplace(i);
             }
-            catch (std::invalid_argument const&)
+            catch (const std::invalid_argument&)
             {
                 std::cerr << "Bad input: std::invalid_argument" << std::endl;
             }
-            catch (std::out_of_range const&)
+            catch (const std::out_of_range&)
             {
                 std::cerr << "Integer overflow: std::out_of_range" << std::endl;
             }
@@ -100,8 +102,10 @@ namespace Exercises_UtilityClasses {
         }
 
         template <typename T>
-        std::optional<T> toNumber(std::string s) {
-            std::optional<T> result;
+        std::optional<T> toNumber(std::string s)
+        {
+            std::optional<T> result{ std::nullopt };
+
             try
             {
                 if constexpr (std::is_same_v<T, int> || std::is_same_v<T, short>) {
@@ -129,11 +133,11 @@ namespace Exercises_UtilityClasses {
                     result.emplace(ll);
                 }
             }
-            catch (std::invalid_argument const&)
+            catch (const std::invalid_argument&)
             {
                 std::cerr << "Bad input: std::invalid_argument" << std::endl;
             }
-            catch (std::out_of_range const&)
+            catch (const std::out_of_range&)
             {
                 std::cerr << "Integer overflow: std::out_of_range" << std::endl;
             }

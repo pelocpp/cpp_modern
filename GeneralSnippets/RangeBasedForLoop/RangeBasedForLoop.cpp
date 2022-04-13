@@ -9,7 +9,7 @@
 #include <algorithm>
 
 /*
-* 9 ways to iterate through a vector 
+*  12 ways to iterate through a vector 
 */
 
 namespace RangeBasedForLoop {
@@ -136,6 +136,12 @@ namespace RangeBasedForLoop {
             ++begin2;
         }
         std::cout << std::endl;
+
+        // l) Range-based 'for' loop with initializer,
+        // we can now use the index variable inside the for statement
+        for (int index{}; int n : vec) {
+            std::cout << index << ": " << n << " " << std::endl;
+        }
     }
 }
 
