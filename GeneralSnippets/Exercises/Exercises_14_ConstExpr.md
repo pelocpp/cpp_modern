@@ -30,9 +30,9 @@ Schreiben Sie eine Klasse `FromString`, die auf geschickte Weise den Typkonverti
 um so das folgende Codefragment übersetzen zu können:
 
 ```cpp
-int n{ FromString("123") };
-float f{ FromString("45.67f") };
-double d{ FromString("890.123") };
+int n{ FromString{ "123" } };
+float f{ FromString{ "45.67f" } };
+double d{ FromString{ "89.123" } };
 
 std::cout << n << std::endl;
 std::cout << f << std::endl;
@@ -44,7 +44,7 @@ std::cout << d << std::endl;
 ```
 123
 45.67
-890.123
+89.123
 ```
 
 *Hilfestellung*:
@@ -56,9 +56,9 @@ In der Lösung kommen ein Klassentemplate, *Type Traits* und `constexpr` zum Ein
 Testen Sie die Lösung an folgendem, zweiten Codefragment:
 
 ```cpp
-auto n1{ FromString("123") };
-auto f1{ FromString("45.67f") };
-auto d1{ FromString("890.123") };
+auto n1{ FromString{ "123" } };
+auto f1{ FromString{ "45.67f" } };
+auto d1{ FromString{ "89.123" } };
 ```
 
   * Ist dieses Codefragment übersetzungsfähig?

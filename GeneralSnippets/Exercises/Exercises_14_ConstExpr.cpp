@@ -48,21 +48,21 @@ namespace Exercises_ConstExpr {
 
             using namespace Exercises_ConstExpr;
 
-            int n{ FromString("123") };
-            float f{ FromString("45.67f") };
-            double d{ FromString("890.123") };
+            int n{ FromString{ "123" } };
+            float f{ FromString{ "45.67f" } };
+            double d{ FromString{ "89.123" } };
 
             std::cout << n << std::endl;
             std::cout << f << std::endl;
             std::cout << d << std::endl;
 
-            auto n1{ FromString("123") };
-            auto f1{ FromString("45.67f") };
-            auto d1{ FromString("890.123") };
+            auto n1{ FromString{ "123" } };
+            auto f1{ FromString{ "45.67f" } };
+            auto d1{ FromString{ "89.123" } };
 
-            auto na{ FromString("123").operator int() };
-            auto fa{ FromString("45.67f").operator float() };
-            auto da{ FromString("890.123").operator double() };
+            auto na{ FromString{ "123" }.operator int() };
+            auto fa{ FromString{ "45.67f" }.operator float() };
+            auto da{ FromString{ "89.123" }.operator double() };
 
             std::cout << na << std::endl;
             std::cout << fa << std::endl;
