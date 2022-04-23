@@ -137,12 +137,16 @@ namespace Lambda {
             std::cout << "Copy:      " << n << " " << m << std::endl;
         };
 
-        auto l2 = [&] {
+        auto l2 = [&] () {
             std::cout << "Reference: " << n << " " << m << std::endl;
         };
 
-        auto l3 = [&n, m] {
+        auto l3 = [&, m] () {
             std::cout << "Both:      " << n << " " << m << std::endl;
+        };
+
+        auto l4 = [=, &m] () {
+            std::cout << "More both: " << n << " " << m << std::endl;
         };
 
         n = 3;
@@ -151,6 +155,7 @@ namespace Lambda {
         l1();
         l2();
         l3();
+        l4();
     }
 
     auto test_06_helper_a() {
