@@ -336,6 +336,9 @@
     <ClCompile Include="ArgumentDependentNameLookup\ArgumentDependentNameLookup.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Bind\Bind.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -669,6 +672,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="RangeBasedForLoop\cpp_range_based_loop.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Bind\Bind.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

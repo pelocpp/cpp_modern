@@ -23,7 +23,7 @@ das den `()`-Operator implementiert):
 ```cpp
 void even(int val) {
     if (!(val % 2)) {
-        std::cout << val << std::endl;
+        std::cout << " is even." << std::endl;
     }
 }
 ```
@@ -66,8 +66,8 @@ oder gerne auch kompakter:
 map['+'] = [](double a, double b) { return a + b; };
 ```
 
-Der erste Wert des `std::pair` Objekts ist eine `char`-Variable und spezifiert die arithmetische Operation,
-also eine Addition im vorliegenden Beispiel.
+Der erste Wert des `std::pair` Objekts ist eine `char`-Variable und spezifiziert
+die arithmetische Operation, also eine Addition im vorliegenden Beispiel.
 
 Erstellen Sie ein `std::map`-Objekt, dass für die 4 Grundrechenarten
 entsprechende Lambda-Funktionen besitzt. Schreiben Sie eine C++-Konsolen-Anwendung,

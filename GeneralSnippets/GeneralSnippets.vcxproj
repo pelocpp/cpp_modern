@@ -155,6 +155,7 @@
     <ClCompile Include="Attributes\Attributes.cpp" />
     <ClCompile Include="Auto\Auto.cpp" />
     <ClCompile Include="BackInserter\BackInserter.cpp" />
+    <ClCompile Include="Bind\Bind.cpp" />
     <ClCompile Include="Casts\Casts.cpp" />
     <ClCompile Include="CommonType\CommonType.cpp" />
     <ClCompile Include="ConstExpr\ConstExpr.cpp" />
@@ -266,6 +267,7 @@
     <None Include="Attributes\Attributes.md" />
     <None Include="Auto\Auto.md" />
     <None Include="BackInserter\BackInserter.md" />
+    <None Include="Bind\Bind.md" />
     <None Include="Casts\Casts.md" />
     <None Include="CommonType\CommonType.md" />
     <None Include="ConstExpr\Constexpr.md" />

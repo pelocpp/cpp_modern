@@ -16,14 +16,14 @@ namespace Exercises_Lambdas {
 
         void even(int val) {
             if (!(val % 2)) {
-                std::cout << val << std::endl;
+                std::cout << val << " is even." << std::endl;
             }
         }
 
         struct Even {
             void operator()(int val) {
                 if (!(val % 2)) {
-                    std::cout << val << std::endl;
+                    std::cout << val << " is even." << std::endl;
                 }
             }
         };
@@ -46,7 +46,7 @@ namespace Exercises_Lambdas {
                 std::end(values), 
                 [](int val) {
                     if (!(val % 2)) {
-                        std::cout << val << std::endl;
+                        std::cout << val << " is even." << std::endl;
                     }
                 }
             );

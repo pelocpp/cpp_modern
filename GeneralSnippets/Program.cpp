@@ -16,6 +16,7 @@ void main_array_decay();
 void main_attributes();
 void main_auto();
 void main_back_inserter();
+void main_bind();
 void main_casts();
 void main_common_type();
 void main_constructor_invocations();
@@ -112,6 +113,7 @@ int main()
         //main_attributes();
         //main_auto();
         //main_back_inserter();
+        //main_bind();
         //main_casts();
         //main_common_type();
         //main_constructor_invocations();
