@@ -141,6 +141,7 @@ namespace RangeBasedForLoop {
         // we can now use the index variable inside the for statement
         for (int index{}; int n : vec) {
             std::cout << index << ": " << n << " " << std::endl;
+            ++index;
         }
     }
 }
