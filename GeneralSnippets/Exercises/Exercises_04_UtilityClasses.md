@@ -40,7 +40,7 @@ void test() {
 Einziger Wermutstropfen bei dieser Realisierung ist der Umstand,
 dass es in dieser kurzen Fassung des Lambdas nicht möglich ist,
 auf unterschiedliche Parametertypen zu reagieren.
-Anders formliliert: Es ist per Quellcode nicht möglich, auf unterschiedliche Parametertypen
+Anders formuliert: Es ist per Quellcode nicht möglich, an Hand unterschiedlicher Parametertypen
 unterschiedliche Aktionen auszuführen.
 
 Wie könnte eine erweiterte Realisierung aussehen,
