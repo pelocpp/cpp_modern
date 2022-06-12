@@ -7,6 +7,7 @@
 #include <vector>
 #include <optional>
 #include <variant>
+#include <type_traits>
 
 namespace Exercises_UtilityClasses {
 
@@ -31,6 +32,7 @@ namespace Exercises_UtilityClasses {
         }
 
         // improved generic visitor
+        // note: doesn't compile with gcc :(
         auto improvedVisitor = [](auto const& elem) {
 
             using T = std::remove_reference<decltype(elem)>::type;

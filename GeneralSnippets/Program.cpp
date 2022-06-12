@@ -96,6 +96,8 @@ void main_virtual_destructor();
 void main_virtual_override_final();
 void main_weak_pointer();
 
+#pragma message("Collection of Modern C++-Code Snippets - Copyright (C) 2019-2022 Peter Loos")
+
 int main()
 {
     std::cout << "[Collection of Modern C++-Code Snippets - Copyright (C) 2019-2022 Peter Loos]" << std::endl;
