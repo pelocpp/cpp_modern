@@ -22,11 +22,11 @@ aber das *Erase-Remove* Idiom hat mehrere Vorteile, die sich vor allem auf die L
     Die physische Größe des Containers bleibt bei dieser Methode unverändert,
     es werden faktisch nur Elemente im Container verschoben.
 
-    Welche Elemente eigentlich nicht mehr zum Conainer gehören, wird durch den Rückgabewert der Methode zum 
+    Welche Elemente dann nicht mehr zum Container gehören, wird durch den Rückgabewert der Methode zum 
     Ausdruck gebracht: Dies ist ein Iterator-Objekt, das auf das erste, nicht mehr dazugehörige Element im Container zeigt.
 
   * STL-Algorithmus `std::erase`:
-    Mit dieser Methoden lassen sich Elemente eines STL-Containers entfernen (ein einzelnes Element oder ein Bereich von Elementen).
+    Mit dieser Methode lassen sich Elemente eines STL-Containers entfernen (ein einzelnes Element oder ein Bereich von Elementen).
     Die Methode verringert die Größe des Containers entsprechend.
 
 ### Das *Erase-Remove* Idiom
@@ -35,8 +35,8 @@ Mit einer Kombination von `std::remove` / `std::remove_if` und `std::erase` ist 
 
 Zuerst verwendet man `std::remove` / `std::remove_if`, um alle Elemente, die *nicht* dem Kriterien für das Entfernen entsprechen,
 an den Anfang des Bereichs zu verschieben, wobei die relative Reihenfolge der Elemente beibehalten wird.
-Danach löscht ein einziger Aufruf von `std::erase` alle verbleibenden, aber nicht mehr zum Container gehörenden Elemente,
-am Ende des Bereichs.
+Danach löscht ein einziger Aufruf von `std::erase` alle verbleibenden, aber nicht mehr zum Container gehörenden,
+Elemente am Ende des Bereichs.
 
 Man kann dies in der Regel in einer einzigen Programmzeile formulieren,
 siehe dazu das Beispiel im korrespondierenden Quellcode. Man betrachte die Ausgaben des Beispiels genau:
