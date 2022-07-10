@@ -101,14 +101,12 @@
 
 ---
 
-## Design Patterns (Entwurfsmuster)
+## Frameworks, Bibliotheken, Ressources und mehr ...
 
-  * Fedor G. Pikus: &ldquo;*Hands-On Design Patterns with C++*&rdquo;.</br>
-    Packt Publishing (30. Januar 2019), 512 Seiten. Sprache: Englisch. ISBN-10: 1788832566, ISBN-13: 978-1788832564.
+  * [Awesome C++](https://github.com/fffaraz/awesome-cpp)
 
-    Ein vergleichsweise anspruchsvolles Buch zu Entwurfsmustern in C++. Neben Klassikern wir *Singleton*, *Factory* und *Adapter*
-    werden moderne C++-Konzepte wie RAII, SFINAE, CRTP und Type Erasure betrachtet. Sehr gut geschrieben,
-    möglicherweise nichts für den Einsteiger in dieses Thema.
+    Eine kuratierte Liste von C++ (oder C)-Frameworks, Bibliotheken, Ressourcen und anderen Informationen
+    für den interessierten C++-Entwickler.
 
 ---
 
