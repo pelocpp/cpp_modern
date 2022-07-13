@@ -119,9 +119,10 @@ namespace Exercises_UtilityClasses {
         {
         private:
             using Stock = std::vector<std::variant<TDevelopers ...>>;
+            using StockList = std::initializer_list<std::variant<TDevelopers ...>>;
 
         public:
-            explicit Bookstore(Stock stock) : m_stock{ std::move(stock) } {}
+            explicit Bookstore(StockList stock) : m_stock{ stock } {}
 
             double balance() {
 

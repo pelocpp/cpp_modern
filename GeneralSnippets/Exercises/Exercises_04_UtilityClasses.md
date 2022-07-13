@@ -50,16 +50,17 @@ die &ndash; an dem gezeigten Beispiel &ndash; eine Unterscheidung der drei Daten
 
 ---
 
-## Aufgabe 2: Visitor-Entwurfsmuster mit `std::variant` und `std::visit` und variadischen Templates
+## Aufgabe 2: Visitor-Entwurfsmuster mit `std::variant` und `std::visit`
 
-#### Vorausetzungen: `std::variant`, `std::visit`, `std:: vector`,<br/>variadische Templates
+#### Vorausetzungen: `std::variant`, `std::visit`, `std:: vector`, variadische Templates
 
-Ein Entwurfsmuster aus der Gruppe der Verhaltensmuster (*Behavioral Design Patterns*)
+Ein Entwurfsmuster aus der Gruppe der Verhaltensmuster (*Behavioral Design Patterns*), das so genannt *Visitor*-Entwurfsmuster,
 lässt sich mit `std::variant` und `std::visit` sehr einfach umsetzen.
 
 Hierbei gilt es eine Besonderheit zu betrachten:
 Wir können mit der C++-Template-Technik die Realisierung so gestalten,
 dass wir auf den virtuellen Methodenaufrufmechanismus nicht angewiesen sind!
+Bei der klassischen Umsetzung des Musters ist dieser vorhanden.
 
 Wir betrachten eine Buchhandlung (Klasse `Bookstore`), die Bücher und DVDs (Klassen `Book` und `Movie`) verkauft. 
 
@@ -76,7 +77,7 @@ class Movie
 ```
 
 1. *Frage*:
-Wie ist die Schnittstelle eines Kontruktors zu definieren,
+Wie ist die Schnittstelle eines Kontruktors für die `Bookstore`-Klasse zu definieren,
 wenn dieser `Book`- und `Movie`-Objekte gemischt in einem `std::vector`-Objekt aufnehmen kann?
 
 ```cpp
@@ -90,22 +91,34 @@ Movie movieBond{ "Spectre", "Sam Mendes", 8.99, 6 };
 
 using MyBookstore = Bookstore<Book, Movie>;
 
-MyBookstore project = MyBookstore{
+MyBookstore project = MyBookstore {
     { cBook, movieBond, javaBook, cppBook, csharpBook, movieTarantino }
 };
 ```
+
+Entwerfen Sie drei rudimentäre Klassen `Book`, `Movie` und `Bookstore`,
+und das gezeigte Code-Fragment übersetzen zu können.
+
 
 2. *Frage*:
 Wozu sind beim Aufruf des Konstruktors zwei öffnende und schließende geschweifte Klammern erforderlich?
 
 3. *Frage*:
 Wie ist in der Klasse `Bookstore` eine Methode `totalBalance` zu implementieren, um den Gesamtwert des Warenbestands in
-der Bibliothek zu berechnen? Hier könnten  `std::variant` und `std::visit` zum Einsatz gelangen.
+der Bibliothek zu berechnen? Hier könnten `std::variant` und `std::visit` zum Einsatz gelangen.
 
 ```cpp
 double balance = project.totalBalance();
 std::cerr << "Total value of Bookstore: " << balance << std::endl;
 ```
+
+Noch ein Hinweis:
+
+Die `std::visit`-Funktion hat als ersten Parameter ein *Callable* (Funktor, generisches Lambda),
+um auf das `std::variant`-Objekt zugreifen zu können. Im `std::variant`-Objekt wiederum kann &ndash; in unserer Betrachtung &ndash;
+ein `Book`- oder ein `Movie`-Objekt enthalten sein. Wenn diese Klassen
+eine Methode desselben Namens (derselben Schnittstelle) enthalten,
+wie zum Beispiel `getPrice` oder `getCount`, dann haben Sie das Ziel fast schon erreicht.
 
 ---
 
