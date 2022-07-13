@@ -50,7 +50,67 @@ die &ndash; an dem gezeigten Beispiel &ndash; eine Unterscheidung der drei Daten
 
 ---
 
-## Aufgabe 2: `std::optional`: Umwandlung von Zeichenketten in ganze Zahlen
+## Aufgabe 2: Visitor-Entwurfsmuster mit `std::variant` und `std::visit` und variadischen Templates
+
+#### Vorausetzungen: `std::variant`, `std::visit`, `std:: vector`,<br/>variadische Templates
+
+Ein Entwurfsmuster aus der Gruppe der Verhaltensmuster (*Behavioral Design Patterns*)
+lässt sich mit `std::variant` und `std::visit` sehr einfach umsetzen.
+
+Hierbei gilt es eine Besonderheit zu betrachten:
+Wir können mit der C++-Template-Technik die Realisierung so gestalten,
+dass wir auf den virtuellen Methodenaufrufmechanismus nicht angewiesen sind!
+
+Wir betrachten eine Buchhandlung (Klasse `Bookstore`), die Bücher und DVDs (Klassen `Book` und `Movie`) verkauft. 
+
+```cpp
+class Book
+{
+  ...
+};
+
+class Movie
+{
+  ...
+};
+```
+
+1. *Frage*:
+Wie ist die Schnittstelle eines Kontruktors zu definieren,
+wenn dieser `Book`- und `Movie`-Objekte gemischt in einem `std::vector`-Objekt aufnehmen kann?
+
+```cpp
+Book cBook { "C", "Dennis Ritchie", 11.99, 12 };
+Book javaBook{"Java", "James Gosling", 17.99, 21 };
+Book cppBook{"C++", "Bjarne Stroustrup", 16.99, 4 };
+Book csharpBook{"C#", "Anders Hejlsberg", 21.99, 8 };
+
+Movie movieTarantino{ "Once upon a time in Hollywood", "Quentin Tarantino", 6.99, 3 };
+Movie movieBond{ "Spectre", "Sam Mendes", 8.99, 6 };
+
+using MyBookstore = Bookstore<Book, Movie>;
+
+MyBookstore project = MyBookstore{
+    { cBook, movieBond, javaBook, cppBook, csharpBook, movieTarantino }
+};
+```
+
+2. *Frage*:
+Wozu sind beim Aufruf des Konstruktors zwei öffnende und schließende geschweifte Klammern erforderlich?
+
+3. *Frage*:
+Wie ist in der Klasse `Bookstore` eine Methode `totalBalance` zu implementieren, um den Gesamtwert des Warenbestands in
+der Bibliothek zu berechnen? Hier könnten  `std::variant` und `std::visit` zum Einsatz gelangen.
+
+```cpp
+double balance = project.totalBalance();
+std::cerr << "Total value of Bookstore: " << balance << std::endl;
+```
+
+---
+
+
+## Aufgabe 3: `std::optional`: Umwandlung von Zeichenketten in ganze Zahlen
 
 #### Vorausetzungen: Templates Grundlagen, `std::optional`, `if constexpr`
 
@@ -74,7 +134,7 @@ Realisieren Sie die Funktion analog zur Funktion `toInt`. Für `T` sollen die in
 
 ---
 
-## Aufgabe 3: `std::variant`: Ein heterogener Container
+## Aufgabe 4: `std::variant`: Ein heterogener Container
 
 #### Vorausetzungen: `std::variant`, `std::visit`, `std::vector`
 

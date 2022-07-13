@@ -75,6 +75,127 @@ namespace Exercises_UtilityClasses {
 
     namespace Exercise_02 {
 
+        class Book
+        {
+        private:
+            std::string m_author;
+            std::string m_title;
+            double m_price;
+            size_t m_count;
+
+        public:
+            Book(std::string author, std::string title, double price, size_t count)
+                : m_author{ author }, m_title{ title }, m_price{ price }, m_count{ count } { }
+
+            // getter / setter
+            std::string getAuthor() const { return m_author; }
+            std::string getTitle() const { return m_title; }
+            double getPrice() const { return m_price; }
+            size_t getCount() const { return m_count; }
+        };
+
+        class Movie
+        {
+        private:
+            std::string m_title;
+            std::string m_director;
+            double m_price;
+            size_t m_count;
+
+        public:
+            Movie(std::string title, std::string director, double price, size_t count)
+                : m_title{ title }, m_director{ director }, m_price{ price }, m_count{ count } { }
+
+            // getter / setter
+            std::string getTitle() const { return m_title; }
+            std::string getDirector() const { return m_director; }
+            double getPrice() const { return m_price; }
+            size_t getCount() const { return m_count; }
+        };
+
+
+        template <typename... TDevelopers>
+        class Bookstore
+        {
+        private:
+            using Stock = std::vector<std::variant<TDevelopers ...>>;
+
+        public:
+            explicit Bookstore(Stock stock) : m_stock{ std::move(stock) } {}
+
+            double balance() {
+
+                double total{};
+
+                for (const auto& element : m_stock) {
+
+                    double price{};
+                    size_t count{};
+
+                    std::visit(
+                        [&](auto& element) {
+                            price = element.getPrice();
+                            count = element.getCount();
+                        },
+                        element
+                    );
+
+                    total += price * count;
+                }
+
+                return total;
+            }
+
+            size_t count() {
+
+                size_t total{};
+
+                for (const auto& element : m_stock) {
+
+                    size_t count{};
+
+                    std::visit(
+                        [&](auto& element) {
+                            count = element.getCount();
+                        },
+                        element
+                    );
+
+                    total += count;
+                }
+
+                return total;
+            }
+
+        private:
+            Stock m_stock;
+        };
+
+        void testExercise_01() {
+
+            Book cBook { "C", "Dennis Ritchie", 11.99, 12 };
+            Book javaBook{"Java", "James Gosling", 17.99, 21 };
+            Book cppBook{"C++", "Bjarne Stroustrup", 16.99, 4 };
+            Book csharpBook{"C#", "Anders Hejlsberg", 21.99, 8 };
+
+            Movie movieTarantino{ "Once upon a time in Hollywood", "Quentin Tarantino", 6.99, 3 };
+            Movie movieBond{ "Spectre", "Sam Mendes", 8.99, 6 };
+
+            using MyBookstore = Bookstore<Book, Movie>;
+
+            MyBookstore project = MyBookstore{
+                { cBook, movieBond, javaBook, cppBook, csharpBook, movieTarantino }
+            };
+
+            double balance = project.balance();
+            std::cerr << "Total value of Bookstore: " << balance << std::endl;
+            size_t count = project.count();
+            std::cerr << "Count of elements in Bookstore: " << count << std::endl;
+        }
+    }
+
+    namespace Exercise_03 {
+
         std::optional<int> toInt(std::string s)
         {
             std::optional<int> result{ std::nullopt };
@@ -198,7 +319,7 @@ namespace Exercises_UtilityClasses {
         }
     }
 
-    namespace Exercise_03 {
+    namespace Exercise_04 {
 
         // https://gieseanw.wordpress.com/2017/05/03/a-true-heterogeneous-container-in-c/
 
@@ -342,9 +463,10 @@ namespace Exercises_UtilityClasses {
 void test_exercises_utility_classes()
 {
     using namespace Exercises_UtilityClasses;
-    Exercise_01::testExercise_01();
+    //Exercise_01::testExercise_01();
     Exercise_02::testExercise_01();
-    Exercise_03::testExercise_01();
+    //Exercise_03::testExercise_01();
+    //Exercise_04::testExercise_01();
 }
 
 // =====================================================================================
