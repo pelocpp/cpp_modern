@@ -133,6 +133,7 @@
   * Beispiel Klasse `Matrix`
   * Beispiel &ldquo;Konkatenation von Zeichenketten&rdquo;
 
+
 ## Functional Programming
   * Allgemeines
   * Funktionen höherer Ordnung `filter`, `map` und `fold`
@@ -165,6 +166,9 @@
 
   * `std::pair`
   * `std::tuple` 
+
+  * Vertiefungen zu `std::variant`: Das Visitor-Konzept mit `std::visit` und das sog. *Overload*&ndash;Pattern
+
 
 
 ## SFINAE (&ldquo;Substitution failure is not an error&ldquo;)

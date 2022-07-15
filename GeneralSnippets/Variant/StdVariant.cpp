@@ -182,6 +182,51 @@ namespace VariantDemo {
         }
         std::cout << std::endl;
     }
+
+    template<class... Ts>
+    struct Overload : Ts... { using Ts::operator()...; };
+    
+    template<class... Ts> Overload(Ts...) -> Overload<Ts...>;
+
+    void test_06() {
+
+        std::variant<int, float, std::string> intFloatString{ "Hello" };
+
+        std::visit(Overload{
+            [](const int& i) { std::cout << "int: " << i << std::endl; },
+            [](const float& f) { std::cout << "float: " << f << std::endl; },
+            [](const std::string& s) { std::cout << "string: " << s << std::endl; }
+            },
+            intFloatString
+        );
+
+        intFloatString = 123;
+
+        std::visit(Overload{
+            [](const int& i) { std::cout << "int: " << i << std::endl; },
+            [](const float& f) { std::cout << "float: " << f << std::endl; },
+            [](const std::string& s) { std::cout << "string: " << s << std::endl; }
+            },
+            intFloatString
+        );
+    }
+
+    void test_07() {
+
+        std::variant<int, float, std::string> intFloatString{ "Hello" };
+
+        Overload overloadSet {
+            [](const int& i) { std::cout << "int: " << i << std::endl; },
+            [](const float& f) { std::cout << "float: " << f << std::endl; },
+            [](const std::string& s) { std::cout << "string: " << s << std::endl; }
+        };
+
+        std::visit(overloadSet, intFloatString);
+
+        intFloatString = 123;
+
+        std::visit(overloadSet, intFloatString);
+    }
 }
 
 void main_variant()
@@ -192,6 +237,8 @@ void main_variant()
     test_03();
     test_04();
     test_05();
+    test_06();
+    test_07();
 }
 
 // =====================================================================================

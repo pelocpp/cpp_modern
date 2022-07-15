@@ -28,6 +28,36 @@ Klasse `std::variant`:
   * `std::visit()`
   * `std::common_type`
 
+*Overload*-Pattern:
+
+  * Kann verwendet werden, um den Wert eines `std::variant`-Objekts zielgerichtet zu besuchen.
+
+```cpp
+template<class... Ts>
+struct Overload : Ts... { using Ts::operator()...; };
+    
+template<class... Ts> Overload(Ts...) -> Overload<Ts...>;
+```
+
+Dieses Pattern ist sehr trickreich &ndash; ich will es deshalb nur kurz beschreiben:
+
+  * Die Strukturdefinition `struct Overload` ist das Overload Pattern selbst.
+  * Die nachfolgende Anweisung ist der so genannte *Deduction Guide* dafür.
+  * Die `Overload`-Klasse kann beliebig viele Basisklassen (`Ts ...`) haben.
+    Sie leitet sich von jeder Klasse `public` ab und
+    bringt den Aufrufoperator (`Ts::operator...`) jeder Basisklasse
+    in ihren Geltungsbereich.
+  * Die Basisklassen benötigen einen überladenen Aufrufoperator (`Ts::operator()`).
+    Lambdas stellen diesen Aufrufoperator zur Verfügung.
+
+Kompakt formuliert kann man unter dem *Deduction Guide* ein Muster verstehen,
+das einer Templateklasse zugeordnet ist und dem Compiler mitteilt,
+wie ein Satz von Konstruktorargumenten (und deren Typen)
+in Template-Parameter für die Klasse übersetzt werden sollen.
+
+Im Quellcode finden Sie ein Beispiel vor,
+das so einfach wie möglich gehalten ist.
+
 ---
 
 ## Literaturhinweise:
