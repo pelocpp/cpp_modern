@@ -32,7 +32,7 @@ namespace StdInvoke {
         int operator()(int n) { return 3 * n; }
     };
 
-    // testing scenarions for std::invoke
+    // testing scenarios for std::invoke
     void test_01() {
         int result;
 

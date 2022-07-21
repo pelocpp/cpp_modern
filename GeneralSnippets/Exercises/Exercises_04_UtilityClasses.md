@@ -52,7 +52,7 @@ die &ndash; an dem gezeigten Beispiel &ndash; eine Unterscheidung der drei Daten
 
 ## Aufgabe 2: Visitor-Entwurfsmuster mit `std::variant` und `std::visit`
 
-#### Vorausetzungen: `std::variant`, `std::visit`, `std:: vector`, variadische Templates
+#### Vorausetzungen: `std::variant`, `std::visit`, `std::vector`, variadische Templates
 
 Ein Entwurfsmuster aus der Gruppe der Verhaltensmuster (*Behavioral Design Patterns*), das so genannt *Visitor*-Entwurfsmuster,
 lässt sich mit `std::variant` und `std::visit` sehr einfach umsetzen.
@@ -97,7 +97,7 @@ MyBookstore project = MyBookstore {
 ```
 
 Entwerfen Sie drei rudimentäre Klassen `Book`, `Movie` und `Bookstore`,
-und das gezeigte Code-Fragment übersetzen zu können.
+um das gezeigte Code-Fragment übersetzen zu können.
 
 
 2. *Frage*:
@@ -105,7 +105,7 @@ Wozu sind beim Aufruf des Konstruktors zwei öffnende und schließende geschweif
 
 3. *Frage*:
 Wie ist in der Klasse `Bookstore` eine Methode `totalBalance` zu implementieren, um den Gesamtwert des Warenbestands in
-der Bibliothek zu berechnen? Hier könnten `std::variant` und `std::visit` zum Einsatz gelangen.
+der Buchhandlung zu berechnen? Hier könnten `std::variant` und `std::visit` zum Einsatz gelangen.
 
 ```cpp
 double balance = project.totalBalance();

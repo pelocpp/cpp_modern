@@ -35,7 +35,7 @@ namespace Exercises_UtilityClasses {
         // note: doesn't compile with gcc :(
         auto improvedVisitor = [](auto const& elem) {
 
-            using T = std::remove_reference<decltype(elem)>::type;
+            using T = typename std::remove_reference<decltype(elem)>::type;
 
             if constexpr (std::is_scalar<T>::value)
             {
@@ -114,12 +114,12 @@ namespace Exercises_UtilityClasses {
         };
 
 
-        template <typename... TDevelopers>
+        template <typename... TMedia>
         class Bookstore
         {
         private:
-            using Stock = std::vector<std::variant<TDevelopers ...>>;
-            using StockList = std::initializer_list<std::variant<TDevelopers ...>>;
+            using Stock = std::vector<std::variant<TMedia ...>>;
+            using StockList = std::initializer_list<std::variant<TMedia ...>>;
 
         public:
             explicit Bookstore(StockList stock) : m_stock{ stock } {}
@@ -134,7 +134,7 @@ namespace Exercises_UtilityClasses {
                     size_t count{};
 
                     std::visit(
-                        [&](auto& element) {
+                        [&](const auto& element) {
                             price = element.getPrice();
                             count = element.getCount();
                         },
@@ -156,7 +156,7 @@ namespace Exercises_UtilityClasses {
                     size_t count{};
 
                     std::visit(
-                        [&](auto& element) {
+                        [&](const auto& element) {
                             count = element.getCount();
                         },
                         element
