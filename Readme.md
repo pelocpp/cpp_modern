@@ -2,7 +2,16 @@
 
 ###### Preamble
 
+<img
+  align="right"
+  width="100"
+  height="100"
+  src="Certified Expert Trainer.png"
+/>
+
 *Herb Sutter*: *"The world is built on C++ (and its C subset)"*
+
+---
 
 ---
 
