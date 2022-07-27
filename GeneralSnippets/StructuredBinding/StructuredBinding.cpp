@@ -61,6 +61,11 @@ namespace StructuredBinding {
         auto [x, y] = p2;
         std::cout << "X Coordinate : " << x << std::endl;
         std::cout << "Y Coordinate : " << y << std::endl;
+
+        // with structured binding and an anonymous object
+        auto [x1, y1] = Point{ 100, 200 };
+        std::cout << "X Coordinate : " << x1 << std::endl;
+        std::cout << "Y Coordinate : " << y1 << std::endl;
     }
 
     void test_04_a() {
