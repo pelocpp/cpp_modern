@@ -113,13 +113,12 @@ namespace Exercises_UtilityClasses {
             size_t getCount() const { return m_count; }
         };
 
-
-        template <typename... TMedia>
+        template <typename... TMEDIA>
         class Bookstore
         {
         private:
-            using Stock = std::vector<std::variant<TMedia ...>>;
-            using StockList = std::initializer_list<std::variant<TMedia ...>>;
+            using Stock = std::vector<std::variant<TMEDIA ...>>;
+            using StockList = std::initializer_list<std::variant<TMEDIA ...>>;
 
         public:
             explicit Bookstore(StockList stock) : m_stock{ stock } {}
@@ -174,7 +173,7 @@ namespace Exercises_UtilityClasses {
 
         void testExercise_01() {
 
-            Book cBook { "C", "Dennis Ritchie", 11.99, 12 };
+            Book cBook{ "C", "Dennis Ritchie", 11.99, 12 };
             Book javaBook{"Java", "James Gosling", 17.99, 21 };
             Book cppBook{"C++", "Bjarne Stroustrup", 16.99, 4 };
             Book csharpBook{"C#", "Anders Hejlsberg", 21.99, 8 };
@@ -184,13 +183,13 @@ namespace Exercises_UtilityClasses {
 
             using MyBookstore = Bookstore<Book, Movie>;
 
-            MyBookstore project = MyBookstore{
+            MyBookstore project = MyBookstore {
                 { cBook, movieBond, javaBook, cppBook, csharpBook, movieTarantino }
             };
 
-            double balance = project.balance();
+            double balance{ project.balance() };
             std::cerr << "Total value of Bookstore: " << balance << std::endl;
-            size_t count = project.count();
+            size_t count{ project.count() };
             std::cerr << "Count of elements in Bookstore: " << count << std::endl;
         }
     }
@@ -203,11 +202,11 @@ namespace Exercises_UtilityClasses {
             
             try
             {
-                int i = std::stoi(s);
+                int i{ std::stoi(s) };
 
                 // want input string to be consumed entirely (there are several ways
                 // to accomplish this each with advantages and disadvantages)
-                std::string tmp = std::to_string(i);
+                std::string tmp{ std::to_string(i) };
                 if (tmp.length() != s.length())
                     throw std::invalid_argument("input string illegal");
 
@@ -232,25 +231,28 @@ namespace Exercises_UtilityClasses {
 
             try
             {
-                if constexpr (std::is_same_v<T, int> || std::is_same_v<T, short>) {
-                    int i = std::stoi(s);
-                    std::string tmp = std::to_string(i);
+                if constexpr (std::is_same_v<T, int> || std::is_same_v<T, short>)
+                {
+                    int i{ std::stoi(s) };
+                    std::string tmp{ std::to_string(i) };
                     if (tmp.length() != s.length())
                         throw std::invalid_argument("input string illegal");
 
                     result.emplace(i);
                 }
-                if constexpr (std::is_same_v<T, long>) {
-                    long l = std::stol(s);
-                    std::string tmp = std::to_string(l);
+                if constexpr (std::is_same_v<T, long>)
+                {
+                    long l{ std::stol(s) };
+                    std::string tmp{ std::to_string(l) };
                     if (tmp.length() != s.length())
                         throw std::invalid_argument("input string illegal");
 
                     result.emplace(l);
                 }
-                if constexpr (std::is_same_v<T, long long>) {
-                    long long ll = std::stoll(s);
-                    std::string tmp = std::to_string(ll);
+                if constexpr (std::is_same_v<T, long long>)
+                {
+                    long long ll{ std::stoll(s) };
+                    std::string tmp{ std::to_string(ll) };
                     if (tmp.length() != s.length())
                         throw std::invalid_argument("input string illegal");
 
@@ -270,22 +272,22 @@ namespace Exercises_UtilityClasses {
         }
 
         void testExercise_01a() {
-            std::optional<int> i1 = toInt("123");
+            std::optional<int> i1{ toInt("123") };
             if (i1.has_value()) {
                 std::cout << i1.value() << std::endl;
             }
 
-            std::optional<int> i2 = toInt("-987654321");
+            std::optional<int> i2{ toInt("-987654321") };
             if (i2.has_value()) {
                 std::cout << i2.value() << std::endl;
             }
 
-            std::optional<int> i3 = toInt("123ABC");
+            std::optional<int> i3{ toInt("123ABC") };
             if (i3.has_value()) {
                 std::cout << i3.value() << std::endl;
             }
 
-            std::optional<int> i4 = toInt("ABC123");
+            std::optional<int> i4{ toInt("ABC123") };
             if (i4.has_value()) {
                 std::cout << i4.value() << std::endl;
             }
@@ -293,22 +295,22 @@ namespace Exercises_UtilityClasses {
 
         void testExercise_01b() {
 
-            std::optional<short> i1 = toNumber<short>("32767");
+            std::optional<short> i1{ toNumber<short>("32767") };
             if (i1.has_value()) {
                 std::cout << i1.value() << std::endl;
             }
 
-            std::optional<int> i2 = toNumber<int>("2147483647");
+            std::optional<int> i2{ toNumber<int>("2147483647") };
             if (i2.has_value()) {
                 std::cout << i2.value() << std::endl;
             }
 
-            std::optional<long int> i3 = toNumber<long int>("2147483647");
+            std::optional<long int> i3{ toNumber<long int>("2147483647") };
             if (i3.has_value()) {
                 std::cout << i3.value() << std::endl;
             }
 
-            std::optional<long long> i4 = toNumber<long long>("9223372036854775807");
+            std::optional<long long> i4{ toNumber<long long>("9223372036854775807") };
             if (i4.has_value()) {
                 std::cout << i4.value() << std::endl;
             }
@@ -464,10 +466,10 @@ namespace Exercises_UtilityClasses {
 void test_exercises_utility_classes()
 {
     using namespace Exercises_UtilityClasses;
-    //Exercise_01::testExercise_01();
+    Exercise_01::testExercise_01();
     Exercise_02::testExercise_01();
-    //Exercise_03::testExercise_01();
-    //Exercise_04::testExercise_01();
+    Exercise_03::testExercise_01();
+    Exercise_04::testExercise_01();
 }
 
 // =====================================================================================

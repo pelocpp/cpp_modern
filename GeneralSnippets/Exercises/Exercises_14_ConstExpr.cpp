@@ -67,6 +67,10 @@ namespace Exercises_ConstExpr {
             std::cout << na << std::endl;
             std::cout << fa << std::endl;
             std::cout << da << std::endl;
+
+            std::cout << static_cast<int>(n1) << std::endl;
+            std::cout << static_cast<float>(f1) << std::endl;
+            std::cout << static_cast<double>(d1) << std::endl;
         }
     }
 
