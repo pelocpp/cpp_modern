@@ -139,6 +139,16 @@
   * Funktionen höherer Ordnung `filter`, `map` und `fold`
 
 
+## FileSystem Library
+  * Klassen `path` und `directory_entry`
+  * Iteratoren für Verzeichnisse
+
+
+## Reguläre Ausdrücke
+  * Allgemeines
+  * Klasse `std::regex`
+
+
 ## Ergänzungen zu Zeichenketten
   * `std::string_view`
   * SSO (Small String Optimization)

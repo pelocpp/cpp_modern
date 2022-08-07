@@ -680,6 +680,9 @@
     <None Include="Bind\Bind.md">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="Agenda\Agenda_01.md">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Global\Dummy.h">
