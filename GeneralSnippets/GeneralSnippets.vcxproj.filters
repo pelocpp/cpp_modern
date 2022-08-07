@@ -339,6 +339,9 @@
     <ClCompile Include="Bind\Bind.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Literals\Literals_01.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
