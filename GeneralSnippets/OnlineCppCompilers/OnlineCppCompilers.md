@@ -35,38 +35,37 @@ mit den neuesten C++17/20&ndash;Features.
 
 *Abbildung* 1: Oberfläche des Online Compilers &ldquo;Wandbox&rdquo;.
 
-*Hinweis*:
-Ein großartiges Feature des Wandbox Online Compilers ist die Fähigkeit,
+**Hinweis**:
+Ein großartiges Feature des Wandbox Online Compilers ist seine Fähigkeit,
 ein Programm auf mehrere Dateien aufteilen zu können:
 
-Um mehr als nur die Quellcodedatei zu erstellen, klickt man auf das große fettgedruckte &ldquo;+&rdquo;-Zeichen
-direkt über Zeile 1 des Quellcodefensters, direkt außerhalb des Textfelds.
-Dadurch wird eine neue Registerkarte mit dem Namen *"noname-1"* erstellt.
-Diese Registerkarte repräsentiert eine neue Quellcodedatei.
+  * Um mehr als nur eine Quellcodedatei zu erstellen, klickt man auf das große fettgedruckte &ldquo;+&rdquo;-Zeichen
+  direkt über Zeile 1 des Quellcodefensters, direkt außerhalb des Textfelds.
+  Dadurch wird eine neue Registerkarte mit dem Namen *"noname-1"* erstellt.
+  Diese Registerkarte repräsentiert eine neue Quellcodedatei:
 
-<img src="WandboxOptions01.png" width="300">
+<img src="WandboxOptions01.png" width="280">
 
 *Abbildung* 2: Mehrere Quellcodedateien für ein Programm.
 
-Diese Quellcodedatei versieht man mit einem richtigen Namen.
-Man klickt dazu auf *"noname-1"*, um zu dieser Registerkarte zu wechseln,
-und klickt dann erneut auf *"noname-1"*. Der Name wird editierbar,
-nennen wir sie beispielsweise &ldquo;Time.cpp&rdquo;
+  * Diese Quellcodedatei versieht man mit einem richtigen Namen.
+  Man klickt dazu auf *"noname-1"*, um zu dieser Registerkarte zu wechseln,
+  und klickt dann erneut auf *"noname-1"*. Der Name wird editierbar,
+  nennen wir sie beispielsweise &ldquo;Time.cpp&rdquo;.
 
-Wenn wir jetzt auf &ldquo;Run&rdquo; klicken, kompiliert Wandbox nur den Code in der Hauptdatei!
-Die zusätzliche Datei &ldquo;Time.cpp&rdquo; wird nicht berücksichtigt.
+  * Wenn wir jetzt auf &ldquo;Run&rdquo; klicken, kompiliert Wandbox nur den Code in der Hauptdatei!
+  Die zusätzliche Datei &ldquo;Time.cpp&rdquo; wird nicht berücksichtigt.
+  Um Wandbox dazu zu bringen, &ldquo;Time.cpp&rdquo; zusammen mit der Hauptdatei zu kompilieren
+  und auszuführen (eigentlich sollten wir von *Linken* sprechen),
+  müssen wir &ldquo;Time.cpp&rdquo; zur Compiler-Befehlszeile hinzufügen!
 
-Um Wandbox dazu zu bringen, &ldquo;Time.cpp&rdquo; zusammen mit der Hauptdatei zu kompilieren
-und ausführen (eigentlich sollten wir von *Linken* sprechen),
-müssen wir &ldquo;Time.cpp&rdquo; zur Compiler-Befehlszeile hinzufügen!
+  * Dazu gibt es ein Texteingabefeld für &ldquo;Compiler Options:&rdquo;
+  Es befindet sich in der linken Seitenleiste.
+  Jede Zeile mit Optionen wird zu einem einzigen Argument für den Compiler.
+  Wenn wir nun zusätzliche Codedateien hinzuzufügen, müssen wir nur die Namen dieser Dateien einfach
+  reinschreiben:
 
-Dazu gibt es ein Texteingabefeld für &ldquo;Compiler Options:&rdquo;
-Es befindet sich in der linken Seitenleiste.
-Jede Zeile mit Optionen wird zu einem einzigen Argument für den Compiler.
-Wenn wir nun zusätzliche Codedateien hinzuzufügen, müssen wir nur die Namen dieser Dateien einfach
-reinschreiben:
-
-<img src="WandboxOptions02.png" width="300">
+<img src="WandboxOptions02.png" width="280">
 
 *Abbildung* 3: Optionen des Compilers.
 
@@ -77,7 +76,6 @@ führt dieselbe Aufgabe aus.
 <img src="WandboxOptions03.png" width="650">
 
 *Abbildung* 4: Tastatur-Shortcut zur Programmausführung.
-
 
 ---
 
