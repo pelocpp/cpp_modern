@@ -14,10 +14,10 @@ namespace TemplateTemplateParameter {
 
         template <
             typename T,
-            template <typename type, typename allocator> typename Container,
-            typename Allocator = std::allocator<T>
+            typename TAllocator = std::allocator<T>,
+            template <typename type, typename TAllocator> typename TContainer
         >
-            void testMe(Container<T, Allocator>& container, const T& value)
+            void testMe(TContainer<T, TAllocator>& container, const T& value)
         {
             container.push_back(value);
             container.push_back(value);
