@@ -93,7 +93,6 @@
 
 ## Templates
 
-
   * David Vandevoorde, Nicolai M. Josuttis und Douglas Gregor: &ldquo;*C++ Templates: The Complete Guide (2nd Edition)*&rdquo;.</br>
     Addison Wesley (1. Dezember 2017), 2. Auflage, 832 Seiten. Sprache: Englisch. ISBN-10: 0321714121, ISBN-13: 978-0321714121.
 

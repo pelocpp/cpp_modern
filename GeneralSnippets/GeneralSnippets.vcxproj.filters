@@ -753,5 +753,14 @@
     <Image Include="..\Horse_Cpp.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="OnlineCppCompilers\WandboxOptions01.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="OnlineCppCompilers\WandboxOptions02.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="OnlineCppCompilers\WandboxOptions03.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
