@@ -15,8 +15,8 @@ namespace Exercises_Folding {
         // =============================================================
         // Logical And - with folding expression
 
-        template<typename ...Args>
-        bool andAll(const Args ...args) {
+        template<typename... TArgs>
+        bool andAll(const TArgs... args) {
             return (... && args);  // unary left fold
         }
 
@@ -32,8 +32,8 @@ namespace Exercises_Folding {
         // =============================================================
         // Logical Or - with folding expression
 
-        template<typename ...Args>
-        bool orAll(const Args ...args) {
+        template<typename... TArgs>
+        bool orAll(const TArgs... args) {
             return (args || ...);  // unary right fold
         }
 
@@ -60,11 +60,11 @@ namespace Exercises_Folding {
         // Beim Lösungsansatz mit variadischen Templates wird
         // das 1. mit dem 2., das 2. mit dem 3., das 3. mit dem 4. Element usw. verglichen!
 
-        template<typename T, typename... TREST>
-        constexpr bool sameType(T arg, TREST... args)
+        template<typename T, typename... TRest>
+        constexpr bool sameType(T arg, TRest... args)
         {
             // since C++17: folding expression !
-            return (std::is_same_v<T, TREST> && ...);
+            return (std::is_same_v<T, TRest> && ...);
             // or
             // return (std::is_same_v<decltype(arg), decltype(args)> && ...);
         }
@@ -87,12 +87,12 @@ namespace Exercises_Folding {
 
     namespace Exercise_03 {
 
-        template <typename T, typename ... TARGS>
-        auto minimum(const T& x, const T& y, const TARGS& ... args)
+        template <typename T, typename...  TArgs>
+        auto minimum(const T& x, const T& y, const TArgs&... args)
         {
             auto m = (x < y) ? x : y;
 
-            if constexpr (sizeof ... (args) > 0) {
+            if constexpr (sizeof... (args) > 0) {
 
                 auto helper = [&](const auto& value) {
                     if (value < m) {
@@ -106,12 +106,12 @@ namespace Exercises_Folding {
             return m;
         }
 
-        template <typename T, typename ... TARGS>
-        auto maximum(const T& x, const T& y, const TARGS& ... args)
+        template <typename T, typename...  TArgs>
+        auto maximum(const T& x, const T& y, const TArgs&... args)
         {
             auto m = (x > y) ? x : y;
 
-            if constexpr (sizeof ... (args) > 0) {
+            if constexpr (sizeof... (args) > 0) {
 
                 auto helper = [&](const auto& value) {
                     if (value > m) {
@@ -151,8 +151,8 @@ namespace Exercises_Folding {
         // ===================================================================
         // folding
 
-        template <typename T, typename ... ARGS>
-        void pushBackAll_01(std::vector<T>& vec, const ARGS&... args)
+        template <typename T, typename...  TArgs>
+        void pushBackAll_01(std::vector<T>& vec, const TArgs&... args)
         {
             (vec.push_back(args) , ...);  // unary right fold or
             (... , vec.push_back(args));  // unary left fold
@@ -160,11 +160,11 @@ namespace Exercises_Folding {
 
         // or better - using perfect forwarding:
 
-        //template <typename T, typename ... ARGS>
-        //void pushBackAll_01(std::vector<T>& vec, ARGS&&... args)
+        //template <typename T, typename...  TArgs>
+        //void pushBackAll_01(std::vector<T>& vec, TArgs&&... args)
         //{
-        //    (vec.push_back(std::forward<ARGS>(args)) , ...);  // unary right fold or
-        //    (..., vec.push_back(std::forward<ARGS>(args)));   // unary left fold
+        //    (vec.push_back(std::forward<TArgs>(args)) , ...);  // unary right fold or
+        //    (..., vec.push_back(std::forward<TArgs>(args)));   // unary left fold
         //}
 
 
@@ -186,17 +186,17 @@ namespace Exercises_Folding {
         // ===================================================================
         // variadic templates
 
-        template <typename T, typename ARG>
-        void pushBackAll_02(std::vector<T>& vec, ARG&& arg)
+        template <typename T, typename TArg>
+        void pushBackAll_02(std::vector<T>& vec, TArg&& arg)
         {
-            vec.push_back(std::forward<ARG>(arg));
+            vec.push_back(std::forward<TArg>(arg));
         }
 
-        template <typename T, typename ARG, typename ... ARGS>
-        void pushBackAll_02(std::vector<T>& vec, ARG&& arg, ARGS&&... args)
+        template <typename T, typename TArg, typename...  TArgs>
+        void pushBackAll_02(std::vector<T>& vec, TArg&& arg, TArgs&&... args)
         {
-            vec.push_back(std::forward<ARG>(arg));
-            pushBackAll_02(vec, std::forward<ARGS>(args) ...);
+            vec.push_back(std::forward<TArg>(arg));
+            pushBackAll_02(vec, std::forward<TArgs>(args) ...);
         }
 
         void testExercise_04b()
@@ -217,10 +217,10 @@ namespace Exercises_Folding {
         // ===================================================================
         // initializer list
 
-        template <typename T, typename ... ARGS>
-        void pushBackAll_03(std::vector<T>& vec, ARGS&&... args)
+        template <typename T, typename...  TArgs>
+        void pushBackAll_03(std::vector<T>& vec, TArgs&&... args)
         {
-            std::initializer_list<int> { (vec.push_back(std::forward<ARGS>(args)), 0) ... };
+            std::initializer_list<int> { (vec.push_back(std::forward<TArgs>(args)), 0) ... };
         }
 
         void testExercise_04c()
@@ -247,20 +247,20 @@ namespace Exercises_Folding {
 
     namespace Exercise_05 {
 
-        template <typename ...ARGS>
-        void printer1(ARGS ...args) {
+        template <typename... TArgs>
+        void printer1(TArgs... args) {
             (std::cout << ... << args);
             std::cout << std::endl;
         }
 
-        template <typename ...ARGS>
-        void printer2(ARGS ...args) {
+        template <typename... TArgs>
+        void printer2(TArgs... args) {
             ((std::cout << args << ", "), ...);
             std::cout << std::endl;
         }
 
-        template <typename T, typename ...ARGS>
-        void printer3(T first, ARGS ...rest) {
+        template <typename T, typename... TArgs>
+        void printer3(T first, TArgs... rest) {
             std::cout << first;
             ((std::cout << ", " << rest), ...);
             std::cout << std::endl;

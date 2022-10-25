@@ -120,10 +120,10 @@ namespace Exercises_Metaprogramming {
 
     namespace Exercise_02 {
 
-        template<size_t n>
+        template<size_t N>
         struct FibImpl {
             static constexpr size_t value =
-                FibImpl<n - 1>::value + FibImpl<n - 2>::value;
+                FibImpl<N - 1>::value + FibImpl<N - 2>::value;
         };
 
         template<>
@@ -136,10 +136,10 @@ namespace Exercises_Metaprogramming {
             static constexpr size_t value = 0;
         };
 
-        template<size_t n>
+        template<size_t N>
         struct Fibonacci {
-            static_assert(n >= 0, "Error: Fibonacci can't be called with a negative integer");
-            static constexpr size_t value = FibImpl<n>::value;
+            static_assert(N >= 0, "Error: Fibonacci can't be called with a negative integer");
+            static constexpr size_t value = FibImpl<N>::value;
         };
 
         void testExercise_02() {

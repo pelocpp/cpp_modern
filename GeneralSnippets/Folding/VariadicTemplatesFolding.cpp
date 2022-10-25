@@ -12,8 +12,8 @@ namespace VariadicTemplatesFolding {
     /* folding examples: introduction
     */
 
-    template<typename ...Args>
-    auto anotherAdder(Args ...args) {
+    template<typename... TArgs>
+    auto anotherAdder(TArgs... args) {
         return (args + ... + 0);  // binary right fold (init == 0)
     }
 
@@ -22,8 +22,8 @@ namespace VariadicTemplatesFolding {
         std::cout << "Sum from 1 up to 10: " << sum << std::endl;
     }
 
-    template<typename ...Args>
-    void printer(Args... args) {
+    template<typename... TArgs>
+    void printer(TArgs... args) {
         // binary left fold (init == ostream)
         (std::cout << ... << args) << std::endl;
     }
@@ -37,8 +37,8 @@ namespace VariadicTemplatesFolding {
     /* demonstrating all four versions of folding expressions
     */
 
-    template<typename ...Args>
-    auto anotherSubtracterBRF(Args ...args) {
+    template<typename... TArgs>
+    auto anotherSubtracterBRF(TArgs... args) {
         return (args - ... - 0);  // binary right fold (init == 0)
     }
 
@@ -50,8 +50,8 @@ namespace VariadicTemplatesFolding {
 
     // -----------------------------------------------------------------------
 
-    template<typename ...Args>
-    auto anotherSubtracterBLF(Args ...args) {
+    template<typename... TArgs>
+    auto anotherSubtracterBLF(TArgs... args) {
         return (0 - ... - args);  // binary left fold (init == 0)
     }
 
@@ -63,8 +63,8 @@ namespace VariadicTemplatesFolding {
 
     // -----------------------------------------------------------------------
 
-    template<typename ...Args>
-    auto anotherSubtracterURF(Args ...args) {
+    template<typename... TArgs>
+    auto anotherSubtracterURF(TArgs... args) {
         return (args - ...);  // unary right fold
     }
 
@@ -76,8 +76,8 @@ namespace VariadicTemplatesFolding {
 
     // ----------------------------------------------------------------------
 
-    template<typename ...Args>
-    auto anotherSubtracterULF(Args ...args) {
+    template<typename... TArgs>
+    auto anotherSubtracterULF(TArgs... args) {
         return (... - args);  // unary left fold
     }
 
@@ -92,14 +92,14 @@ namespace VariadicTemplatesFolding {
     // Folding over a comma: ',' operator
     // (left or right folding is the same in this case)
 
-    template <typename... Args>
-    void printerWithSeperatorRight(Args... args) {
+    template <typename... TArgs>
+    void printerWithSeperatorRight(TArgs... args) {
         std::string sep = " ";
         ((std::cout << args << sep), ...) << std::endl;
     }
 
-    template <typename... Args>
-    void printerWithSeperatorLeft(Args... args) {
+    template <typename... TArgs>
+    void printerWithSeperatorLeft(TArgs... args) {
         std::string sep = " ";
         (... , (std::cout << args << sep)) << std::endl;
     }
@@ -120,8 +120,8 @@ namespace VariadicTemplatesFolding {
         return std::cout;
     }
 
-    template <typename... Args>
-    void printerWithSeperator(Args... args) {
+    template <typename... TArgs>
+    void printerWithSeperator(TArgs... args) {
         (handleArg(args), ...) << std::endl;
     }
 

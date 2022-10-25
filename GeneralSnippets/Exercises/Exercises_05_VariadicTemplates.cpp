@@ -102,8 +102,8 @@ namespace Exercises_VariadicTemplates {
             // return std::is_same<T1, T2>::value;
         }
 
-        template<typename T1, typename T2, typename... TREST>
-        bool sameType(T1 arg1, T2 arg2, TREST... args)
+        template<typename T1, typename T2, typename... TRest>
+        bool sameType(T1 arg1, T2 arg2, TRest... args)
         {
             std::cout << " > " << arg1 << ": " << typeid(arg1).name();
             std::cout << " - " << arg2 << ": " << typeid(arg2).name() << std::endl;
@@ -141,11 +141,11 @@ namespace Exercises_VariadicTemplates {
             return t;
         }
 
-        template <typename T, typename ... TARGS>
-        inline typename std::common_type<T, TARGS...>::type
-            minimum(const T& t, const TARGS& ...p)
+        template <typename T, typename... TArgs>
+        inline typename std::common_type<T, TArgs...>::type
+            minimum(const T& t, const TArgs& ...p)
         {
-            using result_type = typename std::common_type<T, TARGS...>::type;
+            using result_type = typename std::common_type<T, TArgs...>::type;
             return std::min(static_cast<result_type>(t), static_cast<result_type>(minimum(p...)));
         }
 
@@ -156,10 +156,10 @@ namespace Exercises_VariadicTemplates {
         //    return t; 
         //}
 
-        //template <typename T, typename ... TARGS>
-        //inline auto minimum(const T& t, const TARGS& ... p)
+        //template <typename T, typename... TArgs>
+        //inline auto minimum(const T& t, const TArgs& ... p)
         //{
-        //    using result_type = std::common_type_t<T, TARGS ...>;
+        //    using result_type = std::common_type_t<T, TArgs... >;
         //    return std::min(static_cast<result_type>(t), static_cast<result_type>(minimum(p...)));
         //}
 
@@ -192,17 +192,17 @@ namespace Exercises_VariadicTemplates {
             }
         };
 
-        template<typename ... TARGS>
-        void printTuple(const std::tuple<TARGS ...>& t) {
+        template<typename... TArgs>
+        void printTuple(const std::tuple<TArgs... >& t) {
             std::cout << "[";
-            ShowTupleImpl<const std::tuple<TARGS...>&, sizeof...(TARGS)>::print(t);
+            ShowTupleImpl<const std::tuple<TArgs...>&, sizeof...(TArgs)>::print(t);
             std::cout << "]" << std::endl;
         }
 
-        template<typename ... TARGS>
-        void printTupleEx(const std::tuple<TARGS ...>& t) {
-            using tuple_type = const std::tuple<TARGS ...>&;
-            static const int tuple_size = sizeof...(TARGS);
+        template<typename... TArgs>
+        void printTupleEx(const std::tuple<TArgs... >& t) {
+            using tuple_type = const std::tuple<TArgs... >&;
+            static const int tuple_size = sizeof...(TArgs);
             std::cout << "[";
             ShowTupleImpl<tuple_type, tuple_size>::print(t);
             std::cout << "]" << std::endl;
@@ -249,11 +249,11 @@ namespace Exercises_VariadicTemplates {
             static constexpr int result = N;
         };
 
-        template <int N, int ... REST>
-        class sum1<N, REST ...>
+        template <int N, int ... TRest>
+        class sum1<N, TRest ...>
         {
         public:
-            static constexpr int result = N + sum1<REST ...>::result;
+            static constexpr int result = N + sum1<TRest ...>::result;
         };
 
         // =============================================================
@@ -269,8 +269,8 @@ namespace Exercises_VariadicTemplates {
             return n;
         }
 
-        template <typename T, typename  ... TREST>
-        constexpr T sum2(T n, TREST ... r)
+        template <typename T, typename  ... TRest>
+        constexpr T sum2(T n, TRest ... r)
         {
             return n + sum2(r ...);
         }
@@ -301,7 +301,7 @@ namespace Exercises_VariadicTemplates {
         // die Realisierung erzeugt ein 'std::initializer_list<>'-Objekt mit einem
         // anschlieﬂenden Aufruf von 'std::accumulate':
 
-        template <int... ARGS>
+        template <int... TArgs>
         class sum4
         {
         public:
@@ -314,7 +314,7 @@ namespace Exercises_VariadicTemplates {
 
             constexpr operator int() const
             {
-                std::initializer_list<int> args = { ARGS ... };
+                std::initializer_list<int> args = { TArgs ... };
                 return std::accumulate(std::begin(args), std::end(args), 0);
             }
         };
@@ -322,11 +322,11 @@ namespace Exercises_VariadicTemplates {
         // =============================================================
         // Mit einem Folding-Konstrukt:
 
-        template <int... ARGS>
+        template <int... TArgs>
         class sum5
         {
         public:
-            static constexpr int result = ( ... + ARGS);
+            static constexpr int result = ( ... + TArgs);
         };
 
         void testExercise_05() {
@@ -346,7 +346,7 @@ namespace Exercises_VariadicTemplates {
 
     namespace Exercise_06 {
 
-        template <typename ... Bases>
+        template <typename... Bases>
         class X : public Bases ...
         {
         public:
@@ -376,8 +376,8 @@ namespace Exercises_VariadicTemplates {
 
     namespace Exercise_07 {
 
-        template<typename... ARGS>
-        size_t totalLength(const ARGS& ... args)
+        template<typename... TArgs>
+        size_t totalLength(const TArgs& ... args)
         {
             size_t len{};
             for (const auto& s : { args ... }) {

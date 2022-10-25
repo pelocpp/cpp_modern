@@ -92,10 +92,10 @@ public:
 Oder etwa an folgendem realen Beispiel:
 
 <pre>
-template <typename Type, typename ...Args>
-<b>auto</b> make_unique(Args&&... args) // no return type
+template <typename Type, typename... TArgs>
+<b>auto</b> make_unique(TArgs&&... args) // no return type
 {
-    return std::unique_ptr<Type>(new Type(std::forward<Args>(args)...));
+    return std::unique_ptr<Type>(new Type(std::forward<TArgs>(args)...));
 }
 </pre>
 
@@ -430,16 +430,16 @@ Wir rufen die Lambda-Funktion `callingFoo` mit zwei unterschiedlichen Argumenten
 Studieren Sie die Ausgabe sorgfältig:
 
 ```cpp
-const std::string str{ "Hello World with LValue" };
+const std::string str{ "Hello World with LValue - " };
 callingFoo(str);
-callingFoo("Hello World with RValue");
+callingFoo("Hello World with RValue - ");
 ```
 
 *Ausgabe*:
 
 ```
-Calling foo(): Hello World with LValueSignature: const&
-Calling foo(): Hello World with RValueSignature: &&
+Calling foo(): Hello World with LValue - Signature: const&
+Calling foo(): Hello World with RValue - Signature: &&
 ```
 
 
