@@ -1,6 +1,6 @@
-// =====================================================================================
+// ========================================================================
 // Variadic Templates: Introduction
-// =====================================================================================
+// ========================================================================
 
 #include <iostream>
 #include <string>
@@ -8,49 +8,25 @@
 
 namespace VariadicTemplatesIntro_01 {
 
-    // ========================================================================
-    // Erstes Beispiel für ein variadisches Template
-    // ========================================================================
+    // ====================================================================
+    // 1. Beispiel für ein variadisches Template:
+    // Eine print-Funktion mit beliebig vielen Argumenten
+    // ====================================================================
 
-    void print(int value) {
-        std::cout << value << " ";
-    }
-
-    void print(double value) {
-        std::cout << value << " ";
-    }
-
-    void print(char value) {
-        std::cout << value << " ";
-    }
-
-    // template function
-    template <typename T>
-    void print(T value) {
-        std::cout << value << " ";
-    }
-
-    // explicit template specialization
-    template <>
-    void print<bool>(bool value) {
-        std::cout << std::boolalpha << value << " ";
-    }
-
-    // ========================================================================
-
-    // termination
+    // Non-recursive template part (regular template)
     template <typename T>
     void printAll(T value)
     {
         std::cout << value << " ";
     }
 
-    // primary template
-    template <typename T, typename ... TREST>
-    void printAll(T n, TREST ... rest)
+    // Recursive template part
+    // Note: ... specifies a so called 'parameter pack')
+    template <typename T, typename ... TRest>
+    void printAll(T n, TRest ... rest)
     {
         printAll<T>(n);
-        printAll<TREST ...>(rest ...);
+        printAll<TRest...>(rest ...);
     }
 
     void test_printer() 
@@ -62,7 +38,8 @@ namespace VariadicTemplatesIntro_01 {
 namespace VariadicTemplatesIntro_02 {
 
     // ========================================================================
-    // Zweites Beispiel für ein variadisches Template
+    // 2. Beispiel für ein variadisches Template:
+    // Eine add-Funktion mit beliebig vielen Argumenten unterschiedlichen Typs
     // ========================================================================
 
     // Non-recursive template part (regular template)
@@ -73,9 +50,9 @@ namespace VariadicTemplatesIntro_02 {
 
     // Recursive template part
     // Note: ... specifies a so called 'parameter pack')
-    template<typename T, typename ... ARGS>
-    T add(T first, ARGS... args) {
-        return first + add<ARGS ...>(args...);
+    template<typename T, typename ... TArgs>
+    T add(T first, TArgs... args) {
+        return first + add<TArgs ...>(args...);
     }
 
     void test_adder_01() {
@@ -99,65 +76,13 @@ namespace VariadicTemplatesIntro_02 {
     }
 }
 
-namespace VariadicTemplatesIntro_03 {
+namespace VariadicTemplates_TestClassUnknown {
 
-    // =================================================================================
-    // Ein variadisches Template in zwei Realisierungsvarianten
-    //
-    // a) Eine rekursive Template Funktion
-    // b) Eine nicht-rekursive Non-Template Funktion
-    // =================================================================================
+    // ========================================================================
+    // Test-Klasse Unknown
+    // Nur die Konstruktoren sind interessant
+    // ========================================================================
 
-    void print()
-    {
-    }
-
-    template<typename T, typename... Types>
-    void print(T firstArg, Types... args)
-    {
-        std::cout << firstArg << std::endl; // print first argument
-        print(args...); // call print() for remaining arguments
-    }
-
-    // Oder:
-    // a) Eine rekursive Template Funktion
-    // b) Eine nicht-rekursive Template Funktion
-    //
-    // Man beachte: Wenn sich zwei Template Funktionen nur um das Parameter Pack
-    // unterscheiden, wird - wenn möglich - die Template Funktionen ohne Parameter Pack bevorzugt:
-
-    //template<typename T>
-    //void print(T arg)
-    //{
-    //    std::cout << arg << std::endl; // print passed argument
-    //}
-
-    //template<typename T, typename... Types>
-    //void print(T firstArg, Types... args)
-    //{
-    //    print(firstArg); // call print() for first argument
-    //    print(args...);  // call print() for remaining arguments
-    //}
-
-    void test_printer_02()
-    {
-        std::string s("World");
-        print(123.456, "Hello", s);
-
-        // same as
-        print<double, const char*, std::string>(123.456, "Hello", s);
-    }
-}
-
-namespace VariadicTemplatesIntro_04 {
-
-    // =================================================================================
-    // Anwendungsfall:
-    // "Unpacking" a parameter pack to call a matching constructor
-    // =================================================================================
-
-    // Test Class - only c'tors are interesting ..
-    //
     class Unknown {
     private:
         int m_var1;
@@ -185,59 +110,37 @@ namespace VariadicTemplatesIntro_04 {
     };
 
     std::ostream& operator<< (std::ostream& os, const Unknown& obj) {
-        os << "var1: " << obj.m_var1
+        os 
+            << "var1: " << obj.m_var1
             << ", var2: " << obj.m_var2
             << ", var3: " << obj.m_var3 << std::endl;
+
         return os;
-    }
-
-    template<typename T, typename... Args>
-    T make_an_object(Args&&... args)
-    {
-        return T(std::forward<Args>(args)...);
-    }
-
-    void test_make_an_object()
-    {
-        Unknown u1 = make_an_object<Unknown>();
-        std::cout << u1 << std::endl;
-
-        Unknown u2 = make_an_object<Unknown>(1);
-        std::cout << u2 << std::endl;
-
-        Unknown u3 = make_an_object<Unknown>(10, 11);
-        std::cout << u3 << std::endl;
-
-        Unknown u4 = make_an_object<Unknown>(100, 101, 102);
-        std::cout << u4 << std::endl;
-
-        int n = 100;
-        const int m = 101;
-        Unknown u5 = make_an_object<Unknown, int, int&, const int&>(100, n, m);
-        std::cout << u5 << std::endl;
-
-        Unknown u6 = make_an_object<Unknown>(n, 51, m);
-        std::cout << u6 << std::endl;
-
-        // doesn't compile
-        // Unknown u7 = make_an_object<Unknown>(1000, 1001, 1002, 1003);
-        // std::cout << u7 << std::endl;
     }
 }
 
-namespace VariadicTemplatesIntro_05 {
+namespace VariadicTemplatesIntro_03 {
 
     // =============================================================
-    // Anwendungsfall:
-    // std::unique_ptr
+    // 3. Beispiel für ein variadisches Template:
+    //
+    // Anwendungsfall: Standardfunktion std::unique_ptr<>
     // =============================================================
 
-    using namespace VariadicTemplatesIntro_04;
+    using namespace VariadicTemplates_TestClassUnknown;
 
-    template<typename T, typename... Args>
-    std::unique_ptr<T> my_make_unique(Args&&... args)
+    // einfache Variante
+    template<typename T, typename... TArgs>
+    std::unique_ptr<T> my_make_unique(const TArgs&... args)
     {
-        return std::unique_ptr<T>(new T(std::forward<Args>(args)...));
+        return std::unique_ptr<T>{ new T{ args... } };
+    }
+
+    // bessere Variante: Mit Universal Referenz
+    template<typename T, typename... TArgs>
+    std::unique_ptr<T> my_make_unique_ex(TArgs&&... args)
+    {
+        return std::unique_ptr<T>{ new T{ std::forward<TArgs>(args)... } };
     }
 
     void test_my_make_unique()
@@ -249,6 +152,154 @@ namespace VariadicTemplatesIntro_05 {
 
         int n = 33, m = 34;
         std::unique_ptr<Unknown> up5 = my_make_unique<Unknown>(n, m);
+    }
+
+    void test_my_make_unique_ex()
+    {
+        std::unique_ptr<Unknown> up1 = my_make_unique_ex<Unknown>();
+        std::unique_ptr<Unknown> up2 = my_make_unique_ex<Unknown>(1);
+        std::unique_ptr<Unknown> up3 = my_make_unique_ex<Unknown>(10, 11);
+        std::unique_ptr<Unknown> up4 = my_make_unique_ex<Unknown>(100, 101, 102);
+
+        int n = 33, m = 34;
+        std::unique_ptr<Unknown> up5 = my_make_unique_ex<Unknown>(n, m);
+    }
+}
+
+namespace VariadicTemplatesIntro_04 {
+
+    // =================================================================================
+    // 4. Beispiel für ein variadisches Template:
+    // 
+    // Anwendungsfall: "Generische Funktion 'make_an_object'"
+    //                 Umsetzung Parameter Pack auf einen passenden KOnstruktor
+    // 
+    // Siehe Analogien zu Factory-Pattern
+    // =================================================================================
+
+    using namespace VariadicTemplates_TestClassUnknown;
+
+    // einfache Variante
+    template<typename T, typename... TArgs>
+    T make_an_object(const TArgs&... args)
+    {
+        return T{ args... };
+    }
+
+    // bessere Variante: Mit Universal Referenz
+    template<typename T, typename... TArgs>
+    T make_an_object_ex(TArgs&&... args)
+    {
+        return T{ std::forward<TArgs>(args)... };
+    }
+
+    void test_make_an_object()
+    {
+        Unknown u1 = make_an_object<Unknown>();
+        Unknown u2 = make_an_object<Unknown>(1);
+        Unknown u3 = make_an_object<Unknown>(10, 11);
+        Unknown u4 = make_an_object<Unknown>(100, 101, 102);
+
+        std::cout << u1 << std::endl;
+        std::cout << u2 << std::endl;
+        std::cout << u3 << std::endl;
+        std::cout << u4 << std::endl;
+
+        int n = 100;
+        const int m = 101;
+
+        Unknown u5 = make_an_object<Unknown, int, int&, const int&>(100, n, m);
+        Unknown u6 = make_an_object<Unknown>(n, 51, m);
+
+        std::cout << u5 << std::endl;
+        std::cout << u6 << std::endl;
+
+        // doesn't compile: too much parameters
+        // Unknown u7 = make_an_object<Unknown>(1000, 1001, 1002, 1003);
+        // std::cout << u7 << std::endl;
+    }
+
+    void test_make_an_object_ex()
+    {
+        Unknown u1 = make_an_object_ex<Unknown>();
+        Unknown u2 = make_an_object_ex<Unknown>(1);
+        Unknown u3 = make_an_object_ex<Unknown>(10, 11);
+        Unknown u4 = make_an_object_ex<Unknown>(100, 101, 102);
+
+        std::cout << u1 << std::endl;
+        std::cout << u2 << std::endl;
+        std::cout << u3 << std::endl;
+        std::cout << u4 << std::endl;
+
+        int n = 100;
+        const int m = 101;
+
+        Unknown u5 = make_an_object_ex<Unknown, int, int&, const int&>(100, n, m);
+        Unknown u6 = make_an_object_ex<Unknown>(n, 51, m);
+
+        std::cout << u5 << std::endl;
+        std::cout << u6 << std::endl;
+    }
+}
+
+namespace VariadicTemplatesIntro_05 {
+
+    // ========================================================================
+    // 3.) Drittes Beispiel:
+    // Ein variadisches Template in zwei Realisierungsvarianten.
+    // 
+    // Ende der Rekursion:
+    // a) Eine rekursive Template Funktion
+    // b) Eine nicht-rekursive Non-Template Funktion
+    // 
+    // Man beachte: Wenn sich zwei Template Funktionen nur um das Parameter Pack
+    // unterscheiden, wird - wenn möglich - die Template Funktionen ohne Parameter Pack bevorzugt:
+    // ========================================================================
+
+#define EndOfRecursion_NonTemplateFunction 
+// #define EndOfRecursion_TemplateFunction 
+
+#if defined (EndOfRecursion_NonTemplateFunction)
+
+    // Ende der Rekursion: Eine non-Template Funktion
+    void print()
+    {
+    }
+
+    template<typename T, typename... Types>
+    void print(T firstArg, Types... args)
+    {
+        std::cout << firstArg << std::endl; // print first argument
+        print(args...); // call print() for remaining arguments
+    }
+#endif
+
+#if defined (EndOfRecursion_TemplateFunction)
+
+    // Oder:
+    // Ende der Rekursion: Eine Template Funktion
+
+    template<typename T>
+    void print(T arg)
+    {
+        std::cout << arg << std::endl; // print passed argument
+    }
+
+    template<typename T, typename... Types>
+    void print(T firstArg, Types... args)
+    {
+        print(firstArg); // call print() for first argument
+        print(args...);  // call print() for remaining arguments
+    }
+#endif
+
+    void test_printer_01()
+    {
+        std::string s("World");
+        print(123.456, "Hello", s);
+
+        // same as
+        print<double, const char*, std::string>(123.456, "Hello", s);
     }
 }
 
@@ -262,13 +313,15 @@ void main_variadic_templates_intro()
     test_adder_02();
 
     using namespace VariadicTemplatesIntro_03;
-    test_printer_02();
+    test_my_make_unique();
+    test_my_make_unique_ex();
 
     using namespace VariadicTemplatesIntro_04;
     test_make_an_object();
+    test_make_an_object_ex();
 
     using namespace VariadicTemplatesIntro_05;
-    test_my_make_unique();
+    test_printer_01();
 }
 
 // =====================================================================================

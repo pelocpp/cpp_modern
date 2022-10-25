@@ -113,8 +113,8 @@ namespace VariadicTemplatesMixins {
         T m_value{};
     };
 
-    template <typename... Slots>
-    class Repository : private Slots...  // inherit private from our slots...
+    template <typename... TSlots>
+    class Repository : private TSlots...  // inherit private from our slots...
     {
     public:
         template <typename T> // select type
@@ -173,27 +173,27 @@ namespace VariadicTemplatesMixins {
             m_value = value;
         }
 
-        //template <typename... Args>
-        //void emplace(const Args&... args)
-        //{
-        //    m_value = T{ args... }; // assigment (might use move semantics)
-        //}
+        template <typename... TArgs>
+        void emplace(const TArgs&... args)
+        {
+            m_value = T{ args... }; // assigment (might use move semantics)
+        }
 
         // or
 
         // using "Perfect Forwarding":
-        template <typename... Args>
-        void emplace(Args&& ... args)
-        {
-            m_value = T{ std::forward<Args>(args) ... }; // assigment (might use move semantics)
-        }
+        //template <typename... TArgs>
+        //void emplace(TArgs&& ... args)
+        //{
+        //    m_value = T{ std::forward<TArgs>(args) ... }; // assigment (might use move semantics)
+        //}
 
     private:
         T m_value;
     };
 
-    template <typename... Slots>
-    class RepositoryEx : private Slots...  // inherit private from our slots...
+    template <typename... TSlots>
+    class RepositoryEx : private TSlots...  // inherit private from our slots...
     {
     public:
         template <typename T, typename Key = DefaultSlotKey>
@@ -208,20 +208,20 @@ namespace VariadicTemplatesMixins {
             SlotEx<T, Key>::set(value);
         }
 
-        //template <typename T, typename Key = DefaultSlotKey, typename... Args>
-        //void emplace(const Args&... args)
-        //{
-        //    SlotEx<T, Key>::emplace(args...);
-        //}
+        template <typename T, typename Key = DefaultSlotKey, typename... TArgs>
+        void emplace(const TArgs&... args)
+        {
+            SlotEx<T, Key>::emplace(args...);
+        }
 
         // or
 
         // using "Perfect Forwarding":
-        template <typename T, typename Key = DefaultSlotKey, typename... Args>
-        void emplace(Args&& ... args)
-        {
-            SlotEx<T, Key>::emplace(std::forward<Args>(args)...);
-        }
+        //template <typename T, typename Key = DefaultSlotKey, typename... TArgs>
+        //void emplace(TArgs&& ... args)
+        //{
+        //    SlotEx<T, Key>::emplace(std::forward<TArgs>(args)...);
+        //}
     };
 
     // demonstrating several slots with same type
@@ -249,10 +249,12 @@ namespace VariadicTemplatesMixins {
     // ===================================================================
     // Variant 4: adding 'emplace' mechanism for sample class 'Person'
 
-    class Person {
+    class Person 
+    {
     private:
         std::string m_name;
         int m_age;
+
     public:
         Person() : m_name{}, m_age{} {}
 
