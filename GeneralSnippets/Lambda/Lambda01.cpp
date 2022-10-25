@@ -29,50 +29,39 @@ namespace Lambda {
             }
         };
 
-        std::vector<int> myVector;
-        myVector.push_back(5);
-        myVector.push_back(9);
-        myVector.push_back(1);
-        myVector.push_back(3);
-        myVector.push_back(7);
-        myVector.push_back(8);
-
-        for (int n : myVector) {
+        std::vector<int> vec { 5, 9, 1, 3, 7, 8 };
+        for (int n : vec) {
             std::cout << n << ' ';
         }
         std::cout << std::endl;
 
-        std::sort(std::begin(myVector), std::end(myVector), myCompare);
+        std::sort(std::begin(vec), std::end(vec), myCompare);
         // or
-        std::sort(std::begin(myVector), std::end(myVector), MyComparer());
+        std::sort(std::begin(vec), std::end(vec), MyComparer());
         // or
-        std::sort(std::begin(myVector), std::end(myVector), MyInternalComparer());
+        std::sort(std::begin(vec), std::end(vec), MyInternalComparer());
 
-        for (int n : myVector) {
+        for (int n : vec) {
             std::cout << n << ' ';
         }
     }
 
     void test_02() {
 
-        std::vector<int> myVector;
-        myVector.push_back(50);
-        myVector.push_back(90);
-        myVector.push_back(10);
-        myVector.push_back(30);
-        myVector.push_back(70);
-        myVector.push_back(80);
+        std::vector<int> vec{ 50, 90, 10, 30, 70, 80 };
 
-        for (int n : myVector) {
+        for (int n : vec) {
             std::cout << n << ' ';
         }
         std::cout << std::endl;
 
-        std::sort(std::begin(myVector), std::end(myVector),
+        std::sort(
+            std::begin(vec),
+            std::end(vec),
             [] (int n1, int n2) { return n1 < n2; }
         );
 
-        for (int n : myVector) {
+        for (int n : vec) {
             std::cout << n << ' ';
         }
     }
@@ -92,21 +81,21 @@ namespace Lambda {
         auto itsFour = [] { return 4; };
         auto itsFive = [] { return 5; };
         std::cout << itsFour() << ", " << itsFive() << std::endl;
-
-        // notation without 'auto'
-        std::function<int(int, int, int)> itsThree([] (int x, int y, int z){ return 3; });
-
-        // works with anything that defines the plus 'operator+'
-        auto plus = [] (auto l, auto r) { return l + r; };
-        std::cout << plus(1, 2) << std::endl;
-        std::cout << plus(std::string{ "a" }, "b") << std::endl;
-        std::cout << plus(itsOne(), itsTwo()) << std::endl;
-
-        // inline-definition and direct invocation of lambda funtion
-        std::cout << [] (auto l, auto r) { return l + r; } (11, 12) << std::endl;
     }
 
     void test_04() {
+
+        // defining a lambda without 'auto'
+        std::function<int(int, int, int)> threeArgs([](int x, int y, int z) {
+            return x + y + z; 
+            }
+        );
+
+        std::cout << threeArgs (5, 6, 7) << std::endl;
+    }
+
+    void test_05() {
+
         // defining new variables in the lambda capture:
         // we can declare a new variable that is only visible in the scope of the lambda.
         // we do so by defining a variable in the lambda-capture without specifying its type
@@ -128,7 +117,7 @@ namespace Lambda {
         std::cout << std::endl;
     }
 
-    void test_05() {
+    void test_06() {
 
         int n = 1;
         int m = 2;
@@ -158,7 +147,7 @@ namespace Lambda {
         l4();
     }
 
-    auto test_06_helper_a() {
+    auto test_07_helper_a() {
 
         int n = 1;
         int m = 2;
@@ -170,7 +159,7 @@ namespace Lambda {
         return lambda;
     }
 
-    auto test_06_helper_b() {
+    auto test_07_helper_b() {
 
         int n = 1;
         int m = 2;
@@ -182,67 +171,15 @@ namespace Lambda {
         return lambda;  // I would't do this never ever :-)
     }
 
-    void test_06() {
+    void test_07() {
 
-        auto outerLambda1 = test_06_helper_a();
-        auto outerLambda2 = test_06_helper_b();
+        auto outerLambda1 = test_07_helper_a();
+        auto outerLambda2 = test_07_helper_b();
         outerLambda1();
         outerLambda2();
     }
 
-    std::pair<
-        std::function<void(std::string const&)>, 
-        std::function<void(std::string const&)>
-    > 
-    test_07_helper_a() {
-
-        int n = 1;
-        int m = 2;
-
-        std::function<void(std::string const&)> lambda1 = [=](std::string const& info) {
-            std::cout << info << "Copy:      " << n << " " << m << std::endl;
-        };
-
-        std::function<void(std::string const&)> lambda2 = [&](std::string const& info) {
-            std::cout << info << "Reference: " << n << " " << m << std::endl;
-        };
-
-        return std::pair<
-            std::function<void(std::string const&)>,
-            std::function<void(std::string const&)>>(lambda1, lambda2);
-    }
-
-    void test_07_helper_b(std::function<void(std::string const&)> lambda) {
-        lambda("in test_helper ");
-    }
-
-    void test_07() {
-
-        auto [lambda1, lambda2] = test_07_helper_a();
-
-        lambda1("in test_07     ");
-        test_07_helper_b(lambda1);
-
-        lambda2("in test_05     ");
-        test_07_helper_b(lambda2);
-    }
-
-    template <typename T, typename U>
-    auto add = [](const T& t, const U& u) -> decltype (t + u)
-    {
-        return t + u;
-    };
-
     void test_08() {
-         
-        int n = 1;
-        double d = 2.7;
-
-        auto result1 = add<int, double>(n, d);
-        std::cout << result1 << std::endl;
-    }
-
-    void test_09() {
 
         // Example demonstrating so called 'Currying':
 
@@ -262,10 +199,38 @@ namespace Lambda {
 
     void test_10() {
 
+        // demonstrating 'noexcept'
         auto itsOne([] () noexcept { return 1; });
         auto itsTwo = [] () noexcept { return 2; };
         std::cout << itsOne() << ", " << itsTwo() << std::endl;
     }
+
+    // similarities between templates and generic lambdas
+    template <typename T, typename U>
+    auto add = [](const T& t, const U& u) -> decltype (t + u)
+    {
+        return t + u;
+    };
+
+    void test_11() {
+
+        int n = 1;
+        double d = 2.7;
+
+        auto result1 = add<int, double>(n, d);
+        std::cout << result1 << std::endl;
+    }
+
+    void test_12() {
+        // works with anything that defines the plus 'operator+'
+        auto plus = [](auto l, auto r) { return l + r; };
+        std::cout << plus(1, 2) << std::endl;
+        std::cout << plus(std::string{ "a" }, "b") << std::endl;
+
+        // inline-definition and direct invocation of lambda funtion
+        std::cout << [](auto l, auto r) { return l + r; } (11, 12) << std::endl;
+    }
+
 }
 
 void main_lambdas()
@@ -279,7 +244,8 @@ void main_lambdas()
     test_06();
     test_07();
     test_08();
-    test_09();
+    test_10();
+    test_11();
     test_10();
 }
 

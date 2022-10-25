@@ -19,7 +19,7 @@ namespace LambdaAndClosure {
         class ClosureClass
         {
         public:
-            ClosureClass(int n) : m_n(n) {}
+            ClosureClass(int n) : m_n{ n } {}
 
             // if lambda is 'mutable' remove const-ness
             int operator()(int a) const
