@@ -3,10 +3,8 @@
 // =====================================================================================
 
 #include <iostream>
-// #include <iomanip>
 #include <string>
 #include <vector>
-//#include <chrono>
 
 namespace Exercises_ExpressionTemplates {
 
@@ -85,7 +83,6 @@ namespace Exercises_ExpressionTemplates {
 void test_exercices_expression_templates()
 {
     using namespace Exercises_ExpressionTemplates;
-
     test_01();
     test_02();
     test_03();

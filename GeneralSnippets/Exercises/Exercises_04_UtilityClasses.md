@@ -109,7 +109,7 @@ der Buchhandlung zu berechnen? Hier könnten `std::variant` und `std::visit` zum
 
 ```cpp
 double balance = project.totalBalance();
-std::cerr << "Total value of Bookstore: " << balance << std::endl;
+std::cout << "Total value of Bookstore: " << balance << std::endl;
 ```
 
 Noch ein Hinweis:

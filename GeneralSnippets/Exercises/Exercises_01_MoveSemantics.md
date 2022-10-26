@@ -44,7 +44,7 @@ public:
 int main() {
 
     // create a person with some initial values
-    Person donald{ "Donald Fauntleroy Duck" };
+    Person donald{ "Dagobert Duck" };
     for (int value : { 1, 2, 3, 4, 5, 6, 7, 8, 9 }) {
         donald.addValue(value);
     }

@@ -7,6 +7,7 @@
 #include <type_traits>
 #include <algorithm>
 #include <vector>
+#include <iterator>
 
 namespace Exercises_Folding {
 
@@ -61,7 +62,7 @@ namespace Exercises_Folding {
         // das 1. mit dem 2., das 2. mit dem 3., das 3. mit dem 4. Element usw. verglichen!
 
         template<typename T, typename... TRest>
-        constexpr bool sameType(T arg, TRest... args)
+        constexpr bool sameType([[maybe_unused]] T arg, [[maybe_unused]] TRest... args)
         {
             // since C++17: folding expression !
             return (std::is_same_v<T, TRest> && ...);

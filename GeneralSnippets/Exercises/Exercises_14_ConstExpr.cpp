@@ -77,16 +77,24 @@ namespace Exercises_ConstExpr {
     namespace Exercise_02 {
 
         template<typename T1, typename T2>
-        constexpr bool sameType(T1 arg1, T2 arg2)
+        constexpr bool sameType([[maybe_unused]] T1 arg1, [[maybe_unused]] T2 arg2)
         {
             return std::is_same<T1, T2>::value;
         }
 
-        template<typename T1, typename T2, typename... TREST>
-        constexpr bool sameType(T1 arg1, T2 arg2, TREST... args)
+        template<typename T1, typename T2, typename... TRest>
+        constexpr bool sameType([[maybe_unused]] T1 arg1, [[maybe_unused]] T2 arg2, TRest... args)
         {
             return std::is_same<decltype(arg1), decltype(arg2)>::value && sameType(arg2, args...);
         }
+
+        // Oder
+
+        //template<typename T1, typename T2, typename... TRest>
+        //constexpr bool sameType(T1 arg1, T2 arg2, TRest... args)
+        //{
+        //    return std::is_same<T1, T2>::value && sameType(arg2, args...);
+        //}
 
         void testExercise_01() {
 

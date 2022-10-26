@@ -32,18 +32,17 @@ namespace Exercises_UtilityClasses {
         }
 
         // improved generic visitor
-        // note: doesn't compile with gcc :(
         auto improvedVisitor = [](auto const& elem) {
 
             using T = typename std::remove_reference<decltype(elem)>::type;
 
             if constexpr (std::is_scalar<T>::value)
             {
-                    if constexpr (std::is_same<int, std::remove_cvref<T>::type> ::value)
+                    if constexpr (std::is_same<int, typename std::remove_cvref<T>::type> ::value)
                     {
                         std::cout << "int: " << elem << std::endl;
                     }
-                    else if constexpr (std::is_same<double, std::remove_cvref<T>::type> ::value)
+                    else if constexpr (std::is_same<double, typename std::remove_cvref<T>::type> ::value)
                     {
                         std::cout << "double: " << elem << std::endl;
                     }
@@ -188,9 +187,9 @@ namespace Exercises_UtilityClasses {
             };
 
             double balance{ project.balance() };
-            std::cerr << "Total value of Bookstore: " << balance << std::endl;
+            std::cout << "Total value of Bookstore: " << balance << std::endl;
             size_t count{ project.count() };
-            std::cerr << "Count of elements in Bookstore: " << count << std::endl;
+            std::cout << "Count of elements in Bookstore: " << count << std::endl;
         }
     }
 

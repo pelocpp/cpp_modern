@@ -15,14 +15,14 @@ namespace Exercises_Lambdas {
     namespace Exercise_01 {
 
         void even(int val) {
-            if (!(val % 2)) {
+            if ((val % 2) == 0) {
                 std::cout << val << " is even." << std::endl;
             }
         }
 
         struct Even {
             void operator()(int val) {
-                if (!(val % 2)) {
+                if ((val % 2) == 0) {
                     std::cout << val << " is even." << std::endl;
                 }
             }
@@ -38,7 +38,11 @@ namespace Exercises_Lambdas {
             );
 
             // function
-            std::for_each(std::begin(values), std::end(values), even);
+            std::for_each(
+                std::begin(values), 
+                std::end(values),
+                even
+            );
 
             // lambda
             std::for_each(

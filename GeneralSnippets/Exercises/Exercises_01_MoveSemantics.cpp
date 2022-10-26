@@ -11,7 +11,8 @@ namespace Exercises_MoveSemantics {
 
     namespace Exercise_01 {
 
-        class Person {
+        class Person 
+        {
         private:
             std::string m_name;         // name of person
             std::vector<int> m_values;  // some arbitrary person values
@@ -46,7 +47,7 @@ namespace Exercises_MoveSemantics {
         void testExercise_01() {
 
             // create a person with some initial values
-            Person donald{ "Donald Fauntleroy Duck" };
+            Person donald{ "Dagobert Duck" };
             for (int value : { 1, 2, 3, 4, 5, 6, 7, 8, 9 }) {
                 donald.addValue(value);
             }

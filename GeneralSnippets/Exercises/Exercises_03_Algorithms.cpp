@@ -94,11 +94,9 @@ namespace Exercises_Algorithms {
                 fibo3
             );
 
-            std::copy(
-                std::begin(numbers),
-                std::end(numbers),
-                std::ostream_iterator<int>(std::cout, " ")
-            );
+            for (int n : numbers) {
+                std::cout << n << ' ';
+            }
 
             std::cout << std::endl;
         }

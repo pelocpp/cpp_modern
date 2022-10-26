@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <tuple>
 #include <numeric>
 #include <algorithm>
 
@@ -137,31 +138,17 @@ namespace Exercises_VariadicTemplates {
     namespace Exercise_03 {
 
         template <typename T>
-        inline T minimum(const T& t) {
+        T minimum(const T& t) {
             return t;
         }
 
         template <typename T, typename... TArgs>
-        inline typename std::common_type<T, TArgs...>::type
-            minimum(const T& t, const TArgs& ...p)
+        typename std::common_type<T, TArgs...>::type
+        minimum(const T& first, const TArgs& ...rest)
         {
             using result_type = typename std::common_type<T, TArgs...>::type;
-            return std::min(static_cast<result_type>(t), static_cast<result_type>(minimum(p...)));
+            return std::min(static_cast<result_type>(first), static_cast<result_type>(minimum(rest...)));
         }
-
-        // oder etwas knapper
-
-        //template <typename T>
-        //inline T minimum(const T& t) { 
-        //    return t; 
-        //}
-
-        //template <typename T, typename... TArgs>
-        //inline auto minimum(const T& t, const TArgs& ... p)
-        //{
-        //    using result_type = std::common_type_t<T, TArgs... >;
-        //    return std::min(static_cast<result_type>(t), static_cast<result_type>(minimum(p...)));
-        //}
 
         void testExercise_03() {
             auto min1 = minimum(-7, 3.7f, 9u, -2.6);
@@ -177,17 +164,17 @@ namespace Exercises_VariadicTemplates {
 
     namespace Exercise_04 {
 
-        template<typename TUPLE, std::size_t N>
+        template<typename Tuple, std::size_t N>
         struct ShowTupleImpl {
-            static void print(const TUPLE& t) {
-                ShowTupleImpl<TUPLE, N - 1>::print(t);
+            static void print(const Tuple& t) {
+                ShowTupleImpl<Tuple, N - 1>::print(t);
                 std::cout << ", " << std::get<N - 1>(t);
             }
         };
 
-        template<typename TUPLE>
-        struct ShowTupleImpl<TUPLE, 1> {
-            static void print(const TUPLE& t) {
+        template<typename Tuple>
+        struct ShowTupleImpl<Tuple, 1> {
+            static void print(const Tuple& t) {
                 std::cout << std::get<0>(t);
             }
         };
@@ -202,9 +189,9 @@ namespace Exercises_VariadicTemplates {
         template<typename... TArgs>
         void printTupleEx(const std::tuple<TArgs... >& t) {
             using tuple_type = const std::tuple<TArgs... >&;
-            static const int tuple_size = sizeof...(TArgs);
+            static const int tupleSize = sizeof...(TArgs);
             std::cout << "[";
-            ShowTupleImpl<tuple_type, tuple_size>::print(t);
+            ShowTupleImpl<tuple_type, tupleSize>::print(t);
             std::cout << "]" << std::endl;
         }
 
@@ -346,11 +333,11 @@ namespace Exercises_VariadicTemplates {
 
     namespace Exercise_06 {
 
-        template <typename... Bases>
-        class X : public Bases ...
+        template <typename... TBases>
+        class X : public TBases ...
         {
         public:
-            X(const Bases& ... b) : Bases(b)...  {}
+            X(const TBases&... b) : TBases(b)...  {}
         };
 
         void testExercise_06() {

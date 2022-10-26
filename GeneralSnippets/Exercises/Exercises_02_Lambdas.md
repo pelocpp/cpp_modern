@@ -22,7 +22,7 @@ das den `()`-Operator implementiert):
 
 ```cpp
 void even(int val) {
-    if (!(val % 2)) {
+    if ((val % 2) == 0) {
         std::cout << " is even." << std::endl;
     }
 }
