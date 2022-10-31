@@ -92,6 +92,29 @@ std::cout << 20 << ": " << Fibonacci<20>::value << std::endl;
 
 ---
 
+## Aufgabe 3: Selektiver Zugriff auf ein Parameter Pack von Datentypen
+
+
+Parameter Packs von Instanzierungen von Templates können eine beliebige Anzahl
+von Datentypen zusammenfassen, wie zum Beispiel
+
+```cpp
+<int, long, double, char>
+```
+
+Schreiben Sie zwei Klassen Templates XXX und XXX,
+die den Zugriff auf den ersten und den letzten Datentyp des Packs ermöglichen:
+
+*Beispiel*:
+
+```cpp
+<int, long, double, char>
+```
+
+
+
+---
+
 [Lösungen](Exercises_07_Metaprogramming.cpp)
 
 ---

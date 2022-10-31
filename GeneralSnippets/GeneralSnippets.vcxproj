@@ -168,7 +168,6 @@
     <ClCompile Include="EraseRemoveIdiom\EraseRemoveIdiom.cpp" />
     <ClCompile Include="Exercises\Exercises_14_ConstExpr.cpp" />
     <ClCompile Include="Exercises\Exercises_15_SmartPointers.cpp" />
-    <ClCompile Include="Exercises\Exercises_Legacy.cpp" />
     <ClCompile Include="Exercises\Exercises_01_MoveSemantics.cpp" />
     <ClCompile Include="Exercises\Exercises_02_Lambdas.cpp" />
     <ClCompile Include="Exercises\Exercises_03_Algorithms.cpp" />

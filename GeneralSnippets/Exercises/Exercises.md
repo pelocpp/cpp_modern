@@ -161,6 +161,7 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 | :- | :- |
 | [Aufgabe 1](./Exercises_07_Metaprogramming.md#aufgabe-1-konvertierung-binärer-zahlen-in-dezimalzahlen) | Konvertierung binärer Zahlen in Dezimalzahlen |
 | [Aufgabe 2](./Exercises_07_Metaprogramming.md#aufgabe-2-fibonacci-zahlen) | *Fibonacci*-Zahlen |
+| [Aufgabe 3](./Exercises_07_Metaprogramming.md#aufgabe-3-selektiver-zugriff-auf-ein-parameter-pack-von-datentypen) | Selektiver Zugriff auf ein Parameter Pack von Datentypen |
 
 *Tabelle* 10: Aufgaben zur Metaprogrammierung.
 

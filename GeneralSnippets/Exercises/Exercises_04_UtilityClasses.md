@@ -101,9 +101,6 @@ um das gezeigte Code-Fragment übersetzen zu können.
 
 
 2. *Frage*:
-Wozu sind beim Aufruf des Konstruktors zwei öffnende und schließende geschweifte Klammern erforderlich?
-
-3. *Frage*:
 Wie ist in der Klasse `Bookstore` eine Methode `totalBalance` zu implementieren, um den Gesamtwert des Warenbestands in
 der Buchhandlung zu berechnen? Hier könnten `std::variant` und `std::visit` zum Einsatz gelangen.
 
@@ -172,10 +169,15 @@ gibt es die so genannten *Besucher*- / *Visitor*-Objekte:
 Ein generischer, nicht-modifizierender Besucher, der das Variant-Objekt nicht verändert, könnte so definiert werden:
 
 ```cpp
-struct AllInOneVisitor
+struct MyPrintVisitor
 {
-    template <class T>
-    void operator()(const T& value) { std::cout << value << std::endl; }
+    void operator()(const int& value) { 
+        std::cout << "int: " << value << std::endl;
+    }
+
+    void operator()(const std::string& value) { 
+        std::cout << "std::string: " << value << std::endl; 
+    }
 };
 ```
 
@@ -224,7 +226,7 @@ std::cout << std::endl;
 ```
 
 Versuchen nun wiederum, dieses Code-Fragment zum Laufen zu bekommen.
-Die Methoden `Values` liefert eine Referenz des in der Klasse `HeterogeneousContainer`
+Die Methode `Values` (*getter*) liefert eine Referenz des in der Klasse `HeterogeneousContainer`
 gekapselten `std::vector<std::variant<...>`-Objekts zurück.
 
 ---

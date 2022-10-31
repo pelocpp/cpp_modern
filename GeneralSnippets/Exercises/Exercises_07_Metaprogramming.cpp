@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <string>
+#include <type_traits>
 
 namespace Exercises_Metaprogramming {
 
@@ -159,6 +160,47 @@ namespace Exercises_Metaprogramming {
             std::cout << 92 << ": " << Fibonacci<92>::value << std::endl;
         }
     }
+
+    namespace Exercise_03 {
+
+        // primary template
+        template<typename ... TArgs>
+        struct FirstType;
+
+        template<typename T, typename ... TArgs>
+        struct FirstType<T, TArgs ...>
+        {
+            using type = T;
+        };
+
+        // primary template
+        template<typename ... TArgs>
+        struct LastType;
+
+        template<typename T>
+        struct LastType<T>
+        {
+            using type = T;
+        };
+
+        template<typename T, typename ... TArgs>
+        struct LastType<T, TArgs ...>
+        {
+            using type = LastType<TArgs ...>::type;
+        };
+
+        void testExercise_03() {
+
+            using TFirst = FirstType<double, int, long>::type;
+            using TLast = LastType<int, long, double, char>::type;
+
+            TFirst n{ 123.456 };
+            TLast ch { '!' };
+
+            std::cout << "n :  " << n << std::endl;
+            std::cout << "ch : " << ch << std::endl;
+        }
+    }
 }
 
 void test_exercices_metaprogramming()
@@ -166,6 +208,7 @@ void test_exercices_metaprogramming()
     using namespace Exercises_Metaprogramming;
     Exercise_01::testExercise_01();
     Exercise_02::testExercise_02();
+    Exercise_03::testExercise_03();
 }
 
 // =====================================================================================

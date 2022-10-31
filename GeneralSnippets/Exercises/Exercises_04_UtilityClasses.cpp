@@ -112,12 +112,12 @@ namespace Exercises_UtilityClasses {
             size_t getCount() const { return m_count; }
         };
 
-        template <typename... TMEDIA>
+        template <typename... TMedia>
         class Bookstore
         {
         private:
-            using Stock = std::vector<std::variant<TMEDIA ...>>;
-            using StockList = std::initializer_list<std::variant<TMEDIA ...>>;
+            using Stock = std::vector<std::variant<TMedia ...>>;
+            using StockList = std::initializer_list<std::variant<TMedia ...>>;
 
         public:
             explicit Bookstore(StockList stock) : m_stock{ stock } {}
@@ -183,7 +183,7 @@ namespace Exercises_UtilityClasses {
             using MyBookstore = Bookstore<Book, Movie>;
 
             MyBookstore project = MyBookstore {
-                { cBook, movieBond, javaBook, cppBook, csharpBook, movieTarantino }
+                cBook, movieBond, javaBook, cppBook, csharpBook, movieTarantino
             };
 
             double balance{ project.balance() };
@@ -330,9 +330,11 @@ namespace Exercises_UtilityClasses {
             std::variant<int, std::string> myVariant;
             myVariant = 123;
             std::cout << std::get<int>(myVariant) << std::endl;
-            myVariant = std::string("456");
+            myVariant = std::string("ABC");
             std::cout << std::get<std::string>(myVariant) << std::endl;
         }
+
+        // ----------------------------------------------------------------------------------
 
         struct MyPrintVisitor
         {
@@ -356,9 +358,13 @@ namespace Exercises_UtilityClasses {
             void operator()(T& value) { value += value; }
         };
 
+        // oder
+
         auto lambdaAllInOneVisitor = [](const auto& value) {
             std::cout << value << std::endl;
         };
+
+        // ----------------------------------------------------------------------------------
 
         void testExercise_01b()
         {
@@ -374,16 +380,16 @@ namespace Exercises_UtilityClasses {
             std::visit(AllInOneVisitor{}, myVariant);
 
             myVariant = 123;
-            std::visit(lambdaAllInOneVisitor, myVariant);
+            std::visit(MyModifyingVisitor{}, myVariant);
+            std::visit(MyPrintVisitor{}, myVariant);
             myVariant = std::string("456");
-            std::visit(lambdaAllInOneVisitor, myVariant);
+            std::visit(MyModifyingVisitor{}, myVariant);
+            std::visit(MyPrintVisitor{}, myVariant);
 
             myVariant = 123;
-            std::visit(MyModifyingVisitor{}, myVariant);
-            std::visit(MyPrintVisitor{}, myVariant);
+            std::visit(lambdaAllInOneVisitor, myVariant);
             myVariant = std::string("456");
-            std::visit(MyModifyingVisitor{}, myVariant);
-            std::visit(MyPrintVisitor{}, myVariant);
+            std::visit(lambdaAllInOneVisitor, myVariant);
         }
 
         void testExercise_01c()
@@ -411,23 +417,23 @@ namespace Exercises_UtilityClasses {
             }
         }
 
-        template <typename... T>
+        template <typename... Types>
         class HeterogeneousContainer
         {
         private:
-            std::vector<std::variant<T...>> m_values;
+            std::vector<std::variant<Types...>> m_values;
 
         public:
             // visitor
-            template <class V>
-            void visit(V&& visitor) {
+            template <class TVisitor>
+            void visit(TVisitor&& visitor) {
                 for (auto& value : m_values) {
                     std::visit(visitor, value);
                 }
             }
 
             // accessor
-            std::vector<std::variant<T...>>& Values() {
+            std::vector<std::variant<Types...>>& Values() {
                 return m_values;
             };
         };
@@ -464,11 +470,10 @@ namespace Exercises_UtilityClasses {
 
 void test_exercises_utility_classes()
 {
-    using namespace Exercises_UtilityClasses;
-    Exercise_01::testExercise_01();
-    Exercise_02::testExercise_01();
-    Exercise_03::testExercise_01();
-    Exercise_04::testExercise_01();
+    Exercises_UtilityClasses::Exercise_01::testExercise_01();
+    Exercises_UtilityClasses::Exercise_02::testExercise_01();
+    Exercises_UtilityClasses::Exercise_03::testExercise_01();
+    Exercises_UtilityClasses::Exercise_04::testExercise_01();
 }
 
 // =====================================================================================

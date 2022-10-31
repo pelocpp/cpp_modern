@@ -162,9 +162,6 @@
     <ClCompile Include="CommonType\CommonType.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Exercises\Exercises_Legacy.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="VariadicTemplates_Systematic\VariadicTemplate_XX_MoreExamples.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
