@@ -102,16 +102,18 @@ von Datentypen zusammenfassen, wie zum Beispiel
 <int, long, double, char>
 ```
 
-Schreiben Sie zwei Klassen Templates XXX und XXX,
-die den Zugriff auf den ersten und den letzten Datentyp des Packs ermöglichen:
+Schreiben Sie zwei Klassen Templates `FirstType` und `LastType`,
+die den Zugriff auf den ersten und letzten Datentyp des Parameter Packs ermöglichen:
 
 *Beispiel*:
 
 ```cpp
-<int, long, double, char>
+using TFirst = FirstType<double, int, long>::type;
+using TLast = LastType<int, long, double, char>::type;
+
+TFirst n{ 123.456 };
+TLast ch { '!' };
 ```
-
-
 
 ---
 
