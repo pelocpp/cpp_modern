@@ -12,6 +12,172 @@
 #include <sstream>
 #include <iterator>
 
+namespace TypeTraits_Simple_Demo
+{
+    // primary template
+    template <typename T>
+    struct is_this_a_floating_point
+    {
+        static const bool value = false;
+    };
+
+    // explicit (full) specialization
+    template <>
+    struct is_this_a_floating_point<float>
+    {
+        static const bool value = true;
+    };
+
+    template <>
+    struct is_this_a_floating_point<double>
+    {
+        static const bool value = true;
+    };
+
+    template <>
+    struct is_this_a_floating_point<long double>
+    {
+        static const bool value = true;
+    };
+
+    void test_1()
+    {
+        static_assert(is_this_a_floating_point<float>::value);
+        static_assert(is_this_a_floating_point<double>::value);
+        static_assert(is_this_a_floating_point<long double>::value);
+
+        static_assert(not is_this_a_floating_point<int>::value);
+        static_assert(not is_this_a_floating_point<bool>::value);
+    }
+
+    template <typename T>
+    void process_a_floating_point(T value)
+    {
+        static_assert(is_this_a_floating_point<T>::value);
+        std::cout << "processing a real number: " << value << std::endl;
+    }
+
+    void test_2()
+    {
+        process_a_floating_point(42.0);
+        // process_a_floating_point(42);  // does'n t compile: static assertion fails
+    }
+
+    void test_01()
+    {
+        test_1();
+        test_2();
+    }
+}
+
+// =================================================================================
+
+namespace TypeTraits_Conditional_Compilation_Demo {
+
+    class Widget
+    {
+    private:
+        int m_id;
+        std::string m_name;
+
+    public:
+        Widget() : Widget { 0, ""} {}
+        Widget (int id, std::string name) : m_id{ id}, m_name{ name } {}
+
+        std::ostream& write(std::ostream& os) const
+        {
+            os << m_id << ", " << m_name << '\n';
+            return os;
+        }
+    };
+
+    class Gadget
+    {
+    private:
+        int m_id;
+        std::string m_name;
+
+    public:
+        Gadget() : Gadget{ 0, "" } {}
+        Gadget(int id, std::string name) : m_id{ id }, m_name{ name } {}
+
+        int getId() const { return m_id; }
+        std::string getName() const { return m_name; }
+    };
+
+    std::ostream& operator <<(std::ostream& os, const Gadget& gadget)
+    {
+        os << gadget.getId() << ", " << gadget.getName() << '\n';
+        return os;
+    }
+
+    void test_1()
+    {
+        Widget widget{ 1, "I'm a Widget" };
+        Gadget gadget{ 2, "I'm a Gadget" };
+
+        widget.write(std::cout);
+        std::cout << gadget;
+    }
+
+    template <typename T>
+    struct uses_write
+    {
+        static constexpr bool value = false;
+    };
+
+    template <>
+    struct uses_write<Widget>
+    {
+        static constexpr bool value = true;
+    };
+
+    // primary (class) template
+    template <bool>
+    struct Serializer
+    {
+        template <typename T>
+        static void serialize(std::ostream& os, T const& value)
+        {
+            os << value;
+        }
+    };
+
+    template<>
+    struct Serializer<true>
+    {
+        template <typename T>
+        static void serialize(std::ostream& os, T const& value)
+        {
+            value.write(os);
+        }
+    };
+
+    // free function template - based on class Serializer<T>
+    template <typename T>
+    void serialize(std::ostream& os, T const& value)
+    {
+        Serializer<uses_write<T>::value>::serialize(os, value);
+    }
+
+    void test_2()
+    {
+        Widget widget{ 1, "I'm a Widget" };
+        Gadget gadget{ 2, "I'm a Gadget" };
+
+        serialize(std::cout, widget);
+        serialize(std::cout, gadget);
+    }
+
+    void test_02()
+    {
+        test_1();
+        test_2();
+    }
+}
+
+// =================================================================================
+
 namespace TypeTraits_Demo_Iterator_01
 {
     void whichIterator(const std::input_iterator_tag)
@@ -117,7 +283,7 @@ namespace TypeTraits_Demo_Iterator_01
         whichIterator(iter_cat);
     }
 
-    void test_01()
+    void test_03()
     {
         test_1();
         test_2();
@@ -126,6 +292,8 @@ namespace TypeTraits_Demo_Iterator_01
         test_5();
     }
 }
+
+// =================================================================================
 
 namespace TypeTraits_Demo_Iterator_02
 {
@@ -170,7 +338,7 @@ namespace TypeTraits_Demo_Iterator_02
         return getAt(it, size, category);
     }
 
-    void test_02() 
+    void test_04() 
     {
         std::forward_list<char> charList{ 'A', 'B', 'C', 'D', 'E' };
         char ch = getAt(charList.begin(), 3);
@@ -185,6 +353,8 @@ namespace TypeTraits_Demo_Iterator_02
         std::cout << "std::vector:          " << d << std::endl;
     }
 }
+
+// =================================================================================
 
 namespace TypeTraits_Demo_Remove_Reference_03
 {
@@ -238,7 +408,7 @@ namespace TypeTraits_Demo_Remove_Reference_03
         );
     }
 
-    void test_03()
+    void test_05()
     {
         std::vector<int> vec{ 5, 4, 6, 3, 7, 2, 8, 1, 9 };
 
@@ -254,16 +424,21 @@ namespace TypeTraits_Demo_Remove_Reference_03
     }
 }
 
+// =================================================================================
+
 void main_type_traits()
 {
+    using namespace TypeTraits_Simple_Demo;
+    using namespace TypeTraits_Conditional_Compilation_Demo;
     using namespace TypeTraits_Demo_Iterator_01;
-    test_01();
-
     using namespace TypeTraits_Demo_Iterator_02;
-    test_02();
-
     using namespace TypeTraits_Demo_Remove_Reference_03;
+
+    test_01();
+    test_02();
     test_03();
+    test_04();
+    test_05();
 }
 
 // =====================================================================================
