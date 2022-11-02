@@ -169,10 +169,20 @@ namespace TypeTraits_Conditional_Compilation_Demo {
         serialize(std::cout, gadget);
     }
 
+    void test_3()
+    {
+        Widget widget{ 1, "I'm a Widget" };
+        Gadget gadget{ 2, "I'm a Gadget" };
+
+        serialize<Widget>(std::cout, widget);
+        serialize<Gadget>(std::cout, gadget);
+    }
+
     void test_02()
     {
         test_1();
         test_2();
+        test_3();
     }
 }
 

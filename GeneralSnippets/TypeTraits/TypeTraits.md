@@ -10,7 +10,8 @@
 
 *Allgemeines*:
 
-C++ TypeTraits, zu deutsch etwa *Typmerkmale*, sind eine Sammlung von Metafunktionen.
+C++ TypeTraits, zu deutsch etwa *Typmerkmale*, sind eine Sammlung von *Metafunktionen*.
+Sie stammen aus dem Umfeld der so genannten *Metaprogrammierung*.
 
 ---
 
@@ -18,9 +19,9 @@ C++ TypeTraits, zu deutsch etwa *Typmerkmale*, sind eine Sammlung von Metafunkti
 
 Angenommen, wir haben mehrere Klassen, die Operationen zum Schreiben
 in einen Ausgabestrom definieren (Serialisierung).
-Einige unterstützen dies jedoch mit einem überladenen
-`operator<<`, andere mit Hilfe einer Member-Funktion namens `write`.
-Das folgende Code-Fragment zeigt zwei deartige Klassen:
+Einige unterstützen dies mit einem überladenen Operator `<<`,
+andere mit Hilfe einer Member-Funktion namens `write`.
+Das folgende Code-Fragment zeigt zwei Beispiele derartiger Klassen:
 
 ```cpp
 01: class Widget
@@ -74,17 +75,14 @@ std::cout << gadget;
 Unser Ziel ist es jedoch, ein Funktionstemplate zu definieren,
 das es uns ermöglicht, beide Ausgaben in der gleichen Weise zu behandeln.
 Mit anderen Worten, anstatt entweder die `write`-Methode
-oder den `<<`-Operator zu verwenden, sollte folgende Schreibweise möglich sein:
+oder den `<<`-Operator zu bedienen, sollte folgende Schreibweise möglich sein:
 
 ```cpp
 serialize(std::cout, widget);
 serialize(std::cout, gadget);
 ```
 
-Dieses Ziel erreichen wir mit *Type Traits*:
-
-Wir definieren nun sowohl ein Klassentemplate als auch ein Funktionstemplate,
-um eine einheitliche API für die Serialisierung aller in Frage kommenden Klassen zu erhalten:
+Dieses Ziel erreichen wir nun mit Hilfe von *Type Traits*:
 
 
 ```cpp
@@ -127,6 +125,16 @@ um eine einheitliche API für die Serialisierung aller in Frage kommenden Klassen
 37: {
 38:     Serializer<uses_write<T>::value>::serialize(os, value);
 39: }
+```
+
+Damit können wir nun die folgenden beiden `serialize`-Funktionsaufrufe schreiben:
+
+```cpp
+Widget widget{ 1, "I'm a Widget" };
+Gadget gadget{ 2, "I'm a Gadget" };
+
+serialize(std::cout, widget);
+serialize(std::cout, gadget);
 ```
 
 

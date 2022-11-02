@@ -21,7 +21,7 @@ namespace ClassTemplatesBasics {
             static T div(T x, T y) { return x / y; }
         };
 
-        // explicit specialization of template Calculator<T> for T = int
+        // explicit specialization of whole template class Calculator<T> for T = int
         template <>
         class Calculator<int>
         {
@@ -30,11 +30,19 @@ namespace ClassTemplatesBasics {
             static int sub(int x, int y) { return x - y; }
             static int mul(int x, int y) { return x * y; }
             static int div(int x, int y) { 
-                return static_cast<int>(
-                    static_cast<double>(x) / (y + 0.5)
+                return static_cast<int> (
+                    (static_cast<double>(x) / x) + 0.5
                 );
             }
         };
+
+        // or explicit specialization of single template class method 'div' for T = int
+
+        //template <>
+        //int Calculator<int>::div(int n, int m) {
+        //    std::cout << "do rounding:" << std::endl;
+        //    return (int)(((double)n / m) + 0.5);
+        //}
 
         void test_01() {
 
