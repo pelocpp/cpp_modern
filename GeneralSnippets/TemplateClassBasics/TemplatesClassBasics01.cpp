@@ -44,6 +44,11 @@ namespace ClassTemplatesBasics {
         //    return (int)(((double)n / m) + 0.5);
         //}
 
+        // see
+        // https://stackoverflow.com/questions/25724360/template-class-with-a-single-method-specialized-in-c
+        // or
+        // https://stackoverflow.com/questions/1723537/template-specialization-of-a-single-method-from-a-templated-class
+
         void test_01() {
 
             // just verifying template concept: is this assignment allowed?
