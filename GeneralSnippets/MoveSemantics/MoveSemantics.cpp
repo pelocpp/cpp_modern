@@ -6,45 +6,43 @@
 #include <vector>
 #include <algorithm>
 
-#include "MoveSemantics.h"
-
 namespace MoveSemantics {
 
-    //class BigData
-    //{
-    //private:
-    //    // private member data
-    //    size_t m_size;  // current number of elements
-    //    int* m_data;    // array of elements
+    class BigData
+    {
+    private:
+        // private member data
+        size_t m_size;  // current number of elements
+        int* m_data;    // array of elements
 
-    //public:
-    //    // c'tors and d'tor
-    //    BigData();
-    //    BigData(size_t, int);
-    //    ~BigData();
+    public:
+        // c'tors and d'tor
+        BigData();
+        BigData(size_t, int);
+        ~BigData();
 
-    //    // copy semantics
-    //    BigData(const BigData&); // copy c'tor
-    //    BigData& operator= (const BigData&);  // copy assignment
+        // copy semantics
+        BigData(const BigData&); // copy c'tor
+        BigData& operator= (const BigData&);  // copy assignment
 
-    //    // move semantics
-    //    BigData(BigData&&) noexcept;  // move c'tor
-    //    BigData& operator= (BigData&&) noexcept; // move assignment
+        // move semantics
+        BigData(BigData&&) noexcept;  // move c'tor
+        BigData& operator= (BigData&&) noexcept; // move assignment
 
-    //private:
-    //    // private helper methods
-    //    void cleanup() noexcept;
-    //    void moveFrom(BigData&) noexcept;
-    //    void swap(BigData&, BigData&) noexcept;  // 'swap idiom'
+    private:
+        // private helper methods
+        void cleanup() noexcept;
+        void moveFrom(BigData&) noexcept;
+        void swap(BigData&, BigData&) noexcept;  // 'swap idiom'
 
-    //public:
-    //    // getter
-    //    size_t size() const;
-    //    bool isEmpty() const;
+    public:
+        // getter
+        size_t size() const;
+        bool isEmpty() const;
 
-    //    // output operator
-    //    friend std::ostream& operator<< (std::ostream&, const BigData&);
-    //};
+        // output operator
+        friend std::ostream& operator<< (std::ostream&, const BigData&);
+    };
 
     // c'tors and d'tor
     BigData::BigData() {
@@ -63,11 +61,15 @@ namespace MoveSemantics {
     }
 
     BigData::~BigData() {
+        std::cout << "d'tor" << std::endl;
+
         delete[] m_data;
     }
 
     // copy semantics
     BigData::BigData(const BigData& data) {
+
+        std::cout << "copy c'tor" << std::endl;
 
         // allocate buffer
         m_size = data.m_size;
@@ -78,6 +80,8 @@ namespace MoveSemantics {
     }
 
     BigData& BigData::operator= (const BigData& data) {
+
+        std::cout << "operator=" << std::endl;
 
         // prevent self-assignment
         if (this == &data)
@@ -98,6 +102,9 @@ namespace MoveSemantics {
 
     // move semantics
     BigData::BigData(BigData&& data) noexcept {  // move c'tor
+
+        std::cout << "move c'tor" << std::endl;
+
         m_data = data.m_data;   // shallow copy
         m_size = data.m_size;
         data.m_data = nullptr;  // reset source object, ownership has been moved
@@ -115,6 +122,10 @@ namespace MoveSemantics {
     //}
 
     BigData& BigData::operator= (BigData&& data) noexcept { // move-assignment
+
+
+        std::cout << "move assignment" << std::endl;
+
         if (this != &data) {
             delete[] m_data;        // release left side
             m_data = data.m_data;   // shallow copy
@@ -234,7 +245,7 @@ void main_move_semantics()
 {
     using namespace MoveSemantics;
     test_01_move_semantics();
-    test_02_move_semantics();
+   // test_02_move_semantics();
 }
 
 // =====================================================================================

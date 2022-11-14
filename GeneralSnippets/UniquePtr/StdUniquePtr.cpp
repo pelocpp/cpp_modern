@@ -29,8 +29,9 @@ namespace UniquePointerGeneral {
         (*ptr)++;
         std::cout << "*ptr:    " << *ptr << std::endl;
 
-        // take ownership right now: MAKES NO SENSE
-        // std::unique_ptr<int> ptr2{ std::move(ptr) };
+        // A) taking ownership right now: MAKES NO SENSE
+        // B) delete: Under no circumstances: 
+        //    pointer is owned by accompanied Unique Ptr
     }
 
     void test_01() 

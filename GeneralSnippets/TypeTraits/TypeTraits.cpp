@@ -18,26 +18,26 @@ namespace TypeTraits_Simple_Demo
     template <typename T>
     struct is_this_a_floating_point
     {
-        static const bool value = false;
+        static constexpr bool value = false;
     };
 
     // explicit (full) specialization
     template <>
     struct is_this_a_floating_point<float>
     {
-        static const bool value = true;
+        static constexpr bool value = true;
     };
 
     template <>
     struct is_this_a_floating_point<double>
     {
-        static const bool value = true;
+        static constexpr bool value = true;
     };
 
     template <>
     struct is_this_a_floating_point<long double>
     {
-        static const bool value = true;
+        static constexpr bool value = true;
     };
 
     void test_1()
@@ -46,8 +46,8 @@ namespace TypeTraits_Simple_Demo
         static_assert(is_this_a_floating_point<double>::value);
         static_assert(is_this_a_floating_point<long double>::value);
 
-        static_assert(not is_this_a_floating_point<int>::value);
-        static_assert(not is_this_a_floating_point<bool>::value);
+        static_assert(! is_this_a_floating_point<int>::value);
+        static_assert(! is_this_a_floating_point<bool>::value);
     }
 
     template <typename T>

@@ -15,18 +15,18 @@
 namespace RangeBasedForLoop {
 
     // global function
-    template <typename T>
-    void processElement(const T& n)
+    void processElement(int n)
     {
         std::cout << n << " ";
     }
 
     // functor: "callabe object" - class which implements operator()
-    template <typename T>
     class ElementProcessor
     {
     public:
-        void operator() (const T& n) { std::cout << n << " "; }
+        void operator() (int n) { 
+            std::cout << n << " ";
+        }
     };
 
     void test_01()
@@ -54,7 +54,7 @@ namespace RangeBasedForLoop {
         std::for_each(
             std::begin(vec),           // Iterator-object for begin of range
             std::end(vec),             // Iterator-object for end of range
-            processElement<int>        // function pointer
+            processElement             // function pointer
         );
         std::cout << std::endl;
 
@@ -62,7 +62,7 @@ namespace RangeBasedForLoop {
         std::for_each(
             std::next(std::begin(vec)),    // Iterator-object for begin of range
             std::prev(std::end(vec)),      // Iterator-object for end of range
-            processElement<int>            // function pointer
+            processElement                 // function pointer
         );
         std::cout << std::endl;
 
@@ -70,7 +70,7 @@ namespace RangeBasedForLoop {
         std::for_each(
             std::begin(vec),               // Iterator-object for begin of range
             std::end(vec),                 // Iterator-object for end of range
-            ElementProcessor<int>{}        // "callable" object
+            ElementProcessor{}        // "callable" object
         );
         std::cout << std::endl;
 

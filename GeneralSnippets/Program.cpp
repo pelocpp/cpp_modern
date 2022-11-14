@@ -22,6 +22,7 @@ void main_common_type();
 void main_constructor_invocations();
 void main_constexpr();
 void main_constexpr_extended();
+void main_constexpr_crc();
 void main_constexpr_if();
 void main_crtp();
 void main_decltype();
@@ -120,6 +121,7 @@ int main()
         //main_constructor_invocations();
         //main_constexpr();
         //main_constexpr_extended();
+        //main_constexpr_crc();
         //main_constexpr_if();
         //main_crtp();
         //main_decltype();

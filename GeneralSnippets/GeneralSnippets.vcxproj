@@ -159,8 +159,9 @@
     <ClCompile Include="Casts\Casts.cpp" />
     <ClCompile Include="CommonType\CommonType.cpp" />
     <ClCompile Include="ConstExpr\ConstExpr.cpp" />
-    <ClCompile Include="ConstExpr\ConstExpr02.cpp" />
+    <ClCompile Include="ConstExpr\ConstExpr_02.cpp" />
     <ClCompile Include="ConstExpr\ConstExprExtended.cpp" />
+    <ClCompile Include="ConstExpr\ConstExpr_CRC.cpp" />
     <ClCompile Include="ConstructursOrder\ConstructorsOrder.cpp" />
     <ClCompile Include="CRTP\CRTP.cpp" />
     <ClCompile Include="DeclType\Decltype.cpp" />
@@ -236,7 +237,7 @@
     <ClCompile Include="TemplateTwoPhaseLookup\TemplateTwoPhaseLookup.cpp" />
     <ClCompile Include="Transform\Transform.cpp" />
     <ClCompile Include="Trim\Trim.cpp" />
-    <ClCompile Include="Tuple\Tuples.cpp" />
+    <ClCompile Include="Tuple\StdTuple.cpp" />
     <ClCompile Include="TypeTraits\TypeTraits.cpp" />
     <ClCompile Include="UniformInitialization\UniformInitialization.cpp" />
     <ClCompile Include="UniquePtr\StdUniquePtr.cpp" />
@@ -370,7 +371,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Global\Dummy.h" />
-    <ClInclude Include="MoveSemantics\MoveSemantics.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\Horse_Cpp.png" />

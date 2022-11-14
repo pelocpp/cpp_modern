@@ -65,6 +65,8 @@ namespace VariantDemo {
             << std::endl;
     }
 
+    // -------------------------------------------------------------------
+
     void test_02() {
 
         // accessing a variant
@@ -99,6 +101,8 @@ namespace VariantDemo {
             std::cout << "int! => " << *intPtr << std::endl;
     }
 
+    // -------------------------------------------------------------------
+
     void test_03() {
 
         std::variant<int, float, std::string> var{ 3.5f };
@@ -117,10 +121,28 @@ namespace VariantDemo {
         std::visit(visitor, var);
     }
 
-    class MyVisitor
+    // -------------------------------------------------------------------
+
+    template<typename T>
+    void visitorFunction (const T& elem) {
+        std::cout << elem << std::endl;
+    }
+
+    void test_03_a() {
+
+        std::variant<int, float, std::string> var{ 3.5f };
+
+        // Doesn't work: std::visit requires an object,
+        // and template functions aren't objects of functions
+        // std::visit(visitorFunction<float>, var);
+    }
+
+    // -------------------------------------------------------------------
+
+    class Visitor
     {
     public:
-        MyVisitor() = default;
+        Visitor() = default;
 
         void operator() (int n) {
             std::cout << "int: " << n << std::endl;
@@ -138,13 +160,16 @@ namespace VariantDemo {
     void test_04() {
 
         std::variant<int, float, std::string> var{ 3.5f };
-        MyVisitor visitor{};
+
+        Visitor visitor{};
 
         std::visit(visitor, var);
         
         var = 10;
         std::visit(visitor, var);
     }
+
+    // -------------------------------------------------------------------
 
     void test_05() {
 
@@ -183,6 +208,8 @@ namespace VariantDemo {
         std::cout << std::endl;
     }
 
+    // -------------------------------------------------------------------
+
     template<class... Ts>
     struct Overload : Ts... { using Ts::operator()...; };
     
@@ -210,6 +237,8 @@ namespace VariantDemo {
             intFloatString
         );
     }
+
+    // -------------------------------------------------------------------
 
     void test_07() {
 
