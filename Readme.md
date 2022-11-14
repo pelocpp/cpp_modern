@@ -39,6 +39,10 @@ Es wird fast immer als kompilierte Sprache implementiert, und viele Anbieter bie
 darunter die Free Software Foundation, LLVM, Microsoft, Intel, Oracle und IBM.
 C++ ist daher auf sehr vielen Plattformen verfügbar.
 
+Einen genauen Abriss zur geschichtlichen Entwicklung von C++ kann man
+[hier](https://en.cppreference.com/w/cpp/language/history)
+nachlesen.
+
 ---
 
 ## Literaturverzeichnis
