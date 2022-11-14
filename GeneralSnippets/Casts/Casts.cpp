@@ -9,6 +9,23 @@ namespace DiverseCasts {
 
     namespace CastStatic {
 
+        void test_00() {
+            long long l = 1l;            // 8 Byte
+            int  n = 2;                  // 4 Byte
+            n = (int)l;
+            n = static_cast<int> (l);
+
+            double d = 1.0;              // 8 Byte
+            float  f = 2.0f;             // 4 Byte
+            f = (float)d;                // Note: ==> Go to Disassembly (cvtsd2ss)
+            f = static_cast<float> (d);
+
+            // convert Scalar Double-Precision Floating-Point Value to 
+            // Scalar Single-Precision Floating-Point Value
+        }
+
+        // -------------------------------------------------------------------
+
         enum class Color { red, green, blue };
 
         void test_01() {
@@ -18,6 +35,8 @@ namespace DiverseCasts {
             int m = static_cast<int>(Color::blue);
             std::cout << m << std::endl;
         }
+
+        // -------------------------------------------------------------------
 
         struct Base {
             // int m = 0;
@@ -57,6 +76,8 @@ namespace DiverseCasts {
             anotherDerived4.sayHello();
         }
     }
+
+    // -------------------------------------------------------------------
 
     namespace CastDynamic {
 
@@ -106,6 +127,8 @@ namespace DiverseCasts {
         }
     }
 
+    // -------------------------------------------------------------------
+
     namespace CastConst {
 
         void test_04() {
@@ -131,6 +154,8 @@ namespace DiverseCasts {
             std::cout << n << std::endl;
         }
     }
+
+    // -------------------------------------------------------------------
 
     namespace CastReinterpret {
 
@@ -171,6 +196,7 @@ void main_casts()
     using namespace DiverseCasts::CastConst;
     using namespace DiverseCasts::CastReinterpret;
 
+    test_00();
     test_01();
     test_02();
     test_03();

@@ -25,8 +25,8 @@ Seine Stärke sind *downcast*-Typwandlungen (*upcast*-Typwandlungen sind trivial)
 Kann zur Laufzeit die Typwandlung *nicht* durchgeführt werden, liefert der Operator
 einen `nullptr` zurück. Dies kann man zur Laufzeit abfragen.
 
-Mit dem `const_cast`-Operator kann man die `const`-Eigenschaft von `const`-Referenzen oder `const`-Zeigern beseitigen,
-die auf ein non-`const` Objekt / eine non-`const` Variable verweisen / zeigen.
+Der `const_cast`-Operator wird verwendet,
+um die `const`-Eigenschaft von Variablen zu entfernen.
 
 Dies sollte man eigentlich nur im Ausnahmefall machen, den die ursprüngliche Vergabe des `const`-Attributs
 sollte ja einen Sinn gehabt haben.

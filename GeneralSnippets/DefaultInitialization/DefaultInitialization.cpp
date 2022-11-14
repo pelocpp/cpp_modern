@@ -14,29 +14,18 @@ namespace DefaultInitializationExample {
         int m_j{ 2 };
 
     public:
+        X() = default;    // initializes m_i with 1 and m_j with 2
         X(int);
     };
 
-    X::X(int value) : m_i{ value }
-    {
-    }
-
-    class Y
-    {
-    private:
-        int m_i = 4;
-        int m_j{ 5 };
-
-    public:
-        Y(int a) : m_i{ a } {}  // initializes m_i with a and m_j with 5
-        Y() = default;          // initializes m_i with 4 and m_j with 5
-    };
+    X::X(int value) : m_i{ value }  // initializes m_i with value (here: 17) and m_j with 2
+    {}
 
     void test_01() {
-
+        X x{};
+        X y{ 17 };
     }
 }
-
 
 void main_default_initialization()
 {
