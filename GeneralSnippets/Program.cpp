@@ -27,7 +27,6 @@ void main_crtp();
 void main_decltype();
 void main_default_initialization();
 void main_erase_remove_idiom();
-void main_exercises_legacy();
 void main_exercises();
 void main_expression_templates();
 void main_generate();

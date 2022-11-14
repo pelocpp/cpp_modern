@@ -18,12 +18,6 @@ namespace LValueRValue {
         std::cout << "sayHello [std::string&&]: " << message << std::endl;
     }
 
-    void helper(std::string&& message) {
-
-        // sayHello(message);
-        sayHello(std::move(message));    // cast an lvalue to an rvalue
-    }
-
     void test01() {
 
         std::string a = "Hello";
@@ -34,7 +28,22 @@ namespace LValueRValue {
         sayHello(a + b);
     }
 
+    // -------------------------------------------------------------------
+
+    void helper(std::string&& message) {
+
+        sayHello(message);
+        // sayHello(std::move(message));    // casting an lvalue to an rvalue
+    }
+
     void test02() {
+
+        helper(std::string("Where are we going :)"));
+    }
+
+    // -------------------------------------------------------------------
+
+    void test03() {
 
         std::string a = "Hello";
 
@@ -48,10 +57,7 @@ namespace LValueRValue {
         sayHello(std::move(a));  // casts an lvalue to an rvalue
     }
 
-    void test03() {
-
-        helper("Ohooo");
-    }
+    // -------------------------------------------------------------------
 
     void test04() {
 
@@ -83,3 +89,4 @@ void main_rvalue_lvalue()
 // =====================================================================================
 // End-of-File
 // =====================================================================================
+
