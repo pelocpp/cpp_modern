@@ -26,8 +26,8 @@ namespace MoveSemantics {
         BigData& operator= (const BigData&);  // copy assignment
 
         // move semantics
-        BigData(BigData&&) noexcept;  // move c'tor
-        BigData& operator= (BigData&&) noexcept; // move assignment
+        //BigData(BigData&&) noexcept;  // move c'tor
+        //BigData& operator= (BigData&&) noexcept; // move assignment
 
     private:
         // private helper methods
@@ -61,15 +61,11 @@ namespace MoveSemantics {
     }
 
     BigData::~BigData() {
-        std::cout << "d'tor" << std::endl;
-
         delete[] m_data;
     }
 
     // copy semantics
     BigData::BigData(const BigData& data) {
-
-        std::cout << "copy c'tor" << std::endl;
 
         // allocate buffer
         m_size = data.m_size;
@@ -80,8 +76,6 @@ namespace MoveSemantics {
     }
 
     BigData& BigData::operator= (const BigData& data) {
-
-        std::cout << "operator=" << std::endl;
 
         // prevent self-assignment
         if (this == &data)
@@ -100,16 +94,16 @@ namespace MoveSemantics {
         return *this;
     }
 
+    // -------------------------------------------------------------------
+
     // move semantics
-    BigData::BigData(BigData&& data) noexcept {  // move c'tor
+    //BigData::BigData(BigData&& data) noexcept {  // move c'tor
 
-        std::cout << "move c'tor" << std::endl;
-
-        m_data = data.m_data;   // shallow copy
-        m_size = data.m_size;
-        data.m_data = nullptr;  // reset source object, ownership has been moved
-        data.m_size = 0;
-    }
+    //    m_data = data.m_data;   // shallow copy
+    //    m_size = data.m_size;
+    //    data.m_data = nullptr;  // reset source object, ownership has been moved
+    //    data.m_size = 0;
+    //}
 
     // first alternate realisation
     //BigData::BigData(BigData&& data) noexcept {  // move c'tor
@@ -121,20 +115,19 @@ namespace MoveSemantics {
     //    swap(*this, data);
     //}
 
-    BigData& BigData::operator= (BigData&& data) noexcept { // move-assignment
+    // -------------------------------------------------------------------
 
+    //BigData& BigData::operator= (BigData&& data) noexcept { // move-assignment
 
-        std::cout << "move assignment" << std::endl;
-
-        if (this != &data) {
-            delete[] m_data;        // release left side
-            m_data = data.m_data;   // shallow copy
-            m_size = data.m_size;
-            data.m_data = nullptr;  // reset source object, ownership has been moved
-            data.m_size = 0;
-        }
-        return *this;
-    }
+    //    if (this != &data) {
+    //        delete[] m_data;        // release left side
+    //        m_data = data.m_data;   // shallow copy
+    //        m_size = data.m_size;
+    //        data.m_data = nullptr;  // reset source object, ownership has been moved
+    //        data.m_size = 0;
+    //    }
+    //    return *this;
+    //}
 
     // first alternate realisation
     //BigData& BigData::operator= (BigData&& data) noexcept { // move-assignment
@@ -155,6 +148,8 @@ namespace MoveSemantics {
 
     //    return *this;
     //}
+
+    // -------------------------------------------------------------------
 
     // getter
     size_t BigData::size() const {
@@ -239,13 +234,27 @@ namespace MoveSemantics {
         BigData data11;
         data11 = std::move(data1);
     }
+
+    void test_03_demonstrate_move_ctor() {
+
+        std::vector<BigData> vec;
+        vec.push_back(BigData(10, 1));
+    }
+
+    void test_04_demonstrate_move_assignment() {
+
+        BigData data;
+        data = BigData(10, 1);
+    }
 }
 
 void main_move_semantics()
 {
     using namespace MoveSemantics;
     test_01_move_semantics();
-   // test_02_move_semantics();
+    test_02_move_semantics();
+    test_03_demonstrate_move_ctor();
+    test_04_demonstrate_move_assignment();
 }
 
 // =====================================================================================
