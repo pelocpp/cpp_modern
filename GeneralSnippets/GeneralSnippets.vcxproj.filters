@@ -342,6 +342,9 @@
     <ClCompile Include="ConstExpr\ConstExpr_CRC.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GenericLambdas\GenericLambdas.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -681,6 +684,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Agenda\Agenda_01.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="GenericLambdas\GenericLambdas.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

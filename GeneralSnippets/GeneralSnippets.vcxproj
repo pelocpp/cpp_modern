@@ -190,6 +190,7 @@
     <ClCompile Include="FunctionalProgramming\FunctionalProgramming01.cpp" />
     <ClCompile Include="FunctionalProgramming\FunctionalProgramming02.cpp" />
     <ClCompile Include="Generate\Generate.cpp" />
+    <ClCompile Include="GenericLambdas\GenericLambdas.cpp" />
     <ClCompile Include="Global\Dummy.cpp" />
     <ClCompile Include="InitializerList\InitializerList.cpp" />
     <ClCompile Include="InputOutputStreams\InputOutputStreams.cpp" />
@@ -304,6 +305,7 @@
     <None Include="FunctionalProgramming\FunctionalProgramming.md" />
     <None Include="Generate\cpp_generate.svg" />
     <None Include="Generate\Generate.md" />
+    <None Include="GenericLambdas\GenericLambdas.md" />
     <None Include="InitializerList\StdInitializerList.md" />
     <None Include="InputOutputStreams\Streams.md" />
     <None Include="Invoke\StdInvoke.md" />

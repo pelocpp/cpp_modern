@@ -31,6 +31,7 @@ void main_erase_remove_idiom();
 void main_exercises();
 void main_expression_templates();
 void main_generate();
+void main_generic_lambdas();
 void main_keyword_explicit();
 void main_filesystem();
 void main_functional_programming();
@@ -130,6 +131,7 @@ int main()
         //main_exercises();
         //main_expression_templates();
         //main_generate();
+        main_generic_lambdas();
         //main_keyword_explicit();
         //main_filesystem();
         //main_functional_programming();

@@ -29,6 +29,12 @@
   * Generische Lambdas
 
 
+## Generische Lambdas
+  * Generische Lambda Ausdrücke (*Generic Lambda Expressions*)
+  * *Automatic Type Deduction* bei generischen Lambda Ausdrücken
+  * Lambda Ausdrücke mit `template`-Header
+
+
 ## Vererbung
   * Virtueller Methodenaufrufmechanismus
   * Interface- / Schnittstellen-Konzept
@@ -132,11 +138,6 @@
   * Allgemeines
   * Beispiel Klasse `Matrix`
   * Beispiel &ldquo;Konkatenation von Zeichenketten&rdquo;
-
-
-## Functional Programming
-  * Allgemeines
-  * Funktionen höherer Ordnung `filter`, `map` und `fold`
 
 
 ## Ergänzungen zu Zeichenketten
