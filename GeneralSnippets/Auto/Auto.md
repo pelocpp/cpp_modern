@@ -14,7 +14,6 @@ Das Schlüsselwort `auto` besitzt mehrere, völlig unterschiedliche Einsatzmöglich
   * Neuartige Möglichkeit in der Definition von Funktionen / *Function Return Type Deduction*
   * Funktionsdefinition mit *Trailing Return Type*
   * Verlust von `const` und `&` (Referenz) bei `auto`
-  * Generische Lambda Ausdrücke
   * Typableitung bei Template Parametern / *Template Parameter Type Deduction*
   * `decltype(auto)`
   * *Perfect Forwarding* mit generischen Lambdas
@@ -237,72 +236,6 @@ std::cout << "Message: " << msg3 << std::endl;
 Ein letzter Schönheitsfehler verbleibt: Es kommt quasi zu einer Dopplung des Ausdrucks, in unserem Beispiel `getMessage()`.
 Auch das beheben wir noch, siehe weiter unten den Abschnitt zu `decltype(auto)`.
 
-## Generische Lambda Ausdrücke
-
-Das Feature der *Automatic Type Deduction* lässt sich auch bei Lambda-Funktionen anwenden,
-und zwar sowohl beim Rückgabetyp als auch bei den Parametern der Lambda-Funktion.
-Um *Automatic Type Deduction* für Parameter anwenden zu können, müssen diese als `auto` deklariert werden:
-
-```cpp
-// define a generic lambda
-auto isGreaterThanFifty = [](const auto& n) { return n > 50; };
-
-std::vector<int> intValues { 44, 65, 22, 77, 2 };
-
-// use generic lambda with a vector of integers
-auto it1 = std::find_if(std::begin(intValues), std::end(intValues), isGreaterThanFifty);
-if (it1 != std::end(intValues)) {
-    std::cout << "Found a value: " << *it1 << std::endl;
-}
-
-std::vector<double> doubleValues{ 24.0, 75.0, 12.0, 87.0, 12.0 };
-
-// use exactly the *same* generic lambda with a vector of doubles
-auto it2 = std::find_if(std::begin(doubleValues), std::end(doubleValues), isGreaterThanFifty);
-if (it2 != std::end(doubleValues)) {
-    std::cout << "Found a value: " << *it2 << std::endl;
-}
-```
-
-*Ausgabe*:
-
-```
-Found a value: 65
-Found a value: 75
-```
-
-**Bemerkung**:
-Zwischen Funktionstemplates und generischen Lambda Ausdrücken kann man Gemeinsamkeiten erkennen.
-Das letzte Beispiel hätte man auch mit einem Funktionstemplate realisieren können:
-
-```cpp
-template <typename T>
-bool isGreaterThanFiftyEx (const T& n) 
-{
-    return n > 50;
-};
-```
-
-Damit sehen die Aufrufe von `std::find_if` so aus:
-
-```cpp
-std::vector<int> intValues{ 44, 65, 22, 77, 2 };
-
-// use function template with a vector of integers
-auto it1 = std::find_if(std::begin(intValues), std::end(intValues), isGreaterThanFiftyEx<int>);
-if (it1 != std::end(intValues)) {
-    std::cout << "Found a value: " << *it1 << std::endl;
-}
-
-std::vector<double> doubleValues{ 24.0, 75.0, 12.0, 87.0, 12.0 };
-
-// use exactly the *same* function template with another specialization with a vector of doubles
-auto it2 = std::find_if(std::begin(doubleValues), std::end(doubleValues), isGreaterThanFiftyEx<double>);
-if (it2 != std::end(doubleValues)) {
-    std::cout << "Found a value: " << *it2 << std::endl;
-}
-```
-
 ## Typableitung bei Template Parametern (*Template Parameter Type Deduction*)
 
 Der Typ von Template Parametern wird vom Übersetzer an Hand der Argumente aufgelöst,
@@ -312,8 +245,8 @@ müssen folglich explizit angegeben werden.
 Wir betrachten ein Funktionstemplate mit drei Template Parametern:
 
 ```cpp
-template <typename RetType, typename T1, typename T2>
-RetType add(const T1& t1, const T2& t2)
+template <typename TReturn, typename T1, typename T2>
+TReturn add(const T1& t1, const T2& t2)
 {
     return t1 + t2;
 }
@@ -339,8 +272,8 @@ sich am Ende der Template Parameter Liste befinden.
 Also eine Funktionstemplate Definition in der Gestalt
 
 ```cpp
-template <typename T1, typename T2, typename RetType>
-RetType add2(const T1& t1, const T2& t2)
+template <typename T1, typename T2, typename TReturn>
+TReturn add2(const T1& t1, const T2& t2)
 {
     return t1 + t2;
 }
@@ -352,8 +285,8 @@ besitzt diese Eigenschaft nicht.
 Spezifikationen von Datentypen beim Aufruf auskommt, so könnte man mit Default Werten für die Template Parameter arbeiten:
 
 ```cpp
-template <typename RetType = long, typename T1, typename T2>
-RetType add(const T1& t1, const T2& t2)
+template <typename TReturn = long, typename T1, typename T2>
+TReturn add(const T1& t1, const T2& t2)
 {
     return t1 + t2;
 }

@@ -29,10 +29,11 @@
   * Generische Lambdas
 
 
-## Generische Lambdas
-  * Generische Lambda Ausdrücke (*Generic Lambda Expressions*)
+## Generische Lambda Ausdrücke
+  * Übersicht
   * *Automatic Type Deduction* bei generischen Lambda Ausdrücken
   * Lambda Ausdrücke mit `template`-Header
+  * Rekursive Lambda Ausdrücke
 
 
 ## Vererbung

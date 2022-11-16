@@ -116,91 +116,25 @@ namespace Auto_Examples {
 
     // ---------------------------------------------------------------------
 
-    // define a generic lambda
-    auto isGreaterThanFifty = [](const auto& n) { return n > 50; };
-
-    void test_01_e_01()
-    {
-        std::vector<int> intValues{ 44, 65, 22, 77, 2 };
-
-        // use generic lambda with a vector of integers
-        auto it1 = std::find_if(
-            std::begin(intValues), 
-            std::end(intValues), 
-            isGreaterThanFifty
-        );
-        if (it1 != std::end(intValues)) {
-            std::cout << "Found a value: " << *it1 << std::endl;
-        }
-
-        std::vector<double> doubleValues{ 24.0, 75.0, 12.0, 87.0, 12.0 };
-
-        // use exactly the *same* generic lambda with a vector of doubles
-        auto it2 = std::find_if(
-            std::begin(doubleValues), 
-            std::end(doubleValues), 
-            isGreaterThanFifty
-        );
-        if (it2 != std::end(doubleValues)) {
-            std::cout << "Found a value: " << *it2 << std::endl;
-        }
-    }
-
-    template <typename T>
-    bool isGreaterThanFiftyEx(const T& n)
-    {
-        return n > 50;
-    };
-
-    void test_01_e_02()
-    {
-        std::vector<int> intValues{ 44, 65, 22, 77, 2 };
-
-        // use template function with a vector of integers
-        auto it1 = std::find_if(
-            std::begin(intValues),
-            std::end(intValues), 
-            isGreaterThanFiftyEx<int>
-        );
-        if (it1 != std::end(intValues)) {
-            std::cout << "Found a value: " << *it1 << std::endl;
-        }
-
-        std::vector<double> doubleValues{ 24.0, 75.0, 12.0, 87.0, 12.0 };
-
-        // use exactly the *same* template function with
-        // another specialization with a vector of doubles
-        auto it2 = std::find_if(
-            std::begin(doubleValues), 
-            std::end(doubleValues), 
-            isGreaterThanFiftyEx<double>
-        );
-        if (it2 != std::end(doubleValues)) {
-            std::cout << "Found a value: " << *it2 << std::endl;
-        }
-    }
-
-    // ---------------------------------------------------------------------
-
-    template <typename RetType, typename T1, typename T2>
-    RetType add1(const T1& t1, const T2& t2)
+    template <typename TReturn, typename T1, typename T2>
+    TReturn add1(const T1& t1, const T2& t2)
     {
         return t1 + t2;
     }
 
-    template <typename T1, typename T2, typename RetType>
-    RetType add2(const T1& t1, const T2& t2)
+    template <typename T1, typename T2, typename TReturn>
+    TReturn add2(const T1& t1, const T2& t2)
     {
         return t1 + t2;
     }
 
-    template <typename RetType = long, typename T1, typename T2>
-    RetType add3(const T1& t1, const T2& t2)
+    template <typename TReturn = long, typename T1, typename T2>
+    TReturn add3(const T1& t1, const T2& t2)
     {
         return t1 + t2;
     }
 
-    void test_01_f()
+    void test_01_e()
     {
         // works - specifying all template parameters
         auto result = add1<long, int, int>(10, 20);
@@ -222,7 +156,7 @@ namespace Auto_Examples {
         return s[0];
     }
 
-    void test_01_g()
+    void test_01_f()
     {
         auto ch1 = getFirstCharacter(std::string{ "ABC" });
         decltype(auto) ch2 = getFirstCharacter(std::string{ "ABC" });
@@ -243,7 +177,7 @@ namespace Auto_Examples {
         foo(std::forward<decltype(s)>(s));
     };
 
-    void test_01_h()
+    void test_01_g()
     {
         const std::string str{ "Hello World with LValue - " };
         callingFoo(str);
@@ -258,11 +192,9 @@ void main_auto()
     test_01_b();
     test_01_c();
     test_01_d();
-    test_01_e_01();
-    test_01_e_02();
+    test_01_e();
     test_01_f();
     test_01_g();
-    test_01_h();
 }
 
 // =====================================================================================

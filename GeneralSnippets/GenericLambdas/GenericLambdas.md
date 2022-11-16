@@ -1,4 +1,4 @@
-﻿# Generische Lambdas
+﻿# Generische Lambda Ausdrücke
 
 [Zurück](../../Readme.md)
 
@@ -8,7 +8,7 @@
 
 ---
 
-## Generische Lambda Ausdrücke (*Generic Lambda Expressions*)
+## Übersicht
 
 Ein Lambda-Ausdruck, der mindestens einen Parameter vom Typ `auto` hat,
 wird als generischer Lambda-Ausdruck bezeichnet:
@@ -126,8 +126,7 @@ if (it2 != std::end(doubleValues)) {
 
 ## Lambda Ausdrücke mit `template`-Header
 
-
-Lambda Ausdrücke mit `template`-Header, die in C++ 20 eingeführt wurden,
+Lambda Ausdrücke mit `template`-Header Syntax, die in C++ 20 eingeführt wurden,
 ermöglichen es, die Template Syntax zu verwenden, um explizit
 auf die Gestaltung des Template-basierten Funktionsaufrufoperators `operator()`
 Einfluss zu nehmen:
@@ -140,27 +139,143 @@ auto l2 = [](auto a) { return a + a; };            // C++ 14, generic lambda
 auto l3 = []<typename T>(T a) { return a + a; };   // C++ 20, template lambda
 ```
 
-
 Hier haben wir drei verschiedene Lambda Ausdrücke:
 `l1` ist ein regulärer Lambda Ausdruck, `l2` ist ein generischer Lambda Ausdruck,
 da mindestens einer der Parameter vom Typ `auto` definiert ist 
 und `l3` ist ein Lambda Ausdruck mit `template`-Header.
 
-Wir können `l1` mit einer `int`-Zahl aufrufen; wir können es auch mit einem `double`-Wert aufrufen,
-aber dieses Mal gibt der Compiler eine Warnung über einen möglichen Datenverlust aus.
+Wir können `l1` mit einer `int`-Zahl aufrufen. Wenn wir einen `double`-Wert übergeben,
+gibt der Compiler eine Warnung über einen möglichen Datenverlust aus.
 Der Versuch, `l1` mit einem `std::string`-Argument aufzurufen,
-erzeugt einen Kompilierungsfehler, da `std::string` nicht in einen `int`-Wert umgewandelt werden kann.
+erzeugt einen Übersetzungsfehler,
+da `std::string` nicht in einen `int`-Wert umgewandelt werden kann.
 
 `l2` hingegen ist ein generischer Lambda Ausdruck. Der Compiler erzuegt in diesem Fall
-Spezialisierungen für alle Arten von Argumenten, mit denen der Ausdruck aufgerufen wird,
-in unserem Beispiel sind dies `int`, `double` und `std::string`. 
+Spezialisierungen für alle Arten von Argumenten, mit denen der Ausdruck aufgerufen wird.
+In unserem Beispiel sind dies `int`, `double` und `std::string`. 
 
-Es überrascht nicht, dass der Compiler für den dritten Lambda-Ausdruck `l3` denselben Code generiert.
+Es überrascht nicht, dass der Compiler für den dritten Lambda-Ausdruck `l3`
+denselben Code generiert.
 Welchen Vorteil besitzen nun Lambda Ausdrücke mit `template`-Header?
 Um diese Frage zu beantworten, modifizieren wir das vorherige Beispiel ein wenig:
 
+```cpp
+auto l1 = [](int a, int b) { return a + b; };          // C++ 11, regular lambda
+
+auto l2 = [](auto a, auto b) { return a + b; };        // C++ 14, generic lambda
+
+auto l3 = []<typename T, typename U>(T a, U b) {       // C++ 20, template lambda
+    return a + b; 
+};
+```
+
+Die neuen Lambda-Ausdrücke besitzen zwei Parameter.
+Auch hier können wir `l1` mit zwei ganzen Zahlen aufrufen
+oder einem `int`- und einem `double`-Wert, obwohl dies wiederum eine Warnung erzeugt.
+Mit einem `std::string`-Objekt und einem `char`-Wert lässt sich `l1` nicht aufrufen.
+Mit `l1` und `l1` ist dies möglich, der vom Compiler generierte Code
+ist für `l2` und `l3` identisch.
+
+Wie gehen wir vor, wenn wir die Verwendung des generischen Lambda Ausdrucks einschränken wollen?
+Zum Beispiel in Bezug auf Argumente desselben Typs?
+Das ist nicht mit `l1` und `l2` nicht möglich.
+
+Für Lambda Ausdrücke mit `template`-Header gibt es einen Weg:
+
+```cpp
+auto l5 = []<typename T>(T a, T b) { return a + b; };
+```
+
+Jegliche Aufrufe des Lambda Ausdrucks mit zwei beliebigen Argumenten unterschiedlichen Typs sind nicht möglich. 
+Auch für den Fall, dass die Argumente implizit konvertierbar sind,
+wie z.B. von `int` nach `double`. Der Compiler erzeugt auch in diesen Fällen einen Fehler.
+
+*Hinweis*:
+Mit C++ 14 und `decltype` kann man einen alternativen Lösungsansatz betrachten:
+
+```cpp
+auto l6 = [](auto a, decltype(a) b) {return a + b; };
+```
+
+Diese Realisierung impliziert jedoch, dass der Typ des zweiten Parameters `b`
+in den Typ des ersten Parameters `a` konvertierbar sein muss.
 
 
+Der erste Aufruf ist problemlos übersetzbar, da `int` implizit in `double` konvertierbar ist.
+Der zweite Aufruf wird mit einer Warnung übersetzt, da die Konvertierung von `double`
+nach `int` zu einem Datenverlust führen kann.
+Der dritte Aufruf generiert einen Fehler, da `char` kann nicht in `std::string` konvertierbar ist.
+
+Möchte man einen Aufruf der gezeigten Lambda Ausdrücke für Argumente unterschiedlichen Typs ausschließen,
+ist dies nur mit dem gezeigten Lösungswegs eines Lambda Ausdrucks mit `template`-Header möglich.
+
+---
+
+## Rekursive Lambda Ausdrücke
+
+
+Generische Lambda-Ausdrücke eröffnen auch die Möglichkeit, rekursive Lambda-Funktionen zu realisieren,
+ohne dabei auf `std::function` zurückgreifen zu müssen.
+
+
+Lambda Ausdrücke haben keine Namen, sie sind anonym.
+Daher lassen sie sich nicht direkt rekursiv aufrufen.
+
+Stattdessen muss man ein `std::function`-Objekt definieren,
+ihm als Wert den Lambda-Ausdruck zuweisen und dieses Objekt zusätzlich noch
+als Referenz in der *Capture Clause* erfassen:
+
+```cpp
+std::function<int(int)> factorial;
+
+factorial = [&] (int n) {
+    if (n < 2) {
+        return 1;
+    }
+    else {
+        return n * factorial(n - 1);
+    }
+};
+
+std::cout << factorial(5) << std::endl; // 120
+```
+
+Dies kann durch die Verwendung von generischen Lambdas vereinfacht werden.
+Man benötigt kein
+`std::function`-Objekt und keine Erfassung in der *Capture Clause*.
+
+Ein rekursives generisches Lambda kann folgendermaßen implementiert werden:
+
+```cpp
+auto factorial = [] (auto f, int const n) {
+
+    if (n < 2) {
+        return 1;
+    }
+    else {
+        return n * f(f, n - 1);
+    }
+};
+
+std::cout << factorial (factorial, 5) << std::endl;
+```
+
+Die obige generische Lambda-Version von `factorial` ist vom Standpunkt der Lesbarkeit aus nicht besser.
+Sie kann jedoch auf unterschiedliche Basistypen angewendet werden,
+siehe dazu das Beispiel von `power` im begleitenden Quelltext:
+
+```cpp
+std::cout << power(power, 2, 10) << std::endl;    // 2^10 = 1024
+
+std::cout << power(power, 2.71828, 10);           // e^10 = 22026.3
+```
+
+---
+
+## Literatur
+
+Die Anregungen zu rekursiven Lambda Ausdrücken stammen aus
+[Generic code with generic lambda expression](https://www.nextptr.com/tutorial/ta1224017367/generic-code-with-generic-lambda-expression).
 
 ---
 

@@ -139,6 +139,7 @@ In der folgenden Tabelle sind alle Neuerungen von C++&ndash;11/14/17 aufgeführt
 | [Folding](GeneralSnippets/Folding/VariadicTemplatesFolding.md) | *Folding Expressions* |
 | [FunctionalProgramming](GeneralSnippets/FunctionalProgramming/FunctionalProgramming.md) | Funktionale Programmierung |
 | [Generate](GeneralSnippets/Generate/Generate.md) | STL-Algorithmus `std::generate` |
+| [GenericLambdas](GeneralSnippets/GenericLambdas/GenericLambdas.md) | Generische Lambda Ausdrücke |
 | [InitializerList](GeneralSnippets/InitializerList/StdInitializerList.md) | Klasse `std::initializer_list<T>` |
 | [Invoke](GeneralSnippets/Invoke/StdInvoke.md) | `std::invoke`: "*Uniformly invoking anything callable*" |
 | [Lambda](GeneralSnippets/Lambda/Lambda.md) | Lambda-Funktionen |
