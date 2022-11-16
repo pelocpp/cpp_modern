@@ -70,11 +70,13 @@ namespace GenericLambdas {
 
     // -------------------------------------------------------------------
 
-    // define a generic lambda
-    auto isGreaterThanFifty = [](const auto& n) { return n > 50; };
+
 
     void test_04()
     {
+        // define a generic lambda
+        auto isGreaterThanFifty = [](const auto& n) { return n > 50; };
+
         std::vector<int> intValues{ 44, 65, 22, 77, 2 };
 
         // use generic lambda with a vector of integers
@@ -277,16 +279,15 @@ namespace GenericLambdas {
 void main_generic_lambdas()
 {
     using namespace GenericLambdas;
-    //test_01();
-    //test_02();
-    //test_03();
-    //test_04();
-    //test_05();
-    //test_06();
-
-    //test_07();
-    //test_08();
-    //test_09();
+    test_01();
+    test_02();
+    test_03();
+    test_04();
+    test_05();
+    test_06();
+    test_07();
+    test_08();
+    test_09();
     test_10();
     test_11();
     test_12();
