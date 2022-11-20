@@ -159,9 +159,10 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 
 | Aufgabe | Beschreibung |
 | :- | :- |
-| [Aufgabe 1](./Exercises_07_Metaprogramming.md#aufgabe-1-konvertierung-binärer-zahlen-in-dezimalzahlen) | Konvertierung binärer Zahlen in Dezimalzahlen |
-| [Aufgabe 2](./Exercises_07_Metaprogramming.md#aufgabe-2-fibonacci-zahlen) | *Fibonacci*-Zahlen |
-| [Aufgabe 3](./Exercises_07_Metaprogramming.md#aufgabe-3-selektiver-zugriff-auf-ein-parameter-pack-von-datentypen) | Selektiver Zugriff auf ein Parameter Pack von Datentypen |
+| [Aufgabe 1](./Exercises_07_Metaprogramming.md#aufgabe-1-bestimmung_des_maximums_aus_einer_folge_von_ganzen_positiven_zahlen) | Bestimmung des Maximums aus einer Folge von ganzen, positiven Zahlen |
+| [Aufgabe 2](./Exercises_07_Metaprogramming.md#aufgabe-2-konvertierung-binärer-zahlen-in-dezimalzahlen) | Konvertierung binärer Zahlen in Dezimalzahlen |
+| [Aufgabe 3](./Exercises_07_Metaprogramming.md#aufgabe-3-fibonacci-zahlen) | *Fibonacci*-Zahlen |
+| [Aufgabe 4](./Exercises_07_Metaprogramming.md#aufgabe-4-selektiver-zugriff-auf-ein-parameter-pack-von-datentypen) | Selektiver Zugriff auf ein Parameter Pack von Datentypen |
 
 *Tabelle* 10: Aufgaben zur Metaprogrammierung.
 

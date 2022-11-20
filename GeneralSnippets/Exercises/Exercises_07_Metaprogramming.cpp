@@ -10,6 +10,32 @@ namespace Exercises_Metaprogramming {
 
     namespace Exercise_01 {
 
+        template <size_t TNumber, size_t ... TArgs>
+        struct Values
+        {
+            static const size_t MaxNumber =
+                Values<TNumber>::MaxNumber > Values<TArgs...>::MaxNumber ?
+                Values<TNumber>::MaxNumber : Values<TArgs...>::MaxNumber;
+        };
+
+        template <size_t TNumber>
+        struct Values<TNumber>
+        {
+            static const std::size_t MaxNumber = TNumber;
+        };
+
+        void testExercise_01()
+        {
+            constexpr size_t max = Values<1, 3, 5, 4, 2>::MaxNumber;
+            std::cout << "Max: " << max << std::endl;
+
+            constexpr size_t max2 = Values<8, 6, 4, 10, 3, 5, 7>::MaxNumber;
+            std::cout << "Max: " << max2 << std::endl;
+        }
+    }
+
+    namespace Exercise_02 {
+
         // runtime versions
         size_t convert1(size_t number)
         {
@@ -56,7 +82,7 @@ namespace Exercises_Metaprogramming {
             static constexpr size_t value = 0;
         };
 
-        void testExercise_01a() {
+        void testExercise_02a() {
 
             size_t number{ 11111111 };
             size_t result{};
@@ -72,7 +98,7 @@ namespace Exercises_Metaprogramming {
             std::cout << result << std::endl;
         }
 
-        void testExercise_01b() {
+        void testExercise_02b() {
 
             constexpr size_t one = Binary<1>::value;
             constexpr size_t three = Binary<11>::value;
@@ -93,7 +119,7 @@ namespace Exercises_Metaprogramming {
             std::cout << wrong2 << std::endl;
         }
 
-        void testExercise_01c() {
+        void testExercise_02c() {
 
             constexpr size_t one = BinaryEx<1>::value;
             constexpr size_t three = BinaryEx<11>::value;
@@ -112,14 +138,14 @@ namespace Exercises_Metaprogramming {
             std::cout << big << std::endl;
         }
 
-        void testExercise_01() {
-            testExercise_01a();
-            testExercise_01b();
-            testExercise_01c();
+        void testExercise_02() {
+            testExercise_02a();
+            testExercise_02b();
+            testExercise_02c();
         }
     }
 
-    namespace Exercise_02 {
+    namespace Exercise_03 {
 
         template<size_t N>
         struct FibImpl {
@@ -143,7 +169,7 @@ namespace Exercises_Metaprogramming {
             static constexpr size_t value = FibImpl<N>::value;
         };
 
-        void testExercise_02() {
+        void testExercise_03() {
             std::cout << 1 << ":  " << Fibonacci<1>::value << std::endl;
             std::cout << 2 << ":  " << Fibonacci<2>::value << std::endl;
             std::cout << 5 << ":  " << Fibonacci<5>::value << std::endl;
@@ -161,7 +187,7 @@ namespace Exercises_Metaprogramming {
         }
     }
 
-    namespace Exercise_03 {
+    namespace Exercise_04 {
 
         // primary template
         template<typename ... TArgs>
@@ -189,7 +215,7 @@ namespace Exercises_Metaprogramming {
             using type = LastType<TArgs ...>::type;
         };
 
-        void testExercise_03() {
+        void testExercise_04() {
 
             using TFirst = FirstType<double, int, long>::type;
             using TLast = LastType<int, long, double, char>::type;
@@ -209,6 +235,7 @@ void test_exercices_metaprogramming()
     Exercise_01::testExercise_01();
     Exercise_02::testExercise_02();
     Exercise_03::testExercise_03();
+    Exercise_04::testExercise_04();
 }
 
 // =====================================================================================

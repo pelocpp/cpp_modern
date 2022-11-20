@@ -8,7 +8,28 @@
 
 ---
 
-## Aufgabe 1: Konvertierung binärer Zahlen in Dezimalzahlen.
+## Aufgabe 1: Bestimmung des Maximums aus einer Folge von ganzen, positiven Zahlen
+
+Bestimmen Sie die größte Zahl aus einer Folge von ganzen, positiven Zahlen.
+Die Zahlenfolge selbst stellt das Parameterpack eines Klassentemplates dar.
+Das Ergebnis soll zur Übersetzungszeit berechnet werden.
+
+*Beispiel*:
+
+```cpp
+constexpr size_t max = Values<8, 6, 4, 10, 3, 5, 7>::MaxNumber;
+std::cout << "Max: " << max << std::endl;
+```
+
+*Ausgabe*:
+
+```
+Max: 10
+```
+
+---
+
+## Aufgabe 2: Konvertierung binärer Zahlen in Dezimalzahlen.
 
 Das Binärsystem, auch Dual- oder Zweiersystem genannt, ist ein Zahlensystem, das nur zwei verschiedene
 Ziffern &ndash; in der Regel `0` und `1` &ndash; zur Darstellung von Zahlen kennt. Die Ziffernfolge `1101` zum
@@ -58,7 +79,7 @@ vom Übersetzer abgewiesen werden?
 
 ---
 
-## Aufgabe 2: *Fibonacci*-Zahlen
+## Aufgabe 3: *Fibonacci*-Zahlen
 
 In der Mathematik bilden die *Fibonacci*-Zahlen eine Folge,
 so dass jede Zahl die Summe der beiden vorhergehenden Zahlen ist, beginnend mit 0 und 1. 
@@ -92,7 +113,7 @@ std::cout << 20 << ": " << Fibonacci<20>::value << std::endl;
 
 ---
 
-## Aufgabe 3: Selektiver Zugriff auf ein Parameter Pack von Datentypen
+## Aufgabe 4: Selektiver Zugriff auf ein Parameter Pack von Datentypen
 
 
 Parameter Packs von Instanzierungen von Templates können eine beliebige Anzahl
