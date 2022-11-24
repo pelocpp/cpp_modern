@@ -1,35 +1,47 @@
 // =====================================================================================
-// explicit
+// Explicit.cpp // Keyword 'explicit'
 // =====================================================================================
 
 #include <iostream>
 
 namespace KeywordExplicit {
 
-    class String {
+    class Complex {
+    private:
+        double m_real;
+        double m_imag;
+
     public:
-        /* explicit */ String(int n); // allocate String object with n bytes length
-        String(char* p); // initialize String object with char pointer
+        // c'tors
+        Complex() : Complex {0.0, 0.0}{}
+
+        /* explicit */ Complex(double real) :   // remove or add keyword 'explicit'
+            m_real{ real }, m_imag{} {}
+
+        explicit Complex(double real, double imag) :
+            m_real{ real }, m_imag{ imag } {}
+
+        // comparison operator
+        bool operator == (Complex rhs)
+        {
+            return (m_real == rhs.m_real && m_imag == rhs.m_imag);
+        }
     };
-
-    String::String([[ maybe_unused]] int n) {}
-    String::String([[ maybe_unused]] char* p) {}
-
-    void test_01() {
-
-        // char 'x' will be implicitly converted to int
-        // and the String(int) constructor will be called:
-        // Did you intend this?
-
-        [[maybe_unused]] String s1 = 'x';
-        [[maybe_unused]] String s2 (10);
-    }
 }
 
 void main_keyword_explicit()
 {
     using namespace KeywordExplicit;
-    test_01();
+
+    // a Complex object
+    Complex c{ 3.0, 0.0 };
+
+    if (c == 3.0) {
+        std::cout << "Same objects";
+    }
+    else {
+        std::cout << "Not same objects";
+    }
 }
 
 // =====================================================================================

@@ -1,4 +1,4 @@
-# explicit
+# `explicit`
 
 [Zurück](../../Readme.md)
 
@@ -10,7 +10,17 @@
 
 *Allgemeines*:
 
-Siehe das Beispiel im korrespondierenden Quellcode.
+Das Schlüsselwort `explicit` wird in C++ verwendet,
+um Konstruktoren einer Klasse so zu markieren,
+dass deren Objekte nicht als Ergebnis einer **impliziten** Konvertierung
+entstehen können.
+
+Im Regelfall setzt man das `explicit`-Schlüsselwort für Konstruktoren ein,
+die genau ein Argument haben.
+Derartige Konstruktoren heißen &ldquo;Typ-Konvertierungskonstruktoren&rdquo;,
+da sie bei einer Typumwandlung verwendet werden können.
+
+Siehe dazu das Beispiel im korrespondierenden Quellcode.
 
 ---
 
