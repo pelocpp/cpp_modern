@@ -211,6 +211,8 @@ namespace ClassTemplatesBasics_02 {
             MyContainer<int> cont_2;        // cont_1 and cont_2 have same type
             FixedVector<int, 10> vector_1;
             FixedVector<int, 20> vector_2;  // vector_1 undn vector_2 have different types !!!
+
+            // vector_1 = vector_2;         // Error: binary '=': no operator found
         }
 
         void test_06() {

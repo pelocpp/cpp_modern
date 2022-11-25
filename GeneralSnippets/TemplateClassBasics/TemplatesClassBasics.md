@@ -10,14 +10,19 @@
 
 Es werden grundlegende Aspekte von Klassentemplates aufgezeigt:
 
-  * Erstellung eines einfachen Klassentemplates
-  * Explizite und partielle Spezialisierung
-  * Template Member Functions
-  * Methoden eines Klassentemplates überschreiben (spezialisieren)
+  * Definition eines Klassen-Templates
+  * Objekte aus Klassen-Templates erzeugen
+  * Klassen-Templates mit mehreren formalen Datentypen
+  * Definition von Methoden von Klassen-Templates
+  * Methoden eines Klassen-Templates überschreiben (spezialisieren)
+  * Klassen-Templates mit Non-Type Parametern
+  * Template Template-Parameter
+  * Default Template-Parameter
+  * Alias Templates
 
 ---
 
-## Ein erstes Klassen-Template
+## Definition eines Klassen-Templates
 
 
 ```cpp
@@ -47,26 +52,28 @@ Es werden grundlegende Aspekte von Klassentemplates aufgezeigt:
 ```
 
 *Bemerkung*:
-Die Methode (*setter*) wurde bewusst mit der Schnittstelle
+Die Methode `setData` (*setter*) wurde bewusst mit der Schnittstelle
 
-<pre>const T& data</pre>
+```cpp
+const T& data
+```
 
-als Referenz (oder als Zeiger) realisiert.
+unter Verwendung einer Referenz (oder als Zeiger) realisiert.
 
 
 #### Hinweis:
 Klassen-Templates eigen sich vor allem gut zur Erstellung von Container-Klassen,
-siehe deshalb auf den Entwurf und die Konzeption der *Standard Template Library* (STL).
+siehe deshalb auch den Entwurf und die Konzeption der *Standard Template Library* (STL).
 
 ---
 
 ## Objekte aus Klassen-Templates erzeugen
 
 Bei der ersten Festlegung eines konkreten Typs für den Platzhalter `T` wird ein
-Klassentemplate *instanziiert*:
+Klassen-Template *instanziiert*:
 
 ```cpp
-MyContainer<double> container;
+MyContainer<double> container;  // instantiate class template
 container.setData(123.456);
 ...
 ```
@@ -79,7 +86,7 @@ allgemeiner formuliert: in der generischen Programmierung  &ndash; mit 3 Ebenen 
 
 *Abbildung* 1: 3-Ebenenmodell der Template-Instanzierung.
 
-Die Instanziierung eines Templates kann dabei *explitit* und *implizit* erfolgen:
+Die Instanziierung eines Templates kann dabei *explitit* oder *implizit* erfolgen:
 
 *Explitite* Instanziierung:
 
@@ -174,14 +181,14 @@ Funktions-Template formuliert werden:
 26: }
 ```
 
-##### Vorläufige Definition:
+*Hinweis*:
 
 Man beachte, dass die Definition von Methoden eines Klassen-Templates
-nur eine &ldquo;vorläufige Definition&rdquo; darstellt, weil der Klassentyp immer noch
+nur eine &ldquo;*vorläufige Definition*&rdquo; darstellt, weil der Klassentyp immer noch
 unvollständig ist, da hier ja nur ein formaler Datentyp enthalten ist.
 
 Die eigentlichen Methoden werden erst dann erzeugt, wenn zu einem Klassentyp ein bestimmtes
-Objekt instanziiert wird. Das heißt, dass für den Template Parameter `T`
+Objekt instanziiert wird. Also wenn für den Template Parameter `T`
 ein konkreter Typ benannt wird.
 
 ---
@@ -212,24 +219,24 @@ Wir betrachten dies an einem Beispiel der Methode  `setData`:
 
 Im vorliegenden Beispiel finden wir eine Spezialisierung der Methode `setData` für die
 Klasse `MyContainer<std::string>` vor. Dies beeinträchtigt in keiner Weise
-den allgemeinen Fall, der für alle Datentypen in Kraft tritt, für die
+den allgemeinen Fall, der für alle Methoden und Datentypen in Kraft tritt, für die
 keine Spezialisierung vorhanden ist:
 
 *Beispiel*:
 
 ```cpp
-void main()
-{
-    MyContainer<std::string> container;
-    container.setData("I love C++ Templates :)");
-    std::string data = container.getData();
-    std::cout << data << std::endl;
-
-    MyContainer<int> anotherContainer;
-    anotherContainer.setData(123);
-    int value = anotherContainer.getData();
-    std::cout << value << std::endl;
-}
+01: void main()
+02: {
+03:     MyContainer<std::string> container;
+04:     container.setData("I love C++ Templates :)");
+05:     std::string data = container.getData();
+06:     std::cout << data << std::endl;
+07: 
+08:     MyContainer<int> anotherContainer;
+09:     anotherContainer.setData(123);
+10:     int value = anotherContainer.getData();
+11:     std::cout << value << std::endl;
+12: }
 ```
 
 *Ausgabe*:
@@ -246,28 +253,28 @@ void main()
 Neben Datentypen können auch konstante Ausdrücke als Template-Parameter benutzt werden:
 
 ```cpp
-template <typename T, int DIM>
-class FixedVector
-{
-private:
-    T m_data[DIM];
-
-public:
-    FixedVector () : m_data{} {}
-
-    size_t size() { return DIM; }
-
-    void set(size_t idx, const T& elem) { m_data[idx] = elem; }
-
-    T get(size_t idx) const { return m_data[idx]; }
-
-    void print(std::ostream& os) {
-        for (const auto& elem : m_data) {
-            os << elem << ' ';
-        }
-        os << '\n';
-    }
-};
+01: template <typename T, int DIM>
+02: class FixedVector
+03: {
+04: private:
+05:     T m_data[DIM];
+06: 
+07: public:
+08:     FixedVector () : m_data{} {}
+09: 
+10:     size_t size() { return DIM; }
+11: 
+12:     void set(size_t idx, const T& elem) { m_data[idx] = elem; }
+13: 
+14:     T get(size_t idx) const { return m_data[idx]; }
+15: 
+16:     void print(std::ostream& os) {
+17:         for (const auto& elem : m_data) {
+18:             os << elem << ' ';
+19:         }
+20:         os << '\n';
+21:     }
+22: };
 ```
 
 #### Hinweis:
@@ -284,7 +291,7 @@ Betrachten Sie das folgende Beispiel:
 ```
 
 Die beiden Objekte `cont_1` und `cont_2` sind vom selben Typ, was naheliegend, aber
-nicht ganz selbstverständlich ist &ndash; siehe dazu auch Abbildung 1:
+nicht ganz selbstverständlich ist &ndash; siehe dazu auch *Abbildung* 1:
 
 In beiden Fällen wird ein Template (hier: `MyContainer<T>` mit `T` gleich `int`)
 instanziiert (Zeilen 3 und 4).
@@ -292,10 +299,12 @@ Offensichtlich muss der Übersetzer sich hier der Aufgabe stellen, bei einer
 Template-Instanziierung (in Zeile 4) den Überblick zu verschaffen,
 ob er das Klassen-Template (`MyContainer<T>`) schon einmal mit demselben
 Template-Parameter `int` für `T` instanziiert hat. In diesem Fall
-werden die beiden resultierden Typen als &ldquo;identisch&rdquo; erachtet.
+werden die beiden resultierenden Typen als &ldquo;identisch&rdquo; erachtet.
 
 Die zuvor beschriebene Situation liegt in den Zeilen 5 und 6 nicht vor.
-Die beiden Objekte `vector_1` und `vector_2` sind von verschiedenem Typ!
+Die beiden Objekte `vector_1` und `vector_2` sind verschiedenen Typs!
+So ist es beispielsweise nicht möglich, eine Wertzuweisung von `vector_1` an `vector_2`
+oder umgekehrt durchzuführen.
 
 ---
 
@@ -366,7 +375,7 @@ auch die nachfolgende Parameter einen Default-Wert haben:
 ```
 
 Einige Anmerkungen zu dem letzten Beispiel:
-  * Auf `<>` kann man verzichten, oder man schreibt es hin, so ein Leser des Quellcode sieht,
+  * Auf `<>` kann man verzichten, oder man schreibt es hin, so dass ein Leser des Quellcode sieht,
   dass es sich bei dem Objekt `vec2` um die Instanziierung eines Klassen-Template handelt.
   * Objekt `vec3` besitzt intern die Feldlänge 10 - per Voreinstellung.
   * Objekt `vec4` benützt intern die Feldlänge 20.
