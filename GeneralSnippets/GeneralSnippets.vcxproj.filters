@@ -318,10 +318,10 @@
     <ClCompile Include="TemplateFunctionBasics\TemplatesFunctionBasics.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TemplateClassBasics\TemplatesClassBasics01.cpp">
+    <ClCompile Include="TemplateClassBasics\TemplatesClassBasics03.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TemplateClassBasics\TemplatesClassBasics02.cpp">
+    <ClCompile Include="TemplateClassBasics\TemplatesClassBasics04.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Attributes\Attributes.cpp">
@@ -343,6 +343,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GenericLambdas\GenericLambdas.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TemplateClassBasics\TemplatesClassBasics01.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TemplateClassBasics\TemplatesClassBasics02.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -687,6 +693,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="GenericLambdas\GenericLambdas.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="TemplateClassBasics\cpp_template_instantiation.svg">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
