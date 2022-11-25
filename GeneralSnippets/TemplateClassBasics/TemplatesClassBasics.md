@@ -243,14 +243,178 @@ void main()
 
 ## Klassen-Templates mit Non-Type Parametern
 
-Neben Datentypen können auch konstante Ausdrücke als Template-Parameter benutzt werden.
+Neben Datentypen können auch konstante Ausdrücke als Template-Parameter benutzt werden:
 
+```cpp
+template <typename T, int DIM>
+class FixedVector
+{
+private:
+    T m_data[DIM];
+
+public:
+    FixedVector () : m_data{} {}
+
+    size_t size() { return DIM; }
+
+    void set(size_t idx, const T& elem) { m_data[idx] = elem; }
+
+    T get(size_t idx) const { return m_data[idx]; }
+
+    void print(std::ostream& os) {
+        for (const auto& elem : m_data) {
+            os << elem << ' ';
+        }
+        os << '\n';
+    }
+};
+```
+
+#### Hinweis:
+Betrachten Sie das folgende Beispiel:
+
+```cpp
+01: void main()
+02: {
+03:     MyContainer<int> cont_1;
+04:     MyContainer<int> cont_2; 
+05:     FixedVector<int, 10> vector_1;
+06:     FixedVector<int, 20> vector_2;
+07: }
+```
+
+Die beiden Objekte `cont_1` und `cont_2` sind vom selben Typ, was naheliegend, aber
+nicht ganz selbstverständlich ist &ndash; siehe dazu auch Abbildung 1:
+
+In beiden Fällen wird ein Template (hier: `MyContainer<T>` mit `T` gleich `int`)
+instanziiert (Zeilen 3 und 4).
+Offensichtlich muss der Übersetzer sich hier der Aufgabe stellen, bei einer 
+Template-Instanziierung (in Zeile 4) den Überblick zu verschaffen,
+ob er das Klassen-Template (`MyContainer<T>`) schon einmal mit demselben
+Template-Parameter `int` für `T` instanziiert hat. In diesem Fall
+werden die beiden resultierden Typen als &ldquo;identisch&rdquo; erachtet.
+
+Die zuvor beschriebene Situation liegt in den Zeilen 5 und 6 nicht vor.
+Die beiden Objekte `vector_1` und `vector_2` sind von verschiedenem Typ!
 
 ---
 
+## Template Template-Parameter
+
+Templates, die Templates benutzen sollen, können auch
+Templates als Parameter bekommen:
+
+```cpp
+01: template <template <typename> class Container>
+02: class DoubleDataCollector
+03: {
+04: private:
+05:     Container<double> m_collectedData;  // an arbitrary container is used
+06: public:
+07:     // ...
+08: };
+09: 
+10: template <typename T, template <typename> class Container>
+11: class GenericDataCollector
+12: {
+13: private:
+14:     Container<T> m_collectedData;  // an arbitrary container is used
+15: public:
+16:     // ...
+17: };
+```
+
+*Beispiel*:
+
+```cpp
+void main()
+{
+    DoubleDataCollector<MyContainer>         dc{};
+    GenericDataCollector<float, MyContainer> gdc{};
+}
+```
+
+---
+
+## *Default* Template-Parameter
+
+Ähnlich wie bei Default-Argumenten von Funktionen (Methoden)
+können auch Template-Parameter einen Default-Wert haben.
+
+*Hinweis*: Hat ein Template-Parameter einen Default-Wert, so müssen
+auch die nachfolgende Parameter einen Default-Wert haben:
+
+```cpp
+01: template <typename T = int, int DIM = 10>
+02: class FixedVector
+03: {
+04: private:
+05:     T m_data[DIM];
+06:     ...
+07: };
+```
+
+*Beispiel*:
+
+```cpp
+01: void main() {
+02:     FixedVector vec1;
+03:     FixedVector<> vec2;
+04:     FixedVector<double> vec3;
+05:     FixedVector<bool, 20> vec4;
+06: }
+```
+
+Einige Anmerkungen zu dem letzten Beispiel:
+  * Auf `<>` kann man verzichten, oder man schreibt es hin, so ein Leser des Quellcode sieht,
+  dass es sich bei dem Objekt `vec2` um die Instanziierung eines Klassen-Template handelt.
+  * Objekt `vec3` besitzt intern die Feldlänge 10 - per Voreinstellung.
+  * Objekt `vec4` benützt intern die Feldlänge 20.
+
+---
+
+## Alias Templates
+
+Mit einem so genannten *Alias Template* lässt sich einer Familie
+von Typen ein eingängiger Name geben.
+
+Template-Parameter können Datentypen, Non-Types und sogar Templates selbst sein.
+
+*Beispiel*:
+
+Eine Instanziierung der Template-Klasse in der Art
+
+```cpp
+FixedVector<100> vec;   // Error: too few template arguments	
+```
+
+ist nicht möglich, denn wenn bei einer Instanziierung ein Argument weggelassen wird,
+dann müssen alle nachfolgenden Argumente auch weggelassen werden.
+
+Mit Hilfe eines Alias Templates können wir die Fehlermeldung beseitigen:
+
+```cpp
+template <size_t MAX>
+using FixedIntVector = FixedVector<int, MAX>;
+```
+
+Nun ist die Deklaration
+
+```cpp
+FixedVector<100> vec;
+```
+
+fehlerfrei übersetzungsfähig.
+
+---
+
+
+## Template Spezialisierung
+
+
+
+---
 
 [Zurück](../../Readme.md)
 
 ---
-
-

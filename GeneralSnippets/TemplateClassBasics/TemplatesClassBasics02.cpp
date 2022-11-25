@@ -169,7 +169,7 @@ namespace ClassTemplatesBasics_02 {
 
     namespace ClassTemplatesBasics_Intro_06 {
 
-        template <typename T, int DIM>
+        template <typename T, size_t DIM>
         class FixedVector
         {
         private:
@@ -192,7 +192,6 @@ namespace ClassTemplatesBasics_02 {
             }
         };
 
-
         void test_06_01() {
 
             FixedVector<int, 5> vec;
@@ -206,20 +205,102 @@ namespace ClassTemplatesBasics_02 {
 
         void test_06_02() {
 
-            //Vector<int> v1(10)
-            //    Vector<int> v2(20); // v1 und v2 haben den selben Typ
-            //Vector2<int, 10> v2_1; // v2_1 und v2_2 haben
-            //Vector2<int, 20> v2_2; // unterschiedliche Typen!
+            using namespace ClassTemplatesBasics_02::ClassTemplatesBasics_Intro_01;
 
+            MyContainer<int> cont_1;
+            MyContainer<int> cont_2;        // cont_1 and cont_2 have same type
+            FixedVector<int, 10> vector_1;
+            FixedVector<int, 20> vector_2;  // vector_1 undn vector_2 have different types !!!
         }
 
         void test_06() {
-
             test_06_01();
             test_06_02();
+        }
+    }
 
+    // Template Template-Parameter
+    namespace ClassTemplatesBasics_Intro_07 {
+
+        template <template <typename> class Container>
+        class DoubleDataCollector
+        {
+        private:
+            Container<double> m_collectedData;  // an arbitrary container is used
+        public:
+            // ...
+        };
+
+        template <typename T, template <typename> class Container>
+        class GenericDataCollector
+        {
+        private:
+            Container<T> m_collectedData;  // an arbitrary container is used
+        public:
+            // ...
+        };
+
+        void test_07() {
+
+            using namespace ClassTemplatesBasics_02::ClassTemplatesBasics_Intro_01;
+
+            DoubleDataCollector<MyContainer>         dc{};
+            GenericDataCollector<float, MyContainer> gdc{};
+        }
+    }
+
+    // Default Template-Parameter
+    // Alias Templates
+    namespace ClassTemplatesBasics_Intro_08 {
+
+        template <typename T = int, size_t DIM = 10>
+        class FixedVector
+        {
+        private:
+            T m_data[DIM];
+
+        public:
+            FixedVector() : m_data{} {}
+
+            size_t size() { return DIM; }
+
+            void set(size_t idx, const T& elem) { m_data[idx] = elem; }
+
+            T get(size_t idx) const { return m_data[idx]; }
+
+            void print(std::ostream& os) {
+                for (const auto& elem : m_data) {
+                    os << elem << ' ';
+                }
+                os << '\n';
+            }
+        };
+
+        void test_08_01() {
+
+            FixedVector vec1;
+            FixedVector<> vec2;
+            FixedVector<double> vec3;
+            FixedVector<bool, 10> vec4;
+
+            vec1.print(std::cout);
+            vec2.print(std::cout);
+            vec3.print(std::cout);
+            vec4.print(std::cout);
         }
 
+        template <size_t MAX>
+        using FixedIntVector = FixedVector<int, MAX>;
+
+        void test_08_02() {
+
+            FixedIntVector<100> vec;
+        }
+
+        void test_08() {
+            test_08_01();
+            test_08_02();
+        }
     }
 }
 
@@ -227,12 +308,14 @@ void main_class_templates_basics_02()
 {
     using namespace ClassTemplatesBasics_02;
 
-    //ClassTemplatesBasics_Intro_01::test_01();
-    // ClassTemplatesBasics_Intro_02::test_02();
-    //ClassTemplatesBasics_Intro_03::test_03();
-    //ClassTemplatesBasics_Intro_04::test_04();
-       // ClassTemplatesBasics_Intro_05::test_05();
-        ClassTemplatesBasics_Intro_06::test_06();
+    ClassTemplatesBasics_Intro_01::test_01();
+    ClassTemplatesBasics_Intro_02::test_02();
+    ClassTemplatesBasics_Intro_03::test_03();
+    ClassTemplatesBasics_Intro_04::test_04();
+    ClassTemplatesBasics_Intro_05::test_05();
+    ClassTemplatesBasics_Intro_06::test_06();
+    ClassTemplatesBasics_Intro_07::test_07();
+    ClassTemplatesBasics_Intro_08::test_08();
 }
 
 // =====================================================================================
