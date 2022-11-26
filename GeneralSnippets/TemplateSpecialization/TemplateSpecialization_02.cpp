@@ -1,44 +1,14 @@
 // =====================================================================================
-// Template Specialization
+// TemplateSpecialization_02.cpp // Template Specialization
 // =====================================================================================
 
 #include <iostream>
 #include <string>
 #include <vector>
 
+// Siehe hier: http://www.gotw.ca/gotw/049.htm
+
 namespace TemplateSpecialization {
-
-    // ==================================================
-    // Explicit Template Specialization
-
-    template<typename T>
-    class GenericSorter
-    {
-    public:
-        static void sort(std::vector<T>&)
-        {
-            /* ... */
-        };
-    };
-
-    template<>
-    class GenericSorter<char>
-    {
-    public:
-        static void sort(std::vector<char>&)
-        {
-            /* ... */
-        };
-    };
-
-    void test_explicit_template_specialization_01()
-    {
-        std::vector<int>  vi;
-        std::vector<char> vc;
-
-        GenericSorter<int>::sort(vi);   // calls sort<std::vector<int>>
-        GenericSorter<char>::sort(vc);  // calls specialized sort<std::vector<char>>
-    }
 
     // ==================================================
     // Partial Template Specialization
@@ -76,12 +46,6 @@ namespace TemplateSpecialization {
     }
 }
 
-void main_template_specialization()
-{
-    using namespace TemplateSpecialization;
-    test_explicit_template_specialization_01();
-    test_partial_template_specialization_02();
-}
 
 // =====================================================================================
 // End-of-File

@@ -233,7 +233,8 @@
     <ClCompile Include="TemplateClassBasics\TemplatesClassBasics04.cpp" />
     <ClCompile Include="TemplateConstexprIf\Template_ConstExpr_If.cpp" />
     <ClCompile Include="TemplateFunctionBasics\TemplatesFunctionBasics.cpp" />
-    <ClCompile Include="TemplateSpecialization\TemplateSpecialization.cpp" />
+    <ClCompile Include="TemplateSpecialization\TemplateSpecialization_01.cpp" />
+    <ClCompile Include="TemplateSpecialization\TemplateSpecialization_02.cpp" />
     <ClCompile Include="TemplateStaticPolymorphism\TemplateStaticPolymorphism.cpp" />
     <ClCompile Include="TemplateTemplateParameter\TemplateTemplateParameter_01.cpp" />
     <ClCompile Include="TemplateTemplateParameter\TemplateTemplateParameter_02.cpp" />

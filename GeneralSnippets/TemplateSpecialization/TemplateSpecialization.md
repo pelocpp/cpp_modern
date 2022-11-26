@@ -1,16 +1,57 @@
-# Template Spezialisierung (Template Specialization)
+# Template Spezialisierung
 
 [Zurück](../../Readme.md)
 
 ---
 
-[Quellcode](TemplateSpecialization.cpp)
+[Quellcode](TemplateSpecialization_01.cpp)
 
 ---
 
 ## Template Spezialisierung
 
-Unter Template Spezialisierung (Template Specialization) versteht mal die Möglichkeit,
+Mit Hilfe der Template Spezialisierung können
+unterschiedliche Template Implementierungen in
+Abhängigkeit von den Parametern gewählt werden.
+
+Performance ist ein häufiger Grund für die Template Spezialisierung, aber nicht der Einzige.
+Man kann beispielsweise ein Template auch spezialisieren, um mit bestimmten Objekten zu arbeiten,
+die nicht der normalen Schnittstelle entsprechen, die von der generischen Vorlage erwartet wird.
+Diese Betrachtungen bzw. Ausnahmefälle können mit zwei Arten der Templatespezialisierung behandelt werden:
+
+der expliziten Template Spezialisierung und der teilweisen (partiellen) Template Spezialisierung
+("*Explicit Template Specialization*" und "*Partial Template Specialization*"):
+
+
+#### Explizite Template Spezialisierung
+
+Die explizite Template Spezialisierung &ndash; auch als *Full Template Specialization* bezeichnet &ndash; 
+stellt eine Template Definition für einen bestimmten Parametersatz dar (z.B. `MyContainer<bool>`).
+
+Es lassen sich mit einer solchen Definition Sonderfälle behandeln.
+
+
+#### Partielle Template Spezialisierung
+
+Sie stellt eine Teil-Spezialisierung dar, bei der
+nicht alle Parameter des primären (nicht spezialisierten) Klassen-Templates ersetzt werden müssen.
+
+Sie repräsentiert damit eine Menge von Parametern, wie z.B. `MyContainer<const T*>` mit beliebigem `T`. 
+
+*Hinweis*:
+Der Feature der partiellen Template Spezialisierung kann nicht auf Funktions-Templates angewendet werden.
+
+#### Allgemeine Eigenschaften der Template Spezialisierung:
+
+  * Wenn sowohl eine explizite als auch eine partielle Spezialisierung passen,
+  wird die explizite Spezialisierung ausgewählt.
+  * Passt keine Spezialisierung, wird das primäre Template genommen.
+
+---
+
+## Template Spezialisierung
+
+Unter Template Spezialisierung (Template Specialization) versteht man die Möglichkeit,
 dass eine Schablone (ein Template) Sonderfälle behandelt.
 Manchmal könnte ein generischer Algorithmus für eine bestimmte Art von Sequenz (Container) viel effizienter arbeiten
 (z.B. wenn man Iteratoren mit wahlfreiem Zugriff - *random-access* - verwendet).
@@ -20,9 +61,11 @@ während für alle anderen Fälle der langsamere, aber allgemeinere Ansatz verwende
 Performance ist ein häufiger Grund für die Templatespezialisierung, aber nicht der einzige.
 Man kann beispielsweise eine Schablone auch spezialisieren, um mit bestimmten Objekten zu arbeiten,
 die nicht der normalen Schnittstelle entsprechen, die von der generischen Vorlage erwartet wird.
+
 Diese Betrachtungen bzw. Ausnahmefälle können mit zwei Arten der Templatespezialisierung behandelt werden:
-der expliziten Template Spezialisierung und der teilweise (partielle) Template Spezialisierung
-("*explicit template specialization*" und "*partial template specialization*").
+  * der expliziten Template Spezialisierung (&ldquo;*explicit template specialization*&rdquo;).
+  * der teilweisen (partiellen) Template Spezialisierung (&ldquo;*partial template specialization*&rdquo;).
+
 
 ## Explizite Template Spezialisierung
 
@@ -32,15 +75,12 @@ für eine bestimmte Kombination von Templateparametern schreiben.
 Beispiel: 
 
 ```cpp
-template<typename T>
-class GenericSorter
-{
-public:
-    static void sort(std::vector<T>& values)
-    {
-        /* ... */
-    };
-};
+01: template<typename T>
+02: class GenericSorter
+03: {
+04: public:
+05:     static void sort(std::vector<T>&) { /* ... */ }
+06: };
 ```
 
 Wenn wir eine schnellere (oder andere spezialisierte) Möglichkeit haben,
@@ -48,25 +88,25 @@ speziell mit Vektoren von `char`-Variablen (Zeichen) umzugehen,
 dann kann man die Klasse `GenericSorter` explizit spezialisieren:
 
 ```cpp
-template<>
-class GenericSorter<char>
-{
-public:
-    static void sort(std::vector<char>& values)
-    {
-        /* ... */
-    };
-};
+01: template<>
+02: class GenericSorter<char>
+03: {
+04: public:
+05:     static void sort(std::vector<char>&) { /* ... */ }
+06: };
 ```
 
 Der Compiler wählt dann die am besten geeignete Schablone aus:
 
 ```cpp
-std::vector<int>  vi;
-std::vector<char> vc;
+01: void main() {
+02:     std::vector<int>  intVector;
+03:     std::vector<char> charVector;
+04: 
+05:     GenericSorter<int>::sort(intVector);    // calls sort<std::vector<int>&>
+06:     GenericSorter<char>::sort(charVector);  // calls specialized sort<std::vector<char>&>
+07: }
 
-GenericSorter<int>::sort(vi);   // calls sort<std::vector<int>>
-GenericSorter<char>::sort(vc);  // calls specialized sort<std::vector<char>>
 ```
 
 ## Partielle Template Spezialisierung
@@ -77,56 +117,36 @@ die nicht alle Parameter der primären (nicht spezialisierten) Klassenvorlage ers
 Betrachten wir dazu das folgende Beispiel. Die erste Vorlage ist die primäre Klassenvorlage:
 
 ```cpp
-template<typename T1, typename T2, int I>
-class A {};                               // #1
+01: template<typename T>
+02: class GenericSorter
+03: {
+04: public:
+05:     static void sort(std::vector<T>&) { /* ... */ }
+06: };
 ```
 
-Wir können `A` für den Fall spezialisieren, dass `T2` ein `T1*` ist:
+Wir können `T` für den Fall spezialisieren, dass der aktuelle Template Parameter ein Zeiger-Datentyp ist,
+also ein `T*` ist:
 
 ```cpp
-template<typename T, int I>
-class A<T, T*, I> {};                     // #2
+01: template<typename T>
+02: class GenericSorter<T*>
+03: {
+04: public:
+05:     static void sort(std::vector<T*>&) { /* ... */ }
+06: };
 ```
 
-Oder für den Fall, dass `T1` ein Zeiger ist:
+Der Compiler wählt nun im folgenden Beispiel die Templates so aus:
 
 ```cpp
-template<typename T1, typename T2, int I>
-class A<T1*, T2, I> {};                   // #3
-```
-
-Oder für den Fall, dass `T1` ein `int` ist und `T2` ein beliebiger Zeiger ist und `I` gleich 5 ist::
-
-```cpp
-template<typename T>
-class A<int, T*, 5> {};                   // #4
-```
-
-Oder für den Fall, dass `T2` ein Zeiger ist:
-
-```cpp
-template<typename T1, typename T2, int I>
-class A<T1, T2*, I> {};                   // #5
-```
-
-In den Deklarationen 2 bis 5 werden Teilspezialisierungen der primären Vorlage deklariert.
-Der Compiler wählt dann die entsprechende Vorlage aus:
-
-
-```cpp
-A<int, int, 1>   a1;  // uses #1
-
-A<int, int*, 1>  a2;  // uses #2, T is int,
-                      //          I is 1
-
-A<int, char*, 5> a3;  // uses #4, T is char
-
-A<int, char*, 1> a4;  // uses #5, T1 is int,
-                      //          T2 is char,
-                      //          I is 1
-
-A<int*, int*, 2> a5;  // ambiguous:
-                      // matches #3 and #5
+01: void main() {
+02:     std::vector<int> intVector;
+03:     std::vector<int*> pointerVector;
+04: 
+05:     GenericSorter<int>::sort(intVector);       // calls sort<std::vector<int>&>
+06:     GenericSorter<int*>::sort(pointerVector);  // calls specialized sort<std::vector<char>&>
+07: }
 ```
 
 ---

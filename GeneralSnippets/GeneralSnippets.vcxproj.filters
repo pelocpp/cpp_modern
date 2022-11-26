@@ -192,7 +192,7 @@
     <ClCompile Include="Invoke\Invoke.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TemplateSpecialization\TemplateSpecialization.cpp">
+    <ClCompile Include="TemplateSpecialization\TemplateSpecialization_02.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="PerfectForwarding\PerfectForwarding04.cpp">
@@ -349,6 +349,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TemplateClassBasics\TemplatesClassBasics02.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TemplateSpecialization\TemplateSpecialization_01.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
