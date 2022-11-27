@@ -7,11 +7,6 @@
 
 [Quellcode](TemplatesFunctionBasics.cpp)
 
-ZWEI
-
-<a href="TemplatesFunctionBasics.cpp" target="_blank" rel="noopener noreferrer">Quellcode</a>
-
-
 ---
 
 ## Definition eines Funktions-Templates

@@ -175,7 +175,7 @@ int main()
         //main_class_templates_basics_02();
         //main_class_templates_basics_03();
         //main_class_templates_basics_04();
-        main_function_templates_basics();
+        //main_function_templates_basics();
         //main_templates_static_polymorphism();
         //main_template_template_parameter();
         //main_template_template_parameter_02();
