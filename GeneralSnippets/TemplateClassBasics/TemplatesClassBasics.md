@@ -112,6 +112,23 @@ void main()
 }
 ```
 
+*Hinweis*:
+Mit der Visual C++ Entwicklungsumgebung lassen sich in einem Programm alle vorhandenen
+Template Instanziierungen anzeigen.
+Einstiegspunkt hierzu ist das Menü &ldquo;*Provide sample template arguments for IntelliSense*&rdquo;
+im Editor:
+
+<img src="template_instantiations_01.png" width="500">
+
+*Abbildung* 1: Auswahl Untermenü &ldquo;*Add all Existing Instantiations*&rdquo;.
+
+Danach öffent sich ein weiteres Fenster mit allen vorhandenen Template Instanziierungen:
+
+<img src="template_instantiations_02.png" width="700">
+
+*Abbildung* 2: Vorhandene Template Instanziierungen in einem C++&ndash;Programm.
+
+
 ---
 
 ## Klassen-Templates mit mehreren formalen Datentypen
@@ -583,7 +600,7 @@ und dieses wiederum nur mit der Länge 5 &ndash; verwendet werden!
 
 ## Literaturhinweise:
 
-Einige Informationen zu den Übersetzungsmodelle für Templates wurden aus
+Einige Informationen zu den Übersetzungsmodellen für Templates wurden aus
 
 [Source code organization (C++ Templates)](https://learn.microsoft.com/en-us/cpp/cpp/source-code-organization-cpp-templates?view=msvc-170)
 

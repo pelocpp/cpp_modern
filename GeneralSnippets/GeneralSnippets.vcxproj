@@ -399,6 +399,8 @@
     <Image Include="OnlineCppCompilers\WandboxOptions01.png" />
     <Image Include="OnlineCppCompilers\WandboxOptions02.png" />
     <Image Include="OnlineCppCompilers\WandboxOptions03.png" />
+    <Image Include="TemplateClassBasics\template_instantiations_01.png" />
+    <Image Include="TemplateClassBasics\template_instantiations_02.png" />
     <Image Include="Trim\stl_base.png" />
     <Image Include="UniformInitialization\cpp_init.gif" />
     <Image Include="VariadicTemplates\cpp_snippets_mixins_01.png" />

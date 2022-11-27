@@ -786,5 +786,11 @@
     <Image Include="OnlineCppCompilers\WandboxOptions03.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="TemplateClassBasics\template_instantiations_01.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="TemplateClassBasics\template_instantiations_02.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
