@@ -24,18 +24,9 @@ Es werden grundlegende Aspekte von Klassentemplates aufgezeigt:
   * ##### [Alias Template](#Alias-Templates)
 
 
-
+Danach folgen noch Informationen zu den **Übersetzungsmodellen** für Templates.
 
 ---
-
-
-
-
-WEITERARBEIT:
-
-https://learn.microsoft.com/en-us/cpp/cpp/source-code-organization-cpp-templates?view=msvc-170
-
-
 
 
 ## Definition eines Klassen-Templates
@@ -433,8 +424,7 @@ fehlerfrei übersetzungsfähig.
 
 ---
 
-
-## Übersetzungsmodelle für Templates
+## Übersetzungsmodelle für Template
 
 Normalerweise trennen C++ Programmierer die
 Schnittstellendefinition (Deklarationen, <i>\*.h</i> Datei) von der
@@ -462,7 +452,7 @@ const T& max (const T &a, const T &b) {
 Bei Templates führt das zu Problemen:
 
   * In der Datei *Maximum.cpp* sind die noch benötigten Instanzen (`a`, `b`) noch unbekannt
-  * Andere Übersetzungseinheiten haben so nicht den Quelltext des Templates zur Verfügung
+  * Andere Übersetzungseinheiten haben nicht den Quelltext des Templates zur Verfügung
 
 #### Das *Inclusion* Modell:
 
@@ -471,9 +461,9 @@ in einer Übersetzungseinheit sichtbar zu machen, besteht darin,
 die Definitionen in die Header-Datei selbst einzufügen.
 
 Jede <i>\*.cpp</i>-Datei, die das Template verwendet,
-muss nur die Header-Datei inkludieren (`#include`).
+muss nur die Header-Datei inkludieren (`#include`):
 
-*Beispiel*:
+*Beispiel*: Header-Datei
 
 ```cpp
 01: template<typename T, size_t DIM>
@@ -502,9 +492,9 @@ muss nur die Header-Datei inkludieren (`#include`).
 24: };
 ```
 
-Das *Inclusion* Modell kann in Bezug auf die Kompilierungszeiten Nachteile haben.
-Die Übersetzungszeiten können in großen Programmen erheblich sein,
-besonders wenn der Template-Header selbst andere Header-Dateien inkludiert.
+Das *Inclusion* Modell kann in Bezug auf die Übersetzungszeiten Nachteile haben.
+In großen Programmen können diese erheblich sein,
+besonders wenn der Template-Header wiederum andere Header-Dateien inkludiert.
 
 Jede <i>\*.cpp</i>-Datei, die derartige Header-Dateien verwendet,
 erhält eine eigene Kopie der Templates und der dazugehörigen Definitionen.
@@ -569,8 +559,8 @@ auf den der Compiler (Linker) zurückgreift, wenn er auf Template Instanziierunge
 ```
 
 Wir erkennen im letzten Beispiel die expliziten Instanziierungen am Ende der <i>\*.cpp</i>-Datei.
-Eine Klasse `AnotherArray` darf folglich nur für Datentypen `int`, `double` oder `std::string`,
-und dieses nur mit der Länge 5 verwendet werden!
+Eine Klasse `AnotherArray` darf folglich nur für die Datentypen `int`, `double` oder `std::string` &ndash;
+und dieses wiederum nur mit der Länge 5 &ndash; verwendet werden!
 
 *Anwendung*:
 
@@ -588,6 +578,16 @@ und dieses nur mit der Länge 5 verwendet werden!
 11:     // AnotherArray<double, 10> array3;  // does NOT compile !!! see explicit instantiated classes !!!
 12: }
 ```
+
+---
+
+## Literaturhinweise:
+
+Einige Informationen zu den Übersetzungsmodelle für Templates wurden aus
+
+[Source code organization (C++ Templates)](https://learn.microsoft.com/en-us/cpp/cpp/source-code-organization-cpp-templates?view=msvc-170)
+
+entnommen (abgerufen am 27.11.2022).
 
 ---
 

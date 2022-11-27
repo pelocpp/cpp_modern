@@ -19,8 +19,8 @@ Man kann beispielsweise ein Template auch spezialisieren, um mit bestimmten Obje
 die nicht der normalen Schnittstelle entsprechen, die von der generischen Vorlage erwartet wird.
 Diese Betrachtungen bzw. Ausnahmefälle können mit zwei Arten der Templatespezialisierung behandelt werden:
 
-der expliziten Template Spezialisierung und der teilweisen (partiellen) Template Spezialisierung
-("*Explicit Template Specialization*" und "*Partial Template Specialization*"):
+  * der expliziten Template Spezialisierung (&ldquo;*Explicit Template Specialization*&rdquo;)
+  * der teilweisen (partiellen) Template Spezialisierung (&ldquo;*Partial Template Specialization*&rdquo;)
 
 
 #### Explizite Template Spezialisierung
@@ -34,12 +34,12 @@ Es lassen sich mit einer solchen Definition Sonderfälle behandeln.
 #### Partielle Template Spezialisierung
 
 Sie stellt eine Teil-Spezialisierung dar, bei der
-nicht alle Parameter des primären (nicht spezialisierten) Klassen-Templates ersetzt werden müssen.
+nicht alle Parameter des primären (nicht spezialisierten) Klassen-Templates ersetzt werden.
 
 Sie repräsentiert damit eine Menge von Parametern, wie z.B. `MyContainer<const T*>` mit beliebigem `T`. 
 
 *Hinweis*:
-Der Feature der partiellen Template Spezialisierung kann nicht auf Funktions-Templates angewendet werden.
+Das Feature der partiellen Template Spezialisierung kann nicht auf Funktions-Templates angewendet werden.
 
 #### Allgemeine Eigenschaften der Template Spezialisierung:
 
@@ -49,25 +49,7 @@ Der Feature der partiellen Template Spezialisierung kann nicht auf Funktions-Tem
 
 ---
 
-## Template Spezialisierung
-
-Unter Template Spezialisierung (Template Specialization) versteht man die Möglichkeit,
-dass eine Schablone (ein Template) Sonderfälle behandelt.
-Manchmal könnte ein generischer Algorithmus für eine bestimmte Art von Sequenz (Container) viel effizienter arbeiten
-(z.B. wenn man Iteratoren mit wahlfreiem Zugriff - *random-access* - verwendet).
-Daher ist es sinnvoll, den Algorithmus und damit das Template auf diesen Fall zu spezialisieren,
-während für alle anderen Fälle der langsamere, aber allgemeinere Ansatz verwendet wird.
-
-Performance ist ein häufiger Grund für die Templatespezialisierung, aber nicht der einzige.
-Man kann beispielsweise eine Schablone auch spezialisieren, um mit bestimmten Objekten zu arbeiten,
-die nicht der normalen Schnittstelle entsprechen, die von der generischen Vorlage erwartet wird.
-
-Diese Betrachtungen bzw. Ausnahmefälle können mit zwei Arten der Templatespezialisierung behandelt werden:
-  * der expliziten Template Spezialisierung (&ldquo;*explicit template specialization*&rdquo;).
-  * der teilweisen (partiellen) Template Spezialisierung (&ldquo;*partial template specialization*&rdquo;).
-
-
-## Explizite Template Spezialisierung
+## Beispiel einer Explizite Template Spezialisierung
 
 Mit der expliziten Template Spezialisierung können Sie eine bestimmte Implementierung
 für eine bestimmte Kombination von Templateparametern schreiben.
@@ -109,10 +91,10 @@ Der Compiler wählt dann die am besten geeignete Schablone aus:
 
 ```
 
-## Partielle Template Spezialisierung
+## Beispiel einer partielle Template Spezialisierung
 
-Für Klassen Templates (nicht: Funktionstemplates / Funktionsschablonen) kann man Teilspezialisierungen definieren,
-die nicht alle Parameter der primären (nicht spezialisierten) Klassenvorlage ersetzen müssen.
+Für Klassen Templates (nicht: Funktions-Templates) kann man Teilspezialisierungen definieren,
+die nicht alle Parameter der primären (nicht spezialisierten) Klassenvorlage ersetzen.
 
 Betrachten wir dazu das folgende Beispiel. Die erste Vorlage ist die primäre Klassenvorlage:
 
@@ -148,12 +130,6 @@ Der Compiler wählt nun im folgenden Beispiel die Templates so aus:
 06:     GenericSorter<int*>::sort(pointerVector);  // calls specialized sort<std::vector<char>&>
 07: }
 ```
-
----
-
-Die Anregungen zu den Beispielen dieses Code Snippets stammen aus
-
-[Template Specialization and Overloading](http://www.gotw.ca/gotw/049.htm)
 
 ---
 

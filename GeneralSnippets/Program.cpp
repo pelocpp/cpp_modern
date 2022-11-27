@@ -173,7 +173,7 @@ int main()
         //main_string_view();
         //main_structured_binding();
         //main_class_templates_basics_01();
-        main_class_templates_basics_02();
+        //main_class_templates_basics_02();
         //main_class_templates_basics_03();
         //main_class_templates_basics_04();
         //main_templates_static_polymorphism();

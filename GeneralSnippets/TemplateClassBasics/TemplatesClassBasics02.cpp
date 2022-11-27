@@ -342,14 +342,14 @@ void main_class_templates_basics_02()
 {
     using namespace ClassTemplatesBasics_02;
 
-    //ClassTemplatesBasics_Intro_01::test_01();
-    //ClassTemplatesBasics_Intro_02::test_02();
-    //ClassTemplatesBasics_Intro_03::test_03();
-    //ClassTemplatesBasics_Intro_04::test_04();
-    //ClassTemplatesBasics_Intro_05::test_05();
-    //ClassTemplatesBasics_Intro_06::test_06();
-    //ClassTemplatesBasics_Intro_07::test_07();
-    //ClassTemplatesBasics_Intro_08::test_08();
+    ClassTemplatesBasics_Intro_01::test_01();
+    ClassTemplatesBasics_Intro_02::test_02();
+    ClassTemplatesBasics_Intro_03::test_03();
+    ClassTemplatesBasics_Intro_04::test_04();
+    ClassTemplatesBasics_Intro_05::test_05();
+    ClassTemplatesBasics_Intro_06::test_06();
+    ClassTemplatesBasics_Intro_07::test_07();
+    ClassTemplatesBasics_Intro_08::test_08();
 
     test_10();
     test_11();
