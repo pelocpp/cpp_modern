@@ -5,6 +5,9 @@
 #include <iostream>
 #include <string>
 
+#include "MyArray.h"         // demonstrating 'Templates Inclusion Model'
+#include "AnotherArray.h"    // demonstrating 'Templates Explicit Instantiation Model'
+
 namespace ClassTemplatesBasics_02 {
 
     // Simple Class Template Definition
@@ -304,20 +307,52 @@ namespace ClassTemplatesBasics_02 {
             test_08_02();
         }
     }
+
+    // demonstrating 'Templates Inclusion Model'
+    void test_10() {
+
+        using namespace ClassTemplatesBasics;
+
+        MyArray<int, 10> array;
+
+        for (size_t i = 0; i != 10; ++i) {
+            array[i] = static_cast<int>(2 * i);
+        }
+
+        array.print();
+    }
+
+    // demonstrating 'Templates Explicit Instantiation Model'
+    void test_11() {
+
+        using namespace ClassTemplatesBasics;
+
+        AnotherArray<double, 5> array;
+        for (size_t i = 0; i != 5; ++i) {
+            array[i] = 2.0 * i + 0.5;
+        }
+        array.print();
+
+        AnotherArray<double, 5> array2;
+        // AnotherArray<double, 10> array3;  // does NOT compile !!! see explicit instantiated classes !!!
+    }
 }
 
 void main_class_templates_basics_02()
 {
     using namespace ClassTemplatesBasics_02;
 
-    ClassTemplatesBasics_Intro_01::test_01();
-    ClassTemplatesBasics_Intro_02::test_02();
-    ClassTemplatesBasics_Intro_03::test_03();
-    ClassTemplatesBasics_Intro_04::test_04();
-    ClassTemplatesBasics_Intro_05::test_05();
-    ClassTemplatesBasics_Intro_06::test_06();
-    ClassTemplatesBasics_Intro_07::test_07();
-    ClassTemplatesBasics_Intro_08::test_08();
+    //ClassTemplatesBasics_Intro_01::test_01();
+    //ClassTemplatesBasics_Intro_02::test_02();
+    //ClassTemplatesBasics_Intro_03::test_03();
+    //ClassTemplatesBasics_Intro_04::test_04();
+    //ClassTemplatesBasics_Intro_05::test_05();
+    //ClassTemplatesBasics_Intro_06::test_06();
+    //ClassTemplatesBasics_Intro_07::test_07();
+    //ClassTemplatesBasics_Intro_08::test_08();
+
+    test_10();
+    test_11();
 }
 
 // =====================================================================================

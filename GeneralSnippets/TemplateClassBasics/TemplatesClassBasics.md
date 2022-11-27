@@ -12,27 +12,19 @@
 
 Es werden grundlegende Aspekte von Klassentemplates aufgezeigt:
 
-  * Definition eines Klassen-Templates
-  * Objekte aus Klassen-Templates erzeugen
-  * Klassen-Templates mit mehreren formalen Datentypen
-  * Definition von Methoden von Klassen-Templates
-  * Methoden eines Klassen-Templates überschreiben (spezialisieren)
-  * Klassen-Templates mit Non-Type Parametern
-  * Template Template-Parameter
-  * Default Template-Parameter
-  * Alias Templates
 
----
+  * ##### [Klassen-Templates definieren](#Definition-eines-Klassen-Templates)
+  * ##### [Erzeugung von Objekten eines Klassen-Templates](#Objekte-aus-Klassen-Templates-erzeugen)
+  * ##### [Klassen-Templates mit mehreren Parametern](#Klassen-Templates-mit-mehreren-formalen-Datentypen)
+  * ##### [Definition von Methoden eines Klassen-Templates](#Definition-von-Methoden-von-Klassen-Templates)
+  * ##### [Eine Methode eines Klassen-Templates überschreiben](#Methoden-eines-Klassen-Templates-spezialisieren)
+  * ##### [Klassen-Templates und Non-Type Parameter](#Klassen-Templates-mit-Non-Type-Parametern)
+  * ##### [Ein Template mit Template-Parametern](#Template-Template-Parameter)
+  * ##### [Default-Werte für Template-Parameter](#Default-Template-Parameter)
+  * ##### [Alias Template](#Alias-Templates)
 
-  * ##### [Definition eines Klassen-Templates](#Definition-eines-Klassen-Templates)
-  * ##### [Objekte aus Klassen-Templates erzeugen](#Objekte-aus-Klassen-Templates-erzeugen)
-  * ##### [Klassen-Templates mit mehreren formalen Datentypen](#Klassen-Templates-mit-mehreren-formalen-Datentypen)
-  * ##### [Definition von Methoden von Klassen-Templates](#Definition-von-Methoden-von-Klassen-Templates)
-  * ##### [Methoden eines Klassen-Templates überschreiben (spezialisieren)](#Methoden-eines-Klassen-Templates-überschreiben-spezialisieren)
-  * ##### [Klassen-Templates mit Non-Type Parametern](#Klassen-Templates-mit-Non-Type-Parametern)
-  * ##### [Template Template-Parameter](#Template-Template-Parameter)
-  * ##### [Default Template-Parameter](#Default-Template-Parameter)
-  * ##### [Alias Templates](#Alias-Templates)
+
+
 
 ---
 
@@ -217,9 +209,9 @@ ein konkreter Typ benannt wird.
 
 ---
 
-## Methoden eines Klassen-Templates überschreiben (spezialisieren)
+## Methoden eines Klassen-Templates spezialisieren
 
-Von einem Klassentemplate lassen sich einzelne Methoden überschreiben (spezialisieren).
+Von einem Klassentemplate lassen sich einzelne Methoden *überschreiben* bzw. *spezialisieren*.
 Wir betrachten dies an einem Beispiel der Methode  `setData`:
 
 ```cpp
@@ -442,9 +434,160 @@ fehlerfrei übersetzungsfähig.
 ---
 
 
-## Template Spezialisierung
+## Übersetzungsmodelle für Templates
+
+Normalerweise trennen C++ Programmierer die
+Schnittstellendefinition (Deklarationen, <i>\*.h</i> Datei) von der
+Implementierung (<i>\*.cpp</i> Datei):
 
 
+Datei *Maximum.h*:
+
+```cpp
+template <typename T>
+const T& max (const T &a, const T &b);
+```
+
+Datei *Maximum.cpp*:
+
+```cpp
+#include "Maximum.h"
+
+template <typename T>
+const T& max (const T &a, const T &b) {
+    return a < b ? b : a;
+}
+```
+
+Bei Templates führt das zu Problemen:
+
+  * In der Datei *Maximum.cpp* sind die noch benötigten Instanzen (`a`, `b`) noch unbekannt
+  * Andere Übersetzungseinheiten haben so nicht den Quelltext des Templates zur Verfügung
+
+#### Das *Inclusion* Modell:
+
+Der einfachste und gebräuchlichste Weg, um Template-Definitionen
+in einer Übersetzungseinheit sichtbar zu machen, besteht darin,
+die Definitionen in die Header-Datei selbst einzufügen.
+
+Jede <i>\*.cpp</i>-Datei, die das Template verwendet,
+muss nur die Header-Datei inkludieren (`#include`).
+
+*Beispiel*:
+
+```cpp
+01: template<typename T, size_t DIM>
+02: class MyArray
+03: {
+04: private:
+05:     T m_data[DIM];
+06: 
+07: public:
+08:     // full definitions
+09:     MyArray() : m_data{} {}
+10: 
+11:     size_t size() { return DIM; }
+12: 
+13:     void print()
+14:     {
+15:         for (const auto& v : m_data) {
+16:             std::cout << v << " , ";
+17:         }
+18:     }
+19: 
+20:     T& operator[](size_t i)
+21:     {
+22:         return m_data[i];
+23:     }
+24: };
+```
+
+Das *Inclusion* Modell kann in Bezug auf die Kompilierungszeiten Nachteile haben.
+Die Übersetzungszeiten können in großen Programmen erheblich sein,
+besonders wenn der Template-Header selbst andere Header-Dateien inkludiert.
+
+Jede <i>\*.cpp</i>-Datei, die derartige Header-Dateien verwendet,
+erhält eine eigene Kopie der Templates und der dazugehörigen Definitionen.
+
+Template-Funktionen und Member-Funktionen von Template
+Klassen werden in diesem Fall speziell gebunden. Der Binder vermeidet Duplikate,
+er muss in der Lage sein, die möglicherweise dabei auftretenden
+*ODR (One Definition Rule)*&ndash;Verletzungen zu erkennen und auszusortieren.
+
+
+#### Das *Explicit Instantiation* Modell:
+
+Das *Explicit Instantiation* Modell setzt voraus, das der Template Code
+in einer <i>\*.h</i>- und einer <i>\*.cpp</i>-Datei realisiert wird,
+gewissermaßen in der *klassischen* Vorgehensweise.
+
+Zusätzlich müssen dann allerdings in der <i>\*.cpp</i>-Datei die gewünschten Template-Klassen
+explizit instanziiert werden. Auf diese Weise wird für diese Klassen Maschinencode generiert,
+auf den der Compiler (Linker) zurückgreift, wenn er auf Template Instanziierungen trifft.
+
+
+*Beispiel*: Header-Datei
+
+```cpp
+01: template<typename T, size_t DIM>
+02: class AnotherArray
+03: {
+04: private:
+05:     T m_data[DIM];
+06: 
+07: public:
+08:     AnotherArray();
+09:     size_t size();
+10:     void print();
+11:     T& operator[](size_t i);
+12: };
+```
+
+*Beispiel*: Cpp-Datei
+
+```cpp
+01: template<typename T, size_t DIM>
+02: AnotherArray<T, DIM>::AnotherArray() : m_data{} {}
+03: 
+04: template<typename T, size_t DIM>
+05: size_t AnotherArray<T, DIM>::size() { return DIM; }
+06: 
+07: template<typename T, size_t DIM>
+08: void AnotherArray<T, DIM>::print() { 
+09:     for (const auto& v : m_data) {
+10:         std::cout << v << ", ";
+11:     }
+12:     std::cout << '\n';
+13: }
+14: 
+15: template<typename T, size_t DIM>
+16: T& AnotherArray<T, DIM>::operator[](size_t i) { return m_data[i]; }
+17: 
+18: template AnotherArray<int, 5>;
+19: template AnotherArray<double, 5>;
+20: template AnotherArray<std::string, 5>;
+```
+
+Wir erkennen im letzten Beispiel die expliziten Instanziierungen am Ende der <i>\*.cpp</i>-Datei.
+Eine Klasse `AnotherArray` darf folglich nur für Datentypen `int`, `double` oder `std::string`,
+und dieses nur mit der Länge 5 verwendet werden!
+
+*Anwendung*:
+
+```cpp
+01: void main()
+02: {
+03:     AnotherArray<double, 5> array;
+04: 
+05:     for (size_t i = 0; i != 5; ++i) {
+06:         array[i] = 2.0 * i + 0.5;
+07:     }
+08:     array.print();
+09: 
+10:     AnotherArray<double, 5> array2;  // works
+11:     // AnotherArray<double, 10> array3;  // does NOT compile !!! see explicit instantiated classes !!!
+12: }
+```
 
 ---
 

@@ -354,6 +354,9 @@
     <ClCompile Include="TemplateSpecialization\TemplateSpecialization_01.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TemplateClassBasics\AnotherArray.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -705,6 +708,12 @@
   <ItemGroup>
     <ClInclude Include="Global\Dummy.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TemplateClassBasics\MyArray.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TemplateClassBasics\AnotherArray.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

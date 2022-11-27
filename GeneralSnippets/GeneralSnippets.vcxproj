@@ -377,6 +377,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Global\Dummy.h" />
+    <ClInclude Include="TemplateClassBasics\AnotherArray.h" />
+    <ClCompile Include="TemplateClassBasics\AnotherArray.cpp" />
+    <ClInclude Include="TemplateClassBasics\MyArray.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\Horse_Cpp.png" />
