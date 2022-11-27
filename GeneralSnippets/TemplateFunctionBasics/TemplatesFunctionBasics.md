@@ -5,6 +5,15 @@
 
 ---
 
+[Quellcode](TemplatesFunctionBasics.cpp)
+
+ZWEI
+
+<a href="https://www.w3schools.com" target="_blank">Quellcode</a>
+
+
+---
+
 ## Definition eines Funktions-Templates
 
 Ein Funktions-Template &ndash; man könnte auch von einer *generischen* Funktion sprechen &ndash;
@@ -58,7 +67,7 @@ inline const int& minimum(const int& a, const int& b) {
 *Beispiel*:
 
 ```cpp
-01: void test_02()
+01: void main()
 02: {
 03:     minimum(1, 2, 3);         // Template mit 3 Argumenten
 04:     minimum(1.0, 2.0);        // minimum<double> per Typ Deduktion
@@ -75,7 +84,7 @@ inline const int& minimum(const int& a, const int& b) {
 ## Spezialisieren von Funktions-Templates
 
 
-Funktions-Templates können &ndash; prinzipiell, siehe dazu auch den nächsten Punkt &ndash; auf die gleiche Weise 
+Funktions-Templates können &ndash; prinzipiell, siehe dazu aber auch den nächsten Punkt &ndash; auf die gleiche Weise 
 wie Klassen-Templates spezialisiert werden.
 
 ```cpp
@@ -163,7 +172,6 @@ error: non-class, non-variable partial specialization 'function<T, int>' is not 
 
 Die beiden letzten Beispiele zum Überladen und Spezialisieren von Funktions-Templates
 waren sorgfältig ausgewählt worden, um das jeweilige Feature demonstrieren zu können.
-
 Aber man beachte:
 
 Spezialisierungen von Funktions-Templates nehmen nicht an der Auflösung von Funktions-Überladungen teil.
@@ -171,7 +179,6 @@ Spezialisierungen von Funktions-Templates nehmen nicht an der Auflösung von Funk
 Das heißt, eine weniger spezifische Überladung hat Vorrang vor einer spezifischeren Template-Spezialisierung.
 
 Siehe dazu auch
-
 Herb Sutter in diesem Artikel [Why Not Specialize Function Templates?](http://www.gotw.ca/publications/mill17.htm).
 
 Damit schließen wir diesen Abschnitt mit der Aussage 
@@ -180,150 +187,9 @@ Damit schließen wir diesen Abschnitt mit der Aussage
 
 ab
 
-
----
-
-
-ALTES ZEUGS
-
 ---
 
 [Quellcode](TemplatesFunctionBasics.cpp)
-
----
-
-## Typableitung (Type Deduction) und Templatespezialisierung
-
-Es wird an einem einfachen Beispiel die Syntax zu Funktionstemplates gezeigt.
-
-**Hinweis**:
-
-Es wird auf die beiden Features
-
-  * Typableitung / Type Deduction
-  * Templatespezialisierung
-
-  eingegangen.
-
-Den Aspekt der Templatespezialisierung kann man an den beiden unterschiedlichen Ausgaben
-
-<pre>
-Value: 10
-Value: <b>1</b>
-Value: 12.5
-</pre>
-
-bzw.
-
-<pre>
-Value: 10
-Value: <b>true</b>
-Value: 12.5
-</pre>
-
-erkennen.
-
----
-
-## Function Template Overloading
-
-Betrachten wir nun das Überladen von Funktionsschablonen.
-Es ist nicht dasselbe wie Spezialisierung, aber es hängt mit Spezialisierung zusammen.
-
-In C++ kann man Funktionen überladen, der Compiler stellt sicher, dass die richtige bzw. gewünschte Funktion aufgerufen wird:
-
-```cpp
-int  f( int );
-long f( double );
-
-int    i;
-double d;
-
-f( i );   // calls f(int)
-f( d );   // calls f(double)
-```
-
-Wir betrachten nun die folgenden Funktionsdeklarationen:
-
-```cpp
-template<typename T1, typename T2>
-void f( T1, T2 );                       // 1
-template<typename T> void f( T );       // 2
-template<typename T> void f( T, T );    // 3
-template<typename T> void f( T* );      // 4
-template<typename T> void f( T*, T );   // 5
-template<typename T> void f( T, T* );   // 6
-template<typename T> void f( int, T* ); // 7
-template<> void f<int>( int );          // 8
-void f( int, double );                  // 9
-void f( int );                          // 10
-```
-
-Den Aspekt des "*Function Template Overloading*" betrachten wir nun nacheinander an einer Reihe von Aufrufen:
-Die dabei verwendeten Parameter lauten
-
-```cpp
-int             i;
-double          d;
-float           ff;
-complex<double> c;
-```
-
-Es folgen nun die Beispiele:
-
-```cpp
-    f( i );         // a
-```
-
-A. Dies ruft #10 auf, da es genau mit #10 übereinstimmt und Nicht-Template-Aufrufe immer Template-Aufrufen vorgezogen werden.
-
-```cpp
-    f<int>( i );    // b
-```
-
-B. Dies ruft #8 auf, da `f<int>` explizit aufgerufen wird.
-
-```cpp
-    f( i, i );      // c
-```
-
-C. Dies ruft #3 auf (`T` ist `int`), da dies die beste Übereinstimmung ist.
-
-```cpp
-    f( c );         // d
-```
-
-D. Dies ruft #2 auf (`T` ist `std::complex<double>`), da kein anderes `f` übereinstimmen kann.
-
-```cpp
-    f( i, ff );     // e
-```
-
-E. Dies ruft #1 auf (`T1` ist `int`, `T2` ist `float`). Sie könnten denken, dass #9 sehr nahe ist - und das ist es auch -, aber eine Nicht-Template-Funktion wird nur bevorzugt, wenn sie genau übereinstimmt.
-
-```cpp
-    f( i, d );      // f
-```
-
-F. Dieser ruft #9 an, weil #9 jetzt genau übereinstimmt und die Nichtvorlage bevorzugt wird.
-
-```cpp
-    f( c, &c );     // g
-```
-
-G. Dies ruft #6 auf (`T` ist `std::complex<double>`), da #6 die nächste Überladung ist. #6 liefert eine Überladung von `f`, wobei der zweite Parameter ein Zeiger auf denselben Typ wie der erste Parameter ist.
-
-```cpp
-    f( i, &d );     // h
-```
-
-H.  Dies ruft #7 auf (T ist `double`), da #7 die am besten passende Überladung ist.
-
-```cpp
-    f( &d, d );     // i
-```
-
-I. Dies ruft #5 auf (`T` ist `double`). #5 liefert eine Überladung von `f`, wobei der erste Parameter ein Zeiger auf denselben Typ wie der zweite Parameter ist.
 
 ---
 
