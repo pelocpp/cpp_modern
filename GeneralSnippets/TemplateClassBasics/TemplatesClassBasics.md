@@ -1,4 +1,4 @@
-# Klassentemplates: Grundlagen
+# Klassen-Templates: Grundlagen
 
 [Zurück](../../Readme.md)
 
@@ -27,7 +27,6 @@ Es werden grundlegende Aspekte von Klassentemplates aufgezeigt:
 Danach folgen noch Informationen zu den **Übersetzungsmodellen** für Templates.
 
 ---
-
 
 ## Definition eines Klassen-Templates
 
