@@ -9,7 +9,7 @@
 
 ZWEI
 
-<a href="TemplatesFunctionBasics.cpp" target="_blank">Quellcode</a>
+<a href="TemplatesFunctionBasics.cpp" target="_blank" rel="noopener noreferrer">Quellcode</a>
 
 
 ---
