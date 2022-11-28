@@ -16,7 +16,6 @@ Das Schlüsselwort `auto` besitzt mehrere, völlig unterschiedliche Einsatzmöglich
   * Verlust von `const` und `&` (Referenz) bei `auto`
   * Typableitung bei Template Parametern / *Template Parameter Type Deduction*
   * `decltype(auto)`
-  * *Perfect Forwarding* mit generischen Lambdas
   * Möglichkeiten des Gebrauchs von `auto` im Vergleich
 
 *Hinweis*: Das Schlüsselwort `auto` fällt in der C++&ndash;Sprachbeschreibung in die Kategorie der 
@@ -336,44 +335,6 @@ siehe hierzu auch *Abbildung* 2 und *Abbildung* 3:
 <img src="decltype_auto_02.png" width="550">
 
 *Abbildung* 3: Variablendeklaration mit `decltype(auto)`.
-
-
-## *Perfect Forwarding* mit generischen Lambdas
-
-Das Prinzip des &ldquo;perfekteb Weiterleitens&rdquo; gibt es auch für generische Lambdas.
-Definiert man einen Parameter eines generischen Lambdas vom Typ `auto&&`, also als so genannte *Universal Reference*,
-so lassen sich die Argumente beim Aufruf &ldquo;perfekt&rdquo; Weiterleiten:
-
-```cpp
-void foo(const std::string& s) {
-    std::cout << "Signature: const&" << std::endl;
-}
-
-void foo(std::string&& s) {
-    std::cout << "Signature: &&" << std::endl;
-}
-
-auto callingFoo = [](auto&& s) {
-    std::cout << "Calling foo(): " << s;
-    foo(std::forward<decltype(s)>(s));
-};
-```
-
-Wir rufen die Lambda-Funktion `callingFoo` mit zwei unterschiedlichen Argumenten auf.
-Studieren Sie die Ausgabe sorgfältig:
-
-```cpp
-const std::string str{ "Hello World with LValue - " };
-callingFoo(str);
-callingFoo("Hello World with RValue - ");
-```
-
-*Ausgabe*:
-
-```
-Calling foo(): Hello World with LValue - Signature: const&
-Calling foo(): Hello World with RValue - Signature: &&
-```
 
 
 ## Möglichkeiten des Gebrauchs von `auto` im Vergleich

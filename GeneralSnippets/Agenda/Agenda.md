@@ -76,12 +76,21 @@
   * Benutzerdefinierte Literale und `constexpr`
 
 
-## Klassentemplates und Funktionstemplates
+## Funktions- und Klassen-Templates
   * Allgemeines / einführende Beispiele
-  * Type Parameter / Value Parameter
+  * Klassen-Templates mit mehreren Parametern
+  * Definition von Methoden eines Klassen-Templates
+  * Eine Methode eines Klassen-Templates überschreiben
+  * Klassen-Templates und Non-Type Parameter
   * Member Function Template (Method Template)
+  * Ein Template mit Template-Parametern
+  * Default-Werte für Template-Parameter
+  * Alias Template
   * Partielle und explizite Template Spezialisierung
+  * Übersetzungsmodellen für Templates
   * Two-Phase Name Lookup
+  * Überladen und Spezialisieren von Funktions-Templates
+  * Spezialisieren von Funktions-Templates
 
 
 ## Standard Template Library (STL)

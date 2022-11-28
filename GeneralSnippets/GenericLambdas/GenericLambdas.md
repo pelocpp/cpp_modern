@@ -8,7 +8,17 @@
 
 ---
 
-## Übersicht
+## Inhalt
+
+  * Einleitung
+  * *Automatic Type Deduction* bei generischen Lambda Ausdrücken
+  * Lambda Ausdrücke mit `template`-Header
+  * *Perfect Forwarding* mit generischen Lambdas
+  * Rekursive Lambda Ausdrücke
+
+---
+
+## Einleitung
 
 Ein Lambda-Ausdruck, der mindestens einen Parameter vom Typ `auto` hat,
 wird als generischer Lambda-Ausdruck bezeichnet:
@@ -203,7 +213,7 @@ Die neuen Lambda-Ausdrücke besitzen zwei Parameter.
 Auch hier können wir `l1` mit zwei ganzen Zahlen aufrufen
 oder einem `int`- und einem `double`-Wert, obwohl dies wiederum eine Warnung erzeugt.
 Mit einem `std::string`-Objekt und einem `char`-Wert lässt sich `l1` nicht aufrufen.
-Mit `l1` und `l1` ist dies möglich, der vom Compiler generierte Code
+Mit `l2` und `l3` ist dies möglich, der vom Compiler generierte Code
 ist für `l2` und `l3` identisch:
 
 ```cpp
@@ -259,6 +269,45 @@ auto v3 = l6(std::string{ "42" }, '1');       // Error
 
 Möchte man einen Aufruf der gezeigten Lambda Ausdrücke für Argumente unterschiedlichen Typs ausschließen,
 ist dies nur mit dem gezeigten Lösungswegs eines Lambda Ausdrucks mit `template`-Header möglich.
+
+---
+
+## *Perfect Forwarding* mit generischen Lambdas
+
+Das Prinzip des &ldquo;perfekteb Weiterleitens&rdquo; gibt es auch für generische Lambdas.
+Definiert man einen Parameter eines generischen Lambdas vom Typ `auto&&`, also als so genannte *Universal Reference*,
+so lassen sich die Argumente beim Aufruf &ldquo;perfekt&rdquo; Weiterleiten:
+
+```cpp
+void foo(const std::string& s) {
+    std::cout << "Signature: const&" << std::endl;
+}
+
+void foo(std::string&& s) {
+    std::cout << "Signature: &&" << std::endl;
+}
+
+auto callingFoo = [](auto&& s) {
+    std::cout << "Calling foo(): " << s;
+    foo(std::forward<decltype(s)>(s));
+};
+```
+
+Wir rufen die Lambda-Funktion `callingFoo` mit zwei unterschiedlichen Argumenten auf.
+Studieren Sie die Ausgabe sorgfältig:
+
+```cpp
+const std::string str{ "Hello World with LValue - " };
+callingFoo(str);
+callingFoo("Hello World with RValue - ");
+```
+
+*Ausgabe*:
+
+```
+Calling foo(): Hello World with LValue - Signature: const&
+Calling foo(): Hello World with RValue - Signature: &&
+```
 
 ---
 

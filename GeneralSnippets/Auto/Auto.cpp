@@ -65,29 +65,6 @@ namespace Auto_Examples {
 
     // ---------------------------------------------------------------------
 
-    const std::string message{ "This is an important message :)" };
-
-    const std::string& getMessage()
-    {
-        return message;
-    }
-
-    void test_01_c() {
-
-        auto msg = getMessage();
-        std::cout << "Message: " << msg << std::endl;
-
-        // or
-        const auto& msg2 = getMessage();
-        std::cout << "Message: " << msg2 << std::endl;
-
-        // but:
-        decltype(getMessage()) msg3 = getMessage();
-        std::cout << "Message: " << msg3 << std::endl;
-    }
-
-    // ---------------------------------------------------------------------
-
     auto make_planet()
     {
         struct Planet { std::string name; int moons; bool rings; };
@@ -95,7 +72,7 @@ namespace Auto_Examples {
         return Planet{ "Saturn", 82, true };
     }
 
-    void test_01_d() {
+    void test_01_c() {
 
         // using automatic return type deduction
         auto planet = make_planet();
@@ -112,6 +89,29 @@ namespace Auto_Examples {
             << name << ' '
             << num_moons << ' '
             << has_rings << std::endl;
+    }
+
+    // ---------------------------------------------------------------------
+
+    const std::string message{ "This is an important message :)" };
+
+    const std::string& getMessage()
+    {
+        return message;
+    }
+
+    void test_01_d() {
+
+        auto msg = getMessage();
+        std::cout << "Message: " << msg << std::endl;
+
+        // or
+        const auto& msg2 = getMessage();
+        std::cout << "Message: " << msg2 << std::endl;
+
+        // but:
+        decltype(getMessage()) msg3 = getMessage();
+        std::cout << "Message: " << msg3 << std::endl;
     }
 
     // ---------------------------------------------------------------------
@@ -161,28 +161,6 @@ namespace Auto_Examples {
         auto ch1 = getFirstCharacter(std::string{ "ABC" });
         decltype(auto) ch2 = getFirstCharacter(std::string{ "ABC" });
     }
-
-    // ---------------------------------------------------------------------
-
-    void foo(const std::string& s) {
-        std::cout << "Signature: const&" << std::endl;
-    }
-
-    void foo(std::string&& s) {
-        std::cout << "Signature: &&" << std::endl;
-    }
-
-    auto callingFoo = [](auto&& s) {
-        std::cout << "Calling foo(): " << s;
-        foo(std::forward<decltype(s)>(s));
-    };
-
-    void test_01_g()
-    {
-        const std::string str{ "Hello World with LValue - " };
-        callingFoo(str);
-        callingFoo("Hello World with RValue - ");
-    }
 }
 
 void main_auto()
@@ -194,7 +172,6 @@ void main_auto()
     test_01_d();
     test_01_e();
     test_01_f();
-    test_01_g();
 }
 
 // =====================================================================================

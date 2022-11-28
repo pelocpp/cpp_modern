@@ -70,8 +70,6 @@ namespace GenericLambdas {
 
     // -------------------------------------------------------------------
 
-
-
     void test_04()
     {
         // define a generic lambda
@@ -138,8 +136,6 @@ namespace GenericLambdas {
 
     // ---------------------------------------------------------------------
 
-
-
     void test_06()
     {
         auto l1 = [](int a) { return a + a; };             // C++ 11, regular lambda
@@ -201,21 +197,38 @@ namespace GenericLambdas {
 
     void test_09()
     {
-        auto l6 = [](auto a, decltype(a) b) {return a + b; };     // C++ 14, using decltype
+        auto l6 = [](auto a, decltype(a) b) {return a + b; };      // C++ 14, using decltype
 
-        auto v1 = l6(42.0, 1);                                    // Ok
-        // auto v2 = l6(42, 1.0);                                 // Warning
-        // auto v3 = l6(std::string{ "42" }, '1');                // Error
+        auto v1 = l6(42.0, 1);                                     // Ok
+        // auto v2 = l6(42, 1.0);                                  // Warning
+        // auto v3 = l6(std::string{ "42" }, '1');                 // Error
     }
-
-    // REKURSIVE LAmbdas ...
-    // WEITER :  https://www.nextptr.com/tutorial/ta1224017367/generic-code-with-generic-lambda-expression
-
-
 
     // -------------------------------------------------------------------
 
+    void foo(const std::string& s) {
+        std::cout << "Signature: const&" << std::endl;
+    }
+
+    void foo(std::string&& s) {
+        std::cout << "Signature: &&" << std::endl;
+    }
+
+    auto callingFoo = [](auto&& s) {
+        std::cout << "Calling foo(): " << s;
+        foo(std::forward<decltype(s)>(s));
+    };
+
     void test_10()
+    {
+        const std::string str{ "Hello World with LValue - " };
+        callingFoo(str);
+        callingFoo("Hello World with RValue - ");
+    }
+
+    // -------------------------------------------------------------------
+    
+    void test_11()
     {
         // power recursive function
         std::function<int(int, int)> power;
@@ -227,7 +240,7 @@ namespace GenericLambdas {
         std::cout << power(2, 10) << std::endl; // 2^10 = 1024
     }
 
-    void test_11()
+    void test_12()
     {
         // factorial recursive function
         std::function<int(int)> factorial;
@@ -244,7 +257,7 @@ namespace GenericLambdas {
         std::cout << factorial(5) << std::endl; // 120
     }
 
-    void test_12()
+    void test_13()
     {
         // power recursive lambda function
         auto power = [] (auto self, auto base, int exp) -> decltype(base) {
@@ -256,7 +269,7 @@ namespace GenericLambdas {
         std::cout << power(power, 2.71828, 10);           // e^10 = 22026.3
     }
 
-    void test_13()
+    void test_14()
     {
         // factorial recursive lambda function
         auto factorial = [] (auto f, int const n) {
@@ -292,6 +305,7 @@ void main_generic_lambdas()
     test_11();
     test_12();
     test_13();
+    test_14();
 }
 
 // =====================================================================================
