@@ -33,6 +33,7 @@
   * Übersicht
   * *Automatic Type Deduction* bei generischen Lambda Ausdrücken
   * Lambda Ausdrücke mit `template`-Header
+  * *Perfect Forwarding* mit generischen Lambdas
   * Rekursive Lambda Ausdrücke
 
 
@@ -101,19 +102,19 @@
   * Neuerungen ab C++&ndash;11/14/17
 
 
-## Eigenschaften von Datentypen zur Übersetzungszeit betrachten
-  * &ldquo;Type Traits&rdquo;
-  * `decltype` und `std::declval`
-  * `Iterator::value_type` und `Iterator::iterator_category`
-  * `std::remove_reference`
-
-
 ## STL-Algorithmen
   * `std::generate`
   * `std::accumulate`
   * `std::transform`
   * `std::back_inserter` (Iterator)
   * Das *Erase-Remove*-Idiom
+
+
+## Eigenschaften von Datentypen zur Übersetzungszeit betrachten
+  * &ldquo;Type Traits&rdquo;
+  * `decltype` und `std::declval`
+  * `Iterator::value_type` und `Iterator::iterator_category`
+  * `std::remove_reference`
 
 
 ## Variadische Templates
@@ -169,7 +170,6 @@
   * `std::tuple` 
 
   * Vertiefungen zu `std::variant`: Das Visitor-Konzept mit `std::visit` und das sog. *Overload*&ndash;Pattern
-
 
 
 ## SFINAE (&ldquo;Substitution failure is not an error&ldquo;)
