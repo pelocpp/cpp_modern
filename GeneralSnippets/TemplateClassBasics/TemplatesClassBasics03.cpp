@@ -27,7 +27,7 @@ namespace ClassTemplatesBasics_03 {
             D m_denom;
         };
 
-        void test_02() {
+        void test_01() {
             Ratio <int, double> ratio1;
             Ratio <int, double> ratio2(1, 5.0);
             Ratio ratio3(3, 4.0);  // explicit type deduction
@@ -74,7 +74,7 @@ namespace ClassTemplatesBasics_03 {
         template <>
         Ratio<float, float>::operator double() const { return m_num / m_denom; }
 
-        void test_03() {
+        void test_02() {
 
             Ratio <double, double> ratio(1, 5.0);
             double value = static_cast<double>(ratio);
@@ -137,7 +137,7 @@ namespace ClassTemplatesBasics_03 {
             double m_value;
         };
 
-        void test_04() {
+        void test_03() {
 
             Ratio <double, int> ratio1(1.0, 2);
             Ratio <int, double> ratio2(1, 2.0);
@@ -147,45 +147,13 @@ namespace ClassTemplatesBasics_03 {
             // Ratio <double, double> ratio4(1, 2);
         }
     }
-
-    namespace MethodsTemplates {
-
-        class Printer {
-        private:
-            std::ostream& m_target;
-
-        public:
-            explicit Printer(std::ostream& target) : m_target(target) {}
-
-            template<typename T>
-            Printer& print(const T& arg) {
-                m_target << arg;
-                return *this;
-            }
-        };
-
-        void test_05() {
-
-            Printer normalPrinter(std::cout);
-            normalPrinter.print(100).print(" --> ").print(123.456).print("\n");
-
-            Printer errorPrinter(std::cerr);
-            errorPrinter.print(654.321).print(" <== ").print(100).print("\n");
-        }
-    }
 }
 
 void main_class_templates_basics_03()
 {
-    using namespace ClassTemplatesBasics_03::SimpleTemplateDefinition;
-    using namespace ClassTemplatesBasics_03::TemplateExplicitSpecialization;
-    using namespace ClassTemplatesBasics_03::TemplatePartialSpecialization;
-    using namespace ClassTemplatesBasics_03::MethodsTemplates;
-
-    test_02();
-    test_03();
-    test_04();
-    test_05();
+    ClassTemplatesBasics_03::SimpleTemplateDefinition::test_01();
+    ClassTemplatesBasics_03::TemplateExplicitSpecialization::test_02();
+    ClassTemplatesBasics_03::TemplatePartialSpecialization::test_03();
 }
 
 // =====================================================================================

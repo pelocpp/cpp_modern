@@ -18,11 +18,11 @@ Es werden grundlegende Aspekte von Klassentemplates aufgezeigt:
   * ##### [Klassen-Templates mit mehreren Parametern](#Klassen-Templates-mit-mehreren-formalen-Datentypen)
   * ##### [Definition von Methoden eines Klassen-Templates](#Definition-von-Methoden-von-Klassen-Templates)
   * ##### [Eine Methode eines Klassen-Templates überschreiben](#Methoden-eines-Klassen-Templates-spezialisieren)
+  * ##### [Member Function Templates (kurz: Member Templates)](#Member-Function-Templates)
   * ##### [Klassen-Templates und Non-Type Parameter](#Klassen-Templates-mit-Non-Type-Parametern)
   * ##### [Ein Template mit Template-Parametern](#Template-Template-Parameter)
   * ##### [Default-Werte für Template-Parameter](#Default-Template-Parameter)
   * ##### [Alias Template](#Alias-Templates)
-
 
 Danach folgen noch Informationen zu den **Übersetzungsmodellen** für Templates.
 
@@ -267,6 +267,52 @@ keine Spezialisierung vorhanden ist:
 ```
 [I love C++ Templates :)]
 123
+```
+
+---
+
+## Member Function Templates
+
+*Member Function Templates* sind Funktions-Templates, die Mitglieder einer (regulären) Klasse oder
+eines Klassen_Template sind.
+
+
+*Beispiel*:
+
+```cpp
+class Printer {
+private:
+    std::ostream& m_target;
+
+public:
+    explicit Printer(std::ostream& target) : m_target(target) {}
+
+    template<typename T>
+    Printer& print(const T& arg) {
+        m_target << arg;
+        return *this;
+    }
+};
+```
+
+*Anwendung*:
+
+```cpp
+01: void test_06() {
+02: 
+03:     Printer normalPrinter(std::cout);
+04:     normalPrinter.print(100).print(" --> ").print(123.456).print("\n");
+05: 
+06:     Printer errorPrinter(std::cerr);
+07:     errorPrinter.print(654.321).print(" <== ").print(100).print("\n");
+08: }
+```
+
+*Ausgabe*:
+
+```cpp
+100 --> 123.456
+654.321 <== 100
 ```
 
 ---
