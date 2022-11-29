@@ -13,7 +13,7 @@
 #### Vorausetzungen: `if constexpr`, `decltype`, `std::variant`, `std::visit`, Type Traits, `std::remove_reference`,<br/>`std::is_scalar`, `std::is_same` und `std::remove_cvref`
 
 Für `std::variant`-Objekte gibt es eine *Visitor*-Unterstützung in Gestalt der Funktion `std::visit`.
-Diese benötigt nebem einem `std::variant`-Objekt ein so genanntes *Callable*-Objekt,
+Diese benötigt neben einem `std::variant`-Objekt ein so genanntes *Callable*-Objekt,
 das jede mögliche Alternative im `std::variant`-Objekt besuchen kann.
 Eine sehr elegante wie auch kurze Lösung ist ein *Callable* in Gestalt eines generischen Lambdas,
 siehe dazu folgendes Beispiel:

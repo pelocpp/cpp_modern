@@ -440,7 +440,7 @@ fehlerfrei übersetzungsfähig.
 
 ---
 
-## Übersetzungsmodelle für Template
+## Übersetzungsmodelle für Templates
 
 Normalerweise trennen C++ Programmierer die
 Schnittstellendefinition (Deklarationen, <i>\*.h</i> Datei) von der
