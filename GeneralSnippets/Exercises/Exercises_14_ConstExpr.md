@@ -71,7 +71,7 @@ Wie ließe sich das letze Codefragment umformulieren, um das gewünschte Ziel zu
 
 ---
 
-## Aufgabe 2: Auswertung von variadische Templates, `decltype` und Type-Traits am Beispiel von `sameType` zur Übersetzungszeit
+## Aufgabe 2: Auswertung von variadischen Templates, `decltype` und Type-Traits am Beispiel von `sameType` zur Übersetzungszeit
 
 #### Vorausetzungen: `std::is_same`
 

@@ -106,7 +106,7 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 | Aufgabe | Beschreibung |
 | :- | :- |
 | [Aufgabe 1](./Exercises_14_ConstExpr.md#aufgabe-1-return-type-resolver) | *Return Type Resolver*<br/>(Voraussetzungen: Templates, `std::is_same` und `constexpr`) |
-| [Aufgabe 2](./Exercises_14_ConstExpr.md#aufgabe-2-auswertung-von-variadische-templates-decltype-und-type-traits-am-beispiel-von-sametype-zur-übersetzungszeit) | Auswertung von variadische Templates, `decltype` und Type-Traits am Beispiel von `sameType` zur Übersetzungszeit<br/>(Voraussetzungen: `decltype`, `std::is_same`) |
+| [Aufgabe 2](./Exercises_14_ConstExpr.md#aufgabe-2-auswertung-von-variadische-templates-decltype-und-type-traits-am-beispiel-von-sametype-zur-übersetzungszeit) | Auswertung von variadischen Templates, `decltype` und Type-Traits am Beispiel von `sameType` zur Übersetzungszeit<br/>(Voraussetzungen: `decltype`, `std::is_same`) |
 
 *Tabelle* 6: Aufgaben zu `constexpr`.
 
