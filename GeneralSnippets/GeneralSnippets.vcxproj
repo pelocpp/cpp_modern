@@ -183,6 +183,7 @@
     <ClCompile Include="Exercises\Exercises_12_PerfectForwarding.cpp" />
     <ClCompile Include="Exercises\Exercises_13_FunctionalProgramming.cpp" />
     <ClCompile Include="Exercises\Exercises.cpp" />
+    <ClCompile Include="Exercises\Exercises_16_Generic_Lambdas.cpp" />
     <ClCompile Include="Explicit\Explicit.cpp" />
     <ClCompile Include="ExpressionTemplates\ExpressionTemplates.cpp" />
     <ClCompile Include="FileSystem\FileSystem.cpp" />
@@ -286,6 +287,7 @@
     <None Include="Exercises\cpp_dividend_divisor.svg" />
     <None Include="Exercises\Exercises_14_ConstExpr.md" />
     <None Include="Exercises\Exercises_15_SmartPointers.md" />
+    <None Include="Exercises\Exercises_16_GenericLambdas.md" />
     <None Include="Exercises\Exercises_Legacy.md" />
     <None Include="Exercises\Exercises_01_MoveSemantics.md" />
     <None Include="Exercises\Exercises_02_Lambdas.md" />

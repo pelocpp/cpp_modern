@@ -357,6 +357,9 @@
     <ClCompile Include="TemplateClassBasics\AnotherArray.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Exercises\Exercises_16_Generic_Lambdas.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -702,6 +705,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="TemplateClassBasics\cpp_template_instantiation.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Exercises\Exercises_16_GenericLambdas.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

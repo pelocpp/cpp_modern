@@ -17,6 +17,8 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 
   * ### [Lambda Funktionen](#Aufgaben-zu-Lambda-Funktionen)
 
+  * ### [Generische Lambda Funktionen](#Aufgaben-zu-generischen-Lambda-Funktionen)
+
   * ### [Initialisierung](#Aufgaben-zur-Initialisierung)
 
   * ### [Smart Pointer](#Aufgaben-zu-Smart-Pointer)
@@ -56,7 +58,7 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 
 ---
 
-### Aufgaben zu Lambda-Funktionen
+### Aufgaben zu Lambda Funktionen
 
 | Aufgabe | Beschreibung |
 | :- | :- |
@@ -64,9 +66,20 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 | [Aufgabe 2](./Exercises_02_Lambdas.md#aufgabe-2-taschenrechner-mit-lambda-funktionen) | Taschenrechner mit Lambda-Funktionen<br/>(Vorausetzungen: Container `std::map`, Klasse `std::pair`) | 
 | [Aufgabe 3](./Exercises_02_Lambdas.md#aufgabe-3-quiz-mit-lambda-funktionen) | Quiz mit Lambda-Funktionen |
 
-*Tabelle* 2: Aufgaben zu Lambda-Funktionen.
+*Tabelle* 2: Aufgaben zu Lambda Funktionen.
 
 ---
+
+### Aufgaben zu generischen Lambda Funktionen
+
+| Aufgabe | Beschreibung |
+| :- | :- |
+| [Aufgabe 1](./Exercises_16_GenericLambdas.md#aufgabe-1-personensuche) | Personensuche<br/>(Vorausetzungen: Algorithmus `std::find_if`) |
+
+*Tabelle* 3: Aufgaben zu generischen Lambda Funktionen.
+
+---
+
 
 ### Aufgaben zur Initialisierung
 
@@ -74,7 +87,7 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 | :- | :- |
 | [Aufgabe 1](./Exercises_11_Initialization.md#aufgabe-1-uniform-initialization-und-initialisierungliste) | *Uniform Initialization* und Initialisierungliste<br/>(Vorausetzungen: Templates, `std::vector<>`, `std::initializer_list<>`) |
 
-*Tabelle* 3: Aufgaben zur Initialisierung.
+*Tabelle* 4: Aufgaben zur Initialisierung.
 
 ---
 
@@ -86,7 +99,7 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 | [Aufgabe 2](./Exercises_15_SmartPointers.md#aufgabe-2-noch-ein-quiz-zu-smart-pointer) | Noch ein Quiz zu Smart Pointer<br/>(Vorausetzungen: `std::shared_ptr<>`) |
 | [Aufgabe 3](./Exercises_15_SmartPointers.md#aufgabe-3-betrachtungen-eines-nicht-besitzenden-zeigers) | Betrachtungen eines &ldquo;nicht besitzenden&rdquo; Zeigers<br/>(Vorausetzungen: `std::shared_ptr<>`, `std::weak_ptr<>`) |
 
-*Tabelle* 4: Aufgaben zu Smart Pointer.
+*Tabelle* 5: Aufgaben zu Smart Pointer.
 
 ---
 
@@ -97,7 +110,7 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 | [Aufgabe 1](./Exercises_03_Algorithms.md#aufgabe-1-der-algorithmus-stdaccumulate-in-der-anwendung) | Der Algorithmus `std::accumulate` in der Anwendung<br/>(Voraussetzungen: `std::accumulate`, `std::initializer_list`) |
 | [Aufgabe 2](./Exercises_03_Algorithms.md#aufgabe-2-fibonacci-zahlen) | *Fibonacci*-Zahlen<br/>(Voraussetzungen: Algorithmen `std::generate`, `std::for_each`, Lambda-Funktionen, Structured Binding) |
 
-*Tabelle* 5: Aufgaben zu STL-Algorithmen.
+*Tabelle* 6: Aufgaben zu STL-Algorithmen.
 
 ---
 
@@ -108,7 +121,7 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 | [Aufgabe 1](./Exercises_14_ConstExpr.md#aufgabe-1-return-type-resolver) | *Return Type Resolver*<br/>(Voraussetzungen: Templates, `std::is_same` und `constexpr`) |
 | [Aufgabe 2](./Exercises_14_ConstExpr.md#aufgabe-2-auswertung-von-variadische-templates-decltype-und-type-traits-am-beispiel-von-sametype-zur-übersetzungszeit) | Auswertung von variadischen Templates, `decltype` und Type-Traits am Beispiel von `sameType` zur Übersetzungszeit<br/>(Voraussetzungen: `decltype`, `std::is_same`) |
 
-*Tabelle* 6: Aufgaben zu `constexpr`.
+*Tabelle* 7: Aufgaben zu `constexpr`.
 
 ---
 
@@ -124,7 +137,7 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 | [Aufgabe 6](./Exercises_05_VariadicTemplates.md#aufgabe-6-variadische-templates-und-vererbung) | Variadische Templates und Vererbung |
 | [Aufgabe 7](./Exercises_05_VariadicTemplates.md#aufgabe-7-berechnung-der-gesamtlänge-beliebig-vieler-zeichenketten) | Berechnung der Gesamtlänge beliebig vieler Zeichenketten<br/>(Vorausetzungen: `std::initializer_list`) |
 
-*Tabelle* 7: Aufgaben zu variadischen Templates.
+*Tabelle* 8: Aufgaben zu variadischen Templates.
 
 ---
 
@@ -138,7 +151,7 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 | [Aufgabe 4](./Exercises_06_Folding.md#aufgabe-4-beliebig-viele-Werte-zu-einem-stdvector-objekt-hinzufügen) | Beliebig viele Werte zu einem `std::vector`-Objekt hinzufügen |
 | [Aufgabe 5](./Exercises_06_Folding.md#aufgabe-5-störende-trennzeichen-am-ende-eines-folding-ausdrucks) | Störende Trennzeichen am Ende eines Folding-Ausdrucks |
 
-*Tabelle* 8: Aufgaben zu Folding.
+*Tabelle* 9: Aufgaben zu Folding.
 
 ---
 
@@ -151,12 +164,9 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 | [Aufgabe 3](./Exercises_04_UtilityClasses.md#aufgabe-2-stdoptional-umwandlung-von-zeichenketten-in-ganze-zahlen) | `std::optional`: Umwandlung von Zeichenketten in ganze Zahlen<br/>(Vorausetzungen: Templates Grundlagen, `std::optional`, `if constexpr`) |
 | [Aufgabe 4](./Exercises_04_UtilityClasses.md#aufgabe-3-stdvariant-ein-heterogener-container) | `std::variant`: Ein heterogener Container<br/>(Vorausetzungen: `std::variant`, `std::visit`, `std::vector`) |
 
-*Tabelle* 9: Aufgaben zu Utility Klassen.
+*Tabelle* 10: Aufgaben zu Utility Klassen.
 
 ---
-
-
-
 
 ### Aufgaben zur Metaprogrammierung
 
@@ -167,7 +177,7 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 | [Aufgabe 3](./Exercises_07_Metaprogramming.md#aufgabe-3-fibonacci-zahlen) | *Fibonacci*-Zahlen |
 | [Aufgabe 4](./Exercises_07_Metaprogramming.md#aufgabe-4-selektiver-zugriff-auf-ein-parameter-pack-von-datentypen) | Selektiver Zugriff auf ein Parameter Pack von Datentypen |
 
-*Tabelle* 10: Aufgaben zur Metaprogrammierung.
+*Tabelle* 11: Aufgaben zur Metaprogrammierung.
 
 ---
 
@@ -177,7 +187,7 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 | :- | :- |
 | [Aufgabe 1](./Exercises_08_ExpressionTemplates.md#aufgabe-1-das-skalarprodukt-zweier-vektoren) | Das Skalarprodukt zweier Vektoren |
 
-*Tabelle* 11: Aufgaben zu Expression Templates.
+*Tabelle* 12: Aufgaben zu Expression Templates.
 
 ---
 
@@ -188,7 +198,7 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 | [Aufgabe 1](./Exercises_12_PerfectForwarding.md#aufgabe-1-einfaches-beispiel-zu-variadischen-templates-und-perfect-forwarding) | Einfaches Beispiel zu variadischen Templates und *Perfect Forwarding* |
 | [Aufgabe 2](./Exercises_12_PerfectForwarding.md#aufgabe-2-ausführungszeit-einer-Funktion) | Ausführungszeit einer Funktion<br/>(Voraussetzungen: `std::invoke`, variadische Templates und *Perfect Forwarding*) |
 
-*Tabelle* 12: Aufgaben zum *Perfect Forwarding*.
+*Tabelle* 13: Aufgaben zum *Perfect Forwarding*.
 
 ---
 
@@ -199,7 +209,7 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 | [Aufgabe 1](./Exercises_13_FunctionalProgramming.md#aufgabe-1-umwandlung-von-zeichenketten-eines-stdvector-objekts) | Umwandlung von Zeichenketten eines `std::vector`-Objekts<br/>(Vorausetzungen: Templates, Lambda-Funktionen) |
 | [Aufgabe 2](./Exercises_13_FunctionalProgramming.md#aufgabe-2-decltype-declval-und-nachlaufender-rückgabetyp-in-der-praxis) | `decltype`, `declval` und nachlaufender Rückgabetyp in der Praxis<br/>(Vorausetzungen: Kenntnisse von `decltype` und `declval`) |
 
-*Tabelle* 13: Aufgaben zum funktionaler Programmierung.
+*Tabelle* 14: Aufgaben zur funktionalen Programmierung.
 
 ---
 
@@ -212,7 +222,7 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 | [Aufgabe 3](./Exercises_09_SFINAE.md#aufgabe-3-detektion-von-methoden-in-einer-klasse) | Detektion von Methoden in einer Klasse<br/>(Vorausetzungen: Templates, `decltype` und `std::declval`) |
 | [Aufgabe 4](./Exercises_09_SFINAE.md#aufgabe-4-eine-methode-unterschiedliche-implementierungen-zum-zweiten) | Eine Methode, unterschiedliche Implementierungen zum Zweiten<br/>(Vorausetzungen: `std::array`) |
 
-*Tabelle* 14: Aufgaben zu SFINAE.
+*Tabelle* 15: Aufgaben zu SFINAE.
 
 ---
 
@@ -222,7 +232,7 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 | :- | :- |
 | [Aufgabe 1](./Exercises_10_CRTP.md#aufgabe-1-der-kuriose-polymorphismus-crtp-an-einem-beispiel-betrachtet) | Der *kuriose* Polymorphismus (CRTP) an einem Beispiel betrachtet<br/>(Voraussetzungen: Polymorphismus, Templates)  |
 
-*Tabelle* 15: Aufgaben zu CRTP.
+*Tabelle* 16: Aufgaben zu CRTP.
 
 ---
 

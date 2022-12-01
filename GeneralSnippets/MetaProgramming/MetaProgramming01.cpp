@@ -47,7 +47,7 @@ namespace Metaprogramming {
 
     template <size_t N, typename F>
     struct ScalarMultiplication {
-        using result = Frac<N* F::Num, F::Den>;
+        using result = Frac<N * F::Num, F::Den>;
     };
 
     void test_02() {
@@ -66,7 +66,7 @@ namespace Metaprogramming {
         static constexpr size_t result = X;
     };
 
-    template <class F>
+    template <typename F>
     struct FracNormalizedVerbose {
         static constexpr size_t ggt = GGT<F::Num, F::Den>::result;
         static constexpr size_t newNum = F::Num / ggt;
@@ -74,7 +74,7 @@ namespace Metaprogramming {
         using result = Frac<newNum, newDen>;
     };
 
-    template <class F>
+    template <typename F>
     struct FracNormalized {
         static constexpr size_t ggt = GGT<F::Num, F::Den>::result;
         using result = Frac<F::Num / ggt, F::Den / ggt>;
