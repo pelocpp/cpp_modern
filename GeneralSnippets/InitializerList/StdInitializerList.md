@@ -9,58 +9,28 @@
 ---
 
 Um für Konstruktoren eine variable Anzahl von Parametern (desselben Typs) zu ermöglichen,
-wurde in C++ das Konzept von *Initialisierungslisten* für benutzerdefinierte Typen eingeführt.
+wurde in C++ das Konzept von *Initialisierungslisten* eingeführt.
 
-Eine Klasse muss das einen entsprechenden Konstruktor zur Verfügung stellen, der das Klassentemplate `std::initializer_list<>`
+Eine Klasse muss dann einen entsprechenden Konstruktor zur Verfügung stellen, der das Klassentemplate `std::initializer_list<>`
 verwendet.
 
-Weitere Details entnehmen Sie bitte den Code-Snippets.
+---
 
-Ausgabe des Code-Snippets:
+Wenn der Compiler eine `std::initializer_list`-Objekt erstellt,
+werden die Elemente der Liste auf dem Stapel konstruiert (als konstante Objekte).
 
-```cpp
-25
-20
-a - b - c -
-a - b - c -
-65 - 66 - 67 -
-ABC - DEF - GHI -
-ABC - DEF - GHI -
-RST - UVW - XYZ -
-Begin of list:
-a
-b
-c
-End of list.
-Begin of list:
-a
-b
-c
-End of list.
-Begin of list:
-65
-66
-67
-End of list.
-Begin of list:
-ABC
-DEF
-GHI
-End of list.
-Begin of list:
-ABC
-DEF
-GHI
-End of list.
-Begin of list:
-RST
-UVW
-XYZ
-End of list.
-Hans - Sepp - Franz
+Danach erstellt der Compiler das `std::initializer_list`-Objekt selbst,
+das die Adresse des ersten und letzten Elements enthält
+(genauer in Bezug auf das letzte Element: die Adresse des ersten Elements *nach* dem letzten Element).
 
-James - John - Robert - Michael - William - David - Richard - Joseph - Thomas
-```
+Folglich besteht ein `std::initializer_list`-Objekt nur aus zwei Zeigervariablen,
+es handelt sich also um ein recht kleines Objekt.
+Damit ist es nicht wirklich notwendig, bei der Parameterübergabe 
+eine Referenz zu verwenden &ndash; die Parameterübergabe *Call-by-Value* ist völlig ausreichend.
+
+<img src="cpp_initializer_list.svg" width="300">
+
+*Abbildung* 1: Konstruktion des Inhalts eines `std::initializer_list`-Objekts auf dem Stack.
 
 ---
 

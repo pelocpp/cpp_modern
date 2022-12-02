@@ -10,9 +10,9 @@
 
 namespace InitializerList {
 
-    // delegating std::initializer_list to std::for_each
-    int myIntAdderFunction(std::initializer_list<int> list) {
-
+    // function using std::initializer_list
+    int myIntAdderFunction(std::initializer_list<int> list)
+    {
         int result{};
         std::for_each(
             std::begin(list),
@@ -22,6 +22,16 @@ namespace InitializerList {
             });
         return result;
     }
+
+    // delegating std::initializer_list with range based loop
+    void printMe(std::initializer_list<int> list) {
+        for (const auto& value : list) {
+            std::cout << value << " - ";
+        }
+        std::cout << std::endl;
+    }
+
+    // =================================================================================
 
     // delegating templated std::initializer_list to range based loop
     template<typename T>
@@ -45,43 +55,37 @@ namespace InitializerList {
         std::cout << " End of list." << std::endl;
     }
 
-    // delegating templated std::initializer_list to std::copy with std::ostream_iterator<T>
-    template<typename T>
-    void printMeOneMoreToo(std::initializer_list<T> list) {
-        std::cout << "Begin of list: ";
-        std::copy(
-            std::begin(list),
-            std::end(list),
-            std::ostream_iterator<T>(std::cout, " - ")
-        );
-        std::cout << " End of list." << std::endl;
-    }
+    // =================================================================================
 
     // delegating std::initializer_list to std::vector
     class MyPeople {
+        friend std::ostream& operator<< (std::ostream&, MyPeople);
+
     private:
         std::vector<std::string> m_names;
 
     public:
         MyPeople(std::initializer_list<std::string> names) : m_names{ names } {}
 
-        void operator()() {
-            if (m_names.size() == 0) {
-                return;
-            }
-
-            std::copy(
-                std::begin(m_names),
-                std::prev(std::end(m_names)),
-                std::ostream_iterator<std::string>(std::cout, " - ")
-            );
-
-            // prevent output of " - " after last element :-)
-            std::vector<std::string>::const_iterator last = m_names.end();
-            --last;
-            std::cout << *last << std::endl;;
-        }
+        size_t size() const { return m_names.size(); }
     };
+
+    std::ostream& operator<< (std::ostream& os, MyPeople peoples) {
+
+        os << '[';
+        for (int idx{}; const auto & elem : peoples.m_names) {
+            os << elem;
+            if (idx < peoples.size() - 1) {
+                os << " - ";
+            }
+            ++idx;
+        }
+        os << ']';
+
+        return os;
+    }
+
+    // =================================================================================
 
     void test_01() {
         // testing functions expecting lists in function call
@@ -92,6 +96,10 @@ namespace InitializerList {
 
     void test_02() {
         // testing generic functions expecting lists
+
+        printMe({ 11, 12, 13, 14, 15 });
+
+        std::cout << "--------------------------------" << std::endl;
 
         printMe({ 'a', 'b', 'c' });        // template argument T can be deduced automatically
         printMe<char>({ 'a','b', 'c' });   // template argument T specified explicitly
@@ -108,31 +116,14 @@ namespace InitializerList {
         printMeToo({ "ABC", "DEF", "GHI" });
         printMeToo<std::string>({ "ABC", "DEF", "GHI" });
         printMeToo<std::string>({ std::string("RST"), std::string("UVW"), std::string("XYZ") });
-
-        std::cout << "--------------------------------" << std::endl;
-
-        printMeOneMoreToo({ 'a', 'b', 'c' });        // template argument T can be deduced automatically
-        printMeOneMoreToo<char>({ 'a','b', 'c' });   // template argument T specified explicitly
-        printMeOneMoreToo<int>({ 'A', 'B', 'C' });
-        printMeOneMoreToo({ "ABC", "DEF", "GHI" });
-        printMeOneMoreToo<std::string>({ "ABC", "DEF", "GHI" });
-        printMeOneMoreToo<std::string>({ std::string("RST"), std::string("UVW"), std::string("XYZ") });
     }
 
     void test_03() {
-        // testing functions expecting lists as parameter
-
-        MyPeople people({ "Hans", "Sepp", "Franz" });
-        people();
+        MyPeople people({ "Hans", "Sepp", "Franz", "Anton" });
+        std::cout << people << std::endl;
 
         MyPeople noFriends({ });
-        noFriends();
-
-        MyPeople manyFriends({ 
-            "James", "John", "Robert", "Michael", "William",
-            "David", "Richard", "Joseph", "Thomas"
-        });
-        manyFriends();
+        std::cout << noFriends << std::endl;
     }
 }
 

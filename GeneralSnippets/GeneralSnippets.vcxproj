@@ -311,6 +311,7 @@
     <None Include="Generate\cpp_generate.svg" />
     <None Include="Generate\Generate.md" />
     <None Include="GenericLambdas\GenericLambdas.md" />
+    <None Include="InitializerList\cpp_initializer_list.svg" />
     <None Include="InitializerList\StdInitializerList.md" />
     <None Include="InputOutputStreams\Streams.md" />
     <None Include="Invoke\StdInvoke.md" />

@@ -28,7 +28,7 @@ namespace Exercises_Generic_Lambdas {
                 isGreaterThanFifty
             );
             if (pos != std::end(intValues)) {
-                std::cout << "Found a value: " << *it1 << std::endl;
+                std::cout << "Found a value: " << *pos << std::endl;
             }
         }
 
@@ -68,7 +68,7 @@ namespace Exercises_Generic_Lambdas {
                 isGreaterThanFifty
             );
             if (pos != std::end(personValues)) {
-                std::cout << "Found Person: " << (*pos).getName() << std::endl;
+                std::cout << "Found Person:  " << (*pos).getName() << std::endl;
             }
         }
 
@@ -79,7 +79,7 @@ namespace Exercises_Generic_Lambdas {
     }
 }
 
-void test_exercises_lambdas()
+void test_exercises_generic_lambdas()
 {
     using namespace Exercises_Generic_Lambdas;
     Exercise_01::testExercise_01();

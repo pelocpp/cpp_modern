@@ -37,15 +37,6 @@
   * Rekursive Lambda Ausdrücke
 
 
-## Vererbung
-  * Virtueller Methodenaufrufmechanismus
-  * Interface- / Schnittstellen-Konzept
-  * Abstrakte Klassen
-  * Polymorphismus
-  * Schlüsselwörter `override`, `virtual`, `final`
-  * Mehrfachvererbung (Schnittstellen)
-
-
 ## Initialisierung
   * Initialisierung (&ldquo;Uniform Initialization&ldquo;)
   * Default-Initialisierung für Member-Variablen
@@ -56,6 +47,7 @@
   * Structured Binding
   * Range-based `for`&ndash;Loop
   * C++ Standard-Attribute
+  * Vererbung: Schlüsselwörter `override`, `virtual`, `final`
   * Argument-Dependent Name Lookup (ADL) / *Koenig*-Lookup
 
 
@@ -110,8 +102,8 @@
   * Das *Erase-Remove*-Idiom
 
 
-## Eigenschaften von Datentypen zur Übersetzungszeit betrachten
-  * &ldquo;Type Traits&rdquo;
+## &ldquo;Type Traits&rdquo;
+  * Eigenschaften von Datentypen zur Übersetzungszeit betrachten / ändern
   * `decltype` und `std::declval`
   * `Iterator::value_type` und `Iterator::iterator_category`
   * `std::remove_reference`
@@ -159,13 +151,10 @@
 
 ## Neue Utility Klassen
   * `std::common_type`
-
   * `std::array`
-
   * `std::optional`
   * `std::variant`
   * `std::any`
-
   * `std::pair`
   * `std::tuple` 
 

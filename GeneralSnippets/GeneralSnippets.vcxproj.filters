@@ -710,6 +710,9 @@
     <None Include="Exercises\Exercises_16_GenericLambdas.md">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="InitializerList\cpp_initializer_list.svg">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Global\Dummy.h">
