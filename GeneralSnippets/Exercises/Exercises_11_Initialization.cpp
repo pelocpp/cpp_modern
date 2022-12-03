@@ -11,50 +11,38 @@ namespace Exercises_Initialization {
 
     namespace Exercise_01 {
 
-        template <typename T>
-        class MyContainer {
+        class IntegerContainer {
         private:
-            std::vector<T> m_data;
+            std::vector<int> m_data;
 
         public:
-            MyContainer() = default;
-
-            MyContainer(const T& d1, const T& d2) {
-                std::cout << "c'tor (const T&, const T&)" << std::endl;
-                m_data.push_back(d1);
-                m_data.push_back(d2);
+            IntegerContainer() {
+                std::cout << "default c'tor" << std::endl;
             }
 
-            MyContainer(std::initializer_list<T> data) : m_data(data) {
-                std::cout << "c'tor (std::initializer_list<T>)" << std::endl;
+            IntegerContainer(int n1, int n2) {
+                std::cout << "c'tor (int, int)" << std::endl;
+                m_data.push_back(n1);
+                m_data.push_back(n2);
             }
 
-            void operator()() {
-                std::cout << "  [";
-                for (auto data : m_data) {
-                    std::cout << data << ' ';
-                }
-                std::cout << ']' << std::endl;
+            IntegerContainer(std::initializer_list<int> data) : m_data{ data } {
+                std::cout << "c'tor (std::initializer_list<int>)" << std::endl;
+            }
+
+            IntegerContainer(const std::vector<int>& data) : m_data{ data } {
+                std::cout << "c'tor (std::vector<int>)" << std::endl;
             }
         };
 
         void testExercise_01() {
-            // using MyContainer with int
-            MyContainer<int> container1{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-            container1();
 
-            // using MyContainer with std::string
-            MyContainer<std::string> container2{ "range", "-", "based", "for", "loop" };
-            container2();
-
-            MyContainer<int> container3;
-            container3();
-            MyContainer<int> container4{};
-            container4();
-            MyContainer<int> container5(1, 2);
-            container5();
-            MyContainer<int> container6{ 1, 2 };
-            container6();
+            IntegerContainer container1{ {1, 2, 3, 4, 5, 6, 7, 8, 9, 10} };
+            IntegerContainer container2;
+            IntegerContainer container3{};
+            IntegerContainer container4(1, 2);
+            IntegerContainer container5{ 1, 2 };
+            IntegerContainer container6{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
         }
     }
 
@@ -144,8 +132,8 @@ namespace Exercises_Initialization {
 void test_exercises_initialization()
 {
     using namespace Exercises_Initialization;
-    // Exercise_01::testExercise_01();
-    Exercise_02::testExercise_02();
+    Exercise_01::testExercise_01();
+    // Exercise_02::testExercise_02();
 }
 
 // =====================================================================================

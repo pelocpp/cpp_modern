@@ -16,19 +16,12 @@ Erstellen Sie eine leeres Visual C++ Projekt,
 fügen Sie nachstehenden Quellcode dort ein und bringen Sie das Programm zum Laufen:
 
 ```cpp
-template <typename T>
-class MyContainer {
+class IntegerContainer {
 private:
-    std::vector<T> m_data;
+    std::vector<int> m_data;
 
 public:
-    void operator()() {
-        std::cout << "  [";
-        for (auto data : m_data) {
-            std::cout << data << ' ';
-        }
-        std::cout << ']' << std::endl;
-    }
+    // c'tors
 };
 
 int main () {
@@ -36,43 +29,39 @@ int main () {
 }
 ```
 
-Ergänzen Sie die Klasse `MyContainer` in der Weise,
+Ergänzen Sie die Klasse `IntegerContainer` in der Weise,
 dass Sie folgende Konstruktoren zur Verfügung haben:
 
   * Standardkonstruktor
-  * Konstruktor mit zwei Argumenten des Typs `T`
-  * Konstruktor mit Initialisierungsliste des Typs `T`
+  * Konstruktor mit zwei Argumenten des Typs `int`
+  * Konstruktor mit Initialisierungs-Liste des Typs `int`
 
 Testen Sie Ihre Realisierung mit folgenden Anweisungen:
 
 ```cpp
-// using MyContainer with int
-MyContainer<int> container1{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-container1();
-
-// using MyContainer with std::string
-MyContainer<std::string> container2{ "range", "-", "based", "for", "loop" };
-container2();
+IntegerContainer container1{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+IntegerContainer container2;
+IntegerContainer container3{};
+IntegerContainer container4(1, 2);
 ```
 
 Prüfen Sie nun, welche Instanziierung welchen Konstruktor aufruft:
 
-  * Instanz `MyContainer<int> container3;`
-  * Instanz `MyContainer<int> container4{ };`
-  * Instanz `MyContainer<int> container5(1, 2);`
-  * Instanz `MyContainer<int> container6{1, 2};`
+  * Instanz `IntegerContainer container1;`
+  * Instanz `IntegerContainer container2{ };`
+  * Instanz `IntegerContainer container3(1, 2);`
+  * Instanz `IntegerContainer container4{1, 2};`
 
-Entfernen Sie nun nach und nach einen Konstruktor, um auf diese Weise zu erkennen,
+Entfernen Sie nun wahlweise einen Konstruktor, um auf diese Weise zu erkennen,
 welche dieser Konstruktoren auch auf andere Konstruktoren ausweichen können!
 
 ---
 
-## Aufgabe 2: Zeitvergleich im Gebrauch von Vektoren und Initialisierunglisten
+## Aufgabe 2: Zeitvergleich im Gebrauch von Vektoren und Initialisierungs-Listen
 
 Die Übergabe einer Liste von Daten desselben Typs
-an eine Funktion (Methode) könnte man in C++ prinzipiell auf 2 Weisen
-realisieren:
-Mit einem Parameter des Typs `std::vector<>` oder `std::initializer_list<>`.
+an eine Funktion (Methode) könnte man in C++ prinzipiell auf zwei Weisen
+realisieren: Mit einem Parameter des Typs `std::vector<>` oder `std::initializer_list<>`.
 
 Man würde sogar beim Aufruf einer solchen Methode nicht einmal einen Unterschied
 in der Schreibweise erkennen,
@@ -107,7 +96,7 @@ transferData({
 Welches Ergebnis können Sie beobachten?
 
 *Hinweis*: Man könnte argumentieren, dass der Einsatz von `std::string`-Objekten
-zusätzliche Rechenzeit bzgl. der dynamischen Freispeicherverwaltung generiert.
+zusätzliche Rechenzeit bzgl. der dynamischen Freispeicherverwaltung in Anspruch nimmt.
 Dies ist in unserem Beispiel **nicht** der Fall, da hier auf Grund der kurzen Zeichenketten
 die SSO (*Small String Optimization*) zum Einsatz gelangt!
 

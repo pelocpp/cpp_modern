@@ -268,6 +268,7 @@ Siehe hierzu den [Quellcode](VariadicTemplate_01_Introduction.cpp).
 
 Siehe hierzu den [Quellcode](VariadicTemplate_01_Introduction.cpp).
 
+---
 
 ## Literaturhinweise:
 

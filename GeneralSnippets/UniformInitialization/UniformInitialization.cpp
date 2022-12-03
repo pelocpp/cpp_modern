@@ -1,55 +1,131 @@
 // =====================================================================================
-// Uniform Initialization
+// Uniform Initialization / Brace Initialization
 // =====================================================================================
 
 #include <iostream>
 #include <vector>
 #include <map>
+#include <array>
 #include <algorithm>
 
 namespace UniformInitialization {
 
     // =================================================================================
-    // built-in types: default initialization of miscellaneous variables rsp. objects   
+    // built-in types: default initialization of miscellaneous variables
 
     void test_01()
     {
-        int n{};                 // n equals 0
-        float f{};               // f equals 0.0
-        double d{};              // d equals 0.0
-        std::string s{};         // s equals ""
-        std::vector<float> v{};  // v equals an empty vector
+        int n{};              // n equals 0
+        float f{};            // f equals 0.0
+        double d{};           // d equals 0.0
+        unsigned long l{};    // l equals 0
+        size_t i{};           // i equals 0
 
         std::cout << "n: " << n << std::endl;
         std::cout << "f: " << f << std::endl;
         std::cout << "d: " << d << std::endl;
-        std::cout << "s: " << s << std::endl;
-        std::cout << "v.size(): " << v.size() << std::endl;
+        std::cout << "l: " << l << std::endl;
+        std::cout << "i: " << i << std::endl;
     }
 
     // =================================================================================
-    // built-in types: non default initialization of miscellaneous variables rsp. objects
+    // built-in types: non default initialization of miscellaneous variables
 
     void test_02()
     {
-        int n{ 1 };                // n equals 1
-        float f{ 1.5f };           // f equals 1.5
-        double d{ 2.5 };           // d equals 2.5
-        std::string s{ "123" };    // s equals "123"
+        int n{ 1 };          // n equals 1
+        float f{ 1.5f };     // f equals 1.5
+        double d{ 2.5 };     // d equals 2.5
 
         std::cout << "n: " << n << std::endl;
         std::cout << "f: " << f << std::endl;
         std::cout << "d: " << d << std::endl;
-        std::cout << "s: " << s << std::endl;
+    }
+
+    // =================================================================================
+    // user-defined types: structs
+
+    struct Struct
+    {
+        int m_i;
+        int m_j;
+    };
+
+    void test_03()
+    {
+        [[maybe_unused]] struct Struct obj1 {};        // obj1.m_i => 0, obj1.m_j => 0
+        [[maybe_unused]] struct Struct obj2 { 1, 2 };  // obj2.m_i => 1, obj2.m_j => 2
+        [[maybe_unused]] struct Struct obj3 { 3 };     // obj3.m_i => 3, obj3.m_j => 0
+        // gcc: warning: missing initializer for member 'Struct::m_j'
+    }
+
+    // struct with constructor
+    struct StructWithCTor
+    {
+        int m_i;
+        int m_j;
+
+        StructWithCTor(int i, int j) : m_i{ i }, m_j{ j } {}
+    };
+
+    void test_04()
+    {
+        struct StructWithCTor obj { 5, 6 };        // obj.m_i => 5, obj.m_j => 6
+    }
+
+    // =================================================================================
+    // user-defined types: classes
+
+    class Class
+    {
+    private:
+        int m_a;
+        int m_b;
+
+    public:
+        Class(int a, int b) : m_a{ a }, m_b{ b } {}
+    };
+
+    void test_05()
+    {
+        Class obj{ 11, 12 };  // obj.m_a => 11, obj.m_b => 12
+    }
+
+    class AnotherClass
+    {
+    private:
+        int m_a;
+        double m_b;
+
+    public:
+        AnotherClass() : m_a{ }, m_b{ } {}
+        AnotherClass(int a, double b = 0.0) : m_a{ a }, m_b{ b } {}
+
+        void operator() () { std::cout << "a: " << m_a << ", b: " << m_b << std::endl; }
+    };
+
+    void test_05_01()
+    {
+        AnotherClass obj1{};
+        AnotherClass obj2{ 42, 1.2 };
+        AnotherClass obj3{ 42 };
+
+        obj1();
+        obj2();
+        obj3();
     }
 
     // =================================================================================
     // standard STL container
 
-    void test_03()
+    void test_06()
     {
         std::vector<int> myArray{ 1, 2, 3, 4, 5 };
-        std::map<std::string, int> myMap{ { "Hans", 1958 }, { "Sepp", 1956 } };
+
+        std::map<std::string, int> myMap{
+            { "Hans", 1958 },
+            { "Sepp", 1956 } 
+        };
 
         std::for_each(
             std::begin(myArray), 
@@ -81,7 +157,7 @@ namespace UniformInitialization {
     // =================================================================================
     // dynamically allocated arrays
 
-    void test_04()
+    void test_07()
     {
         int* pi = new int[5]{ 1, 2, 3, 4, 5 };
         double* pd = new double[5]{ 1.0, 2.0, 3.0, 4.0, 5.0 };
@@ -103,7 +179,7 @@ namespace UniformInitialization {
     // =================================================================================
     // statically allocated arrays
 
-    void test_05()
+    void test_08()
     {
         int intArray[]{ 1, 2, 3, 4, 5 };
 
@@ -114,34 +190,34 @@ namespace UniformInitialization {
     }
 
     // =================================================================================
-    // user-defined types (classes)
+    // Nested Structures / *Brace Elision* 
 
-    class SomeClass
-    {
-    private:
-        int m_a;
-        double m_b;
-
-    public:
-        SomeClass() : m_a{ }, m_b{ } {}
-        SomeClass(int a, double b = 0.0) : m_a{ a }, m_b{ b } {}
-
-        void operator() () { std::cout << "a: " << m_a << ", b: " << m_b << std::endl; }
+    struct Inner {
+        int m_array[2];
     };
 
-    void test_06()
+    void test_09()
     {
-        SomeClass obj1 {}; 
-        SomeClass obj2 { 42, 1.2 };
-        SomeClass obj3 { 42 };
+        [[maybe_unused]] Inner inner1;                // uninitialized
+        [[maybe_unused]] Inner inner2{ };             // m_array[0] => 0 & m_array[1] => 0
+        [[maybe_unused]] Inner inner3{ { 1, 2 } };    // Direct initialisation
+        [[maybe_unused]] Inner inner4{ 1, 2 };        // Uses Brace Elision (!) of m_array
+    }
 
-        obj1();
-        obj2();
-        obj3();
+    void test_09_01()
+    {
+        // "regular" case:
+        // outer braces for the std::array,
+        // inner set for the (nested) C-style array.
+        [[maybe_unused]] std::array<int, 4> values1 { { 1, 2, 3, 4 } };
+
+        // Brace-elided initialization
+        [[maybe_unused]] std::array<int, 4> values2{ 1, 2, 3, 4 };
     }
 
     // =================================================================================
     // user-defined POD types (struct, 'plain-old-data')
+    // C++ designated initializers
 
     struct MyDataStruct
     {
@@ -160,7 +236,7 @@ namespace UniformInitialization {
         }
     };
 
-    void test_07()
+    void test_10()
     {
         MyDataStruct s{ 42, 1.2 };
         std::cout << "a: " << s.m_a << ", b: " << s.m_b << std::endl;
@@ -216,7 +292,7 @@ namespace UniformInitialization {
         }
     };
 
-    void test_08()
+    void test_11()
     {  
         MyAnotherClass obj1;
         MyAnotherClass obj2{ 11, 12, 13, 14, 15 };
@@ -239,11 +315,19 @@ void main_uniform_initialization()
     test_03();
     test_04();
     test_05();
+    test_05_01();
     test_06();
     test_07();
     test_08();
+    test_09();
+    test_09_01();
+    test_10();
+    test_11();
 }
 
 // =====================================================================================
 // End-of-File
 // =====================================================================================
+
+
+

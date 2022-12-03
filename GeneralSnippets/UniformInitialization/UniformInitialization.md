@@ -14,8 +14,9 @@ Siehe dazu auch das Sprachfeature [Default-Initialisierung für Member-Variablen]
 
 ---
 
-Die Initialisierung mit geschweiften Klammern '{' und '}' ist ab der Version C++ 11 eine einheitliche Methode zum Initialisieren von Daten.
-Sie wird auch als "*Uniform Initialization*" bezeichnet.
+Die Initialisierung mit geschweiften Klammern '{' und '}' ist ab der Version C++&ndash;11
+eine einheitliche Methode zum Initialisieren von Daten.
+Sie wird auch als &ldquo;*Uniform Initialization*&rdquo; oder als &ldquo;*Brace Initialization*&rdquo; bezeichnet.
 
 <img src="cpp_init.gif" width="400">
 
@@ -23,104 +24,193 @@ Abbildung 1: C++ und Initialisierung: *Relax*!
 
 ---
 
-*Vorbemerkung*:
-
-Bei der Initialisierung in C++ gilt es generell zwischen zwei verschiedenene Formen zu unterscheiden:
-
-  * Der sogenannten *direkten Initialisierung*, die ein Objekt mit einem expliziten Konstruktor und einem entsprechenden Satz an Konstruktorargumenten initialisiert.
-  * Der sogenannten *Kopier-Initialisierung*, die ein Objekt mit einem anderen Objekt initialisiert.
-
-```cpp
-std::string s1("test");   // direct initialization
-std::string s2 = "test";  // copy initialization
-```
-
-Diese beiden Varianten gibt es auch bei der *Uniform Initialization*, 
-man spricht dann syntaktisch von der so genannten "*Direct List*" bzw. "*Copy List*" Initialisierung:
-
-```cpp
-T object {other};     // direct list initialization
-T object = {other};   // copy list initialization
-```
-
----
-
 Es lassen sich mit geschweiften Klammern ("*Uniform Initialization*") alle möglichen Arten einer Variablen-Initialisierung (auch Objekte)
 mit einer einheitlichen Schreibweise initialisieren.
 Am besten studiert man die einzelnen Möglichkeiten an Hand der folgenden Systematisierung:
 
+  * Variablen elementaren Datentyps: Initialisierung mit datentyp-spezifischem Null-Wert
+  * Variablen elementaren Datentyps: Allgemeine Initialisierung
+  * Benutzerdefinierte Datentypen: Strukturen
+  * Benutzerdefinierte Datentypen: Klassen
+  * Standard STL Container
+  * Dynamisch allokierte Felder
+  * Statisch allokierte (bzw. definierte) Felder
+  * Geschachtelte Strukturen / *Brace Elision* (Entfernen von Klammern)
 
 
-  * Variablen elementaren Datentyps: Initialisierung mit datentyp-spezifischem Null-Wert.   
-  * Variablen elementaren Datentyps: allgemeine Initialisierung.
-  * Standard STL Container.
-  * Dynamisch allokierte Felder.
-  * Statisch allokierte (bzw. definierte) Felder.
-  * Benutzerdefinierte Objekte (C++ Klassen).
-  * Benutzerdefinierte Variable eines POD Typs (Struktur, 'Plain-Old-Data').
-  * Kombinationen dieser Regeln.
+#### Resümee
 
----
+Das Feature der *einheitliche Initialisierung* bringt zwei Vorteile mit sich:
 
-*Bemerkung*:
-
-Ein POD-Datentyp ist in C++ vereinfacht ausgedrückt ein Strukturtyp. Etwas ausführlicher betrachtet gilt folgende Definition:
-
-"*In C++ ist ein POD-Datentyp entweder ein skalarer Datentyp oder eine POD-Klasse. Eine POD-Klasse hat keinen benutzerdefinierten Kopier-Zuweisungs-Operator,
-keinen benutzerdefinierten Konstruktor und keine nicht-statischen Attribute, die nicht selbst PODs sind.
-Darüber hinaus muss eine POD-Klasse ein Aggregat-Typ oder eine `union` sein, das heißt,
-sie darf keine benutzerdefinierten Konstruktoren haben,
-keine nicht-statischen Attribute, die als `private` oder `protected` definiert sind, keine Basisklassen und keine virtuelle Funktionen.
-Der C++ -Standard enthält weitere Details über das Verhalten von PODs in C++.*"
-
----
-
-Die Ausgabe des Code-Snippets sieht so aus:
+  * Es lassen sich nun manche Konstrukte initialisieren, bei denen das bisher nicht möglich war:
+    * STL-Containerobjekte
+    * Arrays, die mit `new` allokiert wurden
+    * C-Arrays, die Member-Variablen sind
+  * Die Einheitlichkeit der neuen Initialisierungssyntax bringt es mit sich, dass man
+    bei konsequentem Einsatz der geschweiften Klammern für die Initialisierung nun leichter
+    zwischen Funktionsaufrufen und Initialisierungen unterscheiden kann:
+    
 
 ```cpp
-n: 0
-f: 0
-d: 0
-s:
-v.size(): 0
-n: 1
-f: 1.5
-d: 2.5
-s: 123
-1, 2, 3, 4, 5,
-Hans - 1958
-Sepp - 1956
-1, 2, 3, 4, 5,
-1, 2, 3, 4, 5,
-1, 2, 3, 4, 5,
-a: 0, b: 0
-a: 42, b: 1.2
-a: 42, b: 0
-a: 42, b: 1.2
-x: 111, y: 1.23
-x: 123, y: 99.9
-m_n: 98
-0: 10
-1: 20
-2: 30
-3: 40
-4: 50
-m_n: 99
-0: 11
-1: 12
-2: 13
-3: 14
-4: 15
-m_n: 26
-0: 21
-1: 22
-2: 23
-3: 24
-4: 25
-0: 50
-1: 51
-2: 52
+Foo f = Bar(1, 2, 3);   // Konstruktor oder Funktionsaufruf?
+Foo f = Bar{1, 2, 3};   // Konstruktor!
 ```
+
+---
+
+## Variablen elementaren Datentyps: Initialisierung mit datentyp-spezifischem Null-Wert
+
+```cpp
+int n{};                 // n equals 0
+float f{};               // f equals 0.0
+double d{};              // d equals 0.0
+unsigned long l{};       // l equals 0
+size_t i{};              // i equals 0
+```
+
+---
+
+## Variablen elementaren Datentyps: Allgemeine Initialisierung
+
+```cpp
+int n{ 1 };                // n equals 1
+float f{ 1.5f };           // f equals 1.5
+double d{ 2.5 };           // d equals 2.5
+```
+
+---
+
+## Benutzerdefinierte Datentypen: Strukturen
+
+Bei einer Struktur führt die einheitliche Initialisierung eine direkte Initialisierung ihrer Membervariablen durch:
+
+```cpp
+struct Struct
+{
+    int m_i;
+    int m_j;
+};
+
+void main()
+{
+    struct Struct obj1 {};        // obj1.m_i => 0, obj1.m_j => 0
+    struct Struct obj2 { 1, 2 };  // obj2.m_i => 1, obj2.m_j => 2
+    struct Struct obj3 { 3 };     // obj3.m_i => 3, obj3.m_j => 0
+}
+```
+
+Es ist auch möglich, einer Struktur einen Konstruktor hinzuzufügen.
+In diesem Fall resultiert die *Brace Initialization* in einem Aufruf an einen Konstruktor:
+
+```cpp
+struct StructWithCTor
+{
+    int m_i;
+    int m_j;
+
+    StructWithCTor(int i, int j) : m_i{ i }, m_j{ j } {}
+};
+
+void main()
+{
+    struct StructWithCTor obj { 5, 6 };        // obj.m_i => 5, obj.m_j => 6
+}
+```
+
+---
+
+## Benutzerdefinierte Datentypen: Klassen
+
+Bei Klassen führt die *Brace Initialization* zum Aufruf eines Konstruktors.
+
+```cpp
+class Class
+{
+private:
+    int m_a;
+    int m_b;
+
+public:
+    Class(int a, int b) : m_a{ a }, m_b{ b } {}
+};
+
+void main()
+{
+    Class obj{ 11, 12 };  // obj.m_a => 11, obj.m_b => 12
+}
+```
+
+---
+
+
+## Standard STL Container
+
+```cpp
+std::vector<int> myArray{ 1, 2, 3, 4, 5 };
+
+std::map<std::string, int> myMap{
+    { "Hans", 1958 },
+    { "Sepp", 1956 } 
+};
+```
+
+Diese Beispiele stehen zum Teil in Zusammenhang mit der Thematik der *Initialisierungs-Liste*.
+Im Beispiel des `std::map`-Objekts werden die inneren geschweiften Klammern auf einen
+Konstruktoraufruf von `std::pair` abgebildet (*einheitliche Initialisierung*).
+Die äußeren geschweiften Klammern erzeugen in diesem Beispiel eine Liste des Typs
+
+```cpp
+std::initializer_list<std::pair<std::string, int>>
+```
+
+welche dann als Argument für den Aufruf des Sequenzkonstruktors der Klasse `std::map` dient.
+
+---
+
+## Dynamisch allokierte Felder
+
+```cpp
+int* pi = new int[5]{ 1, 2, 3, 4, 5 };
+```
+
+
+---
+
+## Statisch allokierte (bzw. definierte) Felder
+
+```cpp
+int intArray[]{ 1, 2, 3, 4, 5 };
+```
+
+---
+
+## Geschachtelte Strukturen / *Brace Elision* (Entfernen von Klammern)
+
+```cpp
+struct Inner {
+    int m_array[2];
+};
+
+void main()
+{
+    Inner inner1;                // uninitialized
+    Inner inner2{ };             // m_array[0] => 0 & m_array[1] => 0
+    Inner inner3{ { 1, 2 } };    // Direct initialisation
+    Inner inner4{ 1, 2 };        // Uses Brace Elision (!) of m_array
+}
+```
+
+---
+
+## Literaturhinweise:
+
+Die Anregungen zu den Beispielen stammen teilweise aus
+
+[Bitesize Modern C++: std::initializer_list](https://blog.feabhas.com/2015/08/bitesize-modern-c-stdinitializer_list) (abgerufen am 03.12.2022)
+
+und
+
+[Brace initialization of user-defined types](https://blog.feabhas.com/2019/04/brace-initialization-of-user-defined-types) (abgerufen am 03.12.2022).
 
 ---
 
