@@ -263,7 +263,6 @@
     <None Include="..\Readme.md" />
     <None Include="Accumulate\StdAccumulate.md" />
     <None Include="Agenda\Agenda.md" />
-    <None Include="Agenda\Agenda_01.md" />
     <None Include="Allocator\StdAllocator.md" />
     <None Include="Any\cpp_std_any.svg" />
     <None Include="Any\StdAny.md" />

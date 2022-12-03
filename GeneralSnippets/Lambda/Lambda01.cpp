@@ -8,7 +8,7 @@
 #include <algorithm>
 #include <functional>
 
-namespace Lambda {
+namespace Lambdas {
 
     bool myCompare (int n1, int n2) {
         return n1 < n2;
@@ -69,7 +69,7 @@ namespace Lambda {
     void test_03() {
 
         // shortest lambda on earth: no parameters, capturing and doing nothing
-        auto nothing = []{};
+        auto nothing = [] {};
         nothing();
 
         // c'tor notation
@@ -97,8 +97,9 @@ namespace Lambda {
     void test_05() {
 
         // defining new variables in the lambda capture:
-        // we can declare a new variable that is only visible in the scope of the lambda.
-        // we do so by defining a variable in the lambda-capture without specifying its type
+        // we can declare a new variable that is only visible
+        // in the scope of the lambda: We do so by defining a variable
+        // in the lambda-capture without specifying its type:
 
         // lambda with variable definition
         auto lambda = [variable = 10]() { return variable; };
@@ -181,61 +182,34 @@ namespace Lambda {
 
     void test_08() {
 
-        // Example demonstrating so called 'Currying':
-
-        // This means that we take a function that can accept some parameters
-        // and store it in another function object, which accepts *fewer* parameters.
-
-        // In our example, we define a 'plusTen' function which accepts a single parameter.
-        // This parameter is forwarded to the 'plus' function. The second parameter equals 10,
-        // which is being saved in the function object:
-
-        auto plus = [](auto l, auto r) { return l + r; };
-
-        auto plusTen = [plus](int x) { return plus(10, x); };
-
-        std::cout << plusTen(5) << std::endl;
-    }
-
-    void test_10() {
-
         // demonstrating 'noexcept'
         auto itsOne([] () noexcept { return 1; });
         auto itsTwo = [] () noexcept { return 2; };
         std::cout << itsOne() << ", " << itsTwo() << std::endl;
     }
 
-    // similarities between templates and generic lambdas
-    template <typename T, typename U>
-    auto add = [](const T& t, const U& u) -> decltype (t + u)
-    {
-        return t + u;
-    };
+    void test_09() {
+        // IIFE -Immediately Invoked Functional Expression:
+        // Inline-definition and direct invocation of lambda funtion:
+        
+        std::cout << [](int l, int r) { return l + r; } (11, 12) << std::endl;
 
-    void test_11() {
+        // Use case for IIFE:
+        // This kind of expression might be useful when you have
+        // a complex initialisation of a const  object:
 
-        int n = 1;
-        double d = 2.7;
+        auto const ConstValue = [] () {
+            /* several lines of code ... - "very complex" computation */
+            return 123;
+        }();
 
-        auto result1 = add<int, double>(n, d);
-        std::cout << result1 << std::endl;
+        std::cout << "Const Value: " << ConstValue << std::endl;
     }
-
-    void test_12() {
-        // works with anything that defines the plus 'operator+'
-        auto plus = [](auto l, auto r) { return l + r; };
-        std::cout << plus(1, 2) << std::endl;
-        std::cout << plus(std::string{ "a" }, "b") << std::endl;
-
-        // inline-definition and direct invocation of lambda funtion
-        std::cout << [](auto l, auto r) { return l + r; } (11, 12) << std::endl;
-    }
-
 }
 
 void main_lambdas()
 {
-    using namespace Lambda;
+    using namespace Lambdas;
     test_01();
     test_02();
     test_03();
@@ -244,9 +218,7 @@ void main_lambdas()
     test_06();
     test_07();
     test_08();
-    test_10();
-    test_11();
-    test_10();
+    test_09();
 }
 
 // =====================================================================================

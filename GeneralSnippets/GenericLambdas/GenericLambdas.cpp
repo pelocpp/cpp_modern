@@ -287,6 +287,43 @@ namespace GenericLambdas {
 
     // ---------------------------------------------------------------------
 
+    void test_15() {
+
+        // Example demonstrating so called 'Currying':
+
+        // This means that we take a function that can accept some parameters
+        // and store it in another function object, which accepts *fewer* parameters.
+
+        // In our example, we define a 'plusTen' function which accepts a single parameter.
+        // This parameter is forwarded to the 'plus' function.
+        // The second parameter equals 10, which is being saved in the function object:
+
+        auto plus = [](auto l, auto r) { return l + r; };
+
+        auto plusTen = [plus](int x) { return plus(10, x); };
+
+        std::cout << plusTen(5) << std::endl;
+    }
+
+    // ---------------------------------------------------------------------
+
+    // correlations between templates and lambdas
+    template <typename T, typename U>
+    auto add = [](const T& t, const U& u) -> decltype (t + u)
+    {
+        return t + u;
+    };
+
+    void test_16() {
+
+        int n = 1;
+        double d = 2.7;
+
+        auto result1 = add<int, double>(n, d);
+        std::cout << result1 << std::endl;
+    }
+
+    // ---------------------------------------------------------------------
 }
 
 void main_generic_lambdas()
@@ -306,6 +343,8 @@ void main_generic_lambdas()
     test_12();
     test_13();
     test_14();
+    test_15();
+    test_16();
 }
 
 // =====================================================================================

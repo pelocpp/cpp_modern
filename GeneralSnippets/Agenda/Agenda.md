@@ -9,7 +9,6 @@
   * RValue/LValue
   * &ldquo;Big-Five&rdquo;
   * &ldquo;Rule of Zero&rdquo; 
-  * Memory Leaks Detection
 
 
 ## `auto`
@@ -25,8 +24,9 @@
   * Historische Betrachtung (Funktionen, Funktoren, Lambdas)
   * *Capture*-Klausel
   * *Closure* von Lambdas
-  * STL-Algorithmen mit Lambda-Ausdrücken
-  * Generische Lambdas
+  * Lambdas und `std::function<T>`
+  * Zusammenhang Lambda-FUnktion und Funktor
+  * IIFE -Immediately Invoked Functional Expression (Lambda)
 
 
 ## Generische Lambda Ausdrücke
@@ -35,6 +35,7 @@
   * Lambda Ausdrücke mit `template`-Header
   * *Perfect Forwarding* mit generischen Lambdas
   * Rekursive Lambda Ausdrücke
+  * *Currying* in C++
 
 
 ## Initialisierung
@@ -55,7 +56,7 @@
   * Zeiger mit einem Besitzer: `std::unique_ptr`
   * Intelligenter Zeiger mit Referenzzählung: `std::shared_ptr`
   * Spezieller intelligenter Zeiger in Verbindung mit `std::shared_ptr`: `std::weak_ptr`
-
+  * Memory Leaks Detection
 
 ## `constexpr`
   * `constexpr` Variablen
@@ -98,7 +99,8 @@
   * `std::generate`
   * `std::accumulate`
   * `std::transform`
-  * `std::back_inserter` (Iterator)
+  * `std::back_inserter` (Iterator-Adapter)
+  * STL-Algorithmen und Lambda-Ausdrücke
   * Das *Erase-Remove*-Idiom
 
 
@@ -122,8 +124,6 @@
   * `constexpr_if`
   * `std::apply`
   * `std::invoke`
-  * Template Template Parameter
-  * Static Polymorphism
 
 
 ## Folding
