@@ -75,7 +75,7 @@ realisieren:
 Mit einem Parameter des Typs `std::vector<>` oder `std::initializer_list<>`.
 
 Man würde sogar beim Aufruf einer solchen Methode nicht einmal einen Unterschied
-in der Schreibnweise erkennen,
+in der Schreibweise erkennen,
 wenn die Daten der Liste *in-place* beim Aufruf platziert werden:
 
 ```cpp
@@ -83,10 +83,10 @@ transferData({ "A", "B", "C", "D", "E", "F", /* ... */ "X", "Y", "Z" });
 ```
 
 Ungeachtet der Schreibweise gibt es aber einen signifikanten Unterschied
-im Gebrauch eines `std::initializer_list<>`- oder `std::vector<>`-Objekts:
+im Gebrauch eines `std::initializer_list<>`- bzw. `std::vector<>`-Objekts:
 
-  * `std::vector<>` &ndash; Daten liegen auf dem Heap.
-  * `std::initializer_list<>` &ndash; Daten liegen auf dem Stack.
+  * `std::vector<>` &ndash; Daten liegen auf dem *Heap*.
+  * `std::initializer_list<>` &ndash; Daten liegen auf dem *Stack*.
 
 Prinzipiell ist der Einsatz der dynamischen Speicherverwaltung Laufzeit-intensiver,
 da Methoden der Freispeicherverwaltung involviert sind (`new`, `delete`).
@@ -94,7 +94,7 @@ da Methoden der Freispeicherverwaltung involviert sind (`new`, `delete`).
 Realisieren Sie zwei Überladungen einer Methode `transferData`,
 jeweils mit einem Parameter des Typs `std::initializer_list<>` bzw. `std::vector<>`.
 Rufen Sie die beiden Methoden mit einer Liste von `std::string`-Objekten auf
-und stellen Sie einen Zeitvergleich an:
+und stellen Sie einen Laufzeitvergleich an:
 
 ```cpp
 transferData({
@@ -104,12 +104,12 @@ transferData({
 });
 ```
 
-Welches Laufzeitergebnis können Sie beobachten?
+Welches Ergebnis können Sie beobachten?
 
 *Hinweis*: Man könnte argumentieren, dass der Einsatz von `std::string`-Objekten
 zusätzliche Rechenzeit bzgl. der dynamischen Freispeicherverwaltung generiert.
-Dies ist **nicht** der Fall, da in unserem Beispiel (kurze Zeichenkette)
-die SSO (*Small String Optimization*) vorhanden ist!
+Dies ist in unserem Beispiel **nicht** der Fall, da hier auf Grund der kurzen Zeichenketten
+die SSO (*Small String Optimization*) zum Einsatz gelangt!
 
 Zum Messen der Zeit können Sie folgende Code-Snippets verwenden:
 
