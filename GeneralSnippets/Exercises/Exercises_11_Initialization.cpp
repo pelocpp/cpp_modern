@@ -77,20 +77,22 @@ namespace Exercises_Initialization {
         class SomeStrings
         {
         public:
-            static void transferVector(const std::vector<std::string>& strings)
+            static auto transferData(const std::vector<std::string>& strings)
             {
-                // prevent optimizer to work to hard ...
+                // prevent optimizer to work too hard ...
                 auto& first = strings.front();
                 auto& last = strings.back();
+                return first + last;
                 //std::cout << "first=" << first << std::endl;
                 //std::cout << "last=" << last << std::endl;
             }
 
-            static void transferVectorList(const std::initializer_list<std::string> strings)
+            static auto transferData(const std::initializer_list<std::string> strings)
             {
-                // prevent optimizer to work to hard ...
+                // prevent optimizer to work too hard ...
                 const auto& first = strings.begin();
                 const auto& last = std::prev(strings.end());
+                return *first + *last;
                 //std::cout << "first=" << *first << std::endl;
                 //std::cout << "last=" << *last << std::endl;
             }
@@ -106,7 +108,7 @@ namespace Exercises_Initialization {
                 for (size_t i{}; i != MaxIteration; ++i) {
 
                     // heap-based transfer of strings
-                    SomeStrings::transferVector(
+                    SomeStrings::transferData(
                         std::vector<std::string> { 
                         "A", "B", "C", "D", "E", "F", "G", "H", "I",
                         "J", "K", "L", "M", "N", "O", "P", "Q", "R",
@@ -124,7 +126,7 @@ namespace Exercises_Initialization {
                 for (size_t i{}; i != MaxIteration; ++i) {
 
                     // stack-based transfer of strings
-                    SomeStrings::transferVectorList(
+                    SomeStrings::transferData(
                         std::initializer_list<std::string> {
                         "A", "B", "C", "D", "E", "F", "G", "H", "I",
                         "J", "K", "L", "M", "N", "O", "P", "Q", "R",

@@ -130,7 +130,7 @@ int main()
         //main_decltype();
         //main_default_initialization();
         //main_erase_remove_idiom();
-        //main_exercises();
+        main_exercises();
         //main_expression_templates();
         //main_generate();
         //main_generic_lambdas();
