@@ -133,7 +133,7 @@ void test_exercises_initialization()
 {
     using namespace Exercises_Initialization;
     Exercise_01::testExercise_01();
-    // Exercise_02::testExercise_02();
+    Exercise_02::testExercise_02();
 }
 
 // =====================================================================================

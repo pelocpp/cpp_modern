@@ -10,15 +10,34 @@ namespace StringViewDemonstration {
 
     void test_01()
     {
-        std::string s = "12345";
-        std::cout << s << std::endl;
+        std::string_view sv("The quick brown fox jumps over the lazy dog");  // Konstante Zeichenketten
 
-        s[2] = '!';
-        std::cout << s << std::endl;
+        std::string s("The quick brown fox jumps over the lazy dog");  //  Heap
+
+        // sv[0] = '?';   // error
+        char ch = sv[0];
+    }
+
+    void test_02()
+    {
+        std::string s("How vexingly quick daft zebras jump!");
 
         std::string_view sv(s);
+
         std::cout << sv << std::endl;
-        // sv[2] = '?';  // 'sv': you cannot assign to a variable that is const
+
+        s += "Sixty zippers were quickly picked from the woven jute bag";  // the content of s is reallocated !
+
+        std::cout << sv << std::endl;
+    }
+
+    void test_03()
+    {
+        using namespace std::literals; // easiest way to access the s and sv suffixes
+
+        std::cout << "foo" << std::endl;    // no suffix: C-style string literal
+        std::cout << "goo"s << std::endl;   // s suffix:  std::string literal
+        std::cout << "moo"sv << std::endl;  // sv suffix: std::string_view literal
     }
 
     uint32_t countUpperCaseChars(std::string_view sv) {
@@ -31,7 +50,7 @@ namespace StringViewDemonstration {
         return result;
     }
 
-    void test_02()
+    void test_04()
     {
         std::string_view sv("DiesIstEinLangerSatz");
         uint32_t count = countUpperCaseChars(sv);
@@ -59,6 +78,8 @@ void main_string_view()
     using namespace StringViewDemonstration;
     test_01();
     test_02();
+    test_03();
+    test_04();
 }
 
 // =====================================================================================

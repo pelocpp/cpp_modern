@@ -130,7 +130,7 @@ int main()
         //main_decltype();
         //main_default_initialization();
         //main_erase_remove_idiom();
-        main_exercises();
+        //main_exercises();
         //main_expression_templates();
         //main_generate();
         //main_generic_lambdas();
@@ -169,7 +169,7 @@ int main()
         //main_sso();
         //main_standard_library_STL();
         //main_static_assert();
-        //main_string_view();
+        main_string_view();
         //main_structured_binding();
         //main_class_templates_basics_01();
         //main_class_templates_basics_02();
