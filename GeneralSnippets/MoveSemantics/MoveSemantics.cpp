@@ -214,37 +214,27 @@ namespace MoveSemantics {
         std::cout << data << std::endl;
     }
 
-    void test_02_move_semantics() {
-
-        // copy constructing
-        BigData data1(10, 1);
-        std::cout << data1 << std::endl;
-        BigData data2(data1);
-        std::cout << data1 << std::endl;
-        std::cout << data2 << std::endl;
-
-        // copy assigning
-        BigData data3;
-        data3 = data1;
-
-        // move constructing
-        BigData data10(std::move(BigData(10, 1)));
-
-        // move assigning
-        BigData data11;
-        data11 = std::move(data1);
-    }
-
-    void test_03_demonstrate_move_ctor() {
+    void test_02_demonstrate_move_ctor() {
 
         std::vector<BigData> vec;
         vec.push_back(BigData(10, 1));
     }
 
-    void test_04_demonstrate_move_assignment() {
+    void test_03_demonstrate_move_assignment() {
 
         BigData data;
         data = BigData(10, 1);
+    }
+
+    void test_04_demonstrate_move_assignment() {
+
+        std::vector<BigData> vec;
+
+        BigData someData(10, 1);
+
+        vec.push_back(someData);
+        // vs.
+        vec.push_back(std::move(someData));
     }
 }
 
@@ -252,8 +242,8 @@ void main_move_semantics()
 {
     using namespace MoveSemantics;
     test_01_move_semantics();
-    test_02_move_semantics();
-    test_03_demonstrate_move_ctor();
+    test_02_demonstrate_move_ctor();
+    test_03_demonstrate_move_assignment();
     test_04_demonstrate_move_assignment();
 }
 

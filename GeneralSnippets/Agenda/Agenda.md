@@ -4,11 +4,10 @@
 
 ---
 
-## Move-Semantik:
-  * &ldquo;Big-Three&rdquo;
-  * RValue/LValue
-  * &ldquo;Big-Five&rdquo;
-  * &ldquo;Rule of Zero&rdquo; 
+## Verschiebe-Semantik
+  * *RValues* und *LValues*
+  * Verschiebe-Semantik (*Move*&ndash;*Semantics*)
+  * &ldquo;Big-Three&rdquo;, &ldquo;Big-Five&rdquo; und &ldquo;Rule of Zero&rdquo; 
 
 
 ## `auto`
@@ -104,6 +103,12 @@
   * Das *Erase-Remove*-Idiom
 
 
+## Metaprogramming
+  * Grundlagen
+  * Wiederholungsanweisung, bedingte Anweisung und Rückgabewert
+  * List Processing
+
+
 ## &ldquo;Type Traits&rdquo;
   * Eigenschaften von Datentypen zur Übersetzungszeit betrachten / ändern
   * `decltype` und `std::declval`
@@ -129,12 +134,6 @@
 ## Folding
   * Grundlagen
   * Folding &ldquo;über einem Komma&rdquo;
-
-
-## Metaprogramming
-  * Grundlagen
-  * Wiederholungsanweisung, bedingte Anweisung und Rückgabewert
-  * List Processing
 
 
 ## Expression Templates / Lazy Evaluation

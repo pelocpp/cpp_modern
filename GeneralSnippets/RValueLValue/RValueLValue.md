@@ -1,4 +1,4 @@
-# RValue Referenzen / LValue Referenzen
+# *RValues* und *LValues*
 
 [Zurück](../../Readme.md)
 
@@ -8,7 +8,10 @@
 
 ---
 
-*Vorab*:
+*RValues* und *LValues* zahlen in C++ zu so genannten *Wertkategorien*.
+Auf Basis dieser Wertkategorien gibt es für den C++&ndash;Übersetzer Regeln,
+die dieser beim Erstellen, Kopieren und Verschieben temporärer Objekte
+während der Auswertung eines Ausdrucks befolgen muss.
 
 Unter einem *RValue* verstehen wir
 
