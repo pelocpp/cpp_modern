@@ -87,16 +87,6 @@ public:
 };
 </pre>
 
-Oder etwa an folgendem realen Beispiel:
-
-<pre>
-template <typename Type, typename... TArgs>
-<b>auto</b> make_unique(TArgs&&... args) // no return type
-{
-    return std::unique_ptr<Type>(new Type(std::forward<TArgs>(args)...));
-}
-</pre>
-
 **Beachte**:
 
 *Automatic Return Type Deduction* zieht einen interessanten Anwendungsfall nach sich:

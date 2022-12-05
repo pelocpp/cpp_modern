@@ -50,7 +50,7 @@ Prinzipiell kann die Move-Semantik auf dreierlei Weisen realisiert werden:
 
 *Rule of Zero*:
 
-  * Vermeiden Sie Pointer, die mit `new` allokiert wurden.
+  * Es dürfen keine Zeiger vorhanden sein, die mit `new` allokiert wurden.
   * Verwenden Sie Container der STL.
   * Verwenden Sie *Smart Pointer*.
 

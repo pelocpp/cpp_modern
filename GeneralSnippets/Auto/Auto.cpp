@@ -57,12 +57,6 @@ namespace Auto_Examples {
         auto getMobileNumber() const { return m_number; }
     };
 
-    template <typename T, typename... TArgs>
-    auto my_make_unique(TArgs&&... args) // no return type
-    {
-        return std::unique_ptr<T>(new T(std::forward<TArgs>(args)...));
-    }
-
     // ---------------------------------------------------------------------
 
     auto make_planet()

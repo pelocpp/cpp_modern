@@ -24,7 +24,7 @@
   * *Capture*-Klausel
   * *Closure* von Lambdas
   * Lambdas und `std::function<T>`
-  * Zusammenhang Lambda-FUnktion und Funktor
+  * Zusammenhang Lambda-Funktion und Funktor
   * IIFE -Immediately Invoked Functional Expression (Lambda)
 
 
