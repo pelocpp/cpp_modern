@@ -32,6 +32,18 @@ Eine mögliche *per-Reference*-Übergabe könnte möglichen Optimierungen des Compil
 
 ---
 
+## Zusammenspiel der Klassen `std::initializer_list` und `std::vector`
+
+Die Klasse `std::vector` ist dafür ausgelegt,
+mit einem `std::initializer_list`-Objekt initialisiert zu werden:
+
+```cpp
+std::initializer_list<int> list{ 1, 2, 3, 4, 5 };
+std::vector<int> vec{ list };
+```
+
+---
+
 ## Konstruktoren mit einem `std::initializer_list<T>`-Parameter
 
 Um für Konstruktoren eine variable Anzahl von Parametern (desselben Typs) zu ermöglichen,
@@ -43,8 +55,8 @@ der das Klassentemplate `std::initializer_list<>` verwendet.
 *Beispiel*:
 
 ```cpp
-std::map (std::initializer_list<T> init, const Allocator&);
-std::vector (std::initializer_list<T> init, const Allocator&);
+std::map (std::initializer_list<T> init);
+std::vector (std::initializer_list<T> init);
 ```
 
 Die Anweisung
@@ -62,7 +74,19 @@ und benutzt dieses dann anschließend, um den entsprechenden Konstruktor des Vekt
 
 
 Sequenzkonstruktoren lassen sich auch in benutzer-definierten Klassen &ndash; oder auch 
-Funktionen/Methoden &ndash; einsetzen.
+Funktionen/Methoden &ndash; einsetzen:
+
+```cpp
+class Polygon {
+public:
+    Polygon(std::initializer_list<Point> elements)
+        : m_elements{ elements } {};
+    ...
+
+private:
+    std::vector<Point> m_elements;
+};
+```
 
 Bei Funktionen, die eine Initialisierungs-Liste als Parameter haben,
 sind die geschweiften Klammern direkt als Argument anzugeben:
@@ -72,7 +96,6 @@ int sum = adder( { 1, 3, 5, 7, 9 } );
 ```
 
 ## Regeln für Klassen mit Konstruktoren mit `std::initializer_list`-Parameter
-
 
 Unterschiedliche Deklarationen von Konstruktoren in einer Klasse
 im Zusammenspiel mit `std::initializer_list<T>`-Parametern
@@ -84,14 +107,16 @@ public:
     TinyContainer() {}
     TinyContainer(int value) {}
     TinyContainer(std::initializer_list<int>) {};
-    TinyContainer(std::vector<int>) {};
+    TinyContainer(const std::vector<int>&) {};
 };
 
 void test_03() {
-    TinyContainer tc1{ 1, 2, 3, 4 };  // ==> TinyContainer::TinyContainer (std::initializer_list<int>)
-    TinyContainer tc2{ 1 };           // ==> TinyContainer::TinyContainer (std::initializer_list<int>)
-    TinyContainer tc3(1);             // ==> TinyContainer::TinyContainer (int)
-    TinyContainer tc4{ };             // ==> TinyContainer::TinyContainer ()
+    TinyContainer tc0;                                 // TinyContainer::TinyContainer ()
+    TinyContainer tc1{ 1, 2, 3, 4 };                   // TinyContainer::TinyContainer (std::initializer_list<int>)
+    TinyContainer tc2{ 1 };                            // TinyContainer::TinyContainer (std::initializer_list<int>)
+    TinyContainer tc3(1);                              // TinyContainer::TinyContainer (int)
+    TinyContainer tc4{ };                              // TinyContainer::TinyContainer ()
+    TinyContainer tc5{ std::vector<int> { 1, 2, 3} };  // TinyContainer::TinyContainer (const std::vector<int>&)
 }
 ```
 

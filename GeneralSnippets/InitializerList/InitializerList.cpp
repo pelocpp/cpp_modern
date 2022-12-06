@@ -41,35 +41,42 @@ namespace InitializerList {
 
     // =================================================================================
 
-    class Position {
+    void test_02() {
+        std::initializer_list<int> list{ 1, 2, 3, 4, 5 };
+        std::vector<int> vec{ list };
+    }
+
+    // =================================================================================
+
+
+    class Point {
     public:
-        Position() = default;
-        Position(double x, double y) : m_x{ x }, m_y{ y } {}
+        Point() : Point(0.0, 0.0) {}
+        Point(double x, double y) : m_x{ x }, m_y{ y } {}
 
         double X() const { return m_x; };
         double Y() const { return m_y; };
 
     private:
-        double m_x{ };
-        double m_y{ };
+        double m_x;
+        double m_y;
     };
 
     // container-like classes
-    class Path {
+    class Polygon {
     public:
-        Path(std::initializer_list<Position> elements) 
+        Polygon(std::initializer_list<Point> elements)
             : m_elements{ elements } {};
 
     private:
-        std::vector<Position> m_elements;
+        std::vector<Point> m_elements;
     };
 
-    class FixedSizePath {
+    class FixedSizePolygon {
     public:
+        FixedSizePolygon(std::initializer_list<Point> elements) {
 
-        FixedSizePath(std::initializer_list<Position> elements) {
-
-            const Position* iter = std::begin(elements);
+            const Point* iter = std::begin(elements);
             size_t numElems = (elements.size() <= 16) ? elements.size() : 16;
 
             for (size_t i{ }; i != numElems; ++i) {
@@ -79,23 +86,23 @@ namespace InitializerList {
         }
 
     private:
-        std::array<Position, 6> m_elements;
+        std::array<Point, 6> m_elements;
     };
 
-    void test_02() {
+    void test_03() {
 
-        Path track1 { 
-            Position { 45.0, 45.0 },
-            Position { 60.0, 60.0 },
-            Position { 120.0, 120.0 },
-            Position { 180.0, 180.0 }
+        Polygon polygon1 {
+            Point { 45.0, 45.0 },
+            Point { 60.0, 60.0 },
+            Point { 120.0, 120.0 },
+            Point { 180.0, 180.0 }
         };
 
-        FixedSizePath track2{
-            Position { 45.0, 45.0 },
-            Position { 60.0, 60.0 },
-            Position { 120.0, 120.0 },
-            Position { 180.0, 180.0 }
+        FixedSizePolygon polygon2 {
+            Point { 45.0, 45.0 },
+            Point { 60.0, 60.0 },
+            Point { 120.0, 120.0 },
+            Point { 180.0, 180.0 }
         };
     }
 
@@ -107,14 +114,16 @@ namespace InitializerList {
         TinyContainer() {}
         TinyContainer(int value) {}
         TinyContainer(std::initializer_list<int>) {};
-        TinyContainer(std::vector<int>) {};
+        TinyContainer(const std::vector<int>&) {};
     };
 
-    void test_03() {
-        TinyContainer tc1{ 1, 2, 3, 4 };  // TinyContainer::TinyContainer (std::initializer_list<int>)
-        TinyContainer tc2{ 1 };           // TinyContainer::TinyContainer (std::initializer_list<int>)
-        TinyContainer tc3(1);             // TinyContainer::TinyContainer (int)
-        TinyContainer tc4{ };             // TinyContainer::TinyContainer ()
+    void test_04() {
+        TinyContainer tc0;                                 // TinyContainer::TinyContainer ()
+        TinyContainer tc1{ 1, 2, 3, 4 };                   // TinyContainer::TinyContainer (std::initializer_list<int>)
+        TinyContainer tc2{ 1 };                            // TinyContainer::TinyContainer (std::initializer_list<int>)
+        TinyContainer tc3(1);                              // TinyContainer::TinyContainer (int)
+        TinyContainer tc4{ };                              // TinyContainer::TinyContainer ()
+        TinyContainer tc5{ std::vector<int> { 1, 2, 3} };  // TinyContainer::TinyContainer (const std::vector<int>&)
     }
 
     // =================================================================================
@@ -147,7 +156,7 @@ namespace InitializerList {
         return os;
     }
 
-    void test_04() {
+    void test_05() {
         MyPeople people({ "Hans", "Sepp", "Franz", "Anton" });
         std::cout << people << std::endl;
 
@@ -179,7 +188,7 @@ namespace InitializerList {
         std::cout << " End of list." << std::endl;
     }
 
-    void test_05() {
+    void test_06() {
         // testing generic functions expecting lists
 
         printMe({ 11, 12, 13, 14, 15 });
@@ -212,6 +221,7 @@ void main_initializer_list()
     test_03();
     test_04();
     test_05();
+    test_06();
 }
 
 // =====================================================================================

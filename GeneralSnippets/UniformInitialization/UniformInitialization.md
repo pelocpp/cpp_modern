@@ -40,7 +40,7 @@ Am besten studiert man die einzelnen Möglichkeiten an Hand der folgenden Systema
 
 #### Resümee
 
-Das Feature der *einheitliche Initialisierung* bringt zwei Vorteile mit sich:
+Das Feature der *einheitlichen Initialisierung* bringt zwei Vorteile mit sich:
 
   * Es lassen sich nun manche Konstrukte initialisieren, bei denen das bisher nicht möglich war:
     * STL-Containerobjekte
@@ -148,7 +148,8 @@ void main()
 ```cpp
 std::vector<int> myArray{ 1, 2, 3, 4, 5 };
 
-std::map<std::string, int> myMap{
+std::map<std::string, int> myMap
+{
     { "Hans", 1958 },
     { "Sepp", 1956 } 
 };
