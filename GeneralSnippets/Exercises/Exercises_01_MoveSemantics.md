@@ -41,23 +41,23 @@ public:
     }
 };
 
-int main() {
-
+int main()
+{
     // create a person with some initial values
-    Person donald{ "Dagobert Duck" };
+    Person dagobert{ "Dagobert Duck" };
     for (int value : { 1, 2, 3, 4, 5, 6, 7, 8, 9 }) {
-        donald.addValue(value);
+        dagobert.addValue(value);
     }
 
     // print person
-    std::cout << "Person: " << donald << std::endl;
+    std::cout << "Person: " << dagobert << std::endl;
 
     // insert person into a collection
     std::vector<Person> persons;
-    persons.push_back(donald);
+    persons.push_back(dagobert);
 
     // print person again
-    std::cout << "Person: " << donald << std::endl;
+    std::cout << "Person: " << dagobert << std::endl;
 
     return 0;
 }
@@ -66,11 +66,11 @@ int main() {
 Der Ausgabe-Operator `<<` der Klasse `Person` wird in dem Beispiel-Codefragment zweimal aufgerufen.
 Betrachten Sie die Ausgaben im Detail.
 
-Offensichtlich wird von der Instanz `donald` im Container-Objekt `persons` durch den Aufruf von `push_back`
+Offensichtlich wird von der Instanz `dagobert` im Container-Objekt `persons` durch den Aufruf von `push_back`
 eine Kopie angelegt.
-Wie könnten Sie bewirken, dass die vorliegende `donald`-Instanz in das Container-Objekt *verschoben* wird?
+Wie könnten Sie bewirken, dass die vorliegende `dagobert`-Instanz in das Container-Objekt *verschoben* wird?
 Es ist zu diesem Zweck nur eine einzige Zeile des vorliegenden Quellcodes abzuändern!
-Welche Auswirkung auf das `donald`-Objekt können Sie jetzt bei Ausführung des Programms beobachten?
+Welche Auswirkung auf das `dagobert`-Objekt können Sie jetzt bei Ausführung des Programms beobachten?
 
 *Zusatzaufgabe*:
 Die Verschiebe-Semantik wird von benutzerdefinierten Klassen nur *automatisch* bereitgestellt,

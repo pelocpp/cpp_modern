@@ -32,14 +32,7 @@ namespace RangeBasedForLoop {
     void test_01()
     {
         // container of integral data type
-        std::vector<int> vec;
-        vec.push_back(1);
-        vec.push_back(2);
-        vec.push_back(3);
-        vec.push_back(4);
-        vec.push_back(7);
-        vec.push_back(0);
-        vec.push_back(9);
+        std::vector<int> vec{ 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
         // =========================================================================
         // "Classic style" examples

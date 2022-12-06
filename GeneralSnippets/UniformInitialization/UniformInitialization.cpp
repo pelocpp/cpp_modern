@@ -53,6 +53,7 @@ namespace UniformInitialization {
 
     void test_03()
     {
+        [[maybe_unused]] struct Struct obj0;           // uninitialized !!!
         [[maybe_unused]] struct Struct obj1 {};        // obj1.m_i => 0, obj1.m_j => 0
         [[maybe_unused]] struct Struct obj2 { 1, 2 };  // obj2.m_i => 1, obj2.m_j => 2
         [[maybe_unused]] struct Struct obj3 { 3 };     // obj3.m_i => 3, obj3.m_j => 0
@@ -65,12 +66,12 @@ namespace UniformInitialization {
         int m_i;
         int m_j;
 
-        StructWithCTor(int i, int j) : m_i{ i }, m_j{ j } {}
+        StructWithCTor(int i, int j) : m_i{ 2 * i }, m_j{ 2 * j } {}
     };
 
     void test_04()
     {
-        struct StructWithCTor obj { 5, 6 };        // obj.m_i => 5, obj.m_j => 6
+        struct StructWithCTor obj { 5, 6 };        // obj.m_i => 10, obj.m_j => 12
     }
 
     // =================================================================================
@@ -122,7 +123,8 @@ namespace UniformInitialization {
     {
         std::vector<int> myArray{ 1, 2, 3, 4, 5 };
 
-        std::map<std::string, int> myMap{
+        std::map<std::string, int> myMap
+        {
             { "Hans", 1958 },
             { "Sepp", 1956 } 
         };

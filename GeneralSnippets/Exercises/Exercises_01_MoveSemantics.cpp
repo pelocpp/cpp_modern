@@ -47,21 +47,21 @@ namespace Exercises_MoveSemantics {
         void testExercise_01() {
 
             // create a person with some initial values
-            Person donald{ "Dagobert Duck" };
+            Person dagobert{ "Dagobert Duck" };
             for (int value : { 1, 2, 3, 4, 5, 6, 7, 8, 9 }) {
-                donald.addValue(value);
+                dagobert.addValue(value);
             }
 
             // print person
-            std::cout << "Person: " << donald << std::endl;
+            std::cout << "Person: " << dagobert << std::endl;
 
             // insert person into a collection
             std::vector<Person> persons;
-            persons.push_back(donald);
-            persons.push_back(std::move(donald));
+            persons.push_back(dagobert);
+            // persons.push_back(std::move(dagobert));
 
             // print person again
-            std::cout << "Person: " << donald << std::endl;
+            std::cout << "Person: " << dagobert << std::endl;
         }
     }
 

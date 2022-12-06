@@ -8,9 +8,9 @@ namespace LambdaAndClosure {
 
     void test_01() 
     {
-        const int n{ 10 };
-        auto lambda = [n](int a) {return n + a; };
-        auto m = lambda(20); // m is now 30
+        int n{ 10 };
+        auto lambda = [n] (int a) { return n + a; };
+        auto m = lambda(20);  // m is now 30
         std::cout << "m: " << m << std::endl;
     }
 
@@ -33,7 +33,7 @@ namespace LambdaAndClosure {
 
         const int n{ 30 };
         auto lambda = ClosureClass(n);
-        auto m = lambda(20); // m is now 50
+        auto m = lambda(20);    // m is now 50
         std::cout << "m: " << m << std::endl;
     }
 }
