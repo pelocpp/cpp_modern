@@ -10,36 +10,55 @@
 
 namespace Lambdas {
 
-    bool myCompare (int n1, int n2) {
+    bool compare (int n1, int n2) {
         return n1 < n2;
     }
 
-    struct MyComparer {
+    class Comparer
+    {
+    private:
+        bool m_flag;
+
+    public:
+        Comparer() : m_flag{ true } {}
+        Comparer(bool flag) : m_flag{ flag } {}
+
         bool operator() (int n1, int n2) {
-            return n1 < n2;
+            return (m_flag) ? n1 < n2 : n1 > n2;
         }
     };
 
-    void test_01() {
-
+    void test_01()
+    {
         // local class within function possible
-        struct MyInternalComparer {
+        class LocalComparer
+        {
+        private:
+            bool m_flag;
+
+        public:
+            LocalComparer() : m_flag{ true } {}
+            LocalComparer(bool flag) : m_flag{ flag } {}
+
             bool operator() (int n1, int n2) {
-                return n1 < n2;
+                return (m_flag) ? n1 < n2 : n1 > n2;
             }
         };
 
         std::vector<int> vec { 5, 9, 1, 3, 7, 8 };
+
         for (int n : vec) {
             std::cout << n << ' ';
         }
         std::cout << std::endl;
 
-        std::sort(std::begin(vec), std::end(vec), myCompare);
+        std::sort(std::begin(vec), std::end(vec), compare);
         // or
-        std::sort(std::begin(vec), std::end(vec), MyComparer());
+        std::sort(std::begin(vec), std::end(vec), Comparer{});
         // or
-        std::sort(std::begin(vec), std::end(vec), MyInternalComparer());
+        std::sort(std::begin(vec), std::end(vec), Comparer{false});
+        // or
+        std::sort(std::begin(vec), std::end(vec), LocalComparer{});
 
         for (int n : vec) {
             std::cout << n << ' ';
