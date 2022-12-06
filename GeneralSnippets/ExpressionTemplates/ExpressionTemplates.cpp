@@ -60,8 +60,8 @@ namespace ExpressionTemplates {
         Matrix& operator=(const Matrix& rhs);
 
         // operator= --> expression template approach (template member method)
-        template <typename TEXPR>
-        Matrix& operator=(const TEXPR& expression);
+        template <typename TExpr>
+        Matrix& operator=(const TExpr& expression);
     };
 
     const double& Matrix::operator()(size_t x, size_t y) const {
@@ -114,8 +114,8 @@ namespace ExpressionTemplates {
     }
 
     // expression template approach: operator=
-    template <typename TEXPR>
-    Matrix& Matrix::operator=(const TEXPR& expr) {
+    template <typename TExpr>
+    Matrix& Matrix::operator=(const TExpr& expr) {
         for (size_t y{}; y != getRows(); ++y) {
             for (size_t x{}; x != getCols(); ++x) {
 
@@ -147,15 +147,15 @@ namespace ExpressionTemplates {
 
     // ========================================================================
 
-    template <typename LHS, typename RHS>
+    template <typename TLHS, typename TRHS>
     class MatrixExpr
     {
     private:
-        const LHS& m_lhs;
-        const RHS& m_rhs;
+        const TLHS& m_lhs;
+        const TRHS& m_rhs;
 
     public:
-        MatrixExpr(const LHS& lhs, const RHS& rhs) : m_rhs{ rhs }, m_lhs{ lhs } {}
+        MatrixExpr(const TLHS& lhs, const TRHS& rhs) : m_rhs{ rhs }, m_lhs{ lhs } {}
 
         double operator() (size_t x, size_t y) const {
 
@@ -172,9 +172,9 @@ namespace ExpressionTemplates {
         }
     };
 
-    template <typename LHS, typename RHS>
-    MatrixExpr<LHS, RHS> operator+(const LHS& lhs, const LHS& rhs) {
-        return MatrixExpr<LHS, RHS>(lhs, rhs);
+    template <typename TLHS, typename TRHS>
+    MatrixExpr<TLHS, TRHS> operator+(const TLHS& lhs, const TLHS& rhs) {
+        return MatrixExpr<TLHS, TRHS>(lhs, rhs);
     }
 
     // ========================================================================

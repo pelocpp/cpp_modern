@@ -70,7 +70,7 @@
 
 
 ## Funktions- und Klassen-Templates
-  * Allgemeines / einführende Beispiele
+  * Einführende Beispiele
   * Klassen-Templates mit mehreren Parametern
   * Definition von Methoden eines Klassen-Templates
   * Eine Methode eines Klassen-Templates überschreiben
@@ -80,7 +80,7 @@
   * Default-Werte für Template-Parameter
   * Alias Template
   * Partielle und explizite Template Spezialisierung
-  * Übersetzungsmodellen für Templates
+  * Übersetzungsmodelle für Templates
   * Two-Phase Name Lookup
   * Überladen und Spezialisieren von Funktions-Templates
   * Spezialisieren von Funktions-Templates
@@ -117,7 +117,7 @@
 
 
 ## Variadische Templates
-  * Allgemeines / einführende Beispiele
+  * Allgemeines / Einführende Beispiele
   * Anwendungsfall: Zugriff auf jedes einzelne Argument
   * Anwendungsfall: &ldquo;Summe von Summen&rdquo;
   * Anwendungsfall: Mixins
