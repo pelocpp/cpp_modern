@@ -1,4 +1,4 @@
-# `constexpr` - Berechnung von Ausdrücken zur Übersetzungszeit
+# `constexpr` - Programmierung zur Übersetzungszeit mit `constexpr`
 
 [Zurück](../../Readme.md)
 

@@ -26,6 +26,13 @@ Tabelle: Einige C++ Standard Attribute.
 Daneben gibt es noch weitere, recht spezielle Attribute, wie zum Beispiel `carries_dependency`,
 `likely`, `unlikely` oder `no_unique_address`.
 
+
+*Hinweis*: Das Attribut `deprecated` erzeugt mit dem *Visual C++*&ndash;Compiler einen Fehler
+an Stelle einer Warnung. Dies kann man abstellen, eine Beschreibung der *Visual C++*&ndash;Compilereinstellungen
+diesbezüglich findet man hier:
+
+[`deprecated` results in error instead of warning in Visual Studio](https://stackoverflow.com/questions/58228990/deprecated-results-in-error-instead-of-warning-in-visual-studio).<br>(abgerufen am 06.12.2022).
+
 ---
 
 [Zurück](../../Readme.md)

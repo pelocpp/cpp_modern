@@ -77,7 +77,7 @@ class Movie
 ```
 
 1. *Frage*:
-Wie ist die Schnittstelle eines Kontruktors für die `Bookstore`-Klasse zu definieren,
+Wie ist die Schnittstelle eines Konstruktors für die `Bookstore`-Klasse zu definieren,
 wenn dieser `Book`- und `Movie`-Objekte gemischt in einem `std::vector`-Objekt aufnehmen kann?
 
 ```cpp

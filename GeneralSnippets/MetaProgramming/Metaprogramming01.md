@@ -10,10 +10,14 @@
 
 ## Überblick
 
-C++&ndash;Metaprogrammierung bezeichnet eine Technik innerhalb der Programmiersprache C++,
+C++&ndash;Metaprogrammierung bezeichnet eine rekursive Technik innerhalb der Programmiersprache C++,
 um Programmcode zur Übersetzungszeit generieren zu lassen.
 
-Bei der Template-Metaprogrammierung macht man sich zunutze, dass Templates während des Kompilierens ausgewertet werden.
+Durch rekursive Template-Instanziierungen und Template-Spezialisierungen
+können zur Übersetzungszeit Fallunterscheidungen und Schleifen ausgeführt werden
+
+Man macht sich bei der Template-Metaprogrammierung zunutze,
+dass Templates während des Kompilierens ausgewertet werden.
 So kann man Code schreiben, der zur Übersetzungszeit ausgeführt wird.
 Obwohl sich so die Dauer des Kompilierens verlängert, hat das Verfahren den Vorteil, dass es zu einer Verkürzung der Laufzeit kommen kann.
 
@@ -123,8 +127,16 @@ Es werden also in Schablonen neue Typen gebildet, auf die über einen Namen von a
 
 Die partielle Spezialisierung von Templates ist zentrales Hilfsmittel in der Metaprogrammierung.
 Wenn wir dieses Feature noch mit der rekursiven Definition von Templates zusammenführen,
-lassen sich mächtige Funktionen definieren! Wir demonstrieren dies am Beispiel der Berechnung
-des größten gemeinsamen Teilers zweier natürlicher Zahlen (ggT):
+lassen sich mächtige Funktionen definieren!
+
+Wir demonstrieren dies am Beispiel der Berechnung
+des größten gemeinsamen Teilers zweier natürlicher Zahlen (ggT),
+wir legen dabei den *Algorithmus von Euklid* zu Grunde:
+
+<img src="GGT_Algorithmus_Euklid.png" width="400">
+
+*Abbildung* 1: Algorithmus von *Euklid* zur Berechnung des ggT.
+
 
 ```cpp
 template <size_t X, size_t Y>

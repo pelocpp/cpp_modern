@@ -7,6 +7,7 @@
 #include <vector>
 #include <numeric>
 #include <variant>
+#include <functional>
 
 namespace VariantDemo {
 
@@ -128,12 +129,13 @@ namespace VariantDemo {
         std::cout << elem << std::endl;
     }
 
-    void test_03_a() {
+    void test_04() {
 
         std::variant<int, float, std::string> var{ 3.5f };
 
-        // Doesn't work: std::visit requires an object,
-        // and template functions aren't objects of functions
+        // Doesn't work:
+        // std::visit requires an object,
+        // and template functions aren't objects of functions:
         // std::visit(visitorFunction<float>, var);
     }
 
@@ -148,16 +150,16 @@ namespace VariantDemo {
             std::cout << "int: " << n << std::endl;
         }
 
-        void operator() (float& f) {
+        void operator() (float f) {
             std::cout << "float: " << f << std::endl;
         }
 
-        void operator() (std::string& s) {
+        void operator() (std::string s) {
             std::cout << "std::string: " << s << std::endl;
         }
     };
 
-    void test_04() {
+    void test_05() {
 
         std::variant<int, float, std::string> var{ 3.5f };
 
@@ -171,7 +173,7 @@ namespace VariantDemo {
 
     // -------------------------------------------------------------------
 
-    void test_05() {
+    void test_06() {
 
         std::vector<std::variant<int, long, long long, float, double>>
             vec = { 100, 200l, 300ll, 400.5f, 500.5 };
@@ -215,7 +217,7 @@ namespace VariantDemo {
     
     template<class... Ts> Overload(Ts...) -> Overload<Ts...>;
 
-    void test_06() {
+    void test_07() {
 
         std::variant<int, float, std::string> intFloatString{ "Hello" };
 
@@ -240,7 +242,7 @@ namespace VariantDemo {
 
     // -------------------------------------------------------------------
 
-    void test_07() {
+    void test_08() {
 
         std::variant<int, float, std::string> intFloatString{ "Hello" };
 
@@ -268,6 +270,7 @@ void main_variant()
     test_05();
     test_06();
     test_07();
+    test_08();
 }
 
 // =====================================================================================

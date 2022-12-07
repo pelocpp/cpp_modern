@@ -196,7 +196,7 @@ void main()
 {
     Inner inner1;                // uninitialized
     Inner inner2{ };             // m_array[0] => 0 & m_array[1] => 0
-    Inner inner3{ { 1, 2 } };    // Direct initialisation
+    Inner inner3{ { 1, 2 } };    // Direct initialization
     Inner inner4{ 1, 2 };        // Uses Brace Elision (!) of m_array
 }
 ```

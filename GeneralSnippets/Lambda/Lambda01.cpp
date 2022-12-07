@@ -215,9 +215,9 @@ namespace Lambdas {
 
         // Use case for IIFE:
         // This kind of expression might be useful when you have
-        // a complex initialisation of a const  object:
+        // a complex initialization of a const  object:
 
-        auto const ConstValue = [] () {
+        auto constexpr ConstValue = [] () {
             /* several lines of code ... - "very complex" computation */
             return 123;
         }();

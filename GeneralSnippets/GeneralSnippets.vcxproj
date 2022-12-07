@@ -395,6 +395,7 @@
     <Image Include="ConstExpr\constexpr_lambda_02.png" />
     <Image Include="Exercises\cpp_dividend_divisor.png" />
     <Image Include="MetaProgramming\euler_number.png" />
+    <Image Include="MetaProgramming\GGT_Algorithmus_Euklid.png" />
     <Image Include="OnlineCppCompilers\CompilerExplorer.png" />
     <Image Include="OnlineCppCompilers\Cppinsights.png" />
     <Image Include="OnlineCppCompilers\Wandbox.png" />

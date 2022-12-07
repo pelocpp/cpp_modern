@@ -798,5 +798,8 @@
     <Image Include="TemplateClassBasics\template_instantiations_02.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="MetaProgramming\GGT_Algorithmus_Euklid.png">
+      <Filter>Source Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

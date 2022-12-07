@@ -202,7 +202,7 @@ namespace UniformInitialization {
     {
         [[maybe_unused]] Inner inner1;                // uninitialized
         [[maybe_unused]] Inner inner2{ };             // m_array[0] => 0 & m_array[1] => 0
-        [[maybe_unused]] Inner inner3{ { 1, 2 } };    // Direct initialisation
+        [[maybe_unused]] Inner inner3{ { 1, 2 } };    // Direct initialization
         [[maybe_unused]] Inner inner4{ 1, 2 };        // Uses Brace Elision (!) of m_array
     }
 

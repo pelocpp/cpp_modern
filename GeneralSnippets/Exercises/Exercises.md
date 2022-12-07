@@ -160,7 +160,7 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 | Aufgabe | Beschreibung |
 | :- | :- |
 | [Aufgabe 1](./Exercises_04_UtilityClasses.md#aufgabe-1-stdvisit-und-generische-lambdas) | `std::visit` und generische Lambdas<br/>(Vorausetzungen: `if constexpr`, `decltype`, `std::variant`, `std::visit`, Type Traits) |
-| [Aufgabe 2](./Exercises_04_UtilityClasses.md#aufgabe-2-visitor-entwurfsmuster-mit-stdvariant-und-stdvisit) | Visitor-Entwurfsmuster mit `std::variant` und `std::visit`<br/>(Vorausetzungen: `std::variant`, `std::visit`, `std:: vector`, variadische Templates) |
+| [Aufgabe 2](./Exercises_04_UtilityClasses.md#aufgabe-2-visitor-entwurfsmuster-mit-stdvariant-und-stdvisit) | Visitor-Entwurfsmuster mit `std::variant` und `std::visit`<br/>(Vorausetzungen: `std::variant`, `std::visit`, `std::vector`, variadische Templates) |
 | [Aufgabe 3](./Exercises_04_UtilityClasses.md#aufgabe-2-stdoptional-umwandlung-von-zeichenketten-in-ganze-zahlen) | `std::optional`: Umwandlung von Zeichenketten in ganze Zahlen<br/>(Vorausetzungen: Templates Grundlagen, `std::optional`, `if constexpr`) |
 | [Aufgabe 4](./Exercises_04_UtilityClasses.md#aufgabe-3-stdvariant-ein-heterogener-container) | `std::variant`: Ein heterogener Container<br/>(Vorausetzungen: `std::variant`, `std::visit`, `std::vector`) |
 
