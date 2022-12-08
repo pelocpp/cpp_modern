@@ -8,6 +8,8 @@
 
 ---
 
+##### Verknüpfung einer Liste von Bezeichnern mit einem Satz von Objekten (Variablen):
+
 Das so genannte *Structured Binding* besitzt syntaktisch folgendes Aussehen:
 
 ```cpp

@@ -18,10 +18,10 @@ namespace TupleSamples {
         std::tuple <char, int, double> values;
 
         // assigning values to tuple using std::make_tuple
-        values = std::make_tuple('A', 10, 15.5);
+        values = std::make_tuple('A', 123, 123.456);
 
         // just in one statement
-        std::tuple <char, int, double> moreValues{ 'Z', 100, 99.99 };
+        std::tuple <char, int, double> moreValues{ 'Z', 987, 987.654 };
 
         // accessing tuple values using std::get 
         std::cout << "The values of tuple are : ";
@@ -32,8 +32,8 @@ namespace TupleSamples {
             << std::endl;
 
         // use std::get to change single values of a tuple 
-        std::get<0>(values) = 'B';
-        std::get<2>(values) = 30.5;
+        std::get<0>(values) = 'M';
+        std::get<2>(values) = 135.79;
 
         // printing tuple values again
         std::cout << "The modified values of tuple are : ";
@@ -49,8 +49,17 @@ namespace TupleSamples {
 
     using Row = std::tuple<int, char, double, std::string>;
 
-    // forward declaration
-    std::string rowToString(const Row& row);
+    std::string rowToString(const Row& row)
+    {
+        int n = std::get<0>(row);
+        char ch = std::get<1>(row);
+        double d = std::get<2>(row);
+        std::string s = std::get<3>(row);
+
+        return "Id: " +
+            std::to_string(n) + ", " + std::to_string(ch) + ", " +
+            std::to_string(d) + ", " + s;
+    }
 
     void test_02()
     {
@@ -69,18 +78,6 @@ namespace TupleSamples {
         }
     }
 
-    std::string rowToString(const Row& row) 
-    {
-        int n = std::get<0>(row);
-        char ch = std::get<1>(row);
-        double d = std::get<2>(row);
-        std::string s = std::get<3>(row);
-
-        return "Id: " + 
-            std::to_string(n) + ", " + std::to_string(ch) + ", " + 
-            std::to_string(d) + ", " + s;
-    }
-
     // =======================================================
     // same example, but using C++ 17 structured binding
 
@@ -96,7 +93,7 @@ namespace TupleSamples {
         mySheet.push_back(row2);
         mySheet.push_back(row3);
 
-        // C++ 17 structured binding
+        // C++ 17: structured binding
         const auto& [id, abbr, val, name] = mySheet[0];
 
         std::cout
@@ -115,13 +112,51 @@ namespace TupleSamples {
         }
     }
 
+    void test_04()
+    {
+        Row row1 = std::make_tuple(91, 'a', 1.11, "Mueller");
+        Row row2 = std::make_tuple(92, 'b', 2.22, "Sepp");
+        Row row3 = std::make_tuple(93, 'c', 3.33, "Hans");
+
+        std::vector<Row> mySheet;
+
+        mySheet.push_back(row1);
+        mySheet.push_back(row2);
+        mySheet.push_back(row3);
+
+        // C++ 14: std::tie
+        int id{};
+        char abbr{};
+        double val{};
+        std::string name{};
+
+        std::tie(id, abbr, val, name) = mySheet[0];
+
+        std::cout
+            << "Id:    " << id << std::endl
+            << "Abbr:  " << abbr << std::endl
+            << "Value: " << val << std::endl
+            << "Name:  " << name << std::endl;
+
+        for (const auto& row : mySheet) {
+
+            std::tie(id, abbr, val, name) = row;
+
+            std::cout
+                << "Id:    " << id << std::endl
+                << "Abbr:  " << abbr << std::endl
+                << "Value: " << val << std::endl
+                << "Name:  " << name << std::endl;
+        }
+    }
+
     // =======================================================
     // retrieving number of elements of a std::tuple
 
-    void test_04()
+    void test_05()
     {
         // declaring tuple 
-        std::tuple <char, int, double> tuple { 'A', 10, 15.5 };
+        std::tuple <char, int, double> tuple { 'A', 123, 123.456 };
 
         // retrieve number of elements with std::tuple_size
         std::cout << "std::tuple size: ";
@@ -145,6 +180,7 @@ void main_tuples()
     test_02();
     test_03();
     test_04();
+    test_05();
 }
 
 // =====================================================================================
