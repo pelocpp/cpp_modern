@@ -69,8 +69,9 @@ Mit dieser Definition einer Klasse `Matrix` könnten wir nun eine Addition von M
 so formulieren:
 
 ```cpp
-Matrix a{ 1.0 }, b{ 2.0 }, c{ 3.0 };
-Matrix result = a + b + c;  // result(x, y) = 6 
+Matrix<5> result{};
+Matrix<5> a{ 1.0 }, b{ 2.0 }, c{ 3.0 };
+result = a + b + c;   // result(x, y) = 6.0
 ```
 
 Durch das Überladen des `+` -Operators haben wir eine Schreibweise in C ++, 
