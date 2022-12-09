@@ -231,7 +231,7 @@
     <ClCompile Include="Transform\Transform.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ExpressionTemplates\ExpressionTemplates.cpp">
+    <ClCompile Include="ExpressionTemplates\ExpressionTemplates_01.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="DefaultInitialization\DefaultInitialization.cpp">
@@ -358,6 +358,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Exercises\Exercises_16_Generic_Lambdas.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ExpressionTemplates\ExpressionTemplates.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

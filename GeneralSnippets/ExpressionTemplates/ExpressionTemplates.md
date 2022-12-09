@@ -23,49 +23,46 @@ Um ein besseres Verständnis für *Expression Templates* zu bekommen, versuchen 
 warum wir sie überhaupt benötigen. Dazu betrachten wir zur Veranschaulichung eine einfache `Matrix`-Klasse:
 
 ```cpp
-class Matrix {
-private:
-    size_t m_cols;
-    size_t m_rows;
-    std::vector<double> m_values;
-
-public:
-    // c'tor(s)
-    Matrix() : Matrix(Cols, Rows) {}
-
-    Matrix(size_t cols, size_t rows) : m_cols{ cols }, m_rows{ rows }
-    {
-        m_values.resize(cols*rows);
-    }
-
-    // getter
-    size_t inline getCols() const { return m_cols; };
-    size_t inline getRows() const { return m_rows; };
-
-    // functor - representing index operator
-    const double& operator()(size_t x, size_t y) const;
-    double& operator()(size_t x, size_t y);
-
-    // operator= --> classical definition
-    Matrix& operator=(const Matrix& rhs);
-
-    // operator= --> expression template approach (template member method)
-    template <typename TEXPR>
-    Matrix& operator=(const TEXPR& expression);
-};
-
-// classical operator+ definition
-Matrix operator+(const Matrix& lhs, const Matrix& rhs)
-{
-    Matrix result{ lhs.getCols(), lhs.getRows() };
-
-    for (size_t y{}; y != lhs.getRows(); ++y) {
-        for (size_t x{}; x != lhs.getCols(); ++x) {
-            result(x, y) = lhs(x, y) + rhs(x, y);
-        }
-    }
-    return result;
-}
+01: template<size_t N, typename T = ElemType>
+02: class Matrix {
+03: private:
+04:     size_t m_size;
+05:     std::array<std::array<T, N>, N> m_values;
+06: 
+07: public:
+08:     // c'tor(s)
+09:     Matrix() : Matrix{ T{} } {}
+10:     Matrix(T preset) : m_size{ N } {
+11:         std::for_each(
+12:             std::begin(m_values),
+13:             std::end(m_values),
+14:             [=](auto& row) {
+15:                 row.fill(preset);
+16:             }
+17:         );
+18:     }
+19: 
+20:     size_t inline getSize() const { return N; };
+21: 
+22:     const T& operator()(size_t x, size_t y) const {
+23:         return m_values[x][y];
+24:     };
+25: 
+26:     T& operator()(size_t x, size_t y) {
+27:         return m_values[x][y];
+28:     }
+29: 
+30:     Matrix<N> operator+(const Matrix<N>& other) const
+31:     {
+32:         Matrix<N> result;
+33:         for (size_t y{}; y != N; ++y) {
+34:             for (size_t x{}; x != N; ++x) {
+35:                 result.m_values[x][y] = m_values[x][y] + other.m_values[x][y];
+36:             }
+37:         }
+38:         return result;
+39:     }
+40: };
 ```
 
 Mit dieser Definition einer Klasse `Matrix` könnten wir nun eine Addition von Matrizen
@@ -89,20 +86,23 @@ Dies führt auch dazu, dass zwei temporäre `Matrix`-Objekte erstellt werden, wa
 die Rechenleistung des Programms trotzdem zusätzlich beeinträchtigt.
 
 Im Prinzip haben wir die Klasse `Matrix` mit Notationen in der Nähe
-der mathematischen Realität sehr ineffizient gemacht! Ohne Überladung des `+`-Operators könnten wir beispielsweise eine weitaus effizientere Summenbildung von Matrizen
+der mathematischen Realität sehr ineffizient gemacht!
+Ohne Überladung des `+`-Operators könnten wir beispielsweise eine weitaus effizientere Summenbildung von Matrizen
 mit einem einzigen Durchlauf auf diese Weise implementieren:
 
 ```cpp
-Matrix add3(const Matrix& a, const Matrix& b, const Matrix& c)
-{
-    Matrix result{ a.getCols(), a.getRows() };
-    for (size_t y = 0; y != a.getRows(); ++y) {
-        for (size_t x = 0; x != a.getCols(); ++x) {
-            result(x, y) = a(x, y) + b(x, y) + c(x, y);
-        }
-    }
-    return result;
-}
+01: template<size_t N>
+02: Matrix<N> add3(const Matrix<N>& a, const Matrix<N>& b, const Matrix<N>& c)
+03: {
+04:     Matrix<N> result;
+05: 
+06:     for (size_t y = 0; y != a.getRows(); ++y) {
+07:         for (size_t x = 0; x != a.getCols(); ++x) {
+08:             result.m_values[x][y] = a.m_values[x][y] + b.m_values[x][y] + c.m_values[x][y];
+09:         }
+10:     }
+11:     return result;
+12: }
 ```
 
 #### Vorgehensweise mit Expression Templates
@@ -127,29 +127,29 @@ Eine derartige Vorlage, die der Summierung von zwei `Matrix`-Objekten entspricht
 so aussehen:
 
 ```cpp
-template <typename LHS, typename RHS>
-class MatrixExpr
-{
-private:
-    const LHS& m_lhs;
-    const RHS& m_rhs;
-
-public:
-    MatrixExpr(const LHS& lhs, const RHS& rhs) : m_rhs{ rhs }, m_lhs{ lhs } {}
-
-    double operator() (size_t x, size_t y) const {
-        return m_lhs(x, y) + m_rhs(x, y);
-    }
-};
+01: template <typename TLhs, typename TRhs, typename T = ElemType>
+02: class MatrixExpr
+03: {
+04: private:
+05:     const TLhs& m_lhs;
+06:     const TRhs& m_rhs;
+07: 
+08: public:
+09:     MatrixExpr(const TLhs& lhs, const TRhs& rhs) : m_rhs{ rhs }, m_lhs{ lhs } {}
+10: 
+11:     T operator() (size_t x, size_t y) const {
+12:         return m_lhs(x, y) + m_rhs(x, y);
+13:     }
+14: };
 ```
 
 Eine aktualisierte Version des `+`-Operators sieht nun so aus:
 
 ```cpp
-template <typename LHS, typename RHS>
-MatrixExpr<LHS, RHS> operator+(const LHS& lhs, const LHS& rhs) {
-    return MatrixExpr<LHS, RHS>(lhs, rhs);
-}
+01: template <typename TLhs, typename TRhs>
+02: MatrixExpr<TLhs, TRhs> operator+(const TLhs& lhs, const TRhs& rhs) {
+03:     return MatrixExpr<TLhs, TRhs>(lhs, rhs);
+04: }
 ```
 
 Es ist unmittelbar zu erkennen, dass der `+`-Operator
@@ -162,15 +162,15 @@ Er enthält lediglich Verweise (folglich auch keine Kopien) auf seine beiden Ope
 Tatsächlich hindert uns nichts daran, ein `MatrixExpr`-Objekt und damit eine Ausdrucksvorlage wie folgt zu instanziieren:
 
 ```cpp
-MatrixExpr<Matrix, Matrix> sumAB(a, b);
+MatrixExpr<Matrix<Size>, Matrix<Size>> sumAB(a, b);
 ```
 
 Zu einem späteren Zeitpunkt kann man, wenn man das Ergebnis der Summe tatsächlich benötigt,
 den Ausdruck `result = a + b` wie folgt auswerten:
 
 ```cpp
-for (size_t y = 0; y != a.rows(); ++y) {
-    for (size_t x = 0; x != a.cols(); ++x) {
+for (size_t y{}; y != a.getSize(); ++y) {
+    for (size_t x{}; x != a.getSize(); ++x) {
         result(x, y) = sumAB(x, y);
     }
 }
@@ -182,15 +182,15 @@ dass die Summe von `a` und `b` in einem einzigen Durchlauf ausgewertet und dem E
 Wie sieht es bei einer Summe der Gestalt  `a + b + c` aus? Dazu benötigen wir eine Ausdrucksvorlage der Gestalt 
 
 ```cpp
-MatrixExpr<Matrix, Matrix> sumAB(a, b);
-MatrixExpr<MatrixExpr<Matrix, Matrix>, Matrix> sumABC(sumAB, c);
+MatrixExpr<Matrix<Size>, Matrix<Size>> sumAB(a, b);
+MatrixExpr<MatrixExpr<Matrix<Size>, Matrix<Size>>, Matrix<Size>> sumABC(sumAB, c);
 ```
 
 Wiederum können wir in einem einzigen Durchlauf das gewünschte Resultat berechnen:
 
 ```cpp
-for (size_t y = 0; y != a.rows(); ++y) {
-    for (size_t x = 0; x != a.cols(); ++x) {
+for (size_t y{}; y != a.getSize(); ++y) {
+    for (size_t x{}; x != a.getSize(); ++x) {
         result(x, y) = sumABC(x, y);
     }
 }
@@ -211,12 +211,13 @@ Dies wird im Wesentlichen durch die Bereitstellung einer Implementierung des Wer
 und in einem Durchgang auswertet, wie wir es zuvor schon "manuell" betrachtet haben:
 
 ```cpp
-// expression template approach: operator=
-template <typename TEXPR>
-Matrix& Matrix::operator=(const TEXPR& expr) {
-    for (size_t y{}; y != getRows(); ++y) {
-        for (size_t x{}; x != getCols(); ++x) {
-            m_values[y * getCols() + x] = expr(x, y);
+// operator= --> expression template approach
+template <typename TExpr>
+Matrix<N>& operator=(const TExpr& expr)
+{
+    for (size_t y{}; y != N; ++y) {
+        for (size_t x{}; x != N; ++x) {
+            m_values[x][y] = expr(x, y);
         }
     }
     return *this;
@@ -235,7 +236,7 @@ Die Addition von 5 Matrizen wird im klassischen Ansatz und mit "*Expression Temp
 Das Kernstück der klassischen Realisierung sieht kurz und bündig so aus:
 
 ```cpp
-for (int i = 0; i < iterations; ++i) {
+for (size_t i{}; i != iterations; ++i) {
     result = a1 + a2 + a3 + a4 + a5;
 }
 ```
@@ -243,7 +244,7 @@ for (int i = 0; i < iterations; ++i) {
 Um es noch einmal zu verdeutlichen: Genau diese "unschuldige" Formulierung wird hinter den Kulissen so abgearbeitet:
 
 ```cpp
-for (int i = 0; i < iterations; ++i) {
+for (size_t i{}; i != iterations; ++i) {
     result = ((((a1 + a2) + a3) + a4) + a5);
 }
 ```
@@ -255,9 +256,10 @@ Im Vergleich dazu die Quellcode-Gestaltung mit "*Expression Templates*":
 
 ```cpp
 // adding 4 matrices using modified operator=
-MatrixExpr<Matrix, Matrix> sumAB{ a, b };
-MatrixExpr<MatrixExpr<Matrix, Matrix>, Matrix> sumABC{ sumAB, c };
-MatrixExpr<MatrixExpr<MatrixExpr<Matrix, Matrix>, Matrix>, Matrix> sumABCD{ sumABC, d };
+MatrixExpr<Matrix<Size>, Matrix<Size>> sumAB{ a1, a2 };
+MatrixExpr<MatrixExpr<Matrix<Size>, Matrix<Size>>, Matrix<Size>> sumABC{ sumAB, a3 };
+MatrixExpr<MatrixExpr<MatrixExpr<Matrix<Size>, Matrix<Size>>, Matrix<Size>>, Matrix<Size>> sumABCD{ sumABC, a4 };
+MatrixExpr<MatrixExpr<MatrixExpr<MatrixExpr<Matrix<Size>, Matrix<Size>>, Matrix<Size>>, Matrix<Size>>, Matrix<Size>> sumABCDE{ sumABCD, a5 };
 
 result = sumABCD;
 ```
@@ -265,9 +267,10 @@ result = sumABCD;
 oder - mit dem Feature der *Template Argument Type Deduction* geschrieben:
 
 ```cpp
-MatrixExpr sumAB{ a, b };
-MatrixExpr sumABC{ sumAB, c };
-MatrixExpr sumABCD{ sumABC, d };
+MatrixExpr sumAB{ a1, a2 };
+MatrixExpr sumABC{ sumAB, a3 };
+MatrixExpr sumABCD{ sumABC, a4 };
+MatrixExpr sumABCDE{ sumABCD, a5 };
 
 result = sumABCD;
 ```
@@ -276,13 +279,21 @@ Das sieht zunächst einmal etwas aufwendiger aus - die  "*Expression Templates*"
 Das Resultat überzeugt uns, dass der Aufwand die Mühe wert war:
 
 
-
-
 ```
 Start:
-4897 milliseconds.
-1674 milliseconds.
+5153 milliseconds.
+1241 milliseconds.
 Done.
+```
+
+Dabei wurden im Quellcode folgende Werte verwendet:
+
+```cpp
+using ElemType = double;
+
+// benchmark sizes
+constexpr int Iterations{ 500000 };
+constexpr size_t BenchmarkSize{ 50 };
 ```
 
 ---

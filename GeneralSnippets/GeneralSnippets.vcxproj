@@ -186,6 +186,7 @@
     <ClCompile Include="Exercises\Exercises_16_Generic_Lambdas.cpp" />
     <ClCompile Include="Explicit\Explicit.cpp" />
     <ClCompile Include="ExpressionTemplates\ExpressionTemplates.cpp" />
+    <ClCompile Include="ExpressionTemplates\ExpressionTemplates_01.cpp" />
     <ClCompile Include="FileSystem\FileSystem.cpp" />
     <ClCompile Include="Folding\VariadicTemplatesFolding.cpp" />
     <ClCompile Include="FunctionalProgramming\FunctionalProgramming01.cpp" />
