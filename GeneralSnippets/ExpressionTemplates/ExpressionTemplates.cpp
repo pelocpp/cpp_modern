@@ -24,15 +24,16 @@ namespace ExpressionTemplates {
     constexpr size_t Size{ DefaultSize };    // <== modify values here
 
     template<size_t N, typename T = ElemType>
-    class Matrix {
+    class Matrix 
+    {
     private:
-        size_t m_size;
         std::array<std::array<T, N>, N> m_values;
 
     public:
         // c'tor(s)
         Matrix() : Matrix{ T{} } {}
-        Matrix(T preset) : m_size{ N } {
+
+        Matrix(T preset) {
             std::for_each(
                 std::begin(m_values),
                 std::end(m_values),
