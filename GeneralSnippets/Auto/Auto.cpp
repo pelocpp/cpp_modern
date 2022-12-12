@@ -99,13 +99,17 @@ namespace Auto_Examples {
         auto msg = getMessage();
         std::cout << "Message: " << msg << std::endl;
 
-        // or
+        // but:
         const auto& msg2 = getMessage();
         std::cout << "Message: " << msg2 << std::endl;
 
-        // but:
+        // or:
         decltype(getMessage()) msg3 = getMessage();
         std::cout << "Message: " << msg3 << std::endl;
+
+        // once again 'or':
+        decltype(auto) msg4 = getMessage();
+        std::cout << "Message: " << msg4 << std::endl;
     }
 
     // ---------------------------------------------------------------------

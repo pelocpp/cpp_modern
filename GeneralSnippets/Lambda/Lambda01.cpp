@@ -23,10 +23,17 @@ namespace Lambdas {
         Comparer() : m_flag{ true } {}
         Comparer(bool flag) : m_flag{ flag } {}
 
-        bool operator() (int n1, int n2) {
+        bool operator() (int n1, int n2) const {
             return (m_flag) ? n1 < n2 : n1 > n2;
         }
     };
+
+    void test_00()
+    {
+        Comparer obj{ false };
+        bool result = obj(1, 2);
+        std::cout << std::boolalpha << result << std::endl;
+    }
 
     void test_01()
     {
@@ -40,7 +47,7 @@ namespace Lambdas {
             LocalComparer() : m_flag{ true } {}
             LocalComparer(bool flag) : m_flag{ flag } {}
 
-            bool operator() (int n1, int n2) {
+            bool operator() (int n1, int n2) const {
                 return (m_flag) ? n1 < n2 : n1 > n2;
             }
         };
@@ -229,6 +236,7 @@ namespace Lambdas {
 void main_lambdas()
 {
     using namespace Lambdas;
+    test_00();
     test_01();
     test_02();
     test_03();

@@ -78,22 +78,20 @@ namespace ExpressionTemplates {
             }
             return *this;
         }
-    };
 
-    // ========================================================================
+        // just for demonstration purposes
+        static Matrix<N> add3(const Matrix<N>& a, const Matrix<N>& b, const Matrix<N>& c)
+        {
+            Matrix<N> result;
 
-    template<size_t N>
-    Matrix<N> add3(const Matrix<N>& a, const Matrix<N>& b, const Matrix<N>& c)
-    {
-        Matrix<N> result;
-
-        for (size_t y{}; y != a.getRows(); ++y) {
-            for (size_t x{}; x != a.getCols(); ++x) {
-                result.m_values[x][y] = a.m_values[x][y] + b.m_values[x][y] + c.m_values[x][y];
+            for (size_t y{}; y != a.getSize(); ++y) {
+                for (size_t x{}; x != a.getSize(); ++x) {
+                    result.m_values[x][y] = a.m_values[x][y] + b.m_values[x][y] + c.m_values[x][y];
+                }
             }
+            return result;
         }
-        return result;
-    }
+    };
 
     // ========================================================================
 
@@ -119,12 +117,22 @@ namespace ExpressionTemplates {
 
     // ========================================================================
 
+    void test_00()
+    {
+        std::cout << "Expression Template 00: Very Classical Approach" << std::endl;
+
+        Matrix<Size> result{};
+        Matrix<Size> a{ 1.0 }, b{ 2.0 }, c{ 3.0 }, d{ 4.0 };
+
+        result = Matrix<Size>::add3(a, b, c);
+    }
+
     void test_01()
     {
         std::cout << "Expression Template 01: Classical Approach" << std::endl;
 
         Matrix<Size> result{};
-        Matrix<Size> a{ 1.0 }, b{ 2.0 }, c{ 3.0 }, d{ 4.0 };;
+        Matrix<Size> a{ 1.0 }, b{ 2.0 }, c{ 3.0 }, d{ 4.0 };
         result = a + b;          // result(x, y) = 3.0
         result = a + b + c + d;  // result(x, y) = 10 
     }

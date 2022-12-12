@@ -97,8 +97,8 @@ mit einem einzigen Durchlauf auf diese Weise implementieren:
 03: {
 04:     Matrix<N> result;
 05: 
-06:     for (size_t y = 0; y != a.getRows(); ++y) {
-07:         for (size_t x = 0; x != a.getCols(); ++x) {
+06:     for (size_t y = 0; y != a.getSize(); ++y) {
+07:         for (size_t x = 0; x != a.getSize(); ++x) {
 08:             result.m_values[x][y] = a.m_values[x][y] + b.m_values[x][y] + c.m_values[x][y];
 09:         }
 10:     }

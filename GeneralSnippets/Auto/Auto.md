@@ -223,7 +223,13 @@ std::cout << "Message: " << msg3 << std::endl;
 ```
 
 Ein letzter Schönheitsfehler verbleibt: Es kommt quasi zu einer Dopplung des Ausdrucks, in unserem Beispiel `getMessage()`.
-Auch das beheben wir noch, siehe weiter unten den Abschnitt zu `decltype(auto)`.
+Auch das beheben wir noch, siehe hierzu die Kombination
+von `auto` und `decltype`:
+
+```cpp
+decltype(auto)
+```
+
 
 ## Typableitung bei Template Parametern (*Template Parameter Type Deduction*)
 
