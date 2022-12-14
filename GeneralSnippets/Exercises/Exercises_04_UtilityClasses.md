@@ -91,7 +91,7 @@ Movie movieBond{ "Spectre", "Sam Mendes", 8.99, 6 };
 
 using MyBookstore = Bookstore<Book, Movie>;
 
-MyBookstore project = MyBookstore {
+MyBookstore bookstore = MyBookstore {
     { cBook, movieBond, javaBook, cppBook, csharpBook, movieTarantino }
 };
 ```
@@ -105,7 +105,7 @@ Wie ist in der Klasse `Bookstore` eine Methode `totalBalance` zu implementieren,
 der Buchhandlung zu berechnen? Hier könnten `std::variant` und `std::visit` zum Einsatz gelangen.
 
 ```cpp
-double balance = project.totalBalance();
+double balance = bookstore.totalBalance();
 std::cout << "Total value of Bookstore: " << balance << std::endl;
 ```
 

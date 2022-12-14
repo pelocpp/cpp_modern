@@ -112,7 +112,7 @@ namespace Exercises_UtilityClasses {
             size_t getCount() const { return m_count; }
         };
 
-        template <typename... TMedia>
+        template <typename ... TMedia>
         class Bookstore
         {
         private:
@@ -182,13 +182,13 @@ namespace Exercises_UtilityClasses {
 
             using MyBookstore = Bookstore<Book, Movie>;
 
-            MyBookstore project = MyBookstore {
+            MyBookstore bookstore = MyBookstore {
                 cBook, movieBond, javaBook, cppBook, csharpBook, movieTarantino
             };
 
-            double balance{ project.balance() };
+            double balance{ bookstore.balance() };
             std::cout << "Total value of Bookstore: " << balance << std::endl;
-            size_t count{ project.count() };
+            size_t count{ bookstore.count() };
             std::cout << "Count of elements in Bookstore: " << count << std::endl;
         }
     }
