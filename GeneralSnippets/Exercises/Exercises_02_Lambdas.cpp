@@ -21,7 +21,7 @@ namespace Exercises_Lambdas {
         }
 
         struct Even {
-            void operator()(int val) {
+            void operator()(int val) const {
                 if ((val % 2) == 0) {
                     std::cout << val << " is even." << std::endl;
                 }
@@ -29,6 +29,21 @@ namespace Exercises_Lambdas {
         };
 
         void testExercise_01a() {
+
+            // testing functor
+            Even functor;
+            functor (14);
+
+            // testing lambda
+            auto lambdaEven = [](int val) {
+                if (!(val % 2)) {
+                    std::cout << val << " is even." << std::endl;
+                }
+            };
+            lambdaEven(16);
+        }
+
+        void testExercise_01b() {
             std::vector<int> values(20);
 
             std::generate(
@@ -63,7 +78,7 @@ namespace Exercises_Lambdas {
             );
         }
 
-        void testExercise_01b() {
+        void testExercise_01c() {
             std::vector<int> values(20);
 
             std::generate(
@@ -102,6 +117,7 @@ namespace Exercises_Lambdas {
         void testExercise_01() {
             testExercise_01a();
             testExercise_01b();
+            testExercise_01c();
         }
     }
 

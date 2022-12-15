@@ -37,6 +37,8 @@ namespace SharedPointer {
         std::shared_ptr<int> ptr1{ new int{ 123 } };
         // or
         // std::shared_ptr<int> ptr1{ std::make_shared<int>(123) };
+        // or
+        // auto ptr1{ std::make_shared<int>(123) };
 
         // access value behind smart pointer
         std::cout << "ptr1:       " << *ptr1 << std::endl;

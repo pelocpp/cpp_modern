@@ -122,7 +122,7 @@ namespace Exercises_UtilityClasses {
         public:
             explicit Bookstore(StockList stock) : m_stock{ stock } {}
 
-            double balance() {
+            double totalBalance() {
 
                 double total{};
 
@@ -186,7 +186,7 @@ namespace Exercises_UtilityClasses {
                 cBook, movieBond, javaBook, cppBook, csharpBook, movieTarantino
             };
 
-            double balance{ bookstore.balance() };
+            double balance{ bookstore.totalBalance() };
             std::cout << "Total value of Bookstore: " << balance << std::endl;
             size_t count{ bookstore.count() };
             std::cout << "Count of elements in Bookstore: " << count << std::endl;

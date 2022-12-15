@@ -24,7 +24,7 @@ private:
     std::vector<int> m_values;  // some arbitrary person values
 
 public:
-    Person() : m_name{} {}
+    Person() {}
     Person(const std::string& name) : m_name{ name } {}
 
     void addValue(int value) {

@@ -24,7 +24,7 @@ namespace RangeBasedForLoop {
     class ElementProcessor
     {
     public:
-        void operator() (int n) { 
+        void operator() (int n) const { 
             std::cout << n << " ";
         }
     };
@@ -88,7 +88,7 @@ namespace RangeBasedForLoop {
         }
         std::cout << std::endl;
 
-        // g) Same as f), using 'const&'
+        // g) Same as f), using 'const int&'
         for (const int& n : vec) {
             std::cout << n << " ";
         }
@@ -100,7 +100,7 @@ namespace RangeBasedForLoop {
         }
         std::cout << std::endl;
 
-        // i) Same as g), using 'const&': Type inference by reference
+        // i) Same as g), using 'const auto&': type inference by reference
         for (const auto& n : vec) {
             std::cout << n << " ";
         }

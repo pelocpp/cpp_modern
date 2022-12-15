@@ -40,6 +40,8 @@ namespace UniquePointerGeneral {
         std::unique_ptr<int> ptr1{ new int{ 123 } };
         // or
         // std::unique_ptr<int> ptr1{ std::make_unique<int>(123) };
+        // or
+        // auto ptr1{ std::make_unique<int>(123) };
 
         // access value behind smart pointer
         std::cout << "*ptr1:   " << *ptr1 << std::endl;

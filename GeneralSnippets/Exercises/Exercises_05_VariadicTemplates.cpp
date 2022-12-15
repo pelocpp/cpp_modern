@@ -21,8 +21,8 @@ namespace Exercises_VariadicTemplates {
             return cond;
         }
 
-        template<typename T, typename... Ts>
-        bool andAll(T cond, Ts... conds) {
+        template<typename T, typename... TRest>
+        bool andAll(T cond, TRest ... conds) {
             return cond && andAll(conds...);
         }
 
@@ -32,8 +32,8 @@ namespace Exercises_VariadicTemplates {
         //    return true;
         //}
         //
-        //template<typename T, typename... Ts>
-        //bool andAll(T cond, Ts... conds) {
+        //template<typename T, typename... TRest>
+        //bool andAll(T cond, TRest... conds) {
         //    return cond && andAll(conds...);
         //}
 
@@ -57,8 +57,8 @@ namespace Exercises_VariadicTemplates {
             return cond;
         }
 
-        template<typename T, typename... Ts>
-        bool orAll(T cond, Ts... conds) {
+        template<typename T, typename... TRest>
+        bool orAll(T cond, TRest ... conds) {
             return cond || orAll(conds...);
         }
 
@@ -68,8 +68,8 @@ namespace Exercises_VariadicTemplates {
         //    return false;
         //}
 
-        //template<typename T, typename... Ts>
-        //bool orAll(T cond, Ts... conds) {
+        //template<typename T, typename... TRest>
+        //bool orAll(T cond, TRest... conds) {
         //    return cond || orAll(conds...);
         //}
 

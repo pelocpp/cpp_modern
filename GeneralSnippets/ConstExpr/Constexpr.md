@@ -634,6 +634,13 @@ Materialien in elektronischer Form: [Fraunhofer Applied Research Center for Wire
 
 An die Stelle der *Collatz*-Zahlenfolge werden hier Lookup-Tabellen für CRC8-Berechnungen zur Übersetzungszeit untersucht.
 
+*Hinweis*:
+
+Ein Online-Tool zur Berechnung von CRC Lookup-Tabellen findet sich [hier](https://crccalc.com/).
+Allgemeine Erläuterungen zum Verständnis der CRC-Thematik 
+können auch hier nachgelesen werden:<br/>
+[Understanding and implementing CRC (Cyclic Redundancy Check) calculation](http://www.sunshine2k.de/articles/coding/crc/understanding_crc.html).
+
 Die Beispiele für `constexpr`-Funktionen und `constexpr`-Lambda-Funktionen sind in diesem Aufsatz erheblich anwendungsbezogener,
 siehe zum Beispiel die beiden Funktionen zur Erstellung und den Zugriff auf CRC8 Lookup Tabellen:
 
