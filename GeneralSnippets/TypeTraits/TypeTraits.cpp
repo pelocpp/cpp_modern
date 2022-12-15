@@ -155,9 +155,9 @@ namespace TypeTraits_Conditional_Compilation_Demo {
 
     // free function template - based on class Serializer<T>
     template <typename T>
-    void serialize(std::ostream& os, T const& value)
+    void serialize(std::ostream& os, T const& obj)
     {
-        Serializer<uses_write<T>::value>::serialize(os, value);
+        Serializer<uses_write<T>::value>::serialize(os, obj);
     }
 
     void test_2()

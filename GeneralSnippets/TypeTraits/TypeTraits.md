@@ -121,9 +121,9 @@ Dieses Ziel erreichen wir nun mit Hilfe von *Type Traits*:
 33: 
 34: // free function template - based on class Serializer<T>
 35: template <typename T>
-36: void serialize(std::ostream& os, T const& value)
+36: void serialize(std::ostream& os, T const& obj)
 37: {
-38:     Serializer<uses_write<T>::value>::serialize(os, value);
+38:     Serializer<uses_write<T>::value>::serialize(os, obj);
 39: }
 ```
 
