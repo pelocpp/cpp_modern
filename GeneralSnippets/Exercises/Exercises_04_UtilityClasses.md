@@ -117,6 +117,16 @@ ein `Book`- oder ein `Movie`-Objekt enthalten sein. Wenn diese Klassen
 eine Methode desselben Namens (derselben Schnittstelle) enthalten,
 wie zum Beispiel `getPrice` oder `getCount`, dann haben Sie das Ziel fast schon erreicht.
 
+*Zusatzaufgabe*:
+Realisieren Sie eine Methode `addMedia`, die ein beliebiges &ldquo;Media&rdquo;-Objekt einem `Bookstore`-Objekt hinzufügen kann.
+Natürlich muss der Datentyp des &ldquo;Media&rdquo;-Objekts (also z.B. `Book` oder `Movie`) für das `Bookstore`-Objekt
+bereits bekannt sein:
+
+```cpp
+Book csharpBook{ "C#", "Anders Hejlsberg", 21.99, 1 };
+bookstore.addMedia(csharpBook);
+```
+
 ---
 
 

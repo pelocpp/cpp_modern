@@ -122,6 +122,12 @@ namespace Exercises_UtilityClasses {
         public:
             explicit Bookstore(StockList stock) : m_stock{ stock } {}
 
+            // template member method
+            template <typename TNewMedia>
+            void addMedia(TNewMedia media) {
+                m_stock.push_back(media);
+            }
+
             double totalBalance() {
 
                 double total{};
@@ -170,7 +176,7 @@ namespace Exercises_UtilityClasses {
             Stock m_stock;
         };
 
-        void testExercise_01() {
+        void testExercise_02a() {
 
             Book cBook{ "C", "Dennis Ritchie", 11.99, 12 };
             Book javaBook{"Java", "James Gosling", 17.99, 21 };
@@ -190,6 +196,29 @@ namespace Exercises_UtilityClasses {
             std::cout << "Total value of Bookstore: " << balance << std::endl;
             size_t count{ bookstore.count() };
             std::cout << "Count of elements in Bookstore: " << count << std::endl;
+        }
+
+        void testExercise_02b() {
+
+            Book cBook{ "C", "Dennis Ritchie", 11.99, 1 };
+            Movie movieBond{ "Spectre", "Sam Mendes", 8.99, 1 };
+
+            using MyBookstore = Bookstore<Book, Movie>;
+
+            MyBookstore bookstore = MyBookstore{
+                cBook, movieBond
+            };
+
+            Book csharpBook{ "C#", "Anders Hejlsberg", 21.99, 1 };
+            bookstore.addMedia(csharpBook);
+
+            size_t count{ bookstore.count() };
+            std::cout << "Count of elements in Bookstore: " << count << std::endl;
+        }
+
+        void testExercise_02() {
+            testExercise_02a();
+            testExercise_02b();
         }
     }
 
@@ -270,7 +299,7 @@ namespace Exercises_UtilityClasses {
             return result;
         }
 
-        void testExercise_01a() {
+        void testExercise_03a() {
             std::optional<int> i1{ toInt("123") };
             if (i1.has_value()) {
                 std::cout << i1.value() << std::endl;
@@ -292,7 +321,7 @@ namespace Exercises_UtilityClasses {
             }
         }
 
-        void testExercise_01b() {
+        void testExercise_03b() {
 
             std::optional<short> i1{ toNumber<short>("32767") };
             if (i1.has_value()) {
@@ -315,9 +344,9 @@ namespace Exercises_UtilityClasses {
             }
         }
 
-        void testExercise_01() {
-            testExercise_01a();
-            testExercise_01b();
+        void testExercise_03() {
+            testExercise_03a();
+            testExercise_03b();
         }
     }
 
@@ -325,7 +354,7 @@ namespace Exercises_UtilityClasses {
 
         // https://gieseanw.wordpress.com/2017/05/03/a-true-heterogeneous-container-in-c/
 
-        void testExercise_01a()
+        void testExercise_04a()
         {
             std::variant<int, std::string> myVariant;
             myVariant = 123;
@@ -366,7 +395,7 @@ namespace Exercises_UtilityClasses {
 
         // ----------------------------------------------------------------------------------
 
-        void testExercise_01b()
+        void testExercise_04b()
         {
             std::variant<int, std::string> myVariant;
             myVariant = 123;
@@ -392,7 +421,7 @@ namespace Exercises_UtilityClasses {
             std::visit(lambdaAllInOneVisitor, myVariant);
         }
 
-        void testExercise_01c()
+        void testExercise_04c()
         {
             std::vector<std::variant<int, std::string>> hetVec;
 
@@ -438,7 +467,7 @@ namespace Exercises_UtilityClasses {
             };
         };
 
-        void testExercise_01d()
+        void testExercise_04d()
         {
             HeterogeneousContainer<int, std::string> hetCont;
 
@@ -459,21 +488,21 @@ namespace Exercises_UtilityClasses {
             std::cout << std::endl;
         }
 
-        void testExercise_01() {
-            testExercise_01a();
-            testExercise_01b();
-            testExercise_01c();
-            testExercise_01d();
+        void testExercise_04() {
+            testExercise_04a();
+            testExercise_04b();
+            testExercise_04c();
+            testExercise_04d();
         }
     }
 }
 
 void test_exercises_utility_classes()
 {
-    Exercises_UtilityClasses::Exercise_01::testExercise_01();
-    Exercises_UtilityClasses::Exercise_02::testExercise_01();
-    Exercises_UtilityClasses::Exercise_03::testExercise_01();
-    Exercises_UtilityClasses::Exercise_04::testExercise_01();
+    //Exercises_UtilityClasses::Exercise_01::testExercise_01();
+    Exercises_UtilityClasses::Exercise_02::testExercise_02();
+    //Exercises_UtilityClasses::Exercise_03::testExercise_03();
+    //Exercises_UtilityClasses::Exercise_04::testExercise_04();
 }
 
 // =====================================================================================
