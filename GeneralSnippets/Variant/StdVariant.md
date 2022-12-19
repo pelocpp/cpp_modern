@@ -60,6 +60,14 @@ das so einfach wie möglich gehalten ist.
 
 ---
 
+## Internas einer möglichen Realisierung einer Kasse `std::variant`
+
+Im Netz finden sich einige Ansätze vor, wie man eine Klasse `std::variant` selber realisieren könnte,
+siehe zum Beispiel diesen *GitHub Gist*: [variant.cc](https://gist.github.com/tibordp/6909880).
+
+---
+
+
 ## Literaturhinweise:
 
 Ein interessanter Vergleich der beiden Klassen `std::variant` und `std::any` findet sich in *stackoverflow*:
