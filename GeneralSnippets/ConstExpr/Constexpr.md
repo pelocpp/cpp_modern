@@ -625,6 +625,13 @@ in allen seinen Facetten gewonnen!
 
 ## Literatur
 
+Zur Fragestellung &ldquo;`constexpr` und dynamische Speicherverwaltung&rdquo;
+gibt es einen interessanten Aufsatz im [Netz](https://www.cppstories.com/2021/constexpr-new-cpp20)
+(abgerufen am 19.12.2022).
+
+
+## Literatur zum  CRC8-Beispiel
+
 Die Anregungen zu diesem Artikel stammen aus einem Aufsatz aus der Zeitschrift *IX*:
 
 Petrautzki, Dirk. &ldquo;Nachschlagewerk: C++-Metaprogrammierung mit Templates für eingebettete Systeme&rdquo;.
