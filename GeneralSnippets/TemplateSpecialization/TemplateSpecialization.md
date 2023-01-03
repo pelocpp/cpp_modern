@@ -49,7 +49,7 @@ Das Feature der partiellen Template Spezialisierung kann nicht auf Funktions-Tem
 
 ---
 
-## Beispiel einer Explizite Template Spezialisierung
+## Beispiel einer expliziten Template Spezialisierung
 
 Mit der expliziten Template Spezialisierung können Sie eine bestimmte Implementierung
 für eine bestimmte Kombination von Templateparametern schreiben.
@@ -91,7 +91,7 @@ Der Compiler wählt dann die am besten geeignete Schablone aus:
 
 ```
 
-## Beispiel einer partielle Template Spezialisierung
+## Beispiel einer partiellen Template Spezialisierung
 
 Für Klassen Templates (nicht: Funktions-Templates) kann man Teilspezialisierungen definieren,
 die nicht alle Parameter der primären (nicht spezialisierten) Klassenvorlage ersetzen.

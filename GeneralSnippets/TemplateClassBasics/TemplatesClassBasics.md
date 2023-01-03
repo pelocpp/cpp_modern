@@ -13,16 +13,16 @@
 Es werden grundlegende Aspekte von Klassentemplates aufgezeigt:
 
 
-  * ##### [Klassen-Templates definieren](#Definition-eines-Klassen-Templates)
-  * ##### [Erzeugung von Objekten eines Klassen-Templates](#Objekte-aus-Klassen-Templates-erzeugen)
-  * ##### [Klassen-Templates mit mehreren Parametern](#Klassen-Templates-mit-mehreren-formalen-Datentypen)
-  * ##### [Definition von Methoden eines Klassen-Templates](#Definition-von-Methoden-von-Klassen-Templates)
-  * ##### [Eine Methode eines Klassen-Templates überschreiben](#Methoden-eines-Klassen-Templates-spezialisieren)
-  * ##### [Member Function Templates (kurz: Member Templates)](#Member-Function-Templates)
-  * ##### [Klassen-Templates und Non-Type Parameter](#Klassen-Templates-mit-Non-Type-Parametern)
-  * ##### [Ein Template mit Template-Parametern](#Template-Template-Parameter)
-  * ##### [Default-Werte für Template-Parameter](#Default-Template-Parameter)
-  * ##### [Alias Template](#Alias-Templates)
+  * #### [Klassen-Templates definieren](#Definition-eines-Klassen-Templates)
+  * #### [Erzeugung von Objekten eines Klassen-Templates](#Objekte-aus-Klassen-Templates-erzeugen)
+  * #### [Klassen-Templates mit mehreren Parametern](#Klassen-Templates-mit-mehreren-formalen-Datentypen)
+  * #### [Definition von Methoden eines Klassen-Templates](#Definition-von-Methoden-von-Klassen-Templates)
+  * #### [Eine Methode eines Klassen-Templates überschreiben](#Methoden-eines-Klassen-Templates-spezialisieren)
+  * #### [Member Function Templates (kurz: Member Templates)](#Member-Function-Templates)
+  * #### [Klassen-Templates und Non-Type Parameter](#Klassen-Templates-mit-Non-Type-Parametern)
+  * #### [Ein Template mit Template-Parametern](#Template-Template-Parameter)
+  * #### [Default-Werte für Template-Parameter](#Default-Template-Parameter)
+  * #### [Alias Template](#Alias-Templates)
 
 Danach folgen noch Informationen zu den **Übersetzungsmodellen** für Templates.
 
@@ -121,7 +121,7 @@ im Editor:
 
 *Abbildung* 1: Auswahl Untermenü &ldquo;*Add all Existing Instantiations*&rdquo;.
 
-Danach öffent sich ein weiteres Fenster mit allen vorhandenen Template Instanziierungen:
+Danach öffnet sich ein weiteres Fenster mit allen vorhandenen Template Instanziierungen:
 
 <img src="template_instantiations_02.png" width="700">
 
@@ -447,7 +447,7 @@ Einige Anmerkungen zu dem letzten Beispiel:
   * Auf `<>` kann man verzichten, oder man schreibt es hin, so dass ein Leser des Quellcode sieht,
   dass es sich bei dem Objekt `vec2` um die Instanziierung eines Klassen-Template handelt.
   * Objekt `vec3` besitzt intern die Feldlänge 10 - per Voreinstellung.
-  * Objekt `vec4` benützt intern die Feldlänge 20.
+  * Objekt `vec4` benützt die Feldlänge 20.
 
 ---
 

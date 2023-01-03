@@ -152,14 +152,12 @@ Da es gerade bei dieser Übung immer wieder zu überraschenden Ergebnissen kommt
 meines Rechners:
 
 ```
-[Collection of C++-Code Snippets - Copyright (C) 2019-2020 Peter Loos]
 Classical Polymorphism Benchmark:
 Pixels: 160000
 Time taken: 2014668 microseconds
 CRTP Benchmark:
 Pixels: 160000
 Time taken: 402634 microseconds
-[Done.]
 ```
 
 ---
