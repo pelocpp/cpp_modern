@@ -169,18 +169,17 @@ Die beiden letzten Beispiele zum Überladen und Spezialisieren von Funktions-Temp
 waren sorgfältig ausgewählt worden, um das jeweilige Feature demonstrieren zu können.
 Aber man beachte:
 
-Spezialisierungen von Funktions-Templates nehmen nicht an der Auflösung von Funktions-Überladungen teil.
+  * Spezialisierungen von Funktions-Templates nehmen nicht an der Auflösung von Funktions-Überladungen teil.
 
-Das heißt, eine weniger spezifische Überladung hat Vorrang vor einer spezifischeren Template-Spezialisierung.
+  * Das heißt, eine weniger spezifische Überladung hat Vorrang vor einer spezifischeren Template-Spezialisierung.
 
 Siehe dazu auch
 Herb Sutter in diesem Artikel [Why Not Specialize Function Templates?](http://www.gotw.ca/publications/mill17.htm).
 
-Damit schließen wir diesen Abschnitt mit der Aussage 
+Damit schließen wir diesen Abschnitt mit der Aussage ab:
 
-  *  **Verwenden Sie keine Spezialisierungen von Funktions-Templates**.
+> **Lassen Sie Vorsicht bei der Spezialisierung von Funktions-Templates walten**.
 
-ab
 
 ---
 

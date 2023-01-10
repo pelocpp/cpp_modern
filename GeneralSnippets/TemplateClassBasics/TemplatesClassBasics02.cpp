@@ -10,6 +10,7 @@
 
 namespace ClassTemplatesBasics_02 {
 
+    // --------------------------------------------------------------------
     // Simple Class Template Definition
     namespace ClassTemplatesBasics_Intro_01 {
 
@@ -41,7 +42,8 @@ namespace ClassTemplatesBasics_02 {
         }
     }
 
-    // Class Templates with several formal Parameters
+    // --------------------------------------------------------------------
+    // Class Templates with several formal parameters
     namespace ClassTemplatesBasics_Intro_02 {
 
         template <typename T, typename U>
@@ -66,6 +68,7 @@ namespace ClassTemplatesBasics_02 {
         }
     }
 
+    // --------------------------------------------------------------------
     // Definition of methods of class template (inside / outside class)
     namespace ClassTemplatesBasics_Intro_03 {
 
@@ -102,9 +105,8 @@ namespace ClassTemplatesBasics_02 {
         }
     }
 
-    // Template specialization of a single method from a templated class
-
-    // Overriding (specialization) of a single method from a class template
+    // --------------------------------------------------------------------
+    // Overriding (Specialization) of a single method from a class template
     namespace ClassTemplatesBasics_Intro_04 {
 
         template <typename T>
@@ -137,47 +139,16 @@ namespace ClassTemplatesBasics_02 {
         }
     }
 
-    // Overriding (specialization) of a single method from a class template
+    // --------------------------------------------------------------------
+    // Member Function Templates
     namespace ClassTemplatesBasics_Intro_05 {
-
-        template <typename T>
-        class MyContainer
-        {
-        private:
-            T m_data;
-
-        public:
-            MyContainer() : m_data{} {}
-            T getData() const { return m_data; }
-            void setData(const T& data) { m_data = data; }
-        };
-
-        template <>
-        void MyContainer<std::string>::setData(const std::string& data) {
-            m_data = "[" + data + "]";
-        }
-
-        void test_05() {
-            MyContainer<std::string> container;
-            container.setData("I love C++ Templates :)");
-            std::string data = container.getData();
-            std::cout << data << std::endl;
-
-            MyContainer<int> anotherContainer;
-            anotherContainer.setData(123);
-            int value = anotherContainer.getData();
-            std::cout << value << std::endl;
-        }
-    }
-
-    namespace ClassTemplatesBasics_Intro_06 {
 
         class Printer {
         private:
             std::ostream& m_target;
 
         public:
-            explicit Printer(std::ostream& target) : m_target(target) {}
+            explicit Printer(std::ostream& target) : m_target{ target } {}
 
             template<typename T>
             Printer& print(const T& arg) {
@@ -186,17 +157,17 @@ namespace ClassTemplatesBasics_02 {
             }
         };
 
-        void test_06() {
+        void test_05() {
 
-            Printer normalPrinter(std::cout);
+            Printer normalPrinter{ std::cout };
             normalPrinter.print(100).print(" --> ").print(123.456).print("\n");
 
-            Printer errorPrinter(std::cerr);
+            Printer errorPrinter{ std::cerr };
             errorPrinter.print(654.321).print(" <== ").print(100).print("\n");
         }
     }
 
-    namespace ClassTemplatesBasics_Intro_07 {
+    namespace ClassTemplatesBasics_Intro_06 {
 
         template <typename T, size_t DIM>
         class FixedVector
@@ -221,7 +192,7 @@ namespace ClassTemplatesBasics_02 {
             }
         };
 
-        void test_07_01() {
+        void test_06_01() {
 
             FixedVector<int, 5> vec;
 
@@ -232,7 +203,7 @@ namespace ClassTemplatesBasics_02 {
             vec.print(std::cout);
         }
 
-        void test_07_02() {
+        void test_06_02() {
 
             using namespace ClassTemplatesBasics_02::ClassTemplatesBasics_Intro_01;
 
@@ -244,14 +215,14 @@ namespace ClassTemplatesBasics_02 {
             // vector_1 = vector_2;         // Error: binary '=': no operator found
         }
 
-        void test_07() {
-            test_07_01();
-            test_07_02();
+        void test_06() {
+            test_06_01();
+            test_06_02();
         }
     }
 
     // Template Template-Parameter
-    namespace ClassTemplatesBasics_Intro_08 {
+    namespace ClassTemplatesBasics_Intro_07 {
 
         template <template <typename> class Container>
         class DoubleDataCollector
@@ -271,7 +242,7 @@ namespace ClassTemplatesBasics_02 {
             // ...
         };
 
-        void test_08() {
+        void test_07() {
 
             using namespace ClassTemplatesBasics_02::ClassTemplatesBasics_Intro_01;
 
@@ -282,7 +253,7 @@ namespace ClassTemplatesBasics_02 {
 
     // Default Template-Parameter
     // Alias Templates
-    namespace ClassTemplatesBasics_Intro_09 {
+    namespace ClassTemplatesBasics_Intro_08 {
 
         template <typename T = int, size_t DIM = 10>
         class FixedVector
@@ -307,7 +278,7 @@ namespace ClassTemplatesBasics_02 {
             }
         };
 
-        void test_09_01() {
+        void test_08_01() {
 
             FixedVector vec1;
             FixedVector<> vec2;
@@ -323,19 +294,19 @@ namespace ClassTemplatesBasics_02 {
         template <size_t MAX>
         using FixedIntVector = FixedVector<int, MAX>;
 
-        void test_09_02() {
+        void test_08_02() {
 
             FixedIntVector<100> vec;
         }
 
-        void test_09() {
-            test_09_01();
-            test_09_02();
+        void test_08() {
+            test_08_01();
+            test_08_02();
         }
     }
 
     // demonstrating 'Templates Inclusion Model'
-    void test_10() {
+    void test_09() {
 
         using namespace ClassTemplatesBasics;
 
@@ -349,7 +320,7 @@ namespace ClassTemplatesBasics_02 {
     }
 
     // demonstrating 'Templates Explicit Instantiation Model'
-    void test_11() {
+    void test_10() {
 
         using namespace ClassTemplatesBasics;
 
@@ -368,18 +339,17 @@ void main_class_templates_basics_02()
 {
     using namespace ClassTemplatesBasics_02;
 
-    //ClassTemplatesBasics_Intro_01::test_01();
-    //ClassTemplatesBasics_Intro_02::test_02();
-    //ClassTemplatesBasics_Intro_03::test_03();
-    //ClassTemplatesBasics_Intro_04::test_04();
-    //ClassTemplatesBasics_Intro_05::test_05();
+    ClassTemplatesBasics_Intro_01::test_01();
+    ClassTemplatesBasics_Intro_02::test_02();
+    ClassTemplatesBasics_Intro_03::test_03();
+    ClassTemplatesBasics_Intro_04::test_04();
+    ClassTemplatesBasics_Intro_05::test_05();
     ClassTemplatesBasics_Intro_06::test_06();
-    //ClassTemplatesBasics_Intro_07::test_07();
-    //ClassTemplatesBasics_Intro_08::test_08();
-    //ClassTemplatesBasics_Intro_09::test_09();
+    ClassTemplatesBasics_Intro_07::test_07();
+    ClassTemplatesBasics_Intro_08::test_08();
 
+    test_09();
     test_10();
-    test_11();
 }
 
 // =====================================================================================

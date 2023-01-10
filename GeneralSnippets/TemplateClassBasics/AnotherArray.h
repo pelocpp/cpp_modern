@@ -7,8 +7,6 @@
 #include <iostream>
 #include <string>
 
-#include "AnotherArray.h"
-
 namespace ClassTemplatesBasics {
 
     template<typename T, size_t DIM>

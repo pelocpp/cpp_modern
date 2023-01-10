@@ -68,7 +68,7 @@ unter Verwendung einer Referenz (oder als Zeiger) realisiert.
 
 
 #### Hinweis:
-Klassen-Templates eigen sich vor allem gut zur Erstellung von Container-Klassen,
+Klassen-Templates eignen sich vor allem gut zur Erstellung von Container-Klassen,
 siehe deshalb auch den Entwurf und die Konzeption der *Standard Template Library* (STL).
 
 ---
@@ -285,7 +285,7 @@ private:
     std::ostream& m_target;
 
 public:
-    explicit Printer(std::ostream& target) : m_target(target) {}
+    explicit Printer(std::ostream& target) : m_target{ target } {}
 
     template<typename T>
     Printer& print(const T& arg) {
@@ -300,10 +300,10 @@ public:
 ```cpp
 01: void test_06() {
 02: 
-03:     Printer normalPrinter(std::cout);
+03:     Printer normalPrinter{ std::cout };
 04:     normalPrinter.print(100).print(" --> ").print(123.456).print("\n");
 05: 
-06:     Printer errorPrinter(std::cerr);
+06:     Printer errorPrinter{ std::cerr };
 07:     errorPrinter.print(654.321).print(" <== ").print(100).print("\n");
 08: }
 ```
@@ -360,10 +360,10 @@ Betrachten Sie das folgende Beispiel:
 ```
 
 Die beiden Objekte `cont_1` und `cont_2` sind vom selben Typ, was naheliegend, aber
-nicht ganz selbstverständlich ist &ndash; siehe dazu auch *Abbildung* 1:
-
+nicht ganz selbstverständlich ist &ndash; siehe dazu auch *Abbildung* 1.
 In beiden Fällen wird ein Template (hier: `MyContainer<T>` mit `T` gleich `int`)
 instanziiert (Zeilen 3 und 4).
+
 Offensichtlich muss der Übersetzer sich hier der Aufgabe stellen, bei einer 
 Template-Instanziierung (in Zeile 4) den Überblick zu verschaffen,
 ob er das Klassen-Template (`MyContainer<T>`) schon einmal mit demselben
