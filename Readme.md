@@ -126,7 +126,7 @@ In der folgenden Tabelle sind alle Neuerungen von C++&ndash;11/14/17 aufgeführt
 | [ArgumentDependentNameLookup](GeneralSnippets/ArgumentDependentNameLookup/ArgumentDependentNameLookup.md) | Argument-Dependent Name Lookup (ADL) / *Koenig*-Lookup |
 | [Array](GeneralSnippets/Array/StdArray.md) | Neue STL-Utility Klasse `std::array` |
 | [Attributes](GeneralSnippets/Attributes/Attributes.md) | C++ Standard Attribute |
-| [Auto](GeneralSnippets/Auto/Auto.md) | `auto` |
+| [Auto](GeneralSnippets/Auto/Auto.md) | Keyword `auto` |
 | [ConstExpr](GeneralSnippets/ConstExpr/Constexpr.md) | Programmierung zur Übersetzungszeit mit `constexpr` |
 | [CommonType](GeneralSnippets/CommonType/CommonType.md) | Utility `std::common_type` |
 | [CRTP](GeneralSnippets/CRTP/CRTP.md) | Curiously Recurring Template Pattern (CRTP) |
