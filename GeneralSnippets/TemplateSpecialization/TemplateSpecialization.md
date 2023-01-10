@@ -52,7 +52,7 @@ Das Feature der partiellen Template Spezialisierung kann nicht auf Funktions-Tem
 ## Beispiel einer expliziten Template Spezialisierung
 
 Mit der expliziten Template Spezialisierung können Sie eine bestimmte Implementierung
-für eine bestimmte Kombination von Templateparametern schreiben.
+für eine bestimmte Kombination von Template Parametern schreiben.
 
 Beispiel: 
 

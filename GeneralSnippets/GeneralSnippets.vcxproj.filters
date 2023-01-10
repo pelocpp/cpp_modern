@@ -719,10 +719,10 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TemplateClassBasics\MyArray.h">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TemplateClassBasics\AnotherArray.h">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

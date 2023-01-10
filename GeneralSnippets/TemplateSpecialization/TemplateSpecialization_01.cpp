@@ -56,7 +56,7 @@ namespace TemplateSpecialization {
             std::vector<int*> pointerVector;
 
             GenericSorter<int>::sort(intVector);       // calls sort<std::vector<int>&>
-            GenericSorter<int*>::sort(pointerVector);  // calls specialized sort<std::vector<char>&>
+            GenericSorter<int*>::sort(pointerVector);  // calls specialized sort<std::vector<int*>&>
         }
     }
 }
