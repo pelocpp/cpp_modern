@@ -134,10 +134,20 @@ namespace WeakPointer {
 
         parent->setRightNode(rightNode);
         parent->setLeftNode(leftNode);
+    }
 
-        std::cout << "Reference-Count parent: "    << parent.use_count() << std::endl;
+    void test_03()
+    {
+        std::shared_ptr<ParentNode> parent{ new ParentNode {} };
+        std::shared_ptr<RightNode> rightNode{ new RightNode { parent } };
+        std::shared_ptr<LeftNode> leftNode{ new LeftNode { parent } };
+
+        parent->setRightNode(rightNode);
+        parent->setLeftNode(leftNode);
+
+        std::cout << "Reference-Count parent: " << parent.use_count() << std::endl;
         std::cout << "Reference-Count rightNode: " << rightNode.use_count() << std::endl;
-        std::cout << "Reference-Count leftNode: "  << leftNode.use_count() << std::endl;
+        std::cout << "Reference-Count leftNode: " << leftNode.use_count() << std::endl;
     }
 }
 
@@ -145,8 +155,9 @@ void main_weak_pointer()
 {
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
     using namespace WeakPointer;
-    //test_01();
+    test_01();
     test_02();
+    test_03();
 }
 
 // =====================================================================================
