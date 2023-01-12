@@ -198,8 +198,6 @@ namespace Exercises_SmartPointers {
             catch (std::exception ex) {
                 std::cout << ex.what() << std::endl;
             }
-
-            std::cout << "Value: " << std::endl;
         }
 
         void testExercise_03() {
