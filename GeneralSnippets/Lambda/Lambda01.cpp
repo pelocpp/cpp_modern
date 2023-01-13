@@ -128,12 +128,12 @@ namespace Lambdas {
         // in the lambda-capture without specifying its type:
 
         // lambda with variable definition
-        auto lambda = [variable = 10]() { return variable; };
+        auto lambda = [variable = 10] () { return variable; };
         std::cout << lambda() << std::endl;
 
         // Captures default to 'const value':
         // The mutable keyword removes the 'const' qualification from all captured variables
-        auto counter = [count = 50]() mutable { 
+        auto counter = [count = 50] () mutable { 
             ++count; 
             return count;
         };
@@ -149,19 +149,19 @@ namespace Lambdas {
         int n = 1;
         int m = 2;
 
-        auto l1 = [=] () {
+        auto l1 = [=] {
             std::cout << "Copy:      " << n << " " << m << std::endl;
         };
 
-        auto l2 = [&] () {
+        auto l2 = [&] {
             std::cout << "Reference: " << n << " " << m << std::endl;
         };
 
-        auto l3 = [&, m] () {
+        auto l3 = [&, m] {
             std::cout << "Both:      " << n << " " << m << std::endl;
         };
 
-        auto l4 = [=, &m] () {
+        auto l4 = [=, &m] {
             std::cout << "More both: " << n << " " << m << std::endl;
         };
 
