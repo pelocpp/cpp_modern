@@ -250,7 +250,7 @@ wie z.B. von `int` nach `double`. Der Compiler erzeugt auch in diesen Fällen ei
 Mit C++ 14 und `decltype` kann man einen alternativen Lösungsansatz betrachten:
 
 ```cpp
-auto l6 = [](auto a, decltype(a) b) {return a + b; };
+auto l6 = [](auto a, decltype(a) b) { return a + b; };
 ```
 
 Diese Realisierung impliziert jedoch, dass der Typ des zweiten Parameters `b`

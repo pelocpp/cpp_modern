@@ -197,7 +197,7 @@ namespace GenericLambdas {
 
     void test_09()
     {
-        auto l6 = [](auto a, decltype(a) b) {return a + b; };      // C++ 14, using decltype
+        auto l6 = [](auto a, decltype(a) b) { return a + b; };      // C++ 14, using decltype
 
         auto v1 = l6(42.0, 1);                                     // Ok
         // auto v2 = l6(42, 1.0);                                  // Warning
