@@ -2,6 +2,17 @@
 // Exercises_15_SmartPointers.cpp
 // =====================================================================================
 
+#define _CRTDBG_MAP_ALLOC
+#include <cstdlib>
+#include <crtdbg.h>
+
+#ifdef _DEBUG
+#ifndef DBG_NEW
+#define DBG_NEW new ( _NORMAL_BLOCK , __FILE__ , __LINE__ )
+#define new DBG_NEW
+#endif
+#endif  // _DEBUG
+
 #include <iostream>
 #include <string>
 #include <memory>
@@ -90,6 +101,41 @@ namespace Exercises_SmartPointers {
 
     namespace Exercise_03 {
 
+        struct X;
+        struct Y;
+
+        struct X
+        {
+            std::shared_ptr<Y> m_sp_Y{};
+        };
+
+        struct Y
+        {
+            std::shared_ptr<X> m_sp_X{};
+        };
+
+        void testExercise_03() {
+
+            _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+
+            {
+                std::shared_ptr<X> sp_X{ std::make_shared<X>() };
+                std::shared_ptr<Y> sp_Y{ std::make_shared<Y>() };
+
+                sp_X->m_sp_Y = sp_Y;
+                sp_Y->m_sp_X = sp_X;
+
+                std::cout << "UseCount: " << sp_X.use_count() << std::endl;
+                std::cout << "UseCount: " << sp_Y.use_count() << std::endl;
+            }
+
+            std::cout << "Done." << std::endl;
+        }
+    }
+
+
+    namespace Exercise_04 {
+
         // =============================================================
         // Considering a "non-owning reference"
 
@@ -111,7 +157,7 @@ namespace Exercises_SmartPointers {
             }
         };
 
-        void testExercise_03a()
+        void testExercise_04a()
         {
             UnsafeWatcher watcher;
 
@@ -142,7 +188,7 @@ namespace Exercises_SmartPointers {
             }
         };
 
-        void testExercise_03b()
+        void testExercise_04b()
         {
             HeavyAndSafeWatcher watcher;
 
@@ -182,7 +228,7 @@ namespace Exercises_SmartPointers {
             }
         };
 
-        void testExercise_03c() {
+        void testExercise_04c() {
 
             LightweightAndSafeWatcher watcher;
 
@@ -200,10 +246,10 @@ namespace Exercises_SmartPointers {
             }
         }
 
-        void testExercise_03() {
-            testExercise_03a();
-            testExercise_03b();
-            testExercise_03c();
+        void testExercise_04() {
+            testExercise_04a();
+            testExercise_04b();
+            testExercise_04c();
         }
     }
 }
@@ -214,6 +260,7 @@ void test_exercises_smartpointer()
     Exercise_01::testExercise_01();
     // Exercise_02::testExercise_02();   // crashes when executed
     Exercise_03::testExercise_03();
+    Exercise_04::testExercise_04();
 }
 
 // =====================================================================================

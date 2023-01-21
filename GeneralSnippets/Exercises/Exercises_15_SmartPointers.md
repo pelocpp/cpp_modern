@@ -66,7 +66,51 @@ Studieren Sie das folgende Code-Fragement genau.
 
 ---
 
-## Aufgabe 3: Betrachtungen eines &ldquo;nicht besitzenden&rdquo; Zeigers
+## Aufgabe 3: Betrachtungen eines Zyklus von `std::shared_ptr<>`-Objekten
+
+#### Voraussetzungen: `std::shared_ptr<>`, ggf. `std::weak_ptr<>`
+
+Studieren Sie das folgende Code-Fragement genau:
+
+```cpp
+01: struct X;
+02: struct Y;
+03: 
+04: struct X
+05: {
+06:     std::shared_ptr<Y> m_sp_Y{};
+07: };
+08: 
+09: struct Y
+10: {
+11:     std::shared_ptr<X> m_sp_X{};
+12: };
+13: 
+14: void test()
+15: {
+16:     {
+17:         std::shared_ptr<X> sp_X{ std::make_shared<X>() };
+18:         std::shared_ptr<Y> sp_Y{ std::make_shared<Y>() };
+19: 
+20:         sp_X->m_sp_Y = sp_Y;
+21:         sp_Y->m_sp_X = sp_X;
+22:     }
+23: }
+```
+
+  * Bringen Sie das Programm zunächst zum Laufen &ndash; es sind nur fehlende `#include`-Direktiven zu ergänzen.
+  * Wie erklären Sie sich das vorliegende Laufzeitverhalten des Programms?
+    Möglicherweise müssen Sie dazu die Beobachtung der *Memory Leaks Detection* aktivieren, siehe [hier](https://github.com/pelocpp/cpp_modern_examples/blob/master/GeneralSnippets/MemoryLeaks/MemoryLeaksDetection.md).
+  * Welcher prinzipielle Programmierfehler liegt in diesem Code-Fragment vor?
+    Wie könnte man diesen beheben?
+
+---
+
+[An den Anfang](#aufgaben-zu-smart-pointers)
+
+---
+
+## Aufgabe 4: Betrachtungen eines &ldquo;nicht besitzenden&rdquo; Zeigers
 
 #### Voraussetzungen: `std::shared_ptr<>` und `std::weak_ptr<>`
 
