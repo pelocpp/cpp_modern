@@ -804,5 +804,8 @@
     <Image Include="MetaProgramming\GGT_Algorithmus_Euklid.png">
       <Filter>Source Files</Filter>
     </Image>
+    <Image Include="..\tiobe_index_december_2022.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

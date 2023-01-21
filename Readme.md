@@ -20,7 +20,7 @@ Ziel dieses Seminars/Repositories ist es, auf die größten Hürden beim Erlerne
 
 <img src="Horse_Cpp.png" width="600">
 
-Abbildung 1: Modern C++ &ndash; *Relax*!
+*Abbildung* 1: Modern C++ &ndash; *Relax*!
 
 ([How To Build A Horse With Programming](https://toggl.com/blog/build-horse-programming))
 
@@ -42,6 +42,22 @@ C++ ist daher auf sehr vielen Plattformen verfügbar.
 Einen genauen Abriss zur geschichtlichen Entwicklung von C++ kann man
 [hier](https://en.cppreference.com/w/cpp/language/history)
 nachlesen.
+
+*Bemerkung*:
+
+Die Betreiber des monatlich erscheinenden *TIOBE Programming Community Index* haben im Januar 2023
+die Programmiersprache des Jahres 2022 bekannt gegeben.
+Den Titel erhält jeweils die Sprache, die im Verlauf des Jahres den höchsten Zuwachs im Ranking zu verzeichnen hat.
+Nach Python im Jahr 2021 steht nun C++ auf dem Thron für 2022:
+
+<img src="tiobe_index_december_2022.png" width="500">
+
+*Abbildung* 2: Die Rangfolge der ersten zehn Programmiersprachen auf Basis des *TIOBE Programming Community Index* im Januar 2023.
+
+Der Grund für die Beliebtheit von C++ liegt laut TIOBE
+&ldquo;in seiner hervorragenden Leistung und der Tatsache, dass es sich um eine objektorientierte Hochsprache handelt.
+Daher ist es möglich, schnelle und umfangreiche Softwaresysteme (über Millionen von Codezeilen) in C++ zu entwickeln,
+ohne zwangsläufig in einem Wartungsalptraum zu enden.&rdquo;
 
 ---
 
