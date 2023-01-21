@@ -100,7 +100,7 @@ Studieren Sie das folgende Code-Fragement genau:
 
   * Bringen Sie das Programm zunächst zum Laufen &ndash; es sind nur fehlende `#include`-Direktiven zu ergänzen.
   * Wie erklären Sie sich das vorliegende Laufzeitverhalten des Programms?
-    Möglicherweise müssen Sie dazu die Beobachtung der *Memory Leaks Detection* aktivieren, siehe [hier](https://github.com/pelocpp/cpp_modern_examples/blob/master/GeneralSnippets/MemoryLeaks/MemoryLeaksDetection.md).
+    Möglicherweise müssen Sie dazu die Anweisungen der *Memory Leaks Detection* aktivieren, siehe [hier](https://github.com/pelocpp/cpp_modern_examples/blob/master/GeneralSnippets/MemoryLeaks/MemoryLeaksDetection.md).
   * Welcher prinzipielle Programmierfehler liegt in diesem Code-Fragment vor?
     Wie könnte man diesen beheben?
 
