@@ -61,18 +61,6 @@ ohne zwangsläufig in einem Wartungsalptraum zu enden.&rdquo;
 
 ---
 
-## Literaturverzeichnis
-
-Jedes Jahr gibt es immer noch zahlreiche Neuerscheinungen zum Thema C++, die auf den Markt kommen. 
-Sich aus der Fülle an alter und neuer C++-Literatur für einen Titel zu entscheiden,
-fällt oftmals gar nicht so leicht.
-Aus diesem Grund habe ich im Folgenden eine Liste mit Büchern zusammengestellt,
-die bei mir derzeit hoch im Kurs stehen und meiner Meinung nach absolut lesenswert sind. 
-
-[Zum Literaturverzeichnis](GeneralSnippets/Literatur/Literature.md).
-
----
-
 ## Inhaltsverzeichnis
 
 Es ist nicht einfach, bei der Menge an sprachlichen Ergänzungen, Erweiterungen und Neuerungen von C++ den Überblick
@@ -102,6 +90,18 @@ Besonders nützlich können Online Compiler sein, um mit den neuesten Sprachfeat
 oder auch um verschiedene Compiler vergleichen zu können.
 
 [Weitere Details](GeneralSnippets/OnlineCppCompilers/OnlineCppCompilers.md).
+
+---
+
+## Literaturverzeichnis
+
+Jedes Jahr gibt es immer noch zahlreiche Neuerscheinungen zum Thema C++, die auf den Markt kommen. 
+Sich aus der Fülle an alter und neuer C++-Literatur für einen Titel zu entscheiden,
+fällt oftmals gar nicht so leicht.
+Aus diesem Grund habe ich im Folgenden eine Liste mit Büchern zusammengestellt,
+die bei mir derzeit hoch im Kurs stehen und meiner Meinung nach absolut lesenswert sind. 
+
+[Zum Literaturverzeichnis](GeneralSnippets/Literatur/Literature.md).
 
 ---
 
