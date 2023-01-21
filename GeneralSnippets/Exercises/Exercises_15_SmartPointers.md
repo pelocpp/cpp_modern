@@ -66,7 +66,7 @@ Studieren Sie das folgende Code-Fragement genau.
 
 ---
 
-## Aufgabe 3: Betrachtungen eines Zyklus von `std::shared_ptr<>`-Objekten
+## Aufgabe 3: Beobachtungen eines Zyklus von Smart Pointer Objekten
 
 #### Voraussetzungen: `std::shared_ptr<>`, ggf. `std::weak_ptr<>`
 
