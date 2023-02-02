@@ -23,6 +23,16 @@ namespace UniquePointerGeneral {
         // std::unique_ptr<int> ptr2{ std::move(ptr) };
     }
 
+    void storeUniquePointerSafe(const std::unique_ptr<int>& ptr)
+    {
+        std::cout << "*ptr:    " << *ptr << std::endl;
+        (*ptr)++;
+        std::cout << "*ptr:    " << *ptr << std::endl;
+
+        // ownership CANNOT be taken right now - ptr is const:
+        // std::unique_ptr<int> ptr2{ std::move(ptr) };
+    }
+
     void storeUniquePointerAlternate(int* ptr)
     {
         std::cout << "*ptr:    " << *ptr << std::endl;

@@ -36,7 +36,7 @@ namespace Exercises_Lambdas {
 
             // testing lambda
             auto lambdaEven = [](int val) {
-                if (!(val % 2)) {
+                if ((val % 2) == 0) {
                     std::cout << val << " is even." << std::endl;
                 }
             };
@@ -64,7 +64,7 @@ namespace Exercises_Lambdas {
                 std::begin(values), 
                 std::end(values), 
                 [](int val) {
-                    if (!(val % 2)) {
+                    if ((val % 2) == 0) {
                         std::cout << val << " is even." << std::endl;
                     }
                 }

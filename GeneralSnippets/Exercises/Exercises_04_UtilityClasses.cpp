@@ -123,8 +123,8 @@ namespace Exercises_UtilityClasses {
             explicit Bookstore(StockList stock) : m_stock{ stock } {}
 
             // template member method
-            template <typename TNewMedia>
-            void addMedia(TNewMedia media) {
+            template <typename T>
+            void addMedia(const T& media) {
                 m_stock.push_back(media);
             }
 
@@ -132,7 +132,7 @@ namespace Exercises_UtilityClasses {
 
                 double total{};
 
-                for (const auto& element : m_stock) {
+                for (const auto& media : m_stock) {
 
                     double price{};
                     size_t count{};
@@ -142,7 +142,7 @@ namespace Exercises_UtilityClasses {
                             price = element.getPrice();
                             count = element.getCount();
                         },
-                        element
+                        media
                     );
 
                     total += price * count;

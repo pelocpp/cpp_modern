@@ -300,7 +300,7 @@ namespace GenericLambdas {
 
         auto plus = [](auto l, auto r) { return l + r; };
 
-        auto plusTen = [plus](int x) { return plus(10, x); };
+        auto plusTen = [plus](auto x) { return plus(10, x); };
 
         std::cout << plusTen(5) << std::endl;
     }

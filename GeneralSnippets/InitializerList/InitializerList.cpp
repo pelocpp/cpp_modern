@@ -48,14 +48,13 @@ namespace InitializerList {
 
     // =================================================================================
 
-
     class Point {
     public:
         Point() : Point(0.0, 0.0) {}
         Point(double x, double y) : m_x{ x }, m_y{ y } {}
 
-        double X() const { return m_x; };
-        double Y() const { return m_y; };
+        double X() const { return m_x; }
+        double Y() const { return m_y; }
 
     private:
         double m_x;
@@ -66,43 +65,20 @@ namespace InitializerList {
     class Polygon {
     public:
         Polygon(std::initializer_list<Point> elements)
-            : m_elements{ elements } {};
+            : m_elements{ elements } {}
 
     private:
         std::vector<Point> m_elements;
     };
 
-    class FixedSizePolygon {
-    public:
-        FixedSizePolygon(std::initializer_list<Point> elements) {
-
-            const Point* iter = std::begin(elements);
-            size_t numElems = (elements.size() <= 16) ? elements.size() : 16;
-
-            for (size_t i{ }; i != numElems; ++i) {
-                m_elements[i] = *iter;
-                ++iter;
-            }
-        }
-
-    private:
-        std::array<Point, 6> m_elements;
-    };
-
     void test_03() {
 
-        Polygon polygon1 {
-            Point { 45.0, 45.0 },
-            Point { 60.0, 60.0 },
-            Point { 120.0, 120.0 },
-            Point { 180.0, 180.0 }
-        };
-
-        FixedSizePolygon polygon2 {
-            Point { 45.0, 45.0 },
-            Point { 60.0, 60.0 },
-            Point { 120.0, 120.0 },
-            Point { 180.0, 180.0 }
+        Polygon polygon 
+        {
+            { 45.0, 45.0 },
+            { 60.0, 60.0 },
+            { 120.0, 120.0 },
+            { 180.0, 180.0 }
         };
     }
 

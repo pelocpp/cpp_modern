@@ -34,7 +34,7 @@ namespace StructuredBinding {
         std::cout << a << ", " << b << ", " << c << std::endl;
     }
 
-    void test_03_a() {
+    void test_04() {
         int arr[] = { 10, 11, 12 };
         auto& [a, b, c] = arr;
         std::cout << a << ", " << b << ", " << c << std::endl;
@@ -49,15 +49,15 @@ namespace StructuredBinding {
         int m_y;
     };
 
-    void test_04() {
+    void test_05() {
 
         // without structured binding
-        Point p1 = { 1, 2 };
+        Point p1 { 1, 2 };
         std::cout << "X Coordinate : " << p1.m_x << std::endl;
         std::cout << "Y Coordinate : " << p1.m_y << std::endl;
 
         // with structured binding
-        Point p2 = { 10, 20 };
+        Point p2 { 10, 20 };
         auto [x, y] = p2;
         std::cout << "X Coordinate : " << x << std::endl;
         std::cout << "Y Coordinate : " << y << std::endl;
@@ -68,9 +68,9 @@ namespace StructuredBinding {
         std::cout << "Y Coordinate : " << y1 << std::endl;
     }
 
-    void test_04_a() {
+    void test_06() {
 
-        Point p = { 10, 20 };
+        Point p { 10, 20 };
         auto& [x, y] = p;
         std::cout << "X Coordinate : " << x << std::endl;
         std::cout << "Y Coordinate : " << y << std::endl;
@@ -89,7 +89,7 @@ namespace StructuredBinding {
         unsigned long phone;
     };
 
-    void test_05() {
+    void test_07() {
 
         Employee worker { 9987, "Sepp", "Engineer", 987654321 };
         Employee manager { 9999, "Hans", "Manager", 123456789 };
@@ -112,10 +112,10 @@ void main_structured_binding()
     test_01();
     test_02();
     test_03();
-    test_03_a();
     test_04();
-    test_04_a();
     test_05();
+    test_06();
+    test_07();
 }
 
 // =====================================================================================

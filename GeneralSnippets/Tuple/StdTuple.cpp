@@ -132,6 +132,10 @@ namespace TupleSamples {
 
         std::tie(id, abbr, val, name) = mySheet[0];
 
+        // or (note: std::ignore)
+        // 
+        // std::tie(id, std::ignore, val, name) = mySheet[0];
+
         std::cout
             << "Id:    " << id << std::endl
             << "Abbr:  " << abbr << std::endl

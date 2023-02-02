@@ -5,7 +5,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <map>
+#include <unordered_map>
 #include <algorithm>
 #include <iterator>
 
@@ -16,11 +16,11 @@ namespace AlgorithmTransform {
         // very simple phone book
         std::cout << "List of Entries: " << std::endl;
 
-        std::map<std::string, size_t> phonebook
+        std::unordered_map<std::string, size_t> phonebook
         {
             { "Hans Meier" , 12345678 },
-            { "Hubert Mueller", 87654321 },
-            { "Franz Schneider", 81726354 }
+            { "Franz Schneider", 81726354 },
+            { "Hubert Mueller", 87654321 }
         };
 
         for (const auto& [name, number] : phonebook) {
@@ -50,11 +50,11 @@ namespace AlgorithmTransform {
         // very simple phone book
         std::cout << "List of Entries: " << std::endl;
 
-        std::map<std::string, size_t> phonebook
+        std::unordered_map<std::string, size_t> phonebook
         {
             { "Hans Meier" , 12345678 },
-            { "Hubert Mueller", 87654321 },
-            { "Franz Schneider", 81726354 }
+            { "Franz Schneider", 81726354 },
+            { "Hubert Mueller", 87654321 }
         };
 
         for (const auto& [name, number] : phonebook) {
@@ -90,7 +90,7 @@ namespace AlgorithmTransform {
 
         std::vector<size_t> numbers{ 12345678, 7654321, 81726354 };
 
-        std::map<std::string, size_t> contacts{};
+        std::unordered_map<std::string, size_t> contacts{};
 
         // std::transform on two ranges - create contacts from separate informations
         std::transform(

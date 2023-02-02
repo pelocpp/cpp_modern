@@ -204,7 +204,7 @@ auto msg = getMessage();   // msg has type 'std::string'
 Die Variable `msg` hat den Typ `std::string` &ndash; und damit nicht den Typ `const std::string&`!
 
 *Hinweis*:
-Der Visual C++ Compiler weiﬂt in einem Tooltip darauf hin (*Abbildung* 1):
+Der Visual C++ Compiler weist in einem Tooltip darauf hin (*Abbildung* 1):
 
 <img src="auto_no_const_reference.png" width="500">
 
