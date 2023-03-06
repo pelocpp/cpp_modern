@@ -36,10 +36,6 @@ auto g = std::bind(f, _1, 4, _2);
 Im Quellcode finden Sie eine Umsetzung der Standardfunktion `std::pow` (mit regulär 2 Parametern)
 auf eine neue Funktion vor, die nur einen Parameter besitzt.
 
-*Hinweis*:
-
-
-
 
 ## Literaturhinweise:
 

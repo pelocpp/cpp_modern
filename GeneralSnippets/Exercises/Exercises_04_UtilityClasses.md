@@ -48,6 +48,11 @@ die &ndash; an dem gezeigten Beispiel &ndash; eine Unterscheidung der drei Daten
 
 *Hinweis*: Funktionen aus dem *Type Traits* Umfeld stellen eine große Hilfe dar.
 
+*Zusatzaufgabe*:
+Im vorliegenden Beispiel &ndash; `std::variant`-Objekt, unter anderem mit Werten des Typs `std::string` &ndash; ist
+im Falle von Zeichenketten in der Lambda-Funktion die Länge der Zeichenkette auszugeben.
+Welche Beobachtung machen Sie?
+
 ---
 
 ## Aufgabe 2: Visitor-Entwurfsmuster mit `std::variant` und `std::visit`

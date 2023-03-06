@@ -34,22 +34,33 @@ namespace Exercises_UtilityClasses {
         // improved generic visitor
         auto improvedVisitor = [](auto const& elem) {
 
-            using T = typename std::remove_reference<decltype(elem)>::type;
+            using CurrentType = decltype(elem);
 
-            if constexpr (std::is_scalar<T>::value)
+            using CurrentTypeWithoutReference =
+                typename std::remove_reference<CurrentType>::type;
+
+            using CurrentTypeWithoutReferenceAndConst =
+                typename std::remove_const<CurrentTypeWithoutReference>::type;
+
+            CurrentTypeWithoutReferenceAndConst x = CurrentTypeWithoutReferenceAndConst{};
+
+            if constexpr (std::is_same<CurrentTypeWithoutReferenceAndConst, int>::value == true)
             {
-                    if constexpr (std::is_same<int, typename std::remove_cvref<T>::type> ::value)
-                    {
-                        std::cout << "int: " << elem << std::endl;
-                    }
-                    else if constexpr (std::is_same<double, typename std::remove_cvref<T>::type> ::value)
-                    {
-                        std::cout << "double: " << elem << std::endl;
-                    }
+                std::cout << "int: " << elem << std::endl;
+            }
+            else if constexpr (std::is_same<CurrentTypeWithoutReferenceAndConst, double>::value == true)
+            {
+                std::cout << "double: " << elem << std::endl;
+            }
+            else if constexpr (std::is_same<CurrentTypeWithoutReferenceAndConst, std::string>::value == true)
+            {
+                std::cout << "std::string: " << elem << std::endl;
+                size_t len = elem.size();
+                std::cout << "Length: " << len << std::endl;
             }
             else
             {
-                std::cout << "std:string: " << elem << std::endl;
+                std::cout << "Unknown data type" << std::endl;
             }
         };
 
@@ -167,6 +178,45 @@ namespace Exercises_UtilityClasses {
                     );
 
                     total += count;
+                }
+
+                return total;
+            }
+
+            // -----------------------------------------------
+            // demonstrating std::visit with returning a value
+
+            double totalBalanceEx() {
+
+                double total{};
+
+                for (const auto& media : m_stock) {
+
+                    total += std::visit(
+                        [](const auto& element) {
+                            double price = element.getPrice();
+                            size_t count = element.getCount();
+                            return price * count;
+                        },
+                        media
+                    );
+                }
+
+                return total;
+            }
+
+            size_t countEx() {
+
+                size_t total{};
+
+                for (const auto& element : m_stock) {
+
+                    total += std::visit(
+                        [](const auto& element) {
+                            return element.getCount();
+                        },
+                        element
+                    );
                 }
 
                 return total;
@@ -499,10 +549,10 @@ namespace Exercises_UtilityClasses {
 
 void test_exercises_utility_classes()
 {
-    //Exercises_UtilityClasses::Exercise_01::testExercise_01();
+    Exercises_UtilityClasses::Exercise_01::testExercise_01();
     Exercises_UtilityClasses::Exercise_02::testExercise_02();
-    //Exercises_UtilityClasses::Exercise_03::testExercise_03();
-    //Exercises_UtilityClasses::Exercise_04::testExercise_04();
+    Exercises_UtilityClasses::Exercise_03::testExercise_03();
+    Exercises_UtilityClasses::Exercise_04::testExercise_04();
 }
 
 // =====================================================================================
