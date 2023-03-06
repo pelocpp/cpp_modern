@@ -1,4 +1,4 @@
-# Modern C++ Snippets
+# Modern C++
 
 ###### Preamble
 
@@ -105,46 +105,29 @@ die bei mir derzeit hoch im Kurs stehen und meiner Meinung nach absolut lesenswe
 
 ---
 
-## Katalog aller Grundlagen-Code-Snippets
-
-In diesem Projekt sind zahlreiche kleinere Code-Snippets abgelegt, um die diversen Features von C++&ndash;11/14/17 demonstrieren zu können.
-Es folgt eine tabellarische Auflistung dieser Unterverzeichnisse.
-In der ersten Tabelle wiederholen wir einige Grundlagen von C++, die immer wieder 
-zu Fragen führen:
-
-| Unterverzeichnis | Thematik |
-|:-------------- |-----------------------------------------|
-| [Allocator](GeneralSnippets/Allocator/StdAllocator.md) | Container und Speicher-Allokatoren |
-| [ArrayDecay](GeneralSnippets/ArrayDecay/ArrayDecay.md) | Arrays und Pointer |
-| [BackInserter](GeneralSnippets/BackInserter/BackInserter.md) | `std::back_inserter` Iterator |
-| [Bind](GeneralSnippets/Bind/Bind.md) | `std::bind` |
-| [Casts](GeneralSnippets/Casts/Casts.md) | Typumwandlungen `static_cast`, `dynamic_cast`, `const_cast` und `reinterpret_cast` |
-| [ConstructursOrder](GeneralSnippets/ConstructursOrder/CtorDtorOrder.md)  | Reihenfolge der Aufrufe von Konstruktoren und Destruktoren |
-| [TemplatesFunctionBasics](GeneralSnippets/TemplateFunctionBasics/TemplatesFunctionBasics.md) | Grundlagen zu Funktions-Templates |
-| [TemplatesClassBasics](GeneralSnippets/TemplateClassBasics/TemplatesClassBasics.md) | Grundlagen zu Klassen-Templates |
-| [TemplateSpecialization](GeneralSnippets/TemplateSpecialization/TemplateSpecialization.md) | Template Spezialisierung |
-| [InputOutputStreams](GeneralSnippets/InputOutputStreams/Streams.md) | Streams manipulieren und formatieren |
-| [MemoryLeaks](GeneralSnippets/MemoryLeaks/MemoryLeaksDetection.md) | CRT (C-Runtime-Library) Memory Leak Detection |
-| [ParametersWithConstAndRef](GeneralSnippets/ParametersWithConstAndRef/ConstDeclarations.md)  | Die Deklarationen `int& const`, `int const&`, `const& int` und `const int&` im Vergleich |
-| [VirtualBaseClassDestructor](GeneralSnippets/VirtualBaseClassDestructor/VirtualBaseClassDestructor.md) | Virtuelle Destruktoren (einer Basisklasse) |
-
-Tabelle 1. Grundlagen-Code-Snippets.
-
 ## Katalog aller Modern-C++-Code-Snippets
 
-In der folgenden Tabelle sind alle Neuerungen von C++&ndash;11/14/17 aufgeführt:
+In diesem Projekt sind zahlreiche kleinere Code-Snippets abgelegt, um die diversen Features
+von C++&ndash;11/14/17 demonstrieren zu können.
+Es folgt eine tabellarische Auflistung dieser Unterverzeichnisse.
 
 | Unterverzeichnis | Thematik |
 |:-------------- |-----------------------------------------|
 | [Accumulate](GeneralSnippets/Accumulate/StdAccumulate.md) | STL-Algorithmus `std::accumulate` und Lambda-Funktionen in der Anwendung |
+| [Allocator](GeneralSnippets/Allocator/StdAllocator.md) | Container und Speicher-Allokatoren |
 | [Any](GeneralSnippets/Any/StdAny.md) | Neue STL-Utility Klasse `std::any` |
 | [Apply](GeneralSnippets/Apply/Apply.md) | `std::apply`, `std::integer_sequence` und `std::make_integer_sequence` |
 | [ArgumentDependentNameLookup](GeneralSnippets/ArgumentDependentNameLookup/ArgumentDependentNameLookup.md) | Argument-Dependent Name Lookup (ADL) / *Koenig*-Lookup |
 | [Array](GeneralSnippets/Array/StdArray.md) | Neue STL-Utility Klasse `std::array` |
+| [ArrayDecay](GeneralSnippets/ArrayDecay/ArrayDecay.md) | Arrays und Pointer |
 | [Attributes](GeneralSnippets/Attributes/Attributes.md) | C++ Standard Attribute |
 | [Auto](GeneralSnippets/Auto/Auto.md) | Keyword `auto` |
-| [ConstExpr](GeneralSnippets/ConstExpr/Constexpr.md) | Programmierung zur Übersetzungszeit mit `constexpr` |
+| [BackInserter](GeneralSnippets/BackInserter/BackInserter.md) | `std::back_inserter` Iterator |
+| [Bind](GeneralSnippets/Bind/Bind.md) | `std::bind` |
+| [Casts](GeneralSnippets/Casts/Casts.md) | Typumwandlungen `static_cast`, `dynamic_cast`, `const_cast` und `reinterpret_cast` |
 | [CommonType](GeneralSnippets/CommonType/CommonType.md) | Utility `std::common_type` |
+| [ConstExpr](GeneralSnippets/ConstExpr/Constexpr.md) | Programmierung zur Übersetzungszeit mit `constexpr` |
+| [ConstructursOrder](GeneralSnippets/ConstructursOrder/CtorDtorOrder.md)  | Reihenfolge der Aufrufe von Konstruktoren und Destruktoren |
 | [CRTP](GeneralSnippets/CRTP/CRTP.md) | Curiously Recurring Template Pattern (CRTP) |
 | [DeclType](GeneralSnippets/DeclType/decltype.md) | `decltype` und `std::declval` |
 | [DefaultInitialization](GeneralSnippets/DefaultInitialization/DefaultInitialization.md)| Default-Initialisierung für Member-Variablen |
@@ -157,12 +140,15 @@ In der folgenden Tabelle sind alle Neuerungen von C++&ndash;11/14/17 aufgeführt
 | [Generate](GeneralSnippets/Generate/Generate.md) | STL-Algorithmus `std::generate` |
 | [GenericLambdas](GeneralSnippets/GenericLambdas/GenericLambdas.md) | Generische Lambda Ausdrücke |
 | [InitializerList](GeneralSnippets/InitializerList/StdInitializerList.md) | Klasse `std::initializer_list<T>` |
+| [InputOutputStreams](GeneralSnippets/InputOutputStreams/Streams.md) | Streams manipulieren und formatieren |
 | [Invoke](GeneralSnippets/Invoke/StdInvoke.md) | `std::invoke`: "*Uniformly invoking anything callable*" |
 | [Lambda](GeneralSnippets/Lambda/Lambda.md) | Lambda-Funktionen |
 | [Literals](GeneralSnippets/Literals/Literals.md) | Benutzerdefinierte Literale |
+| [MemoryLeaks](GeneralSnippets/MemoryLeaks/MemoryLeaksDetection.md) | CRT (C-Runtime-Library) Memory Leak Detection |
 | [MetaProgramming](GeneralSnippets/MetaProgramming/Metaprogramming01.md) | Programmierung zur Übersetzungszeit |
 | [MoveSemantics](GeneralSnippets/MoveSemantics/MoveSemantics.md) | *Move Semantics* / Verschiebesemantik |
 | [Optional](GeneralSnippets/Optional/StdOptional.md) | Neue STL-Utility Klasse `std::optional` |
+| [ParametersWithConstAndRef](GeneralSnippets/ParametersWithConstAndRef/ConstDeclarations.md)  | Die Deklarationen `int& const`, `int const&`, `const& int` und `const int&` im Vergleich |
 | [PerfectForwarding](GeneralSnippets/PerfectForwarding/PerfectForwarding_01.md) | Perfect Forwarding (`std::forward`) |
 | [RAII](GeneralSnippets/RAII/RAII.md) | RAII-Idiom (*Resource acquisition is Initialization*) |
 | [Random](GeneralSnippets/Random/Random.md) | Generierung von Zufallszahlen |
@@ -177,6 +163,9 @@ In der folgenden Tabelle sind alle Neuerungen von C++&ndash;11/14/17 aufgeführt
 | [StaticAssert](GeneralSnippets/StaticAssert/StaticAssertion.md) | Compile-Time Makro `static_assert` |
 | [StringView](GeneralSnippets/StringView/StdStringView.md) | Klasse `std::string_view` |
 | [StructuredBinding](GeneralSnippets/StructuredBinding/StructuredBinding.md) | Verknüpfung einer Liste von Bezeichnern mit einem Satz von Objekten (Variablen) |
+| [TemplatesFunctionBasics](GeneralSnippets/TemplateFunctionBasics/TemplatesFunctionBasics.md) | Grundlagen zu Funktions-Templates |
+| [TemplatesClassBasics](GeneralSnippets/TemplateClassBasics/TemplatesClassBasics.md) | Grundlagen zu Klassen-Templates |
+| [TemplateSpecialization](GeneralSnippets/TemplateSpecialization/TemplateSpecialization.md) | Template Spezialisierung |
 | [TemplateConstexprIf](GeneralSnippets/TemplateConstexprIf/ConstExpr_If.md) | Templates und bedingte Compilierung (`if constexpr`) |
 | [TemplateStaticPolymorphism](GeneralSnippets/TemplateStaticPolymorphism/TemplatesStaticPolymorphism.md) | Templates und statischer Polymorphismus |
 | [TemplateTemplateParameter](GeneralSnippets/TemplateTemplateParameter/TemplateTemplateParameter.md) | Template Template Parameter |
@@ -189,9 +178,10 @@ In der folgenden Tabelle sind alle Neuerungen von C++&ndash;11/14/17 aufgeführt
 | [UniquePointer](GeneralSnippets/UniquePtr/StdUniquePtr.md) | Klasse `std::unique_ptr<T>` |
 | [VariadicTemplates](GeneralSnippets/VariadicTemplates/VariadicTemplates_01_Introduction.md) | Templates mit variabler Argumentanzahl (Variadische Templates) |
 | [Variant](GeneralSnippets/Variant/StdVariant.md)  | Neue STL-Utility Klasse `std::variant` |
+| [VirtualBaseClassDestructor](GeneralSnippets/VirtualBaseClassDestructor/VirtualBaseClassDestructor.md) | Virtuelle Destruktoren (einer Basisklasse) |
 | [VirtualOverrideFinal](GeneralSnippets/VirtualOverrideFinal/VirtualOverrideFinal.md) | Neue Schlüsselwörter `override` und `final` |
 | [WeakPointer](GeneralSnippets/WeakPtr/StdWeakPtr.md) | Klasse `std::weak_ptr<T>` |
 
-Tabelle 2. Spracherweiterungen C++&ndash;11/14/17/20.
+Tabelle 1. Tabelle aller Beispiele zu Modern C++ dieses Repositories. 
 
 ---
