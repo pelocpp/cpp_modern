@@ -40,7 +40,7 @@ namespace TypeTraits_Simple_Demo
         static constexpr bool value = true;
     };
 
-    void test_1()
+    void test_1a()
     {
         static_assert(is_this_a_floating_point<float>::value);
         static_assert(is_this_a_floating_point<double>::value);
@@ -57,7 +57,7 @@ namespace TypeTraits_Simple_Demo
         std::cout << "processing a real number: " << value << std::endl;
     }
 
-    void test_2()
+    void test_1b()
     {
         process_a_floating_point(42.0);
         // process_a_floating_point(42);  // does'n t compile: static assertion fails
@@ -65,8 +65,39 @@ namespace TypeTraits_Simple_Demo
 
     void test_01()
     {
-        test_1();
-        test_2();
+        test_1a();
+        test_1b();
+    }
+}
+
+// =================================================================================
+
+namespace TypeTraits_Second_Simple_Demo
+{
+    // primary template
+    template <typename T>
+        struct my_remove_reference {
+        using type = T;
+    };
+
+    // explicit (partial) specialization
+    template <typename T>
+    struct my_remove_reference<T&> {
+        using type = T;
+    };
+
+    void test_02()
+    {
+        using SomeType = const double&;
+        using SomeTypeWithoutRef = std::remove_reference<SomeType>::type;
+        using SomeTypeWithoutRefAndConst = std::remove_const<SomeTypeWithoutRef>::type;
+
+        static_assert(std::is_same<SomeTypeWithoutRefAndConst, double>::value == true);
+
+        using SomeTypeWithoutRef2 = my_remove_reference<SomeType>::type;
+        using SomeTypeWithoutRefAndConst2 = std::remove_const<SomeTypeWithoutRef2>::type;
+
+        static_assert(std::is_same<SomeTypeWithoutRefAndConst2, double>::value == true);
     }
 }
 
@@ -111,7 +142,7 @@ namespace TypeTraits_Conditional_Compilation_Demo {
         return os;
     }
 
-    void test_1()
+    void test_3a()
     {
         Widget widget{ 1, "I'm a Widget" };
         Gadget gadget{ 2, "I'm a Gadget" };
@@ -160,7 +191,7 @@ namespace TypeTraits_Conditional_Compilation_Demo {
         Serializer<uses_write<T>::value>::serialize(os, obj);
     }
 
-    void test_2()
+    void test_3b()
     {
         Widget widget{ 1, "I'm a Widget" };
         Gadget gadget{ 2, "I'm a Gadget" };
@@ -169,7 +200,7 @@ namespace TypeTraits_Conditional_Compilation_Demo {
         serialize(std::cout, gadget);
     }
 
-    void test_3()
+    void test_3c()
     {
         Widget widget{ 1, "I'm a Widget" };
         Gadget gadget{ 2, "I'm a Gadget" };
@@ -178,17 +209,17 @@ namespace TypeTraits_Conditional_Compilation_Demo {
         serialize<Gadget>(std::cout, gadget);
     }
 
-    void test_02()
+    void test_03()
     {
-        test_1();
-        test_2();
-        test_3();
+        test_3a();
+        test_3b();
+        test_3c();
     }
 }
 
 // =================================================================================
 
-namespace TypeTraits_Demo_Iterator_01
+namespace TypeTraits_Iterator_Demo
 {
     void whichIterator(const std::input_iterator_tag)
     {
@@ -222,7 +253,7 @@ namespace TypeTraits_Demo_Iterator_01
         return tag;
     }
 
-    void test_1()
+    void test_4a()
     {
         std::vector<int> vec;
         whichIterator(getIteratorType(vec.begin()));
@@ -236,7 +267,7 @@ namespace TypeTraits_Demo_Iterator_01
         whichIterator(iter_cat);
     }
 
-    void test_2()
+    void test_4b()
     {
         std::list<int> list;
         whichIterator(getIteratorType(list.begin()));
@@ -250,7 +281,7 @@ namespace TypeTraits_Demo_Iterator_01
         whichIterator(iter_cat);
     }
 
-    void test_3()
+    void test_4c()
     {
         std::forward_list<int> fwlist;
         whichIterator(getIteratorType(fwlist.begin()));
@@ -264,7 +295,7 @@ namespace TypeTraits_Demo_Iterator_01
         whichIterator(iter_cat);
     }
 
-    void test_4()
+    void test_4d()
     {
         std::ifstream source;
         std::istream_iterator<int> input(source);
@@ -279,7 +310,7 @@ namespace TypeTraits_Demo_Iterator_01
         whichIterator(iter_cat);
     }
 
-    void test_5()
+    void test_4e()
     {
         std::ofstream source;
         std::ostream_iterator<int> output(source);
@@ -293,19 +324,19 @@ namespace TypeTraits_Demo_Iterator_01
         whichIterator(iter_cat);
     }
 
-    void test_03()
+    void test_04()
     {
-        test_1();
-        test_2();
-        test_3();
-        test_4();
-        test_5();
+        test_4a();
+        test_4b();
+        test_4c();
+        test_4d();
+        test_4e();
     }
 }
 
 // =================================================================================
 
-namespace TypeTraits_Demo_Iterator_02
+namespace TypeTraits_Second_Iterator_Demo
 {
     template <typename Iterator>
     using ValueType = typename Iterator::value_type;
@@ -348,7 +379,7 @@ namespace TypeTraits_Demo_Iterator_02
         return getAt(it, size, category);
     }
 
-    void test_04() 
+    void test_05() 
     {
         std::forward_list<char> charList{ 'A', 'B', 'C', 'D', 'E' };
         char ch = getAt(charList.begin(), 3);
@@ -366,7 +397,7 @@ namespace TypeTraits_Demo_Iterator_02
 
 // =================================================================================
 
-namespace TypeTraits_Demo_Remove_Reference_03
+namespace TypeTraits_Demo_Remove_Reference
 {
     template<typename Container>
     void sort_01(Container& container)
@@ -418,7 +449,7 @@ namespace TypeTraits_Demo_Remove_Reference_03
         );
     }
 
-    void test_05()
+    void test_06()
     {
         std::vector<int> vec{ 5, 4, 6, 3, 7, 2, 8, 1, 9 };
 
@@ -439,16 +470,18 @@ namespace TypeTraits_Demo_Remove_Reference_03
 void main_type_traits()
 {
     using namespace TypeTraits_Simple_Demo;
+    using namespace TypeTraits_Second_Simple_Demo;
     using namespace TypeTraits_Conditional_Compilation_Demo;
-    using namespace TypeTraits_Demo_Iterator_01;
-    using namespace TypeTraits_Demo_Iterator_02;
-    using namespace TypeTraits_Demo_Remove_Reference_03;
+    using namespace TypeTraits_Iterator_Demo;
+    using namespace TypeTraits_Second_Iterator_Demo;
+    using namespace TypeTraits_Demo_Remove_Reference;
 
     test_01();
     test_02();
     test_03();
     test_04();
     test_05();
+    test_06();
 }
 
 // =====================================================================================

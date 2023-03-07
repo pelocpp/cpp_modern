@@ -48,8 +48,8 @@ Die Funktion kann eine variabel lange Liste von Parametern (mindestens zwei) ent
 Erklären Sie die Funktionsweise ihrer Realisierung. Welche Rolle spielt Zeile 14?
 
 ```cpp
-01: template <typename T, typename ... TARGS>
-02: auto minimum(const T& x, const T& y, const TARGS& ... args)
+01: template <typename T, typename ... TArgs>
+02: auto minimum(const T& x, const T& y, const TArgs& ... args)
 03: {
 04:     auto m = (x < y) ? x : y;
 05: 

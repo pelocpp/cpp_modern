@@ -10,12 +10,54 @@
 
 *Allgemeines*:
 
-C++ TypeTraits, zu deutsch etwa *Typmerkmale*, sind eine Sammlung von *Metafunktionen*.
+C++ *TypeTraits*, zu deutsch etwa *Typmerkmale*, sind eine Sammlung von *Metafunktionen*.
 Sie stammen aus dem Umfeld der so genannten *Metaprogrammierung*.
 
 ---
 
-*Ein Beispiel*:
+*Ein erstes Beispiel*:
+
+Die so genannte *Template Spezialisierung* stellt das Fundament der *Typmerkmale* dar:
+
+```cpp
+01: // primary template
+02: template <typename T>
+03: struct is_this_a_floating_point
+04: {
+05:     static constexpr bool value = false;
+06: };
+07: 
+08: // explicit (full) specialization
+09: template <>
+10: struct is_this_a_floating_point<float>
+11: {
+12:     static constexpr bool value = true;
+13: };
+14: 
+15: template <>
+16: struct is_this_a_floating_point<double>
+17: {
+18:     static constexpr bool value = true;
+19: };
+20: 
+21: template <typename T>
+22: void process_a_floating_point(T value)
+23: {
+24:     static_assert(is_this_a_floating_point<T>::value);
+25:     std::cout << "processing a real number: " << value << std::endl;
+26: }
+27: 
+28: void test()
+29: {
+30:     process_a_floating_point(42.0);
+31:     // process_a_floating_point(42);  // does'n t compile: static assertion fails
+32: }
+```
+
+
+---
+
+*Ein zweites Beispiel*: Eine Fallunterscheidung zur Übersetzungszeit
 
 Angenommen, wir haben mehrere Klassen, die Operationen zum Schreiben
 in einen Ausgabestrom definieren (Serialisierung).

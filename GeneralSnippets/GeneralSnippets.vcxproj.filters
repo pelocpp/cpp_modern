@@ -503,9 +503,6 @@
     <None Include="CommonType\CommonType.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="Exercises\Exercises_Legacy.md">
-      <Filter>Resource Files</Filter>
-    </None>
     <None Include="MoveSemantics\MoveSemantics.md">
       <Filter>Resource Files</Filter>
     </None>

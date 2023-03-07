@@ -34,8 +34,8 @@ doSomething(argN);
 Es verwundert also nicht, dass folgendes Code-Fragment nicht kompilierbar ist:
 
 ```cpp
-template <typename... TARGS>
-void doSomethingForAll(TARGS const&... args) {
+template <typename... TArgs>
+void doSomethingForAll(TArgs const&... args) {
     doSomething(args)...;
 }
 ```
@@ -96,8 +96,8 @@ aber immer ein ganz anderer Wert als Argument für das `std::initializer_list`-Ob
 Mit dem Komma-Operator ist dies einfach:
 
 ```cpp
-template <typename... TARGS>
-void doSomethingForAll(const TARGS& ... args) {
+template <typename... TArgs>
+void doSomethingForAll(const TArgs& ... args) {
     std::initializer_list<int> list = { (doSomething(args), 0)... };
 }
 ```
