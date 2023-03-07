@@ -16,7 +16,7 @@ namespace Exercises_Folding {
         // =============================================================
         // Logical And - with folding expression
 
-        template<typename... TArgs>
+        template<typename ... TArgs>
         bool andAll(const TArgs... args) {
             return (... && args);  // unary left fold
         }
@@ -33,7 +33,7 @@ namespace Exercises_Folding {
         // =============================================================
         // Logical Or - with folding expression
 
-        template<typename... TArgs>
+        template<typename ... TArgs>
         bool orAll(const TArgs... args) {
             return (args || ...);  // unary right fold
         }
@@ -61,7 +61,7 @@ namespace Exercises_Folding {
         // Beim Lösungsansatz mit variadischen Templates wird
         // das 1. mit dem 2., das 2. mit dem 3., das 3. mit dem 4. Element usw. verglichen!
 
-        template<typename T, typename... TRest>
+        template<typename T, typename ... TRest>
         constexpr bool sameType([[maybe_unused]] T arg, [[maybe_unused]] TRest... args)
         {
             // since C++17: folding expression !
@@ -88,7 +88,7 @@ namespace Exercises_Folding {
 
     namespace Exercise_03 {
 
-        template <typename T, typename...  TArgs>
+        template <typename T, typename ...  TArgs>
         auto minimum(const T& x, const T& y, const TArgs&... args)
         {
             auto m = (x < y) ? x : y;
@@ -107,7 +107,7 @@ namespace Exercises_Folding {
             return m;
         }
 
-        template <typename T, typename...  TArgs>
+        template <typename T, typename ...  TArgs>
         auto maximum(const T& x, const T& y, const TArgs&... args)
         {
             auto m = (x > y) ? x : y;
@@ -152,7 +152,7 @@ namespace Exercises_Folding {
         // ===================================================================
         // folding
 
-        template <typename T, typename...  TArgs>
+        template <typename T, typename ...  TArgs>
         void pushBackAll_01(std::vector<T>& vec, const TArgs&... args)
         {
             (vec.push_back(args) , ...);  // unary right fold or
@@ -161,7 +161,7 @@ namespace Exercises_Folding {
 
         // or better - using perfect forwarding:
 
-        //template <typename T, typename...  TArgs>
+        //template <typename T, typename ...  TArgs>
         //void pushBackAll_01(std::vector<T>& vec, TArgs&&... args)
         //{
         //    (vec.push_back(std::forward<TArgs>(args)) , ...);  // unary right fold or
@@ -193,7 +193,7 @@ namespace Exercises_Folding {
             vec.push_back(std::forward<TArg>(arg));
         }
 
-        template <typename T, typename TArg, typename...  TArgs>
+        template <typename T, typename TArg, typename ...  TArgs>
         void pushBackAll_02(std::vector<T>& vec, TArg&& arg, TArgs&&... args)
         {
             vec.push_back(std::forward<TArg>(arg));
@@ -218,7 +218,7 @@ namespace Exercises_Folding {
         // ===================================================================
         // initializer list
 
-        template <typename T, typename...  TArgs>
+        template <typename T, typename ...  TArgs>
         void pushBackAll_03(std::vector<T>& vec, TArgs&&... args)
         {
             std::initializer_list<int> { (vec.push_back(std::forward<TArgs>(args)), 0) ... };
@@ -248,34 +248,118 @@ namespace Exercises_Folding {
 
     namespace Exercise_05 {
 
-        template <typename... TArgs>
+        // ---------------------------------------------------------
+        // no separator
+
+        template <typename ... TArgs>
         void printer1(TArgs... args) {
             (std::cout << ... << args);
-            std::cout << std::endl;
         }
 
-        template <typename... TArgs>
+        // ---------------------------------------------------------
+        // with separator - but also with trailing separator
+
+        template <typename ... TArgs>
         void printer2(TArgs... args) {
-            ((std::cout << args << ", "), ...);
-            std::cout << std::endl;
+            ((std::cout << args << ", ") , ...);
         }
 
-        template <typename T, typename... TArgs>
+        // ---------------------------------------------------------
+        // The solution uses a template argument for the first parameter
+        // and then a variadic parameter list for the rest.
+        // We print then the first element and then add a separator
+        // before all remaining entries
+
+        template <typename T, typename ... TArgs>
         void printer3(T first, TArgs... rest) {
             std::cout << first;
-            ((std::cout << ", " << rest), ...);
+            ((std::cout << ", " << rest) , ...);
+        }
+
+        /* Miscellaneous implementation variants:
+        */
+
+        // ---------------------------------------------------------
+        // using range-based for-loop and std::initializer_list object
+
+        template <typename T>
+        void printCommaAndValue(T arg) {
+            std::cout << ", " << arg;
+        }
+
+        template <typename T, typename ... TArgs>
+        void printer4(T first, TArgs ... rest) {
+            std::cout << first;
+            for (auto value : { rest ... }) {
+                printCommaAndValue(value);
+            }
+        }
+
+        // ----------------------------------------------------
+        // similar to printer3 - just using a helper function
+
+        template <typename T, typename ... TArgs>
+        void printer5(T first, TArgs ... rest) {
+            std::cout << first;
+            (printCommaAndValue(rest) , ...);
+        }
+
+        // ----------------------------------------------------
+        // using a lambda helper function
+
+        auto lambdaPrintCommaAndValue = [](auto value) {
+            std::cout << ", " << value;
+        };
+
+        template <typename T, typename ... TArgs>
+        void printer6(T first, TArgs ... rest) {
+            std::cout << first;
+            (lambdaPrintCommaAndValue(rest) , ...);
+        }
+
+        // ----------------------------------------------------
+        // hiding lambda helper function inside printer function
+
+        template <typename T, typename ... TArgs>
+        void printer7(T first, TArgs ... rest) {
+
+            auto localLambdaPrintCommaAndValue = [](auto value) {
+                std::cout << ", " << value;
+            };
+
+            std::cout << first;
+            (localLambdaPrintCommaAndValue(rest), ...);
+        }
+
+        // ----------------------------------------------------
+        // using self-invoking lambda helper function
+
+        template <typename T, typename ... TArgs>
+        void printer8(T first, TArgs ... rest) {
+            std::cout << first;
+            // IIFE - Immediately Invoked Functional Expression :
+            ([](auto value) { std::cout << ", " << value; } (rest), ...);
             std::cout << std::endl;
         }
 
-        /* The solution uses a template argument for the first parameter and then
-           a variadic parameter list for the rest. We print then the first element
-           and then add a separator before all other entries.
-        */
+        // ----------------------------------------------------
 
         void testExercise_05() {
             printer1(1, "ABC", 2, "DEF", 3, "GHI");
+            std::cout << std::endl;
             printer2(1, "ABC", 2, "DEF", 3, "GHI");
+            std::cout << std::endl;
             printer3(1, "ABC", 2, "DEF", 3, "GHI");
+            std::cout << std::endl;
+            printer4(1, 2, 3, 4, 5);     // note: parameter types must be the same
+            std::cout << std::endl;
+            printer5(1, "ABC", 2, "DEF", 3, "GHI");
+            std::cout << std::endl;
+            printer6(1, "ABC", 2, "DEF", 3, "GHI");
+            std::cout << std::endl;
+            printer7(1, "ABC", 2, "DEF", 3, "GHI");
+            std::cout << std::endl;
+            printer8(1, "ABC", 2, "DEF", 3, "GHI");
         }
     }
 }

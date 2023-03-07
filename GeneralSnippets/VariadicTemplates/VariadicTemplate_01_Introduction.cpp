@@ -29,7 +29,7 @@ namespace VariadicTemplatesIntro_01 {
         printAll<TRest...>(rest ...);
     }
 
-    void test_printer() 
+    void test_printer_01()
     {
        printAll<int, int, int, int, int>(1, 2, 3, 4, 5);
     }
@@ -123,7 +123,6 @@ namespace VariadicTemplatesIntro_03 {
 
     // =============================================================
     // 3. Beispiel für ein variadisches Template:
-    //
     // Anwendungsfall: Standardfunktion std::unique_ptr<>
     // =============================================================
 
@@ -172,7 +171,7 @@ namespace VariadicTemplatesIntro_04 {
     // 4. Beispiel für ein variadisches Template:
     // 
     // Anwendungsfall: "Generische Funktion 'make_an_object'"
-    //                 Umsetzung Parameter Pack auf einen passenden KOnstruktor
+    //                 Umsetzung Parameter Pack auf einen passenden Konstruktor
     // 
     // Siehe Analogien zu Factory-Pattern
     // =================================================================================
@@ -245,7 +244,7 @@ namespace VariadicTemplatesIntro_04 {
 namespace VariadicTemplatesIntro_05 {
 
     // ========================================================================
-    // 3.) Drittes Beispiel:
+    // 5.) Drittes Beispiel:
     // Ein variadisches Template in zwei Realisierungsvarianten.
     // 
     // Ende der Rekursion:
@@ -255,11 +254,6 @@ namespace VariadicTemplatesIntro_05 {
     // Man beachte: Wenn sich zwei Template Funktionen nur um das Parameter Pack
     // unterscheiden, wird - wenn möglich - die Template Funktionen ohne Parameter Pack bevorzugt:
     // ========================================================================
-
-#define EndOfRecursion_NonTemplateFunction 
-// #define EndOfRecursion_TemplateFunction 
-
-#if defined (EndOfRecursion_NonTemplateFunction)
 
     // Ende der Rekursion: Eine non-Template Funktion
     void print()
@@ -272,41 +266,37 @@ namespace VariadicTemplatesIntro_05 {
         std::cout << firstArg << std::endl; // print first argument
         print(args...); // call print() for remaining arguments
     }
-#endif
-
-#if defined (EndOfRecursion_TemplateFunction)
 
     // Oder:
     // Ende der Rekursion: Eine Template Funktion
 
     template<typename T>
-    void print(T arg)
+    void printEx(T arg)
     {
         std::cout << arg << std::endl; // print passed argument
     }
 
     template<typename T, typename... Types>
-    void print(T firstArg, Types... args)
+    void printEx(T firstArg, Types... args)
     {
-        print(firstArg); // call print() for first argument
-        print(args...);  // call print() for remaining arguments
+        printEx(firstArg); // call print() for first argument
+        printEx(args...);  // call print() for remaining arguments
     }
-#endif
 
-    void test_printer_01()
+    void test_printer_02()
     {
-        std::string s("World");
-        print(123.456, "Hello", s);
+        print(123.456, "Hello", 789);
+        print<double, const char*, int>(123.456, "Hello", 789);
 
-        // same as
-        print<double, const char*, std::string>(123.456, "Hello", s);
+        printEx(123.456, "Hello", 789);
+        printEx<double, const char*, int>(123.456, "Hello", 789);
     }
 }
 
 void main_variadic_templates_intro()
 {
     using namespace VariadicTemplatesIntro_01;
-    test_printer();
+    test_printer_01();
 
     using namespace VariadicTemplatesIntro_02;
     test_adder_01();
@@ -321,7 +311,7 @@ void main_variadic_templates_intro()
     test_make_an_object_ex();
 
     using namespace VariadicTemplatesIntro_05;
-    test_printer_01();
+    test_printer_02();
 }
 
 // =====================================================================================

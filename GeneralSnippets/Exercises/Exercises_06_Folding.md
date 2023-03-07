@@ -165,6 +165,18 @@ Wenn Sie die letzte Ausgabe genau betrachten, können Sie ein störendes Trennze
 *Aufgabe*:
 Schreiben Sie Funktion `printer` so um, dass das letzte Trennzeichen nicht mehr ausgegeben wird!
 
+*Zusatzfrage*:
+In der Realisierung der `printer`-Funktion gibt es mehrere Variationsmöglichkeiten.
+Wenn Sie Ihre Modern C++ Kenntnisse vertiefen möchten, lassen sich zum Zwecke des Übens
+folgende Sprachkonzepte in eine Realisierung mit einbeziehen:
+
+  * Initialisierungs-Liste (`std::initializer_list`) &ndash; *Achtung*: Hier gibt es eine Einschränkung bzgl. der Datentypen der Parameter beim Aufruf.
+  * Range-based `for` Loop
+  * *Folding*
+  * &ldquo;*Folding* over a Comma&rdquo;
+  * Lambda-Funktionen
+  * Self-Invoking Lambda-Funktionen (*IIFE* - *Immediately Invoked Functional Expression*)
+
 ---
 
 [Lösungen](Exercises_06_Folding.cpp)
