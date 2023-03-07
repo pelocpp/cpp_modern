@@ -49,12 +49,12 @@ Das Feature der *einheitlichen Initialisierung* bringt zwei Vorteile mit sich:
   * Die Einheitlichkeit der neuen Initialisierungssyntax bringt es mit sich, dass man
     bei konsequentem Einsatz der geschweiften Klammern für die Initialisierung nun leichter
     zwischen Funktionsaufrufen und Initialisierungen unterscheiden kann:
-    
 
-```cpp
-Foo f = Bar(1, 2, 3);   // Konstruktor oder Funktionsaufruf?
-Foo f = Bar{1, 2, 3};   // Konstruktor!
-```
+<pre>
+    <b>{ ... }</b> ==> Konstruktor-Aufruf
+    <b>( ... )</b> ==> Funktions-/Methoden-Aufruf
+</pre>
+
 
 ---
 
