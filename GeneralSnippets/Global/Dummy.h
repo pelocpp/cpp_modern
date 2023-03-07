@@ -1,5 +1,5 @@
 // ===============================================================================
-// Dummy Class for Testing Purposes
+// Dummy.h // Dummy Class for Testing Purposes
 // ===============================================================================
 
 constexpr bool isVerbose = true;

@@ -123,12 +123,6 @@
     <ClCompile Include="MetaProgramming\MetaProgramming02.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="VariadicTemplates_Anwendungen\VariadicTemplate_XX_Examples.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="VariadicTemplates\VariadicTemplate_XX_Else_If.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="VariadicTemplates\VariadicTemplate_02_WorkingOnEveryArgument.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -160,9 +154,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CommonType\CommonType.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="VariadicTemplates_Systematic\VariadicTemplate_XX_MoreExamples.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="VariadicTemplates\VariadicTemplate_01_Introduction.cpp">
@@ -483,9 +474,6 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="VariadicTemplates\VariadicTemplates_04_Mixins.md">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="VariadicTemplates_Anwendungen\VariadicTemplates_XX_Verschiedenes.md">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="VariadicTemplates\VariadicTemplates_05_Visitor.md">

@@ -251,10 +251,7 @@
     <ClCompile Include="VariadicTemplates\VariadicTemplate_05_Visitor.cpp" />
     <ClCompile Include="VariadicTemplates\VariadicTemplate_02_WorkingOnEveryArgument.cpp" />
     <ClCompile Include="VariadicTemplates\VariadicTemplate_03_SumOfSums.cpp" />
-    <ClCompile Include="VariadicTemplates\VariadicTemplate_XX_Else_If.cpp" />
     <ClCompile Include="VariadicTemplates\VariadicTemplate_04_Mixins.cpp" />
-    <ClCompile Include="VariadicTemplates_Anwendungen\VariadicTemplate_XX_Examples.cpp" />
-    <ClCompile Include="VariadicTemplates_Systematic\VariadicTemplate_XX_MoreExamples.cpp" />
     <ClCompile Include="Variant\StdVariant.cpp" />
     <ClCompile Include="VirtualBaseClassDestructor\VirtualBaseClassDestructor.cpp" />
     <ClCompile Include="VirtualOverrideFinal\VirtualOverrideFinal.cpp" />
@@ -370,7 +367,6 @@
     <None Include="VariadicTemplates\VariadicTemplates_04_Mixins.md" />
     <None Include="VariadicTemplates\VariadicTemplates_03_SumOfSums.md" />
     <None Include="VariadicTemplates\VariadicTemplates_02_WorkingOnEveryArgument.md" />
-    <None Include="VariadicTemplates_Anwendungen\VariadicTemplates_XX_Verschiedenes.md" />
     <None Include="Variant\cpp_std_variant.svg" />
     <None Include="Variant\StdVariant.md" />
     <None Include="VirtualBaseClassDestructor\VirtualBaseClassDestructor.md" />
