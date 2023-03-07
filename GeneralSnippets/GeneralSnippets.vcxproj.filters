@@ -354,6 +354,9 @@
     <ClCompile Include="ExpressionTemplates\ExpressionTemplates.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CopyMoveElision\CopyMoveElision.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -699,6 +702,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="InitializerList\cpp_initializer_list.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="CopyMoveElision\CopyMoveElision.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

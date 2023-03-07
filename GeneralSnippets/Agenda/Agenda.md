@@ -46,6 +46,7 @@
 ## Verschiedenes
   * Structured Binding
   * Range-based `for`&ndash;Loop
+  * *Copy/Move Elision*
   * C++ Standard-Attribute
   * Vererbung: Schlüsselwörter `override`, `virtual`, `final`
   * Argument-Dependent Name Lookup (ADL) / *Koenig*-Lookup

@@ -1,0 +1,95 @@
+# Auslassen von Kopier- oder Verschiebe-Operationen &ndash; *Copy/Move Elision*
+
+[Zurück](../../Readme.md)
+
+---
+
+[Quellcode](CopyMoveElision.cpp)
+
+---
+
+## Allgemeines:
+
+Was versteht man unter *Copy and Move Elision*?
+
+Wenn in einer C++-Funktion das `return`-Schlüsselwort ein Objekt
+eines nicht primitiven Typs als Argument besitzt
+(ggf. als Resultat einer Berechnung eines Ausdrucks),
+kopiert die Ausführung dieser `return`-Anweisung das Ergebnis des Ausdrucks direkt
+in den Rückgabe-Slot (*Stack Frame*) der **aufrufenden** Funktion.
+
+Auf diese Weise wird vermieden, dass noch innerhalb der Funktion eine überflüssige Kopie
+des Resultatobjekts am Stack angelegt wird. Daher auch der Ausdruck &ldquo;*Elision*&rdquo; bzw. &ldquo;*Auslassen*&rdquo;:
+Das Erzeugen eines &ndash; nicht zwingend notwendigen &ndash; Objekts wird &ldquo;*ausgelassen*&rdquo;.
+
+Siehe dazu das Beispiel im korrespondierenden Quellcode.
+
+---
+
+## Obligatorisches Auslassen von Kopier- oder Verschiebe-Operationen
+
+Nicht immer ist es möglich, dass ein C++&ndash;Compiler zwischen den zwei Möglichkeiten des
+Erzeugens oder Nicht-Erzeugens temporärer Objekte  wählen kann.
+In manchen Situationen schreibt der C++ Sprachstandard ein obligatorisches Auslassen der
+an sich erwarteten Kopier- oder Verschiebe-Operationen vor:
+
+```cpp
+return Foo{};
+```
+
+---
+
+## Optionales Auslassen von Kopier- oder Verschiebe-Operationen
+
+Wenn der zurückgegebene Wert ein *benanntes* Objekt ist,
+kann der Compiler auf das Erzeugen des temporären Objekts verzichten, muss dies aber nicht:
+
+```cpp
+Foo createHugeData() {
+    Foo data{ 1 };
+    return data;
+}
+
+void test
+{
+    Foo data{ createHugeData() };
+}
+```
+
+Studieren Sie die Testausgaben dieses Beispiels an Hand des korrespondierenden Quellcodes.
+
+
+---
+
+## Visual C++ &ndash; Compiler Flag `/Zc:nrvo` 
+
+Mit dem Visual C++ Compiler (ab Version 17.4) kann man das *optionale* Auslassen
+von Kopier-/Verschiebeoperationen explizit mit dem Flag `/Zc:nrvo` aktivieren oder
+deaktivieren (`/Zc:nrvo-`).
+
+Es ist nicht möglich, das *obligatorische* Entfernen von Kopier-/Verschiebeoperationen zu deaktivieren.
+
+
+Mit Hilfe dieses Compiler Flags können Sie das Beispielprogramm auf folgende zwei Arten
+ausführen:
+
+```
+c'tor (int) [1]
+d'tor [1]
+```
+
+oder 
+
+```
+c'tor (int) [1]
+copy-c'tor !!!!!!!!!!! [1]
+d'tor [1]
+d'tor [1]
+```
+
+---
+
+[Zurück](../../Readme.md)
+
+---
+
