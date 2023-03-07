@@ -124,7 +124,7 @@ int main()
         //main_constexpr_extended();
         //main_constexpr_crc();
         //main_constexpr_if();
-        main_copy_move_elision();
+        //main_copy_move_elision();
         //main_crtp();
         //main_decltype();
         //main_default_initialization();

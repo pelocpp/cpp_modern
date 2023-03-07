@@ -38,7 +38,7 @@ namespace CopyMoveElision {
     };
 
     // test method
-    Foo createHugeData() {
+    Foo createData() {
         Foo data{ 1 };
         return data;
 
@@ -46,7 +46,7 @@ namespace CopyMoveElision {
     }
 
     void test_copy_elision() {
-        Foo data{ createHugeData() };
+        Foo data{ createData() };
     }
 }
 

@@ -20,7 +20,8 @@ in den Rückgabe-Slot (*Stack Frame*) der **aufrufenden** Funktion.
 
 Auf diese Weise wird vermieden, dass noch innerhalb der Funktion eine überflüssige Kopie
 des Resultatobjekts am Stack angelegt wird. Daher auch der Ausdruck &ldquo;*Elision*&rdquo; bzw. &ldquo;*Auslassen*&rdquo;:
-Das Erzeugen eines &ndash; nicht zwingend notwendigen &ndash; Objekts wird &ldquo;*ausgelassen*&rdquo;.
+Das Erzeugen eines &ndash; nicht zwingend notwendigen &ndash; temporären (lokalen) Objekts
+wird &ldquo;*ausgelassen*&rdquo;.
 
 Siehe dazu das Beispiel im korrespondierenden Quellcode.
 
@@ -29,9 +30,9 @@ Siehe dazu das Beispiel im korrespondierenden Quellcode.
 ## Obligatorisches Auslassen von Kopier- oder Verschiebe-Operationen
 
 Nicht immer ist es möglich, dass ein C++&ndash;Compiler zwischen den zwei Möglichkeiten des
-Erzeugens oder Nicht-Erzeugens temporärer Objekte  wählen kann.
+Erzeugens oder Nicht-Erzeugens temporärer Objekte auswählen kann.
 In manchen Situationen schreibt der C++ Sprachstandard ein obligatorisches Auslassen der
-an sich erwarteten Kopier- oder Verschiebe-Operationen vor:
+an sich erwarteten Kopier- bzw. Verschiebe-Operation vor:
 
 ```cpp
 return Foo{};
@@ -45,14 +46,14 @@ Wenn der zurückgegebene Wert ein *benanntes* Objekt ist,
 kann der Compiler auf das Erzeugen des temporären Objekts verzichten, muss dies aber nicht:
 
 ```cpp
-Foo createHugeData() {
+Foo createData() {
     Foo data{ 1 };
     return data;
 }
 
 void test
 {
-    Foo data{ createHugeData() };
+    Foo data{ createData() };
 }
 ```
 
@@ -65,12 +66,16 @@ Studieren Sie die Testausgaben dieses Beispiels an Hand des korrespondierenden Q
 
 Mit dem Visual C++ Compiler (ab Version 17.4) kann man das *optionale* Auslassen
 von Kopier-/Verschiebeoperationen explizit mit dem Flag `/Zc:nrvo` aktivieren oder
-deaktivieren (`/Zc:nrvo-`).
+deaktivieren (`/Zc:nrvo-`):
+
+<img src="CopyMoveElision.png" width="600">
+
+*Abbildung* 1: Compiler Flag `/Zc:nrvo`.
 
 Es ist nicht möglich, das *obligatorische* Entfernen von Kopier-/Verschiebeoperationen zu deaktivieren.
 
 
-Mit Hilfe dieses Compiler Flags können Sie das Beispielprogramm auf folgende zwei Arten
+Mit Hilfe dieses Compiler Flags können Sie das Beispielprogramm von oben auf folgende zwei Arten
 ausführen:
 
 ```
@@ -89,7 +94,16 @@ d'tor [1]
 
 ---
 
-[Zurück](../../Readme.md)
+## Literaturhinweise:
+
+Die Informationen zu diesem Thema stammen zum größten Teil aus dem Artikel
+
+[Improving Copy and Move Elision](https://devblogs.microsoft.com/cppblog/improving-copy-and-move-elision/)<br>(abgerufen am 7.7.2023).
+
+von Bran Hagger.
 
 ---
 
+[Zurück](../../Readme.md)
+
+---

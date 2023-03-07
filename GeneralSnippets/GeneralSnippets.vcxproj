@@ -393,6 +393,7 @@
     <Image Include="ConstExpr\ConstExpr03.png" />
     <Image Include="ConstExpr\constexpr_lambda_01.png" />
     <Image Include="ConstExpr\constexpr_lambda_02.png" />
+    <Image Include="CopyMoveElision\CopyMoveElision.png" />
     <Image Include="Exercises\cpp_dividend_divisor.png" />
     <Image Include="MetaProgramming\euler_number.png" />
     <Image Include="MetaProgramming\GGT_Algorithmus_Euklid.png" />
