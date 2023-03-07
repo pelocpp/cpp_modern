@@ -8,14 +8,15 @@ class Dummy
 {
 private:
     int m_dummy;
+
 public:
-    explicit Dummy() : m_dummy (0){
+    explicit Dummy() : m_dummy{} {
         if (isVerbose) {
             std::cout << "c'tor Dummy [" << m_dummy << "]" << std::endl;
         }
     }
 
-    explicit Dummy(int dummy) : m_dummy(dummy) {
+    explicit Dummy(int dummy) : m_dummy{ dummy } {
         if (isVerbose) {
             std::cout << "c'tor Dummy [" << m_dummy << "]" << std::endl;
         }

@@ -51,8 +51,7 @@ Foo createData() {
     return data;
 }
 
-void test
-{
+void test {
     Foo data{ createData() };
 }
 ```
@@ -98,7 +97,7 @@ d'tor [1]
 
 Die Informationen zu diesem Thema stammen zum größten Teil aus dem Artikel
 
-[Improving Copy and Move Elision](https://devblogs.microsoft.com/cppblog/improving-copy-and-move-elision/)<br>(abgerufen am 7.7.2023).
+[Improving Copy and Move Elision](https://devblogs.microsoft.com/cppblog/improving-copy-and-move-elision/) (abgerufen am 7.7.2023).
 
 von Bran Hagger.
 
