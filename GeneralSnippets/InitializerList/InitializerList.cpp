@@ -73,10 +73,21 @@ namespace InitializerList {
 
     void test_03() {
 
-        Polygon polygon 
-        {
-            { 45.0, 45.0 },
-            { 60.0, 60.0 },
+        Polygon polygon
+        {                          // c'tor Polygon - using brace initialization syntax
+            {                      // braces for std::initializer_list<Point> object
+                { 45.0, 45.0 },    // c'tor Point - using brace initialization syntax
+                { 60.0, 60.0 },    // c'tor Point - using brace initialization syntax
+                { 120.0, 120.0 },
+                { 180.0, 180.0 }
+            }
+        };
+
+        // same example - with brace elision
+        Polygon polygon2
+        {                          // c'tor Polygon - using brace initialization syntax
+            { 45.0, 45.0 },        // c'tor Point - using brace initialization syntax
+            { 60.0, 60.0 },        // c'tor Point - using brace initialization syntax
             { 120.0, 120.0 },
             { 180.0, 180.0 }
         };

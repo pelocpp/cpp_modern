@@ -103,7 +103,7 @@ namespace InputOutputStreams {
 
     void test_05() {
         int val = 255;
-        std::cout << std::showbase << std::endl;;
+        std::cout << std::showbase << std::endl;
         std::cout << std::dec << val << std::endl;  // output: 255
         std::cout << std::hex << val << std::endl;  // output: 0xff
         g();

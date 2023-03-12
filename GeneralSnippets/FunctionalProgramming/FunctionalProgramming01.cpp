@@ -334,7 +334,7 @@ namespace FunctionalProgramming_01 {
             [](int n, int m) {return n + m; }
         );
 
-        std::cout << sum << std::endl;;
+        std::cout << sum << std::endl;
     }
 
     // testing 'Filter-Map-Reduce' Pattern

@@ -97,11 +97,11 @@ void main_virtual_destructor();
 void main_virtual_override_final();
 void main_weak_pointer();
 
-#pragma message("Collection of Modern C++-Code Snippets - Copyright (C) 2019-2023 Peter Loos")
+#pragma message("Collection of Modern C++-Code Examples - Copyright (C) 2019-2023 Peter Loos")
 
 int main()
 {
-    std::cout << "[Collection of Modern C++-Code Snippets - Copyright (C) 2019-2023 Peter Loos]" << std::endl;
+    std::cout << "[Collection of Modern C++-Code Examples - Copyright (C) 2019-2023 Peter Loos]" << std::endl;
 
     try
     {

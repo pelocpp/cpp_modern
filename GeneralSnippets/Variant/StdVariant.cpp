@@ -87,7 +87,7 @@ namespace VariantDemo {
         }
         catch (std::bad_variant_access&)
         {
-            std::cout << "Variant doesn't hold float at this moment ..." << std::endl;;
+            std::cout << "Variant doesn't hold float at this moment ..." << std::endl;
         }
 
         var = 123;
