@@ -37,6 +37,12 @@
   * *Currying* in C++
 
 
+## Moderne Stilistik für die Schreibweise von Funktionen
+  * Konzept von &ldquo;C++ Concepts&rdquo;: `concept`
+  * `requires`-Klausel
+  * Benutzerdefinierten Einschränkungen (*user-defined requirements*)
+
+
 ## Initialisierung
   * Initialisierung (&ldquo;Uniform Initialization&ldquo;)
   * Default-Initialisierung für Member-Variablen

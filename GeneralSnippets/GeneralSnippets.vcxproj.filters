@@ -357,6 +357,9 @@
     <ClCompile Include="CopyMoveElision\CopyMoveElision.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ConceptsRequiresFunctions\ConceptsRequiresFunctions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -702,6 +705,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="CopyMoveElision\CopyMoveElision.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="ConceptsRequiresFunctions\ConceptsRequiresFunctions.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

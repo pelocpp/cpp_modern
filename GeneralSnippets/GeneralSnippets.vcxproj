@@ -158,6 +158,7 @@
     <ClCompile Include="Bind\Bind.cpp" />
     <ClCompile Include="Casts\Casts.cpp" />
     <ClCompile Include="CommonType\CommonType.cpp" />
+    <ClCompile Include="ConceptsRequiresFunctions\ConceptsRequiresFunctions.cpp" />
     <ClCompile Include="ConstExpr\ConstExpr.cpp" />
     <ClCompile Include="ConstExpr\ConstExpr_02.cpp" />
     <ClCompile Include="ConstExpr\ConstExprExtended.cpp" />
@@ -275,6 +276,7 @@
     <None Include="Bind\Bind.md" />
     <None Include="Casts\Casts.md" />
     <None Include="CommonType\CommonType.md" />
+    <None Include="ConceptsRequiresFunctions\ConceptsRequiresFunctions.md" />
     <None Include="ConstExpr\Constexpr.md" />
     <None Include="ConstExpr\Constexpr_02.md" />
     <None Include="ConstructursOrder\CtorDtorOrder.md" />
