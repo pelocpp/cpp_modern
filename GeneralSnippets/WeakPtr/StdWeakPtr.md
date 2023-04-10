@@ -162,18 +162,13 @@ Aufführung des Programms?
 
 <img src="cpp_sharedptr_cycle_05.svg" width="400">
 
-*Abbildung* 7: Die noch verbleibenden `std::shared_ptr`-Variable `sp1` wird vom Stack entfernt.
+*Abbildung* 7: Die noch verbleibende `std::shared_ptr`-Variable `sp1` wird vom Stack entfernt.
 
-
-
+Ein genaues Studium dieser Abbildungen sollte verdeutlichen, warum Zyklen bei dynamisch verzeigerten
+Objekten mit einem Referenzzähler-Mechanismus nicht korrekt verwaltet werden können.
 
 ---
 
 [Zurück](../../Readme.md)
 
 ---
-
-
-
-cpp_sharedptr_cycle_01
-
