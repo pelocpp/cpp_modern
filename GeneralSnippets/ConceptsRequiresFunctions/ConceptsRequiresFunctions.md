@@ -1,4 +1,4 @@
-# Modern Style of writing Functions
+# Moderne Stilistik für die Schreibweise von Funktionen
 
 [Zurück](../../Readme.md)
 
@@ -26,7 +26,7 @@ Bei der ersten der vier vorgestellten Möglichkeiten verwenden wir die
 
 Der Rückgabetyp der Funktion kann dann `auto` oder einer der Template Parameter sein.
 
-Beispiel:
+*Beispiel*:
 
 ```cpp
 01: template <typename T>
@@ -39,7 +39,6 @@ Beispiel:
 08:     return a + b;
 09: }
 ```
-
 
 Natürlich kann ein Funktionstemplate mehrere Template Parameter haben.
 Im nachfolgenden Beispiel lassen sich Werte unterschiedlichen Typs addieren:
@@ -54,7 +53,8 @@ auto add(T a, U b)
 ```
 
 Das Schlüsselwort `requires` ist neu für C++ 20.
-Es wendet Einschränkungen (*Constraints*) auf ein Template an.
+Es wendet Einschränkungen (*Constraints*) auf ein Template
+bzw. auf die Parameter eines Templates an.
 `Numerical` ist der Name eines Konzepts, das nur Integer- und Gleitkommatypen akzeptiert.
 
 Versucht man, derartige Templates mit unzulässigen Datentyp Parametern zu übersetzen,
@@ -90,6 +90,8 @@ verwendet werden können:
 Das Schlüsselwort `requires` tritt in dieser Variante in der Funktionssignatur
 in Erscheinung:
 
+*Beispiel*:
+
 ```cpp
 01: template <typename T>
 02: auto add(T a, T b) requires Numerical<T>
@@ -101,7 +103,7 @@ in Erscheinung:
 Wir erhalten das gleiche Ergebnis wie bei der `requires`-Klausel zuvor,
 wir haben die Klausel nur mit einer anderen Syntax geschrieben.
 
-In dieser Defintion können wir wieder nicht zwei Zahlen unterschiedlichen Typs addieren.
+In dieser Definition können wir wieder nicht zwei Zahlen unterschiedlichen Typs addieren.
 Wir müssten die Template Definition ähnlich wie zuvor ändern:
 
 ```cpp
@@ -129,8 +131,9 @@ Man kann die Requirements der Template Parameter auch in einer Art
 
 Die dritte Art, ein Konzept zu verwenden,
 ist in der Schreibweise etwas knapper als die vorherigen.
-
 Der Bezeichner des Konzepts wird in der Template Deklaration verwendet:
+
+*Beispiel*:
 
 ```cpp
 01: template <Numerical T>
@@ -174,12 +177,17 @@ können Sie sowohl auf Template Parameter als auch auf `requires`-Klauseln verzic
 Sie können `concept`-Bezeichner direkt dort verwenden,
 wo die Funktionsargumente aufgelistet sind.
 
+*Beachte*:
+
+Der `concept`-Bezeichner wird in dieser Variante ohne Template Parameter verwendet! 
+
+
 ## `requires`-Klauseln mit benutzerdefinierten Einschränkungen
 
 Zum Schreiben einer `requires`-Klausel lassen sich die vordefinierten
 Merkmale (&ldquo;*Traits*&rdquo;) aus dem Header `<type_traits>` verwenden.
 
-Man kann aber auch seine eigene Merkmale definieren.
+Man kann aber auch seine eigenen Merkmale definieren.
 Diese müssen dann den Typ `constexpr bool` zurückgeben.
 
 *Beispiel*:
@@ -196,13 +204,23 @@ Damit ließe sich dann ein Konzept so definieren:
 template <typename T>
 concept GreatIntegral = std::is_integral<T>::value && isGreaterThanWord<T>;
 ```
+
+Eine mögliche Anwendung könnte dann so aussehen:
+
+```cpp
+template<GreatIntegral T>
+T incrementByOne(const T& arg) {
+    return arg + 1;
+}
+```
+
 ---
 
 ## Literaturhinweise:
 
 Ideen und Anregungen zu den Beispielen aus diesem Abschnitt stammen aus
 
-[4 ways to use C++ Concepts in Functions](https://www.sandordargo.com/blog/2021/02/17/cpp-concepts-4-ways-to-use-them)<br>(abgerufen am 09.04.2023).
+[4 ways to use C++ Concepts in Functions](https://www.sandordargo.com/blog/2021/02/17/cpp-concepts-4-ways-to-use-them) (abgerufen am 09.04.2023).
 
 von Sandor Dargo.
 

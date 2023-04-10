@@ -3,16 +3,7 @@
 #include <string>
 #include <type_traits>
 #include <numeric>
-
-//#include <algorithm>
 #include <vector>
-
-// https://www.sandordargo.com/blog/2021/02/24/cpp-concepts-with-classes
-
-
-
-
-// https://www.sandordargo.com/blog/2021/02/17/cpp-concepts-4-ways-to-use-them
 
 // using <concepts>
 template <typename T>
