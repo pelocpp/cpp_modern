@@ -106,12 +106,12 @@ namespace Exercises_SmartPointers {
 
         struct X
         {
-            std::shared_ptr<Y> m_sp_Y{};
+            std::shared_ptr<Y> m_spY{};
         };
 
         struct Y
         {
-            std::shared_ptr<X> m_sp_X{};
+            std::shared_ptr<X> m_spX{};
         };
 
         void testExercise_03() {
@@ -119,20 +119,22 @@ namespace Exercises_SmartPointers {
             _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 
             {
-                std::shared_ptr<X> sp_X{ std::make_shared<X>() };
-                std::shared_ptr<Y> sp_Y{ std::make_shared<Y>() };
+                std::shared_ptr<X> sp1{ std::make_shared<X>() };
+                std::shared_ptr<Y> sp2{ std::make_shared<Y>() };
 
-                sp_X->m_sp_Y = sp_Y;
-                sp_Y->m_sp_X = sp_X;
+                sp1->m_spY = sp2;
+                sp2->m_spX = sp1;
 
-                std::cout << "UseCount: " << sp_X.use_count() << std::endl;
-                std::cout << "UseCount: " << sp_Y.use_count() << std::endl;
+                std::cout << "UseCount sp1: " << sp1.use_count() << std::endl;
+                std::cout << "   UseCount sp1->m_spY: " << sp1->m_spY.use_count() << std::endl;
+
+                std::cout << "UseCount sp2: " << sp2.use_count() << std::endl;
+                std::cout << "   UseCount sp2->m_spX: " << sp2->m_spX.use_count() << std::endl;
             }
 
             std::cout << "Done." << std::endl;
         }
     }
-
 
     namespace Exercise_04 {
 

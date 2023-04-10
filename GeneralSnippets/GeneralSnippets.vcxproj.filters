@@ -710,6 +710,27 @@
     <None Include="ConceptsRequiresFunctions\ConceptsRequiresFunctions.md">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="WeakPtr\cpp_sharedptr_cycle_01.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="WeakPtr\cpp_sharedptr_cycle_02.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="WeakPtr\cpp_sharedptr_cycle_03.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="WeakPtr\cpp_sharedptr_cycle_04.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="WeakPtr\cpp_sharedptr_cycle_05.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="WeakPtr\cpp_sharedptr_cycle_10.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="WeakPtr\cpp_sharedptr_cycle_11.svg">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Global\Dummy.h">

@@ -50,7 +50,7 @@ Dies kann man im Debugger beobachten, die Freigabezeitpunkte der Speicherbereich
 
 *Abbildung* 2: Der Control-Block enthält nicht das eigentlich dynamisch angelegte Objekt. 
 
-In *Abbildung* 1 erkennt man, dass trotz eigentlich erfolgter Freigabe des dynamisch angelegten Objekts
+In *Abbildung* 2 erkennt man, dass trotz eigentlich erfolgter Freigabe des dynamisch angelegten Objekts
 dieses noch vom Debugger angezeigt wird. Die tatsächliche Freigabe erfolgt zu einem späteren Zeitpunkt.
 
 ## Zyklische Referenzen
@@ -83,8 +83,97 @@ d'tor RightNode
 d'tor ParentNode
 ```
 
+
+## Betrachtung der Referenzzähler im Detail
+
+Wir sind dem Problem von `std::shared_ptr`-Objekten und zyklischen Referenzen auf die Spur gekommen.
+Möglicherweise ist es aber immer noch nicht ganz genau verständlich geworden,
+warum es mit der Freigabe allokierten Speichers in diesem Fall nicht funktioniert.
+
+Zu diesem Zweck haben wir das letzte Beispiel auf die wesentlichen Bestandteile komprimiert:
+
+```cpp
+01: struct X;
+02: struct Y;
+03: 
+04: struct X
+05: {
+06:     std::shared_ptr<Y> m_spY{};
+07: };
+08: 
+09: struct Y
+10: {
+11:     std::shared_ptr<X> m_spX{};
+12: };
+13: 
+14: void test() {
+15: 
+16:     std::shared_ptr<X> sp1{ std::make_shared<X>() };
+17:     std::shared_ptr<Y> sp2{ std::make_shared<Y>() };
+18: 
+19:     sp1->m_spY = sp2;
+20:     sp2->m_spX = sp1;
+21: }
+```
+
+
+Eine Studie von mehreren Bildern verdeutlicht nun, warum es bei einem Zyklus mit der Freigabe des 
+allokierten Speichers nicht klappen kann &ndash; und beim Beseitigen des Zyklusses doch:
+
+<img src="cpp_sharedptr_cycle_01.svg" width="350">
+
+*Abbildung* 3: Ein erstes, dynamisch allokiertes Objekt wird angelegt.
+
+<img src="cpp_sharedptr_cycle_02.svg" width="400">
+
+*Abbildung* 4: Ein zweites, dynamisch allokiertes Objekt wird angelegt.
+
+<img src="cpp_sharedptr_cycle_03.svg" width="400">
+
+*Abbildung* 5: Im ersten dynamisch allokierten Objekt wird eine `std::shared_ptr`-Variable dem zweiten dynamisch allokierten Objekt zugewiesen.
+
+<img src="cpp_sharedptr_cycle_10.svg" width="400">
+
+*Abbildung* 6: Derselbe Vorgang wie in der letzten Abbildung, nur umgekehrt: Es ist ein Zyklus vorhanden.
+
+<img src="cpp_sharedptr_cycle_11.svg" width="400">
+
+*Abbildung* 6: Die auf dem Stack vorhandenen `std::shared_ptr`-Variablen werden entfernt: Es verbleibt ein Zyklus auf dem Heap!
+
+ Wir schlagen noch einen alternativen Weg ein &ndash; siehe dazu folgende Modifikation des Beispiels:
+
+```cpp
+01: void test()
+02: {
+03: 
+04:     std::shared_ptr<X> sp1{ std::make_shared<X>() };
+05:     std::shared_ptr<Y> sp2{ std::make_shared<Y>() };
+06: 
+07:     sp1->m_spY = sp2;
+08: }
+```
+
+Es wird folglich kein Zyklus mehr aufgebaut. Welche Konsequenzen hat dies auf die
+Aufführung des Programms?
+
+<img src="cpp_sharedptr_cycle_04.svg" width="400">
+
+*Abbildung* 6: Die `std::shared_ptr`-Variable `sp2` wird vom Stack entfernt (Beachte: Umgekehrte Reihenfolge!).
+
+<img src="cpp_sharedptr_cycle_05.svg" width="400">
+
+*Abbildung* 7: Die noch verbleibenden `std::shared_ptr`-Variable `sp1` wird vom Stack entfernt.
+
+
+
+
 ---
 
 [Zurück](../../Readme.md)
 
 ---
+
+
+
+cpp_sharedptr_cycle_01
+

@@ -374,6 +374,13 @@
     <None Include="Variant\StdVariant.md" />
     <None Include="VirtualBaseClassDestructor\VirtualBaseClassDestructor.md" />
     <None Include="VirtualOverrideFinal\VirtualOverrideFinal.md" />
+    <None Include="WeakPtr\cpp_sharedptr_cycle_01.svg" />
+    <None Include="WeakPtr\cpp_sharedptr_cycle_02.svg" />
+    <None Include="WeakPtr\cpp_sharedptr_cycle_03.svg" />
+    <None Include="WeakPtr\cpp_sharedptr_cycle_04.svg" />
+    <None Include="WeakPtr\cpp_sharedptr_cycle_05.svg" />
+    <None Include="WeakPtr\cpp_sharedptr_cycle_10.svg" />
+    <None Include="WeakPtr\cpp_sharedptr_cycle_11.svg" />
     <None Include="WeakPtr\cpp_snippets_cyclic_references.svg" />
     <None Include="WeakPtr\StdWeakPtr.md" />
   </ItemGroup>
