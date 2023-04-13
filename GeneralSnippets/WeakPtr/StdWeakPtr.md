@@ -130,11 +130,14 @@ allokierten Speichers nicht klappen kann &ndash; und beim Beseitigen des Zykluss
 
 <img src="cpp_sharedptr_cycle_03.svg" width="400">
 
-*Abbildung* 5: Im ersten dynamisch allokierten Objekt wird eine `std::shared_ptr`-Variable dem zweiten dynamisch allokierten Objekt zugewiesen.
+*Abbildung* 5: Wertzuweisung `std::shared_ptr`-Variable.
 
 <img src="cpp_sharedptr_cycle_10.svg" width="400">
 
-*Abbildung* 6: Derselbe Vorgang wie in der letzten Abbildung, nur umgekehrt: Es ist ein Zyklus vorhanden.
+*Abbildung* 6: Zweite Wertzuweisung `std::shared_ptr`-Variable.
+
+Wir erkennen nun in *Abbildung* 6, dass ein Zyklus vorhanden ist!
+
 
 <img src="cpp_sharedptr_cycle_11.svg" width="400">
 
@@ -153,8 +156,8 @@ allokierten Speichers nicht klappen kann &ndash; und beim Beseitigen des Zykluss
 08: }
 ```
 
-Es wird folglich kein Zyklus mehr aufgebaut. Welche Konsequenzen hat dies auf die
-Aufführung des Programms?
+Es wird nun kein Zyklus mehr aufgebaut. Welche Konsequenzen hat dies auf die
+Ausführung des Programms? Die Betrachtungen schließen sich an *Abbildung* 4 an:
 
 <img src="cpp_sharedptr_cycle_04.svg" width="400">
 
