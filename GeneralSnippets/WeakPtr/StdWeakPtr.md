@@ -141,7 +141,7 @@ Wir erkennen nun in *Abbildung* 6, dass ein Zyklus vorhanden ist!
 
 <img src="cpp_sharedptr_cycle_11.svg" width="400">
 
-*Abbildung* 6: Die auf dem Stack vorhandenen `std::shared_ptr`-Variablen werden entfernt: Es verbleibt ein Zyklus auf dem Heap!
+*Abbildung* 7: Die auf dem Stack vorhandenen `std::shared_ptr`-Variablen werden entfernt: Es verbleibt ein Zyklus auf dem Heap!
 
  Wir schlagen noch einen alternativen Weg ein &ndash; siehe dazu folgende Modifikation des Beispiels:
 
@@ -157,15 +157,15 @@ Wir erkennen nun in *Abbildung* 6, dass ein Zyklus vorhanden ist!
 ```
 
 Es wird nun kein Zyklus mehr aufgebaut. Welche Konsequenzen hat dies auf die
-Ausführung des Programms? Die Betrachtungen schließen sich an *Abbildung* 4 an:
+Ausführung des Programms? Die Betrachtungen schließen sich an *Abbildung* 5 an:
 
 <img src="cpp_sharedptr_cycle_04.svg" width="400">
 
-*Abbildung* 6: Die `std::shared_ptr`-Variable `sp2` wird vom Stack entfernt (Beachte: Umgekehrte Reihenfolge!).
+*Abbildung* 8: Die `std::shared_ptr`-Variable `sp2` wird vom Stack entfernt (Beachte: Umgekehrte Reihenfolge!).
 
 <img src="cpp_sharedptr_cycle_05.svg" width="400">
 
-*Abbildung* 7: Die noch verbleibende `std::shared_ptr`-Variable `sp1` wird vom Stack entfernt.
+*Abbildung* 9: Die noch verbleibende `std::shared_ptr`-Variable `sp1` wird vom Stack entfernt.
 
 Ein genaues Studium dieser Abbildungen sollte verdeutlichen, warum Zyklen bei dynamisch verzeigerten
 Objekten mit einem Referenzzähler-Mechanismus nicht korrekt verwaltet werden können.
