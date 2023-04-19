@@ -2,6 +2,8 @@
 // Exercises_15_SmartPointers.cpp
 // =====================================================================================
 
+module;
+
 #define _CRTDBG_MAP_ALLOC
 #include <cstdlib>
 #include <crtdbg.h>
@@ -13,10 +15,13 @@
 #endif
 #endif  // _DEBUG
 
-#include <iostream>
-#include <string>
-#include <memory>
+//#include <iostream>
+//#include <string>
+//#include <memory>
+
 #include <cassert>
+
+module modern_cpp_exercises:smart_pointers;
 
 namespace Exercises_SmartPointers {
 

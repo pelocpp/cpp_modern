@@ -2,10 +2,12 @@
 // Exercises_13_FunctionalProgramming.cpp
 // =====================================================================================
 
-#include <iostream>
-#include <string>
-#include <vector>
-#include <numeric>
+//#include <iostream>
+//#include <string>
+//#include <vector>
+//#include <numeric>
+
+module modern_cpp_exercises:functional_programming;
 
 namespace Exercises_FunctionalProgramming {
 

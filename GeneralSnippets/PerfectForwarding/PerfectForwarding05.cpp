@@ -2,9 +2,11 @@
 // Perfect Forwarding 05
 // =====================================================================================
 
-#include <iostream>
-#include <vector>
-#include <string>
+//#include <iostream>
+//#include <vector>
+//#include <string>
+
+module modern_cpp:perfect_forwarding;
 
 namespace PerfectForwardingRemoveReferenceDemo {
 

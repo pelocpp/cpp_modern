@@ -2,9 +2,11 @@
 // Move Semantics
 // =====================================================================================
 
-#include <iostream>
-#include <vector>
-#include <algorithm>
+//#include <iostream>
+//#include <vector>
+//#include <algorithm>
+
+module modern_cpp:move_semantics;
 
 namespace MoveSemantics {
 

@@ -39,3 +39,12 @@ export import :initializer_list;
 export import :invoke;
 
 export import :lambda;
+export import :literals;
+
+export import :memory_leaks_detection;
+export import :metaprogramming;
+export import :move_semantics;
+
+export import :optional;
+
+export import :perfect_forwarding;

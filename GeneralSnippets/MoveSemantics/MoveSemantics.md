@@ -4,9 +4,7 @@
 
 ---
 
-[Quellcode / Klasse `BigData` - Header-Datei](MoveSemantics.h)
-
-[Quellcode / Klasse `BigData` - Implementierungs-Datei](MoveSemantics.cpp)
+[Quellcode / Klasse `BigData`](MoveSemantics.cpp)
 
 ---
 

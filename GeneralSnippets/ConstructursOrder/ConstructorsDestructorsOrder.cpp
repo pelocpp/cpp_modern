@@ -1,5 +1,5 @@
 // =====================================================================================
-// ConstructorsDestructorsOrder.cpp / Order Constructor / Destructor Invocations
+// ConstructorsDestructorsOrder.cpp // Order Constructor/Destructor Invocations
 // =====================================================================================
 
 //#include <iostream>

@@ -2,11 +2,14 @@
 // Exercises_07_Metaprogramming.cpp
 // =====================================================================================
 
-#include <iostream>
-#include <string>
-#include <type_traits>
+//#include <iostream>
+//#include <string>
+//#include <type_traits>
 
-namespace Exercises_Metaprogramming {
+module modern_cpp_exercises:metaprogramming;
+
+namespace Exercises_Metaprogramming
+{
 
     namespace Exercise_01 {
 

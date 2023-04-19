@@ -2,8 +2,14 @@
 // Perfect Forwarding 04
 // =====================================================================================
 
-#include <iostream>
-#include "../Global/Dummy.h"
+//module;
+//
+//#include "../Global/Dummy.h"
+
+
+module modern_cpp:perfect_forwarding;
+
+import :dummy;
 
 namespace PerfectForwardingObject {
 

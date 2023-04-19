@@ -2,11 +2,13 @@
 // Exercises_14_ConstExpr.cpp
 // =====================================================================================
 
-#include <iostream>
-#include <string>
-#include <vector>
-#include <numeric>
-#include <type_traits>
+//#include <iostream>
+//#include <string>
+//#include <vector>
+//#include <numeric>
+//#include <type_traits>
+
+module modern_cpp_exercises:const_expr;
 
 namespace Exercises_ConstExpr {
 

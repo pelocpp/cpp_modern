@@ -1,6 +1,10 @@
 // ===============================================================================
-// Dummy.h // Dummy Class for Testing Purposes
+// Dummy.ixx // Dummy Class for Testing Purposes
 // ===============================================================================
+
+export module modern_cpp:dummy;
+
+import std;
 
 constexpr bool isVerbose = true;
 

@@ -2,13 +2,17 @@
 // Exercises_02_Lambdas.cpp
 // =====================================================================================
 
-#include <iostream>
-#include <string>
-#include <algorithm>
-#include <vector>
-#include <functional>
-#include <map>
-#include <cmath>
+//#include <iostream>
+//#include <string>
+//#include <algorithm>
+//#include <vector>
+//#include <functional>
+//#include <map>
+//#include <cmath>
+
+module modern_cpp_exercises:lambdas;
+
+import std;
 
 namespace Exercises_Lambdas {
 

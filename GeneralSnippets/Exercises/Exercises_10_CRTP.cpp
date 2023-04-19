@@ -2,9 +2,11 @@
 // Exercises_10_CRTP.cpp
 // =====================================================================================
 
-#include <iostream>
-#include <string>
-#include <chrono>
+//#include <iostream>
+//#include <string>
+//#include <chrono>
+
+module modern_cpp_exercises:crtp;
 
 namespace Exercises_CRTP {
 

@@ -2,7 +2,9 @@
 // Perfect Forwarding 02
 // =====================================================================================
 
-#include <iostream>
+//#include <iostream>
+
+module modern_cpp:perfect_forwarding;
 
 namespace PerfectForwardingMotivation {
 

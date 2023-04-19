@@ -2,21 +2,25 @@
 // Exercises_09_SFINAE.cpp
 // =====================================================================================
 
+module;
+
 #define _CRT_SECURE_NO_WARNINGS  
 
-#include <iostream>
-#include <string>
-#include <vector>
-#include <array>
-#include <cmath>
-#include <chrono>
-#include <ctime>
-#include <cstring>
+//#include <iostream>
+//#include <string>
+//#include <vector>
+//#include <array>
+//#include <cmath>
+//#include <chrono>
+//#include <ctime>
+//#include <cstring>
 
 // GCC support
 #ifndef __FUNCSIG__
 #define __FUNCSIG__ __PRETTY_FUNCTION__
 #endif
+
+module modern_cpp_exercises:sfinae;
 
 namespace Exercises_SFINAE {
 
@@ -72,13 +76,13 @@ namespace Exercises_SFINAE {
 
     namespace Exercise_02 {
 
-        char* printTimeStamp(const std::time_t& ttp)
-        {
-            char* cp{ std::ctime(&ttp) };
-            size_t len{ std::strlen(cp) };
-            cp[len - 1] = '\0';
-            return cp;
-        }
+        //char* printTimeStamp(const std::time_t& ttp)
+        //{
+        //    char* cp{ std::ctime(&ttp) };
+        //    size_t len{ std::strlen(cp) };
+        //    cp[len - 1] = '\0';
+        //    return cp;
+        //}
 
         // Augangsfunktion - ist ein Kommentar gesetzt, da weiter unter das SFINAE-Prinzip angewendet wird
         //template<typename T>
@@ -127,7 +131,7 @@ namespace Exercises_SFINAE {
             print(const T& arg) {
             std::chrono::system_clock::time_point time_point = std::chrono::system_clock::now();
             std::time_t ttp = std::chrono::system_clock::to_time_t(time_point);
-            std::cout << "[" << printTimeStamp(ttp) << "] " << arg << std::endl;
+            // std::cout << "[" << printTimeStamp(ttp) << "] " << arg << std::endl;
         }
 
         template <typename T>
@@ -154,7 +158,7 @@ namespace Exercises_SFINAE {
             print2(const T& arg) {
             std::chrono::system_clock::time_point time_point = std::chrono::system_clock::now();
             std::time_t ttp = std::chrono::system_clock::to_time_t(time_point);
-            std::cout << "[" << printTimeStamp(ttp) << "] " << arg << std::endl;
+            // std::cout << "[" << printTimeStamp(ttp) << "] " << arg << std::endl;
         }
 
         class AnotherClass : public AnyClass

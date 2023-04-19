@@ -1,5 +1,5 @@
 // =====================================================================================
-// ConstExpr_CRC.cpp  // Example from Fraunhofer-Institute for Integrated Circuits IIS
+// ConstExpr_CRC.cpp // Example from Fraunhofer-Institute for Integrated Circuits IIS
 // =====================================================================================
 
 /*
@@ -19,7 +19,7 @@
 
 module;
 
-#include <inttypes.h> // for uint8_t
+#include <cstdint>   // for uint8_t
 
 module modern_cpp:const_expr;
 

@@ -2,12 +2,19 @@
 // Exercises_05_VariadicTemplates.cpp
 // =====================================================================================
 
-#include <iostream>
-#include <string>
-#include <vector>
-#include <tuple>
-#include <numeric>
-#include <algorithm>
+//#include <iostream>
+//#include <string>
+//#include <vector>
+//#include <tuple>
+//#include <numeric>
+//#include <algorithm>
+
+
+//module;
+//
+//import <typeinfo>;
+
+module modern_cpp_exercises:variadic_templates;
 
 namespace Exercises_VariadicTemplates {
 
@@ -93,8 +100,8 @@ namespace Exercises_VariadicTemplates {
         template<typename T1, typename T2>
         bool sameType(T1 arg1, T2 arg2)
         {
-            std::cout << " # " << arg1 << ": " << typeid(arg1).name();
-            std::cout << " - " << arg2 << ": " << typeid(arg2).name() << std::endl;
+            //std::cout << " # " << arg1 << ": " << typeid(arg1).name();
+            //std::cout << " - " << arg2 << ": " << typeid(arg2).name() << std::endl;
 
             return std::is_same<decltype(arg1), decltype(arg2)>::value;
             // or
@@ -106,8 +113,8 @@ namespace Exercises_VariadicTemplates {
         template<typename T1, typename T2, typename... TRest>
         bool sameType(T1 arg1, T2 arg2, TRest... args)
         {
-            std::cout << " > " << arg1 << ": " << typeid(arg1).name();
-            std::cout << " - " << arg2 << ": " << typeid(arg2).name() << std::endl;
+            //std::cout << " > " << arg1 << ": " << typeid(arg1).name();
+            //std::cout << " - " << arg2 << ": " << typeid(arg2).name() << std::endl;
 
             // Note: short-circuit-evaluation is considered !
             // Study output of program execution
@@ -152,13 +159,13 @@ namespace Exercises_VariadicTemplates {
 
         void testExercise_03() {
             auto min1 = minimum(-7, 3.7f, 9u, -2.6);
-            std::cout << "min1: " << min1 << ", type: " << typeid(min1).name() << std::endl;
+            std::cout << "min1: " << min1 << std::endl;
 
             auto min2 = minimum(-7, 3.7f, 9u, -42.6);
-            std::cout << "min2: " << min2 << ", type: " << typeid(min2).name() << std::endl;
+            std::cout << "min2: " << min2 << std::endl;
 
             auto min3 = minimum(123, (short)456, (long)789);
-            std::cout << "min3: " << min3 << ", type: " << typeid(min3).name() << std::endl;
+            std::cout << "min3: " << min3 << std::endl;
         }
     }
 

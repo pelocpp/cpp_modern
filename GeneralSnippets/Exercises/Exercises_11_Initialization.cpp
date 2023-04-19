@@ -2,10 +2,12 @@
 // Exercises_11_Initialization.cpp
 // =====================================================================================
 
-#include <iostream>
-#include <string>
-#include <vector>
-#include <chrono>
+//#include <iostream>
+//#include <string>
+//#include <vector>
+//#include <chrono>
+
+module modern_cpp_exercises:initialization;
 
 namespace Exercises_Initialization {
 

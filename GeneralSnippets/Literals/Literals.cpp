@@ -2,10 +2,16 @@
 // User defined literals
 // =====================================================================================
 
-#include <iostream>
-#include <string>
-#include <cstdint>
-#include <iomanip>
+//#include <iostream>
+//#include <string>
+//#include <cstdint>
+//#include <iomanip>
+
+module;
+
+#include <cstdint>   // for uint8_t
+
+module modern_cpp:literals;
 
 namespace Literals_With_Separators {
 

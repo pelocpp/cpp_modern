@@ -2,7 +2,9 @@
 // Perfect Forwarding 03
 // =====================================================================================
 
-#include <iostream>
+//#include <iostream>
+
+module modern_cpp:perfect_forwarding;
 
 namespace PerfectForwardingDemo {
 

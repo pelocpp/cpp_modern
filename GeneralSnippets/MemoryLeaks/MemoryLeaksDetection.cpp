@@ -1,6 +1,8 @@
 // =====================================================================================
-// Memory Leaks Detection
+// MemoryLeaksDetection.cpp // Memory Leaks Detection
 // =====================================================================================
+
+module;
 
 #define _CRTDBG_MAP_ALLOC
 #include <cstdlib>
@@ -13,7 +15,7 @@
 #endif
 #endif  // _DEBUG
 
-#include <iostream>
+module modern_cpp:memory_leaks_detection;
 
 namespace MemoryLeaksDetection {
 
@@ -24,7 +26,7 @@ namespace MemoryLeaksDetection {
     }
 }
 
-void main_memory_leaks() {
+void main_memory_leaks_detection () {
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
     using namespace MemoryLeaksDetection;
     test_01();

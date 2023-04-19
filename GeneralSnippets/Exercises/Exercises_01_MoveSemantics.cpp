@@ -2,10 +2,12 @@
 // Exercises_01_MoveSemantics.cpp
 // =====================================================================================
 
-#include <iostream>
-#include <string>
-#include <vector>
-#include <chrono>
+//#include <iostream>
+//#include <string>
+//#include <vector>
+//#include <chrono>
+
+module modern_cpp_exercises:move_semantics;
 
 namespace Exercises_MoveSemantics {
 
@@ -155,8 +157,8 @@ namespace Exercises_MoveSemantics {
             bArray = HugeArray(20000000);
             myVec.push_back(HugeArray(30000000));  // <== emplace_back (30000000)
             auto end = std::chrono::high_resolution_clock::now();
-            auto diff = std::chrono::duration_cast<std::chrono::milliseconds> (end - start);
-            std::cout << "Done [" << diff.count() << " msecs]" << std::endl;
+            //auto diff = std::chrono::duration_cast<std::chrono::milliseconds> (end - start);
+            //std::cout << "Done [" << diff.count() << " msecs]" << std::endl;
         }
     }
 }

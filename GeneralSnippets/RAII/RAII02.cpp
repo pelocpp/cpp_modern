@@ -1,12 +1,14 @@
 // =====================================================================================
-// RAII
+// RAII02.cpp
 // =====================================================================================
 
-#include <string>
-#include <mutex>
-#include <iostream>
-#include <fstream>
-#include <stdexcept>
+//#include <string>
+//#include <mutex>
+//#include <iostream>
+//#include <fstream>
+//#include <stdexcept>
+
+module modern_cpp:raii;
 
 // See also:  
 // https://stackoverflow.com/questions/4802494/do-i-need-to-close-a-stdfstream/4802506

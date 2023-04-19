@@ -1,10 +1,14 @@
 // =====================================================================================
-// RAII
+// RAII01.cpp
 // =====================================================================================
 
-#include <iostream>
+//#include <iostream>
+//
+//#include "..\Global\Dummy.h"
 
-#include "..\Global\Dummy.h"
+module modern_cpp:raii;
+
+import :dummy;
 
 namespace RAIIDemo {
 

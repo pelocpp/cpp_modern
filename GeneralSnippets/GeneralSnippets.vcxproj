@@ -205,6 +205,22 @@
     <ClCompile Include="Exercises\Exercises_13_FunctionalProgramming.cpp" />
     <ClCompile Include="Exercises\Exercises.cpp" />
     <ClCompile Include="Exercises\Exercises_16_Generic_Lambdas.cpp" />
+    <ClCompile Include="Exercises\Module_Exercises_01_MoveSemantics.ixx" />
+    <ClCompile Include="Exercises\Module_Exercises_02_Lambdas.ixx" />
+    <ClCompile Include="Exercises\Module_Exercises_03_Algorithms.ixx" />
+    <ClCompile Include="Exercises\Module_Exercises_04_UtilityClasses.ixx" />
+    <ClCompile Include="Exercises\Module_Exercises_05_VariadicTemplates.ixx" />
+    <ClCompile Include="Exercises\Module_Exercises_06_Folding.ixx" />
+    <ClCompile Include="Exercises\Module_Exercises_07_Metaprogramming.ixx" />
+    <ClCompile Include="Exercises\Module_Exercises_08_ExpressionTemplates.ixx" />
+    <ClCompile Include="Exercises\Module_Exercises_09_SFINAE.ixx" />
+    <ClCompile Include="Exercises\Module_Exercises_10_CRTP.ixx" />
+    <ClCompile Include="Exercises\Module_Exercises_11_Initialization.ixx" />
+    <ClCompile Include="Exercises\Module_Exercises_12_PerfectForwarding.ixx" />
+    <ClCompile Include="Exercises\Module_Exercises_13_FunctionalProgramming.ixx" />
+    <ClCompile Include="Exercises\Module_Exercises_14_ConstExpr.ixx" />
+    <ClCompile Include="Exercises\Module_Exercises_15_SmartPointers.ixx" />
+    <ClCompile Include="Exercises\Module_Exercises_16_GenericLambdas.ixx" />
     <ClCompile Include="Explicit\Explicit.cpp" />
     <ClCompile Include="Explicit\Module_Explicit.ixx" />
     <ClCompile Include="ExpressionTemplates\ExpressionTemplates.cpp" />
@@ -232,20 +248,26 @@
     <ClCompile Include="Lambda\Lambda02.cpp" />
     <ClCompile Include="Lambda\Module_Lambda.ixx" />
     <ClCompile Include="Literals\Literals.cpp" />
-    <ClCompile Include="Literals\Literals_01.cpp" />
-    <ClCompile Include="MemoryLeaks\MemoryLeaks.cpp" />
+    <ClCompile Include="Literals\Module_Literals.ixx" />
+    <ClCompile Include="MemoryLeaks\MemoryLeaksDetection.cpp" />
+    <ClCompile Include="MemoryLeaks\Module_MemoryLeaksDetection.ixx" />
     <ClCompile Include="MetaProgramming\MetaProgramming01.cpp" />
     <ClCompile Include="MetaProgramming\MetaProgramming02.cpp" />
+    <ClCompile Include="MetaProgramming\Module_MetaProgramming.ixx" />
     <ClCompile Include="Module_Modern_Cpp.ixx" />
     <ClCompile Include="Module_Modern_Cpp_Exercises.ixx" />
+    <ClCompile Include="MoveSemantics\Module_MoveSemantics.ixx" />
     <ClCompile Include="MoveSemantics\MoveSemantics.cpp" />
-    <ClCompile Include="Optional\StdOptional.cpp" />
+    <ClCompile Include="Optional\Module_Optional.ixx" />
+    <ClCompile Include="Optional\Optional.cpp" />
+    <ClCompile Include="PerfectForwarding\Module_PerfectForwarding.ixx" />
     <ClCompile Include="PerfectForwarding\PerfectForwarding01.cpp" />
     <ClCompile Include="PerfectForwarding\PerfectForwarding02.cpp" />
     <ClCompile Include="PerfectForwarding\PerfectForwarding03.cpp" />
     <ClCompile Include="PerfectForwarding\PerfectForwarding04.cpp" />
     <ClCompile Include="PerfectForwarding\PerfectForwarding05.cpp" />
     <ClCompile Include="Program.cpp" />
+    <ClCompile Include="RAII\Module_RAII.ixx" />
     <ClCompile Include="RAII\RAII01.cpp" />
     <ClCompile Include="RAII\RAII02.cpp" />
     <ClCompile Include="Random\Random.cpp" />
@@ -356,7 +378,7 @@
     <None Include="MoveSemantics\MoveSemantics.md" />
     <None Include="OnlineCppCompilers\OnlineCppCompilers.md" />
     <None Include="Optional\cpp_std_optional.svg" />
-    <None Include="Optional\StdOptional.md" />
+    <None Include="Optional\Optional.md" />
     <None Include="ParametersWithConstAndRef\ConstDeclarations.md" />
     <None Include="PerfectForwarding\PerfectForwarding_01.md" />
     <None Include="PerfectForwarding\PerfectForwarding_02.md" />
@@ -416,7 +438,9 @@
     <None Include="WeakPtr\StdWeakPtr.md" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Global\Dummy.h" />
+    <ClCompile Include="Global\Dummy.ixx">
+      <FileType>Document</FileType>
+    </ClCompile>
     <ClInclude Include="TemplateClassBasics\AnotherArray.h" />
     <ClCompile Include="TemplateClassBasics\AnotherArray.cpp" />
     <ClInclude Include="TemplateClassBasics\MyArray.h" />

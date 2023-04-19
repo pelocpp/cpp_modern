@@ -60,7 +60,7 @@
     <ClCompile Include="RValueLValue\RValueLValue.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MemoryLeaks\MemoryLeaks.cpp">
+    <ClCompile Include="MemoryLeaks\MemoryLeaksDetection.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Global\Dummy.cpp">
@@ -145,9 +145,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="DeclType\Decltype.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Optional\StdOptional.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="UniformInitialization\UniformInitialization.cpp">
@@ -277,9 +274,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Bind\Bind.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Literals\Literals_01.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ConstExpr\ConstExpr_CRC.cpp">
@@ -459,6 +453,81 @@
     <ClCompile Include="Lambda\Module_Lambda.ixx">
       <Filter>Modules</Filter>
     </ClCompile>
+    <ClCompile Include="Literals\Module_Literals.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="MemoryLeaks\Module_MemoryLeaksDetection.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="MetaProgramming\Module_MetaProgramming.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveSemantics\Module_MoveSemantics.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Optional\Module_Optional.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Optional\Optional.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PerfectForwarding\Module_PerfectForwarding.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Global\Dummy.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="RAII\Module_RAII.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Exercises\Module_Exercises_01_MoveSemantics.ixx">
+      <Filter>Exercises</Filter>
+    </ClCompile>
+    <ClCompile Include="Exercises\Module_Exercises_02_Lambdas.ixx">
+      <Filter>Exercises</Filter>
+    </ClCompile>
+    <ClCompile Include="Exercises\Module_Exercises_03_Algorithms.ixx">
+      <Filter>Exercises</Filter>
+    </ClCompile>
+    <ClCompile Include="Exercises\Module_Exercises_04_UtilityClasses.ixx">
+      <Filter>Exercises</Filter>
+    </ClCompile>
+    <ClCompile Include="Exercises\Module_Exercises_05_VariadicTemplates.ixx">
+      <Filter>Exercises</Filter>
+    </ClCompile>
+    <ClCompile Include="Exercises\Module_Exercises_06_Folding.ixx">
+      <Filter>Exercises</Filter>
+    </ClCompile>
+    <ClCompile Include="Exercises\Module_Exercises_07_Metaprogramming.ixx">
+      <Filter>Exercises</Filter>
+    </ClCompile>
+    <ClCompile Include="Exercises\Module_Exercises_08_ExpressionTemplates.ixx">
+      <Filter>Exercises</Filter>
+    </ClCompile>
+    <ClCompile Include="Exercises\Module_Exercises_09_SFINAE.ixx">
+      <Filter>Exercises</Filter>
+    </ClCompile>
+    <ClCompile Include="Exercises\Module_Exercises_10_CRTP.ixx">
+      <Filter>Exercises</Filter>
+    </ClCompile>
+    <ClCompile Include="Exercises\Module_Exercises_11_Initialization.ixx">
+      <Filter>Exercises</Filter>
+    </ClCompile>
+    <ClCompile Include="Exercises\Module_Exercises_12_PerfectForwarding.ixx">
+      <Filter>Exercises</Filter>
+    </ClCompile>
+    <ClCompile Include="Exercises\Module_Exercises_13_FunctionalProgramming.ixx">
+      <Filter>Exercises</Filter>
+    </ClCompile>
+    <ClCompile Include="Exercises\Module_Exercises_14_ConstExpr.ixx">
+      <Filter>Exercises</Filter>
+    </ClCompile>
+    <ClCompile Include="Exercises\Module_Exercises_15_SmartPointers.ixx">
+      <Filter>Exercises</Filter>
+    </ClCompile>
+    <ClCompile Include="Exercises\Module_Exercises_16_GenericLambdas.ixx">
+      <Filter>Exercises</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -558,9 +627,6 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Explicit\Explicit.md">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="Optional\StdOptional.md">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="MetaProgramming\Metaprogramming02.md">
@@ -830,11 +896,11 @@
     <None Include="WeakPtr\cpp_sharedptr_cycle_11.svg">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="Optional\Optional.md">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Global\Dummy.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="TemplateClassBasics\MyArray.h">
       <Filter>Header Files</Filter>
     </ClInclude>

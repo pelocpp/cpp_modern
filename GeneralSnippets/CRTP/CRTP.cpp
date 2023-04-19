@@ -1,5 +1,5 @@
 // =====================================================================================
-// CRTP.cpp / Curiously Recurring Template Pattern (CRTP)
+// CRTP.cpp // Curiously Recurring Template Pattern (CRTP)
 // =====================================================================================
 
 //#include <iostream>

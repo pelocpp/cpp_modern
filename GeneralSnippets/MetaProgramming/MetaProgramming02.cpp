@@ -2,7 +2,9 @@
 // MetaProgramming02.cpp // Metaprogramming: Part II
 // =====================================================================================
 
-#include <iostream>
+//#include <iostream>
+
+module modern_cpp:metaprogramming;
 
 namespace Metaprogramming {
 
