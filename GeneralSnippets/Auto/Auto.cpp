@@ -2,12 +2,14 @@
 // Auto.cpp
 // =====================================================================================
 
-#include <iostream>
-#include <string>
-#include <map>
-#include <vector>
-#include <memory>
-#include <algorithm>
+//#include <iostream>
+//#include <string>
+//#include <map>
+//#include <vector>
+//#include <memory>
+//#include <algorithm>
+
+module modern_cpp:auto_keyword;
 
 namespace Auto_Examples {
 

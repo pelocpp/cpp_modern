@@ -2,8 +2,10 @@
 // Array Decay
 // =====================================================================================
 
-#include <iostream>
-#include <cassert>
+//#include <iostream>
+//#include <cassert>
+//
+module modern_cpp:array_decay;
 
 namespace ArrayDecay {
 

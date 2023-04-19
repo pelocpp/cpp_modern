@@ -1,13 +1,15 @@
 // =====================================================================================
-// std::any
+// Any.cpp / Klasse std::any
 // =====================================================================================
 
-#include <iostream>
-#include <vector>
-#include <string>
-#include <any>
-#include <complex>
-#include <tuple>
+//#include <iostream>
+//#include <vector>
+//#include <string>
+//#include <any>
+//#include <complex>
+//#include <tuple>
+
+module modern_cpp:any;
 
 namespace AnySamples {
 

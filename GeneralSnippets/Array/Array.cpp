@@ -2,10 +2,15 @@
 // std::array
 // =====================================================================================
 
-#include <iostream>
-#include <memory>
-#include <array>
-#include <functional>
+//#include <iostream>
+//#include <memory>
+//#include <array>
+//#include <functional>
+
+//#include <iostream>
+
+module modern_cpp:std_class_array;
+
 
 namespace StdArray {
 

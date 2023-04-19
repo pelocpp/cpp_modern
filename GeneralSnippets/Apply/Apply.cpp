@@ -2,9 +2,11 @@
 // std::apply // std::integer_sequence
 // =====================================================================================
 
-#include <iostream>
-#include <string>
-#include <tuple>
+//#include <iostream>
+//#include <string>
+//#include <tuple>
+
+module modern_cpp:apply;
 
 namespace ApplyIntegerSequence {
 

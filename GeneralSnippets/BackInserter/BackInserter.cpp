@@ -2,10 +2,12 @@
 // BackInserter
 // =====================================================================================
 
-#include <iostream>
-#include <string>
-#include <algorithm>
-#include <vector>
+//#include <iostream>
+//#include <string>
+//#include <algorithm>
+//#include <vector>
+
+module modern_cpp:back_inserter;
 
 namespace BackInserter {
 

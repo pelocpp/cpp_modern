@@ -2,7 +2,7 @@
 // Attributes.cpp
 // =====================================================================================
 
-#include <iostream>
+module modern_cpp:attributes;
 
 // #define DEMONSTRATE_WARNINGS_AND_ERRORS   1
 

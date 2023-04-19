@@ -102,7 +102,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -145,17 +145,27 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Accumulate\Accumulate.cpp" />
+    <ClCompile Include="Accumulate\Module_Accumulate.ixx" />
     <ClCompile Include="Allocator\AllocatorSimple.cpp" />
     <ClCompile Include="Allocator\AllocatorDummy.cpp" />
-    <ClCompile Include="Any\StdAny.cpp" />
+    <ClCompile Include="Any\Module_Any.ixx" />
+    <ClCompile Include="Any\Any.cpp" />
     <ClCompile Include="Apply\Apply.cpp" />
+    <ClCompile Include="Apply\Module_Apply.ixx" />
     <ClCompile Include="ArgumentDependentNameLookup\ArgumentDependentNameLookup.cpp" />
+    <ClCompile Include="ArgumentDependentNameLookup\Module_ArgumentDependentNameLookup.ixx" />
     <ClCompile Include="ArrayDecay\ArrayDecay.cpp" />
+    <ClCompile Include="ArrayDecay\Module_Array_Decay.ixx" />
     <ClCompile Include="Array\Array.cpp" />
+    <ClCompile Include="Array\Module_Array.ixx" />
     <ClCompile Include="Attributes\Attributes.cpp" />
+    <ClCompile Include="Attributes\Module_Attributes.ixx" />
     <ClCompile Include="Auto\Auto.cpp" />
+    <ClCompile Include="Auto\Module_Auto.ixx" />
     <ClCompile Include="BackInserter\BackInserter.cpp" />
+    <ClCompile Include="BackInserter\Module_BackInserter.ixx" />
     <ClCompile Include="Bind\Bind.cpp" />
+    <ClCompile Include="Bind\Module_Bind.ixx" />
     <ClCompile Include="Casts\Casts.cpp" />
     <ClCompile Include="CommonType\CommonType.cpp" />
     <ClCompile Include="ConceptsRequiresFunctions\ConceptsRequiresFunctions.cpp" />
@@ -208,6 +218,8 @@
     <ClCompile Include="MemoryLeaks\MemoryLeaks.cpp" />
     <ClCompile Include="MetaProgramming\MetaProgramming01.cpp" />
     <ClCompile Include="MetaProgramming\MetaProgramming02.cpp" />
+    <ClCompile Include="Module_Modern_Cpp.ixx" />
+    <ClCompile Include="Module_Modern_Cpp_Exercises.ixx" />
     <ClCompile Include="MoveSemantics\MoveSemantics.cpp" />
     <ClCompile Include="Optional\StdOptional.cpp" />
     <ClCompile Include="PerfectForwarding\PerfectForwarding01.cpp" />
@@ -229,6 +241,7 @@
     <ClCompile Include="SSO\SSO.cpp" />
     <ClCompile Include="StandardLibrarySTL\StandardLibrarySTL.cpp" />
     <ClCompile Include="StaticAssert\StaticAssert.cpp" />
+    <ClCompile Include="std.ixx" />
     <ClCompile Include="StringView\StdStringView.cpp" />
     <ClCompile Include="StructuredBinding\StructuredBinding.cpp" />
     <ClCompile Include="TemplateClassBasics\TemplatesClassBasics01.cpp" />

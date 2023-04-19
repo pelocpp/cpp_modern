@@ -81,7 +81,7 @@
     <ClCompile Include="ArrayDecay\ArrayDecay.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Any\StdAny.cpp">
+    <ClCompile Include="Any\Any.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Tuple\StdTuple.cpp">
@@ -365,6 +365,45 @@
     </ClCompile>
     <ClCompile Include="Exercises\Exercises_16_Generic_Lambdas.cpp">
       <Filter>Exercises</Filter>
+    </ClCompile>
+    <ClCompile Include="Module_Modern_Cpp.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Module_Modern_Cpp_Exercises.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="std.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Auto\Module_Auto.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Accumulate\Module_Accumulate.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Apply\Module_Apply.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ArgumentDependentNameLookup\Module_ArgumentDependentNameLookup.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Array\Module_Array.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ArrayDecay\Module_Array_Decay.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Attributes\Module_Attributes.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Any\Module_Any.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="BackInserter\Module_BackInserter.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Bind\Module_Bind.ixx">
+      <Filter>Modules</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
