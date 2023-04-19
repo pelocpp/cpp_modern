@@ -1,11 +1,13 @@
 // =====================================================================================
-// random numbers
+// Random.cpp // Random Numbers
 // =====================================================================================
 
-#include <iostream>
-#include <string>
-#include <ctime>
-#include <random>
+//#include <iostream>
+//#include <string>
+//#include <ctime>
+//#include <random>
+
+module modern_cpp:random;
 
 namespace Random {
 

@@ -1,11 +1,13 @@
 // =====================================================================================
-// Reference Wrapper
+// ReferenceWrapper.cpp // Reference Wrapper
 // =====================================================================================
 
-#include <iostream>
-#include <string>
-#include <vector>
-#include <functional>
+//#include <iostream>
+//#include <string>
+//#include <vector>
+//#include <functional>
+
+module modern_cpp:reference_wrapper;
 
 namespace MyReferenceWrapper {
 
@@ -60,7 +62,7 @@ namespace MyReferenceWrapper {
     }
 }
 
-void main_reference_wrapper ()
+void main_reference_wrapper()
 {
     using namespace MyReferenceWrapper;
     test_01();

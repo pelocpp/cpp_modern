@@ -42,7 +42,7 @@
     <ClCompile Include="ConstExpr\ConstExpr_02.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SharedPtr\StdSharedPtr.cpp">
+    <ClCompile Include="SharedPtr\SharedPtr.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="WeakPtr\StdWeakPtr.cpp">
@@ -528,6 +528,27 @@
     <ClCompile Include="Exercises\Module_Exercises_16_GenericLambdas.ixx">
       <Filter>Exercises</Filter>
     </ClCompile>
+    <ClCompile Include="Random\Module_Random.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="RangeBasedForLoop\Module_RangeBasedForLoop.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ReferenceWrapper\Module_ReferenceWrapper.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="RegExpr\Module_RegExpr.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="RValueLValue\Module_RValueLValue.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="SFINAE_EnableIf\Module_Sfinae.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="SharedPtr\Module_SharedPtr.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -536,7 +557,7 @@
     <None Include="StaticAssert\StaticAssertion.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="SharedPtr\StdSharedPtr.md">
+    <None Include="SharedPtr\SharedPtr.md">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="StructuredBinding\StructuredBinding.md">
@@ -575,10 +596,10 @@
     <None Include="ArrayDecay\ArrayDecay.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="Accumulate\StdAccumulate.md">
+    <None Include="Accumulate\Accumulate.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="Array\StdArray.md">
+    <None Include="Array\Array.md">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="ConstExpr\Constexpr_02.md">
@@ -587,7 +608,7 @@
     <None Include="RValueLValue\RValueLValue.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="Allocator\StdAllocator.md">
+    <None Include="Allocator\Allocator.md">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Casts\Casts.md">
@@ -596,7 +617,7 @@
     <None Include="ConstructursOrder\CtorDtorOrder.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="Any\StdAny.md">
+    <None Include="Any\Any.md">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Literatur\Literature.md">
@@ -608,7 +629,7 @@
     <None Include="MemoryLeaks\MemoryLeaksDetection.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="InitializerList\StdInitializerList.md">
+    <None Include="InitializerList\InitializerList.md">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="InputOutputStreams\InputOutputStreams.md">
@@ -680,7 +701,7 @@
     <None Include="VirtualBaseClassDestructor\VirtualBaseClassDestructor.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="Invoke\StdInvoke.md">
+    <None Include="Invoke\Invoke.md">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="TemplateSpecialization\TemplateSpecialization.md">

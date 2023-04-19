@@ -1,10 +1,12 @@
 // =====================================================================================
 // SFINAE and enable_if
 // =====================================================================================
+//
+//#include <iostream>
+//#include <string>
+//#include <vector>
 
-#include <iostream>
-#include <string>
-#include <vector>
+module modern_cpp:sfinae;
 
 namespace SFINAE_Examples {
 

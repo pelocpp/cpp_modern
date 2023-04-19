@@ -1,3 +1,5 @@
+
+
 # Funktion `std::invoke`: "*Uniformly invoking anything callable*"
 
 [Zurück](../../Readme.md)

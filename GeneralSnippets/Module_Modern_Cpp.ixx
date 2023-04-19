@@ -48,3 +48,14 @@ export import :move_semantics;
 export import :optional;
 
 export import :perfect_forwarding;
+
+export import :raii;
+export import :random;
+export import :range_based_for_loop;
+export import :reference_wrapper;
+export import :regexpr;
+export import :rvalue_lvalue;
+
+export import :sfinae;
+export import :shared_ptr;
+

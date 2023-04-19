@@ -270,14 +270,21 @@
     <ClCompile Include="RAII\Module_RAII.ixx" />
     <ClCompile Include="RAII\RAII01.cpp" />
     <ClCompile Include="RAII\RAII02.cpp" />
+    <ClCompile Include="Random\Module_Random.ixx" />
     <ClCompile Include="Random\Random.cpp" />
+    <ClCompile Include="RangeBasedForLoop\Module_RangeBasedForLoop.ixx" />
     <ClCompile Include="RangeBasedForLoop\RangeBasedForLoop.cpp" />
+    <ClCompile Include="ReferenceWrapper\Module_ReferenceWrapper.ixx" />
     <ClCompile Include="ReferenceWrapper\ReferenceWrapper.cpp" />
+    <ClCompile Include="RegExpr\Module_RegExpr.ixx" />
     <ClCompile Include="RegExpr\RegExpr.cpp" />
+    <ClCompile Include="RValueLValue\Module_RValueLValue.ixx" />
     <ClCompile Include="RValueLValue\RValueLValue.cpp" />
+    <ClCompile Include="SFINAE_EnableIf\Module_Sfinae.ixx" />
     <ClCompile Include="SFINAE_EnableIf\Sfinae01.cpp" />
     <ClCompile Include="SFINAE_EnableIf\Sfinae02.cpp" />
-    <ClCompile Include="SharedPtr\StdSharedPtr.cpp" />
+    <ClCompile Include="SharedPtr\Module_SharedPtr.ixx" />
+    <ClCompile Include="SharedPtr\SharedPtr.cpp" />
     <ClCompile Include="SSO\SSO.cpp" />
     <ClCompile Include="StandardLibrarySTL\StandardLibrarySTL.cpp" />
     <ClCompile Include="StaticAssert\StaticAssert.cpp" />
@@ -314,15 +321,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md" />
-    <None Include="Accumulate\StdAccumulate.md" />
+    <None Include="Accumulate\Accumulate.md" />
     <None Include="Agenda\Agenda.md" />
-    <None Include="Allocator\StdAllocator.md" />
+    <None Include="Allocator\Allocator.md" />
     <None Include="Any\cpp_std_any.svg" />
-    <None Include="Any\StdAny.md" />
+    <None Include="Any\Any.md" />
     <None Include="Apply\Apply.md" />
     <None Include="ArgumentDependentNameLookup\ArgumentDependentNameLookup.md" />
     <None Include="ArrayDecay\ArrayDecay.md" />
-    <None Include="Array\StdArray.md" />
+    <None Include="Array\Array.md" />
     <None Include="Attributes\Attributes.md" />
     <None Include="Auto\Auto.md" />
     <None Include="BackInserter\BackInserter.md" />
@@ -365,9 +372,9 @@
     <None Include="Generate\Generate.md" />
     <None Include="GenericLambdas\GenericLambdas.md" />
     <None Include="InitializerList\cpp_initializer_list.svg" />
-    <None Include="InitializerList\StdInitializerList.md" />
+    <None Include="InitializerList\InitializerList.md" />
     <None Include="InputOutputStreams\InputOutputStreams.md" />
-    <None Include="Invoke\StdInvoke.md" />
+    <None Include="Invoke\Invoke.md" />
     <None Include="Lambda\cpp_snippets_lambda.svg" />
     <None Include="Lambda\Lambda.md" />
     <None Include="Literals\Literals.md" />
@@ -391,7 +398,7 @@
     <None Include="RegExpr\RegExpr.md" />
     <None Include="RValueLValue\RValueLValue.md" />
     <None Include="SFINAE_EnableIf\Sfinae.md" />
-    <None Include="SharedPtr\StdSharedPtr.md" />
+    <None Include="SharedPtr\SharedPtr.md" />
     <None Include="SSO\SSO.md" />
     <None Include="StandardLibrarySTL\StandardLibrarySTL.md" />
     <None Include="StaticAssert\StaticAssertion.md" />

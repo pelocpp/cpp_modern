@@ -113,12 +113,12 @@ Es folgt eine tabellarische Auflistung dieser Unterverzeichnisse.
 
 | Unterverzeichnis | Thematik |
 |:-------------- |-----------------------------------------|
-| [Accumulate](GeneralSnippets/Accumulate/StdAccumulate.md) | STL-Algorithmus `std::accumulate` und Lambda-Funktionen in der Anwendung |
-| [Allocator](GeneralSnippets/Allocator/StdAllocator.md) | Container und Speicher-Allokatoren |
-| [Any](GeneralSnippets/Any/StdAny.md) | Neue STL-Utility Klasse `std::any` |
+| [Accumulate](GeneralSnippets/Accumulate/Accumulate.md) | STL-Algorithmus `std::accumulate` und Lambda-Funktionen in der Anwendung |
+| [Allocator](GeneralSnippets/Allocator/Allocator.md) | Container und Speicher-Allokatoren |
+| [Any](GeneralSnippets/Any/Any.md) | Neue STL-Utility Klasse `std::any` |
 | [Apply](GeneralSnippets/Apply/Apply.md) | `std::apply`, `std::integer_sequence` und `std::make_integer_sequence` |
 | [ArgumentDependentNameLookup](GeneralSnippets/ArgumentDependentNameLookup/ArgumentDependentNameLookup.md) | Argument-Dependent Name Lookup (ADL) / *Koenig*-Lookup |
-| [Array](GeneralSnippets/Array/StdArray.md) | Neue STL-Utility Klasse `std::array` |
+| [Array](GeneralSnippets/Array/Array.md) | Neue STL-Utility Klasse `std::array` |
 | [ArrayDecay](GeneralSnippets/ArrayDecay/ArrayDecay.md) | Arrays und Pointer |
 | [Attributes](GeneralSnippets/Attributes/Attributes.md) | C++ Standard Attribute |
 | [Auto](GeneralSnippets/Auto/Auto.md) | Keyword `auto` |
@@ -141,9 +141,9 @@ Es folgt eine tabellarische Auflistung dieser Unterverzeichnisse.
 | [FunctionalProgramming](GeneralSnippets/FunctionalProgramming/FunctionalProgramming.md) | Funktionale Programmierung |
 | [Generate](GeneralSnippets/Generate/Generate.md) | STL-Algorithmus `std::generate` |
 | [GenericLambdas](GeneralSnippets/GenericLambdas/GenericLambdas.md) | Generische Lambda Ausdrücke |
-| [InitializerList](GeneralSnippets/InitializerList/StdInitializerList.md) | Klasse `std::initializer_list<T>` |
+| [InitializerList](GeneralSnippets/InitializerList/InitializerList.md) | Klasse `std::initializer_list<T>` |
 | [InputOutputStreams](GeneralSnippets/InputOutputStreams/InputOutputStreams.md) | Streams manipulieren und formatieren |
-| [Invoke](GeneralSnippets/Invoke/StdInvoke.md) | `std::invoke`: "*Uniformly invoking anything callable*" |
+| [Invoke](GeneralSnippets/Invoke/Invoke.md) | `std::invoke`: "*Uniformly invoking anything callable*" |
 | [Lambda](GeneralSnippets/Lambda/Lambda.md) | Lambda-Funktionen |
 | [Literals](GeneralSnippets/Literals/Literals.md) | Benutzerdefinierte Literale |
 | [MemoryLeaks](GeneralSnippets/MemoryLeaks/MemoryLeaksDetection.md) | CRT (C-Runtime-Library) Memory Leak Detection |

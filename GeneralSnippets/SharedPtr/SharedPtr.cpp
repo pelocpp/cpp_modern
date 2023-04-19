@@ -2,6 +2,8 @@
 // std::shared_ptr
 // =====================================================================================
 
+module;
+
 #define _CRTDBG_MAP_ALLOC
 #include <cstdlib>
 #include <crtdbg.h>
@@ -12,9 +14,11 @@
 #define new DBG_NEW
 #endif
 #endif  // _DEBUG
+//
+//#include <iostream>
+//#include <memory>
 
-#include <iostream>
-#include <memory>
+module modern_cpp:shared_ptr;
 
 namespace SharedPointer {
 
