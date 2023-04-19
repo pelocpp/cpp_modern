@@ -2,11 +2,13 @@
 // std::generate
 // =====================================================================================
 
-#include <iostream>
-#include <string>
-#include <vector>
-#include <algorithm>
-#include <iterator>
+//#include <iostream>
+//#include <string>
+//#include <vector>
+//#include <algorithm>
+//#include <iterator>
+
+module modern_cpp:generate;
 
 namespace AlgorithmGenerate {
 

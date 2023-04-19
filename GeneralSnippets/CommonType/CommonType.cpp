@@ -1,10 +1,12 @@
 // =====================================================================================
-// std::common_type
+// CommonType.cpp / std::common_type
 // =====================================================================================
 
-#include <iostream>
-#include <type_traits>
-#include <complex>
+//#include <iostream>
+//#include <type_traits>
+//#include <complex>
+
+module modern_cpp:common_type;
 
 namespace CommonType {
 

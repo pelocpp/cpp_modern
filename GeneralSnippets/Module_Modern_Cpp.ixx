@@ -10,3 +10,32 @@ export import :attributes;
 export import :auto_keyword;
 
 export import :back_inserter;
+export import :bind;
+
+export import :casts;
+export import :common_type;
+export import :concepts_requires_functions;
+export import :const_expr;
+export import :constructors_destructors_order;
+export import :copy_move_elision;
+export import :crtp;
+
+export import :decltype_keyword;
+export import :default_initialization;
+
+export import :erase_remove_idiom;
+export import :explicit_keyword;
+export import :expression_templates;
+
+export import :expression_templates;
+
+export import :folding;
+export import :functional_programming;
+
+export import :generate;
+export import :generic_lambdas;
+
+export import :initializer_list;
+export import :invoke;
+
+export import :lambda;

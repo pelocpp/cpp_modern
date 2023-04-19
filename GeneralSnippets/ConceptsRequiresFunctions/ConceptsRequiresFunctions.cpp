@@ -1,9 +1,15 @@
-#include <iostream>
-#include <concepts>
-#include <string>
-#include <type_traits>
-#include <numeric>
-#include <vector>
+// =====================================================================================
+// ConceptsRequiresFunctions.cpp
+// =====================================================================================
+
+//#include <iostream>
+//#include <concepts>
+//#include <string>
+//#include <type_traits>
+//#include <numeric>
+//#include <vector>
+
+module modern_cpp:concepts_requires_functions;
 
 // using <concepts>
 template <typename T>
@@ -214,4 +220,8 @@ void main_concepts_requires()
     Abbreviated_Function_Templates::test_concepts_requires_variant_04();
     Usedefined_Concept::test_concepts_requires_variant_05();
 }
+
+// =====================================================================================
+// End-of-File
+// =====================================================================================
 

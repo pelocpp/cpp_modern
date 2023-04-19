@@ -2,8 +2,10 @@
 // DefaultInitialization
 // =====================================================================================
 
-#include <iostream>
-#include <vector>
+//#include <iostream>
+//#include <vector>
+
+module modern_cpp:default_initialization;
 
 namespace DefaultInitializationExample {
 

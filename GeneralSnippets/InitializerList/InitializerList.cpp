@@ -1,13 +1,15 @@
 // =====================================================================================
-// std::initializer_list
+// InitializerList.cpp // std::initializer_list
 // =====================================================================================
 
-#include <iostream>
-#include <string>
-#include <iterator>
-#include <vector>
-#include <array>
-#include <algorithm>
+//#include <iostream>
+//#include <string>
+//#include <iterator>
+//#include <vector>
+//#include <array>
+//#include <algorithm>
+
+module modern_cpp:initializer_list;
 
 namespace InitializerList {
 

@@ -1,10 +1,12 @@
 // =====================================================================================
-// EraseRemoveIdiom.cpp
+// EraseRemoveIdiom.cpp / Erase-Remove Idiom
 // =====================================================================================
 
-#include <iostream>
-#include <algorithm>
-#include <vector>
+//#include <iostream>
+//#include <algorithm>
+//#include <vector>
+
+module modern_cpp:erase_remove_idiom;
 
 namespace EraseRemoveIdiom
 {

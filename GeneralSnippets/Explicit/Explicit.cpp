@@ -2,7 +2,9 @@
 // Explicit.cpp // Keyword 'explicit'
 // =====================================================================================
 
-#include <iostream>
+//#include <iostream>
+
+module modern_cpp:explicit_keyword;
 
 namespace KeywordExplicit {
 

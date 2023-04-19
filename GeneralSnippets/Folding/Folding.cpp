@@ -1,13 +1,16 @@
 // =====================================================================================
 // Variadic Templates / Folding
 // =====================================================================================
+//
+//#include <iostream>
+//#include <map>
 
-#include <iostream>
-#include <map>
-#include <typeinfo>
-#include <typeindex>
+//#include <typeinfo>
+//#include <typeindex>
 
-namespace VariadicTemplatesFolding {
+module modern_cpp:folding;
+
+namespace Folding {
 
     /* folding examples: introduction
     */
@@ -131,9 +134,9 @@ namespace VariadicTemplatesFolding {
     }
 }
 
-void main_variadic_templates_folding()
+void main_folding()
 {
-    using namespace VariadicTemplatesFolding;
+    using namespace Folding;
     test_01();
     test_02();
     test_03a();

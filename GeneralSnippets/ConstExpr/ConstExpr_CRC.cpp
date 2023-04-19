@@ -13,9 +13,15 @@
  * Copyright Fraunhofer IIS, All rights reserved.
  */
 
+//#include <inttypes.h> // for uint8_t
+//#include <array>
+//#include <iostream>
+
+module;
+
 #include <inttypes.h> // for uint8_t
-#include <array>
-#include <iostream>
+
+module modern_cpp:const_expr;
 
 constexpr uint8_t MY_POLYNOM = 0x07;
 constexpr int TABLE_SIZE = 256;

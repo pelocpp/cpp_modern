@@ -2,12 +2,14 @@
 // Generic Lambdas
 // =====================================================================================
 
-#include <iostream>
-#include <string>
-#include <vector>
-#include <algorithm>
-#include <iterator>
-#include <functional>
+//#include <iostream>
+//#include <string>
+//#include <vector>
+//#include <algorithm>
+//#include <iterator>
+//#include <functional>
+
+module modern_cpp:generic_lambdas;
 
 namespace GenericLambdas {
 

@@ -42,9 +42,6 @@
     <ClCompile Include="ConstExpr\ConstExpr_02.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ConstExpr\ConstExprExtended.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="SharedPtr\StdSharedPtr.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -54,7 +51,7 @@
     <ClCompile Include="Casts\Casts.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ConstructursOrder\ConstructorsOrder.cpp">
+    <ClCompile Include="ConstructursOrder\ConstructorsDestructorsOrder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="InputOutputStreams\InputOutputStreams.cpp">
@@ -219,9 +216,6 @@
     <ClCompile Include="StandardLibrarySTL\StandardLibrarySTL.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Lambda\Lambda04.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Lambda\Lambda03.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -249,7 +243,7 @@
     <ClCompile Include="EraseRemoveIdiom\EraseRemoveIdiom.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Folding\VariadicTemplatesFolding.cpp">
+    <ClCompile Include="Folding\Folding.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Trim\Trim.cpp">
@@ -405,6 +399,66 @@
     <ClCompile Include="Bind\Module_Bind.ixx">
       <Filter>Modules</Filter>
     </ClCompile>
+    <ClCompile Include="Casts\Module_Casts.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="CommonType\Module_CommonType.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ConceptsRequiresFunctions\Module_ConceptsRequiresFunctions.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ConstExpr\Module_ConstExpr.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ConstructursOrder\Module_ConstructorsDestructorsOrder.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="CopyMoveElision\Module_CopyMoveElision.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="CRTP\Module_CRTP.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="DeclType\Module_Decltype.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="DefaultInitialization\Module_DefaultInitialization.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="EraseRemoveIdiom\Module_EraseRemoveIdiom.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Explicit\Module_Explicit.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ExpressionTemplates\Module_ExpressionTemplates.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Folding\Module_Folding.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="FunctionalProgramming\Module_FunctionalProgramming.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Generate\Module_Generate.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="GenericLambdas\Module_Generic_Lambdas.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="InitializerList\Module_InitializerList.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="InputOutputStreams\Module_InputOutputStreams.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Invoke\Module_Invoke.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Lambda\Module_Lambda.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -488,7 +542,7 @@
     <None Include="InitializerList\StdInitializerList.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="InputOutputStreams\Streams.md">
+    <None Include="InputOutputStreams\InputOutputStreams.md">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="ParametersWithConstAndRef\ConstDeclarations.md">
@@ -671,7 +725,7 @@
     <None Include="Agenda\Agenda.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="Folding\VariadicTemplatesFolding.md">
+    <None Include="Folding\Folding.md">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="OnlineCppCompilers\OnlineCppCompilers.md">

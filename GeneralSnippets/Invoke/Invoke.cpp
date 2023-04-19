@@ -2,8 +2,10 @@
 // std::invoke
 // =====================================================================================
 
-#include <iostream>
-#include <functional>
+//#include <iostream>
+//#include <functional>
+
+module modern_cpp:invoke;
 
 namespace StdInvoke {
 

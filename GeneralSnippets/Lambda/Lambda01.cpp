@@ -1,12 +1,14 @@
 // =====================================================================================
-// Lambda Methods
+// Lambda01.cpp // Lambda Methods
 // =====================================================================================
 
-#include <iostream>
-#include <string>
-#include <vector>
-#include <algorithm>
-#include <functional>
+//#include <iostream>
+//#include <string>
+//#include <vector>
+//#include <algorithm>
+//#include <functional>
+
+module modern_cpp:lambda;
 
 namespace Lambdas {
 

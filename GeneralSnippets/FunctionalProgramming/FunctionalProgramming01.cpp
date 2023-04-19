@@ -1,17 +1,23 @@
 // =====================================================================================
 // Functional Programming - Variante 1
 // =====================================================================================
+//
+//#include <iostream>
+//#include <string>
+//#include <algorithm>
+//#include <numeric>
+//#include <iterator>
+//#include <type_traits>
+//#include <vector>
+//#include <list>
+//#include <sstream>
+//#include <cctype>
 
-#include <iostream>
-#include <string>
-#include <algorithm>
-#include <numeric>
-#include <iterator>
-#include <type_traits>
-#include <vector>
-#include <list>
-#include <sstream>
-#include <cctype>
+module;
+
+#include <cctype>   // <-- ::toupper
+
+module modern_cpp:functional_programming;
 
 namespace FunctionalProgramming_01 {
 
@@ -300,7 +306,7 @@ namespace FunctionalProgramming_01 {
         std::cout << txt2 << std::endl; // jihgfedcba
     }
 
-    // =================================================================================
+    //// =================================================================================
 
     void test_functional_fmr_pattern_04a()
     {

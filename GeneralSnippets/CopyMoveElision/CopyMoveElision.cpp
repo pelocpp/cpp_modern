@@ -2,7 +2,9 @@
 // CopyMoveElision.cpp // Copy/Move Elision
 // =====================================================================================
 
-#include <iostream>
+//#include <iostream>
+
+module modern_cpp:copy_move_elision;
 
 namespace CopyMoveElision {
 

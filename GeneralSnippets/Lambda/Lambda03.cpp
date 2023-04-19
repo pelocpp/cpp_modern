@@ -1,8 +1,10 @@
 // =====================================================================================
-// Lambda Methods
+// Lambda03.cpp // Lambda and 'this' Closure
 // =====================================================================================
 
-#include <iostream>
+//#include <iostream>
+
+module modern_cpp:lambda;
 
 namespace LambdaAndThisClosure {
 
