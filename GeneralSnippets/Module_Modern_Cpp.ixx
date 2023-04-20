@@ -1,6 +1,7 @@
 export module modern_cpp;
 
 export import :accumulate;
+export import :allocator;
 export import :any;
 export import :apply;
 export import :argument_dependent_name_lookup;

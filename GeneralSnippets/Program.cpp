@@ -110,10 +110,8 @@ int main()
     try
     {
         //main_accumulate();
-
-        ////////main_allocator_classtype();
-        ////////main_allocator_integral();
-
+        //main_allocator_01();
+        //main_allocator_02();
         //main_any();
         //main_apply_integer_sequence();  
         //main_argument_dependent_name_lookup();
@@ -140,7 +138,7 @@ int main()
         //main_generate();
         //main_generic_lambdas();
         //main_keyword_explicit();
-        //main_filesystem();
+      //  main_filesystem();
         //main_folding();
         //main_functional_programming();
         //main_functional_programming_alternate();

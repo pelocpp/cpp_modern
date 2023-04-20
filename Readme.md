@@ -136,7 +136,6 @@ Es folgt eine tabellarische Auflistung dieser Unterverzeichnisse.
 | [*Erase-Remove* Idiom](GeneralSnippets/EraseRemoveIdiom/EraseRemoveIdiom.md) | Das *Erase-Remove*-Idiom |
 | [Explicit](GeneralSnippets/Explicit/Explicit.md) | Schlüsselwort `explicit` |
 | [ExpressionTemplates](GeneralSnippets/ExpressionTemplates/ExpressionTemplates.md) | Expression Templates |
-| [FileSystem](GeneralSnippets/FileSystem/FileSystem.md) | C++ 17 FileSystem Library |
 | [Folding](GeneralSnippets/Folding/Folding.md) | *Folding Expressions* |
 | [FunctionalProgramming](GeneralSnippets/FunctionalProgramming/FunctionalProgramming.md) | Funktionale Programmierung |
 | [Generate](GeneralSnippets/Generate/Generate.md) | STL-Algorithmus `std::generate` |
@@ -177,6 +176,7 @@ Es folgt eine tabellarische Auflistung dieser Unterverzeichnisse.
 | [TypeTraits](GeneralSnippets/TypeTraits/TypeTraits.md) | Typmerkmale |
 | [UniformInitialization](GeneralSnippets/UniformInitialization/UniformInitialization.md) | Einheitliches Initialisierungs-Konzept |
 | [UniquePointer](GeneralSnippets/UniquePtr/UniquePtr.md) | Klasse `std::unique_ptr<T>` |
+| [UsingNamespaceStd](GeneralSnippets/UsingNamespaceStd/UsingNamespaceStd.md) | Warum ist `using namespace std;` als schlechte Praxis angesehen? |
 | [VariadicTemplates](GeneralSnippets/VariadicTemplates/VariadicTemplates_01_Introduction.md) | Templates mit variabler Argumentanzahl (Variadische Templates) |
 | [Variant](GeneralSnippets/Variant/Variant.md)  | Neue STL-Utility Klasse `std::variant` |
 | [VirtualBaseClassDestructor](GeneralSnippets/VirtualBaseClassDestructor/VirtualBaseClassDestructor.md) | Virtuelle Destruktoren (einer Basisklasse) |

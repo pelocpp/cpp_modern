@@ -1,18 +1,22 @@
 // =====================================================================================
-// Allocator
+// Allocator01.cpp // Allocator
 // =====================================================================================
 
-#include <cstddef>
-#include <new>
-#include <iostream>
-#include <vector>
-#include <memory>
-#include <string>
+module;
 
 // GCC support
 #ifndef __FUNCSIG__
 #define __FUNCSIG__ __PRETTY_FUNCTION__
 #endif
+
+//#include <cstddef>
+//#include <new>
+//#include <iostream>
+//#include <vector>
+//#include <memory>
+//#include <string>
+
+module modern_cpp:allocator;
 
 namespace Allocator {
 
@@ -99,7 +103,7 @@ namespace Allocator {
     }
 }
 
-void main_allocator_integral ()
+void main_allocator_01()
 {
     using namespace Allocator;
     test_01_allocator();

@@ -1,20 +1,25 @@
 // =====================================================================================
-// Allocator
+// Allocator02.cpp // Allocator
 // =====================================================================================
 
-#include <cstddef>
-#include <new>
-#include <iostream>
-#include <vector>
-#include <memory>
-#include <string>
+module;
 
 // GCC support
 #ifndef __FUNCSIG__
 #define __FUNCSIG__ __PRETTY_FUNCTION__
 #endif
 
-#include "../Global/Dummy.h"
+//#include <cstddef>
+//#include <new>
+//#include <iostream>
+//#include <vector>
+//#include <memory>
+//#include <string>
+
+module modern_cpp:allocator;
+
+// #include "../Global/Dummy.h"
+import :dummy;
 
 namespace AllocatorWithObject {
 
@@ -103,7 +108,7 @@ namespace AllocatorWithObject {
     }
 }
 
-void main_allocator_classtype()
+void main_allocator_02()
 {
     using namespace AllocatorWithObject;
     test_01a_allocator();

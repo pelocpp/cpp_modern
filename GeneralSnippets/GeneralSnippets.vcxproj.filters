@@ -114,9 +114,6 @@
     <ClCompile Include="Literals\Literals.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="FileSystem\FileSystem.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="MetaProgramming\MetaProgramming01.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -600,6 +597,15 @@
     <ClCompile Include="WeakPtr\Module_WeakPtr.ixx">
       <Filter>Modules</Filter>
     </ClCompile>
+    <ClCompile Include="Allocator\Allocator01.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Allocator\Module_Allocator.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Allocator\Allocator02.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -690,9 +696,6 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Lambda\Lambda.md">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="FileSystem\FileSystem.md">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="UniquePtr\UniquePtr.md">
