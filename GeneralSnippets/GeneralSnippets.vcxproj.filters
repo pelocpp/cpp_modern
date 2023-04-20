@@ -114,9 +114,6 @@
     <ClCompile Include="Literals\Literals.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Allocator\AllocatorDummy.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="FileSystem\FileSystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -157,9 +154,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MoveSemantics\MoveSemantics.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Allocator\AllocatorSimple.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Random\Random.cpp">

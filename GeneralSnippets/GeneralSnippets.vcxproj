@@ -146,8 +146,6 @@
   <ItemGroup>
     <ClCompile Include="Accumulate\Accumulate.cpp" />
     <ClCompile Include="Accumulate\Module_Accumulate.ixx" />
-    <ClCompile Include="Allocator\AllocatorSimple.cpp" />
-    <ClCompile Include="Allocator\AllocatorDummy.cpp" />
     <ClCompile Include="Any\Module_Any.ixx" />
     <ClCompile Include="Any\Any.cpp" />
     <ClCompile Include="Apply\Apply.cpp" />

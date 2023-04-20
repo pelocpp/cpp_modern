@@ -92,7 +92,7 @@ namespace TemplateTemplateParameter {
     }
 }
 
-void main_template_template_parameter_01()
+void main_templates_template_parameter_01()
 {
     using namespace TemplateTemplateParameter::TemplateTemplateParameterFunction;
     using namespace TemplateTemplateParameter::TemplateTemplateParameterClass;

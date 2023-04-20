@@ -36,6 +36,9 @@ export import :generate;
 export import :generic_lambdas;
 
 export import :initializer_list;
+
+export import :input_output_streams;
+
 export import :invoke;
 
 export import :lambda;
@@ -69,6 +72,7 @@ export import :templates_function_basics;
 export import :template_specialization;
 export import :template_static_polymorphism;
 export import :template_template_parameter;
+export import :template_two_phase_lookup;
 
 export import :transform;
 export import :trim;
@@ -78,8 +82,8 @@ export import :uniform_initialization;
 export import :unique_ptr;
 
 export import :variadic_templates;
+export import :variant;
+export import :virtual_base_class_destructor;
+export import :virtual_override_final;
 
-// variant
-// virtual_base_class_destructor
-// virtual_override_final
-// weak_ptr
+export import :weak_ptr;

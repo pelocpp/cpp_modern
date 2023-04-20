@@ -202,7 +202,6 @@ namespace InputOutputStreams {
         std::cout << "AAA" << exmarks(3) << "AAA" << std::endl;
         std::cout << "AAA" << exmarks(4) << "AAA" << std::endl;
     }
-
 }
 
 void main_input_output_streams()

@@ -1,5 +1,5 @@
 // =====================================================================================
-// std::weak_ptr
+// WeakPtr.cpp // std::weak_ptr
 // =====================================================================================
 
 module;
@@ -16,8 +16,8 @@ module;
 
 #endif  // _DEBUG
 
-#include <iostream>
-#include <memory>
+//#include <iostream>
+//#include <memory>
 
 module modern_cpp:weak_ptr;
 

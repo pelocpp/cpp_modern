@@ -88,7 +88,7 @@ namespace TemplateTemplateParameter_02 {
     }
 }
 
-void main_template_template_parameter_02()
+void main_templates_template_parameter_02()
 {
     using namespace TemplateTemplateParameter_02;
     test_01();
