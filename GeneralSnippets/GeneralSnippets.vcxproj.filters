@@ -45,7 +45,7 @@
     <ClCompile Include="SharedPtr\SharedPtr.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="WeakPtr\StdWeakPtr.cpp">
+    <ClCompile Include="WeakPtr\WeakPtr.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Casts\Casts.cpp">
@@ -81,10 +81,10 @@
     <ClCompile Include="Any\Any.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Tuple\StdTuple.cpp">
+    <ClCompile Include="Tuple\Tuple.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TemplateConstexprIf\Template_ConstExpr_If.cpp">
+    <ClCompile Include="TemplateConstexprIf\TemplatesConstExpr_If.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Lambda\Lambda01.cpp">
@@ -93,7 +93,7 @@
     <ClCompile Include="Accumulate\Accumulate.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Variant\StdVariant.cpp">
+    <ClCompile Include="Variant\Variant.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Explicit\Explicit.cpp">
@@ -135,9 +135,6 @@
     <ClCompile Include="VariadicTemplates\VariadicTemplate_04_Mixins.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="VariadicTemplates\VariadicTemplate_05_Visitor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="SFINAE_EnableIf\Sfinae01.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -150,7 +147,7 @@
     <ClCompile Include="UniformInitialization\UniformInitialization.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="UniquePtr\StdUniquePtr.cpp">
+    <ClCompile Include="UniquePtr\UniquePtr.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CommonType\CommonType.cpp">
@@ -183,9 +180,6 @@
     <ClCompile Include="Invoke\Invoke.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TemplateSpecialization\TemplateSpecialization_02.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="PerfectForwarding\PerfectForwarding04.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -207,10 +201,7 @@
     <ClCompile Include="PerfectForwarding\PerfectForwarding05.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="StringView\StdStringView.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="StandardLibrarySTL\StandardLibrarySTL.cpp">
+    <ClCompile Include="StringView\StringView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Lambda\Lambda03.cpp">
@@ -258,12 +249,6 @@
     <ClCompile Include="TemplateFunctionBasics\TemplatesFunctionBasics.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TemplateClassBasics\TemplatesClassBasics03.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TemplateClassBasics\TemplatesClassBasics04.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Attributes\Attributes.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -288,7 +273,7 @@
     <ClCompile Include="TemplateClassBasics\TemplatesClassBasics02.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TemplateSpecialization\TemplateSpecialization_01.cpp">
+    <ClCompile Include="TemplateSpecialization\TemplateSpecialization.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TemplateClassBasics\AnotherArray.cpp">
@@ -549,12 +534,84 @@
     <ClCompile Include="SharedPtr\Module_SharedPtr.ixx">
       <Filter>Modules</Filter>
     </ClCompile>
+    <ClCompile Include="SSO\Module_SSO.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="StaticAssert\Module_StaticAssert.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="StringView\Module_StringView.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="StructuredBinding\Module_StructuredBinding.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="TemplateClassBasics\Module_TemplatesClassBasics.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="TemplateClassBasics\MyArray.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="TemplateClassBasics\AnotherArray.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="TemplateConstexprIf\Module_TemplatesConstExpr_If.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="TemplateFunctionBasics\Module_TemplatesFunctionBasics.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="TemplateSpecialization\Module_TemplateSpecialization.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="TemplateStaticPolymorphism\Module_TemplateStaticPolymorphism.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="TemplateTemplateParameter\Module_TemplateTemplateParameter.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="TemplateTwoPhaseLookup\Module_TemplateTwoPhaseLookup.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Transform\Module_Transform.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Trim\Module_Trim.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Tuple\Module_Tuple.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="TypeTraits\Module_TypeTraits.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="UniformInitialization\Module_UniformInitialization.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="UniquePtr\Module_UniquePtr.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="VariadicTemplates\Module_VariadicTemplates.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Variant\Module_Variant.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="VirtualBaseClassDestructor\Module_VirtualBaseClassDestructor.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="VirtualOverrideFinal\Module_VirtualOverrideFinal.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="WeakPtr\Module_WeakPtr.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="StaticAssert\StaticAssertion.md">
+    <None Include="StaticAssert\StaticAssert.md">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="SharedPtr\SharedPtr.md">
@@ -566,10 +623,10 @@
     <None Include="ReferenceWrapper\ReferenceWrapper.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="TemplateStaticPolymorphism\TemplatesStaticPolymorphism.md">
+    <None Include="TemplateStaticPolymorphism\TemplateStaticPolymorphism.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="TemplateConstexprIf\ConstExpr_If.md">
+    <None Include="TemplateConstexprIf\TemplatesConstExpr_If.md">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="TemplateTemplateParameter\TemplateTemplateParameter.md">
@@ -578,19 +635,19 @@
     <None Include="RAII\RAII.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="WeakPtr\StdWeakPtr.md">
+    <None Include="WeakPtr\WeakPtr.md">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="TypeTraits\TypeTraits.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="Tuple\StdTuple.md">
+    <None Include="Tuple\Tuple.md">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="UsingNamespaceStd\UsingNamespaceStd.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="Variant\StdVariant.md">
+    <None Include="Variant\Variant.md">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="ArrayDecay\ArrayDecay.md">
@@ -644,7 +701,7 @@
     <None Include="FileSystem\FileSystem.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="UniquePtr\StdUniquePtr.md">
+    <None Include="UniquePtr\UniquePtr.md">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Explicit\Explicit.md">
@@ -666,9 +723,6 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="VariadicTemplates\VariadicTemplates_04_Mixins.md">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="VariadicTemplates\VariadicTemplates_05_Visitor.md">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="SFINAE_EnableIf\Sfinae.md">
@@ -740,10 +794,7 @@
     <None Include="PerfectForwarding\PerfectForwarding_02.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="StringView\StdStringView.md">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="StandardLibrarySTL\StandardLibrarySTL.md">
+    <None Include="StringView\StringView.md">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Transform\cpp_snippet_transform_01.svg">
@@ -920,14 +971,6 @@
     <None Include="Optional\Optional.md">
       <Filter>Resource Files</Filter>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="TemplateClassBasics\MyArray.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TemplateClassBasics\AnotherArray.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="VariadicTemplates\cpp_snippets_mixins_01.png">

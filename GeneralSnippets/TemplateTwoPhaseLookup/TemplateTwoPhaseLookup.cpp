@@ -1,9 +1,11 @@
 // =====================================================================================
 // TemplateTwoPhaseLookup.cpp
 // =====================================================================================
+//
+//#include <iostream>
+//#include <string>
 
-#include <iostream>
-#include <string>
+module modern_cpp:template_two_phase_lookup;
 
 namespace Templates_TwoPhaseNameLookup
 {

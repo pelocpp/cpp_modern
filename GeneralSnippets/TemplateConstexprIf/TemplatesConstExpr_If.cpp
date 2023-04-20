@@ -1,10 +1,12 @@
 // =====================================================================================
-// Templates und bedingte Compilierung (if constexpr) 
+// TemplatesConstExpr_If.cpp // Templates und bedingte Compilierung (if constexpr) 
 // =====================================================================================
 
-#include <iostream>
-#include <vector>
-#include <string>
+//#include <iostream>
+//#include <vector>
+//#include <string>
+
+module modern_cpp:templates_constexpr_if;
 
 namespace TemplateConstExprIf {
 
@@ -37,8 +39,7 @@ namespace TemplateConstExprIf {
         // template member function
         template <typename U>
         T add(U x) const {
-            if constexpr (std::is_same_v<T, std::vector<U>>) {
-            // if constexpr (std::is_same<T, std::vector<U>>::value) {
+            if constexpr (std::is_same<T, std::vector<U>>::value) {
 
                 // create a copy of the member vector
                 T vecCopy(m_val);

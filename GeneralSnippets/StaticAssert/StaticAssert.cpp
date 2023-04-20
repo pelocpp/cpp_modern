@@ -1,8 +1,10 @@
 // =====================================================================================
-// static_assert
+// StaticAssert.cpp // static_assert keyword
 // =====================================================================================
 
-#include <iostream>
+//#include <iostream>
+
+module modern_cpp:static_assert_keyword;
 
 namespace StaticAssertDemo {
 

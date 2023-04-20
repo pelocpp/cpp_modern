@@ -2,8 +2,10 @@
 // Templates Static Polymorphism
 // =====================================================================================
 
-#include <iostream>
-#include <vector>
+//#include <iostream>
+//#include <vector>
+
+module modern_cpp:template_static_polymorphism;
 
 namespace TemplatesStaticPolymorphism {
 

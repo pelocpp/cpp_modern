@@ -1,13 +1,15 @@
 // =====================================================================================
-// AnotherArray.hpp // Demonstrating Templates Explicit Instantiation Model
+// AnotherArray.cpp // Demonstrating Templates Explicit Instantiation Model
 // =====================================================================================
 
-#pragma once
+//#pragma once
+//
+//#include <iostream>
+//#include <string>
+//
+//#include "AnotherArray.h"
 
-#include <iostream>
-#include <string>
-
-#include "AnotherArray.h"
+module modern_cpp:another_array;
 
 namespace ClassTemplatesBasics {
 

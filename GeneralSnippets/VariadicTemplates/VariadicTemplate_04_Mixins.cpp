@@ -1,11 +1,13 @@
 // =====================================================================================
-// Variadic Templates - Mixins
+// VariadicTemplate_04_Mixins.cpp // Variadic Templates - Mixins
 // =====================================================================================
 
-#include <iostream>
-#include <sstream>
-#include <string>
-#include <functional>
+//#include <iostream>
+//#include <sstream>
+//#include <string>
+//#include <functional>
+
+module modern_cpp:variadic_templates;
 
 namespace VariadicTemplatesMixins {
 

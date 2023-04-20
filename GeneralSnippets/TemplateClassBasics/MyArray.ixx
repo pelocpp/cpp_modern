@@ -1,11 +1,15 @@
 // =====================================================================================
-// MyArray.h // Demonstrating Templates Inclusion model
+// MyArray.ixx // Demonstrating Templates Inclusion model
 // =====================================================================================
 
-#pragma once
+//#pragma once
+//
+//#include <iostream>
+//#include <string>
 
-#include <iostream>
-#include <string>
+export module modern_cpp:my_array;
+
+import std;
 
 namespace ClassTemplatesBasics {
 

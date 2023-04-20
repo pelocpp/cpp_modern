@@ -2,9 +2,11 @@
 // Structured Binding
 // =====================================================================================
 
-#include <iostream>
-#include <vector>
-#include <string>
+//#include <iostream>
+//#include <vector>
+//#include <string>
+
+module modern_cpp:structured_binding;
 
 namespace StructuredBinding {
 

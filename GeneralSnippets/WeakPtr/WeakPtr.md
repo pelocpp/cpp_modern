@@ -4,7 +4,7 @@
 
 ---
 
-[Quellcode](StdWeakPtr.cpp)
+[Quellcode](WeakPtr.cpp)
 
 ---
 

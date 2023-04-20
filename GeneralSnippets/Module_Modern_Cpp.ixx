@@ -58,4 +58,28 @@ export import :rvalue_lvalue;
 
 export import :sfinae;
 export import :shared_ptr;
+export import :sso;
+export import :static_assert_keyword;
+export import :string_view;
+export import :structured_binding;
 
+export import :templates_class_basics;
+export import :templates_constexpr_if;
+export import :templates_function_basics;
+export import :template_specialization;
+export import :template_static_polymorphism;
+export import :template_template_parameter;
+
+export import :transform;
+export import :trim;
+export import :tuple;
+export import :type_traits;
+export import :uniform_initialization;
+export import :unique_ptr;
+
+export import :variadic_templates;
+
+// variant
+// virtual_base_class_destructor
+// virtual_override_final
+// weak_ptr

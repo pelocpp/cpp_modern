@@ -97,8 +97,7 @@
   * Container
   * Iteratoren
   * Algorithmen
-  * Funktionen, Funktoren und Lambdas
-  * Neuerungen ab C++&ndash;11/14/17
+  * Funktionsobjekte (Funktoren) und Lambdas
 
 
 ## STL-Algorithmen

@@ -2,9 +2,11 @@
 // TemplatesClassBasics01.cpp // Class Templates Basics 01
 // =====================================================================================
 
-#include <iostream>
-#include <string>
-#include <complex>
+//#include <iostream>
+//#include <string>
+//#include <complex>
+
+module modern_cpp:templates_class_basics;
 
 namespace ClassTemplatesBasics {
 

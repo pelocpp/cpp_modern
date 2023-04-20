@@ -1,16 +1,18 @@
 // =====================================================================================
-// Typmerkmale // Type Traits
+// TypeTraits.cpp // Typmerkmale // Type Traits
 // =====================================================================================
 
-#include <iostream>
-#include <vector>
-#include <list>
-#include <forward_list>
-#include <algorithm>
-#include <fstream>
-#include <iostream>
-#include <sstream>
-#include <iterator>
+//#include <iostream>
+//#include <vector>
+//#include <list>
+//#include <forward_list>
+//#include <algorithm>
+//#include <fstream>
+//#include <iostream>
+//#include <sstream>
+//#include <iterator>
+
+module modern_cpp:type_traits;
 
 namespace TypeTraits_Simple_Demo
 {

@@ -2,6 +2,8 @@
 // std::weak_ptr
 // =====================================================================================
 
+module;
+
 #define _CRTDBG_MAP_ALLOC
 #include <cstdlib>
 #include <crtdbg.h>
@@ -13,8 +15,11 @@
 #endif
 
 #endif  // _DEBUG
+
 #include <iostream>
 #include <memory>
+
+module modern_cpp:weak_ptr;
 
 namespace WeakPointer {
 

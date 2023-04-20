@@ -1,11 +1,13 @@
 // =====================================================================================
-// std::tuple
+// Tuple.cpp // std::tuple
 // =====================================================================================
 
-#include <iostream>
-#include <vector>
-#include <tuple>
-#include <string>
+//#include <iostream>
+//#include <vector>
+//#include <tuple>
+//#include <string>
+
+module modern_cpp:tuple;
 
 namespace TupleSamples {
 
@@ -177,7 +179,7 @@ namespace TupleSamples {
     }
 }
 
-void main_tuples()
+void main_tuple()
 {
     using namespace TupleSamples;
     test_01();

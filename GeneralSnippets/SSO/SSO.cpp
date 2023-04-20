@@ -2,8 +2,10 @@
 // SSO (Small String Optimization)
 // =====================================================================================
 
-#include <iostream>
-#include <string>
+//#include <iostream>
+//#include <string>
+
+module modern_cpp:sso;
 
 void main_sso()
 {

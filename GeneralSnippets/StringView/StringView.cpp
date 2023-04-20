@@ -1,10 +1,16 @@
 // =====================================================================================
-// Klasse std::string_view
+// StringView.cpp // Klasse std::string_view
 // =====================================================================================
 
-#include <iostream>
-#include <string>
-#include <cctype>
+//#include <iostream>
+//#include <string>
+//#include <cctype>
+
+module;
+
+#include <cstdint>   // for uint8_t
+
+module modern_cpp:string_view;
 
 namespace StringViewDemonstration {
 

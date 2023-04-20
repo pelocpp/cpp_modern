@@ -1,12 +1,14 @@
 // =====================================================================================
 // Uniform Initialization / Brace Initialization
 // =====================================================================================
+//
+//#include <iostream>
+//#include <vector>
+//#include <map>
+//#include <array>
+//#include <algorithm>
 
-#include <iostream>
-#include <vector>
-#include <map>
-#include <array>
-#include <algorithm>
+module modern_cpp:uniform_initialization;
 
 namespace UniformInitialization {
 
