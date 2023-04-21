@@ -2,9 +2,6 @@
 // ConstructorsDestructorsOrder.cpp // Order Constructor/Destructor Invocations
 // =====================================================================================
 
-//#include <iostream>
-//#include <memory>
-
 module modern_cpp:constructors_destructors_order;
 
 namespace OrderConstructorInvocations {

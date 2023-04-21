@@ -224,8 +224,8 @@
     <ClCompile Include="Exercises\Module_Exercises_16_GenericLambdas.ixx" />
     <ClCompile Include="Explicit\Explicit.cpp" />
     <ClCompile Include="Explicit\Module_Explicit.ixx" />
-    <ClCompile Include="ExpressionTemplates\ExpressionTemplates.cpp" />
     <ClCompile Include="ExpressionTemplates\ExpressionTemplates_01.cpp" />
+    <ClCompile Include="ExpressionTemplates\ExpressionTemplates_02.cpp" />
     <ClCompile Include="ExpressionTemplates\Module_ExpressionTemplates.ixx" />
     <ClCompile Include="Folding\Module_Folding.ixx" />
     <ClCompile Include="Folding\Folding.cpp" />
@@ -265,7 +265,6 @@
     <ClCompile Include="PerfectForwarding\PerfectForwarding02.cpp" />
     <ClCompile Include="PerfectForwarding\PerfectForwarding03.cpp" />
     <ClCompile Include="PerfectForwarding\PerfectForwarding04.cpp" />
-    <ClCompile Include="PerfectForwarding\PerfectForwarding05.cpp" />
     <ClCompile Include="Program.cpp" />
     <ClCompile Include="RAII\Module_RAII.ixx" />
     <ClCompile Include="RAII\RAII01.cpp" />

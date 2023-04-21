@@ -2,8 +2,6 @@
 // MetaProgramming01.cpp // Metaprogramming: Part I
 // =====================================================================================
 
-//#include <iostream>
-
 module modern_cpp:metaprogramming;
 
 namespace Metaprogramming {

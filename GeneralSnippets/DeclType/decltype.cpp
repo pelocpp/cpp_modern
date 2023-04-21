@@ -1,9 +1,6 @@
 // =====================================================================================
-// decltype and std::declval
+// Decltype.cpp // decltype and std::declval
 // =====================================================================================
-
-//#include <iostream>
-//#include <vector>
 
 module modern_cpp:decltype_keyword;
 

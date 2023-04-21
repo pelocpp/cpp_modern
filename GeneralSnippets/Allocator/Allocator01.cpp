@@ -9,13 +9,6 @@ module;
 #define __FUNCSIG__ __PRETTY_FUNCTION__
 #endif
 
-//#include <cstddef>
-//#include <new>
-//#include <iostream>
-//#include <vector>
-//#include <memory>
-//#include <string>
-
 module modern_cpp:allocator;
 
 namespace Allocator {

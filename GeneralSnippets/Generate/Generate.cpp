@@ -1,12 +1,6 @@
 // =====================================================================================
-// std::generate
+// Generate.cpp // std::generate
 // =====================================================================================
-
-//#include <iostream>
-//#include <string>
-//#include <vector>
-//#include <algorithm>
-//#include <iterator>
 
 module modern_cpp:generate;
 

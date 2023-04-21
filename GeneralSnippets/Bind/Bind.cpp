@@ -2,12 +2,6 @@
 // Bind.cpp
 // =====================================================================================
 
-//#include <iostream>
-//#include <string>
-//#include <algorithm>
-//#include <vector>
-//#include <functional>
-
 module modern_cpp:bind;
 
 namespace Bind {

@@ -2,11 +2,6 @@
 // CRTP.cpp // Curiously Recurring Template Pattern (CRTP)
 // =====================================================================================
 
-//#include <iostream>
-//#include <string>
-//#include <vector>
-//#include <memory>
-
 module modern_cpp:crtp;
 
 namespace CRTP {

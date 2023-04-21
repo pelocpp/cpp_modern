@@ -2,13 +2,6 @@
 // Optional.cpp // std::optional
 // =====================================================================================
 
-//#include <iostream>
-//#include <string>
-//#include <vector>
-//#include <set>
-//#include <optional>
-//#include <algorithm>
-
 module modern_cpp:optional;
 
 namespace OptionalExamples {

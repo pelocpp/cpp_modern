@@ -2,8 +2,6 @@
 // Lambda03.cpp // Lambda and 'this' Closure
 // =====================================================================================
 
-//#include <iostream>
-
 module modern_cpp:lambda;
 
 namespace LambdaAndThisClosure {

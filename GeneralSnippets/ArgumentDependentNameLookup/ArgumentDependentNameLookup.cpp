@@ -2,8 +2,6 @@
 // ArgumentDependentNameLookup.cpp
 // =====================================================================================
 
-//#include <iostream>
-
 module modern_cpp:argument_dependent_name_lookup;
 
 namespace ArgumentDependentNameLookup

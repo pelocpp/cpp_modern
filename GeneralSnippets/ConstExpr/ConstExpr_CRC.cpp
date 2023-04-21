@@ -13,10 +13,6 @@
  * Copyright Fraunhofer IIS, All rights reserved.
  */
 
-//#include <inttypes.h> // for uint8_t
-//#include <array>
-//#include <iostream>
-
 module;
 
 #include <cstdint>   // for uint8_t

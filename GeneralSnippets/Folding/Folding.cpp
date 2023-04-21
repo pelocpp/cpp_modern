@@ -1,12 +1,6 @@
 // =====================================================================================
-// Variadic Templates // Folding
+// Folding.cpp // Variadic Templates // Folding
 // =====================================================================================
-//
-//#include <iostream>
-//#include <map>
-
-//#include <typeinfo>
-//#include <typeindex>
 
 module modern_cpp:folding;
 

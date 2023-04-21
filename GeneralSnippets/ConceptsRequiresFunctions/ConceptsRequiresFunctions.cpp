@@ -2,13 +2,6 @@
 // ConceptsRequiresFunctions.cpp
 // =====================================================================================
 
-//#include <iostream>
-//#include <concepts>
-//#include <string>
-//#include <type_traits>
-//#include <numeric>
-//#include <vector>
-
 module modern_cpp:concepts_requires_functions;
 
 // using <concepts>

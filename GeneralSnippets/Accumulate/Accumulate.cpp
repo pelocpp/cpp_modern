@@ -1,13 +1,6 @@
 // =====================================================================================
-// std::accumulate
+// Accumulate.cpp // std::accumulate
 // =====================================================================================
-
-//#include <iostream>
-//#include <iomanip>
-//#include <string>
-//#include <vector>
-//#include <numeric>
-//#include <sstream>
 
 module modern_cpp:accumulate;
 

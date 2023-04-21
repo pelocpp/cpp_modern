@@ -2,10 +2,7 @@
 // Lambda02.cpp // Lambda and Closure Classes
 // =====================================================================================
 
-//#include <iostream>
-
 module modern_cpp:lambda;
-
 
 namespace LambdaAndClosure {
 

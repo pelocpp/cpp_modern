@@ -4,8 +4,6 @@
 
 ---
 
-&#x21D2; [Teil V: Variadische Templates: Visitor](VariadicTemplates_05_Visitor.md)
-
 &#x21D0; [Teil III: Variadische Templates: Anwendungsfall &ldquo;Summe von Summen&rdquo;](VariadicTemplates_03_SumOfSums.md)
 
 ---

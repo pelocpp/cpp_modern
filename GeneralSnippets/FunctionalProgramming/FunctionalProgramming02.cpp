@@ -1,17 +1,6 @@
 // =====================================================================================
-// Functional Programming- Variante 2
+// FunctionalProgramming02.cpp // Functional Programming- Variante 2
 // =====================================================================================
-
-//#include <iostream>
-//#include <string>
-//#include <algorithm>
-//#include <numeric>
-//#include <iterator>
-//#include <type_traits>
-//#include <vector>
-//#include <list>
-//#include <sstream>
-//#include <cctype>
 
 module;
 

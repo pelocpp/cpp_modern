@@ -2,8 +2,6 @@
 // ConstExpr_02.cpp
 // =====================================================================================
 
-//#include <iostream>
-
 module modern_cpp:const_expr;
 
 namespace ConstExpr {

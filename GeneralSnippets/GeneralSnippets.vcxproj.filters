@@ -189,9 +189,6 @@
     <ClCompile Include="VirtualOverrideFinal\VirtualOverrideFinal.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PerfectForwarding\PerfectForwarding05.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="StringView\StringView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -201,7 +198,7 @@
     <ClCompile Include="Transform\Transform.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ExpressionTemplates\ExpressionTemplates_01.cpp">
+    <ClCompile Include="ExpressionTemplates\ExpressionTemplates_02.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="DefaultInitialization\DefaultInitialization.cpp">
@@ -270,7 +267,7 @@
     <ClCompile Include="TemplateClassBasics\AnotherArray.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ExpressionTemplates\ExpressionTemplates.cpp">
+    <ClCompile Include="ExpressionTemplates\ExpressionTemplates_01.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CopyMoveElision\CopyMoveElision.cpp">

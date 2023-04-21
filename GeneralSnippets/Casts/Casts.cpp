@@ -2,9 +2,6 @@
 // Casts.cpp // static_cast, dynamic_cast, const_cast and reinterpret_cast examples
 // =====================================================================================
 
-//#include <iostream>
-//#include <memory>
-
 module modern_cpp:casts;
 
 namespace DiverseCasts {
