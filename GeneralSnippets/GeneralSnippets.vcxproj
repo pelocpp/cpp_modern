@@ -254,6 +254,8 @@
     <ClCompile Include="MetaProgramming\MetaProgramming01.cpp" />
     <ClCompile Include="MetaProgramming\MetaProgramming02.cpp" />
     <ClCompile Include="MetaProgramming\Module_MetaProgramming.ixx" />
+    <ClCompile Include="Modules_Import\Modules_Import.cpp" />
+    <ClCompile Include="Modules_Import\Module_Modules_Import.ixx" />
     <ClCompile Include="Module_Modern_Cpp.ixx" />
     <ClCompile Include="Module_Modern_Cpp_Exercises.ixx" />
     <ClCompile Include="MoveSemantics\Module_MoveSemantics.ixx" />
@@ -399,6 +401,7 @@
     <None Include="MemoryLeaks\MemoryLeaksDetection.md" />
     <None Include="MetaProgramming\Metaprogramming01.md" />
     <None Include="MetaProgramming\Metaprogramming02.md" />
+    <None Include="Modules_Import\Modules_Import.md" />
     <None Include="MoveSemantics\MoveSemantics.md" />
     <None Include="OnlineCppCompilers\OnlineCppCompilers.md" />
     <None Include="Optional\cpp_std_optional.svg" />

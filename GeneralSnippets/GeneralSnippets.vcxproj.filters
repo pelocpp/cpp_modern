@@ -603,6 +603,12 @@
     <ClCompile Include="Allocator\Allocator02.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Modules_Import\Module_Modules_Import.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Modules_Import\Modules_Import.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -963,6 +969,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Optional\Optional.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Modules_Import\Modules_Import.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
