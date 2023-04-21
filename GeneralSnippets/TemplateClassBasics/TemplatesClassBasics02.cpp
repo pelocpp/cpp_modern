@@ -2,16 +2,10 @@
 // TemplatesClassBasics02.cpp // Class Templates Basics 02
 // =====================================================================================
 
-//#include <iostream>
-//#include <string>
-//
-//#include "MyArray.h"         // demonstrating 'Templates Inclusion Model'
-//#include "AnotherArray.h"    // demonstrating 'Templates Explicit Instantiation Model'
-
 module modern_cpp:templates_class_basics;
 
-import :my_array;
-import :another_array;
+import :my_array;        // demonstrating 'Templates Inclusion Model'
+import :another_array;   // demonstrating 'Templates Explicit Instantiation Model'
 
 namespace ClassTemplatesBasics_02 {
 

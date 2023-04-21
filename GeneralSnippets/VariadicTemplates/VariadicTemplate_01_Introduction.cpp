@@ -2,10 +2,6 @@
 // VariadicTemplate_01_Introduction.cpp // Variadic Templates: Introduction
 // ========================================================================
 
-//#include <iostream>
-//#include <string>
-//#include <memory>
-
 module modern_cpp:variadic_templates;
 
 namespace VariadicTemplatesIntro_01 {

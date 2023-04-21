@@ -2,12 +2,6 @@
 // Trim.cpp
 // =====================================================================================
 
-//#include <iostream>
-//#include <vector>
-//#include <tuple>
-//#include <string>
-//#include <cctype>
-
 module modern_cpp:trim;
 
 namespace TrimExample {

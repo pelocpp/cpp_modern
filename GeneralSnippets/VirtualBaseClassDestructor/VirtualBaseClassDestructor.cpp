@@ -2,8 +2,6 @@
 // VirtualBaseClassDestructor.cpp // Virtual Base Class Destructor
 // =====================================================================================
 
-//#include <iostream>
-
 module modern_cpp:virtual_base_class_destructor;
 
 namespace VirtualBaseClassDestructor {

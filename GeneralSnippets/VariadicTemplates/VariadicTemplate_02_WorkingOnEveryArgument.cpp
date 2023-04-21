@@ -2,10 +2,6 @@
 // VariadicTemplate_02_WorkingOnEveryArgument.cpp // Working on every argument
 // =====================================================================================
 
-//#include <iostream>
-//#include <variant>
-//#include <string>
-
 module modern_cpp:variadic_templates;
 
 namespace VariadicTemplatesWorkingOnEveryArgument {

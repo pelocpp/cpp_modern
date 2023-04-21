@@ -2,10 +2,6 @@
 // Regular Expressions
 // =====================================================================================
 
-//#include <iostream>
-//#include <string>
-//#include <regex>
-
 module modern_cpp:regexpr;
 
 namespace RegularExpressions {

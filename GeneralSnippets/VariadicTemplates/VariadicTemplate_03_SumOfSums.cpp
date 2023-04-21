@@ -2,14 +2,6 @@
 // VariadicTemplate_03_SumOfSums.cpp // Variadic Templates - Sum of Sums
 // =====================================================================================
 
-//#include <iostream>
-//#include <string>
-//#include <vector>
-//#include <deque>
-//#include <list>
-//#include <algorithm>
-//#include <numeric>
-
 module modern_cpp:variadic_templates;
 
 namespace VariadicTemplatesSumofSums {

@@ -1,13 +1,8 @@
 // =====================================================================================
 // TemplateTemplateParameter_02.cpp // Template Template Parameter 02
 // =====================================================================================
-//
-//#include <iostream>
-//#include <cctype>
-//#include <stdexcept>
 
 module modern_cpp:template_template_parameter;
-
 
 namespace TemplateTemplateParameter_02 {
 

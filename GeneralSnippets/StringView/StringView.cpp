@@ -2,10 +2,6 @@
 // StringView.cpp // Klasse std::string_view
 // =====================================================================================
 
-//#include <iostream>
-//#include <string>
-//#include <cctype>
-
 module;
 
 #include <cstdint>   // for uint8_t

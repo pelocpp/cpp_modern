@@ -2,8 +2,6 @@
 // VirtualOverrideFinal.cpp // virtual, override und final
 // =====================================================================================
 
-//#include <iostream>
-
 module modern_cpp:virtual_override_final;
 
 namespace VirtualOverrideFinal{

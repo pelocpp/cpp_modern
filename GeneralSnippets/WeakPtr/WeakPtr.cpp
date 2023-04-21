@@ -16,9 +16,6 @@ module;
 
 #endif  // _DEBUG
 
-//#include <iostream>
-//#include <memory>
-
 module modern_cpp:weak_ptr;
 
 namespace WeakPointer {

@@ -2,11 +2,6 @@
 // Tuple.cpp // std::tuple
 // =====================================================================================
 
-//#include <iostream>
-//#include <vector>
-//#include <tuple>
-//#include <string>
-
 module modern_cpp:tuple;
 
 namespace TupleSamples {

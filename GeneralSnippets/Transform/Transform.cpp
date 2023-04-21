@@ -2,13 +2,6 @@
 // Transform.cpp // std::transform
 // =====================================================================================
 
-//#include <iostream>
-//#include <string>
-//#include <vector>
-//#include <unordered_map>
-//#include <algorithm>
-//#include <iterator>
-
 module modern_cpp:transform;
 
 namespace AlgorithmTransform {

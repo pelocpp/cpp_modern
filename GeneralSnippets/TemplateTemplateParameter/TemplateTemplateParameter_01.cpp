@@ -2,12 +2,6 @@
 // TemplateTemplateParameter_01.cpp // Template Template Parameter
 // =====================================================================================
 
-//#include <iostream>
-//#include <vector>
-//#include <list>
-//#include <deque>
-//#include <string>
-
 module modern_cpp:template_template_parameter;
 
 namespace TemplateTemplateParameter {

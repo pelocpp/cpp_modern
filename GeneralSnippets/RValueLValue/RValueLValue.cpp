@@ -2,10 +2,6 @@
 // LValue / RValue
 // =====================================================================================
 
-//#include <iostream>
-//#include <string>
-//#include <cctype>
-
 module modern_cpp:rvalue_lvalue;
 
 namespace LValueRValue {

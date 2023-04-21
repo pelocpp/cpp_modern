@@ -1,10 +1,6 @@
 // =====================================================================================
-// Structured Binding
+// StructuredBinding.cpp // Structured Binding
 // =====================================================================================
-
-//#include <iostream>
-//#include <vector>
-//#include <string>
 
 module modern_cpp:structured_binding;
 

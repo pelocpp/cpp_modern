@@ -1,9 +1,6 @@
 // =====================================================================================
-// Templates Static Polymorphism
+// TemplateStaticPolymorphism.cpp // Templates Static Polymorphism
 // =====================================================================================
-
-//#include <iostream>
-//#include <vector>
 
 module modern_cpp:template_static_polymorphism;
 

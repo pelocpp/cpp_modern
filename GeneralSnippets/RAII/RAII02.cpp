@@ -2,12 +2,6 @@
 // RAII02.cpp
 // =====================================================================================
 
-//#include <string>
-//#include <mutex>
-//#include <iostream>
-//#include <fstream>
-//#include <stdexcept>
-
 module modern_cpp:raii;
 
 // See also:  

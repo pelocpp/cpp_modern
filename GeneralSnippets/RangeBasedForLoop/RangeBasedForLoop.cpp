@@ -2,12 +2,6 @@
 // RangeBasedForLoop.cpp
 // =====================================================================================
 
-//#include <iostream>
-//#include <string>
-//#include <iterator>
-//#include <vector>
-//#include <algorithm>
-
 module modern_cpp:range_based_for_loop;
 
 /*
