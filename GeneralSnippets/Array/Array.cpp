@@ -2,7 +2,7 @@
 // Array.cpp // std::array
 // =====================================================================================
 
-module modern_cpp:std_class_array;
+module modern_cpp:class_array;
 
 
 namespace StdArray {

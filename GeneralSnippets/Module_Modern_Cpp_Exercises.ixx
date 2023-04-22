@@ -1,3 +1,7 @@
+// =====================================================================================
+// Module Interface Partition 'modern_cpp_exercises'
+// =====================================================================================
+
 export module modern_cpp_exercises;
 
 export import :move_semantics; 
@@ -18,3 +22,8 @@ export import :smart_pointers;
 export import :generic_lambdas;
 
 export void main_exercises();
+
+// =====================================================================================
+// End-of-File
+// =====================================================================================
+

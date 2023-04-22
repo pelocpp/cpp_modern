@@ -1,5 +1,5 @@
 // =====================================================================================
-// Module_Modern_Cpp.ixx // Module 'modern_cpp': Interface Definitio File
+// Module_Modern_Cpp.ixx // Module 'modern_cpp': Interface Definition File
 // =====================================================================================
 
 export module modern_cpp;
@@ -9,7 +9,7 @@ export import :allocator;
 export import :any;
 export import :apply;
 export import :argument_dependent_name_lookup;
-export import :std_class_array;
+export import :class_array;
 export import :array_decay;
 export import :attributes;
 export import :auto_keyword;
