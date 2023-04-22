@@ -241,7 +241,7 @@ export import :weak_ptr;
 
 
 ```cpp
-01: /// Module Interface Partition
+01: /// Module Interface Partition: File Module_SharedPtr.ixx
 02: export module modern_cpp:shared_ptr;
 03: 
 04: import std;
@@ -253,7 +253,7 @@ export import :weak_ptr;
 
 
 ```cpp
-01: /// Module Implementation Partition
+01: /// Module Implementation Partition: File SharedPtr.cpp
 02: module modern_cpp:shared_ptr;
 03: 
 04: namespace SharedPointer {
