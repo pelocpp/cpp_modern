@@ -4,381 +4,293 @@
 
 ---
 
-[Quellcode](xxx.cpp)
+[Quellcode](Modules_Import.cpp)
 
 ---
 
-Das Schlüsselwort `auto` besitzt mehrere, völlig unterschiedliche Einsatzmöglichkeiten:
+## Einleitung
 
-  * Vereinbarung von Variablen / *Automatic Type Deduction*
-  * Neuartige Möglichkeit in der Definition von Funktionen / *Function Return Type Deduction*
-  * Funktionsdefinition mit *Trailing Return Type*
-  * Verlust von `const` und `&` (Referenz) bei `auto`
-  * Typableitung bei Template Parametern / *Template Parameter Type Deduction*
-  * `decltype(auto)`
-  * Möglichkeiten des Gebrauchs von `auto` im Vergleich
+Im klassischen C++ besteht ein (objekt-orientiertes) Programm aus Header-Dateien,
+die Schnittstellen enthalten (Dateiendung *.h*) und Implementationsdateien,
+den den dazugehörigen Programmcode enthalten (Dateiendung *.cpp*).
 
-*Hinweis*: Das Schlüsselwort `auto` fällt in der C++&ndash;Sprachbeschreibung in die Kategorie der 
-so genannten *Type Inference*. Hierzu zählen die beiden Schlüsselwörter `auto` und `decltype`.
+Ab C++ 20 gibt es das Sprachmittel der *Module*: Darunter versteht man Softwarekomponenten,
+die Schnittstelle und Implementation zusammenfassen (können).
+Sie werden unabhängig compiliert und sind danach benutzbar.
 
 ---
 
-## Vereinbarung von Variablen / *Automatic Type Deduction*
+## Unterschiede zwischen Header-Dateien und Modulen
 
-Mit `auto` lassen sich Variablen definieren. Der Typ der Variablen leitet sich in diesem Fall
-aus dem Vorbelegungswert der Variablen ab:
+Ein Modul ist eine eigene Übersetzungseinheit.
+Das klassische Modell der Aufteilung in Header- und Implementationsdateien weist einige Nachteile auf:
 
-```cpp
-auto n = 123;    // n is type of int
-```
+  * Die Aufteilung in Header- und Implementationsdateien führt zu doppelt so vielen Dateien im Vergleich zur Konzentration
+  von Schnittstelle und Implementation in einer einzigen Moduldatei.
 
-*Bemerkung*: Im letzten Beispiel hat man durch die Verwendung von `auto` nicht viel gewonnen.
-Etwas anders ist die Situation im nächsten Beispiel:
+  * Eine Aufteilung in zwei Dateien kann zu Inkonsistenzen führen, wenn die Deklaration in der
+  Header-Datei nicht mit derjenigen in der Implementationsdatei übereinstimmt. Bei
+  Modulen kann dieses Problem nicht auftreten.
 
-```cpp
-auto result = getFunction(); 
-```
+  * Header-interne Definitionen mit #define sind in allen nachfolgenden Übersetzungseinheiten
+  sichtbar. Das kann Konflikte auslösen. Module vermeiden dieses Problem
 
-Hier gewinnt man zwei Vorteile:
+  * Das Inkludieren einer Header-Dateien wird mit Makros gesteuert (`#include`).
+  Andere Makros wiederum überwachen, dass der Inhalt einer Header-Datei
+  nicht zweimal berücksichtigt wird (`#pragma once`).
+  Aber auch wenn der Compiler den Inhalt ignoriert (&ldquo;passives Parsen&rdquo;),
+  muss er dennoch das zweite Inkludieren dieser Header-Datei
+  bis zum Ende durchführen, um zu wissen, wann er wieder in den aktiven Modus des Übersetzens umschaltet.
+  Unnötige längere Compilationszeiten sind die Folge.
 
-  * Ist der Rückgabetyp von `getFunction` länglich zum Hinschreiben, dann spart man mit `auto` Tipparbeit
-    (z.B. eben `auto` an Stelle von `std::map<int, std::string>`).
-  * Ändert sich der Rückgabetyp von `getFunction`, so muss man den Quellcode an all den Stellen,
-    an denen ein Aufruf von `getFunction` in Verbindung mit `auto` steht, nicht nachgezogen werden.
+  * Header-Dateien müssen bei jeder Übersetzung vom Compiler analysiert werden. Bei
+  Modulen liegt das binäre Ergebnis nach deren einmaliger Übersetzung vor (&ldquo;*precompiled*&rdquo; Header Vorgehensweise).
+  Das spart Compilationszeit.
 
-## Neuartige Möglichkeit in der Definition von Funktionen / *Function Return Type Deduction*
+  * Es kann eine Rolle spielen, in welcher Reihenfolge Header-Dateien mit `#include` eingebunden werden.
+  Module können in beliebiger Reihenfolge importiert werden.
 
-Ab C++ 14 ist es möglich, dass der Rückgabetyp einer Funktion vom Compiler automatisch bestimmt wird.
-Zu diesem Zweck
+  * In einer Header-Datei kann es in Klassendefinitionen mit `private` gekennzeichnete Bereiche geben.
+  Diese sind für die Benutzung einer Schnittstelle von außen nicht
+  von Bedeutung, sogar unerwünscht. Details von *privater* Natur können vor dem Anwender nicht wirklich versteckt werden.
+  In Modulen sind solche Bereiche nach außen nicht sichtbar.
 
-  * verwendet man das Schlüsselwort `auto` als Rückgabetyp in der Funktionsdefinition.
-  * muss der Compiler auf Grund einer oder auch mehrerer `return`-Anweisungen eindeutig in der Lage sein,
-    den Rückgabetyp ermitteln zu können.
 
-*Beispiel*:
+---
 
-```cpp
-auto sum(float f1, float f2)
-{
-    return f1 + f2;
-}
-```
+## Import der Standard-Bibliothek STL mit Visual C++
 
-*Anwendung*:
+Obwohl dies nicht im C++ 20-Standard festgelegt ist,
+ermöglicht es die Erstellung eines C++ Programms mit dem Visual C++ Compiler,
+dass die Implementierung der C++&ndash;Standardbibliothek als Modul mit dem Namen **std** importiert werden kann.
 
-```cpp
-auto result = sum(1.0, 2.0);  // float
-```
+Dies hat gegenüber der Vorgehensweise mit `#include`&ndash;Direktiven und entsprechenden Header-Dateien
+den Vorteil, dass sich die Kompilierungszeiten je nach Größe des Programms erheblich verkürzen.
 
-Häufig kann man die Beobachtung machen, dass der Umstieg auf *Function Return Type Deduction*
-(auch: *Automatic Return Type Deduction*) zu leichter lesbarem Quellcode führt:
+### Anweisung `import std;`
 
-*Beispiel*:
+Mit der Anweisung
 
 <pre>
-class Contact
-{
-    std::string m_name;
-    size_t m_number;
-
-public:
-    <b>auto</b> getName() const { return m_name; }
-    <b>auto</b> getMobileNumber () const { return m_number; }
-};
+import std;
 </pre>
 
-**Beachte**:
+wird die STL in die aktuelle Übersetzungseinheit importiert.
 
-*Automatic Return Type Deduction* zieht einen interessanten Anwendungsfall nach sich:
-Es ist möglich, den Rückgabetyp einer Funktion **lokal** in dieser zu definieren und
-den Aufruf dieser Funktion mit *Automatic Return Type Deduction* durchzuführen.
-Auch zu dieser skuril anmutenden Vorgehensweise ein Beispiel:
+Dazu wird allerdings &ndash; in Bezug auf den Visual C++ Compiler &ndash; eine Datei `std.ixx` 
+im Programm benötigt. Diese muss man nicht selbst erstellen, sie ist in einer Visual C++ Installation
+in folgendem Verzeichnis vorhanden:
+
+<pre>
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\modules\std.ixx
+</pre>
+
+Wenn wir den Quellcode der Datei `std.ixx` betrachten, erkennen wir im nachfolgenden Ausschnitt
+in Zeile 17 die Definition des Modulnamens `std`:
+
+<pre>
+01: // Copyright (c) Microsoft Corporation.
+02: // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
+03: 
+04: // This named module expects to be built with classic headers, not header units.
+05: #define _BUILD_STD_MODULE
+06: 
+07: module;
+08: 
+09: // The subset of "C headers" [tab:c.headers] corresponding to
+10: // the "C++ headers for C library facilities" [tab:headers.cpp.c]
+11: #include <assert.h>
+12: #include <ctype.h>
+13: ...
+14: #include <wchar.h>
+15: #include <wctype.h>
+16: 
+<b>17: export module std;</b>
+18: 
+19: #pragma warning(push)
+20: #pragma warning(disable : 5244) // '#include <meow>' in the purview of module 'std' appears erroneous.
+21: 
+22: // "C++ library headers" [tab:headers.cpp]
+23: #include <algorithm>
+24: #if _HAS_STATIC_RTTI
+25: #include <any>
+26: #endif // _HAS_STATIC_RTTI
+27: #include <array>
+28: #include <atomic>
+29: ...
+30: #include <variant>
+31: #include <vector>
+32: #include <version>
+33: 
+34: // "C++ headers for C library facilities" [tab:headers.cpp.c]
+35: #include <cassert>
+36: #include <cctype>
+37: ...
+38: #include <cwchar>
+39: #include <cwctype>
+40: 
+41: #pragma warning(pop)
+</pre>
+
+---
+
+## Ein einfaches Beispiel
+
+Das nachfolgende Programmfragment (*Code-Listing* 1) zeigt die Einbindung eines Moduls
+`hello_world` mit der `import`-Anweisung. 
+Das Modul exportiert einen Namensraum `MyHelloWorld`.
+Auf diese Weise stehen eine globale Variable `globalData` und eine globale Funktion `sayHello`
+zur Verfügung.
+Ein Aufruf von `main()` gibt
+
+<pre>
+Hello Module! Data is 123
+</pre>
+
+auf der Standardausgabe `std::cout` aus. Dabei muss in `main()` keine `#include`-Anweisung
+vorhanden sein: Das Modul bringt alles Notwendige mit:
+
 
 ```cpp
-auto make_planet()
-{
-    struct Planet { std::string name; int moons; bool rings; };
-
-    return Planet{ "Saturn", 82, true };
-}
+01: /// Program.cpp
+02: import hello_world;
+03: 
+04: int main()
+05: {
+06:     MyHelloWorld::globalData = 123;
+07: 
+08:     MyHelloWorld::sayHello();
+09: }
 ```
 
-Damit kann die Funktion `make_planet` wie folgt aufgerufen werden:
+*Code-Listing* 1: Einbindung eines Moduls.
+
 
 ```cpp
-// using automatic return type deduction
-auto planet = make_planet();
-
-std::cout 
-    << planet.name << ' '
-    << planet.moons << ' '
-    << planet.rings << std::endl;
-
-// using automatic return type deduction & structured binding
-auto [name, num_moons, has_rings] = make_planet();
-
-std::cout
-    << name << ' '
-    << num_moons << ' '
-    << has_rings << std::endl;
+01: /// HelloWorld.ixx
+02: export module hello_world;
+03: 
+04: import std;
+05: 
+06: export namespace MyHelloWorld
+07: {
+08:     int globalData{};
+09: 
+10:     void sayHello()
+11:     {
+12:         std::cout << "Hello Module! Data is " << globalData << std::endl;
+13:     }
+14: }
 ```
 
-Im letzten Code-Fragment finden Sie noch eine Kombination der *Automatic Return Type Deduction* und dem
-*Structured Binding* vor!
+*Code-Listing* 2: Definition/Implementierung eines Moduls.
 
 
-## Funktionsdefinition mit *Trailing Return Type*
+Der Effekt des Importierens eines Moduls besteht darin, die in dem Modul deklarierten
+exportierten Entitäten (hier: Namensraum `MyHelloWorld`) für die importierende Übersetzungseinheit sichtbar zu machen.
 
-Unter dem Begriff &ldquo;*Trailing Return Type*&rdquo; versteht man die Möglichkeit,
-den Rückgabetyp hinter der Parameterliste statt wie ursprünglich vor dem Funktionsnamen zu platzieren.
-Die neue und alte Syntax sind zueinander kompatibel und können im Code durchaus gemeinsam verwendet werden.
 
-*Beispiel*:
+---
+
+## Modul Partitionen
+
+Genau wie bei C++&ndash;Headerdateien müssen Module nicht zwingend aufgeteilt,
+also in mehrere Dateien unterteilt werden.
+Trotzdem können große Quelldateien unhandlich werden, sodass C++&ndash;Module auch eine Möglichkeit bieten,
+ein einzelnes Modul in verschiedene Übersetzungseinheiten zu unterteilen.
+Diese Unterteilungen werden als *Partitionen* bezeichnet.
+
+Wir betrachten dazu das vorliegende Projekt und seine Aufteilung in Partitionen.
+Dabei treten neue Begriffe in Aktion: *Module Interface Units* und *Module Implementation  Units*:
+
 
 ```cpp
-// old, "classical" syntax
-std::string toString(int value);
-
-// new syntax with trailing return type
-auto toString(int value) -> std::string;
+01: /// Program.cpp
+02: import modern_cpp;
+03: 
+04: import std;
+05: 
+06: int main()
+07: {
+08:     main_shared_ptr(); 
+09:     main_unique_ptr();
+10:     main_weak_pointer();
+11:     ...
+12:     return 0;
+13: }
 ```
 
-Eine Funktionsdefinition mit *Trailing Return Type* bietet sich dann an,
-wenn es bei Funktionen in der Schreibweise *Function Return Type Deduction*
-mit mehreren `return`-Anweisungen zu Mehrdeutigkeiten kommt:
+*Code-Listing* 3: Hauptprogramm.
 
-*Beispiel*:
 
 ```cpp
-// Error:
-// "'double': all return expressions must deduce to the same type:
-// previously it was 'char'"
-auto foo(bool flag, char ch, double d)
-{
-    if (flag) {
-        return ch;
-    }
-    else {
-        return d;
-    }
-}
+/// Module_Modern_Cpp.ixx
+export module modern_cpp;
+
+export import :shared_ptr;
+export import :unique_ptr;
+export import :weak_ptr;
+....
 ```
 
-Eine übersetzungsfähige Version sieht so aus:
+*Code-Listing* 4: Primäre Modulschnittstelle.
+
 
 ```cpp
-auto foo(bool flag, char ch, double d) -> double
-{
-    if (flag) {
-        return ch;
-    }
-    else {
-        return d;
-    }
-}
+01: /// Module Interface Partition
+02: export module modern_cpp:shared_ptr;
+03: 
+04: import std;
+05: 
+06: export void main_shared_ptr();
 ```
 
-## Verlust von `const` und `&` (Referenz) bei `auto`
+*Code-Listing* 5: Modulschnittstellenpartition / &ldquo;*Module Interface Partition*&rdquo;.
 
-Die automatische Typableitung mit `auto` hat einen Nebeneffekt:
-Die zwei möglichen Qualifizierer `const` und `&` (Referenz)
-gehen bei der Typableitung verloren.
-Wir demonstrieren dies an einem Beispiel:
 
 ```cpp
-const std::string message{ "This is an important message :)" };
-
-const std::string& getMessage()
-{
-    return message;
-}
+01: /// Module Implementation Partition
+02: module modern_cpp:shared_ptr;
+03: 
+04: namespace SharedPointer {
+05: 
+06:     void test_01_shared_ptr ()
+07:     { ...
+08:     }
+09: 
+10:     void test_02_shared_ptr () 
+11:     { ...
+12:     }
+13: 
+14:     void test_03_shared_ptr ()
+15:     { ...
+16:     }
+17: }
+18: 
+19: void main_shared_ptr()
+20: {
+21:     using namespace SharedPointer;
+22:     test_01_shared_ptr ();
+23:     test_02_shared_ptr ();
+24:     test_03_shared_ptr ();
+25: }
 ```
 
-Wenn wir die Funktion `getMessage` aufrufen und ihr Resultat in einer mit `auto`  deklarierten Variablen abspeichern,
-verlieren wir sowohl `const` als auch die Referenz:
+*Code-Listing* 6: Modulimplementierungspartition / &ldquo;*Module Implementation Partition*&rdquo;.
 
-```cpp
-auto msg = getMessage();   // msg has type 'std::string'
-```
-
-Die Variable `msg` hat den Typ `std::string` &ndash; und damit nicht den Typ `const std::string&`!
-
-*Hinweis*:
-Der Visual C++ Compiler weist in einem Tooltip darauf hin (*Abbildung* 1):
-
-<img src="auto_no_const_reference.png" width="500">
-
-*Abbildung* 1: Fehlermeldung *auto* doesn't deduce references.
-
-Man kann dies natürlich dadurch verhindern, dass man die Variable vom Typ `auto&` oder `const auto&` deklariert!
-
-*Hinweis*:
-Es würde eine *zweite* Möglichkeit geben, den Verlust von `const` bzw. von `&` auszugleichen.
-Hierzu darf man nicht `auto` einsetzen, sondern muss mit `decltype` arbeiten:
-
-```cpp
-decltype(getMessage()) msg3 = getMessage();  // msg3 has type `const std::string&`
-
-std::cout << "Message: " << msg3 << std::endl;
-```
-
-Ein letzter Schönheitsfehler verbleibt: Es kommt quasi zu einer Dopplung des Ausdrucks, in unserem Beispiel `getMessage()`.
-Auch das beheben wir noch, siehe hierzu die Kombination
-von `auto` und `decltype`:
-
-```cpp
-decltype(auto)
-```
-
-
-## Typableitung bei Template Parametern (*Template Parameter Type Deduction*)
-
-Der Typ von Template Parametern wird vom Übersetzer an Hand der Argumente aufgelöst,
-mit denen ein Funktionstemplate aufgerufen wird. Template Parameter, die sich aus den Argumenten nicht erschließen lassen,
-müssen folglich explizit angegeben werden.
-
-Wir betrachten ein Funktionstemplate mit drei Template Parametern:
-
-```cpp
-template <typename TReturn, typename T1, typename T2>
-TReturn add(const T1& t1, const T2& t2)
-{
-    return t1 + t2;
-}
-```
-
-Ein Aufruf mit allen drei Template Parametern sieht so aus:
-
-```cpp
-auto result = add<long, int , int>(10, 20);
-```
-
-Da sich, um bei diesem Beispiel zu bleiben, die Template Parameter für `T1` und `T2` aus den
-Werten 10 und 20 ableiten lassen können,
-kann man auch verkürzt schreiben:
-
-```cpp
-auto result = add<long>(10, 20);
-```
-
-Es ist logischerweise nur noch der Typ für den Rückgabetyp aufzuführen, da dieser von `T1` und `T2` abweichen kann.
-Dies wiederum kann nur funktionieren, wenn diejenigen Template Parameter, die der Compiler automatisch ermitteln soll,
-sich am Ende der Template Parameter Liste befinden.
-Also eine Funktionstemplate Definition in der Gestalt
-
-```cpp
-template <typename T1, typename T2, typename TReturn>
-TReturn add2(const T1& t1, const T2& t2)
-{
-    return t1 + t2;
-}
-```
-
-besitzt diese Eigenschaft nicht.
-
-*Hinweis*: Ist man auf der Suche nach einer Funktionstemplate Definition, die bei Bedarf ohne jegliche
-Spezifikationen von Datentypen beim Aufruf auskommt, so könnte man mit Default Werten für die Template Parameter arbeiten:
-
-```cpp
-template <typename TReturn = long, typename T1, typename T2>
-TReturn add(const T1& t1, const T2& t2)
-{
-    return t1 + t2;
-}
-```
-
-Jetzt ist ein Aufruf der Gestalt
-
-```cpp
-auto result = add(10, 20);
-```
-
-übersetzungsfähig.
-
-## decltype(auto)
-
-`decltype(auto)` wird genauso benutzt wie `auto`, nur sind die Regeln zum Ableiten des Typ (*Type Deduction*)
-unterschiedlich:
-
-  * Bei `auto` gehen mögliche Qualifizierer wie `const`, `volatile` und `&` (Referenz) verloren.
-  * Bei `decltype(auto)` gehen diese Qualifizierer **nicht** verloren.
-
-Wir betrachten dazu ein Beispiel:
-
-```cpp
-decltype(auto) getFirstCharacter(const std::string& s)
-{
-    return s[0];
-}
-```
-
-Wenn wir diese Funktion zweimal aufrufen,
-erkennen wir den Unterschied:
-
-```cpp
-auto ch1 = getFirstCharacter(std::string{ "ABC" });
-
-decltype(auto) ch2 = getFirstCharacter(std::string{ "ABC" });
-```
-
-Variable `ch1` ist vom Typ `char`, Variable `ch2` hingegen vom Typ `const char&`,
-siehe hierzu auch *Abbildung* 2 und *Abbildung* 3:
-
-<img src="decltype_auto_01.png" width="500">
-
-*Abbildung* 2: Variablendeklaration mit `auto`.
-
-<img src="decltype_auto_02.png" width="550">
-
-*Abbildung* 3: Variablendeklaration mit `decltype(auto)`.
-
-
-## Möglichkeiten des Gebrauchs von `auto` im Vergleich
-
-Wir wollen einen kurzen und prägnanten Vergleich in der Möglichkeit des Gebrauchs von `auto` geben:
-
-#### `auto`
-
-Steht für eine Kopie eines Elements.
-
-#### `auto&`
-
-Steht für eine Referenz eines Elements mit der Intention, dieses zu ändern.
-
-#### `const auto&`
-
-Steht für eine Referenz eines Elements mit der Intention, dieses **nicht** zu ändern.
-
-#### `auto&&`
-
-Steht für eine *Universal Referenz* eines Elements im Kontext von generischem Code (Template, generisches Lambda).
-`auto&&` bezeichnet man auch als *Vorwärtsreferenz*, dies bedeutet:
-
-  * Wenn `auto&&` mit einem *LValue* initialisiert wird, verhält sich die Referenz wie eine *LValue* Referenz.
-  * Wenn `auto&&` mit einem *RValue* initialisiert wird, verhält sich die Referenz wie eine *RValue* Referenz.
-
-#### `decltype(auto)`
-
-`decltype(auto)` verhält sich im Prinzip wie `auto`, nur werden `const`, `volatile` und `&` beibehalten.
-
-Zusammenfassend kann man sagen:
-
-  * Verwende `auto`, wenn man zum Beispiel in einer *range-based loop* mit einer Kopie arbeiten möchte.
-  * Verwende `auto&`, wenn man zum Beispiel in einer *range-based loop* die Elemente verändern möchte.
-  * Verwende `auto&&`, wenn man zum Beispiel in einer *range-based loop* im Kontext von generischem Code die Elemente verändern möchte.
-  * Verwende `const auto&`, wenn man zum Beispiel in einer *range-based loop* auf die Elemente nur mit lesendem Zugriff zugreifen möchte (auch im Kontext von generischen Code).
 
 ---
 
 ## Literaturhinweise:
 
-Die Anregungen zu diesem Code-Snippet finden sich unter anderem in
+Die Anregungen zu diesem Code-Snippet finden sich teilweise in
 
-[Modern C++ Features](https://arne-mertz.de/2017/01/decltype-declval/)<br>(abgerufen am 06.11.2021)
+[Understanding C++ Modules: Part 1: Hello Modules, and Module Units](https://vector-of-bool.github.io/2019/03/10/modules-1.html)<br>(abgerufen am 22.04.2023)
 
-oder in
+vor. Eine andere, empfehlenswerte Beschreibung stammt von Simon Toth:
 
-[Auto Type Deduction in Range-Based For Loops](https://blog.petrzemek.net/2016/08/17/auto-type-deduction-in-range-based-for-loops/)<br>(abgerufen am 06.11.2021).
+[C++20 Modules — Complete Guide](https://itnext.io/c-20-modules-complete-guide-ae741ddbae3d)<br>(abgerufen am 22.04.2023)
+
 
 ---
 

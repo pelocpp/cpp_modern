@@ -4,11 +4,19 @@
 
 module modern_cpp:module_import;
 
+namespace ModulesAndImport {
 
-void main_auto()
+    void halloSeminar() {
+
+        std::cout << "Hallo Seminar" << std::endl;
+    }
+}
+
+void main_modules_import()
 {
-    using namespace Auto_Examples;
+    using namespace ModulesAndImport;
 
+    halloSeminar();
 }
 
 // =====================================================================================

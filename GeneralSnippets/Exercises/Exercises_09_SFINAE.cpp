@@ -4,17 +4,6 @@
 
 module;
 
-#define _CRT_SECURE_NO_WARNINGS  
-
-//#include <iostream>
-//#include <string>
-//#include <vector>
-//#include <array>
-//#include <cmath>
-//#include <chrono>
-//#include <ctime>
-//#include <cstring>
-
 // GCC support
 #ifndef __FUNCSIG__
 #define __FUNCSIG__ __PRETTY_FUNCTION__

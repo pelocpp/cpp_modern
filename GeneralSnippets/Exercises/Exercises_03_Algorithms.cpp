@@ -2,12 +2,6 @@
 // Exercises_03_Algorithms.cpp
 // =====================================================================================
 
-//#include <iostream>
-//#include <string>
-//#include <numeric>
-//#include <vector>
-//#include <algorithm>
-
 module modern_cpp_exercises:algorithms;
 
 import std;

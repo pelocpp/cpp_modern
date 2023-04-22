@@ -2,10 +2,6 @@
 // Exercises_08_ExpressionTemplates.cpp
 // =====================================================================================
 
-//#include <iostream>
-//#include <string>
-//#include <vector>
-
 module modern_cpp_exercises:expression_templates;
 
 namespace Exercises_ExpressionTemplates {

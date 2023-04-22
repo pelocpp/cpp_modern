@@ -2,11 +2,6 @@
 // Exercises_01_MoveSemantics.cpp
 // =====================================================================================
 
-//#include <iostream>
-//#include <string>
-//#include <vector>
-//#include <chrono>
-
 module modern_cpp_exercises:move_semantics;
 
 namespace Exercises_MoveSemantics {

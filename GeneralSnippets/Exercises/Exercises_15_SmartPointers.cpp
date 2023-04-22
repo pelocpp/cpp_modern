@@ -15,10 +15,6 @@ module;
 #endif
 #endif  // _DEBUG
 
-//#include <iostream>
-//#include <string>
-//#include <memory>
-
 #include <cassert>
 
 module modern_cpp_exercises:smart_pointers;

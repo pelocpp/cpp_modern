@@ -2,21 +2,9 @@
 // Exercises_05_VariadicTemplates.cpp
 // =====================================================================================
 
-//#include <iostream>
-//#include <string>
-//#include <vector>
-//#include <tuple>
-//#include <numeric>
-//#include <algorithm>
-
-/*
- *  There are some problems with typeid and modules ... 
- */
-
-
 //module;
 //
-//import <typeinfo>;
+//import <typeinfo>;   // There are some problems with typeid and modules ... 
 
 module modern_cpp_exercises:variadic_templates;
 

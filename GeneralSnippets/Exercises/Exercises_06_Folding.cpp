@@ -2,13 +2,6 @@
 // Exercises_06_Folding.cpp
 // =====================================================================================
 
-//#include <iostream>
-//#include <string>
-//#include <type_traits>
-//#include <algorithm>
-//#include <vector>
-//#include <iterator>
-
 module modern_cpp_exercises:folding;
 
 namespace Exercises_Folding {

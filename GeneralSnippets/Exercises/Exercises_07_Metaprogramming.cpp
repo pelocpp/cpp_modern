@@ -2,10 +2,6 @@
 // Exercises_07_Metaprogramming.cpp
 // =====================================================================================
 
-//#include <iostream>
-//#include <string>
-//#include <type_traits>
-
 module modern_cpp_exercises:metaprogramming;
 
 namespace Exercises_Metaprogramming

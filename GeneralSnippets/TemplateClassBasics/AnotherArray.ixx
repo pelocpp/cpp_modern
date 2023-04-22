@@ -2,11 +2,6 @@
 // AnotherArray.ixx // Demonstrating Templates Explicit Instantiation Model
 // =====================================================================================
 
-//#pragma once
-//
-//#include <iostream>
-//#include <string>
-
 export module modern_cpp:another_array;
 
 import std;

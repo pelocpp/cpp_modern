@@ -256,6 +256,8 @@
     <ClCompile Include="MetaProgramming\Module_MetaProgramming.ixx" />
     <ClCompile Include="Modules_Import\Modules_Import.cpp" />
     <ClCompile Include="Modules_Import\Module_Modules_Import.ixx" />
+    <ClCompile Include="Modules_Import\HelloWorldProgram.cpp" />
+    <ClCompile Include="Modules_Import\HelloWorldProgram.ixx" />
     <ClCompile Include="Module_Modern_Cpp.ixx" />
     <ClCompile Include="Module_Modern_Cpp_Exercises.ixx" />
     <ClCompile Include="MoveSemantics\Module_MoveSemantics.ixx" />

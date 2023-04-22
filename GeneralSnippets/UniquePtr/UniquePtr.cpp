@@ -2,9 +2,6 @@
 // UniquePtr.cpp // std::unique_ptr
 // ===============================================================================
 
-//#include <iostream>
-//#include <memory>
-
 module modern_cpp:unique_ptr;
 
 namespace UniquePointerGeneral {
