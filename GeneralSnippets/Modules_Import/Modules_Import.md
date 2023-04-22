@@ -11,48 +11,49 @@
 ## Einleitung
 
 Im klassischen C++ besteht ein (objekt-orientiertes) Programm aus Header-Dateien,
-die Schnittstellen enthalten (Dateiendung *.h*) und Implementationsdateien,
+die Schnittstellen enthalten (Dateiendung *.h*) und Implementierungsdateien,
 den den dazugehörigen Programmcode enthalten (Dateiendung *.cpp*).
 
 Ab C++ 20 gibt es das Sprachmittel der *Module*: Darunter versteht man Softwarekomponenten,
 die Schnittstelle und Implementation zusammenfassen (können).
-Sie werden unabhängig compiliert und sind danach benutzbar.
+Sie werden unabhängig voneinander übersetzt und können danach von anderen Programmteilen verwendet werden.
 
 ---
 
 ## Unterschiede zwischen Header-Dateien und Modulen
 
 Ein Modul ist eine eigene Übersetzungseinheit.
-Das klassische Modell der Aufteilung in Header- und Implementationsdateien weist einige Nachteile auf:
+Das klassische Modell der Aufteilung in Header- und Implementierungsdateien weist einige Nachteile auf:
 
-  * Die Aufteilung in Header- und Implementationsdateien führt zu doppelt so vielen Dateien im Vergleich zur Konzentration
-  von Schnittstelle und Implementation in einer einzigen Moduldatei.
+  * Die Aufteilung in Header- und Implementierungsdatei führt zu doppelt so vielen Dateien im Vergleich dazu,
+  wenn man Schnittstelle und Implementation beispielsweise in einer einzigen (Modul-)Datei ablegt.
 
-  * Eine Aufteilung in zwei Dateien kann zu Inkonsistenzen führen, wenn die Deklaration in der
-  Header-Datei nicht mit derjenigen in der Implementationsdatei übereinstimmt. Bei
+  * Eine Aufteilung einer Funktionalität auf zwei Dateien kann zu Inkonsistenzen führen, wenn die Deklaration in der
+  Header-Datei nicht mit derjenigen in der Implementierungsdatei übereinstimmt. Bei
   Modulen kann dieses Problem nicht auftreten.
 
-  * Header-interne Definitionen mit #define sind in allen nachfolgenden Übersetzungseinheiten
-  sichtbar. Das kann Konflikte auslösen. Module vermeiden dieses Problem
+  * Header-interne Definitionen mit `#define` sind in allen nachfolgenden Übersetzungseinheiten
+  sichtbar. Das kann Konflikte auslösen. Module vermeiden dieses Problem.
 
   * Das Inkludieren einer Header-Dateien wird mit Makros gesteuert (`#include`).
   Andere Makros wiederum überwachen, dass der Inhalt einer Header-Datei
   nicht zweimal berücksichtigt wird (`#pragma once`).
   Aber auch wenn der Compiler den Inhalt ignoriert (&ldquo;passives Parsen&rdquo;),
   muss er dennoch das zweite Inkludieren dieser Header-Datei
-  bis zum Ende durchführen, um zu wissen, wann er wieder in den aktiven Modus des Übersetzens umschaltet.
+  bis zum Ende durchführen, um zu wissen, wann er wieder in den aktiven Modus des Übersetzens umschalten muss.
   Unnötige längere Compilationszeiten sind die Folge.
 
   * Header-Dateien müssen bei jeder Übersetzung vom Compiler analysiert werden. Bei
-  Modulen liegt das binäre Ergebnis nach deren einmaliger Übersetzung vor (&ldquo;*precompiled*&rdquo; Header Vorgehensweise).
-  Das spart Compilationszeit.
+  Modulen liegt das binäre Ergebnis nach deren einmaliger Übersetzung vor (&ldquo;*precompiled*&rdquo; Header).
+  Auf diese Weise wird Übersetzungszeit eingespart.
 
   * Es kann eine Rolle spielen, in welcher Reihenfolge Header-Dateien mit `#include` eingebunden werden.
   Module können in beliebiger Reihenfolge importiert werden.
 
   * In einer Header-Datei kann es in Klassendefinitionen mit `private` gekennzeichnete Bereiche geben.
   Diese sind für die Benutzung einer Schnittstelle von außen nicht
-  von Bedeutung, sogar unerwünscht. Details von *privater* Natur können vor dem Anwender nicht wirklich versteckt werden.
+  von Bedeutung, sogar unerwünscht. Details von *privater* Natur können vor dem Anwender bei
+  Verwendung von Header-Dateien nicht wirklich versteckt werden.
   In Modulen sind solche Bereiche nach außen nicht sichtbar.
 
 
@@ -62,12 +63,12 @@ Das klassische Modell der Aufteilung in Header- und Implementationsdateien weist
 
 Obwohl dies nicht im C++ 20-Standard festgelegt ist,
 ermöglicht es die Erstellung eines C++ Programms mit dem Visual C++ Compiler,
-dass die Implementierung der C++&ndash;Standardbibliothek als Modul mit dem Namen **std** importiert werden kann.
+dass die C++&ndash;Standardbibliothek als Modul mit dem Namen &ldquo;**std**&rdquo; importiert werden kann.
 
 Dies hat gegenüber der Vorgehensweise mit `#include`&ndash;Direktiven und entsprechenden Header-Dateien
 den Vorteil, dass sich die Kompilierungszeiten je nach Größe des Programms erheblich verkürzen.
 
-### Anweisung `import std;`
+#### Anweisung `import std;`
 
 Mit der Anweisung
 
@@ -195,13 +196,16 @@ exportierten Entitäten (hier: Namensraum `MyHelloWorld`) für die importierende Ü
 ## Modul Partitionen
 
 Genau wie bei C++&ndash;Headerdateien müssen Module nicht zwingend aufgeteilt,
-also in mehrere Dateien unterteilt werden.
+also deren Inhalt nich auf mehrere Dateien aufgeteilt werden.
 Trotzdem können große Quelldateien unhandlich werden, sodass C++&ndash;Module auch eine Möglichkeit bieten,
 ein einzelnes Modul in verschiedene Übersetzungseinheiten zu unterteilen.
 Diese Unterteilungen werden als *Partitionen* bezeichnet.
 
-Wir betrachten dazu das vorliegende Projekt und seine Aufteilung in Partitionen.
-Dabei treten neue Begriffe in Aktion: *Module Interface Units* und *Module Implementation  Units*:
+Eine *Partitionen* wiederum kann aus einer oder aus mehreren Dateien bestehen.
+Hierbei unterscheidet man *Module Interface Units* und *Module Implementation  Units*:
+
+Eine *Module Interface Unit* kann es nur einmal geben, die dazugehörigen
+*Module Implementation Units* wiederum lassen sich auf mehrere Dateien aufteilen:
 
 
 ```cpp
@@ -233,7 +237,7 @@ export import :weak_ptr;
 ....
 ```
 
-*Code-Listing* 4: Primäre Modulschnittstelle.
+*Code-Listing* 4: Primäre Modulschnittstelle: Modul `modern_cpp`. 
 
 
 ```cpp
@@ -245,7 +249,7 @@ export import :weak_ptr;
 06: export void main_shared_ptr();
 ```
 
-*Code-Listing* 5: Modulschnittstellenpartition / &ldquo;*Module Interface Partition*&rdquo;.
+*Code-Listing* 5: Modulschnittstellenpartition / &ldquo;*Module Interface Partition*&rdquo;: Partition `:shared_ptr`.
 
 
 ```cpp
@@ -276,7 +280,7 @@ export import :weak_ptr;
 25: }
 ```
 
-*Code-Listing* 6: Modulimplementierungspartition / &ldquo;*Module Implementation Partition*&rdquo;.
+*Code-Listing* 6: Modulimplementierungspartition / &ldquo;*Module Implementation Partition*&rdquo;: Partition `:shared_ptr`.
 
 
 ---
@@ -289,7 +293,7 @@ Die Anregungen zu diesem Code-Snippet finden sich teilweise in
 
 vor. Eine andere, empfehlenswerte Beschreibung stammt von Simon Toth:
 
-[C++20 Modules — Complete Guide](https://itnext.io/c-20-modules-complete-guide-ae741ddbae3d)<br>(abgerufen am 22.04.2023)
+[C++20 Modules &ndash; Complete Guide](https://itnext.io/c-20-modules-complete-guide-ae741ddbae3d)<br>(abgerufen am 22.04.2023)
 
 
 ---
