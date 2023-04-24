@@ -107,15 +107,14 @@ namespace Trailing_Requires_Clause {
         return a + b;  
     }
 
-    template <typename T, typename U>
-    auto add(T a, U b) requires Numerical<T> && Numerical<U>
+    template <typename T>
+    auto addEx(T a, T b) requires std::integral<T> || std::floating_point<T>
     {
         return a + b;
     }
 
-    template <typename T>
-    requires std::integral<T> || std::floating_point<T>
-    auto addEx(T a, T b)
+    template <typename T, typename U>
+    auto add(T a, U b) requires Numerical<T> && Numerical<U>
     {
         return a + b;
     }

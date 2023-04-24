@@ -65,6 +65,18 @@ The concept 'Numerical<std::string>' evaluated to false
 The associated constraints are not satisfied
 ```
 
+Man kann die Requirements der Template Parameter auch in einer Art 
+&ldquo;inline&rdquo;&ndash;Notation formulieren. In diesem Fall entfällt die separate
+`concept`-Definition:
+
+```cpp
+01: template <typename T>
+02: requires std::integral<T> || std::floating_point<T>
+03: auto add(T a, T b)
+04: {
+05:     return a + b;
+06: }
+```
 
 *Zur Nomenklatur*:
 
@@ -114,19 +126,6 @@ Wir müssten die Template Definition ähnlich wie zuvor ändern:
 05: }
 ```
 
-Man kann die Requirements der Template Parameter auch in einer Art 
-&ldquo;inline&rdquo;&ndash;Notation formulieren:
-
-```cpp
-01: template <typename T>
-02: requires std::integral<T> || std::floating_point<T>
-03: auto add(T a, T b)
-04: {
-05:     return a + b;
-06: }
-```
-
-
 ## Variante 3: Template-Parameter mit Einschränkungen (&ldquo;Constraints&rdquo;)
 
 Die dritte Art, ein Konzept zu verwenden,
@@ -162,7 +161,8 @@ schreiben. In der dritten Variante geht das nicht.
 
 ## Variante 4: Abgekürzte Funktionstemplates (&ldquo;Abbreviated Function Templates&rdquo;)
 
-Für all diejenigen, die es kurz lieben: Bitte schön!
+Für all diejenigen, die es kurz lieben, gibt es die so genannte &ldquo;*Abbreviated Function Templates*&rdquo;
+Schreibweise:
 
 ```cpp
 01: auto add(Numerical auto a, Numerical auto b)
@@ -171,7 +171,7 @@ Für all diejenigen, die es kurz lieben: Bitte schön!
 04: }
 ```
 
-Wenn Sie sich für die &ldquo;Abbreviated Function Templates&rdquo; Syntax entscheiden,
+Wenn Sie sich für die &ldquo;Abbreviated Function Templates&rdquo; Schreibweise entscheiden,
 können Sie sowohl auf Template Parameter als auch auf `requires`-Klauseln verzichten.
 
 Sie können `concept`-Bezeichner direkt dort verwenden,
