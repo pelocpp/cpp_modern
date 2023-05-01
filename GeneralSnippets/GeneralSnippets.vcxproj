@@ -171,6 +171,8 @@
     <ClCompile Include="Casts\Module_Casts.ixx" />
     <ClCompile Include="CommonType\CommonType.cpp" />
     <ClCompile Include="CommonType\Module_CommonType.ixx" />
+    <ClCompile Include="ConceptsRequiresClasses\ConceptsRequiresClasses.cpp" />
+    <ClCompile Include="ConceptsRequiresClasses\Module_ConceptsRequiresClasses.ixx" />
     <ClCompile Include="ConceptsRequiresFunctions\ConceptsRequiresFunctions.cpp" />
     <ClCompile Include="ConceptsRequiresFunctions\Module_ConceptsRequiresFunctions.ixx" />
     <ClCompile Include="ConstExpr\ConstExpr.cpp" />
@@ -358,6 +360,7 @@
     <None Include="Bind\Bind.md" />
     <None Include="Casts\Casts.md" />
     <None Include="CommonType\CommonType.md" />
+    <None Include="ConceptsRequiresClasses\ConceptsRequiresClasses.md" />
     <None Include="ConceptsRequiresFunctions\ConceptsRequiresFunctions.md" />
     <None Include="ConstExpr\Constexpr.md" />
     <None Include="ConstExpr\Constexpr_02.md" />

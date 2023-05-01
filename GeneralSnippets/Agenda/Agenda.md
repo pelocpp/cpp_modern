@@ -40,7 +40,7 @@
 ## Moderne Stilistik für die Schreibweise von Funktionen
   * Konzept von &ldquo;C++ Concepts&rdquo;: `concept`
   * `requires`-Klausel
-  * Benutzerdefinierten Einschränkungen (*user-defined requirements*)
+  * Benutzerdefinierte Einschränkungen (*user-defined requirements*)
 
 
 ## Initialisierung
@@ -120,6 +120,12 @@
   * `decltype` und `std::declval`
   * `Iterator::value_type` und `Iterator::iterator_category`
   * `std::remove_reference`
+
+
+## Moderne Stilistik für die Schreibweise von Klassen
+  * Konzept von &ldquo;C++ Concepts&rdquo;: `concept`
+  * `requires`-Klausel nach der Template-Parameterliste
+  * Eingeschränkte Template Parameter
 
 
 ## Variadische Templates

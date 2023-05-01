@@ -204,7 +204,7 @@ namespace Usedefined_Concept {
     }
 }
 
-void main_concepts_requires()
+void main_concepts_requires_functions()
 {
     Requires_Clause::test_concepts_requires_variant_01();
     Trailing_Requires_Clause::test_concepts_requires_variant_02();

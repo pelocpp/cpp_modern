@@ -107,6 +107,12 @@
     Eine kuratierte Liste von C++ (oder C)-Frameworks, Bibliotheken, Ressourcen und anderen Informationen
     für den interessierten C++-Entwickler.
 
+
+  * [A cheatsheet of modern C++ language and library features](https://github.com/AnthonyCalandra/modern-cpp-features)
+
+    Cheatsheet zu allen Spracherweiterungen von C++ in Bezug auf die einzelnen Versionen (C++20/17/14/11).
+
+
 ---
 
 [Zurück](../../Readme.md)

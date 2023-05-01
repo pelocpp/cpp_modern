@@ -615,6 +615,12 @@
     <ClCompile Include="Modules_Import\HelloWorldProgram.ixx">
       <Filter>Modules</Filter>
     </ClCompile>
+    <ClCompile Include="ConceptsRequiresClasses\Module_ConceptsRequiresClasses.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ConceptsRequiresClasses\ConceptsRequiresClasses.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -978,6 +984,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Modules_Import\Modules_Import.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="ConceptsRequiresClasses\ConceptsRequiresClasses.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

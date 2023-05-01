@@ -17,6 +17,7 @@ export import :back_inserter;
 export import :bind;
 export import :casts;
 export import :common_type;
+export import :concepts_requires_classes;
 export import :concepts_requires_functions;
 export import :const_expr;
 export import :constructors_destructors_order;
