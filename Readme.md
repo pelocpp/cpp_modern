@@ -126,8 +126,8 @@ Es folgt eine tabellarische Auflistung dieser Unterverzeichnisse.
 | [Bind](GeneralSnippets/Bind/Bind.md) | `std::bind` |
 | [Casts](GeneralSnippets/Casts/Casts.md) | Typumwandlungen `static_cast`, `dynamic_cast`, `const_cast` und `reinterpret_cast` |
 | [CommonType](GeneralSnippets/CommonType/CommonType.md) | Utility `std::common_type` |
-| [Concepts / Requires](GeneralSnippets/ConceptsRequiresFunctions/ConceptsRequiresFunctions.md) | Moderne Stilistik für die Schreibweise von Funktionen |
-| [Concepts / Requires](GeneralSnippets/ConceptsRequiresClasses/ConceptsRequiresClasses.md) | Moderne Stilistik für die Schreibweise von Klassen |
+| [Concepts/Requires/Classes](GeneralSnippets/ConceptsRequiresClasses/ConceptsRequiresClasses.md) | Moderne Stilistik für die Schreibweise von Klassen |
+| [Concepts/Requires/Functions](GeneralSnippets/ConceptsRequiresFunctions/ConceptsRequiresFunctions.md) | Moderne Stilistik für die Schreibweise von Funktionen |
 | [ConstExpr](GeneralSnippets/ConstExpr/Constexpr.md) | Programmierung zur Übersetzungszeit mit `constexpr` |
 | [ConstructursOrder](GeneralSnippets/ConstructursOrder/CtorDtorOrder.md)  | Reihenfolge der Aufrufe von Konstruktoren und Destruktoren |
 | [*Copy/Move Elision*](GeneralSnippets/CopyMoveElision/CopyMoveElision.md) | Auslassen von Kopier- oder Verschiebe-Operationen |
