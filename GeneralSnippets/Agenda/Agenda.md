@@ -15,8 +15,11 @@
   * Neuartige Möglichkeit in der Definition von Funktionen / *Function Return Type Deduction*
   * Funktionsdefinition mit *Trailing Return Type*
   * Verlust von `const` und `&` (Referenz) bei `auto`
-  * Typableitung bei Template Parametern / *Template Parameter Type Deduction*
   * `decltype(auto)`
+  * `auto` versus `decltype`
+  * `auto` versus `decltype(auto)`
+  * Typableitung bei Template Parametern / *Template Parameter Type Deduction*
+  * Möglichkeiten des Gebrauchs von `auto` im Vergleich
 
 
 ## Lambdas

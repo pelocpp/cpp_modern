@@ -14,8 +14,10 @@ Das Schlüsselwort `auto` besitzt mehrere, völlig unterschiedliche Einsatzmöglich
   * Neuartige Möglichkeit in der Definition von Funktionen / *Function Return Type Deduction*
   * Funktionsdefinition mit *Trailing Return Type*
   * Verlust von `const` und `&` (Referenz) bei `auto`
-  * Typableitung bei Template Parametern / *Template Parameter Type Deduction*
   * `decltype(auto)`
+  * `auto` versus `decltype`
+  * `auto` versus `decltype(auto)`
+  * Typableitung bei Template Parametern / *Template Parameter Type Deduction*
   * Möglichkeiten des Gebrauchs von `auto` im Vergleich
 
 *Hinweis*: Das Schlüsselwort `auto` fällt in der C++&ndash;Sprachbeschreibung in die Kategorie der 
@@ -231,6 +233,95 @@ decltype(auto)
 ```
 
 
+## decltype(auto)
+
+`decltype(auto)` wird genauso benutzt wie `auto`, nur sind die Regeln zum Ableiten des Typ (*Type Deduction*)
+unterschiedlich:
+
+  * Bei `auto` gehen mögliche Qualifizierer wie `const`, `volatile` und `&` (Referenz) verloren.
+  * Bei `decltype(auto)` gehen diese Qualifizierer **nicht** verloren.
+
+Wir betrachten dazu ein Beispiel:
+
+```cpp
+decltype(auto) getFirstCharacter(const std::string& s)
+{
+    return s[0];
+}
+```
+
+Wenn wir diese Funktion zweimal aufrufen,
+erkennen wir den Unterschied:
+
+```cpp
+auto ch1 = getFirstCharacter(std::string{ "ABC" });
+
+decltype(auto) ch2 = getFirstCharacter(std::string{ "ABC" });
+```
+
+Variable `ch1` ist vom Typ `char`, Variable `ch2` hingegen vom Typ `const char&`,
+siehe hierzu auch *Abbildung* 2 und *Abbildung* 3:
+
+<img src="decltype_auto_01.png" width="500">
+
+*Abbildung* 2: Variablendeklaration mit `auto`.
+
+<img src="decltype_auto_02.png" width="550">
+
+*Abbildung* 3: Variablendeklaration mit `decltype(auto)`.
+
+
+##  `auto` versus `decltype`
+
+`auto` leitet den Typ einer Variablen ab, wenn sie mit Hilfe ihres Initialisierers deklariert wird.
+
+```cpp
+auto i = 1; // int
+```
+
+`decltype` leitet den Typ des Ausdrucks ab, der für die Variablendeklaration oder das Einfügen in ein Template verwendet werden kann.
+
+
+```cpp
+int f() {
+    return 0;
+}
+
+decltype(f()) i;            // i is integer
+
+vector<decltype(f())> v;    // vector<int>, cannot be done with auto
+```
+
+##  `auto` versus `decltype(auto)`
+
+In den in diesem Abschnitt gezeigten Beispielen haben wir gesehen,
+dass `auto` allein nicht in einen konstanten oder Referenztyp konvertiert werden kann.
+Dazu müssen wir `auto&` oder `const auto` verwenden.
+Sie geben dem Programmierer damit mehr Kontrolle über den deklarierten Typ.
+
+```cpp
+int& f(int& i){
+    return ++i;
+}
+
+int x = 10;
+
+auto i = f(x);      // i gets a copy of f(10)
+
+auto& j = f(x);     // j is a reference to x
+```
+
+Aber manchmal möchten wir, wie bei einem Wrapper,
+dass der Compiler den Typ genau so herleitet, wie er ist:
+
+```cpp
+decltype(auto) getFirstCharacter(const std::string& s)
+{
+    return s[0];
+}
+```
+
+
 ## Typableitung bei Template Parametern (*Template Parameter Type Deduction*)
 
 Der Typ von Template Parametern wird vom Übersetzer an Hand der Argumente aufgelöst,
@@ -294,44 +385,6 @@ auto result = add(10, 20);
 ```
 
 übersetzungsfähig.
-
-## decltype(auto)
-
-`decltype(auto)` wird genauso benutzt wie `auto`, nur sind die Regeln zum Ableiten des Typ (*Type Deduction*)
-unterschiedlich:
-
-  * Bei `auto` gehen mögliche Qualifizierer wie `const`, `volatile` und `&` (Referenz) verloren.
-  * Bei `decltype(auto)` gehen diese Qualifizierer **nicht** verloren.
-
-Wir betrachten dazu ein Beispiel:
-
-```cpp
-decltype(auto) getFirstCharacter(const std::string& s)
-{
-    return s[0];
-}
-```
-
-Wenn wir diese Funktion zweimal aufrufen,
-erkennen wir den Unterschied:
-
-```cpp
-auto ch1 = getFirstCharacter(std::string{ "ABC" });
-
-decltype(auto) ch2 = getFirstCharacter(std::string{ "ABC" });
-```
-
-Variable `ch1` ist vom Typ `char`, Variable `ch2` hingegen vom Typ `const char&`,
-siehe hierzu auch *Abbildung* 2 und *Abbildung* 3:
-
-<img src="decltype_auto_01.png" width="500">
-
-*Abbildung* 2: Variablendeklaration mit `auto`.
-
-<img src="decltype_auto_02.png" width="550">
-
-*Abbildung* 3: Variablendeklaration mit `decltype(auto)`.
-
 
 ## Möglichkeiten des Gebrauchs von `auto` im Vergleich
 
