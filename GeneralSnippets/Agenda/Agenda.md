@@ -4,8 +4,6 @@
 
 ---
 
-TEST
-
 ## Verschiebe-Semantik
   * *RValues* und *LValues*
   * Verschiebe-Semantik (*Move*&ndash;*Semantics*)
