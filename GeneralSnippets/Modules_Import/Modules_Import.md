@@ -86,6 +86,12 @@ in folgendem Verzeichnis vorhanden:
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\modules\std.ixx
 </pre>
 
+
+<b>Update</b>:
+Ab Visual Studio 17.6.2 (möglicherweise auch einige Versionen darunter) ist das explizite
+Hinzufügen der `std.ixx`-Datei zum Projekt **nicht** mehr erforderlich!
+
+
 Wenn wir den Quellcode der Datei `std.ixx` betrachten, erkennen wir im nachfolgenden Ausschnitt
 in Zeile 17 die Definition des Modulnamens `std`:
 

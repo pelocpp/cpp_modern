@@ -294,7 +294,9 @@
     <ClCompile Include="SSO\SSO.cpp" />
     <ClCompile Include="StaticAssert\Module_StaticAssert.ixx" />
     <ClCompile Include="StaticAssert\StaticAssert.cpp" />
-    <ClCompile Include="std.ixx" />
+    <ClCompile Include="std.ixx">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="StringView\Module_StringView.ixx" />
     <ClCompile Include="StringView\StringView.cpp" />
     <ClCompile Include="StructuredBinding\Module_StructuredBinding.ixx" />
