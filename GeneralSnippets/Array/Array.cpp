@@ -4,64 +4,53 @@
 
 module modern_cpp:class_array;
 
-
 namespace StdArray {
 
     void test_01() {
 
         // initialization variants
-        [[maybe_unused]] std::array<int, 5> myArray1{};
-
-        [[maybe_unused]] std::array<int, 5> myArray2 = { 1, 2, 3, 4, 5 }; //  initializer list
-
-        [[maybe_unused]] std::array<int, 5> myArray3{ 1, 2, 3, 4, 5 }; // uniform initialization
-
-        // doesn't compile
-        // std::array myArray;
-        // myArray = { 1, 2, 3, 4, 5 };
-
-        // also doesn't compile
-        // int n = 5;
-        // std::array <int, n> myArray;
-
-        const int n = 5;
-        [[maybe_unused]] std::array<int, n> myArray4{};
-
-        constexpr int m = 5;
-        [[maybe_unused]] std::array<int, m> myArray5{};
-
-        // also doesn't compile
-        // std::array<int> myArray = { 1, 2, 3, 4, 5 };
-
-        // type is deduced to std::array<int, 5>
-        [[maybe_unused]] std::array myArray6{ 9, 7, 5, 3, 1 };
-
-        // type is deduced to std::array<double, 2>
-        [[maybe_unused]] std::array myArray7{ 9.7, 7.31 };
+        std::array<int, 5> array1{};
+        std::array<int, 5> array2 = { 1, 2, 3, 4, 5 };  // initializer list
+        std::array<int, 5> array3{ 1, 2, 3, 4, 5 };     // uniform initialization
     }
 
     void test_02() {
 
-        std::array<int, 5> myArray;
+        /* initialization variants using CTAD: Class Template Argument Deduction
+        */
 
-        myArray = { 0, 1, 2, 3, 4 };       // assignment with initializer list: okay
+        // type is deduced to std::array<double, 2>
+        std::array array1{ 9.7, 7.31 };
 
-        myArray = { 9, 8, 7 };             // okay, elements 3 and 4 are set to zero!
+        // type is deduced to std::array<int, 5>
+        std::array array2{ 1, 2, 3, 4, 5 };
 
-        // myArray = { 0, 1, 2, 3, 4, 5 }; // doesn't compile, too many elements in initializer list!
+        // BUT, take care !!!!!
+        // type is deduced to std::array<const char*, 1>
+        // see std::to_array below
+        std::array array3{ "Hello C++ 20" };
     }
 
     void test_03() {
 
-        // General Hint:
+        std::array<int, 5> myArray;
+
+        myArray = { 0, 1, 2, 3, 4 };    // assignment with initializer list: okay
+
+        myArray = { 9, 8, 7 };          // okay, elements 3 and 4 are set to zero!
+
+        // myArray = { 0, 1, 2, 3, 4, 5 }; // doesn't compile, too many elements in initializer list!
+    }
+
+    void test_04() {
+
+        // Exception handling:
         // 'at' does bounds checking, is therefore slower - but safer.
-        // subscript operator [] does not do any bounds-checking.
+        // subscript operator [] does not do any bounds-checking:
         // If an invalid index is provided, unexpected behaviour will happen.
 
-        // use subscript operator to access array
-        std::array<int, 5> myArray = { 1, 2, 3, 4, 5 };
-
-        // works like you would expect
+        // use subscript operator to access array, works like you would expect
+        std::array<int, 5> myArray { 1, 2, 3, 4, 5 };
         std::cout << myArray[3] << std::endl;
 
         // undefined behaviour
@@ -71,47 +60,43 @@ namespace StdArray {
         myArray.at(2) = 33;
 
         // invalid index
-        // myArray.at(9) = 10;
+        try {
+            myArray.at(9) = 10;
+        }
+        catch (std::out_of_range)
+        {
+            std::cout << "Wrong index used!" << std::endl;
+        }
 
-        for (int elem : myArray) {
+        for (auto elem : myArray) {
             std::cout << elem << ' ';
         }
+        std::cout << std::endl;
     }
 
-    void printLength(const std::array<int, 5>& myArray)
-    {
+    void printLength(const std::array<int, 5>& myArray) {
         std::cout << "Length: " << myArray.size() << std::endl;
     }
 
-    // doesn't compile
-    // void printLength(const std::array<int, ??? >& myArray)
-    // {
-    //     std::cout << "length: " << myArray.size() << std::endl;
-    // }
-
-    template<typename T, int LEN>
-    void printLength(const std::array<T, LEN>& myArray)
-    {
+    template<typename T, int Length>
+    void printLength(const std::array<T, Length>& myArray) {
         std::cout << "Length: " << myArray.size() << std::endl;
-    }
-
-    // or
-
-    void printLength(const auto& myArray)
-    {
-        std::cout << "Length: " << myArray.size() << std::endl;
-    }
-
-    void test_04() {
-        // General Hint:
-        // There is no 'array decay' when passing an std::array to a function
-        std::array<int, 5> myArray = { 1, 2, 3, 4, 5 };
-        printLength(myArray);
     }
 
     void test_05() {
-        std::array<int, 5> myArray = { 1, 2, 3, 4, 5 };
-        for (int elem : myArray) {
+
+        std::array<int, 5> array1 = { 1, 2, 3, 4, 5 };
+        printLength(array1);
+
+        std::array<int, 10> array2 = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        printLength(array2);
+    }
+
+    void test_06() {
+
+        std::array<int, 5> myArray { 1, 2, 3, 4, 5 };
+
+        for (auto elem : myArray) {
             std::cout << elem << ' ';
         }
 
@@ -123,56 +108,74 @@ namespace StdArray {
 
         myArray.fill(9);
 
-        for (int elem : myArray) {
+        for (auto elem : myArray) {
             std::cout << elem << ' ';
         }
+        std::cout << std::endl;
     }
 
-    void test_06() {
+    void test_07() {
+
         // multidimensional std::array
         std::array<std::array<int, 3>, 3> myArray{
             {
-                {1, 2, 3}, {4, 5, 6}, {7, 8, 9}
+                { 1, 2, 3 },
+                { 4, 5, 6 },
+                { 7, 8, 9 }
             }
         };
 
-        for (size_t i = 0; i < myArray.size(); i++) {
-            for (size_t j = 0; j < myArray[0].size(); j++) {
+        for (size_t i{}; i != myArray.size(); i++) {
+            for (size_t j{}; j != myArray[0].size(); j++) {
                 std::cout << myArray[i][j] << "\t";
             }
             std::cout << std::endl;
         }
     }
 
-    void display(const std::array<std::array<int, 3>, 3>& array)
-    {
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
+    void display(const std::array<std::array<int, 3>, 3>& array) {
+
+        for (size_t i{}; i != 3; i++) {
+            for (size_t j{}; j != 3; j++) {
                 std::cout << array[i][j] << "\t";
             }
             std::cout << std::endl;
         }
     }
 
-    void test_07() {
+    void test_08() {
 
         // passing a multidimensional std::array to another function
-        std::array<std::array<int, 3>, 3> array{ { {11,12,13}, {14,15,16}, {17,18,19} } };
+        std::array<std::array<int, 3>, 3> array{
+            {
+                {11, 12, 13},
+                { 14,15,16 },
+                { 17,18,19 }
+            }
+        };
+
         display(array);
     }
 
     class Employee {
     public:
-        unsigned m_id{};
-        std::string m_name{};
-        std::string m_role{};
-        unsigned m_phone{};
+        size_t m_id;
+        std::string m_name;
+        std::string m_role;
+        size_t m_phone;
+
+        Employee()
+            : Employee(0, "", "", 0) {}
+
+        Employee(size_t m_id, const std::string& m_name, const std::string& m_role, size_t m_phone)
+            : m_id(m_id), m_name(m_name), m_role(m_role), m_phone(m_phone) {}
     };
 
-    void test_08() {
+    void test_09() {
 
         // arrays of objects
         std::array<Employee, 2> employees{};
+
         employees[0] = { 9987, "Sepp", "Engineer", 987654321 };
         employees[1] = { 9988, "Hans", "Manager",  123456789 };
 
@@ -184,11 +187,160 @@ namespace StdArray {
                 << "Phone: " << phone << std::endl;
         }
     }
+
+    void test_10() {
+
+        // C-style array
+
+        std::string cArray[4] = { "the", "quick", "brown", "fox" };
+
+        // copying via operator= isn't supported!
+        std::string other[4];
+
+        // array type 'std::string [4]' is not assignable
+        // other = cArray;  
+
+        // algorithm std::copy works
+        std::copy(
+            std::begin(cArray),
+            std::end(cArray),
+            std::begin(other)
+        );
+
+        // Worse: operator== compiles, but does the "wrong" thing: address comparison!
+        // (Warning: operator '==' : deprecated for array types)
+        bool isEqual = cArray == other;
+
+        // works as expected - need to use a standard algorithm
+        isEqual = std::equal(
+            cArray, cArray + 4, other, other + 4
+        );
+    }
+
+    void test_11() {
+
+        // std::array
+
+        std::array<std::string, 4> array{ "the", "quick", "brown", "fox" };
+
+        // copying via operator= is supported ... in linear time
+        std::array<std::string, 4> other;
+        other = array;
+
+        // operator== compiles and does expected value comparison of all array elements!
+        bool isEqual = array == other;
+    }
+
+    // returning a std::array: works
+    auto crossProduct(
+        const std::array<int, 3>& a, const std::array<int, 3>& b) -> std::array<int, 3>
+    {
+        return { {
+            a[1] * b[2] - a[2] * b[1],
+            a[2] * b[0] - a[0] * b[2],
+            a[0] * b[1] - a[1] * b[0],
+        } };
+    }
+
+    // returning address of local variable or temporary: compiles, but is false
+    auto c_crossProduct(
+        const int a[3], const int b[3]) // -> int[3]
+    {
+        int result[3]{
+            a[1] * b[2] - a[2] * b[1],
+            a[2] * b[0] - a[0] * b[2],
+            a[0] * b[1] - a[1] * b[0],
+        };
+
+        return result;
+    }
+
+    // =====================================================================================
+
+    // std::to_array
+
+    void test_20() {
+
+        // type is deduced to std::array<char, 13>
+        // Note: see std::array above
+        auto array1 = std::to_array("Hello C++ 20");
+
+        // type is deduced to std::array<char, 13>
+        // Note: see std::array above
+        auto array2 = std::to_array<const char>("Hello C++ 20");
+
+        // type is deduced to std::array<int, 5>
+        auto array3 = std::to_array({ 1, 2, 3, 4, 5 });
+    }
+
+    // =====================================================================================
+
+    // std::span
+
+    void printArray(const int* array, size_t size)
+    {
+        std::cout << std::format("Number of elements: {}\n", size);
+
+        for (size_t i{}; i != size; ++i) {
+            std::cout << std::format("{} ", array[i]);
+        }
+        std::cout << std::endl;
+    }
+
+    void printSpan(std::span<int> values)
+    {
+        std::cout << std::format("Number of elements: {}\n", values.size());
+        std::cout << std::format("Size of span: {}\n", values.size_bytes());
+
+        values[0] = 123;
+
+        for (auto elem : values) {
+            std::cout << std::format("{} ", elem);
+        }
+        std::cout << std::endl;
+    }
+
+    void printSpanConst(std::span<const int> values)
+    {
+        std::cout << std::format("Number of elements: {}\n", values.size());
+        std::cout << std::format("Size of span: {}\n", values.size_bytes());
+
+        for (const auto elem : values) {
+            std::cout << std::format("{} ", elem);
+        }
+        std::cout << std::endl;
+    }
+
+    void test_30() {
+
+        int cArray[]{ 1, 2, 3, 4, 5 };
+        printSpan(cArray);
+
+        std::array array{ 6, 7, 8, 9, 10 };
+        printSpan(array);
+
+        std::vector vector{ 1, 3, 5, 7, 9 };
+        printSpan(vector);
+    }
+
+    void test_31() {
+
+        int cArray[]{ 1, 2, 3, 4, 5 };
+        printArray(cArray, 5);
+
+        std::array array{ 6, 7, 8, 9, 10 };
+        printArray(array.data(), array.size());
+
+        std::vector vector{ 1, 3, 5, 7, 9 };
+        printArray(vector.data(), vector.size());
+    }
+
 }
 
 void main_array()
 {
     using namespace StdArray;
+
     test_01();
     test_02();
     test_03();
@@ -197,6 +349,14 @@ void main_array()
     test_06();
     test_07();
     test_08();
+    test_09();
+    test_10();
+    test_11();
+
+    test_20();
+
+    test_30();
+    test_31();
 }
 
 // =====================================================================================
