@@ -165,7 +165,7 @@
 
 ## Neue Utility Klassen
   * `std::common_type`
-  * `std::array`
+  * `std::array`, `std::to_array` und `std::span`
   * `std::optional`
   * `std::variant`
   * `std::any`

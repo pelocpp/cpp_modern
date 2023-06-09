@@ -1,4 +1,4 @@
-# Unique Pointer - Klasse `std::unique_ptr`
+# Unique Pointer: Klasse `std::unique_ptr`
 
 [Zurück](../../Readme.md)
 

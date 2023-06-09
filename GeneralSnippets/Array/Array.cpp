@@ -1,5 +1,5 @@
 // =====================================================================================
-// Array.cpp // std::array
+// Array.cpp // std::array // std::to_array // std::span
 // =====================================================================================
 
 module modern_cpp:class_array;
@@ -10,8 +10,8 @@ namespace StdArray {
 
         // initialization variants
         std::array<int, 5> array1{};
-        std::array<int, 5> array2 = { 1, 2, 3, 4, 5 };  // initializer list
-        std::array<int, 5> array3{ 1, 2, 3, 4, 5 };     // uniform initialization
+        std::array<int, 5> array2{ 1, 2, 3, 4, 5 };     // uniform initialization
+        std::array<int, 5> array3 = { 1, 2, 3, 4, 5 };  // initializer list
     }
 
     void test_02() {
@@ -33,13 +33,13 @@ namespace StdArray {
 
     void test_03() {
 
-        std::array<int, 5> myArray;
+        std::array<int, 5> array;
 
-        myArray = { 0, 1, 2, 3, 4 };    // assignment with initializer list: okay
+        array = { 0, 1, 2, 3, 4 };    // Assignment with initializer list: okay
 
-        myArray = { 9, 8, 7 };          // okay, elements 3 and 4 are set to zero!
+        array = { 9, 8, 7 };          // Okay, elements 3 and 4 are set to zero!
 
-        // myArray = { 0, 1, 2, 3, 4, 5 }; // doesn't compile, too many elements in initializer list!
+        // array = { 0, 1, 2, 3, 4, 5 }; // doesn't compile, too many elements in initializer list!
     }
 
     void test_04() {
@@ -50,37 +50,37 @@ namespace StdArray {
         // If an invalid index is provided, unexpected behaviour will happen.
 
         // use subscript operator to access array, works like you would expect
-        std::array<int, 5> myArray { 1, 2, 3, 4, 5 };
-        std::cout << myArray[3] << std::endl;
+        std::array<int, 5> array { 1, 2, 3, 4, 5 };
+        std::cout << array[3] << std::endl;
 
         // undefined behaviour
         // std::cout << myArray[5] << std::endl;
 
         // valid index
-        myArray.at(2) = 33;
+        array.at(2) = 33;
 
         // invalid index
         try {
-            myArray.at(9) = 10;
+            array.at(9) = 10;
         }
         catch (std::out_of_range)
         {
             std::cout << "Wrong index used!" << std::endl;
         }
 
-        for (auto elem : myArray) {
+        for (auto elem : array) {
             std::cout << elem << ' ';
         }
         std::cout << std::endl;
     }
 
-    void printLength(const std::array<int, 5>& myArray) {
-        std::cout << "Length: " << myArray.size() << std::endl;
+    void printLength(const std::array<int, 5>& array) {
+        std::cout << "Length: " << array.size() << std::endl;
     }
 
     template<typename T, int Length>
-    void printLength(const std::array<T, Length>& myArray) {
-        std::cout << "Length: " << myArray.size() << std::endl;
+    void printLength(const std::array<T, Length>& array) {
+        std::cout << "Length: " << array.size() << std::endl;
     }
 
     void test_05() {
@@ -94,21 +94,21 @@ namespace StdArray {
 
     void test_06() {
 
-        std::array<int, 5> myArray { 1, 2, 3, 4, 5 };
+        std::array<int, 5> array { 1, 2, 3, 4, 5 };
 
-        for (auto elem : myArray) {
+        for (auto elem : array) {
             std::cout << elem << ' ';
         }
 
         std::cout << std::boolalpha;
-        std::cout << "front: " << myArray.front() << std::endl;
-        std::cout << "back: " << myArray.back() << std::endl;
-        std::cout << "empty: " << myArray.empty() << std::endl;
-        std::cout << "max_size: " << myArray.max_size() << std::endl;
+        std::cout << "front: " << array.front() << std::endl;
+        std::cout << "back: " << array.back() << std::endl;
+        std::cout << "empty: " << array.empty() << std::endl;
+        std::cout << "max_size: " << array.max_size() << std::endl;
 
-        myArray.fill(9);
+        array.fill(9);
 
-        for (auto elem : myArray) {
+        for (auto elem : array) {
             std::cout << elem << ' ';
         }
         std::cout << std::endl;
@@ -117,7 +117,7 @@ namespace StdArray {
     void test_07() {
 
         // multidimensional std::array
-        std::array<std::array<int, 3>, 3> myArray{
+        std::array<std::array<int, 3>, 3> array {
             {
                 { 1, 2, 3 },
                 { 4, 5, 6 },
@@ -125,9 +125,9 @@ namespace StdArray {
             }
         };
 
-        for (size_t i{}; i != myArray.size(); i++) {
-            for (size_t j{}; j != myArray[0].size(); j++) {
-                std::cout << myArray[i][j] << "\t";
+        for (size_t i{}; i != array.size(); i++) {
+            for (size_t j{}; j != array[0].size(); j++) {
+                std::cout << array[i][j] << ' ';
             }
             std::cout << std::endl;
         }
@@ -137,7 +137,7 @@ namespace StdArray {
 
         for (size_t i{}; i != 3; i++) {
             for (size_t j{}; j != 3; j++) {
-                std::cout << array[i][j] << "\t";
+                std::cout << array[i][j] << ' ';
             }
             std::cout << std::endl;
         }
@@ -148,9 +148,9 @@ namespace StdArray {
         // passing a multidimensional std::array to another function
         std::array<std::array<int, 3>, 3> array{
             {
-                {11, 12, 13},
-                { 14,15,16 },
-                { 17,18,19 }
+                { 11, 12, 13 },
+                { 14, 15, 16 },
+                { 17, 18, 19 }
             }
         };
 
@@ -190,7 +190,8 @@ namespace StdArray {
 
     void test_10() {
 
-        // C-style array
+        /* C - style array
+        */
 
         std::string cArray[4] = { "the", "quick", "brown", "fox" };
 
@@ -212,14 +213,13 @@ namespace StdArray {
         bool isEqual = cArray == other;
 
         // works as expected - need to use a standard algorithm
-        isEqual = std::equal(
-            cArray, cArray + 4, other, other + 4
-        );
+        isEqual = std::equal(cArray, cArray + 4, other, other + 4);
     }
 
     void test_11() {
 
-        // std::array
+        /* std::array
+        */
 
         std::array<std::string, 4> array{ "the", "quick", "brown", "fox" };
 
@@ -231,7 +231,7 @@ namespace StdArray {
         bool isEqual = array == other;
     }
 
-    // returning a std::array: works
+    // returning a std::array object: works
     auto crossProduct(
         const std::array<int, 3>& a, const std::array<int, 3>& b) -> std::array<int, 3>
     {
@@ -242,7 +242,8 @@ namespace StdArray {
         } };
     }
 
-    // returning address of local variable or temporary: compiles, but is false
+    // returning address of local variable or temporary C style array:
+    // compiles, but is false
     auto c_crossProduct(
         const int a[3], const int b[3]) // -> int[3]
     {
@@ -277,8 +278,8 @@ namespace StdArray {
 
     // std::span
 
-    void printArray(const int* array, size_t size)
-    {
+    void printArray(const int* array, size_t size) {
+
         std::cout << std::format("Number of elements: {}\n", size);
 
         for (size_t i{}; i != size; ++i) {
@@ -287,12 +288,10 @@ namespace StdArray {
         std::cout << std::endl;
     }
 
-    void printSpan(std::span<int> values)
-    {
+    void printSpan(std::span<int> values) {
+
         std::cout << std::format("Number of elements: {}\n", values.size());
         std::cout << std::format("Size of span: {}\n", values.size_bytes());
-
-        values[0] = 123;
 
         for (auto elem : values) {
             std::cout << std::format("{} ", elem);
@@ -300,8 +299,8 @@ namespace StdArray {
         std::cout << std::endl;
     }
 
-    void printSpanConst(std::span<const int> values)
-    {
+    void printSpanConst(std::span<const int> values) {
+
         std::cout << std::format("Number of elements: {}\n", values.size());
         std::cout << std::format("Size of span: {}\n", values.size_bytes());
 
@@ -335,6 +334,17 @@ namespace StdArray {
         printArray(vector.data(), vector.size());
     }
 
+    void test_32() {
+
+        int cArray[]{ 1, 2, 3, 4, 5 };
+        printSpanConst(cArray);
+
+        std::array array{ 6, 7, 8, 9, 10 };
+        printSpanConst(array);
+
+        std::vector vector{ 1, 3, 5, 7, 9 };
+        printSpanConst(vector);
+    }
 }
 
 void main_array()
@@ -357,6 +367,7 @@ void main_array()
 
     test_30();
     test_31();
+    test_32();
 }
 
 // =====================================================================================
