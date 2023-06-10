@@ -164,14 +164,14 @@
 
 
 ## Neue Utility Klassen
-  * `std::common_type`
   * `std::array`, `std::to_array` und `std::span`
   * `std::optional`
   * `std::variant`
   * `std::any`
   * `std::pair`
-  * `std::tuple` 
-
+  * `std::tuple`
+  * `std::reference_wrapper` und `std::ref`
+  * `std::common_type`
   * Vertiefungen zu `std::variant`: Das Visitor-Konzept mit `std::visit` und das sog. *Overload*&ndash;Pattern
 
 
