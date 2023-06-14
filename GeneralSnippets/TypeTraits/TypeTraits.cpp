@@ -78,7 +78,21 @@ namespace TypeTraits_Second_Simple_Demo
         using type = T;
     };
 
-    void test_02()
+    // primary template
+    template<class T, class U>
+    struct my_is_same
+    {
+        static constexpr bool value = false;
+    };
+
+    // template (partial) specialization  
+    template<class T>
+    struct my_is_same<T, T>
+    {
+        static constexpr bool value = true;
+    };
+
+    void test_02_a()
     {
         using SomeType = const double&;
         using SomeTypeWithoutRef = std::remove_reference<SomeType>::type;
@@ -90,6 +104,18 @@ namespace TypeTraits_Second_Simple_Demo
         using SomeTypeWithoutRefAndConst2 = std::remove_const<SomeTypeWithoutRef2>::type;
 
         static_assert(std::is_same<SomeTypeWithoutRefAndConst2, double>::value == true);
+    }
+
+    void test_02_b()
+    {
+        static_assert(my_is_same<int, double>::value == false);
+        static_assert(my_is_same<int, int>::value == true);
+    }
+
+    void test_02()
+    {
+        test_02_a();
+        test_02_b();
     }
 }
 
