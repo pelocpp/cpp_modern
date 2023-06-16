@@ -372,6 +372,16 @@ namespace Exercises_VariadicTemplates {
             return len;
         }
 
+        template<typename... TArgs>
+        size_t totalLengthEx(const TArgs& ... args)
+        {
+            size_t len{};
+            for (const auto& s : { args.size() ... }) {
+                len += s;
+            }
+            return len;
+        }
+
         void testExercise_07_a()
         {
             const std::string s1{ "111" };
@@ -379,6 +389,9 @@ namespace Exercises_VariadicTemplates {
             const std::string s3{ "!!!" };
 
             size_t len{ totalLength(s1, s2, s3) };
+            std::cout << len << std::endl;
+
+            len = totalLengthEx(s1, s2, s3);
             std::cout << len << std::endl;
         }
 

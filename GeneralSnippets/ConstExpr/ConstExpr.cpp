@@ -36,9 +36,9 @@ namespace ConstExprComplex {
         constexpr Complex c1{ 1.0, 2.0 };
         constexpr Complex c2{ 3.0, 3.0 };
 
-        [[maybe_unused]] constexpr float r1 = c1.real();
+        constexpr float r1 = c1.real();
         constexpr Complex c3 = c1 + c2;
-        [[maybe_unused]] constexpr float r2 = c3.real();
+        constexpr float r2 = c3.real();
 
         // verify 'constness' with the help of disassembly and
         // https://www.h-schmidt.net/FloatConverter/IEEE754de.html
@@ -84,9 +84,9 @@ namespace ConstExprComplexTemplate {
         constexpr Complex<float> c1{ 10.0, 20.0 };
         constexpr Complex<float> c2{ 30.0, 30.0 };
 
-        [[maybe_unused]] constexpr float r1 = c1.real();
+        constexpr float r1 = c1.real();
         constexpr Complex<float> c3 = c1 + c2;
-        [[maybe_unused]] constexpr float r2 = c3.real();
+        constexpr float r2 = c3.real();
 
         std::cout << "Real: " << c3.real() << std::endl;
         std::cout << "Imag: " << c3.imag() << std::endl;

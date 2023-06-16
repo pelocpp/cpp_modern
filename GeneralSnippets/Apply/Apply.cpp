@@ -36,8 +36,8 @@ namespace ApplyIntegerSequence {
 
     void test01()
     {
-        [[maybe_unused]] auto seq = make_index_sequence<4>{};
-        [[maybe_unused]] sequence<0, 1, 2, 3> seq2 = make_index_sequence<4>{};
+        auto seq = make_index_sequence<4>{};
+        sequence<0, 1, 2, 3> seq2 = make_index_sequence<4>{};
     }
 
     // ===========================================================
@@ -64,8 +64,8 @@ namespace ApplyIntegerSequence {
 
     void test02()
     {
-        [[maybe_unused]] auto seq = make_index_sequence_ex<4U>{};
-        [[maybe_unused]] sequence_ex<0U, 1U, 2U, 3U> seq2 = make_index_sequence_ex<4U>{};
+        auto seq = make_index_sequence_ex<4U>{};
+        sequence_ex<0U, 1U, 2U, 3U> seq2 = make_index_sequence_ex<4U>{};
     }
 
     // ===========================================================

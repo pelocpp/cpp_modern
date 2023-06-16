@@ -48,18 +48,18 @@ namespace Decltype {
         // decltype (vec[0]) anotherValue = 123;
 
         // int&
-        [[maybe_unused]] decltype (vec[0]) anotherValue = value;
+        decltype (vec[0]) anotherValue = value;
 
         // retrieve value type from vector
         using ValueType = std::remove_reference <decltype (vec[0])>::type;
-        [[maybe_unused]] ValueType yetAnotherValue = 123;
+        ValueType yetAnotherValue = 123;
 
         // same as:
         using AnotherValueType = std::remove_reference<int&>::type;
-        [[maybe_unused]] AnotherValueType oneMoreValue = 123;
+        AnotherValueType oneMoreValue = 123;
 
         // using std::vector's reference type
-        [[maybe_unused]] std::vector<int>::reference refWert = value;
+        std::vector<int>::reference refWert = value;
 
         // doesn't compile !!! type is int&, not int
         // std::vector<int>::reference refWert = 123;
@@ -86,7 +86,7 @@ namespace Decltype {
         // decltype(foo()) yields the type of 
         // whatever foo() returns, in this case: float:
         float foo();
-        [[maybe_unused]] decltype(foo()) b = decltype(foo()){};
+        decltype(foo()) b = decltype(foo()){};
 
         //decltype yields void, so this is the same as void bar();
         std::vector<int> vec;
@@ -154,10 +154,10 @@ namespace Decltype_Auto_Vs_Templates {
 
     void test_06() {
 
-        [[maybe_unused]] auto result1 = mimimum1(100.0, 200l);
-        // [[maybe_unused]] auto result2 = mimimum2(100.0, 200l);
-        [[maybe_unused]] auto result3 = mimimum3(100.0, 200l);
-        [[maybe_unused]] auto result4 = mimimum4(100.0, 200l);
+        auto result1 = mimimum1(100.0, 200l);
+        // auto result2 = mimimum2(100.0, 200l);
+        auto result3 = mimimum3(100.0, 200l);
+        auto result4 = mimimum4(100.0, 200l);
     }
 }
 

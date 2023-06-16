@@ -49,10 +49,10 @@ namespace UniformInitialization {
 
     void test_03()
     {
-        [[maybe_unused]] struct Struct obj0;           // uninitialized !!!
-        [[maybe_unused]] struct Struct obj1 {};        // obj1.m_i => 0, obj1.m_j => 0
-        [[maybe_unused]] struct Struct obj2 { 1, 2 };  // obj2.m_i => 1, obj2.m_j => 2
-        [[maybe_unused]] struct Struct obj3 { 3 };     // obj3.m_i => 3, obj3.m_j => 0
+        [[ maybe_unused]] struct Struct obj0;         // uninitialized !!!
+        struct Struct obj1 {};                        // obj1.m_i => 0, obj1.m_j => 0
+        struct Struct obj2 { 1, 2 };                  // obj2.m_i => 1, obj2.m_j => 2
+        struct Struct obj3 { 3 };                     // obj3.m_i => 3, obj3.m_j => 0
         // gcc: warning: missing initializer for member 'Struct::m_j'
     }
 
@@ -196,10 +196,10 @@ namespace UniformInitialization {
 
     void test_09()
     {
-        [[maybe_unused]] Inner inner1;                // uninitialized
-        [[maybe_unused]] Inner inner2{ };             // m_array[0] => 0 & m_array[1] => 0
-        [[maybe_unused]] Inner inner3{ { 1, 2 } };    // Direct initialization
-        [[maybe_unused]] Inner inner4{ 1, 2 };        // Uses Brace Elision (!) of m_array
+        [[ maybe_unused]] Inner inner1; // uninitialized
+        Inner inner2{ };                // m_array[0] => 0 & m_array[1] => 0
+        Inner inner3{ { 1, 2 } };       // Direct initialization
+        Inner inner4{ 1, 2 };           // Uses Brace Elision (!) of m_array
     }
 
     void test_09_01()
@@ -207,10 +207,10 @@ namespace UniformInitialization {
         // "regular" case:
         // outer braces for the std::array,
         // inner set for the (nested) C-style array.
-        [[maybe_unused]] std::array<int, 4> values1 { { 1, 2, 3, 4 } };
+        std::array<int, 4> values1 { { 1, 2, 3, 4 } };
 
         // Brace-elided initialization
-        [[maybe_unused]] std::array<int, 4> values2{ 1, 2, 3, 4 };
+        std::array<int, 4> values2{ 1, 2, 3, 4 };
     }
 
     // =================================================================================

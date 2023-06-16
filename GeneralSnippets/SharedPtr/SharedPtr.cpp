@@ -83,14 +83,30 @@ namespace SharedPointer {
 
     void test_03()
     {
-        // can create a const shared pointer from a non-const pointer 
+        // you can create a const shared pointer from a non-const pointer 
         std::shared_ptr<int> ptr1{ new int{ 123 } };
         const std::shared_ptr<const int> ptr2 = ptr1;
 
         // *ptr2 = 456;  // error: 'ptr2': you cannot assign to a variable that is const
 
-        [[maybe_unused]] int dummy = *ptr2;
-        [[maybe_unused]] const int* ip = ptr2.get();
+        int dummy = *ptr2;
+        const int* ip = ptr2.get();
+    }
+
+    void storeSharedPointerEx(const std::shared_ptr<const int>& ptr)
+    {
+        std::cout << "inner scope: " << ptr.use_count() << std::endl;
+        // *ptr = 456;
+    }
+
+    void test_04()
+    {
+        std::shared_ptr<int> ptr1{ new int{ 123 } };
+
+        const std::shared_ptr<const int> ptr2 = ptr1;
+
+        storeSharedPointerEx(ptr1);
+        storeSharedPointerEx(ptr2);
     }
 }
 
@@ -101,6 +117,7 @@ void main_shared_ptr()
     test_01();
     test_02();
     test_03();
+    test_04();
 }
 
 // =====================================================================================

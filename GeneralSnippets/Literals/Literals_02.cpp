@@ -1,5 +1,5 @@
 // =====================================================================================
-// User defined literals
+// User defined literals // Older Version
 // =====================================================================================
 
 module;
@@ -8,7 +8,7 @@ module;
 
 module modern_cpp:literals;
 
-namespace Literals_With_Separators {
+namespace Literals_With_Separators_02 {
 
     void test_01() {
 
@@ -31,7 +31,7 @@ namespace Literals_With_Separators {
 // implementation of literal operator
 // =====================================================================================
 
-namespace Literals_Color_Runtime {
+namespace Literals_Color_Runtime_02 {
 
     class Color {
         friend std::ostream& operator<< (std::ostream&, const Color&);
@@ -125,7 +125,7 @@ namespace Literals_Color_Runtime {
 // 'constexpr' implementation of literal operator
 // =====================================================================================
 
-namespace Literals_Color_CompileTime {
+namespace Literals_Color_CompileTime_02 {
 
     class Color {
         friend std::ostream& operator<< (std::ostream&, const Color&);
@@ -182,6 +182,11 @@ namespace Literals_Color_CompileTime {
             std::string gs{ arg.substr(4, 2) };
             std::string bs{ arg.substr(6, 2) };
 
+            // std::stoi is not 'constexpr' -  at the time of this writing
+            //uint8_t r = static_cast<uint8_t>(hexstoi(rs.c_str()));
+            //uint8_t g = static_cast<uint8_t>(hexstoi(gs.c_str()));
+            //uint8_t b = static_cast<uint8_t>(hexstoi(bs.c_str()));
+
             uint8_t r{ static_cast<uint8_t>(std::stoi(rs, nullptr, 16)) };
             uint8_t g{ static_cast<uint8_t>(std::stoi(gs, nullptr, 16)) };
             uint8_t b{ static_cast<uint8_t>(std::stoi(bs, nullptr, 16)) };
@@ -192,6 +197,49 @@ namespace Literals_Color_CompileTime {
 
         // note: braced-init-list syntax
         return {};
+    }
+
+    constexpr size_t hexstoi(const char* str)
+    {
+        int value{};
+        while (*str != '\0') {
+            // get current character, then increment
+            uint8_t byte = hex2int(*str);
+            ++str;
+
+            // shift 4 to make space for new digit, and add the 4 bits of the new digit 
+            value = (value << 4) | (byte & 0xF);
+        }
+        return value;
+    }
+
+    constexpr bool isHex(char ch)
+    {
+        if ((ch >= '0' && ch <= '9') || (ch >= 'A' && ch <= 'F') || (ch >= 'a' && ch <= 'f')) {
+            return true;
+        }
+
+        return false;
+    }
+
+    constexpr uint8_t hex2int(char ch)
+    {
+        if (! isHex(ch)) {
+            throw std::logic_error("illegal hexadecimal digit");
+        }
+
+        // transform hex character to 4-bit equivalent number
+        uint8_t byte = ch;
+        if (byte >= '0' and byte <= '9') {
+            byte -= '0';
+        }
+        else if (byte >= 'a' and byte <= 'f') {
+            byte -= ('a' - 10);
+        }
+        else if (byte >= 'A' and byte <= 'F') {
+            byte -= ('A' - 10);
+        }
+        return byte;
     }
 
     void test_03() {
@@ -214,20 +262,6 @@ namespace Literals_Color_CompileTime {
         // illegal hexadecimal digit
         // constexpr Color col2 = "0x00GG00"_rgb;
     }
-}
-
-void main_literals()
-{
-    using namespace Literals_With_Separators;
-    // test_01();
-
-    using namespace Literals_Color_Runtime;
-    test_02();
-    test_02_with_errors();   // throws exceptions at runtime
-
-    using namespace Literals_Color_CompileTime;
-    test_03();
-    test_03_with_errors();   // throws errors at compile time
 }
 
 // =====================================================================================

@@ -195,10 +195,9 @@ namespace StdArray {
 
         std::string cArray[4] = { "the", "quick", "brown", "fox" };
 
-        // copying via operator= isn't supported!
-        std::string other[4];
-
+        // copying via operator= isn't supported:
         // array type 'std::string [4]' is not assignable
+        std::string other[4];
         // other = cArray;  
 
         // algorithm std::copy works
@@ -209,8 +208,7 @@ namespace StdArray {
         );
 
         // Worse: operator== compiles, but does the "wrong" thing: address comparison!
-        // (Warning: operator '==' : deprecated for array types)
-        bool isEqual = cArray == other;
+        bool isEqual = (cArray == other);
 
         // works as expected - need to use a standard algorithm
         isEqual = std::equal(cArray, cArray + 4, other, other + 4);
@@ -228,7 +226,7 @@ namespace StdArray {
         other = array;
 
         // operator== compiles and does expected value comparison of all array elements!
-        bool isEqual = array == other;
+        bool isEqual = (array == other);
     }
 
     // returning a std::array object: works

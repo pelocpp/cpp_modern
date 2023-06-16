@@ -250,6 +250,7 @@
     <ClCompile Include="Lambda\Lambda02.cpp" />
     <ClCompile Include="Lambda\Module_Lambda.ixx" />
     <ClCompile Include="Literals\Literals.cpp" />
+    <ClCompile Include="Literals\Literals_02.cpp" />
     <ClCompile Include="Literals\Module_Literals.ixx" />
     <ClCompile Include="MemoryLeaks\MemoryLeaksDetection.cpp" />
     <ClCompile Include="MemoryLeaks\Module_MemoryLeaksDetection.ixx" />
@@ -294,9 +295,6 @@
     <ClCompile Include="SSO\SSO.cpp" />
     <ClCompile Include="StaticAssert\Module_StaticAssert.ixx" />
     <ClCompile Include="StaticAssert\StaticAssert.cpp" />
-    <ClCompile Include="std.ixx">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="StringView\Module_StringView.ixx" />
     <ClCompile Include="StringView\StringView.cpp" />
     <ClCompile Include="StructuredBinding\Module_StructuredBinding.ixx" />

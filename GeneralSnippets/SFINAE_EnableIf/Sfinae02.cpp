@@ -98,8 +98,8 @@ namespace SFINAE_02 {
     // ==============================================
 
     void test_is_complex() {
-        [[maybe_unused]] constexpr bool int_is_complex = is_complex<int>(); //false
-        [[maybe_unused]] constexpr bool complex_is_complex = is_complex<std::complex<float>>(); //true
+        constexpr bool int_is_complex = is_complex<int>(); //false
+        constexpr bool complex_is_complex = is_complex<std::complex<float>>(); //true
     }
 
     void test_enable_if_01() {

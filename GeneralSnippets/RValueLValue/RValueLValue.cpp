@@ -66,12 +66,12 @@ namespace LValueRValue {
 
         //int& k = a + b;     // invalid: reference to a temporary
 
-        [[maybe_unused]] int&& i = 2;     // works: reference to a constant
+        int&& i = 2;     // works: reference to a constant
 
         int a = 2;
         int b = 3;
 
-        [[maybe_unused]] int&& k = a + b;     // works: reference to a temporary
+        int&& k = a + b;     // works: reference to a temporary
     }
 }
 

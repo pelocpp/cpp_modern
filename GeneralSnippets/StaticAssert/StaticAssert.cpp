@@ -32,12 +32,12 @@ void main_static_assert()
     //static_assert(sizeof(void*) == 4, "Size of Pointer is 32-bits!");
     static_assert(sizeof(void*) == 8, "Size of Pointer is 64-bits!");
 
-    [[maybe_unused]] Grid<int, 10, 5> intGrid;
-    [[maybe_unused]] Grid<std::string, 3, 4> stringGrid;
+    [[ maybe_unused]] Grid<int, 10, 5> intGrid;
+    [[ maybe_unused]] Grid<std::string, 3, 4> stringGrid;
     // Grid<double, 0, 0> doubleGrid;   // doesn't compile
-    [[maybe_unused]] Grid<long long, 1, 0> longGrid;
+    [[ maybe_unused]] Grid<long long, 1, 0> longGrid;
 
-    [[maybe_unused]] MyVector<int, 4> four;     // compiles
+    [[ maybe_unused]] MyVector<int, 4> four;     // compiles
     // MyVector<short, 2> two; // doesn't compile
 }
 

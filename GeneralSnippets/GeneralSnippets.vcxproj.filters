@@ -333,9 +333,6 @@
     <ClCompile Include="Module_Modern_Cpp_Exercises.ixx">
       <Filter>Modules</Filter>
     </ClCompile>
-    <ClCompile Include="std.ixx">
-      <Filter>Modules</Filter>
-    </ClCompile>
     <ClCompile Include="Auto\Module_Auto.ixx">
       <Filter>Modules</Filter>
     </ClCompile>
@@ -619,6 +616,9 @@
       <Filter>Modules</Filter>
     </ClCompile>
     <ClCompile Include="ConceptsRequiresClasses\ConceptsRequiresClasses.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Literals\Literals_02.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

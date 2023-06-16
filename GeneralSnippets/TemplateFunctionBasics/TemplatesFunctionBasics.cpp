@@ -62,7 +62,7 @@ namespace FunctionTemplate_01_Basics {
 
     void test_01()
     {
-        [[maybe_unused]] bool result;
+        bool result;
         result = lessThan(10, 20);
         // result = lessThan(10, 20.5);   // warning or error
         result = lessThan(10.0, 20.0);
