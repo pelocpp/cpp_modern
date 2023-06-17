@@ -12,7 +12,7 @@ namespace Exercises_Folding {
         // Logical And - with folding expression
 
         template<typename ... TArgs>
-        bool andAll(const TArgs... args) {
+        bool andAll(TArgs... args) {
             return (... && args);  // unary left fold
         }
 
@@ -29,7 +29,7 @@ namespace Exercises_Folding {
         // Logical Or - with folding expression
 
         template<typename ... TArgs>
-        bool orAll(const TArgs... args) {
+        bool orAll(TArgs... args) {
             return (args || ...);  // unary right fold
         }
 
