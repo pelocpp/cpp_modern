@@ -51,9 +51,9 @@ namespace Literals_Color_Runtime {
     std::ostream& operator<< (std::ostream& os, const Color& col) {
 
         os << std::uppercase
-            << std::hex << std::setw(2) << std::setfill('0') << (int)col.m_r << ":"
-            << std::hex << std::setw(2) << std::setfill('0') << (int)col.m_g << ":"
-            << std::hex << std::setw(2) << std::setfill('0') << (int)col.m_b;
+            << std::hex << std::setw(2) << std::setfill('0') << (int) col.m_r << ":"
+            << std::hex << std::setw(2) << std::setfill('0') << (int) col.m_g << ":"
+            << std::hex << std::setw(2) << std::setfill('0') << (int) col.m_b;
 
         return os;
     }
@@ -69,7 +69,7 @@ namespace Literals_Color_Runtime {
         uint8_t g{ static_cast<uint8_t>((value & 0x0000FF00) >> 8) };
         uint8_t b{ static_cast<uint8_t>((value & 0x000000FF) >> 0) };
 
-        return { r, g, b };
+        return Color { r, g, b };
     }
 
     // literal operator ("raw" version)
@@ -87,12 +87,10 @@ namespace Literals_Color_Runtime {
             uint8_t g { static_cast<uint8_t>(std::stoi(gs, nullptr, 16)) };
             uint8_t b { static_cast<uint8_t>(std::stoi(bs, nullptr, 16)) };
 
-            // note: braced-init-list syntax
-            return { r, g, b };
+            return Color { r, g, b };
         }
 
-        // note: braced-init-list syntax
-        return {};
+        return Color {};
     }
 
     void test_02() {
@@ -163,13 +161,8 @@ namespace Literals_Color_CompileTime {
         uint8_t g{ static_cast<uint8_t>((value & 0x0000FF00) >> 8) };
         uint8_t b{ static_cast<uint8_t>((value & 0x000000FF) >> 0) };
 
-        return { r, g, b };
+        return Color { r, g, b };
     }
-
-    constexpr size_t hexstoi(const char*);
-    constexpr bool isHex(char);
-    constexpr uint8_t hex2int(char);
-    constexpr size_t hexstoi(const char*);
 
     // literal operator ('raw' and 'constexpr' version)
     constexpr Color operator"" _rgb(const char* literal, size_t length) {
@@ -186,12 +179,10 @@ namespace Literals_Color_CompileTime {
             uint8_t g{ static_cast<uint8_t>(std::stoi(gs, nullptr, 16)) };
             uint8_t b{ static_cast<uint8_t>(std::stoi(bs, nullptr, 16)) };
 
-            // note: braced-init-list syntax
-            return { r, g, b };
+            return Color { r, g, b };
         }
 
-        // note: braced-init-list syntax
-        return {};
+        return Color {};
     }
 
     void test_03() {

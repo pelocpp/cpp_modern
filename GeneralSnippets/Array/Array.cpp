@@ -74,22 +74,22 @@ namespace StdArray {
         std::cout << std::endl;
     }
 
-    void printLength(const std::array<int, 5>& array) {
+    void print(const std::array<int, 5>& array) {
         std::cout << "Length: " << array.size() << std::endl;
     }
 
     template<typename T, int Length>
-    void printLength(const std::array<T, Length>& array) {
+    void print(const std::array<T, Length>& array) {
         std::cout << "Length: " << array.size() << std::endl;
     }
 
     void test_05() {
 
         std::array<int, 5> array1 = { 1, 2, 3, 4, 5 };
-        printLength(array1);
+        print(array1);
 
         std::array<int, 10> array2 = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-        printLength(array2);
+        print(array2);
     }
 
     void test_06() {
@@ -207,8 +207,13 @@ namespace StdArray {
             std::begin(other)
         );
 
+#pragma warning(push)
+#pragma warning(disable : 5056)
+
         // Worse: operator== compiles, but does the "wrong" thing: address comparison!
         bool isEqual = (cArray == other);
+
+#pragma warning(pop)
 
         // works as expected - need to use a standard algorithm
         isEqual = std::equal(cArray, cArray + 4, other, other + 4);
@@ -242,6 +247,10 @@ namespace StdArray {
 
     // returning address of local variable or temporary C style array:
     // compiles, but is false
+
+#pragma warning(push)
+#pragma warning(disable : 4172)
+
     auto c_crossProduct(
         const int a[3], const int b[3]) // -> int[3]
     {
@@ -253,6 +262,8 @@ namespace StdArray {
 
         return result;
     }
+
+#pragma warning(pop)
 
     // =====================================================================================
 

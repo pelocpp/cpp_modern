@@ -307,12 +307,36 @@ namespace Exercises_Lambdas {
             std::cout << std::endl;
         }
 
+        void testExercise_03e()
+        {
+            // Output:
+            // 1
+            // 2
+            // 3
+
+            // See testExercise_03d - using 'std::function' instead of 'auto'
+
+            int i{ };
+
+            std::function<void(void)> count { 
+                [i]() mutable {
+                    std::cout << ++i << std::endl;
+                }
+            };
+
+            invoke(count);
+            invoke(count);
+            invoke(count);
+            std::cout << std::endl;
+        }
+
         void testExercise_03()
         {
             testExercise_03a();
             testExercise_03b();
             testExercise_03c();
             testExercise_03d();
+            testExercise_03e();
         }
     }
 }

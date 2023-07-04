@@ -5,8 +5,8 @@
 module modern_cpp:range_based_for_loop;
 
 /*
-*  12 ways to iterate through a vector 
-*/
+ *  12 ways to iterate through a vector 
+ */
 
 namespace RangeBasedForLoop {
 
@@ -33,7 +33,7 @@ namespace RangeBasedForLoop {
         // =========================================================================
         // "Classic style" examples
 
-        // a) Very, very old style ... I wouldn't do this ... C-stylistic
+        // a) Very, very classic style ... C-stylistic
         for (size_t i = 0; i != vec.size(); ++i) {
             std::cout << vec[i] << " ";
         }
@@ -55,7 +55,7 @@ namespace RangeBasedForLoop {
         );
         std::cout << std::endl;
 
-        // d) Looks like C++, classic style, 'functor'-stylistic
+        // d) Looks like C++, classic style, 'Functor'-stylistic
         std::for_each(
             std::begin(vec),               // Iterator-object for begin of range
             std::end(vec),                 // Iterator-object for end of range
@@ -63,7 +63,7 @@ namespace RangeBasedForLoop {
         );
         std::cout << std::endl;
 
-        // e) Using STL algorithm std::for_each with a lambda: Looks like C++, modern style
+        // e) Using STL algorithm std::for_each with a lambda: Modern style
         std::for_each(
             std::begin(vec),               // Iterator-object for begin of range
             std::end(vec),                 // Iterator-object for end of range
@@ -76,7 +76,7 @@ namespace RangeBasedForLoop {
         // =========================================================================
         // Range-based 'for' Loop examples
 
-        // f) Using Range-based 'for' Loop: Looks like C++, very modern style
+        // f) Using Range-based 'for' Loop: Very modern style
         for (int n : vec) {
             std::cout << n << " ";
             if (n == 2)  // break is possible
@@ -102,7 +102,7 @@ namespace RangeBasedForLoop {
         }
         std::cout << std::endl;
 
-        // j) Real C++: How the compiler 'sees' a Range-based 'for' Loop - you never ever do this
+        // j) Real C++: How the compiler 'sees' a Range-based 'for' Loop
         std::vector<int>::iterator begin = std::begin(vec);
         std::vector<int>::iterator end = std::end(vec);
 
