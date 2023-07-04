@@ -44,6 +44,8 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
   * ### [SFINAE](#Aufgaben-zu-SFINAE)
     
   * ### [CRTP](#Aufgaben-zu-CRTP)
+
+  * ### [Concepts](#Aufgaben-zu-Konzepten)
       
 ---
 
@@ -234,6 +236,17 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 | [Aufgabe 1](./Exercises_10_CRTP.md#aufgabe-1-der-kuriose-polymorphismus-crtp-an-einem-beispiel-betrachtet) | Der *kuriose* Polymorphismus (CRTP) an einem Beispiel betrachtet<br/>(Voraussetzungen: Polymorphismus, Templates)  |
 
 *Tabelle* 16: Aufgaben zu CRTP.
+
+---
+
+### Aufgaben zu Konzepten
+
+| Aufgabe | Beschreibung |
+| :- | :- |
+| [Aufgabe 1](./Exercises_17_Concepts.md#aufgabe-1-überprüfung-des-vorhandenseins-einer-bestimmten-basisklasse) | Überprüfung des Vorhandenseins einer bestimmten Basisklasse |
+
+*Tabelle* 17: Aufgaben zu Konzepten.
+
 
 ---
 

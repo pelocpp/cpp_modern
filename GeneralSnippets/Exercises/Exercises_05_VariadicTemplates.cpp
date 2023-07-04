@@ -2,9 +2,9 @@
 // Exercises_05_VariadicTemplates.cpp
 // =====================================================================================
 
-//module;
-//
-//import <typeinfo>;   // There are some problems with typeid and modules ... 
+module;
+
+// import <typeinfo>;   // There are some problems with typeid and modules ... 
 
 module modern_cpp_exercises:variadic_templates;
 
@@ -20,7 +20,7 @@ namespace Exercises_VariadicTemplates {
             return cond;
         }
 
-        template<typename T, typename... TRest>
+        template<typename T, typename ... TRest>
         bool andAll(T cond, TRest ... conds) {
             return cond && andAll(conds...);
         }
@@ -31,7 +31,7 @@ namespace Exercises_VariadicTemplates {
         //    return true;
         //}
         //
-        //template<typename T, typename... TRest>
+        //template<typename T, typename ... TRest>
         //bool andAll(T cond, TRest... conds) {
         //    return cond && andAll(conds...);
         //}

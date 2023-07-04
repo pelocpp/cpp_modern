@@ -2,9 +2,9 @@
 // Exercises_17_Concepts.cpp
 // =====================================================================================
 
-// https://lemire.me/blog/2023/04/18/defining-interfaces-in-c-with-concepts-c20/?amp
+// https://oopscenities.net/2021/07/13/c20-useful-concepts-requiring-type-t-to-be-derived-from-a-base-class/
 
-// https://itnext.io/c-20-concepts-complete-guide-42c9e009c6bf
+// https://lemire.me/blog/2023/04/18/defining-interfaces-in-c-with-concepts-c20/?amp
 
 // https://itnext.io/c-20-concepts-complete-guide-42c9e009c6bf
 
@@ -16,12 +16,6 @@ module modern_cpp_exercises:concepts;
 namespace Exercises_Concepts {
 
     namespace Exercise_01 {
-
-//01: template < typename T>
-//02 : concept Numerical = std::integral<T> || std::floating_point<T>;
-
-// https://oopscenities.net/2021/07/13/c20-useful-concepts-requiring-type-t-to-be-derived-from-a-base-class/
-
 
         class Object;
 
@@ -41,12 +35,11 @@ namespace Exercises_Concepts {
 
         class Integer : public Object
         {
-        private:
+        protected:
             int m_value;
 
         public:
             Integer() : Integer{ 0 } {};
-
             Integer(int value) : m_value{ value } {}
 
             std::string toString() const override
@@ -55,62 +48,114 @@ namespace Exercises_Concepts {
             }
         };
 
-        class Double // : public Object
+        class NaturalNumber : public Integer
+        {
+        public:
+            NaturalNumber() : Integer{ 0 } {};
+            NaturalNumber(int value) : Integer{ value >= 0 ? value : 0 } {}
+        };
+
+        class Double
         {
         private:
             double m_value;
 
         public:
             Double() : Double{ 0 } {};
-
             Double(double value) : m_value{ value } {}
 
             std::string toString() const // override
             {
-                return "Double: " + std::to_string(m_value);  // TOTO : TESTEN
+                return "Double:  " + std::to_string(m_value);
             }
         };
 
-
-
         template <typename T>
-        void print(const T& obj)
+        void print00(const T& obj)
         {
             std::cout << obj.toString() << std::endl;
         }
 
-        template <ConceptObject T>
-        void print1(const T& obj)
+        template <typename  T>
+            requires std::is_base_of<Object, T>::value
+        void print01(const T& obj)
         {
             std::cout << obj.toString() << std::endl;
         }
 
-        template <ConceptObjectEx T>
-        void print2(const T& obj)
+        template <typename  T>
+        void print02(const T& obj) requires std::is_base_of<Object, T>::value
         {
             std::cout << obj.toString() << std::endl;
         }
 
-        // WEITER: ALLE 4 Varianten !!!
+        template <ConceptObject  T>
+        void print03(const T& obj)
+        {
+            std::cout << obj.toString() << std::endl;
+        }
 
+        auto print04(const ConceptObject auto& obj)
+        {
+            std::cout << obj.toString() << std::endl;
+        }
 
         void test_01() {
 
-            print(Integer{ 123 });
-            //Double d{ 123.456 };
-            //d.toString();
-            //std::cout << d.toString() << std::endl;
+            print00(Integer{ 12 });
+            print01(Integer{ 34 });
+            print02(Integer{ 56 });
+            print03(Integer{ 78 });
+            print04(Integer{ 90 });
 
-            print1(Integer{ 456 });
+            print00(NaturalNumber{ 1 });
+            print01(NaturalNumber{ 2 });
+            print02(NaturalNumber{ 3 });
+            print03(NaturalNumber{ 4 });
+            print04(NaturalNumber{ 5 });
 
-            print2(Integer{ 789 });
+            print01(NaturalNumber{ -2 });
+            print02(NaturalNumber{ -3 });
+            print03(NaturalNumber{ -4 });
+            print04(NaturalNumber{ -5 });
         }
 
+        void test_02() {
 
+            Double d{ 123.456 };
+            std::cout << d.toString() << std::endl;
+
+            // print01(d);   // the constraint was not satisfied
+            // print02(d);   // the constraint was not satisfied
+            // print03(d);   // the constraint was not satisfied
+            // print04(d);   // the constraint was not satisfied
+        }
+
+        template <ConceptObjectEx T>
+        void print10(const T& obj)
+        {
+            std::cout << obj.toString() << std::endl;
+        }
+
+        void print11(const ConceptObjectEx auto& obj)
+        {
+            std::cout << obj.toString() << std::endl;
+        }
+
+        void test_03() {
+
+            print00(NaturalNumber{ 1 });
+            print10(NaturalNumber{ 2 });
+            print11(NaturalNumber{ 3 });
+            print10(NaturalNumber{ -1 });
+            print11(NaturalNumber{ -2 });
+        }
 
         void testExercise_01() {
 
-            std::cout << "asdasdasd";
+            test_01();
+            test_02();
+            test_03();
         }
     }
 }

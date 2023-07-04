@@ -10,29 +10,14 @@
 
 ## Aufgabe 1: Überprüfung des Vorhandenseins einer bestimmten Basisklasse
 
-#### Vorausetzungen: Algorithmus `std::find_if`
+#### Vorausetzungen: `concept`, `requires`
 
-Definition eines Konzepts zur Überprüfung auf das Vorhandensein einer bestimmten Basisklasse
-
-
-
-Erstellen Sie ein Konzept, das für eine generische Klasse überprüft,
+Erstellen Sie ein Konzept, das für ein Klassentemplate überprüft,
 dass deren Template Parameter sich von einer bestimmten Basisklasse ableiten.
 
-Eine Anwendung 
-
-----------
-
-
-Wie kann ich ein Konzept erstellen, das erfordert, dass meine parametrisierten Typen von einer Basisklasse erben?
-
-Ich erstelle eine stark objektorientierte Klassenhierarchie und möchte,
-dass die mit dieser Klassenhierarchie verbundenen Funktionen nur Instanzen von Klassen akzeptieren, die von der Basisklasse dieser Hierarchie abgeleitet sind.
-
----
-
 Wir betrachten die Aufgabenstellung an einem Beispiel.
-Die folgende Klasse sei als Basisklasse für eine Hierarchie von Klassen bestimmt:
+Die folgende Klasse `Object` sei als Basisklasse für eine Hierarchie von Klassen bestimmt &ndash;
+Ähnlichkeiten zur Programmiersprache C# sind rein zufälliger Natur:
 
 ```cpp
 class Object
@@ -44,7 +29,7 @@ public:
 };
 ```
 
-Offensichtlich soll mit der Klasse `Object` erzwungen werden, dass alle Kindklasse eine Methode `toString` bereitstellen.
+Offensichtlich soll mit der Klasse `Object` erzwungen werden, dass alle Kindklassen eine Methode `toString` bereitstellen.
 Die Klasse `Integer` erfüllt diese Eigenschaft:
 
 ```cpp
@@ -83,32 +68,18 @@ die eine `to_string()`-Methode besitzen.
 Wie können Sie das Funktionstemplate `print` schreiben, 
 so dass es nur Instanzen von Klassen akzeptiert, die sich von der Klasse `Object` abgeleiten?
 
-## Lösung:
+*Hinweise zur Lösung*:
 
 Im Prinzip bieten sich zwei Lösungansätze an:
 
-  * Verwendung von `std::is_base_of` aus der Type-Traits-Bibliothek
-  * Verwendung von `std::derived_from` aus der Concepts-Bibliothek 
+  * Verwendung von `std::is_base_of` aus der Type-Traits-Bibliothek.
+  * Verwendung von `std::derived_from` aus der Concepts-Bibliothek .
 
-Die beiden Ansätze unterscheiden sich in der &ldquo;Vererbungsart&rdquo;,
-also inwieweit beim Vererben der Zugriff auf Elemente der Basisklasse eingeschränkt wird
-(Angabe von `public`, `protected` oder `private` vor dem Namen der Basisklasse).
-Derartige Details oder vielleicht besser auch als Feinheiten wollen wir in dieser Aufgabe nicht betrachten.
+Die beiden Ansätze unterscheiden sich nur in der &ldquo;Vererbungsart&rdquo;,
+also inwieweit beim Vererben der Zugriff auf Elemente der Basisklasse eingeschränkt wird.
+Dies betrifft die Angabe von `public`, `protected` oder `private` vor dem Namen der Basisklasse.
+Derartige Details oder vielleicht besser auch als Feinheiten wollen wir in dieser Aufgabe nicht näher betrachten.
 Wir legen der Einfachheit halber die Vererbungsart `public` zu Grunde.
-
-
-
-
-
-
-
-Beachten Sie, dass sich dieses Verhalten von std::is_base_of unterscheidet, wenn die Basisklasse
-eine private oder geschützte Basis von Derived ist.
-
-
-
-
-
 
 ---
 
