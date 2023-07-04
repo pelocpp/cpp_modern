@@ -83,6 +83,12 @@ Wir legen der Einfachheit halber die Vererbungsart `public` zu Grunde.
 
 ---
 
+## Aufgabe 1: Überprüfung des Vorhandenseins einer bestimmten Basisklasse
+
+#### Vorausetzungen: `concept`, `requires`
+
+---
+
 [Lösungen](Exercises_17_Concepts.cpp)
 
 ---

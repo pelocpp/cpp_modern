@@ -8,9 +8,6 @@
 
 // https://itnext.io/c-20-concepts-complete-guide-42c9e009c6bf
 
-// https://iteo.com/blog/post/c-concepts-make-the-templates-greater-again/
-
-
 module modern_cpp_exercises:concepts;
 
 namespace Exercises_Concepts {
@@ -158,12 +155,119 @@ namespace Exercises_Concepts {
             test_03();
         }
     }
+
+    namespace Exercise_02 {
+
+        namespace RequiresAllSame_01 {
+
+            // Using Function Overloading
+
+            template<typename T>
+                requires std::same_as<T, bool>
+            bool andAll(T cond) {
+                return cond;
+            }
+
+            template<typename T, typename ... TRest>
+                requires std::same_as<T, bool> && (std::same_as<TRest, bool> && ...)
+            bool andAll(T cond, TRest ... conds) {
+                return cond && andAll(conds...);
+            }
+
+            void test() {
+
+                auto result = andAll(true, true, true);
+
+                bool b{ false };
+                result = andAll(!b, b, !b);
+
+                //result = andAll(1, 2, 3);
+                //result = andAll(123.456);
+            }
+        }
+
+        namespace RequiresAllSame_02 {
+
+            // Using Folding
+
+            template<typename ... TArgs>
+                requires (std::same_as<TArgs, bool> && ...)
+            bool andAll(TArgs ... args) {
+                return (... && args);
+            }
+
+            void test() {
+
+                auto result = andAll(true, true, true);
+
+                bool b{ false };
+                result = andAll(!b, b, !b);
+
+                //result = andAll(1, 2, 3);
+                //result = andAll(123.456);
+            }
+        }
+
+        namespace RequiresAllSame_03 {
+
+            // Using "Abbreviated Function Templates Syntax"
+
+            bool andAll(std::same_as<bool> auto ... args) {
+                return (... && args);
+            }
+
+            void test() {
+
+                auto result = andAll(true, true, true);
+
+                bool b{ false };
+                result = andAll(!b, b, !b);
+
+                //result = andAll(1, 2, 3);
+                //result = andAll(123.456);
+            }
+        }
+
+        namespace RequiresAllSame_04 {
+
+            // Using "Abbreviated Function Templates Syntax"
+            // in combination with overloaded functions
+
+            bool andAll(std::same_as<bool> auto cond) {
+                return cond;
+            }
+
+            bool andAll(std::same_as<bool> auto cond, std::same_as<bool> auto ... conds) {
+                return cond && andAll(conds...);
+            }
+
+            void test() {
+
+                auto result = andAll(true, true, true);
+
+                bool b{ false };
+                result = andAll(!b, b, !b);
+
+                //result = andAll(1, 2, 3);
+                //result = andAll(123.456);
+            }
+        }
+
+        void testExercise_01() {
+
+            RequiresAllSame_01::test();
+            RequiresAllSame_02::test();
+            RequiresAllSame_03::test();
+            RequiresAllSame_04::test();
+        }
+    }
 }
 
 void test_exercises_concepts()
 {
     using namespace Exercises_Concepts;
     Exercise_01::testExercise_01();
+    Exercise_02::testExercise_01();
 }
 
 // =====================================================================================
