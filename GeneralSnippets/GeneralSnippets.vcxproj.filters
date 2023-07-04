@@ -621,6 +621,12 @@
     <ClCompile Include="Literals\Literals_02.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Exercises\Module_Exercises_17_Concepts.ixx">
+      <Filter>Exercises</Filter>
+    </ClCompile>
+    <ClCompile Include="Exercises\Exercises_17_Concepts.cpp">
+      <Filter>Exercises</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -987,6 +993,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="ConceptsRequiresClasses\ConceptsRequiresClasses.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Exercises\Exercises_17_Concepts.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

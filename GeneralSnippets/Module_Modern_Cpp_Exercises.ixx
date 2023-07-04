@@ -20,6 +20,7 @@ export import :functional_programming;
 export import :const_expr;
 export import :smart_pointers;
 export import :generic_lambdas;
+export import :concepts;
 
 export void main_exercises();
 

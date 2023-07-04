@@ -208,6 +208,7 @@
     <ClCompile Include="Exercises\Exercises_13_FunctionalProgramming.cpp" />
     <ClCompile Include="Exercises\Exercises.cpp" />
     <ClCompile Include="Exercises\Exercises_16_Generic_Lambdas.cpp" />
+    <ClCompile Include="Exercises\Exercises_17_Concepts.cpp" />
     <ClCompile Include="Exercises\Module_Exercises_01_MoveSemantics.ixx" />
     <ClCompile Include="Exercises\Module_Exercises_02_Lambdas.ixx" />
     <ClCompile Include="Exercises\Module_Exercises_03_Algorithms.ixx" />
@@ -224,6 +225,7 @@
     <ClCompile Include="Exercises\Module_Exercises_14_ConstExpr.ixx" />
     <ClCompile Include="Exercises\Module_Exercises_15_SmartPointers.ixx" />
     <ClCompile Include="Exercises\Module_Exercises_16_GenericLambdas.ixx" />
+    <ClCompile Include="Exercises\Module_Exercises_17_Concepts.ixx" />
     <ClCompile Include="Explicit\Explicit.cpp" />
     <ClCompile Include="Explicit\Module_Explicit.ixx" />
     <ClCompile Include="ExpressionTemplates\ExpressionTemplates_01.cpp" />
@@ -388,6 +390,7 @@
     <None Include="Exercises\Exercises_12_PerfectForwarding.md" />
     <None Include="Exercises\Exercises_13_FunctionalProgramming.md" />
     <None Include="Exercises\Exercises.md" />
+    <None Include="Exercises\Exercises_17_Concepts.md" />
     <None Include="Explicit\Explicit.md" />
     <None Include="ExpressionTemplates\ExpressionTemplates.md" />
     <None Include="Folding\Folding.md" />
