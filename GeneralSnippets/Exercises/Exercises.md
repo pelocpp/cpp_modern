@@ -244,9 +244,9 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 | Aufgabe | Beschreibung |
 | :- | :- |
 | [Aufgabe 1](./Exercises_17_Concepts.md#aufgabe-1-überprüfung-des-vorhandenseins-einer-bestimmten-basisklasse) | Überprüfung des Vorhandenseins einer bestimmten Basisklasse |
+| [Aufgabe 2](./Exercises_17_Concepts.md#aufgabe-2-überprüfung-des-datentyps-der-parameter-einer-funktion) | Überprüfung des Datentyps der Parameter einer Funktion |
 
 *Tabelle* 17: Aufgaben zu Konzepten.
-
 
 ---
 

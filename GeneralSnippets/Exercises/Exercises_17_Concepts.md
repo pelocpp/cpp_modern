@@ -83,17 +83,42 @@ Wir legen der Einfachheit halber die Vererbungsart `public` zu Grunde.
 
 ---
 
-## Aufgabe 1: Überprüfung des Vorhandenseins einer bestimmten Basisklasse
+## Aufgabe 2: Überprüfung des Datentyps der Parameter einer Funktion
 
 #### Vorausetzungen: `concept`, `requires`
+
+In den Übungen zu variadischen Templates hatten wir zwei Funktionen `andAll` und `orAll`
+betrachtet:
+
+```cpp
+bool result = andAll(true, false, true);
+```
+
+Die beiden Funktionen lassen sich unterschiedlich realisieren.
+In allen Fällen tritt als Parameter jedoch ein *Parameter Pack* in Erscheinung,
+da gefordert war, dass eine beliebige Anzahl von `bool`-Parametern übergeben werden können sollen.
+
+Erweiteren Sie die vorhandenen Lösungen so, dass neben der reinen Funktionalität
+auch der Datentyp der Aktualparameter überprüft wird.
+Ein Aufruf von 
+
+
+```cpp
+bool result = andAll(1, 2, 3);
+```
+
+soll eine &ndash; soweit möglich &ndash; verständliche Fehlermeldung erzeugen,
+also nicht übersetzbar sein!
+
+*Hinweis zur Lösung*:
+
+Die Technik des *Foldings* kann auch auch *Constraints* angewendet werden. 
 
 ---
 
 [Lösungen](Exercises_17_Concepts.cpp)
 
 ---
-
-Der Link geht nicht
 
 [An den Anfang](#Aufgaben-zu-Konzepten)
 
