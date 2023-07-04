@@ -2,8 +2,6 @@
 // Exercises_17_Concepts.cpp
 // =====================================================================================
 
-// https://oopscenities.net/2021/07/13/c20-useful-concepts-requiring-type-t-to-be-derived-from-a-base-class/
-
 // https://lemire.me/blog/2023/04/18/defining-interfaces-in-c-with-concepts-c20/?amp
 
 // https://itnext.io/c-20-concepts-complete-guide-42c9e009c6bf

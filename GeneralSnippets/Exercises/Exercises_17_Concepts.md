@@ -96,9 +96,9 @@ bool result = andAll(true, false, true);
 
 Die beiden Funktionen lassen sich unterschiedlich realisieren.
 In allen Fällen tritt als Parameter jedoch ein *Parameter Pack* in Erscheinung,
-da gefordert war, dass eine beliebige Anzahl von `bool`-Parametern übergeben werden können sollen.
+da gefordert war, dass eine beliebige Anzahl von `bool`-Parametern übergeben werden kann.
 
-Erweiteren Sie die vorhandenen Lösungen so, dass neben der reinen Funktionalität
+Erweitern Sie die vorhandenen Lösungen so, dass neben der reinen Funktionalität
 auch der Datentyp der Aktualparameter überprüft wird.
 Ein Aufruf von 
 
