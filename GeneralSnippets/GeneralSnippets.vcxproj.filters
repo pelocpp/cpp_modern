@@ -627,6 +627,9 @@
     <ClCompile Include="Exercises\Exercises_17_Concepts.cpp">
       <Filter>Exercises</Filter>
     </ClCompile>
+    <ClCompile Include="PerfectForwarding\PerfectForwarding.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -996,6 +999,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Exercises\Exercises_17_Concepts.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="PerfectForwarding\PerfectForwarding.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

@@ -6,7 +6,7 @@ module modern_cpp:perfect_forwarding;
 
 import :dummy;
 
-namespace PerfectForwardingObject {
+namespace PerfectForwarding04 {
 
     void overloaded(const Dummy& arg) {
         std::cout << "By lvalue" << std::endl;
@@ -42,9 +42,9 @@ namespace PerfectForwardingObject {
     }
 }
 
-void main_perfect_forwarding_object()
+void main_perfect_forwarding_04()
 {
-    using namespace PerfectForwardingObject;
+    using namespace PerfectForwarding04;
     test_01();
 }
 

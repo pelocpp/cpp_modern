@@ -4,7 +4,7 @@
 
 module modern_cpp:perfect_forwarding;
 
-namespace PerfectForwardingMotivation {
+namespace PerfectForwarding02 {
 
     // util class
     class AnyClass
@@ -98,9 +98,9 @@ namespace PerfectForwardingMotivation {
     }
 }
 
-void main_perfect_forwarding_motivation()
+void main_perfect_forwarding_02()
 {
-    using namespace PerfectForwardingMotivation;
+    using namespace PerfectForwarding02;
     test_01();
     test_02();
     test_03();

@@ -152,7 +152,7 @@ Es folgt eine tabellarische Auflistung dieser Unterverzeichnisse.
 | [MoveSemantics](GeneralSnippets/MoveSemantics/MoveSemantics.md) | *Move Semantics* / Verschiebesemantik |
 | [Optional](GeneralSnippets/Optional/Optional.md) | Neue STL-Utility Klasse `std::optional` |
 | [ParametersWithConstAndRef](GeneralSnippets/ParametersWithConstAndRef/ConstDeclarations.md)  | Die Deklarationen `int& const`, `int const&`, `const& int` und `const int&` im Vergleich |
-| [PerfectForwarding](GeneralSnippets/PerfectForwarding/PerfectForwarding_01.md) | Perfect Forwarding (`std::forward`) |
+| [PerfectForwarding](GeneralSnippets/PerfectForwarding/PerfectForwarding.md) | Perfect Forwarding (`std::forward`) |
 | [RAII](GeneralSnippets/RAII/RAII.md) | RAII-Idiom (*Resource acquisition is Initialization*) |
 | [Random](GeneralSnippets/Random/Random.md) | Generierung von Zufallszahlen |
 | [RangeBasedForLoop](GeneralSnippets/RangeBasedForLoop/RangeBasedForLoop.md) | Range-based `for` Loop |

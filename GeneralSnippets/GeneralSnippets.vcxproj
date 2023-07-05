@@ -270,6 +270,7 @@
     <ClCompile Include="Optional\Module_Optional.ixx" />
     <ClCompile Include="Optional\Optional.cpp" />
     <ClCompile Include="PerfectForwarding\Module_PerfectForwarding.ixx" />
+    <ClCompile Include="PerfectForwarding\PerfectForwarding.cpp" />
     <ClCompile Include="PerfectForwarding\PerfectForwarding01.cpp" />
     <ClCompile Include="PerfectForwarding\PerfectForwarding02.cpp" />
     <ClCompile Include="PerfectForwarding\PerfectForwarding03.cpp" />
@@ -415,6 +416,7 @@
     <None Include="Optional\cpp_std_optional.svg" />
     <None Include="Optional\Optional.md" />
     <None Include="ParametersWithConstAndRef\ConstDeclarations.md" />
+    <None Include="PerfectForwarding\PerfectForwarding.md" />
     <None Include="PerfectForwarding\PerfectForwarding_01.md" />
     <None Include="PerfectForwarding\PerfectForwarding_02.md" />
     <None Include="PerfectForwarding\PerfectForwarding_03.md" />

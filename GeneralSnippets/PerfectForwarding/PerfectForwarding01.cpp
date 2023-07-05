@@ -4,7 +4,7 @@
 
 module modern_cpp:perfect_forwarding;
 
-namespace PerfectForwarding {
+namespace PerfectForwarding01 {
 
     // utility class
     class AnyClass
@@ -161,9 +161,9 @@ namespace PerfectForwarding {
     }
 }
 
-void main_perfect_forwarding()
+void main_perfect_forwarding_01()
 {
-    using namespace PerfectForwarding;
+    using namespace PerfectForwarding01;
     test_01();
     test_02();
     test_03();
