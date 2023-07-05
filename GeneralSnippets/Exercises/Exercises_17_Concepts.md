@@ -113,7 +113,7 @@ also nicht übersetzbar sein!
 
 *Hinweis zur Lösung*:
 
-Die Technik des *Foldings* kann auch auch *Constraints* angewendet werden. 
+Die Technik des *Foldings* kann auch auch *Konzepte* angewendet werden. 
 
 ---
 

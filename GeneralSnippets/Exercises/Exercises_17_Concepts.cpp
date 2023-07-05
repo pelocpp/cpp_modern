@@ -251,12 +251,44 @@ namespace Exercises_Concepts {
             }
         }
 
+        namespace RequiresAllSame_05 {
+
+            /*
+             * NOT using concepts:
+             * Based on C++ 17 with std::enable_if and Folding
+             * C++ 11 is always possible, then you need to reimplement std::conjunction.
+             */
+
+            // wrapper for 'std::conjunction'
+            template <typename ... TArgs>
+            constexpr bool AreSame = std::conjunction<std::is_same<bool, TArgs> ...>::value;
+
+            template <typename ... TArgs>
+            std::enable_if <AreSame<TArgs ...>, bool>::type
+                andAll(TArgs ... args) noexcept
+            {
+                return (... && args);
+            }
+
+            void test() {
+
+                auto result = andAll(true, true, true);
+
+                bool b{ false };
+                result = andAll(!b, b, !b);
+
+                //result = andAll(1, 2, 3);
+                //result = andAll(123.456);
+            }
+        }
+
         void testExercise_01() {
 
             RequiresAllSame_01::test();
             RequiresAllSame_02::test();
             RequiresAllSame_03::test();
             RequiresAllSame_04::test();
+            RequiresAllSame_05::test();
         }
     }
 }
