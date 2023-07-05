@@ -71,20 +71,20 @@ namespace Exercises_Concepts {
             std::cout << obj.toString() << std::endl;
         }
 
-        template <typename  T>
+        template <typename T>
             requires std::is_base_of<Object, T>::value
         void print01(const T& obj)
         {
             std::cout << obj.toString() << std::endl;
         }
 
-        template <typename  T>
+        template <typename T>
         void print02(const T& obj) requires std::is_base_of<Object, T>::value
         {
             std::cout << obj.toString() << std::endl;
         }
 
-        template <ConceptObject  T>
+        template <ConceptObject T>
         void print03(const T& obj)
         {
             std::cout << obj.toString() << std::endl;

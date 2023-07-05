@@ -50,8 +50,8 @@ public:
 };
 ```
 
-Nun betrachten wir eine Funktionstemplate `print`,
-das die Methode `to_string()` des angegebenen Parameters `T` aufruft:
+Nun betrachten wir ein Funktionstemplate `print`,
+das die Methode `to_string()` an einem Objekt `obj` des angegebenen Parametertyps `T` aufruft:
 
 ```cpp
 template <typename T>
@@ -61,12 +61,12 @@ void print(const T& obj)
 }
 ```
 
-Wir können im Augenblick nur &ldquo;nur mit dem Auge erkennen&rdquo;,
-dass die `print`-Funkion sinnvollerweise nur mit Template Parametern `T` instanziiert werden kann,
-die eine `to_string()`-Methode besitzen.
+Wir können im Augenblick nur &ldquo;mit dem Auge&rdquo; erkennen,
+dass die `print`-Funktion sinnvollerweise nur mit (benutzerdefinierten) Datentypen instanziiert werden kann,
+die eine `toString()`-Methode besitzen.
 
-Wie können Sie das Funktionstemplate `print` schreiben, 
-so dass es nur Instanzen von Klassen akzeptiert, die sich von der Klasse `Object` abgeleiten?
+Wie können Sie das Funktionstemplate `print` umschreiben, 
+so dass es nur Instanzen von Klassen akzeptiert, die sich von der Klasse `Object` ableiten?
 
 *Hinweise zur Lösung*:
 
@@ -78,12 +78,13 @@ Im Prinzip bieten sich zwei Lösungansätze an:
 Die beiden Ansätze unterscheiden sich nur in der &ldquo;Vererbungsart&rdquo;,
 also inwieweit beim Vererben der Zugriff auf Elemente der Basisklasse eingeschränkt wird.
 Dies betrifft die Angabe von `public`, `protected` oder `private` vor dem Namen der Basisklasse.
-Derartige Details oder vielleicht besser auch als Feinheiten wollen wir in dieser Aufgabe nicht näher betrachten.
-Wir legen der Einfachheit halber die Vererbungsart `public` zu Grunde.
+Derartige Details oder Feinheiten wollen wir in dieser Aufgabe nicht näher betrachten,
+dieser Hinweis ist nur der Vollständigkeit halber gegeben.
+Der Einfachheit halber legen wir die Vererbungsart `public` zu Grunde.
 
 ---
 
-## Aufgabe 2: Überprüfung des Datentyps der Parameter einer Funktion
+## Aufgabe 2: Überprüfung des Datentyps von Funktionsparametern
 
 #### Vorausetzungen: `concept`, `requires`
 
@@ -96,12 +97,12 @@ bool result = andAll(true, false, true);
 
 Die beiden Funktionen lassen sich unterschiedlich realisieren.
 In allen Fällen tritt als Parameter jedoch ein *Parameter Pack* in Erscheinung,
-da gefordert war, dass eine beliebige Anzahl von `bool`-Parametern übergeben werden kann.
+da gefordert war, dass eine *beliebige* Anzahl von `bool`-Parametern an die Funktionen
+übergeben werden kann.
 
 Erweitern Sie die vorhandenen Lösungen so, dass neben der reinen Funktionalität
-auch der Datentyp der Aktualparameter überprüft wird.
-Ein Aufruf von 
-
+auch der Datentyp der Aktualparameter überprüft wird. Es sind nur Werte
+des Typs `bool` zulässig. Ein Aufruf von 
 
 ```cpp
 bool result = andAll(1, 2, 3);

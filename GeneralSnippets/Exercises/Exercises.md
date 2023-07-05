@@ -45,7 +45,7 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
     
   * ### [CRTP](#Aufgaben-zu-CRTP)
 
-  * ### [Concepts](#Aufgaben-zu-Konzepten)
+  * ### [Konzepte](#Aufgaben-zu-Konzepten)
       
 ---
 
@@ -244,7 +244,7 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 | Aufgabe | Beschreibung |
 | :- | :- |
 | [Aufgabe 1](./Exercises_17_Concepts.md#aufgabe-1-überprüfung-des-vorhandenseins-einer-bestimmten-basisklasse) | Überprüfung des Vorhandenseins einer bestimmten Basisklasse |
-| [Aufgabe 2](./Exercises_17_Concepts.md#aufgabe-2-überprüfung-des-datentyps-der-parameter-einer-funktion) | Überprüfung des Datentyps der Parameter einer Funktion |
+| [Aufgabe 2](./Exercises_17_Concepts.md#aufgabe-2-überprüfung-des-datentyps-von-funktionsparametern) | Überprüfung des Datentyps von Funktionsparametern |
 
 *Tabelle* 17: Aufgaben zu Konzepten.
 
