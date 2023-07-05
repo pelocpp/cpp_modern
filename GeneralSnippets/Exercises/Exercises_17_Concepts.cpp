@@ -2,10 +2,6 @@
 // Exercises_17_Concepts.cpp
 // =====================================================================================
 
-// https://lemire.me/blog/2023/04/18/defining-interfaces-in-c-with-concepts-c20/?amp
-
-// https://itnext.io/c-20-concepts-complete-guide-42c9e009c6bf
-
 module modern_cpp_exercises:concepts;
 
 namespace Exercises_Concepts {
