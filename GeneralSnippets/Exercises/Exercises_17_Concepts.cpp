@@ -142,7 +142,7 @@ namespace Exercises_Concepts {
             print11(NaturalNumber{ -2 });
         }
 
-        void testExercise_01() {
+        void testExercise() {
 
             test_01();
             test_02();
@@ -255,7 +255,7 @@ namespace Exercises_Concepts {
              * C++ 11 is always possible, then you need to reimplement std::conjunction.
              */
 
-            // wrapper for 'std::conjunction'
+             // wrapper for 'std::conjunction'
             template <typename ... TArgs>
             constexpr bool AreSame = std::conjunction<std::is_same<bool, TArgs> ...>::value;
 
@@ -278,7 +278,7 @@ namespace Exercises_Concepts {
             }
         }
 
-        void testExercise_01() {
+        void testExercise() {
 
             RequiresAllSame_01::test();
             RequiresAllSame_02::test();
@@ -287,13 +287,170 @@ namespace Exercises_Concepts {
             RequiresAllSame_05::test();
         }
     }
+
+    namespace Exercise_03 {
+
+        namespace Exercise_03_Using_Interface {
+
+            class IntegerIterable
+            {
+            public:
+                virtual bool hasNext() const = 0;
+                virtual int next() = 0;
+                virtual void reset() = 0;
+            };
+
+            int count(IntegerIterable& t)
+            {
+                int count{};
+
+                t.reset();
+                while (t.hasNext()) {
+                    t.next();
+                    count++;
+                }
+
+                return count;
+            }
+
+            class IterableArray : public IntegerIterable
+            {
+            private:
+                std::vector<int> m_array{};
+                size_t m_index{};
+
+            public:
+                IterableArray(std::initializer_list<int> numbers)
+                    : m_array{ numbers }, m_index{} {}
+
+                virtual void reset() override { 
+                    m_index = 0;
+                }
+
+                virtual bool hasNext() const override {
+                    return m_index < m_array.size();
+                }
+
+                virtual int next() override {
+                    m_index++;
+                    return m_array[m_index - 1];
+                }
+            };
+
+            void test()
+            {
+                IterableArray a{ 1, 2, 3 };
+                IntegerIterable* ap = &a;
+
+                ap->reset();
+                while (ap->hasNext()) {
+                    int n{ ap->next() };
+                    std::cout << n << ' ';
+                }
+                std::cout << std::endl;
+            }
+        }
+
+        namespace Exercise_03_Using_Concepts {
+
+            template <typename T>
+            int count(T& t)
+            {
+                int count{};
+
+                t.reset();
+                while (t.hasNext()) {
+                    t.next();
+                    count++;
+                }
+
+                return count;
+            }
+
+            template <typename T>
+            concept IsIterable = requires(T v)
+            {
+                { std::as_const(v).hasNext() } -> std::convertible_to<bool>;
+                { v.next() } -> std::same_as<int>;
+                { v.reset() }-> std::convertible_to<void>;
+            };
+
+            template <typename T>
+                requires IsIterable<T>
+            int count(T& t) {
+                int count{};
+                t.reset();
+                while (t.hasNext()) {
+                    t.next();
+                    count++;
+                }
+                return count;
+            }
+
+            class IterableArray
+            {
+            private:
+                std::vector<int> m_array{};
+                size_t m_index{};
+
+            public:
+                IterableArray(std::initializer_list<int> numbers)
+                    : m_array{ numbers }, m_index{} {}
+
+                void reset() {
+                    m_index = 0; 
+                }
+
+                bool hasNext() const {
+                    return m_index < m_array.size();
+                }
+
+                int next() {
+                    m_index++;
+                    return m_array[m_index - 1];
+                }
+            };
+
+            template <typename T>
+                requires IsIterable <T>
+            int getCount(T& a) {
+                return count(a);
+            }
+
+            void test()
+            {
+                IterableArray a{ 1, 2, 3 };
+
+                int count1 = getCount(a);
+                int count2 = getCount<IterableArray>(a);
+
+                std::cout << count1 << std::endl;
+                std::cout << count2 << std::endl;
+
+                a.reset();
+                while (a.hasNext()) {
+                    int n{ a.next() };
+                    std::cout << n << ' ';
+                }
+                std::cout << std::endl;
+            }
+        }
+
+        void testExercise() {
+
+            Exercise_03_Using_Interface::test();
+            Exercise_03_Using_Concepts::test();
+        }
+    }
 }
 
 void test_exercises_concepts()
 {
     using namespace Exercises_Concepts;
-    Exercise_01::testExercise_01();
-    Exercise_02::testExercise_01();
+
+    Exercise_01::testExercise();
+    Exercise_02::testExercise();
+    Exercise_03::testExercise();
 }
 
 // =====================================================================================
