@@ -138,7 +138,6 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 | [Aufgabe 4](./Exercises_05_VariadicTemplates.md#aufgabe-4-ausgabe-eines-stdtuple-objekts) | Ausgabe eines `std::tuple` Objekts<br/>(Vorausetzungen: `std::tuple`, Non-Type Template Parameter) |
 | [Aufgabe 5](./Exercises_05_VariadicTemplates.md#aufgabe-5-viele-wege-führen-zum-gleichen-ergebnis-summenbildung-natürlicher-zahlen) | Viele Wege führen zum gleichen Ergebnis: Summenbildung natürlicher Zahlen |
 | [Aufgabe 6](./Exercises_05_VariadicTemplates.md#aufgabe-6-variadische-templates-und-vererbung) | Variadische Templates und Vererbung |
-| [Aufgabe 7](./Exercises_05_VariadicTemplates.md#aufgabe-7-berechnung-der-gesamtlänge-beliebig-vieler-zeichenketten) | Berechnung der Gesamtlänge beliebig vieler Zeichenketten<br/>(Vorausetzungen: `std::initializer_list`) |
 
 *Tabelle* 8: Aufgaben zu variadischen Templates.
 
@@ -243,10 +242,10 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 
 | Aufgabe | Beschreibung |
 | :- | :- |
-| [Aufgabe 1](./Exercises_17_Concepts.md#aufgabe-1-überprüfung-des-vorhandenseins-einer-bestimmten-basisklasse) | Überprüfung des Vorhandenseins einer bestimmten Basisklasse |
-| [Aufgabe 2](./Exercises_17_Concepts.md#aufgabe-2-überprüfung-des-datentyps-von-funktionsparametern) | Überprüfung des Datentyps von Funktionsparametern |
-| [Aufgabe 3](./Exercises_17_Concepts.md#aufgabe-3-konzepte-und-schnittstellen-im-vergleich) | Konzepte und Schnittstellen im Vergleich |
-
+| [Aufgabe 1](./Exercises_17_Concepts.md#aufgabe-1-überprüfung-des-vorhandenseins-einer-bestimmten-basisklasse) | Überprüfung des Vorhandenseins einer bestimmten Basisklasse<br/>(Vorausetzungen: `concept`, `requires`) |
+| [Aufgabe 2](./Exercises_17_Concepts.md#aufgabe-2-überprüfung-des-datentyps-von-funktionsparametern) | Überprüfung des Datentyps von Funktionsparametern<br/>(Vorausetzungen: `concept`, `requires`) |
+| [Aufgabe 3](./Exercises_17_Concepts.md#aufgabe-3-konzepte-und-schnittstellen-im-vergleich) | Konzepte und Schnittstellen im Vergleich<br/>(Vorausetzungen: `concept`, `requires`, `virtual`, `override`) |
+| [Aufgabe 4](./Exercises_17_Concepts.md#aufgabe-4-berechnung-der-gesamtlänge-beliebig-vieler-zeichenketten) | Berechnung der Gesamtlänge beliebig vieler Zeichenketten<br/>(Vorausetzungen: `requires`, `std::initializer_list`) |
 
 *Tabelle* 17: Aufgaben zu Konzepten.
 

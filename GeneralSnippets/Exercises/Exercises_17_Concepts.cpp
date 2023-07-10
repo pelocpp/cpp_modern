@@ -455,6 +455,59 @@ namespace Exercises_Concepts {
             Exercise_03_Using_Concepts::test();
         }
     }
+
+    namespace Exercise_04 {
+
+        template<typename... TArgs>
+            requires (std::same_as<TArgs, std::string> && ...)
+        size_t totalLength(const TArgs& ... args)
+        {
+            size_t len{};
+            for (const auto& s : { args ... }) {
+                len += s.size();
+            }
+            return len;
+        }
+
+        template<typename... TArgs>
+            requires (std::same_as<TArgs, std::string> && ...)
+        size_t totalLengthEx(const TArgs& ... args)
+        {
+            size_t len{};
+            for (const auto& s : { args.size() ... }) {
+                len += s;
+            }
+            return len;
+        }
+
+        void testExercise_01()
+        {
+            const std::string s1{ "111" };
+            const std::string s2{ "AAAAA" };
+            const std::string s3{ "!!!" };
+
+            size_t len{ totalLength(s1, s2, s3) };
+            std::cout << len << std::endl;
+
+            len = totalLengthEx(s1, s2, s3);
+            std::cout << len << std::endl;
+        }
+
+        void testExercise_02()
+        {
+            const std::string cs{ "11111" };
+            const std::string& csr{ cs };
+            std::string s{ "333" };
+
+            size_t len{ totalLength(cs, std::string{ "2" }, csr, s) };
+            std::cout << len << std::endl;
+        }
+
+        void testExercise() {
+            testExercise_01();
+            testExercise_02();
+        }
+    }
 }
 
 void test_exercises_concepts()
@@ -464,6 +517,7 @@ void test_exercises_concepts()
     Exercise_01::testExercise();
     Exercise_02::testExercise();
     Exercise_03::testExercise();
+    Exercise_04::testExercise();
 }
 
 // =====================================================================================

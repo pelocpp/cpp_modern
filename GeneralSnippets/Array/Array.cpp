@@ -268,6 +268,7 @@ namespace StdArray {
     // =====================================================================================
 
     // std::to_array
+    // helper for creating a std::array from a C-array
 
     void test_20() {
 
@@ -281,6 +282,13 @@ namespace StdArray {
 
         // type is deduced to std::array<int, 5>
         auto array3 = std::to_array({ 1, 2, 3, 4, 5 });
+
+        // type is deduced to std::array<long, 5>
+        auto array4 = std::to_array<long>({ 1, 2, 3, 4, 5 });
+
+        // type is deduced to std::array<int, 5>
+        float numbers[]{ 1.5, 2.5, 3.5, 4.5, 5.5 };
+        auto array5 = std::to_array(numbers);
     }
 
     // =====================================================================================
