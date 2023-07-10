@@ -149,7 +149,7 @@ int count(T& t)
 
 Um das Funktionstemplate `count` instanziieren zu können, benötigen wir eine Klasse,
 die eine bestimmte Schnittstelle unterstützt. Welche Schnittstelle?
-Das erkennen wir beim genauen Betrachten des Rumpfes von `count`:
+Das erkennen wir nur beim genauen Betrachten des Rumpfes von `count`:
 Es müssen drei Methoden `hasNext`, `next` und `reset` mit der jeweils richtigen Signatur
 vorhanden sein.
 
@@ -157,17 +157,17 @@ Eine Überprüfung dieses Sachverhalts könnte man in C++ mit
 dem Schnittstellenkonzept erzielen:
 
 ```cpp
-class IntIterable
+class IntegerIterable
 {
 public:
-    virtual bool hasNext() = 0;
+    virtual bool hasNext() const = 0;
     virtual int next() = 0;
     virtual void reset() = 0;
 };
 ```
 
 Diesen Schnittstellentyp kann man nun als Parameter von Funktionen verwenden
-(wir haben es dann nicht einmal mit einem Funktionstemplate zu tun):
+(wir haben es dann nicht einmal mehr mit einem Funktionstemplate zu tun):
 
 ```cpp
 int count(IntegerIterable& t)
@@ -178,7 +178,7 @@ int count(IntegerIterable& t)
 
 Diese Vorgehensweise ist aber so nicht immer erwünscht.
 Einer von mehreren Gründen, der dagegegen spricht, ist der Umstand,
-dass virtuelle Methoden zur Laufzeit nicht so performant wir direkte Methodenaufrufe sind.
+dass virtuelle Methoden zur Laufzeit nicht so performant wie direkte Methodenaufrufe sind.
 
 Definieren Sie &ndash; in Gestalt eines alternativen Ansatzes &ndash; 
 ein Konzept `IsIterable`, das die drei Methoden `hasNext`, `next` und `reset` festschreibt.

@@ -337,11 +337,18 @@ namespace Exercises_Concepts {
                 }
             };
 
+            int getCount(IntegerIterable& a) {
+                return count(a);
+            }
+
             void test()
             {
                 IterableArray a{ 1, 2, 3 };
-                IntegerIterable* ap = &a;
 
+                int count = getCount(a);
+                std::cout << count << std::endl;
+
+                IntegerIterable* ap = &a;
                 ap->reset();
                 while (ap->hasNext()) {
                     int n{ ap->next() };
@@ -352,6 +359,9 @@ namespace Exercises_Concepts {
         }
 
         namespace Exercise_03_Using_Concepts {
+
+            // ---------------------------------------------------------------
+            // without concepts
 
             template <typename T>
             int count(T& t)
@@ -366,6 +376,9 @@ namespace Exercises_Concepts {
 
                 return count;
             }
+
+            // ---------------------------------------------------------------
+            // with concepts
 
             template <typename T>
             concept IsIterable = requires(T v)
