@@ -22,11 +22,11 @@ namespace ConstExprComplex {
         constexpr float imag() const { return m_imag; }
 
         // operators
-        friend constexpr Complex operator+(const Complex& x, const Complex& y)
+        constexpr Complex operator+ (const Complex& other) const
         {
-            float real = x.real() + y.real();
-            float imag = x.imag() + y.imag();
-            return Complex{ real, imag };
+            float real = m_real + other.m_real;
+            float imag = m_imag + other.m_imag;
+            return { real, imag };
         }
     };
 

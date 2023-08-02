@@ -63,7 +63,7 @@ Als Beispiel betrachten wir eine Klasse `Complex` für komplexe Zahlen, die Opera
 zur Übersetzungszeit unterstützt:
 
 ```cpp
-01: struct Complex
+01: class Complex
 02: {
 03: private:
 04:     float m_real;
@@ -79,11 +79,11 @@ zur Übersetzungszeit unterstützt:
 14:     constexpr float imag() const { return m_imag; }
 15: 
 16:     // operators
-17:     friend constexpr Complex operator+(const Complex& x, const Complex& y)
+17:     constexpr Complex operator+ (const Complex& other) const
 18:     {
-19:         float real = x.real() + y.real();
-20:         float imag = x.imag() + y.imag();
-21:         return Complex{ real, imag };
+19:         float real = m_real + other.m_real;
+20:         float imag = m_imag + other.m_imag;
+21:         return { real, imag };
 22:     }
 23: };
 ```

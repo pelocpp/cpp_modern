@@ -110,12 +110,12 @@ namespace Literals_Color_Runtime {
 
     void test_02_with_errors() {
         // value outside rgb range
-        // Color col1 = 0x1FFFFFF_rgb;
-        // std::cout << col1 << std::endl;
+         Color col1 = 0x1FFFFFF_rgb;
+         std::cout << col1 << std::endl;
 
         // illegal hexadecimal digit
-        // Color col2 = "0x00GG00"_rgb;
-        // std::cout << col2 << std::endl;
+         Color col2 = "0x00GG00"_rgb;
+         std::cout << col2 << std::endl;
     }
 }
 
