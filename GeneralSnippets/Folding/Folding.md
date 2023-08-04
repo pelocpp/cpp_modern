@@ -4,7 +4,7 @@
 
 ---
 
-[Quellcode](VariadicTemplatesFolding.cpp)
+[Quellcode](Folding.cpp)
 
 ---
 

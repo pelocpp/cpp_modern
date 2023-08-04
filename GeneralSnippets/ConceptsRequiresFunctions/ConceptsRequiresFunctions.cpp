@@ -15,7 +15,7 @@ concept NumericalEx = std::is_integral<T>::value || std::is_floating_point<T>::v
 namespace Requires_Clause {
 
     template <typename T>
-    requires Numerical<T>
+        requires Numerical<T>
     auto add(T a, T b)
     {
         return a + b;
@@ -23,7 +23,7 @@ namespace Requires_Clause {
 
     // "inlining" constraints on template parameter types
     template <typename T>
-    requires std::integral<T> || std::floating_point<T>
+        requires std::integral<T> || std::floating_point<T>
     auto addEx(T a, T b)
     {
         return a + b;
@@ -37,12 +37,23 @@ namespace Requires_Clause {
         auto sum2 = add(123.456, 654.321);
         std::cout << sum2 << std::endl;
 
-        // no instance of function template "add" matches the argument list
+        // 'add': no matching overloaded function found		
+        // template parameter 'T' is ambiguous
+        //   could be 'float'
+        //   or 'double'
         // auto sum3 = add(123.456, 654.321F);
+
+        //'add': no matching overloaded function found
+        //    could be 'auto Requires_Clause::add(T,T)'
+        //    the associated constraints are not satisfied
+        //    the concept 'Numerical<std::string>' evaluated to false
+        //    the concept 'std::floating_point<std::string>' evaluated to false
+        //    the concept 'std::integral<std::string>' evaluated to false
+        // auto sum4 = add(std::string { "ABC" }, std::string { "DEF" });
     }
 
     template <typename T, typename U>
-    requires Numerical<T> && Numerical<U>
+        requires Numerical<T> && Numerical<U>
     auto add(T a, U b)
     {
         return a + b;
@@ -57,7 +68,7 @@ namespace Requires_Clause {
     void test_concepts_requires_variant_01_c()
     {
         std::string s1{ "ABC" };
-        std::string s2{ "ABC" };
+        std::string s2{ "DEF" };
 
         // the associated constraints are not satisfied:
         // auto result = add(s1, s2);
@@ -65,7 +76,7 @@ namespace Requires_Clause {
 
     // using <type_traits>
     template<typename T>
-    requires std::is_integral<T>::value
+        requires std::is_integral<T>::value
     double avg(const std::vector<T>& vec)
     {
         double sum{

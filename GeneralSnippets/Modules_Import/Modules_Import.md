@@ -201,8 +201,8 @@ exportierten Entitäten (hier: Namensraum `MyHelloWorld`) für die importierende Ü
 
 ## Modul Partitionen
 
-Genau wie bei C++&ndash;Headerdateien müssen Module nicht zwingend aufgeteilt,
-also deren Inhalt nich auf mehrere Dateien aufgeteilt werden.
+Genau wie bei C++&ndash;Headerdateien müssen Module nicht zwingend aufgeteilt werden,
+also deren Inhalt nicht auf mehrere Dateien verteilt werden.
 Trotzdem können große Quelldateien unhandlich werden, sodass C++&ndash;Module auch eine Möglichkeit bieten,
 ein einzelnes Modul in verschiedene Übersetzungseinheiten zu unterteilen.
 Diese Unterteilungen werden als *Partitionen* bezeichnet.

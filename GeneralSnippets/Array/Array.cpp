@@ -54,7 +54,7 @@ namespace StdArray {
         std::cout << array[3] << std::endl;
 
         // undefined behaviour
-        // std::cout << myArray[5] << std::endl;
+        // std::cout << array[5] << std::endl;
 
         // valid index
         array.at(2) = 33;

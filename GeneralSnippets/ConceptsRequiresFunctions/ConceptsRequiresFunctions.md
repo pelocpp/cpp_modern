@@ -33,7 +33,7 @@ Der Rückgabetyp der Funktion kann dann `auto` oder einer der Template Parameter 
 02: concept Numerical = std::integral<T> || std::floating_point<T>;
 03: 
 04: template <typename T>
-05: requires Numerical<T>
+05:     requires Numerical<T>
 06: auto add(T a, T b)
 07: {
 08:     return a + b;
@@ -45,7 +45,7 @@ Im nachfolgenden Beispiel lassen sich Werte unterschiedlichen Typs addieren:
 
 ```cpp
 template <typename T, typename U>
-requires Numerical<T> && Numerical<U>
+    requires Numerical<T> && Numerical<U>
 auto add(T a, U b)
 {
     return a + b;
@@ -71,7 +71,7 @@ Man kann die Requirements der Template Parameter auch in einer Art
 
 ```cpp
 01: template <typename T>
-02: requires std::integral<T> || std::floating_point<T>
+02:     requires std::integral<T> || std::floating_point<T>
 03: auto add(T a, T b)
 04: {
 05:     return a + b;
