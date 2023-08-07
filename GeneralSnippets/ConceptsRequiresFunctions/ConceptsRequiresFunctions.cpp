@@ -29,7 +29,7 @@ namespace Requires_Clause {
         return a + b;
     }
 
-    void test_concepts_requires_variant_01_a()
+    void test_concepts_requires_01()
     {
         float sum1 = add(123.456f, 654.321f);
         std::cout << sum1 << std::endl;
@@ -44,13 +44,15 @@ namespace Requires_Clause {
         // auto sum3 = add(123.456, 654.321F);
 
         //'add': no matching overloaded function found
-        //    could be 'auto Requires_Clause::add(T,T)'
         //    the associated constraints are not satisfied
         //    the concept 'Numerical<std::string>' evaluated to false
         //    the concept 'std::floating_point<std::string>' evaluated to false
         //    the concept 'std::integral<std::string>' evaluated to false
         // auto sum4 = add(std::string { "ABC" }, std::string { "DEF" });
     }
+
+    // ---------------------------------------------------------------------------------
+    // several, different template parameters
 
     template <typename T, typename U>
         requires Numerical<T> && Numerical<U>
@@ -59,13 +61,13 @@ namespace Requires_Clause {
         return a + b;
     }
 
-    void test_concepts_requires_variant_01_b()
+    void test_concepts_requires_02()
     {
         auto sum = add(123.456, 654.321F);
         std::cout << sum << std::endl;
     }
     
-    void test_concepts_requires_variant_01_c()
+    void test_concepts_requires_03()
     {
         std::string s1{ "ABC" };
         std::string s2{ "DEF" };
@@ -90,7 +92,7 @@ namespace Requires_Clause {
         return sum / vec.size();
     }
 
-    void test_concepts_requires_variant_01_d()
+    void test_concepts_requires_04()
     {
         std::vector<int> numbers{ 1, 2, 3, 4, 5 };
         std::vector<double> moreNumbers{ 1, 2, 3, 4, 5 };
@@ -101,12 +103,12 @@ namespace Requires_Clause {
         // auto anotherAverage = avg(moreNumbers);
     }
 
-    void test_concepts_requires_variant_01()
+    void test_concepts_requires_basic_usage()
     {
-        test_concepts_requires_variant_01_a();
-        test_concepts_requires_variant_01_b();
-        test_concepts_requires_variant_01_c();
-        test_concepts_requires_variant_01_d();
+        test_concepts_requires_01();
+        test_concepts_requires_02();
+        test_concepts_requires_03();
+        test_concepts_requires_04();
     }
 }
 
@@ -130,7 +132,7 @@ namespace Trailing_Requires_Clause {
         return a + b;
     }
 
-    void test_concepts_requires_variant_02()
+    void test_trailing_requires_clause()
     {
         float sum1 = add(123.456f, 654.321f);
         std::cout << sum1 << std::endl;
@@ -157,7 +159,7 @@ namespace Constrained_Template_Parameters {
         return a + b;
     }
 
-    void test_concepts_requires_variant_03()
+    void test_constrained_template_parameters()
     {
         float sum1 = add(123.456f, 654.321f);
         std::cout << sum1 << std::endl;
@@ -177,7 +179,7 @@ namespace Abbreviated_Function_Templates {
         return a + b;
     }
 
-    void test_concepts_requires_variant_04()
+    void test_abbreviated_function_template_syntax()
     {
         float sum1 = add(123.456f, 654.321f);
         std::cout << sum1 << std::endl;
@@ -190,7 +192,7 @@ namespace Abbreviated_Function_Templates {
     }
 }
 
-namespace Usedefined_Concept {
+namespace UserDefined_Concept {
 
     template<typename T>
     constexpr bool isGreaterThanWord{ sizeof(T) > 2 };
@@ -204,7 +206,7 @@ namespace Usedefined_Concept {
         return arg + 1;
     }
 
-    void test_concepts_requires_variant_05()
+    void test_user_defined_concept()
     {
         int n{ 123 };
         n = incrementByOne(n);
@@ -217,11 +219,11 @@ namespace Usedefined_Concept {
 
 void main_concepts_requires_functions()
 {
-    Requires_Clause::test_concepts_requires_variant_01();
-    Trailing_Requires_Clause::test_concepts_requires_variant_02();
-    Constrained_Template_Parameters::test_concepts_requires_variant_03();
-    Abbreviated_Function_Templates::test_concepts_requires_variant_04();
-    Usedefined_Concept::test_concepts_requires_variant_05();
+    Requires_Clause::test_concepts_requires_basic_usage();
+    Trailing_Requires_Clause::test_trailing_requires_clause();
+    Constrained_Template_Parameters::test_constrained_template_parameters();
+    Abbreviated_Function_Templates::test_abbreviated_function_template_syntax();
+    UserDefined_Concept::test_user_defined_concept();
 }
 
 // =====================================================================================
