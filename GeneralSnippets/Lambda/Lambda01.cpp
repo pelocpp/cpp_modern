@@ -108,12 +108,13 @@ namespace Lambdas {
     void test_04() {
 
         // defining a lambda without 'auto'
-        std::function<int(int, int, int)> threeArgs([](int x, int y, int z) {
-            return x + y + z; 
+        std::function<int(int, int, int)> lambdaWithThreeParams {
+            [] (int x, int y, int z) {
+                return x + y + z;
             }
-        );
+        };
 
-        std::cout << threeArgs (5, 6, 7) << std::endl;
+        std::cout << lambdaWithThreeParams(5, 6, 7) << std::endl;
     }
 
     void test_05() {

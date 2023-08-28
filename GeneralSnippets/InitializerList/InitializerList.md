@@ -10,7 +10,7 @@
 
 # Allgemeines
 
-Wenn der Compiler eine `std::initializer_list`-Objekt erstellt,
+Wenn der Compiler ein `std::initializer_list`-Objekt erstellt,
 werden die Elemente der Liste auf dem Stapel konstruiert (als konstante Objekte).
 
 Danach erstellt der Compiler das `std::initializer_list`-Objekt selbst,
