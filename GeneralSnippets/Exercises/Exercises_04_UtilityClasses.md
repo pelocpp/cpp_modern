@@ -96,7 +96,7 @@ Movie movieBond{ "Spectre", "Sam Mendes", 8.99, 6 };
 
 using MyBookstore = Bookstore<Book, Movie>;
 
-MyBookstore bookstore = MyBookstore {
+MyBookstore bookstore {
     cBook, movieBond, javaBook, cppBook, csharpBook, movieTarantino
 };
 ```

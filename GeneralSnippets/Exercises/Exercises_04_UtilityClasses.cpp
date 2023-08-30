@@ -233,7 +233,7 @@ namespace Exercises_UtilityClasses {
 
             using MyBookstore = Bookstore<Book, Movie>;
 
-            MyBookstore bookstore = MyBookstore {
+            MyBookstore bookstore {
                 cBook, movieBond, javaBook, cppBook, csharpBook, movieTarantino
             };
 
@@ -250,9 +250,7 @@ namespace Exercises_UtilityClasses {
 
             using MyBookstore = Bookstore<Book, Movie>;
 
-            MyBookstore bookstore = MyBookstore{
-                cBook, movieBond
-            };
+            MyBookstore bookstore { cBook, movieBond };
 
             Book csharpBook{ "C#", "Anders Hejlsberg", 21.99, 1 };
             bookstore.addMedia(csharpBook);
