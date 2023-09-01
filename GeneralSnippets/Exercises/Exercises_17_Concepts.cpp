@@ -292,6 +292,9 @@ namespace Exercises_Concepts {
 
         namespace Exercise_03_Using_Interface {
 
+            // ---------------------------------------------------------------
+            // without interfaces
+
             class IntegerIterable
             {
             public:
@@ -307,7 +310,7 @@ namespace Exercises_Concepts {
                 t.reset();
                 while (t.hasNext()) {
                     t.next();
-                    count++;
+                    ++count;
                 }
 
                 return count;
@@ -316,8 +319,8 @@ namespace Exercises_Concepts {
             class IterableArray : public IntegerIterable
             {
             private:
-                std::vector<int> m_array{};
-                size_t m_index{};
+                std::vector<int> m_array;
+                size_t m_index;
 
             public:
                 IterableArray(std::initializer_list<int> numbers)
@@ -332,7 +335,7 @@ namespace Exercises_Concepts {
                 }
 
                 virtual int next() override {
-                    m_index++;
+                    ++m_index;
                     return m_array[m_index - 1];
                 }
             };
@@ -341,13 +344,13 @@ namespace Exercises_Concepts {
                 return count(a);
             }
 
-            void test()
-            {
+            void test() {
                 IterableArray a{ 1, 2, 3 };
 
                 int count = getCount(a);
                 std::cout << count << std::endl;
 
+                // Note: '->'-Operator
                 IntegerIterable* ap = &a;
                 ap->reset();
                 while (ap->hasNext()) {
@@ -371,7 +374,7 @@ namespace Exercises_Concepts {
                 t.reset();
                 while (t.hasNext()) {
                     t.next();
-                    count++;
+                    ++count;
                 }
 
                 return count;
@@ -395,7 +398,7 @@ namespace Exercises_Concepts {
                 t.reset();
                 while (t.hasNext()) {
                     t.next();
-                    count++;
+                    ++count;
                 }
                 return count;
             }
@@ -403,8 +406,8 @@ namespace Exercises_Concepts {
             class IterableArray
             {
             private:
-                std::vector<int> m_array{};
-                size_t m_index{};
+                std::vector<int> m_array;
+                size_t m_index;
 
             public:
                 IterableArray(std::initializer_list<int> numbers)
@@ -419,7 +422,7 @@ namespace Exercises_Concepts {
                 }
 
                 int next() {
-                    m_index++;
+                    ++m_index;
                     return m_array[m_index - 1];
                 }
             };
@@ -430,8 +433,7 @@ namespace Exercises_Concepts {
                 return count(a);
             }
 
-            void test()
-            {
+            void test() {
                 IterableArray a{ 1, 2, 3 };
 
                 int count1 = getCount(a);
@@ -440,6 +442,7 @@ namespace Exercises_Concepts {
                 std::cout << count1 << std::endl;
                 std::cout << count2 << std::endl;
 
+                // Note: '.'-Operator
                 a.reset();
                 while (a.hasNext()) {
                     int n{ a.next() };
@@ -449,10 +452,73 @@ namespace Exercises_Concepts {
             }
         }
 
+        namespace Exercise_03_Using_Concepts_Improved {
+
+            // ---------------------------------------------------------------
+            // with concepts
+
+            template <typename T, typename U>
+            concept GenericIsIterable = requires(T v)
+            {
+                { std::as_const(v).hasNext() } -> std::convertible_to<bool>;
+                { v.next() } -> std::same_as<U>;
+                { v.reset() }-> std::convertible_to<void>;
+            };
+
+            template <typename T, typename U>
+                requires GenericIsIterable<T, U>
+            int count(T& t) {
+                int count{};
+                t.reset();
+                while (t.hasNext()) {
+                    t.next();
+                    count++;
+                }
+                return count;
+            }
+
+            class IterableDoubleArray
+            {
+            private:
+                std::vector<double> m_array{};
+                size_t m_index{};
+
+            public:
+                IterableDoubleArray(std::initializer_list<double> numbers)
+                    : m_array{ numbers }, m_index{} {}
+
+                void reset() {
+                    m_index = 0;
+                }
+
+                bool hasNext() const {
+                    return m_index < m_array.size();
+                }
+
+                double next() {
+                    m_index++;
+                    return m_array[m_index - 1];
+                }
+            };
+
+            template <typename T, typename U>
+                requires GenericIsIterable <T, U>
+            int getCount(T& a) {
+                return count<T, U>(a);
+            }
+
+            void test() {
+                IterableDoubleArray d{ 1.5, 2.5, 3.5, 4.5, 5.5 };
+                int count = getCount<IterableDoubleArray, double>(d);
+                std::cout << count << std::endl;
+            }
+        }
+
         void testExercise() {
 
             Exercise_03_Using_Interface::test();
             Exercise_03_Using_Concepts::test();
+            Exercise_03_Using_Concepts_Improved::test();
         }
     }
 
