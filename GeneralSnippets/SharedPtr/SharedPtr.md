@@ -4,7 +4,7 @@
 
 ---
 
-[Quellcode](StdSharedPtr.cpp)
+[Quellcode](SharedPtr.cpp)
 
 ---
 

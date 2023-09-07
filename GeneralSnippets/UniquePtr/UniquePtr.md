@@ -36,7 +36,7 @@ Sie muss in diesem Beispiel nur nicht explizit formuliert werden,
 da der Rückgabewert des Erzeugers ein temporäres Objekt ist und infolgedessen der
 Verschiebe-Konstruktor automatisch aufgerufen wird.
 
-Im [Quellcode](StdUniquePtr.cpp) finden Sie hierzu ein Beispiel vor.
+Im [Quellcode](UniquePtr.cpp) finden Sie hierzu ein Beispiel vor.
 
 ---
 
