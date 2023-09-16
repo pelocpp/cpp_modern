@@ -179,8 +179,8 @@
     <ClCompile Include="ConstExpr\ConstExpr_02.cpp" />
     <ClCompile Include="ConstExpr\ConstExpr_CRC.cpp" />
     <ClCompile Include="ConstExpr\Module_ConstExpr.ixx" />
-    <ClCompile Include="ConstructursOrder\ConstructorsDestructorsOrder.cpp" />
-    <ClCompile Include="ConstructursOrder\Module_ConstructorsDestructorsOrder.ixx" />
+    <ClCompile Include="ConstructorsOrder\ConstructorsDestructorsOrder.cpp" />
+    <ClCompile Include="ConstructorsOrder\Module_ConstructorsDestructorsOrder.ixx" />
     <ClCompile Include="CopyMoveElision\CopyMoveElision.cpp" />
     <ClCompile Include="CopyMoveElision\Module_CopyMoveElision.ixx" />
     <ClCompile Include="CRTP\CRTP.cpp" />
@@ -367,7 +367,7 @@
     <None Include="ConceptsRequiresFunctions\ConceptsRequiresFunctions.md" />
     <None Include="ConstExpr\Constexpr.md" />
     <None Include="ConstExpr\Constexpr_02.md" />
-    <None Include="ConstructursOrder\CtorDtorOrder.md" />
+    <None Include="ConstructorsOrder\ConstructorsDestructorsOrder.md" />
     <None Include="CopyMoveElision\CopyMoveElision.md" />
     <None Include="CRTP\CRTP.md" />
     <None Include="DeclType\decltype.md" />
