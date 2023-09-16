@@ -2,10 +2,6 @@
 // Exercises_05_VariadicTemplates.cpp
 // =====================================================================================
 
-module;
-
-// import <typeinfo>;   // There are some problems with typeid and modules ... 
-
 module modern_cpp_exercises:variadic_templates;
 
 namespace Exercises_VariadicTemplates {
@@ -92,8 +88,8 @@ namespace Exercises_VariadicTemplates {
         template<typename T1, typename T2>
         bool sameType(T1 arg1, T2 arg2)
         {
-            //std::cout << " # " << arg1 << ": " << typeid(arg1).name();
-            //std::cout << " - " << arg2 << ": " << typeid(arg2).name() << std::endl;
+            std::cout << " # " << arg1 << ": " << typeid(arg1).name();
+            std::cout << " - " << arg2 << ": " << typeid(arg2).name() << std::endl;
 
             return std::is_same<decltype(arg1), decltype(arg2)>::value;
             // or
@@ -105,8 +101,8 @@ namespace Exercises_VariadicTemplates {
         template<typename T1, typename T2, typename... TRest>
         bool sameType(T1 arg1, T2 arg2, TRest... args)
         {
-            //std::cout << " > " << arg1 << ": " << typeid(arg1).name();
-            //std::cout << " - " << arg2 << ": " << typeid(arg2).name() << std::endl;
+            std::cout << " > " << arg1 << ": " << typeid(arg1).name();
+            std::cout << " - " << arg2 << ": " << typeid(arg2).name() << std::endl;
 
             // Note: short-circuit-evaluation is considered !
             // Study output of program execution

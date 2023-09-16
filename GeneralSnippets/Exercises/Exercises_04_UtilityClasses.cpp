@@ -134,6 +134,11 @@ namespace Exercises_UtilityClasses {
                 m_stock.push_back(media);
             }
 
+            // or
+            void addMediaEx(const auto& media) {
+                m_stock.push_back(media);
+            }
+
             double totalBalance() {
 
                 double total{};
@@ -254,6 +259,9 @@ namespace Exercises_UtilityClasses {
 
             Book csharpBook{ "C#", "Anders Hejlsberg", 21.99, 1 };
             bookstore.addMedia(csharpBook);
+
+            Book cppBook{ "C++", "Bjarne Stroustrup", 16.99, 4 };
+            bookstore.addMediaEx(cppBook);
 
             size_t count{ bookstore.count() };
             std::cout << "Count of elements in Bookstore: " << count << std::endl;

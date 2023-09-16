@@ -181,17 +181,15 @@ namespace VariantDemo {
         std::cout << std::endl;
 
         // display each type
-        // C++ modules & typeid don't work
-        //std::cout << "Types:       ";
-        //for (const auto& var : vec) {
-        //    std::visit([](const auto& arg) { std::cout << typeid(arg).name() << " "; }, var);
-        //}
-        //std::cout << std::endl;
+        std::cout << "Types:       ";
+        for (const auto& var : vec) {
+            std::visit([](const auto& arg) { std::cout << typeid(arg).name() << " "; }, var);
+        }
+        std::cout << std::endl; 
 
         // get the sum
-        // C++ modules & typeid don't work
         std::common_type<int, long, long long, float, double>::type res{};
-        //std::cout << "Type of Sum: " << typeid(res).name() << std::endl;
+        std::cout << "Type of Sum: " << typeid(res).name() << std::endl;
 
         for (const auto& var : vec) {
             std::visit([&res](const auto& arg) { res += arg; }, var);
