@@ -10,7 +10,7 @@ Siehe dazu auch das Sprachfeature [Default-Initialisierung für Member-Variablen]
 
 ---
 
-[Quellcode](UniformInitialization.cpp)
+[Quellcode](BraceInitialization.cpp)
 
 ---
 
