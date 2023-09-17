@@ -37,10 +37,11 @@ Am besten studiert man die einzelnen Möglichkeiten an Hand der folgenden Systema
   * Statisch allokierte (bzw. definierte) Felder
   * Geschachtelte Strukturen / *Brace Elision* (Entfernen von Klammern)
 
+---
 
 #### Resümee
 
-Das Feature der *einheitlichen Initialisierung* bringt zwei Vorteile mit sich:
+Das Feature der *einheitlichen Initialisierung* bringt drei Vorteile mit sich:
 
   * Es lassen sich nun manche Konstrukte initialisieren, bei denen das bisher nicht möglich war:
     * STL-Containerobjekte
@@ -55,6 +56,15 @@ Das Feature der *einheitlichen Initialisierung* bringt zwei Vorteile mit sich:
     <b>( ... )</b> ==> Funktions-/Methoden-Aufruf
 </pre>
 
+  * Die *einheitliche Initialisierung* erlaubt kein &ldquo;*Narrowing*&rdquo;:
+
+  <pre>
+    double d1 = ival;      // Compiles
+    // double d2{ ival };  // Error: "conversion from 'int' to 'double' requires a narrowing conversion"
+   </pre>
+
+Eine genaue Begründung der Fehlermeldung des letzten Beispiels
+findet man [hier](https://isocpp.org/blog/2016/05/quick-q-why-is-list-initialization-using-curly-braces-better-than-the-alter/).
 
 ---
 

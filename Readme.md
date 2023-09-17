@@ -124,6 +124,7 @@ Es folgt eine tabellarische Auflistung dieser Unterverzeichnisse.
 | [Auto](GeneralSnippets/Auto/Auto.md) | Keyword `auto` |
 | [BackInserter](GeneralSnippets/BackInserter/BackInserter.md) | `std::back_inserter` Iterator |
 | [Bind](GeneralSnippets/Bind/Bind.md) | `std::bind` |
+| [BraceInitialization](GeneralSnippets/BraceInitialization/BraceInitialization.md) | Einheitliches Initialisierungs-Konzept |
 | [Casts](GeneralSnippets/Casts/Casts.md) | Typumwandlungen `static_cast`, `dynamic_cast`, `const_cast` und `reinterpret_cast` |
 | [CommonType](GeneralSnippets/CommonType/CommonType.md) | Utility `std::common_type` |
 | [Concepts/Requires/Classes](GeneralSnippets/ConceptsRequiresClasses/ConceptsRequiresClasses.md) | Moderne Stilistik für die Schreibweise von Klassen |
@@ -176,7 +177,6 @@ Es folgt eine tabellarische Auflistung dieser Unterverzeichnisse.
 | [TrimmingStrings](GeneralSnippets/Trim/Trim.md) | Leerzeichen am Anfang und Ende einer Zeichenkette entfernen |
 | [Tuples](GeneralSnippets/Tuple/Tuple.md) | Neue STL-Utility Klasse `std::tuple` |
 | [TypeTraits](GeneralSnippets/TypeTraits/TypeTraits.md) | Typmerkmale |
-| [UniformInitialization](GeneralSnippets/UniformInitialization/UniformInitialization.md) | Einheitliches Initialisierungs-Konzept |
 | [UniquePointer](GeneralSnippets/UniquePtr/UniquePtr.md) | Klasse `std::unique_ptr<T>` |
 | [UsingNamespaceStd](GeneralSnippets/UsingNamespaceStd/UsingNamespaceStd.md) | Warum ist `using namespace std;` als schlechte Praxis angesehen? |
 | [VariadicTemplates](GeneralSnippets/VariadicTemplates/VariadicTemplates_01_Introduction.md) | Templates mit variabler Argumentanzahl (Variadische Templates) |

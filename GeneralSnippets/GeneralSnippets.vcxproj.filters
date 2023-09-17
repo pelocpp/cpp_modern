@@ -135,9 +135,6 @@
     <ClCompile Include="DeclType\Decltype.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="UniformInitialization\UniformInitialization.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="UniquePtr\UniquePtr.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -564,9 +561,6 @@
     <ClCompile Include="TypeTraits\Module_TypeTraits.ixx">
       <Filter>Modules</Filter>
     </ClCompile>
-    <ClCompile Include="UniformInitialization\Module_UniformInitialization.ixx">
-      <Filter>Modules</Filter>
-    </ClCompile>
     <ClCompile Include="UniquePtr\Module_UniquePtr.ixx">
       <Filter>Modules</Filter>
     </ClCompile>
@@ -628,6 +622,12 @@
       <Filter>Modules</Filter>
     </ClCompile>
     <ClCompile Include="ConstructorsOrder\ConstructorsDestructorsOrder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BraceInitialization\Module_BraceInitialization.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="BraceInitialization\BraceInitialization.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -747,9 +747,6 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="DeclType\decltype.md">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="UniformInitialization\UniformInitialization.md">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="FunctionalProgramming\FunctionalProgramming.md">
@@ -1004,6 +1001,9 @@
     <None Include="ConstructorsOrder\ConstructorsDestructorsOrder.md">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="BraceInitialization\BraceInitialization.md">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="VariadicTemplates\cpp_snippets_mixins_01.png">
@@ -1088,6 +1088,9 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="CopyMoveElision\CopyMoveElision.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="BraceInitialization\cpp_init.gif">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

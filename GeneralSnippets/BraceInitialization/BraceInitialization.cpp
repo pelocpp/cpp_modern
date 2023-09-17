@@ -7,6 +7,17 @@ module modern_cpp:uniform_initialization;
 namespace UniformInitialization {
 
     // =================================================================================
+    // Uniform initialization does not allow narrowing:
+    void test_00()
+    {
+        double dval{ 123.456 };
+        int ival{ 123 };
+
+        double d1 = ival;      // Compiles
+        // double d2{ ival };  // Error: "conversion from 'int' to 'double' requires a narrowing conversion"
+    }
+
+    // =================================================================================
     // built-in types: default initialization of miscellaneous variables
 
     void test_01()

@@ -167,6 +167,8 @@
     <ClCompile Include="BackInserter\Module_BackInserter.ixx" />
     <ClCompile Include="Bind\Bind.cpp" />
     <ClCompile Include="Bind\Module_Bind.ixx" />
+    <ClCompile Include="BraceInitialization\BraceInitialization.cpp" />
+    <ClCompile Include="BraceInitialization\Module_BraceInitialization.ixx" />
     <ClCompile Include="Casts\Casts.cpp" />
     <ClCompile Include="Casts\Module_Casts.ixx" />
     <ClCompile Include="CommonType\CommonType.cpp" />
@@ -328,8 +330,6 @@
     <ClCompile Include="Tuple\Tuple.cpp" />
     <ClCompile Include="TypeTraits\Module_TypeTraits.ixx" />
     <ClCompile Include="TypeTraits\TypeTraits.cpp" />
-    <ClCompile Include="UniformInitialization\Module_UniformInitialization.ixx" />
-    <ClCompile Include="UniformInitialization\UniformInitialization.cpp" />
     <ClCompile Include="UniquePtr\Module_UniquePtr.ixx" />
     <ClCompile Include="UniquePtr\UniquePtr.cpp" />
     <ClCompile Include="VariadicTemplates\Module_VariadicTemplates.ixx" />
@@ -361,6 +361,7 @@
     <None Include="Auto\Auto.md" />
     <None Include="BackInserter\BackInserter.md" />
     <None Include="Bind\Bind.md" />
+    <None Include="BraceInitialization\BraceInitialization.md" />
     <None Include="Casts\Casts.md" />
     <None Include="CommonType\CommonType.md" />
     <None Include="ConceptsRequiresClasses\ConceptsRequiresClasses.md" />
@@ -449,7 +450,6 @@
     <None Include="Trim\Trim.md" />
     <None Include="Tuple\Tuple.md" />
     <None Include="TypeTraits\TypeTraits.md" />
-    <None Include="UniformInitialization\UniformInitialization.md" />
     <None Include="UniquePtr\UniquePtr.md" />
     <None Include="UsingNamespaceStd\UsingNamespaceStd.md" />
     <None Include="VariadicTemplates\cpp_snippets_mixins_01.svg" />
@@ -484,6 +484,7 @@
     <Image Include="Auto\auto_no_const_reference.png" />
     <Image Include="Auto\decltype_auto_01.png" />
     <Image Include="Auto\decltype_auto_02.png" />
+    <Image Include="BraceInitialization\cpp_init.gif" />
     <Image Include="ConstExpr\ConstExpr01.png" />
     <Image Include="ConstExpr\ConstExpr02.png" />
     <Image Include="ConstExpr\ConstExpr03.png" />
