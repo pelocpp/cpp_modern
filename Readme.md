@@ -23,7 +23,7 @@ Einsatzbereichen nicht mehr wegzudenken.
 C++ zählt zu den Programmiersprachen, die ein etwas tieferes Verständnis erfordern.
 Ziel dieses Seminars/Repositories ist es, auf die größten Hürden beim Erlernen von *Modern C++* einzugehen!
 
-<img src="what_are_you_studying.png" width="300">
+<img src="Horse_Cpp.png" width="300">
 
 *Abbildung* 2: We get the Job done &ndash; :)
 
