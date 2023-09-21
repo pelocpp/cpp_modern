@@ -14,7 +14,9 @@
 
 *Modern C++* mag möglicherweise für den einen oder anderen Entwickler durch seine Komplexität etwas abschreckend wirken.
 
-<img src="what_are_you_studying.png" width="300">
+<p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="what_are_you_studying.png" width="300">
+</p>
 
 *Abbildung* 1: Modern C++ &ndash; *Relax*!
 
@@ -23,7 +25,9 @@ Einsatzbereichen nicht mehr wegzudenken.
 C++ zählt zu den Programmiersprachen, die ein etwas tieferes Verständnis erfordern.
 Ziel dieses Seminars/Repositories ist es, auf die größten Hürden beim Erlernen von *Modern C++* einzugehen!
 
-<img src="Horse_Cpp.png" width="600">
+<p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="Horse_Cpp.png" width="600">
+</p>
 
 *Abbildung* 2: We get the Job done &ndash; :)
 
