@@ -20,6 +20,8 @@
 
 *Abbildung* 1: Modern C++ &ndash; *Relax*!
 
+([Don’t Trust a Programmer Who Knows C++](https://analyticsindiamag.com/dont-trust-a-programmer-who-knows-c))
+
 Nichtsdestotrotz ist diese Programmiersprache aus der systemnahen Software-Entwicklung und vielen anderen
 Einsatzbereichen nicht mehr wegzudenken.
 C++ zählt zu den Programmiersprachen, die ein etwas tieferes Verständnis erfordern.
