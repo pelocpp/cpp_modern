@@ -57,7 +57,7 @@ welche dieser Konstruktoren auch auf andere Konstruktoren ausweichen können!
 
 ---
 
-## Aufgabe 2: Zeitvergleich im Gebrauch von Vektoren und Initialisierungs-Listen
+## Aufgabe 2: Zeitvergleich im Gebrauch von Vektoren und Initialisierungslisten
 
 Die Übergabe einer Liste von Daten desselben Typs
 an eine Funktion (Methode) könnte man in C++ prinzipiell auf zwei Weisen
