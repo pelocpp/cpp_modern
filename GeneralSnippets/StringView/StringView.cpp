@@ -12,19 +12,19 @@ namespace StringViewDemonstration {
 
     void test_01()
     {
-        std::string_view sv("The quick brown fox jumps over the lazy dog");  // Konstante Zeichenketten
+        std::string_view sv{ "The quick brown fox jumps over the lazy dog" };  // Konstante Zeichenkette
 
-        std::string s("The quick brown fox jumps over the lazy dog");  //  Heap
+        std::string s{ "The quick brown fox jumps over the lazy dog" };        //  Heap
 
         // sv[0] = '?';   // error
-        char ch = sv[0];
+        char ch{ sv[0] };
     }
 
     void test_02()
     {
-        std::string s("How vexingly quick daft zebras jump!");
+        std::string s{ "How vexingly quick daft zebras jump!" };
 
-        std::string_view sv(s);
+        std::string_view sv{ s };
 
         std::cout << sv << std::endl;
 
@@ -35,7 +35,7 @@ namespace StringViewDemonstration {
 
     void test_03()
     {
-        using namespace std::literals; // easiest way to access the s and sv suffixes
+        using namespace std::literals;      // easiest way to access the s and sv suffixes
 
         std::cout << "foo" << std::endl;    // no suffix: C-style string literal
         std::cout << "goo"s << std::endl;   // s suffix:  std::string literal
@@ -43,6 +43,7 @@ namespace StringViewDemonstration {
     }
 
     uint32_t countUpperCaseChars(std::string_view sv) {
+
         uint32_t result{};
         for (char c : sv) {
             if (std::isupper(c)) {
@@ -54,11 +55,11 @@ namespace StringViewDemonstration {
 
     void test_04()
     {
-        std::string_view sv("DiesIstEinLangerSatz");
-        uint32_t count = countUpperCaseChars(sv);
+        std::string_view sv{ "DiesIstEinLangerSatz" };
+        uint32_t count{ countUpperCaseChars(sv) };
         std::cout << "countUpperCaseChars: " << count << std::endl;
 
-        std::string s = "AuchDasWiederIstEinLangerSatz";
+        std::string s{ "AuchDasWiederIstEinLangerSatz" };
         count = countUpperCaseChars(s);
         std::cout << "countUpperCaseChars: " << count << std::endl;
 
