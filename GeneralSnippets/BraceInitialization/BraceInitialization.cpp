@@ -1,13 +1,13 @@
 // =====================================================================================
-// UniformInitialization.cpp // Uniform Initialization / Brace Initialization
+// BraceInitialization.cpp // Uniform Initialization / Brace Initialization
 // =====================================================================================
 
-module modern_cpp:uniform_initialization;
+module modern_cpp:brace_initialization;
 
-namespace UniformInitialization {
+namespace BraceInitialization {
 
     // =================================================================================
-    // Uniform initialization does not allow narrowing:
+    // Brace initialization does not allow narrowing:
     void test_00()
     {
         double dval{ 123.456 };
@@ -315,9 +315,9 @@ namespace UniformInitialization {
     }
 }
 
-void main_uniform_initialization()
+void main_brace_initialization()
 {
-    using namespace UniformInitialization;
+    using namespace BraceInitialization;
 
     test_01(); 
     test_02();

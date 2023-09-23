@@ -1,12 +1,12 @@
 // =====================================================================================
-// Module Interface Partition 'uniform_initialization'
+// Module Interface Partition 'brace_initialization'
 // =====================================================================================
 
-export module modern_cpp:uniform_initialization;
+export module modern_cpp:brace_initialization;
 
 import std;
 
-export void main_uniform_initialization();
+export void main_brace_initialization();
 
 // =====================================================================================
 // End-of-File

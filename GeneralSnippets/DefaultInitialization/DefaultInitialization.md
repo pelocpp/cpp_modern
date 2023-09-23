@@ -6,7 +6,7 @@
 
 *Hinweis*:
 
-Siehe dazu auch die Spracherweiterung [*Uniform Initialization*](../../GeneralSnippets/UniformInitialization/UniformInitialization.md).
+Siehe dazu auch die Spracherweiterung [*Uniform Initialization*](../../GeneralSnippets/BraceInitialization/BraceInitialization.md).
 
 ---
 
@@ -20,7 +20,7 @@ direkt in der Klassendefinition (und damit typischerweise im Header-File) bereit
 
 Man kann einfach einen Vorbelegungswert angeben,
 indem man diesen Wert nach seiner Deklaration in der Klassendefinition
-hinzufügt. Sowohl Initialisierungen mit geschweiften Klammern (siehe "*Uniform Initialization*")
+hinzufügt. Sowohl Initialisierungen mit geschweiften Klammern (siehe "*Brace Initialization*")
 als auch in Gestalt 
 einer Wertzuweisung sind zulässig - sie werden daher im C++-Standard als
 "*Brace-or-Equal-Initializer*" bezeichnet:

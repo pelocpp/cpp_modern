@@ -47,7 +47,7 @@
 
 
 ## Initialisierung
-  * Initialisierung (&ldquo;Uniform Initialization&ldquo;)
+  * Initialisierung (&ldquo;Brace Initialization&ldquo; bzw. &ldquo;Uniform Initialization&ldquo;)
   * Default-Initialisierung für Member-Variablen
   * Initialisierungslisten (`std::initializer_list`)
 

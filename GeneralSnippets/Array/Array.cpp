@@ -10,7 +10,7 @@ namespace StdArray {
 
         // initialization variants
         std::array<int, 5> array1{};
-        std::array<int, 5> array2{ 1, 2, 3, 4, 5 };     // uniform initialization
+        std::array<int, 5> array2{ 1, 2, 3, 4, 5 };     // brace initialization
         std::array<int, 5> array3 = { 1, 2, 3, 4, 5 };  // initializer list
     }
 
