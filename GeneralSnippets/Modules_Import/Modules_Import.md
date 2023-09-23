@@ -207,7 +207,7 @@ Trotzdem können große Quelldateien unhandlich werden, sodass C++&ndash;Module au
 ein einzelnes Modul in verschiedene Übersetzungseinheiten zu unterteilen.
 Diese Unterteilungen werden als *Partitionen* bezeichnet.
 
-Eine *Partitionen* wiederum kann aus einer oder aus mehreren Dateien bestehen.
+Eine *Partition* wiederum kann aus einer oder aus mehreren Dateien bestehen.
 Hierbei unterscheidet man *Module Interface Units* und *Module Implementation  Units*:
 
 Eine *Module Interface Unit* kann es nur einmal geben, die dazugehörigen

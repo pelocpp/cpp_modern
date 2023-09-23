@@ -45,9 +45,11 @@ namespace InitializerList {
 
     class Point {
     public:
-        Point() : Point(0.0, 0.0) {}
+        // c'tors
+        Point() : Point{ 0.0, 0.0 } {}
         Point(double x, double y) : m_x{ x }, m_y{ y } {}
 
+        // getter
         double X() const { return m_x; }
         double Y() const { return m_y; }
 
@@ -96,16 +98,14 @@ namespace InitializerList {
         TinyContainer() {}
         TinyContainer(int value) {}
         TinyContainer(std::initializer_list<int>) {};
-        TinyContainer(const std::vector<int>&) {};
     };
 
     void test_04() {
-        TinyContainer tc0;                                 // TinyContainer::TinyContainer ()
-        TinyContainer tc1{ 1, 2, 3, 4 };                   // TinyContainer::TinyContainer (std::initializer_list<int>)
-        TinyContainer tc2{ 1 };                            // TinyContainer::TinyContainer (std::initializer_list<int>)
-        TinyContainer tc3(1);                              // TinyContainer::TinyContainer (int)
-        TinyContainer tc4{ };                              // TinyContainer::TinyContainer ()
-        TinyContainer tc5{ std::vector<int> { 1, 2, 3} };  // TinyContainer::TinyContainer (const std::vector<int>&)
+        TinyContainer tc0;                  // TinyContainer::TinyContainer()
+        TinyContainer tc1{ 1, 2, 3, 4 };    // TinyContainer::TinyContainer(std::initializer_list<int>)
+        TinyContainer tc2{ 1 };             // TinyContainer::TinyContainer(std::initializer_list<int>)
+        TinyContainer tc3(1);               // TinyContainer::TinyContainer(int)
+        TinyContainer tc4{ };               // TinyContainer::TinyContainer()
     }
 
     // =================================================================================
@@ -118,15 +118,18 @@ namespace InitializerList {
         std::vector<std::string> m_names;
 
     public:
-        MyPeople(std::initializer_list<std::string> names) : m_names{ names } {}
+        // c'tors
+        MyPeople(std::initializer_list<std::string> names) 
+            : m_names{ names } {}
 
+        // getter
         size_t size() const { return m_names.size(); }
     };
 
     std::ostream& operator<< (std::ostream& os, MyPeople peoples) {
 
         os << '[';
-        for (int idx{}; const auto & elem : peoples.m_names) {
+        for (int idx{}; const auto& elem : peoples.m_names) {
             os << elem;
             if (idx < peoples.size() - 1) {
                 os << " - ";
@@ -139,10 +142,11 @@ namespace InitializerList {
     }
 
     void test_05() {
-        MyPeople people({ "Hans", "Sepp", "Franz", "Anton" });
+
+        MyPeople people{ "Hans", "Sepp", "Franz", "Anton" };
         std::cout << people << std::endl;
 
-        MyPeople noFriends({ });
+        MyPeople noFriends{ };
         std::cout << noFriends << std::endl;
     }
 
