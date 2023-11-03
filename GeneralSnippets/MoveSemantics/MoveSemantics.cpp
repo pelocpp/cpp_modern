@@ -50,11 +50,11 @@ namespace MoveSemantics {
     }
 
     BigData::BigData(size_t size, int preset) {
-        // empty buffer
+        // create buffer
         m_size = size;
         m_data = new int[m_size];
 
-        // initialize object
+        // initialize buffer
         std::fill(m_data, m_data + m_size, preset);
     }
 
