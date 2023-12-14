@@ -235,26 +235,28 @@ namespace StdArray {
     }
 
     // returning a std::array object: works
-    auto crossProduct(
-        const std::array<int, 3>& a, const std::array<int, 3>& b) -> std::array<int, 3>
+    std::array<int, 3>
+    crossProduct(const std::array<int, 3>& a, const std::array<int, 3>& b)
     {
-        return { {
+        return { 
             a[1] * b[2] - a[2] * b[1],
             a[2] * b[0] - a[0] * b[2],
             a[0] * b[1] - a[1] * b[0],
-        } };
+        };
     }
-
-    // returning address of local variable or temporary C style array:
-    // compiles, but is false
 
 #pragma warning(push)
 #pragma warning(disable : 4172)
 
-    auto c_crossProduct(
-        const int a[3], const int b[3]) // -> int[3]
+    // returning address of local variable or temporary C style array:
+    // compiles, but is false
+    // alternate signature could be
+    // 'auto c_crossProduct(...) -> int[3]'
+
+    int* 
+    c_crossProduct(const int a[3], const int b[3]) // -> int[3]
     {
-        int result[3]{
+        int result[3] {
             a[1] * b[2] - a[2] * b[1],
             a[2] * b[0] - a[0] * b[2],
             a[0] * b[1] - a[1] * b[0],
@@ -299,9 +301,11 @@ namespace StdArray {
 
         std::cout << std::format("Number of elements: {}\n", size);
 
+        // note: range-based loop doesn't work for pointers
         for (size_t i{}; i != size; ++i) {
             std::cout << std::format("{} ", array[i]);
         }
+
         std::cout << std::endl;
     }
 
@@ -310,6 +314,7 @@ namespace StdArray {
         std::cout << std::format("Number of elements: {}\n", values.size());
         std::cout << std::format("Size of span: {}\n", values.size_bytes());
 
+        // range-based loop
         for (auto elem : values) {
             std::cout << std::format("{} ", elem);
         }
