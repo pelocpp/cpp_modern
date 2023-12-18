@@ -28,7 +28,7 @@ Wir stellen einige signifikante Beispiele vor:
   * Variablen,
   * Klassen / benutzerdefinierte Datentypen mit `constexpr` Konstruktoren,
   * Klassentemplates mit `constexpr` Konstruktoren,
-  * `constexpr`-Funktionen und `constexpr`-Lambda-Funktionen und
+  * `constexpr`-Funktionen und `constexpr`-Lambda-Objekte und
   * Konstante `std::array<>`-Objekte, initialisiert mit variadischen Templates 
 
 ## Variablen
@@ -264,7 +264,7 @@ und damit nicht auf dem Zielsystem, für das Maschinencode generiert wird.
 33: }
 ```
 
-*Listing* 4: `constexpr`-Funktionen und -Lambda-Funktionen in der Praxis.
+*Listing* 4: `constexpr`-Funktionen und -Objekte-Funktionen in der Praxis.
 
 Die Zeilen 4 bis 22 von Listing 1 haben es in sich: Prinzipiell haben wir es mit einer Lambda-Funktion zu tun, die anonym ist,
 also keinen Namen besitzt! Eigentlich haben wir es mit einer Lambda-Templatefunktion zu tun,
@@ -648,7 +648,7 @@ Allgemeine Erläuterungen zum Verständnis der CRC-Thematik
 können auch hier nachgelesen werden:<br/>
 [Understanding and implementing CRC (Cyclic Redundancy Check) calculation](http://www.sunshine2k.de/articles/coding/crc/understanding_crc.html).
 
-Die Beispiele für `constexpr`-Funktionen und `constexpr`-Lambda-Funktionen sind in diesem Aufsatz erheblich anwendungsbezogener,
+Die Beispiele für `constexpr`-Funktionen und `constexpr`-Lambda-Objekte sind in diesem Aufsatz erheblich anwendungsbezogener,
 siehe zum Beispiel die beiden Funktionen zur Erstellung und den Zugriff auf CRC8 Lookup Tabellen:
 
 ```cpp

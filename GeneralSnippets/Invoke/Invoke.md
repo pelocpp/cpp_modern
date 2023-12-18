@@ -17,7 +17,7 @@ Man zählt dazu
   * einen Zeiger auf eine (reguläre) Funktion,
   * einen Zeiger auf eine Methode (*member function pointer*),
   * ein Funktionsobjekt,
-  * einen Funktor,
+  * ein aurufbares Objekt,
   * eine Lambda-Funktion
 
 Mit C++ 17 hat man nun eine Standardfunktion `std::invoke` ergänzt, 

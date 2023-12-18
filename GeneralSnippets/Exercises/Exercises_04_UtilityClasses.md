@@ -116,7 +116,7 @@ std::cout << "Total value of Bookstore: " << balance << std::endl;
 
 Noch ein Hinweis:
 
-Die `std::visit`-Funktion hat als ersten Parameter ein *Callable* (Funktor, generisches Lambda),
+Die `std::visit`-Funktion hat als ersten Parameter ein *Callable* (aufrufbares Objekt, generisches Lambda),
 um auf das `std::variant`-Objekt zugreifen zu können. Im `std::variant`-Objekt wiederum kann &ndash; in unserer Betrachtung &ndash;
 ein `Book`- oder ein `Movie`-Objekt enthalten sein. Wenn diese Klassen
 eine Methode desselben Namens (derselben Schnittstelle) enthalten,

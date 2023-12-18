@@ -23,11 +23,11 @@
 
 
 ## Lambdas
-  * Historische Betrachtung (Funktionen, Funktoren, Lambdas)
+  * Historische Betrachtung (Funktionen, aufrufbare Objekte, Lambdas)
   * *Capture*-Klausel
   * *Closure* von Lambdas
   * Lambdas und `std::function<T>`
-  * Zusammenhang Lambda-Funktion und Funktor
+  * Zusammenhang Lambda-Objekt und aufrufbares Objekt
   * IIFE -Immediately Invoked Functional Expression (Lambda)
 
 
@@ -100,7 +100,7 @@
   * Container
   * Iteratoren
   * Algorithmen
-  * Funktionsobjekte (Funktoren) und Lambdas
+  * Funktionsobjekte und Lambdas
 
 
 ## STL-Algorithmen

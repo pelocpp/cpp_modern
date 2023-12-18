@@ -32,7 +32,7 @@ auto lambda = [](auto x, int y) {
 Man beachte, dass der Lambda Ausdruck einen Parameter vom Typ `auto` hat.
 
 Intern &ndash; also aus Sicht des Compilers &ndash; wird ein derartiger Lambda Ausdruck
-auf ein &ldquo;aufrufbares Objekt&rdquo; (*Funktor*) abgebildet.
+auf ein &ldquo;aufrufbares Objekt&rdquo; abgebildet.
 Der Aufruf-Operator `operator()` wird dabei im Sinne der Template Technik als so genannte
 *Template Member Function* realisiert:
 

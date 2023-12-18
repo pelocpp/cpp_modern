@@ -17,8 +17,7 @@ fügen Sie nachstehenden Quellcode dort ein und bringen Sie das Programm zum Lau
 
 Ergänzen Sie das Programm um eine Lambda-Funktion, die dieselbe Funktionalität wie Funktion `even` hat,
 nur eben als Lambda-Funktion realisiert. Entwickeln Sie des weiteren eine Klasse `Even`,
-die die Funktionalität von Funktion `even` als *Funktor* repräsentiert (so genanntes *ausführbares Objekt*,
-das den `()`-Operator implementiert):
+die die Funktionalität von Funktion `even` als *ausführbares Objekt* repräsentiert.
 
 ```cpp
 void even(int val) {
@@ -53,7 +52,7 @@ bestimmt werden.
 
 Erstellen Sie ein `std::map`-Objekt vom Typ `std::map<char, std::function<double(double, double)>>`.
 Der zweite Parameter `std::function<double(double, double)>` ist so ausgelegt,
-dass er Lambda-Funktionen mit 2 `double`-Parametern und Rückgabewert `double` akzeptiert.
+dass er Lambda-Objekte mit zwei `double`-Parametern und Rückgabewert `double` akzeptiert.
 Also zum Beispiel
 
 ```cpp
@@ -70,7 +69,7 @@ Der erste Wert des `std::pair` Objekts ist eine `char`-Variable und spezifiziert
 die arithmetische Operation, also eine Addition im vorliegenden Beispiel.
 
 Erstellen Sie ein `std::map`-Objekt, dass für die 4 Grundrechenarten
-entsprechende Lambda-Funktionen besitzt. Schreiben Sie eine C++-Konsolen-Anwendung,
+entsprechende Lambda-Objekte besitzt. Schreiben Sie eine C++-Konsolen-Anwendung,
 die 2 `double`-Werte von der Konsole einliest und die entsprechenden Grundrechenarten ausführt.
 Ein Testrahmen für Ihre Anwendungen könnte so aussehen:
 

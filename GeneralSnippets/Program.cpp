@@ -27,6 +27,7 @@ int main()
         //main_attributes();
         //main_auto();
         //main_back_inserter();
+        //main_brace_initialization();
         //main_bind();
         //main_casts();
         //main_common_type();
@@ -89,7 +90,6 @@ int main()
         //main_trim();
         //main_tuple();
         //main_type_traits();
-        //main_uniform_initialization();
         //main_unique_ptr();
         //main_variadic_templates_introduction();
         //main_variadic_templates_working_on_every_argument();
