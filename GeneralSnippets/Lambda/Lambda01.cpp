@@ -6,7 +6,7 @@ module modern_cpp:lambda;
 
 namespace Lambdas {
 
-    bool compare (int n1, int n2) {
+    static bool compare (int n1, int n2) {
         return n1 < n2;
     }
 
@@ -24,14 +24,14 @@ namespace Lambdas {
         }
     };
 
-    void test_00()
+    static void test_00()
     {
         Comparer obj{ false };
         bool result = obj(1, 2);
         std::cout << std::boolalpha << result << std::endl;
     }
 
-    void test_01()
+    static void test_01()
     {
         // local class within function possible
         class LocalComparer
@@ -68,7 +68,7 @@ namespace Lambdas {
         }
     }
 
-    void test_02() {
+    static void test_02() {
 
         std::vector<int> vec{ 50, 90, 10, 30, 70, 80 };
 
@@ -88,7 +88,7 @@ namespace Lambdas {
         }
     }
 
-    void test_03() {
+    static void test_03() {
 
         // shortest lambda on earth: no parameters, capturing and doing nothing
         auto nothing = [] {};
@@ -105,7 +105,7 @@ namespace Lambdas {
         std::cout << itsFour() << ", " << itsFive() << std::endl;
     }
 
-    void test_04() {
+    static void test_04() {
 
         // defining a lambda without 'auto'
         std::function<int(int, int, int)> lambdaWithThreeParams {
@@ -117,7 +117,7 @@ namespace Lambdas {
         std::cout << lambdaWithThreeParams(5, 6, 7) << std::endl;
     }
 
-    void test_05() {
+    static void test_05() {
 
         // defining new variables in the lambda capture:
         // we can declare a new variable that is only visible
@@ -141,7 +141,7 @@ namespace Lambdas {
         std::cout << std::endl;
     }
 
-    void test_06() {
+    static void test_06() {
 
         int n = 1;
         int m = 2;
@@ -171,7 +171,7 @@ namespace Lambdas {
         l4();
     }
 
-    auto test_07_helper_a() {
+    static auto test_07_helper_a() {
 
         int n = 1;
         int m = 2;
@@ -183,7 +183,7 @@ namespace Lambdas {
         return lambda;
     }
 
-    auto test_07_helper_b() {
+    static auto test_07_helper_b() {
 
         int n = 1;
         int m = 2;
@@ -195,7 +195,7 @@ namespace Lambdas {
         return lambda;  // I would't do this never ever :-)
     }
 
-    void test_07() {
+    static void test_07() {
 
         auto outerLambda1 = test_07_helper_a();
         auto outerLambda2 = test_07_helper_b();
@@ -203,7 +203,7 @@ namespace Lambdas {
         outerLambda2();
     }
 
-    void test_08() {
+    static void test_08() {
 
         // demonstrating 'noexcept'
         auto itsOne([] () noexcept { return 1; });
@@ -211,7 +211,8 @@ namespace Lambdas {
         std::cout << itsOne() << ", " << itsTwo() << std::endl;
     }
 
-    void test_09() {
+    static void test_09() {
+
         // IIFE -Immediately Invoked Functional Expression:
         // Inline-definition and direct invocation of lambda funtion:
         

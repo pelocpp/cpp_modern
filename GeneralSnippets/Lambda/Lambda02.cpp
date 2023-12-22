@@ -6,7 +6,7 @@ module modern_cpp:lambda;
 
 namespace LambdaAndClosure {
 
-    void test_01() 
+    static void test_01()
     {
         int n{ 10 };
         auto lambda = [n] (int a) { return n + a; };
@@ -14,7 +14,7 @@ namespace LambdaAndClosure {
         std::cout << "m: " << m << std::endl;
     }
 
-    void test_02() 
+    static void test_02()
     {
         class ClosureClass
         {

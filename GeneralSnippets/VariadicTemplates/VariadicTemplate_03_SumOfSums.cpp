@@ -14,13 +14,13 @@ namespace VariadicTemplatesSumofSums {
         return std::accumulate(std::begin(sums), std::end(sums), 0);
     }
 
-    void test_01() {
+    static void test_01() {
         std::vector<int> vec { 1, 2, 3, 4, 5  };
         int sum = std::accumulate(std::begin(vec), std::end(vec), 0);
         std::cout << "sum: " << sum << std::endl;
     }
 
-    void test_02() {
+    static void test_02() {
         std::vector<int> vec{ 1, 2, 3, 4, 5 };
         std::deque<int> queue { 6, 7, 8, 9, 10 };
         std::list<int> list{ 11, 12, 13, 14, 15 };

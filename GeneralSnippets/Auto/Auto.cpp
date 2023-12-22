@@ -8,7 +8,7 @@ namespace Auto_Examples {
 
     std::map<int, std::string> getFunction() { return {}; };
 
-    void test_01_a() {
+    static void test_01_a() {
 
         auto n = 123;    // n is type of int
 
@@ -18,7 +18,7 @@ namespace Auto_Examples {
 
     // ---------------------------------------------------------------------
 
-    void test_01_b() {
+    static void test_01_b() {
 
         // auto figures out the below types
 
@@ -43,12 +43,12 @@ namespace Auto_Examples {
     // ---------------------------------------------------------------------
 
 
-    auto sum(float f1, float f2)
+    static auto sum(float f1, float f2)
     {
         return f1 + f2;
     }
 
-    auto foo(bool flag, char ch, double d) -> double
+    static auto foo(bool flag, char ch, double d) -> double
     {
         if (flag) {
             return ch;
@@ -58,7 +58,7 @@ namespace Auto_Examples {
         }
     }
 
-    void test_01_c() {
+    static void test_01_c() {
 
         auto result = sum(1.0, 2.0);  // float
 
@@ -79,14 +79,14 @@ namespace Auto_Examples {
 
     // ---------------------------------------------------------------------
 
-    auto make_planet()
+    static auto make_planet()
     {
         struct Planet { std::string name; int moons; bool rings; };
 
         return Planet{ "Saturn", 82, true };
     }
 
-    void test_01_d() {
+    static void test_01_d() {
 
         // using automatic return type deduction
         auto planet = make_planet();
@@ -109,12 +109,12 @@ namespace Auto_Examples {
 
     const std::string message{ "This is an important message :)" };
 
-    const std::string& getMessage()
+    static const std::string& getMessage()
     {
         return message;
     }
 
-    void test_01_e() {
+    static void test_01_e() {
 
         auto msg = getMessage();
         std::cout << "Message: " << msg << std::endl;
@@ -134,12 +134,12 @@ namespace Auto_Examples {
 
     // ---------------------------------------------------------------------
 
-    decltype(auto) getFirstCharacter(const std::string& s)
+    static decltype(auto) getFirstCharacter(const std::string& s)
     {
         return s[0];
     }
 
-    void test_01_f()
+    static void test_01_f()
     {
         auto ch1 = getFirstCharacter(std::string{ "ABC" });
         decltype(auto) ch2 = getFirstCharacter(std::string{ "ABC" });
@@ -147,22 +147,22 @@ namespace Auto_Examples {
 
     // ---------------------------------------------------------------------
 
-    int f() {
+    static int f() {
         return 0;
     }
 
-    void test_01_g_01()
+    static void test_01_g_01()
     {
         decltype(f()) i = 1;                 // i is integer
 
         std::vector<decltype(f())> v;        // vector<int>, cannot be done with auto
     }
 
-    int& g(int& i) {
+    static int& g(int& i) {
         return ++i;
     }
 
-    void test_01_g_02()
+    static void test_01_g_02()
     {
         int x = 10;
 
@@ -171,7 +171,7 @@ namespace Auto_Examples {
         auto& j = g(x);     // j is a reference to x  ==> 12
     }
 
-    void test_01_g()
+    static void test_01_g()
     {
         test_01_g_01();
         test_01_g_02();
@@ -197,7 +197,7 @@ namespace Auto_Examples {
         return t1 + t2;
     }
 
-    void test_01_h()
+    static void test_01_h()
     {
         // works - specifying all template parameters
         auto result = add1<long, int, int>(10, 20);

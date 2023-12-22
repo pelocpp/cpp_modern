@@ -13,7 +13,7 @@ namespace StandardAttributes {
         return 123;
     }
 
-    void test_01()
+    static void test_01()
     {
         int result = discard_test();
 
@@ -24,11 +24,11 @@ namespace StandardAttributes {
 #endif
     }
 
-    [[ noreturn ]] void criticalFunction() {
+    [[ noreturn ]] static void criticalFunction() {
         throw "error";
     }
 
-    void not_yet_ready()
+    static void not_yet_ready()
     {
         // set debug mode in compiler or 'R'
         [[ maybe_unused ]] char mg_brk = 'D';
@@ -37,7 +37,7 @@ namespace StandardAttributes {
         // or error on this unused variable
     }
 
-    void not_yet_ready_too()
+    static void not_yet_ready_too()
     {
         // set debug mode in compiler or 'R'
         char mg_brk = 'D';
@@ -57,7 +57,7 @@ namespace StandardAttributes {
     // For variables (including static data members)
     [[ deprecated ]] int x;
 
-    [[ deprecated ]] void test_deprecated()
+    [[ deprecated ]] static void test_deprecated()
     {
         Struct s{};
         f();
@@ -65,7 +65,7 @@ namespace StandardAttributes {
     }
 #endif
 
-    void complicatedSwitch(int n)
+    static void complicatedSwitch(int n)
     {
         switch (n)
         {

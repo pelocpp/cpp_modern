@@ -176,7 +176,7 @@ namespace ExpressionTemplates_VectorBasedVersion {
 
     // ========================================================================
 
-    void test_01()
+    static void test_01()
     {
         std::cout << "Expression Template 01: Classical Approach" << std::endl;
 
@@ -184,7 +184,7 @@ namespace ExpressionTemplates_VectorBasedVersion {
         Matrix result = a + b + c + d;  // result(x, y) = 10 
     }
 
-    void test_02()
+    static void test_02()
     {
         std::cout << "Expression Template 02:" << std::endl;
 
@@ -216,7 +216,7 @@ namespace ExpressionTemplates_VectorBasedVersion {
         }
     }
 
-    void test_03()
+    static void test_03()
     {
         std::cout << "Expression Template 03: Expression Templates Approach" << std::endl;
 
@@ -238,7 +238,7 @@ namespace ExpressionTemplates_VectorBasedVersion {
 
     // =====================================================================================
 
-    void test_04a_benchmark(
+    static void test_04a_benchmark(
         int iterations,
         Matrix& result,
         const Matrix& a1,
@@ -258,7 +258,7 @@ namespace ExpressionTemplates_VectorBasedVersion {
             << " milliseconds." << std::endl;
     }
 
-    void test_04b_benchmark(
+    static void test_04b_benchmark(
         int iterations,
         Matrix& result,
         const Matrix& a1,
@@ -290,7 +290,7 @@ namespace ExpressionTemplates_VectorBasedVersion {
             << " milliseconds." << std::endl;
     }
 
-    void test_04_benchmark()
+    static void test_04_benchmark()
     {
         std::cout << "Expression Templates 04 (Benchmark):" << std::endl;
 

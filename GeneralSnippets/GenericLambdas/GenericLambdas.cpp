@@ -12,7 +12,7 @@ namespace GenericLambdas {
         std::cout << "x=" << x << ", y=" << y << std::endl;
     };
 
-    void test_01()
+    static void test_01()
     {
         lambda(1, 100);
         lambda(2.5, 101);
@@ -28,7 +28,7 @@ namespace GenericLambdas {
         }
     };
 
-    void test_02()
+    static void test_02()
     {
         struct Lambda instance;
         instance(1, 200);
@@ -49,7 +49,7 @@ namespace GenericLambdas {
         }
     };
 
-    void test_03()
+    static void test_03()
     {
         lambdaTwice(1, 300);
         lambdaTwice(2.5, 301);
@@ -65,7 +65,7 @@ namespace GenericLambdas {
 
     // -------------------------------------------------------------------
 
-    void test_04()
+    static void test_04()
     {
         // define a generic lambda
         auto isGreaterThanFifty = [](const auto& n) { return n > 50; };
@@ -101,7 +101,7 @@ namespace GenericLambdas {
         return n > 50;
     };
 
-    void test_05()
+    static void test_05()
     {
         std::vector<int> intValues{ 44, 65, 22, 77, 2 };
 
@@ -131,7 +131,7 @@ namespace GenericLambdas {
 
     // ---------------------------------------------------------------------
 
-    void test_06()
+    static void test_06()
     {
         auto l1 = [](int a) { return a + a; };             // C++ 11, regular lambda
 
@@ -152,7 +152,7 @@ namespace GenericLambdas {
         auto v10 = l3(std::string{ "42" });     // Ok
     }
 
-    void test_07()
+    static void test_07()
     {
         auto l1 = [](int a, int b) { return a + b; };          // C++ 11, regular lambda
 
@@ -178,7 +178,7 @@ namespace GenericLambdas {
 
     }
 
-    void test_08()
+    static void test_08()
     {
         auto l5 = []<typename T>(T a, T b) { return a + b; };      // C++ 20, template lambda
 
@@ -190,7 +190,7 @@ namespace GenericLambdas {
         // auto v6 = l5(std::string{ "42" }, '1');                 // Error
     }
 
-    void test_09()
+    static void test_09()
     {
         auto l6 = [](auto a, decltype(a) b) { return a + b; };      // C++ 14, using decltype
 
@@ -201,11 +201,11 @@ namespace GenericLambdas {
 
     // -------------------------------------------------------------------
 
-    void foo(const std::string& s) {
+    static void foo(const std::string& s) {
         std::cout << "Signature: const&" << std::endl;
     }
 
-    void foo(std::string&& s) {
+    static void foo(std::string&& s) {
         std::cout << "Signature: &&" << std::endl;
     }
 
@@ -214,7 +214,7 @@ namespace GenericLambdas {
         foo(std::forward<decltype(s)>(s));
     };
 
-    void test_10()
+    static void test_10()
     {
         const std::string str{ "Hello World with LValue - " };
         callingFoo(str);
@@ -223,7 +223,7 @@ namespace GenericLambdas {
 
     // -------------------------------------------------------------------
     
-    void test_11()
+    static void test_11()
     {
         // power recursive function
         std::function<int(int, int)> power;
@@ -235,7 +235,7 @@ namespace GenericLambdas {
         std::cout << power(2, 10) << std::endl; // 2^10 = 1024
     }
 
-    void test_12()
+    static void test_12()
     {
         // factorial recursive function
         std::function<int(int)> factorial;
@@ -252,7 +252,7 @@ namespace GenericLambdas {
         std::cout << factorial(5) << std::endl; // 120
     }
 
-    void test_13()
+    static void test_13()
     {
         // power recursive lambda function
         auto power = [] (auto self, auto base, int exp) -> decltype(base) {
@@ -264,7 +264,7 @@ namespace GenericLambdas {
         std::cout << power(power, 2.71828, 10);           // e^10 = 22026.3
     }
 
-    void test_14()
+    static void test_14()
     {
         // factorial recursive lambda function
         auto factorial = [] (auto f, int const n) {
@@ -282,7 +282,7 @@ namespace GenericLambdas {
 
     // ---------------------------------------------------------------------
 
-    void test_15() {
+    static void test_15() {
 
         // Example demonstrating so called 'Currying':
 
@@ -309,7 +309,7 @@ namespace GenericLambdas {
         return t + u;
     };
 
-    void test_16() {
+    static void test_16() {
 
         int n = 1;
         double d = 2.7;

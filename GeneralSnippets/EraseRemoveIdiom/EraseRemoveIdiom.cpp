@@ -6,7 +6,7 @@ module modern_cpp:erase_remove_idiom;
 
 namespace EraseRemoveIdiom
 {
-    auto print = [](const std::vector<int>& v) {
+    static auto print = [](const std::vector<int>& v) {
         std::cout << "Length:   " << v.size() << std::endl;
         std::cout << "Capacity: " << v.capacity() << std::endl;
         std::for_each(std::begin(v), std::end(v), [](const auto& e) {
@@ -16,7 +16,7 @@ namespace EraseRemoveIdiom
         std::cout << std::endl << std::endl;
     };
 
-    void test_01()
+    static void test_01()
     {
         std::vector<int> vec = { 0, 1, 2, 5, 4, 5, 6, 5, 8, 9 };
         print(vec);
@@ -32,7 +32,7 @@ namespace EraseRemoveIdiom
         print(vec);
     }
 
-    void test_02()
+    static void test_02()
     {
         std::vector<int> vec = { 0, 1, 2, 5, 4, 5, 6, 5, 8, 9 };
         print(vec);

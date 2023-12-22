@@ -8,7 +8,7 @@ namespace TrimExample {
 
     // =======================================================
     // trim string from start (in place)
-    void leftTrimInPlace(std::string& s) {
+    static void leftTrimInPlace(std::string& s) {
 
         std::string::iterator pos = std::find_if(
             std::begin(s),
@@ -22,7 +22,7 @@ namespace TrimExample {
     }
 
     // trim string from end (in place)
-    void rightTrimInPlace(std::string& s) {
+    static void rightTrimInPlace(std::string& s) {
 
         std::string::reverse_iterator pos = std::find_if(
             std::rbegin(s),
@@ -36,31 +36,31 @@ namespace TrimExample {
     }
 
     // trim string from both ends (in place)
-    void trimInPlace(std::string& s) {
+    static void trimInPlace(std::string& s) {
         leftTrimInPlace(s);
         rightTrimInPlace(s);
     }
 
     // =======================================================
     // trim from start (creating a copy)
-    std::string leftTrim(std::string s) {
+    static std::string leftTrim(std::string s) {
         leftTrimInPlace(s);
         return s;
     }
 
     // trim from end (copying)
-    std::string rightTrim(std::string s) {
+    static std::string rightTrim(std::string s) {
         rightTrimInPlace(s);
         return s;
     }
 
     // trim from both ends (copying)
-    std::string trim(std::string s) {
+    static std::string trim(std::string s) {
         trimInPlace(s);
         return s;
     }
 
-    void test_01()
+    static void test_01()
     {
         // small benchmark test
         std::string s{ "   ABCDEFGHIJK   " };
@@ -70,7 +70,7 @@ namespace TrimExample {
         std::cout << '[' << s << ']' << std::endl;
     }
 
-    void test_02()
+    static void test_02()
     {
         // small benchmark test
         std::string s{ "   ABCDEFGHIJK   " };
@@ -82,7 +82,7 @@ namespace TrimExample {
         std::cout << '[' << s << ']' << std::endl;
     }
 
-    void test_03()
+    static void test_03()
     {
         std::vector<int> vec{ 1, 2, 3, 4, 5 };
 

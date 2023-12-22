@@ -46,13 +46,13 @@ namespace Templates_TwoPhaseNameLookup
     *   'doSomething': function declaration must be available as none of the arguments depend on a template parameter
     */
 
-    void test_01() {
+    static void test_01() {
 
         Derived derived;
         derived.callBase();
     }
 
-    void test_02() {
+    static void test_02() {
 
         DerivedEx<int> derived;
         derived.callBase();

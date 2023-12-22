@@ -32,7 +32,7 @@ namespace TypeTraits_Simple_Demo
         static constexpr bool value = true;
     };
 
-    void test_1a()
+    static void test_1a()
     {
         static_assert(is_this_a_floating_point<float>::value);
         static_assert(is_this_a_floating_point<double>::value);
@@ -49,13 +49,13 @@ namespace TypeTraits_Simple_Demo
         std::cout << "processing a real number: " << value << std::endl;
     }
 
-    void test_1b()
+    static void test_1b()
     {
         process_a_floating_point(42.0);
         // process_a_floating_point(42);  // does'n t compile: static assertion fails
     }
 
-    void test_01()
+    static void test_01()
     {
         test_1a();
         test_1b();
@@ -92,7 +92,7 @@ namespace TypeTraits_Second_Simple_Demo
         static constexpr bool value = true;
     };
 
-    void test_02_a()
+    static void test_02_a()
     {
         using SomeType = const double&;
         using SomeTypeWithoutRef = std::remove_reference<SomeType>::type;
@@ -106,13 +106,13 @@ namespace TypeTraits_Second_Simple_Demo
         static_assert(std::is_same<SomeTypeWithoutRefAndConst2, double>::value == true);
     }
 
-    void test_02_b()
+    static void test_02_b()
     {
         static_assert(my_is_same<int, double>::value == false);
         static_assert(my_is_same<int, int>::value == true);
     }
 
-    void test_02()
+    static void test_02()
     {
         test_02_a();
         test_02_b();
@@ -160,7 +160,7 @@ namespace TypeTraits_Conditional_Compilation_Demo {
         return os;
     }
 
-    void test_3a()
+    static void test_3a()
     {
         Widget widget{ 1, "I'm a Widget" };
         Gadget gadget{ 2, "I'm a Gadget" };
@@ -209,7 +209,7 @@ namespace TypeTraits_Conditional_Compilation_Demo {
         Serializer<uses_write<T>::value>::serialize(os, obj);
     }
 
-    void test_3b()
+    static void test_3b()
     {
         Widget widget{ 1, "I'm a Widget" };
         Gadget gadget{ 2, "I'm a Gadget" };
@@ -218,7 +218,7 @@ namespace TypeTraits_Conditional_Compilation_Demo {
         serialize(std::cout, gadget);
     }
 
-    void test_3c()
+    static void test_3c()
     {
         Widget widget{ 1, "I'm a Widget" };
         Gadget gadget{ 2, "I'm a Gadget" };
@@ -227,7 +227,7 @@ namespace TypeTraits_Conditional_Compilation_Demo {
         serialize<Gadget>(std::cout, gadget);
     }
 
-    void test_03()
+    static void test_03()
     {
         test_3a();
         test_3b();
@@ -271,7 +271,7 @@ namespace TypeTraits_Iterator_Demo
         return tag;
     }
 
-    void test_4a()
+    static void test_4a()
     {
         std::vector<int> vec;
         whichIterator(getIteratorType(vec.begin()));
@@ -285,7 +285,7 @@ namespace TypeTraits_Iterator_Demo
         whichIterator(iter_cat);
     }
 
-    void test_4b()
+    static void test_4b()
     {
         std::list<int> list;
         whichIterator(getIteratorType(list.begin()));
@@ -299,7 +299,7 @@ namespace TypeTraits_Iterator_Demo
         whichIterator(iter_cat);
     }
 
-    void test_4c()
+    static void test_4c()
     {
         std::forward_list<int> fwlist;
         whichIterator(getIteratorType(fwlist.begin()));
@@ -313,7 +313,7 @@ namespace TypeTraits_Iterator_Demo
         whichIterator(iter_cat);
     }
 
-    void test_4d()
+    static void test_4d()
     {
         std::ifstream source;
         std::istream_iterator<int> input(source);
@@ -328,7 +328,7 @@ namespace TypeTraits_Iterator_Demo
         whichIterator(iter_cat);
     }
 
-    void test_4e()
+    static void test_4e()
     {
         std::ofstream source;
         std::ostream_iterator<int> output(source);
@@ -342,7 +342,7 @@ namespace TypeTraits_Iterator_Demo
         whichIterator(iter_cat);
     }
 
-    void test_04()
+    static void test_04()
     {
         test_4a();
         test_4b();
@@ -397,7 +397,7 @@ namespace TypeTraits_Second_Iterator_Demo
         return getAt(it, size, category);
     }
 
-    void test_05() 
+    static void test_05()
     {
         std::forward_list<char> charList{ 'A', 'B', 'C', 'D', 'E' };
         char ch = getAt(charList.begin(), 3);
@@ -467,7 +467,7 @@ namespace TypeTraits_Demo_Remove_Reference
         );
     }
 
-    void test_06()
+    static void test_06()
     {
         std::vector<int> vec{ 5, 4, 6, 3, 7, 2, 8, 1, 9 };
 

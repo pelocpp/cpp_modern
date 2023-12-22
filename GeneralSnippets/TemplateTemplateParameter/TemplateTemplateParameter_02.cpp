@@ -76,7 +76,7 @@ namespace TemplateTemplateParameter_02 {
         T getHigh() { return m_high; }
     };
 
-    void test_01() {
+    static void test_01() {
 
         Range<long, 1, 5, MaxCheck> range1;
         Range<long, 1, 5, NoMaxCheck> range2;

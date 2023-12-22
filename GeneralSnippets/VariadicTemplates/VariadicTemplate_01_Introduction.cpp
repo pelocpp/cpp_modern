@@ -27,7 +27,7 @@ namespace VariadicTemplatesIntro_01 {
         printAll<TRest...>(rest ...);
     }
 
-    void test_printer_01()
+    static void test_printer_01()
     {
        printAll<int, int, int, int, int>(1, 2, 3, 4, 5);
     }
@@ -53,12 +53,12 @@ namespace VariadicTemplatesIntro_02 {
         return first + add<TArgs ...>(args...);
     }
 
-    void test_adder_01() {
+    static void test_adder_01() {
         int sum = add<int, int, int, int, int>(1, 2, 3, 4, 5);
         std::cout << "Sum from 1 up to 5: " << sum << std::endl;
     }
 
-    void test_adder_02() {
+    static void test_adder_02() {
 
         int sum = add(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
         std::cout << "Sum from 1 up to 10: " << sum << std::endl;
@@ -140,7 +140,7 @@ namespace VariadicTemplatesIntro_03 {
         return std::unique_ptr<T>{ new T{ std::forward<TArgs>(args)... } };
     }
 
-    void test_my_make_unique()
+    static void test_my_make_unique()
     {
         std::unique_ptr<Unknown> up1 = my_make_unique<Unknown>();
         std::unique_ptr<Unknown> up2 = my_make_unique<Unknown>(1);
@@ -151,7 +151,7 @@ namespace VariadicTemplatesIntro_03 {
         std::unique_ptr<Unknown> up5 = my_make_unique<Unknown>(n, m);
     }
 
-    void test_my_make_unique_ex()
+    static void test_my_make_unique_ex()
     {
         std::unique_ptr<Unknown> up1 = my_make_unique_ex<Unknown>();
         std::unique_ptr<Unknown> up2 = my_make_unique_ex<Unknown>(1);
@@ -190,7 +190,7 @@ namespace VariadicTemplatesIntro_04 {
         return T{ std::forward<TArgs>(args)... };
     }
 
-    void test_make_an_object()
+    static void test_make_an_object()
     {
         Unknown u1 = make_an_object<Unknown>();
         Unknown u2 = make_an_object<Unknown>(1);
@@ -216,7 +216,7 @@ namespace VariadicTemplatesIntro_04 {
         // std::cout << u7 << std::endl;
     }
 
-    void test_make_an_object_ex()
+    static void test_make_an_object_ex()
     {
         Unknown u1 = make_an_object_ex<Unknown>();
         Unknown u2 = make_an_object_ex<Unknown>(1);
@@ -254,7 +254,7 @@ namespace VariadicTemplatesIntro_05 {
     // ========================================================================
 
     // Ende der Rekursion: Eine non-Template Funktion
-    void print()
+    static void print()
     {
     }
 
@@ -281,7 +281,7 @@ namespace VariadicTemplatesIntro_05 {
         printEx(args...);  // call print() for remaining arguments
     }
 
-    void test_printer_02()
+    static void test_printer_02()
     {
         print(123.456, "Hello", 789);
         print<double, const char*, int>(123.456, "Hello", 789);

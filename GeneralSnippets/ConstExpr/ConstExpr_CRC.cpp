@@ -39,7 +39,7 @@ constexpr auto crcTable = [] {
     return A;
 }();
 
-constexpr auto calcCRC(uint8_t len, const uint8_t* data) {
+static constexpr auto calcCRC(uint8_t len, const uint8_t* data) {
     uint8_t checksum = 0;
     while (len--) {
         checksum = crcTable<MY_POLYNOM>[*data++ ^ checksum];

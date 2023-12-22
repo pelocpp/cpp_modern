@@ -21,7 +21,7 @@ namespace VariadicTemplatesMixins {
         X(const TS&... mixins) : TS{ mixins } ... {}
     };
 
-    void test_00() 
+    static void test_00()
     {
         A a{};
         B b{};
@@ -62,7 +62,7 @@ namespace VariadicTemplatesMixins {
             SlotA::m_value = value;
         }
 
-        int getSlotA() 
+        int getSlotA() const
         {
             return SlotA::m_value;
         }
@@ -72,13 +72,13 @@ namespace VariadicTemplatesMixins {
             SlotB::m_value = value;
         }
 
-        std::string getSlotB()
+        std::string getSlotB() const
         {
             return SlotB::m_value;
         }
     };
 
-    void test_01() 
+    static void test_01()
     {
         MyRepository repo{};
 
@@ -96,7 +96,7 @@ namespace VariadicTemplatesMixins {
     class Slot
     {
     protected:
-        T& get()
+        T& get() const
         {
             return m_value;
         }
@@ -115,7 +115,7 @@ namespace VariadicTemplatesMixins {
     {
     public:
         template <typename T> // select type
-        T& get()
+        T& get() const
         {
             return Slot<T>::get(); // select base class
         }
@@ -127,7 +127,7 @@ namespace VariadicTemplatesMixins {
         }
     };
 
-    void test_02() 
+    static void test_02()
     {
         using MyRepo = Repository<Slot<int>, Slot<std::string>>;
 
@@ -148,7 +148,7 @@ namespace VariadicTemplatesMixins {
     // ===================================================================
     // Variant 4: adding 'emplace' mechanism for sample class 'Person'
 
-    void test_03_error() 
+    static void test_03_error() 
     {
          // RepositoryEx < Slot<int>, Slot<int> > repo{};
          // error: 'VariadicTemplatesMixins::Slot<int>' is already a direct base
@@ -160,7 +160,7 @@ namespace VariadicTemplatesMixins {
     class SlotEx
     {
     protected:
-        T& get()
+        T& get() const
         {
             return m_value;
         }
@@ -194,7 +194,7 @@ namespace VariadicTemplatesMixins {
     {
     public:
         template <typename T, typename Key = DefaultSlotKey>
-        T& get()
+        T& get() const
         {
             return SlotEx<T, Key>::get(); // select base class
         }
@@ -222,7 +222,7 @@ namespace VariadicTemplatesMixins {
     };
 
     // demonstrating several slots with same type
-    void test_03()
+    static void test_03()
     {
         // again forward definition sufficient, definitions not needed
         struct Key1;
@@ -256,7 +256,8 @@ namespace VariadicTemplatesMixins {
         Person() : m_name{}, m_age{} {}
 
         Person(const std::string& name, const int age)
-        : m_name{ name }, m_age{age } {}
+        : m_name{ name }, m_age{age } 
+        {}
 
         // just for testing: if move-assignment is available, copy-assignment is ignored !!!
         Person& operator= (const Person& person) {
@@ -295,7 +296,7 @@ namespace VariadicTemplatesMixins {
     };
 
     // demonstrating 'emplace' mechanism
-    void test_04() 
+    static void test_04()
     {
         using MyRepo = RepositoryEx<SlotEx<Person>, SlotEx<std::string>>;
 

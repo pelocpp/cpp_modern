@@ -6,7 +6,7 @@ module modern_cpp:regexpr;
 
 namespace RegularExpressions {
 
-    void test_01_simple_regex()
+    static void test_01_simple_regex()
     {
         // simple example
 
@@ -25,7 +25,7 @@ namespace RegularExpressions {
         }
     }
 
-    void test_02_capturing_groups()
+    static void test_02_capturing_groups()
     {
         // example from 'geeksforgeeks'
 
@@ -65,7 +65,7 @@ namespace RegularExpressions {
         }
     }
 
-    void test_03_capturing_group_vs_non_capturing_group_01()
+    static void test_03_capturing_group_vs_non_capturing_group_01()
     {
         // example: capturing groups
 
@@ -95,7 +95,7 @@ namespace RegularExpressions {
         }
     }
 
-    void test_04_capturing_group_vs_non_capturing_group_02()
+    static void test_04_capturing_group_vs_non_capturing_group_02()
     {
         // example: non-capturing group
 
@@ -124,7 +124,7 @@ namespace RegularExpressions {
         }
     }
 
-    void test_05_datum_01()
+    static void test_05_datum_01()
     {
         // example: date, non-capturing groups
 
@@ -148,7 +148,7 @@ namespace RegularExpressions {
         }
     }
 
-    void test_06_datum_02()
+    static void test_06_datum_02()
     {
         // example: date, capturing groups
 

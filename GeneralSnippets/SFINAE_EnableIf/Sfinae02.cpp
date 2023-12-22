@@ -97,12 +97,14 @@ namespace SFINAE_02 {
 
     // ==============================================
 
-    void test_is_complex() {
+    static void test_is_complex() {
+
         constexpr bool int_is_complex = is_complex<int>(); //false
         constexpr bool complex_is_complex = is_complex<std::complex<float>>(); //true
     }
 
-    void test_enable_if_01() {
+    static void test_enable_if_01() {
+
         std::complex<double> number(1.0, 4.0);
         double m = norm(number);
         std::cout << number << ", Magnitude: " << m << std::endl;
@@ -112,7 +114,8 @@ namespace SFINAE_02 {
         std::cout << "Vector Magnitude: " << m << std::endl;
     }
 
-    void test_enable_if_02() {
+    static void test_enable_if_02() {
+
         std::complex<double> number(1.0, 4.0);
         double m = norm(number);
         std::cout << number << ", Magnitude: " << m << std::endl;

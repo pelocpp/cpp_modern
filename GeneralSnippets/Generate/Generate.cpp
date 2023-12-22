@@ -6,7 +6,7 @@ module modern_cpp:generate;
 
 namespace AlgorithmGenerate {
 
-    void test_01()
+    static void test_01()
     {
         std::vector<int> values(10);
 

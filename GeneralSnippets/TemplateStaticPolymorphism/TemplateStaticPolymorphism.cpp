@@ -56,27 +56,27 @@ namespace TemplatesStaticPolymorphism {
         };
 
         // draw any GeoObj
-        void myDraw(const GeoObj& obj)
+        static void myDraw(const GeoObj& obj)
         {
             obj.draw(); // call draw() according to type of object
         }
 
         // compute distance of center of gravity between two GeoObjs
-        Coord distance(const GeoObj& x1, const GeoObj& x2)
+        static Coord distance(const GeoObj& x1, const GeoObj& x2)
         {
             Coord c = x1.center_of_gravity() - x2.center_of_gravity();
             return c.abs(); // return coordinates as absolute values
         }
 
         // draw HETEROGENEOUS collection of GeoObjs
-        void drawElems(const std::vector<GeoObj*>& elems)
+        static void drawElems(const std::vector<GeoObj*>& elems)
         {
             for (size_t i = 0; i < elems.size(); ++i) {
                 elems[i]->draw(); // call draw() according to type of element
             }
         }
 
-        void test_01() {
+        static void test_01() {
 
             Line line;
             Circle c1;
@@ -138,7 +138,7 @@ namespace TemplatesStaticPolymorphism {
             }
         }
 
-        void test_02() {
+        static void test_02() {
 
             Line line;
             Circle c1;

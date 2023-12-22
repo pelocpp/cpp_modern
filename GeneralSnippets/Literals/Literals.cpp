@@ -10,7 +10,7 @@ module modern_cpp:literals;
 
 namespace Literals_With_Separators {
 
-    void test_01() {
+    static void test_01() {
 
         // binary, octal and hexadecimal literals
         // (including single quotation mark as separator)
@@ -59,7 +59,7 @@ namespace Literals_Color_Runtime {
     }
 
     // literal operator ("cooked" version)
-    Color operator"" _rgb(unsigned long long int value) {
+    static Color operator"" _rgb(unsigned long long int value) {
 
         if (value > 0xFFFFFF) {
             throw std::runtime_error("literal too large");
@@ -73,7 +73,7 @@ namespace Literals_Color_Runtime {
     }
 
     // literal operator ("raw" version)
-    Color operator"" _rgb(const char* literal, size_t length) {
+    static Color operator"" _rgb(const char* literal, size_t length) {
 
         // tiny implementation - just parsing hexadecimal format
         std::string arg(literal);
@@ -94,7 +94,7 @@ namespace Literals_Color_Runtime {
         return Color{};
     }
 
-    void test_02() {
+    static void test_02() {
 
         Color red{ 0xFF0000_rgb };
         std::cout << red << std::endl;
@@ -112,7 +112,7 @@ namespace Literals_Color_Runtime {
         std::cout << unknown << std::endl;
     }
 
-    void test_02_with_errors() 
+    static void test_02_with_errors()
     {
         // value outside rgb range
          Color col1{ 0x1FFFFFF_rgb };
@@ -156,7 +156,7 @@ namespace Literals_Color_CompileTime {
     }
 
     // literal operator ("cooked" version)
-    constexpr Color operator"" _rgb(unsigned long long int value) {
+    static constexpr Color operator"" _rgb(unsigned long long int value) {
 
         if (value > 0xFFFFFF) {
             throw std::logic_error("literal too large");
@@ -169,7 +169,7 @@ namespace Literals_Color_CompileTime {
         return Color{ r, g, b };
     }
 
-    constexpr bool isHex(char ch) {
+    static constexpr bool isHex(char ch) {
 
         if ((ch >= '0' && ch <= '9') || (ch >= 'A' && ch <= 'F') || (ch >= 'a' && ch <= 'f')) {
             return true;
@@ -178,7 +178,7 @@ namespace Literals_Color_CompileTime {
         return false;
     }
 
-    constexpr uint8_t hex2int(char ch) {
+    static constexpr uint8_t hex2int(char ch) {
 
         if (!isHex(ch)) {
             throw std::logic_error("illegal hexadecimal digit");
@@ -200,7 +200,7 @@ namespace Literals_Color_CompileTime {
         return byte;
     }
 
-    constexpr size_t hexstoi(const char* str)
+    static constexpr size_t hexstoi(const char* str)
     {
         int value{};
 
@@ -218,7 +218,7 @@ namespace Literals_Color_CompileTime {
     }
 
     // literal operator ('raw' and 'constexpr' version)
-    constexpr Color operator"" _rgb(const char* literal, size_t length) {
+    static constexpr Color operator"" _rgb(const char* literal, size_t length) {
 
         // std::string is partially 'constexpr'
         std::string arg(literal);
@@ -240,7 +240,8 @@ namespace Literals_Color_CompileTime {
         return Color{};
     }
 
-    void test_03() {
+    static void test_03() {
+
         constexpr Color red{ 0xFF0000_rgb };
         std::cout << red << std::endl;
 
@@ -255,7 +256,8 @@ namespace Literals_Color_CompileTime {
     }
 
     // throws errors at compile time
-    void test_03_with_errors() {
+    static void test_03_with_errors() {
+
         // value outside rgb range
         // constexpr Color col1{ 0x1FFFFFF_rgb };
 
@@ -267,7 +269,7 @@ namespace Literals_Color_CompileTime {
 void main_literals()
 {
     using namespace Literals_With_Separators;
-    // test_01();
+    test_01();
 
     using namespace Literals_Color_Runtime;
     test_02();

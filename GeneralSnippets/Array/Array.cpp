@@ -6,7 +6,7 @@ module modern_cpp:class_array;
 
 namespace StdArray {
 
-    void test_01() {
+    static void test_01() {
 
         // initialization variants
         std::array<int, 5> array1{};
@@ -14,13 +14,13 @@ namespace StdArray {
         std::array<int, 5> array3 = { 1, 2, 3, 4, 5 };  // initializer list
     }
 
-    void test_02() {
+    static void test_02() {
 
         /* initialization variants using CTAD: Class Template Argument Deduction
         */
 
         // type is deduced to std::array<double, 2>
-        std::array array1{ 9.7, 7.31 };
+        std::array array1{ 123.456, 654.321 };
 
         // type is deduced to std::array<int, 5>
         std::array array2{ 1, 2, 3, 4, 5 };
@@ -31,18 +31,18 @@ namespace StdArray {
         std::array array3{ "Hello C++ 20" };
     }
 
-    void test_03() {
+    static void test_03() {
 
         std::array<int, 5> array;
 
-        array = { 0, 1, 2, 3, 4 };    // Assignment with initializer list: okay
+        array = { 1, 2, 3, 4, 5 };    // Assignment with initializer list: okay
 
         array = { 9, 8, 7 };          // Okay, elements 3 and 4 are set to zero!
 
         // array = { 0, 1, 2, 3, 4, 5 }; // doesn't compile, too many elements in initializer list!
     }
 
-    void test_04() {
+    static void test_04() {
 
         // Exception handling:
         // 'at' does bounds checking, is therefore slower - but safer.
@@ -74,7 +74,7 @@ namespace StdArray {
         std::cout << std::endl;
     }
 
-    void print(const std::array<int, 5>& array) {
+    static void print(const std::array<int, 5>& array) {
         std::cout << "Length: " << array.size() << std::endl;
     }
 
@@ -83,7 +83,7 @@ namespace StdArray {
         std::cout << "Length: " << array.size() << std::endl;
     }
 
-    void test_05() {
+    static void test_05() {
 
         std::array<int, 5> array1 = { 1, 2, 3, 4, 5 };
         print(array1);
@@ -92,7 +92,7 @@ namespace StdArray {
         print(array2);
     }
 
-    void test_06() {
+    static void test_06() {
 
         std::array<int, 5> array { 1, 2, 3, 4, 5 };
 
@@ -114,7 +114,7 @@ namespace StdArray {
         std::cout << std::endl;
     }
 
-    void test_07() {
+    static void test_07() {
 
         // multidimensional std::array
         std::array<std::array<int, 3>, 3> array {
@@ -133,7 +133,7 @@ namespace StdArray {
         }
     }
 
-    void display(const std::array<std::array<int, 3>, 3>& array) {
+    static void display(const std::array<std::array<int, 3>, 3>& array) {
 
         for (size_t i{}; i != 3; i++) {
             for (size_t j{}; j != 3; j++) {
@@ -143,7 +143,7 @@ namespace StdArray {
         }
     }
 
-    void test_08() {
+    static void test_08() {
 
         // passing a multidimensional std::array to another function
         std::array<std::array<int, 3>, 3> array{
@@ -168,10 +168,11 @@ namespace StdArray {
             : Employee(0, "", "", 0) {}
 
         Employee(size_t m_id, const std::string& m_name, const std::string& m_role, size_t m_phone)
-            : m_id(m_id), m_name(m_name), m_role(m_role), m_phone(m_phone) {}
+            : m_id(m_id), m_name(m_name), m_role(m_role), m_phone(m_phone)
+        {}
     };
 
-    void test_09() {
+    static void test_09() {
 
         // arrays of objects
         std::array<Employee, 2> employees{};
@@ -188,7 +189,7 @@ namespace StdArray {
         }
     }
 
-    void test_10() {
+    static void test_10() {
 
         /* C - style array
         */
@@ -219,7 +220,7 @@ namespace StdArray {
         isEqual = std::equal(cArray, cArray + 4, other, other + 4);
     }
 
-    void test_11() {
+    static void test_11() {
 
         /* std::array
         */
@@ -235,7 +236,7 @@ namespace StdArray {
     }
 
     // returning a std::array object: works
-    std::array<int, 3>
+    static std::array<int, 3>
     crossProduct(const std::array<int, 3>& a, const std::array<int, 3>& b)
     {
         return { 
@@ -253,7 +254,7 @@ namespace StdArray {
     // alternate signature could be
     // 'auto c_crossProduct(...) -> int[3]'
 
-    int* 
+    static int*
     c_crossProduct(const int a[3], const int b[3]) // -> int[3]
     {
         int result[3] {
@@ -272,7 +273,7 @@ namespace StdArray {
     // std::to_array
     // helper for creating a std::array from a C-array
 
-    void test_20() {
+    static void test_20() {
 
         // type is deduced to std::array<char, 13>
         // Note: see std::array above
@@ -297,7 +298,7 @@ namespace StdArray {
 
     // std::span
 
-    void printArray(const int* array, size_t size) {
+    static void printArray(const int* array, size_t size) {
 
         std::cout << std::format("Number of elements: {}\n", size);
 
@@ -309,7 +310,21 @@ namespace StdArray {
         std::cout << std::endl;
     }
 
-    void printSpan(std::span<int> values) {
+    static void test_30() {
+
+        int carr[]{ 1, 2, 3, 4, 5 };
+        printArray(carr, 5);
+
+        std::array arr{ 6, 7, 8, 9, 10 };
+        printArray(arr.data(), arr.size());
+
+        std::vector vec{ 1, 3, 5, 7, 9 };
+        printArray(vec.data(), vec.size());
+    }
+
+    // --------------------------------------------------------------------
+
+    static void printSpan(std::span<int> values) {
 
         std::cout << std::format("Number of elements: {}\n", values.size());
         std::cout << std::format("Size of span: {}\n", values.size_bytes());
@@ -321,7 +336,20 @@ namespace StdArray {
         std::cout << std::endl;
     }
 
-    void printSpanConst(std::span<const int> values) {
+
+    static void test_31() {
+
+        int carr[]{ 1, 2, 3, 4, 5 };
+        printSpan(carr);
+
+        std::array arr{ 6, 7, 8, 9, 10 };
+        printSpan(arr);
+
+        std::vector vec{ 1, 3, 5, 7, 9 };
+        printSpan(vec);
+    }
+
+    static void printSpanConst(std::span<const int> values) {
 
         std::cout << std::format("Number of elements: {}\n", values.size());
         std::cout << std::format("Size of span: {}\n", values.size_bytes());
@@ -332,40 +360,16 @@ namespace StdArray {
         std::cout << std::endl;
     }
 
-    void test_30() {
+    static void test_32() {
 
-        int cArray[]{ 1, 2, 3, 4, 5 };
-        printSpan(cArray);
+        int carr[]{ 1, 2, 3, 4, 5 };
+        printSpanConst(carr);
 
-        std::array array{ 6, 7, 8, 9, 10 };
-        printSpan(array);
+        std::array arr{ 6, 7, 8, 9, 10 };
+        printSpanConst(arr);
 
-        std::vector vector{ 1, 3, 5, 7, 9 };
-        printSpan(vector);
-    }
-
-    void test_31() {
-
-        int cArray[]{ 1, 2, 3, 4, 5 };
-        printArray(cArray, 5);
-
-        std::array array{ 6, 7, 8, 9, 10 };
-        printArray(array.data(), array.size());
-
-        std::vector vector{ 1, 3, 5, 7, 9 };
-        printArray(vector.data(), vector.size());
-    }
-
-    void test_32() {
-
-        int cArray[]{ 1, 2, 3, 4, 5 };
-        printSpanConst(cArray);
-
-        std::array array{ 6, 7, 8, 9, 10 };
-        printSpanConst(array);
-
-        std::vector vector{ 1, 3, 5, 7, 9 };
-        printSpanConst(vector);
+        std::vector vec{ 1, 3, 5, 7, 9 };
+        printSpanConst(vec);
     }
 }
 
@@ -384,9 +388,7 @@ void main_array()
     test_09();
     test_10();
     test_11();
-
     test_20();
-
     test_30();
     test_31();
     test_32();

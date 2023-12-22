@@ -38,14 +38,14 @@ namespace CopyMoveElision {
     };
 
     // test method
-    Foo createData() {
+    static Foo createData() {
         Foo data{ 1 };
         return data;
 
         // return Foo{ 1 };   // Note: Mandatory copy / move elision
     }
 
-    void test_copy_elision() {
+    static void test_copy_elision() {
         Foo data{ createData() };
     }
 }

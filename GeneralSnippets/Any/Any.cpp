@@ -6,7 +6,7 @@ module modern_cpp:any;
 
 namespace AnySamples {
 
-    void test_01_any() 
+    static void test_01_any()
     {
         std::any a{ 1 };
         std::cout << a.type().name() << ": " << std::any_cast<int>(a) << std::endl;
@@ -48,7 +48,7 @@ namespace AnySamples {
         std::cout << *i << std::endl;
     }
 
-    void test_02_any()
+    static void test_02_any()
     {
         std::any a1 = std::make_any<std::string>("Hello, std::any!");
         std::any a2 = std::make_any<std::complex<double>>(1.5, 2.5);
@@ -62,7 +62,7 @@ namespace AnySamples {
     // helper method (forward declaration)
     std::string to_string(const std::any&);
 
-    void test_03_any() 
+    static void test_03_any()
     {
         Row row1{ 1, 2, 3  };
         Row row2{ '1',  std::string("ABC"), 99.99  };
@@ -110,8 +110,8 @@ void main_any()
 {
     using namespace AnySamples;
     test_01_any();
-    //test_02_any();
-    //test_03_any();
+    test_02_any();
+    test_03_any();
 }
 
 // =====================================================================================

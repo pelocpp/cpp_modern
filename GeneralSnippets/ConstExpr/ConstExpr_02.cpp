@@ -17,7 +17,7 @@ namespace ConstExpr {
         ERROR
     };
 
-    constexpr char const* toString(const LogLevel level)
+    static constexpr char const* toString(const LogLevel level)
     {
         switch (level)
         {
@@ -44,7 +44,7 @@ namespace ConstExpr {
         }
     }
 
-    void test_01() {
+    static void test_01() {
 
         log<LogLevel::TRACE>("Just a test");
         log<LogLevel::INFO>(12345);

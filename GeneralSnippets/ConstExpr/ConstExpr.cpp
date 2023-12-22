@@ -30,7 +30,7 @@ namespace ConstExprComplex {
         }
     };
 
-    void testComplex()
+    static void testComplex()
     {
         constexpr Complex c0{ };
         constexpr Complex c1{ 1.0, 2.0 };
@@ -78,7 +78,7 @@ namespace ConstExprComplexTemplate {
         }
     };
 
-    void testComplexTemplate()
+    static void testComplexTemplate()
     {
         constexpr Complex<float> c0{ };
         constexpr Complex<float> c1{ 10.0, 20.0 };
@@ -123,7 +123,7 @@ namespace ConstExprPow {
         return table;
     } ();
 
-    constexpr size_t sumUpPowerTable()
+    static constexpr size_t sumUpPowerTable()
     {
         static_assert (powerTable<Factor>[0] == 1, "Value should be ");
         static_assert (powerTable<Factor>[1] == 16, "Value should be ");
@@ -140,14 +140,14 @@ namespace ConstExprPow {
         return total;
     }
 
-    void testPower_01()
+    static void testPower_01()
     {
         constexpr size_t total{ sumUpPowerTable() };
         static_assert (total == 979, "Sum should be 979");
         std::cout << "Total: " << total << std::endl;
     }
 
-    void testPower_02()
+    static void testPower_02()
     {
         int index = 0;
         for (size_t elem : powerTable<Factor>) {
@@ -158,7 +158,7 @@ namespace ConstExprPow {
         std::cout << "Total: " << total << std::endl;
     }
 
-    void testPower()
+    static void testPower()
     {
         testPower_01();
         testPower_02();
@@ -167,7 +167,7 @@ namespace ConstExprPow {
 
 namespace ConstExprCollatz {
 
-    constexpr int collatz(int index)
+    static constexpr int collatz(int index)
     {
         return (index % 2 == 0) ? index / 2 : index * 3 + 1;
     }
@@ -206,7 +206,7 @@ namespace ConstExprCollatz {
     template <int N>
     using makeCollatzSequence = typename SequenceHelper<N>::type;
 
-    void testCollatz()
+    static void testCollatz()
     {
         auto seq1 = makeCollatzSequence<13>{};
         //CollatzSequence seq2 = makeCollatzSequence<9>{};
@@ -214,15 +214,20 @@ namespace ConstExprCollatz {
 
         std::cout << "Size: " << sequence.size() << std::endl;
 
-        std::for_each(std::rbegin(sequence), std::rend(sequence), [](const int elem) {
-            std::cout << "   Element: " << elem << std::endl;
-        });
+        std::for_each(
+            std::rbegin(sequence),
+            std::rend(sequence), 
+            [](const int elem) {
+            
+                std::cout << "   Element: " << elem << std::endl;
+            }
+        );
     }
 }
 
 namespace ConstExprCollatzInheritance {
 
-    constexpr int collatz(int index) {
+    static constexpr int collatz(int index) {
         return (index % 2 == 0) ? index / 2 : index * 3 + 1;
     }
 
@@ -239,7 +244,7 @@ namespace ConstExprCollatzInheritance {
 
     auto squaresTable = Helper<13>::table;
 
-    void testCollatzInheritance()
+    static void testCollatzInheritance()
     {
         std::cout << "Size: " << squaresTable.size() << std::endl;
 

@@ -13,7 +13,7 @@ namespace TemplateTemplateParameter {
             typename TAllocator = std::allocator<T>,
             template <typename type, typename TAllocator> typename TContainer
         >
-            void testMe(TContainer<T, TAllocator>& container, const T& value)
+        void testMe(TContainer<T, TAllocator>& container, const T& value)
         {
             container.push_back(value);
             container.push_back(value);
@@ -24,7 +24,7 @@ namespace TemplateTemplateParameter {
             }
         }
 
-        void test_01() {
+        static void test_01() {
 
             std::vector<int> intVector;
             testMe(intVector, 123);
@@ -45,7 +45,7 @@ namespace TemplateTemplateParameter {
             typename,
             typename Allocator = std::allocator<T>> typename Container = std::vector
             >
-            class MyContainer
+        class MyContainer
         {
         public:
             virtual ~MyContainer() = default;
@@ -72,7 +72,7 @@ namespace TemplateTemplateParameter {
             }
         }
 
-        void test_02() {
+        static void test_02() {
 
             MyContainer<int, std::vector> myIntContainer;
             myIntContainer.testMe(1);

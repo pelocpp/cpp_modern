@@ -20,7 +20,7 @@ namespace Metaprogramming {
     template <int N>
     struct Int { static constexpr int result = N; };
 
-    void test_06() {
+    static void test_06() {
         // List(1, List(2, List(3, Nil)))
         using OneTwoThree = List<Int<1>, List<Int<2>, List<Int<3>>>>;
     }
@@ -49,7 +49,7 @@ namespace Metaprogramming {
         static constexpr unsigned int result = 0;
     };
 
-    void test_07() {
+    static void test_07() {
         // List (1, 2, 3, 4, 5) 
         using List12345 = List<Int<1>, List<Int<2>, List<Int<3>, List<Int<4>, List<Int<5>>>>>>;
         std::cout << LengthVerbose<List12345>::result << std::endl;
@@ -66,12 +66,12 @@ namespace Metaprogramming {
         using result = typename LIST::Head;
     };
 
-    void test_08() {
+    static void test_08() {
         using List12345 = List<Int<1>, List<Int<2>, List<Int<3>, List<Int<4>, List<Int<5>>>>>>;
         std::cout << Nth<List12345, 3>::result::result << std::endl;
     }
 
-    void test_08a() {
+    static void test_08a() {
         // out of range: doesn't compile
         // using List12345 = List<Int<1>, List<Int<2>, List<Int<3>, List<Int<4>, List<Int<5>>>>>>;
         // std::cout << Nth<List12345, 99>::result::result << std::endl;
@@ -100,7 +100,7 @@ namespace Metaprogramming {
         static constexpr bool result = false;
     };
 
-    void test_09() {
+    static void test_09() {
         using List12345 = List<Int<1>, List<Int<2>, List<Int<3>, List<Int<4>, List<Int<5>>>>>>;
         std::cout << Contains<Int<5>, List12345>::result << std::endl;
         std::cout << Contains<Int<10>, List12345>::result << std::endl;
@@ -125,7 +125,8 @@ namespace Metaprogramming {
         using result = List<Elm>;
     };
 
-    void test_10() {
+    static void test_10() {
+
         using List12345 = List<Int<1>, List<Int<2>, List<Int<3>, List<Int<4>, List<Int<5>>>>>>;
 
         using newList = Prepend<Int<0>, List12345>::result;

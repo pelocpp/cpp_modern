@@ -6,11 +6,11 @@ module modern_cpp:reference_wrapper;
 
 namespace MyReferenceWrapper {
 
-    void task (int& data) {    // expecting a reference to int 
+    static void task (int& data) {    // expecting a reference to int 
         data = 123;
     }
 
-    void test_01() {
+    static void test_01() {
 
         int data{ 1 };
 
@@ -25,7 +25,7 @@ namespace MyReferenceWrapper {
         std::cout << data << std::endl;
     }
 
-    void test_02() {
+    static void test_02() {
 
         /*  A reference does not satisfy the STL container element requirements
          *  (in this case: Erasable)
@@ -56,7 +56,7 @@ namespace MyReferenceWrapper {
         }
     }
 
-    std::vector<std::reference_wrapper<std::string>> generateVector() {
+    static std::vector<std::reference_wrapper<std::string>> generateVector() {
 
         std::vector<std::reference_wrapper<std::string>> names;
 
@@ -71,7 +71,7 @@ namespace MyReferenceWrapper {
         return names;
     }
 
-    void test_03() {
+    static void test_03() {
 
         std::vector<std::reference_wrapper<std::string>> areThereNames {
             generateVector()
@@ -106,7 +106,7 @@ namespace MyReferenceWrapper {
         return my_reference_wrapper<T>(t);
     }
 
-    void test_04() {
+    static void test_04() {
 
         int result{ 1 };
 

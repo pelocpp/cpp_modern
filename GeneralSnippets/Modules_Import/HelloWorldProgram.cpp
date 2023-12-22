@@ -2,7 +2,7 @@
 
 import hello_world;
 
-int _main()
+static int _main()
 {
     MyHelloWorld::globalData = 123;
 

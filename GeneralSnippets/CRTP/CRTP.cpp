@@ -88,7 +88,7 @@ namespace CRTP {
         c.draw();
     }
 
-    void test_01_crtp()
+    static void test_01_crtp()
     {
         Button b;
         drawControl(b);
@@ -97,14 +97,14 @@ namespace CRTP {
         drawControl(c);
     }
 
-    void drawControls(std::vector<std::shared_ptr<ControlBase>>& controls) {
+    static void drawControls(std::vector<std::shared_ptr<ControlBase>>& controls) {
 
         for (auto& control : controls) {
             control->draw();
         }
     }
 
-    void test_02_crtp()
+    static void test_02_crtp()
     {
         std::vector<std::shared_ptr<ControlBase>> vector;
 

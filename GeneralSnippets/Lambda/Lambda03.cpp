@@ -42,7 +42,7 @@ namespace LambdaAndThisClosure {
         return os;
     }
 
-    void test_01() {
+    static void test_01() {
         Class object;
         std::cout << object << std::endl;
         object.doSomething();

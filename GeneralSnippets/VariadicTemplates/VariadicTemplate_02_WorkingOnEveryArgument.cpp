@@ -28,7 +28,7 @@ namespace VariadicTemplatesWorkingOnEveryArgument {
         std::initializer_list<int> { (doSomething(args), 0)... };
     }
 
-    void test_01() {
+    static void test_01() {
         doSomethingForAll(1, '!', std::string("ABC"), 5.5);
         std::cout << std::endl;
     }
@@ -44,7 +44,7 @@ namespace VariadicTemplatesWorkingOnEveryArgument {
     // print-Funktion mit 2 Überladungen
     // ====================================================================
 
-    void print() {}
+    static void print() {}
 
     template <typename Head, typename ... Tail>
     void print(Head head, Tail ... tail)
@@ -53,7 +53,7 @@ namespace VariadicTemplatesWorkingOnEveryArgument {
         print(tail ...);
     }
 
-    void test_02_01() {
+    static void test_02_01() {
         print(1, '!', std::string("ABC"), 5.5);
         std::cout << std::endl;
     }
@@ -72,7 +72,7 @@ namespace VariadicTemplatesWorkingOnEveryArgument {
         }
     }
 
-    void test_02_02() {
+    static void test_02_02() {
         printEx(1, '!', std::string("ABC"), 5.5);
         std::cout << std::endl;
     }

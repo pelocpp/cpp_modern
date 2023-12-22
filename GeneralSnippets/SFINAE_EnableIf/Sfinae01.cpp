@@ -24,12 +24,12 @@ namespace SFINAE_Examples {
         return -T(t);
     }
 
-    void test_01() {
+    static void test_01() {
         // which version of foo is called?
         foo(123);
     }
 
-    void test_02() {
+    static void test_02() {
         // which version of negate is called?
         negate(123);
     }
@@ -39,7 +39,7 @@ namespace SFINAE_Examples {
         typename T::value_type n = -t;
     }
 
-    //void test_03() {
+    //static void test_03() {
     //    negate2(123);  // doesn't compile
     //}
 
@@ -71,7 +71,7 @@ namespace SFINAE_Examples {
         }
     };
 
-    void test_04() {
+    static void test_04() {
         doSomething(123);
         doSomething(SomeClass{});
     }
@@ -91,7 +91,7 @@ namespace SFINAE_Examples {
         std::cout << "doSomething class type: " << t() << std::endl;
     }
 
-    void test_05() {
+    static void test_05() {
         doSomething2(456);
         doSomething2(SomeClass{});
     }
@@ -153,7 +153,8 @@ namespace SFINAE_EnableIf_Examples {
 
     // ===================================================================================
 
-    void test_06() {
+    static void test_06() {
+
         int x = 10;
 
         std::cout << "x = " << x << std::endl;
