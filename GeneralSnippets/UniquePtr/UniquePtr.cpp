@@ -6,13 +6,13 @@ module modern_cpp:unique_ptr;
 
 namespace UniquePointerGeneral {
 
-    std::unique_ptr<int> loadUniquePointer()
+    static std::unique_ptr<int> loadUniquePointer()
     {
         std::unique_ptr<int> ptr{ std::make_unique<int>(100) };
         return ptr;
     }
 
-    void storeUniquePointer(std::unique_ptr<int>& ptr)
+    static void storeUniquePointer(std::unique_ptr<int>& ptr)
     {
         std::cout << "*ptr:    " << *ptr << std::endl;
         (*ptr)++;
@@ -22,7 +22,7 @@ namespace UniquePointerGeneral {
         // std::unique_ptr<int> ptr2{ std::move(ptr) };
     }
 
-    void storeUniquePointerSafe(const std::unique_ptr<int>& ptr)
+    static void storeUniquePointerSafe(const std::unique_ptr<int>& ptr)
     {
         std::cout << "*ptr:    " << *ptr << std::endl;
         (*ptr)++;
@@ -32,7 +32,7 @@ namespace UniquePointerGeneral {
         // std::unique_ptr<int> ptr2{ std::move(ptr) };
     }
 
-    void storeUniquePointerAlternate(int* ptr)
+    static void storeUniquePointerAlternate(int* ptr)
     {
         std::cout << "*ptr:    " << *ptr << std::endl;
         (*ptr)++;
@@ -43,7 +43,7 @@ namespace UniquePointerGeneral {
         //    pointer is owned by accompanied Unique Ptr
     }
 
-    void test_01() 
+    static void test_01()
     {
         // create a unique_ptr to an int with value 123
         std::unique_ptr<int> ptr1{ new int{ 123 } };
@@ -77,7 +77,7 @@ namespace UniquePointerGeneral {
         std::cout << "*ptr3:   " << *ptr3 << std::endl;
     }
 
-    void test_02()
+    static void test_02()
     {
         // retrieving a unique pointer from a function
         std::unique_ptr<int> ptr{ loadUniquePointer() };
@@ -93,7 +93,7 @@ namespace UniquePointerGeneral {
         std::cout << "*ptr:   " << *ptr << std::endl;
     }
 
-    void test_03()
+    static void test_03()
     {
         // creates a unique_ptr to an array of 20 ints
         std::unique_ptr<int[]> ptr{ std::make_unique<int[]>(20) };
@@ -102,19 +102,19 @@ namespace UniquePointerGeneral {
 
 namespace UniquePointer_SourceSinkPattern
 {
-    std::unique_ptr<int> createResource(int value)
+    static std::unique_ptr<int> createResource(int value)
     {
         std::unique_ptr<int> ptr{ std::make_unique<int>(value) };
         return ptr;
     }
 
-    void consumeResource(std::unique_ptr<int> ptr)  // call by-value (!)
+    static void consumeResource(std::unique_ptr<int> ptr)  // call by-value (!)
     {
         std::cout << "*ptr:    " << *ptr << std::endl;
         // now *ptr is deleted 
     }
 
-    void test_04()
+    static void test_04()
     {
         // creating a unique pointer with the help of a creator function
         std::unique_ptr<int> ptr{ createResource(123) };

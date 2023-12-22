@@ -6,17 +6,25 @@ module modern_cpp:variant;
 
 namespace VariantDemo {
 
-    void test_01() {
+    static void test_01() {
 
-        std::variant<int, float, std::string> var{ 10.5f };
+        std::variant<int, double, std::string> var{ 123 };
 
+        // std::get with type
         std::cout
             << var.index()
             << ", value "
-            << std::get<float>(var)
+            << std::get<int>(var)
             << std::endl;
 
-        var = std::string{ "Hello" }; // we're now a string
+        // works too: std::get with index
+        std::cout
+            << var.index()
+            << ", value "
+            << std::get<0>(var)
+            << std::endl;
+
+        var = std::string{ "Hello" }; // we're now a std::string
 
         std::cout
             << var.index()
@@ -24,12 +32,12 @@ namespace VariantDemo {
             << std::get<std::string>(var)
             << std::endl;
 
-        var = 10; // we're now an int
+        var = 123.456; // we're now a double
 
         std::cout
             << var.index()
             << ", value "
-            << std::get<int>(var)
+            << std::get<double>(var)
             << std::endl;
 
         var.emplace<2>("Hello again"); // we're now a string again
@@ -50,24 +58,25 @@ namespace VariantDemo {
             << std::get<std::string>(var)
             << std::endl;
 
-        var = 10.1f;
-        if (auto pFloat = std::get_if<float>(&var); pFloat)
-            *pFloat *= 2.0f;
+        var = 654.321;
+        if (auto pd = std::get_if<double>(&var); pd != nullptr) {
+            *pd *= 2.0;
+        }
 
         std::cout
             << var.index()
             << ", value "
-            << std::get<float>(var)
+            << std::get<double>(var)
             << std::endl;
     }
 
     // -------------------------------------------------------------------
 
-    void test_02() {
+    static void test_02() {
 
         // accessing a variant
 
-        std::variant<int, float, std::string> var{ std::string{ "Hello" } };
+        std::variant<int, double, std::string> var{ std::string{ "Hello" } };
 
         std::cout
             << var.index()
@@ -77,8 +86,8 @@ namespace VariantDemo {
 
         try
         {
-            auto f = std::get<float>(var);
-            std::cout << "float! " << f << "\n";
+            auto f = std::get<double>(var);
+            std::cout << "double! " << f << "\n";
         }
         catch (std::bad_variant_access&)
         {
@@ -93,15 +102,16 @@ namespace VariantDemo {
             << std::get<int>(var)
             << std::endl;
 
-        if (auto intPtr = std::get_if<0>(&var))
-            std::cout << "int! => " << *intPtr << std::endl;
+        if (auto ip = std::get_if<0>(&var)) {
+            std::cout << "int! => " << *ip << std::endl;
+        }
     }
 
     // -------------------------------------------------------------------
 
-    void test_03() {
+    static void test_03() {
 
-        std::variant<int, float, std::string> var{ 3.5f };
+        std::variant<int, double, std::string> var{ 123 };
 
         // using a generic visitor (matching all types in the variant)
         auto visitor = [](auto const& elem) {
@@ -110,28 +120,11 @@ namespace VariantDemo {
 
         std::visit(visitor, var);
 
-        var = 10;
+        var = 123.456;
         std::visit(visitor, var);
 
         var = std::string{ "Hello" };
         std::visit(visitor, var);
-    }
-
-    // -------------------------------------------------------------------
-
-    template<typename T>
-    void visitorFunction (const T& elem) {
-        std::cout << elem << std::endl;
-    }
-
-    void test_04() {
-
-        std::variant<int, float, std::string> var{ 3.5f };
-
-        // Doesn't work:
-        // std::visit requires an object,
-        // and template functions aren't objects of functions:
-        // std::visit(visitorFunction<float>, var);
     }
 
     // -------------------------------------------------------------------
@@ -145,8 +138,8 @@ namespace VariantDemo {
             std::cout << "int: " << n << std::endl;
         }
 
-        void operator() (float f) {
-            std::cout << "float: " << f << std::endl;
+        void operator() (double f) {
+            std::cout << "double: " << f << std::endl;
         }
 
         void operator() (std::string s) {
@@ -154,21 +147,24 @@ namespace VariantDemo {
         }
     };
 
-    void test_05() {
+    static void test_04() {
 
-        std::variant<int, float, std::string> var{ 3.5f };
+        std::variant<int, double, std::string> var{ 123 };
 
         Visitor visitor{};
 
         std::visit(visitor, var);
-        
-        var = 10;
+
+        var = 123.456;
+        std::visit(visitor, var);
+
+        var = std::string{ "Hello" };
         std::visit(visitor, var);
     }
 
     // -------------------------------------------------------------------
 
-    void test_06() {
+    static void test_05() {
 
         std::vector<std::variant<int, long, long long, float, double>>
             vec = { 100, 200l, 300ll, 400.5f, 500.5 };
@@ -212,13 +208,13 @@ namespace VariantDemo {
     
     template<class... Ts> Overload(Ts...) -> Overload<Ts...>;
 
-    void test_07() {
+    static void test_06() {
 
-        std::variant<int, float, std::string> intFloatString{ "Hello" };
+        std::variant<int, double, std::string> intFloatString{ "Hello" };
 
         std::visit(Overload{
             [](const int& i) { std::cout << "int: " << i << std::endl; },
-            [](const float& f) { std::cout << "float: " << f << std::endl; },
+            [](const double& f) { std::cout << "double: " << f << std::endl; },
             [](const std::string& s) { std::cout << "string: " << s << std::endl; }
             },
             intFloatString
@@ -228,7 +224,7 @@ namespace VariantDemo {
 
         std::visit(Overload{
             [](const int& i) { std::cout << "int: " << i << std::endl; },
-            [](const float& f) { std::cout << "float: " << f << std::endl; },
+            [](const double& f) { std::cout << "double: " << f << std::endl; },
             [](const std::string& s) { std::cout << "string: " << s << std::endl; }
             },
             intFloatString
@@ -237,13 +233,13 @@ namespace VariantDemo {
 
     // -------------------------------------------------------------------
 
-    void test_08() {
+    static void test_07() {
 
-        std::variant<int, float, std::string> intFloatString{ "Hello" };
+        std::variant<int, double, std::string> intFloatString{ "Hello" };
 
         Overload overloadSet {
             [](const int& i) { std::cout << "int: " << i << std::endl; },
-            [](const float& f) { std::cout << "float: " << f << std::endl; },
+            [](const double& f) { std::cout << "double: " << f << std::endl; },
             [](const std::string& s) { std::cout << "string: " << s << std::endl; }
         };
 
@@ -265,7 +261,6 @@ void main_variant()
     test_05();
     test_06();
     test_07();
-    test_08();
 }
 
 // =====================================================================================

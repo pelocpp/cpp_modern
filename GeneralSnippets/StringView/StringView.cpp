@@ -10,7 +10,7 @@ module modern_cpp:string_view;
 
 namespace StringViewDemonstration {
 
-    void test_01()
+    static void test_01()
     {
         std::string_view sv{ "The quick brown fox jumps over the lazy dog" };  // Konstante Zeichenkette
 
@@ -20,7 +20,7 @@ namespace StringViewDemonstration {
         char ch{ sv[0] };
     }
 
-    void test_02()
+    static void test_02()
     {
         std::string s{ "How vexingly quick daft zebras jump!" };
 
@@ -33,7 +33,7 @@ namespace StringViewDemonstration {
         std::cout << sv << std::endl;
     }
 
-    void test_03()
+    static void test_03()
     {
         using namespace std::literals;      // easiest way to access the s and sv suffixes
 
@@ -42,18 +42,20 @@ namespace StringViewDemonstration {
         std::cout << "moo"sv << std::endl;  // sv suffix: std::string_view literal
     }
 
-    uint32_t countUpperCaseChars(std::string_view sv) {
+    static uint32_t countUpperCaseChars(std::string_view sv) {
 
         uint32_t result{};
+
         for (char c : sv) {
             if (std::isupper(c)) {
                 ++result;
             }
         }
+
         return result;
     }
 
-    void test_04()
+    static void test_04()
     {
         std::string_view sv{ "DiesIstEinLangerSatz" };
         uint32_t count{ countUpperCaseChars(sv) };

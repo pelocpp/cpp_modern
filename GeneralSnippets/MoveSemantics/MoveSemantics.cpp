@@ -199,12 +199,12 @@ namespace MoveSemantics {
     }
 
     // test methods
-    BigData createHugeData() {
+    static BigData createHugeData() {
         BigData data(10, 1);
         return data;
     }
 
-    void test_01_move_semantics() {
+    static void test_01_move_semantics() {
 
         BigData data;
         std::cout << data << std::endl;
@@ -212,19 +212,19 @@ namespace MoveSemantics {
         std::cout << data << std::endl;
     }
 
-    void test_02_demonstrate_move_ctor() {
+    static void test_02_demonstrate_move_ctor() {
 
         std::vector<BigData> vec;
         vec.push_back(BigData(10, 1));
     }
 
-    void test_03_demonstrate_move_assignment() {
+    static void test_03_demonstrate_move_assignment() {
 
         BigData data;
         data = BigData(10, 1);
     }
 
-    void test_04_demonstrate_move_assignment() {
+    static void test_04_demonstrate_move_assignment() {
 
         std::vector<BigData> vec;
 

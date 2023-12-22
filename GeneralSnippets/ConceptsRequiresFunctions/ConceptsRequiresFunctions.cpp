@@ -29,7 +29,7 @@ namespace Requires_Clause {
         return a + b;
     }
 
-    void test_concepts_requires_01()
+    static void test_concepts_requires_01()
     {
         float sum1 = add(123.456f, 654.321f);
         std::cout << sum1 << std::endl;
@@ -61,13 +61,13 @@ namespace Requires_Clause {
         return a + b;
     }
 
-    void test_concepts_requires_02()
+    static void test_concepts_requires_02()
     {
         auto sum = add(123.456, 654.321F);
         std::cout << sum << std::endl;
     }
     
-    void test_concepts_requires_03()
+    static void test_concepts_requires_03()
     {
         std::string s1{ "ABC" };
         std::string s2{ "DEF" };
@@ -92,7 +92,7 @@ namespace Requires_Clause {
         return sum / vec.size();
     }
 
-    void test_concepts_requires_04()
+    static void test_concepts_requires_04()
     {
         std::vector<int> numbers{ 1, 2, 3, 4, 5 };
         std::vector<double> moreNumbers{ 1, 2, 3, 4, 5 };
@@ -103,7 +103,7 @@ namespace Requires_Clause {
         // auto anotherAverage = avg(moreNumbers);
     }
 
-    void test_concepts_requires_basic_usage()
+    static void test_concepts_requires_basic_usage()
     {
         test_concepts_requires_01();
         test_concepts_requires_02();
@@ -132,7 +132,7 @@ namespace Trailing_Requires_Clause {
         return a + b;
     }
 
-    void test_trailing_requires_clause()
+    static void test_trailing_requires_clause()
     {
         float sum1 = add(123.456f, 654.321f);
         std::cout << sum1 << std::endl;
@@ -159,7 +159,7 @@ namespace Constrained_Template_Parameters {
         return a + b;
     }
 
-    void test_constrained_template_parameters()
+    static void test_constrained_template_parameters()
     {
         float sum1 = add(123.456f, 654.321f);
         std::cout << sum1 << std::endl;
@@ -174,12 +174,12 @@ namespace Constrained_Template_Parameters {
 
 namespace Abbreviated_Function_Templates {
 
-    auto add(Numerical auto a, Numerical auto b)
+    static auto add(Numerical auto a, Numerical auto b)
     {
         return a + b;
     }
 
-    void test_abbreviated_function_template_syntax()
+    static void test_abbreviated_function_template_syntax()
     {
         float sum1 = add(123.456f, 654.321f);
         std::cout << sum1 << std::endl;
@@ -206,7 +206,7 @@ namespace UserDefined_Concept {
         return arg + 1;
     }
 
-    void test_user_defined_concept()
+    static void test_user_defined_concept()
     {
         int n{ 123 };
         n = incrementByOne(n);

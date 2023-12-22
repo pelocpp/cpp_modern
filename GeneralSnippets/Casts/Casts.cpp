@@ -164,6 +164,8 @@ namespace DiverseCasts {
             char* ch = reinterpret_cast<char*>(p);
             std::cout << *p << std::endl;
             std::cout << *ch << std::endl;
+
+            delete p;
         }
 
         struct myStruct {

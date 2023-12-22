@@ -22,7 +22,7 @@ namespace ClassesAndConcepts_01 {
         T getNumber() const { return m_number; }
     };
 
-    void test_concepts_requires_variant_01()
+    static void test_concepts_requires_variant_01()
     {
         WrappedNumber wn1{ 123 };
         std::cout << wn1.getNumber() << std::endl;
@@ -56,7 +56,7 @@ namespace ClassesAndConcepts_02 {
         U getSecondNumber() const { return m_secondNumber; }
     };
 
-    void test_concepts_requires_variant_02()
+    static void test_concepts_requires_variant_02()
     {
         WrappedPair wn1{ 123, 123.456 };
         std::cout << wn1.getFirstNumber() << std::endl;
@@ -87,7 +87,7 @@ namespace ClassesAndConcepts_03 {
         T getNumber() const { return m_number; }
     };
 
-    void test_concepts_requires_variant_03()
+    static void test_concepts_requires_variant_03()
     {
         WrappedNumber wn1{ 123 };
         std::cout << wn1.getNumber() << std::endl;
@@ -120,7 +120,7 @@ namespace ClassesAndConcepts_04 {
         U getSecondNumber() const { return m_secondNumber; }
     };
 
-    void test_concepts_requires_variant_04()
+    static void test_concepts_requires_variant_04()
     {
         WrappedPair wn1{ 123, 123.456 };
         std::cout << wn1.getFirstNumber() << std::endl;

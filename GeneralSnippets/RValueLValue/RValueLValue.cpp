@@ -7,41 +7,40 @@ module modern_cpp:rvalue_lvalue;
 namespace LValueRValue {
 
     // lvalue reference
-    void sayHello(std::string& message) {
+    static void sayHello(std::string& message) {
         std::cout << "sayHello [std::string&]:  " << message << std::endl;
     }
 
     // rvalue reference
-    void sayHello(std::string&& message) {
+    static void sayHello(std::string&& message) {
         std::cout << "sayHello [std::string&&]: " << message << std::endl;
     }
 
-    void test01() {
+    static void test01() {
 
         std::string a = "Hello";
         std::string b = " World";
 
         sayHello(a);
-        sayHello("ABC");
         sayHello(a + b);
     }
 
     // -------------------------------------------------------------------
 
-    void helper(std::string&& message) {
+    static void helper(std::string&& message) {
 
         sayHello(message);
         // sayHello(std::move(message));    // casting an lvalue to an rvalue
     }
 
-    void test02() {
+    static void test02() {
 
         helper(std::string("Where are we going :)"));
     }
 
     // -------------------------------------------------------------------
 
-    void test03() {
+    static void test03() {
 
         std::string a = "Hello";
 
@@ -57,7 +56,7 @@ namespace LValueRValue {
 
     // -------------------------------------------------------------------
 
-    void test04() {
+    static void test04() {
 
         //int& i = 2;       // invalid: reference to a constant
 

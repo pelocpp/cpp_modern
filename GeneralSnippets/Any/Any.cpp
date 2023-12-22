@@ -39,7 +39,7 @@ namespace AnySamples {
         a.reset();
         if (!a.has_value())
         {
-            std::cout << "no value\n";
+            std::cout << "no value" << std::endl;
         }
 
         // pointer to contained data
@@ -110,8 +110,8 @@ void main_any()
 {
     using namespace AnySamples;
     test_01_any();
-    test_02_any();
-    test_03_any();
+    //test_02_any();
+    //test_03_any();
 }
 
 // =====================================================================================

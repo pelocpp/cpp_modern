@@ -7,36 +7,43 @@ module modern_cpp:initializer_list;
 namespace InitializerList {
 
     // function using std::initializer_list
-    int myIntAdderFunction(std::initializer_list<int> list)
+    static int adder (std::initializer_list<int> list)
     {
         int result{};
+
         std::for_each(
             std::begin(list),
             std::end(list),
             [&result](int value) {
                 result += value; 
-            });
+            }
+        );
+        
         return result;
     }
 
     // delegating std::initializer_list with range based loop
-    void printMe(std::initializer_list<int> list) {
+    static void print(std::initializer_list<int> list) {
+
         for (const auto& value : list) {
             std::cout << value << " - ";
         }
         std::cout << std::endl;
     }
 
-    void test_01() {
+    static void test_01() {
+
         // testing functions expecting lists in function call
-        int sum = myIntAdderFunction({ 1, 3, 5, 7, 9 });
+        int sum = adder({ 1, 2, 3, 4, 5 });
         std::cout << sum << std::endl;
-        std::cout << myIntAdderFunction({ 2, 4, 6, 8 }) << std::endl;
+
+        print({ 1, 2, 3, 4, 5 });
     }
 
     // =================================================================================
 
-    void test_02() {
+    static void test_02() {
+
         std::initializer_list<int> list{ 1, 2, 3, 4, 5 };
         std::vector<int> vec{ list };
     }
@@ -62,13 +69,14 @@ namespace InitializerList {
     class Polygon {
     public:
         Polygon(std::initializer_list<Point> elements)
-            : m_elements{ elements } {}
+            : m_elements{ elements } 
+        {}
 
     private:
         std::vector<Point> m_elements;
     };
 
-    void test_03() {
+    static void test_03() {
 
         Polygon polygon
         {                          // c'tor Polygon - using brace initialization syntax
@@ -100,7 +108,8 @@ namespace InitializerList {
         TinyContainer(std::initializer_list<int>) {};
     };
 
-    void test_04() {
+    static void test_04() {
+
         TinyContainer tc0;                  // TinyContainer::TinyContainer()
         TinyContainer tc1{ 1, 2, 3, 4 };    // TinyContainer::TinyContainer(std::initializer_list<int>)
         TinyContainer tc2{ 1 };             // TinyContainer::TinyContainer(std::initializer_list<int>)
@@ -110,51 +119,10 @@ namespace InitializerList {
 
     // =================================================================================
 
-    // delegating std::initializer_list to std::vector
-    class MyPeople {
-        friend std::ostream& operator<< (std::ostream&, MyPeople);
-
-    private:
-        std::vector<std::string> m_names;
-
-    public:
-        // c'tors
-        MyPeople(std::initializer_list<std::string> names) 
-            : m_names{ names } {}
-
-        // getter
-        size_t size() const { return m_names.size(); }
-    };
-
-    std::ostream& operator<< (std::ostream& os, MyPeople peoples) {
-
-        os << '[';
-        for (int idx{}; const auto& elem : peoples.m_names) {
-            os << elem;
-            if (idx < peoples.size() - 1) {
-                os << " - ";
-            }
-            ++idx;
-        }
-        os << ']';
-
-        return os;
-    }
-
-    void test_05() {
-
-        MyPeople people{ "Hans", "Sepp", "Franz", "Anton" };
-        std::cout << people << std::endl;
-
-        MyPeople noFriends{ };
-        std::cout << noFriends << std::endl;
-    }
-
-    // =================================================================================
-
     // delegating templated std::initializer_list to range based loop
     template<typename T>
-    void printMe(std::initializer_list<T> list) {
+    void printEx(std::initializer_list<T> list) {
+
         for (const auto& value : list) {
             std::cout << value << " - ";
         }
@@ -163,39 +131,43 @@ namespace InitializerList {
 
     // delegating templated std::initializer_list to std::for_each with lambda
     template<typename T>
-    void printMeToo(std::initializer_list<T> list) {
+    void printExEx(std::initializer_list<T> list) {
+
         std::cout << "Begin of list: ";
+
         std::for_each(
             std::begin(list),
             std::end(list),
             [](const T& elem) {
                 std::cout << elem << " - ";
-            });
+            }
+        );
+
         std::cout << " End of list." << std::endl;
     }
 
-    void test_06() {
+    static void test_05() {
+
         // testing generic functions expecting lists
-
-        printMe({ 11, 12, 13, 14, 15 });
-
-        std::cout << "--------------------------------" << std::endl;
-
-        printMe({ 'a', 'b', 'c' });        // template argument T can be deduced automatically
-        printMe<char>({ 'a','b', 'c' });   // template argument T specified explicitly
-        printMe<int>({ 'A', 'B', 'C' });
-        printMe({ "ABC", "DEF", "GHI" });
-        printMe<std::string>({ "ABC", "DEF", "GHI" });
-        printMe<std::string>({ std::string("RST"), std::string("UVW"), std::string("XYZ") });
+        printEx({ 11, 12, 13, 14, 15 });
 
         std::cout << "--------------------------------" << std::endl;
 
-        printMeToo({ 'a', 'b', 'c' });        // template argument T can be deduced automatically
-        printMeToo<char>({ 'a','b', 'c' });   // template argument T specified explicitly
-        printMeToo<int>({ 'A', 'B', 'C' });
-        printMeToo({ "ABC", "DEF", "GHI" });
-        printMeToo<std::string>({ "ABC", "DEF", "GHI" });
-        printMeToo<std::string>({ std::string("RST"), std::string("UVW"), std::string("XYZ") });
+        printEx({ 'a', 'b', 'c' });        // template argument T can be deduced automatically
+        printEx<char>({ 'a','b', 'c' });   // template argument T specified explicitly
+        printEx<int>({ 'A', 'B', 'C' });
+        printEx({ "ABC", "DEF", "GHI" });
+        printEx<std::string>({ "ABC", "DEF", "GHI" });
+        printEx<std::string>({ std::string("RST"), std::string("UVW"), std::string("XYZ") });
+
+        std::cout << "--------------------------------" << std::endl;
+
+        printExEx({ 'a', 'b', 'c' });        // template argument T can be deduced automatically
+        printExEx<char>({ 'a','b', 'c' });   // template argument T specified explicitly
+        printExEx<int>({ 'A', 'B', 'C' });
+        printExEx({ "ABC", "DEF", "GHI" });
+        printExEx<std::string>({ "ABC", "DEF", "GHI" });
+        printExEx<std::string>({ std::string("RST"), std::string("UVW"), std::string("XYZ") });
     }
 }
 
@@ -207,7 +179,6 @@ void main_initializer_list()
     test_03();
     test_04();
     test_05();
-    test_06();
 }
 
 // =====================================================================================

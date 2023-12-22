@@ -59,11 +59,13 @@ namespace VirtualOverrideFinal{
 
     // =========================================================
 
-    void test_01()
+    static void test_01()
     {
         Base* ptr;
         ptr = new Derived();
         ptr->func(123);
+
+        delete ptr;
     }
 }
 

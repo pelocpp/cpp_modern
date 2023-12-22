@@ -9,7 +9,7 @@ namespace TupleSamples {
     // =======================================================
     // demonstrating simple operations on a std::tuple
 
-    void test_01()
+    static void test_01()
     {
         // declaring tuple 
         std::tuple <char, int, double> values;
@@ -46,7 +46,7 @@ namespace TupleSamples {
 
     using Row = std::tuple<int, char, double, std::string>;
 
-    std::string rowToString(const Row& row)
+    static std::string rowToString(const Row& row)
     {
         int n = std::get<0>(row);
         char ch = std::get<1>(row);
@@ -58,7 +58,7 @@ namespace TupleSamples {
             std::to_string(d) + ", " + s;
     }
 
-    void test_02()
+    static void test_02()
     {
         Row row1 = std::make_tuple(10, 'A', 1.11, "Mueller");
         Row row2 = std::make_tuple(11, 'B', 2.22, "Sepp");
@@ -78,7 +78,7 @@ namespace TupleSamples {
     // =======================================================
     // same example, but using C++ 17 structured binding
 
-    void test_03() 
+    static void test_03()
     {
         Row row1 = std::make_tuple(10, 'A', 1.11, "Mueller");
         Row row2 = std::make_tuple(11, 'B', 2.22, "Sepp");
@@ -109,7 +109,7 @@ namespace TupleSamples {
         }
     }
 
-    void test_04()
+    static void test_04()
     {
         Row row1 = std::make_tuple(91, 'a', 1.11, "Mueller");
         Row row2 = std::make_tuple(92, 'b', 2.22, "Sepp");
@@ -154,7 +154,7 @@ namespace TupleSamples {
     // =======================================================
     // retrieving number of elements of a std::tuple
 
-    void test_05()
+    static void test_05()
     {
         // declaring tuple 
         std::tuple <char, int, double> tuple { 'A', 123, 123.456 };

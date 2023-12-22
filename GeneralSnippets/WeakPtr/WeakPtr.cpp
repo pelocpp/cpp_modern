@@ -20,7 +20,7 @@ module modern_cpp:weak_ptr;
 
 namespace WeakPointer {
 
-    void test_01() {
+    static void test_01() {
         std::cout << std::boolalpha;
 
         std::cout << "Begin-of-program" << std::endl;
@@ -57,7 +57,7 @@ namespace WeakPointer {
         std::cout << "Is weak ptr expired:        " << weakPtr.expired() << std::endl;
 
         // Note: C++17 initializer syntax: limited variable scope
-        if (std::shared_ptr<int> ptr3; (ptr3 = weakPtr.lock()) == nullptr) {
+        if (std::shared_ptr<int> ptr3 = weakPtr.lock(); ptr3 == nullptr) {
             std::cout << "Don't get the resource!" << std::endl;
         }
 
@@ -128,7 +128,7 @@ namespace WeakPointer {
         }
     };
 
-    void test_02()
+    static void test_02()
     {
         std::shared_ptr<ParentNode> parent{ new ParentNode {} };
         std::shared_ptr<RightNode> rightNode{ new RightNode { parent } };
@@ -138,7 +138,7 @@ namespace WeakPointer {
         parent->setLeftNode(leftNode);
     }
 
-    void test_03()
+    static void test_03()
     {
         std::shared_ptr<ParentNode> parent{ new ParentNode {} };
         std::shared_ptr<RightNode> rightNode{ new RightNode { parent } };

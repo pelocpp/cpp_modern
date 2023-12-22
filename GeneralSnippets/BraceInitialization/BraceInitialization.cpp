@@ -8,7 +8,7 @@ namespace BraceInitialization {
 
     // =================================================================================
     // Brace initialization does not allow narrowing:
-    void test_00()
+    static void test_00()
     {
         double dval{ 123.456 };
         int ival{ 123 };
@@ -20,7 +20,7 @@ namespace BraceInitialization {
     // =================================================================================
     // built-in types: default initialization of miscellaneous variables
 
-    void test_01()
+    static void test_01()
     {
         int n{};              // n equals 0
         float f{};            // f equals 0.0
@@ -38,7 +38,7 @@ namespace BraceInitialization {
     // =================================================================================
     // built-in types: non default initialization of miscellaneous variables
 
-    void test_02()
+    static void test_02()
     {
         int n{ 1 };          // n equals 1
         float f{ 1.5f };     // f equals 1.5
@@ -58,7 +58,7 @@ namespace BraceInitialization {
         int m_j;
     };
 
-    void test_03()
+    static void test_03()
     {
         [[ maybe_unused]] struct Struct obj0;         // uninitialized !!!
         struct Struct obj1 {};                        // obj1.m_i => 0, obj1.m_j => 0
@@ -76,7 +76,7 @@ namespace BraceInitialization {
         StructWithCTor(int i, int j) : m_i{ 2 * i }, m_j{ 2 * j } {}
     };
 
-    void test_04()
+    static void test_04()
     {
         struct StructWithCTor obj { 5, 6 };        // obj.m_i => 10, obj.m_j => 12
     }
@@ -94,7 +94,7 @@ namespace BraceInitialization {
         Class(int a, int b) : m_a{ a }, m_b{ b } {}
     };
 
-    void test_05()
+    static void test_05()
     {
         Class obj{ 11, 12 };  // obj.m_a => 11, obj.m_b => 12
     }
@@ -112,7 +112,7 @@ namespace BraceInitialization {
         void operator() () { std::cout << "a: " << m_a << ", b: " << m_b << std::endl; }
     };
 
-    void test_05_01()
+    static void test_05_01()
     {
         AnotherClass obj1{};
         AnotherClass obj2{ 42, 1.2 };
@@ -126,7 +126,7 @@ namespace BraceInitialization {
     // =================================================================================
     // standard STL container
 
-    void test_06()
+    static void test_06()
     {
         std::vector<int> myArray{ 1, 2, 3, 4, 5 };
 
@@ -166,7 +166,7 @@ namespace BraceInitialization {
     // =================================================================================
     // dynamically allocated arrays
 
-    void test_07()
+    static void test_07()
     {
         int* pi = new int[5]{ 1, 2, 3, 4, 5 };
         double* pd = new double[5]{ 1.0, 2.0, 3.0, 4.0, 5.0 };
@@ -188,7 +188,7 @@ namespace BraceInitialization {
     // =================================================================================
     // statically allocated arrays
 
-    void test_08()
+    static void test_08()
     {
         int intArray[]{ 1, 2, 3, 4, 5 };
 
@@ -205,7 +205,7 @@ namespace BraceInitialization {
         int m_array[2];
     };
 
-    void test_09()
+    static void test_09()
     {
         [[ maybe_unused]] Inner inner1; // uninitialized
         Inner inner2{ };                // m_array[0] => 0 & m_array[1] => 0
@@ -213,7 +213,7 @@ namespace BraceInitialization {
         Inner inner4{ 1, 2 };           // Uses Brace Elision (!) of m_array
     }
 
-    void test_09_01()
+    static void test_09_01()
     {
         // "regular" case:
         // outer braces for the std::array,
@@ -239,13 +239,13 @@ namespace BraceInitialization {
         int m_x;
         double m_y;
 
-        void operator()()
+        void operator()() const
         {
             std::cout << "x: " << m_x << ", y: " << m_y << std::endl;
         }
     };
 
-    void test_10()
+    static void test_10()
     {
         MyDataStruct s{ 42, 1.2 };
         std::cout << "a: " << s.m_a << ", b: " << s.m_b << std::endl;
@@ -301,7 +301,7 @@ namespace BraceInitialization {
         }
     };
 
-    void test_11()
+    static void test_11()
     {  
         MyAnotherClass obj1;
         MyAnotherClass obj2{ 11, 12, 13, 14, 15 };

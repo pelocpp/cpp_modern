@@ -6,7 +6,7 @@ module modern_cpp:transform;
 
 namespace AlgorithmTransform {
 
-    void test_01()
+    static void test_01()
     {
         // very simple phone book
         std::cout << "List of Entries: " << std::endl;
@@ -40,7 +40,7 @@ namespace AlgorithmTransform {
         }
     }
 
-    void test_02()
+    static void test_02()
     {
         // very simple phone book
         std::cout << "List of Entries: " << std::endl;
@@ -74,7 +74,7 @@ namespace AlgorithmTransform {
         }
     }
 
-    void test_03()
+    static void test_03()
     {
         std::vector<std::string> persons
         {

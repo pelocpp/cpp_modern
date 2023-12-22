@@ -149,7 +149,12 @@ namespace FunctionTemplates_04_Specialization_vs_FunctionOverloading {
         template <>           void foo<int*>(int*) { std::cout << ""; };  // specialization of foo(T*)
 
         void test_04() {
-          foo(new int);       // calls overload
+
+            int* ip = new int{ 123 };
+
+            foo(new int);       // calls overload
+        
+            delete ip;
         }
     }
 
@@ -160,7 +165,12 @@ namespace FunctionTemplates_04_Specialization_vs_FunctionOverloading {
         template <typename T> void foo(T*) { std::cout << "overload"; };  // overload of foo(T)
    
         void test_04() {
-            foo(new int);     // calls specialization
+
+            int* ip = new int{ 123 };
+
+            foo(new int);       // calls specialization
+
+            delete ip;
         }
     }
 

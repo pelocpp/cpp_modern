@@ -47,6 +47,7 @@ namespace Exercises_PerfectForwarding {
             Point* pp = new Point{ 3, 4 };
             std::complex<double> c{ 2.5, 3.5 };
             list(c, 10, "abc", p, *pp, 2.4, Point{ 1, 2 });
+            delete pp;
         }
 
         // Lösung zur Ergänzungsaufgabe:
@@ -85,6 +86,7 @@ namespace Exercises_PerfectForwarding {
             Point* pp = new Point{ 3, 4 };
             std::complex<double> c(2.5, 2.5);
             listEx(c, 10, "abc", p, *pp, 2.4, Point{ 1, 2 });
+            delete pp;
         }
 
         void test_05() {
@@ -122,15 +124,16 @@ namespace Exercises_PerfectForwarding {
             std::complex<double> c(2.5, 2.5);
             listExEx(c, 10, "abc", p, *pp, 2.4, Point{ 1, 2 });
             listExExEx(c, 10, "abc", p, *pp, 2.4, Point{ 1, 2 });
+            delete pp;
         }
 
         void testExercise_01() {
-            //test_01();
-            //test_02();
-            //test_03();
-            //test_04();
-            //test_05();
-            //test_06();
+            test_01();
+            test_02();
+            test_03();
+            test_04();
+            test_05();
+            test_06();
             test_07();
         }
     }

@@ -86,12 +86,12 @@ namespace Exercises_Concepts {
             std::cout << obj.toString() << std::endl;
         }
 
-        auto print04(const ConceptObject auto& obj)
+        static auto print04(const ConceptObject auto& obj)
         {
             std::cout << obj.toString() << std::endl;
         }
 
-        void test_01() {
+        static void test_01() {
 
             print00(Integer{ 12 });
             print01(Integer{ 34 });
@@ -111,7 +111,7 @@ namespace Exercises_Concepts {
             print04(NaturalNumber{ -5 });
         }
 
-        void test_02() {
+        static void test_02() {
 
             Double d{ 123.456 };
             std::cout << d.toString() << std::endl;
@@ -128,12 +128,12 @@ namespace Exercises_Concepts {
             std::cout << obj.toString() << std::endl;
         }
 
-        void print11(const ConceptObjectEx auto& obj)
+        static void print11(const ConceptObjectEx auto& obj)
         {
             std::cout << obj.toString() << std::endl;
         }
 
-        void test_03() {
+        static void test_03() {
 
             print00(NaturalNumber{ 1 });
             print10(NaturalNumber{ 2 });
@@ -142,7 +142,7 @@ namespace Exercises_Concepts {
             print11(NaturalNumber{ -2 });
         }
 
-        void testExercise() {
+        static void testExercise() {
 
             test_01();
             test_02();
@@ -168,7 +168,7 @@ namespace Exercises_Concepts {
                 return cond && andAll(conds...);
             }
 
-            void test() {
+            static void test() {
 
                 auto result = andAll(true, true, true);
 
@@ -190,7 +190,7 @@ namespace Exercises_Concepts {
                 return (... && args);
             }
 
-            void test() {
+            static void test() {
 
                 auto result = andAll(true, true, true);
 
@@ -206,11 +206,11 @@ namespace Exercises_Concepts {
 
             // Using "Abbreviated Function Templates Syntax"
 
-            bool andAll(std::same_as<bool> auto ... args) {
+            static bool andAll(std::same_as<bool> auto ... args) {
                 return (... && args);
             }
 
-            void test() {
+            static void test() {
 
                 auto result = andAll(true, true, true);
 
@@ -227,15 +227,15 @@ namespace Exercises_Concepts {
             // Using "Abbreviated Function Templates Syntax"
             // in combination with overloaded functions
 
-            bool andAll(std::same_as<bool> auto cond) {
+            static bool andAll(std::same_as<bool> auto cond) {
                 return cond;
             }
 
-            bool andAll(std::same_as<bool> auto cond, std::same_as<bool> auto ... conds) {
+            static bool andAll(std::same_as<bool> auto cond, std::same_as<bool> auto ... conds) {
                 return cond && andAll(conds...);
             }
 
-            void test() {
+            static void test() {
 
                 auto result = andAll(true, true, true);
 
@@ -266,7 +266,7 @@ namespace Exercises_Concepts {
                 return (... && args);
             }
 
-            void test() {
+            static void test() {
 
                 auto result = andAll(true, true, true);
 
@@ -278,7 +278,7 @@ namespace Exercises_Concepts {
             }
         }
 
-        void testExercise() {
+        static void testExercise() {
 
             RequiresAllSame_01::test();
             RequiresAllSame_02::test();
@@ -303,7 +303,7 @@ namespace Exercises_Concepts {
                 virtual void reset() = 0;
             };
 
-            int count(IntegerIterable& t)
+            static int count(IntegerIterable& t)
             {
                 int count{};
 
@@ -324,7 +324,8 @@ namespace Exercises_Concepts {
 
             public:
                 IterableArray(std::initializer_list<int> numbers)
-                    : m_array{ numbers }, m_index{} {}
+                    : m_array{ numbers }, m_index{} 
+                {}
 
                 virtual void reset() override { 
                     m_index = 0;
@@ -344,14 +345,15 @@ namespace Exercises_Concepts {
                 return count(a);
             }
 
-            void test() {
+            static void test() {
+
                 IterableArray a{ 1, 2, 3 };
 
-                int count = getCount(a);
+                int count{ getCount(a) };
                 std::cout << count << std::endl;
 
                 // Note: '->'-Operator
-                IntegerIterable* ap = &a;
+                IntegerIterable* ap{ &a };
                 ap->reset();
                 while (ap->hasNext()) {
                     int n{ ap->next() };
@@ -411,7 +413,8 @@ namespace Exercises_Concepts {
 
             public:
                 IterableArray(std::initializer_list<int> numbers)
-                    : m_array{ numbers }, m_index{} {}
+                    : m_array{ numbers }, m_index{} 
+                {}
 
                 void reset() {
                     m_index = 0; 
@@ -433,11 +436,11 @@ namespace Exercises_Concepts {
                 return count(a);
             }
 
-            void test() {
+            static void test() {
                 IterableArray a{ 1, 2, 3 };
 
-                int count1 = getCount(a);
-                int count2 = getCount<IterableArray>(a);
+                int count1{ getCount(a) };
+                int count2{ getCount<IterableArray>(a) };
 
                 std::cout << count1 << std::endl;
                 std::cout << count2 << std::endl;
@@ -485,7 +488,8 @@ namespace Exercises_Concepts {
 
             public:
                 IterableDoubleArray(std::initializer_list<double> numbers)
-                    : m_array{ numbers }, m_index{} {}
+                    : m_array{ numbers }, m_index{} 
+                {}
 
                 void reset() {
                     m_index = 0;
@@ -507,14 +511,14 @@ namespace Exercises_Concepts {
                 return count<T, U>(a);
             }
 
-            void test() {
+            static void test() {
                 IterableDoubleArray d{ 1.5, 2.5, 3.5, 4.5, 5.5 };
-                int count = getCount<IterableDoubleArray, double>(d);
+                int count{ getCount<IterableDoubleArray, double>(d) };
                 std::cout << count << std::endl;
             }
         }
 
-        void testExercise() {
+        static void testExercise() {
 
             Exercise_03_Using_Interface::test();
             Exercise_03_Using_Concepts::test();
@@ -546,7 +550,7 @@ namespace Exercises_Concepts {
             return len;
         }
 
-        void testExercise_01()
+        static void testExercise_01()
         {
             const std::string s1{ "111" };
             const std::string s2{ "AAAAA" };

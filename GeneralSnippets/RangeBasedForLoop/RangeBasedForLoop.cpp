@@ -11,7 +11,7 @@ module modern_cpp:range_based_for_loop;
 namespace RangeBasedForLoop {
 
     // global function
-    void processElement(int n)
+    static void processElement(int n)
     {
         std::cout << n << " ";
     }
@@ -25,7 +25,7 @@ namespace RangeBasedForLoop {
         }
     };
 
-    void test_01()
+    static void test_01()
     {
         // container of integral data type
         std::vector<int> vec{ 1, 2, 3, 4, 5, 6, 7, 8, 9 };

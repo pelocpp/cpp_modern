@@ -6,38 +6,45 @@ module modern_cpp:structured_binding;
 
 namespace StructuredBinding {
 
-    std::pair<int, int> divide_remainder(int dividend, int divisor) {
+    static std::pair<int, int> divide_remainder(int dividend, int divisor) {
+
         int quotient = dividend / divisor;
         int remainder = dividend % divisor;
-        return std::make_pair(quotient, remainder);
+        std::pair<int, int> result{ std::make_pair(quotient, remainder) };
+        return result;
     }
 
-    void test_01() {
+    static void test_01() {
+
         auto result = divide_remainder(16, 3);
+
         std::cout << "16 / 3 is "
             << result.first << " with a remainder of "
             << result.second << std::endl;
     }
 
-    void test_02() {
+    static void test_02() {
+
         auto [quotient, remainder] = divide_remainder(20, 3);
+
         std::cout << "20 / 3 is "
             << quotient << " with a remainder of "
             << remainder << std::endl;
     }
 
-    void test_03() {
-        int arr[] = { 10, 11, 12 };
+    static void test_03() {
+
+        int arr[] = { 123, 456, 789 };
         auto [ a, b, c ] = arr;
         std::cout << a << ", " << b << ", " << c << std::endl;
     }
 
-    void test_04() {
-        int arr[] = { 10, 11, 12 };
+    static void test_04() {
+        int arr[] = { 123, 456, 789 };
         auto& [a, b, c] = arr;
         std::cout << a << ", " << b << ", " << c << std::endl;
 
-        b = 111;
+        b = 999;
         std::cout << arr[0] << ", " << arr[1] << ", " << arr[2] << std::endl;
     }
 
@@ -47,7 +54,7 @@ namespace StructuredBinding {
         int m_y;
     };
 
-    void test_05() {
+    static void test_05() {
 
         // without structured binding
         Point p1 { 1, 2 };
@@ -66,7 +73,7 @@ namespace StructuredBinding {
         std::cout << "Y Coordinate : " << y1 << std::endl;
     }
 
-    void test_06() {
+    static void test_06() {
 
         Point p { 10, 20 };
         auto& [x, y] = p;
@@ -87,7 +94,7 @@ namespace StructuredBinding {
         unsigned long phone;
     };
 
-    void test_07() {
+    static void test_07() {
 
         Employee worker { 9987, "Sepp", "Engineer", 987654321 };
         Employee manager { 9999, "Hans", "Manager", 123456789 };

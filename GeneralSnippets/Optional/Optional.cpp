@@ -10,7 +10,7 @@ namespace OptionalExamples {
     * Introduction
     */
 
-    void test_01_optional() {
+    static void test_01_optional() {
 
         std::optional<int> someValue;
 
@@ -54,10 +54,11 @@ namespace OptionalExamples {
         Contact() : m_phone(std::nullopt) {}
 
         void setPhone(std::string phone) { m_phone = phone; }
+
         std::optional<std::string> getPhone() { return m_phone; }
     };
 
-    void test_02_optional() {
+    static void test_02_optional() {
 
         Contact contact;
 
@@ -79,19 +80,19 @@ namespace OptionalExamples {
     }
 
     /*
-    * Using optionals as return value
+    * Using optionals as return value / std::optional<T>::value_or()
     */
 
-    std::optional<double> divide(double a, double b) {
+    static std::optional<double> divide(double a, double b) {
 
         if (b != 0.0) { 
             return a / b; 
         }
 
-        return {};  // or std::nullopt
+        return std::nullopt;
     }
 
-    void test_03_optional() {
+    static void test_03_optional() {
 
         auto result = divide(1.0, 3.0);
 
@@ -129,12 +130,19 @@ namespace OptionalExamples {
     * Demonstrating std::optional and emplace
     */
 
-    void test_04_optional() {
+    static void test_04_optional() {
 
         // construct a std::vector<int> object inside std::optional in-place
         std::optional<std::vector<int>> optVec{
-            std::make_optional<std::vector<int>>(3, 22)   // { 22, 22, 22 }
+            std::make_optional<std::vector<int>>(5, 123)   // { 123, 123, 123, 123, 123 }
         };
+
+        std::copy(
+            optVec->begin(),
+            optVec->end(),
+            std::ostream_iterator<int>(std::cout, ", ")
+        );
+        std::cout << std::endl;
 
         std::set<int> ints{ 1, 2, 3, 4, 5 };
 
