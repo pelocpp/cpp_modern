@@ -96,7 +96,7 @@ namespace VariadicTemplatesMixins {
     class Slot
     {
     protected:
-        T& get() const
+        const T& get() const
         {
             return m_value;
         }
@@ -115,7 +115,7 @@ namespace VariadicTemplatesMixins {
     {
     public:
         template <typename T> // select type
-        T& get() const
+        const T& get() const
         {
             return Slot<T>::get(); // select base class
         }
@@ -160,7 +160,7 @@ namespace VariadicTemplatesMixins {
     class SlotEx
     {
     protected:
-        T& get() const
+        T& get()
         {
             return m_value;
         }
@@ -194,7 +194,7 @@ namespace VariadicTemplatesMixins {
     {
     public:
         template <typename T, typename Key = DefaultSlotKey>
-        T& get() const
+        T& get()
         {
             return SlotEx<T, Key>::get(); // select base class
         }

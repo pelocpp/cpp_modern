@@ -16,7 +16,7 @@ namespace Exercises_Folding {
             return (... && args);  // unary left fold
         }
 
-        void testExercise_01a() {
+        static void testExercise_01a() {
 
             bool result = andAll(true, (1 > 2), true);
             std::cout << std::boolalpha << result << std::endl;
@@ -33,7 +33,7 @@ namespace Exercises_Folding {
             return (args || ...);  // unary right fold
         }
 
-        void testExercise_01b() {
+        static void testExercise_01b() {
 
             bool result = orAll(false, false, true);
             std::cout << std::boolalpha << result << std::endl;
@@ -42,7 +42,7 @@ namespace Exercises_Folding {
             std::cout << std::boolalpha << result << std::endl;
         }
 
-        void testExercise_01() {
+        static void testExercise_01() {
             testExercise_01a();
             testExercise_01b();
         }
@@ -56,16 +56,16 @@ namespace Exercises_Folding {
         // Beim Lösungsansatz mit variadischen Templates wird
         // das 1. mit dem 2., das 2. mit dem 3., das 3. mit dem 4. Element usw. verglichen!
 
-        template<typename T, typename ... TRest>
-        constexpr bool sameType(T arg, TRest... args)
+        template<typename T, typename ... TArgs>
+        constexpr bool sameType(T arg, TArgs... args)
         {
             // since C++17: folding expression !
-            return (std::is_same_v<T, TRest> && ...);
+            return (std::is_same_v<T, TArgs> && ...);
             // or
             // return (std::is_same_v<decltype(arg), decltype(args)> && ...);
         }
 
-        void testExercise_02() {
+        static void testExercise_02() {
 
             constexpr bool result1 = sameType(1, 2, 3, 4, '?', 6, 7, 8, 9);
             std::cout << std::boolalpha << result1 << std::endl;
@@ -90,13 +90,13 @@ namespace Exercises_Folding {
 
             if constexpr (sizeof... (args) > 0) {
 
-                auto helper = [&](const auto& value) {
+                auto helper = [&] (const auto& value) {
                     if (value < m) {
                         m = value;
                     }
                 };
 
-                (..., helper(args));
+                ( ... , helper(args) );
             }
 
             return m;
@@ -109,19 +109,19 @@ namespace Exercises_Folding {
 
             if constexpr (sizeof... (args) > 0) {
 
-                auto helper = [&](const auto& value) {
+                auto helper = [&] (const auto& value) {
                     if (value > m) {
                         m = value;
                     }
                 };
 
-                (..., helper(args));
+                ( ... , helper(args) );
             }
 
             return m;
         }
 
-        void testExercise_03a() {
+        static void testExercise_03a() {
             std::cout << minimum(1, 2) << std::endl;
             std::cout << minimum(2, 3, 4) << std::endl;
             std::cout << minimum(4, 3, 2, 1) << std::endl;
@@ -129,14 +129,14 @@ namespace Exercises_Folding {
             std::cout << std::endl;
         }
 
-        void testExercise_03b() {
+        static void testExercise_03b() {
             std::cout << maximum(1, 2) << std::endl;
             std::cout << maximum(2, 3, 4) << std::endl;
             std::cout << maximum(4, 3, 2, 1) << std::endl;
             std::cout << maximum(6, 1, 5, 2, 4, 3) << std::endl;
         }
 
-        void testExercise_03() {
+        static void testExercise_03() {
             testExercise_03a();
             testExercise_03b();
         }
@@ -163,8 +163,7 @@ namespace Exercises_Folding {
         //    (..., vec.push_back(std::forward<TArgs>(args)));   // unary left fold
         //}
 
-
-        void testExercise_04a()
+        static void testExercise_04a()
         {
             std::vector<double> values;
 
@@ -195,7 +194,7 @@ namespace Exercises_Folding {
             pushBackAll_02(vec, std::forward<TArgs>(args) ...);
         }
 
-        void testExercise_04b()
+        static void testExercise_04b()
         {
             std::vector<double> values;
 
@@ -219,7 +218,7 @@ namespace Exercises_Folding {
             std::initializer_list<int> { (vec.push_back(std::forward<TArgs>(args)), 0) ... };
         }
 
-        void testExercise_04c()
+        static void testExercise_04c()
         {
             std::vector<double> values;
 
@@ -234,7 +233,7 @@ namespace Exercises_Folding {
             std::cout << std::endl;
         }
 
-        void testExercise_04() {
+        static void testExercise_04() {
             testExercise_04a();
             testExercise_04b();
             testExercise_04c();
@@ -263,7 +262,7 @@ namespace Exercises_Folding {
         // The solution uses a template argument for the first parameter
         // and then a variadic parameter list for the rest.
         // We print then the first element and then add a separator
-        // before all remaining entries
+        // before all remaining entries are being printed
 
         template <typename T, typename ... TArgs>
         void printer3(T first, TArgs... rest) {
@@ -302,7 +301,7 @@ namespace Exercises_Folding {
         // ----------------------------------------------------
         // using a lambda helper function
 
-        auto lambdaPrintCommaAndValue = [](auto value) {
+        auto lambdaPrintCommaAndValue = [] (auto value) {
             std::cout << ", " << value;
         };
 
@@ -334,12 +333,23 @@ namespace Exercises_Folding {
             std::cout << first;
             // IIFE - Immediately Invoked Functional Expression :
             ([](auto value) { std::cout << ", " << value; } (rest), ...);
+        }
+
+        // ----------------------------------------------------
+        // using binary folding: extract first parameter
+        // and print this parameter with the help of an 'init object';
+        // print the remaining parameters with 'binary folding over a comma'
+
+        template <typename T, typename ... TArgs>
+        void printer9(T first, TArgs ... rest) {
+
+            ( (std::cout << first) , ..., (std::cout << ", " << rest) );
             std::cout << std::endl;
         }
 
         // ----------------------------------------------------
 
-        void testExercise_05() {
+        static void testExercise_05() {
             printer1(1, "ABC", 2, "DEF", 3, "GHI");
             std::cout << std::endl;
             printer2(1, "ABC", 2, "DEF", 3, "GHI");
@@ -355,6 +365,8 @@ namespace Exercises_Folding {
             printer7(1, "ABC", 2, "DEF", 3, "GHI");
             std::cout << std::endl;
             printer8(1, "ABC", 2, "DEF", 3, "GHI");
+            std::cout << std::endl;
+            printer9(1, "ABC", 2, "DEF", 3, "GHI");
         }
     }
 }
