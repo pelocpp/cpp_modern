@@ -32,7 +32,7 @@ auto lambda = [](auto x, int y) {
 Man beachte, dass der Lambda Ausdruck einen Parameter vom Typ `auto` hat.
 
 Intern &ndash; also aus Sicht des Compilers &ndash; wird ein derartiger Lambda Ausdruck
-auf ein &ldquo;aufrufbares Objekt&rdquo; abgebildet.
+auf ein &bdquo;aufrufbares Objekt&rdquo; abgebildet.
 Der Aufruf-Operator `operator()` wird dabei im Sinne der Template Technik als so genannte
 *Template Member Function* realisiert:
 
@@ -274,9 +274,9 @@ ist dies nur mit dem gezeigten Lösungswegs eines Lambda Ausdrucks mit `template
 
 ## *Perfect Forwarding* mit generischen Lambdas
 
-Das Prinzip des &ldquo;perfekteb Weiterleitens&rdquo; gibt es auch für generische Lambdas.
+Das Prinzip des &bdquo;perfekteb Weiterleitens&rdquo; gibt es auch für generische Lambdas.
 Definiert man einen Parameter eines generischen Lambdas vom Typ `auto&&`, also als so genannte *Universal Reference*,
-so lassen sich die Argumente beim Aufruf &ldquo;perfekt&rdquo; Weiterleiten:
+so lassen sich die Argumente beim Aufruf &bdquo;perfekt&rdquo; Weiterleiten:
 
 ```cpp
 void foo(const std::string& s) {

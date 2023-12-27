@@ -244,7 +244,7 @@ auto negate4(T& value) -> std::enable_if_t<std::is_integral_v<T>>
 }
 ```
 
-*Hinweis*: Für die Variante &ldquo;*In der Definition des Rückgabetyps*&rdquo; habe ich das Beispiel zweimal formuliert:
+*Hinweis*: Für die Variante &bdquo;*In der Definition des Rückgabetyps*&rdquo; habe ich das Beispiel zweimal formuliert:
 Zum einen mit einem regulären Rückgabetyp und zum zweiten mit `auto` und einem nachgestellten Rückgabetyp.
 
 Um es ausdrücklich zu betonen: Für die reine Arbeitsweise der Funktion `negate` bräuchte man in den ersten beiden Varianten
@@ -263,8 +263,8 @@ void negate2(T& value, std::enable_if_t<std::is_integral_v<T>>* = nullptr)
 *Hinweis*: In den Beispielen zur `negate`-Funktion wurden die Schablonen `std::enable_if_t` und `std::is_integral_v` eingesetzt.
 Beide Schablonen ermöglichen es dem Programmierer mit weniger Schreibarbeit auszukommen,
 dafür erschweren sie &ndash; zumindest auf den ersten Blick &ndash; das Verständnis,
-da sie den Blick auf die &ldquo;*versteckten*&rdquo; Alias-Definitionen verbergen:
-Die &ldquo;*Langschreibweise*&rdquo; dieser Beispiele (mit den Schablonen `std::enable_if` und `std::is_integral`)
+da sie den Blick auf die &bdquo;*versteckten*&rdquo; Alias-Definitionen verbergen:
+Die &bdquo;*Langschreibweise*&rdquo; dieser Beispiele (mit den Schablonen `std::enable_if` und `std::is_integral`)
 würde so aussehen:
 
 ```cpp

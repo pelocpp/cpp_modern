@@ -8,7 +8,7 @@
 
 ---
 
-## &ldquo;It's about ownership&rdquo;
+## &bdquo;It's about ownership&rdquo;
 
 ###### Exklusiver Besitz: `std::unique_ptr<T>`
 
@@ -49,7 +49,7 @@ Auch in das C++&ndash;Umfeld dringen bisweilen *Fake*-*News* ein:
 
 [No New New: Das Ende von Zeigern in C++](https://www.heise.de/blog/No-New-New-4009347.html) (abgerufen am 13.06.2022).
 
-&ldquo;*Vor zwei Wochen fand das ISO-C++-Standardisierungsmeeting in Jacksonville statt.*
+&bdquo;*Vor zwei Wochen fand das ISO-C++-Standardisierungsmeeting in Jacksonville statt.*
 *Das Standardisierungskomitee entschied, dass Zeiger mit C++ 20 deprecated und mit C++23 mit hoher Wahrscheinlichkeit entfernt werden.*&rdquo;
 Alles weitere hierzu können Sie dem zitierten Artikel entnehmen :)
 

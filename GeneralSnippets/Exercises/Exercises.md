@@ -100,7 +100,7 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 | [Aufgabe 1](./Exercises_15_SmartPointers.md#aufgabe-1-quiz-zu-smart-pointer) | Quiz zu Smart Pointer<br/>(Vorausetzungen: `std::shared_ptr<>`) |
 | [Aufgabe 2](./Exercises_15_SmartPointers.md#aufgabe-2-noch-ein-quiz-zu-smart-pointer) | Noch ein Quiz zu Smart Pointer<br/>(Vorausetzungen: `std::shared_ptr<>`) |
 | [Aufgabe 3](./Exercises_15_SmartPointers.md#aufgabe-3-beobachtungen-eines-zyklus-von-smart-pointer-objekten) | Betrachtungen eines Zyklus von `std::shared_ptr<>`-Objekten<br/>(Vorausetzungen: `std::shared_ptr<>`, ggf. `std::weak_ptr<>`) |
-| [Aufgabe 4](./Exercises_15_SmartPointers.md#aufgabe-4-betrachtungen-eines-nicht-besitzenden-zeigers) | Betrachtungen eines &ldquo;nicht besitzenden&rdquo; Zeigers<br/>(Vorausetzungen: `std::shared_ptr<>`, `std::weak_ptr<>`) |
+| [Aufgabe 4](./Exercises_15_SmartPointers.md#aufgabe-4-betrachtungen-eines-nicht-besitzenden-zeigers) | Betrachtungen eines &bdquo;nicht besitzenden&rdquo; Zeigers<br/>(Vorausetzungen: `std::shared_ptr<>`, `std::weak_ptr<>`) |
 
 *Tabelle* 5: Aufgaben zu Smart Pointer.
 
@@ -149,7 +149,7 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 | :- | :- |
 | [Aufgabe 1](./Exercises_06_Folding.md#aufgabe-1-logische-operationen-mit-beliebig-vielen-operanden) | Logische Operationen mit beliebig vielen Operanden |
 | [Aufgabe 2](./Exercises_06_Folding.md#aufgabe-2-folding-expressions-decltype-und-type-traits-am-beispiel-von-sameType) | `decltype` und Type-Traits am Beispiel von `sameType`<br/>(Vorausetzungen: `std::is_same`) |
-| [Aufgabe 3](./Exercises_06_Folding.md#aufgabe-3-folding-over-a-comma-am-beispiel-zweier-funktionen-minimum-und-maximum) | &ldquo;Folding over a Comma&rdquo; am Beispiel zweier Funktionen `minimum` und `maximum`<br/>(Voraussetzungen: Lambda Funktionen) |
+| [Aufgabe 3](./Exercises_06_Folding.md#aufgabe-3-folding-over-a-comma-am-beispiel-zweier-funktionen-minimum-und-maximum) | &bdquo;Folding over a Comma&rdquo; am Beispiel zweier Funktionen `minimum` und `maximum`<br/>(Voraussetzungen: Lambda Funktionen) |
 | [Aufgabe 4](./Exercises_06_Folding.md#aufgabe-4-beliebig-viele-Werte-zu-einem-stdvector-objekt-hinzufügen) | Beliebig viele Werte zu einem `std::vector`-Objekt hinzufügen |
 | [Aufgabe 5](./Exercises_06_Folding.md#aufgabe-5-störende-trennzeichen-am-ende-eines-folding-ausdrucks) | Störende Trennzeichen am Ende eines Folding-Ausdrucks |
 

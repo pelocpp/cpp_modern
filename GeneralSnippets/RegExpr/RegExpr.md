@@ -106,7 +106,7 @@ mit Verwendung von `?:` wird er nicht in das Resultat übernommen. Man spricht in
 von einer *Non-Capturing Group*.
 
 Wir betrachten dies an einem Beispiel, um URLs mit den Bestandteilen
-&ldquo;Protokoll&rdquo;, &ldquo;Domain&rdquo; und &ldquo;Pfad&rdquo; zu analysieren:
+&bdquo;Protokoll&rdquo;, &bdquo;Domain&rdquo; und &bdquo;Pfad&rdquo; zu analysieren:
 
 ```cpp
 std::regex re{ "(https?|s?ftp)://([^/\r\n]+)(/[^\r\n]*)?" };
@@ -310,11 +310,11 @@ Valid date:   0001/1/1 ==> 1-1-1
 
 Zum Testen von regulären Ausdrücken gibt es zwei empehlenswerte Seiten:
 
-&ldquo;[RegExr is an online tool to learn, build, & test Regular Expressions](https://regexr.com/)&rdquo;
+&bdquo;[RegExr is an online tool to learn, build, & test Regular Expressions](https://regexr.com/)&rdquo;
 
 und
 
-&ldquo;[Free PCRE-based regular expression debugger with real time explanation, error detection and highlighting](https://regex101.com/)&rdquo;
+&bdquo;[Free PCRE-based regular expression debugger with real time explanation, error detection and highlighting](https://regex101.com/)&rdquo;
 
 Das Thema der *Capturing Groups* findet man Hinweise hier:
 

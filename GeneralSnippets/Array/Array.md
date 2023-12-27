@@ -15,7 +15,7 @@ Die Klasse `std::array` stellt im Prinzip eine dünne Hülle um ein Array im C-Sti
 Die Verwendung der Klasse `std::array` anstelle eines C-Stil Arrays bietet eine Reihe von Vorteilen:
 
   * Die Größe (Länge) des zugrunde liegenden Datenbereichs ist immer bekannt.
-  * Ein `std::array`-Objekt wird nicht automatisch in einen Zeiger umgewandelt (z.B. bei einem Funktionsaufruf, so genannte &ldquo;*Array Decay*&rdquo; Thematik),
+  * Ein `std::array`-Objekt wird nicht automatisch in einen Zeiger umgewandelt (z.B. bei einem Funktionsaufruf, so genannte &bdquo;*Array Decay*&rdquo; Thematik),
     wenn das Objekt über Funktionsgrenzen weitergereicht wird.
   * `std::array`-Objekte verfügen über Iteratoren-Objekte, mit deren Hilfe man die Elemente des Arrays einfach durchlaufen kann.
 
@@ -78,10 +78,10 @@ Die Zeigervariable `m_data` ist folglich nur solange gültig, wie der Datenbereic
 Lebt das `std::span`-Objekt länger als der Datenbereich, stoßen wir auf *UB* (*Undefined Behaviour*).
 
 Man spricht in Bezug auf das `std::span`-Objekt auch von einem
-so genannten &ldquo;*Non-Owning*&rdquo; Container.
+so genannten &bdquo;*Non-Owning*&rdquo; Container.
 
 *Beachte*:
-Im Gegensatz zur Klasse `std::string_view` (ebenfalls eine &ldquo;*Non-Owning*&rdquo; Klasse), die eine schreibgeschützte Ansicht
+Im Gegensatz zur Klasse `std::string_view` (ebenfalls eine &bdquo;*Non-Owning*&rdquo; Klasse), die eine schreibgeschützte Ansicht
 einer Zeichenfolge bereitstellt,
 kann ein `std::span`-Objekt Lese- und Schreibzugriff auf die zugrunde liegenden Elemente ermöglichen.
 

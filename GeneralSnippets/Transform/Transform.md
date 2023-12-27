@@ -17,7 +17,7 @@ um mit den Rückgabewerten dieser Funktion einen neuen Container zu füllen:
 
 *Abbildung* 1: `std::transform` auf einem Bereich.
 
-*Hinweis*: Für das Befüllen des neuen Containers (das Ergebnis der &ldquo;Transformation&rdquo;)
+*Hinweis*: Für das Befüllen des neuen Containers (das Ergebnis der &bdquo;Transformation&rdquo;)
 benötigt man in jedem Fall eine Komfortfunktion, um mit den anfänglich leeren Containern 
 richtig umzugehen! Für `std::vector`-Objekte bietet sich die `std::back_inserter`-Funktion an,
 für `std::map`-Objekte die `std::inserter` Funktion,

@@ -11,7 +11,7 @@
 *Allgemeines*:
 
 
-`std::bind` ist zur Bildung von so genannten &ldquo;*Partial Application*&rdquo; Teilfunktionen vorgesehen.
+`std::bind` ist zur Bildung von so genannten &bdquo;*Partial Application*&rdquo; Teilfunktionen vorgesehen.
 Angenommen, Sie haben ein Funktionsobjekt `f`, das 3 Argumente akzeptiert:
 
 ```cpp
@@ -25,7 +25,7 @@ das nur zwei Argumente akzeptiert:
 g(a,b) := f(a, 4, b);
 ```
 
-`g` ist eine so genannte &ldquo;*Partial Application*&rdquo; der Funktion `f`:
+`g` ist eine so genannte &bdquo;*Partial Application*&rdquo; der Funktion `f`:
 Das mittlere Argument wurde bereits angegeben, zwei weitere sind bei einem Aufruf von `g` noch festzulegen.
 Hier kommt nun `std::bind` ins Spiel, um eine derartige Funktion `g` zu definieren: 
 
@@ -40,7 +40,7 @@ auf eine neue Funktion vor, die nur einen Parameter besitzt.
 ## Literaturhinweise:
 
 Das Beispiel zu `std::bind`
-stammt aus &ldquo;[`std::function` and `std::bind`: what are they, and when should they be used?](https://stackoverflow.com/questions/6610046/stdfunction-and-stdbind-what-are-they-and-when-should-they-be-used)&rdquo;.
+stammt aus &bdquo;[`std::function` and `std::bind`: what are they, and when should they be used?](https://stackoverflow.com/questions/6610046/stdfunction-and-stdbind-what-are-they-and-when-should-they-be-used)&rdquo;.
 
 ---
 

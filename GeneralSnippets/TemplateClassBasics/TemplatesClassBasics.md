@@ -114,12 +114,12 @@ void main()
 *Hinweis*:
 Mit der Visual C++ Entwicklungsumgebung lassen sich in einem Programm alle vorhandenen
 Template Instanziierungen anzeigen.
-Einstiegspunkt hierzu ist das Menü &ldquo;*Provide sample template arguments for IntelliSense*&rdquo;
+Einstiegspunkt hierzu ist das Menü &bdquo;*Provide sample template arguments for IntelliSense*&rdquo;
 im Editor:
 
 <img src="template_instantiations_01.png" width="500">
 
-*Abbildung* 1: Auswahl Untermenü &ldquo;*Add all Existing Instantiations*&rdquo;.
+*Abbildung* 1: Auswahl Untermenü &bdquo;*Add all Existing Instantiations*&rdquo;.
 
 Danach öffnet sich ein weiteres Fenster mit allen vorhandenen Template Instanziierungen:
 
@@ -207,7 +207,7 @@ Funktions-Template formuliert werden:
 *Hinweis*:
 
 Man beachte, dass die Definition von Methoden eines Klassen-Templates
-nur eine &ldquo;*vorläufige Definition*&rdquo; darstellt, weil der Klassentyp immer noch
+nur eine &bdquo;*vorläufige Definition*&rdquo; darstellt, weil der Klassentyp immer noch
 unvollständig ist, da hier ja nur ein formaler Datentyp enthalten ist.
 
 Die eigentlichen Methoden werden erst dann erzeugt, wenn zu einem Klassentyp ein bestimmtes
@@ -368,7 +368,7 @@ Offensichtlich muss der Übersetzer sich hier der Aufgabe stellen, bei einer
 Template-Instanziierung (in Zeile 4) den Überblick zu verschaffen,
 ob er das Klassen-Template (`MyContainer<T>`) schon einmal mit demselben
 Template-Parameter `int` für `T` instanziiert hat. In diesem Fall
-werden die beiden resultierenden Typen als &ldquo;identisch&rdquo; erachtet.
+werden die beiden resultierenden Typen als &bdquo;identisch&rdquo; erachtet.
 
 Die zuvor beschriebene Situation liegt in den Zeilen 5 und 6 nicht vor.
 Die beiden Objekte `vector_1` und `vector_2` sind verschiedenen Typs!

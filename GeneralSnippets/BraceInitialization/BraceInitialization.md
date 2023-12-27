@@ -16,7 +16,7 @@ Siehe dazu auch das Sprachfeature [Default-Initialisierung für Member-Variablen]
 
 Die Initialisierung mit geschweiften Klammern '{' und '}' ist ab der Version C++&ndash;11
 eine einheitliche Methode zum Initialisieren von Daten.
-Sie wird auch als &ldquo;*Uniform Initialization*&rdquo; oder als &ldquo;*Brace Initialization*&rdquo; bezeichnet.
+Sie wird auch als &bdquo;*Uniform Initialization*&rdquo; oder als &bdquo;*Brace Initialization*&rdquo; bezeichnet.
 
 <img src="cpp_init.gif" width="400">
 
@@ -56,7 +56,7 @@ Das Feature der *einheitlichen Initialisierung* bringt drei Vorteile mit sich:
     <b>( ... )</b> ==> Funktions-/Methoden-Aufruf
 </pre>
 
-  * Die *einheitliche Initialisierung* erlaubt kein &ldquo;*Narrowing*&rdquo;:
+  * Die *einheitliche Initialisierung* erlaubt kein &bdquo;*Narrowing*&rdquo;:
 
   <pre>
     double d1 = ival;      // Compiles

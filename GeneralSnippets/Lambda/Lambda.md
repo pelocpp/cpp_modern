@@ -49,7 +49,7 @@ Aus dem engl. C++-Manual habe ich einen Überblick bzgl. der Gestaltungsmöglichke
 Tabelle 1: Liste aller Optionen für die Lambda-Zugriffsklausel.
 
 
-Das Feature der *Capture Clause*, den Zugriff auf Variablen der &ldquo;Umgebung&rdquo; genauer festzulegen,
+Das Feature der *Capture Clause*, den Zugriff auf Variablen der &bdquo;Umgebung&rdquo; genauer festzulegen,
 ist nicht mit der Möglichkeit zu verwechseln, **innerhalb** einer *Capture Clause*
 Instanzvariablen des zu einer Lambda-Funktion gehörenden Funktions-Objekts zu definieren:
 

@@ -33,13 +33,13 @@ mit den neuesten C++17/20&ndash;Features.
 
 <img src="Wandbox.png" width="800">
 
-*Abbildung* 1: Oberfläche des Online Compilers &ldquo;Wandbox&rdquo;.
+*Abbildung* 1: Oberfläche des Online Compilers &bdquo;Wandbox&rdquo;.
 
 **Hinweis**:
 Ein großartiges Feature des Wandbox Online Compilers ist seine Fähigkeit,
 ein Programm auf mehrere Dateien aufteilen zu können:
 
-  * Um mehr als nur eine Quellcodedatei zu erstellen, klickt man auf das große fettgedruckte &ldquo;+&rdquo;-Zeichen
+  * Um mehr als nur eine Quellcodedatei zu erstellen, klickt man auf das große fettgedruckte &bdquo;+&rdquo;-Zeichen
   direkt über Zeile 1 des Quellcodefensters, direkt außerhalb des Textfelds.
   Dadurch wird eine neue Registerkarte mit dem Namen *"noname-1"* erstellt.
   Diese Registerkarte repräsentiert eine neue Quellcodedatei:
@@ -51,15 +51,15 @@ ein Programm auf mehrere Dateien aufteilen zu können:
   * Diese Quellcodedatei versieht man mit einem richtigen Namen.
   Man klickt dazu auf *"noname-1"*, um zu dieser Registerkarte zu wechseln,
   und klickt dann erneut auf *"noname-1"*. Der Name wird editierbar,
-  nennen wir sie beispielsweise &ldquo;Time.cpp&rdquo;.
+  nennen wir sie beispielsweise &bdquo;Time.cpp&rdquo;.
 
-  * Wenn wir jetzt auf &ldquo;Run&rdquo; klicken, kompiliert Wandbox nur den Code in der Hauptdatei!
-  Die zusätzliche Datei &ldquo;Time.cpp&rdquo; wird nicht berücksichtigt.
-  Um Wandbox dazu zu bringen, &ldquo;Time.cpp&rdquo; zusammen mit der Hauptdatei zu kompilieren
+  * Wenn wir jetzt auf &bdquo;Run&rdquo; klicken, kompiliert Wandbox nur den Code in der Hauptdatei!
+  Die zusätzliche Datei &bdquo;Time.cpp&rdquo; wird nicht berücksichtigt.
+  Um Wandbox dazu zu bringen, &bdquo;Time.cpp&rdquo; zusammen mit der Hauptdatei zu kompilieren
   und auszuführen (eigentlich sollten wir von *Linken* sprechen),
-  müssen wir &ldquo;Time.cpp&rdquo; zur Compiler-Befehlszeile hinzufügen!
+  müssen wir &bdquo;Time.cpp&rdquo; zur Compiler-Befehlszeile hinzufügen!
 
-  * Dazu gibt es ein Texteingabefeld für &ldquo;Compiler Options:&rdquo;
+  * Dazu gibt es ein Texteingabefeld für &bdquo;Compiler Options:&rdquo;
   Es befindet sich in der linken Seitenleiste.
   Jede Zeile mit Optionen wird zu einem einzigen Argument für den Compiler.
   Wenn wir nun zusätzliche Codedateien hinzuzufügen, müssen wir nur die Namen dieser Dateien einfach
@@ -70,7 +70,7 @@ ein Programm auf mehrere Dateien aufteilen zu können:
 *Abbildung* 3: Optionen des Compilers.
 
 Und noch ein letzer Hinweis: Zum Ausführen des Programms muss man nicht immer umständlich
-in den unteren Abschnitt des Fensters navigieren. Der Short-Cut &ldquo;*Control - Enter*&rdquo;
+in den unteren Abschnitt des Fensters navigieren. Der Short-Cut &bdquo;*Control - Enter*&rdquo;
 führt dieselbe Aufgabe aus.
 
 <img src="WandboxOptions03.png" width="650">
@@ -81,7 +81,7 @@ führt dieselbe Aufgabe aus.
 
 ### Compiler Explorer (Godbolt)
 
-[Compiler Explorer](https://godbolt.org/) ist eine &ldquo;*compile-as-you-type*&rdquo; IDE mit einer besonderen Funktion,
+[Compiler Explorer](https://godbolt.org/) ist eine &bdquo;*compile-as-you-type*&rdquo; IDE mit einer besonderen Funktion,
 da sie den von den Compilern erzeugten Assemblercode darstellt.
 Der resultierende Assemblercode kann dem ursprünglichen C++-Code farblich zugeordnet werden.
 *Compiler Explorer* unterstützt die gleichzeitige Verwendung verschiedener Quellen und mehrerer Compiler,
@@ -90,7 +90,7 @@ vergleichen können. Der Compiler-Explorer ist auf GitHub zu finden und kann loka
 
 <img src="CompilerExplorer.png" width="800">
 
-*Abbildung* 5: Oberfläche des Online Compilers &ldquo;Compiler Explorer&rdquo;.
+*Abbildung* 5: Oberfläche des Online Compilers &bdquo;Compiler Explorer&rdquo;.
 
 ---
 
@@ -100,12 +100,12 @@ vergleichen können. Der Compiler-Explorer ist auf GitHub zu finden und kann loka
 denn sie erlaubt es nicht, kompilierte Programme auszuführen.
 Stattdessen zeigt die IDE eine andere Version des Quellcodes, die einen Teil der Magie zeigt,
 die der Compiler unter der Haube macht. Man könnte auch sagen, dass *Cppinsights* eine Art
-&ldquo;C++ nach C++&rdquo;&ndash;Präcompiler mit dem Ziel ist, den ursprünglichen Quellcode besser verständlich umzuwandeln.
+&bdquo;C++ nach C++&rdquo;&ndash;Präcompiler mit dem Ziel ist, den ursprünglichen Quellcode besser verständlich umzuwandeln.
 *Cppinsights* ist ein Tool geschrieben von [Andreas Fertig](https://andreasfertig.info/).
 
 <img src="Cppinsights.png" width="800">
 
-*Abbildung* 6: Oberfläche des Online Compilers &ldquo;Cppinsights&rdquo;.
+*Abbildung* 6: Oberfläche des Online Compilers &bdquo;Cppinsights&rdquo;.
 
 ---
 

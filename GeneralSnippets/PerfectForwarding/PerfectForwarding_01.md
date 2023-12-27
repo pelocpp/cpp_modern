@@ -6,21 +6,21 @@
 
 ## Zusammenfassung
 
-Voraussetzung für das &ldquo;Perfect Forwarding&rdquo; ist das Vorhandensein eines
+Voraussetzung für das &bdquo;Perfect Forwarding&rdquo; ist das Vorhandensein eines
 Funktionstemplate, das im Rumpf weitere unterlagerte Funktionen aufruft:
 
- > Werden die Argumente des Funktionstemplate &ldquo;identisch&ldquo;
+ > Werden die Argumente des Funktionstemplate &bdquo;identisch&bdquo;
    &ndash;
    darunter verstehen wir in diesem Kontext: die *LValue*- oder *RValue*-Eigenschaft bleibt erhalten 
    &ndash;
-   weitergereicht, so sprechen wir von  &ldquo;Perfect Forwarding&rdquo;.
+   weitergereicht, so sprechen wir von  &bdquo;Perfect Forwarding&rdquo;.
 
 Zu den Begriffen *LValue* oder *RValue* siehe auch
 [RValue Referenzen / LValue Referenzen](../RValueLValue/RValueLValue.md).
 
 ---
 
-## Vertiefung zu &ldquo;Perfect Forwarding&rdquo;
+## Vertiefung zu &bdquo;Perfect Forwarding&rdquo;
 
 &#x21D2; [Teil II: Ein klassischer Übersetzungsfehler](PerfectForwarding_03.md)
 
@@ -59,11 +59,11 @@ Weitere Details hierzu beschreiben wir nun ausführlicher.
 *Anmerkung*: Auch sind &ndash; nebenbei bemerkt &ndash; diese beiden Code-Fragmente nicht übersetzungsfähig,
 wir betrachten und beheben den vorhandenen Fehler natürlich in den nachfolgenden Erläuterungen.
 
-## Das &ldquo;perfekte Weiterleiten&rdquo; / &ldquo;Perfect Forwarding&rdquo;
+## Das &bdquo;perfekte Weiterleiten&rdquo; / &bdquo;Perfect Forwarding&rdquo;
 
 ### Vorbereitungen: Eine Hilfsklasse `AnyClass`
 
-Hintergrund des &ldquo;perfekten Weiterleitens&rdquo; ist ein Szenario,
+Hintergrund des &bdquo;perfekten Weiterleitens&rdquo; ist ein Szenario,
 in dem eine normale C++-Funktion/Methode im Kontext eines Templates
 aufgerufen wird. Dies stellt prinzipiell kein Problem dar, 
 aber wenn man nicht aufpasst, kann hier eben Funktionalität verloren gehen.
@@ -179,7 +179,7 @@ Dies ist keine Typdefinition, die in einem regulären C++&ndash;Programm erlaubt 
 int& && n;  // Error: reference to reference is not allowed
 ```
 
-Beim Zuordnen (&ldquo;Binden&rdquo;, &ldquo;Auflösen&rdquo;) von aktuellen Parametertypen zu Template-Parametern können
+Beim Zuordnen (&bdquo;Binden&rdquo;, &bdquo;Auflösen&rdquo;) von aktuellen Parametertypen zu Template-Parametern können
 während des Übersetzens solche Kombinationen auftreten, wie das Beispiel gezeigt hat.
 Aus diesem Grund hat man in der C++&ndash;Sprachdefinition die so genannten *Zusammenfassungsregeln* (engl. *Reference Collapsing Rules*)
 definiert:
@@ -281,7 +281,7 @@ auto Clone(T&& src) {
 }
 ```
 
-Letzen Endes haben wir zwei Werkzeuge aus dem &ldquo;Modern&ndash;C++&rdquo; Baukasten verwendet:
+Letzen Endes haben wir zwei Werkzeuge aus dem &bdquo;Modern&ndash;C++&rdquo; Baukasten verwendet:
 
   * Rückgabewert `auto` &ndash; der Compiler leitet den Rückgabedatentyp anhand der `return`-Anweisung ab
   * Definition des Rückgabedatentyps mit `std::remove_reference<T>` und `using` 
@@ -434,7 +434,7 @@ Zu den Details:
    dann eine (unbenannte) *RValue*-Referenz ist.
 
 Jetzt leitet `Clone` ein *LValue* Argument als *LValue* weiter und ein *RValue* Argument als *RValue*,
-die Weiterleitung ist &ldquo;perfekt&ldquo;.
+die Weiterleitung ist &bdquo;perfekt&bdquo;.
 
 ### `std::forward`:
 

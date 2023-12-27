@@ -2,7 +2,7 @@
 
 Oder auch
 
-## &ldquo;*Generierung von Integer-Sequenzen zur Kompilierungszeit*&rdquo;
+## &bdquo;*Generierung von Integer-Sequenzen zur Kompilierungszeit*&rdquo;
 
 [Zurück](../../Readme.md)
 
@@ -53,13 +53,13 @@ template <int N>
 using make_index_sequence = typename sequence_helper<N>::type;
 ```
 
-Der Zweck in der Definition von `struct sequence` besteht ausschließlich darin, Zahlenfolgen zu &ldquo;tragen&rdquo;.
+Der Zweck in der Definition von `struct sequence` besteht ausschließlich darin, Zahlenfolgen zu &bdquo;tragen&rdquo;.
 Beachten Sie, dass es sich um eine leere Klasse handelt, die tatsächlich definiert ist (da sie einen leeren Definitionskörper `{}`  hat).
 Dies ist wichtig, da diese Klasse in einigen Anwendungsfällen instanziiert wird.
 
 Die Klasse `sequence_helper` wird verwendet, um eine ganzzahlige Sequenz rekursiv zu generieren.
 Betrachten wir die Abbildung vom Schritt `N` auf den Schritt `N-1` etwas genauer:
-Von der Zahlenfolge `NS...` wird die erste Zahl &ldquo;entnommen&rdquo; und dekrementiert (`N-1`).
+Von der Zahlenfolge `NS...` wird die erste Zahl &bdquo;entnommen&rdquo; und dekrementiert (`N-1`).
 Danach wird ihr Wert zweimal verwendet:
 
   * Der erste Wert geht in die rekursive Template Klassendefinition ein, damit die irgendwann zum Abbruch der Rekursion führt. 

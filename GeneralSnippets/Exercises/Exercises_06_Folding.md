@@ -11,7 +11,7 @@
 ## Aufgabe 1: Logische Operationen mit beliebig vielen Operanden
 
 Die Aufgabenstellung ist identisch zur ersten Aufgabe
-&ldquo;Logische Operationen mit beliebig vielen Operanden&rdquo;
+&bdquo;Logische Operationen mit beliebig vielen Operanden&rdquo;
 aus dem Abschnitt [Variadische Templates](Exercises_05_VariadicTemplates.md):
 Setzen Sie zur Lösung dieses Mal *Folding Expressions* ein.
 
@@ -20,7 +20,7 @@ Setzen Sie zur Lösung dieses Mal *Folding Expressions* ein.
 #### Vorausetzungen: `std::is_same`
 
 Die Aufgabenstellung ist identisch zur zweiten Aufgabe
-&ldquo;Logische Operationen mit beliebig vielen Operanden&rdquo;
+&bdquo;Logische Operationen mit beliebig vielen Operanden&rdquo;
 aus dem Abschnitt [Variadische Templates](Exercises_05_VariadicTemplates.md)(ohne Zusatzaufgabe):
 Setzen Sie zur Lösung dieses Mal *Folding Expressions* ein.
 
@@ -34,12 +34,12 @@ von Aufgabe 1 und 2?
 
 ---
 
-## Aufgabe 3: &ldquo;*Folding over a Comma*&rdquo; am Beispiel zweier Funktionen `minimum` und `maximum`
+## Aufgabe 3: &bdquo;*Folding over a Comma*&rdquo; am Beispiel zweier Funktionen `minimum` und `maximum`
 
 #### Voraussetzungen: Lambda Funktionen
 
 Der Zugriff auf die einzelnen Werte eines Parameter Packs ist nicht ganz einfach.
-Eine übliche Vorgehensweise ist das so genannte &ldquo;*Folding over a Comma*&rdquo;.
+Eine übliche Vorgehensweise ist das so genannte &bdquo;*Folding over a Comma*&rdquo;.
 Hierbei handelt es sich um einen *Folding*-Ausdruck, der mit dem Komma-Operator &ndash; gebildet wird.
 Der Komma-Operator bewirkt in diesem Fall einzig und allein, dass alle Werte des Parameter Packs sequentiell aufgelistet werden.
 
@@ -108,7 +108,7 @@ std::copy(
 *Zusatzaufgabe*:
 Man könnte das Funktionstemplate `pushBackAll<T>` auch mit variadischen Templates 
 oder auch dem Trick mit einer Initialisierungsliste
-und wiederum Folding (dieses Mal &ldquo;über einem Komma&rdquo;) realisieren.
+und wiederum Folding (dieses Mal &bdquo;über einem Komma&rdquo;) realisieren.
 Implementieren Sie die weiteren Varianten.
 
 ---
@@ -137,7 +137,7 @@ Eine Anweisung der Gestalt `printer(1, "ABC", 2, "DEF", 3, "GHI");` führt zur A
 
 Möchte man die einzelnen Argumente von `printer` mit Trennzeichen auszugeben,
 dürfen wir das Folding nicht mit dem `<<`-Operator durchführen.
-Das so genannte &ldquo;*Folding over a Comma*&ldquo; hilft jetzt weiter,
+Das so genannte &bdquo;*Folding over a Comma*&bdquo; hilft jetzt weiter,
 es kommt ein *Unary Right Folding*&ndash;Ausdruck zum Einsatz:
 
 ```cpp
@@ -173,7 +173,7 @@ folgende Sprachkonzepte in eine Realisierung mit einbeziehen:
   * Initialisierungs-Liste (`std::initializer_list`) &ndash; *Achtung*: Hier gibt es eine Einschränkung bzgl. der Datentypen der Parameter beim Aufruf.
   * Range-based `for` Loop
   * *Folding*
-  * &ldquo;*Folding* over a Comma&rdquo;
+  * &bdquo;*Folding* over a Comma&rdquo;
   * Lambda-Funktionen
   * Self-Invoking Lambda-Funktionen (*IIFE* - *Immediately Invoked Functional Expression*)
 

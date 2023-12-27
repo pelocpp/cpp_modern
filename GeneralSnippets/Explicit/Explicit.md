@@ -17,7 +17,7 @@ entstehen können.
 
 Im Regelfall setzt man das `explicit`-Schlüsselwort für Konstruktoren ein,
 die genau ein Argument haben.
-Derartige Konstruktoren heißen &ldquo;Typ-Konvertierungskonstruktoren&rdquo;,
+Derartige Konstruktoren heißen &bdquo;Typ-Konvertierungskonstruktoren&rdquo;,
 da sie bei einer Typumwandlung verwendet werden können.
 
 Siehe dazu das Beispiel im korrespondierenden Quellcode.

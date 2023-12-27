@@ -74,7 +74,7 @@ Welche Auswirkung auf das `dagobert`-Objekt können Sie jetzt bei Ausführung de
 
 *Zusatzaufgabe*:
 Die Verschiebe-Semantik wird von benutzerdefinierten Klassen nur *automatisch* bereitgestellt,
-wenn keine der &ldquo;Big-Five&rdquo;-Methoden in der Klasse explizit vorhanden ist.
+wenn keine der &bdquo;Big-Five&rdquo;-Methoden in der Klasse explizit vorhanden ist.
 Demonstrieren Sie diese Aussage, indem Sie die Klasse `Person` geeignet um eine einzige Quellcodezeile ergänzen.
 
 ---

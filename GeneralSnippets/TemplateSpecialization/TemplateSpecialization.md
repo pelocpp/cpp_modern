@@ -19,8 +19,8 @@ Man kann beispielsweise ein Template auch spezialisieren, um mit bestimmten Obje
 die nicht der normalen Schnittstelle entsprechen, die von der generischen Vorlage erwartet wird.
 Diese Betrachtungen bzw. Ausnahmefälle können mit zwei Arten der Templatespezialisierung behandelt werden:
 
-  * der expliziten Template Spezialisierung (&ldquo;*Explicit Template Specialization*&rdquo;)
-  * der teilweisen (partiellen) Template Spezialisierung (&ldquo;*Partial Template Specialization*&rdquo;)
+  * der expliziten Template Spezialisierung (&bdquo;*Explicit Template Specialization*&rdquo;)
+  * der teilweisen (partiellen) Template Spezialisierung (&bdquo;*Partial Template Specialization*&rdquo;)
 
 
 #### Explizite Template Spezialisierung

@@ -131,7 +131,7 @@ Im letzten Code-Fragment finden Sie noch eine Kombination der *Automatic Return 
 
 ## Funktionsdefinition mit *Trailing Return Type*
 
-Unter dem Begriff &ldquo;*Trailing Return Type*&rdquo; versteht man die Möglichkeit,
+Unter dem Begriff &bdquo;*Trailing Return Type*&rdquo; versteht man die Möglichkeit,
 den Rückgabetyp hinter der Parameterliste statt wie ursprünglich vor dem Funktionsnamen zu platzieren.
 Die neue und alte Syntax sind zueinander kompatibel und können im Code durchaus gemeinsam verwendet werden.
 

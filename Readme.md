@@ -41,7 +41,7 @@ Ziel dieses Seminars/Repositories ist es, auf die größten Hürden beim Erlerne
 
 **C++** ist eine high-level, general-purpose Programmiersprache, 
 die von Bjarne Stroustrup als Erweiterung der Programmiersprache C erfunden wurde.
-*Cfront* war der ursprüngliche Compiler für C ++ &ndash; damals bekannt als &ldquo;*C with Classes*&rdquo; &ndash; aus der Zeit um 1983,
+*Cfront* war der ursprüngliche Compiler für C ++ &ndash; damals bekannt als &bdquo;*C with Classes*&rdquo; &ndash; aus der Zeit um 1983,
 der C ++ in C konvertierte. Entwickelt wurde der Übersetzer von Bjarne Stroustrup bei AT&T Bell Labs.
 
 Die Sprache hat sich im Laufe der Zeit erheblich erweitert, und modernes C++ verfügt jetzt
@@ -66,7 +66,7 @@ Nach Python im Jahr 2021 steht nun C++ auf dem Thron für 2022:
 *Abbildung* 2: Die Rangfolge der ersten zehn Programmiersprachen auf Basis des *TIOBE Programming Community Index* im Januar 2023.
 
 Der Grund für die Beliebtheit von C++ liegt laut TIOBE
-&ldquo;in seiner hervorragenden Leistung und der Tatsache, dass es sich um eine objektorientierte Hochsprache handelt.
+&bdquo;in seiner hervorragenden Leistung und der Tatsache, dass es sich um eine objektorientierte Hochsprache handelt.
 Daher ist es möglich, schnelle und umfangreiche Softwaresysteme (über Millionen von Codezeilen) in C++ zu entwickeln,
 ohne zwangsläufig in einem Wartungsalptraum zu enden.&rdquo;
 
@@ -77,7 +77,7 @@ ohne zwangsläufig in einem Wartungsalptraum zu enden.&rdquo;
 Es ist nicht einfach, bei der Menge an sprachlichen Ergänzungen, Erweiterungen und Neuerungen von C++ den Überblick
 zu behalten. Das von mir zusammengestellte Inhaltsverzeichnis unternimmt den Versuch,
 den größten Teil dieser Weiterentwicklung zumindest nach gewissen systematischen und methodischen Gesichtspunkten
-so zu gliedern und zusammenzufassen, dass bei deren Betrachtung der &ldquo;rote Faden&rdquo; nicht verloren geht. 
+so zu gliedern und zusammenzufassen, dass bei deren Betrachtung der &bdquo;rote Faden&rdquo; nicht verloren geht. 
 
 [Zur Agenda](GeneralSnippets/Agenda/Agenda.md).
 
@@ -87,7 +87,7 @@ so zu gliedern und zusammenzufassen, dass bei deren Betrachtung der &ldquo;rote 
 
 Einige kleinere Aufgaben (samt Musterlösungen) sind diesem Repository ebenfalls beigefügt.
 Sie können bei weitem nicht den gesamten Stoffumfang des *Modern C++* Sprachumfangs abdecken,
-dienen aber dem Zweck, die &ldquo;graue Materie&rdquo; an der einen oder anderen Stelle etwas aufzuhellen:
+dienen aber dem Zweck, die &bdquo;graue Materie&rdquo; an der einen oder anderen Stelle etwas aufzuhellen:
 
 [Zu den Aufgaben](GeneralSnippets/Exercises/Exercises.md).
 

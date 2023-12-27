@@ -94,7 +94,7 @@ char* printTimeStamp(const std::time_t& ttp)
 
 Die Datums- und Uhrzeitfunktionen von C sind in der C++-Standardbibliothek
 noch nicht richtig angekommen. Aus diesem Grund muss man hier auf entsprechende C-Bibliotheksfunktionen
-zurückgreifen. Verwenden Sie die `printTimeStamp`-Funktion &ldquo;*as it is*&rdquo;,
+zurückgreifen. Verwenden Sie die `printTimeStamp`-Funktion &bdquo;*as it is*&rdquo;,
 und nicht zu vergessen: Vor der `#include`-Anweisung der Datei `<ctime>` muss die Zeile
 
 ```cpp
@@ -247,7 +247,7 @@ vor.
 
 #### Vorausetzungen: Templates, `decltype` und `std::declval`
 
-Das *Detection Idiom* (zu deutsch etwa &ldquo;Erkennungsidiom&rdquo;)
+Das *Detection Idiom* (zu deutsch etwa &bdquo;Erkennungsidiom&rdquo;)
 ermöglicht die Introspektion eines C++-Klassentyps zur Übersetzungszeit.
 Einfacher ausgedrückt: Mithilfe dieses Idioms können wir überprüfen, ob eine Klasse eine bestimmte Methode
 oder ein Element eines bestimmten Namens enthält &ndash; und das zur Übersetzungszeit.
@@ -278,7 +278,7 @@ Es folgen einige Hinweise:<br/>
 
   * Im Klassentemplate gibt es zwei Methoden namens `detect`:
     Der Rückgabewert ist in beiden Fällen `bool`! 
-    Die zweite Überladung akzeptiert bzgl. der aktuellen Parameter &ldquo;alles&rdquo;,
+    Die zweite Überladung akzeptiert bzgl. der aktuellen Parameter &bdquo;alles&rdquo;,
     was durch das Symbol der Ellipses `'...'` zum Ausdruck gebracht wird.
 
   * Die erste `detect`-Methode besitzt einen `int`-Parameter.

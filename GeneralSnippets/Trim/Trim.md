@@ -12,7 +12,7 @@
 
 Im Quellcode wird gezeigt, wie sich der STL-Algorithmus `std::find_if` einsetzen lässt, um eine `trim`-Funktion für Zeichenketten zu realisieren.
 `std::find_if` wird sowohl mit einem Vorwärts- als auch einem Rückwärts-Iterator angewendet,
-um jeweils das erste &ldquo;non-space&rdquo;-Zeichen zu finden.
+um jeweils das erste &bdquo;non-space&rdquo;-Zeichen zu finden.
 Das so gefundene Iterator-Objekt kann nun an die `erase`-Methode der Klasse `std::string` übergeben werden.
 
 *Hinweis*: Bei Rückwärts-Iteratoren gilt es eine Eigenheit zu beachten:
@@ -39,7 +39,7 @@ Im [Quellcode](Trim.cpp) finden Sie beide Realisierungen vor.
 
 Die `base`-Methode wandelt einen Rückwärts-Iterator in den entsprechenden Vorwärts-Iterator um.
 Trotz dieser einfachen Funktionalität ist diese Zuordnung nicht ganz so trivial, wie man meinen könnte.
-Wenn ein Rückwärts-Iterator auf ein Element zeigt, wird beim Dereferenzieren das &ldquo;vorherige&rdquo; Element zurückgeliefert!
+Wenn ein Rückwärts-Iterator auf ein Element zeigt, wird beim Dereferenzieren das &bdquo;vorherige&rdquo; Element zurückgeliefert!
 Dies bedeutet, dass das Element, auf das er physisch zeigt, und das Element, auf das er logisch verweist, unterschiedlich sind!
 
 Im folgenden Diagramm ist `it` ein Vorwärts-Iterator und `rit` ein Rückwärts-Iterator, der sich auf `it` bezieht:

@@ -38,13 +38,13 @@ Das klassische Modell der Aufteilung in Header- und Implementierungsdateien weis
   * Das Inkludieren einer Header-Dateien wird mit Makros gesteuert (`#include`).
   Andere Makros wiederum überwachen, dass der Inhalt einer Header-Datei
   nicht zweimal berücksichtigt wird (`#pragma once`).
-  Aber auch wenn der Compiler den Inhalt ignoriert (&ldquo;passives Parsen&rdquo;),
+  Aber auch wenn der Compiler den Inhalt ignoriert (&bdquo;passives Parsen&rdquo;),
   muss er dennoch das zweite Inkludieren dieser Header-Datei
   bis zum Ende durchführen, um zu wissen, wann er wieder in den aktiven Modus des Übersetzens umschalten muss.
   Unnötige längere Compilationszeiten sind die Folge.
 
   * Header-Dateien müssen bei jeder Übersetzung vom Compiler analysiert werden. Bei
-  Modulen liegt das binäre Ergebnis nach deren einmaliger Übersetzung vor (&ldquo;*precompiled*&rdquo; Header).
+  Modulen liegt das binäre Ergebnis nach deren einmaliger Übersetzung vor (&bdquo;*precompiled*&rdquo; Header).
   Auf diese Weise wird Übersetzungszeit eingespart.
 
   * Es kann eine Rolle spielen, in welcher Reihenfolge Header-Dateien mit `#include` eingebunden werden.
@@ -63,7 +63,7 @@ Das klassische Modell der Aufteilung in Header- und Implementierungsdateien weis
 
 Obwohl dies nicht im C++ 20-Standard festgelegt ist,
 ermöglicht es die Erstellung eines C++ Programms mit dem Visual C++ Compiler,
-dass die C++&ndash;Standardbibliothek als Modul mit dem Namen &ldquo;**std**&rdquo; importiert werden kann.
+dass die C++&ndash;Standardbibliothek als Modul mit dem Namen &bdquo;**std**&rdquo; importiert werden kann.
 
 Dies hat gegenüber der Vorgehensweise mit `#include`&ndash;Direktiven und entsprechenden Header-Dateien
 den Vorteil, dass sich die Kompilierungszeiten je nach Größe des Programms erheblich verkürzen.
@@ -255,7 +255,7 @@ export import :weak_ptr;
 06: export void main_shared_ptr();
 ```
 
-*Code-Listing* 5: Modulschnittstellenpartition / &ldquo;*Module Interface Partition*&rdquo;: Partition `:shared_ptr`.
+*Code-Listing* 5: Modulschnittstellenpartition / &bdquo;*Module Interface Partition*&rdquo;: Partition `:shared_ptr`.
 
 
 ```cpp
@@ -286,7 +286,7 @@ export import :weak_ptr;
 25: }
 ```
 
-*Code-Listing* 6: Modulimplementierungspartition / &ldquo;*Module Implementation Partition*&rdquo;: Partition `:shared_ptr`.
+*Code-Listing* 6: Modulimplementierungspartition / &bdquo;*Module Implementation Partition*&rdquo;: Partition `:shared_ptr`.
 
 
 ---

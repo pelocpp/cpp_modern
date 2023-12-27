@@ -110,7 +110,7 @@ Studieren Sie das folgende Code-Fragement genau:
 
 ---
 
-## Aufgabe 4: Betrachtungen eines &ldquo;nicht besitzenden&rdquo; Zeigers
+## Aufgabe 4: Betrachtungen eines &bdquo;nicht besitzenden&rdquo; Zeigers
 
 #### Voraussetzungen: `std::shared_ptr<>` und `std::weak_ptr<>`
 
@@ -118,12 +118,12 @@ Wir betrachten in dieser Übungsaufgabe die Situation, dass wir zu einem Objekt
 (hier: dynamisch allokierte Variable vom Typ `int`)
 eine Zeigervariable haben möchten, aber nicht um den Preis, dass wir damit
 einen Anspruch auf Eigentum erheben.
-Natürlich könnten wir einen klassischen &ldquo;raw&rdquo; Zeiger verwenden,
-um die Idee eines &ldquo;nicht besitzenden&rdquo; Zeigers auszudrücken,
+Natürlich könnten wir einen klassischen &bdquo;raw&rdquo; Zeiger verwenden,
+um die Idee eines &bdquo;nicht besitzenden&rdquo; Zeigers auszudrücken,
 aber in Zeiten von *Modern C++* ist das keine opportune Lösung.
 Außerdem bestünde dann die Gefahr, dass der tatsächliche Eigentümer des referenzierten Objekts beschließen könnte,
 dieses freizugeben.
-Wenn wir dann den &ldquo;nicht besitzenden&rdquo; Zeiger dereferenzieren, käme es zu einem Absturz.
+Wenn wir dann den &bdquo;nicht besitzenden&rdquo; Zeiger dereferenzieren, käme es zu einem Absturz.
 
 Studieren Sie vor dem geschilderten Hintergrund das folgende Szenario:
 
@@ -166,7 +166,7 @@ Studieren Sie vor dem geschilderten Hintergrund das folgende Szenario:
 ---
 
 Alternativ zum letzten Beispiel könnten wir in der Klasse `UnsafeWatcher` eine `std::shared_ptr`-Variable verwenden.
-Damit würden wir aber zu einem Besitzer des Zeigers und verlassen den Ansatz eines &ldquo;nicht besitzenden&rdquo; Zeigers!
+Damit würden wir aber zu einem Besitzer des Zeigers und verlassen den Ansatz eines &bdquo;nicht besitzenden&rdquo; Zeigers!
 Auch dies wollen wir mit einem Beispiel untermauern:
 
 ```cpp
@@ -215,7 +215,7 @@ Die gesuchte primitive Operation ist *multithreading sicher*!
 Sie liefert eine besitzende Referenz (`std::shared_ptr`-Variable) auf das
 referenzierte Objekt zurück, wenn dieses noch existiert, oder zeigt andernfalls einen Fehler an.
 
-Man könnte auch die Formulierung wählen, dass wir auf der Suche nach einer &ldquo;Fahrkarte&rdquo;
+Man könnte auch die Formulierung wählen, dass wir auf der Suche nach einer &bdquo;Fahrkarte&rdquo;
 für ein `std::shared_ptr`-Objekt sind.
 Das Ticket selbst steht für einen nicht-besitzenden Zeiger,
 man kann es zu einem späteren Zeitpunkt gegen ein `std::shared_ptr`-Objekt eintauschen &ndash; sofern

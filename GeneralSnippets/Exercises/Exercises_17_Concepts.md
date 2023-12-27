@@ -61,7 +61,7 @@ void print(const T& obj)
 }
 ```
 
-Wir können im Augenblick nur &ldquo;mit dem Auge&rdquo; erkennen,
+Wir können im Augenblick nur &bdquo;mit dem Auge&rdquo; erkennen,
 dass die `print`-Funktion sinnvollerweise nur mit (benutzerdefinierten) Datentypen instanziiert werden kann,
 die eine `toString()`-Methode besitzen.
 
@@ -75,7 +75,7 @@ Im Prinzip bieten sich zwei Lösungansätze an:
   * Verwendung von `std::is_base_of` aus der Type-Traits-Bibliothek.
   * Verwendung von `std::derived_from` aus der Concepts-Bibliothek .
 
-Die beiden Ansätze unterscheiden sich nur in der &ldquo;Vererbungsart&rdquo;,
+Die beiden Ansätze unterscheiden sich nur in der &bdquo;Vererbungsart&rdquo;,
 also inwieweit beim Vererben der Zugriff auf Elemente der Basisklasse eingeschränkt wird.
 Dies betrifft die Angabe von `public`, `protected` oder `private` vor dem Namen der Basisklasse.
 Derartige Details oder Feinheiten wollen wir in dieser Aufgabe nicht näher betrachten,

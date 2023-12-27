@@ -52,7 +52,7 @@ T product = a[0] * b[0] + a[1] * b[1] + a[2] * b[2] + a[3] * b[3] + a[4] * b[4];
 Bei Vektoren mit im Vorneherein bekannter fester Länge könnte man diesen Ausdruck einfach wie gezeigt hinschreiben.
 Wie sieht es aus, wenn die Vektorenlänge zwar ebenfalls zur Übersetzungszeit bekannt ist,
 aber eben durch einen Bezeichner &ndash; sagen wir `N` &ndash; allgemein (zur Übersetzungszeit) gehalten wird?
-Mit Hilfe von &ldquo;Loop Unrolling&rdquo; bzw. C++ *Metaprogramming* kann man einen Ausdruck
+Mit Hilfe von &bdquo;Loop Unrolling&rdquo; bzw. C++ *Metaprogramming* kann man einen Ausdruck
 
 ```
 T product = a[0] * b[0] + a[1] * b[1] + a[2] * b[2] + ... a[N-1] * b[N-1];
@@ -60,7 +60,7 @@ T product = a[0] * b[0] + a[1] * b[1] + a[2] * b[2] + ... a[N-1] * b[N-1];
 
 vom Übersetzer erzeugen lassen!
 
-*Aufgabe*: Erstellen Sie eine Klasseschablone `ScalarProduct`, die mit Hilfe von &ldquo;Loop Unrolling&rdquo;
+*Aufgabe*: Erstellen Sie eine Klasseschablone `ScalarProduct`, die mit Hilfe von &bdquo;Loop Unrolling&rdquo;
 dieses Ziel erreicht.
 
 ---

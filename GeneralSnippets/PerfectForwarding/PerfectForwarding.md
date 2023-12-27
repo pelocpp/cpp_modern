@@ -10,14 +10,14 @@
 
 ## Zusammenfassung
 
-Voraussetzung für das &ldquo;Perfect Forwarding&rdquo; ist das Vorhandensein eines
+Voraussetzung für das &bdquo;Perfect Forwarding&rdquo; ist das Vorhandensein eines
 Funktionstemplates, das im Rumpf weitere unterlagerte Funktionen aufruft:
 
- > Werden die Argumente des Funktionstemplate &ldquo;identisch&ldquo;
+ > Werden die Argumente des Funktionstemplate &bdquo;identisch&bdquo;
    &ndash;
    darunter verstehen wir in diesem Kontext: die *LValue*- oder *RValue*-Eigenschaft bleibt erhalten 
    &ndash;
-   weitergereicht, so sprechen wir von  &ldquo;Perfect Forwarding&rdquo;.
+   weitergereicht, so sprechen wir von  &bdquo;Perfect Forwarding&rdquo;.
 
 Zu den Begriffen *LValue* oder *RValue* siehe auch
 [RValue Referenzen / LValue Referenzen](../RValueLValue/RValueLValue.md).

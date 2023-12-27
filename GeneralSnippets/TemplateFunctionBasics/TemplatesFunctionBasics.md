@@ -32,7 +32,7 @@ im letzten Beispiel:
 
   * `T` benötigt eine Realisierung des Operators `operator< (const T&) const`.
   * Die Aufrufparameter von `lessThan` müssen den selben Typ haben,
-  damit `T` &ldquo;deduziert&rdquo; werden kann.
+  damit `T` &bdquo;deduziert&rdquo; werden kann.
     * `bool result = lessThan(10, 20);     // ok`
     * `bool result = lessThan(10, 20.5);   // warning or error` 
 

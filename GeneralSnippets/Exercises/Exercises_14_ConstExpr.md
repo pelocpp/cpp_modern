@@ -21,8 +21,8 @@ float from_string(const char* str) { return std::stof(str); }
 
 Erklären Sie, warum und welchen Übersetzungsfehler Sie enthalten?
 
-Wir sind im Abschnitt &ldquo;Überladung von Methoden/Operatoren&rdquo; angekommen und hier
-beim Spezialfall &ldquo;Eine Überladung einer Funktion kann sich nicht nur durch ihren Rückgabetyp von einer anderen Funktion unterscheiden.&rdquo; angekommen.
+Wir sind im Abschnitt &bdquo;Überladung von Methoden/Operatoren&rdquo; angekommen und hier
+beim Spezialfall &bdquo;Eine Überladung einer Funktion kann sich nicht nur durch ihren Rückgabetyp von einer anderen Funktion unterscheiden.&rdquo; angekommen.
 
 Unter dem Stichwort *Return Type Resolver* findet sich eine Lösung dieses Problems &ndash;
 natürlich mit einem anderen Realisierungsansatz als dem des fälschlichen Überladens einer Funktion.

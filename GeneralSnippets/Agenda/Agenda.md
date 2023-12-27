@@ -1,4 +1,4 @@
-# Agenda Seminar &ldquo;Modern C++&rdquo;
+# Agenda Seminar &bdquo;Modern C++&rdquo;
 
 [Zurück](../../Readme.md)
 
@@ -7,7 +7,7 @@
 ## Verschiebe-Semantik
   * *RValues* und *LValues*
   * Verschiebe-Semantik (*Move*&ndash;*Semantics*)
-  * &ldquo;Big-Three&rdquo;, &ldquo;Big-Five&rdquo; und &ldquo;Rule of Zero&rdquo; 
+  * &bdquo;Big-Three&rdquo;, &bdquo;Big-Five&rdquo; und &bdquo;Rule of Zero&rdquo; 
 
 
 ## `auto`
@@ -41,13 +41,13 @@
 
 
 ## Moderne Stilistik für die Schreibweise von Funktionen
-  * Konzept von &ldquo;C++ Concepts&rdquo;: `concept`
+  * Konzept von &bdquo;C++ Concepts&rdquo;: `concept`
   * `requires`-Klausel
   * Benutzerdefinierte Einschränkungen (*user-defined requirements*)
 
 
 ## Initialisierung
-  * Initialisierung (&ldquo;Brace Initialization&ldquo; bzw. &ldquo;Uniform Initialization&ldquo;)
+  * Initialisierung (&bdquo;Brace Initialization&bdquo; bzw. &bdquo;Uniform Initialization&bdquo;)
   * Default-Initialisierung für Member-Variablen
   * Initialisierungslisten (`std::initializer_list`)
 
@@ -118,7 +118,7 @@
   * List Processing
 
 
-## &ldquo;Type Traits&rdquo;
+## &bdquo;Type Traits&rdquo;
   * Eigenschaften von Datentypen zur Übersetzungszeit betrachten / ändern
   * `decltype` und `std::declval`
   * `Iterator::value_type` und `Iterator::iterator_category`
@@ -126,7 +126,7 @@
 
 
 ## Moderne Stilistik für die Schreibweise von Klassen
-  * Konzept von &ldquo;C++ Concepts&rdquo;: `concept`
+  * Konzept von &bdquo;C++ Concepts&rdquo;: `concept`
   * `requires`-Klausel nach der Template-Parameterliste
   * Eingeschränkte Template Parameter
 
@@ -134,7 +134,7 @@
 ## Variadische Templates
   * Allgemeines / Einführende Beispiele
   * Anwendungsfall: Zugriff auf jedes einzelne Argument
-  * Anwendungsfall: &ldquo;Summe von Summen&rdquo;
+  * Anwendungsfall: &bdquo;Summe von Summen&rdquo;
   * Anwendungsfall: Mixins
   * Anwendungsfall: *emplace*-Technik
 
@@ -148,13 +148,13 @@
 
 ## Folding
   * Grundlagen
-  * Folding &ldquo;über einem Komma&rdquo;
+  * Folding &bdquo;über einem Komma&rdquo;
 
 
 ## Expression Templates / Lazy Evaluation
   * Allgemeines
   * Beispiel Klasse `Matrix`
-  * Beispiel &ldquo;Konkatenation von Zeichenketten&rdquo;
+  * Beispiel &bdquo;Konkatenation von Zeichenketten&rdquo;
 
 
 ## Ergänzungen zu Zeichenketten
@@ -175,19 +175,19 @@
   * Vertiefungen zu `std::variant`: Das Visitor-Konzept mit `std::visit` und das sog. *Overload*&ndash;Pattern
 
 
-## SFINAE (&ldquo;Substitution failure is not an error&ldquo;)
+## SFINAE (&bdquo;Substitution failure is not an error&bdquo;)
   * Allgemeines
   * Beispiel
 
 
-## CRTP (&ldquo;Curiously recurring template pattern&ldquo;)
+## CRTP (&bdquo;Curiously recurring template pattern&bdquo;)
   * Allgemeines
-  * Beispiel &ldquo;Mixins&rdquo;
+  * Beispiel &bdquo;Mixins&rdquo;
 
 
 ## Multithreading
   * RAII (Allgemeines / Beispiel `ofstream`/ Beispiel *Clipboard*)
-  * `std::thread` (&ldquo;Simple Threading&rdquo;)
+  * `std::thread` (&bdquo;Simple Threading&rdquo;)
   * Atomare Operationen
   * Mutual Exclusion / Locks (ScopedLock, UniqueLock und Condition_Variable)
   * Async (`std::async`)

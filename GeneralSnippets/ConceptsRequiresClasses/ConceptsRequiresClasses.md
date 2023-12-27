@@ -12,7 +12,7 @@
 
 Es gibt zwei Möglichkeiten, um Konzepte (`concept`) mit Klassen zu verwenden.
 
-Sowohl mit der `requires`-Klausel als auch mit `den so genannten &ldquo;Constrained Template Parametern&rdquo;
+Sowohl mit der `requires`-Klausel als auch mit `den so genannten &bdquo;Constrained Template Parametern&rdquo;
 haben wir eine einfache und lesbare Möglichkeit, Konzepte zu verwenden, um die Menge aller möglichen Datentypen einzuschränken,
 die für eine Template-Klasse Anwendung finden sollen.
 
@@ -80,7 +80,7 @@ Mit der nun folgenden Art, eingeschränkte Klassentemplates zu schreiben, ist die
 
 ## Variante 2: Eingeschränkte Template Parameter
 
-Mit &ldquo;Constrained Template Parametern&rdquo; ist es noch einfacher,
+Mit &bdquo;Constrained Template Parametern&rdquo; ist es noch einfacher,
 das Sprachmittel `concept` zu verwenden.
 
 In der Liste der Template Parameter wird anstelle des Schlüsselworts `typename`

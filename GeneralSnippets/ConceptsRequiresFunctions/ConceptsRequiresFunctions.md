@@ -13,7 +13,7 @@
 Templates eignen sich sehr gut zum Schreiben von Code,
 der mit unterschiedlichen Datentypen funktioniert.
 
-Mit dem Konzept von &ldquo;C++ Concepts&rdquo; wiederum
+Mit dem Konzept von &bdquo;C++ Concepts&rdquo; wiederum
 können die Parameter für Templates durch boolesche Prädikate validiert werden.
 
 Auf diese Weise kann man erreichen, dass Funktionstemplates nur für
@@ -66,7 +66,7 @@ The associated constraints are not satisfied
 ```
 
 Man kann die Requirements der Template Parameter auch in einer Art 
-&ldquo;inline&rdquo;&ndash;Notation formulieren. In diesem Fall entfällt die separate
+&bdquo;inline&rdquo;&ndash;Notation formulieren. In diesem Fall entfällt die separate
 `concept`-Definition:
 
 ```cpp
@@ -126,7 +126,7 @@ Wir müssten die Template Definition ähnlich wie zuvor ändern:
 05: }
 ```
 
-## Variante 3: Template-Parameter mit Einschränkungen (&ldquo;Constraints&rdquo;)
+## Variante 3: Template-Parameter mit Einschränkungen (&bdquo;Constraints&rdquo;)
 
 Die dritte Art, ein Konzept zu verwenden,
 ist in der Schreibweise etwas knapper als die vorherigen.
@@ -159,9 +159,9 @@ requires std::integral<T> || std::floating_point<T>
 schreiben. In der dritten Variante geht das nicht.
 
 
-## Variante 4: Abgekürzte Funktionstemplates (&ldquo;Abbreviated Function Templates&rdquo;)
+## Variante 4: Abgekürzte Funktionstemplates (&bdquo;Abbreviated Function Templates&rdquo;)
 
-Für all diejenigen, die es kurz lieben, gibt es die so genannte &ldquo;*Abbreviated Function Templates*&rdquo;
+Für all diejenigen, die es kurz lieben, gibt es die so genannte &bdquo;*Abbreviated Function Templates*&rdquo;
 Schreibweise:
 
 ```cpp
@@ -171,7 +171,7 @@ Schreibweise:
 04: }
 ```
 
-Wenn Sie sich für die &ldquo;Abbreviated Function Templates&rdquo; Schreibweise entscheiden,
+Wenn Sie sich für die &bdquo;Abbreviated Function Templates&rdquo; Schreibweise entscheiden,
 können Sie sowohl auf Template Parameter als auch auf `requires`-Klauseln verzichten.
 
 Sie können `concept`-Bezeichner direkt dort verwenden,
@@ -185,7 +185,7 @@ Der `concept`-Bezeichner wird in dieser Variante ohne Template Parameter verwend
 ## `requires`-Klauseln mit benutzerdefinierten Einschränkungen
 
 Zum Schreiben einer `requires`-Klausel lassen sich die vordefinierten
-Merkmale (&ldquo;*Traits*&rdquo;) aus dem Header `<type_traits>` verwenden.
+Merkmale (&bdquo;*Traits*&rdquo;) aus dem Header `<type_traits>` verwenden.
 
 Man kann aber auch seine eigenen Merkmale definieren.
 Diese müssen dann den Typ `constexpr bool` zurückgeben.

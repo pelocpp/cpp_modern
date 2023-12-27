@@ -10,12 +10,12 @@
 
 *Allgemeines*:
 
-Im ersten, einfachen Beispiel zum Thema &ldquo;constexpr&rdquo; wird das klassische Thema von Log- bzw. Debug-Methoden betrachtet.
+Im ersten, einfachen Beispiel zum Thema &bdquo;constexpr&rdquo; wird das klassische Thema von Log- bzw. Debug-Methoden betrachtet.
 Diese sind einerseits eminent wichtig, aber man möchte ihnen zur Laufzeit nicht zuviel unnütze Rechenzeit zukommen lassen.
-&ldquo;Unnütze&rdquo; aus dem Blickwinkel des eigentlichen Programms, nicht aus dem des Entwicklers, der ohne derartige Hilfsmittel
+&bdquo;Unnütze&rdquo; aus dem Blickwinkel des eigentlichen Programms, nicht aus dem des Entwicklers, der ohne derartige Hilfsmittel
 nicht auskommt!
 
-Ein sehr exzessives Beispiel zum Thema &ldquo;Compile Time Expressions&rdquo; ist aus dem Netz entnommen:
+Ein sehr exzessives Beispiel zum Thema &bdquo;Compile Time Expressions&rdquo; ist aus dem Netz entnommen:
 
 https://codereview.stackexchange.com/questions/102495/compile-time-list-in-c
 

@@ -4,7 +4,7 @@
 
 ---
 
-&#x21D0; [Teil III: Variadische Templates: Anwendungsfall &ldquo;Summe von Summen&rdquo;](VariadicTemplates_03_SumOfSums.md)
+&#x21D0; [Teil III: Variadische Templates: Anwendungsfall &bdquo;Summe von Summen&rdquo;](VariadicTemplates_03_SumOfSums.md)
 
 ---
 
@@ -17,7 +17,7 @@
 Parameter Packs können auch bei der Vererbung eingesetzt werden,
 um die Menge der Basisklassen zu definieren,
 von denen eine Unterklasse abgeleitet werden soll. Neben dem Begriff *Mixin*
-spricht man hier auch von der so genannten *variadischen Vererbung* (*&ldquo;Variadic&rdquo; Inheritance*).
+spricht man hier auch von der so genannten *variadischen Vererbung* (*&bdquo;Variadic&rdquo; Inheritance*).
 
 ## Mixins
 
@@ -59,7 +59,7 @@ da das Ändern der Reihenfolge zu einem anderen Typ führt - wie unterschiedlich d
 *Hinweis*:
 
 Bei Mehrfachvererbung gilt:
-&ldquo;Die Reihenfolge der Ableitung ist relevant, um die Reihenfolge der Standardinitialisierung
+&bdquo;Die Reihenfolge der Ableitung ist relevant, um die Reihenfolge der Standardinitialisierung
 durch Konstruktoren und die Bereinigung durch den Destruktor zu bestimmen&rdquo;.
 
 ---
@@ -110,7 +110,7 @@ class X<A, B, C> : public A, public B, public C
 ```
 
 Wir können also in C++ eine Klasse erstellen, die von einer beliebigen Anzahl von Basisklassen erbt.
-Eine **class X: public T...** wird folglich in eine Klasse `X` wie folgt &ldquo;transformiert&rdquo;:
+Eine **class X: public T...** wird folglich in eine Klasse `X` wie folgt &bdquo;transformiert&rdquo;:
 **class X: public A, public B, public C, ...**.
 
 ## Eine Anwendung zu Mixins
@@ -194,7 +194,7 @@ Wir stellen im Folgenden zwei Implementierungen gegenüber:
 
 Man kann unschwer die Nachteile dieser Realisierung erkennen: Für jeden Slot muss man eine eigene *Slot*-Klasse
 definieren. Und zum Zweiten muss man für jeden dieser Slots eine separate *getter*- und *setter*-Methode implementieren. 
-Dies kann man nur als &ldquo;Copy-Paste&rdquo;-Programmierung bezeichnen, es muss andere Lösungsmöglichkeiten geben.
+Dies kann man nur als &bdquo;Copy-Paste&rdquo;-Programmierung bezeichnen, es muss andere Lösungsmöglichkeiten geben.
 
 ### Ansatz mit Mixins
 
@@ -256,7 +256,7 @@ Dies kann man nur als &ldquo;Copy-Paste&rdquo;-Programmierung bezeichnen, es mus
 
 Dieser zweite Ansatz in der Implementierung einer Klasse `Repository` nimmt Gestalt an, aber wir sind noch nicht fertig!
 Wenn Sie versuchen, zwei `int`-Slots anzulegen, wird ein Kompilierungsfehler ausgegeben:
-&ldquo;*Basisklasse 'Slot' wurde mehrmals als direkte Basisklasse angegeben*&rdquo;.
+&bdquo;*Basisklasse 'Slot' wurde mehrmals als direkte Basisklasse angegeben*&rdquo;.
 
 ### Verbesserung des Mixins-Ansatzes
 
@@ -347,7 +347,7 @@ angelegt werden muss. `emplace` wird direkt mit Argumenten für einen geeigneten 
 des gewünschten Objekts aufgerufen. In diesem Fall vermeiden wir es, ein unnötiges
 temporäres Objekt zu erstellen und wieder zu zerstören.
 
-Um den geeigneten Konstruktor des Zielobjekts zu &ldquo;finden&rdquo;, verwendet `emplace`
+Um den geeigneten Konstruktor des Zielobjekts zu &bdquo;finden&rdquo;, verwendet `emplace`
 eine variable Anzahl von Argumenten unterschiedlichen Typs und leitet diese
 an den korrespondierenden Konstruktor weiter.
 Eine variable Anzahl von Argumenten und Typen muss Sie an etwas erinnern ... variadische Templates!

@@ -19,9 +19,9 @@ kopiert die Ausführung dieser `return`-Anweisung das Ergebnis des Ausdrucks dire
 in den Rückgabe-Slot (*Stack Frame*) der **aufrufenden** Funktion.
 
 Auf diese Weise wird vermieden, dass noch innerhalb der Funktion eine überflüssige Kopie
-des Resultatobjekts am Stack angelegt wird. Daher auch der Ausdruck &ldquo;*Elision*&rdquo; bzw. &ldquo;*Auslassen*&rdquo;:
+des Resultatobjekts am Stack angelegt wird. Daher auch der Ausdruck &bdquo;*Elision*&rdquo; bzw. &bdquo;*Auslassen*&rdquo;:
 Das Erzeugen eines &ndash; nicht zwingend notwendigen &ndash; temporären (lokalen) Objekts
-wird &ldquo;*ausgelassen*&rdquo;.
+wird &bdquo;*ausgelassen*&rdquo;.
 
 Siehe dazu das Beispiel im korrespondierenden Quellcode.
 

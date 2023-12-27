@@ -8,7 +8,7 @@
 
 ---
 
-## &ldquo;It's about ownership&rdquo;
+## &bdquo;It's about ownership&rdquo;
 
 ###### Exklusiver Besitz: `std::unique_ptr<T>`
 
