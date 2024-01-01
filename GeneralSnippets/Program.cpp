@@ -7,11 +7,11 @@ import modern_cpp_exercises;
 
 import std;
 
-#pragma message("Collection of Modern C++-Code Examples - Copyright (C) 2019-2023 Peter Loos")
+#pragma message("Collection of Modern C++-Code Examples - Copyright (C) 2019-2024 Peter Loos")
 
 int main()
 {
-    std::cout << "[Collection of Modern C++-Code Examples - Copyright (C) 2019-2023 Peter Loos]" << std::endl;
+    std::cout << "[Collection of Modern C++-Code Examples - Copyright (C) 2019-2024 Peter Loos]" << std::endl;
 
     // main entry points code snippets
     try
