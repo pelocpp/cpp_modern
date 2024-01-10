@@ -2,7 +2,7 @@
 
 ###### Preamble
 
-<img align="right" width="80" height="120" src="Images/Certified Expert Trainer.png" />
+<img align="right" width="80" height="120" src="Images/CertifiedExpertTrainer.png" />
 
 <br/>*Herb Sutter*:<br/>*"The world is built on C++ (and its C subset)"*
 
