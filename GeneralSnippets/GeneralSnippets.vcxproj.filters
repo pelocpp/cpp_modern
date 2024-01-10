@@ -1090,16 +1090,16 @@
     <Image Include="BraceInitialization\cpp_init.gif">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="..\Images\CertifiedExpertTrainer.png">
+    <Image Include="Images\CertifiedExpertTrainer.png">
       <Filter>Images</Filter>
     </Image>
-    <Image Include="..\Images\Horse_Cpp.png">
+    <Image Include="Images\Horse_Cpp.png">
       <Filter>Images</Filter>
     </Image>
-    <Image Include="..\Images\tiobe_index_december_2022.png">
+    <Image Include="Images\tiobe_index_december_2022.png">
       <Filter>Images</Filter>
     </Image>
-    <Image Include="..\Images\what_are_you_studying.png">
+    <Image Include="Images\what_are_you_studying.png">
       <Filter>Images</Filter>
     </Image>
   </ItemGroup>
