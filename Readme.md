@@ -2,7 +2,7 @@
 
 ###### Preamble
 
-<img align="right" width="80" height="120" src="Images/GeneralSnippets/CertifiedExpertTrainer.png" />
+<img align="right" width="80" height="120" src="GeneralSnippets/Images/CertifiedExpertTrainer.png" />
 
 <br/>*Herb Sutter*:<br/>*"The world is built on C++ (and its C subset)"*
 
@@ -15,7 +15,7 @@
 *Modern C++* mag möglicherweise für den einen oder anderen Entwickler durch seine Komplexität etwas abschreckend wirken.
 
 <p>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="Images/GeneralSnippets/what_are_you_studying.png" width="300">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="GeneralSnippets/Images/what_are_you_studying.png" width="300">
 </p>
 
 *Abbildung* 1: Modern C++ &ndash; *Relax*!
@@ -28,7 +28,7 @@ C++ zählt zu den Programmiersprachen, die ein etwas tieferes Verständnis erfor
 Ziel dieses Seminars/Repositories ist es, auf die größten Hürden beim Erlernen von *Modern C++* einzugehen!
 
 <p>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="Images/GeneralSnippets/Horse_Cpp.png" width="600">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="GeneralSnippets/Images/Horse_Cpp.png" width="600">
 </p>
 
 *Abbildung* 2: We get the Job done &ndash; :)
@@ -61,7 +61,7 @@ die Programmiersprache des Jahres 2022 bekannt gegeben.
 Den Titel erhält jeweils die Sprache, die im Verlauf des Jahres den höchsten Zuwachs im Ranking zu verzeichnen hat.
 Nach Python im Jahr 2021 steht nun C++ auf dem Thron für 2022:
 
-<img src="Images/GeneralSnippets/tiobe_index_december_2022.png" width="500">
+<img src="GeneralSnippets/Images/tiobe_index_december_2022.png" width="500">
 
 *Abbildung* 3: Die Rangfolge der ersten zehn Programmiersprachen auf Basis des *TIOBE Programming Community Index* im Januar 2023.
 
