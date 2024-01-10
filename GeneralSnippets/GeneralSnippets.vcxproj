@@ -479,9 +479,10 @@
     <ClCompile Include="TemplateClassBasics\AnotherArray.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\Horse_Cpp.png" />
-    <Image Include="..\tiobe_index_december_2022.png" />
-    <Image Include="..\what_are_you_studying.png" />
+    <Image Include="..\Images\CertifiedExpertTrainer.png" />
+    <Image Include="..\Images\Horse_Cpp.png" />
+    <Image Include="..\Images\tiobe_index_december_2022.png" />
+    <Image Include="..\Images\what_are_you_studying.png" />
     <Image Include="Auto\auto_no_const_reference.png" />
     <Image Include="Auto\decltype_auto_01.png" />
     <Image Include="Auto\decltype_auto_02.png" />

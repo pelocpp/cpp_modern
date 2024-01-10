@@ -19,6 +19,9 @@
     <Filter Include="Modules">
       <UniqueIdentifier>{2680afac-be2b-40c9-80c6-ad18b1ad8a32}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Images">
+      <UniqueIdentifier>{f38d6bc2-2f11-43df-af11-e4e28755f82a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Program.cpp">
@@ -1063,9 +1066,6 @@
     <Image Include="Auto\decltype_auto_02.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="..\Horse_Cpp.png">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="OnlineCppCompilers\WandboxOptions01.png">
       <Filter>Resource Files</Filter>
     </Image>
@@ -1081,9 +1081,6 @@
     <Image Include="TemplateClassBasics\template_instantiations_02.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="..\tiobe_index_december_2022.png">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="MetaProgramming\GGT_Algorithmus_Euklid.png">
       <Filter>Resource Files</Filter>
     </Image>
@@ -1093,8 +1090,17 @@
     <Image Include="BraceInitialization\cpp_init.gif">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="..\what_are_you_studying.png">
-      <Filter>Resource Files</Filter>
+    <Image Include="..\Images\CertifiedExpertTrainer.png">
+      <Filter>Images</Filter>
+    </Image>
+    <Image Include="..\Images\Horse_Cpp.png">
+      <Filter>Images</Filter>
+    </Image>
+    <Image Include="..\Images\tiobe_index_december_2022.png">
+      <Filter>Images</Filter>
+    </Image>
+    <Image Include="..\Images\what_are_you_studying.png">
+      <Filter>Images</Filter>
     </Image>
   </ItemGroup>
 </Project>
