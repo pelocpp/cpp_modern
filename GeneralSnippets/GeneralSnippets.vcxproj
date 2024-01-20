@@ -277,6 +277,8 @@
     <ClCompile Include="PerfectForwarding\PerfectForwarding02.cpp" />
     <ClCompile Include="PerfectForwarding\PerfectForwarding03.cpp" />
     <ClCompile Include="PerfectForwarding\PerfectForwarding04.cpp" />
+    <ClCompile Include="PlacementNew\Module_PlacementNew.ixx" />
+    <ClCompile Include="PlacementNew\PlacementNew.cpp" />
     <ClCompile Include="Program.cpp" />
     <ClCompile Include="RAII\Module_RAII.ixx" />
     <ClCompile Include="RAII\RAII01.cpp" />
@@ -421,6 +423,7 @@
     <None Include="PerfectForwarding\PerfectForwarding_01.md" />
     <None Include="PerfectForwarding\PerfectForwarding_02.md" />
     <None Include="PerfectForwarding\PerfectForwarding_03.md" />
+    <None Include="PlacementNew\PlacementNew.md" />
     <None Include="RAII\RAII.md" />
     <None Include="Random\Random.md" />
     <None Include="RangeBasedForLoop\cpp_range_based_loop.svg" />

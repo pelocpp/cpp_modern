@@ -633,6 +633,12 @@
     <ClCompile Include="BraceInitialization\BraceInitialization.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PlacementNew\Module_PlacementNew.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="PlacementNew\PlacementNew.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -1005,6 +1011,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="BraceInitialization\BraceInitialization.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="PlacementNew\PlacementNew.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

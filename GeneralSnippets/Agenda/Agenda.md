@@ -57,6 +57,7 @@
   * Range-based `for`&ndash;Loop
   * *Copy/Move Elision*
   * C++ Standard-Attribute
+  * *Placement New*: Trennung von Speicherallokation und Objektkonstruktion
   * Vererbung: Schlüsselwörter `override`, `virtual`, `final`
   * Argument-Dependent Name Lookup (ADL) / *Koenig*-Lookup
 
