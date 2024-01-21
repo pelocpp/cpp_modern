@@ -64,7 +64,7 @@ int main()
         //main_move_semantics();
         //main_optional();
         //main_perfect_forwarding();
-        main_placement_new();
+        //main_placement_new();
         //main_raii();
         //main_raii_02();
         //main_random();

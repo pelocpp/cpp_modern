@@ -8,7 +8,7 @@
 
 ---
 
-# Allgemeines
+## Allgemeines
 
 Templates eignen sich sehr gut zum Schreiben von Code,
 der mit unterschiedlichen Datentypen funktioniert.

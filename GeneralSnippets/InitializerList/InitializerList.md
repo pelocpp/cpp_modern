@@ -8,7 +8,7 @@
 
 ---
 
-# Allgemeines
+## Allgemeines
 
 Wenn der Compiler ein `std::initializer_list`-Objekt erstellt,
 werden die Elemente der Liste auf dem Stapel konstruiert (als konstante Objekte).

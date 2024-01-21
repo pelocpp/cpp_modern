@@ -8,7 +8,7 @@
 
 ---
 
-# Allgemeines
+## Allgemeines
 
 Es gibt zwei Möglichkeiten, um Konzepte (`concept`) mit Klassen zu verwenden.
 

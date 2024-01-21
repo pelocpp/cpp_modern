@@ -8,7 +8,7 @@
 
 ---
 
-# Allgemeines
+## Allgemeines
 
 Es ist &ndash; wenngleich auch eher selten benutzt &ndash; in C++ möglich,
 die Speicherallokation von der Objektkonstruktion zu trennen.
@@ -31,138 +31,136 @@ Die vielleicht ungewohnte Syntax
 
 heißt *Placement new*.
 
-Dieser Aufruf des new-Operators reserviert keinen Speicher, sondern konstruiert auf bereits vorhandenem Speicher ein neues Objekt.
+Dieser Aufruf des `new`-Operators reserviert keinen Speicher,
+sondern konstruiert auf bereits vorhandenem Speicher ein neues Objekt.
 
-Der Doppelpunkt (::) vor new stellt sicher, dass die Suche nach `new` aus dem globalen Namensraum erfolgt,
+Der Doppelpunkt (`::`) vor `new` stellt sicher, dass die Suche nach `new` aus dem globalen Namensraum erfolgt,
 um zu vermeiden, dass eine überladene Version des `new`-Operators erfasst wird.
 
-Im vorherigen Beispiel wird ein `User`-Objekt an einem vorgegebenen Speicherort konstruiert.
+Im Beispiel wird ein `User`-Objekt an einem vorgegebenen Speicherort konstruiert.
 
 Es gibt kein *Placement delete*. Um das Objekt zu zerstören und den von ihm benutzten Speicher freizugeben,
-Wir müssen den Destruktor explizit aufrufen und dann den Speicher freigeben.
+müssen wir den Destruktor explizit aufrufen und danach den Speicher explizit freigeben.
 
 ```cpp
 user->~User();
 std::free(memory);
 ```
+---
+
+## Ein Anwendungsfall
+
+Wir betrachten Klassen, die keinen Standard-Konstruktor besitzen.
+Für manche Container kann dies zu Problemen führen:
+
+```cpp
+01: template <class T>
+02: class Vector
+03: {
+04: private:
+05:     T* m_data;
+06: 
+07: public:
+08:     Vector() : m_data{ new T[10] } {}
+09:     ~Vector() { delete[] m_data; }
+10: };
+11: 
+12: static void test_05()
+13: {
+14:     Vector<int> a;      // compiles
+15:     // Vector<User> b;  // Error: User type doesn't have a default c'tor
+16: }
+```
+
+Wir legen dabei zu Grunde, dass die Klasse `User` keinen Standard-Konstruktor besitzt.
+
+Das Problem finden wir in Zeile 8 vor. Die Anweisung `new T[10]` bewirkt zwei Dinge:
+
+  * Reserviere Speicher mit einer Länge von `sizeof(T) * size`.
+  * Konstruiere alle Objekt mit einem Aufruf von `T()`, dem Standardkonstruktor.
+
+Da `T` keinen Standardkonstruktor hat und `m_data` beim Erstellen lediglich einen zusammenhängenden Speicherbereich benötigt,
+warum trennen wir dann nicht die Speicherzuweisung vom Konstruieren der Objekte?
+
+Damit betrachten wir folgenden Ansatz, um Speicher zu reservieren:
+
+```cpp
+T *data = reinterpret_cast<T*>(std::malloc(sizeof(T) * 10));
+```
+
+Was machen wir nun, wenn der Benutzer `push_back(value);` aufruft?
+Mit der Syntax des *Placement New* kann man bei vorhandenem Zeiger
+den Konstruktor eines Typs an der Position des Zeigers aufrufen:
+
+```cpp
+T* node = new (static_cast<void*>(&data[size])) T{ value };
+```
+
+`&data[size]` wäre in diesem Beispiel der erste verfügbare Platz eines zusammenhängenden Speicherbereichs,
+in dem wir das Element `T{ value }` platzieren können.
+
+Der Wert wird durch Kopieren eines neuen `T`-Objekts erstellt.
+Da der Kopierkonstruktor verwendet wird, wird das Problem des fehlenden Standardkonstruktors umgangen.
+
+Eine Klasse `Vector`, die mit dem Hilfsmittel des *Placement New* arbeitet,
+könnte so aussehen:
+
+```cpp
+01: template <class T>
+02: class VectorEx
+03: {
+04: private:
+05:     size_t m_capacity;
+06:     size_t m_size;
+07:     T* m_data;
+08: 
+09: public:
+10:     VectorEx() :
+11:         m_capacity{ 10 },
+12:         m_size{},
+13:         m_data{ reinterpret_cast<T*>(std::malloc(sizeof(T) * m_capacity)) }
+14:     {}
+15: 
+16:     ~VectorEx()
+17:     {
+18:         while (m_size) {
+19:             pop_back();
+20:         }
+21: 
+22:         std::free(m_data);
+23:     }
+24: 
+25:     void push_back(const T& value)
+26:     {
+27:         T* ptr{ m_data + m_size };
+28:         new (ptr) T{ value };
+29:         ++m_size;
+30:     }
+31: 
+32:     void push_back(T&& value)
+33:     {
+34:         T* ptr{ m_data + m_size };
+35:         new (ptr) T{ std::move(value) };
+36:         ++m_size;
+37:     }
+38: 
+39:     void pop_back() {
+40: 
+41:         --m_size;
+42:         m_data[m_size].~T();
+43:     }
+44: };
+```
 
 ---
 
+## Literaturhinweise:
 
+Ideen und Anregungen zu den Beispielen aus diesem Abschnitt stammen aus
 
-// ALTES ZEUGS ..................
+[C++ Placement New](https://medium.com/@dgodfrey206/c-placement-new-1298ccbb076e) (abgerufen am 21.01.2024).
 
-# Allgemeines
-
-Wenn der Compiler ein `std::initializer_list`-Objekt erstellt,
-werden die Elemente der Liste auf dem Stapel konstruiert (als konstante Objekte).
-
-Danach erstellt der Compiler das `std::initializer_list`-Objekt selbst,
-das die Adresse des ersten und letzten Elements enthält
-(genauer in Bezug auf das letzte Element: die Adresse des ersten Elements *nach* dem letzten Element).
-
-Folglich besteht ein `std::initializer_list`-Objekt nur aus zwei Zeigervariablen,
-es handelt sich also um ein recht kleines Objekt.
-Damit ist es nicht wirklich notwendig, bei der Parameterübergabe 
-eine Referenz zu verwenden &ndash; die Parameterübergabe *Call-by-Value* ist völlig ausreichend.
-
-<img src="cpp_initializer_list.svg" width="300">
-
-*Abbildung* 1: Konstruktion des Inhalts eines `std::initializer_list`-Objekts auf dem Stack.
-
-*Hinweis*:
-Ein `std::initializer_list`-Objekt ist immer *per-Value* zu übergeben.
-Eine mögliche *per-Reference*-Übergabe könnte möglichen Optimierungen des Compilers im Wege stehen. 
-
----
-
-## Zusammenspiel der Klassen `std::initializer_list` und `std::vector`
-
-Die Klasse `std::vector` ist dafür ausgelegt,
-mit einem `std::initializer_list`-Objekt initialisiert zu werden:
-
-```cpp
-std::initializer_list<int> list{ 1, 2, 3, 4, 5 };
-std::vector<int> vec{ list };
-```
-
----
-
-## Konstruktoren mit einem `std::initializer_list<T>`-Parameter
-
-Um für Konstruktoren eine variable Anzahl von Parametern (desselben Typs) zu ermöglichen,
-wurde in C++ das Konzept von *Initialisierungs-Listen* eingeführt.
-
-Eine Klasse muss dann einen entsprechenden Konstruktor zur Verfügung stellen,
-der das Klassentemplate `std::initializer_list<>` verwendet.
-
-*Beispiel*:
-
-```cpp
-std::map (std::initializer_list<T> init);
-std::vector (std::initializer_list<T> init);
-```
-
-Die Anweisung
-
-```cpp
-std::vector<int> vec = { 1, 2, 3 };
-```
-
-erzeugt *zunächst* ein `std::initializer_list<int>`-Objekt mit den Werten 1, 2 und 3
-und benutzt dieses dann anschließend, um den entsprechenden Konstruktor des Vektors aufzurufen.
-
-  * Ein Konstruktor mit `std::initializer_list<T>`-Parameter wird auch *Sequenzkonstruktor* genannt.
-  * Bei der Suche nach einem passenden Konstruktor für einen bestimmten Aufruf wird im
-    Regelfall der Sequenzkonstruktor bevorzugt ausgewählt.
-
-
-Sequenzkonstruktoren lassen sich auch in benutzer-definierten Klassen &ndash; oder auch 
-Funktionen/Methoden &ndash; einsetzen:
-
-```cpp
-class Polygon {
-public:
-    Polygon(std::initializer_list<Point> elements)
-        : m_elements{ elements } {};
-    ...
-
-private:
-    std::vector<Point> m_elements;
-};
-```
-
-Bei Funktionen, die eine Initialisierungs-Liste als Parameter haben,
-sind die geschweiften Klammern direkt als Argument anzugeben:
-
-```cpp
-int sum = adder( { 1, 3, 5, 7, 9 } );
-```
-
-## Regeln für Klassen mit Konstruktoren mit `std::initializer_list`-Parameter
-
-Unterschiedliche Deklarationen von Konstruktoren in einer Klasse
-im Zusammenspiel mit `std::initializer_list<T>`-Parametern
-führen zu unterschiedlichen (und möglicherweise unerwarteten!) Ergebnissen:
-
-```cpp
-class TinyContainer {
-public:
-    TinyContainer() {}
-    TinyContainer(int value) {}
-    TinyContainer(std::initializer_list<int>) {};
-    TinyContainer(const std::vector<int>&) {};
-};
-
-void test_03() {
-    TinyContainer tc0;                                 // TinyContainer::TinyContainer ()
-    TinyContainer tc1{ 1, 2, 3, 4 };                   // TinyContainer::TinyContainer (std::initializer_list<int>)
-    TinyContainer tc2{ 1 };                            // TinyContainer::TinyContainer (std::initializer_list<int>)
-    TinyContainer tc3(1);                              // TinyContainer::TinyContainer (int)
-    TinyContainer tc4{ };                              // TinyContainer::TinyContainer ()
-    TinyContainer tc5{ std::vector<int> { 1, 2, 3} };  // TinyContainer::TinyContainer (const std::vector<int>&)
-}
-```
+von David Godfrey.
 
 ---
 
