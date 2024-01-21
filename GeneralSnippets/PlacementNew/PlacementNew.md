@@ -1,4 +1,4 @@
-# *Placement New*: Trennung von Speicherallokation und Objektkonstruktion
+# *Placement New*:<br />Trennung von Speicherallokation und Objektkonstruktion
 
 [Zurück](../../Readme.md)
 
@@ -76,8 +76,8 @@ Wir legen dabei zu Grunde, dass die Klasse `User` keinen Standard-Konstruktor be
 
 Das Problem finden wir in Zeile 8 vor. Die Anweisung `new T[10]` bewirkt zwei Dinge:
 
-  * Reserviere Speicher mit einer Länge von `sizeof(T) * size`.
-  * Konstruiere alle Objekt mit einem Aufruf von `T()`, dem Standardkonstruktor.
+  * Reserviere Speicher mit einer Länge von `sizeof(T) * 10`.
+  * Konstruiere alle Objekt mit einem Aufruf von `T{}`, dem Standardkonstruktor.
 
 Da `T` keinen Standardkonstruktor hat und `m_data` beim Erstellen lediglich einen zusammenhängenden Speicherbereich benötigt,
 warum trennen wir dann nicht die Speicherzuweisung vom Konstruieren der Objekte?
@@ -96,8 +96,8 @@ den Konstruktor eines Typs an der Position des Zeigers aufrufen:
 T* node = new (static_cast<void*>(&data[size])) T{ value };
 ```
 
-`&data[size]` wäre in diesem Beispiel der erste verfügbare Platz eines zusammenhängenden Speicherbereichs,
-in dem wir das Element `T{ value }` platzieren können.
+`&data[size]` wäre in diesem Beispiel ein verfügbarer Platz eines zusammenhängenden Speicherbereichs,
+in dem wir das Element `T{ value }` platzieren könnten.
 
 Der Wert wird durch Kopieren eines neuen `T`-Objekts erstellt.
 Da der Kopierkonstruktor verwendet wird, wird das Problem des fehlenden Standardkonstruktors umgangen.
