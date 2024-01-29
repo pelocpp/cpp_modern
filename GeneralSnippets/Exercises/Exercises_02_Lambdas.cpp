@@ -95,14 +95,12 @@ namespace Exercises_Lambdas {
             std::for_each(
                 std::begin(values), 
                 std::end(values), 
-                [](int val) {
+                [] (int val) {
                     if ((val % 2) == 0) {
                         std::cout << val << " is even." << std::endl;
-                        return true;
                     }
                     else {
                         std::cout << val << " is odd." << std::endl;
-                        return false;
                     }
                 }
             );
@@ -131,10 +129,10 @@ namespace Exercises_Lambdas {
                 std::end(values),
                 [divisor = 3] (int val) {
                     if (!(val % divisor)) {
-                        std::cout << val << " divides by " << divisor << std::endl;
+                        std::cout << val << " can be divided by " << divisor << std::endl;
                     }
                     else {
-                        std::cout << val << " not divides by " << divisor << std::endl;
+                        std::cout << val << " cannot be divided by " << divisor << std::endl;
                     }
                 }
             );
@@ -149,10 +147,10 @@ namespace Exercises_Lambdas {
                 std::end(values),
                 [=] (int val) {
                     if (!(val % divisor)) {
-                        std::cout << val << " divides by " << divisor << std::endl;
+                        std::cout << val << " can be divided by " << divisor << std::endl;
                     }
                     else {
-                        std::cout << val << " not divides by " << divisor << std::endl;
+                        std::cout << val << " cannot be divided by " << divisor << std::endl;
                     }
                 }
             );
@@ -393,8 +391,8 @@ void test_exercises_lambdas()
 {
     using namespace Exercises_Lambdas;
     Exercise_01::testExercise_01();
-    //Exercise_02::testExercise_02();
-    //Exercise_03::testExercise_03();
+    Exercise_02::testExercise_02();
+    Exercise_03::testExercise_03();
 }
 
 // =====================================================================================
