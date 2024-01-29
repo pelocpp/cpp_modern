@@ -10,36 +10,72 @@ namespace Exercises_Lambdas {
 
     namespace Exercise_01 {
 
-        void even(int val) {
+        bool evenOrOdd(int val) {
+
             if ((val % 2) == 0) {
                 std::cout << val << " is even." << std::endl;
+                return true;
+            }
+            else {
+                std::cout << val << " is odd." << std::endl;
+                return false;
             }
         }
 
-        struct Even {
-            void operator()(int val) const {
+        struct EvenOrOdd
+        {
+            bool operator() (int val) const {
+
                 if ((val % 2) == 0) {
                     std::cout << val << " is even." << std::endl;
+                    return true;
                 }
+                else {
+                    std::cout << val << " is odd." << std::endl;
+                    return false;
+                }
+            }
+        };
+
+        auto lambda = [](int val) -> bool {
+
+            if ((val % 2) == 0) {
+                std::cout << val << " is even." << std::endl;
+                return true;
+            }
+            else {
+                std::cout << val << " is odd." << std::endl;
+                return false;
             }
         };
 
         void testExercise_01a() {
 
-            // testing functor
-            Even functor;
-            functor (14);
+            // testing C-style function
+            int value = 14;
+            auto result = evenOrOdd(value);
+            std::cout 
+                << "evenOrOdd of " << value << ": " 
+                << std::boolalpha << result << std::endl;
+
+            // testing callable object
+            EvenOrOdd callableObj;
+            value = 15;
+            result = callableObj(value);
+            std::cout
+                << "evenOrOdd of " << value << ": "
+                << std::boolalpha << result << std::endl;
 
             // testing lambda
-            auto lambdaEven = [](int val) {
-                if ((val % 2) == 0) {
-                    std::cout << val << " is even." << std::endl;
-                }
-            };
-            lambdaEven(16);
+            value = 16;
+            result = lambda(value);
+            std::cout
+                << "evenOrOdd of " << value << ": "
+                << std::boolalpha << result << std::endl;
         }
 
         void testExercise_01b() {
+
             std::vector<int> values(20);
 
             std::generate(
@@ -52,7 +88,7 @@ namespace Exercises_Lambdas {
             std::for_each(
                 std::begin(values), 
                 std::end(values),
-                even
+                evenOrOdd
             );
 
             // lambda
@@ -62,19 +98,25 @@ namespace Exercises_Lambdas {
                 [](int val) {
                     if ((val % 2) == 0) {
                         std::cout << val << " is even." << std::endl;
+                        return true;
+                    }
+                    else {
+                        std::cout << val << " is odd." << std::endl;
+                        return false;
                     }
                 }
             );
 
-            // functor
+            // callable object
             std::for_each(
                 std::begin(values),
                 std::end(values),
-                Even{}
+                EvenOrOdd{}
             );
         }
 
         void testExercise_01c() {
+
             std::vector<int> values(20);
 
             std::generate(
@@ -87,9 +129,12 @@ namespace Exercises_Lambdas {
             std::for_each(
                 std::begin(values), 
                 std::end(values),
-                [divisor = 3](int val) {
+                [divisor = 3] (int val) {
                     if (!(val % divisor)) {
-                        std::cout << val << std::endl;
+                        std::cout << val << " divides by " << divisor << std::endl;
+                    }
+                    else {
+                        std::cout << val << " not divides by " << divisor << std::endl;
                     }
                 }
             );
@@ -102,9 +147,12 @@ namespace Exercises_Lambdas {
             std::for_each(
                 std::begin(values),
                 std::end(values),
-                [=](int val) {
+                [=] (int val) {
                     if (!(val % divisor)) {
-                        std::cout << val << std::endl;
+                        std::cout << val << " divides by " << divisor << std::endl;
+                    }
+                    else {
+                        std::cout << val << " not divides by " << divisor << std::endl;
                     }
                 }
             );
@@ -345,8 +393,8 @@ void test_exercises_lambdas()
 {
     using namespace Exercises_Lambdas;
     Exercise_01::testExercise_01();
-    Exercise_02::testExercise_02();
-    Exercise_03::testExercise_03();
+    //Exercise_02::testExercise_02();
+    //Exercise_03::testExercise_03();
 }
 
 // =====================================================================================

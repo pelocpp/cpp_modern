@@ -15,14 +15,20 @@
 Erstellen Sie eine leeres Visual C++ Projekt,
 fügen Sie nachstehenden Quellcode dort ein und bringen Sie das Programm zum Laufen.
 
-Ergänzen Sie das Programm um eine Lambda-Funktion, die dieselbe Funktionalität wie Funktion `even` hat,
-nur eben als Lambda-Funktion realisiert. Entwickeln Sie des weiteren eine Klasse `Even`,
-die die Funktionalität von Funktion `even` als *ausführbares Objekt* repräsentiert.
+Ergänzen Sie das Programm um eine Lambda-Funktion, die dieselbe Funktionalität wie Funktion `evenOrOdd` hat,
+nur eben als Lambda-Funktion realisiert. Entwickeln Sie des weiteren eine Klasse `EvenOrOdd`,
+die die Funktionalität von Funktion `evenOrOdd` als *ausführbares Objekt* repräsentiert.
 
 ```cpp
-void even(int val) {
+bool evenOrOdd(int val) {
+
     if ((val % 2) == 0) {
-        std::cout << " is even." << std::endl;
+        std::cout << val << " is even." << std::endl;
+        return true;
+    }
+    else {
+        std::cout << val << " is odd." << std::endl;
+        return false;
     }
 }
 ```
