@@ -33,7 +33,7 @@ die sich durch `std::shared_ptr`-Objekte gegenseitig referenzieren.
 Der bei `std::shared_ptr`-Objekten vorhandene *Control Block* bezieht auch 
 `std::weak_ptr`-Objekte mit ein:
 
-<img src="cpp_control_block_02.svg" width="500">
+<img src="cpp_control_block_02.svg" width="600">
 
 *Abbildung* 1: `std::weak_ptr`-Objekt und Control-Block.
 

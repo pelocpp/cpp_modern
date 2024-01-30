@@ -57,7 +57,7 @@ effizienter ist, siehe dazu auch die folgenden beiden Abbildungen:
 Wesentlich für die Arbeitsweise eines `std::shared_ptr`-Objekts ist der so genannte *Control Block*:
 Siehe hierzu Abbildung 3: 
 
-<img src="cpp_control_block_01.svg" width="500">
+<img src="cpp_control_block_01.svg" width="600">
 
 *Abbildung* 3: `std::shared_ptr`-Objekt und Control-Block.
 
