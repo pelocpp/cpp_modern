@@ -23,35 +23,22 @@ Die Funktionsweise der Wrapper-Klasse wird an zwei Beispielen aufgezeigt.
 Das erste Beispiel erläutert vor allem den Zusammenhang zwischen den beiden Klassen
 `std::weak_ptr` und `std::shared_ptr`.
 
+Ein zweites Beispiel demonstriert die Probleme mehrere Objekte,
+die sich durch `std::shared_ptr`-Objekte gegenseitig referenzieren.
+
+---
+
 *Hinweis*:
 
-Man beachte den Unterschied in der Anwendung der beiden Anweisungen
+Der bei `std::shared_ptr`-Objekten vorhandene *Control Block* bezieht auch 
+`std::weak_ptr`-Objekte mit ein:
 
-```cpp
-std::shared_ptr<int> ptr1 = std::make_shared<int>(123);
-```
+<img src="cpp_control_block_02" width="500">
 
-oder
+*Abbildung* 1: `std::weak_ptr`-Objekt und Control-Block.
 
-```cpp
-std::shared_ptr<int> ptr1 = std::shared_ptr<int>(new int{ 123 });
-```
 
-Im ersten Fall wird für den dynamischen Speicherbereich *und* den Control-Block
-*ein* gemeinsamer Speicherbereich angelegt &ndash; im zweiten Fall sind dies zwei getrennte Speicherbereiche.
-
-Dies kann man im Debugger beobachten, die Freigabezeitpunkte der Speicherbereiche sind unterschiedlich:
-
-<img src="WeakPointer_01.PNG" width="500">
-
-*Abbildung* 1: Der Control-Block enthält beide Speicherbereiche.
-
-<img src="WeakPointer_02.PNG" width="400">
-
-*Abbildung* 2: Der Control-Block enthält nicht das eigentlich dynamisch angelegte Objekt. 
-
-In *Abbildung* 2 erkennt man, dass trotz eigentlich erfolgter Freigabe des dynamisch angelegten Objekts
-dieses noch vom Debugger angezeigt wird. Die tatsächliche Freigabe erfolgt zu einem späteren Zeitpunkt.
+---
 
 ## Zyklische Referenzen
 
@@ -82,7 +69,6 @@ d'tor LeftNode
 d'tor RightNode
 d'tor ParentNode
 ```
-
 
 ## Betrachtung der Referenzzähler im Detail
 
@@ -122,26 +108,26 @@ allokierten Speichers nicht klappen kann &ndash; und beim Beseitigen des Zykluss
 
 <img src="cpp_sharedptr_cycle_01.svg" width="350">
 
-*Abbildung* 3: Ein erstes, dynamisch allokiertes Objekt wird angelegt.
+*Abbildung* 2: Ein erstes, dynamisch allokiertes Objekt wird angelegt.
 
 <img src="cpp_sharedptr_cycle_02.svg" width="400">
 
-*Abbildung* 4: Ein zweites, dynamisch allokiertes Objekt wird angelegt.
+*Abbildung* 3: Ein zweites, dynamisch allokiertes Objekt wird angelegt.
 
 <img src="cpp_sharedptr_cycle_03.svg" width="400">
 
-*Abbildung* 5: Wertzuweisung `std::shared_ptr`-Variable.
+*Abbildung* 4: Wertzuweisung `std::shared_ptr`-Variable.
 
 <img src="cpp_sharedptr_cycle_10.svg" width="400">
 
-*Abbildung* 6: Zweite Wertzuweisung `std::shared_ptr`-Variable.
+*Abbildung* 5: Zweite Wertzuweisung `std::shared_ptr`-Variable.
 
-Wir erkennen nun in *Abbildung* 6, dass ein Zyklus vorhanden ist!
+Wir erkennen nun in *Abbildung* 5, dass ein Zyklus vorhanden ist!
 
 
 <img src="cpp_sharedptr_cycle_11.svg" width="400">
 
-*Abbildung* 7: Die auf dem Stack vorhandenen `std::shared_ptr`-Variablen werden entfernt: Es verbleibt ein Zyklus auf dem Heap!
+*Abbildung* 6: Die auf dem Stack vorhandenen `std::shared_ptr`-Variablen werden entfernt: Es verbleibt ein Zyklus auf dem Heap!
 
  Wir schlagen noch einen alternativen Weg ein &ndash; siehe dazu folgende Modifikation des Beispiels:
 
@@ -157,15 +143,15 @@ Wir erkennen nun in *Abbildung* 6, dass ein Zyklus vorhanden ist!
 ```
 
 Es wird nun kein Zyklus mehr aufgebaut. Welche Konsequenzen hat dies auf die
-Ausführung des Programms? Die Betrachtungen schließen sich an *Abbildung* 5 an:
+Ausführung des Programms? Die Betrachtungen schließen sich an *Abbildung* 6 an:
 
 <img src="cpp_sharedptr_cycle_04.svg" width="400">
 
-*Abbildung* 8: Die `std::shared_ptr`-Variable `sp2` wird vom Stack entfernt (Beachte: Umgekehrte Reihenfolge!).
+*Abbildung* 7: Die `std::shared_ptr`-Variable `sp2` wird vom Stack entfernt (Beachte: Umgekehrte Reihenfolge!).
 
 <img src="cpp_sharedptr_cycle_05.svg" width="400">
 
-*Abbildung* 9: Die noch verbleibende `std::shared_ptr`-Variable `sp1` wird vom Stack entfernt.
+*Abbildung* 8: Die noch verbleibende `std::shared_ptr`-Variable `sp1` wird vom Stack entfernt.
 
 Ein genaues Studium dieser Abbildungen sollte verdeutlichen, warum Zyklen bei dynamisch verzeigerten
 Objekten mit einem Referenzzähler-Mechanismus nicht korrekt verwaltet werden können.

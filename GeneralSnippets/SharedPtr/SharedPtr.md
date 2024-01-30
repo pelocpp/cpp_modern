@@ -18,7 +18,7 @@
 
 ---
 
-*Hinweis*:
+*Erster Hinweis*:
 
 Die beiden Varianten, ein `std::shared_ptr`-Objekt anzulegen, sind nicht
 ganz identisch:
@@ -39,7 +39,27 @@ und der Konstruktor von `std::shared_ptr` führt die zweite Anforderung
 für den Kontrollblock aus.
 
 Man kann damit zusammenfassen, dass die Verwendung der `std::make_shared`-Funktion
-effizienter ist.
+effizienter ist, siehe dazu auch die folgenden beiden Abbildungen:
+
+<img src="WeakPointer_01.PNG" width="500">
+
+*Abbildung* 1: Der Control-Block enthält beide Speicherbereiche.
+
+<img src="WeakPointer_02.PNG" width="400">
+
+*Abbildung* 2: Der Control-Block enthält nicht das eigentlich dynamisch angelegte Objekt. 
+
+
+---
+
+*Zweiter Hinweis*:
+
+Wesentlich für die Arbeitsweise eines `std::shared_ptr`-Objekts ist der so genannte *Control Block*:
+Siehe hierzu Abbildung 3: 
+
+<img src="cpp_control_block_01" width="500">
+
+*Abbildung* 3: `std::shared_ptr`-Objekt und Control-Block.
 
 ---
 
