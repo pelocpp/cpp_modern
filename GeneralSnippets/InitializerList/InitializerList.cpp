@@ -68,12 +68,12 @@ namespace InitializerList {
     // container-like classes
     class Polygon {
     public:
-        Polygon(std::initializer_list<Point> elements)
-            : m_elements{ elements } 
+        Polygon(std::initializer_list<Point> points)
+            : m_points{ points }
         {}
 
     private:
-        std::vector<Point> m_elements;
+        std::vector<Point> m_points;
     };
 
     static void test_03() {

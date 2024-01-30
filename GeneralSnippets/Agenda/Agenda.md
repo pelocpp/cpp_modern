@@ -47,7 +47,7 @@
 
 
 ## Initialisierung
-  * Initialisierung (&bdquo;Brace Initialization&bdquo; bzw. &bdquo;Uniform Initialization&bdquo;)
+  * Initialisierung (&bdquo;Brace Initialization&rdquo; bzw. &bdquo;Uniform Initialization&rdquo;)
   * Default-Initialisierung für Member-Variablen
   * Initialisierungslisten (`std::initializer_list`)
 
@@ -176,12 +176,12 @@
   * Vertiefungen zu `std::variant`: Das Visitor-Konzept mit `std::visit` und das sog. *Overload*&ndash;Pattern
 
 
-## SFINAE (&bdquo;Substitution failure is not an error&bdquo;)
+## SFINAE (&bdquo;Substitution failure is not an error&rdquo;)
   * Allgemeines
   * Beispiel
 
 
-## CRTP (&bdquo;Curiously recurring template pattern&bdquo;)
+## CRTP (&bdquo;Curiously recurring template pattern&rdquo;)
   * Allgemeines
   * Beispiel &bdquo;Mixins&rdquo;
 
@@ -199,7 +199,7 @@
   * C++&ndash;20: Parallelisierung von STL-Algorithmen
 
 
-## C++&ndash;20: Ausblick
+## C++&ndash;23: Ausblick
   * Concepts
   * Ranges
   * Coroutines

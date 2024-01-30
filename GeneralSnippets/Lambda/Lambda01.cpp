@@ -48,7 +48,7 @@ namespace Lambdas {
             }
         };
 
-        std::vector<int> vec { 5, 9, 1, 3, 7, 8 };
+        std::vector<int> vec { 5, 6, 4, 1, 3, 2, 7, 8 };
 
         for (int n : vec) {
             std::cout << n << ' ';

@@ -319,6 +319,7 @@ void main_brace_initialization()
 {
     using namespace BraceInitialization;
 
+    test_00();
     test_01(); 
     test_02();
     test_03();
