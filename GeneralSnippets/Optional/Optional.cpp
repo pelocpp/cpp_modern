@@ -51,7 +51,7 @@ namespace OptionalExamples {
         std::optional<std::string> m_phone;
 
     public:
-        Contact() : m_phone(std::nullopt) {}
+        Contact() : m_phone{ std::nullopt } {}
 
         void setPhone(std::string phone) { m_phone = phone; }
 
@@ -60,7 +60,7 @@ namespace OptionalExamples {
 
     static void test_02_optional() {
 
-        Contact contact;
+        Contact contact{};
 
         if (contact.getPhone()) {
             std::cout << "Number: " << contact.getPhone().value() << std::endl;
@@ -94,7 +94,7 @@ namespace OptionalExamples {
 
     static void test_03_optional() {
 
-        auto result = divide(1.0, 3.0);
+        auto result{ divide(1.0, 3.0) };
 
         if (result.has_value()) {
 
@@ -119,7 +119,7 @@ namespace OptionalExamples {
 
         result = divide(1.0, 1.0);
 
-        const double defaultValue = 0.0;
+        const double defaultValue{};
 
         auto value = result.value_or(defaultValue);
 

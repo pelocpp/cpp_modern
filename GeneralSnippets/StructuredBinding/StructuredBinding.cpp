@@ -10,7 +10,7 @@ namespace StructuredBinding {
 
         int quotient = dividend / divisor;
         int remainder = dividend % divisor;
-        std::pair<int, int> result{ std::make_pair(quotient, remainder) };
+        std::pair<int, int> result{ quotient, remainder };
         return result;
     }
 

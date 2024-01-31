@@ -347,6 +347,15 @@ namespace StdArray {
 
         std::vector vec{ 1, 3, 5, 7, 9 };
         printSpan(vec);
+
+        //int carr[]{ 1, 2, 3, 4, 5 };
+        //printSpan(std::span{ carr });
+
+        //std::array arr{ 6, 7, 8, 9, 10 };
+        //printSpan(std::span{ arr });
+
+        //std::vector vec{ 1, 3, 5, 7, 9 };
+        //printSpan(std::span{ vec });
     }
 
     static void printSpanConst(std::span<const int> values) {

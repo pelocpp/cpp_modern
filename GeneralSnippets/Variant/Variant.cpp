@@ -114,7 +114,7 @@ namespace VariantDemo {
         std::variant<int, double, std::string> var{ 123 };
 
         // using a generic visitor (matching all types in the variant)
-        auto visitor = [](auto const& elem) {
+        auto visitor = [](const auto& elem) {
             std::cout << elem << std::endl;
         };
 

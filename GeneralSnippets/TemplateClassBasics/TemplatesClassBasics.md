@@ -17,7 +17,7 @@ Es werden grundlegende Aspekte von Klassentemplates aufgezeigt:
   * #### [Erzeugung von Objekten eines Klassen-Templates](#Objekte-aus-Klassen-Templates-erzeugen)
   * #### [Klassen-Templates mit mehreren Parametern](#Klassen-Templates-mit-mehreren-formalen-Datentypen)
   * #### [Definition von Methoden eines Klassen-Templates](#Definition-von-Methoden-von-Klassen-Templates)
-  * #### [Eine Methode eines Klassen-Templates überschreiben](#Methoden-eines-Klassen-Templates-spezialisieren)
+  * #### [Eine Methode eines Klassen-Templates spezialisieren](#Methoden-eines-Klassen-Templates-spezialisieren)
   * #### [Member Function Templates (kurz: Member Templates)](#Member-Function-Templates)
   * #### [Klassen-Templates und Non-Type Parameter](#Klassen-Templates-mit-Non-Type-Parametern)
   * #### [Ein Template mit Template-Parametern](#Template-Template-Parameter)

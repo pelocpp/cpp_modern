@@ -84,7 +84,7 @@
   * Einführende Beispiele
   * Klassen-Templates mit mehreren Parametern
   * Definition von Methoden eines Klassen-Templates
-  * Eine Methode eines Klassen-Templates überschreiben
+  * Eine Methode eines Klassen-Templates spezialisieren
   * Klassen-Templates und Non-Type Parameter
   * Member Function Template (Method Template)
   * Ein Template mit Template-Parametern
