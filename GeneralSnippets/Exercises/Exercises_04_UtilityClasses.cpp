@@ -131,6 +131,7 @@ namespace Exercises_UtilityClasses {
             // template member method
             template <typename T>
             void addMedia(const T& media) {
+                // m_stock.push_back(std::variant<TMedia ...>{ media });
                 m_stock.push_back(media);
             }
 
