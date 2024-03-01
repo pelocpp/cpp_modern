@@ -40,7 +40,7 @@
   * *Currying* in C++
 
 
-## Moderne Stilistik für die Schreibweise von Funktionen
+## Konzepte (*Concepts*) und Einschränkungen (*Requirements*) für Funktionen
   * Konzept von &bdquo;C++ Concepts&rdquo;: `concept`
   * `requires`-Klausel
   * Benutzerdefinierte Einschränkungen (*user-defined requirements*)
@@ -126,7 +126,7 @@
   * `std::remove_reference`
 
 
-## Moderne Stilistik für die Schreibweise von Klassen
+## Konzepte (*Concepts*) und Einschränkungen (*Requirements*) für Klassen
   * Konzept von &bdquo;C++ Concepts&rdquo;: `concept`
   * `requires`-Klausel nach der Template-Parameterliste
   * Eingeschränkte Template Parameter

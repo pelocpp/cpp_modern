@@ -138,8 +138,8 @@ Es folgt eine tabellarische Auflistung dieser Unterverzeichnisse.
 | [BraceInitialization](GeneralSnippets/BraceInitialization/BraceInitialization.md) | Einheitliches Initialisierungs-Konzept |
 | [Casts](GeneralSnippets/Casts/Casts.md) | Typumwandlungen `static_cast`, `dynamic_cast`, `const_cast` und `reinterpret_cast` |
 | [CommonType](GeneralSnippets/CommonType/CommonType.md) | Utility `std::common_type` |
-| [Concepts/Requires/Classes](GeneralSnippets/ConceptsRequiresClasses/ConceptsRequiresClasses.md) | Moderne Stilistik für die Schreibweise von Klassen |
-| [Concepts/Requires/Functions](GeneralSnippets/ConceptsRequiresFunctions/ConceptsRequiresFunctions.md) | Moderne Stilistik für die Schreibweise von Funktionen |
+| [Concepts/Requires/Classes](GeneralSnippets/ConceptsRequiresClasses/ConceptsRequiresClasses.md) | Konzepte (*Concepts*) und Einschränkungen (*Requirements*) für Klassen |
+| [Concepts/Requires/Functions](GeneralSnippets/ConceptsRequiresFunctions/ConceptsRequiresFunctions.md) | Konzepte (*Concepts*) und Einschränkungen (*Requirements*) für Funktionen |
 | [ConstExpr](GeneralSnippets/ConstExpr/Constexpr.md) | Programmierung zur Übersetzungszeit mit `constexpr` |
 | [ConstructorsOrder](GeneralSnippets/ConstructorsOrder/ConstructorsDestructorsOrder.md)  | Reihenfolge der Aufrufe von Konstruktoren und Destruktoren |
 | [*Copy/Move Elision*](GeneralSnippets/CopyMoveElision/CopyMoveElision.md) | Auslassen von Kopier- oder Verschiebe-Operationen |

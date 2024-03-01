@@ -1,4 +1,4 @@
-# Moderne Stilistik für die Schreibweise von Klassen
+# Konzepte (*Concepts*) und Einschränkungen (*Requirements*) für Klassen
 
 [Zurück](../../Readme.md)
 

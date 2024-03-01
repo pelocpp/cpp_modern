@@ -1,4 +1,4 @@
-# Moderne Stilistik für die Schreibweise von Funktionen
+# Konzepte (*Concepts*) und Einschränkungen (*Requirements*) für Funktionen
 
 [Zurück](../../Readme.md)
 
