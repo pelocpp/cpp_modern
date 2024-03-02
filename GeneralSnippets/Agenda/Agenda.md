@@ -198,6 +198,9 @@
   * C++&ndash;20: Verriegelungen (*Latches*) und Barrieren (*Barriers*)
   * C++&ndash;20: Parallelisierung von STL-Algorithmen
 
+## C++&ndash;23: Odds and Ends
+  * `std::source_location`
+
 
 ## C++&ndash;23: Ausblick
   * Concepts

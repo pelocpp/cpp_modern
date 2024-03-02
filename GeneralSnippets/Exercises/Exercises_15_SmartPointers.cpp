@@ -26,7 +26,7 @@ namespace Exercises_SmartPointers {
         // =============================================================
         // Counting references :) 
 
-        void testExercise_01() {
+        static void testExercise_01() {
 
             class X {};
 
@@ -59,7 +59,7 @@ namespace Exercises_SmartPointers {
         // =============================================================
         // Don't double-manage!
 
-        void testExercise_02() {
+        static void testExercise_02() {
 
             class X
             {
@@ -115,7 +115,7 @@ namespace Exercises_SmartPointers {
             std::shared_ptr<X> m_spX{};
         };
 
-        void testExercise_03() {
+        static void testExercise_03() {
 
             _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 
@@ -160,7 +160,7 @@ namespace Exercises_SmartPointers {
             }
         };
 
-        void testExercise_04a()
+        static void testExercise_04a()
         {
             UnsafeWatcher watcher;
 
@@ -191,7 +191,7 @@ namespace Exercises_SmartPointers {
             }
         };
 
-        void testExercise_04b()
+        static void testExercise_04b()
         {
             HeavyAndSafeWatcher watcher;
 
@@ -231,7 +231,7 @@ namespace Exercises_SmartPointers {
             }
         };
 
-        void testExercise_04c() {
+        static void testExercise_04c() {
 
             LightweightAndSafeWatcher watcher;
 
@@ -249,7 +249,7 @@ namespace Exercises_SmartPointers {
             }
         }
 
-        void testExercise_04() {
+        static void testExercise_04() {
             testExercise_04a();
             testExercise_04b();
             testExercise_04c();

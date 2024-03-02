@@ -60,7 +60,7 @@ namespace FunctionTemplate_01_Basics {
     template <>
     void function<double, int>(double, int) {}
 
-    void test_01()
+    static void test_01()
     {
         bool result;
         result = lessThan(10, 20);
@@ -91,7 +91,7 @@ namespace FunctionTemplate_02_Overloading {
         return (a < b) ? a : b;
     }
 
-    void test_02()
+    static void test_02()
     {
         minimum(1, 2, 3);       // Template mit 3 Argumenten
         minimum(1.0, 2.0);      // minimum<double> per Typ Deduktion
@@ -118,19 +118,19 @@ namespace FunctionTemplates_03_Specialisation {
         std::cout << std::boolalpha << "Value: " << b << std::endl;
     }
 
-    void test_03_01() {
+    static void test_03_01() {
         printValue<int>(10);
         printValue<bool>(true);
         printValue<double>(12.5);
     }
 
-    void test_03_02() {
+    static void test_03_02() {
         printValue<>(10);
         printValue<>(true);
         printValue<>(12.5);
     }
 
-    void test_03_03() {
+    static void test_03_03() {
         printValue(10);
         printValue(true);
         printValue(12.5);
@@ -148,7 +148,7 @@ namespace FunctionTemplates_04_Specialization_vs_FunctionOverloading {
         template <typename T> void foo(T*) { std::cout << "overload"; };  // overload of foo(T)
         template <>           void foo<int*>(int*) { std::cout << ""; };  // specialization of foo(T*)
 
-        void test_04() {
+        static void test_04() {
 
             int* ip = new int{ 123 };
 
@@ -164,7 +164,7 @@ namespace FunctionTemplates_04_Specialization_vs_FunctionOverloading {
         template <>           void foo<int*>(int*) { std::cout << ""; };  // specialization of foo(T*)
         template <typename T> void foo(T*) { std::cout << "overload"; };  // overload of foo(T)
    
-        void test_04() {
+        static void test_04() {
 
             int* ip = new int{ 123 };
 
@@ -174,7 +174,7 @@ namespace FunctionTemplates_04_Specialization_vs_FunctionOverloading {
         }
     }
 
-    void test_04() {
+    static void test_04() {
         Variant_01::test_04();
         Variant_02::test_04();
     }

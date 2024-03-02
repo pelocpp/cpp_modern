@@ -96,7 +96,7 @@ namespace PerfectForwarding01 {
         return new typename std::remove_reference<T>::type(std::forward<T>(src));
     }
 
-    void test_01() {
+    static void test_01() {
         // a)
         AnyClass obj1;
         AnyClass* obj2{ new AnyClass(obj1) };               // copy c'tor invoked
@@ -114,7 +114,7 @@ namespace PerfectForwarding01 {
         //AnyClass* obj12{ Clone2(std::move(*obj11)) };        // copy c'tor invoked (???)
     }
 
-    void test_02() {
+    static void test_02() {
         // d1)
         AnyClass obj20;
         AnyClass* obj21{ Clone2a(obj20) };
@@ -141,7 +141,7 @@ namespace PerfectForwarding01 {
         AnyClass* obj62{ Clone2e(std::move(*obj61)) };
     }
 
-    void test_03() {
+    static void test_03() {
         // i)
         //AnyClass obj70;
         //AnyClass* obj71{ Clone3(obj70) };

@@ -47,7 +47,7 @@ namespace ClassTemplatesBasics {
         // or
         // https://stackoverflow.com/questions/1723537/template-specialization-of-a-single-method-from-a-templated-class
 
-        void test_01() {
+        static void test_01() {
 
             // just verifying template concept: is this assignment allowed?
             Calculator<int> calc10;

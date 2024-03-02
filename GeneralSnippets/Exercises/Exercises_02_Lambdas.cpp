@@ -49,7 +49,7 @@ namespace Exercises_Lambdas {
             }
         };
 
-        void testExercise_01a() {
+        static void testExercise_01a() {
 
             // testing C-style function
             int value = 14;
@@ -74,7 +74,7 @@ namespace Exercises_Lambdas {
                 << std::boolalpha << result << std::endl;
         }
 
-        void testExercise_01b() {
+        static void testExercise_01b() {
 
             std::vector<int> values(20);
 
@@ -113,7 +113,7 @@ namespace Exercises_Lambdas {
             );
         }
 
-        void testExercise_01c() {
+        static void testExercise_01c() {
 
             std::vector<int> values(20);
 
@@ -156,7 +156,7 @@ namespace Exercises_Lambdas {
             );
         }
 
-        void testExercise_01() {
+        static void testExercise_01() {
             testExercise_01a();
             testExercise_01b();
             testExercise_01c();
@@ -165,7 +165,7 @@ namespace Exercises_Lambdas {
 
     namespace Exercise_02 {
 
-        std::map<char, std::function<double(double, double)>> createCalculator() {
+        static std::map<char, std::function<double(double, double)>> createCalculator() {
 
             std::map<char, std::function<double(double, double)>> map;
             map.insert(std::make_pair('+', [](double a, double b) { return a + b; }));
@@ -177,7 +177,7 @@ namespace Exercises_Lambdas {
 
         // or more compact
 
-        std::map<char, std::function<double(double, double)>> createCalculatorEx() {
+        static std::map<char, std::function<double(double, double)>> createCalculatorEx() {
 
             std::map<char, std::function<double(double, double)>> map;
             map['+'] = [](double a, double b) { return a + b; };
@@ -189,7 +189,7 @@ namespace Exercises_Lambdas {
 
         // or still more compact
 
-        std::map<char, std::function<double(double, double)>> createCalculatorExEx()
+        static std::map<char, std::function<double(double, double)>> createCalculatorExEx()
         {
             return {
                 { '+', [](double a, double b) {return a + b; } },
@@ -199,7 +199,7 @@ namespace Exercises_Lambdas {
             };
         }
 
-        void testExercise_02a() {
+        static void testExercise_02a() {
 
             std::map<char, std::function<double(double, double)>> calculator = createCalculator();
             double op1, op2;
@@ -217,7 +217,7 @@ namespace Exercises_Lambdas {
             std::cout << "Result: " << op1 << ' ' << op << ' ' << op2 << " = " << result << '.' << std::endl;
         };
 
-        void testExercise_02b() {
+        static void testExercise_02b() {
 
             std::map<char, std::function<double(double, double)>> calculator = createCalculator();
 
@@ -232,7 +232,7 @@ namespace Exercises_Lambdas {
             std::cout << "1.5 ^ 2.5 = " << calculator['^'](1.5, 2.5) << std::endl;
         };
 
-        void testExercise_02() {
+        static void testExercise_02() {
             // testExercise_02a();  // needs console input
             testExercise_02b();
         }
@@ -268,7 +268,7 @@ namespace Exercises_Lambdas {
             std::cout << "Variable: " << variable << std::endl << std::endl;
         }
 
-        void testExercise_03b()
+        static void testExercise_03b()
         {
             // Output:
             // 10
@@ -294,7 +294,7 @@ namespace Exercises_Lambdas {
             L();
         }
 
-        void testExercise_03c()
+        static void testExercise_03c()
         {
             // Output:
             // 1
@@ -322,12 +322,12 @@ namespace Exercises_Lambdas {
             std::cout << std::endl;
         }
 
-        void invoke(const std::function<void(void)>& fn)
+        static void invoke(const std::function<void(void)>& fn)
         {
             fn();
         }
 
-        void testExercise_03d()
+        static void testExercise_03d()
         {
             // Output:
             // 1
@@ -353,7 +353,7 @@ namespace Exercises_Lambdas {
             std::cout << std::endl;
         }
 
-        void testExercise_03e()
+        static void testExercise_03e()
         {
             // Output:
             // 1
@@ -376,7 +376,7 @@ namespace Exercises_Lambdas {
             std::cout << std::endl;
         }
 
-        void testExercise_03()
+        static void testExercise_03()
         {
             testExercise_03a();
             testExercise_03b();

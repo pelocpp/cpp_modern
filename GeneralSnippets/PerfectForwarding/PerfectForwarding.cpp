@@ -29,7 +29,7 @@ namespace PerfectForwarding {
         overloaded(std::forward<T>(arg));
     }
 
-    void test_forwarding() {
+    static void test_forwarding() {
 
         int n{ 123 };
         forwarding(n);
@@ -37,7 +37,7 @@ namespace PerfectForwarding {
         forwarding(456);
     }
 
-    void test_forwardingPerfect() {
+    static void test_forwardingPerfect() {
 
         int n{ 123 };
         forwardingPerfect(n);
@@ -45,7 +45,7 @@ namespace PerfectForwarding {
         forwardingPerfect(456);
     }
 
-    void test_01() {
+    static void test_01() {
         test_forwarding();
         // test_forwardingPerfect();
     }

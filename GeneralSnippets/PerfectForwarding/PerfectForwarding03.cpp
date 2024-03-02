@@ -29,7 +29,7 @@ namespace PerfectForwarding03 {
         overloaded(std::forward<T>(arg));
     }
 
-    void test_01() {
+    static void test_01() {
         std::cout << "Caller passes rvalue:" << std::endl;
         forwarding(5);
         std::cout << "----------------------------" << std::endl;

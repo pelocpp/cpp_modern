@@ -299,6 +299,8 @@
     <ClCompile Include="SFINAE_EnableIf\Sfinae02.cpp" />
     <ClCompile Include="SharedPtr\Module_SharedPtr.ixx" />
     <ClCompile Include="SharedPtr\SharedPtr.cpp" />
+    <ClCompile Include="SourceLocation\Module_SourceLocation.ixx" />
+    <ClCompile Include="SourceLocation\SourceLocation.cpp" />
     <ClCompile Include="SSO\Module_SSO.ixx" />
     <ClCompile Include="SSO\SSO.cpp" />
     <ClCompile Include="StaticAssert\Module_StaticAssert.ixx" />
@@ -434,6 +436,7 @@
     <None Include="RValueLValue\RValueLValue.md" />
     <None Include="SFINAE_EnableIf\Sfinae.md" />
     <None Include="SharedPtr\SharedPtr.md" />
+    <None Include="SourceLocation\SourceLocation.md" />
     <None Include="SSO\SSO.md" />
     <None Include="StaticAssert\StaticAssert.md" />
     <None Include="StringView\StringView.md" />

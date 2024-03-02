@@ -20,7 +20,7 @@ namespace DefaultInitializationExample {
     X::X(int value) : m_i{ value }  // initializes m_i with value (here: 17) and m_j with 2
     {}
 
-    void test_01() {
+    static void test_01() {
         X x{};
         X y{ 17 };
     }

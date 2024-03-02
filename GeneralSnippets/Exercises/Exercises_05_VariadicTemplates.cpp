@@ -32,7 +32,7 @@ namespace Exercises_VariadicTemplates {
         //    return cond && andAll(conds...);
         //}
 
-        void testExercise_01a() {
+        static void testExercise_01a() {
 
             bool result = andAll(true, false, true);
             std::cout << std::boolalpha << result << std::endl;
@@ -68,7 +68,7 @@ namespace Exercises_VariadicTemplates {
         //    return cond || orAll(conds...);
         //}
 
-        void testExercise_01b() {
+        static void testExercise_01b() {
 
             bool result = orAll(false, true, false);
             std::cout << std::boolalpha << result << std::endl;
@@ -77,7 +77,7 @@ namespace Exercises_VariadicTemplates {
             std::cout << std::boolalpha << result << std::endl;
         }
 
-        void testExercise_01() {
+        static void testExercise_01() {
             testExercise_01a();
             testExercise_01b();
         }
@@ -113,7 +113,7 @@ namespace Exercises_VariadicTemplates {
             // return sameType(arg2, args...) && std::is_same<decltype(arg1), decltype(arg2)>::value;
         }
 
-        void testExercise_02() {
+        static void testExercise_02() {
 
             bool result;
             result = sameType(43, false, "hello");
@@ -145,7 +145,7 @@ namespace Exercises_VariadicTemplates {
             return std::min(static_cast<result_type>(first), static_cast<result_type>(minimum(rest...)));
         }
 
-        void testExercise_03() {
+        static void testExercise_03() {
             auto min1 = minimum(-7, 3.7f, 9u, -2.6);
             std::cout << "min1: " << min1 << std::endl;
 
@@ -190,7 +190,7 @@ namespace Exercises_VariadicTemplates {
             std::cout << "]" << std::endl;
         }
 
-        void testExercise_04() {
+        static void testExercise_04() {
             auto tuple1 = std::make_tuple(1, std::string("Modern C++"), false, 3.14159);
             auto tuple2 = std::make_tuple(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
             auto tuple3 = std::make_tuple(12345);
@@ -311,7 +311,7 @@ namespace Exercises_VariadicTemplates {
             static constexpr int result = ( ... + TArgs);
         };
 
-        void testExercise_05() {
+        static void testExercise_05() {
             constexpr int result1 = sum1<1, 2, 3, 4, 5>::result;
             constexpr int result2 = sum2(1, 2, 3, 4, 5);
             constexpr int result3 = sum3<1, 2, 3, 4, 5>();
@@ -335,7 +335,7 @@ namespace Exercises_VariadicTemplates {
             X(const TBases&... b) : TBases(b)...  {}
         };
 
-        void testExercise_06() {
+        static void testExercise_06() {
             X o1{};
 
             X<std::string> o2{ "ABCDEF" };

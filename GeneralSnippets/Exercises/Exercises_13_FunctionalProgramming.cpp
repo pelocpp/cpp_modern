@@ -83,7 +83,7 @@ namespace Exercises_FunctionalProgramming {
             return std::accumulate(begin, end, init, std::forward<TFunctor>(lambda));
         }
 
-        void test_fold_01()
+        static void test_fold_01()
         {
             std::vector<int> numbers { 1, 2, 3, 4, 5, 6, 7, 8 };
 
@@ -103,7 +103,7 @@ namespace Exercises_FunctionalProgramming {
             std::cout << concatenated << std::endl;
         }
 
-        void test_fold_02()
+        static void test_fold_02()
         {
             std::vector<int> numbers{ 8, 7, 6, 5, 4, 3, 2, 1 };
 
@@ -118,7 +118,7 @@ namespace Exercises_FunctionalProgramming {
             std::cout << concatenated << std::endl;
         }
 
-        void testExercise_02() {
+        static void testExercise_02() {
             test_fold_01();
             test_fold_02();
         }

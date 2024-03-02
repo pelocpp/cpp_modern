@@ -43,7 +43,7 @@ namespace PerfectForwarding02 {
         return TCLASS{ a };
     }
 
-    void test_01() {
+    static void test_01() {
         // first example
         auto n = Factory<int>(123);
         std::cout << n << std::endl;
@@ -53,7 +53,7 @@ namespace PerfectForwarding02 {
         std::cout << obj << std::endl;
     }
 
-    void test_02() {
+    static void test_02() {
         // first example
         int value = 123;
         auto n = Factory<int>(value);
@@ -71,7 +71,7 @@ namespace PerfectForwarding02 {
         return TCLASS(std::forward<TARG>(a));
     }
 
-    void test_03()
+    static void test_03()
     {
         // first example
         auto n = FactoryEx<int>(123);

@@ -34,7 +34,7 @@ namespace ApplyIntegerSequence {
 
     // -----------------------------------------------------------
 
-    void test01()
+    static void test01()
     {
         auto seq = make_index_sequence<4>{};
         sequence<0, 1, 2, 3> seq2 = make_index_sequence<4>{};
@@ -62,7 +62,7 @@ namespace ApplyIntegerSequence {
 
     // -----------------------------------------------------------
 
-    void test02()
+    static void test02()
     {
         auto seq = make_index_sequence_ex<4U>{};
         sequence_ex<0U, 1U, 2U, 3U> seq2 = make_index_sequence_ex<4U>{};
@@ -73,7 +73,7 @@ namespace ApplyIntegerSequence {
     // demonstrating mapping a function call to arguments of a tuple
     // with the help of an int sequence:
 
-    void f(double x, std::string y, int z)
+    static void f(double x, std::string y, int z)
     {
         std::cout << x << std::endl;
         std::cout << y << std::endl;
@@ -93,7 +93,7 @@ namespace ApplyIntegerSequence {
     }
 
     // self-written 'tuple_call' function
-    void test03()
+    static void test03()
     {
         std::tuple<double, std::string, int> someTuple = std::make_tuple<>(123.456, std::string("ABC"), 789);
         f(std::get<0>(someTuple), std::get<1>(someTuple), std::get<2>(someTuple));
@@ -101,7 +101,7 @@ namespace ApplyIntegerSequence {
     }
 
     // using standard STL function 'std::apply'
-    void test04()
+    static void test04()
     {
         std::tuple<double, std::string, int> someTuple = std::make_tuple<>(123.456, std::string("ABC"), 789);
         f(std::get<0>(someTuple), std::get<1>(someTuple), std::get<2>(someTuple));
@@ -114,7 +114,7 @@ namespace ApplyIntegerSequence {
 
     // https://stackoverflow.com/questions/24109737/what-are-some-uses-of-decltypeauto
 
-    int g(double x, std::string y, int z, char ch)
+    static int g(double x, std::string y, int z, char ch)
     {
         std::cout << x << std::endl;
         std::cout << y << std::endl;
@@ -157,7 +157,7 @@ namespace ApplyIntegerSequence {
         }
     }
 
-    void test05()
+    static void test05()
     {
         auto some_args = std::make_tuple(43.43, std::string{ "ABCD" }, 123, '?');
         auto result = pelo::apply(g, some_args); // calls g(43.43, "ABCD", 123, '?')

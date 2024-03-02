@@ -68,7 +68,7 @@ namespace AllocatorWithObject {
 
     constexpr int AnotherMax = 5;
 
-    void test_01a_allocator() {
+    static void test_01a_allocator() {
 
         std::cout << "Insertion: push_back - Object by LValue reference" << std::endl;
         std::vector<Dummy, MyAlloc<Dummy>> vec;
@@ -79,7 +79,7 @@ namespace AllocatorWithObject {
         }
     }
 
-    void test_01b_allocator() {
+    static void test_01b_allocator() {
 
         std::cout << "Insertion: push_back - Object by RValue reference" << std::endl;
         std::vector<Dummy, MyAlloc<Dummy>> vec;
@@ -89,7 +89,7 @@ namespace AllocatorWithObject {
         }
     }
 
-    void test_01c_allocator() {
+    static void test_01c_allocator() {
 
         std::cout << "Insertion: emplace_back" << std::endl;
         std::vector<Dummy, MyAlloc<Dummy>> vec;

@@ -23,7 +23,7 @@ namespace Exercises_Metaprogramming
             static const std::size_t MaxNumber = TNumber;
         };
 
-        void testExercise_01()
+        static void testExercise_01()
         {
             constexpr size_t max = Values<1, 3, 5, 4, 2>::MaxNumber;
             std::cout << "Max: " << max << std::endl;
@@ -81,7 +81,7 @@ namespace Exercises_Metaprogramming
             static constexpr size_t value = 0;
         };
 
-        void testExercise_02a() {
+        static void testExercise_02a() {
 
             size_t number{ 11111111 };
             size_t result{};
@@ -97,7 +97,7 @@ namespace Exercises_Metaprogramming
             std::cout << result << std::endl;
         }
 
-        void testExercise_02b() {
+        static void testExercise_02b() {
 
             constexpr size_t one = Binary<1>::value;
             constexpr size_t three = Binary<11>::value;
@@ -118,7 +118,7 @@ namespace Exercises_Metaprogramming
             std::cout << wrong2 << std::endl;
         }
 
-        void testExercise_02c() {
+        static void testExercise_02c() {
 
             constexpr size_t one = BinaryEx<1>::value;
             constexpr size_t three = BinaryEx<11>::value;
@@ -137,7 +137,7 @@ namespace Exercises_Metaprogramming
             std::cout << big << std::endl;
         }
 
-        void testExercise_02() {
+        static void testExercise_02() {
             testExercise_02a();
             testExercise_02b();
             testExercise_02c();
@@ -168,7 +168,7 @@ namespace Exercises_Metaprogramming
             static constexpr size_t value = FibImpl<N>::value;
         };
 
-        void testExercise_03() {
+        static void testExercise_03() {
             std::cout << 1 << ":  " << Fibonacci<1>::value << std::endl;
             std::cout << 2 << ":  " << Fibonacci<2>::value << std::endl;
             std::cout << 5 << ":  " << Fibonacci<5>::value << std::endl;
@@ -214,7 +214,7 @@ namespace Exercises_Metaprogramming
             using type = LastType<TArgs ...>::type;
         };
 
-        void testExercise_04() {
+        static void testExercise_04() {
 
             using TFirst = FirstType<double, int, long>::type;
             using TLast = LastType<int, long, double, char>::type;

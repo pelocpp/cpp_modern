@@ -8,7 +8,7 @@ namespace Exercises_Generic_Lambdas {
 
     namespace Exercise_01 {
 
-        void testExercise_01_01() {
+        static void testExercise_01_01() {
 
             // define a generic lambda
             auto isGreaterThanFifty = [](const auto& n) { return n > 50; };
@@ -43,7 +43,7 @@ namespace Exercises_Generic_Lambdas {
             }
         };
 
-        void testExercise_01_02()
+        static void testExercise_01_02()
         {
             // generic lambda - same as above
             auto isGreaterThanFifty = [](const auto& object) {
@@ -66,7 +66,7 @@ namespace Exercises_Generic_Lambdas {
             }
         }
 
-        void testExercise_01() {
+        static void testExercise_01() {
             testExercise_01_01();
             testExercise_01_02();
         }

@@ -13,7 +13,7 @@ module modern_cpp:allocator;
 
 namespace Allocator {
 
-    void test_01_allocator() {
+    static void test_01_allocator() {
 
         std::allocator<int> myIntAlloc;    // default allocator for ints
         int* ip = myIntAlloc.allocate(3);  // space for three ints
@@ -84,7 +84,7 @@ namespace Allocator {
 
     constexpr int Max = 50;
 
-    void test_02_allocator() {
+    static void test_02_allocator() {
 
         std::vector<int, MyAlloc<int>> vec;
         // v1.reserve(Max);  // put into comments ... or not

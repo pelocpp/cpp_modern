@@ -6,7 +6,7 @@ module modern_cpp:input_output_streams;
 
 namespace InputOutputStreams {
 
-    void test_01() {
+    static void test_01() {
 
         // input of several values with one statement
         int val1, val2;
@@ -15,7 +15,7 @@ namespace InputOutputStreams {
         std::cout << val1 << " : " << val2 << std::endl;
     }
 
-    void test_02() {
+    static void test_02() {
 
         // output with put and write - unformatted output
         std::string s("ABC");
@@ -49,7 +49,7 @@ namespace InputOutputStreams {
         stream.clear();
     }
 
-    void test_03() {
+    static void test_03() {
 
         int val = 0;
         std::cout << "Enter value: ";
@@ -83,7 +83,7 @@ namespace InputOutputStreams {
         std::cout << b << std::endl;     // output: "true"
     }
 
-    void test_04() {
+    static void test_04() {
         bool b = true;
         std::cout << std::boolalpha << b << std::endl;     // output: "true"
         b = false;
@@ -99,7 +99,7 @@ namespace InputOutputStreams {
         std::cout << val << std::endl;   // output: 0x64
     }
 
-    void test_05() {
+    static void test_05() {
         int val = 255;
         std::cout << std::showbase << std::endl;
         std::cout << std::dec << val << std::endl;  // output: 255
@@ -111,7 +111,7 @@ namespace InputOutputStreams {
         std::cout << val << std::endl;  // output: 255
     }
 
-    void test_06() {
+    static void test_06() {
         int val = -123;
         std::cout << std::setw(10) << std::internal << val << std::endl;
         //= -     123
@@ -129,7 +129,7 @@ namespace InputOutputStreams {
         //=       987
     }
 
-    void test_07() {
+    static void test_07() {
         // note: setw must be caller for every output seperately
         int val = 12345;
         std::cout << std::setw(10);
@@ -142,7 +142,7 @@ namespace InputOutputStreams {
         std::cout << std::right << val << std::endl;
     }
 
-    void test_08() {
+    static void test_08() {
         // note: setfill must be reset
         int val = 12345;
         std::cout << std::setw(10) << std::setfill('.');
@@ -165,7 +165,7 @@ namespace InputOutputStreams {
         return os << "#";
     };
 
-    void test_09() {
+    static void test_09() {
         std::cout << "Some Text " << hash << " Some Text" << std::endl;
         std::cout << "some text " << hashLambda << " some text" << std::endl;
     }
@@ -190,7 +190,7 @@ namespace InputOutputStreams {
         return elem(os);
     }
 
-    void test_10() {
+    static void test_10() {
 
         std::cout << "AAA" << exmarks()  << "AAA" << std::endl;
         std::cout << "AAA" << exmarks(1) << "AAA" << std::endl;

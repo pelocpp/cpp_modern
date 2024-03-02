@@ -78,7 +78,7 @@ namespace Exercises_CRTP {
         };
 
         // driver code for classical polymorphism benchmark
-        void testExercise_01a_classic_benchmark()
+        static void testExercise_01a_classic_benchmark()
         {
             std::cout << "Classical Polymorphism Benchmark: " << std::endl;
 
@@ -173,7 +173,7 @@ namespace Exercises_CRTP {
         };
 
         // driver code for CRTP benchmark
-        void testExercise_01a_crtp_benchmark()
+        static void testExercise_01a_crtp_benchmark()
         {
             std::cout << "CRTP Benchmark: " << std::endl;
 
@@ -195,7 +195,7 @@ namespace Exercises_CRTP {
                 << " microseconds" << std::endl;
         }
 
-        void testExercise_01() {
+        static void testExercise_01() {
             testExercise_01a_classic_benchmark();
             testExercise_01a_crtp_benchmark();
         }

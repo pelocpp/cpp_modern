@@ -41,7 +41,7 @@ namespace Exercises_MoveSemantics {
         * = the object's class defines the special member move functions
         */
 
-        void testExercise_01() {
+        static void testExercise_01() {
 
             // create a person with some initial values
             Person dagobert{ "Dagobert Duck" };
@@ -142,7 +142,7 @@ namespace Exercises_MoveSemantics {
         }
 #endif
 
-        void testExercise_02() {
+        static void testExercise_02() {
             std::cout << "Start:" << std::endl;
             auto start = std::chrono::high_resolution_clock::now();
             std::vector<HugeArray> myVec;

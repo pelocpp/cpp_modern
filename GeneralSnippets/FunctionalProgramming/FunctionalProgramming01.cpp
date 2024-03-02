@@ -86,7 +86,7 @@ namespace FunctionalProgramming_01 {
     // testing 'filter'
 
     // filtering even numbers in a list of numbers
-    void test_functional_filter_01() {
+    static void test_functional_filter_01() {
 
         std::vector<int> vec(20);
         std::generate(std::begin(vec), std::end(vec), [value = 0]() mutable {
@@ -116,7 +116,7 @@ namespace FunctionalProgramming_01 {
 
     // mapping both negative and positive values to a new vector
     // with only positive values
-    void test_functional_map_02a()
+    static void test_functional_map_02a()
     {
         std::vector<int> numbers = std::vector<int>{ 0, 2, -3, 5, -1, 6, 8, -4, 9 };
 
@@ -137,7 +137,7 @@ namespace FunctionalProgramming_01 {
     }
 
     // mapping list of numbers to new list with each number multiplied by 2 
-    void test_functional_map_02b() {
+    static void test_functional_map_02b() {
         std::vector<int> vec(20);
         std::generate(std::begin(vec), std::end(vec), [value = 0]() mutable {
             return ++value;
@@ -163,7 +163,7 @@ namespace FunctionalProgramming_01 {
     }
 
     // mapping list of strings to new list with integers 
-    void test_functional_map_02c() {
+    static void test_functional_map_02c() {
         std::vector<std::string> vec = { "1", "2", "3", "4", "5", "6", "7" , "8", "9", "10" };
         std::for_each(std::begin(vec), std::end(vec), [](std::string s) {
             std::cout << s << ' ';
@@ -183,7 +183,7 @@ namespace FunctionalProgramming_01 {
         std::cout << std::endl;
     }
 
-    void test_functional_map_02d() {
+    static void test_functional_map_02d() {
         std::vector<float> vec = { 1.F, 2.f, 3.f, 4.f, 5.f };
         std::for_each(std::begin(vec), std::end(vec), [](float value) {
             std::cout << value << ' ';
@@ -203,7 +203,7 @@ namespace FunctionalProgramming_01 {
         std::cout << std::endl;
     }
 
-    void test_functional_map_02e() {
+    static void test_functional_map_02e() {
 
         std::vector<std::string> words = {
             std::string("one"),
@@ -237,7 +237,7 @@ namespace FunctionalProgramming_01 {
     // testing 'fold'
 
     // adding the values of a vector of integers
-    void test_functional_fold_03a()
+    static void test_functional_fold_03a()
     {
         std::vector<int> numbers = std::vector <int>{ 0, 2, -3, 5, -1, 6, 8, -4, 9 };
 
@@ -251,7 +251,7 @@ namespace FunctionalProgramming_01 {
     }
 
     // concatenating a list of strings into a single string
-    void test_functional_fold_03b() {
+    static void test_functional_fold_03b() {
         std::list<std::string> words = { "Implementing", "fold", "with", "Modern", "C++" };
         std::for_each(std::begin(words), std::end(words), [](std::string s) {
             std::cout << s;
@@ -278,7 +278,7 @@ namespace FunctionalProgramming_01 {
     }
 
     // concatenating an array of characters into a string
-    void test_functional_fold_03c()
+    static void test_functional_fold_03c()
     {
         char chars[] = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j' };
 
@@ -297,7 +297,7 @@ namespace FunctionalProgramming_01 {
 
     //// =================================================================================
 
-    void test_functional_fmr_pattern_04a()
+    static void test_functional_fmr_pattern_04a()
     {
         auto numbers = std::vector<int>{ 0, 2, -3, 5, -1, 6, 8, -4, 9 };
 
@@ -341,7 +341,7 @@ namespace FunctionalProgramming_01 {
         double m_price;
     };
 
-    void test_functional_fmr_pattern_04b() {
+    static void test_functional_fmr_pattern_04b() {
 
         std::list<Book> booksList{
             {"C", "Dennis Ritchie", 1972, 11.99 } ,
@@ -391,7 +391,7 @@ namespace FunctionalProgramming_01 {
         std::string m_author;
     };
 
-    void test_functional_fmr_pattern_04c() {
+    static void test_functional_fmr_pattern_04c() {
 
         std::list<Book> booksList{
             {"C", "Dennis Ritchie", 1972, 11.99 } ,
@@ -435,7 +435,7 @@ namespace FunctionalProgramming_01 {
     }
 
     // same query, using 'std::pair' utility class
-    void test_functional_fmr_pattern_04d() {
+    static void test_functional_fmr_pattern_04d() {
 
         std::list<Book> booksList{
             {"C", "Dennis Ritchie", 1972, 11.99 } ,

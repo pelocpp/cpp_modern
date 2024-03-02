@@ -26,7 +26,7 @@ namespace Exercises_ExpressionTemplates {
         return product;
     }
 
-    void test_01()
+    static void test_01()
     {
         std::vector<double> a{ 1, 2, 3, 4,  5 };
         std::vector<double> b{ 6, 7, 8, 9, 10 };
@@ -34,7 +34,7 @@ namespace Exercises_ExpressionTemplates {
         std::cout << "scalarProduct<double>(a, b) = " << scalarProduct<double>(a, a) << std::endl; // 55
     }
 
-    void test_02()
+    static void test_02()
     {
         std::vector<double> a{ 1, 2, 3, 4,  5 };
         std::vector<double> b{ 6, 7, 8, 9, 10 };
@@ -64,7 +64,7 @@ namespace Exercises_ExpressionTemplates {
         }
     };
 
-    void test_03()
+    static void test_03()
     {
         std::vector<double> a{ 1, 2, 3, 4,  5 };
         std::vector<double> b{ 6, 7, 8, 9, 10 };

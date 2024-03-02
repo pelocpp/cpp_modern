@@ -34,7 +34,7 @@ namespace Exercises_Algorithms {
             );
         }
 
-        void testExercise_01a() {
+        static void testExercise_01a() {
             bool result = andAll({ true, false, true });
             std::cout << std::boolalpha << result << std::endl;
 
@@ -42,7 +42,7 @@ namespace Exercises_Algorithms {
             std::cout << std::boolalpha << result << std::endl;
         }
 
-        void testExercise_01b() {
+        static void testExercise_01b() {
             bool result = orAll({ false, true, false });
             std::cout << std::boolalpha << result << std::endl;
 
@@ -50,7 +50,7 @@ namespace Exercises_Algorithms {
             std::cout << std::boolalpha << result << std::endl;
         }
 
-        void testExercise_01() {
+        static void testExercise_01() {
             testExercise_01a();
             testExercise_01b();
         }
@@ -58,7 +58,7 @@ namespace Exercises_Algorithms {
 
     namespace Exercise_02 {
 
-        void testExercise_02() {
+        static void testExercise_02() {
 
             std::vector<int> numbers(20);
 

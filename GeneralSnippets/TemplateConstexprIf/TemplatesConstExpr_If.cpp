@@ -51,7 +51,7 @@ namespace TemplateConstExprIf {
         }
     };
 
-    void test_01() {
+    static void test_01() {
         Adder<int> intAdder(123);
         int n = intAdder.addSingle(456);
         std::cout << n << std::endl;
@@ -80,7 +80,7 @@ namespace TemplateConstExprIf {
         std::cout << std::endl;
     }
 
-    void test_02() {
+    static void test_02() {
         Adder<int> intAdder(123);
         int n = intAdder.add(456);
         std::cout << n << std::endl;

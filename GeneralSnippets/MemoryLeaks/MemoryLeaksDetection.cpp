@@ -19,7 +19,7 @@ module modern_cpp:memory_leaks_detection;
 
 namespace MemoryLeaksDetection {
 
-    void test_01() {
+    static void test_01() {
 
         int* ip = new int[10];
         // delete[] ip;   // put this line into comment to generate 'Object dump'

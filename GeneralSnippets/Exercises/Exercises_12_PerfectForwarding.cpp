@@ -21,7 +21,7 @@ namespace Exercises_PerfectForwarding {
             list(std::forward<TREST>(rest)...);
         }
 
-        void test_01() 
+        static void test_01()
         {
             int n{ 123 };
             const double Pi{ 3.14 };
@@ -41,7 +41,7 @@ namespace Exercises_PerfectForwarding {
             return os;
         }
 
-        void test_02() 
+        static void test_02()
         {
             Point p{ 11, 12 };
             Point* pp = new Point{ 3, 4 };
@@ -75,13 +75,13 @@ namespace Exercises_PerfectForwarding {
             list_internal(index, std::forward<TREST>(rest)...);
         }
 
-        void test_03() {
+        static void test_03() {
             int n = 123;
             const double pi = 3.14;
             listEx(10, "abc", n, pi, 2.4, std::string("ABC"), 99.99f);
         }
 
-        void test_04() {
+        static void test_04() {
             Point p{ 11, 12 };
             Point* pp = new Point{ 3, 4 };
             std::complex<double> c(2.5, 2.5);
@@ -89,7 +89,7 @@ namespace Exercises_PerfectForwarding {
             delete pp;
         }
 
-        void test_05() {
+        static void test_05() {
             listEx(10, 11, 12, 13, 14);
         }
 
@@ -113,12 +113,12 @@ namespace Exercises_PerfectForwarding {
             };
         }
 
-        void test_06() {
+        static void test_06() {
             listExEx(100, 101, 102, 103, 104, 105);
             listExExEx(100, 101, 102, 103, 104, 105);
         }
 
-        void test_07() {
+        static void test_07() {
             Point p{ 11, 12 };
             Point* pp = new Point{ 3, 4 };
             std::complex<double> c(2.5, 2.5);
@@ -127,7 +127,7 @@ namespace Exercises_PerfectForwarding {
             delete pp;
         }
 
-        void testExercise_01() {
+        static void testExercise_01() {
             test_01();
             test_02();
             test_03();
@@ -171,17 +171,17 @@ namespace Exercises_PerfectForwarding {
             }
         };
 
-        void test_01() {
+        static void test_01() {
             std::chrono::milliseconds time = ExecutionTimer::duration(f);
             std::cout << time.count() << " msecs." << std::endl;
         }
 
-        void test_02() {
+        static void test_02() {
             std::chrono::milliseconds time = ExecutionTimer::duration(g, 10, 20.0);
             std::cout << time.count() << " msecs." << std::endl;
         }
 
-        void testExercise_02() {
+        static void testExercise_02() {
             test_01();
             test_02();
         }

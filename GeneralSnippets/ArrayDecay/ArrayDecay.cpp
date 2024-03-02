@@ -25,7 +25,7 @@ namespace ArrayDecay {
         std::cout << sizeof(p) << std::endl;
     }
 
-    void test_01 () {
+    static void test_01 () {
         int arr[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
         std::cout << "Actual size of array is : ";
         std::cout << sizeof(arr) << std::endl;

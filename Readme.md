@@ -174,6 +174,7 @@ Es folgt eine tabellarische Auflistung dieser Unterverzeichnisse.
 | [RValueLValue](GeneralSnippets/RValueLValue/RValueLValue.md) | LValue- und RValue Referenzen |
 | [SFINAE_EnableIf](GeneralSnippets/SFINAE_EnableIf/Sfinae.md) | SFINAE und `std::enable_if` |
 | [SharedPointer](GeneralSnippets/SharedPtr/SharedPtr.md) | Klasse `std::shared_ptr<T>` |
+| [SourceLocation](GeneralSnippets/SourceLocation/SourceLocation.md) | Klasse `std::source_location` |
 | [SSO](GeneralSnippets/SSO/SSO.md) | *Small String Optimization* |
 | [StaticAssert](GeneralSnippets/StaticAssert/StaticAssert.md) | Compile-Time Makro `static_assert` |
 | [StringView](GeneralSnippets/StringView/StringView.md) | Klasse `std::string_view` |

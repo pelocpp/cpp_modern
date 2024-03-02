@@ -6,7 +6,7 @@ module modern_cpp:bind;
 
 namespace Bind {
 
-    void test_01() {
+    static void test_01() {
 
         using namespace std::placeholders;  // for _1, _2, _3...
 

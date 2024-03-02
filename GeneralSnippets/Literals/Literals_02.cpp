@@ -10,7 +10,7 @@ module modern_cpp:literals;
 
 namespace Literals_With_Separators_02 {
 
-    void test_01() {
+    static void test_01() {
 
         // binary, octal and hexadecimal literals
         // (including single quotation mark as separator)
@@ -95,7 +95,7 @@ namespace Literals_Color_Runtime_02 {
         return {};
     }
 
-    void test_02() {
+    static void test_02() {
         Color red = 0xFF0000_rgb;
         std::cout << red << std::endl;
         Color magenta = 0xFF00FF_rgb;
@@ -110,7 +110,7 @@ namespace Literals_Color_Runtime_02 {
         std::cout << unknown << std::endl;
     }
 
-    void test_02_with_errors() {
+    static void test_02_with_errors() {
         // value outside rgb range
         // Color col1 = 0x1FFFFFF_rgb;
         // std::cout << col1 << std::endl;
@@ -242,7 +242,7 @@ namespace Literals_Color_CompileTime_02 {
         return byte;
     }
 
-    void test_03() {
+    static void test_03() {
         constexpr Color red = 0xFF0000_rgb;
         std::cout << red << std::endl;
         constexpr Color magenta = 0xFF00FF_rgb;
@@ -255,7 +255,7 @@ namespace Literals_Color_CompileTime_02 {
     }
 
     // throws errors at compile time
-    void test_03_with_errors() {
+    static void test_03_with_errors() {
         // value outside rgb range
         // constexpr Color col1 = 0x1FFFFFF_rgb;
 

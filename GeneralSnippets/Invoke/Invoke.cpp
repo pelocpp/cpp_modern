@@ -32,7 +32,7 @@ namespace StdInvoke {
     };
 
     // testing scenarios for std::invoke
-    void test_01() {
+    static void test_01() {
         int result;
 
         // free function:

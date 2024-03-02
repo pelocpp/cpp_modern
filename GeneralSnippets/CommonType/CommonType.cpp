@@ -43,7 +43,7 @@ namespace CommonType {
     //    return result;
     //}
 
-    void test_commontype_01()
+    static void test_commontype_01()
     {
         std::cout << "std::common_type demonstration:" << std::endl;
 
@@ -69,7 +69,7 @@ namespace CommonType {
 
     // do you notice the difference using operator+ between these two examples?
     // (hint: the debugger may help ...)
-    void test_commontype_02()
+    static void test_commontype_02()
     {
         std::cout << "More std::common_type demonstration:" << std::endl;
 

@@ -54,6 +54,7 @@ export import :regexpr;
 export import :rvalue_lvalue;
 export import :sfinae;
 export import :shared_ptr;
+export import :source_location;
 export import :sso;
 export import :static_assert_keyword;
 export import :string_view;

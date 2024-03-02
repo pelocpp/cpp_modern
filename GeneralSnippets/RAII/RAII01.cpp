@@ -24,7 +24,7 @@ namespace RAIIDemo {
         T* m_p;
     };
 
-    void test_01 () {
+    static void test_01 () {
 
         {
             RAII<Dummy> p (new Dummy (1));
@@ -33,7 +33,7 @@ namespace RAIIDemo {
         std::cout << "Done." << std::endl;
     }
 
-    void test_02() {
+    static void test_02() {
 
         {
             RAII<Dummy> p (new Dummy(2));
@@ -50,7 +50,7 @@ namespace RAIIDemo {
         std::cout << "Done." << std::endl;
     }
 
-    void test_03() {
+    static void test_03() {
 
         // test RAII idiom upon a loop break
         do {
@@ -61,7 +61,7 @@ namespace RAIIDemo {
         std::cout << "Done." << std::endl;
     }
 
-    void test_04() {
+    static void test_04() {
 
         // test RAII idiom upon exception being thrown
         try {
@@ -75,7 +75,7 @@ namespace RAIIDemo {
         std::cout << "Done." << std::endl;
     }
 
-    void test_05() {
+    static void test_05() {
 
         // test RAII idiom with two encapsulated resources:
         // Note order of destructor calls
@@ -95,7 +95,7 @@ namespace RAIIDemo {
         RAII<Dummy> m_rp;
     };
 
-    void test_06() {
+    static void test_06() {
 
         {
             RAIIContainer cont (new Dummy(5));

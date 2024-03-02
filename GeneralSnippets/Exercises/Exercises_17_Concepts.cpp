@@ -563,7 +563,7 @@ namespace Exercises_Concepts {
             std::cout << len << std::endl;
         }
 
-        void testExercise_02()
+        static void testExercise_02()
         {
             const std::string cs{ "11111" };
             const std::string& csr{ cs };
@@ -573,7 +573,7 @@ namespace Exercises_Concepts {
             std::cout << len << std::endl;
         }
 
-        void testExercise() {
+        static void testExercise() {
             testExercise_01();
             testExercise_02();
         }

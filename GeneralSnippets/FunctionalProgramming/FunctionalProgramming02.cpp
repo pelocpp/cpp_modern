@@ -77,7 +77,7 @@ namespace FunctionalProgramming_02 {
     // =================================================================================
     // testing 'filter'
 
-    void test_functional_filter_01() {
+    static void test_functional_filter_01() {
         std::vector<int> vec(20);
         std::generate(std::begin(vec), std::end(vec), [value = 0]() mutable {
             return ++value;
@@ -105,7 +105,7 @@ namespace FunctionalProgramming_02 {
 
     // mapping both negative and positive values to a new vector
     // with only positive values
-    void test_functional_map_02a()
+    static void test_functional_map_02a()
     {
         std::vector<int> numbers = std::vector<int>{ 0, 2, -3, 5, -1, 6, 8, -4, 9 };
 
@@ -124,7 +124,7 @@ namespace FunctionalProgramming_02 {
         }
     }
 
-    void test_functional_map_02b() {
+    static void test_functional_map_02b() {
         std::vector<int> vec(20);
         std::generate(std::begin(vec), std::end(vec), [value = 0]() mutable {
             return ++value;
@@ -148,7 +148,7 @@ namespace FunctionalProgramming_02 {
         std::cout << std::endl;
     }
 
-    void test_functional_map_02c() {
+    static void test_functional_map_02c() {
         std::vector<std::string> vec = { "1", "2", "3", "4", "5", "6", "7" , "8", "9", "10" };
         std::for_each(std::begin(vec), std::end(vec), [](std::string s) {
             std::cout << s << ' ';
@@ -167,7 +167,7 @@ namespace FunctionalProgramming_02 {
         std::cout << std::endl;
     }
 
-    void test_functional_map_02d() {
+    static void test_functional_map_02d() {
         std::vector<float> vec = { 1.F, 2.f, 3.f, 4.f, 5.f };
         std::for_each(std::begin(vec), std::end(vec), [](float value) {
             std::cout << value << ' ';
@@ -186,7 +186,7 @@ namespace FunctionalProgramming_02 {
         std::cout << std::endl;
     }
 
-    void test_functional_map_02e() {
+    static void test_functional_map_02e() {
 
         std::vector<std::string> words = { 
             std::string("one"),
@@ -219,7 +219,7 @@ namespace FunctionalProgramming_02 {
     // testing 'fold'
 
     // adding the values of a vector of integers
-    void test_functional_fold_03a()
+    static void test_functional_fold_03a()
     {
         std::vector<int> numbers = std::vector <int>{ 0, 2, -3, 5, -1, 6, 8, -4, 9 };
 
@@ -233,7 +233,7 @@ namespace FunctionalProgramming_02 {
     }
 
     // concatenating a list of strings into a single string
-    void test_functional_fold_03b() {
+    static void test_functional_fold_03b() {
         std::list<std::string> list = { "Implementing", "fold", "with", "Modern", "C++" };
         std::for_each(std::begin(list), std::end(list), [](std::string s) {
             std::cout << s << ' ';
@@ -258,7 +258,7 @@ namespace FunctionalProgramming_02 {
     }
 
     // concatenating an array of characters into a string
-    void test_functional_fold_03c()
+    static void test_functional_fold_03c()
     {
         char chars[] = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 0 };
 
@@ -278,7 +278,7 @@ namespace FunctionalProgramming_02 {
     // =================================================================================
     // testing 'Filter-Map-Reduce' Pattern
 
-    void test_functional_fmr_pattern_04a()
+    static void test_functional_fmr_pattern_04a()
     {
         auto numbers = std::vector<int>{ 0, 2, -3, 5, -1, 6, 8, -4, 9 };
 
@@ -311,7 +311,7 @@ namespace FunctionalProgramming_02 {
         std::cout << sum << std::endl;
     }
 
-    void test_functional_fmr_pattern_04a_compact() {
+    static void test_functional_fmr_pattern_04a_compact() {
 
         std::vector<int> numbers = std::vector<int>{ 0, 2, -3, 5, -1, 6, 8, -4, 9 };
 
@@ -338,7 +338,7 @@ namespace FunctionalProgramming_02 {
         double m_price;
     };
 
-    void test_functional_fmr_pattern_04b() {
+    static void test_functional_fmr_pattern_04b() {
 
         std::vector<Book> booksList{
             {"C", "Dennis Ritchie", 1972, 11.99 } ,
@@ -379,7 +379,7 @@ namespace FunctionalProgramming_02 {
         std::cout << result3 << std::endl;
     }
 
-    void test_functional_fmr_pattern_04b_compact() {
+    static void test_functional_fmr_pattern_04b_compact() {
 
         std::vector<Book> booksList{
             {"C", "Dennis Ritchie", 1972, 11.99 } ,
@@ -423,7 +423,7 @@ namespace FunctionalProgramming_02 {
         std::string m_author;
     };
 
-    void test_functional_fmr_pattern_04c() {
+    static void test_functional_fmr_pattern_04c() {
 
         std::vector<Book> booksList{
             {"C", "Dennis Ritchie", 1972, 11.99 } ,
@@ -464,7 +464,7 @@ namespace FunctionalProgramming_02 {
         std::cout << result3 << std::endl;
     }
 
-    void test_functional_fmr_pattern_04c_compact() {
+    static void test_functional_fmr_pattern_04c_compact() {
 
         std::vector<Book> booksList{
             {"C", "Dennis Ritchie", 1972, 11.99 } ,
@@ -502,7 +502,7 @@ namespace FunctionalProgramming_02 {
     }
 
     // same query, using 'std::pair' utility class
-    void test_functional_fmr_pattern_04d() {
+    static void test_functional_fmr_pattern_04d() {
 
         std::vector<Book> booksList{
             {"C", "Dennis Ritchie", 1972, 11.99 } ,
@@ -543,7 +543,7 @@ namespace FunctionalProgramming_02 {
         std::cout << result3 << std::endl;
     }
 
-    void test_functional_fmr_pattern_04d_compact() {
+    static void test_functional_fmr_pattern_04d_compact() {
 
         std::vector<Book> booksList{
             {"C", "Dennis Ritchie", 1972, 11.99 } ,

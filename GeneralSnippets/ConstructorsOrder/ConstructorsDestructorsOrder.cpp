@@ -32,7 +32,7 @@ namespace OrderConstructorInvocations {
     };
 
 
-    void test_01() {
+    static void test_01() {
 
         Derived myDerived;
         myDerived.printHello();

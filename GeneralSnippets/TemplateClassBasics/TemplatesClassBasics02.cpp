@@ -28,7 +28,7 @@ namespace ClassTemplatesBasics_02 {
         // explicit class template instantiation
         template class MyContainer<float>;
 
-        void test_01() {
+        static void test_01() {
             MyContainer<double> container;
             container.setData(123.456);
             double value = container.getData();
@@ -36,7 +36,7 @@ namespace ClassTemplatesBasics_02 {
         }
 
         // implicit instantiation of MyContainer<double>
-        void test_02() {
+        static void test_02() {
             MyContainer<double> container;
         }
     }
@@ -61,7 +61,7 @@ namespace ClassTemplatesBasics_02 {
             }
         };
 
-        void test_02() {
+        static void test_02() {
             MyPair<std::string, double> averageTemperature{ "March", 5.5 };
             averageTemperature.print(std::cout);
         }
@@ -96,7 +96,7 @@ namespace ClassTemplatesBasics_02 {
             m_data = data;
         }
 
-        void test_03() {
+        static void test_03() {
             MyContainer<double> container;
             container.setData(654.321);
             double value = container.getData();
@@ -125,7 +125,7 @@ namespace ClassTemplatesBasics_02 {
             m_data = "[" + data + "]";
         }
 
-        void test_04() {
+        static void test_04() {
             MyContainer<std::string> container;
             container.setData("I love C++ Templates :)");
             std::string data = container.getData();
@@ -156,7 +156,7 @@ namespace ClassTemplatesBasics_02 {
             }
         };
 
-        void test_05() {
+        static void test_05() {
 
             Printer normalPrinter{ std::cout };
             normalPrinter.print(100).print(" --> ").print(123.456).print("\n");
@@ -191,7 +191,7 @@ namespace ClassTemplatesBasics_02 {
             }
         };
 
-        void test_06_01() {
+        static void test_06_01() {
 
             FixedVector<int, 5> vec;
 
@@ -202,7 +202,7 @@ namespace ClassTemplatesBasics_02 {
             vec.print(std::cout);
         }
 
-        void test_06_02() {
+        static void test_06_02() {
 
             using namespace ClassTemplatesBasics_02::ClassTemplatesBasics_Intro_01;
 
@@ -214,7 +214,7 @@ namespace ClassTemplatesBasics_02 {
             // vector_1 = vector_2;         // Error: binary '=': no operator found
         }
 
-        void test_06() {
+        static void test_06() {
             test_06_01();
             test_06_02();
         }
@@ -241,7 +241,7 @@ namespace ClassTemplatesBasics_02 {
             // ...
         };
 
-        void test_07() {
+        static void test_07() {
 
             using namespace ClassTemplatesBasics_02::ClassTemplatesBasics_Intro_01;
 
@@ -277,7 +277,7 @@ namespace ClassTemplatesBasics_02 {
             }
         };
 
-        void test_08_01() {
+        static void test_08_01() {
 
             FixedVector vec1;
             FixedVector<> vec2;
@@ -293,19 +293,19 @@ namespace ClassTemplatesBasics_02 {
         template <size_t MAX>
         using FixedIntVector = FixedVector<int, MAX>;
 
-        void test_08_02() {
+        static void test_08_02() {
 
             FixedIntVector<100> vec;
         }
 
-        void test_08() {
+        static void test_08() {
             test_08_01();
             test_08_02();
         }
     }
 
     // demonstrating 'Templates Inclusion Model'
-    void test_09() {
+    static void test_09() {
 
         using namespace ClassTemplatesBasics;
 
@@ -319,7 +319,7 @@ namespace ClassTemplatesBasics_02 {
     }
 
     // demonstrating 'Templates Explicit Instantiation Model'
-    void test_10() {
+    static void test_10() {
 
         using namespace ClassTemplatesBasics;
 

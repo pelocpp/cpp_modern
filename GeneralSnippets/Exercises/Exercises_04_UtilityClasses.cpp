@@ -13,7 +13,7 @@ namespace Exercises_UtilityClasses {
             std::cout << elem << std::endl;
         };
 
-        void testExercise_01a() {
+        static void testExercise_01a() {
 
             std::variant<int, double, std::string> var{ 123.456 };
 
@@ -59,7 +59,7 @@ namespace Exercises_UtilityClasses {
             }
         };
 
-        void testExercise_01b() {
+        static void testExercise_01b() {
 
             std::variant<int, double, std::string> var{ 123.456 };
 
@@ -72,7 +72,7 @@ namespace Exercises_UtilityClasses {
             std::visit(improvedVisitor, var);
         }
 
-        void testExercise_01() {
+        static void testExercise_01() {
             testExercise_01a();
             testExercise_01b();
         }
@@ -227,7 +227,7 @@ namespace Exercises_UtilityClasses {
             Stock m_stock;
         };
 
-        void testExercise_02a() {
+        static void testExercise_02a() {
 
             Book cBook{ "C", "Dennis Ritchie", 11.99, 12 };
             Book javaBook{"Java", "James Gosling", 17.99, 21 };
@@ -249,7 +249,7 @@ namespace Exercises_UtilityClasses {
             std::cout << "Count of elements in Bookstore: " << count << std::endl;
         }
 
-        void testExercise_02b() {
+        static void testExercise_02b() {
 
             Book cBook{ "C", "Dennis Ritchie", 11.99, 1 };
             Movie movieBond{ "Spectre", "Sam Mendes", 8.99, 1 };
@@ -268,7 +268,7 @@ namespace Exercises_UtilityClasses {
             std::cout << "Count of elements in Bookstore: " << count << std::endl;
         }
 
-        void testExercise_02() {
+        static void testExercise_02() {
             testExercise_02a();
             testExercise_02b();
         }
@@ -351,7 +351,7 @@ namespace Exercises_UtilityClasses {
             return result;
         }
 
-        void testExercise_03a() {
+        static void testExercise_03a() {
             std::optional<int> i1{ toInt("123") };
             if (i1.has_value()) {
                 std::cout << i1.value() << std::endl;
@@ -373,7 +373,7 @@ namespace Exercises_UtilityClasses {
             }
         }
 
-        void testExercise_03b() {
+        static void testExercise_03b() {
 
             std::optional<short> i1{ toNumber<short>("32767") };
             if (i1.has_value()) {
@@ -396,7 +396,7 @@ namespace Exercises_UtilityClasses {
             }
         }
 
-        void testExercise_03() {
+        static void testExercise_03() {
             testExercise_03a();
             testExercise_03b();
         }
@@ -406,7 +406,7 @@ namespace Exercises_UtilityClasses {
 
         // https://gieseanw.wordpress.com/2017/05/03/a-true-heterogeneous-container-in-c/
 
-        void testExercise_04a()
+        static void testExercise_04a()
         {
             std::variant<int, std::string> myVariant;
             myVariant = 123;
@@ -447,7 +447,7 @@ namespace Exercises_UtilityClasses {
 
         // ----------------------------------------------------------------------------------
 
-        void testExercise_04b()
+        static void testExercise_04b()
         {
             std::variant<int, std::string> myVariant;
             myVariant = 123;
@@ -473,7 +473,7 @@ namespace Exercises_UtilityClasses {
             std::visit(lambdaAllInOneVisitor, myVariant);
         }
 
-        void testExercise_04c()
+        static void testExercise_04c()
         {
             std::vector<std::variant<int, std::string>> hetVec;
 
@@ -519,7 +519,7 @@ namespace Exercises_UtilityClasses {
             };
         };
 
-        void testExercise_04d()
+        static void testExercise_04d()
         {
             HeterogeneousContainer<int, std::string> hetCont;
 
@@ -540,7 +540,7 @@ namespace Exercises_UtilityClasses {
             std::cout << std::endl;
         }
 
-        void testExercise_04() {
+        static void testExercise_04() {
             testExercise_04a();
             testExercise_04b();
             testExercise_04c();

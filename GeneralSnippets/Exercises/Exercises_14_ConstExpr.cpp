@@ -40,7 +40,7 @@ namespace Exercises_ConstExpr {
             }
         };
 
-        void testExercise_01() {
+        static void testExercise_01() {
 
             using namespace Exercises_ConstExpr;
 
@@ -92,7 +92,7 @@ namespace Exercises_ConstExpr {
         //    return std::is_same<T1, T2>::value && sameType(arg2, args...);
         //}
 
-        void testExercise_01() {
+        static void testExercise_01() {
 
             constexpr bool result1 = sameType(43, false, "hello");
             std::cout << std::boolalpha << result1 << std::endl;

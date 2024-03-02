@@ -32,7 +32,7 @@ namespace Exercises_Initialization {
             }
         };
 
-        void testExercise_01() {
+        static void testExercise_01() {
 
             IntegerContainer container1{ {1, 2, 3, 4, 5, 6, 7, 8, 9, 10} };
             IntegerContainer container2;
@@ -86,7 +86,7 @@ namespace Exercises_Initialization {
         // Note: Debug vs Release Mode
         constexpr int MaxIteration = 10'000;
 
-        void testExercise_02() {
+        static void testExercise_02() {
             {
                 const auto startTime{ std::chrono::high_resolution_clock::now() };
 

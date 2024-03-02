@@ -8,7 +8,7 @@ namespace DiverseCasts {
 
     namespace CastStatic {
 
-        void test_00() {
+        static void test_00() {
             long long l = 1l;            // 8 Byte
             int  n = 2;                  // 4 Byte
             n = (int)l;
@@ -27,7 +27,7 @@ namespace DiverseCasts {
 
         enum class Color { red, green, blue };
 
-        void test_01() {
+        static void test_01() {
 
             // int n = Color::blue;  // a value of type "Color" cannot be used to initialize an entity of type "int"
 
@@ -51,7 +51,7 @@ namespace DiverseCasts {
         };
 
         // static_cast
-        void test_02() {
+        static void test_02() {
 
             using namespace CastStatic;
 
@@ -106,7 +106,7 @@ namespace DiverseCasts {
             return static_cast<Derived*>(baseRef);
         }
 
-        void test_03() {
+        static void test_03() {
 
             using namespace CastDynamic;
 
@@ -130,7 +130,7 @@ namespace DiverseCasts {
 
     namespace CastConst {
 
-        void test_04() {
+        static void test_04() {
 
             int n = 1;
             const int* ip1 = &n;
@@ -158,7 +158,7 @@ namespace DiverseCasts {
 
     namespace CastReinterpret {
 
-        void test_05() {
+        static void test_05() {
 
             int* p = new int(65);
             char* ch = reinterpret_cast<char*>(p);
@@ -175,7 +175,7 @@ namespace DiverseCasts {
             char x4;
         };
 
-        void test_06() {
+        static void test_06() {
 
             using namespace CastReinterpret;
 

@@ -29,7 +29,7 @@ namespace VirtualBaseClassDestructor {
         }
     };
 
-    void test01() {
+    static void test01() {
         Base* b = new Derived();
         // use b
         delete b; // here's the problem!

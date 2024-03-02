@@ -50,7 +50,7 @@ namespace Exercises_SFINAE {
             return std::sqrt(tmp1 * tmp1 + tmp2 * tmp2);
         }
 
-        void testExercise_01() {
+        static void testExercise_01() {
 
             double result1 = distanceEx<double>(2.0, 2.0, 1.0, 1.0);
             std::cout << result1 << std::endl;
@@ -162,7 +162,7 @@ namespace Exercises_SFINAE {
             }
         };
 
-        void test_02a()
+        static void test_02a()
         {
             int n{ 123 };
             print(n);
@@ -171,13 +171,13 @@ namespace Exercises_SFINAE {
             print(s);
         }
 
-        void test_02b()
+        static void test_02b()
         {
             AnyClass obj{ 456 };
             print(obj);
         }
 
-        void test_02c()
+        static void test_02c()
         {
             char ch{ '!' };
             print(ch);
@@ -186,7 +186,7 @@ namespace Exercises_SFINAE {
             print(obj);
         }
 
-        void test_02d()
+        static void test_02d()
         {
             int n{ 123 };
             print2(n);
@@ -198,7 +198,7 @@ namespace Exercises_SFINAE {
             print2(obj2);
         }
 
-        void testExercise_02() {
+        static void testExercise_02() {
             test_02a();
             test_02b();
             test_02c();
@@ -243,7 +243,7 @@ namespace Exercises_SFINAE {
             int getter() { return 456; };
         };
 
-        void testExercise_03a() {
+        static void testExercise_03a() {
 
             std::cout
                 << "FirstStruct:  "
@@ -291,7 +291,7 @@ namespace Exercises_SFINAE {
             int get(int value1, int value2) { return value1 * value2; };
         };
 
-        void testExercise_03b() {
+        static void testExercise_03b() {
 
             std::cout
                 << "ThirdStruct:  "
@@ -306,7 +306,7 @@ namespace Exercises_SFINAE {
                 << std::endl;
         };
 
-        void testExercise_03() {
+        static void testExercise_03() {
             testExercise_03a();
             testExercise_03b();
         }
@@ -326,7 +326,7 @@ namespace Exercises_SFINAE {
             return arr;
         }
 
-        void testExercise_04() {
+        static void testExercise_04() {
             int vals[5]{ 1, 2, 3, 4, 5 };
             int elem = *(first(vals));
             std::cout << elem << std::endl;

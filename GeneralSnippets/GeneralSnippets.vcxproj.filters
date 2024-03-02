@@ -639,6 +639,12 @@
     <ClCompile Include="PlacementNew\PlacementNew.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SourceLocation\SourceLocation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceLocation\Module_SourceLocation.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -1014,6 +1020,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="PlacementNew\PlacementNew.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="SourceLocation\SourceLocation.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

@@ -23,7 +23,7 @@ namespace TemplateSpecialization {
             static void sort(std::vector<char>&) { /* ... */ }
         };
 
-        void test_01() {
+        static void test_01() {
             std::vector<int>  intVector;
             std::vector<char> charVector;
 
@@ -49,7 +49,7 @@ namespace TemplateSpecialization {
             static void sort(std::vector<T*>&) { /* ... */ }
         };
 
-        void test_02() {
+        static void test_02() {
             std::vector<int> intVector;
             std::vector<int*> pointerVector;
 

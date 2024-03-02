@@ -35,7 +35,7 @@ namespace RAIIDemo02 {
         // when closing at the end of the scope is sufficient.
     }
 
-    void test_01 () {
+    static void test_01 () {
         write_to_file("Nachrichtentext");
     }
 }
