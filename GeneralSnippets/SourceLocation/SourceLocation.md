@@ -4,43 +4,50 @@
 
 ---
 
-[Quellcode](Invoke.cpp)
+[Quellcode](SourceLocation.cpp)
 
 ---
 
-Der Begriff des *Callables* tritt in C++ an vielen Stellen in Erscheinung.
-Man zählt dazu
-
-  * eine (reguläre) Funktion,
-  * einen Zeiger auf eine (reguläre) Funktion,
-  * einen Zeiger auf eine Methode (*member function pointer*),
-  * ein Funktionsobjekt,
-  * ein aurufbares Objekt,
-  * eine Lambda-Funktion
-
-Mit C++ 17 hat man nun eine Standardfunktion `std::invoke` ergänzt, 
-die jedes *Callable* mit einer entsprechenden Liste von Parametern aufrufen kann.
-
-`std::invoke` ist eine variadische Funktionsschablone, die
-das aufrufbare Objekt als erstes Argument entgegennimmt und anschließend eine variable
-Anzahl von Argumenten, die an den Aufruf übergeben werden.
-
-Der Sinn und Zweck von `std::invoke` ist es nicht,
-den direkten Aufrufe zu ersetzen,
-aber `std::invoke` kann nützlich sein bei der Programmierung von
-Templates und allgemein gehaltenen Bibliotheksfunktionen.
-
-Ausgabe des Code-Snippets:
+*Beispiel*:
 
 ```cpp
-result: 3
-result: 7
-result: 11
-m_x: 5
-result: 5
-result: 13
-result: 15
-a: 23
+01: static void log(
+02:     const std::string_view message, 
+03:     const std::source_location location = std::source_location::current()) {
+04: 
+05:     std::println("File:          {}", location.file_name());
+06:     std::println("Function Name: {}", location.function_name());
+07:     std::println("Column :       {}", location.column());
+08:     std::println("Line:          {}", location.line());
+09:     std::println("");
+10: }
+11: 
+12: template<typename T>
+13: static void function(T x)
+14: {
+15:     log(x);
+16: }
+17: 
+18: static void test_01() {
+19: 
+20:     log("Hello World!");
+21:     function("Hello Function!");
+22: }
+```
+
+*Ausgabe*:
+
+```
+[Collection of Modern C++-Code Examples - Copyright (C) 2019-2024 Peter Loos]
+File:          C:\Development\GitRepositoryCPlusPlus\Cpp_Modern\GeneralSnippets\SourceLocation\SourceLocation.cpp
+Function Name: void __cdecl StdSourceLocation::test_01(void)
+Column :       9
+Line:          28
+
+File:          C:\Development\GitRepositoryCPlusPlus\Cpp_Modern\GeneralSnippets\SourceLocation\SourceLocation.cpp
+Function Name: void __cdecl StdSourceLocation::function<const char*>(const char *)
+Column :       9
+Line:          23
 ```
 
 ---
