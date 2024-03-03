@@ -21,6 +21,7 @@ export import :common_type;
 export import :concepts_requires_classes;
 export import :concepts_requires_functions;
 export import :const_expr;
+export import :const_variants;
 export import :constructors_destructors_order;
 export import :copy_move_elision;
 export import :crtp;

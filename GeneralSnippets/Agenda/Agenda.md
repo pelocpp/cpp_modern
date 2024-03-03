@@ -71,7 +71,7 @@
   * `constexpr` Variablen
   * Klassen / benutzerdefinerte Datentypen mit `constexpr` Konstruktoren
   * `constexpr`-Funktionen und `constexpr`-Lambda-Funktionen
-  * Konstante `std::array<>`-Objekte, initialisiert mit variadischen Templates
+  * `const`, `constexpr`, `consteval` und `constinit`
 
 
 ## Benutzerdefinierte Literale

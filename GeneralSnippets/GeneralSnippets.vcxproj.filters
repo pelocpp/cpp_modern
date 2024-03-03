@@ -651,6 +651,12 @@
     <ClCompile Include="ToUnderlying\Module_ToUnderlying.ixx">
       <Filter>Modules</Filter>
     </ClCompile>
+    <ClCompile Include="Const\Module_Const.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Const\Const.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -1032,6 +1038,12 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="ToUnderlying\ToUnderlying.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Const\Const.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Const\cpp_const.svg">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

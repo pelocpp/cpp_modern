@@ -141,6 +141,7 @@ Es folgt eine tabellarische Auflistung dieser Unterverzeichnisse.
 | [Concepts/Requires/Classes](GeneralSnippets/ConceptsRequiresClasses/ConceptsRequiresClasses.md) | Konzepte (*Concepts*) und Einschränkungen (*Requirements*) für Klassen |
 | [Concepts/Requires/Functions](GeneralSnippets/ConceptsRequiresFunctions/ConceptsRequiresFunctions.md) | Konzepte (*Concepts*) und Einschränkungen (*Requirements*) für Funktionen |
 | [ConstExpr](GeneralSnippets/ConstExpr/Constexpr.md) | Programmierung zur Übersetzungszeit mit `constexpr` |
+| [Const](GeneralSnippets/Const/Const.md) | `const`, `constexpr`, `consteval` und `constinit` |
 | [ConstructorsOrder](GeneralSnippets/ConstructorsOrder/ConstructorsDestructorsOrder.md)  | Reihenfolge der Aufrufe von Konstruktoren und Destruktoren |
 | [*Copy/Move Elision*](GeneralSnippets/CopyMoveElision/CopyMoveElision.md) | Auslassen von Kopier- oder Verschiebe-Operationen |
 | [CRTP](GeneralSnippets/CRTP/CRTP.md) | Curiously Recurring Template Pattern (CRTP) |

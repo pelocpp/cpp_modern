@@ -37,6 +37,7 @@ int main()
         //main_constexpr();
         //main_constexpr_02();
         //main_constexpr_crc();
+        //main_const_variants();
         //main_copy_move_elision();
         //main_crtp();
         //main_decltype();
