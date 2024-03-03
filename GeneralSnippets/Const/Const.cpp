@@ -9,7 +9,7 @@ namespace ConstVariants {
     // ============================================================
     // const
 
-    int computeNumber() {
+    static int computeNumber() {
         return 456;
     }
 
@@ -53,7 +53,7 @@ namespace ConstVariants {
         // computed at runtime
         Point b{ 111, 222 };
         // constexpr double y = b.getY();  // does not compile
-        double y = b.getY();
+        double z = b.getY();
     }
 
     // ============================================================
@@ -136,7 +136,7 @@ namespace ConstVariants {
 
     static void test_05()
     {
-        // constexpr int prod1{ productRunTime(5, 10) };  // Error: expression did not evaluate to a constant
+        // constexpr int prod1{ productRunTime(5, 10) };    // Error: expression did not evaluate to a constant
 
         constexpr int prod2{ productCompileTime(5, 10) };
 
@@ -146,7 +146,7 @@ namespace ConstVariants {
 
         int prod4{ productRunTime(5, x) };
 
-        // int prod5{ productCompileTime(5, x) };        // Error: call to immediate function is not a constant expression
+        // int prod5{ productCompileTime(5, x) };          // Error: call to immediate function is not a constant expression
 
         int prod6{ productRunOrCompileTime(5, x) };
     }

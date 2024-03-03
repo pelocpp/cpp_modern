@@ -50,6 +50,8 @@ in den zugrunde liegenden Typ.
 *Ausgabe*:
 
 ```
+Color Code: B
+Weekday Code: 5
 ```
 
 ---

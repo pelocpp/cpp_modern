@@ -10,7 +10,7 @@
 
 ## Allgemeines
 
-Mit C++20 haben wir vier Schlüsselwörter, die mit `const` beginnen:
+Mit C++20 haben wir vier Schlüsselwörter, die alle mit `const` beginnen:
 
 <p>
 <img src="cpp_const.svg" width="250">
@@ -36,7 +36,7 @@ aber im Allgemeinen werden `const`-Objekte zur Laufzeit initialisiert:
 ## `constexpr` 
 
 
-  * `constexpr` teilt dem Compiler mit, dass dieser Ausdruck zu einem berechenbaren konstanten Wert zur Übersetzungszeit führt,
+  * `constexpr` teilt dem Compiler mit, dass dieser Ausdruck zu einem berechenbaren konstanten Wert zur *Übersetzungszeit* führt,
 sodass er an Stellen wie Array-Längen und Zuweisungen zu konstanten Variablen etc. verwendet werden kann.
 
   * `constexpr` erlaubt es explizit zur Übersetzungszeit zu programmieren und dies in der vertrauten C++&ndash;Syntax.
@@ -50,19 +50,19 @@ der zur Übersetzungszeit evaluiert werden kann.
 So sind `constexpr` Variablen und auch Instanzen von benutzerdefinierten Typen automatisch thread-sicher
 und können im ROM gespeichert werden.
 
-  * Folglich werden `constexpr` Funktionen zur Übersetzungszeit ausgeführt,
+  * `constexpr` Funktionen werden zur Übersetzungszeit ausgeführt,
 so dass deren Ergebnisse direkt zur Laufzeit zur Verfügung stehen
 
 
 ## `consteval` 
 
-  * `consteval` kann es nur auf Funktionen angewendet werden und erzwingt,
+  * `consteval` kann nur auf Funktionen angewendet werden und erzwingt,
 dass alle Aufrufe zur Übersetzungszeit erfolgen.
 
 
   * Mit `consteval` werden sogenannte *Immediate-Functions* erzeugt.
 Jeder Aufruf einer solchen Funktion erzeugt eine Übersetzungszeit-Konstante.
-Dies lässt sich auch einfacher ausdrücken.
+Oder einfacher ausgedrückt:
 Eine `consteval`&ndash;Funktion / *Immediate-Function* wird zur Übersetzungszeit ausgeführt.
 
   * *Immediate-Functions* können als Alternative zu Makros angesehen werden.
