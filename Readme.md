@@ -186,6 +186,7 @@ Es folgt eine tabellarische Auflistung dieser Unterverzeichnisse.
 | [TemplateStaticPolymorphism](GeneralSnippets/TemplateStaticPolymorphism/TemplateStaticPolymorphism.md) | Templates und statischer Polymorphismus |
 | [TemplateTemplateParameter](GeneralSnippets/TemplateTemplateParameter/TemplateTemplateParameter.md) | Template Template Parameter |
 | [TemplateTwoPhaseLookup](GeneralSnippets/TemplateTwoPhaseLookup/TemplateTwoPhaseLookup.md) | Two-Phase Name Lookup |
+| [ToUnderlying](GeneralSnippets/ToUnderlying/ToUnderlying.md) | Funktion `std::to_underlying` |
 | [Transform](GeneralSnippets/Transform/Transform.md) | STL-Algorithmus `std::transform` und Lambda-Objekte in der Anwendung |
 | [TrimmingStrings](GeneralSnippets/Trim/Trim.md) | Leerzeichen am Anfang und Ende einer Zeichenkette entfernen |
 | [Tuples](GeneralSnippets/Tuple/Tuple.md) | Neue STL-Utility Klasse `std::tuple` |
@@ -198,6 +199,6 @@ Es folgt eine tabellarische Auflistung dieser Unterverzeichnisse.
 | [VirtualOverrideFinal](GeneralSnippets/VirtualOverrideFinal/VirtualOverrideFinal.md) | Neue Schlüsselwörter `override` und `final` |
 | [WeakPointer](GeneralSnippets/WeakPtr/WeakPtr.md) | Klasse `std::weak_ptr<T>` |
 
-Tabelle 1. Tabelle aller Beispiele zu Modern C++ dieses Repositories. 
+*Tabelle* 1. Tabellarische Auflistung aller *Modern C++*&ndash;Beispiele dieses Repositories. 
 
 ---

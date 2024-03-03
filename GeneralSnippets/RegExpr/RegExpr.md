@@ -36,7 +36,7 @@ In der folgenden Tabelle finden Sie &ndash; in einem gekürzten Umfang &ndash; di
 | `[`*klasse*`]` | Zeichen aus einer Klasse |
 | `\d` `\w` `\s` | Klassenkürzel |
 
-*Tabelle*: Überblick über die Syntax regulärer Ausdrücke.
+*Tabelle* 1: Überblick über die Syntax regulärer Ausdrücke.
 
 Beispiele für Zeichen aus einer Klasse sind `[[digit]]`, `[[alpha]]`, `[[alnum]]`, `[[space]]` usw.
 Die Klassenkürzel `\d` `\w` `\s` sind gleichbedeutend mit  `[[digit]]`, `[[alnum]]` und `[[space]]`.

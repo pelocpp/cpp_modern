@@ -46,7 +46,7 @@ Aus dem engl. C++-Manual habe ich einen Überblick bzgl. der Gestaltungsmöglichke
 | `[bar]` | Capture `bar` by making a copy; don't copy anything else |
 | `[this]` | Capture the `this` pointer of the enclosing class |
 
-Tabelle 1: Liste aller Optionen für die Lambda-Zugriffsklausel.
+*Tabelle* 1: Liste aller Optionen für die Lambda-Zugriffsklausel.
 
 
 Das Feature der *Capture Clause*, den Zugriff auf Variablen der &bdquo;Umgebung&rdquo; genauer festzulegen,

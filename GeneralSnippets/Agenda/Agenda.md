@@ -56,7 +56,6 @@
   * Structured Binding
   * Range-based `for`&ndash;Loop
   * *Copy/Move Elision*
-  * C++ Standard-Attribute
   * *Placement New*: Trennung von Speicherallokation und Objektkonstruktion
   * Vererbung: Schlüsselwörter `override`, `virtual`, `final`
   * Argument-Dependent Name Lookup (ADL) / *Koenig*-Lookup
@@ -198,9 +197,11 @@
   * C++&ndash;20: Verriegelungen (*Latches*) und Barrieren (*Barriers*)
   * C++&ndash;20: Parallelisierung von STL-Algorithmen
 
-## C++&ndash;23: Odds and Ends
-  * `std::source_location`
 
+## C++&ndash;23: Odds and Ends
+  * C++ Standard-Attribute
+  * Klasse `std::source_location`
+  * Funktion `std::to_underlying`
 
 ## C++&ndash;23: Ausblick
   * Concepts

@@ -1,4 +1,4 @@
-# Funktion `std::source_location`
+# Klasse `std::source_location`
 
 [Zurück](../../Readme.md)
 
@@ -7,6 +7,10 @@
 [Quellcode](SourceLocation.cpp)
 
 ---
+
+Die Klasse `std::source_location` bietet eine einfache Möglichkeit,
+Informationen über den Speicherort des Quellcodes zu erhalten, an dem er verwendet wird,
+z. B. Dateiname, Zeilennummer und Funktionsname.
 
 *Beispiel*:
 

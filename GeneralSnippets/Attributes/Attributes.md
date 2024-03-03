@@ -21,7 +21,7 @@ Die bekanntesten Attribute sind in der folgenden Tabelle aufgeführt:
 | `[[nodiscard]]` | Der Compiler gibt eine Warnung aus, wenn der Rückgabewert ignoriert wird. |
 | `[[maybe_unused]]` | Unterdrückt eine Compiler-Warnung, wenn eine Variable/Objekt nicht verwendet wird. |
 
-Tabelle: Einige C++ Standard Attribute.
+*Tabelle* 1: Einige C++ Standard Attribute.
 
 Daneben gibt es noch weitere, recht spezielle Attribute, wie zum Beispiel `carries_dependency`,
 `likely`, `unlikely` oder `no_unique_address`.

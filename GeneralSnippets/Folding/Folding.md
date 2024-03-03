@@ -32,7 +32,7 @@ darstellt:
 | Unary Right Fold | (pack *op* ...) | pack<sub>1</sub> *op* (... *op* (pack<sub>N-1</sub> *op* pack<sub>N</sub>)) |
 | Binary Right Fold | (pack *op* ... *op* init) | pack<sub>1</sub> *op* (... *op* (pack<sub>N-1</sub> *op* (pack<sub>N</sub> *op* init))) |
 
-Tabelle *"Folding-Expressions"*.
+*Tabelle* 1: *"Folding-Expressions"*.
 
 Der Addierer und ein einfacher Printer demonstrieren in den Code-Snippets *fold expressions*.
 

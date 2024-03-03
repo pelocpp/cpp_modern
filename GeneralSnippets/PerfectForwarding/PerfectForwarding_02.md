@@ -132,7 +132,7 @@ Es gilt die sogenannte Tabelle der *Reference Collapsing Rules*
 | T& &&  | RValue-Referenz auf eine LValue-Referenz | T&  | LValue-Referenz |
 | T&& && | RValue-Referenz auf eine RValue-Referenz | T&& | RValue-Referenz |
 
-Tabelle 1. *Zusammenfassungsregeln*/*Collapsing Rules* für das *Perfect Forwarding*.
+*Tabelle* 1. *Zusammenfassungsregeln*/*Collapsing Rules* für das *Perfect Forwarding*.
 
 Von *Scott Meyers* in Worte gefasst lauten diese Regeln, wenn gleich auch nicht einfach verständlich formuliert:
 

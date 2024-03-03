@@ -645,6 +645,12 @@
     <ClCompile Include="SourceLocation\Module_SourceLocation.ixx">
       <Filter>Modules</Filter>
     </ClCompile>
+    <ClCompile Include="ToUnderlying\ToUnderlying.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ToUnderlying\Module_ToUnderlying.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -1023,6 +1029,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="SourceLocation\SourceLocation.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="ToUnderlying\ToUnderlying.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

@@ -66,6 +66,7 @@ export import :template_specialization;
 export import :template_static_polymorphism;
 export import :template_template_parameter;
 export import :template_two_phase_lookup;
+export import :to_underlying;
 export import :transform;
 export import :trim;
 export import :tuple;

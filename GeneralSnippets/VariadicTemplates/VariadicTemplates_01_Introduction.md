@@ -216,7 +216,7 @@ wo die Grammatik eine durch Kommas getrennte Liste gestattet:
 | In der Parameterliste eines Funktionstyps |
 | Bei der Verwendung von `using`-Deklarationen |
 
-Tabelle 1. Einsatzmöglichkeiten von Parameter Pack Expansionen.
+*Tabelle* 1. Einsatzmöglichkeiten von Parameter Pack Expansionen.
 
 ## Der sizeof… Operator
 

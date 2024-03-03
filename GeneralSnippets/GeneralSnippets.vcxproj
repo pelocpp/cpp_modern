@@ -327,6 +327,8 @@
     <ClCompile Include="TemplateTemplateParameter\TemplateTemplateParameter_02.cpp" />
     <ClCompile Include="TemplateTwoPhaseLookup\Module_TemplateTwoPhaseLookup.ixx" />
     <ClCompile Include="TemplateTwoPhaseLookup\TemplateTwoPhaseLookup.cpp" />
+    <ClCompile Include="ToUnderlying\Module_ToUnderlying.ixx" />
+    <ClCompile Include="ToUnderlying\ToUnderlying.cpp" />
     <ClCompile Include="Transform\Module_Transform.ixx" />
     <ClCompile Include="Transform\Transform.cpp" />
     <ClCompile Include="Trim\Module_Trim.ixx" />
@@ -449,6 +451,7 @@
     <None Include="TemplateStaticPolymorphism\TemplateStaticPolymorphism.md" />
     <None Include="TemplateTemplateParameter\TemplateTemplateParameter.md" />
     <None Include="TemplateTwoPhaseLookup\TemplateTwoPhaseLookup.md" />
+    <None Include="ToUnderlying\ToUnderlying.md" />
     <None Include="Transform\cpp_snippet_transform_01.svg" />
     <None Include="Transform\cpp_snippet_transform_02.svg" />
     <None Include="Transform\Transform.md" />
