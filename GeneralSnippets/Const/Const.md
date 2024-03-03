@@ -16,7 +16,7 @@ Mit C++20 haben wir vier Schlüsselwörter, die mit `const` beginnen:
 <img src="cpp_const.svg" width="250">
 </p>
 
-*Abbildung* 2: Verschiedene Varianten mit `const`.
+*Abbildung* 1: Verschiedene Varianten mit `const`.
 
 
 ## `const` 
