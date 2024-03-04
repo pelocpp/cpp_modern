@@ -16,18 +16,18 @@
 
 ## Allgemeines
 
-C++ ist eine "imperative, objektorientierte Programmiersprache" und keine "funktionale Programmiersprache".
-Mit den Neuerungen des so genannten "Modern C++" lassen sich aber auch
-einige Aspekte der "funktionalen Programmierung" in C++ darstellen.
+C++ ist eine &bdquo;prozedurale, objektorientierte und generische Programmiersprache&rdquo; und keine rein &bdquo;funktionale Programmiersprache&rdquo;.
+Mit den Neuerungen des so genannten &bdquo;Modern C++&rdquo; lassen sich aber auch
+einige Aspekte der &bdquo;funktionalen Programmierung&rdquo; in C++ darstellen.
 
-"Funktionen" ähneln Methoden. Aber anders als Methoden werden Funktionen bei der "funktionalen Programmierung" weitergereicht, beispielsweise als Argumente an Methoden oder als Return-Wert einer Methode.
+&bdquo;Funktionen&rdquo; ähneln Methoden. Aber anders als Methoden werden Funktionen bei der &bdquo;funktionalen Programmierung&rdquo; weitergereicht, beispielsweise als Argumente an Methoden oder als Return-Wert einer Methode.
 Dies ist in C++ spätestens seit Einführung der Lambda-Funktionen elegant darstellbar.
 
-"Rein funktionale Sprachen" ("*pure functional languages*") wie beispielsweise *Haskell* sind zustandslos und Funktionen haben keinerlei Seiteneffekte. Sie ändern keine Daten, sondern können höchstens neue Daten als Resultat einer Funktion zurückliefern.
+&bdquo;Rein funktionale Sprachen&rdquo; (&bdquo;*Pure functional languages*&rdquo;) wie beispielsweise *Haskell* sind zustandslos und Funktionen haben keinerlei Seiteneffekte. Sie ändern keine Daten, sondern können höchstens neue Daten als Resultat einer Funktion zurückliefern.
 Das ist natürlich bei C++ anders. Hier können Funktionen durchaus Daten ändern, sei es wir betrachten
 den Zustand eines Objekts oder mögen es Seiteneffekte anderen Ursprungs sein.
 
-"Rein funktionale Programmierung" eignet sich ideal zur Parallelverarbeitung sowie für mathematische Aufgaben und steht in dem Ruf,
+&bdquo;Rein funktionale Programmierung&rdquo; eignet sich ideal zur Parallelverarbeitung sowie für mathematische Aufgaben und steht in dem Ruf,
 dass auf diese Weise erstellte Programme weniger fehleranfällig sind.
 Nachteilig ist, dass sich reale Objekte und Zustandsänderungen nur schwierig abbilden lassen, was die Programmierung realer Vorgänge und Geschäftsprozesse erschwert.
 Dies ist eben das Terrain der objektorientierten zustandsbehafteten Programmierung.
@@ -132,13 +132,13 @@ Age: 26
 Age: 26
 ```
 
-Es wird der funktionalen Programmierung als großer Vorteil angesehen,
+Es wird in der funktionalen Programmierung als großer Vorteil angesehen,
 wenn sich eine Funktion bei jedem Aufruf für dieselben Eingabedaten gleich verhält.
 
 Das bedeutet, dass wir die Logik einer Anwendung entwerfen können,
 indem wir sie in kleinere Funktionen zerlegen, von denen jede einen genauen und klaren Zweck hat.
 
-Für die reine Funktionen entsteht jedoch ein Mehraufwand hinsichtlich des zusätzlichen temporären Objekts.
+Für reine Funktionen entsteht jedoch ein Mehraufwand hinsichtlich zusätzlicher temporärer Objekte.
 
 Ein reguläres Design beinhaltet einen zentralen Speicher, der den Programmstatus enthält,
 der indirekt durch reine Funktionen aktualisiert werden kann.
@@ -187,7 +187,7 @@ Es folgt ein Beispiel, wie eine Funktion an eine andere Funktion übergeben werd
 
 Klasse `Function` ist eine Klasse mit einem überladenen Operator `operator()`.
 
-Immer, wenn wir den `operator()` einer Klasse überladen, machen wir Objekte dieser Klasse &bdquo;aufrufbar&rdquo;.
+Immer, wenn wir den `operator()` einer Klasse überladen, machen wir Objekte dieser Klasse &rdquo;aufrufbar&rdquo;.
 Alles, was aufrufbar ist, wird als Funktion behandelt.
 
 Ein Objekt einer Klasse, das über einen überladenen `operator()` verfügt, kann also als Funktion betrachtet werden.
@@ -238,12 +238,10 @@ bei genauem Hinsehen in den STL-Algorithmen vor:
   * `filter` - ähnlich zu `std::copy_if`.
   * `fold` - ähnlich zu `std::accumulate`.
 
-Im Beispielcode zu diesem Snippet ergänzen wir diese STL-Standardfunktionen mit einer adäquaten Hülle,
-so dass ihr Bezug zur funktionalen Programmierung deutlicher wird.
 
 ## Filter-Map-Reduce Pattern
 
-"Filter-Map-Reduce" beschreibt ein Pattern, bei dem eine Menge von Daten in einer Abfolge
+&bdquo;Filter-Map-Reduce&rdquo; beschreibt ein Pattern, bei dem eine Menge von Daten in einer Abfolge
 von bestimmten Schritten verarbeitet wird. Dabei ist `reduce` eine andere Bezeichnung für `fold`.
 
 Offensichtlich ist die Reihenfolge dabei wichtig:
