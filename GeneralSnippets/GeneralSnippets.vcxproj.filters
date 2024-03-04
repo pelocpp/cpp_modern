@@ -153,10 +153,10 @@
     <ClCompile Include="Random\Random.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="FunctionalProgramming\FunctionalProgramming01.cpp">
+    <ClCompile Include="FunctionalProgramming\FunctionalProgramming02.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="FunctionalProgramming\FunctionalProgramming02.cpp">
+    <ClCompile Include="FunctionalProgramming\FunctionalProgramming03.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CRTP\CRTP.cpp">
@@ -655,6 +655,9 @@
       <Filter>Modules</Filter>
     </ClCompile>
     <ClCompile Include="Const\Const.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FunctionalProgramming\FunctionalProgramming01.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

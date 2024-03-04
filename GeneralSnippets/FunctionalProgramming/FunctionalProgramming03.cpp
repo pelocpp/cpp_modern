@@ -1,5 +1,5 @@
 // =====================================================================================
-// FunctionalProgramming02.cpp // Functional Programming - Variante 1
+// FunctionalProgramming03.cpp // Functional Programming- Variante 2
 // =====================================================================================
 
 module;
@@ -8,86 +8,76 @@ module;
 
 module modern_cpp:functional_programming;
 
-namespace FunctionalProgramming_01 {
+namespace FunctionalProgramming_02 {
 
     // =================================================================================
 
-    template <typename TReturn, typename InputIterator, typename TFunctor>
-    auto fold(InputIterator begin, InputIterator end, TFunctor&& lambda)
-        // not needed, just for demonstration purposes
-        -> TReturn
+    // note: container is passed by value so that modifying the local copy
+    // does not affect the original container
+    template <typename TContainer, typename TResult, typename TFunctor>
+    TResult foldLeft(TContainer cont, TResult&& init, TFunctor&& lambda)
     {
-        TReturn init{};
-        return std::accumulate(begin, end, init, std::forward<TFunctor>(lambda));
+        return std::accumulate(
+            std::begin(cont),
+            std::end(cont),
+            std::move(init),
+            std::forward<TFunctor>(lambda));
+    }
+
+    template <typename TContainer, typename TResult, typename TFunctor>
+    TResult foldRight(TContainer cont, TResult&& init, TFunctor&& lambda)
+    {
+        return std::accumulate(
+            std::rbegin(cont),
+            std::rend(cont),
+            std::move(init),
+            std::forward<TFunctor>(lambda));
     }
 
     // =================================================================================
 
-    // alias template
-    template <typename T>
-    using ValueType = typename std::iterator_traits<T>::value_type;
+    template <typename TContainer, typename TFunctor>
+    auto filter(TContainer&& cont, TFunctor&& lambda)
 
-    template <typename InputIterator, typename TFunctor>
-    auto filter(InputIterator begin, InputIterator end, TFunctor&& lambda)
         // not needed, just for demonstration purposes
-        -> std::vector<ValueType<InputIterator>>
+        ->std::vector<typename std::remove_reference<decltype (cont[0])>::type >
     {
-        std::vector<ValueType<InputIterator>> result;
-        result.reserve(std::distance(begin, end));
-        std::copy_if(begin, end, std::back_inserter(result), std::forward<TFunctor>(lambda));
-        return result;
-    }
-
-    // without alias template
-    template <typename InputIterator, typename TFunctor>
-    auto filterEx(InputIterator begin, InputIterator end, TFunctor&& lambda)
-        // not needed, just for demonstration purposes
-        -> std::vector<typename std::iterator_traits<InputIterator>::value_type>
-    {
-        using ValueType = typename std::iterator_traits<InputIterator>::value_type;
+        using ValueType0 = decltype (cont[0]);  // retrieve type of single container element
+        using ValueType = typename std::remove_reference<ValueType0>::type;  
 
         std::vector<ValueType> result;
-        result.reserve(std::distance(begin, end));
-        std::copy_if(begin, end, std::back_inserter(result), std::forward<TFunctor>(lambda));
+        result.reserve(std::distance(std::begin(cont), std::end(cont)));
+        std::copy_if(
+            std::begin(cont),
+            std::end(cont), 
+            std::back_inserter(result),
+            std::forward<TFunctor>(lambda)
+        );
         return result;
     }
 
     // =================================================================================
 
-    template <typename InputIterator, typename TFunctor>
-    auto map(InputIterator begin, InputIterator end, TFunctor&& lambda)
+    template <typename TFunctor, typename TContainer>
+    auto map(TContainer cont, TFunctor&& lambda)
         // not needed, just for demonstration purposes
-        -> std::vector<decltype(std::declval<TFunctor>()(std::declval<typename std::iterator_traits<InputIterator>::value_type>()))>
+       -> std::vector<decltype(std::declval<TFunctor>()(std::declval<typename TContainer::value_type>()))>
     {
-        using FunctorValueType = decltype(std::declval<TFunctor>()(std::declval<ValueType<InputIterator>>()));
+        std::vector<decltype(std::declval<TFunctor>()(std::declval<typename TContainer::value_type>()))> result;
 
-        std::vector<FunctorValueType> result;
-        result.reserve(std::distance(begin, end));
-        std::transform(begin, end, std::back_inserter(result), std::forward<TFunctor>(lambda));
-        return result;
-    }
+        std::transform(
+            std::begin(cont),
+            std::end(cont),
+            std::back_inserter(result),
+            std::forward<TFunctor>(lambda));
 
-    // without alias template
-    template <typename InputIterator, typename TFunctor>
-    auto mapEx(InputIterator begin, InputIterator end, TFunctor&& lambda)
-        // not needed, just for demonstration purposes
-        -> std::vector<decltype(std::declval<TFunctor>()(std::declval<typename std::iterator_traits<InputIterator>::value_type>()))>
-    {
-        using ValueType = typename std::iterator_traits<InputIterator>::value_type;
-        using FunctorValueType = decltype(std::declval<TFunctor>()(std::declval<ValueType>()));
-
-        std::vector<FunctorValueType> result;
-        result.reserve(std::distance(begin, end));
-        std::transform(begin, end, std::back_inserter(result), std::forward<TFunctor>(lambda));
         return result;
     }
 
     // =================================================================================
     // testing 'filter'
 
-    // filtering even numbers in a list of numbers
     static void test_functional_filter_01() {
-
         std::vector<int> vec(20);
         std::generate(std::begin(vec), std::end(vec), [value = 0]() mutable {
             return ++value;
@@ -99,9 +89,8 @@ namespace FunctionalProgramming_01 {
         );
         std::cout << std::endl;
 
-        std::vector<int> result = filter(
-            std::begin(vec), 
-            std::end(vec),
+        auto result = filter(
+            vec,
             [](unsigned i) { return i % 2 == 0; }
         );
 
@@ -126,8 +115,7 @@ namespace FunctionalProgramming_01 {
         std::cout << std::endl;
 
         std::vector<int> result = map(
-            std::begin(numbers),
-            std::end(numbers),
+            numbers,
             [](int const i) { return std::abs(i); }
         );
 
@@ -136,7 +124,6 @@ namespace FunctionalProgramming_01 {
         }
     }
 
-    // mapping list of numbers to new list with each number multiplied by 2 
     static void test_functional_map_02b() {
         std::vector<int> vec(20);
         std::generate(std::begin(vec), std::end(vec), [value = 0]() mutable {
@@ -150,8 +137,7 @@ namespace FunctionalProgramming_01 {
         std::cout << std::endl;
 
         std::vector<int> result = map(
-            std::begin(vec),
-            std::end(vec),
+            vec,
             [](int i) { return i * 2; }
         );
 
@@ -162,7 +148,6 @@ namespace FunctionalProgramming_01 {
         std::cout << std::endl;
     }
 
-    // mapping list of strings to new list with integers 
     static void test_functional_map_02c() {
         std::vector<std::string> vec = { "1", "2", "3", "4", "5", "6", "7" , "8", "9", "10" };
         std::for_each(std::begin(vec), std::end(vec), [](std::string s) {
@@ -171,8 +156,7 @@ namespace FunctionalProgramming_01 {
         std::cout << std::endl;
 
         auto result = map(
-            std::begin(vec),
-            std::end(vec),
+            vec,
             [](std::string s) { return std::stoi(s); }  // convert strings to int
         );
 
@@ -191,8 +175,7 @@ namespace FunctionalProgramming_01 {
         std::cout << std::endl;
 
         auto result = map(
-            std::begin(vec),
-            std::end(vec),
+            vec,
             [](float f) { return std::to_string(f); }  // convert float to string
         );
 
@@ -205,7 +188,7 @@ namespace FunctionalProgramming_01 {
 
     static void test_functional_map_02e() {
 
-        std::vector<std::string> words = {
+        std::vector<std::string> words = { 
             std::string("one"),
             std::string("two"),
             std::string("three")
@@ -217,8 +200,7 @@ namespace FunctionalProgramming_01 {
         std::cout << std::endl;
 
         auto result = map(
-            std::begin(words),
-            std::end(words),
+            words,
             [](std::string word) {
                 // convert std::string to upper case
                 std::transform(std::begin(word), std::end(word), std::begin(word), ::toupper);
@@ -241,36 +223,34 @@ namespace FunctionalProgramming_01 {
     {
         std::vector<int> numbers = std::vector <int>{ 0, 2, -3, 5, -1, 6, 8, -4, 9 };
 
-        int sum1 = fold<int>(
-            std::begin(numbers),
-            std::end(numbers),
+        int sum = foldLeft(
+            numbers,
+            0,
             [](const int n, const int m) {return n + m; }
         );
 
-        std::cout << sum1 << std::endl;
+        std::cout << sum << std::endl;
     }
 
     // concatenating a list of strings into a single string
     static void test_functional_fold_03b() {
-        std::list<std::string> words = { "Implementing", "fold", "with", "Modern", "C++" };
-        std::for_each(std::begin(words), std::end(words), [](std::string s) {
-            std::cout << s;
+        std::list<std::string> list = { "Implementing", "fold", "with", "Modern", "C++" };
+        std::for_each(std::begin(list), std::end(list), [](std::string s) {
+            std::cout << s << ' ';
             });
         std::cout << std::endl;
 
-        // testing left fold
-        auto result1 = fold<std::string>(
-            std::begin(words),
-            std::end(words),
+        auto result1 = foldLeft(
+            list,
+            std::string(""),
             [](std::string a, std::string b) { return a + std::string(":") + b; }
         );
 
         std::cout << result1 << std::endl;
 
-        // testing right fold - note usage of reverse iterators
-        auto result2 = fold<std::string>(
-            std::rbegin(words),
-            std::rend(words),
+        auto result2 = foldRight(
+            list,
+            std::string(""),
             [](std::string a, std::string b) { return a + std::string(":") + b; }
         );
 
@@ -280,30 +260,30 @@ namespace FunctionalProgramming_01 {
     // concatenating an array of characters into a string
     static void test_functional_fold_03c()
     {
-        char chars[] = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j' };
+        char chars[] = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 0 };
 
-        auto txt1 = fold<std::string>(
-            std::begin(chars),
-            std::end(chars),
-            std::plus<>()); 
+        auto txt1 = foldLeft<std::string>(
+            chars,
+            std::string(""),
+            std::plus<>());
         std::cout << txt1 << std::endl; // abcdefghij
 
-        auto txt2 = fold<std::string>(
-            std::rbegin(chars),
-            std::rend(chars),
+        auto txt2 = foldRight<std::string>(
+            chars,
+            std::string(""),
             std::plus<>());
         std::cout << txt2 << std::endl; // jihgfedcba
     }
 
-    //// =================================================================================
+    // =================================================================================
+    // testing 'Filter-Map-Reduce' Pattern
 
     static void test_functional_fmr_pattern_04a()
     {
         auto numbers = std::vector<int>{ 0, 2, -3, 5, -1, 6, 8, -4, 9 };
 
         std::vector<int> result = map(
-            std::begin(numbers),
-            std::end(numbers),
+            numbers,
             [](int i) { return std::abs(i); }
         );
 
@@ -313,8 +293,7 @@ namespace FunctionalProgramming_01 {
         std::cout << std::endl;
 
         std::vector<int> result2 = map(
-            std::begin(numbers),
-            std::end(numbers),
+            result,
             [](int i) { return i * i; }
         );
 
@@ -323,16 +302,34 @@ namespace FunctionalProgramming_01 {
         }
         std::cout << std::endl;
 
-        int sum = fold<int>(
-            std::begin(result2),
-            std::end(result2),
+        int sum = foldLeft(
+            result2,
+            0,
             [](int n, int m) {return n + m; }
         );
 
         std::cout << sum << std::endl;
     }
 
-    // testing 'Filter-Map-Reduce' Pattern
+    static void test_functional_fmr_pattern_04a_compact() {
+
+        std::vector<int> numbers = std::vector<int>{ 0, 2, -3, 5, -1, 6, 8, -4, 9 };
+
+        int sum = foldLeft(
+            map(
+                map(
+                    numbers,
+                    [](int i) { return std::abs(i); }
+                ),
+                [](int i) { return i * i; }
+            ),
+            0,
+            [](int n, int m) {return n + m; }
+        );
+
+        std::cout << sum << std::endl;
+    }
+
     class Book {
     public:
         std::string m_title;
@@ -343,7 +340,7 @@ namespace FunctionalProgramming_01 {
 
     static void test_functional_fmr_pattern_04b() {
 
-        std::list<Book> booksList{
+        std::vector<Book> booksList{
             {"C", "Dennis Ritchie", 1972, 11.99 } ,
             {"Java", "James Gosling", 1995, 19.99 },
             {"C++", "Bjarne Stroustrup", 1985, 20.00 },
@@ -354,21 +351,19 @@ namespace FunctionalProgramming_01 {
         // b) extract book title
         // c) reduce to result string, e.g. comma seperated list
 
-        auto result1 = filter(
-            std::begin(booksList),
-            std::end(booksList),
+        std::vector<Book> result1 = filter(
+            booksList,
             [](const Book& book) { return book.m_year >= 1990; }
         );
 
-        auto result2 = map(
-            std::begin(result1),
-            std::end(result1),
+        std::vector<std::string> result2 = map(
+            result1,
             [](const Book& book) { return book.m_title; }  // convert Book to string
         );
 
-        auto result3 = fold<std::string>(
-            std::begin(result2),
-            std::end(result2),
+        std::string result3 = foldLeft(
+            result2,
+            std::string(""),
             [](std::string a, std::string b) {
                 std::ostringstream oss;
                 if (a.empty()) {
@@ -384,6 +379,43 @@ namespace FunctionalProgramming_01 {
         std::cout << result3 << std::endl;
     }
 
+    static void test_functional_fmr_pattern_04b_compact() {
+
+        std::vector<Book> booksList{
+            {"C", "Dennis Ritchie", 1972, 11.99 } ,
+            {"Java", "James Gosling", 1995, 19.99 },
+            {"C++", "Bjarne Stroustrup", 1985, 20.00 },
+            {"C#", "Anders Hejlsberg", 2000, 29.99 }
+        };
+
+        // a) filter books which appeared past 1990
+        // b) extract book title
+        // c) reduce to result string, e.g. comma seperated list
+
+        std::string result = foldLeft(
+            map(
+                filter(
+                    booksList,
+                    [] (const Book& book) { return book.m_year >= 1990; }
+                ),
+                [] (const Book& book) { return book.m_title; }  // convert Book to string
+            ),
+            std::string(""),
+            [] (std::string a, std::string b) {
+                std::ostringstream oss;
+                if (a.empty()) {
+                    oss << b;
+                }
+                else {
+                    oss << a << ", " << b;
+                }
+                return oss.str();
+            }
+        );
+
+        std::cout << result << std::endl;
+    }
+
     // helper class
     class SearchResult {
     public:
@@ -393,7 +425,7 @@ namespace FunctionalProgramming_01 {
 
     static void test_functional_fmr_pattern_04c() {
 
-        std::list<Book> booksList{
+        std::vector<Book> booksList{
             {"C", "Dennis Ritchie", 1972, 11.99 } ,
             {"Java", "James Gosling", 1995, 19.99 },
             {"C++", "Bjarne Stroustrup", 1985, 20.00 },
@@ -405,20 +437,18 @@ namespace FunctionalProgramming_01 {
         // c) reduce to result string, e.g. comma separated list
 
         auto result1 = filter(
-            std::begin(booksList),
-            std::end(booksList),
+            booksList,
             [](const Book& book) { return book.m_year >= 1990; }
         );
 
         auto result2 = map(
-            std::begin(result1),
-            std::end(result1),
+            result1,
             [](const Book& book) { return SearchResult{ book.m_title, book.m_author }; }
         );
 
-        auto result3 = fold<std::string>(
-            std::begin(result2),
-            std::end(result2),
+        std::string result3 = foldLeft(
+            result2,
+            std::string(""),
             [](std::string a, SearchResult b) -> std::string {
                 std::ostringstream oss;
                 if (a.empty()) {
@@ -434,10 +464,47 @@ namespace FunctionalProgramming_01 {
         std::cout << result3 << std::endl;
     }
 
+    static void test_functional_fmr_pattern_04c_compact() {
+
+        std::vector<Book> booksList{
+            {"C", "Dennis Ritchie", 1972, 11.99 } ,
+            {"Java", "James Gosling", 1995, 19.99 },
+            {"C++", "Bjarne Stroustrup", 1985, 20.00 },
+            {"C#", "Anders Hejlsberg", 2000, 29.99 }
+        };
+
+        // a) filter books which appeared past 1990
+        // b) extract book title and authors name
+        // c) reduce to result string, e.g. comma separated list
+
+        std::string result = foldLeft(
+            map(
+                filter(
+                    booksList,
+                    [](const Book& book) { return book.m_year >= 1990; }
+                ),
+                [](const Book& book) { return SearchResult{ book.m_title, book.m_author }; }
+            ),
+            std::string(""),
+            [](std::string a, SearchResult b) -> std::string {
+                std::ostringstream oss;
+                if (a.empty()) {
+                    oss << b.m_title << " [" << b.m_author << ']';
+                }
+                else {
+                    oss << a << " | " << b.m_title << " [" << b.m_author << ']';
+                }
+                return oss.str();
+            }
+        );
+
+        std::cout << result << std::endl;
+    }
+
     // same query, using 'std::pair' utility class
     static void test_functional_fmr_pattern_04d() {
 
-        std::list<Book> booksList{
+        std::vector<Book> booksList{
             {"C", "Dennis Ritchie", 1972, 11.99 } ,
             {"Java", "James Gosling", 1995, 19.99 },
             {"C++", "Bjarne Stroustrup", 1985, 20.00 },
@@ -449,20 +516,18 @@ namespace FunctionalProgramming_01 {
         // c) reduce to result string, e.g. comma separated list
 
         auto result1 = filter(
-            std::begin(booksList),
-            std::end(booksList),
+            booksList,
             [](const Book& book) { return book.m_year >= 1990; }
         );
 
         auto result2 = map(
-            std::begin(result1),
-            std::end(result1),
+            result1,
             [](const Book& book) { return std::make_pair(book.m_title, book.m_author); }
         );
 
-        auto result3 = fold<std::string>(
-            std::begin(result2),
-            std::end(result2),
+        auto result3 = foldLeft(
+            result2,
+            std::string(""),
             [](std::string a, std::pair<std::string, std::string> b) -> std::string {
                 std::ostringstream oss;
                 if (a.empty()) {
@@ -477,11 +542,48 @@ namespace FunctionalProgramming_01 {
 
         std::cout << result3 << std::endl;
     }
+
+    static void test_functional_fmr_pattern_04d_compact() {
+
+        std::vector<Book> booksList{
+            {"C", "Dennis Ritchie", 1972, 11.99 } ,
+            {"Java", "James Gosling", 1995, 19.99 },
+            {"C++", "Bjarne Stroustrup", 1985, 20.00 },
+            {"C#", "Anders Hejlsberg", 2000, 29.99 }
+        };
+
+        // a) filter books which appeared past 1990
+        // b) extract book title and authors name
+        // c) reduce to result string, e.g. comma separated list
+
+        std::string result = foldLeft(
+            map(
+                filter(
+                    booksList,
+                    [](const Book& book) { return book.m_year >= 1990; }
+                ),
+                [](const Book& book) { return std::make_pair(book.m_title, book.m_author); }
+            ),
+            std::string(""),
+            [](std::string a, std::pair<std::string, std::string> b) -> std::string {
+                std::ostringstream oss;
+                if (a.empty()) {
+                    oss << b.first << " [" << b.second << ']';
+                }
+                else {
+                    oss << a << " | " << b.first << " [" << b.second << ']';
+                }
+                return oss.str();
+            }
+        );
+
+        std::cout << result << std::endl;
+    }
 }
 
-void main_functional_programming()
+void main_functional_programming_alternate()
 {
-    using namespace FunctionalProgramming_01;
+    using namespace FunctionalProgramming_02;
 
     // testing 'filter'
     test_functional_filter_01();
@@ -500,9 +602,13 @@ void main_functional_programming()
 
     // testing 'fold-map-reduce' pattern
     test_functional_fmr_pattern_04a();
+    test_functional_fmr_pattern_04a_compact();
     test_functional_fmr_pattern_04b();
+    test_functional_fmr_pattern_04b_compact();
     test_functional_fmr_pattern_04c();
+    test_functional_fmr_pattern_04c_compact();
     test_functional_fmr_pattern_04d();
+    test_functional_fmr_pattern_04d_compact();
 }
 
 // =====================================================================================

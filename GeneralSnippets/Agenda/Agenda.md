@@ -150,7 +150,14 @@
   * Grundlagen
   * Folding &bdquo;über einem Komma&rdquo;
 
+  
+## Funktionale Programmierung mit C++
+  * Grundlagen
+  * *Pure* Funktionen
+  * Funktionen höherer Ordnung
+  * Ein Beispiel mit STL und *Ranges*
 
+  
 ## Expression Templates / Lazy Evaluation
   * Allgemeines
   * Beispiel Klasse `Matrix`

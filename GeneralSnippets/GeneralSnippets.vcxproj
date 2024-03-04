@@ -240,6 +240,7 @@
     <ClCompile Include="Folding\Folding.cpp" />
     <ClCompile Include="FunctionalProgramming\FunctionalProgramming01.cpp" />
     <ClCompile Include="FunctionalProgramming\FunctionalProgramming02.cpp" />
+    <ClCompile Include="FunctionalProgramming\FunctionalProgramming03.cpp" />
     <ClCompile Include="FunctionalProgramming\Module_FunctionalProgramming.ixx" />
     <ClCompile Include="Generate\Generate.cpp" />
     <ClCompile Include="Generate\Module_Generate.ixx" />
