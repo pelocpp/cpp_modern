@@ -206,6 +206,7 @@
 
 
 ## C++&ndash;23: Odds and Ends
+  * Modularisierte Standardbibliothek
   * C++ Standard-Attribute
   * Klasse `std::source_location`
   * Funktion `std::to_underlying`

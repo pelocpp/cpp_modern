@@ -265,6 +265,8 @@
     <ClCompile Include="MetaProgramming\MetaProgramming01.cpp" />
     <ClCompile Include="MetaProgramming\MetaProgramming02.cpp" />
     <ClCompile Include="MetaProgramming\Module_MetaProgramming.ixx" />
+    <ClCompile Include="ModularizedStandardLibrary\ModularizedStandardLibrary.cpp" />
+    <ClCompile Include="ModularizedStandardLibrary\Module_ModularizedStandardLibrary.ixx" />
     <ClCompile Include="Modules_Import\Modules_Import.cpp" />
     <ClCompile Include="Modules_Import\Module_Modules_Import.ixx" />
     <ClCompile Include="Modules_Import\HelloWorldProgram.cpp" />
@@ -423,6 +425,7 @@
     <None Include="MemoryLeaks\MemoryLeaksDetection.md" />
     <None Include="MetaProgramming\Metaprogramming01.md" />
     <None Include="MetaProgramming\Metaprogramming02.md" />
+    <None Include="ModularizedStandardLibrary\ModularizedStandardLibrary.md" />
     <None Include="Modules_Import\Modules_Import.md" />
     <None Include="MoveSemantics\MoveSemantics.md" />
     <None Include="OnlineCppCompilers\OnlineCppCompilers.md" />
@@ -511,6 +514,7 @@
     <Image Include="Images\what_are_you_studying.png" />
     <Image Include="MetaProgramming\euler_number.png" />
     <Image Include="MetaProgramming\GGT_Algorithmus_Euklid.png" />
+    <Image Include="ModularizedStandardLibrary\ModularizedStandardLibrary.png" />
     <Image Include="OnlineCppCompilers\CompilerExplorer.png" />
     <Image Include="OnlineCppCompilers\Cppinsights.png" />
     <Image Include="OnlineCppCompilers\Wandbox.png" />

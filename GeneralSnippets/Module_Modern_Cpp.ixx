@@ -42,6 +42,9 @@ export import :lambda;
 export import :literals;
 export import :memory_leaks_detection;
 export import :metaprogramming;
+
+export import :modularized_standard_library;
+
 export import :module_import;
 export import :move_semantics;
 export import :optional;

@@ -660,6 +660,12 @@
     <ClCompile Include="FunctionalProgramming\FunctionalProgramming01.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ModularizedStandardLibrary\Module_ModularizedStandardLibrary.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModularizedStandardLibrary\ModularizedStandardLibrary.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -1049,6 +1055,9 @@
     <None Include="Const\cpp_const.svg">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="ModularizedStandardLibrary\ModularizedStandardLibrary.md">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="VariadicTemplates\cpp_snippets_mixins_01.png">
@@ -1143,6 +1152,9 @@
     </Image>
     <Image Include="Images\what_are_you_studying.png">
       <Filter>Images</Filter>
+    </Image>
+    <Image Include="ModularizedStandardLibrary\ModularizedStandardLibrary.png">
+      <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
 </Project>

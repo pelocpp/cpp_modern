@@ -161,6 +161,7 @@ Es folgt eine tabellarische Auflistung dieser Unterverzeichnisse.
 | [Literals](GeneralSnippets/Literals/Literals.md) | Benutzerdefinierte Literale |
 | [MemoryLeaks](GeneralSnippets/MemoryLeaks/MemoryLeaksDetection.md) | CRT (C-Runtime-Library) Memory Leak Detection |
 | [MetaProgramming](GeneralSnippets/MetaProgramming/Metaprogramming01.md) | Programmierung zur Übersetzungszeit |
+| [ModularizedStandardLibrary](GeneralSnippets/ModularizedStandardLibrary/ModularizedStandardLibrary.md) | Modularisierte Standardbibliothek |
 | [Modules](GeneralSnippets/Modules_Import/Modules_Import.md) | Module |
 | [MoveSemantics](GeneralSnippets/MoveSemantics/MoveSemantics.md) | *Move Semantics* / Verschiebesemantik |
 | [Optional](GeneralSnippets/Optional/Optional.md) | Neue STL-Utility Klasse `std::optional` |
