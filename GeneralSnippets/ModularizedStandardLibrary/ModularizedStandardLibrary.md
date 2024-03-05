@@ -21,10 +21,10 @@ Ab C++23 gibt es zwei benannte Module:
   * `std`
   * `std.compat`
 
-  * Das Modul `std` importiert die im Namensraum `std::` der C++-Standardbibliothek definierten Deklarationen und Namen
+Das Modul `std` importiert die im Namensraum `std::` der C++-Standardbibliothek definierten Deklarationen und Namen
 wie beispielsweise `std::vector`. 
 
-  * Das Modul `std.compat` importiert globale Namensräume der &bdquo;C Runtime Library&rdquo; wie
+Das Modul `std.compat` importiert globale Namensräume der &bdquo;C Runtime Library&rdquo; wie
 `::printf`, `::fopen`, `::size_t`, `::strlen` usw.
 Das Modul `std.compat` erleichtert die Arbeit mit Codebasen,
 die auf viele &bdquo;C Runtime Library&rdquo;-Funktionen/-Typen im globalen Namensraum verweisen.
