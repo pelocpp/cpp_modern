@@ -62,7 +62,7 @@ int main()
         //main_memory_leaks_detection();
         //main_metaprogramming_01();
         //main_metaprogramming_02(); 
-        main_modularized_standard_library(); 
+        //main_modularized_standard_library(); 
         //main_modules_import();
         //main_move_semantics();
         //main_optional();
