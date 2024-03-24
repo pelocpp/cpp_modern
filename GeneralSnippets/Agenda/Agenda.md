@@ -27,7 +27,7 @@
   * *Capture*-Klausel
   * *Closure* von Lambdas
   * Lambdas und `std::function<T>`
-  * Zusammenhang Lambda-Objekt und aufrufbares Objekt
+  * Zusammenhang Lambda-Objekt und aufrufbare Objekte
   * IIFE -Immediately Invoked Functional Expression (Lambda)
 
 
@@ -69,13 +69,13 @@
 
 ## `constexpr`
   * `constexpr` Variablen
-  * Klassen / benutzerdefinerte Datentypen mit `constexpr` Konstruktoren
+  * Klassen / benutzerdefinierte Datentypen mit `constexpr` Konstruktoren
   * `constexpr`-Funktionen und `constexpr`-Lambda-Funktionen
   * `const`, `constexpr`, `consteval` und `constinit`
 
 
 ## Benutzerdefinierte Literale
-  * Beispiel Klasse `Color`
+  * Beispiel eines Literals `0xFF0000_rgb`
   * Benutzerdefinierte Literale und `constexpr`
 
 
