@@ -4,10 +4,12 @@
 
 ---
 
-## Verschiebe-Semantik
+## Verschiebe-Semantik (*Move*-Semantik)
+  * *Move*-Semantik einsetzen um teures Kopieren durch billiges Verschieben zu ersetzen
+  * *Move*-Semantik einsetzen um Daten zu verschieben, die nicht kopiert werden können
   * *RValues* und *LValues*
-  * Verschiebe-Semantik (*Move*&ndash;*Semantics*)
-  * &bdquo;Big-Three&rdquo;, &bdquo;Big-Five&rdquo; und &bdquo;Rule of Zero&rdquo; 
+  * Verschiebe-Semantik (*Move*&ndash;*Semantics*) erklärt
+  * &bdquo;Rule of Three&rdquo;, &bdquo;Rule of Five&rdquo; und &bdquo;Rule of Zero&rdquo; 
 
 
 ## `auto`
@@ -16,9 +18,6 @@
   * Funktionsdefinition mit *Trailing Return Type*
   * Verlust von `const` und `&` (Referenz) bei `auto`
   * `decltype(auto)`
-  * `auto` versus `decltype`
-  * `auto` versus `decltype(auto)`
-  * Typableitung bei Template Parametern / *Template Parameter Type Deduction*
   * Möglichkeiten des Gebrauchs von `auto` im Vergleich
 
 
@@ -28,7 +27,7 @@
   * *Closure* von Lambdas
   * Lambdas und `std::function<T>`
   * Zusammenhang Lambda-Objekt und aufrufbare Objekte
-  * IIFE -Immediately Invoked Functional Expression (Lambda)
+  * IIFE &ndash; *Immediately Invoked Functional Expression*
 
 
 ## Generische Lambda Ausdrücke
@@ -48,7 +47,6 @@
 
 ## Initialisierung
   * Initialisierung (&bdquo;Brace Initialization&rdquo; bzw. &bdquo;Uniform Initialization&rdquo;)
-  * Default-Initialisierung für Member-Variablen
   * Initialisierungslisten (`std::initializer_list`)
 
 
@@ -68,7 +66,8 @@
   * Memory Leaks Detection
 
 ## `constexpr`
-  * `constexpr` Variablen
+  * Funktionen mit `constexpr` verwenden um teure Berechnungen in die Übersetzungszeit zu verschieben
+  * `constexpr` erklärt
   * Klassen / benutzerdefinierte Datentypen mit `constexpr` Konstruktoren
   * `constexpr`-Funktionen und `constexpr`-Lambda-Funktionen
   * `const`, `constexpr`, `consteval` und `constinit`
@@ -97,32 +96,30 @@
 
 
 ## Standard Template Library (STL)
-  * Container
-  * Iteratoren
+  * STL-Container, -Iteratoren, -Algorithmen und aufrufbare Objekte
+  * Von sequentiellen auf ungeordnete assoziative Container umsteigen, um die Laufzeit zu verbessern
   * Algorithmen
-  * Funktionsobjekte und Lambdas
+  * STL-Algorithmen und Lambdas
 
 
-## STL-Algorithmen
+## Ausgewählte STL-Algorithmen
   * `std::generate`
   * `std::accumulate`
   * `std::transform`
   * `std::back_inserter` (Iterator-Adapter)
-  * STL-Algorithmen und Lambda-Ausdrücke
   * Das *Erase-Remove*-Idiom
 
 
 ## Metaprogramming
   * Grundlagen
   * Wiederholungsanweisung, bedingte Anweisung und Rückgabewert
-  * List Processing
 
 
 ## &bdquo;Type Traits&rdquo;
   * Eigenschaften von Datentypen zur Übersetzungszeit betrachten / ändern
   * `decltype` und `std::declval`
   * `Iterator::value_type` und `Iterator::iterator_category`
-  * `std::remove_reference`
+  * `std::remove_reference` und `std::remove_const` erkärt
 
 
 ## Konzepte (*Concepts*) und Einschränkungen (*Requirements*) für Klassen
@@ -134,15 +131,10 @@
 ## Variadische Templates
   * Allgemeines / Einführende Beispiele
   * Anwendungsfall: Zugriff auf jedes einzelne Argument
-  * Anwendungsfall: &bdquo;Summe von Summen&rdquo;
   * Anwendungsfall: Mixins
   * Anwendungsfall: *emplace*-Technik
-
-
-## Vertiefungen zu (variadischen) Templates
   * *Perfect Forwarding* (*Universal Reference*)
-  * `constexpr_if`
-  * `std::apply`
+  * `constexpr if`
   * `std::invoke`
 
 
@@ -159,19 +151,17 @@
 
   
 ## Expression Templates / Lazy Evaluation
-  * Allgemeines
+  * Allgemeines / Erläuterung
   * Beispiel Klasse `Matrix`
-  * Beispiel &bdquo;Konkatenation von Zeichenketten&rdquo;
 
 
 ## Ergänzungen zu Zeichenketten
-  * `std::string_view`
-  * SSO (Small String Optimization)
-  * Leerzeichen am Anfang und Ende einer Zeichenkette entfernen (`std::find_if`, `erase` und `base`)
+  * Klasse `std::string_view`
+  * SSO (*Small String Optimization*)
 
 
 ## Neue Utility Klassen
-  * `std::array`, `std::to_array` und `std::span`
+  * `std::array`, `std::to_array` und `std::span`:<br />Speicher- und Laufzeitcharakteristik eines C-Arrays mit der Schnittstelle eines C++-Vektors verbinden
   * `std::optional`
   * `std::variant`
   * `std::any`
@@ -179,30 +169,33 @@
   * `std::tuple`
   * `std::reference_wrapper` und `std::ref`
   * `std::common_type`
-  * Vertiefungen zu `std::variant`: Das Visitor-Konzept mit `std::visit` und das sog. *Overload*&ndash;Pattern
+  * Vertiefungen zu `std::variant`: Das *Visitor*-Konzept mit `std::visit` und das sog. *Overload*&ndash;Pattern
 
 
-## SFINAE (&bdquo;Substitution failure is not an error&rdquo;)
-  * Allgemeines
-  * Beispiel
-
+## Performanz Betrachtung
+  * Vergleich von statischem Polymorphismus (Templates) mit dynamischem Polymorphismus<br />(virtueller Methodenaufrufmechanismus)
+  * Beispiel &bdquo;Buchhandlung&rdquo;
+  
 
 ## CRTP (&bdquo;Curiously recurring template pattern&rdquo;)
   * Allgemeines
   * Beispiel &bdquo;Mixins&rdquo;
 
 
-## Multithreading
-  * RAII (Allgemeines / Beispiel `ofstream`/ Beispiel *Clipboard*)
-  * `std::thread` (&bdquo;Simple Threading&rdquo;)
-  * Atomare Operationen
-  * Mutual Exclusion / Locks (ScopedLock, UniqueLock und Condition_Variable)
-  * Async (`std::async`)
-  * Future & Promise (`std::promise` und `std::future`)
-  * Die Klasse `std::std::packaged_task`
-  * Exception Forwarding
-  * C++&ndash;20: Verriegelungen (*Latches*) und Barrieren (*Barriers*)
-  * C++&ndash;20: Parallelisierung von STL-Algorithmen
+## Multithreading / Concurrency
+  * RAII
+  * Nebenläufige Ausführung: Klasse `std::thread`
+  * Mutexe und Sperrmechanismen
+  * Nochmals nebenläufige Ausführung: Funktion `std::async` und Thread-Pool
+  * Futures und Promises: Klassen `std::future` und `std::promise`
+  * Funktionen verpacken: Klasse `std::packaged_task`
+  * Nochmals nebenläufige Ausführung: Klasse `std::jthread`
+  * Die Klassen `std::stop_source`, `std::stop_token` und `std::stop_callback`
+  * Verriegelungen und Barrieren: Klassen `std::latch` und `std::barrier`
+  * Semaphore: Klassen `std::binary_semaphore` und `std::counting_semaphore`
+  * Parallelisierung von STL-Algorithmen
+  * Anwendungsbeispiel: Das Erzeuger-Verbraucher Problem
+  * Anwendungsbeispiel: Event Loop - Ereigniswarteschlange
 
 
 ## C++&ndash;23: Odds and Ends

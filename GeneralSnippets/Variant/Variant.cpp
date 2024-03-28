@@ -132,8 +132,6 @@ namespace VariantDemo {
     class Visitor
     {
     public:
-        Visitor() = default;
-
         void operator() (int n) {
             std::cout << "int: " << n << std::endl;
         }

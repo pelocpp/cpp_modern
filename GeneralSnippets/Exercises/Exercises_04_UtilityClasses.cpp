@@ -167,7 +167,7 @@ namespace Exercises_UtilityClasses {
 
                 size_t total{};
 
-                for (const auto& element : m_stock) {
+                for (const auto& media : m_stock) {
 
                     size_t count{};
 
@@ -175,7 +175,7 @@ namespace Exercises_UtilityClasses {
                         [&](const auto& element) {
                             count = element.getCount();
                         },
-                        element
+                        media
                     );
 
                     total += count;
