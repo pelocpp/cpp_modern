@@ -35,11 +35,13 @@ void main_keyword_explicit()
 
     // a Complex object
     Complex c{ 3.0, 0.0 };
-
-    if (c == 3.0) {
+    
+    if (c == 3.0)  // remove or add cast '(Complex)'
+    {
         std::cout << "Same objects";
     }
-    else {
+    else
+    {
         std::cout << "Not same objects";
     }
 }
