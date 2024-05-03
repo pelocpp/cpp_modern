@@ -138,7 +138,7 @@
   * `std::invoke`
 
 
-## Folding
+## Folding-Ausdrücke
   * Grundlagen
   * Folding &bdquo;über einem Komma&rdquo;
 
@@ -172,7 +172,7 @@
   * Vertiefungen zu `std::variant`: Das *Visitor*-Konzept mit `std::visit` und das sog. *Overload*&ndash;Pattern
 
 
-## Performanz Betrachtung
+## Performanzbetrachtung
   * Vergleich von statischem Polymorphismus (Templates) mit dynamischem Polymorphismus<br />(virtueller Methodenaufrufmechanismus)
   * Beispiel &bdquo;Buchhandlung&rdquo;
   

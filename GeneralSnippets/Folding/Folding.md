@@ -1,4 +1,4 @@
-# Variadische Templates: Fold-Ausdrücke
+# Folding-Ausdrücke
 
 [Zurück](../../Readme.md)
 
