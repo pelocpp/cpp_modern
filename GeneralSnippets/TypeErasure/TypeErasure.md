@@ -13,9 +13,9 @@
 #### [Einleitung](#link1)
 #### [Beschreibung](#link2)
 #### [C++ Klassenbibliothek STL](#link3)
-#### [Benutzerdefinierte Realisierung des *Type Erasure* Idioms](#link4)
-#### [Eine Verbesserung mit Konzepten ](#link5)
-#### [Ein Beispiel: Buchhandung ](#link6)
+#### [Benutzerdefinierte Implementierung des *Type Erasure* Idioms](#link4)
+#### [Verbesserung der Implementierung mit Konzepten](#link5)
+#### [Ein Beispiel: Buchhandung](#link6)
 #### [Fazit](#link7)
 #### [Literaturhinweise](#link8)
 
@@ -65,7 +65,7 @@ wenngleich uns dies vermutlicherweise nicht unmittelbar bewusst ist:
 
 
 
-## Benutzerdefinierte Realisierung des *Type Erasure* Idioms  <a name="link4"></a>
+## Benutzerdefinierte Implementierung des *Type Erasure* Idioms  <a name="link4"></a>
 
 
 Zusätzlich zu den Möglichkeiten, die die C++&ndash;Standardbibliothek bietet,
@@ -274,7 +274,7 @@ Ein **Modell** ist ein auf Templates basierendes Wrapper-Objekt, das die **Konze
 und alle Konzept-Methoden an den zugrunde liegenden, konkreten Typ weiterleitet.
 
 
-## Eine Verbesserung mit Konzepten  <a name="link5"></a>
+## Verbesserung der Implementierung mit Konzepten <a name="link5"></a>
 
 Die Klasse `PolymorphicObjectWrapper` und die in ihr enthaltene Klasse `ObjectModel` setzen ein bestimmtes
 Verhalten der verwendeten Klassen `T` voraus (*Duck Typing*).
@@ -462,7 +462,7 @@ Im Quellcode finden Sie zwei Realisierungen vor:
 
 Die Anregungen zu den Beispielen aus diesem Abschnitt sind aus dem Buch
 
-[Clean C++ 20](https://www.clean-cpp.com/)<br>(abgerufen am 19.05.2024).
+[Clean C++ 20](https://www.clean-cpp.com/) (abgerufen am 19.05.2024).
 
 von Stephan Roth entnommen, siehe dazu auch das [Literaturverzeichnis](../Literatur/Literature.md).
 

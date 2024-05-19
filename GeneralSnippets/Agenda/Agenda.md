@@ -172,8 +172,11 @@
   * Vertiefungen zu `std::variant`: Das *Visitor*-Konzept mit `std::visit` und das sog. *Overload*&ndash;Pattern
 
 
-## Performanzbetrachtung
-  * Vergleich von statischem Polymorphismus (Templates) mit dynamischem Polymorphismus<br />(virtueller Methodenaufrufmechanismus)
+## *Type Erasure* &ndash; statischer versus dynamischer Polymorphismus
+  * Was ist *Type Erasure*
+  * Implementierung des *Type Erasure* Idioms
+  * Ergänzung um Konzepte (`concept`) 
+  * Vergleich (Performanzbetrachtung) von statischem Polymorphismus (Templates) mit dynamischem Polymorphismus (virtueller Methodenaufrufmechanismus)
   * Beispiel &bdquo;Buchhandlung&rdquo;
   
 

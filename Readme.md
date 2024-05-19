@@ -191,6 +191,7 @@ Es folgt eine tabellarische Auflistung dieser Unterverzeichnisse.
 | [Transform](GeneralSnippets/Transform/Transform.md) | STL-Algorithmus `std::transform` und Lambda-Objekte in der Anwendung |
 | [TrimmingStrings](GeneralSnippets/Trim/Trim.md) | Leerzeichen am Anfang und Ende einer Zeichenkette entfernen |
 | [Tuples](GeneralSnippets/Tuple/Tuple.md) | Neue STL-Utility Klasse `std::tuple` |
+| [TypeErasure](GeneralSnippets/TypeErasure/TypeErasure.md) | *Type Erasure* &ndash; statischer versus dynamischer Polymorphismus |
 | [TypeTraits](GeneralSnippets/TypeTraits/TypeTraits.md) | Typmerkmale |
 | [UniquePointer](GeneralSnippets/UniquePtr/UniquePtr.md) | Klasse `std::unique_ptr<T>` |
 | [UsingNamespaceStd](GeneralSnippets/UsingNamespaceStd/UsingNamespaceStd.md) | Warum ist `using namespace std;` als schlechte Praxis angesehen? |
