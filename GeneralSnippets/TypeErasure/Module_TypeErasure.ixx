@@ -1,12 +1,12 @@
 // =====================================================================================
-// Module Interface Partition 'template_static_polymorphism'
+// Module Interface Partition 'Type Erasure'
 // =====================================================================================
 
-export module modern_cpp:template_static_polymorphism;
+export module modern_cpp:type_erasure;
 
 import std;
 
-export void main_templates_static_polymorphism();
+export void main_type_erasure();
 
 // =====================================================================================
 // End-of-File

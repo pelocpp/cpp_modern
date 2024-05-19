@@ -325,8 +325,6 @@
     <ClCompile Include="TemplateFunctionBasics\TemplatesFunctionBasics.cpp" />
     <ClCompile Include="TemplateSpecialization\Module_TemplateSpecialization.ixx" />
     <ClCompile Include="TemplateSpecialization\TemplateSpecialization.cpp" />
-    <ClCompile Include="TemplateStaticPolymorphism\Module_TemplateStaticPolymorphism.ixx" />
-    <ClCompile Include="TemplateStaticPolymorphism\TemplateStaticPolymorphism.cpp" />
     <ClCompile Include="TemplateTemplateParameter\Module_TemplateTemplateParameter.ixx" />
     <ClCompile Include="TemplateTemplateParameter\TemplateTemplateParameter_01.cpp" />
     <ClCompile Include="TemplateTemplateParameter\TemplateTemplateParameter_02.cpp" />
@@ -340,6 +338,8 @@
     <ClCompile Include="Trim\Trim.cpp" />
     <ClCompile Include="Tuple\Module_Tuple.ixx" />
     <ClCompile Include="Tuple\Tuple.cpp" />
+    <ClCompile Include="TypeErasure\Module_TypeErasure.ixx" />
+    <ClCompile Include="TypeErasure\TypeErasure.cpp" />
     <ClCompile Include="TypeTraits\Module_TypeTraits.ixx" />
     <ClCompile Include="TypeTraits\TypeTraits.cpp" />
     <ClCompile Include="UniquePtr\Module_UniquePtr.ixx" />
@@ -456,7 +456,6 @@
     <None Include="TemplateConstexprIf\TemplatesConstExpr_If.md" />
     <None Include="TemplateFunctionBasics\TemplatesFunctionBasics.md" />
     <None Include="TemplateSpecialization\TemplateSpecialization.md" />
-    <None Include="TemplateStaticPolymorphism\TemplateStaticPolymorphism.md" />
     <None Include="TemplateTemplateParameter\TemplateTemplateParameter.md" />
     <None Include="TemplateTwoPhaseLookup\TemplateTwoPhaseLookup.md" />
     <None Include="ToUnderlying\ToUnderlying.md" />
@@ -467,6 +466,7 @@
     <None Include="Trim\cpp_snippet_base_02.svg" />
     <None Include="Trim\Trim.md" />
     <None Include="Tuple\Tuple.md" />
+    <None Include="TypeErasure\TypeErasure.md" />
     <None Include="TypeTraits\TypeTraits.md" />
     <None Include="UniquePtr\UniquePtr.md" />
     <None Include="UsingNamespaceStd\UsingNamespaceStd.md" />

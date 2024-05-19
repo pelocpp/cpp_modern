@@ -185,7 +185,6 @@ Es folgt eine tabellarische Auflistung dieser Unterverzeichnisse.
 | [TemplatesClassBasics](GeneralSnippets/TemplateClassBasics/TemplatesClassBasics.md) | Grundlagen zu Klassen-Templates |
 | [TemplateSpecialization](GeneralSnippets/TemplateSpecialization/TemplateSpecialization.md) | Template Spezialisierung |
 | [TemplateConstexprIf](GeneralSnippets/TemplateConstexprIf/TemplatesConstExpr_If.md) | Templates und bedingte Compilierung (`if constexpr`) |
-| [TemplateStaticPolymorphism](GeneralSnippets/TemplateStaticPolymorphism/TemplateStaticPolymorphism.md) | Templates und statischer Polymorphismus |
 | [TemplateTemplateParameter](GeneralSnippets/TemplateTemplateParameter/TemplateTemplateParameter.md) | Template Template Parameter |
 | [TemplateTwoPhaseLookup](GeneralSnippets/TemplateTwoPhaseLookup/TemplateTwoPhaseLookup.md) | Two-Phase Name Lookup |
 | [ToUnderlying](GeneralSnippets/ToUnderlying/ToUnderlying.md) | Funktion `std::to_underlying` |

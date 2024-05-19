@@ -55,87 +55,7 @@ Welche Beobachtung machen Sie?
 
 ---
 
-## Aufgabe 2: Visitor-Entwurfsmuster mit `std::variant` und `std::visit`
-
-#### Vorausetzungen: `std::variant`, `std::visit`, `std::vector`, variadische Templates
-
-Ein Entwurfsmuster aus der Gruppe der Verhaltensmuster (*Behavioral Design Patterns*), das so genannt *Visitor*-Entwurfsmuster,
-lässt sich mit `std::variant` und `std::visit` sehr einfach umsetzen.
-
-Hierbei gilt es eine Besonderheit zu betrachten:
-Wir können mit der C++-Template-Technik die Realisierung so gestalten,
-dass wir auf den virtuellen Methodenaufrufmechanismus nicht angewiesen sind!
-Bei der klassischen Umsetzung des Musters ist dieser vorhanden.
-
-Wir betrachten eine Buchhandlung (Klasse `Bookstore`), die Bücher und DVDs (Klassen `Book` und `Movie`) verkauft. 
-
-```cpp
-class Book
-{
-  ...
-};
-
-class Movie
-{
-  ...
-};
-```
-
-1. *Frage*:
-Wie ist die Schnittstelle eines Konstruktors für die `Bookstore`-Klasse zu definieren,
-wenn dieser `Book`- und `Movie`-Objekte gemischt in einem `std::vector`-Objekt aufnehmen kann?
-
-```cpp
-Book cBook { "C", "Dennis Ritchie", 11.99, 12 };
-Book javaBook{"Java", "James Gosling", 17.99, 21 };
-Book cppBook{"C++", "Bjarne Stroustrup", 16.99, 4 };
-Book csharpBook{"C#", "Anders Hejlsberg", 21.99, 8 };
-
-Movie movieTarantino{ "Once upon a time in Hollywood", "Quentin Tarantino", 6.99, 3 };
-Movie movieBond{ "Spectre", "Sam Mendes", 8.99, 6 };
-
-using MyBookstore = Bookstore<Book, Movie>;
-
-MyBookstore bookstore {
-    cBook, movieBond, javaBook, cppBook, csharpBook, movieTarantino
-};
-```
-
-Entwerfen Sie drei rudimentäre Klassen `Book`, `Movie` und `Bookstore`,
-um das gezeigte Code-Fragment übersetzen zu können.
-
-
-2. *Frage*:
-Wie ist in der Klasse `Bookstore` eine Methode `totalBalance` zu implementieren, um den Gesamtwert des Warenbestands in
-der Buchhandlung zu berechnen? Hier könnten `std::variant` und `std::visit` zum Einsatz gelangen.
-
-```cpp
-double balance = bookstore.totalBalance();
-std::cout << "Total value of Bookstore: " << balance << std::endl;
-```
-
-Noch ein Hinweis:
-
-Die `std::visit`-Funktion hat als ersten Parameter ein *Callable* (aufrufbares Objekt, generisches Lambda),
-um auf das `std::variant`-Objekt zugreifen zu können. Im `std::variant`-Objekt wiederum kann &ndash; in unserer Betrachtung &ndash;
-ein `Book`- oder ein `Movie`-Objekt enthalten sein. Wenn diese Klassen
-eine Methode desselben Namens (derselben Schnittstelle) enthalten,
-wie zum Beispiel `getPrice` oder `getCount`, dann haben Sie das Ziel fast schon erreicht.
-
-*Zusatzaufgabe*:
-Realisieren Sie eine Methode `addMedia`, die ein beliebiges &bdquo;Media&rdquo;-Objekt einem `Bookstore`-Objekt hinzufügen kann.
-Natürlich muss der Datentyp des &bdquo;Media&rdquo;-Objekts (also z.B. `Book` oder `Movie`) für das `Bookstore`-Objekt
-bereits bekannt sein:
-
-```cpp
-Book csharpBook{ "C#", "Anders Hejlsberg", 21.99, 1 };
-bookstore.addMedia(csharpBook);
-```
-
----
-
-
-## Aufgabe 3: `std::optional`: Umwandlung von Zeichenketten in ganze Zahlen
+## Aufgabe 2: `std::optional`: Umwandlung von Zeichenketten in ganze Zahlen
 
 #### Vorausetzungen: Templates Grundlagen, `std::optional`, `if constexpr`
 
@@ -159,7 +79,7 @@ Realisieren Sie die Funktion analog zur Funktion `toInt`. Für `T` sollen die in
 
 ---
 
-## Aufgabe 4: `std::variant`: Ein heterogener Container
+## Aufgabe 3: `std::variant`: Ein heterogener Container
 
 #### Vorausetzungen: `std::variant`, `std::visit`, `std::vector`
 

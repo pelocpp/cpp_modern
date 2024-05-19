@@ -26,6 +26,17 @@
 
 ---
 
+  * Stephan Roth: &bdquo;Clean C++ 20&rdquo;.</br>
+    Apress (18. Juni 2021), 508 Seiten. Sprache: Englisch. ISBN-10: 1484259483, ISBN-13: 978-1484259481.
+
+    Dieses Buch vermittelt nicht die Merkmale der Programmiersprache C++ (Lexikon, Syntax, ...),
+    sondern allgemeingültige Prinzipien für eine moderne Softwareentwicklung mit C++.
+
+    Die Beispiel sind vergleichsweise einfach gehalten, aber dadurch besitzen sie eine starke Prägnanz,
+    um den Blick auf das Wesentliche zu lenken.
+
+---
+
   * [*Google C++ Style Guide*](https://google.github.io/styleguide/cppguide.html)<br/>
     (abgerufen am 26.02.2022).
 

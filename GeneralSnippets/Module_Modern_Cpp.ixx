@@ -42,9 +42,7 @@ export import :lambda;
 export import :literals;
 export import :memory_leaks_detection;
 export import :metaprogramming;
-
 export import :modularized_standard_library;
-
 export import :module_import;
 export import :move_semantics;
 export import :optional;
@@ -67,13 +65,13 @@ export import :templates_class_basics;
 export import :templates_constexpr_if;
 export import :templates_function_basics;
 export import :template_specialization;
-export import :template_static_polymorphism;
 export import :template_template_parameter;
 export import :template_two_phase_lookup;
 export import :to_underlying;
 export import :transform;
 export import :trim;
 export import :tuple;
+export import :type_erasure;
 export import :type_traits;
 export import :unique_ptr;
 export import :variadic_templates;
