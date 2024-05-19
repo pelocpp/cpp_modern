@@ -435,7 +435,15 @@ namespace BookStoreUsingTypeErasure {
         size_t getCount() const { return m_count; }
     };
 
+    template<typename T>
+    concept MediaConcept = requires (const T & m)
+    {
+        { m.getPrice() } -> std::same_as<double>;
+        { m.getCount() } -> std::same_as<size_t>;
+    };
+
     template <typename ... TMedia>
+        requires (MediaConcept<TMedia> && ...)
     class Bookstore
     {
     private:
@@ -633,19 +641,32 @@ namespace BookStoreUsingTypeErasure {
         std::cout << "Done: " << duration << " msecs." << std::endl;
         std::cout << std::endl;
     }
+
+    class BluRay
+    {
+    public:
+        BluRay() = default;
+
+        // getter / setter
+        size_t getCount() const { return 0; }
+        double getPrice() const { return 0.0; }   // put into comments
+    };
+
+    static void test_bookstore_type_erasure_05() {
+
+        // verifying concept 'MediaConcept'
+        Bookstore<Book, BluRay, Movie> bookstore{};
+    }
 }
 
 
 void main_type_erasure()
 {
     using namespace TypeErasureUsingDynamicPolymorphism;
-
     using namespace TypeErasureUsingTemplateTechniques;
     using namespace TypeErasureUsingTemplateTechniquesAndConcepts;
-
     using namespace BookStoreUsingDynamicPolymorphism;
     using namespace BookStoreUsingTypeErasure;
-
 
     TypeErasureUsingDynamicPolymorphism::test_type_erasure_using_dynamic_polymorphism();
     TypeErasureUsingTemplateTechniques::test_type_erasure_using_template_techniques();

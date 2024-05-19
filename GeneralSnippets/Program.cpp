@@ -86,7 +86,6 @@ int main()
         //main_class_templates_basics_01();
         //main_class_templates_basics_02();
         //main_function_templates_basics();
-        //main_templates_static_polymorphism();
         //main_templates_template_parameter_01();
         //main_templates_template_parameter_02();
         //main_templates_two_phase_name_lookup();
@@ -95,6 +94,7 @@ int main()
         //main_transform();
         //main_trim(); 
         //main_tuple();
+        main_type_erasure();
         //main_type_traits();
         //main_unique_ptr();
         //main_variadic_templates_introduction();

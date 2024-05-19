@@ -10,14 +10,14 @@
 
 ## Inhalt
 
-#### [Einleitung](#link1)
-#### [Beschreibung](#link2)
-#### [C++ Klassenbibliothek STL](#link3)
-#### [Benutzerdefinierte Implementierung des *Type Erasure* Idioms](#link4)
-#### [Verbesserung der Implementierung mit Konzepten](#link5)
-#### [Ein Beispiel: Buchhandung](#link6)
-#### [Fazit](#link7)
-#### [Literaturhinweise](#link8)
+  * [Einleitung](#link1)
+  * [Beschreibung](#link2)
+  * [C++ Klassenbibliothek STL](#link3)
+  * [Benutzerdefinierte Implementierung des *Type Erasure* Idioms](#link4)
+  * [Verbesserung der Implementierung mit Konzepten](#link5)
+  * [Ein Beispiel: Buchhandung](#link6)
+  * [Fazit](#link7)
+  * [Literaturhinweise](#link8)
 
 ---
 
@@ -361,12 +361,16 @@ Wir vertiefen die Betrachtungen zu *Type Erasure* an einem praxisnahen Beispiel:
 Das *Type Erasure* Idiom kommt hier indirekt zum Zuge, indem wir die Klasse `std::variant` verwenden.
 
 Als Vorausetzungen für dieses Beispiel benötigen wir Kenntnisse bzgl.
-der Klassen bzw. Funktionen `std::variant`, `std::visit`, `std::vector` und variadische Templates.
+der Klassen bzw. Funktionen `std::variant`, `std::visit`, `std::vector` und variadischer Templates.
 
-Ein Entwurfsmuster aus der Gruppe der Verhaltensmuster (*Behavioral Design Patterns*), das so genannt *Visitor*-Entwurfsmuster,
+Worum geht es?
+
+Ein Entwurfsmuster aus der Gruppe der Verhaltensmuster (*Behavioral Design Patterns*),
+das so genannt *Visitor*-Entwurfsmuster,
 lässt sich mit `std::variant` und `std::visit` sehr einfach umsetzen.
 
-Wir betrachten eine Buchhandlung (Klasse `Bookstore`), die Bücher und DVDs (Klassen `Book` und `Movie`) verkauft. 
+Wir betrachten zu diesem Zweck eine Buchhandlung (Klasse `Bookstore`),
+die Bücher und DVDs (Klassen `Book` und `Movie`) verkauft. 
 
 ```cpp
 class Book
@@ -417,8 +421,8 @@ Noch ein Hinweis:
 
 Die `std::visit`-Funktion hat als ersten Parameter ein *Callable* (aufrufbares Objekt, generisches Lambda),
 um auf das `std::variant`-Objekt zugreifen zu können. Im `std::variant`-Objekt wiederum kann &ndash; in unserer Betrachtung &ndash;
-ein `Book`- oder ein `Movie`-Objekt enthalten sein. Wenn diese Klassen
-eine Methode desselben Namens (derselben Schnittstelle) enthalten,
+ein `Book`- oder ein `Movie`-Objekt enthalten sein.
+Wenn diese Klassen eine Methode desselben Namens (derselben Schnittstelle) enthalten,
 wie zum Beispiel `getPrice` oder `getCount`, dann haben Sie das Ziel fast schon erreicht.
 
 *Zusatzaufgabe*:
@@ -433,9 +437,8 @@ bookstore.addMedia(csharpBook);
 
 Im Quellcode finden Sie zwei Realisierungen vor:
 
-
-  * Realisierung mit einer abstrakten Basisklasse und abgeleiteten Klassen.
-  * Realisierung auf Basis *Type Erasure* Idiom unter Verwendung von Templates.
+  * Realisierung mit einer abstrakten Basisklasse (Schnittstelle `IMedia`) und davon abgeleiteten Klassen.
+  * Realisierung auf Basis des *Type Erasure* Idioms unter Verwendung von Templates.
 
 ---
 
