@@ -12,10 +12,10 @@
 
   * [Einleitung](#link1)
   * [Beschreibung](#link2)
-  * [C++ Klassenbibliothek STL](#link3)
+  * [*Type Erasure* in der C++ Klassenbibliothek STL](#link3)
   * [Benutzerdefinierte Implementierung des *Type Erasure* Idioms](#link4)
   * [Verbesserung der Implementierung mit Konzepten](#link5)
-  * [Ein Beispiel: Buchhandung](#link6)
+  * [Beispiel: Eine Buchhandung](#link6)
   * [Fazit](#link7)
   * [Literaturhinweise](#link8)
 
@@ -48,7 +48,7 @@ und folglich auch die Ressourcenverwaltung (Speicherzuweisung und -freigabe) ein
 
 Ein zweiter Ansatz, das so genannte *Type Erasure* Idiom, besteht in der Verwendung von Templates.
 
-## C++ Klassenbibliothek STL  <a name="link3"></a>
+## *Type Erasure* in der C++ Klassenbibliothek STL  <a name="link3"></a>
 
 Das *Type Erasure* Idiom ist in der C++ Klassenbibliothek bereits an mehrere Stellen vorhanden,
 wenngleich uns dies vermutlicherweise nicht unmittelbar bewusst ist:
@@ -355,7 +355,7 @@ Nun ist die Klasse `PolymorphicObjectWrapper` entsprechend anzupassen:
 ```
 ---
 
-## Ein Beispiel: Buchhandung  <a name="link6"></a>
+## Beispiel: Eine Buchhandung <a name="link6"></a>
 
 Wir vertiefen die Betrachtungen zu *Type Erasure* an einem praxisnahen Beispiel: einer Buchhandung.
 Das *Type Erasure* Idiom kommt hier indirekt zum Zuge, indem wir die Klasse `std::variant` verwenden.
@@ -453,7 +453,7 @@ Im Quellcode finden Sie zwei Realisierungen vor:
   * Der Nachteil des Idioms besteht darin, dass es im Vergleich zur viel einfacheren Implementierung
   mit objektorientierten Techniken einen deutlich höheren Komplexitätsgrad aufweist.
 
-  * Ein weiterer Nachteil besteht darin, dass es während der Objektkonstruktion ein Performanzproblem gibt,
+  * Ein weiterer Nachteil besteht darin, dass es während der Objekterzeugung ein Performanzproblem gibt,
   da die erstellten Objekte in das `ObjectModel`-Objekt kopiert werden müssen,
   was zu zusätzlichen Aufrufen des Kopierkonstruktors führt.
 
