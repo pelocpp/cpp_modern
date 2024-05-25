@@ -178,8 +178,9 @@ namespace TypeErasureUsingTemplateTechniquesAndConcepts {
 
         template<typename T>
             requires ClassActingLikeAnAnimal<T>
-        struct ObjectModel final : public ObjectConcept
+        class ObjectModel final : public ObjectConcept
         {
+        public:
             ObjectModel(const T& object) : m_object{ object } {}
 
             std::string see() const override

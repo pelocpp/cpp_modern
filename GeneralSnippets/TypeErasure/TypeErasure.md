@@ -180,49 +180,52 @@ Nun kommt das Kernstück des *Type Erasure* Idioms in Gestalt einer Klasse `Polym
 02: {
 03: public:
 04:     template<typename T>
-05:     PolymorphicObjectWrapper(const T& obj) :
-06:         m_wrappedObject{ std::make_shared<ObjectModel<T>>(obj) }
-07:     {}
-08: 
-09:     std::string see() const
-10:     {
-11:         return m_wrappedObject->see();
-12:     }
-13: 
-14:     std::string say() const
-15:     {
-16:         return m_wrappedObject->say();
-17:     }
-18: 
-19: private:
-20:     struct ObjectConcept
-21:     {
-22:         virtual ~ObjectConcept() = default;
-23:         virtual std::string see() const = 0;
-24:         virtual std::string say() const = 0;
-25:     };
-26: 
-27:     template<typename T>
-28:     struct ObjectModel final : public ObjectConcept
-29:     {
-30:         ObjectModel(const T& object) : m_object{ object } {}
-31: 
-32:         std::string see() const override
-33:         {
-34:             return m_object.see();
-35:         }
-36: 
-37:         std::string say() const override
-38:         {
-39:             return m_object.say();
-40:         }
-41: 
-42:     private:
-43:         T m_object;
-44:     };
-45: 
-46:     std::shared_ptr<ObjectConcept> m_wrappedObject;
-47: };
+05:         requires ClassActingLikeAnAnimal<T>
+06:     PolymorphicObjectWrapper(const T& obj) :
+07:         m_wrappedObject{ std::make_shared<ObjectModel<T>>(obj) }
+08:     {}
+09: 
+10:     std::string see() const
+11:     {
+12:         return m_wrappedObject->see();
+13:     }
+14: 
+15:     std::string say() const
+16:     {
+17:         return m_wrappedObject->say();
+18:     }
+19: 
+20: private:
+21:     struct ObjectConcept
+22:     {
+23:         virtual ~ObjectConcept() = default;
+24:         virtual std::string see() const = 0;
+25:         virtual std::string say() const = 0;
+26:     };
+27: 
+28:     template<typename T>
+29:         requires ClassActingLikeAnAnimal<T>
+30:     class ObjectModel final : public ObjectConcept
+31:     {
+32:     public:
+33:         ObjectModel(const T& object) : m_object{ object } {}
+34: 
+35:         std::string see() const override
+36:         {
+37:             return m_object.see();
+38:         }
+39: 
+40:         std::string say() const override
+41:         {
+42:             return m_object.say();
+43:         }
+44: 
+45:     private:
+46:         T m_object;
+47:     };
+48: 
+49:     std::shared_ptr<ObjectConcept> m_wrappedObject;
+50: };
 ```
 
 Zur Klasse `PolymorphicObjectWrapper` bedarf es einiger Anmerkungen:
