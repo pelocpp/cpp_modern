@@ -49,6 +49,46 @@ Prinzipiell kann die Move-Semantik auf dreierlei Weisen realisiert werden:
 
 ---
 
+## Notwendigkeit des Schlüsselworts `noexcept`
+
+
+Man beachte die Notwendigkeit des Schlüsselworts `noexcept` bei der Definition
+des Move-Konstruktors.
+
+Das folgende Beispiel führt zu unterschiedlichen Ausführungen in Abhängigkeit vom 
+Vorhandensein des `noexcept`-Schlüsselworts:
+
+```cpp
+01: void test() {
+02: 
+03:     std::vector<BigData> vec;
+04:     vec.push_back(BigData(10, 1));
+05:     vec.push_back(BigData(20, 2));
+06: }
+```
+
+*Ausgabe*:
+
+```
+move c'tor
+move c'tor
+move c'tor
+```
+
+oder
+
+
+```
+move c'tor
+move c'tor
+copy c'tor
+```
+
+Fehlt das `noexcept`-Schlüsselwort, verwendet das STL-Containerobjekt vom Typ `std::vector`
+den Kopierkonstruktor, wenn intern der Datenpuffer neu auszurichten ist!
+
+---
+
 ## Rule of Three (Four), Rule of Five (Six), Rule of Zero
 
 *Allgemeines*:

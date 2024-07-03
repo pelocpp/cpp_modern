@@ -10,7 +10,7 @@
 
 ## Allgemeines
 
-Das *Copy-and-Swap* wurde eingeführt, um zwei Ziele zu erreichen:
+Das *Copy-and-Swap*-Idiom wurde eingeführt, um zwei Ziele zu erreichen:
   * Realisierung der Kopier-Konstruktoren und Wertzuweisungsoperatoren (sowohl &bdquo;kopierende&rdquo; als auch &bdquo;verschiebende&rdquo; Semantik)
   auf eine einfache Weise (Vermeidung von Code-Duplikationen).
   * Bereitstellung der so genannten *Strong Exception Guarantee*.
@@ -53,7 +53,7 @@ Folgende Nachteile sind in dieser Realisierung vorhanden:
   * Verhinderung einer Selbstzuweisung (Zeile 4):<br />
 Eine Selbstzuweisung bei Objekten mit Instanzdaten führt in Zeile 9
 dazu, dass die Daten des aktuellen Objekts &ndash; und damit eben auch
-die Daten des Objekte `other` auf der rechten Seite der Wertzuweisung gelöscht werden,
+die Daten des Objekte `other` auf der rechten Seite &ndash; der Wertzuweisung gelöscht werden,
 bevor sie kopiert werden.
 Natürlich ist dies ein Anwendungsfehler des Benutzers der Klasse,
 aber in allen Fällen, in denen das Programm korrekt ist,
@@ -103,7 +103,7 @@ Der Zuweisungsoperator `operator=` dupliziert effektiv Quellcode,
 den wir bereits anderswo geschrieben haben: Das sollte man in jedem Fall vermeiden!
 Man könnte argumentieren, dass der Kern des Zuweisungsoperators
 nur aus zwei Anweisungen besteht (Wertzuweisung der Längenangabe, Erstellen einer Kopie),
-aber bei komplexeren Objekten kann die Realisierung aufwändiger werden!
+aber bei komplexeren Objekten kann die Realisierung doch aufwändiger werden!
 
 
 ---
@@ -136,7 +136,7 @@ Beachte folgende wichtige Anweisungen in der Realisierung des Zuweisungs-Operato
 
   * Geänderte Signatur des Operators `operator=`<br />
 Das Parameterargument wird als Wert übernommen:<br />
-`BigData& BigData::operator= (BigData other)`<br />
+`BigData& BigData::operator= (BigData other)`;<br />
 Auf diese Weise sind beim Aufrufen der Funktion alle neuen Daten bereits zugewiesen, kopiert und zur Verwendung bereit.
 Dadurch erhalten wir die *Strong Exception Guarantee* kostenlos! 
 Die Funktion wird nicht aufgerufen, wenn die Erstellung der Kopie fehlschlägt,
