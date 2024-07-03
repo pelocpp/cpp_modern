@@ -188,6 +188,8 @@
     <ClCompile Include="Const\Module_Const.ixx" />
     <ClCompile Include="CopyMoveElision\CopyMoveElision.cpp" />
     <ClCompile Include="CopyMoveElision\Module_CopyMoveElision.ixx" />
+    <ClCompile Include="CopySwapIdiom\CopySwapIdiom.cpp" />
+    <ClCompile Include="CopySwapIdiom\Module_CopySwapIdiom.ixx" />
     <ClCompile Include="CRTP\CRTP.cpp" />
     <ClCompile Include="CRTP\Module_CRTP.ixx" />
     <ClCompile Include="DeclType\Decltype.cpp" />
@@ -384,6 +386,7 @@
     <None Include="Const\Const.md" />
     <None Include="Const\cpp_const.svg" />
     <None Include="CopyMoveElision\CopyMoveElision.md" />
+    <None Include="CopySwapIdiom\CopySwapIdiom.md" />
     <None Include="CRTP\CRTP.md" />
     <None Include="DeclType\decltype.md" />
     <None Include="DefaultInitialization\DefaultInitialization.md" />

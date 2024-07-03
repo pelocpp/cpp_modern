@@ -24,14 +24,13 @@ namespace MoveSemantics {
         BigData& operator= (const BigData&);  // copy assignment
 
         // move semantics
-        //BigData(BigData&&) noexcept;  // move c'tor
-        //BigData& operator= (BigData&&) noexcept; // move assignment
+        BigData(BigData&&) noexcept;  // move c'tor
+        BigData& operator= (BigData&&) noexcept; // move assignment
 
     private:
         // private helper methods
         void cleanup() noexcept;
         void moveFrom(BigData&) noexcept;
-        void swap(BigData&, BigData&) noexcept;  // 'swap idiom'
 
     public:
         // getter
@@ -95,55 +94,39 @@ namespace MoveSemantics {
     // -------------------------------------------------------------------
 
     // move semantics
-    //BigData::BigData(BigData&& data) noexcept {  // move c'tor
+    BigData::BigData(BigData&& data) noexcept {  // move c'tor
 
-    //    m_data = data.m_data;   // shallow copy
-    //    m_size = data.m_size;
-    //    data.m_data = nullptr;  // reset source object, ownership has been moved
-    //    data.m_size = 0;
-    //}
+        m_data = data.m_data;   // shallow copy
+        m_size = data.m_size;
+        data.m_data = nullptr;  // reset source object, ownership has been moved
+        data.m_size = 0;
+    }
 
-    // first alternate realisation
+    // alternate realisation
     //BigData::BigData(BigData&& data) noexcept {  // move c'tor
     //    moveFrom(data);  // move argument to current object
     //}
 
-    // second alternate realisation - based on so called 'swap idiom'
-    //BigData::BigData(BigData&& data) noexcept : BigData() {
-    //    swap(*this, data);
-    //}
-
     // -------------------------------------------------------------------
 
-    //BigData& BigData::operator= (BigData&& data) noexcept { // move-assignment
+    BigData& BigData::operator= (BigData&& data) noexcept { // move-assignment
 
-    //    if (this != &data) {
-    //        delete[] m_data;        // release left side
-    //        m_data = data.m_data;   // shallow copy
-    //        m_size = data.m_size;
-    //        data.m_data = nullptr;  // reset source object, ownership has been moved
-    //        data.m_size = 0;
-    //    }
-    //    return *this;
-    //}
+        if (this != &data) {
+            delete[] m_data;        // release left side
+            m_data = data.m_data;   // shallow copy
+            m_size = data.m_size;
+            data.m_data = nullptr;  // reset source object, ownership has been moved
+            data.m_size = 0;
+        }
+        return *this;
+    }
 
-    // first alternate realisation
+    // alternate realisation
     //BigData& BigData::operator= (BigData&& data) noexcept { // move-assignment
     //    if (this != &data) {
     //        cleanup();         // release left side
     //        moveFrom(data);    // move right side to left side
     //    }
-    //    return *this;
-    //}
-
-    // second alternate realisation - based on so called 'swap idiom'
-    //BigData& BigData::operator= (BigData&& data) noexcept {
-    //    if (this == &data)
-    //        return *this;
-
-    //    BigData tmp(std::move(data));
-    //    swap(*this, tmp);
-
     //    return *this;
     //}
 
@@ -173,11 +156,6 @@ namespace MoveSemantics {
         // reset source  object, because ownership has been moved
         data.m_data = nullptr;
         data.m_size = 0;
-    }
-
-    void BigData::swap(BigData& data1, BigData& data2) noexcept {  // 'swap idiom'
-        std::swap(data1.m_data, data2.m_data);
-        std::swap(data1.m_size, data2.m_size);
     }
 
     // output operator

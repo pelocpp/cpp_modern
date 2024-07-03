@@ -9,6 +9,7 @@
   * *Move*-Semantik einsetzen um Daten zu verschieben, die nicht kopiert werden können
   * *RValues* und *LValues*
   * Verschiebe-Semantik (*Move*&ndash;*Semantics*) erklärt
+  * Verschiebe-Semantik mit dem *Swap-Idiom* realisiert
   * &bdquo;Rule of Three&rdquo;, &bdquo;Rule of Five&rdquo; und &bdquo;Rule of Zero&rdquo; 
 
 

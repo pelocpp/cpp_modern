@@ -666,6 +666,12 @@
     <ClCompile Include="TypeErasure\Module_TypeErasure.ixx">
       <Filter>Modules</Filter>
     </ClCompile>
+    <ClCompile Include="CopySwapIdiom\CopySwapIdiom.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CopySwapIdiom\Module_CopySwapIdiom.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -1056,6 +1062,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="TypeErasure\TypeErasure.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="CopySwapIdiom\CopySwapIdiom.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

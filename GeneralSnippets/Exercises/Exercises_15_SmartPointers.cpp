@@ -244,7 +244,7 @@ namespace Exercises_SmartPointers {
             try {
                 std::cout << "Value: " << watcher.currentValue() << std::endl;
             }
-            catch (std::exception ex) {
+            catch (const std::exception& ex) {
                 std::cout << ex.what() << std::endl;
             }
         }

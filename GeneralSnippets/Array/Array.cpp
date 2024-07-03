@@ -63,7 +63,7 @@ namespace StdArray {
         try {
             array.at(9) = 10;
         }
-        catch (std::out_of_range)
+        catch (const std::out_of_range&)
         {
             std::cout << "Wrong index used!" << std::endl;
         }

@@ -24,6 +24,7 @@ export import :const_expr;
 export import :const_variants;
 export import :constructors_destructors_order;
 export import :copy_move_elision;
+export import :copy_swap_idiom;
 export import :crtp;
 export import :decltype_keyword;
 export import :default_initialization;

@@ -15,11 +15,39 @@ den Wertzuweisungsoperator ein) hin zur Verschiebe-Konstruktion (dies wiederum
 schließt den Verschiebe-Konstruktor und
 die Verschiebe-Wertzuweisung ein) kann dem dazugehörigen Quellcode entnommen werden.
 
+*Ausschnitt*:
+
+```cpp
+01: BigData::BigData(BigData&& data) noexcept {  // move c'tor
+02: 
+03:     m_data = data.m_data;   // shallow copy
+04:     m_size = data.m_size;
+05:     data.m_data = nullptr;  // reset source object, ownership has been moved
+06:     data.m_size = 0;
+07: }
+```
+
+Man beachte, dass das Objekt `data` &ndash; also das durch eine Referenz / einen Aliasnamen
+an den verschiebenden Konstruktor übergebene Objekt &ndash; sich *nach* nach dem Methodenaufruf
+in dem so genannten &bdquo;*Moved-From*&rdquo;-Zustand befindet:
+
+An einem Objekt im &bdquo;*Moved-From*&rdquo;-Zustand lassen sich nur 2 Vorgänge durchführen:
+
+  * Man kann es zerstören
+  * Man kann es neu zuweisen
+
+---
+
+## Realisierung
+
 Prinzipiell kann die Move-Semantik auf dreierlei Weisen realisiert werden:
 
-  * *straight*-*forward*, also Realisierung ohne direktes Entwurfsmuster
-  * mit zwei Hilfsmethoden `cleanup` und `moveFrom` - so genannte *Primitive* / minimalistisches Entwurfsmuster
-  * auf Basis des *Swap*-Idioms
+  * *Straightforward*, also Realisierung ohne direktes Entwurfsmuster,
+  * mit zwei Hilfsmethoden `cleanup` und `moveFrom` - so genannte *Primitive* / minimalistisches Entwurfsmuster oder
+  * auf Basis des *Swap*-Idioms.
+
+
+---
 
 ## Rule of Three (Four), Rule of Five (Six), Rule of Zero
 
