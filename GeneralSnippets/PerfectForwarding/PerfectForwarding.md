@@ -37,10 +37,10 @@ wenn man das betroffene Objekt nicht kopieren möchte.
 Sei es zum Schutze des Objekts oder aus Gründen der Performanz.
 
 
-### Mutable Referenzen
+### Veränderbare (mutable) Referenzen
 
-Im Gegensatz zu einer konstanten Referenz kann eine veränderliche Referenz (gekennzeichnet durch `T&`)
-nicht an eine temporäre Variable (Objekt) gebunden werden.
+Im Gegensatz zu einer konstanten Referenz kann eine veränderbare Referenz (gekennzeichnet durch `T&`)
+nicht an eine temporäre Variable / temporäres Objekt gebunden werden.
 
 Verwenden Sie eine veränderliche Referenz nur dann, wenn Sie das Objekt ändern möchten, auf das die Referenz verweist.
 
@@ -49,19 +49,22 @@ Verwenden Sie eine veränderliche Referenz nur dann, wenn Sie das Objekt ändern m
 Die Schreibweise `T&&` wird als *Forwarding Referenz* (auch als *universelle Referenz*) bezeichnet.
 Sie kann an alles gebunden werden.
 
-Verwenden Sie universelle Referenzen für Variablen, die Sie an unterlagerte Funktionen/Methoden weiterleiten.
+*Achtung*:<br />
+Verwenden Sie universelle Referenzen nur dann, wenn Sie Variablen/Objekte an unterlagerte Funktionen/Methoden weiterleiten wollen.
 
-*Bemerkung*:
-
+*Bemerkung*:<br />
 Man beachte, dass `T&&` nur dann eine universelle Referenz darstellt,
-wenn sie in einem Funktionstemplate verwendet werden,
-in der `T` ein Templateparameter dieses Funktionstemplate ist.
+wenn sie in einem Funktionstemplate verwendet wird,
+in der `T` ein Templateparameter des umgebenden Funktionstemplates ist.
 
 Die Verwendung der `&&`-Syntax mit einem expliziten Typ,
 z.B. `std::string&&`, bezeichnet eine *RValue*-Referenz und ist *keine* keine universelle Referenz!
 
 
 ---
+
+## Erläuterung einer *universellen Referenz* nach Scott Meyers
+
 
 *Scott Meyers* bietet eine möglicherweise leichter verständlichere Darstellung
 des Sachverhalts an:

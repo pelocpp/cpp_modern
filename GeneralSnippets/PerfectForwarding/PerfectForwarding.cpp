@@ -32,6 +32,7 @@ namespace PerfectForwarding {
     static void test_forwarding() {
 
         int n{ 123 };
+
         forwarding(n);
 
         forwarding(456);
@@ -40,21 +41,18 @@ namespace PerfectForwarding {
     static void test_forwardingPerfect() {
 
         int n{ 123 };
+
         forwardingPerfect(n);
 
         forwardingPerfect(456);
-    }
-
-    static void test_01() {
-        test_forwarding();
-        // test_forwardingPerfect();
     }
 }
 
 void main_perfect_forwarding()
 {
     using namespace PerfectForwarding;
-    test_01();
+    test_forwarding();
+    test_forwardingPerfect();
 }
 
 // =====================================================================================
