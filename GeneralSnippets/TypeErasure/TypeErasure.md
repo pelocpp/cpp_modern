@@ -25,9 +25,9 @@
 
 Unter *Type Erasure* in C++ verstehen wir eine Technik, 
 die eine generische Schnittstelle zu verschiedenen darunterliegenden Typen bereitstellt,
-während diese darunterliegenden Typinformationen vor dem Client-Code verborgen werden.
+diese Typinformationen vor dem Client-Code aber verborgen werden.
 
-Mit anderen Worten:<br />
+*In anderen Worten*:<br />
 Der Client-Code kennt die konkreten Typen nicht:
 Er kennt und verwendet nur eine Art abstrakte Schnittstelle.
 
@@ -36,7 +36,7 @@ Er kennt und verwendet nur eine Art abstrakte Schnittstelle.
 Die Einführung einer objektorientierten Typhierarchie mit einer abstrakten Basisklasse als einziger Schnittstelle
 zu allen abgeleiteten Klassen ist eine Möglichkeit, *Type Erasure* zu realisieren. 
 
-Bei dieser Vorgehensweise steht der virtelle Methodenaufrufmechnismus im Mittelpunkt.
+Bei dieser Vorgehensweise steht der virtuelle Methodenaufrufmechnismus im Mittelpunkt.
 Dieser besitzt in Punkto Performanz jedoch Schwächen.
 
 In einer Umgebung mit kritischen Leistungsanforderungen oder begrenztem Speicher (z.B. *Embedded Software Development*),
@@ -44,22 +44,23 @@ kann ein objektorientierter Ansatz schnell problematisch werden.
 
 Ein weiterer Nachteil des Ansatzes mit virtuellen Methoden ist, dass wir gezwungen sind,
 die Objekte überwiegend über Zeiger oder Referenzen zu verwenden,
-und folglich auch die Ressourcenverwaltung (Speicherzuweisung und -freigabe) eine Rolle spielt.
+und folglich auch die Ressourcenverwaltung (Speicherzuweisung und -freigabe, `new`, `delete`) eine Rolle spielt.
 
-Ein zweiter Ansatz, das so genannte *Type Erasure* Idiom, besteht in der Verwendung von Templates.
+Ein zweiter Ansatz besteht in der Verwendung von Templates.
+Wir sind beim *Type Erasure* Idiom angekommen.
 
 ## *Type Erasure* in der C++ Klassenbibliothek STL  <a name="link3"></a>
 
 Das *Type Erasure* Idiom ist in der C++ Klassenbibliothek bereits an mehrere Stellen vorhanden,
-wenngleich uns dies vermutlicherweise nicht unmittelbar bewusst ist:
+wenngleich uns dies vermutlich nicht unmittelbar bewusst ist:
 
   * `std::function<>`<br />
-  Das `std::function<>`-Klassentemplate (seit C++ 11 &ndash; Header <functional>) ist eine universelle polymorphe Funktionshüllenklasse (*Function Wrapper Class*),
+  Das `std::function<>`-Klassentemplate (seit C++11 &ndash; Header `<functional>`) ist eine universelle polymorphe Funktionshüllenklasse (*Function Wrapper Class*),
   d.h. sie bietet eine *einheitliche* Schnittstelle zu einer Funktion, einem aurufbaren Objekt oder einem Lambda-Ausdruck.
 
   * `std::variant<>`<br />
-  Das Klassentemplate `std::variant<>` (seit C++17 &ndash; Header <variant>) hat Ähnlichkeiten zu einem typsicheren Datentyp `union`.
-  Ein `std::variant`-Objekt kann einen Wert enthalten, dessen Typ sich auf einen der Datentypen beziehen muss,
+  Das Klassentemplate `std::variant<>` (seit C++17 &ndash; Header `<variant>`) hat Ähnlichkeiten zu einem typsicheren Datentyp `union`.
+  Ein `std::variant`-Objekt kann einen Wert enthalten, dessen Typ sich auf einen der Datentypen bezieht,
   der als Templateparameter für `std::variant<...>` aufzuführen ist.
   Beispielsweise kann eine `std::variant<int, double>`-Variable entweder einen ganzzahligen Wert oder einen `double`-Gleitkommawert enthalten.
 
@@ -140,9 +141,9 @@ Darüber kommt durch die Vererbung eine enge Kopplung ins Spiel:
 Die abgeleiteten Klassen kennen ihre Basisklasse und deren Implementierung!
 
 Wir betrachten nun eine alternative Implementierung mit C++&ndash;Templates: Das *Type Erasure* Idiom,
-auch bekannt als &bdquo;Duck-Typing&rdquo;:
+auch bekannt als &bdquo;*Duck-Typing*&rdquo;:
 
-&bdquo;Duck-Typing&rdquo;:<br />
+&bdquo;*Duck-Typing*&rdquo;:<br />
 Der amerikanische Schriftsteller und Dichter James Whitcomb Riley (1849 – 1916) soll den Satz geprägt haben:
 
 > &bdquo;Wenn ich einen Vogel sehe, der wie eine Ente läuft, wie eine Ente schwimmt und wie eine Ente quakt, nenne ich diesen Vogel eine Ente.&rdquo;
@@ -180,63 +181,60 @@ Nun kommt das Kernstück des *Type Erasure* Idioms in Gestalt einer Klasse `Polym
 02: {
 03: public:
 04:     template<typename T>
-05:         requires ClassActingLikeAnAnimal<T>
-06:     PolymorphicObjectWrapper(const T& obj) :
-07:         m_wrappedObject{ std::make_shared<ObjectModel<T>>(obj) }
-08:     {}
-09: 
-10:     std::string see() const
-11:     {
-12:         return m_wrappedObject->see();
-13:     }
-14: 
-15:     std::string say() const
-16:     {
-17:         return m_wrappedObject->say();
-18:     }
-19: 
-20: private:
-21:     struct ObjectConcept
-22:     {
-23:         virtual ~ObjectConcept() = default;
-24:         virtual std::string see() const = 0;
-25:         virtual std::string say() const = 0;
-26:     };
-27: 
-28:     template<typename T>
-29:         requires ClassActingLikeAnAnimal<T>
-30:     class ObjectModel final : public ObjectConcept
-31:     {
-32:     public:
-33:         ObjectModel(const T& object) : m_object{ object } {}
-34: 
-35:         std::string see() const override
-36:         {
-37:             return m_object.see();
-38:         }
-39: 
-40:         std::string say() const override
-41:         {
-42:             return m_object.say();
-43:         }
-44: 
-45:     private:
-46:         T m_object;
-47:     };
-48: 
-49:     std::shared_ptr<ObjectConcept> m_wrappedObject;
-50: };
+05:     PolymorphicObjectWrapper(const T& obj) :
+06:         m_wrappedObject{ std::make_shared<ObjectModel<T>>(obj) }
+07:     {}
+08: 
+09:     std::string see() const
+10:     {
+11:         return m_wrappedObject->see();
+12:     }
+13: 
+14:     std::string say() const
+15:     {
+16:         return m_wrappedObject->say();
+17:     }
+18: 
+19: private:
+20:     struct ObjectConcept
+21:     {
+22:         virtual ~ObjectConcept() = default;
+23:         virtual std::string see() const = 0;
+24:         virtual std::string say() const = 0;
+25:     };
+26: 
+27:     template<typename T>
+28:     struct ObjectModel final : public ObjectConcept
+29:     {
+30:         ObjectModel(const T& object) : m_object{ object } {}
+31: 
+32:         std::string see() const override
+33:         {
+34:             return m_object.see();
+35:         }
+36: 
+37:         std::string say() const override
+38:         {
+39:             return m_object.say();
+40:         }
+41: 
+42:     private:
+43:         T m_object;
+44:     };
+45: 
+46:     std::shared_ptr<ObjectConcept> m_wrappedObject;
+47: };
 ```
 
 Zur Klasse `PolymorphicObjectWrapper` bedarf es einiger Anmerkungen:
 
   * Die Klasse `PolymorphicObjectWrapper` besitzt eine Instanzvariable `m_wrappedObject` (Smart Pointer),
-  dessen Typ von der inneren Schnittstelle bzw. abstrakten Klasse `ObjectConcept` definiert wird.
+  deren Typ von der inneren Schnittstelle `ObjectConcept` bzw. der abstrakten Klasse `ObjectConcept` definiert wird.
   * Das innere Klassentemplate `ObjectModel<T>` implementiert diese Schnittstelle.
   * Auf konkrete Implementierungen von `ObjectModel<T>` (wie `ObjectModel<Dog>` oder `ObjectModel<Cat>`)
-  wird über die abstrakte Klasse `ObjectConcept` zugegriffen.
+  wird über die Schnittstelle (abstrakte Klasse) `ObjectConcept` zugegriffen.
   * Die Klasse `PolymorphicObjectWrapper` leitet Aufrufe der Methoden `see()` und `say()`
-  an ihre Schnittstelle `ObjectConcept` weiter, die von einer konkreten Unterklasse `ObjectModel<T>` spezialisiert wird.
+  an ihre Schnittstelle `ObjectConcept` weiter, die wiederum von der konkreten Unterklasse `ObjectModel<T>` implementiert wird.
   * Diese Unterklasse ruft letztendlich `see()` und `say()` für den zugrunde liegenden Typ auf.
 
 
@@ -283,9 +281,11 @@ Die Klasse `PolymorphicObjectWrapper` und die in ihr enthaltene Klasse `ObjectMo
 Verhalten der verwendeten Klassen `T` voraus (*Duck Typing*).
 
 Dieses Verhalten wird zwar durch die (innere) Schnittstelle `ObjectConcept` beschrieben als auch definiert,
-den Templateparamter `T` kann man mit Hilfe von Konzepten aber exakter fassen.
+der Templateparamter `T` steht prinzipiell für beliebige Datentypen.
 
-Damit dies funktioniert, müssen alle konkreten Typen, die für den Templateparamter `T` verwendet werden,
+Mit Hilfe von *Konzepten* (`concept`) kann man die Eigenschaften des Datentyps `T` exakter fassen.
+
+Hierzu müssen alle konkreten Typen, die für den Templateparamter `T` verwendet werden,
 einen Schnittstellenvertrag erfüllen, d.h.
 sie müssen öffentliche Methoden haben, die zu denen passen,
 die von der inneren Schnittstelle `ObjectConcept` deklariert werden.
@@ -468,7 +468,7 @@ Im Quellcode finden Sie zwei Realisierungen vor:
 
 Die Anregungen zu den Beispielen aus diesem Abschnitt sind aus dem Buch
 
-[Clean C++ 20](https://www.clean-cpp.com/) (abgerufen am 19.05.2024).
+[Clean C++ 20](https://www.clean-cpp.com/) (abgerufen am 19.05.2024)
 
 von Stephan Roth entnommen, siehe dazu auch das [Literaturverzeichnis](../Literatur/Literature.md).
 

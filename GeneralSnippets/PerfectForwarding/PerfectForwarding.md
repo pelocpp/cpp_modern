@@ -8,7 +8,7 @@
 
 ---
 
-## Zusammenfassung
+## Einleitung
 
 Voraussetzung für das &bdquo;Perfect Forwarding&rdquo; ist das Vorhandensein eines
 Funktionstemplates, das im Rumpf weitere unterlagerte Funktionen aufruft:
@@ -21,6 +21,45 @@ Funktionstemplates, das im Rumpf weitere unterlagerte Funktionen aufruft:
 
 Zu den Begriffen *LValue* oder *RValue* siehe auch
 [RValue Referenzen / LValue Referenzen](../RValueLValue/RValueLValue.md).
+
+---
+
+## Begrifflichkeiten
+
+### `const` Referenzen
+
+Eine konstante Referenz, gekennzeichnet durch `const T&`, kann an alles gebunden werden.
+
+Das Originalobjekt kann durch eine solche Referenz niemals verändert werden.
+
+`const`-Referenzen sollten eigentlich immer dann verwendet werden, 
+wenn man das betroffene Objekt nicht kopieren möchte.
+Sei es zum Schutze des Objekts oder aus Gründen der Performanz.
+
+
+### Mutable Referenzen
+
+Im Gegensatz zu einer konstanten Referenz kann eine veränderliche Referenz (gekennzeichnet durch `T&`)
+nicht an eine temporäre Variable (Objekt) gebunden werden.
+
+Verwenden Sie eine veränderliche Referenz nur dann, wenn Sie das Objekt ändern möchten, auf das die Referenz verweist.
+
+### Universal Referenzen / *Forwarding Referenz*
+
+Die Schreibweise `T&&` wird als *Forwarding Referenz* (auch als *universelle Referenz*) bezeichnet.
+Sie kann an alles gebunden werden.
+
+Verwenden Sie universelle Referenzen für Variablen, die Sie an unterlagerte Funktionen/Methoden weiterleiten.
+
+*Bemerkung*:
+
+Man beachte, dass `T&&` nur dann eine universelle Referenz darstellt,
+wenn sie in einem Funktionstemplate verwendet werden,
+in der `T` ein Templateparameter dieses Funktionstemplate ist.
+
+Die Verwendung der `&&`-Syntax mit einem expliziten Typ,
+z.B. `std::string&&`, bezeichnet eine *RValue*-Referenz und ist *keine* keine universelle Referenz!
+
 
 ---
 

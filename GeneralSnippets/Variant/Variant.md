@@ -8,7 +8,7 @@
 
 ---
 
-*Allgemeines*:
+## Allgemeines
 
 <img src="cpp_std_variant.svg" width="700">
 
@@ -28,9 +28,11 @@ Klasse `std::variant`:
   * `std::visit()`
   * `std::common_type`
 
-*Overload*-Pattern:
+---
 
-  * Kann verwendet werden, um den Wert eines `std::variant`-Objekts zielgerichtet zu besuchen.
+## *Overload*-Pattern:
+
+Dieses Pattern verwendet werden, um den Wert eines `std::variant`-Objekts zielgerichtet zu besuchen.
 
 ```cpp
 template<class... Ts>

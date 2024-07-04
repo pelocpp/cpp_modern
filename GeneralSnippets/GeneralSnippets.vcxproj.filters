@@ -1067,6 +1067,9 @@
     <None Include="CopySwapIdiom\CopySwapIdiom.md">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="Tuple\cpp_std_tuple.svg">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="VariadicTemplates\cpp_snippets_mixins_01.png">

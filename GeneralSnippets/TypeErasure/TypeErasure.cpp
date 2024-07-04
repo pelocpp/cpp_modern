@@ -2,11 +2,17 @@
 // TypeErasure.cpp
 // =====================================================================================
 
+module;
+
+#include <chrono>
+
 module modern_cpp:type_erasure;
 
 namespace {
     size_t MaxIterations = 1000000;
 }
+
+// =====================================================================================
 
 namespace TypeErasureUsingDynamicPolymorphism {
 
@@ -48,6 +54,8 @@ namespace TypeErasureUsingDynamicPolymorphism {
         std::cout << std::endl;
     }
 }
+
+// =====================================================================================
 
 namespace TypeErasureUsingTemplateTechniques {
 
@@ -126,6 +134,8 @@ namespace TypeErasureUsingTemplateTechniques {
     }
 }
 
+// =====================================================================================
+
 namespace TypeErasureUsingTemplateTechniquesAndConcepts {
 
     class Dog
@@ -178,9 +188,8 @@ namespace TypeErasureUsingTemplateTechniquesAndConcepts {
 
         template<typename T>
             requires ClassActingLikeAnAnimal<T>
-        class ObjectModel final : public ObjectConcept
+        struct ObjectModel final : public ObjectConcept
         {
-        public:
             ObjectModel(const T& object) : m_object{ object } {}
 
             std::string see() const override
@@ -213,10 +222,7 @@ namespace TypeErasureUsingTemplateTechniquesAndConcepts {
     }
 }
 
-
-
-
-
+// =====================================================================================
 
 namespace BookStoreUsingDynamicPolymorphism {
 
@@ -394,6 +400,8 @@ namespace BookStoreUsingDynamicPolymorphism {
     }
 }
 
+// =====================================================================================
+
 namespace BookStoreUsingTypeErasure {
 
     class Book
@@ -457,7 +465,7 @@ namespace BookStoreUsingTypeErasure {
         // template member method
         template <typename T>
         void addMedia(const T& media) {
-            // m_stock.push_back(std::variant<TMedia ...>{ media });
+            // m_stock.push_back(std::variant<TMedia ...>{ media });  // ausführliche Schreibweise
             m_stock.push_back(media);
         }
 
@@ -660,6 +668,7 @@ namespace BookStoreUsingTypeErasure {
     }
 }
 
+// =====================================================================================
 
 void main_type_erasure()
 {

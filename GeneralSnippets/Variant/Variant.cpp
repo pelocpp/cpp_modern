@@ -10,63 +10,54 @@ namespace VariantDemo {
 
         std::variant<int, double, std::string> var{ 123 };
 
-        // std::get with type
-        std::cout
-            << var.index()
-            << ", value "
-            << std::get<int>(var)
-            << std::endl;
+        size_t index{ var.index() };
+        int n{ std::get<int>(var) };  // std::get using type
 
-        // works too: std::get with index
-        std::cout
-            << var.index()
-            << ", value "
-            << std::get<0>(var)
-            << std::endl;
+        std::cout << index << ", value: " << n << std::endl;
 
-        var = std::string{ "Hello" }; // we're now a std::string
+        // -------------------------------------------------
+        
+        n = std::get<0>(var);         // std::get using index
+        
+        std::cout << index << ", value: " << n << std::endl;
 
-        std::cout
-            << var.index()
-            << ", value "
-            << std::get<std::string>(var)
-            << std::endl;
+        // -------------------------------------------------
+        
+        var = std::string{ "Hello" };     // we're now a std::string
 
-        var = 123.456; // we're now a double
+        index = var.index();
+        std::string s = std::get<std::string>(var);
 
-        std::cout
-            << var.index()
-            << ", value "
-            << std::get<double>(var)
-            << std::endl;
+        std::cout << index << ", value: " << s << std::endl;
 
-        var.emplace<2>("Hello again"); // we're now a string again
+        // -------------------------------------------------
+        
+        var = 123.456;                    // we're now a double
 
-        std::cout
-            << var.index()
-            << ", value "
-            << std::get<std::string>(var)
-            << std::endl;
+        index = var.index();
+        double d = std::get<double>(var);
 
+        std::cout << index << ", value: " << d << std::endl;
+
+        // -------------------------------------------------
+        
+        var.emplace<2>("Hello again");    // we're now a std::string again
+
+        index = var.index();
+        s = std::get<std::string>(var);
+
+        std::cout << index << ", value: " << s << std::endl;
+
+        // -------------------------------------------------
+        
         // std::get returns a reference, so you can change the value:
 
         std::get<std::string>(var) += std::string{ " World" };
 
         std::cout
             << var.index()
-            << ", value "
+            << ", value: "
             << std::get<std::string>(var)
-            << std::endl;
-
-        var = 654.321;
-        if (auto pd = std::get_if<double>(&var); pd != nullptr) {
-            *pd *= 2.0;
-        }
-
-        std::cout
-            << var.index()
-            << ", value "
-            << std::get<double>(var)
             << std::endl;
     }
 
@@ -101,10 +92,6 @@ namespace VariantDemo {
             << ", value "
             << std::get<int>(var)
             << std::endl;
-
-        if (auto ip = std::get_if<0>(&var)) {
-            std::cout << "int! => " << *ip << std::endl;
-        }
     }
 
     // -------------------------------------------------------------------

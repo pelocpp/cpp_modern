@@ -468,6 +468,7 @@
     <None Include="Trim\cpp_snippet_base_01.svg" />
     <None Include="Trim\cpp_snippet_base_02.svg" />
     <None Include="Trim\Trim.md" />
+    <None Include="Tuple\cpp_std_tuple.svg" />
     <None Include="Tuple\Tuple.md" />
     <None Include="TypeErasure\TypeErasure.md" />
     <None Include="TypeTraits\TypeTraits.md" />

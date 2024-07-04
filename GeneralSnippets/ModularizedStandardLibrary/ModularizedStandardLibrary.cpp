@@ -51,7 +51,7 @@ void main_modularized_standard_library()
 {
     using namespace ModularizedStandardLibrary;
 
-    // test_01(); 
+    test_01(); 
     test_02();
 }
 

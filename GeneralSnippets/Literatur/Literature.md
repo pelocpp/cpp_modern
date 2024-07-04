@@ -20,20 +20,16 @@
 
     Ein sehr gutes Buch für Leser, die deutschsprachige Bücher bevorzugen. Viele Beispiele, gute Erklärungen.
 
-    Es folgen zwei Autoren &ndash; *Marius Bancila* und *Jacek Galowicz* &ndash;, deren Bücher sich stark
-    mit den so genannten &bdquo;Modern C++&rdquo; Sprachergänzungen 
-    beschäftigen. Beides absolut empfehlenswerte Bücher, aber nicht unbedingt für den C++-Einsteiger zu empfehlen:
-
 ---
 
   * Stephan Roth: &bdquo;Clean C++ 20&rdquo;.</br>
     Apress (18. Juni 2021), 508 Seiten. Sprache: Englisch. ISBN-10: 1484259483, ISBN-13: 978-1484259481.
 
-    Dieses Buch vermittelt nicht die Merkmale der Programmiersprache C++ (Lexikon, Syntax, ...),
-    sondern allgemeingültige Prinzipien für eine moderne Softwareentwicklung mit C++.
+    Dieses Buch vermittelt weniger die Merkmale der Programmiersprache C++ (Lexikon, Syntax, ...),
+    sondern vielmehr allgemeingültige Prinzipien für eine moderne Softwareentwicklung mit C++.
 
-    Die Beispiel sind vergleichsweise einfach gehalten, aber dadurch besitzen sie eine starke Prägnanz,
-    um den Blick auf das Wesentliche zu lenken.
+    Die Beispiele sind vergleichsweise einfach gehalten, besitzen deshalb eine starke Prägnanz
+    und bringen das jeweilige zu veranschaulichende Konzept auf den Punkt. Ein absolut empfehlenswertes Buch!
 
 ---
 
@@ -68,6 +64,10 @@
   * Bancila, Marius, &bdquo;*Modern C++ Programming Cookbook*&rdquo;.</br> 
     Packt Publishing (11. September 2020, 2. Auflage), 750 Seiten. Sprache: Englisch. ISBN-10: 1800208987, ISBN-13: 978-1800208988.
 
+    Das Buch beschäftigt sich überwiegend
+    mit den so genannten &bdquo;Modern C++&rdquo; Sprachergänzungen.
+    Eine absolut empfehlenswerte Lektüre, aber nicht unbedingt für den C++-Einsteiger zu empfehlen.
+  
 ---
 
   * Bancila, Marius, &bdquo;*The Modern C++ Challenge*&rdquo;.</br> 
@@ -77,6 +77,9 @@
 
   * Galowicz, Jacek, &bdquo;*C++17 STL Cookbook*&rdquo;.</br> 
     Packt Publishing (28. Juni 2017), 532 Seiten. Sprache: Englisch. ISBN-10: 178712049X, ISBN-13: 978-1787120495.
+
+    Es gilt dasselbe wie für die Bücher von *Marius Bancila*: Vorzugsweise für Leser geeignet,
+    die sich schwerpunktmäßig mit den Sprachergänzungen von &bdquo;*Modern C++*&rdquo; beschäftigen möchten.
 
 ---
 

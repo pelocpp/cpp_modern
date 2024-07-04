@@ -5,10 +5,10 @@
 ---
 
 ## Verschiebe-Semantik (*Move*-Semantik)
-  * *Move*-Semantik einsetzen um teures Kopieren durch billiges Verschieben zu ersetzen
-  * *Move*-Semantik einsetzen um Daten zu verschieben, die nicht kopiert werden können
+  * *Move*-Semantik einsetzen um laufzeitintensives Kopieren durch schnelles Verschieben zu ersetzen
+  * *Move*-Semantik einsetzen um Daten zu verschieben, die nicht kopierbar sind
   * *RValues* und *LValues*
-  * Verschiebe-Semantik (*Move*&ndash;*Semantics*) erklärt
+  * Verschiebe-Semantik (*Move*&ndash;*Semantic*) erklärt
   * Verschiebe-Semantik mit dem *Swap-Idiom* realisiert
   * &bdquo;Rule of Three&rdquo;, &bdquo;Rule of Five&rdquo; und &bdquo;Rule of Zero&rdquo; 
 

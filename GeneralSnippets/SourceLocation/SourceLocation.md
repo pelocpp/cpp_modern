@@ -10,7 +10,7 @@
 
 Die Klasse `std::source_location` bietet eine einfache Möglichkeit,
 Informationen über den Speicherort des Quellcodes zu erhalten, an dem er verwendet wird,
-z. B. Dateiname, Zeilennummer und Funktionsname.
+z. B. Dateiname, Zeilennummer und Funktionsname:
 
 *Beispiel*:
 
@@ -42,7 +42,6 @@ z. B. Dateiname, Zeilennummer und Funktionsname.
 *Ausgabe*:
 
 ```
-[Collection of Modern C++-Code Examples - Copyright (C) 2019-2024 Peter Loos]
 File:          C:\Development\GitRepositoryCPlusPlus\Cpp_Modern\GeneralSnippets\SourceLocation\SourceLocation.cpp
 Function Name: void __cdecl StdSourceLocation::test_01(void)
 Column :       9
