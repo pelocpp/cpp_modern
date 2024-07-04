@@ -119,7 +119,7 @@ int sumOfSums<
 #endif
 ```
 
-## Literaturhinweise:
+## Literaturhinweise
 
 Das Beispiel stammt aus
 

@@ -80,7 +80,7 @@ std::cout << *i2 << std::endl;  // prints '3'
 
 ---
 
-## Literaturhinweise:
+## Literaturhinweise
 
 Die Anregungen zu den Beispielen dieses Code-Snippets finden sich unter
 

@@ -16,7 +16,7 @@ Siehe das Beispiel im korrespondierenden Quellcode.
 
 ---
 
-## Literaturhinweise:
+## Literaturhinweise
 
 Die Anregungen zu diesem Code-Snippet finden sich unter anderem unter
 

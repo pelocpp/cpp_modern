@@ -135,7 +135,7 @@ da der Compiler nicht die entsprechende `print`-Funktion für einen Aufruf
 mit null Argumenten findet!
 
 
-## Literaturhinweise:
+## Literaturhinweise
 
 Die Beispiele stammen aus
 

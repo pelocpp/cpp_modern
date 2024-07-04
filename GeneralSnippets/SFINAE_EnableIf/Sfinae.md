@@ -294,7 +294,7 @@ auto negate13(T& value) -> typename std::enable_if<std::is_integral<T>::value>::
 }
 ```
 
-## Literaturhinweise:
+## Literaturhinweise
 
 Die Anregungen zu den Beispielen aus diesem Code-Snippet finden sich unter
 

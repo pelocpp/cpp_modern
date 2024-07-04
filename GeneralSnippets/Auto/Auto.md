@@ -8,6 +8,24 @@
 
 ---
 
+## Inhalt
+
+  * [Einleitung](#link1)
+  * [Vereinbarung von Variablen / *Automatic Type Deduction*](#link2)
+  * [Neuartige Möglichkeit in der Definition von Funktionen / *Function Return Type Deduction*](#link3)
+  * [Funktionsdefinition mit *Trailing Return Type*](#link4)
+  * [Verlust von `const` und `&` (Referenz) bei `auto`](#link5)
+  * [decltype(auto)](#link6)
+  * [`auto` versus `decltype`](#link7)
+  * [`auto` versus `decltype(auto)`](#link8)
+  * [Typableitung bei Template Parametern (*Template Parameter Type Deduction*)](#link9)
+  * [Möglichkeiten des Gebrauchs von `auto` im Vergleich](#link10)
+  * [Literaturhinweise](#link11)
+
+---
+
+## Einleitung <a name="link1"></a>
+
 Das Schlüsselwort `auto` besitzt mehrere, völlig unterschiedliche Einsatzmöglichkeiten:
 
   * Vereinbarung von Variablen / *Automatic Type Deduction*
@@ -25,7 +43,7 @@ so genannten *Type Inference*. Hierzu zählen die beiden Schlüsselwörter `auto` u
 
 ---
 
-## Vereinbarung von Variablen / *Automatic Type Deduction*
+## Vereinbarung von Variablen / *Automatic Type Deduction* <a name="link2"></a>
 
 Mit `auto` lassen sich Variablen definieren. Der Typ der Variablen leitet sich in diesem Fall
 aus dem Vorbelegungswert der Variablen ab:
@@ -48,7 +66,7 @@ Hier gewinnt man zwei Vorteile:
   * Ändert sich der Rückgabetyp von `getFunction`, so muss man den Quellcode an all den Stellen,
     an denen ein Aufruf von `getFunction` in Verbindung mit `auto` steht, nicht nachgezogen werden.
 
-## Neuartige Möglichkeit in der Definition von Funktionen / *Function Return Type Deduction*
+## Neuartige Möglichkeit in der Definition von Funktionen / *Function Return Type Deduction* <a name="link3"></a>
 
 Ab C++ 14 ist es möglich, dass der Rückgabetyp einer Funktion vom Compiler automatisch bestimmt wird.
 Zu diesem Zweck
@@ -129,7 +147,7 @@ Im letzten Code-Fragment finden Sie noch eine Kombination der *Automatic Return 
 *Structured Binding* vor!
 
 
-## Funktionsdefinition mit *Trailing Return Type*
+## Funktionsdefinition mit *Trailing Return Type* <a name="link4"></a>
 
 Unter dem Begriff &bdquo;*Trailing Return Type*&rdquo; versteht man die Möglichkeit,
 den Rückgabetyp hinter der Parameterliste statt wie ursprünglich vor dem Funktionsnamen zu platzieren.
@@ -180,7 +198,7 @@ auto foo(bool flag, char ch, double d) -> double
 }
 ```
 
-## Verlust von `const` und `&` (Referenz) bei `auto`
+## Verlust von `const` und `&` (Referenz) bei `auto` <a name="link5"></a>
 
 Die automatische Typableitung mit `auto` hat einen Nebeneffekt:
 Die zwei möglichen Qualifizierer `const` und `&` (Referenz)
@@ -233,7 +251,7 @@ decltype(auto)
 ```
 
 
-## decltype(auto)
+## `decltype(auto)` <a name="link6"></a>
 
 `decltype(auto)` wird genauso benutzt wie `auto`, nur sind die Regeln zum Ableiten des Typ (*Type Deduction*)
 unterschiedlich:
@@ -271,7 +289,7 @@ siehe hierzu auch *Abbildung* 2 und *Abbildung* 3:
 *Abbildung* 3: Variablendeklaration mit `decltype(auto)`.
 
 
-##  `auto` versus `decltype`
+## `auto` versus `decltype` <a name="link7"></a>
 
 `auto` leitet den Typ einer Variablen ab, wenn sie mit Hilfe ihres Initialisierers deklariert wird.
 
@@ -292,7 +310,7 @@ decltype(f()) i;            // i is integer
 vector<decltype(f())> v;    // vector<int>, cannot be done with auto
 ```
 
-##  `auto` versus `decltype(auto)`
+## `auto` versus `decltype(auto)` <a name="link8"></a>
 
 In den in diesem Abschnitt gezeigten Beispielen haben wir gesehen,
 dass `auto` allein nicht in einen konstanten oder Referenztyp konvertiert werden kann.
@@ -321,8 +339,7 @@ decltype(auto) getFirstCharacter(const std::string& s)
 }
 ```
 
-
-## Typableitung bei Template Parametern (*Template Parameter Type Deduction*)
+## Typableitung bei Template Parametern (*Template Parameter Type Deduction*) <a name="link9"></a>
 
 Der Typ von Template Parametern wird vom Übersetzer an Hand der Argumente aufgelöst,
 mit denen ein Funktionstemplate aufgerufen wird. Template Parameter, die sich aus den Argumenten nicht erschließen lassen,
@@ -386,7 +403,7 @@ auto result = add(10, 20);
 
 übersetzungsfähig.
 
-## Möglichkeiten des Gebrauchs von `auto` im Vergleich
+## Möglichkeiten des Gebrauchs von `auto` im Vergleich <a name="link10"></a>
 
 Wir wollen einen kurzen und prägnanten Vergleich in der Möglichkeit des Gebrauchs von `auto` geben:
 
@@ -423,7 +440,7 @@ Zusammenfassend kann man sagen:
 
 ---
 
-## Literaturhinweise:
+## Literaturhinweise <a name="link11"></a>
 
 Die Anregungen zu diesem Code-Snippet finden sich unter anderem in
 

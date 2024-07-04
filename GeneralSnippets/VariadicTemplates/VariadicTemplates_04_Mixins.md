@@ -465,7 +465,7 @@ oder noch besser mit *Perfect Forwarding*:
 12: }
 ```
 
-## Literaturhinweise:
+## Literaturhinweise
 
 Die Anregungen zu den Beispielen aus diesem Abschnitt sind entnommen aus
 

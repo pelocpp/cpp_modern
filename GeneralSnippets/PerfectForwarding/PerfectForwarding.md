@@ -42,7 +42,7 @@ Sei es zum Schutze des Objekts oder aus Gründen der Performanz.
 Im Gegensatz zu einer konstanten Referenz kann eine veränderbare Referenz (gekennzeichnet durch `T&`)
 nicht an eine temporäre Variable / temporäres Objekt gebunden werden.
 
-Verwenden Sie eine veränderliche Referenz nur dann, wenn Sie das Objekt ändern möchten, auf das die Referenz verweist.
+Verwenden Sie eine veränderbare Referenz nur dann, wenn Sie das Objekt ändern möchten, auf das die Referenz verweist.
 
 ### Universal Referenzen / *Forwarding Referenz*
 
@@ -58,7 +58,7 @@ wenn sie in einem Funktionstemplate verwendet wird,
 in der `T` ein Templateparameter des umgebenden Funktionstemplates ist.
 
 Die Verwendung der `&&`-Syntax mit einem expliziten Typ,
-z.B. `std::string&&`, bezeichnet eine *RValue*-Referenz und ist *keine* keine universelle Referenz!
+z.B. `std::string&&`, bezeichnet eine *RValue*-Referenz und ist *keine* universelle Referenz!
 
 
 ---
@@ -75,7 +75,7 @@ des Sachverhalts an:
 
 ---
 
-## Literaturhinweise:
+## Literaturhinweise
 
 Gute Beschreibungen zu diesem Thema befinden sich in
 

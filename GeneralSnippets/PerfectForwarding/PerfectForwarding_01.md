@@ -481,7 +481,7 @@ das Argument in einen *RValue* zu konvertieren:
   * `std::forward<T>` hingegen verwandelt nur *RValue* Referenzen **mit Namen** in *RValue* Referenzen **ohne Namen**, macht sie infolgedessen zu *RValues*.
 
 
-## Literaturhinweise:
+## Literaturhinweise
 
 Das oben verwendete Bespiel stammt im Groﬂen und Ganzen aus
 

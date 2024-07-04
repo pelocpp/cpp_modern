@@ -63,7 +63,7 @@ Siehe hierzu Abbildung 3:
 
 ---
 
-## Literaturhinweise:
+## Literaturhinweise
 
 Auch in das C++&ndash;Umfeld dringen bisweilen *Fake*-*News* ein:
 

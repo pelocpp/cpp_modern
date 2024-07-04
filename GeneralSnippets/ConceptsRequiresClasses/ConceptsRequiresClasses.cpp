@@ -10,7 +10,7 @@ namespace ClassesAndConcepts_01 {
     concept Number = std::integral<T> || std::floating_point<T>;
 
     template <typename T>
-    requires Number<T>
+        requires Number<T>
     class WrappedNumber
     {
     private:
@@ -40,7 +40,7 @@ namespace ClassesAndConcepts_02 {
     concept Number = std::integral<T> || std::floating_point<T>;
 
     template <typename T, typename U>
-    requires Number<T> && Number<U>
+        requires Number<T> && Number<U>
     class WrappedPair
     {
     private:

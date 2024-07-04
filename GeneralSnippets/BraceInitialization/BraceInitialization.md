@@ -14,6 +14,25 @@ Siehe dazu auch das Sprachfeature [Default-Initialisierung für Member-Variablen]
 
 ---
 
+## Inhalt
+
+  * [Einleitung](#link1)
+  * [Überblick](#link2)
+  * [Resümee](#link3)
+  * [Variablen elementaren Datentyps: Initialisierung mit datentyp-spezifischem Null-Wert](#link4)
+  * [Variablen elementaren Datentyps: Allgemeine Initialisierung](#link5)
+  * [Benutzerdefinierte Datentypen: Strukturen](#link6)
+  * [Benutzerdefinierte Datentypen: Klassen](#link7)
+  * [Standard STL Container](#link8)
+  * [Dynamisch allokierte Felder](#link9)
+  * [Statisch allokierte (bzw. definierte) Felder](#link10)
+  * [Geschachtelte Strukturen / *Brace Elision* (Entfernen von Klammern)](#link11)
+  * [Literaturhinweise](#link12)
+
+---
+
+## Einleitung <a name="link1"></a>
+
 Die Initialisierung mit geschweiften Klammern '{' und '}' ist ab der Version C++&ndash;11
 eine einheitliche Methode zum Initialisieren von Daten.
 Sie wird auch als &bdquo;*Uniform Initialization*&rdquo; oder als &bdquo;*Brace Initialization*&rdquo; bezeichnet.
@@ -23,6 +42,8 @@ Sie wird auch als &bdquo;*Uniform Initialization*&rdquo; oder als &bdquo;*Brace 
 Abbildung 1: C++ und Initialisierung: *Relax*!
 
 ---
+
+## Überblick <a name="link2"></a>
 
 Es lassen sich mit geschweiften Klammern ("*Uniform Initialization*") alle möglichen Arten einer Variablen-Initialisierung (auch Objekte)
 mit einer einheitlichen Schreibweise initialisieren.
@@ -39,7 +60,7 @@ Am besten studiert man die einzelnen Möglichkeiten an Hand der folgenden Systema
 
 ---
 
-#### Resümee
+## Resümee <a name="link3"></a>
 
 Das Feature der *einheitlichen Initialisierung* bringt drei Vorteile mit sich:
 
@@ -68,7 +89,7 @@ findet man [hier](https://isocpp.org/blog/2016/05/quick-q-why-is-list-initializa
 
 ---
 
-## Variablen elementaren Datentyps: Initialisierung mit datentyp-spezifischem Null-Wert
+## Variablen elementaren Datentyps: Initialisierung mit datentyp-spezifischem Null-Wert <a name="link4"></a>
 
 ```cpp
 int n{};                 // n equals 0
@@ -80,7 +101,7 @@ size_t i{};              // i equals 0
 
 ---
 
-## Variablen elementaren Datentyps: Allgemeine Initialisierung
+## Variablen elementaren Datentyps: Allgemeine Initialisierung <a name="link5"></a>
 
 ```cpp
 int n{ 1 };                // n equals 1
@@ -90,7 +111,7 @@ double d{ 2.5 };           // d equals 2.5
 
 ---
 
-## Benutzerdefinierte Datentypen: Strukturen
+## Benutzerdefinierte Datentypen: Strukturen <a name="link6"></a>
 
 Bei einer Struktur führt die einheitliche Initialisierung eine direkte Initialisierung ihrer Membervariablen durch:
 
@@ -129,7 +150,7 @@ void main()
 
 ---
 
-## Benutzerdefinierte Datentypen: Klassen
+## Benutzerdefinierte Datentypen: Klassen <a name="link7"></a>
 
 Bei Klassen führt die *Brace Initialization* zum Aufruf eines Konstruktors.
 
@@ -153,7 +174,7 @@ void main()
 ---
 
 
-## Standard STL Container
+## Standard STL Container <a name="link8"></a>
 
 ```cpp
 std::vector<int> myArray{ 1, 2, 3, 4, 5 };
@@ -178,24 +199,24 @@ welche dann als Argument für den Aufruf des Sequenzkonstruktors der Klasse `std:
 
 ---
 
-## Dynamisch allokierte Felder
+## Dynamisch allokierte Felder <a name="link9"></a>
 
 ```cpp
-int* pi = new int[5]{ 1, 2, 3, 4, 5 };
+int* pi = new int[5] { 1, 2, 3, 4, 5 };
 ```
 
 
 ---
 
-## Statisch allokierte (bzw. definierte) Felder
+## Statisch allokierte (bzw. definierte) Felder <a name="link10"></a>
 
 ```cpp
-int intArray[]{ 1, 2, 3, 4, 5 };
+int intArray[] { 1, 2, 3, 4, 5 };
 ```
 
 ---
 
-## Geschachtelte Strukturen / *Brace Elision* (Entfernen von Klammern)
+## Geschachtelte Strukturen / *Brace Elision* (Entfernen von Klammern) <a name="link11"></a>
 
 ```cpp
 struct Inner {
@@ -213,7 +234,7 @@ void main()
 
 ---
 
-## Literaturhinweise:
+## Literaturhinweise <a name="link12"></a>
 
 Die Anregungen zu den Beispielen stammen teilweise aus
 

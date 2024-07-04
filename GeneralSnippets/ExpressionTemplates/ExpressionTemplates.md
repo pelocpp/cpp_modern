@@ -299,7 +299,7 @@ constexpr size_t BenchmarkSize{ 50 };
 
 ---
 
-## Literaturhinweise:
+## Literaturhinweise
 
 Die Anregungen zu den Beispielen dieses Code-Snippets finden sich unter
 

@@ -384,7 +384,7 @@ Titles: C, C++
 
 Siehe den dazugehörigen [Quellcode zu Variante 1](FunctionalProgramming01.cpp) und [Quellcode zu Variante 2](FunctionalProgramming02.cpp).
 
-## Literaturhinweise:
+## Literaturhinweise
 
 Die Anregungen zu den Beispielen aus diesem Code-Snippet stammen teilweise aus
 

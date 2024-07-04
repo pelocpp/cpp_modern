@@ -179,7 +179,7 @@ Auf diese Weise können *rvalue*-Argumente als *rvalues* und *lvalue*-Argumente a
 ein Schema, das als “perfekte Weiterleitung” (“perfect forwarding”) bezeichnet wird.
 
 
-## Literaturhinweise:
+## Literaturhinweise
 
 Eine sehr gute Beschreibung zu diesem Thema befindet sich unter
 

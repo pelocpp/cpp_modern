@@ -111,7 +111,7 @@ using sum_t = decltype(T + U);
 
 ist nicht übersetzungsfähig! Zwei Typen lassen sich nicht "addieren"!
 
-## Literaturhinweise:
+## Literaturhinweise
 
 Die Anregungen zu diesem Code-Snippet finden sich unter anderem unter
 

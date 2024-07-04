@@ -643,7 +643,7 @@ und dieses wiederum nur mit der Länge 5 &ndash; verwendet werden!
 
 ---
 
-## Literaturhinweise:
+## Literaturhinweise
 
 Einige Informationen zu den Übersetzungsmodellen für Templates wurden aus
 

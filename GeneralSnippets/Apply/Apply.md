@@ -161,7 +161,7 @@ void test()
 
 ---
 
-## Literaturhinweise:
+## Literaturhinweise
 
 Die Beispiel zu diesem Snippet sind angelehnt an
 

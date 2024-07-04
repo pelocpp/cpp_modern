@@ -291,7 +291,7 @@ export import :weak_ptr;
 
 ---
 
-## Literaturhinweise:
+## Literaturhinweise
 
 Die Anregungen zu diesem Code-Snippet finden sich teilweise in
 

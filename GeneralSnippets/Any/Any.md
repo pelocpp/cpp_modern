@@ -16,7 +16,7 @@ Siehe das Beispiel im korrespondierenden Quellcode.
 
 ---
 
-## Literaturhinweise:
+## Literaturhinweise
 
 Ein interessanter Vergleich der beiden Klassen `std::any` und `std::variant` findet sich in *stackoverflow*:
 

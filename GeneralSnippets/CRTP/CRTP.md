@@ -309,7 +309,7 @@ dass in den Projekt-Einstellungen der "**Release**"-Modus eingestellt ist!
 Die Unterschiede bzgl. der Laufzeiten zwischen "*Debug*"-Modus und "*Release*"-Modus sind exorbitant groß!
 
 
-## Literaturhinweise:
+## Literaturhinweise
 
 Die Anregungen zu den Beispielen aus diesem Abschnitt sind aus dem Buch
 

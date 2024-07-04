@@ -70,7 +70,7 @@ siehe zum Beispiel diesen *GitHub Gist*: [variant.cc](https://gist.github.com/ti
 ---
 
 
-## Literaturhinweise:
+## Literaturhinweise
 
 Ein interessanter Vergleich der beiden Klassen `std::variant` und `std::any` findet sich in *stackoverflow*:
 

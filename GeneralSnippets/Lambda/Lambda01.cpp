@@ -213,7 +213,7 @@ namespace Lambdas {
 
     static void test_09() {
 
-        // IIFE -Immediately Invoked Functional Expression:
+        // IIFE - Immediately Invoked Functional Expression:
         // Inline-definition and direct invocation of lambda funtion:
         
         std::cout << [](int l, int r) { return l + r; } (11, 12) << std::endl;

@@ -10,15 +10,16 @@
 
 ## Inhalt
 
-  * Einleitung
-  * *Automatic Type Deduction* bei generischen Lambda Ausdrücken
-  * Lambda Ausdrücke mit `template`-Header
-  * *Perfect Forwarding* mit generischen Lambdas
-  * Rekursive Lambda Ausdrücke
-
+  * [Einleitung](#link1)
+  * [*Automatic Type Deduction* bei generischen Lambda Ausdrücken](#link2)
+  * [Lambda Ausdrücke mit `template`-Header](#link3)
+  * [*Perfect Forwarding* mit generischen Lambdas](#link4)
+  * [Rekursive Lambda Ausdrücke](#link5)
+  * [Literatur](#link6)
+    
 ---
 
-## Einleitung
+## Einleitung <a name="link1"></a>
 
 Ein Lambda-Ausdruck, der mindestens einen Parameter vom Typ `auto` hat,
 wird als generischer Lambda-Ausdruck bezeichnet:
@@ -65,7 +66,7 @@ struct LambdaTwice
 
 ---
 
-## *Automatic Type Deduction* bei generischen Lambda Ausdrücken
+## *Automatic Type Deduction* bei generischen Lambda Ausdrücken <a name="link2"></a>
 
 Das Feature der *Automatic Type Deduction* wird auch bei Lambda-Ausdrücken angewendet,
 und zwar sowohl beim Rückgabetyp als auch bei den Parametern der Lambda-Funktion.
@@ -151,7 +152,7 @@ if (it2 != std::end(doubleValues)) {
 
 ---
 
-## Lambda Ausdrücke mit `template`-Header
+## Lambda Ausdrücke mit `template`-Header <a name="link3"></a>
 
 Lambda Ausdrücke mit `template`-Header Syntax, die in C++ 20 eingeführt wurde,
 ermöglichen es, explizit auf die Gestaltung des Template-basierten Funktionsaufrufoperators `operator()`
@@ -272,7 +273,7 @@ ist dies nur mit dem gezeigten Lösungswegs eines Lambda Ausdrucks mit `template
 
 ---
 
-## *Perfect Forwarding* mit generischen Lambdas
+## *Perfect Forwarding* mit generischen Lambdas <a name="link4"></a>
 
 Das Prinzip des &bdquo;perfekteb Weiterleitens&rdquo; gibt es auch für generische Lambdas.
 Definiert man einen Parameter eines generischen Lambdas vom Typ `auto&&`, also als so genannte *Universal Reference*,
@@ -311,7 +312,7 @@ Calling foo(): Hello World with RValue - Signature: &&
 
 ---
 
-## Rekursive Lambda Ausdrücke
+## Rekursive Lambda Ausdrücke <a name="link5"></a>
 
 
 Generische Lambda Ausdrücke eröffnen auch die Möglichkeit, rekursive Lambda-Funktionen zu realisieren,
@@ -374,7 +375,7 @@ std::cout << power(power, 2.71828, 10);           // e^10 = 22026.3
 
 ---
 
-## Literatur
+## Literatur <a name="link6"></a>
 
 Die Anregungen zu rekursiven Lambda Ausdrücken stammen aus
 [Generic code with generic lambda expression](https://www.nextptr.com/tutorial/ta1224017367/generic-code-with-generic-lambda-expression).

@@ -8,16 +8,26 @@
 
 ---
 
-## Allgemeines
+## Inhalt
+
+  * [Allgemeines](#link1)
+  * [Variante 1: `requires`-Klausel nach der Template-Parameterliste](#link2)
+  * [Variante 2: Eingeschränkte Template Parameter](#link3)
+  * [Literaturhinweise](#link4)
+
+---
+
+## Allgemeines <a name="link1"></a>
 
 Es gibt zwei Möglichkeiten, um Konzepte (`concept`) mit Klassen zu verwenden.
 
-Sowohl mit der `requires`-Klausel als auch mit `den so genannten &bdquo;Constrained Template Parametern&rdquo;
+Sowohl mit der `requires`-Klausel als auch mit den so genannten &bdquo;Constrained Template Parametern&rdquo;
 haben wir eine einfache und lesbare Möglichkeit, Konzepte zu verwenden, um die Menge aller möglichen Datentypen einzuschränken,
 die für eine Template-Klasse Anwendung finden sollen.
 
+---
 
-## Variante 1: `requires`-Klausel nach der Template-Parameterliste
+## Variante 1: `requires`-Klausel nach der Template-Parameterliste <a name="link2"></a>
 
 Wir können eine `requires`-Klausel verwenden, um Einschränkungen (*Constraints*) für ein
 Klassentemplate zu definieren.
@@ -27,14 +37,14 @@ nach der Template-Parameterliste ergänzen wir eine `requires`-Klausel mit allen 
 die wir festlegen wollen.
 
 
-Beispiel:
+*Beispiel*:
 
 ```cpp
 01: template <typename T>
 02: concept Number = std::integral<T> || std::floating_point<T>;
 03: 
 04: template <typename T>
-05: requires Number<T>
+05:     requires Number<T>
 06: class WrappedNumber
 07: {
 08: private:
@@ -49,15 +59,17 @@ Beispiel:
 
 Wie wir an dem Beispiel erkennen können, ist die Syntax
 &ndash; abgesehen von der zusätzlichen Zeile mit der `requires`-Klausel &ndash;
-dieselbe wie die eines Klassentemplate.
+dieselbe wie die eines Klassentemplates.
 
 Wir wollen noch ein Beispiel mit mehreren Template Parametern betrachten.
 
 In diesem Fall müssen wir die `requires`-Klausel entsprechend für alle Template Parameter erweitern:
 
+*Beispiel*:
+
 ```cpp
 01: template <typename T, typename U>
-02: requires Number<T> && Number<U>
+02:     requires Number<T> && Number<U>
 03: class WrappedPair
 04: {
 05: private:
@@ -77,8 +89,9 @@ In diesem Fall müssen wir die `requires`-Klausel entsprechend für alle Template 
 Das obige Beispiel zeigt, dass wir zusammengesetzte Ausdrücke als Einschränkungen verwenden können.
 Mit der nun folgenden Art, eingeschränkte Klassentemplates zu schreiben, ist dies nicht mehr möglich.
 
+---
 
-## Variante 2: Eingeschränkte Template Parameter
+## Variante 2: Eingeschränkte Template Parameter <a name="link3"></a>
 
 Mit &bdquo;Constrained Template Parametern&rdquo; ist es noch einfacher,
 das Sprachmittel `concept` zu verwenden.
@@ -86,6 +99,7 @@ das Sprachmittel `concept` zu verwenden.
 In der Liste der Template Parameter wird anstelle des Schlüsselworts `typename`
 einfach das Konzept angeben, das man verwenden möchte:
 
+*Beispiel*:
 
 ```cpp
 01: template <Number T>
@@ -105,6 +119,8 @@ In diesem Beispiel können wir sehen, wie wir den Template Parameter `T` eingesch
 um das `Number`-Konzept zu erfüllen.
 
 Wir wollen zum Abschluss auch für diese Variante ein Beispiel mit mehreren Template Parametern betrachten:
+
+*Beispiel*:
 
 ```cpp
 01: template <Number T, Number U>
@@ -126,7 +142,7 @@ Wir wollen zum Abschluss auch für diese Variante ein Beispiel mit mehreren Templ
 
 ---
 
-## Literaturhinweise:
+## Literaturhinweise <a name="link4"></a>
 
 Ideen und Anregungen zu den Beispielen aus diesem Abschnitt stammen aus
 

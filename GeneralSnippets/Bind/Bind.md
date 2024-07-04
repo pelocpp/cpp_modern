@@ -37,7 +37,7 @@ Im Quellcode finden Sie eine Umsetzung der Standardfunktion `std::pow` (mit regu
 auf eine neue Funktion vor, die nur einen Parameter besitzt.
 
 
-## Literaturhinweise:
+## Literaturhinweise
 
 Das Beispiel zu `std::bind`
 stammt aus &bdquo;[`std::function` and `std::bind`: what are they, and when should they be used?](https://stackoverflow.com/questions/6610046/stdfunction-and-stdbind-what-are-they-and-when-should-they-be-used)&rdquo;.

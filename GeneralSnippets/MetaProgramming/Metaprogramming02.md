@@ -311,7 +311,7 @@ std::cout << Length<Append <Int<7>, newList>::result>::result << std::endl;
 
 ---
 
-## Literaturhinweise:
+## Literaturhinweise
 
 Die Anregungen zu den Beispielen aus diesem Code-Snippet finden sich unter
 

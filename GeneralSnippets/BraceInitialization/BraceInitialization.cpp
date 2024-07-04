@@ -168,8 +168,8 @@ namespace BraceInitialization {
 
     static void test_07()
     {
-        int* pi = new int[5]{ 1, 2, 3, 4, 5 };
-        double* pd = new double[5]{ 1.0, 2.0, 3.0, 4.0, 5.0 };
+        int* pi = new int[5] { 1, 2, 3, 4, 5 };
+        double* pd = new double[5] { 1.0, 2.0, 3.0, 4.0, 5.0 };
 
         for (int i = 0; i < 5; i++) {
             std::cout << pi[i] << ", ";
@@ -190,7 +190,7 @@ namespace BraceInitialization {
 
     static void test_08()
     {
-        int intArray[]{ 1, 2, 3, 4, 5 };
+        int intArray[] { 1, 2, 3, 4, 5 };
 
         for (int n : intArray) {
             std::cout << n << ", ";

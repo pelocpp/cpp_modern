@@ -8,7 +8,19 @@
 
 ---
 
-## Allgemeines
+## Inhalt
+
+  * [Allgemeines](#link1)
+  * [Variante 1: `requires`-Klausel zwischen der Template-Parameterliste und dem Rückgabetyp der Funktion](#link2)
+  * [Variante 2: Nachgestellte `requires`-Klausel](#link3)
+  * [Variante 3: Template-Parameter mit Einschränkungen (&bdquo;Constraints&rdquo;)](#link4)
+  * [Variante 4: Abgekürzte Funktionstemplates (&bdquo;Abbreviated Function Templates&rdquo;)](#link5)
+  * [`requires`-Klauseln mit benutzerdefinierten Einschränkungen](#link6)
+  * [Literaturhinweise](#link7)
+
+---
+
+## Allgemeines <a name="link1"></a>
 
 Templates eignen sich sehr gut zum Schreiben von Code,
 der mit unterschiedlichen Datentypen funktioniert.
@@ -19,7 +31,9 @@ können die Parameter für Templates durch boolesche Prädikate validiert werden.
 Auf diese Weise kann man erreichen, dass Funktionstemplates nur für
 sinnvolle Template Parameter instanziiert werden.
 
-## Variante 1: `requires`-Klausel zwischen der Template-Parameterliste und dem Rückgabetyp der Funktion
+---
+
+## Variante 1: `requires`-Klausel zwischen der Template-Parameterliste und dem Rückgabetyp der Funktion <a name="link2"></a>
 
 Bei der ersten der vier vorgestellten Möglichkeiten verwenden wir die
 `requires`-Klausel zwischen der Template-Parameterliste und dem Rückgabetyp der Funktion.
@@ -52,7 +66,7 @@ auto add(T a, U b)
 }
 ```
 
-Das Schlüsselwort `requires` ist neu für C++ 20.
+Das Schlüsselwort `requires` ist neu ab C++ 20.
 Es wendet Einschränkungen (*Constraints*) auf ein Template
 bzw. auf die Parameter eines Templates an.
 `Numerical` ist der Name eines Konzepts, das nur Integer- und Gleitkommatypen akzeptiert.
@@ -96,8 +110,9 @@ verwendet werden können:
   * Der logische *Not*-Operator (`!`) wird verwendet, um den negierten Wert einer Einschränkung zu erhalten.
 
 
+---
 
-## Variante 2: Nachgestellte `requires`-Klausel
+## Variante 2: Nachgestellte `requires`-Klausel <a name="link3"></a>
 
 Das Schlüsselwort `requires` tritt in dieser Variante in der Funktionssignatur
 in Erscheinung:
@@ -126,7 +141,9 @@ Wir müssten die Template Definition ähnlich wie zuvor ändern:
 05: }
 ```
 
-## Variante 3: Template-Parameter mit Einschränkungen (&bdquo;Constraints&rdquo;)
+---
+
+## Variante 3: Template-Parameter mit Einschränkungen (&bdquo;Constraints&rdquo;) <a name="link4"></a>
 
 Die dritte Art, ein Konzept zu verwenden,
 ist in der Schreibweise etwas knapper als die vorherigen.
@@ -158,8 +175,9 @@ requires std::integral<T> || std::floating_point<T>
 
 schreiben. In der dritten Variante geht das nicht.
 
+---
 
-## Variante 4: Abgekürzte Funktionstemplates (&bdquo;Abbreviated Function Templates&rdquo;)
+## Variante 4: Abgekürzte Funktionstemplates (&bdquo;Abbreviated Function Templates&rdquo;) <a name="link5"></a>
 
 Für all diejenigen, die es kurz lieben, gibt es die so genannte &bdquo;*Abbreviated Function Templates*&rdquo;
 Schreibweise:
@@ -181,8 +199,9 @@ wo die Funktionsargumente aufgelistet sind.
 
 Der `concept`-Bezeichner wird in dieser Variante ohne Template Parameter verwendet! 
 
+---
 
-## `requires`-Klauseln mit benutzerdefinierten Einschränkungen
+## `requires`-Klauseln mit benutzerdefinierten Einschränkungen <a name="link6"></a>
 
 Zum Schreiben einer `requires`-Klausel lassen sich die vordefinierten
 Merkmale (&bdquo;*Traits*&rdquo;) aus dem Header `<type_traits>` verwenden.
@@ -216,7 +235,7 @@ T incrementByOne(const T& arg) {
 
 ---
 
-## Literaturhinweise:
+## Literaturhinweise <a name="link7"></a>
 
 Ideen und Anregungen zu den Beispielen aus diesem Abschnitt stammen aus
 

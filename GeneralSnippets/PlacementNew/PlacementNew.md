@@ -154,7 +154,7 @@ könnte so aussehen:
 
 ---
 
-## Literaturhinweise:
+## Literaturhinweise
 
 Ideen und Anregungen zu den Beispielen aus diesem Abschnitt stammen aus
 

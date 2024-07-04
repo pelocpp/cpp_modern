@@ -93,7 +93,7 @@ d'tor [1]
 
 ---
 
-## Literaturhinweise:
+## Literaturhinweise
 
 Die Informationen zu diesem Thema stammen zum größten Teil aus dem Artikel
 

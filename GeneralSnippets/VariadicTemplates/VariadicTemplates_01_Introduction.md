@@ -270,7 +270,7 @@ Siehe hierzu den [Quellcode](VariadicTemplate_01_Introduction.cpp).
 
 ---
 
-## Literaturhinweise:
+## Literaturhinweise
 
 Einführende Artikel zum Thema der varadischen Templates finden sich zum Beispiel unter
 

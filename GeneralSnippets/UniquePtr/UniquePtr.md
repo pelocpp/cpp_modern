@@ -40,7 +40,7 @@ Im [Quellcode](UniquePtr.cpp) finden Sie hierzu ein Beispiel vor.
 
 ---
 
-## Literaturhinweise:
+## Literaturhinweise
 
 Auch in das C++&ndash;Umfeld dringen bisweilen *Fake*-*News* ein:
 

@@ -278,7 +278,7 @@ e = 109601/40320
 
 ---
 
-## Literaturhinweise:
+## Literaturhinweise
 
 Die Anregungen zu den Beispielen aus diesem Code-Snippet finden sich unter
 
