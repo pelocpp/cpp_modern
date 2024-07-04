@@ -2,6 +2,11 @@
 // UniquePtr.cpp // std::unique_ptr
 // ===============================================================================
 
+module;
+
+#include <stdio.h>
+#include <windows.h>
+
 module modern_cpp:unique_ptr;
 
 namespace UniquePointerGeneral {
@@ -127,15 +132,133 @@ namespace UniquePointer_SourceSinkPattern
     }
 }
 
+namespace UniquePointerWrappingResourceHandles {
+
+    // stateless callable object to delete FILE files
+    struct FILE_Deleter
+    {
+        void operator() (FILE* pFile) const
+        {
+            if (pFile != (FILE*)0) {
+                fclose(pFile);
+            }
+        }
+    };
+
+    using FILE_UniquePtr = std::unique_ptr<FILE, FILE_Deleter>;
+
+    static FILE_UniquePtr make_fopen(const char* fname, const char* mode)
+    {
+        FILE* file{ nullptr };
+        auto err{ fopen_s(&file, fname, mode) };
+        if (err != 0)
+        {
+            // print error info
+            std::cout << "Cannot open file " << fname << "!" << std::endl;
+            return nullptr;
+        }
+
+        return FILE_UniquePtr{ file };
+    }
+
+    static void test_05()
+    {
+        const char* fileName{ "..\\GeneralSnippets\\UniquePtr\\UniquePtr.cpp" };
+
+        FILE_UniquePtr pInputFilePtr{ make_fopen(fileName, "r") };
+
+        if (!pInputFilePtr) {
+            std::cout << "Done." << std::endl;
+            return;
+        }
+        else {
+            FILE* fp{ pInputFilePtr.get() };
+            char buf[512];
+            fgets(buf, sizeof(buf), fp);
+
+            std::cout << "First Line: " << buf << std::endl;
+        }
+    }
+}
+
+// https://www.cppstories.com/2016/10/wrapping-resource-handles-in-smart/
+
+namespace UniquePointerWrappingWin32Handles {
+
+    // stateless callable object to release Win32 handles
+    struct HANDLE_Deleter
+    {
+        void operator() (HANDLE handle) const
+        {
+            if (handle != INVALID_HANDLE_VALUE) {
+                ::CloseHandle(handle);
+            }
+        }
+    };
+
+    using HANDLE_UniquePtr = std::unique_ptr<void, HANDLE_Deleter>;
+
+    static HANDLE_UniquePtr make_HANDLE_unique_ptr(HANDLE handle)
+    {
+        if (handle == INVALID_HANDLE_VALUE || handle == nullptr) {
+            return HANDLE_UniquePtr{ nullptr };
+        }
+
+        return HANDLE_UniquePtr{ handle };
+    }
+
+    static void test_06()
+    {
+        const auto* fileName{ L"..\\GeneralSnippets\\UniquePtr\\UniquePtr.cpp" };
+
+        HANDLE  hFile = ::CreateFile(
+            fileName,                                      // file to open
+            GENERIC_READ,                                  // open for reading
+            FILE_SHARE_READ,                               // share for reading
+            NULL,                                          // default security
+            OPEN_EXISTING,                                 // existing file only
+            FILE_ATTRIBUTE_NORMAL | FILE_FLAG_OVERLAPPED,  // normal file
+            NULL
+        );
+
+        HANDLE_UniquePtr uniquePtr { make_HANDLE_unique_ptr(hFile ) };
+
+        if (! uniquePtr) {
+            return;
+        }
+        else {
+            char buffer[512] = { 0 };
+            OVERLAPPED ol = { 0 };
+
+            if (::ReadFileEx(hFile, buffer, sizeof(buffer) - 1, &ol, NULL) == 0) {
+
+                std::cout << "Done." << std::endl;
+                return;
+            }
+            else
+            {
+                std::cout << "First part of File:" << std::endl;
+                std::cout << buffer << std::endl;
+            }
+        }
+    }
+}
+
 void main_unique_ptr()
 {
-    using namespace UniquePointerGeneral;
-    test_01();
-    test_02();
-    test_03();
+    //using namespace UniquePointerGeneral;
+    //test_01();
+    //test_02();
+    //test_03();
 
-    using namespace UniquePointer_SourceSinkPattern;
-    test_04();
+    //using namespace UniquePointer_SourceSinkPattern;
+    //test_04();
+
+    //using namespace UniquePointerWrappingResourceHandles;
+    //test_05();
+
+    using namespace UniquePointerWrappingWin32Handles;
+    test_06();
 }
 
 // =================================================================================

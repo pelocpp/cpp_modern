@@ -8,7 +8,16 @@
 
 ---
 
-## &bdquo;It's about ownership&rdquo;
+## Inhalt
+
+  * [&bdquo;It's about ownership&rdquo;](#link1)
+  * [Das *Source*-*Sink*-Pattern mit `std::unique_ptr<T>`-Objekten](#link2)
+  * [Verpacken von Resource Handles in Smart Pointern (`std::unique_ptr<T>`)](#link3)
+  * [Literaturhinweise](#link4)
+
+---
+
+## &bdquo;It's about ownership&rdquo; <a name="link1"></a>
 
 #### Exklusiver Besitz: `std::unique_ptr<T>`
 
@@ -18,7 +27,7 @@
 
 ---
 
-#### Das *Source*-*Sink*-Pattern mit `std::unique_ptr<T>`-Objekten
+## Das *Source*-*Sink*-Pattern mit `std::unique_ptr<T>`-Objekten <a name="link2"></a>
 
 `std::unique_ptr<T>`-Objekte sind weder kopierbar (Kopier-Konstruktor)
 noch ist eine Wertzuweisung (`operator=`) möglich.
@@ -40,7 +49,22 @@ Im [Quellcode](UniquePtr.cpp) finden Sie hierzu ein Beispiel vor.
 
 ---
 
-## Literaturhinweise
+## Verpacken von Resource Handles in Smart Pointern (`std::unique_ptr<T>`) <a name="link3"></a>
+
+Standardmäßig arbeiten Smart Pointer mit Zeigern, aber man kann ihre Funktionalität auch wiederverwenden
+und diese auf die Verwaltung von zum Beispiel Betriebssystem-Ressourcen anwenden.
+
+Wir betrachten ein Beispiel zu den beiden Funktionen `fopen` und `fclose` aus der CRT.
+`fopen` liefert ein Handle (Zeiger) auf eine `FILE`-Struktur zurück.
+
+Vergisst man bei einer geöffneten Datei diese zu schließen,
+riskiert man möglicherweise nicht nur Speicherlecks, sondern auch, dass die Datei gesperrt oder sogar beschädigt wird.
+
+Im [Quellcode](UniquePtr.cpp) finden Sie ein Beispiel an Hand der Klasse `std::unique_ptr` vor.
+
+---
+
+## Literaturhinweise <a name="link4"></a>
 
 Auch in das C++&ndash;Umfeld dringen bisweilen *Fake*-*News* ein:
 
