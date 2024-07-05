@@ -8,7 +8,16 @@
 
 ---
 
-## &bdquo;It's about ownership&rdquo;
+## Inhalt
+
+  * [&bdquo;It's about ownership&rdquo;](#link1)
+  * [`std::make_shared`](#link2)
+  * [*Control Block*](#link3)
+  * [Literaturhinweise](#link4)
+
+---
+
+## &bdquo;It's about ownership&rdquo; <a name="link1"></a>
 
 ###### Exklusiver Besitz: `std::unique_ptr<T>`
 
@@ -18,7 +27,7 @@
 
 ---
 
-*Erster Hinweis*:
+## `std::make_shared` <a name="link2"></a>
 
 Die beiden Varianten, ein `std::shared_ptr`-Objekt anzulegen, sind nicht
 ganz identisch:
@@ -52,6 +61,9 @@ effizienter ist, siehe dazu auch die folgenden beiden Abbildungen:
 
 ---
 
+## *Control Block* <a name="link3"></a>
+
+
 *Zweiter Hinweis*:
 
 Wesentlich für die Arbeitsweise eines `std::shared_ptr`-Objekts ist der so genannte *Control Block*:
@@ -63,7 +75,7 @@ Siehe hierzu Abbildung 3:
 
 ---
 
-## Literaturhinweise
+## Literaturhinweise <a name="link4"></a>
 
 Auch in das C++&ndash;Umfeld dringen bisweilen *Fake*-*News* ein:
 

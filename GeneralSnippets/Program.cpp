@@ -13,6 +13,10 @@ int main()
 {
     std::cout << "[Collection of Modern C++-Code Examples - Copyright (C) 2019-2024 Peter Loos]" << std::endl;
 
+
+
+
+
     // main entry points code snippets
     try
     {
@@ -48,7 +52,8 @@ int main()
         //main_expression_templates();
         //main_generate();
         //main_generic_lambdas();
-        //main_keyword_explicit();
+        main_exception_safety();
+        //main_explicit_keyword();
         //main_folding();
         //main_functional_programming_ranges();
         //main_functional_programming();
@@ -97,7 +102,7 @@ int main()
         //main_tuple();
         //main_type_erasure();
         //main_type_traits();
-        main_unique_ptr();
+        //main_unique_ptr();
         //main_variadic_templates_introduction();
         //main_variadic_templates_working_on_every_argument();
         //main_variadic_templates_sum_of_sums();

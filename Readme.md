@@ -4,7 +4,7 @@
 
 <img align="right" width="80" height="120" src="GeneralSnippets/Images/CertifiedExpertTrainer.png" />
 
-<br/>*Herb Sutter*:<br/>*"The world is built on C++ (and its C subset)"*
+<br/>*Herb Sutter*:<br/>*&bdquo;The world is built on C++ (and its C subset)&rdquo;*
 
 <br/>
 

@@ -181,8 +181,6 @@ namespace UniquePointerWrappingResourceHandles {
     }
 }
 
-// https://www.cppstories.com/2016/10/wrapping-resource-handles-in-smart/
-
 namespace UniquePointerWrappingWin32Handles {
 
     // stateless callable object to release Win32 handles
@@ -198,7 +196,7 @@ namespace UniquePointerWrappingWin32Handles {
 
     using HANDLE_UniquePtr = std::unique_ptr<void, HANDLE_Deleter>;
 
-    static HANDLE_UniquePtr make_HANDLE_unique_ptr(HANDLE handle)
+    static HANDLE_UniquePtr make_Win32_HANDLE(HANDLE handle)
     {
         if (handle == INVALID_HANDLE_VALUE || handle == nullptr) {
             return HANDLE_UniquePtr{ nullptr };
@@ -211,22 +209,23 @@ namespace UniquePointerWrappingWin32Handles {
     {
         const auto* fileName{ L"..\\GeneralSnippets\\UniquePtr\\UniquePtr.cpp" };
 
-        HANDLE  hFile = ::CreateFile(
-            fileName,                                      // file to open
-            GENERIC_READ,                                  // open for reading
-            FILE_SHARE_READ,                               // share for reading
-            NULL,                                          // default security
-            OPEN_EXISTING,                                 // existing file only
-            FILE_ATTRIBUTE_NORMAL | FILE_FLAG_OVERLAPPED,  // normal file
+        HANDLE  hFile = ::CreateFile (
+            fileName,                                       // file to open
+            GENERIC_READ,                                   // open for reading
+            FILE_SHARE_READ,                                // share for reading
+            NULL,                                           // default security
+            OPEN_EXISTING,                                  // existing file only
+            FILE_ATTRIBUTE_NORMAL | FILE_FLAG_OVERLAPPED,   // normal file
             NULL
         );
 
-        HANDLE_UniquePtr uniquePtr { make_HANDLE_unique_ptr(hFile ) };
+        HANDLE_UniquePtr uniquePtr { make_Win32_HANDLE(hFile ) };
 
         if (! uniquePtr) {
             return;
         }
         else {
+
             char buffer[512] = { 0 };
             OVERLAPPED ol = { 0 };
 

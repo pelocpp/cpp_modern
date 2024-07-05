@@ -29,7 +29,7 @@ namespace KeywordExplicit {
     };
 }
 
-void main_keyword_explicit()
+void main_explicit_keyword()
 {
     using namespace KeywordExplicit;
 
@@ -38,11 +38,11 @@ void main_keyword_explicit()
     
     if (c == 3.0)  // remove or add cast '(Complex)'
     {
-        std::cout << "Same objects";
+        std::cout << "Same objects" << std::endl;
     }
     else
     {
-        std::cout << "Not same objects";
+        std::cout << "Not same objects" << std::endl;
     }
 }
 

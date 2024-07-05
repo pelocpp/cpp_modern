@@ -672,6 +672,12 @@
     <ClCompile Include="CopySwapIdiom\Module_CopySwapIdiom.ixx">
       <Filter>Modules</Filter>
     </ClCompile>
+    <ClCompile Include="ExceptionSafety\ExceptionSafety.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ExceptionSafety\Module_ExceptionSafety.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -1068,6 +1074,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Tuple\cpp_std_tuple.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="ExceptionSafety\ExceptionSafety.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

@@ -8,7 +8,17 @@
 
 ---
 
-## &bdquo;It's about ownership&rdquo;
+## Inhalt
+
+  * [&bdquo;It's about ownership&rdquo;](#link1)
+  * [Funktionsweise Klasse `std::weak_ptr`](#link2)
+  * [*Control Block*](#link3)
+  * [Zyklische Referenzen](#link4)
+  * [Betrachtung der Referenzzähler im Detail](#link5)
+
+---
+
+## &bdquo;It's about ownership&rdquo; <a name="link1"></a>
 
 ###### Exklusiver Besitz: `std::unique_ptr<T>`
 
@@ -18,7 +28,9 @@
 
 ---
 
-Die Funktionsweise der Wrapper-Klasse wird an zwei Beispielen aufgezeigt.
+## Funktionsweise Klasse `std::weak_ptr` <a name="link2"></a>
+
+Die Funktionsweise der Klasse `std::weak_ptr` wird an zwei Beispielen aufgezeigt.
 
 Das erste Beispiel erläutert vor allem den Zusammenhang zwischen den beiden Klassen
 `std::weak_ptr` und `std::shared_ptr`.
@@ -28,7 +40,7 @@ die sich durch `std::shared_ptr`-Objekte gegenseitig referenzieren.
 
 ---
 
-*Hinweis*:
+## *Control Block*  <a name="link3"></a>
 
 Der bei `std::shared_ptr`-Objekten vorhandene *Control Block* bezieht auch 
 `std::weak_ptr`-Objekte mit ein:
@@ -40,7 +52,7 @@ Der bei `std::shared_ptr`-Objekten vorhandene *Control Block* bezieht auch
 
 ---
 
-## Zyklische Referenzen
+## Zyklische Referenzen <a name="link4"></a>
 
 Interessant ist der Weak-Pointer bei zyklischen Referenzen:
 
@@ -70,7 +82,7 @@ d'tor RightNode
 d'tor ParentNode
 ```
 
-## Betrachtung der Referenzzähler im Detail
+## Betrachtung der Referenzzähler im Detail <a name="link5"></a>
 
 Wir sind dem Problem von `std::shared_ptr`-Objekten und zyklischen Referenzen auf die Spur gekommen.
 Möglicherweise ist es aber immer noch nicht ganz genau verständlich geworden,

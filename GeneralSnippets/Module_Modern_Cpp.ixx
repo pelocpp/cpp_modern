@@ -29,6 +29,7 @@ export import :crtp;
 export import :decltype_keyword;
 export import :default_initialization;
 export import :erase_remove_idiom;
+export import :exception_safety;
 export import :explicit_keyword;
 export import :expression_templates;
 export import :expression_templates;

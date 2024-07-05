@@ -173,6 +173,13 @@
   * Vertiefungen zu `std::variant`: Das *Visitor*-Konzept mit `std::visit` und das sog. *Overload*&ndash;Pattern
 
 
+## Ausnahmesicherheit / *Exception Safety*
+  * Keine Ausnahmesicherheit (*No Exception Safety*)
+  * Elementare Ausnahmesicherheit (*Basic Exception Safety*)
+  * Starke Ausnahmesicherheit (*Strong Exception Safety*)
+  * *No-throw*-Garantie (*No-throw guarantee*)
+
+
 ## *Type Erasure* &ndash; statischer versus dynamischer Polymorphismus
   * Was ist *Type Erasure*
   * Implementierung des *Type Erasure* Idioms

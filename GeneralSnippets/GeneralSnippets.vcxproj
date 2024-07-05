@@ -198,6 +198,8 @@
     <ClCompile Include="DefaultInitialization\Module_DefaultInitialization.ixx" />
     <ClCompile Include="EraseRemoveIdiom\EraseRemoveIdiom.cpp" />
     <ClCompile Include="EraseRemoveIdiom\Module_EraseRemoveIdiom.ixx" />
+    <ClCompile Include="ExceptionSafety\ExceptionSafety.cpp" />
+    <ClCompile Include="ExceptionSafety\Module_ExceptionSafety.ixx" />
     <ClCompile Include="Exercises\Exercises_14_ConstExpr.cpp" />
     <ClCompile Include="Exercises\Exercises_15_SmartPointers.cpp" />
     <ClCompile Include="Exercises\Exercises_01_MoveSemantics.cpp" />
@@ -391,6 +393,7 @@
     <None Include="DeclType\decltype.md" />
     <None Include="DefaultInitialization\DefaultInitialization.md" />
     <None Include="EraseRemoveIdiom\EraseRemoveIdiom.md" />
+    <None Include="ExceptionSafety\ExceptionSafety.md" />
     <None Include="Exercises\cpp_dividend_divisor.svg" />
     <None Include="Exercises\Exercises_14_ConstExpr.md" />
     <None Include="Exercises\Exercises_15_SmartPointers.md" />

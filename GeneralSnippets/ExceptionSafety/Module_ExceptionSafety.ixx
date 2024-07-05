@@ -1,12 +1,12 @@
 // =====================================================================================
-// Module Interface Partition 'explicit_keyword'
+// Module Interface Partition 'exception_safety'
 // =====================================================================================
 
-export module modern_cpp:explicit_keyword;
+export module modern_cpp:exception_safety;
 
 import std;
 
-export void main_explicit_keyword();
+export void main_exception_safety();
 
 // =====================================================================================
 // End-of-File
