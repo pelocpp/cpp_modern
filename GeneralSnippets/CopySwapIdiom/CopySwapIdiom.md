@@ -4,11 +4,20 @@
 
 ---
 
-[Quellcode / Klasse `BigData`](CopySwapIdiom.cpp)
+[Quellcode](CopySwapIdiom.cpp)
 
 ---
 
-## Allgemeines
+## Inhalt
+
+  * [Allgemeines](#link1)
+  * [Eine &bdquo;nicht optimale&rdquo; Realisierung](#link2)
+  * [Eine verbesserte Realisierung: Das *Copy-and-Swap* Idiom](#link3)
+
+
+---
+
+## Allgemeines <a name="link1"></a>
 
 Das *Copy-and-Swap*-Idiom wurde eingeführt, um zwei Ziele zu erreichen:
   * Realisierung der Kopier-Konstruktoren und Wertzuweisungsoperatoren (sowohl &bdquo;kopierende&rdquo; als auch &bdquo;verschiebende&rdquo; Semantik)
@@ -18,7 +27,7 @@ Das *Copy-and-Swap*-Idiom wurde eingeführt, um zwei Ziele zu erreichen:
 
 ---
 
-## Eine &bdquo;nicht optimale&rdquo; Realisierung
+## Eine &bdquo;nicht optimale&rdquo; Realisierung <a name="link2"></a>
 
 Naive Realisierungen, wie man sie in vielen Büchern vorfindet,
 würden einen Wertzuweisungs-Operator mehr oder weniger so implementieren:
@@ -108,7 +117,7 @@ aber bei komplexeren Objekten kann die Realisierung doch aufwändiger werden!
 
 ---
 
-## Eine verbesserte Realisierung: Das *Copy-and-Swap* Idiom
+## Eine verbesserte Realisierung: Das *Copy-and-Swap* Idiom <a name="link3"></a>
 
 Mit Hilfe einer `swap`-Funktion kann der Zuweisungs-Operator nur auf folgende, 
 sehr einfache Weise realisiert werden:
@@ -131,13 +140,17 @@ Die `swap`-Funktion sieht dabei so aus:
 04: }
 ```
 
-Beachte folgende wichtige Anweisungen in der Realisierung des Zuweisungs-Operators:
+Beachte folgende wichtige Anweisung in der Realisierung des Zuweisungs-Operators:
 
 
-  * Geänderte Signatur des Operators `operator=`<br />
-Das Parameterargument wird als Wert übernommen:<br />
-`BigData& BigData::operator= (BigData other)`;<br />
+> Geänderte Signatur des Operators `operator=`<br />
+
+Das Parameterargument `other` wird als Wert übernommen:
+
+`BigData& BigData::operator= (BigData other)`;
+
 Auf diese Weise sind beim Aufrufen der Funktion alle neuen Daten bereits zugewiesen, kopiert und zur Verwendung bereit.
+
 Dadurch erhalten wir die *Strong Exception Guarantee* kostenlos! 
 Die Funktion wird nicht aufgerufen, wenn die Erstellung der Kopie fehlschlägt,
 und es ist daher nicht möglich, den Status von `*this` zu ändern. 

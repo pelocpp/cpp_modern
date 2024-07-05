@@ -8,7 +8,20 @@
 
 ---
 
-## Überblick
+## Inhalt
+
+  * [Überblick](#link1)
+  * [*No Exception* Garantie](#link2)
+  * [*Basic Exception Safety*](#link3)
+  * [*Strong Exception Safety*](#link4)
+  * [*No-throw* Garantie](#link5)
+  * [RAII-Idiom zur Verwaltung von Ressourcen](#link6)
+  * [Literaturhinweise](#link7)
+
+
+---
+
+## Überblick <a name="link1"></a>
 
 
 Die C++-Standardbibliothek bietet mehrere Ebenen der Ausnahmesicherheit (in aufsteigender Reihenfolge):
@@ -21,29 +34,29 @@ Die C++-Standardbibliothek bietet mehrere Ebenen der Ausnahmesicherheit (in aufs
   Die teilweise Ausführung fehlgeschlagener Operationen kann zu Nebenwirkungen führen,
   aber alle Invarianten bleiben erhalten.<br />
   Alle gespeicherten Daten enthalten gültige Werte, die von den ursprünglichen Werten abweichen können.
-  Ressourcenlecks (einschließlich Speicherlecks) werden üblicherweise durch eine Invariante ausgeschlossen,
+  Ressourcenleakss (einschließlich Speicherleaks) werden üblicherweise durch eine Invariante ausgeschlossen,
   die besagt, dass alle Ressourcen berücksichtigt und verwaltet werden.
 
   * **Starke Ausnahmesicherheit** (*Strong Exception Safety*):<br />
   Wird auch als *Commit*- oder *Rollback*-Semantik bezeichnet:
   Operationen können fehlschlagen, aber fehlgeschlagene Operationen haben garantiert keine Nebenwirkungen
-  und die ursprünglichen Werte bleiben intakt.
+  und die ursprünglichen Werte bleiben erhalten.
 
   * **No-throw-Garantie** (*No-throw guarantee*):<br />
   Operationen sind garantiert erfolgreich und erfüllen alle Anforderungen auch in Ausnahmesituationen.
-  Tritt eine Ausnahme auf, wird sie intern behandelt und von Clients nicht beobachtet.
+  Tritt eine Ausnahme auf, wird sie intern behandelt und von Clients nicht wahrgenommen.
 
 
 ---
 
-## *No Exception* Garantie
+## *No Exception* Garantie <a name="link2"></a>
 
-Was bedeutet es, wenn Code keine Garantien bezüglich Ausnahmen trifft?
+Was bedeutet es, wenn Code keine Garantien bezüglich Ausnahmen gibt?
 
 Diese Ebene der Ausnahmesicherheit bedeutet, dass &bdquo;alles&rdquo; passieren kann,
 wenn während der Ausführung des Programms eine Ausnahme eintritt.
 
-Zum Beispiel nicht freigegebene Ressourcen, Zeiger oder Referenzen, deren Ziel nicht mehr vorhanden ist
+Zum Beispiel das Vorhandensein nicht freigegebener Ressourcen, Zeiger oder Referenzen, deren Ziel nicht mehr vorhanden ist
 bis hin zu verletzten Klasseninvarianten.
 
 *Beispiel*:
@@ -67,24 +80,22 @@ bis hin zu verletzten Klasseninvarianten.
 16: }
 ```
 
-Auf den ersten Blick mag das gut aussehen,
+Auf den ersten Blick mag diese Beispiel gut aussehen,
 da das Objekt beide Zeiger direkt an die beiden `std::unique_ptr`-Objekte weitergibt,
 die sich um die Speicherfreigabe kümmern.
 
 Aber dieser Code kann ein Speicher-Leak produzieren,
-da beim Versagen des zweiten der beiden `new`-Aufrufe eine `std::bad_alloc`-Ausnahme geworfen wird.
+da beim Versagen des zweiten der beiden `new`-Aufrufe eine `std::bad_alloc`&ndash;Ausnahme geworfen werden kann.
 
 Die Ausnahme wird beim Aufruf des Konstruktors der `TwoPointers`-Klasse geworfen!
 Dies bedeutet, dass der vom ersten `new` zugewiesene Speicher keinem der beiden `std::unique_ptr`-Objekte zugewiesen wurde
 und daher nie freigegeben wird.
 
-*Fazit*: **&bdquo;Don’t write code that has no exception guarantee!&rdquo;**
-
-> 
+*Fazit*:<br />**&bdquo;Don’t write code that has no exception guarantee!&rdquo;**
 
 ---
 
-## *Basic Exception Safety*
+## *Basic Exception Safety* <a name="link3"></a>
 
 Prinzipiell muss man festhalten, dass die *Basic Exception Safety* in ihrer Berücksichtigung
 ziemlich einfach ist.
@@ -102,13 +113,12 @@ Aber wir wissen, dass wir sie verwenden und zerstören können,
 weil die Invarianten intakt sind.
 
 
-*Fazit*: **&bdquo;Entwerfen Sie Ihre Klassen so, dass sie über geeignete Klasseninvarianten verfügen, die immer eingehalten werden, auch bei Eintreten von Ausnahmen.!&rdquo;**
+*Fazit*:<br />**&bdquo;Entwerfen Sie Ihre Klassen so, dass sie über geeignete Klasseninvarianten verfügen, die immer eingehalten werden, auch bei Eintreten von Ausnahmen.!&rdquo;**
 
 
 ---
 
-## *Strong Exception Safety*
-
+## *Strong Exception Safety* <a name="link4"></a>
 
 Die *Strong Exception Safety* Garantie ergänzt die *Basic Exception Safety* Garantie um den Umstand,
 dass wenn eine Operation mit einer Ausnahme fehlschlägt, das Objekt im gleichen Zustand verbleibt,
@@ -130,7 +140,7 @@ aber man muss sie sehr genau betrachten:
 
   * Zunächst wird eine Kopie des anderen Objekts erstellt.
   Dies kann eine Ausnahme auslösen (!), aber wenn dies der Fall ist, wird die Funktion vorzeitig beendet
-  und weder mit `*this` noch mit dem anderen Objekt `other` ist bisher etwas passiert!
+  und weder mit `*this` noch mit dem anderen Objekt `other` ist etwas passiert!
 
   * Nun werden die Instanzvariablen der beiden Objekte `*this` und `temp` ausgetauscht.
   Um die *Strong Exception Safety* zu garantieren, darf dieser Vorgang keine Ausnahmen auslösen!
@@ -144,11 +154,11 @@ Man erkennt, dass die Umsetzung der *Strong Exception Safety* Garantie kostspiel
 wir reden von Laufzeit oder zusätzlichem Speicherbedarf.
 
 
-*Fazit*: **&bdquo;Realisieren Sie die *Strong Exception Safety* Garantie nur dann, wenn sie benötigt wird!&rdquo;**
+*Fazit*:<br />**&bdquo;Realisieren Sie die *Strong Exception Safety* Garantie nur dann, wenn sie benötigt wird!&rdquo;**
 
 ---
 
-## *No-throw* Garantie
+## *No-throw* Garantie <a name="link5"></a>
 
 Die letzte fehlende Ebene ist die *no-throw* Garantie.
 
@@ -169,11 +179,33 @@ Es gibt einige Operationen, die niemals eine Ausnahme auslösen sollten, egal wa
   Von *Swap*-Funktionen wird erwartet, dass sie keine Ausnahme auslösen.
 
 
-*Fazit*: **&bdquo;Verwenden Sie das Schlüsselwort `noexcept`, um Funktionen/Methoden kennzuzeichnen, die die *No-throw* Garantie gewähren.!&rdquo;**
+*Fazit*:<br />**&bdquo;Verwenden Sie das Schlüsselwort `noexcept`, um Funktionen/Methoden kennzuzeichnen, die die *No-throw* Garantie gewähren.!&rdquo;**
 
 ---
 
-## Literaturhinweise
+## RAII-Idiom zur Verwaltung von Ressourcen <a name="link6"></a>
+
+Um gerüstet gegen Exceptions zu sein, muss eine Funktion sicherstellen,
+dass Objekte, die sie mithilfe von `new` (`malloc`) zugewiesen hat, zerstört werden
+und alle Ressourcen wie Datei-Handles geschlossen oder freigegeben werden,
+selbst wenn eine Ausnahme ausgelöst wird.
+
+Das *Resource Acquisition Is Initialization* (*RAII*)-Idiom verknüpft die Verwaltung solcher Ressourcen
+mit der Lebensdauer von Hüllen-Objekten, die am Stack liegen.
+
+Wenn eine Funktion/Methode ihren Gültigkeitsbereich verlässt,
+entweder durch normale Beendigung oder auf Grund einer eingetretenen Ausnahme,
+werden die Destruktoren für alle am Stack liegenden Hüllen-Objekte aufgerufen.
+
+Ein RAII-Hüllenobjekt (z.B. ein Smart Pointer Objekt) ruft in seinem Destruktor
+die entsprechende `delete`- oder `release`-Funktion auf.
+
+In Exception-sicherem Code ist es folglich von entscheidender Bedeutung,
+den Besitz jeder Ressource sofort an eine Art RAII-Hüllenobjekt zu übergeben.
+
+---
+
+## Literaturhinweise <a name="link7"></a>
 
 Die Anregungen zu den Beispielen aus diesem Abschnitt sind aus dem Artikel
 

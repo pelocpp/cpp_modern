@@ -6,11 +6,22 @@
 
 [Quellcode 1](ConstExpr.cpp)
 
-[Quellcode 2](ConstExprExtended.cpp)
+---
+
+## Inhalt
+
+  * [Allgemeines](#link1)
+  * [Variablen](#link2)
+  * [Klassen mit `constexpr` Konstruktoren](#link3)
+  * [Klassentemplate mit `constexpr` Konstruktoren](#link4)
+  * [`constexpr`-Funktionen und `constexpr`-Lambda-Funktionen](#link5)
+  * [`constexpr`&ndash;`std::array`-Objekte, initialisiert mit variadischen Templates ](#link6)
+  * [`std::array`-Objekte und variadische Templates: Ein alternativer Ansatz](#link7)
+  * [Literaturhinweise](#link8)
 
 ---
 
-## Allgemeines:
+## Allgemeines <a name="link1"></a>
 
 Die Berechnung von Ausdrücken zur Übersetzungszeit wurde mit C++&ndash;17 auf ein neues Niveau angehoben.
 Längst haben wir es nicht mehr mit nur konstanten Literalen oder einfachen Ausdrücken,
@@ -31,7 +42,7 @@ Wir stellen einige signifikante Beispiele vor:
   * `constexpr`-Funktionen und `constexpr`-Lambda-Objekte und
   * Konstante `std::array<>`-Objekte, initialisiert mit variadischen Templates 
 
-## Variablen
+## Variablen <a name="link2"></a>
 
 Bei Deklaration einer Variablen mit dem Schlüsselwort `constexpr` wird diese zu einem konstanten Ausdruck:
 
@@ -47,7 +58,7 @@ Für Variablen, die mit `constexpr` definiert sind, gelten folgende Regeln, die m
 
 Vielmehr gibt es zum Themenbereich &bdquo;Variablen&rdquo; nicht zu sagen, wir kommen jetzt auf Klassen und Objekte zu sprechen.
 
-## Klassen mit `constexpr` Konstruktoren
+## Klassen mit `constexpr` Konstruktoren <a name="link3"></a>
 
 Wie Variablen, deren Wert zur Übersetzungszeit bestimmt wird,
 lassen sich analog auch Objekte vom Übersetzer zur Übersetzungszeit erzeugen.
@@ -150,7 +161,7 @@ Aufruf der *getter*-Methode `real()`!
 *Abbildung* 3: IEEE-754 Konverter für Fließkommazahlen.
 
 
-## Klassentemplate mit `constexpr` Konstruktoren
+## Klassentemplate mit `constexpr` Konstruktoren <a name="link4"></a>
 
 Bei den benutzerdefinierten Klassen darf es sich auch um Klassentemplates handeln.
 Wir können die Klasse `Complex` aus dem letzten Absatz verallgemeinern zu `Complex<T>`:
@@ -205,7 +216,7 @@ wir betrachten das letzte Beispiel einfach mit einer `Complex<double>`-Klasse:
 
 *Listing* 3: Klassetemplate `Complex` mit `constexpr` Konstruktoren.
 
-## `constexpr`-Funktionen und `constexpr`-Lambda-Funktionen
+## `constexpr`-Funktionen und `constexpr`-Lambda-Funktionen <a name="link5"></a>
 
 Mit C++&ndash;17 haben `constexpr`-Funktionen und `constexpr`-Lambda-Methoden Einzug in die Sprache gefunden.
 Dazu betrachten wir am besten gleich ein Beispiel.
@@ -296,7 +307,7 @@ Der hexadezimale Wert `3D3h` tritt in einer `MOV`-Instruktion auf, der Übersetze
 
 *Abbildung* 2: `MOV`-Instruktion mit Operand 979 (3D3h)
 
-## `constexpr`-`std::array`-Objekte, initialisiert mit variadischen Templates 
+## `constexpr`&ndash;`std::array`-Objekte, initialisiert mit variadischen Templates <a name="link6"></a>
 
 Ein ganz anderer Ansatz für Berechnungen zur Übersetzungszeit tut sich mit variadischen Templates auf.
 Welchen Vorteil bietet dieser Lösungsansatz?
@@ -534,7 +545,7 @@ static constexpr std::array<int, sizeof... (NS)> elements = { NS ... };
 
 schaffen wir es jetzt, die Templateparameter zur Initialisierung eines `std::array`-Objekts heranzuziehen.
 
-## `std::array`-Objekte und variadische Templates: Ein alternativer Ansatz
+## `std::array`-Objekte und variadische Templates: Ein alternativer Ansatz <a name="link7"></a>
 
 Die rekursive Templatedefinition aus dem letzten Beispiel fußte auf dem Trick,
 die Definition eines Klassentemplates in Abhängigkeit von einem anderen Klassentemplate zu formulieren.
@@ -623,14 +634,14 @@ std::array<unsigned long, 9> squaresTable =
 Damit wären wir am Ende unserer Betrachtungen angelegt. Ich hoffe, Sie haben einen Eindruck von der Mächtigkeit von `constexpr`
 in allen seinen Facetten gewonnen!
 
-## Literatur
+## Literaturhinweise <a name="link8"></a>
 
 Zur Fragestellung &bdquo;`constexpr` und dynamische Speicherverwaltung&rdquo;
 gibt es einen interessanten Aufsatz im [Netz](https://www.cppstories.com/2021/constexpr-new-cpp20)
 (abgerufen am 19.12.2022).
 
 
-## Literatur zum  CRC8-Beispiel
+### Literatur zum  CRC8-Beispiel
 
 Die Anregungen zu diesem Artikel stammen aus einem Aufsatz aus der Zeitschrift *IX*:
 

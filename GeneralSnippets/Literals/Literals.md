@@ -20,7 +20,7 @@ Die zweite Variante ist natürlich zu bevorzugen.
 In der Realisierung kann sie geringfügig aufwendiger sein, die gesamte Funktionalität
 ist auf Basis des `constexpr`-Konzepts zu implementieren!
 
-## Literatur
+## Literaturhinweise
 
 Eine ausführliche Beschreibung des Beispiels findet sich unter
 

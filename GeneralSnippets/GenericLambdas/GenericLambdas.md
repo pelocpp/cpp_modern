@@ -15,7 +15,7 @@
   * [Lambda Ausdrücke mit `template`-Header](#link3)
   * [*Perfect Forwarding* mit generischen Lambdas](#link4)
   * [Rekursive Lambda Ausdrücke](#link5)
-  * [Literatur](#link6)
+  * [Literaturhinweise](#link6)
     
 ---
 
@@ -375,7 +375,7 @@ std::cout << power(power, 2.71828, 10);           // e^10 = 22026.3
 
 ---
 
-## Literatur <a name="link6"></a>
+## Literaturhinweise <a name="link6"></a>
 
 Die Anregungen zu rekursiven Lambda Ausdrücken stammen aus
 [Generic code with generic lambda expression](https://www.nextptr.com/tutorial/ta1224017367/generic-code-with-generic-lambda-expression).

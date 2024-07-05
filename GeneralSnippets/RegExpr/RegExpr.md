@@ -306,7 +306,7 @@ Valid date:   0001/1/1 ==> 1-1-1
 
 ---
 
-## Literatur
+## Literaturhinweise
 
 Zum Testen von regulären Ausdrücken gibt es zwei empehlenswerte Seiten:
 
