@@ -8,7 +8,15 @@
 
 ---
 
-*Allgemeines*:
+## Inhalt
+
+  * [Allgemeines](#link1)
+  * [Einige Beispiele](#link2)
+
+
+---
+
+## Allgemeines <a name="link1"></a>
 
 Eine Instanz von `std::string_view` ist eine *Sicht* auf eine Zeichenkette,
 die nicht verändert werden kann.
@@ -28,55 +36,59 @@ Das geht mit `const std::string&` nicht.
 Zum anderen ist es auch möglich, einen Teilstring *ohne zusätzliche Speicherplatzanforderung*
 als `std::string_view` an eine Funktion zu übergeben.
 
+---
+
+## Einige Beispiele <a name="link2"></a>
+
 Wir betrachten dazu einige Code-Snippets:
 
 *Beispiel*:
 
 ```cpp
-void test_01()
-{
-    std::string s = "12345";
-    std::cout << s << std::endl;
-
-    s[2] = '!';
-    std::cout << s << std::endl;
-
-    std::string_view sv(s);
-    std::cout << sv << std::endl;
-    // sv[2] = '?';  // 'sv': you cannot assign to a variable that is const
-}
-
-uint32_t countUpperCaseChars(std::string_view sv ) {
-    uint32_t result{};
-    for (char c : sv) {
-        if (std::isupper(c)) {
-            ++result;
-        }
-    }
-    return result;
-}
-
-void test_02()
-{
-    std::string_view sv("DiesIstEinLangerSatz");
-    uint32_t count = countUpperCaseChars(sv);
-    std::cout << "countUpperCaseChars: " << count << std::endl;
-
-    std::string s = "AuchDasWiederIstEinLangerSatz";
-    count = countUpperCaseChars(s);
-    std::cout << "countUpperCaseChars: " << count << std::endl;
-
-    count = countUpperCaseChars("NurKurzJetzt");
-    std::cout << "countUpperCaseChars: " << count << std::endl;
-
-    // works too 
-    count = countUpperCaseChars({&s[25]}); // "Satz"
-    std::cout << "countUpperCaseChars: " << count << std::endl;
-
-    // works too
-    count = countUpperCaseChars({ &s[26], 2 }); // "at"
-    std::cout << "countUpperCaseChars: " << count << std::endl;
-}
+01: void test_01()
+02: {
+03:     std::string s = "12345";
+04:     std::cout << s << std::endl;
+05: 
+06:     s[2] = '!';
+07:     std::cout << s << std::endl;
+08: 
+09:     std::string_view sv(s);
+10:     std::cout << sv << std::endl;
+11:     // sv[2] = '?';  // 'sv': you cannot assign to a variable that is const
+12: }
+13: 
+14: uint32_t countUpperCaseChars(std::string_view sv ) {
+15:     uint32_t result{};
+16:     for (char c : sv) {
+17:         if (std::isupper(c)) {
+18:             ++result;
+19:         }
+20:     }
+21:     return result;
+22: }
+23: 
+24: void test_02()
+25: {
+26:     std::string_view sv("DiesIstEinLangerSatz");
+27:     uint32_t count = countUpperCaseChars(sv);
+28:     std::cout << "countUpperCaseChars: " << count << std::endl;
+29: 
+30:     std::string s = "AuchDasWiederIstEinLangerSatz";
+31:     count = countUpperCaseChars(s);
+32:     std::cout << "countUpperCaseChars: " << count << std::endl;
+33: 
+34:     count = countUpperCaseChars("NurKurzJetzt");
+35:     std::cout << "countUpperCaseChars: " << count << std::endl;
+36: 
+37:     // works too 
+38:     count = countUpperCaseChars({&s[25]}); // "Satz"
+39:     std::cout << "countUpperCaseChars: " << count << std::endl;
+40: 
+41:     // works too
+42:     count = countUpperCaseChars({ &s[26], 2 }); // "at"
+43:     std::cout << "countUpperCaseChars: " << count << std::endl;
+44: }
 ```
 
 *Ausgabe* von `test_01`:

@@ -8,7 +8,7 @@
 
 ---
 
-*Allgemeines*:
+## Allgemeines
 
 Siehe das Beispiel im korrespondierenden Quellcode.
 

@@ -8,14 +8,23 @@
 
 ---
 
-*Allgemeines*:
+## Inhalt
+
+  * [Allgemeines](#link1)
+  * [Erstes Beispiel: &bdquo;is_this_a_floating_point&rdquo;](#link2)
+  * [Zweites Beispiel: Fallunterscheidung zur Übersetzungszeit](#link3)
+  * [Weitere Beispiele: `std::bidirectional_iterator_tag` und `std::random_access_iterator_tag`](#link4)
+
+---
+
+## Allgemeines <a name="link1"></a>
 
 C++ *TypeTraits*, zu deutsch etwa *Typmerkmale*, sind eine Sammlung von *Metafunktionen*.
 Sie stammen aus dem Umfeld der so genannten *Metaprogrammierung*.
 
 ---
 
-*Ein erstes Beispiel*:
+## Erstes Beispiel: &bdquo;is_this_a_floating_point&rdquo; <a name="link2"></a>
 
 Die so genannte *Template Spezialisierung* stellt das Fundament der *Typmerkmale* dar:
 
@@ -54,10 +63,9 @@ Die so genannte *Template Spezialisierung* stellt das Fundament der *Typmerkmale
 32: }
 ```
 
-
 ---
 
-*Ein zweites Beispiel*: Eine Fallunterscheidung zur Übersetzungszeit
+## Zweites Beispiel: Fallunterscheidung zur Übersetzungszeit <a name="link3"></a>
 
 Angenommen, wir haben mehrere Klassen, die Operationen zum Schreiben
 in einen Ausgabestrom definieren (Serialisierung).
@@ -179,10 +187,10 @@ serialize(std::cout, widget);
 serialize(std::cout, gadget);
 ```
 
-
 ---
 
-*Weiteres Beispiel*:
+## Weitere Beispiele: `std::bidirectional_iterator_tag` und `std::random_access_iterator_tag` <a name="link4"></a>
+
 
 Im korrespondierenden Quellcode finden Sie in Bezug auf Iterator-Kategorien
 wie `std::bidirectional_iterator_tag` und `std::random_access_iterator_tag`

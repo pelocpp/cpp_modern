@@ -8,7 +8,7 @@
 
 ---
 
-*Allgemeines*:
+## Allgemeines
 
 Im Wesentlichen ruft `std::generate` eine &bdquo;Generator Funktion&rdquo; (z.B. Lambda-Funktion)
 für jeden existierenden Eintrag eines Bereichs (Container) auf,

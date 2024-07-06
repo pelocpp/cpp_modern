@@ -8,6 +8,8 @@
 
 ---
 
+## Allgemeines
+
 Die `if constexpr` Anweisung kann als *statisches if* für C++ angesehen werden!
 
 Mit dieser Anweisung lassen sich Code-Abschnitte innerhalb einer `if`-Anweisung
@@ -28,8 +30,6 @@ als Templateargument übergeben bekommt.
 Die dritte Realisierung verdeckt diesen Aspekt und unterscheidet die unterschiedlichen 
 Möglichkeiten mit `if constexpr()`.
 
-
-*Allgemeines*:
 
 Siehe das Beispiel im korrespondierenden Quellcode.
 

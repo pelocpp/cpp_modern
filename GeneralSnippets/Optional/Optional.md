@@ -8,7 +8,7 @@
 
 ---
 
-*Allgemeines*:
+## Allgemeines
 
 <img src="cpp_std_optional.svg" width="700">
 

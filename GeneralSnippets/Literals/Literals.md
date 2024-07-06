@@ -8,7 +8,7 @@
 
 ---
 
-*Allgemeines*:
+## Allgemeines
 
 Im korrespondierenden Quellcode werden zwei Möglichkeiten in der Definition
 von benutzerdefinierten Literalen aufgezeigt:

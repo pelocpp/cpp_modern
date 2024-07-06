@@ -8,7 +8,7 @@
 
 ---
 
-*Allgemeines*:
+## Allgemeines
 
 
 `std::bind` ist zur Bildung von so genannten &bdquo;*Partial Application*&rdquo; Teilfunktionen vorgesehen.

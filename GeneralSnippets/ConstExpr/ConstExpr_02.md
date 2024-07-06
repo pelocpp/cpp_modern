@@ -8,7 +8,7 @@
 
 ---
 
-*Allgemeines*:
+## Allgemeines
 
 Im ersten, einfachen Beispiel zum Thema &bdquo;constexpr&rdquo; wird das klassische Thema von Log- bzw. Debug-Methoden betrachtet.
 Diese sind einerseits eminent wichtig, aber man möchte ihnen zur Laufzeit nicht zuviel unnütze Rechenzeit zukommen lassen.

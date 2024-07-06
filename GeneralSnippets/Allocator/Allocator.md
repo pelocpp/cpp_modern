@@ -10,7 +10,7 @@
 
 ---
 
-*Allgemeines*:
+## Allgemeines
 
 Es wird zum einen auf die Klasse `std::allocator<T>` eingegangen. Sie stellt den Zugang zur
 den Speicherverwaltungsfunktionen im C++-Laufzeitsystem zur Verfügung.

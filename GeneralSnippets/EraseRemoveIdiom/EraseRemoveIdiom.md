@@ -8,7 +8,7 @@
 
 ---
 
-### *Allgemeines*:
+## Allgemeines
 
 Das Idiom *Erase-Remove* ist eine C++-Technik, um Elemente aus einem Container zu entfernen, die ein bestimmtes Kriterium erfüllen.
 Natürlich wäre es möglich, Elemente eines STL-Containers mit traditionellen, herkömmlichen Techniken zu eliminieren,
@@ -29,7 +29,7 @@ aber das *Erase-Remove* Idiom hat mehrere Vorteile, die sich vor allem auf die L
     Mit dieser Methode lassen sich Elemente eines STL-Containers entfernen (ein einzelnes Element oder ein Bereich von Elementen).
     Die Methode verringert die Größe des Containers entsprechend.
 
-### Das *Erase-Remove* Idiom
+## Das *Erase-Remove* Idiom
 
 Mit einer Kombination von `std::remove` / `std::remove_if` und `std::erase` ist Code zum Löschen und Entfernen von Elementen nicht nur ausdrucksvoller, sondern auch effizienter.
 

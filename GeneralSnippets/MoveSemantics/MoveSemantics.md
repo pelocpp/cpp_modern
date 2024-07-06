@@ -4,7 +4,7 @@
 
 ---
 
-[Quellcode / Klasse `BigData`](MoveSemantics.cpp)
+[Quellcode](MoveSemantics.cpp)
 
 ---
 
@@ -53,7 +53,7 @@ Prinzipiell kann die Move-Semantik auf dreierlei Weisen realisiert werden:
 
   * *Straightforward*, also Realisierung ohne direktes Entwurfsmuster,
   * mit zwei Hilfsmethoden `cleanup` und `moveFrom` - so genannte *Primitive* / minimalistisches Entwurfsmuster oder
-  * auf Basis des [*Swap*-Idioms](../../GeneralSnippets/CopySwapIdiom/CopySwapIdiom.md).
+  * auf Basis des [*Copy-Swap*-Idioms](../../GeneralSnippets/CopySwapIdiom/CopySwapIdiom.md).
 
 ---
 

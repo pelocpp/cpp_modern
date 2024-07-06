@@ -8,7 +8,7 @@
 
 ---
 
-*Allgemeines*:
+## Allgemeines
 
 Die Beispiel zu diesem Snippet sind angelehnt an
 

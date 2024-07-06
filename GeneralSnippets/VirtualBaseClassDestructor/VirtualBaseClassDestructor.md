@@ -4,7 +4,11 @@
 
 ---
 
-*Allgemeines*:
+[Quellcode](VirtualBaseClassDestructor.cpp)
+
+---
+
+## Allgemeines
 
 Virtuelle Destruktoren sind nützlich, wenn Sie möglicherweise eine Instanz einer abgeleiteten Klasse
 über einen Zeiger auf die Basisklasse löschen. Wir betrachten das folgende Beispiel:
@@ -77,10 +81,6 @@ abändern, also nur das Schlüsselwort `virtual` hinzufügen, lautet die Programmau
 d'tor Derived
 d'tor Base
 ```
-
-Siehe hier den kompletten Quellcode des Beispiels:
-
-[Quellcode](VirtualBaseClassDestructor.cpp)
 
 ---
 

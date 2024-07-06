@@ -8,7 +8,7 @@
 
 ---
 
-*Allgemeines*:
+## Allgemeines
 
 Im Wesentlichen wendet `std::transform` eine Funktion (z.B. Lambda-Funktion) auf jedes Element eines Bereichs (Container) an,
 um mit den Rückgabewerten dieser Funktion einen neuen Container zu füllen:

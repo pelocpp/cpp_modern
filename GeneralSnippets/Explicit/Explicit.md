@@ -8,7 +8,7 @@
 
 ---
 
-*Allgemeines*:
+## Allgemeines
 
 Das Schlüsselwort `explicit` wird in C++ verwendet,
 um Konstruktoren einer Klasse so zu markieren,

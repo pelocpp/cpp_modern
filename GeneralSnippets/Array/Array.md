@@ -8,7 +8,7 @@
 
 ---
 
-*Allgemeines*:
+## Allgemeines
 
 Die Klasse `std::array` stellt im Prinzip eine dünne Hülle um ein Array im C-Stil dar.
 

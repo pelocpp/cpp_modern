@@ -8,7 +8,7 @@
 
 ---
 
-*Allgemeines*:
+## Allgemeines
 
 Das Erzeugen von Zufallszahlen setzt sich in *Modern C++* aus zwei Schritten zusammen:
 

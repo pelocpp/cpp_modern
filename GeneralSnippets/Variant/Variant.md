@@ -8,7 +8,16 @@
 
 ---
 
-## Allgemeines
+## Inhalt
+
+  * [Allgemeines](#link1)
+  * [*Overload*-Pattern](#link2)
+  * [Internas einer möglichen Realisierung einer Kasse `std::variant`](#link3)
+  * [Literaturhinweise](#link4)
+
+---
+
+## Allgemeines <a name="link1"></a>
 
 <img src="cpp_std_variant.svg" width="700">
 
@@ -30,7 +39,7 @@ Klasse `std::variant`:
 
 ---
 
-## *Overload*-Pattern:
+## *Overload*-Pattern <a name="link2"></a>
 
 Dieses Pattern verwendet werden, um den Wert eines `std::variant`-Objekts zielgerichtet zu besuchen.
 
@@ -62,7 +71,7 @@ das so einfach wie möglich gehalten ist.
 
 ---
 
-## Internas einer möglichen Realisierung einer Kasse `std::variant`
+## Internas einer möglichen Realisierung einer Kasse `std::variant` <a name="link3"></a>
 
 Im Netz finden sich einige Ansätze vor, wie man eine Klasse `std::variant` selber realisieren könnte,
 siehe zum Beispiel diesen *GitHub Gist*: [variant.cc](https://gist.github.com/tibordp/6909880).
@@ -70,7 +79,7 @@ siehe zum Beispiel diesen *GitHub Gist*: [variant.cc](https://gist.github.com/ti
 ---
 
 
-## Literaturhinweise
+## Literaturhinweise <a name="link4"></a>
 
 Ein interessanter Vergleich der beiden Klassen `std::variant` und `std::any` findet sich in *stackoverflow*:
 

@@ -4,11 +4,12 @@
 
 ---
 
-[Quellcode 1](RAII01.cpp) und [Quellcode 2](RAII02.cpp)
+[RAII 1](RAII01.cpp)<br />
+[RAII 1](RAII02.cpp)
 
 ---
 
-*Allgemeines*:
+## Allgemeines
 
 RAII steht für *Resource Acquisition is Initialization*.
 Alles weitere siehe im Beispiel des korrespondierenden Quellcodes.
