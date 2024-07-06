@@ -8,7 +8,16 @@
 
 ---
 
-## Wertekategorien
+## Inhalt
+
+  * [Wertekategorien](#link1)
+  * [Funktionsüberladungen mit *RValue* und *LValue* Referenzen als Parametertyp](#link2)
+  * [`std::move`](#link3)
+  * [Zusammenfassung:*RValue* Referenzen als Parametertyp](#link4)
+
+---
+
+## Wertekategorien <a name="link1"></a>
 
 *RValues* und *LValues* zahlen in C++ zu so genannten *Wertekategorien*.
 Auf Basis dieser Wertekategorien gibt es für den C++&ndash;Übersetzer Regeln,
@@ -40,7 +49,7 @@ Unter einem *LValue* verstehen wir
 
 ---
 
-## Funktionsüberladungen mit *RValue* und *LValue* Referenzen
+## Funktionsüberladungen mit *RValue* und *LValue* Referenzen als Parametertyp <a name="link2"></a>
 
 Wenn `X` ein Typ ist, wird `X&&` als *RValue* Referenz auf `X` bezeichnet.
 Zur besseren Unterscheidung wird die gewöhnliche Referenz `X&` jetzt auch als *LValue* Referenz bezeichnet.
@@ -71,7 +80,7 @@ Siehe weiteres dazu im korrespondieren [Quellcode](RValueLValue.cpp).
 
 ---
 
-## `std::move`
+## `std::move` <a name="link3"></a>
 
 Man kann eine *LValue*-Referenz in eine *RValue*-Referenz umwandeln,
 indem man die Funktion `std::move` einsetzt 
@@ -100,12 +109,10 @@ indem man die Funktion `std::move` einsetzt
 
 ---
 
-## *RValue* Referenzen als Parametertyp
-
+## Zusammenfassung: *RValue* Referenzen als Parametertyp <a name="link4"></a>
 
 Mit der Einführung von *RValue* Referenzen können diese natürlich auch als Parameter
 in Funktionen oder Methoden erscheinen:
-
 
 | Funktions-/Methodensignatur | Zulässige Parametertypen |
 |:-|:-|
@@ -116,12 +123,10 @@ in Funktionen oder Methoden erscheinen:
 
 *Tabelle* 1: Unterschiedliche Funktions- und Methodensignaturen und ihre zulässigen Parametertypen..
 
-
-Obwohl *RValue* Referenzen natürlich für Parameter in jeder Funktion oder Methode verwendet werden können,
-ist ihr prädestiniertes Anwendungsgebiet die *Verschiebe-Semantik*.
+Obwohl *RValue*-Referenzen natürlich für Parameter in jeder Funktion oder Methode verwendet werden können,
+ist ihr prädestiniertes Anwendungsgebiet die [*Verschiebe-Semantik*](../../GeneralSnippets/MoveSemantics/MoveSemantics.md).
 
 ---
-
 
 [Zurück](../../Readme.md)
 

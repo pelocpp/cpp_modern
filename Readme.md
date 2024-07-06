@@ -149,7 +149,7 @@ Es folgt eine tabellarische Auflistung dieser Unterverzeichnisse.
 | [DeclType](GeneralSnippets/DeclType/decltype.md) | `decltype` und `std::declval` |
 | [DefaultInitialization](GeneralSnippets/DefaultInitialization/DefaultInitialization.md)| Default-Initialisierung für Member-Variablen |
 | [*Erase-Remove* Idiom](GeneralSnippets/EraseRemoveIdiom/EraseRemoveIdiom.md) | Das *Erase-Remove*-Idiom |
-| [Explicit](GeneralSnippets/ExceptionSafety/ExceptionSafety.md) | Ausnahmesicherheit / *Exception Safety* |
+| [ExceptionSafety](GeneralSnippets/ExceptionSafety/ExceptionSafety.md) | Ausnahmesicherheit / *Exception Safety* |
 | [Explicit](GeneralSnippets/Explicit/Explicit.md) | Schlüsselwort `explicit` |
 | [ExpressionTemplates](GeneralSnippets/ExpressionTemplates/ExpressionTemplates.md) | Expression Templates |
 | [Folding](GeneralSnippets/Folding/Folding.md) | *Folding Expressions* |

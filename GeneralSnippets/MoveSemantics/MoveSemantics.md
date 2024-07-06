@@ -8,7 +8,16 @@
 
 ---
 
-## Allgemeines
+## Inhalt
+
+  * [Allgemeines](#link1)
+  * [Realisierung](#link2)
+  * [Notwendigkeit des Schlüsselworts `noexcept`](#link3)
+  * [Rule of Three (Four), Rule of Five (Six), Rule of Zero](#link4)
+
+---
+
+## Allgemeines <a name="link1"></a>
 
 Die Erweiterung einer Klasse von der Kopier-Konstruktion (dies schließt den Kopier-Konstruktor und
 den Wertzuweisungsoperator ein) hin zur Verschiebe-Konstruktion (dies wiederum 
@@ -38,18 +47,17 @@ An einem Objekt im &bdquo;*Moved-From*&rdquo;-Zustand lassen sich nur 2 Vorgäng
 
 ---
 
-## Realisierung
+## Realisierung <a name="link2"></a>
 
 Prinzipiell kann die Move-Semantik auf dreierlei Weisen realisiert werden:
 
   * *Straightforward*, also Realisierung ohne direktes Entwurfsmuster,
   * mit zwei Hilfsmethoden `cleanup` und `moveFrom` - so genannte *Primitive* / minimalistisches Entwurfsmuster oder
-  * auf Basis des *Swap*-Idioms.
-
+  * auf Basis des [*Swap*-Idioms](../../GeneralSnippets/CopySwapIdiom/CopySwapIdiom.md).
 
 ---
 
-## Notwendigkeit des Schlüsselworts `noexcept`
+## Notwendigkeit des Schlüsselworts `noexcept` <a name="link3"></a>
 
 
 Man beachte die Notwendigkeit des Schlüsselworts `noexcept` bei der Definition
@@ -89,7 +97,7 @@ den Kopierkonstruktor, wenn intern der Datenpuffer neu auszurichten ist!
 
 ---
 
-## Rule of Three (Four), Rule of Five (Six), Rule of Zero
+## Rule of Three (Four), Rule of Five (Six), Rule of Zero <a name="link4"></a>
 
 *Allgemeines*:
 

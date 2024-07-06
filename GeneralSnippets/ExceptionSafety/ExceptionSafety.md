@@ -91,7 +91,7 @@ Die Ausnahme wird beim Aufruf des Konstruktors der `TwoPointers`-Klasse geworfen
 Dies bedeutet, dass der vom ersten `new` zugewiesene Speicher keinem der beiden `std::unique_ptr`-Objekte zugewiesen wurde
 und daher nie freigegeben wird.
 
-*Fazit*:<br />**&bdquo;Don’t write code that has no exception guarantee!&rdquo;**
+**Fazit**:<br />**&bdquo;Schreiben Sie keinen Code, der die *No Exception* Garantie besitzt!&rdquo;**
 
 ---
 
@@ -113,7 +113,7 @@ Aber wir wissen, dass wir sie verwenden und zerstören können,
 weil die Invarianten intakt sind.
 
 
-*Fazit*:<br />**&bdquo;Entwerfen Sie Ihre Klassen so, dass sie über geeignete Klasseninvarianten verfügen, die immer eingehalten werden, auch bei Eintreten von Ausnahmen.!&rdquo;**
+**Fazit**:<br />**&bdquo;Entwerfen Sie Ihre Klassen so, dass sie über geeignete Klasseninvarianten verfügen, die immer eingehalten werden, auch bei Eintreten von Ausnahmen!&rdquo;**
 
 
 ---
@@ -154,7 +154,7 @@ Man erkennt, dass die Umsetzung der *Strong Exception Safety* Garantie kostspiel
 wir reden von Laufzeit oder zusätzlichem Speicherbedarf.
 
 
-*Fazit*:<br />**&bdquo;Realisieren Sie die *Strong Exception Safety* Garantie nur dann, wenn sie benötigt wird!&rdquo;**
+**Fazit**:<br />**&bdquo;Realisieren Sie die *Strong Exception Safety* Garantie nur dann, wenn sie benötigt wird!&rdquo;**
 
 ---
 
@@ -179,7 +179,7 @@ Es gibt einige Operationen, die niemals eine Ausnahme auslösen sollten, egal wa
   Von *Swap*-Funktionen wird erwartet, dass sie keine Ausnahme auslösen.
 
 
-*Fazit*:<br />**&bdquo;Verwenden Sie das Schlüsselwort `noexcept`, um Funktionen/Methoden kennzuzeichnen, die die *No-throw* Garantie gewähren.!&rdquo;**
+**Fazit**:<br />**&bdquo;Verwenden Sie das Schlüsselwort `noexcept`, um Funktionen/Methoden kennzuzeichnen, die die *No-throw* Garantie gewähren!&rdquo;**
 
 ---
 
