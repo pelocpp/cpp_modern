@@ -138,11 +138,11 @@ Im [Quellcode](UniquePtr.cpp) finden Sie hierzu ein Beispiel vor.
 
 ---
 
-## Literaturhinweise <a name="lin54"></a>
+## Literaturhinweise <a name="link5"></a>
 
 
 Die Beispiele zu dem Verpacken von Resource Handles in `std::unique_ptr<T>`-Objekten
-stammen aus einem Artikel von XXX
+stammen aus einem Artikel von
 
 [Wrapping Resource Handles in Smart Pointers](https://www.cppstories.com/2016/10/wrapping-resource-handles-in-smart/) (abgerufen am 5.7.2024).
 
