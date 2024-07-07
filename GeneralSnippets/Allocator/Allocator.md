@@ -4,9 +4,7 @@
 
 ---
 
-[Quellcode AllocatorSimple](AllocatorSimple.cpp)
-
-[Quellcode AllocatorDummy](AllocatorDummy.cpp)
+[Quellcode](Allocator.cpp)
 
 ---
 

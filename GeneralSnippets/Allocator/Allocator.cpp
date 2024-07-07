@@ -1,15 +1,12 @@
 // =====================================================================================
-// Allocator01.cpp // Allocator
+// Allocator.cpp // Allocator
 // =====================================================================================
 
 module;
 
-// GCC support
-#ifndef __FUNCSIG__
-#define __FUNCSIG__ __PRETTY_FUNCTION__
-#endif
-
 module modern_cpp:allocator;
+
+import :dummy;
 
 namespace Allocator {
 
@@ -25,8 +22,8 @@ namespace Allocator {
         std::cout << ip[1] << std::endl;   // access memory (read)
         std::cout << ip[2] << std::endl;   // access memory (read)
 
-        // note: size (2. parameter for deallocate not necessarily needed, but:
-        // std::allocator is an abstraction over an underlying memory model
+        // note: size (2. parameter for deallocate not necessarily needed,
+        // but: std::allocator is an abstraction over an underlying memory model
 
         myIntAlloc.deallocate(ip, 3);  // deallocate space for ints
     }
@@ -87,20 +84,66 @@ namespace Allocator {
     static void test_02_allocator() {
 
         std::vector<int, MyAlloc<int>> vec;
-        // v1.reserve(Max);  // put into comments ... or not
+        // vec.reserve(Max);  // put into comments ... or not
 
         for (int n = 0; n < Max; ++n) {
             std::cout << "    ==> push_back(" << n << ")" << std::endl;
             vec.push_back(n);
         }
     }
+
+    // =================================================================================
+
+    /*
+     * Note:
+     *
+     * Watch difference between executions with and without
+     * 'vec.reserve' invocation
+     */
+
+    constexpr int AnotherMax = 5;
+
+    static void test_03a_allocator() {
+
+        std::cout << "Insertion: push_back - Object by LValue reference" << std::endl;
+        std::vector<Dummy, MyAlloc<Dummy>> vec;
+        // vec.reserve(AnotherMax);  // put into comments ... or not
+        for (int n = 0; n < AnotherMax; ++n) {
+            Dummy dummy(n);
+            vec.push_back(dummy);
+        }
+    }
+
+    static void test_03b_allocator() {
+
+        std::cout << "Insertion: push_back - Object by RValue reference" << std::endl;
+        std::vector<Dummy, MyAlloc<Dummy>> vec;
+        // vec.reserve(AnotherMax); // put into comments ... or not
+        for (int n = 0; n < AnotherMax; ++n) {
+            vec.push_back(Dummy(n));
+        }
+    }
+
+    static void test_03c_allocator() {
+
+        std::cout << "Insertion: emplace_back" << std::endl;
+        std::vector<Dummy, MyAlloc<Dummy>> vec;
+        // vec.reserve(AnotherMax);   // put into comments ... or not
+        for (int n = 0; n < AnotherMax; ++n) {
+            vec.emplace_back(n);
+        }
+    }
+
 }
 
-void main_allocator_01()
+void main_allocator()
 {
     using namespace Allocator;
     test_01_allocator();
     test_02_allocator();
+    test_03a_allocator();
+    test_03b_allocator();
+    test_03c_allocator();
 }
 
 // =====================================================================================

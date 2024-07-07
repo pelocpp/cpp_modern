@@ -147,8 +147,7 @@
   <ItemGroup>
     <ClCompile Include="Accumulate\Accumulate.cpp" />
     <ClCompile Include="Accumulate\Module_Accumulate.ixx" />
-    <ClCompile Include="Allocator\Allocator01.cpp" />
-    <ClCompile Include="Allocator\Allocator02.cpp" />
+    <ClCompile Include="Allocator\Allocator.cpp" />
     <ClCompile Include="Allocator\Module_Allocator.ixx" />
     <ClCompile Include="Any\Module_Any.ixx" />
     <ClCompile Include="Any\Any.cpp" />

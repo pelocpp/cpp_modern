@@ -13,16 +13,11 @@ int main()
 {
     std::cout << "[Collection of Modern C++-Code Examples - Copyright (C) 2019-2024 Peter Loos]" << std::endl;
 
-
-
-
-
     // main entry points code snippets
     try
     {
         //main_accumulate();
-        //main_allocator_01();
-        //main_allocator_02();
+        //main_allocator();
         //main_any();
         //main_apply_integer_sequence();  
         //main_argument_dependent_name_lookup();
@@ -52,7 +47,7 @@ int main()
         //main_expression_templates();
         //main_generate();
         //main_generic_lambdas();
-        main_exception_safety();
+        //main_exception_safety();
         //main_explicit_keyword();
         //main_folding();
         //main_functional_programming_ranges();

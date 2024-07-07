@@ -576,14 +576,11 @@
     <ClCompile Include="WeakPtr\Module_WeakPtr.ixx">
       <Filter>Modules</Filter>
     </ClCompile>
-    <ClCompile Include="Allocator\Allocator01.cpp">
+    <ClCompile Include="Allocator\Allocator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Allocator\Module_Allocator.ixx">
       <Filter>Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="Allocator\Allocator02.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Modules_Import\Module_Modules_Import.ixx">
       <Filter>Modules</Filter>
