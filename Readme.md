@@ -177,7 +177,7 @@ Es folgt eine tabellarische Auflistung dieser Unterverzeichnisse.
 | [RegExpr](GeneralSnippets/RegExpr/RegExpr.md) | Reguläre Ausdrücke |
 | [RValue/LValue](GeneralSnippets/RValueLValue/RValueLValue.md) | LValue- und RValue Referenzen |
 | [SFINAE_EnableIf](GeneralSnippets/SFINAE_EnableIf/Sfinae.md) | SFINAE und `std::enable_if` |
-| [SharedPointer](GeneralSnippets/SharedPtr/SharedPtr.md) | Klasse `std::shared_ptr<T>` |
+| [Shared Pointer](GeneralSnippets/SharedPtr/SharedPtr.md) | Klasse `std::shared_ptr<T>` |
 | [SourceLocation](GeneralSnippets/SourceLocation/SourceLocation.md) | Klasse `std::source_location` |
 | [SSO](GeneralSnippets/SSO/SSO.md) | *Small String Optimization* |
 | [StaticAssert](GeneralSnippets/StaticAssert/StaticAssert.md) | Compile-Time Makro `static_assert` |
@@ -195,13 +195,13 @@ Es folgt eine tabellarische Auflistung dieser Unterverzeichnisse.
 | [Two-Phase Name Lookup](GeneralSnippets/TwoPhaseNameLookup/TwoPhaseNameLookup.md) | Two-Phase Name Lookup |
 | [TypeErasure](GeneralSnippets/TypeErasure/TypeErasure.md) | *Type Erasure* &ndash; statischer versus dynamischer Polymorphismus |
 | [TypeTraits](GeneralSnippets/TypeTraits/TypeTraits.md) | Typmerkmale |
-| [UniquePointer](GeneralSnippets/UniquePtr/UniquePtr.md) | Klasse `std::unique_ptr<T>` |
+| [Unique Pointer](GeneralSnippets/UniquePtr/UniquePtr.md) | Klasse `std::unique_ptr<T>` |
 | [Using Namespace Std](GeneralSnippets/UsingNamespaceStd/UsingNamespaceStd.md) | Warum ist `using namespace std;` als schlechte Praxis angesehen? |
 | [Variadic Templates](GeneralSnippets/VariadicTemplates/VariadicTemplates_01_Introduction.md) | Templates mit variabler Argumentanzahl (Variadische Templates) |
 | [Variant](GeneralSnippets/Variant/Variant.md)  | Neue STL-Utility Klasse `std::variant` |
 | [Virtual Base Class Destructor](GeneralSnippets/VirtualBaseClassDestructor/VirtualBaseClassDestructor.md) | Virtuelle Destruktoren (einer Basisklasse) |
 | [Virtual/Override/Final](GeneralSnippets/VirtualOverrideFinal/VirtualOverrideFinal.md) | Neue Schlüsselwörter `override` und `final` |
-| [WeakPointer](GeneralSnippets/WeakPtr/WeakPtr.md) | Klasse `std::weak_ptr<T>` |
+| [Weak Pointer](GeneralSnippets/WeakPtr/WeakPtr.md) | Klasse `std::weak_ptr<T>` |
 
 *Tabelle* 1. Tabellarische Auflistung aller *Modern C++*&ndash;Beispiele dieses Repositories. 
 
