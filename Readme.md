@@ -188,7 +188,7 @@ Es folgt eine tabellarische Auflistung dieser Unterverzeichnisse.
 | [TemplateSpecialization](GeneralSnippets/TemplateSpecialization/TemplateSpecialization.md) | Template Spezialisierung |
 | [TemplateConstexprIf](GeneralSnippets/TemplateConstexprIf/TemplatesConstExpr_If.md) | Templates und bedingte Compilierung (`if constexpr`) |
 | [TemplateTemplateParameter](GeneralSnippets/TemplateTemplateParameter/TemplateTemplateParameter.md) | Template Template Parameter |
-| [TemplateTwoPhaseLookup](GeneralSnippets/TemplateTwoPhaseLookup/TemplateTwoPhaseLookup.md) | Two-Phase Name Lookup |
+| [TwoPhaseNameLookup](GeneralSnippets/TwoPhaseNameLookup/TwoPhaseNameLookup.md) | Two-Phase Name Lookup |
 | [ToUnderlying](GeneralSnippets/ToUnderlying/ToUnderlying.md) | Funktion `std::to_underlying` |
 | [Transform](GeneralSnippets/Transform/Transform.md) | STL-Algorithmus `std::transform` und Lambda-Objekte in der Anwendung |
 | [TrimmingStrings](GeneralSnippets/Trim/Trim.md) | Leerzeichen am Anfang und Ende einer Zeichenkette entfernen |
