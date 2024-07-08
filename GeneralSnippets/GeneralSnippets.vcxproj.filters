@@ -231,9 +231,6 @@
     <ClCompile Include="Attributes\Attributes.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TemplateTwoPhaseLookup\TwoPhaseNameLookup.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ArgumentDependentNameLookup\ArgumentDependentNameLookup.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -540,9 +537,6 @@
     <ClCompile Include="TemplateTemplateParameter\Module_TemplateTemplateParameter.ixx">
       <Filter>Modules</Filter>
     </ClCompile>
-    <ClCompile Include="TemplateTwoPhaseLookup\Module_TwoPhaseNameLookup.ixx">
-      <Filter>Modules</Filter>
-    </ClCompile>
     <ClCompile Include="Transform\Module_Transform.ixx">
       <Filter>Modules</Filter>
     </ClCompile>
@@ -670,6 +664,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ExceptionSafety\Module_ExceptionSafety.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="TwoPhaseNameLookup\TwoPhaseNameLookup.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TwoPhaseNameLookup\Module_TwoPhaseNameLookup.ixx">
       <Filter>Modules</Filter>
     </ClCompile>
   </ItemGroup>
@@ -971,9 +971,6 @@
     <None Include="Attributes\Attributes.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="TemplateTwoPhaseLookup\TwoPhaseNameLookup.md">
-      <Filter>Resource Files</Filter>
-    </None>
     <None Include="ArgumentDependentNameLookup\ArgumentDependentNameLookup.md">
       <Filter>Resource Files</Filter>
     </None>
@@ -1071,6 +1068,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="ExceptionSafety\ExceptionSafety.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="TwoPhaseNameLookup\TwoPhaseNameLookup.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

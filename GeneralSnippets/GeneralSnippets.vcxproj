@@ -330,8 +330,6 @@
     <ClCompile Include="TemplateTemplateParameter\Module_TemplateTemplateParameter.ixx" />
     <ClCompile Include="TemplateTemplateParameter\TemplateTemplateParameter_01.cpp" />
     <ClCompile Include="TemplateTemplateParameter\TemplateTemplateParameter_02.cpp" />
-    <ClCompile Include="TemplateTwoPhaseLookup\Module_TwoPhaseNameLookup.ixx" />
-    <ClCompile Include="TemplateTwoPhaseLookup\TwoPhaseNameLookup.cpp" />
     <ClCompile Include="ToUnderlying\Module_ToUnderlying.ixx" />
     <ClCompile Include="ToUnderlying\ToUnderlying.cpp" />
     <ClCompile Include="Transform\Module_Transform.ixx" />
@@ -340,6 +338,8 @@
     <ClCompile Include="Trim\Trim.cpp" />
     <ClCompile Include="Tuple\Module_Tuple.ixx" />
     <ClCompile Include="Tuple\Tuple.cpp" />
+    <ClCompile Include="TwoPhaseNameLookup\Module_TwoPhaseNameLookup.ixx" />
+    <ClCompile Include="TwoPhaseNameLookup\TwoPhaseNameLookup.cpp" />
     <ClCompile Include="TypeErasure\Module_TypeErasure.ixx" />
     <ClCompile Include="TypeErasure\TypeErasure.cpp" />
     <ClCompile Include="TypeTraits\Module_TypeTraits.ixx" />
@@ -461,7 +461,6 @@
     <None Include="TemplateFunctionBasics\TemplatesFunctionBasics.md" />
     <None Include="TemplateSpecialization\TemplateSpecialization.md" />
     <None Include="TemplateTemplateParameter\TemplateTemplateParameter.md" />
-    <None Include="TemplateTwoPhaseLookup\TwoPhaseNameLookup.md" />
     <None Include="ToUnderlying\ToUnderlying.md" />
     <None Include="Transform\cpp_snippet_transform_01.svg" />
     <None Include="Transform\cpp_snippet_transform_02.svg" />
@@ -471,6 +470,7 @@
     <None Include="Trim\Trim.md" />
     <None Include="Tuple\cpp_std_tuple.svg" />
     <None Include="Tuple\Tuple.md" />
+    <None Include="TwoPhaseNameLookup\TwoPhaseNameLookup.md" />
     <None Include="TypeErasure\TypeErasure.md" />
     <None Include="TypeTraits\TypeTraits.md" />
     <None Include="UniquePtr\UniquePtr.md" />
