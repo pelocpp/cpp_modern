@@ -8,7 +8,17 @@
 
 ---
 
-## Allgemeines:
+## Inhalt
+
+  * [Allgemeines](#link1)
+  * [Obligatorisches Auslassen von Kopier- oder Verschiebe-Operationen](#link2)
+  * [Optionales Auslassen von Kopier- oder Verschiebe-Operationen](#link3)
+  * [Visual C++ &ndash; Compiler Flag `/Zc:nrvo`](#link4)
+  * [Literaturhinweise](#link5)
+
+---
+
+## Allgemeines <a name="link1"></a>
 
 Was versteht man unter *Copy and Move Elision*?
 
@@ -27,7 +37,7 @@ Siehe dazu das Beispiel im korrespondierenden Quellcode.
 
 ---
 
-## Obligatorisches Auslassen von Kopier- oder Verschiebe-Operationen
+## Obligatorisches Auslassen von Kopier- oder Verschiebe-Operationen <a name="link2"></a>
 
 Nicht immer ist es möglich, dass ein C++&ndash;Compiler zwischen den zwei Möglichkeiten des
 Erzeugens oder Nicht-Erzeugens temporärer Objekte auswählen kann.
@@ -40,7 +50,7 @@ return Foo{};
 
 ---
 
-## Optionales Auslassen von Kopier- oder Verschiebe-Operationen
+## Optionales Auslassen von Kopier- oder Verschiebe-Operationen <a name="link3"></a>
 
 Wenn der zurückgegebene Wert ein *benanntes* Objekt ist,
 kann der Compiler auf das Erzeugen des temporären Objekts verzichten, muss dies aber nicht:
@@ -58,10 +68,9 @@ void test {
 
 Studieren Sie die Testausgaben dieses Beispiels an Hand des korrespondierenden Quellcodes.
 
-
 ---
 
-## Visual C++ &ndash; Compiler Flag `/Zc:nrvo` 
+## Visual C++ &ndash; Compiler Flag `/Zc:nrvo` <a name="link4"></a>
 
 Mit dem Visual C++ Compiler (ab Version 17.4) kann man das *optionale* Auslassen
 von Kopier-/Verschiebeoperationen explizit mit dem Flag `/Zc:nrvo` aktivieren oder
@@ -93,7 +102,7 @@ d'tor [1]
 
 ---
 
-## Literaturhinweise
+## Literaturhinweise <a name="link5"></a>
 
 Die Informationen zu diesem Thema stammen zum größten Teil aus dem Artikel
 

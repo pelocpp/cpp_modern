@@ -8,7 +8,16 @@
 
 ---
 
-## Allgemeines
+## Inhalt
+
+  * [Allgemeines](#link1)
+  * [`std::to_array`](#link2)
+  * [`std::span`](#link3)
+  * [&bdquo;*Non-Owning*&rdquo; Objekte](#link4)
+
+---
+
+## Allgemeines <a name="link1"></a>
 
 Die Klasse `std::array` stellt im Prinzip eine dünne Hülle um ein Array im C-Stil dar.
 
@@ -30,6 +39,8 @@ Weitere Vorteile der Klasse `std::array`:
 
 ---
 
+## `std::to_array` <a name="link2"></a>
+
 C++20 führt eine neue Funktion namens `std::to_array` ein (definiert in der Include-Datei `<array>`).
 Sie konvertiert ein bestimmtes Array im C-Stil in ein `std::array`-Objekt.
 Die Funktion funktioniert nur für eindimensionale Arrays. 
@@ -39,6 +50,8 @@ der Definition des `std::array`-Objekts die Template Parameter weglassen, vor al
 bisweilen lästige Angabe der Feldlänge.
 
 ---
+
+## `std::span` <a name="link3"></a>
 
 Die Klasse `std::span` stellt eine Hilfestellung dar, wenn man `std::array`-Objekte an Funktionen übergeben möchte.
 Für ein `std::array`-Objekt muss man den Typ und die Anzahl der Elemente im Array als Template-Parameter angeben.
@@ -74,10 +87,14 @@ Der Trick bzgl. der Länge des Datenbereichs besteht darin, dass die `std::span`-
 zahlreiche Konstruktoren besitzt, die die Länge des Datenbereichs jeweils zur Laufzeit ermitteln
 und in einer Instanzvariablen (hier: `m_count`) ablegen.
 
-Die Zeigervariable `m_data` ist folglich nur solange gültig, wie der Datenbereich existiert.
+---
+
+## &bdquo;*Non-Owning*&rdquo; Objekte <a name="link4"></a>
+
+Die Zeigervariable `m_data` ist nur solange gültig, wie der Datenbereich existiert.
 Lebt das `std::span`-Objekt länger als der Datenbereich, stoßen wir auf *UB* (*Undefined Behaviour*).
 
-Man spricht in Bezug auf das `std::span`-Objekt auch von einem
+Man spricht in Bezug auf das `std::span`-Objekt von einem
 so genannten &bdquo;*Non-Owning*&rdquo; Container.
 
 *Beachte*:

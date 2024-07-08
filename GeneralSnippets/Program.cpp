@@ -19,7 +19,7 @@ int main()
         //main_accumulate();
         //main_allocator();
         //main_any();
-        //main_apply_integer_sequence();  
+        //main_apply();  
         //main_argument_dependent_name_lookup();
         //main_array();
         //main_array_decay();
@@ -77,7 +77,6 @@ int main()
         //main_regular_expressions();
         //main_rvalue_lvalue();
         //main_sfinae();
-        //main_sfinae_02();
         //main_shared_ptr();
         //main_source_location();
         //main_sso();
@@ -89,12 +88,12 @@ int main()
         //main_function_templates_basics();
         //main_templates_template_parameter_01();
         //main_templates_template_parameter_02();
-        //main_templates_two_phase_name_lookup();
         //main_template_specialization();
         //main_to_underlying();
         //main_transform();
         //main_trim(); 
-        //main_tuple();
+        //main_tuple(); 
+        //main_two_phase_name_lookup();
         //main_type_erasure();
         //main_type_traits();
         //main_unique_ptr();

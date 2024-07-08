@@ -4,17 +4,23 @@
 
 ---
 
-[Quellcode zu Variante 1](FunctionalProgramming01.cpp)
-
-<!-- 
-[Quellcode zu Variante 1](FunctionalProgramming02.cpp)
-
-[Quellcode zu Variante 2](FunctionalProgramming03.cpp)
--->
+[Quellcode](FunctionalProgramming.cpp)
 
 ---
 
-## Allgemeines
+## Inhalt
+
+  * [Allgemeines](#link1)
+  * [*Pure* Funktionen](#link)
+  * [Funktionen höherer Ordnung](#link)
+  * [Umsetzung in C++ und STL](#link)
+  * [*Filter-Map-Reduce* Pattern](#link)
+  * [Umsetzung in C++ und *Ranges*](#link)
+
+
+---
+
+## Allgemeines <a name="link1"></a>
 
 C++ ist eine &bdquo;prozedurale, objektorientierte und generische Programmiersprache&rdquo; und keine rein &bdquo;funktionale Programmiersprache&rdquo;.
 Mit den Neuerungen des so genannten &bdquo;Modern C++&rdquo; lassen sich aber auch
@@ -32,7 +38,7 @@ dass auf diese Weise erstellte Programme weniger fehleranfällig sind.
 Nachteilig ist, dass sich reale Objekte und Zustandsänderungen nur schwierig abbilden lassen, was die Programmierung realer Vorgänge und Geschäftsprozesse erschwert.
 Dies ist eben das Terrain der objektorientierten zustandsbehafteten Programmierung.
 
-## *Pure* Funktionen
+## *Pure* Funktionen <a name="link2"></a>
 
 In der objektorientierten Programmierung zerlegen wir typischerweise ein Programm in Objekte,
 von denen jedes eine bestimmte Menge an Methoden besitzt.
@@ -147,7 +153,7 @@ Nach jedem reinen Funktionsaufruf gibt die Funktion das geänderte Objekt als ne
 das eben bei Bedarf gespeichert werden kann.
 
 
-## Funktionen höherer Ordnung
+## Funktionen höherer Ordnung <a name="link3"></a>
 
 Funktionen, die entweder Funktionen als Argument annehmen oder als Ergebnis zurückgeben, werden als
 *Funktionen höherer Ordnung* bezeichnet.
@@ -229,7 +235,7 @@ speziell Lambda-Funktionen an.
     mit zwei Argumenten auf ein Element des Containers und das vorangehende Zwischenergebnis angewendet.
 
 
-## Umsetzung in C++ und STL
+## Umsetzung in C++ und STL <a name="link4"></a>
 
 In einer ersten Näherung finden wir die drei Funktionen höherer Ordnung auch in C++
 bei genauem Hinsehen in den STL-Algorithmen vor:
@@ -239,7 +245,7 @@ bei genauem Hinsehen in den STL-Algorithmen vor:
   * `fold` - ähnlich zu `std::accumulate`.
 
 
-## Filter-Map-Reduce Pattern
+## *Filter-Map-Reduce* Pattern <a name="link5"></a>
 
 &bdquo;Filter-Map-Reduce&rdquo; beschreibt ein Pattern, bei dem eine Menge von Daten in einer Abfolge
 von bestimmten Schritten verarbeitet wird. Dabei ist `reduce` eine andere Bezeichnung für `fold`.
@@ -320,7 +326,7 @@ Im Quellcode zu diesem Snippet gibt es Beispiel zum *Filter-Map-Reduce* Pattern:
 Titles: Java, C#
 ```
 
-## Umsetzung in C++ und *Ranges*
+## Umsetzung in C++ und *Ranges* <a name="link6"></a>
 
 
 ```cpp

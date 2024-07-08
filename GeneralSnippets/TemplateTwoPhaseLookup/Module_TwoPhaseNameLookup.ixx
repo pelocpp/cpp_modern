@@ -1,12 +1,12 @@
 // =====================================================================================
-// Module Interface Partition 'template_two_phase_lookup'
+// Module Interface Partition 'two_phase_name_lookup'
 // =====================================================================================
 
-export module modern_cpp:template_two_phase_lookup;
+export module modern_cpp:two_phase_name_lookup;
 
 import std;
 
-export void main_templates_two_phase_name_lookup();
+export void main_two_phase_name_lookup();
 
 // =====================================================================================
 // End-of-File

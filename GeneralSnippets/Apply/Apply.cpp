@@ -170,7 +170,7 @@ namespace ApplyIntegerSequence {
 #endif
 }
 
-void main_apply_integer_sequence()
+void main_apply()
 {
     using namespace ApplyIntegerSequence;
     test01();

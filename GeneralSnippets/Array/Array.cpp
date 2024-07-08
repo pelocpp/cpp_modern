@@ -6,6 +6,9 @@ module modern_cpp:class_array;
 
 namespace StdArray {
 
+    // -------------------------------------------------------------------
+    // initialization
+
     static void test_01() {
 
         // initialization variants
@@ -31,6 +34,9 @@ namespace StdArray {
         std::array array3{ "Hello C++ 20" };
     }
 
+    // -------------------------------------------------------------------
+    // assignment
+
     static void test_03() {
 
         std::array<int, 5> array;
@@ -41,6 +47,9 @@ namespace StdArray {
 
         // array = { 0, 1, 2, 3, 4, 5 }; // doesn't compile, too many elements in initializer list!
     }
+
+    // -------------------------------------------------------------------
+    // exception handling
 
     static void test_04() {
 
@@ -74,6 +83,9 @@ namespace StdArray {
         std::cout << std::endl;
     }
 
+    // -------------------------------------------------------------------
+    // passing std::array as parameter
+
     static void print(const std::array<int, 5>& array) {
         std::cout << "Length: " << array.size() << std::endl;
     }
@@ -91,6 +103,9 @@ namespace StdArray {
         std::array<int, 10> array2 = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
         print(array2);
     }
+
+    // -------------------------------------------------------------------
+    // miscellaneous
 
     static void test_06() {
 
@@ -113,6 +128,9 @@ namespace StdArray {
         }
         std::cout << std::endl;
     }
+
+    // -------------------------------------------------------------------
+    // multidimensional arrays
 
     static void test_07() {
 
@@ -157,15 +175,19 @@ namespace StdArray {
         display(array);
     }
 
+    // -------------------------------------------------------------------
+    // arrays of objects
+
     class Employee {
     public:
-        size_t m_id;
+        size_t      m_id;
         std::string m_name;
         std::string m_role;
-        size_t m_phone;
+        size_t      m_phone;
 
         Employee()
-            : Employee(0, "", "", 0) {}
+            : Employee(0, "", "", 0)
+        {}
 
         Employee(size_t m_id, const std::string& m_name, const std::string& m_role, size_t m_phone)
             : m_id(m_id), m_name(m_name), m_role(m_role), m_phone(m_phone)
@@ -189,9 +211,12 @@ namespace StdArray {
         }
     }
 
+    // -------------------------------------------------------------------
+    // assignment - comparison C-style array with std::string
+
     static void test_10() {
 
-        /* C - style array
+        /* C-style array
         */
 
         std::string cArray[4] = { "the", "quick", "brown", "fox" };
@@ -235,16 +260,10 @@ namespace StdArray {
         bool isEqual = (array == other);
     }
 
-    // returning a std::array object: works
-    static std::array<int, 3>
-    crossProduct(const std::array<int, 3>& a, const std::array<int, 3>& b)
-    {
-        return { 
-            a[1] * b[2] - a[2] * b[1],
-            a[2] * b[0] - a[0] * b[2],
-            a[0] * b[1] - a[1] * b[0],
-        };
-    }
+    // -------------------------------------------------------------------
+    // returning an array - comparison C-style array with std::string
+
+    // returning a C-style
 
 #pragma warning(push)
 #pragma warning(disable : 4172)
@@ -268,8 +287,20 @@ namespace StdArray {
 
 #pragma warning(pop)
 
-    // =====================================================================================
+    // returning an std::array
+    static std::array<int, 3>
+        crossProduct(const std::array<int, 3>& a, const std::array<int, 3>& b)
+    {
+        std::array<int, 3> prod{
+            a[1] * b[2] - a[2] * b[1],
+            a[2] * b[0] - a[0] * b[2],
+            a[0] * b[1] - a[1] * b[0],
+        };
 
+        return prod;
+    }
+
+    // -------------------------------------------------------------------
     // std::to_array
     // helper for creating a std::array from a C-array
 
@@ -290,14 +321,14 @@ namespace StdArray {
         auto array4 = std::to_array<long>({ 1, 2, 3, 4, 5 });
 
         // type is deduced to std::array<int, 5>
-        float numbers[]{ 1.5, 2.5, 3.5, 4.5, 5.5 };
-        auto array5 = std::to_array(numbers);
+        int intNumbers[] { 1, 2, 3, 4, 5 };
+        auto array6 = std::to_array(intNumbers);
     }
 
-    // =====================================================================================
-
+    // -------------------------------------------------------------------
     // std::span
 
+    // demonstrating printArray with pointer parameter
     static void printArray(const int* array, size_t size) {
 
         std::cout << std::format("Number of elements: {}\n", size);
@@ -323,19 +354,19 @@ namespace StdArray {
     }
 
     // --------------------------------------------------------------------
+    // demonstrating printSpan with std::span parameter
 
     static void printSpan(std::span<int> values) {
 
         std::cout << std::format("Number of elements: {}\n", values.size());
         std::cout << std::format("Size of span: {}\n", values.size_bytes());
 
-        // range-based loop
+        // range-based loop works now
         for (auto elem : values) {
             std::cout << std::format("{} ", elem);
         }
         std::cout << std::endl;
     }
-
 
     static void test_31() {
 
@@ -345,7 +376,7 @@ namespace StdArray {
         std::array arr{ 6, 7, 8, 9, 10 };
         printSpan(arr);
 
-        std::vector vec{ 1, 3, 5, 7, 9 };
+        std::vector<int> vec{ 1, 3, 5, 7, 9 };
         printSpan(vec);
 
         //int carr[]{ 1, 2, 3, 4, 5 };
@@ -357,6 +388,9 @@ namespace StdArray {
         //std::vector vec{ 1, 3, 5, 7, 9 };
         //printSpan(std::span{ vec });
     }
+
+    // --------------------------------------------------------------------
+    // demonstrating std::span with const type
 
     static void printSpanConst(std::span<const int> values) {
 

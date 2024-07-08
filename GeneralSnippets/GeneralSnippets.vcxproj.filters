@@ -126,10 +126,7 @@
     <ClCompile Include="VariadicTemplates\VariadicTemplate_04_Mixins.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SFINAE_EnableIf\Sfinae01.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SFINAE_EnableIf\Sfinae02.cpp">
+    <ClCompile Include="SFINAE_EnableIf\Sfinae.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="DeclType\Decltype.cpp">
@@ -234,7 +231,7 @@
     <ClCompile Include="Attributes\Attributes.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TemplateTwoPhaseLookup\TemplateTwoPhaseLookup.cpp">
+    <ClCompile Include="TemplateTwoPhaseLookup\TwoPhaseNameLookup.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ArgumentDependentNameLookup\ArgumentDependentNameLookup.cpp">
@@ -543,7 +540,7 @@
     <ClCompile Include="TemplateTemplateParameter\Module_TemplateTemplateParameter.ixx">
       <Filter>Modules</Filter>
     </ClCompile>
-    <ClCompile Include="TemplateTwoPhaseLookup\Module_TemplateTwoPhaseLookup.ixx">
+    <ClCompile Include="TemplateTwoPhaseLookup\Module_TwoPhaseNameLookup.ixx">
       <Filter>Modules</Filter>
     </ClCompile>
     <ClCompile Include="Transform\Module_Transform.ixx">
@@ -648,7 +645,7 @@
     <ClCompile Include="Const\Const.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="FunctionalProgramming\FunctionalProgramming01.cpp">
+    <ClCompile Include="FunctionalProgramming\FunctionalProgramming.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ModularizedStandardLibrary\Module_ModularizedStandardLibrary.ixx">
@@ -974,7 +971,7 @@
     <None Include="Attributes\Attributes.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="TemplateTwoPhaseLookup\TemplateTwoPhaseLookup.md">
+    <None Include="TemplateTwoPhaseLookup\TwoPhaseNameLookup.md">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="ArgumentDependentNameLookup\ArgumentDependentNameLookup.md">

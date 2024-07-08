@@ -8,7 +8,18 @@
 
 ---
 
-## Überblick
+## Inhalt
+
+  * [Allgemeines](#link1)
+  * [*Curiously Recurring Template Pattern* (CRTP)](#link2)
+  * [Funktionsweise von CRTP](#link3)
+  * [Einschränkungen von CRTP](#link4)
+  * [Ein zweites Beispiel](#link5)
+  * [Literaturhinweise](#link6)
+
+---
+
+## Allgemeines <a name="link1"></a>
 
 C ++ bietet eine sehr gute Unterstützung für Polymorphismus mit Hilfe virtueller Funktionen.
 Diese Form des Polymorphismus wird auch *dynamischer* Polymorphismus (*Late-Binding* - Laufzeitpunkt
@@ -32,7 +43,7 @@ Polymorphismus ohne zusätzliche Kosten zu implementieren. Es gibt natürlich ei
 Die Datentypen dieser Objekte müssen vom Compiler zum Übersetzungszeitpunkt aufgelöst werden.
 Dies wird als *statischer Polymorphismus* (oder auch als "simuliertes dynamisches Binden") bezeichnet.
 
-## *Curiously Recurring Template Pattern* (CRTP)
+## *Curiously Recurring Template Pattern* (CRTP) <a name="link2"></a>
 
 Das *Curiously Recurring Template Pattern* genannte Entwurfsmuster ist eine Technik,
 die eine Simulation des auf virtuellen Methoden basierenden Polymorphismus zur Kompilierungszeit ermöglicht.
@@ -133,7 +144,7 @@ erasing checkbox background ...
 painting checkbox ...
 ```
 
-## Funktionsweise von CRTP
+## Funktionsweise von CRTP <a name="link3"></a>
 
 Virtuelle Methoden können ein Performanceproblem aufweisen,
 wenn sie wenige Anweisungen enthalten und häufig in einer Wiederholungsschleife aufgerufen werden.
@@ -181,7 +192,7 @@ private:
 };
 ```
 
-## Einschränkungen von CRTP
+## Einschränkungen von CRTP <a name="link4"></a>
 
 Wenn Sie CRTP einsetzen wollen, müssen Sie sich einiger Einschränkungen oder Fallstricke
 bei der Verwendung bewusst sein:
@@ -288,7 +299,7 @@ erasing button background ...
 painting button ...
 ```
 
-## Ein zweites Beispiel
+## Ein zweites Beispiel <a name="link5"></a>
 
 Ein zweites Beispiel zur Technik des CRTP finden Sie im Aufgabenteil vor.
 Die Laufzeiten der beiden Varianten (*klassischer* versus *statischer* Polymorphismus) sieht auf meinem Rechner so aus:
@@ -301,7 +312,6 @@ Time taken: 16082 microseconds
 Man erkennt unschwer, dass die Variante des "*statischen* Polymorphismus" ca. um den Faktor 3 schneller ist.
 
 
-
 #### *Hinweis*:
 
 Beim Vergleich der Programmlaufzeiten dieses Beispiels ist strikt darauf zu achten,
@@ -309,7 +319,7 @@ dass in den Projekt-Einstellungen der "**Release**"-Modus eingestellt ist!
 Die Unterschiede bzgl. der Laufzeiten zwischen "*Debug*"-Modus und "*Release*"-Modus sind exorbitant groß!
 
 
-## Literaturhinweise
+## Literaturhinweise <a name="link6"></a>
 
 Die Anregungen zu den Beispielen aus diesem Abschnitt sind aus dem Buch
 

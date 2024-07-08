@@ -1,10 +1,10 @@
 // =====================================================================================
-// TemplateTwoPhaseLookup.cpp
+// TwoPhaseNameLookup.cpp
 // =====================================================================================
 
-module modern_cpp:template_two_phase_lookup;
+module modern_cpp:two_phase_name_lookup;
 
-namespace Templates_TwoPhaseNameLookup
+namespace TwoPhaseNameLookup
 {
     // Non-Template Code Example:
     class Base {
@@ -59,9 +59,9 @@ namespace Templates_TwoPhaseNameLookup
     }
 }
 
-void main_templates_two_phase_name_lookup()
+void main_two_phase_name_lookup()
 {
-    using namespace Templates_TwoPhaseNameLookup;
+    using namespace TwoPhaseNameLookup;
     test_01();
     test_02();
 }

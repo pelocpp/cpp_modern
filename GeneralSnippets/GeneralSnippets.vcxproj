@@ -241,7 +241,7 @@
     <ClCompile Include="ExpressionTemplates\Module_ExpressionTemplates.ixx" />
     <ClCompile Include="Folding\Module_Folding.ixx" />
     <ClCompile Include="Folding\Folding.cpp" />
-    <ClCompile Include="FunctionalProgramming\FunctionalProgramming01.cpp" />
+    <ClCompile Include="FunctionalProgramming\FunctionalProgramming.cpp" />
     <ClCompile Include="FunctionalProgramming\FunctionalProgramming02.cpp" />
     <ClCompile Include="FunctionalProgramming\FunctionalProgramming03.cpp" />
     <ClCompile Include="FunctionalProgramming\Module_FunctionalProgramming.ixx" />
@@ -303,8 +303,7 @@
     <ClCompile Include="RValueLValue\Module_RValueLValue.ixx" />
     <ClCompile Include="RValueLValue\RValueLValue.cpp" />
     <ClCompile Include="SFINAE_EnableIf\Module_Sfinae.ixx" />
-    <ClCompile Include="SFINAE_EnableIf\Sfinae01.cpp" />
-    <ClCompile Include="SFINAE_EnableIf\Sfinae02.cpp" />
+    <ClCompile Include="SFINAE_EnableIf\Sfinae.cpp" />
     <ClCompile Include="SharedPtr\Module_SharedPtr.ixx" />
     <ClCompile Include="SharedPtr\SharedPtr.cpp" />
     <ClCompile Include="SourceLocation\Module_SourceLocation.ixx" />
@@ -331,8 +330,8 @@
     <ClCompile Include="TemplateTemplateParameter\Module_TemplateTemplateParameter.ixx" />
     <ClCompile Include="TemplateTemplateParameter\TemplateTemplateParameter_01.cpp" />
     <ClCompile Include="TemplateTemplateParameter\TemplateTemplateParameter_02.cpp" />
-    <ClCompile Include="TemplateTwoPhaseLookup\Module_TemplateTwoPhaseLookup.ixx" />
-    <ClCompile Include="TemplateTwoPhaseLookup\TemplateTwoPhaseLookup.cpp" />
+    <ClCompile Include="TemplateTwoPhaseLookup\Module_TwoPhaseNameLookup.ixx" />
+    <ClCompile Include="TemplateTwoPhaseLookup\TwoPhaseNameLookup.cpp" />
     <ClCompile Include="ToUnderlying\Module_ToUnderlying.ixx" />
     <ClCompile Include="ToUnderlying\ToUnderlying.cpp" />
     <ClCompile Include="Transform\Module_Transform.ixx" />
@@ -462,7 +461,7 @@
     <None Include="TemplateFunctionBasics\TemplatesFunctionBasics.md" />
     <None Include="TemplateSpecialization\TemplateSpecialization.md" />
     <None Include="TemplateTemplateParameter\TemplateTemplateParameter.md" />
-    <None Include="TemplateTwoPhaseLookup\TemplateTwoPhaseLookup.md" />
+    <None Include="TemplateTwoPhaseLookup\TwoPhaseNameLookup.md" />
     <None Include="ToUnderlying\ToUnderlying.md" />
     <None Include="Transform\cpp_snippet_transform_01.svg" />
     <None Include="Transform\cpp_snippet_transform_02.svg" />

@@ -4,7 +4,7 @@
 
 ---
 
-[Quellcode](TemplateTwoPhaseLookup.cpp)
+[Quellcode](TwoPhaseNameLookup.cpp)
 
 ---
 
