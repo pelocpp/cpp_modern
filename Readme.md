@@ -122,8 +122,8 @@ In diesem Projekt sind zahlreiche kleinere Code-Snippets abgelegt, um die divers
 von C++&ndash;11/14/17 demonstrieren zu können.
 Es folgt eine tabellarische Auflistung dieser Unterverzeichnisse.
 
-| Unterverzeichnis | Thematik |
-|:-------------- |-----------------------------------------|
+| Thema | Kurzbeschreibung |
+|:- |:-|
 | [Accumulate](GeneralSnippets/Accumulate/Accumulate.md) | STL-Algorithmus `std::accumulate` und Lambda-Objekte in der Anwendung |
 | [Allocator](GeneralSnippets/Allocator/Allocator.md) | Container und Speicher-Allokatoren |
 | [Any](GeneralSnippets/Any/Any.md) | Neue STL-Utility Klasse `std::any` |
