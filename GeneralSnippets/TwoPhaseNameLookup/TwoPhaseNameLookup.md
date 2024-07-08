@@ -8,7 +8,15 @@
 
 ---
 
-## Two-Phase Name Lookup
+## Allgemeines
+
+  * [Allgemeines](#link1)
+  * [Ein Beispiel](#link2)
+  * [Two-Phase Name Lookup](#link3)
+
+---
+
+## Allgemeines <a name="link1"></a>
 
 Klassen- und Funktions-Templates  werden vom C++-Compiler (mindestens) zweimal übersetzt:
 
@@ -26,7 +34,7 @@ fast die gesamte Arbeit auf die zweite Phase,
 bis eine Instanziierung des Templates stattfindet.
 
 
-## Ein Beispiel
+## Ein Beispiel <a name="link2"></a>
 
 Im Umfeld der Vererbung weist das *Two-Phase Name Lookup* ein überraschendes Verhalten auf,
 wie das folgende Beispiel verdeutlicht:
@@ -64,6 +72,8 @@ Da außer in der Basisklasse kein weiterer Bezeichner `doSomething`
 verfügbar ist, kommt es zu einer Fehlermeldung!
 
 *Abhängige* Namen werden zum Zeitpunkt der Template-Instanziierung aufgelöst.
+
+## Two-Phase Name Lookup <a name="link3"></a>
 
 Damit wären wir wieder beim Thema des *Two-Phase Name Lookups* angekommen:
 
