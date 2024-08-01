@@ -102,43 +102,6 @@ namespace Exercises_SmartPointers {
 
     namespace Exercise_03 {
 
-        struct X;
-        struct Y;
-
-        struct X
-        {
-            std::shared_ptr<Y> m_spY{};
-        };
-
-        struct Y
-        {
-            std::shared_ptr<X> m_spX{};
-        };
-
-        static void testExercise_03() {
-
-            _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-
-            {
-                std::shared_ptr<X> sp1{ std::make_shared<X>() };
-                std::shared_ptr<Y> sp2{ std::make_shared<Y>() };
-
-                sp1->m_spY = sp2;
-                sp2->m_spX = sp1;
-
-                std::cout << "UseCount sp1: " << sp1.use_count() << std::endl;
-                std::cout << "   UseCount sp1->m_spY: " << sp1->m_spY.use_count() << std::endl;
-
-                std::cout << "UseCount sp2: " << sp2.use_count() << std::endl;
-                std::cout << "   UseCount sp2->m_spX: " << sp2->m_spX.use_count() << std::endl;
-            }
-
-            std::cout << "Done." << std::endl;
-        }
-    }
-
-    namespace Exercise_04 {
-
         // =============================================================
         // Considering a "non-owning reference"
 
@@ -160,7 +123,7 @@ namespace Exercises_SmartPointers {
             }
         };
 
-        static void testExercise_04a()
+        static void testExercise_03a()
         {
             UnsafeWatcher watcher;
 
@@ -191,7 +154,7 @@ namespace Exercises_SmartPointers {
             }
         };
 
-        static void testExercise_04b()
+        static void testExercise_03b()
         {
             HeavyAndSafeWatcher watcher;
 
@@ -231,7 +194,7 @@ namespace Exercises_SmartPointers {
             }
         };
 
-        static void testExercise_04c() {
+        static void testExercise_03c() {
 
             LightweightAndSafeWatcher watcher;
 
@@ -249,10 +212,10 @@ namespace Exercises_SmartPointers {
             }
         }
 
-        static void testExercise_04() {
-            testExercise_04a();
-            testExercise_04b();
-            testExercise_04c();
+        static void testExercise_03() {
+            testExercise_03a();
+            testExercise_03b();
+            testExercise_03c();
         }
     }
 }
@@ -263,7 +226,6 @@ void test_exercises_smartpointer()
     Exercise_01::testExercise_01();
     // Exercise_02::testExercise_02();   // crashes when executed
     Exercise_03::testExercise_03();
-    Exercise_04::testExercise_04();
 }
 
 // =====================================================================================

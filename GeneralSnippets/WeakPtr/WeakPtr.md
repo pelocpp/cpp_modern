@@ -56,7 +56,7 @@ Der bei `std::shared_ptr`-Objekten vorhandene *Control Block* bezieht auch
 
 Interessant ist der Weak-Pointer bei zyklischen Referenzen:
 
-<img src="cpp_snippets_cyclic_references.svg" width="700">
+<img src="cpp_snippets_cyclic_references.svg" width="800">
 
 Beachten Sie die Ausgabe des zweiten Code-Snippets: Hier haben wir es mit
 einer zyklischen Referenz von Shared-Pointern zu tun. Im einen Fall werden
@@ -118,52 +118,28 @@ Zu diesem Zweck haben wir das letzte Beispiel auf die wesentlichen Bestandteile 
 Eine Studie von mehreren Bildern verdeutlicht nun, warum es bei einem Zyklus mit der Freigabe des 
 allokierten Speichers nicht klappen kann &ndash; und beim Beseitigen des Zyklusses doch:
 
-<img src="cpp_sharedptr_cycle_01.svg" width="350">
+<img src="cpp_sharedptr_cycle_01.svg" width="550">
 
 *Abbildung* 2: Ein erstes, dynamisch allokiertes Objekt wird angelegt.
 
-<img src="cpp_sharedptr_cycle_02.svg" width="400">
+<img src="cpp_sharedptr_cycle_02.svg" width="650">
 
 *Abbildung* 3: Ein zweites, dynamisch allokiertes Objekt wird angelegt.
 
-<img src="cpp_sharedptr_cycle_03.svg" width="400">
+<img src="cpp_sharedptr_cycle_03.svg" width="650">
 
 *Abbildung* 4: Wertzuweisung `std::shared_ptr`-Variable.
 
-<img src="cpp_sharedptr_cycle_10.svg" width="400">
+<img src="cpp_sharedptr_cycle_04.svg" width="650">
 
 *Abbildung* 5: Zweite Wertzuweisung `std::shared_ptr`-Variable.
 
 Wir erkennen nun in *Abbildung* 5, dass ein Zyklus vorhanden ist!
 
+<img src="cpp_sharedptr_cycle_05.svg" width="650">
 
-<img src="cpp_sharedptr_cycle_11.svg" width="400">
-
-*Abbildung* 6: Die auf dem Stack vorhandenen `std::shared_ptr`-Variablen werden entfernt: Es verbleibt ein Zyklus auf dem Heap!
-
- Wir schlagen noch einen alternativen Weg ein &ndash; siehe dazu folgende Modifikation des Beispiels:
-
-```cpp
-01: void test()
-02: {
-03: 
-04:     std::shared_ptr<X> sp1{ std::make_shared<X>() };
-05:     std::shared_ptr<Y> sp2{ std::make_shared<Y>() };
-06: 
-07:     sp1->m_spY = sp2;
-08: }
-```
-
-Es wird nun kein Zyklus mehr aufgebaut. Welche Konsequenzen hat dies auf die
-Ausführung des Programms? Die Betrachtungen schließen sich an *Abbildung* 6 an:
-
-<img src="cpp_sharedptr_cycle_04.svg" width="400">
-
-*Abbildung* 7: Die `std::shared_ptr`-Variable `sp2` wird vom Stack entfernt (Beachte: Umgekehrte Reihenfolge!).
-
-<img src="cpp_sharedptr_cycle_05.svg" width="400">
-
-*Abbildung* 8: Die noch verbleibende `std::shared_ptr`-Variable `sp1` wird vom Stack entfernt.
+*Abbildung* 6: Die auf dem Stack vorhandenen `std::shared_ptr`-Variablen werden entfernt:
+Es verbleibt ein Zyklus auf dem Heap!
 
 Ein genaues Studium dieser Abbildungen sollte verdeutlichen, warum Zyklen bei dynamisch verzeigerten
 Objekten mit einem Referenzzähler-Mechanismus nicht korrekt verwaltet werden können.

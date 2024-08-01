@@ -1013,12 +1013,6 @@
     <None Include="WeakPtr\cpp_sharedptr_cycle_05.svg">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="WeakPtr\cpp_sharedptr_cycle_10.svg">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="WeakPtr\cpp_sharedptr_cycle_11.svg">
-      <Filter>Resource Files</Filter>
-    </None>
     <None Include="Optional\Optional.md">
       <Filter>Resource Files</Filter>
     </None>
