@@ -13,64 +13,22 @@ namespace VariadicTemplatesIntro_01 {
 
     // Non-recursive template part (regular template)
     template <typename T>
-    void printAll(T value)
+    void print(T value)
     {
         std::cout << value << " ";
     }
 
     // Recursive template part
-    // Note: ... specifies a so called 'parameter pack')
     template <typename T, typename ... TRest>
-    void printAll(T n, TRest ... rest)
+    void print(T n, TRest ... rest)
     {
-        printAll<T>(n);
-        printAll<TRest...>(rest ...);
+        print<T>(n);
+        print<TRest...>(rest ...);
     }
 
     static void test_printer_01()
     {
-       printAll<int, int, int, int, int>(1, 2, 3, 4, 5);
-    }
-}
-
-namespace VariadicTemplatesIntro_02 {
-
-    // ========================================================================
-    // 2. Beispiel für ein variadisches Template:
-    // Eine add-Funktion mit beliebig vielen Argumenten unterschiedlichen Typs
-    // ========================================================================
-
-    // Non-recursive template part (regular template)
-    template<typename T>
-    T add(T v) {
-        return v;
-    }
-
-    // Recursive template part
-    // Note: ... specifies a so called 'parameter pack')
-    template<typename T, typename ... TArgs>
-    T add(T first, TArgs... args) {
-        return first + add<TArgs ...>(args...);
-    }
-
-    static void test_adder_01() {
-        int sum = add<int, int, int, int, int>(1, 2, 3, 4, 5);
-        std::cout << "Sum from 1 up to 5: " << sum << std::endl;
-    }
-
-    static void test_adder_02() {
-
-        int sum = add(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
-        std::cout << "Sum from 1 up to 10: " << sum << std::endl;
-
-        std::string stringConcat = add(
-            std::string("ABC"),
-            std::string("DEF"),
-            std::string("GHI"),
-            std::string("JKL"),
-            std::string("MNO")
-        );
-        std::cout << "String Concatenation: " << stringConcat << std::endl;
+        print<int, int, int, int, int>(1, 2, 3, 4, 5);
     }
 }
 
@@ -117,10 +75,10 @@ namespace VariadicTemplates_TestClassUnknown {
     }
 }
 
-namespace VariadicTemplatesIntro_03 {
+namespace VariadicTemplatesIntro_02 {
 
     // =============================================================
-    // 3. Beispiel für ein variadisches Template:
+    // 2. Beispiel für ein variadisches Template:
     // Anwendungsfall: Standardfunktion std::unique_ptr<>
     // =============================================================
 
@@ -128,7 +86,7 @@ namespace VariadicTemplatesIntro_03 {
 
     // einfache Variante
     template<typename T, typename... TArgs>
-    std::unique_ptr<T> my_make_unique(const TArgs&... args)
+    std::unique_ptr<T> my_make_unique(TArgs... args)
     {
         return std::unique_ptr<T>{ new T{ args... } };
     }
@@ -160,6 +118,30 @@ namespace VariadicTemplatesIntro_03 {
 
         int n = 33, m = 34;
         std::unique_ptr<Unknown> up5 = my_make_unique_ex<Unknown>(n, m);
+    }
+}
+
+namespace VariadicTemplatesIntro_03 {
+
+    // =============================================================
+    // 3. Beispiel für ein variadisches Template:
+    // Anwendungsfall: Zugriff auf die einzelnen Elemente eines Parameter Packs
+    // =============================================================
+
+    template <typename... TArgs>
+    void func(TArgs... args) {
+
+        // unpack all function arguments with the help of a std::initializer_list object
+        auto unpackedArgs = { args ... };
+
+        for (auto param : unpackedArgs) {
+            std::cout << "Passed Argument: " << param << std::endl;
+        }
+    }
+
+    static void test_accessing_parameterpack()
+    {
+        func(10, 11, 12, 13, 14, 15);
     }
 }
 
@@ -297,12 +279,11 @@ void main_variadic_templates_introduction()
     test_printer_01();
 
     using namespace VariadicTemplatesIntro_02;
-    test_adder_01();
-    test_adder_02();
-
-    using namespace VariadicTemplatesIntro_03;
     test_my_make_unique();
     test_my_make_unique_ex();
+
+    using namespace VariadicTemplatesIntro_03;
+    test_accessing_parameterpack();
 
     using namespace VariadicTemplatesIntro_04;
     test_make_an_object();

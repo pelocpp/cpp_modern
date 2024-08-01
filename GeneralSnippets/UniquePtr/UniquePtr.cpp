@@ -245,16 +245,16 @@ namespace UniquePointerWrappingWin32Handles {
 
 void main_unique_ptr()
 {
-    //using namespace UniquePointerGeneral;
-    //test_01();
-    //test_02();
-    //test_03();
+    using namespace UniquePointerGeneral;
+    test_01();
+    test_02();
+    test_03();
 
-    //using namespace UniquePointer_SourceSinkPattern;
-    //test_04();
+    using namespace UniquePointer_SourceSinkPattern;
+    test_04();
 
-    //using namespace UniquePointerWrappingResourceHandles;
-    //test_05();
+    using namespace UniquePointerWrappingResourceHandles;
+    test_05();
 
     using namespace UniquePointerWrappingWin32Handles;
     test_06();

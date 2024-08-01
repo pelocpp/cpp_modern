@@ -49,7 +49,6 @@ Der bei `std::shared_ptr`-Objekten vorhandene *Control Block* bezieht auch
 
 *Abbildung* 1: `std::weak_ptr`-Objekt und Control-Block.
 
-
 ---
 
 ## Zyklische Referenzen <a name="link4"></a>
@@ -57,6 +56,8 @@ Der bei `std::shared_ptr`-Objekten vorhandene *Control Block* bezieht auch
 Interessant ist der Weak-Pointer bei zyklischen Referenzen:
 
 <img src="cpp_snippets_cyclic_references.svg" width="800">
+
+*Abbildung* 2: Zyklische Referenzen.
 
 Beachten Sie die Ausgabe des zweiten Code-Snippets: Hier haben wir es mit
 einer zyklischen Referenz von Shared-Pointern zu tun. Im einen Fall werden
@@ -120,25 +121,25 @@ allokierten Speichers nicht klappen kann &ndash; und beim Beseitigen des Zykluss
 
 <img src="cpp_sharedptr_cycle_01.svg" width="550">
 
-*Abbildung* 2: Ein erstes, dynamisch allokiertes Objekt wird angelegt.
+*Abbildung* 3: Ein erstes, dynamisch allokiertes Objekt wird angelegt.
 
-<img src="cpp_sharedptr_cycle_02.svg" width="650">
+<img src="cpp_sharedptr_cycle_02.svg" width="600">
 
-*Abbildung* 3: Ein zweites, dynamisch allokiertes Objekt wird angelegt.
+*Abbildung* 4: Ein zweites, dynamisch allokiertes Objekt wird angelegt.
 
-<img src="cpp_sharedptr_cycle_03.svg" width="650">
+<img src="cpp_sharedptr_cycle_03.svg" width="600">
 
-*Abbildung* 4: Wertzuweisung `std::shared_ptr`-Variable.
+*Abbildung* 5: Wertzuweisung `std::shared_ptr`-Variable.
 
-<img src="cpp_sharedptr_cycle_04.svg" width="650">
+<img src="cpp_sharedptr_cycle_04.svg" width="600">
 
-*Abbildung* 5: Zweite Wertzuweisung `std::shared_ptr`-Variable.
+*Abbildung* 6: Zweite Wertzuweisung `std::shared_ptr`-Variable.
 
 Wir erkennen nun in *Abbildung* 5, dass ein Zyklus vorhanden ist!
 
-<img src="cpp_sharedptr_cycle_05.svg" width="650">
+<img src="cpp_sharedptr_cycle_05.svg" width="600">
 
-*Abbildung* 6: Die auf dem Stack vorhandenen `std::shared_ptr`-Variablen werden entfernt:
+*Abbildung* 7: Die auf dem Stack vorhandenen `std::shared_ptr`-Variablen werden entfernt:
 Es verbleibt ein Zyklus auf dem Heap!
 
 Ein genaues Studium dieser Abbildungen sollte verdeutlichen, warum Zyklen bei dynamisch verzeigerten

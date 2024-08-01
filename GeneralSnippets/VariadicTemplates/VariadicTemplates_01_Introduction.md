@@ -12,9 +12,18 @@
 
 ---
 
-Ab C++ 11 gibt es in C++ die so genannten *Variadic Templates*, 
-mit denen ein Template definiert werden kann,
-das eine beliebige Anzahl von Parametern annehmen kann.
+## Einführung
+
+Ab C++&ndash;11 gibt es in C++ die so genannten *variadischen Templates*  (*Variadic Templates*).
+Darunter versteht man Klassen- oder Funktionstemplates ,
+die eine beliebige Anzahl von Argumenten annehmen können.
+
+In klassischem C++ können Templates nur eine feste Anzahl von Parametern haben,
+die bei der Deklaration angegeben werden müssen.
+Variadische Templates helfen jedoch, dieses Problem zu überwinden.
+
+Das Konzept für diese Spracherweiterung wurde von *Douglas Gregor* und *Jaakko Järvi* entwickelt.
+
 
 Grundsätzlich werden zwei neue syntaktische Elemente
 für die Definition derartiger Templates benötigt:
@@ -62,11 +71,11 @@ dann gilt **ARGS... args** ≙ **T1 t1, T2 t2** und **args... = t1, t2**.
 
 ## Expansion des Parameter Packs
 
-Es ist nicht möglich, ein *parameter pack* anders zu verwenden als es zu erweitern.
-In den meisten Fällen ergibt die Erweiterung des *parameter packs* eine durch Kommas getrennte Liste von Ausdrücken,
+Es ist nicht möglich, ein *Parameter Pack* anders zu verwenden als es zu erweitern.
+In den meisten Fällen ergibt die Erweiterung des *Parameter Packs* eine durch Kommas getrennte Liste von Ausdrücken,
 die die einzelnen Elemente des packs enthalten.
 
-Die einfachste Pack-Expansion ist nur der Name des *parameter packs*,
+Die einfachste Pack-Expansion ist nur der Name des *Parameter Packs*,
 gefolgt von der Ellipse (`...`), was zu einer durch komma-getrennten Liste der *pack*-Elemente führt:
 
 ```cpp
@@ -140,48 +149,32 @@ std::string stringConcat = add(
 std::cout << "String Concatenation: " << stringConcat << std::endl;
 ```
 
-## Ein weiteres Beispiel zur Parameter Pack Expansion
+## Zugriff auf die einzelnen Elemente eines Parameter Packs
 
-Die Ellipses direkt nach dem Namen des Parameter Packs ist die einfachste Form der Parameter Pack Expansion.
-Es kann jedoch sehr wohl komplizierter sein. Im Prinzip können wir jedes Muster schreiben,
-das einen Parameter Pack Namen enthält, gefolgt von einer Ellipse.
-Das Ergebnis ist eine durch Kommas getrennte Liste von Mustern, wobei in jedem Muster der Pack Name
-durch ein Mitglied des Packs ersetzt wird.
+Prinzipiell ist der Zugriff auf die einzelnen Elemente eines Parameter Packs nicht vorgesehen.
 
-Nehmen wir zum Beispiel das zuvor verwendete Tupel.
-Normalerweise möchten wir das "*perfect forwarding*" verwenden,
-um das Tupel aus den Funktionsargumenten zu erstellen. Werfen wir einen Blick auf ein Beispiel:
+Sind alle Elemente vom selben Typ,
+kann man diese mit Hilfe eines `std::initializer_list`-Objekts entpacken:
+
 
 ```cpp
-template <typename... ARGS>
-void f(int i, ARGS&&... args) {
-    std::tuple<ARGS...> argsTuple{ std::forward<ARGS>(args)... }; 
-    //...
+template <typename... TArgs>
+void func(TArgs... args) {
+
+    // unpack all function arguments with the help of a std::initializer_list object
+    auto unpackedArgs = { args ... };
+
+    for (auto param : unpackedArgs) {
+        std::cout << "Passed Argument: " << param << std::endl;
+    }
+}
+
+static void test()
+{
+    func(10, 11, 12, 13, 14, 15);
 }
 ```
 
-Wir haben hier **drei** Pack-Expansionen: `ARGS&&...` bedeutet (beachten Sie die beiden &),
-dass wir eine Liste von Vorwärtsreferenzen haben.
-Die `ARGS...` Expansion für die `std::tuple` Templateparameter hatten wir bereits in dem
-Beispiel zuvor betrachtet.
-Die dritte Erweiterung `std::forward<ARGS>(args)...` enthält **zwei** Parameter Packs:
-das Template Parameter Pack `ARGS` und das Funktionsparameterpack `args`.
-Immer wenn zwei Packs im Muster für eine Pack-Erweiterung erscheinen,
-werden beide gleichzeitig erweitert und müssen daher die gleiche Anzahl von Elementen haben!
-
-Die obige Funktion im Pseudo-Template-Code nach der Pack-Erweiterung würde so aussehen:
-
-```cpp
-template <typename Args_1, typename Args_2, /* etc ... */>
-void f(int i, Args_1&& args_1, Args_2&& args_2, /*...*/) {
-  std::tuple<Args_1, Args_2, /*...*/> argsTuple{ 
-    std::forward<Args_1>(args_1),
-    std::forward<Args_2>(args_2), 
-    /*...*/ 
-  }; 
-  //...
-}
-```
 
 ## Leeres Parameter Pack
 
@@ -247,12 +240,12 @@ printCount(22, std::optional{0}, "!");
 
 ## Ein erstes Anwendungsbeispiel: Abbildung eines *Parameter Packs* auf einen Methodenaufruf
 
-Es wird demonstriert, wie ein *parameter pack* auf einen Methodenaufruf
+Es wird demonstriert, wie ein *Parameter Pack* auf einen Methodenaufruf
 (hier: Konstruktor) abgebildet werden kann 
-("*Unpacking a parameter pack to call a matching constructor*").
+("*Unpacking a Parameter Pack to call a matching constructor*").
 
 Zu diesem Zweck definieren wir eine Klasse `Unknown` mit einer Reihe
-von Konstruktoren, um zu zeigen, wie das Auspacken des *parameter packs*
+von Konstruktoren, um zu zeigen, wie das Auspacken des *Parameter Packs*
 dem passenden Konstruktor zugeordnet wird:
 
 Es kommt die zentrale `std::forwarding`-Anweisung zum Zuge:
