@@ -14,7 +14,6 @@
   * [Eine &bdquo;nicht optimale&rdquo; Realisierung](#link2)
   * [Eine verbesserte Realisierung: Das *Copy-and-Swap* Idiom](#link3)
 
-
 ---
 
 ## Allgemeines <a name="link1"></a>
@@ -62,7 +61,7 @@ Folgende Nachteile sind in dieser Realisierung vorhanden:
   * Verhinderung einer Selbstzuweisung (Zeile 4):<br />
 Eine Selbstzuweisung bei Objekten mit Instanzdaten führt in Zeile 9
 dazu, dass die Daten des aktuellen Objekts &ndash; und damit eben auch
-die Daten des Objekte `other` auf der rechten Seite &ndash; der Wertzuweisung gelöscht werden,
+die Daten des Objekte `other` auf der rechten Seite &ndash; der Wertzuweisung gelöscht würden,
 bevor sie kopiert werden.
 Natürlich ist dies ein Anwendungsfehler des Benutzers der Klasse,
 aber in allen Fällen, in denen das Programm korrekt ist,
