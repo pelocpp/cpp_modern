@@ -143,7 +143,7 @@ Es folgt eine tabellarische Auflistung dieser Unterverzeichnisse.
 | [ConstExpr](GeneralSnippets/ConstExpr/Constexpr.md) | Programmierung zur Übersetzungszeit mit `constexpr` |
 | [Const](GeneralSnippets/Const/Const.md) | `const`, `constexpr`, `consteval` und `constinit` |
 | [Constructors Order](GeneralSnippets/ConstructorsOrder/ConstructorsDestructorsOrder.md)  | Reihenfolge der Aufrufe von Konstruktoren und Destruktoren |
-| [*Copy/Move Elision*](GeneralSnippets/CopyMoveElision/CopyMoveElision.md) | Auslassen von Kopier- oder Verschiebe-Operationen |
+| [Copy/Move Elision](GeneralSnippets/CopyMoveElision/CopyMoveElision.md) | Auslassen von Kopier- oder Verschiebe-Operationen |
 | [Copy-Swap Idiom](GeneralSnippets/CopySwapIdiom/CopySwapIdiom.md) | Das *Copy-and-Swap* Idiom |
 | [CRTP](GeneralSnippets/CRTP/CRTP.md) | Curiously Recurring Template Pattern (CRTP) |
 | [DeclType](GeneralSnippets/DeclType/decltype.md) | `decltype` und `std::declval` |

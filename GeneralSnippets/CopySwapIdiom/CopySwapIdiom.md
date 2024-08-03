@@ -118,7 +118,7 @@ aber bei komplexeren Objekten kann die Realisierung doch aufwändiger werden!
 
 ## Eine verbesserte Realisierung: Das *Copy-and-Swap* Idiom <a name="link3"></a>
 
-Mit Hilfe einer `swap`-Funktion kann der Zuweisungs-Operator nur auf folgende, 
+Mit Hilfe einer `swap`-Funktion kann der Zuweisungs-Operator nun auf folgende, 
 sehr einfache Weise realisiert werden:
 
 ```cpp
@@ -139,7 +139,7 @@ Die `swap`-Funktion sieht dabei so aus:
 04: }
 ```
 
-Beachte folgende wichtige Anweisung in der Realisierung des Zuweisungs-Operators:
+Beachte folgende wichtige Eigenschaft in der Realisierung des Zuweisungs-Operators:
 
 
 > Geänderte Signatur des Operators `operator=`<br />
@@ -148,7 +148,8 @@ Das Parameterargument `other` wird als Wert übernommen:
 
 `BigData& BigData::operator= (BigData other)`;
 
-Auf diese Weise sind beim Aufrufen der Funktion alle neuen Daten bereits zugewiesen, kopiert und zur Verwendung bereit.
+Auf diese Weise sind beim Aufrufen der Funktion alle neuen Daten bereits zugewiesen,
+kopiert und stehen so zur Verwendung bereit.
 
 Dadurch erhalten wir die *Strong Exception Guarantee* kostenlos! 
 Die Funktion wird nicht aufgerufen, wenn die Erstellung der Kopie fehlschlägt,

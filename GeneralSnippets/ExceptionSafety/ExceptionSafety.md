@@ -34,7 +34,7 @@ Die C++-Standardbibliothek bietet mehrere Ebenen der Ausnahmesicherheit (in aufs
   Die teilweise Ausführung fehlgeschlagener Operationen kann zu Nebenwirkungen führen,
   aber alle Invarianten bleiben erhalten.<br />
   Alle gespeicherten Daten enthalten gültige Werte, die von den ursprünglichen Werten abweichen können.
-  Ressourcenleakss (einschließlich Speicherleaks) werden üblicherweise durch eine Invariante ausgeschlossen,
+  Ressourcenleaks (einschließlich Speicherleaks) werden üblicherweise durch eine Invariante ausgeschlossen,
   die besagt, dass alle Ressourcen berücksichtigt und verwaltet werden.
 
   * **Starke Ausnahmesicherheit** (*Strong Exception Safety*):<br />
@@ -85,10 +85,10 @@ da das Objekt beide Zeiger direkt an die beiden `std::unique_ptr`-Objekte weiter
 die sich um die Speicherfreigabe kümmern.
 
 Aber dieser Code kann ein Speicher-Leak produzieren,
-da beim Versagen des zweiten der beiden `new`-Aufrufe eine `std::bad_alloc`&ndash;Ausnahme geworfen werden kann.
+da beim Versagen des zweiten der beiden `new`-Aufrufe eine `std::bad_alloc`&ndash;Ausnahme geworfen wird.
 
-Die Ausnahme wird beim Aufruf des Konstruktors der `TwoPointers`-Klasse geworfen!
-Dies bedeutet, dass der vom ersten `new` zugewiesene Speicher keinem der beiden `std::unique_ptr`-Objekte zugewiesen wurde
+Diese Ausnahme wird beim Aufruf des Konstruktors der `TwoPointers`-Klasse geworfen!
+Dies bedeutet, dass der vom ersten `new`-Aufruf zugewiesene Speicher keinem der beiden `std::unique_ptr`-Objekte zugewiesen wurde
 und daher nie freigegeben wird.
 
 **Fazit**:<br />**&bdquo;Schreiben Sie keinen Code, der die *No Exception* Garantie besitzt!&rdquo;**
@@ -160,9 +160,9 @@ wir reden von Laufzeit oder zusätzlichem Speicherbedarf.
 
 ## *No-throw* Garantie <a name="link5"></a>
 
-Die letzte fehlende Ebene ist die *no-throw* Garantie.
+Die letzte Ebene in der *Exception Safety*&ndash;Hierarchie ist die *no-throw* Garantie.
 
-Sie bedeutet einfach, dass eine Operation *keine* Ausnahme auslösen kann.
+Sie bedeutet einfach, dass eine Operation *keine* Ausnahme auslöst.
 
 Wir haben am letzen Beispiel gesehen, dass *no-throw* Operationen erforderlich sind,
 um die starke und elementare Garantie bereitzustellen.
@@ -172,7 +172,7 @@ Es gibt einige Operationen, die niemals eine Ausnahme auslösen sollten, egal wa
   * Destruktoren:<br />
   Destruktoren dürfen grundsätzlich keine Ausnahme werfen,
   da sie während des Entfernen des aktuellen *Stackframes* aufgerufen werden.<br />
-  Wenn eine Ausnahme aktiv ist und während der Entfernung des *Stackframes* eine zweite Ausnahme ausgelöst wird, wird das Programm beendet.
+  Wenn eine Ausnahme aktiv ist und während der Entfernung des *Stackframes* eine zweite Ausnahme eintritt, wird das Programm beendet.
   * Aufräumarbeiten:<br />
   Alle Aufräumarbeiten wie das Schließen von Dateien, das Freigeben von Speicher und alles andere, was von einem Destruktor aufgerufen werden kann, sollten keine Ausnahme auslösen.
   * *Swap*-Funktionen:<br />
@@ -185,7 +185,7 @@ Es gibt einige Operationen, die niemals eine Ausnahme auslösen sollten, egal wa
 
 ## RAII-Idiom zur Verwaltung von Ressourcen <a name="link6"></a>
 
-Um gerüstet gegen Exceptions zu sein, muss eine Funktion sicherstellen,
+Um gegen Exceptions gerüstet zu sein, muss eine Funktion sicherstellen,
 dass Objekte, die sie mithilfe von `new` (`malloc`) zugewiesen hat, zerstört werden
 und alle Ressourcen wie Datei-Handles geschlossen oder freigegeben werden,
 selbst wenn eine Ausnahme ausgelöst wird.
@@ -198,10 +198,10 @@ entweder durch normale Beendigung oder auf Grund einer eingetretenen Ausnahme,
 werden die Destruktoren für alle am Stack liegenden Hüllen-Objekte aufgerufen.
 
 Ein RAII-Hüllenobjekt (z.B. ein Smart Pointer Objekt) ruft in seinem Destruktor
-die entsprechende `delete`- oder `release`-Funktion auf.
+die entsprechende `delete`- oder `free`-Funktion auf.
 
 In Exception-sicherem Code ist es folglich von entscheidender Bedeutung,
-den Besitz jeder Ressource sofort an eine Art RAII-Hüllenobjekt zu übergeben.
+den Besitz jeder Ressource sofort an eine Art RAII-Hüllenobjekt zu binden.
 
 ---
 
@@ -212,6 +212,14 @@ Die Anregungen zu den Beispielen aus diesem Abschnitt sind aus dem Artikel
 [Levels of Exception Safety](https://arne-mertz.de/2015/12/levels-of-exception-safety/)<br>(abgerufen am 23.09.2020).
 
 von Arne Mertz entnommen.
+
+Ebenfalls interessant zum Lesen sind die beiden Artikel
+
+[How to: Design for exception safety](https://learn.microsoft.com/en-us/cpp/cpp/how-to-design-for-exception-safety)<br>(abgerufen am 08.03.2024).
+
+und
+
+[The Deep Dive into Advanced Exception Safety in Embedded C++](https://www.codewithc.com/the-deep-dive-into-advanced-exception-safety-in-embedded-c)<br>(abgerufen am 08.03.2024).
 
 ---
 
