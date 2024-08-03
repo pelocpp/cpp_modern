@@ -11,6 +11,8 @@ import std;
 
 int main()
 {
+    extern int _main_modules();
+
     std::cout << "[Collection of Modern C++-Code Examples - Copyright (C) 2019-2024 Peter Loos]" << std::endl;
 
     // main entry points code snippets
@@ -64,7 +66,8 @@ int main()
         //main_metaprogramming_01();
         //main_metaprogramming_02(); 
         //main_modularized_standard_library(); 
-        //main_modules_import();
+        main_modules();
+        _main_modules();
         //main_move_semantics();
         //main_optional();
         //main_perfect_forwarding();

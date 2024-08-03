@@ -1,8 +1,8 @@
-/// Program.cpp
+// HelloWorldProgram.cpp
 
 import hello_world;
 
-static int _main()
+int _main_modules()
 {
     MyHelloWorld::globalData = 123;
 

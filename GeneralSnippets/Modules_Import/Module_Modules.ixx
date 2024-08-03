@@ -1,23 +1,12 @@
 // =====================================================================================
-// Modules_Import.cpp // Keywords module / import
+// Module Interface Partition 'modules'
 // =====================================================================================
 
-module modern_cpp:module_import;
+export module modern_cpp:modules;
 
-namespace ModulesAndImport {
+import std;
 
-    void halloSeminar() {
-
-        std::cout << "Hallo Seminar" << std::endl;
-    }
-}
-
-void main_modules_import()
-{
-    using namespace ModulesAndImport;
-
-    halloSeminar();
-}
+export void main_modules();
 
 // =====================================================================================
 // End-of-File

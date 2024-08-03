@@ -573,10 +573,10 @@
     <ClCompile Include="Allocator\Module_Allocator.ixx">
       <Filter>Modules</Filter>
     </ClCompile>
-    <ClCompile Include="Modules_Import\Module_Modules_Import.ixx">
+    <ClCompile Include="Modules_Import\Module_Modules.ixx">
       <Filter>Modules</Filter>
     </ClCompile>
-    <ClCompile Include="Modules_Import\Modules_Import.cpp">
+    <ClCompile Include="Modules_Import\Modules.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Modules_Import\HelloWorldProgram.cpp">
@@ -1016,7 +1016,7 @@
     <None Include="Optional\Optional.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="Modules_Import\Modules_Import.md">
+    <None Include="Modules_Import\Modules.md">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="ConceptsRequiresClasses\ConceptsRequiresClasses.md">

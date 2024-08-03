@@ -1,8 +1,6 @@
 // =====================================================================================
-// Module Interface Partition 'hello_world'
+// Module Interface Partition 'hello_world' // HelloWorldProgram.ixx
 // =====================================================================================
-
-/// HelloWorld.ixx
 
 export module hello_world;
 

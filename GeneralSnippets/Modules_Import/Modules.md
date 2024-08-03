@@ -4,7 +4,28 @@
 
 ---
 
-[Quellcode](Modules_Import.cpp)
+TBD: Muss aktualisiert werden
+
+[Quellcode](WeakPtr.cpp)
+
+---
+
+## Inhalt
+
+
+TBD: Muss aktualisiert werden
+
+
+  * [&bdquo;It's about ownership&rdquo;](#link1)
+  * [Funktionsweise Klasse `std::weak_ptr`](#link2)
+  * [*Control Block*](#link3)
+  * [Zyklische Referenzen](#link4)
+  * [Betrachtung der Referenzzähler im Detail](#link5)
+
+
+---
+
+[Quellcode](Modules.cpp)
 
 ---
 
@@ -12,7 +33,7 @@
 
 Im klassischen C++ besteht ein (objekt-orientiertes) Programm aus Header-Dateien,
 die Schnittstellen enthalten (Dateiendung *.h*) und Implementierungsdateien,
-den den dazugehörigen Programmcode enthalten (Dateiendung *.cpp*).
+die den dazugehörigen Programmcode enthalten (Dateiendung *.cpp*).
 
 Ab C++ 20 gibt es das Sprachmittel der *Module*: Darunter versteht man Softwarekomponenten,
 die Schnittstelle und Implementation zusammenfassen (können).
@@ -20,42 +41,107 @@ Sie werden unabhängig voneinander übersetzt und können danach von anderen Progra
 
 ---
 
-## Unterschiede zwischen Header-Dateien und Modulen
+## Nachteile bei der Verwendung von Header-Dateien
 
-Ein Modul ist eine eigene Übersetzungseinheit.
-Das klassische Modell der Aufteilung in Header- und Implementierungsdateien weist einige Nachteile auf:
+Das klassische Modell in der Realisierung eines C++&ndash;Programms
+mit einer Aufteilung in Header- und Implementierungsdateien weist einige Nachteile auf:
+
 
   * Die Aufteilung in Header- und Implementierungsdatei führt zu doppelt so vielen Dateien im Vergleich dazu,
-  wenn man Schnittstelle und Implementation beispielsweise in einer einzigen (Modul-)Datei ablegt.
+  wenn man Schnittstelle und Implementation beispielsweise in einer einzigen Datei ablegen könnte oder würde.
 
-  * Eine Aufteilung einer Funktionalität auf zwei Dateien kann zu Inkonsistenzen führen, wenn die Deklaration in der
-  Header-Datei nicht mit derjenigen in der Implementierungsdatei übereinstimmt. Bei
-  Modulen kann dieses Problem nicht auftreten.
+  * Die Aufteilung einer Funktionalität auf zwei Dateien kann zu Inkonsistenzen führen,
+  wenn die Deklaration in der Header-Datei nicht mit derjenigen in der Implementierungsdatei übereinstimmt.
 
   * Header-interne Definitionen mit `#define` sind in allen nachfolgenden Übersetzungseinheiten
-  sichtbar. Das kann Konflikte auslösen. Module vermeiden dieses Problem.
+  sichtbar. Das kann Konflikte auslösen (mehrfache Definition eines konstanten Werts `Pi` beispielsweise).
 
   * Das Inkludieren einer Header-Dateien wird mit Makros gesteuert (`#include`).
   Andere Makros wiederum überwachen, dass der Inhalt einer Header-Datei
   nicht zweimal berücksichtigt wird (`#pragma once`).
-  Aber auch wenn der Compiler den Inhalt ignoriert (&bdquo;passives Parsen&rdquo;),
+  Aber auch wenn der Compiler den Inhalt einer Datei beim zweiten Lesen ignoriert (&bdquo;passives Parsen&rdquo;),
   muss er dennoch das zweite Inkludieren dieser Header-Datei
   bis zum Ende durchführen, um zu wissen, wann er wieder in den aktiven Modus des Übersetzens umschalten muss.
-  Unnötige längere Compilationszeiten sind die Folge.
+  Unnötige lange Compilationszeiten sind die Folge.
 
-  * Header-Dateien müssen bei jeder Übersetzung vom Compiler analysiert werden. Bei
-  Modulen liegt das binäre Ergebnis nach deren einmaliger Übersetzung vor (&bdquo;*precompiled*&rdquo; Header).
-  Auf diese Weise wird Übersetzungszeit eingespart.
+  * Header-Dateien müssen bei jeder Übersetzung vom Compiler analysiert (übersetzt) werden.
+  Dies verursacht bisweilen lange Übersetzungszeiten.
 
   * Es kann eine Rolle spielen, in welcher Reihenfolge Header-Dateien mit `#include` eingebunden werden.
-  Module können in beliebiger Reihenfolge importiert werden.
 
   * In einer Header-Datei kann es in Klassendefinitionen mit `private` gekennzeichnete Bereiche geben.
   Diese sind für die Benutzung einer Schnittstelle von außen nicht
   von Bedeutung, sogar unerwünscht. Details von *privater* Natur können vor dem Anwender bei
-  Verwendung von Header-Dateien nicht wirklich versteckt werden.
-  In Modulen sind solche Bereiche nach außen nicht sichtbar.
+  Verwendung von Header-Dateien nicht versteckt werden. Aus Sicht eines sauberen
+  *objektorientierten Entwurfs/Designs* ist dies wirklich ein unschöner Nebeneffekt.
 
+
+---
+
+## Unterschiede im Gebrauch von klassischen Header-Dateien und dem C++ Modul-Konzept
+
+Ein C++&ndash;Modul ist eine eigene Übersetzungseinheit. Hiermit lassen sich folgende Schwächen
+des `#include`-Konzepts bereinigen:
+
+
+  * Schnittstelle und Realisierung einer Klasse lassen sich in einer einzigen (Modul-)Datei ablegen.
+
+  * Schnittstelle und Realisierung einer Klasse kann man mit dem neuen Modul-Konzept auch in zwei Dateien ablegen.
+  Dies zieht wiederum die Nachteile in der Verwaltung zweier Dateien nach sich, führt bei
+  größeren Modulen jedoch zu einer verbesserten Übersichtlichkeit.  
+
+  * Module kennen das Problem wiedersprüchlicher `#define`-Definitionen nicht.
+
+  *  Bei Modulen liegt das (binäre) Ergebnis nach deren erster bzw. einmaliger Übersetzung vor (&bdquo;*precompiled*&rdquo; Header).
+  Auf diese Weise wird Übersetzungszeit eingespart.
+
+  * Module können in beliebiger Reihenfolge importiert werden.
+
+  * In Modulen sind  mit `private` gekennzeichnete Bereiche nach außen nicht sichtbar.
+
+
+---
+
+## Hinweise zu den Dateiendungen
+
+Es haben sich bzgl. der verschiedenen Hersteller von C++ Sprachübersetzern unterschiedlichen Endungen für
+bestimmte Dateien etabliert.
+
+* Modul-Datei Dateiendung: <b>.mpp</b> &ndash; Visual Studio C++ Compiler: Dateiendung <b>.ixx</b>.
+
+* Built Module Interface (BMI) Datei: <b>.bmi</b> &ndash; Visual Studio C++ Compiler: Dateiendung <b>.ifc</b>.
+
+
+---
+
+## ODR &ndash; &bdquo;One Definition Rule&rdquo;
+
+
+*ODR* ist die Abkürzung für eine wichtige Regel in der C++&ndash;Entwicklung: Die *One Definition Rule*.
+
+Sie besagt, dass keine Übersetzungseinheit mehr als eine Definition einer beliebigen
+Variablen, Funktion, eines Klassentyps, Aufzählungstyps, etc. enthalten sollte.
+
+Ein einfaches Beispiel für einen *ODR*-Verstoß:
+
+Eine Übersetzungseinheit (*.cpp*-Datei) inkludiert zwei Header-Dateien,
+die beide eine Klasse mit identischem Namen definieren.
+
+Der Compiler würde dann mit einer Fehlermeldung (z.B. &bdquo;Class Type Redefinition&rdquo;) reagieren.
+
+Verstöße gegen die *ODR*-Regel werden vom Compiler diagnostiziert und mit entsprechenden Fehlermeldungen versehen.
+In manchen Fällen kann der Übersetzer bei Verstößen gegen diese Regel auch schweigen.
+
+Diese möglicherweise unentdeckten *ODR*-Verstöße können zu sehr subtilen Nebenwirkungen und Fehlern in einem Programm führen.
+
+Das neue C++ Modul-Konzept verhindert *ODR*-Verstöße bzw. kann immer mit entsprechenden Fehlermeldungen reagieren.
+
+---
+
+## Architektur des Modul-Konzepts
+
+
+WEITER: Bild bei Roth
 
 ---
 
