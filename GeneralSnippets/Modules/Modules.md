@@ -141,27 +141,51 @@ Das neue C++ Modul-Konzept verhindert *ODR*-Verstöße bzw. kann immer mit entspre
 
 Eine Moduldatei wird zunächst in eine *Binary Module Interface* (BMI)-Datei und eine Objektdatei übersetzt.
 
-<img src="cpp_modules_02.svg" width="700">
+<img src="cpp_modules_02.svg" width="600">
 
 *Abbildung* 1: Übersetzungsweg bei Verwendung von Moduldateien.
 
 Bevor wir etwas mehr ins Detail gehen, schauen wir uns an, was „hinter den Kulissen“ passiert, wenn ein C++-Modul importiert wird
-
 und was der grundlegende Unterschied zur Einbindung von Header-Dateien ist.
 
 Wie in *Abbildung* 1 dargestellt, ist das Importieren eines Moduls 
-keine Kopier- und Einfügeoperation wie beim Einfügen des Inhalts einer Header-Datei.
+keine Kopier- bzw. Einfügeoperation wie beim Einfügen des Inhalts einer Header-Datei.
 
-Wenn der Compiler auf eine Moduldatei stößt &ndash; in diesem Fall die Datei mit dem Namen mathLibrary.mpp &ndash;,
-die von einer Übersetzungseinheit (main.cpp) importiert wurde,
+Wenn der Compiler auf eine Moduldatei stößt &ndash; im Fall von *Abbildung* 1 die Datei mit dem Namen *Library.ixx* &ndash;,
+die von einer Übersetzungseinheit (hier: *Main.cpp*) importiert wurde,
+wird die Moduldatei zuerst in eine *Built Module Interface* (*BMI*)-Datei und eine Objektdatei übersetzt.
 
-wird die Moduldatei zuerst in eine Built Module Interface (BMI)-Datei und eine Objektdatei übersetzt.
+Das *BMI*-File ist eine Datei im Dateisystem, die die Metadaten für das Modul enthält
+und die exportierte Schnittstelle von *Library.ixx* beschreibt.
 
-Die BMI ist eine Datei im Dateisystem, die die Metadaten für das Modul enthält und die exportierte Schnittstelle von mathLibrary.mpp beschreibt.
+Der Compiler erzeugt auch eine Objektdatei (*Library.obj*), die der Linker benötigt,
+um eine ausführbare Datei (*Main.exe*) zu erstellen.
 
-Der Compiler erzeugt auch eine Objektdatei (mathLibrary.o), die der Linker benötigt, um das Modul zu verknüpfen und eine ausführbare Datei zu erstellen.
+Grundsätzlich ist also bei der Verwendung von Modulen ein zusätzlicher Verarbeitungsschritt erforderlich,
+um die temporären Dateien *BMI*-Datei und Objektdatei zu generieren.
 
+Der große Vorteil ist jedoch, dass dieser Schritt nur *einmal* ausgeführt werden muss,
+unabhängig davon, wie viele Übersetzungseinheiten das Modul importieren.
 
+Wenn Sie beispielsweise überall in Ihrem Programm 
+
+```cpp
+import <iostream>
+```
+
+anstelle von
+
+```cpp
+#include <iostream>
+```
+
+verwenden, vermeiden Sie, die Tausenden von Codezeilen aus dem <iostream>-Header immer wieder zu kompilieren.
+
+Dies bedeutet aber auch, dass wir eine strikte chronologische Reihenfolge haben:
+
+Beim Importieren eines Moduls wird eine zeitliche Abfolge erstellt,
+d.h. der Compiler muss das Modul zuerst verarbeiten, um die *BMI*-Datei zu erhalten,
+bevor er die Übersetzungseinheiten kompiliert, die das Modul importieren.
 
 
 ---
