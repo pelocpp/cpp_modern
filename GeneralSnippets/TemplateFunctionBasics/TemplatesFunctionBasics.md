@@ -183,10 +183,6 @@ Damit schließen wir diesen Abschnitt mit der Aussage ab:
 
 ---
 
-[Quellcode](TemplatesFunctionBasics.cpp)
-
----
-
 [Zurück](../../Readme.md)
 
 ---
