@@ -17,7 +17,7 @@
   * [Unterschiede im Gebrauch von klassischen Header-Dateien und dem C++ Modul-Konzept](#link3)
   * [Hinweise zu den Dateiendungen](#link4)
   * [ODR &ndash; &bdquo;One Definition Rule&rdquo;](#link5)
-  * [Architektur des Modul-Konzepts](#link66)
+  * [Architektur des Modul-Konzepts](#link6)
   * [Import der Standard-Bibliothek STL](#link7)
   * [Ein einfaches Beispiel](#link8)
   * [Modul Partitionen](#link9)
@@ -128,7 +128,7 @@ Daher folgt es denselben Prinzipien wie die IPR:
 
   * Typbezogenheit: Jeder Ausdruck hat einen Typ.
 
-  * Minimalität: Keine redundanten Werte, und die Durchquerung beinhaltet keine redundanten Indirektionen.
+  * Minimalität: Keine redundanten Werte, und eine Traverierung beinhaltet keine redundanten Indirektionen.
 
   * Compilerneutralität: Nicht an einen bestimmten Compiler gebunden.
 
