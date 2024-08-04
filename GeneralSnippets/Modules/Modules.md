@@ -44,7 +44,7 @@ mit einer Aufteilung in Header- und Implementierungsdateien weist einige Nachtei
 
 
   * Die Aufteilung in Header- und Implementierungsdatei führt zu doppelt so vielen Dateien im Vergleich dazu,
-  wenn man Schnittstelle und Implementation beispielsweise in einer einzigen Datei ablegen könnte oder würde.
+  wenn man Schnittstelle und Implementation beispielsweise in einer einzigen Datei ablegen würde.
 
   * Die Aufteilung einer Funktionalität auf zwei Dateien kann zu Inkonsistenzen führen,
   wenn die Deklaration in der Header-Datei nicht mit derjenigen in der Implementierungsdatei übereinstimmt.
@@ -88,12 +88,13 @@ des `#include`-Konzepts bereinigen:
 
   * Module kennen das Problem wiedersprüchlicher `#define`-Definitionen nicht.
 
-  *  Bei Modulen liegt das (binäre) Ergebnis nach deren erster bzw. einmaliger Übersetzung vor (&bdquo;*precompiled*&rdquo; Header).
+  *  Bei Modulen liegt das (binäre) Ergebnis nach deren erster bzw. einmaliger Übersetzung vor (Ähnlichkeit zu einem &bdquo;*precompiled*&rdquo; Header vorhanden).
   Auf diese Weise wird Übersetzungszeit eingespart.
 
   * Module können in beliebiger Reihenfolge importiert werden.
 
-  * In Modulen sind  mit `private` gekennzeichnete Bereiche nach außen nicht sichtbar.
+  * In Modulen sind  mit `private` gekennzeichnete Bereiche nicht nach außen sichtbar.
+
 
 
 ---
@@ -105,7 +106,36 @@ bestimmte Dateien etabliert:
 
 * Modul-Datei: Dateiendung <b>.mpp</b> &ndash; Visual Studio C++ Compiler: <b>.ixx</b>.
 
-* Built Module Interface (BMI) Datei: Dateiendung <b>.bmi</b> &ndash; Visual Studio C++ Compiler: <b>.ifc</b>.
+* Built Module Interface (*BMI*) Datei: Dateiendung <b>.bmi</b> &ndash; Visual Studio C++ Compiler: <b>.ifc</b>.
+
+
+### IFC-Spezifikation
+
+
+Die IFC-Spezifikation zielt darauf ab, ein binäres Format zur Beschreibung der Semantik von C++-Programmen (oder Programmfragmenten) auf einer hohen Abstraktionsebene formal zu definieren,
+bevor es auf Maschinencode oder Ähnliches heruntergebrochen wird.
+
+Dieses Format soll eine persistente Form der speicherinternen Programmdarstellung (*Internal Program Representation*, *IPR*) von C++-Programmen bieten,
+die ursprünglich von *Gabriel Dos Reis* und *Bjarne Stroustrup* entwickelt wurde.
+
+Daher folgt es denselben Prinzipien wie die IPR:
+
+  * Vollständigkeit: Stellt die Semantik aller Standard-C++-Konstrukte dar.
+
+  * Allgemeingültigkeit: Geeignet für jede Art von Anwendung, anstatt auf einen bestimmten Anwendungsbereich ausgerichtet zu sein.
+
+  * Regularität: Imitiert keine Unregelmäßigkeiten der C++-Sprache; es werden allgemeine Regeln verwendet, anstatt lange Listen mit Sonderfällen.
+
+  * Typbezogenheit: Jeder Ausdruck hat einen Typ.
+
+  * Minimalität: Keine redundanten Werte, und die Durchquerung beinhaltet keine redundanten Indirektionen.
+
+  * Compilerneutralität: Nicht an einen bestimmten Compiler gebunden.
+
+  * Skalierbarkeit: Kann Hunderttausende von Codezeilen auf gängigen Maschinen darstellen.
+
+
+Eine detaillierte Beschreibung der IFC-Spezifikation findet man [hier](https://github.com/microsoft/ifc-spec?tab=readme-ov-file#ifc-format-specification).
 
 
 ---
@@ -148,7 +178,7 @@ Wie in *Abbildung* 1 dargestellt, ist das Importieren eines Moduls
 keine Kopier- bzw. Einfügeoperation wie beim Einfügen des Inhalts einer Header-Datei.
 
 Wenn der Compiler auf eine Moduldatei stößt &ndash; im Fall von *Abbildung* 1 die Datei mit dem Namen *Library.ixx* &ndash;,
-die von einer Übersetzungseinheit (hier: *Main.cpp*) importiert wurde,
+die von einer Übersetzungseinheit (hier: *Main.cpp*) importiert wird,
 wird die Moduldatei zuerst in eine *Built Module Interface* (*BMI*)-Datei und eine Objektdatei übersetzt.
 
 Das *BMI*-File ist eine Datei im Dateisystem, die die Metadaten für das Modul enthält
@@ -175,10 +205,9 @@ anstelle von
 #include <iostream>
 ```
 
-verwenden, vermeiden Sie, die Tausenden von Codezeilen aus dem <iostream>-Header immer wieder zu kompilieren.
+verwenden, vermeiden Sie, Tausende von Codezeilen aus dem <iostream>-Header immer wieder zu kompilieren.
 
-Dies bedeutet aber auch, dass wir eine strikte chronologische Reihenfolge haben:
-
+Dies bedeutet aber auch, dass wir eine strikte chronologische Reihenfolge haben:<br />
 Beim Importieren eines Moduls wird eine zeitliche Abfolge erstellt,
 d.h. der Compiler muss das Modul zuerst verarbeiten, um die *BMI*-Datei zu erhalten,
 bevor er die Übersetzungseinheiten kompiliert, die das Modul importieren.
@@ -188,22 +217,16 @@ bevor er die Übersetzungseinheiten kompiliert, die das Modul importieren.
 
 ## Import der Standard-Bibliothek STL <a name="link7"></a>
 
-Obwohl dies nicht im C++ 20-Standard festgelegt ist,
-ermöglicht es die Erstellung eines C++ Programms mit dem Visual C++ Compiler,
-dass die C++&ndash;Standardbibliothek als Modul mit dem Namen &bdquo;**std**&rdquo; importiert werden kann.
+Mit der Anweisung
+
+```cpp
+import std;
+```
+
+wird die STL in die aktuelle Übersetzungseinheit importiert.
 
 Dies hat gegenüber der Vorgehensweise mit `#include`&ndash;Direktiven und entsprechenden Header-Dateien
 den Vorteil, dass sich die Kompilierungszeiten je nach Größe des Programms erheblich verkürzen.
-
-#### Anweisung `import std;`
-
-Mit der Anweisung
-
-<pre>
-import std;
-</pre>
-
-wird die STL in die aktuelle Übersetzungseinheit importiert.
 
 Dazu wird allerdings &ndash; in Bezug auf den Visual C++ Compiler &ndash; eine Datei `std.ixx` 
 im Programm benötigt. Diese muss man nicht selbst erstellen, sie ist in einer Visual C++ Installation
