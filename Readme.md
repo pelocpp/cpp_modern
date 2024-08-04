@@ -164,7 +164,7 @@ Es folgt eine tabellarische Auflistung dieser Unterverzeichnisse.
 | [Memory Leaks](GeneralSnippets/MemoryLeaks/MemoryLeaksDetection.md) | CRT (C-Runtime-Library) Memory Leak Detection |
 | [MetaProgramming](GeneralSnippets/MetaProgramming/Metaprogramming01.md) | Programmierung zur Übersetzungszeit |
 | [Modularized Standard Library](GeneralSnippets/ModularizedStandardLibrary/ModularizedStandardLibrary.md) | Modularisierte Standardbibliothek |
-| [Modules](GeneralSnippets/Modules_Import/Modules.md) | Module |
+| [Modules](GeneralSnippets/Modules/Modules.md) | Neues Modul-Konzept |
 | [Move-Semantics](GeneralSnippets/MoveSemantics/MoveSemantics.md) | *Move Semantics* / Verschiebesemantik |
 | [Optional](GeneralSnippets/Optional/Optional.md) | Neue STL-Utility Klasse `std::optional` |
 | [Parameters with Const and Reference](GeneralSnippets/ParametersWithConstAndRef/ConstDeclarations.md)  | Die Deklarationen `int& const`, `int const&`, `const& int` und `const int&` im Vergleich |
