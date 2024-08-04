@@ -270,10 +270,10 @@
     <ClCompile Include="MetaProgramming\Module_MetaProgramming.ixx" />
     <ClCompile Include="ModularizedStandardLibrary\ModularizedStandardLibrary.cpp" />
     <ClCompile Include="ModularizedStandardLibrary\Module_ModularizedStandardLibrary.ixx" />
-    <ClCompile Include="Modules_Import\Modules.cpp" />
-    <ClCompile Include="Modules_Import\Module_Modules.ixx" />
-    <ClCompile Include="Modules_Import\HelloWorldProgram.cpp" />
-    <ClCompile Include="Modules_Import\HelloWorldProgram.ixx" />
+    <ClCompile Include="Modules\HelloWorldProgram.cpp" />
+    <ClCompile Include="Modules\HelloWorldProgram.ixx" />
+    <ClCompile Include="Modules\Modules.cpp" />
+    <ClCompile Include="Modules\Module_Modules.ixx" />
     <ClCompile Include="Module_Modern_Cpp.ixx" />
     <ClCompile Include="Module_Modern_Cpp_Exercises.ixx" />
     <ClCompile Include="MoveSemantics\Module_MoveSemantics.ixx" />
@@ -430,7 +430,8 @@
     <None Include="MetaProgramming\Metaprogramming01.md" />
     <None Include="MetaProgramming\Metaprogramming02.md" />
     <None Include="ModularizedStandardLibrary\ModularizedStandardLibrary.md" />
-    <None Include="Modules_Import\Modules.md" />
+    <None Include="Modules\cpp_modules_02.svg" />
+    <None Include="Modules\Modules.md" />
     <None Include="MoveSemantics\MoveSemantics.md" />
     <None Include="OnlineCppCompilers\OnlineCppCompilers.md" />
     <None Include="Optional\cpp_std_optional.svg" />

@@ -573,18 +573,6 @@
     <ClCompile Include="Allocator\Module_Allocator.ixx">
       <Filter>Modules</Filter>
     </ClCompile>
-    <ClCompile Include="Modules_Import\Module_Modules.ixx">
-      <Filter>Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="Modules_Import\Modules.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Modules_Import\HelloWorldProgram.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Modules_Import\HelloWorldProgram.ixx">
-      <Filter>Modules</Filter>
-    </ClCompile>
     <ClCompile Include="ConceptsRequiresClasses\Module_ConceptsRequiresClasses.ixx">
       <Filter>Modules</Filter>
     </ClCompile>
@@ -671,6 +659,18 @@
     </ClCompile>
     <ClCompile Include="TwoPhaseNameLookup\Module_TwoPhaseNameLookup.ixx">
       <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Modules\HelloWorldProgram.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Modules\Module_Modules.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Modules\HelloWorldProgram.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Modules\Modules.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1016,9 +1016,6 @@
     <None Include="Optional\Optional.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="Modules_Import\Modules.md">
-      <Filter>Resource Files</Filter>
-    </None>
     <None Include="ConceptsRequiresClasses\ConceptsRequiresClasses.md">
       <Filter>Resource Files</Filter>
     </None>
@@ -1065,6 +1062,12 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="TwoPhaseNameLookup\TwoPhaseNameLookup.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Modules\Modules.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Modules\cpp_modules_02.svg">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

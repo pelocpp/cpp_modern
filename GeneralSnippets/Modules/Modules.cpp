@@ -4,7 +4,7 @@
 
 module modern_cpp:modules;
 
-namespace ModulesAndImport {
+namespace ModulesDemo {
 
     static void halloSeminar() {
 
@@ -14,7 +14,7 @@ namespace ModulesAndImport {
 
 void main_modules()
 {
-    using namespace ModulesAndImport;
+    using namespace ModulesDemo;
 
     halloSeminar();
 }

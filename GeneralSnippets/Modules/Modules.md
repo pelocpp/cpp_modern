@@ -4,24 +4,24 @@
 
 ---
 
-TBD: Muss aktualisiert werden
-
-[Quellcode](WeakPtr.cpp)
+[Quellcode](Modules.cpp)
+[Quellcode](HelloWorldProgram.ixx)
+[Quellcode](HelloWorldProgram.cpp)
 
 ---
 
 ## Inhalt
 
-
-TBD: Muss aktualisiert werden
-
-
-  * [&bdquo;It's about ownership&rdquo;](#link1)
-  * [Funktionsweise Klasse `std::weak_ptr`](#link2)
-  * [*Control Block*](#link3)
-  * [Zyklische Referenzen](#link4)
-  * [Betrachtung der Referenzzähler im Detail](#link5)
-
+  * [Einleitung](#link1)
+  * [Nachteile bei der Verwendung von klassischen Header-Dateien](#link2)
+  * [Unterschiede im Gebrauch von klassischen Header-Dateien und dem C++ Modul-Konzept](#link3)
+  * [Hinweise zu den Dateiendungen](#link4)
+  * [ODR &ndash; &bdquo;One Definition Rule&rdquo;](#link5)
+  * [Architektur des Modul-Konzepts](#link66)
+  * [Import der Standard-Bibliothek STL](#link7)
+  * [Ein einfaches Beispiel](#link8)
+  * [Modul Partitionen](#link9)
+  * [Literaturhinweise](#link10)
 
 ---
 
@@ -29,7 +29,7 @@ TBD: Muss aktualisiert werden
 
 ---
 
-## Einleitung
+## Einleitung  <a name="link1"></a>
 
 Im klassischen C++ besteht ein (objekt-orientiertes) Programm aus Header-Dateien,
 die Schnittstellen enthalten (Dateiendung *.h*) und Implementierungsdateien,
@@ -41,7 +41,7 @@ Sie werden unabhängig voneinander übersetzt und können danach von anderen Progra
 
 ---
 
-## Nachteile bei der Verwendung von Header-Dateien
+## Nachteile bei der Verwendung von klassischen Header-Dateien <a name="link2"></a>
 
 Das klassische Modell in der Realisierung eines C++&ndash;Programms
 mit einer Aufteilung in Header- und Implementierungsdateien weist einige Nachteile auf:
@@ -78,7 +78,7 @@ mit einer Aufteilung in Header- und Implementierungsdateien weist einige Nachtei
 
 ---
 
-## Unterschiede im Gebrauch von klassischen Header-Dateien und dem C++ Modul-Konzept
+## Unterschiede im Gebrauch von klassischen Header-Dateien und dem C++ Modul-Konzept <a name="link3"></a>
 
 Ein C++&ndash;Modul ist eine eigene Übersetzungseinheit. Hiermit lassen sich folgende Schwächen
 des `#include`-Konzepts bereinigen:
@@ -102,19 +102,19 @@ des `#include`-Konzepts bereinigen:
 
 ---
 
-## Hinweise zu den Dateiendungen
+## Hinweise zu den Dateiendungen <a name="link4"></a>
 
 Es haben sich bzgl. der verschiedenen Hersteller von C++ Sprachübersetzern unterschiedlichen Endungen für
-bestimmte Dateien etabliert.
+bestimmte Dateien etabliert:
 
-* Modul-Datei Dateiendung: <b>.mpp</b> &ndash; Visual Studio C++ Compiler: Dateiendung <b>.ixx</b>.
+* Modul-Datei: Dateiendung <b>.mpp</b> &ndash; Visual Studio C++ Compiler: <b>.ixx</b>.
 
-* Built Module Interface (BMI) Datei: <b>.bmi</b> &ndash; Visual Studio C++ Compiler: Dateiendung <b>.ifc</b>.
+* Built Module Interface (BMI) Datei: Dateiendung <b>.bmi</b> &ndash; Visual Studio C++ Compiler: <b>.ifc</b>.
 
 
 ---
 
-## ODR &ndash; &bdquo;One Definition Rule&rdquo;
+## ODR &ndash; &bdquo;One Definition Rule&rdquo; <a name="link5"></a>
 
 
 *ODR* ist die Abkürzung für eine wichtige Regel in der C++&ndash;Entwicklung: Die *One Definition Rule*.
@@ -122,12 +122,11 @@ bestimmte Dateien etabliert.
 Sie besagt, dass keine Übersetzungseinheit mehr als eine Definition einer beliebigen
 Variablen, Funktion, eines Klassentyps, Aufzählungstyps, etc. enthalten sollte.
 
-Ein einfaches Beispiel für einen *ODR*-Verstoß:
-
+Ein einfaches Beispiel für einen *ODR*-Verstoß:<br />
 Eine Übersetzungseinheit (*.cpp*-Datei) inkludiert zwei Header-Dateien,
 die beide eine Klasse mit identischem Namen definieren.
 
-Der Compiler würde dann mit einer Fehlermeldung (z.B. &bdquo;Class Type Redefinition&rdquo;) reagieren.
+Der Compiler würde dann mit einer Fehlermeldung (z.B. *&bdquo;Class Type Redefinition&rdquo;*) reagieren.
 
 Verstöße gegen die *ODR*-Regel werden vom Compiler diagnostiziert und mit entsprechenden Fehlermeldungen versehen.
 In manchen Fällen kann der Übersetzer bei Verstößen gegen diese Regel auch schweigen.
@@ -138,14 +137,36 @@ Das neue C++ Modul-Konzept verhindert *ODR*-Verstöße bzw. kann immer mit entspre
 
 ---
 
-## Architektur des Modul-Konzepts
+## Architektur des Modul-Konzepts <a name="link6"></a>
+
+Eine Moduldatei wird zunächst in eine *Binary Module Interface* (BMI)-Datei und eine Objektdatei übersetzt.
+
+<img src="cpp_modules_02.svg" width="700">
+
+*Abbildung* 1: Übersetzungsweg bei Verwendung von Moduldateien.
+
+Bevor wir etwas mehr ins Detail gehen, schauen wir uns an, was „hinter den Kulissen“ passiert, wenn ein C++-Modul importiert wird
+
+und was der grundlegende Unterschied zur Einbindung von Header-Dateien ist.
+
+Wie in *Abbildung* 1 dargestellt, ist das Importieren eines Moduls 
+keine Kopier- und Einfügeoperation wie beim Einfügen des Inhalts einer Header-Datei.
+
+Wenn der Compiler auf eine Moduldatei stößt &ndash; in diesem Fall die Datei mit dem Namen mathLibrary.mpp &ndash;,
+die von einer Übersetzungseinheit (main.cpp) importiert wurde,
+
+wird die Moduldatei zuerst in eine Built Module Interface (BMI)-Datei und eine Objektdatei übersetzt.
+
+Die BMI ist eine Datei im Dateisystem, die die Metadaten für das Modul enthält und die exportierte Schnittstelle von mathLibrary.mpp beschreibt.
+
+Der Compiler erzeugt auch eine Objektdatei (mathLibrary.o), die der Linker benötigt, um das Modul zu verknüpfen und eine ausführbare Datei zu erstellen.
 
 
-WEITER: Bild bei Roth
+
 
 ---
 
-## Import der Standard-Bibliothek STL mit Visual C++
+## Import der Standard-Bibliothek STL <a name="link7"></a>
 
 Obwohl dies nicht im C++ 20-Standard festgelegt ist,
 ermöglicht es die Erstellung eines C++ Programms mit dem Visual C++ Compiler,
@@ -172,62 +193,9 @@ in folgendem Verzeichnis vorhanden:
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\modules\std.ixx
 </pre>
 
-
-<b>Update</b>:
-Ab Visual Studio 17.6.2 (möglicherweise auch einige Versionen darunter) ist das explizite
-Hinzufügen der `std.ixx`-Datei zum Projekt **nicht** mehr erforderlich!
-
-
-Wenn wir den Quellcode der Datei `std.ixx` betrachten, erkennen wir im nachfolgenden Ausschnitt
-in Zeile 17 die Definition des Modulnamens `std`:
-
-<pre>
-01: // Copyright (c) Microsoft Corporation.
-02: // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
-03: 
-04: // This named module expects to be built with classic headers, not header units.
-05: #define _BUILD_STD_MODULE
-06: 
-07: module;
-08: 
-09: // The subset of "C headers" [tab:c.headers] corresponding to
-10: // the "C++ headers for C library facilities" [tab:headers.cpp.c]
-11: #include <assert.h>
-12: #include <ctype.h>
-13: ...
-14: #include <wchar.h>
-15: #include <wctype.h>
-16: 
-<b>17: export module std;</b>
-18: 
-19: #pragma warning(push)
-20: #pragma warning(disable : 5244) // '#include <meow>' in the purview of module 'std' appears erroneous.
-21: 
-22: // "C++ library headers" [tab:headers.cpp]
-23: #include <algorithm>
-24: #if _HAS_STATIC_RTTI
-25: #include <any>
-26: #endif // _HAS_STATIC_RTTI
-27: #include <array>
-28: #include <atomic>
-29: ...
-30: #include <variant>
-31: #include <vector>
-32: #include <version>
-33: 
-34: // "C++ headers for C library facilities" [tab:headers.cpp.c]
-35: #include <cassert>
-36: #include <cctype>
-37: ...
-38: #include <cwchar>
-39: #include <cwctype>
-40: 
-41: #pragma warning(pop)
-</pre>
-
 ---
 
-## Ein einfaches Beispiel
+## Ein einfaches Beispiel <a name="link8"></a>
 
 Das nachfolgende Programmfragment (*Code-Listing* 1) zeigt die Einbindung eines Moduls
 `hello_world` mit der `import`-Anweisung. 
@@ -245,35 +213,40 @@ vorhanden sein: Das Modul bringt alles Notwendige mit:
 
 
 ```cpp
-01: /// Program.cpp
-02: import hello_world;
-03: 
-04: int main()
-05: {
-06:     MyHelloWorld::globalData = 123;
-07: 
-08:     MyHelloWorld::sayHello();
-09: }
+01: // File: HelloWorldProgram.cpp
+02: 
+03: import hello_world;
+04: 
+05: int main()
+06: {
+07:     MyHelloWorld::globalData = 123;
+08: 
+09:     MyHelloWorld::sayHello();
+10: 
+11:     return 0;
+12: }
 ```
 
 *Code-Listing* 1: Einbindung eines Moduls.
 
 
 ```cpp
-01: /// HelloWorld.ixx
-02: export module hello_world;
-03: 
-04: import std;
-05: 
-06: export namespace MyHelloWorld
-07: {
-08:     int globalData{};
-09: 
-10:     void sayHello()
-11:     {
-12:         std::cout << "Hello Module! Data is " << globalData << std::endl;
-13:     }
-14: }
+01: // File: HelloWorldProgram.ixx
+02: 
+03: export module hello_world;
+04: 
+05: import std;
+06: 
+07: export namespace MyHelloWorld
+08: {
+09:     int globalData{};
+10: 
+11:     void sayHello()
+12:     {
+13:         std::printf("Hello Module! Data is %d\n", globalData);
+14:     }
+15: }
+
 ```
 
 *Code-Listing* 2: Definition/Implementierung eines Moduls.
@@ -285,7 +258,7 @@ exportierten Entitäten (hier: Namensraum `MyHelloWorld`) für die importierende Ü
 
 ---
 
-## Modul Partitionen
+## Modul Partitionen <a name="link9"></a>
 
 Genau wie bei C++&ndash;Headerdateien müssen Module nicht zwingend aufgeteilt werden,
 also deren Inhalt nicht auf mehrere Dateien verteilt werden.
@@ -377,7 +350,7 @@ export import :weak_ptr;
 
 ---
 
-## Literaturhinweise
+## Literaturhinweise <a name="link10"></a>
 
 Die Anregungen zu diesem Code-Snippet finden sich teilweise in
 
