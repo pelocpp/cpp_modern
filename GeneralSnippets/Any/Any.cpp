@@ -9,18 +9,22 @@ namespace AnySamples {
     static void test_01_any()
     {
         std::any a{ 1 };
+
         std::cout << a.type().name() << ": " << std::any_cast<int>(a) << std::endl;
 
         a = 3.14;
+
         std::cout << a.type().name() << ": " << std::any_cast<double>(a) << std::endl;
 
         a = true;
+
         std::cout << a.type().name() << ": " << std::any_cast<bool>(a) << std::endl;
 
         // bad cast
         try
         {
             a = 1;
+
             std::cout << std::any_cast<float>(a) << std::endl;
         }
         catch (const std::bad_any_cast & e)
@@ -30,6 +34,7 @@ namespace AnySamples {
 
         // has value
         a = 1;
+
         if (a.has_value())
         {
             std::cout << a.type().name() << std::endl;
@@ -37,6 +42,7 @@ namespace AnySamples {
 
         // reset
         a.reset();
+
         if (!a.has_value())
         {
             std::cout << "no value" << std::endl;
@@ -50,8 +56,8 @@ namespace AnySamples {
 
     static void test_02_any()
     {
-        std::any a1 = std::make_any<std::string>("Hello, std::any!");
-        std::any a2 = std::make_any<std::complex<double>>(1.5, 2.5);
+        std::any a1{ std::make_any<std::string>("Hello, std::any!") };
+        std::any a2{ std::make_any<std::complex<double>>(1.5, 2.5) };
 
         std::cout << std::any_cast<std::string&>(a1) << std::endl;
         std::cout << std::any_cast<std::complex<double>&>(a2) << std::endl;
@@ -65,8 +71,8 @@ namespace AnySamples {
     static void test_03_any()
     {
         Row row1{ 1, 2, 3  };
-        Row row2{ '1',  std::string("ABC"), 99.99  };
-        Row row3{  true, 123, false  };
+        Row row2{ '1',  std::string{"ABC"}, 99.99 };
+        Row row3{ true, 123, false  };
 
         std::vector<Row> mySheet;
 
@@ -77,9 +83,9 @@ namespace AnySamples {
 
         for (const auto& [val1, val2, val3] : mySheet) {
             std::cout
-                << "Val1:    " << to_string(val1) << std::endl
-                << "Val2:    " << to_string(val2) << std::endl
-                << "Val3:    " << to_string(val3) << std::endl;
+                << "Val1:  " << to_string(val1) << std::endl
+                << "Val2:  " << to_string(val2) << std::endl
+                << "Val3:  " << to_string(val3) << std::endl;
         }
     }
 
@@ -104,6 +110,38 @@ namespace AnySamples {
             return std::string("<Unknown>");
         }
     }
+
+    static void test_04_any() {
+
+        // array with three instances of std::any (note: brace elision)
+        const std::array<std::any, 3> many
+        { 
+            std::any{ 42 },                   // int
+            std::any{ 1.23 },                 // double
+            std::any{ std::string{"Hello"} }  // std::string
+        };
+
+        // use random access on the container elements.
+        int n{ std::any_cast<int>(many[0]) };
+        double f{ std::any_cast<double>(many[1]) };
+        std::string str{ std::any_cast<std::string>(many[2]) };
+
+        // query the container size
+        const std::size_t size = many.size();
+
+        // iterate container with an algorithm and execute a member function
+        bool haveValues{ std::all_of (
+            many.cbegin(),
+            many.cend(),
+            [] (const auto& a) -> bool {
+                return a.has_value();
+            }
+        ) };
+
+        if (haveValues) {
+            std::cout << "All std::any objects contains a value." << std::endl;
+        }
+    }
 }
 
 void main_any()
@@ -112,6 +150,7 @@ void main_any()
     test_01_any();
     test_02_any();
     test_03_any();
+    test_04_any();
 }
 
 // =====================================================================================

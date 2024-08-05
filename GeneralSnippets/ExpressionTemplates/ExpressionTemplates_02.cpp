@@ -2,6 +2,10 @@
 // ExpressionTemplates_02.cpp // Expression Templates
 // =====================================================================================
 
+module;
+
+#include <chrono>
+
 module modern_cpp:expression_templates;
 
 namespace ExpressionTemplates_VectorBasedVersion {
@@ -247,11 +251,11 @@ namespace ExpressionTemplates_VectorBasedVersion {
         const Matrix& a4,
         const Matrix& a5)
     {
-        auto start = std::chrono::high_resolution_clock::now();
+        auto start{ std::chrono::high_resolution_clock::now() };
         for (int i = 0; i < iterations; ++i) {
             result = a1 + a2 + a3 + a4 + a5;
         }
-        auto end = std::chrono::high_resolution_clock::now();
+        auto end{ std::chrono::high_resolution_clock::now() };
 
         std::cout
             << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count()

@@ -31,10 +31,10 @@ namespace Requires_Clause {
 
     static void test_concepts_requires_01()
     {
-        float sum1 = add(123.456f, 654.321f);
+        auto sum1{ add(123.456f, 654.321f) };
         std::cout << sum1 << std::endl;
 
-        auto sum2 = add(123.456, 654.321);
+        auto sum2{ add(123.456, 654.321) };
         std::cout << sum2 << std::endl;
 
         // 'add': no matching overloaded function found		
@@ -63,7 +63,7 @@ namespace Requires_Clause {
 
     static void test_concepts_requires_02()
     {
-        auto sum = add(123.456, 654.321F);
+        auto sum{ add(123.456, 654.321F) };
         std::cout << sum << std::endl;
     }
     
@@ -73,7 +73,7 @@ namespace Requires_Clause {
         std::string s2{ "DEF" };
 
         // the associated constraints are not satisfied:
-        // auto result = add(s1, s2);
+        // auto result{ add(s1, s2) };
     }
 
     // using <type_traits>
@@ -97,10 +97,10 @@ namespace Requires_Clause {
         std::vector<int> numbers{ 1, 2, 3, 4, 5 };
         std::vector<double> moreNumbers{ 1, 2, 3, 4, 5 };
  
-        auto average = avg(numbers);
+        auto average{ avg(numbers) };
 
         // the associated constraints are not satisfied:
-        // auto anotherAverage = avg(moreNumbers);
+        // auto anotherAverage{ avg(moreNumbers) };
     }
 
     static void test_concepts_requires_basic_usage()
@@ -134,13 +134,13 @@ namespace Trailing_Requires_Clause {
 
     static void test_trailing_requires_clause()
     {
-        float sum1 = add(123.456f, 654.321f);
+        auto sum1{ add(123.456f, 654.321f) };
         std::cout << sum1 << std::endl;
 
-        auto sum2 = add(123.456, 654.321);
+        auto sum2{ add(123.456, 654.321) };
         std::cout << sum2 << std::endl;
 
-        auto sum3 = add(123.456, 654.321F);
+        auto sum3{ add(123.456, 654.321F) };
         std::cout << sum3 << std::endl;
     }
 }
@@ -161,13 +161,13 @@ namespace Constrained_Template_Parameters {
 
     static void test_constrained_template_parameters()
     {
-        float sum1 = add(123.456f, 654.321f);
+        auto sum1{ add(123.456f, 654.321f) };
         std::cout << sum1 << std::endl;
 
-        auto sum2 = add(123.456, 654.321);
+        auto sum2{ add(123.456, 654.321) };
         std::cout << sum2 << std::endl;
 
-        auto sum3 = add(123.456, 654.321F);
+        auto sum3{ add(123.456, 654.321F) };
         std::cout << sum3 << std::endl;
     }
 }
@@ -181,13 +181,13 @@ namespace Abbreviated_Function_Templates {
 
     static void test_abbreviated_function_template_syntax()
     {
-        float sum1 = add(123.456f, 654.321f);
+        auto sum1{ add(123.456f, 654.321f) };
         std::cout << sum1 << std::endl;
 
-        auto sum2 = add(123.456, 654.321);
+        auto sum2{ add(123.456, 654.321) };
         std::cout << sum2 << std::endl;
 
-        auto sum3 = add(123.456, 654.321F);
+        auto sum3{ add(123.456, 654.321F) };
         std::cout << sum3 << std::endl;
     }
 }

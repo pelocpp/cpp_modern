@@ -6,33 +6,25 @@ module modern_cpp:auto_keyword;
 
 namespace Auto_Examples {
 
-    std::map<int, std::string> getFunction() { return {}; };
+    // ---------------------------------------------------------------------
 
     static void test_01_a() {
 
-        auto n = 123;    // n is type of int
+        // type deduction / type inference
 
-        auto result = getFunction();
-        std::map<int, std::string> result2 = getFunction();
-    }
+        auto a = 1;                  // int
+        auto b = 7ul;                // unsigned long
+        auto c = 2.0;                // double
+        auto d = 2.0f;               // float
+        auto e = 'A';                // char
+        auto f = "hi";               // char const*
+        auto g = true;               // bool
 
-    // ---------------------------------------------------------------------
+        auto list = { 1, 2, 3 };     // std::initializer_list<int>
 
-    static void test_01_b() {
-
-        // auto figures out the below types
-
-        auto i = 1;             // int
-        auto j = 7ul;           // unsigned long
-        auto x = 2.0;           // double
-        auto y = 2.0f;          // float
-        auto c = 'A';           // char
-        auto s = "hi";          // char const*
-        auto b = true;          // bool
-
-        // C++ 14 and above we have std::string literals
-        using namespace std;    // This is necessary
-        auto st = "hello"s;     // std::string, note the s operator
+        // C++ 14 and above we have std::string_literals
+        using namespace std::string_literals;    //  necessary (!)
+        auto st = "hello"s;          // std::string, note the s operator
 
         // C++ 23 and above we have size_t and signed size_t
         // Not yet supported from Visual C++
@@ -42,27 +34,54 @@ namespace Auto_Examples {
 
     // ---------------------------------------------------------------------
 
+    std::map<int, std::string> getFunction() {
+
+        return std::map<int, std::string>{};
+    }
+
+    static void test_01_b() {
+
+        auto n{ 123 };    // n is type of int
+
+        auto result{ getFunction() };
+
+        std::map<int, std::string> result2{
+            getFunction()
+        };
+    }
+
+    // ---------------------------------------------------------------------
 
     static auto sum(float f1, float f2)
     {
         return f1 + f2;
     }
 
-    static auto foo(bool flag, char ch, double d) -> double
+    static auto foo(bool flag, float f, double d) -> double
     {
         if (flag) {
-            return ch;
+            return f;
         }
         else {
             return d;
         }
     }
 
+    // type of the ternary ?: expression is the common type
+    // of its second and third argument
+    // (if both types are the same, you get a reference back)
+    static auto moreFoolish(bool flag, float f, double d)
+    {
+        return (flag) ? f : d;
+    }
+
     static void test_01_c() {
 
-        auto result = sum(1.0, 2.0);  // float
+        auto result = sum(1.0, 2.0);                           // float
 
-        auto value = foo(true, '!', 123.456);   // double
+        auto value = foo(true, 123, 123.456);                  // double
+
+        auto anotherValue = moreFoolish(true, 123, 123.456);   // double
     }
 
     // ---------------------------------------------------------------------
@@ -81,7 +100,12 @@ namespace Auto_Examples {
 
     static auto make_planet()
     {
-        struct Planet { std::string name; int moons; bool rings; };
+        struct Planet 
+        { 
+            std::string name;
+            int moons;
+            bool rings; 
+        };
 
         return Planet{ "Saturn", 82, true };
     }
@@ -89,7 +113,7 @@ namespace Auto_Examples {
     static void test_01_d() {
 
         // using automatic return type deduction
-        auto planet = make_planet();
+        auto planet{ make_planet() };
 
         std::cout
             << planet.name << ' '
@@ -116,19 +140,19 @@ namespace Auto_Examples {
 
     static void test_01_e() {
 
-        auto msg = getMessage();
+        auto msg{ getMessage() };
         std::cout << "Message: " << msg << std::endl;
 
         // but:
-        const auto& msg2 = getMessage();
+        const auto& msg2{ getMessage() };
         std::cout << "Message: " << msg2 << std::endl;
 
         // or:
-        decltype(getMessage()) msg3 = getMessage();
+        decltype(getMessage()) msg3{ getMessage() };
         std::cout << "Message: " << msg3 << std::endl;
 
         // once again 'or':
-        decltype(auto) msg4 = getMessage();
+        decltype(auto) msg4{ getMessage() };
         std::cout << "Message: " << msg4 << std::endl;
     }
 
@@ -141,34 +165,31 @@ namespace Auto_Examples {
 
     static void test_01_f()
     {
-        auto ch1 = getFirstCharacter(std::string{ "ABC" });
-        decltype(auto) ch2 = getFirstCharacter(std::string{ "ABC" });
+        auto ch1{ getFirstCharacter(std::string{ "ABC" }) };
+
+        decltype(auto) ch2{ getFirstCharacter(std::string{ "ABC" }) };
     }
 
     // ---------------------------------------------------------------------
 
-    static int f() {
-        return 0;
-    }
+    static int f() { return 0; }
 
     static void test_01_g_01()
     {
-        decltype(f()) i = 1;                 // i is integer
+        decltype(f()) i{ 1 };                 // i is integer
 
         std::vector<decltype(f())> v;        // vector<int>, cannot be done with auto
     }
 
-    static int& g(int& i) {
-        return ++i;
-    }
+    static int& g(int& i) { return ++i; }
 
     static void test_01_g_02()
     {
-        int x = 10;
+        int x { 10 };
 
-        auto i = g(x);      // i gets a copy of f(10) ==> 11
+        auto i{ g(x) };      // i gets a copy of f(10) ==> 11
 
-        auto& j = g(x);     // j is a reference to x  ==> 12
+        auto& j{ g(x) };     // j is a reference to x  ==> 12
     }
 
     static void test_01_g()
@@ -200,16 +221,16 @@ namespace Auto_Examples {
     static void test_01_h()
     {
         // works - specifying all template parameters
-        auto result = add1<long, int, int>(10, 20);
+        auto result{ add1<long, int, int>(10, 20) };
 
         // works too - only the return template parameter type needs to be specified
-        auto result1 = add1<long>(10, 20);
+        auto result1{ add1<long>(10, 20) };
 
         // doesn't work too - return template parameter is at wrong position
-        // auto result2 = add2<long>(10, 20);
+        // auto result2{ add2<long>(10, 20) };
 
         // works too - no template parameter type needs to be specified
-        auto result3 = add3(10, 20);
+        auto result3{ add3(10, 20) };
     }
 }
 

@@ -56,11 +56,17 @@ namespace Lambdas {
         std::cout << std::endl;
 
         std::sort(std::begin(vec), std::end(vec), compare);
+        
         // or
+        
         std::sort(std::begin(vec), std::end(vec), Comparer{});
+        
         // or
+        
         std::sort(std::begin(vec), std::end(vec), Comparer{false});
+        
         // or
+        
         std::sort(std::begin(vec), std::end(vec), LocalComparer{});
 
         for (int n : vec) {

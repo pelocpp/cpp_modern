@@ -128,7 +128,7 @@ namespace BraceInitialization {
 
     static void test_06()
     {
-        std::vector<int> myArray{ 1, 2, 3, 4, 5 };
+        std::vector<int> myVector{ 1, 2, 3, 4, 5 };
 
         std::map<std::string, int> myMap
         {
@@ -137,8 +137,8 @@ namespace BraceInitialization {
         };
 
         std::for_each(
-            std::begin(myArray), 
-            std::end(myArray),
+            std::begin(myVector),
+            std::end(myVector),
             [](int value) {
                 std::cout << value << ", ";
             }

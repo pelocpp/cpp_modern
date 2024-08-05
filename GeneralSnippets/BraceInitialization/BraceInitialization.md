@@ -173,11 +173,10 @@ void main()
 
 ---
 
-
 ## Standard STL Container <a name="link8"></a>
 
 ```cpp
-std::vector<int> myArray{ 1, 2, 3, 4, 5 };
+std::vector<int> myVector{ 1, 2, 3, 4, 5 };
 
 std::map<std::string, int> myMap
 {

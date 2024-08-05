@@ -308,21 +308,21 @@ namespace StdArray {
 
         // type is deduced to std::array<char, 13>
         // Note: see std::array above
-        auto array1 = std::to_array("Hello C++ 20");
+        auto array1{ std::to_array("Hello C++ 20") };
 
         // type is deduced to std::array<char, 13>
         // Note: see std::array above
-        auto array2 = std::to_array<const char>("Hello C++ 20");
+        auto array2{ std::to_array<const char>("Hello C++ 20") };
 
         // type is deduced to std::array<int, 5>
-        auto array3 = std::to_array({ 1, 2, 3, 4, 5 });
+        auto array3{ std::to_array({ 1, 2, 3, 4, 5 }) };
 
         // type is deduced to std::array<long, 5>
-        auto array4 = std::to_array<long>({ 1, 2, 3, 4, 5 });
+        auto array4{ std::to_array<long>({ 1, 2, 3, 4, 5 }) };
 
         // type is deduced to std::array<int, 5>
         int intNumbers[] { 1, 2, 3, 4, 5 };
-        auto array6 = std::to_array(intNumbers);
+        auto array5{ std::to_array(intNumbers) };
     }
 
     // -------------------------------------------------------------------
