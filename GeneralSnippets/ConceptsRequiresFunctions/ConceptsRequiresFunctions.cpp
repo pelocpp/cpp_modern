@@ -206,14 +206,25 @@ namespace UserDefined_Concept {
         return arg + 1;
     }
 
+    auto incrementByTwo(GreatIntegral auto arg) {
+        return arg + 2;
+    }
+
     static void test_user_defined_concept()
     {
-        int n{ 123 };
+        auto n{ 123 };
+
         n = incrementByOne(n);
 
         // short s{ 1 };
         // the associated constraints are not satisfied:
         // s = incrementByOne(s);
+
+        n = incrementByTwo(n);
+
+        // short s{ 1 };
+        // the associated constraints are not satisfied:
+        // s = incrementByTwo(s);
     }
 }
 

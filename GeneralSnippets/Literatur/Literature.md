@@ -6,19 +6,23 @@
 
 ## C++
 
-  * Marc Gregoire, &bdquo;*Professional C++ (5th Edition)*&rdquo;.</br>
-    Wrox Press (22. März 2021), 1312 Seiten. Sprache: Englisch. ISBN-13: 978-1119695400, ISBN-10: 1119695406.
+  * Marc Gregoire, &bdquo;*Professional C++ (6th Edition)*&rdquo;.</br>
+    Wiley John + Sons (13. Februar 2024), 1326 Seiten. Sprache: Englisch. ISBN-13: 978-1394193172, ISBN-10: 1394193173.
 
     Für mich das derzeit beste C++ -Buch am Markt. Zugegeben, sehr umfangreich, aber dafür versteht es der Autor,
     seine Leser mit einem jederzeit erkennbaren roten Faden durch alle Niederungen der Sprache C++ 
     in verständlichen (englischen) Erklärungen zu führen. Großartig!
 
+    <img src="Buch_Marc_Gregoire.png" width="150">
+
 ---
 
-  * Torsten T. Will, &bdquo;*C++: Das umfassende Handbuch zu Modern C++ - aktuell zu C++17*&rdquo;.</br> 
-    Rheinwerk Computing (27. Dezember 2017), 1067 Seiten. Sprache: Deutsch. ISBN-10: 3836243601, ISBN-13: 978-3836243605.
+  * Torsten T. Will, &bdquo;*C++: Das umfassende Handbuch zu Modern C++ - aktuell zu C++23 (3. Auflage)*&rdquo;.</br> 
+    Rheinwerk Computing (6. Juni 2024), 1113 Seiten. Sprache: Deutsch. ISBN-10: 3836298538, ISBN-13: 978-3836298537.
 
     Ein sehr gutes Buch für Leser, die deutschsprachige Bücher bevorzugen. Viele Beispiele, gute Erklärungen.
+
+    <img src="Buch_T_Will_Cpp_Handbuch_C23.png" width="150">
 
 ---
 
@@ -30,6 +34,8 @@
 
     Die Beispiele sind vergleichsweise einfach gehalten, besitzen deshalb eine starke Prägnanz
     und bringen das jeweilige zu veranschaulichende Konzept auf den Punkt. Ein absolut empfehlenswertes Buch!
+
+    <img src="Buch_Stephan_Roth_Clean_Cpp_20.png" width="150">
 
 ---
 
@@ -62,16 +68,20 @@
 ---
 
   * Bancila, Marius, &bdquo;*Modern C++ Programming Cookbook*&rdquo;.</br> 
-    Packt Publishing (11. September 2020, 2. Auflage), 750 Seiten. Sprache: Englisch. ISBN-10: 1800208987, ISBN-13: 978-1800208988.
+    Packt Publishing (29. Februar 2020, 3. Auflage), 816 Seiten. Sprache: Englisch. ISBN-10: 1835080545, ISBN-13: 978-1835080542.
 
     Das Buch beschäftigt sich überwiegend
     mit den so genannten &bdquo;Modern C++&rdquo; Sprachergänzungen.
     Eine absolut empfehlenswerte Lektüre, aber nicht unbedingt für den C++-Einsteiger zu empfehlen.
   
+    <img src="Buch_Marius_Bancila_Modern_Cpp_Cookbook_23.png" width="150">
+
 ---
 
   * Bancila, Marius, &bdquo;*The Modern C++ Challenge*&rdquo;.</br> 
     Packt Publishing (23. Mai 2018, 1. Auflage), 328 Seiten. Sprache: Englisch. ISBN-10: 1788993861, ISBN-13: 978-1788993869.
+
+    <img src="Buch_Marius_Bancila_Modern_Cpp_Challenge.png" width="150">
 
 ---
 
@@ -81,27 +91,35 @@
     Es gilt dasselbe wie für die Bücher von *Marius Bancila*: Vorzugsweise für Leser geeignet,
     die sich schwerpunktmäßig mit den Sprachergänzungen von &bdquo;*Modern C++*&rdquo; beschäftigen möchten.
 
+    <img src="Buch_Jacek_Galowicz_Cpp_17_Cookbook.png" width="150">
+
 ---
 
   * Josuttis, Nicolai M., &bdquo;*C++ Move Semantics &ndash; The Complete Guide*&rdquo;.</br> 
     NicoJosuttis (30. August 2020), 262 Seiten. Sprache: Englisch. ISBN-10: 3967309002, ISBN-13: 978-3967309003.
 
+    <img src="Buch_Nicolai_Josuttis_Cpp_Move_Semantics.png" width="150">
+
 ---
 
   * Fertig, Andreas, &bdquo;*Tips and Tricks with Templates*&rdquo;.</br> 
-    Fertig Publications (20. Januar 2021), 102 Seiten. Sprache: Englisch. ISBN-10: 3949323007, ISBN-13: 978-3949323003.
+    Fertig Publications (5. Februar 2024), 104 Seiten. Sprache: Englisch. ISBN-10: 3949323074, ISBN-13: 978-3949323072.
 
     Der Autor von [C++ Insights](https://cppinsights.io/), einem Analysetool für &bdquo;Modern C++&rdquo; Spracherweiterungen,
     wartet mit einem kleinen, aber feinen Werk auf: Viele Tipps und Tricks im Umfeld der Templates werden vorgestellt.
 
+    <img src="Buch_Andreas_Fertig_Cpp_Tips_Tricks.png" width="150">
+ 
 ---
 
   * Peter Pohmann, &bdquo;*C++ 17: Praxiswissen zum neuen Standard. Von C++11 bis 17*&rdquo;.</br> 
-    Software + Support (30. Mai 2017), 330 Seiten. Sprache: Deutsch. ISBN-10: 9783868021745, ISBN-13: 978-3868021745.
+    Software + Support (15. Mai 2017), 332 Seiten. Sprache: Deutsch. ISBN-10: 9783868021745, ISBN-13: 978-3868021745.
 
     Ein kurz gehaltenes Nachschlagewerk, dass vor allem für Entwickler geeignet ist, die sich für die Neuerungen
     der Programmiersprache C++ bzgl. C++ -11, C++ -14 und C++ -17 interessieren. Zu jedem Sprachfeature gibt es ein
     kleines (und vor allem auch leicht verständliches) Beispiel.
+
+    <img src="Buch_Peter_Pohmann_Cpp_17.png" width="150">
 
 ---
 
@@ -112,6 +130,7 @@
 
     Das ultimative Buch zu Templates in C++. 
 
+    <img src="Buch_Vandervoorde_Josuttis_Gregor_Cpp_Templates.png" width="150">
 ---
 
 ## Frameworks, Bibliotheken, Ressources und mehr ...

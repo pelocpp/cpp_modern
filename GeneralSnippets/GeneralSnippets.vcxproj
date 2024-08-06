@@ -516,6 +516,16 @@
     <Image Include="Images\Horse_Cpp.png" />
     <Image Include="Images\tiobe_index_december_2022.png" />
     <Image Include="Images\what_are_you_studying.png" />
+    <Image Include="Literatur\Buch_Andreas_Fertig_Cpp_Tips_Tricks.png" />
+    <Image Include="Literatur\Buch_Jacek_Galowicz_Cpp_17_Cookbook.png" />
+    <Image Include="Literatur\Buch_Marc_Gregoire.png" />
+    <Image Include="Literatur\Buch_Marius_Bancila_Modern_Cpp_Challenge.png" />
+    <Image Include="Literatur\Buch_Marius_Bancila_Modern_Cpp_Cookbook_23.png" />
+    <Image Include="Literatur\Buch_Nicolai_Josuttis_Cpp_Move_Semantics.png" />
+    <Image Include="Literatur\Buch_Peter_Pohmann_Cpp_17.png" />
+    <Image Include="Literatur\Buch_Stephan_Roth_Clean_Cpp_20.png" />
+    <Image Include="Literatur\Buch_T_Will_Cpp_Handbuch_C23.png" />
+    <Image Include="Literatur\Buch_Vandervoorde_Josuttis_Gregor_Cpp_Templates.png" />
     <Image Include="MetaProgramming\euler_number.png" />
     <Image Include="MetaProgramming\GGT_Algorithmus_Euklid.png" />
     <Image Include="ModularizedStandardLibrary\ModularizedStandardLibrary.png" />

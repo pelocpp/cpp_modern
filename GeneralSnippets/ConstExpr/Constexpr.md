@@ -1,4 +1,4 @@
-# `constexpr` - Programmierung zur Übersetzungszeit mit `constexpr`
+# Programmierung zur Übersetzungszeit mit `constexpr`
 
 [Zurück](../../Readme.md)
 

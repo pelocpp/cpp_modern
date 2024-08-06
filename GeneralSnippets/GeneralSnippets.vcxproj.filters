@@ -1168,5 +1168,35 @@
     <Image Include="ModularizedStandardLibrary\ModularizedStandardLibrary.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Literatur\Buch_Marc_Gregoire.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Literatur\Buch_Andreas_Fertig_Cpp_Tips_Tricks.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Literatur\Buch_Jacek_Galowicz_Cpp_17_Cookbook.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Literatur\Buch_Marius_Bancila_Modern_Cpp_Challenge.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Literatur\Buch_Marius_Bancila_Modern_Cpp_Cookbook_23.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Literatur\Buch_Nicolai_Josuttis_Cpp_Move_Semantics.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Literatur\Buch_Peter_Pohmann_Cpp_17.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Literatur\Buch_Stephan_Roth_Clean_Cpp_20.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Literatur\Buch_T_Will_Cpp_Handbuch_C23.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Literatur\Buch_Vandervoorde_Josuttis_Gregor_Cpp_Templates.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
