@@ -172,7 +172,7 @@ Wir betrachten nun wieder Hunde und Katzen, aber bitte betrachten Sie die Unters
 13: };
 ```
 
-Die beiden Klassen leiten sich dieses Mall *nicht* von einer Basisklasse ab!
+Die beiden Klassen leiten sich dieses Mal *nicht* von einer Basisklasse ab!
 
 Nun kommt das Kernstück des *Type Erasure* Idioms in Gestalt einer Klasse `PolymorphicObjectWrapper`:
 

@@ -456,8 +456,9 @@ namespace BookStoreUsingTypeErasure {
     class Bookstore
     {
     private:
-        using Stock = std::vector<std::variant<TMedia ...>>;
-        using StockList = std::initializer_list<std::variant<TMedia ...>>;
+        using StockType = std::variant<TMedia ...>;
+        using Stock = std::vector<StockType>;
+        using StockList = std::initializer_list<StockType>;
 
     public:
         explicit Bookstore(StockList stock) : m_stock{ stock } {}
@@ -465,7 +466,7 @@ namespace BookStoreUsingTypeErasure {
         // template member method
         template <typename T>
         void addMedia(const T& media) {
-            // m_stock.push_back(std::variant<TMedia ...>{ media });  // ausführliche Schreibweise
+            // m_stock.push_back(StockType{ media });  // ausführliche Schreibweise
             m_stock.push_back(media);
         }
 
