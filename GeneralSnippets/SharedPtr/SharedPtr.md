@@ -50,11 +50,11 @@ für den Kontrollblock aus.
 Man kann damit zusammenfassen, dass die Verwendung der `std::make_shared`-Funktion
 effizienter ist, siehe dazu auch die folgenden beiden Abbildungen:
 
-<img src="WeakPointer_01.PNG" width="500">
+<img src="SharedPointer_01.png" width="620">
 
 *Abbildung* 1: Der Control-Block enthält beide Speicherbereiche.
 
-<img src="WeakPointer_02.PNG" width="400">
+<img src="SharedPointer_02.png" width="500">
 
 *Abbildung* 2: Der Control-Block enthält nicht das eigentlich dynamisch angelegte Objekt. 
 

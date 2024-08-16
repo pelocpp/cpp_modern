@@ -22,7 +22,7 @@ namespace SharedPointer {
     // 'shared ptr' approach
     static std::shared_ptr<int> loadSharedPointer()
     {
-        std::shared_ptr<int> tmp{ std::make_shared<int>(456) };
+        std::shared_ptr<int> tmp{ std::make_shared<int>(123) };
         return tmp;
     }
 

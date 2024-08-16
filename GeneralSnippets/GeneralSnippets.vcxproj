@@ -282,10 +282,6 @@
     <ClCompile Include="Optional\Optional.cpp" />
     <ClCompile Include="PerfectForwarding\Module_PerfectForwarding.ixx" />
     <ClCompile Include="PerfectForwarding\PerfectForwarding.cpp" />
-    <ClCompile Include="PerfectForwarding\PerfectForwarding01.cpp" />
-    <ClCompile Include="PerfectForwarding\PerfectForwarding02.cpp" />
-    <ClCompile Include="PerfectForwarding\PerfectForwarding03.cpp" />
-    <ClCompile Include="PerfectForwarding\PerfectForwarding04.cpp" />
     <ClCompile Include="PlacementNew\Module_PlacementNew.ixx" />
     <ClCompile Include="PlacementNew\PlacementNew.cpp" />
     <ClCompile Include="Program.cpp" />
@@ -438,9 +434,6 @@
     <None Include="Optional\Optional.md" />
     <None Include="ParametersWithConstAndRef\ConstDeclarations.md" />
     <None Include="PerfectForwarding\PerfectForwarding.md" />
-    <None Include="PerfectForwarding\PerfectForwarding_01.md" />
-    <None Include="PerfectForwarding\PerfectForwarding_02.md" />
-    <None Include="PerfectForwarding\PerfectForwarding_03.md" />
     <None Include="PlacementNew\PlacementNew.md" />
     <None Include="RAII\RAII.md" />
     <None Include="Random\Random.md" />
@@ -535,14 +528,14 @@
     <Image Include="OnlineCppCompilers\WandboxOptions01.png" />
     <Image Include="OnlineCppCompilers\WandboxOptions02.png" />
     <Image Include="OnlineCppCompilers\WandboxOptions03.png" />
+    <Image Include="SharedPtr\SharedPointer_01.png" />
+    <Image Include="SharedPtr\SharedPointer_02.png" />
     <Image Include="TemplateClassBasics\template_instantiations_01.png" />
     <Image Include="TemplateClassBasics\template_instantiations_02.png" />
     <Image Include="Trim\stl_base.png" />
     <Image Include="UniformInitialization\cpp_init.gif" />
     <Image Include="VariadicTemplates\cpp_snippets_mixins_01.png" />
     <Image Include="VariadicTemplates\cpp_snippets_mixins_02.png" />
-    <Image Include="WeakPtr\WeakPointer_01.PNG" />
-    <Image Include="WeakPtr\WeakPointer_02.PNG" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
