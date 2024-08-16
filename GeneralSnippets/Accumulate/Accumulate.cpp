@@ -10,8 +10,8 @@ namespace AlgorithmAccumulate {
 
         std::string s{ 
             std::accumulate(
-                std::begin(vec),
-                std::end(vec),
+                vec.begin(),
+                vec.end(),
                 std::string{}, // first element
                 [counter = 0](const std::string& first, const auto& next) mutable {
                     counter++;
@@ -33,8 +33,8 @@ namespace AlgorithmAccumulate {
 
         std::string s{ 
             std::accumulate(
-                std::begin(vec),
-                std::end(vec),
+                vec.begin(),
+                vec.end(),
                 std::string{}, // first element
                 [counter = 0](const std::string& first, const T& next) mutable {
                     counter++;

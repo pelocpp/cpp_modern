@@ -147,7 +147,7 @@ namespace OptionalExamples {
         std::set<int> ints{ 1, 2, 3, 4, 5 };
 
         // construct a std::vector<int> object inside std::optional in-place
-        optVec.emplace(std::begin(ints), std::end(ints));
+        optVec.emplace(ints.begin(), ints.end());
 
         std::copy(
             optVec->begin(),

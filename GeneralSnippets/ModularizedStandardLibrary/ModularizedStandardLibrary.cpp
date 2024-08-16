@@ -32,8 +32,8 @@ namespace ModularizedStandardLibrary {
 
         // retrieve names from phonebook
         std::transform(
-            std::begin(phonebook),
-            std::end(phonebook),
+            phonebook.begin(),
+            phonebook.end(),
             std::back_inserter(names),
             [](const std::pair<std::string, size_t>& entry) {
                 return std::get<0>(entry);

@@ -137,8 +137,8 @@ namespace BraceInitialization {
         };
 
         std::for_each(
-            std::begin(myVector),
-            std::end(myVector),
+            myVector.begin(),
+            myVector.end(),
             [](int value) {
                 std::cout << value << ", ";
             }
@@ -146,8 +146,8 @@ namespace BraceInitialization {
         std::cout << std::endl;
 
         std::for_each(
-            std::begin(myMap),
-            std::end(myMap),
+            myMap.begin(),
+            myMap.end(),
             [](const std::pair<std::string, int>& value) {
                 std::cout << value.first << " - " << value.second << std::endl;
             }
@@ -155,8 +155,8 @@ namespace BraceInitialization {
 
         // or shorter
         std::for_each(
-            std::begin(myMap),
-            std::end(myMap),
+            myMap.begin(),
+            myMap.end(),
             [](const auto& value) {
                 std::cout << value.first << " - " << value.second << std::endl;
             }

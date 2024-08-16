@@ -421,8 +421,8 @@ namespace TypeTraits_Demo_Remove_Reference
     void sort_01(Container& container)
     {
         std::sort(
-            std::begin(container),
-            std::end(container),
+            container.begin(),
+            container.end(),
             [](auto n1, auto n2) -> bool {
                 return n1 < n2;
             }
@@ -433,8 +433,8 @@ namespace TypeTraits_Demo_Remove_Reference
     void sort_02(Container& container)
     {
         std::sort(
-            std::begin(container),
-            std::end(container),
+            container.begin(),
+            container.end(),
             [](typename Container::value_type n1, typename Container::value_type n2) {
                 return n1 < n2;
             }
@@ -445,8 +445,8 @@ namespace TypeTraits_Demo_Remove_Reference
     void sort_03(Container& container)
     {
         std::sort(
-            std::begin(container),
-            std::end(container),
+            container.begin(),
+            container.end(),
             []( decltype (container[0]) n1, 
                 decltype (container[0]) n2) {
                     return n1 < n2;
@@ -458,8 +458,8 @@ namespace TypeTraits_Demo_Remove_Reference
     void sort_04(Container& container)
     {
         std::sort(
-            std::begin(container),
-            std::end(container),
+            container.begin(),
+            container.end(),
             []( std::remove_reference<decltype (container[0])>::type n1,
                 std::remove_reference<decltype (container[0])>::type n2) {
                     return n1 < n2;

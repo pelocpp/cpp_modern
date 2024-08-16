@@ -11,28 +11,28 @@ namespace TrimExample {
     static void leftTrimInPlace(std::string& s) {
 
         std::string::iterator pos = std::find_if(
-            std::begin(s),
-            std::end(s),
+            s.begin(),
+            s.end(),
             [](unsigned char ch) {
                 return !std::isspace(ch);
             }
         );
 
-        s.erase(std::begin(s), pos);
+        s.erase(s.begin(), pos);
     }
 
     // trim string from end (in place)
     static void rightTrimInPlace(std::string& s) {
 
         std::string::reverse_iterator pos = std::find_if(
-            std::rbegin(s),
-            std::rend(s),
+            s.rbegin(),
+            s.rend(),
             [](unsigned char ch) {
                 return !std::isspace(ch);
             }
         );
 
-        s.erase(pos.base(), std::end(s));
+        s.erase(pos.base(), s.end());
     }
 
     // trim string from both ends (in place)
@@ -87,18 +87,18 @@ namespace TrimExample {
         std::vector<int> vec{ 1, 2, 3, 4, 5 };
 
         std::vector<int>::iterator it = std::find(
-            std::begin(vec),
-            std::end(vec),
+            vec.begin(),
+            vec.end(),
             3
         );
 
-        std::cout << *it << std::endl;  // prints '2'
+        std::cout << *it << std::endl;  // prints '3'
 
         std::reverse_iterator<std::vector<int>::iterator> rit{ it };
-        std::cout << *rit << std::endl; // prints '1'
+        std::cout << *rit << std::endl; // prints '2'
 
         std::vector<int>::iterator i2 = rit.base();
-        std::cout << *i2 << std::endl;  // prints '2'
+        std::cout << *i2 << std::endl;  // prints '3'
     }
 }
 

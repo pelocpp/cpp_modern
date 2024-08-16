@@ -42,9 +42,6 @@
     <ClCompile Include="InitializerList\InitializerList.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ConstExpr\ConstExpr_02.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="SharedPtr\SharedPtr.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -180,9 +177,6 @@
     <ClCompile Include="Transform\Transform.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ExpressionTemplates\ExpressionTemplates_02.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="DefaultInitialization\DefaultInitialization.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -243,7 +237,7 @@
     <ClCompile Include="TemplateClassBasics\AnotherArray.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ExpressionTemplates\ExpressionTemplates_01.cpp">
+    <ClCompile Include="ExpressionTemplates\ExpressionTemplates.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CopyMoveElision\CopyMoveElision.cpp">
@@ -708,9 +702,6 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Array\Array.md">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="ConstExpr\Constexpr_02.md">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="RValueLValue\RValueLValue.md">

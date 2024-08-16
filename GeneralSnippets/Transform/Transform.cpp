@@ -26,9 +26,9 @@ namespace AlgorithmTransform {
 
         // std::transform on a single range - retrieve names from phonebook
         std::transform(
-            std::begin(phonebook),
-            std::end(phonebook),
-            std::begin(names),    // beginning of the destination range
+            phonebook.begin(),
+            phonebook.end(),
+            names.begin(),      // beginning of the destination range
             [](const std::pair<std::string, size_t>& entry) {
                 return std::get<0>(entry);
             }
@@ -60,8 +60,8 @@ namespace AlgorithmTransform {
 
         // std::transform on a single range - retrieve names from phonebook
         std::transform(
-            std::begin(phonebook),
-            std::end(phonebook),
+            phonebook.begin(),
+            phonebook.end(),
             std::back_inserter(names),   // back_inserter needed (!)
             [](const std::pair<std::string, size_t>& entry) {
                 return std::get<0>(entry);
@@ -89,10 +89,10 @@ namespace AlgorithmTransform {
 
         // std::transform on two ranges - create contacts from separate informations
         std::transform(
-            std::begin(persons),
-            std::end(persons),
-            std::begin(numbers),
-            std::inserter(contacts, std::end(contacts)),
+            persons.begin(),
+            persons.end(),
+            numbers.begin(),
+            std::inserter(contacts, contacts.end()),
             [](const std::string& person, size_t number) {
                 return std::pair<std::string, size_t>(person, number);
             }

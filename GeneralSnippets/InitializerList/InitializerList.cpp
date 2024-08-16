@@ -12,8 +12,8 @@ namespace InitializerList {
         int result{};
 
         std::for_each(
-            std::begin(list),
-            std::end(list),
+            list.begin(),
+            list.end(),
             [&result](int value) {
                 result += value; 
             }
@@ -136,8 +136,8 @@ namespace InitializerList {
         std::cout << "Begin of list: ";
 
         std::for_each(
-            std::begin(list),
-            std::end(list),
+            list.begin(),
+            list.end(),
             [](const T& elem) {
                 std::cout << elem << " - ";
             }

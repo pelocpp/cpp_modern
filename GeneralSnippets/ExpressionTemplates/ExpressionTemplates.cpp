@@ -2,6 +2,10 @@
 // ExpressionTemplates_01.cpp // Expression Templates
 // =====================================================================================
 
+module;
+
+#include <chrono>
+
 module modern_cpp:expression_templates;
 
 namespace ExpressionTemplates {
@@ -32,8 +36,8 @@ namespace ExpressionTemplates {
 
         Matrix(T preset) {
             std::for_each(
-                std::begin(m_values),
-                std::end(m_values),
+                m_values.begin(),
+                m_values.end(),
                 [=](auto& row) {
                     row.fill(preset);
                 }

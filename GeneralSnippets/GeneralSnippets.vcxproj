@@ -178,7 +178,6 @@
     <ClCompile Include="ConceptsRequiresFunctions\ConceptsRequiresFunctions.cpp" />
     <ClCompile Include="ConceptsRequiresFunctions\Module_ConceptsRequiresFunctions.ixx" />
     <ClCompile Include="ConstExpr\ConstExpr.cpp" />
-    <ClCompile Include="ConstExpr\ConstExpr_02.cpp" />
     <ClCompile Include="ConstExpr\ConstExpr_CRC.cpp" />
     <ClCompile Include="ConstExpr\Module_ConstExpr.ixx" />
     <ClCompile Include="ConstructorsOrder\ConstructorsDestructorsOrder.cpp" />
@@ -236,8 +235,7 @@
     <ClCompile Include="Exercises\Module_Exercises_17_Concepts.ixx" />
     <ClCompile Include="Explicit\Explicit.cpp" />
     <ClCompile Include="Explicit\Module_Explicit.ixx" />
-    <ClCompile Include="ExpressionTemplates\ExpressionTemplates_01.cpp" />
-    <ClCompile Include="ExpressionTemplates\ExpressionTemplates_02.cpp" />
+    <ClCompile Include="ExpressionTemplates\ExpressionTemplates.cpp" />
     <ClCompile Include="ExpressionTemplates\Module_ExpressionTemplates.ixx" />
     <ClCompile Include="Folding\Module_Folding.ixx" />
     <ClCompile Include="Folding\Folding.cpp" />
@@ -377,7 +375,6 @@
     <None Include="ConceptsRequiresClasses\ConceptsRequiresClasses.md" />
     <None Include="ConceptsRequiresFunctions\ConceptsRequiresFunctions.md" />
     <None Include="ConstExpr\Constexpr.md" />
-    <None Include="ConstExpr\Constexpr_02.md" />
     <None Include="ConstructorsOrder\ConstructorsDestructorsOrder.md" />
     <None Include="Const\Const.md" />
     <None Include="Const\cpp_const.svg" />

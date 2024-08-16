@@ -74,11 +74,11 @@ namespace GenericLambdas {
 
         // use generic lambda with a vector of integers
         auto it1 = std::find_if(
-            std::begin(intValues),
-            std::end(intValues),
+            intValues.begin(),
+            intValues.end(),
             isGreaterThanFifty
         );
-        if (it1 != std::end(intValues)) {
+        if (it1 != intValues.end()) {
             std::cout << "Found a value: " << *it1 << std::endl;
         }
 
@@ -86,11 +86,11 @@ namespace GenericLambdas {
 
         // use exactly the *same* generic lambda with a vector of doubles
         auto it2 = std::find_if(
-            std::begin(doubleValues),
-            std::end(doubleValues),
+            doubleValues.begin(),
+            doubleValues.end(),
             isGreaterThanFifty
         );
-        if (it2 != std::end(doubleValues)) {
+        if (it2 != doubleValues.end()) {
             std::cout << "Found a value: " << *it2 << std::endl;
         }
     }
@@ -107,8 +107,8 @@ namespace GenericLambdas {
 
         // use template function with a vector of integers
         auto it1 = std::find_if(
-            std::begin(intValues),
-            std::end(intValues),
+            intValues.begin(),
+            intValues.end(),
             isGreaterThanFiftyEx<int>
         );
         if (it1 != std::end(intValues)) {
@@ -120,8 +120,8 @@ namespace GenericLambdas {
         // use exactly the *same* template function with
         // another specialization with a vector of doubles
         auto it2 = std::find_if(
-            std::begin(doubleValues),
-            std::end(doubleValues),
+            doubleValues.begin(),
+            doubleValues.end(),
             isGreaterThanFiftyEx<double>
         );
         if (it2 != std::end(doubleValues)) {

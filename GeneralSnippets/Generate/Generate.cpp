@@ -11,14 +11,14 @@ namespace AlgorithmGenerate {
         std::vector<int> values(10);
 
         std::generate(
-            std::begin(values),
-            std::end(values),
+            values.begin(),
+            values.end(),
             [count = 1]() mutable { return count++; }
         );
 
         std::copy(
-            std::begin(values),
-            std::end(values),
+            values.begin(),
+            values.end(),
             std::ostream_iterator<int>(std::cout, " ")
         );
 

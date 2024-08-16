@@ -16,23 +16,23 @@ namespace BackInserter {
 
         // using std::back_inserter inside std::copy 
         std::copy(
-            std::begin(vec1),
-            std::end(vec1), 
+            vec1.begin(),
+            vec1.end(),
             std::back_inserter(vec2)
         );
 
         std::cout << "vec1 = ";
         std::copy(
-            std::begin(vec1),
-            std::end(vec1),
+            vec1.begin(),
+            vec1.end(),
             std::ostream_iterator<int>(std::cout, " ")
         );
         std::cout << std::endl;
 
         std::cout << "vec2 = ";
         std::copy(
-            std::begin(vec2),
-            std::end(vec2),
+            vec2.begin(),
+            vec2.end(),
             std::ostream_iterator<int>(std::cout, " ")
         );
         std::cout << std::endl;
@@ -56,8 +56,8 @@ namespace BackInserter {
 
         // using std::back_inserter inside std::copy 
         std::copy(
-            std::begin(vec1),
-            std::end(vec1),
+            vec1.begin(),
+            vec1.end(),
             std::back_inserter(vec2)
         );
         // v2 now contains 1 2 3 
@@ -65,16 +65,16 @@ namespace BackInserter {
         // displaying v1 and v2 
         std::cout << "vec1 = ";
         std::copy(
-            std::begin(vec1),
-            std::end(vec1),
+            vec1.begin(),
+            vec1.end(),
             std::ostream_iterator<int>(std::cout, " ")
         );
         std::cout << std::endl;
 
         std::cout << "vec2 = ";
         std::copy(
-            std::begin(vec2),
-            std::end(vec2),
+            vec2.begin(),
+            vec2.end(),
             std::ostream_iterator<int>(std::cout, " ")
         );
         std::cout << std::endl;

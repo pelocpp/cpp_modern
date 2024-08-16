@@ -9,8 +9,11 @@ namespace EraseRemoveIdiom
     static auto print = [](const std::vector<int>& v) {
         std::cout << "Length:   " << v.size() << std::endl;
         std::cout << "Capacity: " << v.capacity() << std::endl;
-        std::for_each(std::begin(v), std::end(v), [](const auto& e) {
-            std::cout << e << ' ';
+        std::for_each(
+            v.begin(),
+            v.end(),
+            [](const auto& e) {
+                std::cout << e << ' ';
             }
         );
         std::cout << std::endl << std::endl;

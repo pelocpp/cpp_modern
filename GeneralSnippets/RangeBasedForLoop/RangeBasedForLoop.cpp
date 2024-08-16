@@ -41,32 +41,32 @@ namespace RangeBasedForLoop {
 
         // b) Looks like C++, very classic style
         std::for_each(
-            std::begin(vec),           // Iterator-object for begin of range
-            std::end(vec),             // Iterator-object for end of range
-            processElement             // function pointer
+            vec.begin(),                   // Iterator-object for begin of range
+            vec.end(),                     // Iterator-object for end of range
+            processElement                 // function pointer
         );
         std::cout << std::endl;
 
         // c) Same as b), modified ranges
         std::for_each(
-            std::next(std::begin(vec)),    // Iterator-object for begin of range
-            std::prev(std::end(vec)),      // Iterator-object for end of range
+            std::next(vec.begin()),        // Iterator-object for begin of range
+            std::prev(vec.end()),          // Iterator-object for end of range
             processElement                 // function pointer
         );
         std::cout << std::endl;
 
         // d) Looks like C++, classic style, 'Functor'-stylistic
         std::for_each(
-            std::begin(vec),               // Iterator-object for begin of range
-            std::end(vec),                 // Iterator-object for end of range
-            ElementProcessor{}        // "callable" object
+            vec.begin(),                   // Iterator-object for begin of range
+            vec.end(),                     // Iterator-object for end of range
+            ElementProcessor{}             // "callable" object
         );
         std::cout << std::endl;
 
         // e) Using STL algorithm std::for_each with a lambda: Modern style
         std::for_each(
-            std::begin(vec),               // Iterator-object for begin of range
-            std::end(vec),                 // Iterator-object for end of range
+            vec.begin(),                   // Iterator-object for begin of range
+            vec.end(),                     // Iterator-object for end of range
             [](int n) {                    // anonymous method (lambda)
                 std::cout << n << " ";
             }
@@ -103,8 +103,8 @@ namespace RangeBasedForLoop {
         std::cout << std::endl;
 
         // j) Real C++: How the compiler 'sees' a Range-based 'for' Loop
-        std::vector<int>::iterator begin = std::begin(vec);
-        std::vector<int>::iterator end = std::end(vec);
+        std::vector<int>::iterator begin = vec.begin();
+        std::vector<int>::iterator end = vec.end();
 
         while (begin != end) {
 
@@ -115,8 +115,8 @@ namespace RangeBasedForLoop {
         std::cout << std::endl;
 
         // k) Same as h), using 'auto'
-        auto begin2 = std::begin(vec);
-        auto end2 = std::end(vec);
+        auto begin2 = vec.begin();
+        auto end2 = vec.end();
 
         while (begin2 != end2) {
 
