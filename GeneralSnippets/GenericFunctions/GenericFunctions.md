@@ -21,6 +21,17 @@
 
 ## Einleitung <a name="link1"></a>
 
+Eine Funktion, die mindestens einen Parameter vom Typ `auto` hat,
+wird als *generische Funktion* bezeichnet:
+
+```cpp
+auto function(auto x, int y) {
+    std::cout << "x=" << x << ", y=" << y << std::endl;
+};
+```
+
+Ebenso:
+
 Ein Lambda-Ausdruck, der mindestens einen Parameter vom Typ `auto` hat,
 wird als generischer Lambda-Ausdruck bezeichnet:
 
@@ -32,7 +43,7 @@ auto lambda = [](auto x, int y) {
 
 Man beachte, dass der Lambda Ausdruck einen Parameter vom Typ `auto` hat.
 
-Intern &ndash; also aus Sicht des Compilers &ndash; wird ein derartiger Lambda Ausdruck
+Intern &ndash; also aus Sicht des Compilers &ndash; wird ein derartige Funktion bzw. ein derartiger Lambda Ausdruck
 auf ein &bdquo;aufrufbares Objekt&rdquo; abgebildet.
 Der Aufruf-Operator `operator()` wird dabei im Sinne der Template Technik als so genannte
 *Template Member Function* realisiert:
@@ -47,7 +58,7 @@ struct Lambda
 };
 ```
 
-Besitzt ein Lambda Ausdruck mehrere `auto` Parameter, dann werden bei der Umsetzung
+Besitzt eine Funktion bzw. ein Lambda Ausdruck mehrere `auto` Parameter, dann werden bei der Umsetzung
 auf eine adäquate *Template Member Function* mehrere Template Parameter eingesetzt:
 
 ```cpp
