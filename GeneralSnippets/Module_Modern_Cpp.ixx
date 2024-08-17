@@ -36,7 +36,7 @@ export import :expression_templates;
 export import :folding;
 export import :functional_programming;
 export import :generate;
-export import :generic_lambdas;
+export import :generic_functions;
 export import :initializer_list;
 export import :input_output_streams;
 export import :invoke;

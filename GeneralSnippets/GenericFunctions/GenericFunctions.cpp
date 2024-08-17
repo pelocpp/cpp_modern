@@ -1,8 +1,101 @@
 // =====================================================================================
-// GenericLambdas.cpp // Generic Lambdas
+// GenericFunctions.cpp // Generic Functions (incl. Lambdas)
 // =====================================================================================
 
-module modern_cpp:generic_lambdas;
+module modern_cpp:generic_functions;
+
+
+namespace GenericFunctions {
+
+    // -------------------------------------------------------------------
+
+    static auto function(auto x, int y) {
+        std::cout << "x=" << x << ", y=" << y << std::endl;
+    };
+
+    static void test_01()
+    {
+        function(1, 100);
+        function(2.5, 101);
+        function(std::string{ "ABC" }, 102);
+        function("XYZ", 103);
+    }
+
+    struct Function
+    {
+        template <typename T>
+        void operator() (T x, int y) {
+            std::cout << "x=" << x << ", y=" << y << std::endl;
+        }
+    };
+
+    static void test_02()
+    {
+        struct Function func;
+        func(1, 200);
+        func(2.5, 201);
+        func(std::string{ "ABC" }, 202);
+        func("XYZ", 203);
+    }
+
+    static void functionTwice(auto x, auto y) {
+        std::cout << "x=" << x << ", y=" << y << std::endl;
+    };
+
+    struct FuncionTwice
+    {
+        template <typename T, typename U>
+        void operator() (T x, U y) {
+            std::cout << "x=" << x << ", y=" << y << std::endl;
+        }
+    };
+
+    static void test_03()
+    {
+        functionTwice(1, 300);
+        functionTwice(2.5, 301);
+        functionTwice(std::string{ "ABC" }, 302);
+        functionTwice("XYZ", 303);
+
+        struct FuncionTwice twice;
+        twice(1, 400);
+        twice(2.5, 401);
+        twice(std::string{ "ABC" }, 402);
+        twice("XYZ", 403);
+    }
+
+    // -------------------------------------------------------------------
+
+    // define a generic function (top-level (!))
+    static bool isGreaterThanFifty(const auto& n) { return n > 50; };
+
+    static void test_04()
+    {
+        std::vector<int> intValues{ 44, 65, 22, 77, 2 };
+
+        // use generic lambda with a vector of integers
+        auto it1 = std::find_if(
+            intValues.begin(),
+            intValues.end(),
+            isGreaterThanFifty<int>
+        );
+        if (it1 != intValues.end()) {
+            std::cout << "Found a value: " << *it1 << std::endl;
+        }
+
+        std::vector<double> doubleValues{ 24.5, 75.5, 12.5, 87.5, 12.5 };
+
+        // use exactly the *same* generic lambda with a vector of doubles
+        auto it2 = std::find_if(
+            doubleValues.begin(),
+            doubleValues.end(),
+            isGreaterThanFifty<double>
+        );
+        if (it2 != doubleValues.end()) {
+            std::cout << "Found a value: " << *it2 << std::endl;
+        }
+    }
+}
 
 namespace GenericLambdas {
 
@@ -317,11 +410,18 @@ namespace GenericLambdas {
         auto result1 = add<int, double>(n, d);
         std::cout << result1 << std::endl;
     }
-
-    // ---------------------------------------------------------------------
 }
 
-void main_generic_lambdas()
+static void test_generic_functions()
+{
+    using namespace GenericFunctions;
+    test_01();
+    test_02();
+    test_03();
+    test_04();
+}
+
+static void test_generic_lambdas()
 {
     using namespace GenericLambdas;
     test_01();
@@ -340,6 +440,12 @@ void main_generic_lambdas()
     test_14();
     test_15();
     test_16();
+}
+
+void main_generic_functions()
+{
+    test_generic_functions();
+    test_generic_lambdas();
 }
 
 // =====================================================================================

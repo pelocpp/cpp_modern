@@ -245,8 +245,8 @@
     <ClCompile Include="FunctionalProgramming\Module_FunctionalProgramming.ixx" />
     <ClCompile Include="Generate\Generate.cpp" />
     <ClCompile Include="Generate\Module_Generate.ixx" />
-    <ClCompile Include="GenericLambdas\GenericLambdas.cpp" />
-    <ClCompile Include="GenericLambdas\Module_Generic_Lambdas.ixx" />
+    <ClCompile Include="GenericFunctions\GenericFunctions.cpp" />
+    <ClCompile Include="GenericFunctions\Module_Generic_Functions.ixx" />
     <ClCompile Include="Global\Dummy.cpp" />
     <ClCompile Include="InitializerList\InitializerList.cpp" />
     <ClCompile Include="InitializerList\Module_InitializerList.ixx" />
@@ -410,7 +410,7 @@
     <None Include="FunctionalProgramming\FunctionalProgramming.md" />
     <None Include="Generate\cpp_generate.svg" />
     <None Include="Generate\Generate.md" />
-    <None Include="GenericLambdas\GenericLambdas.md" />
+    <None Include="GenericFunctions\GenericFunctions.md" />
     <None Include="InitializerList\cpp_initializer_list.svg" />
     <None Include="InitializerList\InitializerList.md" />
     <None Include="InputOutputStreams\InputOutputStreams.md" />

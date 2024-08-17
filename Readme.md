@@ -155,7 +155,7 @@ Es folgt eine tabellarische Auflistung dieser Unterverzeichnisse.
 | [Folding](GeneralSnippets/Folding/Folding.md) | *Folding Expressions* |
 | [Functional Programming](GeneralSnippets/FunctionalProgramming/FunctionalProgramming.md) | Funktionale Programmierung |
 | [Generate](GeneralSnippets/Generate/Generate.md) | STL-Algorithmus `std::generate` |
-| [Generic Lambdas](GeneralSnippets/GenericLambdas/GenericLambdas.md) | Generische Lambda Ausdrücke |
+| [Generic Functions](GeneralSnippets/GenericFunctions/GenericFunctions.md) | Generische Funktionen (inkl. Lambdas) |
 | [InitializerList](GeneralSnippets/InitializerList/InitializerList.md) | Klasse `std::initializer_list<T>` |
 | [Input/Output Streams](GeneralSnippets/InputOutputStreams/InputOutputStreams.md) | Streams manipulieren und formatieren |
 | [Invoke](GeneralSnippets/Invoke/Invoke.md) | `std::invoke`: "*Uniformly invoking anything callable*" |

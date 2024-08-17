@@ -1,4 +1,4 @@
-﻿# Generische Lambda Ausdrücke
+﻿# Generische Funktionen (inkl. Lambdas)
 
 [Zurück](../../Readme.md)
 

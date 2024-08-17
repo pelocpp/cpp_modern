@@ -222,9 +222,6 @@
     <ClCompile Include="ConstExpr\ConstExpr_CRC.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GenericLambdas\GenericLambdas.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="TemplateClassBasics\TemplatesClassBasics01.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -373,9 +370,6 @@
       <Filter>Modules</Filter>
     </ClCompile>
     <ClCompile Include="Generate\Module_Generate.ixx">
-      <Filter>Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="GenericLambdas\Module_Generic_Lambdas.ixx">
       <Filter>Modules</Filter>
     </ClCompile>
     <ClCompile Include="InitializerList\Module_InitializerList.ixx">
@@ -652,6 +646,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Modules\Modules.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GenericFunctions\Module_Generic_Functions.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="GenericFunctions\GenericFunctions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -950,9 +950,6 @@
     <None Include="Bind\Bind.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="GenericLambdas\GenericLambdas.md">
-      <Filter>Resource Files</Filter>
-    </None>
     <None Include="TemplateClassBasics\cpp_template_instantiation.svg">
       <Filter>Resource Files</Filter>
     </None>
@@ -1038,6 +1035,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Modules\cpp_modules_02.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="GenericFunctions\GenericFunctions.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
