@@ -63,11 +63,8 @@ effizienter ist, siehe dazu auch die folgenden beiden Abbildungen:
 
 ## *Control Block* <a name="link3"></a>
 
-
-*Zweiter Hinweis*:
-
 Wesentlich für die Arbeitsweise eines `std::shared_ptr`-Objekts ist der so genannte *Control Block*:
-Siehe hierzu Abbildung 3: 
+Siehe hierzu *Abbildung* 3: 
 
 <img src="cpp_control_block_01.svg" width="600">
 

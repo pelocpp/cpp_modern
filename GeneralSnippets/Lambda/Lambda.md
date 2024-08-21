@@ -70,7 +70,7 @@ Die `counter`-Variable ist nur **in** der Lambda-Funktion verfügbar.
 ## Weitere Besonderheiten im Aufbau eines Lambda-Objekts <a name="link3"></a>
 
 Neben der Zugriffsklausel kann ein Lambda-Objekt mit zahlreichen Schlüsselwörtern *garniert* werden.
-Siehe hierzu Abbildung 1:
+Siehe hierzu *Abbildung* 1:
 
 <img src="cpp_snippets_lambda.svg" width="300">
 

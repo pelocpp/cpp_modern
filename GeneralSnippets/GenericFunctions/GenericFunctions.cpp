@@ -24,7 +24,7 @@ namespace GenericFunctions {
     struct Function
     {
         template <typename T>
-        void operator() (T x, int y) {
+        auto operator() (T x, int y) {
             std::cout << "x=" << x << ", y=" << y << std::endl;
         }
     };
@@ -38,14 +38,14 @@ namespace GenericFunctions {
         func("XYZ", 203);
     }
 
-    static void functionTwice(auto x, auto y) {
+    static auto functionTwice(auto x, auto y) {
         std::cout << "x=" << x << ", y=" << y << std::endl;
     };
 
     struct FuncionTwice
     {
         template <typename T, typename U>
-        void operator() (T x, U y) {
+        auto operator() (T x, U y) {
             std::cout << "x=" << x << ", y=" << y << std::endl;
         }
     };
@@ -67,13 +67,13 @@ namespace GenericFunctions {
     // -------------------------------------------------------------------
 
     // define a generic function (top-level (!))
-    static bool isGreaterThanFifty(const auto& n) { return n > 50; };
+    static auto isGreaterThanFifty(const auto& n) { return n > 50; };
 
     static void test_04()
     {
         std::vector<int> intValues{ 44, 65, 22, 77, 2 };
 
-        // use generic lambda with a vector of integers
+        // use generic function with a vector of integers
         auto it1 = std::find_if(
             intValues.begin(),
             intValues.end(),
@@ -85,7 +85,7 @@ namespace GenericFunctions {
 
         std::vector<double> doubleValues{ 24.5, 75.5, 12.5, 87.5, 12.5 };
 
-        // use exactly the *same* generic lambda with a vector of doubles
+        // use exactly the *same* generic function with a vector of doubles
         auto it2 = std::find_if(
             doubleValues.begin(),
             doubleValues.end(),
@@ -101,7 +101,7 @@ namespace GenericLambdas {
 
     // -------------------------------------------------------------------
 
-    auto lambda = [](auto x, int y) {
+    auto lambda = [] (auto x, int y) {
         std::cout << "x=" << x << ", y=" << y << std::endl;
     };
 
@@ -116,7 +116,7 @@ namespace GenericLambdas {
     struct Lambda
     {
         template <typename T>
-        void operator() (T x, int y) {
+        auto operator() (T x, int y) {
             std::cout << "x=" << x << ", y=" << y << std::endl;
         }
     };
@@ -130,14 +130,14 @@ namespace GenericLambdas {
         instance("XYZ", 203);
     }
 
-    auto lambdaTwice = [](auto x, auto y) {
+    auto lambdaTwice = [] (auto x, auto y) {
         std::cout << "x=" << x << ", y=" << y << std::endl;
     };
 
     struct LambdaTwice
     {
         template <typename T, typename U>
-        void operator() (T x, U y) {
+        auto operator() (T x, U y) {
             std::cout << "x=" << x << ", y=" << y << std::endl;
         }
     };

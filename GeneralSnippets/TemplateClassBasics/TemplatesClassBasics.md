@@ -86,7 +86,7 @@ container.setData(123.456);
 
 Im Prinzip haben wir es hier &ndash; oder
 allgemeiner formuliert: in der generischen Programmierung  &ndash; mit 3 Ebenen zu tun
-(siehe Abbildung 1):
+(siehe *Abbildung* 1):
 
 <img src="cpp_template_instantiation.svg" width="400">
 

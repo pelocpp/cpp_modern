@@ -32,7 +32,7 @@ die Schnittstellen enthalten (Dateiendung *.h*) und Implementierungsdateien,
 die den dazugehörigen Programmcode enthalten (Dateiendung *.cpp*).
 
 Ab C++ 20 gibt es das Sprachmittel der *Module*: Darunter versteht man Softwarekomponenten,
-die Schnittstelle und Implementation zusammenfassen (können).
+die Schnittstelle und Implementierung zusammenfassen (können).
 Sie werden unabhängig voneinander übersetzt und können danach von anderen Programmteilen verwendet werden.
 
 ---
@@ -44,7 +44,7 @@ mit einer Aufteilung in Header- und Implementierungsdateien weist einige Nachtei
 
 
   * Die Aufteilung in Header- und Implementierungsdatei führt zu doppelt so vielen Dateien im Vergleich dazu,
-  wenn man Schnittstelle und Implementation beispielsweise in einer einzigen Datei ablegen würde.
+  wenn man Schnittstelle und Implementierung beispielsweise in einer einzigen Datei ablegen würde.
 
   * Die Aufteilung einer Funktionalität auf zwei Dateien kann zu Inkonsistenzen führen,
   wenn die Deklaration in der Header-Datei nicht mit derjenigen in der Implementierungsdatei übereinstimmt.
@@ -128,7 +128,7 @@ Daher folgt es denselben Prinzipien wie die IPR:
 
   * Typbezogenheit: Jeder Ausdruck hat einen Typ.
 
-  * Minimalität: Keine redundanten Werte, und eine Traverierung beinhaltet keine redundanten Indirektionen.
+  * Minimalität: Keine redundanten Werte, und eine Traversierung beinhaltet keine redundanten Indirektionen.
 
   * Compilerneutralität: Nicht an einen bestimmten Compiler gebunden.
 
@@ -310,7 +310,7 @@ ein einzelnes Modul in verschiedene Übersetzungseinheiten zu unterteilen.
 Diese Unterteilungen werden als *Partitionen* bezeichnet.
 
 Eine *Partition* wiederum kann aus einer oder aus mehreren Dateien bestehen.
-Hierbei unterscheidet man *Module Interface Units* und *Module Implementation  Units*:
+Hierbei unterscheidet man *Module Interface Units* und *Module Implementation Units*:
 
 Eine *Module Interface Unit* kann es nur einmal geben, die dazugehörigen
 *Module Implementation Units* wiederum lassen sich auf mehrere Dateien aufteilen:
@@ -361,7 +361,7 @@ export import :weak_ptr;
 
 
 ```cpp
-01: /// Module Implementation Partition: File SharedPtr.cpp
+01: // Module Implementation Partition: File SharedPtr.cpp
 02: module modern_cpp:shared_ptr;
 03: 
 04: namespace SharedPointer {

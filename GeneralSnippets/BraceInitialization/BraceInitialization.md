@@ -39,7 +39,7 @@ Sie wird auch als &bdquo;*Uniform Initialization*&rdquo; oder als &bdquo;*Brace 
 
 <img src="cpp_init.gif" width="400">
 
-Abbildung 1: C++ und Initialisierung: *Relax*!
+*Abbildung* 1: C++ und Initialisierung: *Relax*!
 
 ---
 

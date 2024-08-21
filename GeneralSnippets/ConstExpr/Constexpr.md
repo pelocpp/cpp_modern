@@ -241,7 +241,7 @@ Um es an einem Beispiel zu betrachten. Ein Aufruf der `sumUpPowerTable`-Funktion
 und einer Tabellengröße gleich 5 die Summe von 1 + 16 + 81 + 256 + 625 = 979 zurückliefern.
 Diesen (konstanten) Wert müssten wir im OpCode des Programms vorfinden:
 
-In Abbildung 2 &ndash; und bei Bedarf mit dem *Calculator* &ndash; können wir uns davon überzeugen:
+In *Abbildung* 2 &ndash; und bei Bedarf mit dem *Calculator* &ndash; können wir uns davon überzeugen:
 Der hexadezimale Wert `3D3h` tritt in einer `MOV`-Instruktion auf, der Übersetzer hat tatsächlich alle Berechnungen zur 
 Übersetzungszeit vorgenommen:
 

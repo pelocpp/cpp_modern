@@ -23,7 +23,7 @@ Dabei gilt zwischen `rit` und `it` die folgende &ndash; auf den ersten Blick nic
 *rit == *(it - 1)
 ```
 
-Siehe dazu auch die folgenden Abbildung:
+Siehe dazu auch die folgende *Abbildung* 1:
 
 <img src="cpp_snippet_base_02.svg" width="350">
 

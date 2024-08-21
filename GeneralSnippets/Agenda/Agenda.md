@@ -31,7 +31,7 @@
   * IIFE &ndash; *Immediately Invoked Functional Expression*
 
 
-## Generische Lambda Ausdrücke
+## Generische Funktionen (inkl. Lambdas)
   * Übersicht
   * *Automatic Type Deduction* bei generischen Lambda Ausdrücken
   * Lambda Ausdrücke mit `template`-Header

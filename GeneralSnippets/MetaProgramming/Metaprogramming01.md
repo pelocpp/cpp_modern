@@ -236,7 +236,7 @@ Die Eulersche Zahl *e* lässt sich mit folgender Formel berechnen:
 
 <img src="euler_number.png" width="300"> 
 
-Abbildung: Reihenentwicklung der Eulerschen Zahl *e*.
+*Abbildung* 2: Reihenentwicklung der Eulerschen Zahl *e*.
 
 Da wir bereits wissen, wie Wiederholungsanweisungen, bedingte Anweisungen und Rückgabewerte in der Metaprogrammierung
 formuliert werden, fällt uns eine Implementierung nicht schwer:

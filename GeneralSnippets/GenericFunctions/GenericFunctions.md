@@ -52,7 +52,7 @@ Der Aufruf-Operator `operator()` wird dabei im Sinne der Template Technik als so
 struct Lambda
 {
     template <typename T>
-    void operator() (T x, int y) {
+    auto operator() (T x, int y) {
         std::cout << "x=" << x << ", y=" << y << std::endl;
     }
 };
@@ -62,14 +62,14 @@ Besitzt eine Funktion bzw. ein Lambda Ausdruck mehrere `auto` Parameter, dann we
 auf eine adäquate *Template Member Function* mehrere Template Parameter eingesetzt:
 
 ```cpp
-auto lambdaTwice = [](auto x, auto y) {
+auto functionTwice(auto x, auto y) {
     std::cout << "x=" << x << ", y=" << y << std::endl;
 };
 
-struct LambdaTwice
+struct FuncionTwice
 {
     template <typename T, typename U>
-    void operator() (T x, U y) {
+    auto operator() (T x, U y) {
         std::cout << "x=" << x << ", y=" << y << std::endl;
     }
 };

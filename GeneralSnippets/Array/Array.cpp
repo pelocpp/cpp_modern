@@ -242,7 +242,12 @@ namespace StdArray {
 #pragma warning(pop)
 
         // works as expected - need to use a standard algorithm
-        isEqual = std::equal(cArray, cArray + 4, other, other + 4);
+        isEqual = std::equal(
+            std::begin(cArray),
+            std::end(cArray),
+            std::begin(other),
+            std::end(other)
+        );
     }
 
     static void test_11() {
