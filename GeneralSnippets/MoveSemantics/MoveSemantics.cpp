@@ -36,9 +36,6 @@ namespace MoveSemantics {
         // getter
         size_t size() const;
         bool isEmpty() const;
-
-        // output operator
-        friend std::ostream& operator<< (std::ostream&, const BigData&);
     };
 
     // c'tors and d'tor
@@ -64,7 +61,7 @@ namespace MoveSemantics {
     // copy semantics
     BigData::BigData(const BigData& data) {
 
-        // std::cout << "copy c'tor" << std::endl;
+        std::println("copy c'tor");
 
         // allocate buffer
         m_size = data.m_size;
@@ -98,7 +95,7 @@ namespace MoveSemantics {
     // move semantics
     //BigData::BigData(BigData&& data) noexcept {  // move c'tor
 
-    //    // std::cout << "move c'tor" << std::endl;
+    //    std::println("move c'tor");
 
     //    m_data = data.m_data;   // shallow copy
     //    m_size = data.m_size;
@@ -162,24 +159,6 @@ namespace MoveSemantics {
         data.m_size = 0;
     }
 
-    // output operator
-    std::ostream& operator<< (std::ostream& os, const BigData& data) {
-        constexpr bool verbose = false;
-
-        os << "Size: " << data.m_size << " - Data at " << data.m_data;
-        if constexpr (verbose) {
-            os << std::endl;
-            os << "{";
-            for (size_t i = 0; i < data.m_size; i++) {
-                os << data.m_data[i];
-                if (i < data.m_size - 1)
-                    os << ',';
-            }
-            os << "}";
-        }
-        return os;
-    }
-
     // test methods
     static BigData createHugeData() {
         BigData data(10, 1);
@@ -189,9 +168,7 @@ namespace MoveSemantics {
     static void test_01_move_semantics() {
 
         BigData data;
-        std::cout << data << std::endl;
         data = createHugeData();
-        std::cout << data << std::endl;
     }
 
     static void test_02_demonstrate_move_ctor() {

@@ -8,12 +8,12 @@ namespace LValueRValue {
 
     // lvalue reference
     static void sayHello(std::string& message) {
-        std::cout << "sayHello [std::string&]:  " << message << std::endl;
+        std::println("sayHello [std::string&]:  {}", message);
     }
 
     // rvalue reference
     static void sayHello(std::string&& message) {
-        std::cout << "sayHello [std::string&&]: " << message << std::endl;
+        std::println("sayHello [std::string&&]: {}", message);
     }
 
     static void test01() {

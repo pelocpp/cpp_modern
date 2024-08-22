@@ -114,19 +114,11 @@ namespace Auto_Examples {
 
         // using automatic return type deduction
         auto planet{ make_planet() };
-
-        std::cout
-            << planet.name << ' '
-            << planet.moons << ' '
-            << planet.rings << std::endl;
+        std::println("{} {} {}", planet.name, planet.moons, planet.rings);
 
         // using automatic return type deduction & structured binding
         auto [name, num_moons, has_rings] = make_planet();
-
-        std::cout
-            << name << ' '
-            << num_moons << ' '
-            << has_rings << std::endl;
+        std::println("{} {} {}", name, num_moons, has_rings);
     }
 
     // ---------------------------------------------------------------------
@@ -140,20 +132,20 @@ namespace Auto_Examples {
 
     static void test_01_e() {
 
-        auto msg{ getMessage() };
-        std::cout << "Message: " << msg << std::endl;
+        auto msg1{ getMessage() };
+        std::println("Message: {}", msg1);
 
         // but:
         const auto& msg2{ getMessage() };
-        std::cout << "Message: " << msg2 << std::endl;
+        std::println("Message: {}", msg2);
 
         // or:
         decltype(getMessage()) msg3{ getMessage() };
-        std::cout << "Message: " << msg3 << std::endl;
+        std::println("Message: {}", msg3);
 
         // once again 'or':
         decltype(auto) msg4{ getMessage() };
-        std::cout << "Message: " << msg4 << std::endl;
+        std::println("Message: {}", msg4);
     }
 
     // ---------------------------------------------------------------------
