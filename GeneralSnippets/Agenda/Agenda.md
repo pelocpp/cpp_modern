@@ -219,7 +219,7 @@
   * Concepts
   * Ranges
   * Coroutines
-  * Modules
+  * Module
   * `std::format`
   * Spaceship Operator `<=>`
 

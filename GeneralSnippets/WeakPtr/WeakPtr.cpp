@@ -20,48 +20,50 @@ module modern_cpp:weak_ptr;
 
 namespace WeakPointer {
 
-    static void test_01() {
-        std::cout << std::boolalpha;
+    static void test_01()
+    {
+        std::println("Begin-of-Program");
 
-        std::cout << "Begin-of-program" << std::endl;
         std::weak_ptr<int> weakPtr;
 
         {
-            std::cout << "Begin-of-Scope" << std::endl;
+            std::println("Begin-of-Scope");
 
             std::shared_ptr<int> ptr1{ std::make_shared<int>(123) };
             // or
             // std::shared_ptr<int> ptr1{ new int{ 123 } };
 
-            std::cout << "Usage count shared_ptr:     " << ptr1.use_count() << std::endl;
+            std::println("Usage count shared_ptr:     {}", ptr1.use_count());
+
             weakPtr = ptr1;
-            std::cout << "Usage count shared_ptr:     " << ptr1.use_count() << std::endl;
+            
+            std::println("Usage count shared_ptr:     {}", ptr1.use_count());
+            std::println("Is weak ptr expired:        {}", weakPtr.expired());
 
             // need shared pointer to access weak pointer
-            std::cout << "Is weak ptr expired:        " << weakPtr.expired() << std::endl;
-
             std::shared_ptr<int> ptr2{ weakPtr.lock() };
-            if (ptr2 != nullptr) {
-
-                std::cout << "Usage count shared_ptr:     " << ptr1.use_count() << std::endl;
-                std::cout << "Usage count shared_ptr:     " << ptr2.use_count() << std::endl;
-
+            if (ptr2 != nullptr)
+            {
                 // access weak pointer via shared pointer
-                std::cout << "*sharedPtr:                 " << *ptr2 << std::endl;
+                std::println("*sharedPtr:                 {}", *ptr2);
+
+                std::println("Usage count shared_ptr:     {}", ptr1.use_count());
+                std::println("Usage count shared_ptr:     {}", ptr2.use_count());
             }
 
-            std::cout << "Is weak ptr expired:        " << weakPtr.expired() << std::endl;
-            std::cout << "End-of-Scope" << std::endl;
+            std::println("Is weak ptr expired:        {}", weakPtr.expired());
+            std::println("End-of-Scope");
         }
 
-        std::cout << "Is weak ptr expired:        " << weakPtr.expired() << std::endl;
+        std::println("Is weak ptr expired:        {}", weakPtr.expired());
 
-        // Note: C++17 initializer syntax: limited variable scope
-        if (std::shared_ptr<int> ptr3 = weakPtr.lock(); ptr3 == nullptr) {
-            std::cout << "Don't get the resource!" << std::endl;
+        // trying once more to access weak pointer
+        std::shared_ptr<int> ptr3{ weakPtr.lock() };
+        if (ptr3 == nullptr) {
+            std::println("Don't get the resource!");
         }
 
-        std::cout << "End-of-program" << std::endl;
+        std::println("End-of-Program");
     }
 
     // =============================================================================
@@ -85,10 +87,10 @@ namespace WeakPointer {
 
     public:
         ParentNode() {
-            std::cout << "c'tor ParentNode" << std::endl;
+            std::println("c'tor ParentNode");
         }
         ~ParentNode() {
-            std::cout << "d'tor ParentNode" << std::endl;
+            std::println("d'tor ParentNode");
         }
         void setRightNode(const std::shared_ptr<RightNode> right) {
             m_rightNode = right;
@@ -105,11 +107,11 @@ namespace WeakPointer {
     public:
         RightNode(std::shared_ptr<ParentNode> parent)
             : m_parentNode{ parent } {
-            std::cout << "c'tor RightNode" << std::endl;
+            std::println("c'tor RightNode");
         }
 
         ~RightNode() {
-            std::cout << "d'tor RightNode" << std::endl;
+            std::println("d'tor RightNode");
         }
     };
 
@@ -120,11 +122,11 @@ namespace WeakPointer {
     public:
         LeftNode(std::shared_ptr<ParentNode> parent)
             : m_parentNode{ parent } {
-            std::cout << "c'tor LeftNode" << std::endl;
+            std::println("c'tor LeftNode");
         }
 
         ~LeftNode() {
-            std::cout << "d'tor LeftNode" << std::endl;
+            std::println("d'tor LeftNode");
         }
     };
 
@@ -147,9 +149,9 @@ namespace WeakPointer {
         parent->setRightNode(rightNode);
         parent->setLeftNode(leftNode);
 
-        std::cout << "Reference-Count parent: " << parent.use_count() << std::endl;
-        std::cout << "Reference-Count rightNode: " << rightNode.use_count() << std::endl;
-        std::cout << "Reference-Count leftNode: " << leftNode.use_count() << std::endl;
+        std::println("Reference-Count parent:    {}", parent.use_count());
+        std::println("Reference-Count rightNode: {}", rightNode.use_count());
+        std::println("Reference-Count leftNode:  {}", leftNode.use_count());
     }
 }
 

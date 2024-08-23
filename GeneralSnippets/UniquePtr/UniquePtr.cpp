@@ -19,9 +19,9 @@ namespace UniquePointerGeneral {
 
     static void storeUniquePointer(std::unique_ptr<int>& ptr)
     {
-        std::cout << "*ptr:    " << *ptr << std::endl;
+        std::println("*ptr:    {}", *ptr);
         (*ptr)++;
-        std::cout << "*ptr:    " << *ptr << std::endl;
+        std::println("*ptr:    {}", *ptr);
 
         // take ownership right now:
         // std::unique_ptr<int> ptr2{ std::move(ptr) };
@@ -29,9 +29,9 @@ namespace UniquePointerGeneral {
 
     static void storeUniquePointerSafe(const std::unique_ptr<int>& ptr)
     {
-        std::cout << "*ptr:    " << *ptr << std::endl;
+        std::println("*ptr:    {}", *ptr);
         (*ptr)++;
-        std::cout << "*ptr:    " << *ptr << std::endl;
+        std::println("*ptr:    {}", *ptr);
 
         // ownership CANNOT be taken right now - ptr is const:
         // std::unique_ptr<int> ptr2{ std::move(ptr) };
@@ -39,9 +39,9 @@ namespace UniquePointerGeneral {
 
     static void storeUniquePointerAlternate(int* ptr)
     {
-        std::cout << "*ptr:    " << *ptr << std::endl;
+        std::println("*ptr:    {}", *ptr);
         (*ptr)++;
-        std::cout << "*ptr:    " << *ptr << std::endl;
+        std::println("*ptr:    {}", *ptr);
 
         // A) taking ownership right now: MAKES NO SENSE
         // B) delete: Under no circumstances: 
@@ -58,35 +58,35 @@ namespace UniquePointerGeneral {
         // auto ptr1{ std::make_unique<int>(123) };
 
         // access value behind smart pointer
-        std::cout << "*ptr1:   " << *ptr1 << std::endl;
+        std::println("*ptr1:   {}", *ptr1);
 
         // access value using raw pointer
         int* ip1{ ptr1.get() };
         (*ip1)++;
-        std::cout << "*ip:     " << *ip1 << std::endl;
+        std::println("*ip:     {}", *ip1);
 
         // access value - again - behind smart pointer
-        std::cout << "*ptr1:   " << *ptr1 << std::endl;
+        std::println("*ptr:    {}", *ptr1);
 
         // second std::unique_ptr by moving 'ptr1' to 'ptr2',
         // 'ptr1' doesn't own the object anymore
         std::unique_ptr<int> ptr2{ std::move(ptr1) };
-        // std::cout << "*ptr1: " << *ptr1 << std::endl;  // crashes 
-        std::cout << "*ptr2:   " << *ptr2 << std::endl;
+        // std::println("*ptr1:   {}", *ptr1);    // crashes 
+        std::println("*ptr2:   {}", *ptr2);
 
-        std::unique_ptr<int> ptr3;
+        std::unique_ptr<int> ptr3{};
         ptr3 = std::move(ptr2);
 
         int* ip3{ ptr3.get() };
         (*ip3)++;
-        std::cout << "*ptr3:   " << *ptr3 << std::endl;
+        std::println("*ptr3:   {}", *ptr3);
     }
 
     static void test_02()
     {
         // retrieving a unique pointer from a function
         std::unique_ptr<int> ptr{ loadUniquePointer() };
-        std::cout << "*ptr:   " << *ptr << std::endl;
+        std::println("*ptr:    {}", *ptr);
 
         // provide a function with a unique pointer: who owns the pointer now?
         storeUniquePointer(ptr);
@@ -95,7 +95,7 @@ namespace UniquePointerGeneral {
         storeUniquePointerAlternate(ptr.get());
 
         // does this work?
-        std::cout << "*ptr:   " << *ptr << std::endl;
+        std::println("*ptr:    {}", *ptr);
     }
 
     static void test_03()
@@ -115,7 +115,7 @@ namespace UniquePointer_SourceSinkPattern
 
     static void consumeResource(std::unique_ptr<int> ptr)  // call by-value (!)
     {
-        std::cout << "*ptr:    " << *ptr << std::endl;
+        std::println("*ptr:    {}", *ptr);
         // now *ptr is deleted 
     }
 
@@ -123,7 +123,7 @@ namespace UniquePointer_SourceSinkPattern
     {
         // creating a unique pointer with the help of a creator function
         std::unique_ptr<int> ptr{ createResource(123) };
-        std::cout << "*ptr:   " << *ptr << std::endl;
+        std::println("*ptr:    {}", *ptr);
 
         // Pass unique pointer to another function:
         // No need for explicit std::move, temporary is captured as R-Value reference
@@ -147,14 +147,14 @@ namespace UniquePointerWrappingResourceHandles {
 
     using FILE_UniquePtr = std::unique_ptr<FILE, FILE_Deleter>;
 
-    static FILE_UniquePtr make_fopen(const char* fname, const char* mode)
+    static FILE_UniquePtr make_fopen(const char* fileName, const char* mode)
     {
         FILE* file{ nullptr };
-        auto err{ fopen_s(&file, fname, mode) };
+        auto err{ fopen_s(&file, fileName, mode) };
         if (err != 0)
         {
             // print error info
-            std::cout << "Cannot open file " << fname << "!" << std::endl;
+            std::println("Cannot open file {}!", fileName);
             return nullptr;
         }
 
@@ -168,15 +168,14 @@ namespace UniquePointerWrappingResourceHandles {
         FILE_UniquePtr pInputFilePtr{ make_fopen(fileName, "r") };
 
         if (!pInputFilePtr) {
-            std::cout << "Done." << std::endl;
+            std::println("Done.");
             return;
         }
         else {
             FILE* fp{ pInputFilePtr.get() };
             char buf[512];
             fgets(buf, sizeof(buf), fp);
-
-            std::cout << "First Line: " << buf << std::endl;
+            std::print("First Line: {}", buf);
         }
     }
 }
@@ -230,14 +229,13 @@ namespace UniquePointerWrappingWin32Handles {
             OVERLAPPED ol = { 0 };
 
             if (::ReadFileEx(hFile, buffer, sizeof(buffer) - 1, &ol, NULL) == 0) {
-
-                std::cout << "Done." << std::endl;
+                std::println("Done.");
                 return;
             }
             else
             {
-                std::cout << "First part of File:" << std::endl;
-                std::cout << buffer << std::endl;
+                std::println("First part of File:");
+                std::println("{}", buffer);
             }
         }
     }

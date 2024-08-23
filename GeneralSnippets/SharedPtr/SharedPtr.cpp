@@ -29,7 +29,7 @@ namespace SharedPointer {
     // note: play with 'call-by-value' or 'call-by-reference'
     static void storeSharedPointer(std::shared_ptr<int> ptr)
     {
-        std::cout << "inner scope: " << ptr.use_count() <<  std::endl;
+        std::println("Inner scope: {}", ptr.use_count());
     }
 
     static void test_01() {
@@ -42,15 +42,15 @@ namespace SharedPointer {
         // auto ptr1{ std::make_shared<int>(123) };
 
         // access value behind smart pointer
-        std::cout << "ptr1:       " << *ptr1 << std::endl;
+        std::println("ptr1:        {}", *ptr1);
 
         // access value using raw pointer
         int* ip1{ ptr1.get() };
         (*ip1)++;
-        std::cout << "*ip:        " << *ip1 << std::endl;
+        std::println("*ip:         {}", *ptr1);
 
         // access value - again - behind smart pointer
-        std::cout << "*ptr1:      " << *ptr1 << std::endl;
+        std::println("*ptr1:       {}", *ptr1);
 
         // create several smart pointers that share the same object:
         //
@@ -62,22 +62,23 @@ namespace SharedPointer {
         ptr3 = ptr1;
 
         // retrieve number of different shared_ptr instances managing the same object
-        std::cout << "use_count:  " << ptr1.use_count() << std::endl;
-        std::cout << "use_count:  " << ptr2.use_count() << std::endl;
-        std::cout << "use_count:  " << ptr3.use_count() << std::endl;
+        std::println("use_count:   {}", ptr1.use_count());
+        std::println("use_count:   {}", ptr2.use_count());
+        std::println("use_count:   {}", ptr3.use_count());
 
         // access object through different shared_ptr instances
-        std::cout << "value:      " << *ptr1 << std::endl;
-        std::cout << "value:      " << *ptr2 << std::endl;
-        std::cout << "value:      " << *ptr3 << std::endl;
+        std::println("Value:       {}", *ptr1);
+        std::println("Value:       {}", *ptr2);
+        std::println("Value:       {}", *ptr3);
     }
 
     static void test_02()
     {
         std::shared_ptr<int> ptr{ loadSharedPointer() };
-        std::cout << "outer scope: " << ptr.use_count() << std::endl;
+        std::println("Outer scope: {}", ptr.use_count());
+
         storeSharedPointer(ptr);
-        std::cout << "outer scope: " << ptr.use_count() << std::endl;
+        std::println("Outer scope: {}", ptr.use_count());
         // no explicit delete on object ptr: shared ptr goes out of scope!
     }
 
@@ -95,7 +96,7 @@ namespace SharedPointer {
 
     static void storeSharedPointerEx(const std::shared_ptr<const int>& ptr)
     {
-        std::cout << "inner scope: " << ptr.use_count() << std::endl;
+        std::println("Inner scope: {}", ptr.use_count());
         // *ptr = 456;
     }
 
@@ -110,7 +111,7 @@ namespace SharedPointer {
     }
 }
 
-void main_shared_ptr()
+void main_shared_ptr() 
 {
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
     using namespace SharedPointer;
