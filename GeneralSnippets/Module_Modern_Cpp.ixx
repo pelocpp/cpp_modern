@@ -50,6 +50,7 @@ export import :move_semantics;
 export import :optional;
 export import :perfect_forwarding;
 export import :placement_new;
+export import :println;
 export import :raii;
 export import :random;
 export import :range_based_for_loop;

@@ -654,6 +654,12 @@
     <ClCompile Include="GenericFunctions\GenericFunctions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Println\Module_Println.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Println\Println.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -1040,6 +1046,9 @@
     <None Include="GenericFunctions\GenericFunctions.md">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="Println\Println.md">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="VariadicTemplates\cpp_snippets_mixins_01.png">
@@ -1166,6 +1175,9 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="SharedPtr\SharedPointer_02.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Println\StdPrintln.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

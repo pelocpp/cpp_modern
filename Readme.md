@@ -170,6 +170,7 @@ Es folgt eine tabellarische Auflistung dieser Unterverzeichnisse.
 | [Parameters with Const and Reference](GeneralSnippets/ParametersWithConstAndRef/ConstDeclarations.md)  | Die Deklarationen `int& const`, `int const&`, `const& int` und `const int&` im Vergleich |
 | [Perfect-Forwarding](GeneralSnippets/PerfectForwarding/PerfectForwarding.md) | Perfect Forwarding (`std::forward`) |
 | [Placement-New](GeneralSnippets/PlacementNew/PlacementNew.md) | *Placement New*: Trennung von Speicherallokation und Objektkonstruktion |
+| [Println](GeneralSnippets/Println/Println.md) | The Return of &bdquo;`printf`&rdquo;: `std::print(ln)` in C++ 23 |
 | [RAII](GeneralSnippets/RAII/RAII.md) | RAII-Idiom (*Resource acquisition is Initialization*) |
 | [Random](GeneralSnippets/Random/Random.md) | Generierung von Zufallszahlen |
 | [Range-Based For Loop](GeneralSnippets/RangeBasedForLoop/RangeBasedForLoop.md) | Range-based `for` Loop |
