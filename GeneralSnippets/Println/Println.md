@@ -2,13 +2,24 @@
 
 [Zurück](../../Readme.md)
 
+
 ---
 
 [Quellcode](Println.cpp)
 
 ---
 
-## Überblick
+## Inhalt
+
+  * [Einleitung](#link1)
+  * [Dokumentation](#link2)
+  * [Beispiele zur Ausgabe elementarer Datentypen](#link3)
+  * [Beispiele zur Ausgabe benutzerdefinierter Datentypen](#link4)
+  * [Literaturhinweise](#link5)
+
+---
+
+## Einleitung <a name="link1"></a>
 
 &bdquo;`printf`&rdquo;: Wer hat sie nicht vermisst? Die C-Bibliotheksfunktion war uns doch &ndash; trotz all ihrer Schwächen &ndash; 
 sehr ans Herz gewachsen.
@@ -26,7 +37,7 @@ Darüber hinaus weisen sie große Ähnlichkeiten zu `printf` auf!
 
 ---
 
-## Dokumentation
+## Dokumentation <a name="link2"></a>
 
 Eine genaue Beschreibung der Formatzeichenkette findet man in der
 &bdquo;[Standard Format Specification](https://en.cppreference.com/w/cpp/utility/format/spec)&rdquo; wieder.
@@ -55,9 +66,7 @@ Sie finden auch hierzu im Beispielcode eine Reihe von Beispielen vor.
 
 ---
 
-## Beispiele
-
-### Ausgabe elementarer Datentypen
+## Beispiele zur Ausgabe elementarer Datentypen <a name="link3"></a>
 
 
 *Beispiel*:
@@ -299,7 +308,7 @@ Binary:                 0B111
 ```
 
 
-### Ausgabe elementarer Datentypen
+## Beispiele zur Ausgabe benutzerdefinierter Datentypen <a name="link4"></a>
 
 
 *Beispiel*: *Basic Formatter API*
@@ -789,7 +798,7 @@ Color #64C8FF
 
 ---
 
-## Literaturhinweise:
+## Literaturhinweise <a name="link5"></a>
 
 Die Anregungen zu den Beispielen stammen teilweise bzw. in modifizierter Form aus
 
