@@ -2,8 +2,6 @@
 // Allocator.cpp // Allocator
 // =====================================================================================
 
-module;
-
 module modern_cpp:allocator;
 
 import :dummy;

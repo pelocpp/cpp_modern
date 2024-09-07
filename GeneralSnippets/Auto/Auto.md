@@ -228,7 +228,7 @@ Der Visual C++ Compiler weist in einem Tooltip darauf hin (*Abbildung* 1):
 
 <img src="auto_no_const_reference.png" width="500">
 
-*Abbildung* 1: Fehlermeldung *auto* doesn't deduce references.
+*Abbildung* 1: Warning *auto* doesn't deduce references.
 
 Man kann dies natürlich dadurch verhindern, dass man die Variable vom Typ `auto&` oder `const auto&` deklariert!
 

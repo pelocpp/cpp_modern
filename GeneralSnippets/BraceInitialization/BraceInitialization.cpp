@@ -112,7 +112,7 @@ namespace BraceInitialization {
         void operator() () { std::cout << "a: " << m_a << ", b: " << m_b << std::endl; }
     };
 
-    static void test_05_01()
+    static void test_06()
     {
         AnotherClass obj1{};
         AnotherClass obj2{ 42, 1.2 };
@@ -126,7 +126,7 @@ namespace BraceInitialization {
     // =================================================================================
     // standard STL container
 
-    static void test_06()
+    static void test_07()
     {
         std::vector<int> myVector{ 1, 2, 3, 4, 5 };
 
@@ -166,7 +166,7 @@ namespace BraceInitialization {
     // =================================================================================
     // dynamically allocated arrays
 
-    static void test_07()
+    static void test_08()
     {
         int* pi = new int[5] { 1, 2, 3, 4, 5 };
         double* pd = new double[5] { 1.0, 2.0, 3.0, 4.0, 5.0 };
@@ -188,7 +188,7 @@ namespace BraceInitialization {
     // =================================================================================
     // statically allocated arrays
 
-    static void test_08()
+    static void test_09()
     {
         int intArray[] { 1, 2, 3, 4, 5 };
 
@@ -199,13 +199,38 @@ namespace BraceInitialization {
     }
 
     // =================================================================================
-    // Nested Structures / *Brace Elision* 
+    // Nested Structures / *Brace Elision*
+
+        // POD - C-kompatibel
+    struct Point
+    {
+        int x;
+        int y;
+    };
+
+    // POD // C-kompatibel
+    struct Rectangle
+    {
+        struct Point leftUpper;
+        struct Point rightLower;
+    };
+
+    static void test_10()
+    {
+        Rectangle r1{ {1, 2}, {3, 4} };
+        Rectangle r2{ {}, {} };
+        Rectangle r3{ };
+        Rectangle r4{ 1, 2, 3, 4 };
+        Rectangle r5{ 1, 2 };
+    }
+
+    // ---------------------------------------------------------------------------------
 
     struct Inner {
         int m_array[2];
     };
 
-    static void test_09()
+    static void test_11()
     {
         [[ maybe_unused]] Inner inner1; // uninitialized
         Inner inner2{ };                // m_array[0] => 0 & m_array[1] => 0
@@ -213,7 +238,7 @@ namespace BraceInitialization {
         Inner inner4{ 1, 2 };           // Uses Brace Elision (!) of m_array
     }
 
-    static void test_09_01()
+    static void test_12()
     {
         // "regular" case:
         // outer braces for the std::array,
@@ -245,7 +270,7 @@ namespace BraceInitialization {
         }
     };
 
-    static void test_10()
+    static void test_13()
     {
         MyDataStruct s{ 42, 1.2 };
         std::cout << "a: " << s.m_a << ", b: " << s.m_b << std::endl;
@@ -301,7 +326,7 @@ namespace BraceInitialization {
         }
     };
 
-    static void test_11()
+    static void test_14()
     {  
         MyAnotherClass obj1;
         MyAnotherClass obj2{ 11, 12, 13, 14, 15 };
@@ -325,14 +350,15 @@ void main_brace_initialization()
     test_03();
     test_04();
     test_05();
-    test_05_01();
     test_06();
     test_07();
     test_08();
     test_09();
-    test_09_01();
     test_10();
     test_11();
+    test_12();
+    test_13();
+    test_14();
 }
 
 // =====================================================================================

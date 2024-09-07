@@ -32,8 +32,9 @@ namespace StdInvoke {
     };
 
     // testing scenarios for std::invoke
-    static void test_01() {
-        int result;
+    static void test_01()
+    {
+        int result{};
 
         // free function:
         result = std::invoke(add, 1, 2);
@@ -45,13 +46,13 @@ namespace StdInvoke {
         std::cout << "result: " << result << std::endl;
         // => 7
 
-        int(*fadd) (int, int) = &add;
+        int(*fadd) (int, int) { &add };
         result = std::invoke(fadd, 5, 6);
         std::cout << "result: " << result << std::endl;
         // => 11
 
         // member function through pointer to member function:
-        Incrementer inc;
+        Incrementer inc{};
         std::invoke(&Incrementer::incrementBy, &inc, 5);
         inc();  // output
         // => 5
@@ -62,7 +63,7 @@ namespace StdInvoke {
         std::cout << "result: " << result << std::endl;
 
         // (nested) function objects:
-        Incrementer inc2(10);
+        Incrementer inc2{ 10 };
         result = std::invoke(std::plus<>(), std::invoke(&Incrementer::m_x, &inc2), 3);
         std::cout << "result: " << result << std::endl;
         // => 13
@@ -72,8 +73,8 @@ namespace StdInvoke {
         // => 15
 
         // lambda expression:
-        auto a = std::invoke([](auto a, auto b) {return a + b; }, 11, 12);
-        std::cout << "a: " << a << std::endl;
+        result = std::invoke([](auto a, auto b) {return a + b; }, 11, 12);
+        std::cout << "result: " << result << std::endl;
         // => 23
     }
 }

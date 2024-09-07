@@ -167,9 +167,15 @@ void func(TArgs... args) {
     for (auto param : unpackedArgs) {
         std::cout << "Passed Argument: " << param << std::endl;
     }
+
+    // oder
+
+    for (auto param : { args ... } ) {
+        std::cout << "Passed Argument: " << param << std::endl;
+    }
 }
 
-static void test()
+static void test_accessing_parameterpack()
 {
     func(10, 11, 12, 13, 14, 15);
 }

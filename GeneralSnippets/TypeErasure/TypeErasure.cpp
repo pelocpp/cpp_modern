@@ -239,8 +239,8 @@ namespace BookStoreUsingDynamicPolymorphism {
     private:
         std::string m_author;
         std::string m_title;
-        double m_price;
-        size_t m_count;
+        double      m_price;
+        size_t      m_count;
 
     public:
         Book(std::string author, std::string title, double price, size_t count)
@@ -250,8 +250,9 @@ namespace BookStoreUsingDynamicPolymorphism {
         // getter / setter
         std::string getAuthor() const { return m_author; }
         std::string getTitle() const { return m_title; }
-        double getPrice() const { return m_price; }
-        size_t getCount() const { return m_count; }
+
+        double getPrice() const override { return m_price; }
+        size_t getCount() const override { return m_count; }
     };
 
     class Movie : public IMedia
@@ -259,8 +260,8 @@ namespace BookStoreUsingDynamicPolymorphism {
     private:
         std::string m_title;
         std::string m_director;
-        double m_price;
-        size_t m_count;
+        double      m_price;
+        size_t      m_count;
 
     public:
         Movie(std::string title, std::string director, double price, size_t count)
@@ -270,8 +271,9 @@ namespace BookStoreUsingDynamicPolymorphism {
         // getter / setter
         std::string getTitle() const { return m_title; }
         std::string getDirector() const { return m_director; }
-        double getPrice() const { return m_price; }
-        size_t getCount() const { return m_count; }
+
+        double getPrice() const override { return m_price; }
+        size_t getCount() const override { return m_count; }
     };
 
     class Bookstore
@@ -287,7 +289,7 @@ namespace BookStoreUsingDynamicPolymorphism {
             m_stock.push_back(media);
         }
 
-        double totalBalance() {
+        double totalBalance() const {
 
             double total{};
 
@@ -298,7 +300,7 @@ namespace BookStoreUsingDynamicPolymorphism {
             return total;
         }
 
-        size_t count() {
+        size_t count() const {
 
             size_t total{};
 
@@ -409,8 +411,8 @@ namespace BookStoreUsingTypeErasure {
     private:
         std::string m_author;
         std::string m_title;
-        double m_price;
-        size_t m_count;
+        double      m_price;
+        size_t      m_count;
 
     public:
         Book(std::string author, std::string title, double price, size_t count)
@@ -420,6 +422,7 @@ namespace BookStoreUsingTypeErasure {
         // getter / setter
         std::string getAuthor() const { return m_author; }
         std::string getTitle() const { return m_title; }
+
         double getPrice() const { return m_price; }
         size_t getCount() const { return m_count; }
     };
@@ -429,8 +432,8 @@ namespace BookStoreUsingTypeErasure {
     private:
         std::string m_title;
         std::string m_director;
-        double m_price;
-        size_t m_count;
+        double      m_price;
+        size_t      m_count;
 
     public:
         Movie(std::string title, std::string director, double price, size_t count)
@@ -440,6 +443,7 @@ namespace BookStoreUsingTypeErasure {
         // getter / setter
         std::string getTitle() const { return m_title; }
         std::string getDirector() const { return m_director; }
+
         double getPrice() const { return m_price; }
         size_t getCount() const { return m_count; }
     };
@@ -475,7 +479,7 @@ namespace BookStoreUsingTypeErasure {
             m_stock.push_back(media);
         }
 
-        double totalBalance() {
+        double totalBalance() const {
 
             double total{};
 
@@ -498,7 +502,7 @@ namespace BookStoreUsingTypeErasure {
             return total;
         }
 
-        size_t count() {
+        size_t count() const {
 
             size_t total{};
 
@@ -522,7 +526,7 @@ namespace BookStoreUsingTypeErasure {
         // -----------------------------------------------
         // demonstrating std::visit with returning a value
 
-        double totalBalanceEx() {
+        double totalBalanceEx() const {
 
             double total{};
 
@@ -541,7 +545,7 @@ namespace BookStoreUsingTypeErasure {
             return total;
         }
 
-        size_t countEx() {
+        size_t countEx() const {
 
             size_t total{};
 

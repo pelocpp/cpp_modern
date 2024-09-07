@@ -1,4 +1,4 @@
-# Lambda-Funktionen
+# Lambda-Objekte
 
 [Zurück](../../Readme.md)
 

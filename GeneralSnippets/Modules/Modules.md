@@ -52,7 +52,7 @@ mit einer Aufteilung in Header- und Implementierungsdateien weist einige Nachtei
   * Header-interne Definitionen mit `#define` sind in allen nachfolgenden Übersetzungseinheiten
   sichtbar. Das kann Konflikte auslösen (mehrfache Definition eines konstanten Werts `Pi` beispielsweise).
 
-  * Das Inkludieren einer Header-Dateien wird mit Makros gesteuert (`#include`).
+  * Das Inkludieren einer Header-Datei wird mit Makros gesteuert (`#include`).
   Andere Makros wiederum überwachen, dass der Inhalt einer Header-Datei
   nicht zweimal berücksichtigt wird (`#pragma once`).
   Aber auch wenn der Compiler den Inhalt einer Datei beim zweiten Lesen ignoriert (&bdquo;passives Parsen&rdquo;),

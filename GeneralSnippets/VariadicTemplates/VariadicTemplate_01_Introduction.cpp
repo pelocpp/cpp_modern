@@ -137,6 +137,12 @@ namespace VariadicTemplatesIntro_03 {
         for (auto param : unpackedArgs) {
             std::cout << "Passed Argument: " << param << std::endl;
         }
+
+        // oder
+
+        for (auto param : { args ... } ) {
+            std::cout << "Passed Argument: " << param << std::endl;
+        }
     }
 
     static void test_accessing_parameterpack()
