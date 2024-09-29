@@ -10,55 +10,56 @@ namespace VariantDemo {
 
         std::variant<int, double, std::string> var{ 123 };
 
-        size_t index{ var.index() };
-        int n{ std::get<int>(var) };  // std::get using type
+        // -------------------------------------------------
 
-        std::cout << index << ", value: " << n << std::endl;
+        {
+            size_t index{ var.index() };
+            int n{ std::get<int>(var) };  // std::get using type
+            std::println("{} - Value: {}", index, n);
+        }
 
         // -------------------------------------------------
-        
-        n = std::get<0>(var);         // std::get using index
-        
-        std::cout << index << ", value: " << n << std::endl;
+
+        {
+            size_t index{ var.index() };
+            int n{ std::get<0>(var) };    // std::get using index
+            std::println("{} - Value: {}", index, n);
+        }
 
         // -------------------------------------------------
-        
-        var = std::string{ "Hello" };     // we're now a std::string
+        {
+            var = std::string{ "Hello" }; // we're now a std::string
 
-        index = var.index();
-        std::string s = std::get<std::string>(var);
-
-        std::cout << index << ", value: " << s << std::endl;
-
-        // -------------------------------------------------
-        
-        var = 123.456;                    // we're now a double
-
-        index = var.index();
-        double d = std::get<double>(var);
-
-        std::cout << index << ", value: " << d << std::endl;
+            size_t index{ var.index() };
+            std::string s{ std::get<std::string>(var) };
+            std::println("{} - Value: {}", index, s);
+        }
 
         // -------------------------------------------------
-        
-        var.emplace<2>("Hello again");    // we're now a std::string again
+        {
+            var = 123.456;                // we're now a double
 
-        index = var.index();
-        s = std::get<std::string>(var);
-
-        std::cout << index << ", value: " << s << std::endl;
+            size_t index{ var.index() };
+            double d{ std::get<double>(var) };
+            std::println("{} - Value: {}", index, d);
+        }
 
         // -------------------------------------------------
-        
-        // std::get returns a reference, so you can change the value:
 
-        std::get<std::string>(var) += std::string{ " World" };
+        {
+            var.emplace<2>("Hello again");    // we're now a std::string again
 
-        std::cout
-            << var.index()
-            << ", value: "
-            << std::get<std::string>(var)
-            << std::endl;
+            size_t index{ var.index() };
+            std::string s{ std::get<std::string>(var) };
+            std::println("{} - Value: {}", index, s);
+        }
+        // -------------------------------------------------
+        {
+            // std::get returns a reference, so you can change the value:
+
+            std::get<std::string>(var) += std::string{ " World" };
+            std::println("{} - Value: {}", var.index(), std::get<std::string>(var));
+        }
     }
 
     // -------------------------------------------------------------------
@@ -68,30 +69,20 @@ namespace VariantDemo {
         // accessing a variant
 
         std::variant<int, double, std::string> var{ std::string{ "Hello" } };
-
-        std::cout
-            << var.index()
-            << ", value "
-            << std::get<std::string>(var)
-            << std::endl;
+        std::println("{} - Value: {}", var.index(), std::get<std::string>(var));
 
         try
         {
             auto f = std::get<double>(var);
-            std::cout << "double! " << f << "\n";
+            std::println("double! ", f);
         }
         catch (std::bad_variant_access&)
         {
-            std::cout << "Variant doesn't hold a double at this moment ..." << std::endl;
+            std::println("Variant doesn't hold a double at this moment ...");
         }
 
         var = 123;
-
-        std::cout
-            << var.index()
-            << ", value "
-            << std::get<int>(var)
-            << std::endl;
+        std::println("{} - Value: {}", var.index(), std::get<int>(var));
     }
 
     // -------------------------------------------------------------------
@@ -102,7 +93,7 @@ namespace VariantDemo {
 
         // using a generic visitor (matching all types in the variant)
         auto visitor = [](const auto& elem) {
-            std::cout << elem << std::endl;
+            std::println("{}", elem);
         };
 
         std::visit(visitor, var);
@@ -120,15 +111,15 @@ namespace VariantDemo {
     {
     public:
         void operator() (int n) {
-            std::cout << "int: " << n << std::endl;
+            std::println("int: {}", n);
         }
 
         void operator() (double f) {
-            std::cout << "double: " << f << std::endl;
+            std::println("double: {}", f);
         }
 
-        void operator() (std::string s) {
-            std::cout << "std::string: " << s << std::endl;
+        void operator() (const std::string& s) {
+            std::println("const std::string&: {}", s);
         }
     };
 
@@ -155,35 +146,35 @@ namespace VariantDemo {
             vec = { 100, 200l, 300ll, 400.5f, 500.5 };
 
         // display each value
-        std::cout << "Values:      ";
+        std::println("Values:      ");
         for (const auto& var : vec) {
-            std::visit([](const auto& n) { std::cout << n << " "; }, var);
+            std::visit([](const auto& n) { std::print("{} ", n); }, var);
         }
-        std::cout << std::endl;
+        std::println("");
 
         // display each type
-        std::cout << "Types:       ";
+        std::println("Types:       ");
         for (const auto& var : vec) {
-            std::visit([](const auto& arg) { std::cout << typeid(arg).name() << " "; }, var);
+            std::visit([](const auto& arg) { std::print("{} ", typeid(arg).name()); }, var);
         }
-        std::cout << std::endl; 
+        std::println("");
 
         // get the sum
         std::common_type<int, long, long long, float, double>::type res{};
-        std::cout << "Type of Sum: " << typeid(res).name() << std::endl;
+        std::println("Type of Sum: {}", typeid(res).name());
 
         for (const auto& var : vec) {
             std::visit([&res](const auto& arg) { res += arg; }, var);
         }
-        std::cout << "Sum:         " << res << std::endl;
+        std::println("Sum:         {}", res);
 
         // double each value of the vector
-        std::cout << "Values:      ";
+        std::println("Values:      ");
         for (auto& var : vec) {
             std::visit([](auto& arg) { arg *= 2; }, var);
-            std::visit([](const auto& arg) { std::cout << arg << " "; }, var);
+            std::visit([](const auto& arg) { std::print("{} ", arg); }, var);
         }
-        std::cout << std::endl;
+        std::println("");
     }
 
     // -------------------------------------------------------------------
@@ -195,24 +186,24 @@ namespace VariantDemo {
 
     static void test_06() {
 
-        std::variant<int, double, std::string> intFloatString{ "Hello" };
+        std::variant<int, double, std::string> var{ "Hello" };
 
         std::visit(Overload{
-            [](const int& i) { std::cout << "int: " << i << std::endl; },
-            [](const double& f) { std::cout << "double: " << f << std::endl; },
-            [](const std::string& s) { std::cout << "string: " << s << std::endl; }
+            [](const int& i) { std::println("const int&: {}", i); },
+            [](const double& f) { std::println("const double&: {}", f); },
+            [](const std::string& s) { std::println("const std::string&: {}", s); }
             },
-            intFloatString
+            var
         );
 
-        intFloatString = 123;
+        var = 123;
 
         std::visit(Overload{
-            [](const int& i) { std::cout << "int: " << i << std::endl; },
-            [](const double& f) { std::cout << "double: " << f << std::endl; },
-            [](const std::string& s) { std::cout << "string: " << s << std::endl; }
+            [](const int& i) { std::println("const int&: {}", i); },
+            [](const double& f) { std::println("const double&: {}", f); },
+            [](const std::string& s) { std::println("const std::string&: {}", s); }
             },
-            intFloatString
+            var
         );
     }
 
@@ -220,19 +211,19 @@ namespace VariantDemo {
 
     static void test_07() {
 
-        std::variant<int, double, std::string> intFloatString{ "Hello" };
+        std::variant<int, double, std::string> var{ "Hello" };
 
         Overload overloadSet {
-            [](const int& i) { std::cout << "int: " << i << std::endl; },
-            [](const double& f) { std::cout << "double: " << f << std::endl; },
-            [](const std::string& s) { std::cout << "string: " << s << std::endl; }
+            [](const int& i) { std::println("const int&: {}", i); },
+            [](const double& f) { std::println("const double&: {}", f); },
+            [](const std::string& s) { std::println("const std::string&: {}", s); }
         };
 
-        std::visit(overloadSet, intFloatString);
+        std::visit(overloadSet, var);
 
-        intFloatString = 123;
+        var = 123;
 
-        std::visit(overloadSet, intFloatString);
+        std::visit(overloadSet, var);
     }
 }
 

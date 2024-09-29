@@ -21,24 +21,20 @@ namespace TupleSamples {
         std::tuple <char, int, double> moreValues{ 'Z', 987, 987.654 };
 
         // accessing tuple values using std::get 
-        std::cout << "The values of tuple are : ";
-        std::cout 
-            << std::get<0>(values) << " - " 
-            << std::get<1>(values) << " - " 
-            << std::get<2>(values)
-            << std::endl;
+        std::print("The values of tuple are : ");
+        std::println("{} - {} - {}", 
+            std::get<0>(values), std::get<1>(values), std::get<2>(values)
+        );
 
         // use std::get to change single values of a tuple 
         std::get<0>(values) = 'M';
         std::get<2>(values) = 135.79;
 
         // printing tuple values again
-        std::cout << "The modified values of tuple are : ";
-        std::cout
-            << std::get<0>(values) << " - "
-            << std::get<1>(values) << " - "
-            << std::get<2>(values)
-            << std::endl;
+        std::print("The modified values of tuple are : ");
+        std::println("{} - {} - {}", 
+            std::get<0>(values), std::get<1>(values), std::get<2>(values)
+        );
     }
 
     // =======================================================
@@ -71,7 +67,7 @@ namespace TupleSamples {
         mySheet.push_back(row3);
 
         for (const Row& row : mySheet) {
-            std::cout << rowToString(row) << std::endl;
+            std::println("{}", rowToString(row));
         }
     }
 
@@ -93,19 +89,17 @@ namespace TupleSamples {
         // C++ 17: structured binding
         const auto& [id, abbr, val, name] = mySheet[0];
 
-        std::cout
-            << "Id:    " << id << std::endl
-            << "Abbr:  " << abbr << std::endl
-            << "Value: " << val << std::endl
-            << "Name:  " << name << std::endl;
+        std::println("Id:    {}", id);
+        std::println("Abbr:  {}", abbr);
+        std::println("Value: {}", val);
+        std::println("Name:  {}", name);
 
-        for (const auto& [id, abbr, val, name] : mySheet) {
-
-            std::cout 
-                << "Id:    " << id << std::endl
-                << "Abbr:  " << abbr << std::endl
-                << "Value: " << val << std::endl
-                << "Name:  " << name << std::endl;
+        for (const auto& [id, abbr, val, name] : mySheet)
+        {
+            std::println("Id:    {}", id);
+            std::println("Abbr:  {}", abbr);
+            std::println("Value: {}", val);
+            std::println("Name:  {}", name);
         }
     }
 
@@ -133,21 +127,19 @@ namespace TupleSamples {
         // 
         // std::tie(id, std::ignore, val, name) = mySheet[0];
 
-        std::cout
-            << "Id:    " << id << std::endl
-            << "Abbr:  " << abbr << std::endl
-            << "Value: " << val << std::endl
-            << "Name:  " << name << std::endl;
+        std::println("Id:    {}", id);
+        std::println("Abbr:  {}", abbr);
+        std::println("Value: {}", val);
+        std::println("Name:  {}", name);
 
-        for (const auto& row : mySheet) {
-
+        for (const auto& row : mySheet)
+        {
             std::tie(id, abbr, val, name) = row;
 
-            std::cout
-                << "Id:    " << id << std::endl
-                << "Abbr:  " << abbr << std::endl
-                << "Value: " << val << std::endl
-                << "Name:  " << name << std::endl;
+            std::println("Id:    {}", id);
+            std::println("Abbr:  {}", abbr);
+            std::println("Value: {}", val);
+            std::println("Name:  {}", name);
         }
     }
 
@@ -160,17 +152,20 @@ namespace TupleSamples {
         std::tuple <char, int, double> tuple { 'A', 123, 123.456 };
 
         // retrieve number of elements with std::tuple_size
-        std::cout << "std::tuple size: ";
-        std::cout << std::tuple_size<decltype(tuple)>::value << std::endl;
+        std::println("std::tuple size: {}",
+            std::tuple_size<decltype(tuple)>::value
+        );
 
         // or
         using MyTuple = std::tuple<char, int, double>;
-        std::cout << "std::tuple size: ";
-        std::cout << std::tuple_size<MyTuple>::value << std::endl;
+        std::println("std::tuple size: {}",
+            std::tuple_size<MyTuple>::value
+        );
 
         // or
-        std::cout << "std::tuple size: ";
-        std::cout << std::tuple_size<std::tuple<char, int, double>>::value << std::endl;
+        std::println("std::tuple size: {}", 
+            std::tuple_size<std::tuple<char, int, double>>::value
+        );
     }
 }
 

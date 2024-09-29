@@ -9,27 +9,23 @@ namespace AnySamples {
     static void test_01_any()
     {
         std::any a{ 1 };
-
-        std::cout << a.type().name() << ": " << std::any_cast<int>(a) << std::endl;
+        std::println("{}: {}", a.type().name(), std::any_cast<int>(a));
 
         a = 3.14;
-
-        std::cout << a.type().name() << ": " << std::any_cast<double>(a) << std::endl;
+        std::println("{}: {}", a.type().name(), std::any_cast<double>(a));
 
         a = true;
-
-        std::cout << a.type().name() << ": " << std::any_cast<bool>(a) << std::endl;
+        std::println("{}: {}", a.type().name(), std::any_cast<bool>(a));
 
         // bad cast
         try
         {
             a = 1;
-
-            std::cout << std::any_cast<float>(a) << std::endl;
+            std::println("{}", std::any_cast<float>(a));
         }
         catch (const std::bad_any_cast & e)
         {
-            std::cout << e.what() << std::endl;
+            std::println("{}", e.what());
         }
 
         // has value
@@ -37,7 +33,7 @@ namespace AnySamples {
 
         if (a.has_value())
         {
-            std::cout << a.type().name() << std::endl;
+            std::println("{}", a.type().name());
         }
 
         // reset
@@ -45,22 +41,22 @@ namespace AnySamples {
 
         if (!a.has_value())
         {
-            std::cout << "no value" << std::endl;
+            std::println("no value");
         }
 
         // pointer to contained data
         a = 1;
         int* i = std::any_cast<int>(&a);
-        std::cout << *i << std::endl;
+        std::println("{}", *i);
     }
 
     static void test_02_any()
     {
         std::any a1{ std::make_any<std::string>("Hello, std::any!") };
-        std::any a2{ std::make_any<std::complex<double>>(1.5, 2.5) };
+        std::any a2{ std::make_any<double>(123.456) };
 
-        std::cout << std::any_cast<std::string&>(a1) << std::endl;
-        std::cout << std::any_cast<std::complex<double>&>(a2) << std::endl;
+        std::println("{}", std::any_cast<std::string&>(a1));
+        std::println("{}", std::any_cast<double&>(a2));
     }
 
     using Row = std::tuple<std::any, std::any, std::any>;
@@ -74,7 +70,7 @@ namespace AnySamples {
         Row row2{ '1',  std::string{"ABC"}, 99.99 };
         Row row3{ true, 123, false  };
 
-        std::vector<Row> mySheet;
+        std::vector<Row> mySheet{ };
 
         // note: conversion to base class 'std::tuple<std::any, std::any, std::any>'
         mySheet.push_back(row1);
@@ -83,9 +79,13 @@ namespace AnySamples {
 
         for (const auto& [val1, val2, val3] : mySheet) {
             std::cout
-                << "Val1:  " << to_string(val1) << std::endl
-                << "Val2:  " << to_string(val2) << std::endl
-                << "Val3:  " << to_string(val3) << std::endl;
+                << "Value1:  " << to_string(val1) << std::endl
+                << "Value2:  " << to_string(val2) << std::endl
+                << "Value3:  " << to_string(val3) << std::endl;
+
+            std::println("Value1: {}", to_string(val1));
+            std::println("Value2: {}", to_string(val2));
+            std::println("Value3: {}", to_string(val3));
         }
     }
 
@@ -122,15 +122,15 @@ namespace AnySamples {
         };
 
         // use random access on the container elements.
-        int n{ std::any_cast<int>(many[0]) };
-        double f{ std::any_cast<double>(many[1]) };
-        std::string str{ std::any_cast<std::string>(many[2]) };
+        auto n{ std::any_cast<int>(many[0]) };
+        auto f{ std::any_cast<double>(many[1]) };
+        auto s{ std::any_cast<std::string>(many[2]) };
 
         // query the container size
         const std::size_t size = many.size();
 
         // iterate container with an algorithm and execute a member function
-        bool haveValues{ std::all_of (
+        bool hasValues{ std::all_of (
             many.cbegin(),
             many.cend(),
             [] (const auto& a) -> bool {
@@ -138,8 +138,8 @@ namespace AnySamples {
             }
         ) };
 
-        if (haveValues) {
-            std::cout << "All std::any objects contains a value." << std::endl;
+        if (hasValues) {
+            std::println("All std::any objects contain a value.");
         }
     }
 }

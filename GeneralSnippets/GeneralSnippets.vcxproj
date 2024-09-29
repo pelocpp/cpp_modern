@@ -514,6 +514,7 @@
     <Image Include="Literatur\Buch_Marc_Gregoire.png" />
     <Image Include="Literatur\Buch_Marius_Bancila_Modern_Cpp_Challenge.png" />
     <Image Include="Literatur\Buch_Marius_Bancila_Modern_Cpp_Cookbook_23.png" />
+    <Image Include="Literatur\Buch_Nicolai_Josuttis_Cpp_20_Complete_Guide.png" />
     <Image Include="Literatur\Buch_Nicolai_Josuttis_Cpp_Move_Semantics.png" />
     <Image Include="Literatur\Buch_Peter_Pohmann_Cpp_17.png" />
     <Image Include="Literatur\Buch_Stephan_Roth_Clean_Cpp_20.png" />

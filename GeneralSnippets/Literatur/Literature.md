@@ -6,7 +6,7 @@
 
 ## C++
 
-  * Marc Gregoire, &bdquo;*Professional C++ (6th Edition)*&rdquo;.</br>
+  * Marc Gregoire, &bdquo;*Professional C++ (6. Auflage)*&rdquo;.</br>
     Wiley John + Sons (13. Februar 2024), 1326 Seiten. Sprache: Englisch. ISBN-13: 978-1394193172, ISBN-10: 1394193173.
 
     Für mich das derzeit beste C++ -Buch am Markt. Zugegeben, sehr umfangreich, aber dafür versteht es der Autor,
@@ -17,12 +17,16 @@
 
 ---
 
-  * Torsten T. Will, &bdquo;*C++: Das umfassende Handbuch zu Modern C++ - aktuell zu C++23 (3. Auflage)*&rdquo;.</br> 
-    Rheinwerk Computing (6. Juni 2024), 1113 Seiten. Sprache: Deutsch. ISBN-10: 3836298538, ISBN-13: 978-3836298537.
+## C++
 
-    Ein sehr gutes Buch für Leser, die deutschsprachige Bücher bevorzugen. Viele Beispiele, gute Erklärungen.
+  * Josuttis, Nicolai M., &bdquo;*C++20 - The Complete Guide*&rdquo;.</br>
+    NicoJosuttis (7. November, 2022), 768 Seiten. Sprache: Englisch. ISBN-13: 978-3967309201, ISBN-10: 3967309207.
 
-    <img src="Buch_T_Will_Cpp_Handbuch_C23.png" width="150">
+    Das Buch hat mehr den Charakter eines Referenzmanuals als eines Lehrbuches.
+    Der Autor versteht es allerdings, bei nahezu allen Themen das Wesentliche herauszuarbeiten
+    und dies mit prägnanten Beispielen zu untermauern. 
+
+    <img src="Buch_Nicolai_Josuttis_Cpp_20_Complete_Guide.png" width="150">
 
 ---
 
@@ -36,6 +40,15 @@
     und bringen das jeweilige zu veranschaulichende Konzept auf den Punkt. Ein absolut empfehlenswertes Buch!
 
     <img src="Buch_Stephan_Roth_Clean_Cpp_20.png" width="150">
+
+---
+
+  * Torsten T. Will, &bdquo;*C++: Das umfassende Handbuch zu Modern C++ - aktuell zu C++23 (3. Auflage)*&rdquo;.</br> 
+    Rheinwerk Computing (6. Juni 2024), 1113 Seiten. Sprache: Deutsch. ISBN-10: 3836298538, ISBN-13: 978-3836298537.
+
+    Ein sehr gutes Buch für Leser, die deutschsprachige Bücher bevorzugen. Viele Beispiele, gute Erklärungen.
+
+    <img src="Buch_T_Will_Cpp_Handbuch_C23.png" width="150">
 
 ---
 

@@ -1180,5 +1180,8 @@
     <Image Include="Println\StdPrintln.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Literatur\Buch_Nicolai_Josuttis_Cpp_20_Complete_Guide.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
