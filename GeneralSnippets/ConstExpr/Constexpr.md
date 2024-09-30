@@ -13,8 +13,9 @@
   * [Allgemeines](#link1)
   * [Variablen](#link2)
   * [Klassen mit `constexpr` Konstruktoren](#link3)
-  * [`constexpr`-Funktionen und `constexpr`-Lambda-Funktionen](#link4)
-  * [Literaturhinweise](#link5)
+  * [`constexpr` und dynamische Speicherverwaltung](#link4)
+  * [`constexpr`-Funktionen und `constexpr`-Lambda-Funktionen](#link5)
+  * [Literaturhinweise](#link6)
 
 ---
 
@@ -158,7 +159,42 @@ Aufruf der *getter*-Methode `real()`!
 *Abbildung* 3: IEEE-754 Konverter für Fließkommazahlen.
 
 
-## `constexpr`-Funktionen und `constexpr`-Lambda-Funktionen <a name="link4"></a>
+## `constexpr` und dynamische Speicherverwaltung <a name="link4"></a>
+
+Zur Fragestellung &bdquo;`constexpr` und dynamische Speicherverwaltung&rdquo;
+gibt es einen interessanten Aufsatz im [Netz](https://www.cppstories.com/2021/constexpr-new-cpp20)
+(abgerufen am 19.12.2022).
+
+Das dort gezeigte Beispiel wird in den aktuellen Versionen des Visual C++ Compilers unterstützt:
+
+```cpp
+01: constexpr int naiveSum(unsigned int n)
+02: {
+03:     auto ip = new int[n];
+04:     std::iota(ip, ip + n, 1);
+05:     auto tmp = std::accumulate(ip, ip + n, 0);
+06:     delete[] ip;
+07:     return tmp;
+08: }
+09: 
+10: void test()
+11: {
+12:     constexpr int sum = naiveSum(10);
+13:     std::println("Sum from 1 up to 10: {}", sum);
+14: }
+```
+
+*Listing* 3: Erstellung einer CRC8 Lookup Tabelle.
+
+*Ausgabe*:
+
+```
+Sum from 1 up to 10: 55
+```
+
+
+
+## `constexpr`-Funktionen und `constexpr`-Lambda-Funktionen <a name="link5"></a>
 
 Mit C++&ndash;17 haben `constexpr`-Funktionen und `constexpr`-Lambda-Methoden Einzug in die Sprache gefunden.
 Dazu betrachten wir am besten gleich ein Beispiel.
@@ -219,7 +255,7 @@ und damit nicht auf dem Zielsystem, für das Maschinencode generiert wird.
 
 *Listing* 4: `constexpr`-Funktionen und -Objekte-Funktionen in der Praxis.
 
-Die Zeilen 4 bis 22 von Listing 1 haben es in sich: Prinzipiell haben wir es mit einer Lambda-Funktion zu tun, die anonym ist,
+Die Zeilen 4 bis 22 von *Listing* 4 haben es in sich: Prinzipiell haben wir es mit einer Lambda-Funktion zu tun, die anonym ist,
 also keinen Namen besitzt! Eigentlich haben wir es mit einer Lambda-Templatefunktion zu tun,
 der Template-Parameter `F` (wie &bdquo;Factor&rdquo;) spezifiziert den Faktor,
 der für die Potenzierung heranzuziehen ist. Nun zu Zeile 22: Die runden Klammern `()` bewirken, dass die Lambda-Templatefunktion
@@ -250,16 +286,9 @@ Der hexadezimale Wert `3D3h` tritt in einer `MOV`-Instruktion auf, der Übersetze
 *Abbildung* 2: `MOV`-Instruktion mit Operand 979 (3D3h)
 
 
-## Literaturhinweise <a name="link5"></a>
+## Literaturhinweise <a name="link6"></a>
 
-Zur Fragestellung &bdquo;`constexpr` und dynamische Speicherverwaltung&rdquo;
-gibt es einen interessanten Aufsatz im [Netz](https://www.cppstories.com/2021/constexpr-new-cpp20)
-(abgerufen am 19.12.2022).
-
-
-### Literatur zum  CRC8-Beispiel
-
-Die Anregungen zu diesem Artikel stammen aus einem Aufsatz aus der Zeitschrift *IX*:
+Die Anregungen zu dem CRC8-Artikel stammen aus einem Aufsatz aus der Zeitschrift *IX*:
 
 Petrautzki, Dirk. &bdquo;Nachschlagewerk: C++-Metaprogrammierung mit Templates für eingebettete Systeme&rdquo;.
 *iX* Magazin für professionelle Informationstechnik, Mai 2021, S. 134 - 137.
@@ -307,7 +336,7 @@ siehe zum Beispiel die beiden Funktionen zur Erstellung und den Zugriff auf CRC8
 26: }
 ```
 
-*Listing* 7: Erstellung einer CRC8 Lookup Tabelle.
+*Listing* 5: Erstellung einer CRC8 Lookup Tabelle.
 
 ---
 

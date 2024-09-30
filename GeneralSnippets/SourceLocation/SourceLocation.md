@@ -23,7 +23,7 @@ z. B. Dateiname, Zeilennummer und Funktionsname:
 06:     std::println("Function Name: {}", location.function_name());
 07:     std::println("Column :       {}", location.column());
 08:     std::println("Line:          {}", location.line());
-09:     std::println("");
+09:     std::println();
 10: }
 11: 
 12: template<typename T>

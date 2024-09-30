@@ -14,7 +14,7 @@ namespace StdSourceLocation {
         std::println("Function Name: {}", location.function_name());
         std::println("Column :       {}", location.column());
         std::println("Line:          {}", location.line());
-        std::println("");
+        std::println();
     }
 
     template<typename T>

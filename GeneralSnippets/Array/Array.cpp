@@ -12,36 +12,25 @@ namespace StdArray {
     static void test_01() {
 
         // initialization variants
-        std::array<int, 5> array1{};
-        std::array<int, 5> array2{ 1, 2, 3, 4, 5 };     // brace initialization
-        std::array<int, 5> array3 = { 1, 2, 3, 4, 5 };  // initializer list
-    }
+        std::array<int, 5> array1;
 
-    static void test_02() {
+        std::array<int, 5> array2{};
 
-        /* initialization variants using CTAD: Class Template Argument Deduction
-        */
+        std::array<int, 5> array3{ 1, 2, 3, 4, 5 };     // brace initialization
 
-        // type is deduced to std::array<double, 2>
-        std::array array1{ 123.456, 654.321 };
+        std::array<int, 5> array4 = { 1, 2, 3, 4, 5 };  // initializer list
 
-        // type is deduced to std::array<int, 5>
-        std::array array2{ 1, 2, 3, 4, 5 };
-
-        // BUT, take care !!!!!
-        // type is deduced to std::array<const char*, 1>
-        // see std::to_array below
-        std::array array3{ "Hello C++ 20" };
+        std::array array5 = { 1, 2, 3, 4, 5 };          // CTAD - type is deduced to std::array<int, 5>
     }
 
     // -------------------------------------------------------------------
     // assignment
 
-    static void test_03() {
+    static void test_02() {
 
         std::array<int, 5> array;
 
-        array = { 1, 2, 3, 4, 5 };    // Assignment with initializer list: okay
+        array = { 1, 2, 3, 4, 5 };    // assignment with initializer list: okay
 
         array = { 9, 8, 7 };          // Okay, elements 3 and 4 are set to zero!
 
@@ -51,7 +40,7 @@ namespace StdArray {
     // -------------------------------------------------------------------
     // exception handling
 
-    static void test_04() {
+    static void test_03() {
 
         // Exception handling:
         // 'at' does bounds checking, is therefore slower - but safer.
@@ -60,10 +49,10 @@ namespace StdArray {
 
         // use subscript operator to access array, works like you would expect
         std::array<int, 5> array { 1, 2, 3, 4, 5 };
-        std::cout << array[3] << std::endl;
+        std::println("{}", array[3]);
 
         // undefined behaviour
-        // std::cout << array[5] << std::endl;
+        //std::println("{}", array[5]);
 
         // valid index
         array.at(2) = 33;
@@ -74,28 +63,28 @@ namespace StdArray {
         }
         catch (const std::out_of_range&)
         {
-            std::cout << "Wrong index used!" << std::endl;
+            std::println("Wrong index used!");
         }
 
         for (auto elem : array) {
-            std::cout << elem << ' ';
+            std::print("{} ", elem);
         }
-        std::cout << std::endl;
+        std::println();
     }
 
     // -------------------------------------------------------------------
     // passing std::array as parameter
 
     static void print(const std::array<int, 5>& array) {
-        std::cout << "Length: " << array.size() << std::endl;
+        std::println("Length: {}", array.size());
     }
 
     template<typename T, int Length>
     void print(const std::array<T, Length>& array) {
-        std::cout << "Length: " << array.size() << std::endl;
+        std::println("Length: {}", array.size());
     }
 
-    static void test_05() {
+    static void test_04() {
 
         std::array<int, 5> array1 = { 1, 2, 3, 4, 5 };
         print(array1);
@@ -107,32 +96,28 @@ namespace StdArray {
     // -------------------------------------------------------------------
     // miscellaneous
 
-    static void test_06() {
+    static void test_05() {
 
         std::array<int, 5> array { 1, 2, 3, 4, 5 };
 
         for (auto elem : array) {
-            std::cout << elem << ' ';
+            std::println("{}", elem);
         }
 
-        std::cout << std::boolalpha;
-        std::cout << "front: " << array.front() << std::endl;
-        std::cout << "back: " << array.back() << std::endl;
-        std::cout << "empty: " << array.empty() << std::endl;
-        std::cout << "max_size: " << array.max_size() << std::endl;
+        std::println("front:{}", array.front());
+        std::println("back: {}", array.back());
 
-        array.fill(9);
-
+        array.fill(123);
         for (auto elem : array) {
-            std::cout << elem << ' ';
+            std::println("{}", elem);
         }
-        std::cout << std::endl;
+        std::println();
     }
 
     // -------------------------------------------------------------------
     // multidimensional arrays
 
-    static void test_07() {
+    static void test_06() {
 
         // multidimensional std::array
         std::array<std::array<int, 3>, 3> array {
@@ -145,9 +130,9 @@ namespace StdArray {
 
         for (size_t i{}; i != array.size(); i++) {
             for (size_t j{}; j != array[0].size(); j++) {
-                std::cout << array[i][j] << ' ';
+                std::print("{} ", array[i][j]);
             }
-            std::cout << std::endl;
+            std::println();
         }
     }
 
@@ -155,16 +140,17 @@ namespace StdArray {
 
         for (size_t i{}; i != 3; i++) {
             for (size_t j{}; j != 3; j++) {
-                std::cout << array[i][j] << ' ';
+                std::print("{} ", array[i][j]);
             }
-            std::cout << std::endl;
+            std::println();
         }
     }
 
-    static void test_08() {
+    static void test_07() {
 
         // passing a multidimensional std::array to another function
-        std::array<std::array<int, 3>, 3> array{
+        std::array<std::array<int, 3>, 3> array
+        {
             {
                 { 11, 12, 13 },
                 { 14, 15, 16 },
@@ -185,36 +171,35 @@ namespace StdArray {
         std::string m_role;
         size_t      m_phone;
 
-        Employee()
-            : Employee(0, "", "", 0)
-        {}
+        Employee() : Employee(0, "", "", 0) {}
 
         Employee(size_t m_id, const std::string& m_name, const std::string& m_role, size_t m_phone)
-            : m_id(m_id), m_name(m_name), m_role(m_role), m_phone(m_phone)
+            : m_id{ m_id }, m_name{ m_name }, m_role{ m_role }, m_phone{ m_phone }
         {}
     };
 
-    static void test_09() {
+    static void test_08() {
 
         // arrays of objects
-        std::array<Employee, 2> employees{};
+        std::array<Employee, 2> employees
+        {
+            Employee{ 12345, "Sepp", "Engineer", 987654321 },
+            Employee{ 54321, "Hans", "Manager", 123456789 }
+        };
 
-        employees[0] = { 9987, "Sepp", "Engineer", 987654321 };
-        employees[1] = { 9988, "Hans", "Manager",  123456789 };
-
-        for (const auto& [id, name, role, phone] : employees) {
-            std::cout
-                << "Id: " << id << ", "
-                << "Name: " << name << ", "
-                << "Role: " << role << ", "
-                << "Phone: " << phone << std::endl;
+        for (const auto& [id, name, role, phone] : employees)
+        {
+            std::println("Id:    {}", id);
+            std::println("Name:  {}", name);
+            std::println("Role:  {}", role);
+            std::println("Phone: {}", phone);
         }
     }
 
     // -------------------------------------------------------------------
     // assignment - comparison C-style array with std::string
 
-    static void test_10() {
+    static void test_09() {
 
         /* C-style array
         */
@@ -250,7 +235,7 @@ namespace StdArray {
         );
     }
 
-    static void test_11() {
+    static void test_10() {
 
         /* std::array
         */
@@ -275,34 +260,34 @@ namespace StdArray {
 
     // returning address of local variable or temporary C style array:
     // compiles, but is false
-    // alternate signature could be
-    // 'auto c_crossProduct(...) -> int[3]'
 
-    static int*
-    c_crossProduct(const int a[3], const int b[3]) // -> int[3]
+    static int* scalarProduct(int scalar, const int vec[3])
     {
-        int result[3] {
-            a[1] * b[2] - a[2] * b[1],
-            a[2] * b[0] - a[0] * b[2],
-            a[0] * b[1] - a[1] * b[0],
-        };
-
+        int result[3] = { scalar * vec[0], scalar * vec[1], scalar * vec[2] };
         return result;
     }
 
 #pragma warning(pop)
 
     // returning an std::array
-    static std::array<int, 3>
-        crossProduct(const std::array<int, 3>& a, const std::array<int, 3>& b)
+    static std::array<int, 3> scalarProduct(int scalar, const std::array<int, 3>& vec)
     {
-        std::array<int, 3> prod{
-            a[1] * b[2] - a[2] * b[1],
-            a[2] * b[0] - a[0] * b[2],
-            a[0] * b[1] - a[1] * b[0],
-        };
+        std::array result = { scalar * vec[0], scalar * vec[1], scalar * vec[2] };
+        return result;
+    }
 
-        return prod;
+    static void test_11()
+    {
+        // testing scalarProduct with C-style array
+        int vector[3] { 1, 2, 3 };
+        int* result{ scalarProduct(3, vector) };
+        std::println("Result: {},{},{}", result[0], result[1], result[2]);
+        // results can be correct, but that is absolutely coincidental
+
+        // testing scalarProduct with std::array
+        std::array vector2 { 1, 2, 3 };
+        std::array result2{ scalarProduct(3, vector2) };
+        std::println("Result: {},{},{}", result2[0], result2[1], result2[2]);
     }
 
     // -------------------------------------------------------------------
@@ -336,14 +321,13 @@ namespace StdArray {
     // demonstrating printArray with pointer parameter
     static void printArray(const int* array, size_t size) {
 
-        std::cout << std::format("Number of elements: {}\n", size);
+        std::println("Number of elements: {}", size);
 
         // note: range-based loop doesn't work for pointers
         for (size_t i{}; i != size; ++i) {
-            std::cout << std::format("{} ", array[i]);
+            std::println("{} ", array[i]);
         }
-
-        std::cout << std::endl;
+        std::println();
     }
 
     static void test_30() {
@@ -363,14 +347,14 @@ namespace StdArray {
 
     static void printSpan(std::span<int> values) {
 
-        std::cout << std::format("Number of elements: {}\n", values.size());
-        std::cout << std::format("Size of span: {}\n", values.size_bytes());
+        std::println("Number of elements: {}", values.size());
+        std::println("Size of span:       {}", values.size_bytes());
 
         // range-based loop works now
         for (auto elem : values) {
-            std::cout << std::format("{} ", elem);
+            std::println("{}", elem);
         }
-        std::cout << std::endl;
+        std::println();
     }
 
     static void test_31() {
@@ -399,13 +383,13 @@ namespace StdArray {
 
     static void printSpanConst(std::span<const int> values) {
 
-        std::cout << std::format("Number of elements: {}\n", values.size());
-        std::cout << std::format("Size of span: {}\n", values.size_bytes());
+        std::println("Number of elements: {}", values.size());
+        std::println("Size of span:       {}", values.size_bytes());
 
         for (const auto elem : values) {
-            std::cout << std::format("{} ", elem);
+            std::println("{}", elem);
         }
-        std::cout << std::endl;
+        std::println();
     }
 
     static void test_32() {

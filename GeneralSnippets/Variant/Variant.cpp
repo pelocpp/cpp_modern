@@ -150,14 +150,14 @@ namespace VariantDemo {
         for (const auto& var : vec) {
             std::visit([](const auto& n) { std::print("{} ", n); }, var);
         }
-        std::println("");
+        std::println();
 
         // display each type
         std::println("Types:       ");
         for (const auto& var : vec) {
             std::visit([](const auto& arg) { std::print("{} ", typeid(arg).name()); }, var);
         }
-        std::println("");
+        std::println();
 
         // get the sum
         std::common_type<int, long, long long, float, double>::type res{};
@@ -174,7 +174,7 @@ namespace VariantDemo {
             std::visit([](auto& arg) { arg *= 2; }, var);
             std::visit([](const auto& arg) { std::print("{} ", arg); }, var);
         }
-        std::println("");
+        std::println();
     }
 
     // -------------------------------------------------------------------

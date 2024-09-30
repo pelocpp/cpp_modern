@@ -110,16 +110,16 @@ Beispielsweise besteht für die nachfolgende Funktion `print` keine Möglichkeit z
 eines ihrer Elemente im Datenbereich.
 
 ```cpp
-void print(std::span<const int> values)
-{
-    std::cout << std::format("Number of elements: {}\n", values.size());
-    std::cout << std::format("Size of span: {}\n", values.size_bytes());
-
-    for (const auto elem : values) {
-        std::cout << std::format("{} ", elem);
-    }
-    std::cout << std::endl;
-}
+01: void printSpan(std::span<const int> values) {
+02: 
+03:     std::println("Number of elements: {}", values.size());
+04:     std::println("Size of span:       {}", values.size_bytes());
+05: 
+06:     for (const auto elem : values) {
+07:         std::println("{}", elem);
+08:     }
+09:     std::println();
+10: }
 ```
 
 ---

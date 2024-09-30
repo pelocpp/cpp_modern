@@ -43,8 +43,8 @@ namespace ConstExprComplex {
         // verify 'constness' with the help of disassembly and
         // https://www.h-schmidt.net/FloatConverter/IEEE754de.html
         
-        std::cout << "Real: " << c3.real() << std::endl;
-        std::cout << "Imag: " << c3.imag() << std::endl;
+        std::println("Real: ", c3.real());
+        std::println("Imag: ", c3.imag());
 
         // verify compile time computing
         static_assert (c1.real() == 1.0, "real part shoud be 1.0");
@@ -55,17 +55,19 @@ namespace ConstExprComplex {
 
 namespace ConstExprDynamicData {
 
-    static constexpr int naiveSum(unsigned int n) {
-        auto p = new int[n];
-        std::iota(p, p + n, 1);
-        auto tmp = std::accumulate(p, p + n, 0);
-        delete[] p;
+    static constexpr int naiveSum(unsigned int n)
+    {
+        auto ip = new int[n];
+        std::iota(ip, ip + n, 1);
+        auto tmp = std::accumulate(ip, ip + n, 0);
+        delete[] ip;
         return tmp;
     }
 
     static void testDynamicData()
     {
-        constexpr int sum = naiveSum(5);
+        constexpr int sum = naiveSum(10);
+        std::println("Sum from 1 up to 10: {}", sum);
     }
 }
 
@@ -115,18 +117,18 @@ namespace ConstExprPow {
     {
         constexpr size_t total{ sumUpPowerTable() };
         static_assert (total == 979, "Sum should be 979");
-        std::cout << "Total: " << total << std::endl;
+        std::println("Total: ", total);
     }
 
     static void testPower_02()
     {
-        int index = 0;
+        int index = 1;
         for (size_t elem : powerTable<Factor>) {
-            std::cout << "    " << ++index << ": " << elem << std::endl;
+            std::println("{:02}: {}", index++, elem);
         }
 
         constexpr size_t total = sumUpPowerTable();
-        std::cout << "Total: " << total << std::endl;
+        std::println("Total: {}", total);
     }
 
     static void testPower()
