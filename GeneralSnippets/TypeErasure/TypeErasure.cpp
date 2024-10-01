@@ -9,7 +9,9 @@ module;
 module modern_cpp:type_erasure;
 
 namespace {
-    size_t MaxIterations = 1000000;
+   // size_t MaxIterations = 1000000;
+
+    size_t MaxIterations = 100000;
 }
 
 // =====================================================================================
@@ -49,9 +51,9 @@ namespace TypeErasureUsingDynamicPolymorphism {
         Animals animals{ animal1, animal2 };
 
         for (const auto& animal : animals) {
-            std::cout << animal->see() << ": " << animal->say() << std::endl;
+            std::println("{}: {}", animal->see(), animal->say());
         }
-        std::cout << std::endl;
+        std::println();
     }
 }
 
@@ -128,9 +130,9 @@ namespace TypeErasureUsingTemplateTechniques {
         Animals animals{ Cat(), Dog() };
 
         for (const auto& animal : animals) {
-            std::cout << animal.see() << ": " << animal.say() << std::endl;
+            std::println("{}: {}", animal.see(), animal.say());
         }
-        std::cout << std::endl;
+        std::println();
     }
 }
 
@@ -216,9 +218,9 @@ namespace TypeErasureUsingTemplateTechniquesAndConcepts {
         Animals animals{ Cat(), Dog() };
 
         for (const auto& animal : animals) {
-            std::cout << animal.see() << ": " << animal.say() << std::endl;
+            std::println("{}: {}", animal.see(), animal.say());
         }
-        std::cout << std::endl;
+        std::println();
     }
 }
 
@@ -330,9 +332,10 @@ namespace BookStoreUsingDynamicPolymorphism {
         };
 
         double balance{ bookstore.totalBalance() };
-        std::cout << "Total value of Bookstore: " << balance << std::endl;
+        std::println("Total value of Bookstore: {:.{}f}", balance, 2);
+
         size_t count{ bookstore.count() };
-        std::cout << "Count of elements in Bookstore: " << count << std::endl;
+        std::println("Count of elements in Bookstore: {}", count);
     }
 
     static void test_bookstore_polymorphic_02() {
@@ -349,12 +352,12 @@ namespace BookStoreUsingDynamicPolymorphism {
         bookstore.addMedia(movieTarantino);
 
         size_t count{ bookstore.count() };
-        std::cout << "Count of elements in Bookstore: " << count << std::endl;
+        std::println("Count of elements in Bookstore: {}", count);
     }
 
     static void test_bookstore_polymorphic_03() {
 
-        std::cout << "Benchmark - Method Call - using Polymorphism" << std::endl;
+        std::println("Benchmark - Method Call - using Polymorphism");
 
         std::shared_ptr<IMedia> cBook{ std::make_shared<Book>("C", "Dennis Ritchie", 11.99, 12) };
 
@@ -369,13 +372,13 @@ namespace BookStoreUsingDynamicPolymorphism {
 
         double duration{ std::chrono::duration_cast<std::chrono::duration<double, std::milli>>(endTime - startTime).count() };
 
-        std::cout << "Done: " << duration << " msecs." << std::endl;
-        std::cout << std::endl;
+        std::println("Done: {} msecs.", duration);
+        std::println();
     }
 
     static void test_bookstore_polymorphic_04() {
 
-        std::cout << "Benchmark - Iterating a Container of Shared Pointers - using Polymorphism" << std::endl;
+        std::println("Benchmark - Iterating a Container of Shared Pointers - using Polymorphism");
 
         Bookstore bookstore{ };
 
@@ -397,8 +400,8 @@ namespace BookStoreUsingDynamicPolymorphism {
 
         double duration{ std::chrono::duration_cast<std::chrono::duration<double, std::milli>>(endTime - startTime).count() };
 
-        std::cout << "Done: " << duration << " msecs." << std::endl;
-        std::cout << std::endl;
+        std::println("Done: {} msecs.", duration);
+        std::println();
     }
 }
 
@@ -583,9 +586,9 @@ namespace BookStoreUsingTypeErasure {
         };
 
         double balance{ bookstore.totalBalance() };
-        std::cout << "Total value of Bookstore: " << balance << std::endl;
+        std::println("Total value of Bookstore: {:.{}f}", balance, 2);
         size_t count{ bookstore.count() };
-        std::cout << "Count of elements in Bookstore: " << count << std::endl;
+        std::println("Count of elements in Bookstore: {}", count);
     }
 
     static void test_bookstore_type_erasure_02() {
@@ -604,12 +607,12 @@ namespace BookStoreUsingTypeErasure {
         bookstore.addMediaEx(movieTarantino);
 
         size_t count{ bookstore.count() };
-        std::cout << "Count of elements in Bookstore: " << count << std::endl;
+        std::println("Count of elements in Bookstore: {}", count);
     }
 
     static void test_bookstore_type_erasure_03() {
 
-        std::cout << "Benchmark - Method Call - using Type Erasure" << std::endl;
+        std::println("Benchmark - Method Call - using Type Erasure");
 
         Book cBook{ "C", "Dennis Ritchie", 11.99, 12 };
 
@@ -624,14 +627,14 @@ namespace BookStoreUsingTypeErasure {
 
         double duration{ std::chrono::duration_cast<std::chrono::duration<double, std::milli>>(endTime - startTime).count() };
 
-        std::cout << "Done: " << duration << " msecs." << std::endl;
-        std::cout << std::endl;
+        std::println("Done: {} msecs.", duration);
+        std::println();
     }
 
     static void test_bookstore_type_erasure_04() {
 
-        std::cout << "Benchmark - Iterating a Container of std:variants - using Type Erasure" << std::endl;
-
+        std::println("Benchmark - Iterating a Container of std:variants - using Type Erasure");
+        
         Bookstore<Book, Movie> bookstore{ };
 
         Book cBook{ "C", "Dennis Ritchie", 11.99, 12 };
@@ -652,8 +655,8 @@ namespace BookStoreUsingTypeErasure {
 
         double duration{ std::chrono::duration_cast<std::chrono::duration<double, std::milli>>(endTime - startTime).count() };
 
-        std::cout << "Done: " << duration << " msecs." << std::endl;
-        std::cout << std::endl;
+        std::println("Done: {} msecs.", duration);
+        std::println();
     }
 
     class BluRay
