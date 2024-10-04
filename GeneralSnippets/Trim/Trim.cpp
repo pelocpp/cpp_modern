@@ -86,11 +86,9 @@ namespace TrimExample {
     {
         std::vector<int> vec{ 1, 2, 3, 4, 5 };
 
-        std::vector<int>::iterator it = std::find(
-            vec.begin(),
-            vec.end(),
-            3
-        );
+        std::vector<int>::iterator it{
+            std::find(vec.begin(),vec.end(), 3)
+        };
 
         std::cout << *it << std::endl;  // prints '3'
 

@@ -69,7 +69,7 @@ Wir betrachten noch ein zweites Beispiel:
 ```cpp
 01: import std;
 02: 
-03: static void test()
+03: void test()
 04: {
 05:     std::println("List of Entries:");
 06: 
@@ -88,8 +88,8 @@ Wir betrachten noch ein zweites Beispiel:
 19: 
 20:     // retrieve names from phonebook
 21:     std::transform(
-22:         std::begin(phonebook),
-23:         std::end(phonebook),
+22:         phonebook.begin(),
+23:         phonebook.end(),
 24:         std::back_inserter(names),
 25:         [](const std::pair<std::string, size_t>& entry) {
 26:             return std::get<0>(entry);

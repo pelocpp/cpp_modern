@@ -10,7 +10,7 @@ namespace Exercises_Lambdas {
 
     namespace Exercise_01 {
 
-        bool evenOrOdd(int val) {
+        static bool evenOrOdd(int val) {
 
             if ((val % 2) == 0) {
                 std::cout << val << " is even." << std::endl;

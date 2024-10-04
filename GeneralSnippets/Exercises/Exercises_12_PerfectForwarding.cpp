@@ -6,18 +6,63 @@ module modern_cpp_exercises:perfect_forwarding;
 
 namespace Exercises_PerfectForwarding {
 
+    namespace Exercise_01
+    {
+        struct Point
+        {
+            int m_x;
+            int m_y;
+        };
+    }
+}
+
+namespace std
+{
+    using namespace Exercises_PerfectForwarding::Exercise_01;
+
+    // formatter for struct Point
+    template<>
+    struct std::formatter<Point> {
+        constexpr auto parse(std::format_parse_context& ctx) {
+            return ctx.begin();
+        }
+
+        auto format(const Point& pt, std::format_context& ctx) const {
+
+            return
+                std::format_to(ctx.out(), "[{},{}]", pt.m_x, pt.m_y);
+        }
+    };
+
+    // formatter for std::complex
+    template<typename U>
+    struct std::formatter<std::complex<U>> {
+        constexpr auto parse(std::format_parse_context& ctx) {
+            return ctx.begin();
+        }
+
+        auto format(const std::complex<U>& c, std::format_context& ctx) const {
+
+            return
+                std::format_to(ctx.out(), "[{},{}]", c.real(), c.imag());
+        }
+    };
+}
+
+namespace Exercises_PerfectForwarding {
+
     namespace Exercise_01 {
 
         template <typename T>
         void list(T&& value)
         {
-            std::cout << std::forward<T>(value) << std::endl;
+           std::println("{}", std::forward<T>(value));
         }
 
         template <typename T, typename ... TREST>
         void list(T&& first, TREST&& ... rest)
         {
-            std::cout << std::forward<T>(first) << std::endl;
+            std::println("{}", std::forward<T>(first));
             list(std::forward<TREST>(rest)...);
         }
 
@@ -29,24 +74,14 @@ namespace Exercises_PerfectForwarding {
             list(10, "abc", n, Pi, 2.4, std::string{ "ABC" }, 99.99f);
         }
 
-        struct Point
-        {
-            int m_x;
-            int m_y;
-        };
-
-        std::ostream& operator<< (std::ostream& os, const Point& p)
-        {
-            os << '[' << p.m_x << ',' << p.m_y << ']';
-            return os;
-        }
-
         static void test_02()
         {
             Point p{ 11, 12 };
             Point* pp = new Point{ 3, 4 };
             std::complex<double> c{ 2.5, 3.5 };
+
             list(c, 10, "abc", p, *pp, 2.4, Point{ 1, 2 });
+
             delete pp;
         }
 
@@ -54,7 +89,7 @@ namespace Exercises_PerfectForwarding {
         template <typename T>
         void print(int index, T&& value)
         {
-            std::cout << index << ": " << std::forward<T>(value) << std::endl;
+            std::println("{}: {}", index, std::forward<T>(value));
         }
 
         template <typename T, typename ... TREST>
@@ -85,7 +120,9 @@ namespace Exercises_PerfectForwarding {
             Point p{ 11, 12 };
             Point* pp = new Point{ 3, 4 };
             std::complex<double> c(2.5, 2.5);
+
             listEx(c, 10, "abc", p, *pp, 2.4, Point{ 1, 2 });
+
             delete pp;
         }
 
@@ -99,8 +136,9 @@ namespace Exercises_PerfectForwarding {
         template <typename ... T>
         void listExEx(T&& ... args)
         {
-            std::initializer_list<int> { 
-                (std::cout << std::forward<T>(args) << std::endl, int{}) ...
+            std::initializer_list<int>
+            { 
+                (std::println("{}", std::forward<T>(args)), int{}) ...
             };
         }
 
@@ -108,8 +146,9 @@ namespace Exercises_PerfectForwarding {
         void listExExEx(T&& ... args)
         {
             size_t count{};
-            std::initializer_list<int> {
-                (std::cout << ++count << ": " << std::forward<T>(args) << std::endl, int{}) ... 
+            std::initializer_list<int>
+            {
+                (std::println("{}: {}", ++count, std::forward<T>(args)), int{}) ...
             };
         }
 
@@ -122,8 +161,10 @@ namespace Exercises_PerfectForwarding {
             Point p{ 11, 12 };
             Point* pp = new Point{ 3, 4 };
             std::complex<double> c(2.5, 2.5);
+
             listExEx(c, 10, "abc", p, *pp, 2.4, Point{ 1, 2 });
             listExExEx(c, 10, "abc", p, *pp, 2.4, Point{ 1, 2 });
+
             delete pp;
         }
 
@@ -140,17 +181,17 @@ namespace Exercises_PerfectForwarding {
 
     namespace Exercise_02 {
 
-        void f()
+        static void f()
         {
             // simulate some work (function without parameters)
-            std::cout << "calling f" << std::endl;
+            std::println("calling f");
             std::this_thread::sleep_for(std::chrono::seconds(2));
         }
 
-        void g(int a, double b)
+        static void g(int a, double b)
         {
             // simulate some work (function with parameters)
-            std::cout << "calling g with parameters " << a << " and " << b << std::endl;
+            std::println("calling g with parameters {} and {}", a, b);
             std::this_thread::sleep_for(std::chrono::seconds(3));
         }
 
@@ -161,24 +202,24 @@ namespace Exercises_PerfectForwarding {
             static std::chrono::milliseconds duration(F&& f, Args&&... args)
             {
                 // Zeitmessung in Millisekunden
-                std::chrono::system_clock::time_point start = std::chrono::system_clock::now();
-                auto tpStart = std::chrono::time_point_cast<std::chrono::milliseconds>(start);
+                std::chrono::system_clock::time_point start{ std::chrono::system_clock::now() };
+                auto tpStart{ std::chrono::time_point_cast<std::chrono::milliseconds>(start) };
                 std::invoke(std::forward<F>(f), std::forward<Args>(args)...);
-                std::chrono::system_clock::time_point end = std::chrono::system_clock::now();
-                auto tpEnd = std::chrono::time_point_cast<std::chrono::milliseconds>(end);
+                std::chrono::system_clock::time_point end{ std::chrono::system_clock::now() };
+                auto tpEnd{ std::chrono::time_point_cast<std::chrono::milliseconds>(end) };
                 std::chrono::milliseconds diff = tpEnd - tpStart;
                 return diff;
             }
         };
 
         static void test_01() {
-            std::chrono::milliseconds time = ExecutionTimer::duration(f);
-            std::cout << time.count() << " msecs." << std::endl;
+            std::chrono::milliseconds time{ ExecutionTimer::duration(f) };
+            std::println("{} msecs.", time.count());
         }
 
         static void test_02() {
-            std::chrono::milliseconds time = ExecutionTimer::duration(g, 10, 20.0);
-            std::cout << time.count() << " msecs." << std::endl;
+            std::chrono::milliseconds time{ ExecutionTimer::duration(g, 10, 20.0) };
+            std::println("{} msecs.", time.count());
         }
 
         static void testExercise_02() {

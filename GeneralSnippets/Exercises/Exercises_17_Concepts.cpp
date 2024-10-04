@@ -20,7 +20,6 @@ namespace Exercises_Concepts {
         {
         public:
             virtual ~Object() = default;
-
             virtual std::string toString() const = 0;
         };
 
@@ -64,57 +63,57 @@ namespace Exercises_Concepts {
         template <typename T>
         void print00(const T& obj)
         {
-            std::cout << obj.toString() << std::endl;
+            std::println("{}", obj.toString());
         }
 
         template <typename T>
             requires std::is_base_of<Object, T>::value
         void print01(const T& obj)
         {
-            std::cout << obj.toString() << std::endl;
+            std::println("{}", obj.toString());
         }
 
         template <typename T>
         void print02(const T& obj) requires std::is_base_of<Object, T>::value
         {
-            std::cout << obj.toString() << std::endl;
+            std::println("{}", obj.toString());
         }
 
         template <ConceptObject T>
         void print03(const T& obj)
         {
-            std::cout << obj.toString() << std::endl;
+            std::println("{}", obj.toString());
         }
 
         static auto print04(const ConceptObject auto& obj)
         {
-            std::cout << obj.toString() << std::endl;
+            std::println("{}", obj.toString());
         }
 
         static void test_01() {
 
-            print00(Integer{ 12 });
-            print01(Integer{ 34 });
-            print02(Integer{ 56 });
-            print03(Integer{ 78 });
-            print04(Integer{ 90 });
+            print00(Integer{ 1 });
+            print01(Integer{ 2 });
+            print02(Integer{ 3 });
+            print03(Integer{ 4 });
+            print04(Integer{ 5 });
 
-            print00(NaturalNumber{ 1 });
-            print01(NaturalNumber{ 2 });
-            print02(NaturalNumber{ 3 });
-            print03(NaturalNumber{ 4 });
-            print04(NaturalNumber{ 5 });
+            print00(NaturalNumber{ 10 });
+            print01(NaturalNumber{ 20 });
+            print02(NaturalNumber{ 30 });
+            print03(NaturalNumber{ 40 });
+            print04(NaturalNumber{ 50 });
 
-            print01(NaturalNumber{ -2 });
-            print02(NaturalNumber{ -3 });
-            print03(NaturalNumber{ -4 });
-            print04(NaturalNumber{ -5 });
+            print01(NaturalNumber{ -1 });
+            print02(NaturalNumber{ -2 });
+            print03(NaturalNumber{ -3 });
+            print04(NaturalNumber{ -4 });
         }
 
         static void test_02() {
 
             Double d{ 123.456 };
-            std::cout << d.toString() << std::endl;
+            std::println("{}", d.toString());
 
             // print01(d);   // the constraint was not satisfied
             // print02(d);   // the constraint was not satisfied
@@ -125,12 +124,12 @@ namespace Exercises_Concepts {
         template <ConceptObjectEx T>
         void print10(const T& obj)
         {
-            std::cout << obj.toString() << std::endl;
+            std::println("{}", obj.toString());
         }
 
         static void print11(const ConceptObjectEx auto& obj)
         {
-            std::cout << obj.toString() << std::endl;
+            std::println("{}", obj.toString());
         }
 
         static void test_03() {
@@ -299,7 +298,7 @@ namespace Exercises_Concepts {
             {
             public:
                 virtual bool hasNext() const = 0;
-                virtual int next() = 0;
+                virtual int  next() = 0;
                 virtual void reset() = 0;
             };
 
@@ -320,7 +319,7 @@ namespace Exercises_Concepts {
             {
             private:
                 std::vector<int> m_array;
-                size_t m_index;
+                size_t           m_index;
 
             public:
                 IterableArray(std::initializer_list<int> numbers)
@@ -341,25 +340,25 @@ namespace Exercises_Concepts {
                 }
             };
 
-            int getCount(IntegerIterable& a) {
+            static int getCount(IntegerIterable& a) {
                 return count(a);
             }
 
             static void test() {
 
-                IterableArray a{ 1, 2, 3 };
+                IterableArray a{ 1, 2, 3, 4, 5 };
 
                 int count{ getCount(a) };
-                std::cout << count << std::endl;
+                std::println("{}", count);
 
                 // Note: '->'-Operator
                 IntegerIterable* ap{ &a };
                 ap->reset();
                 while (ap->hasNext()) {
                     int n{ ap->next() };
-                    std::cout << n << ' ';
+                    std::print("{} ", n);
                 }
-                std::cout << std::endl;
+                std::println();
             }
         }
 
@@ -409,7 +408,7 @@ namespace Exercises_Concepts {
             {
             private:
                 std::vector<int> m_array;
-                size_t m_index;
+                size_t           m_index;
 
             public:
                 IterableArray(std::initializer_list<int> numbers)
@@ -436,22 +435,23 @@ namespace Exercises_Concepts {
                 return count(a);
             }
 
-            static void test() {
-                IterableArray a{ 1, 2, 3 };
+            static void test()
+            {
+                IterableArray a{ 1, 2, 3, 4, 5 };
 
                 int count1{ getCount(a) };
                 int count2{ getCount<IterableArray>(a) };
 
-                std::cout << count1 << std::endl;
-                std::cout << count2 << std::endl;
+                std::println("{}", count1);
+                std::println("{}", count2);
 
                 // Note: '.'-Operator
                 a.reset();
                 while (a.hasNext()) {
                     int n{ a.next() };
-                    std::cout << n << ' ';
+                    std::print("{} ", n);
                 }
-                std::cout << std::endl;
+                std::println();
             }
         }
 
@@ -484,7 +484,7 @@ namespace Exercises_Concepts {
             {
             private:
                 std::vector<double> m_array{};
-                size_t m_index{};
+                size_t              m_index{};
 
             public:
                 IterableDoubleArray(std::initializer_list<double> numbers)
@@ -514,7 +514,7 @@ namespace Exercises_Concepts {
             static void test() {
                 IterableDoubleArray d{ 1.5, 2.5, 3.5, 4.5, 5.5 };
                 int count{ getCount<IterableDoubleArray, double>(d) };
-                std::cout << count << std::endl;
+                std::println("{}", count);
             }
         }
 
@@ -528,7 +528,7 @@ namespace Exercises_Concepts {
 
     namespace Exercise_04 {
 
-        template<typename... TArgs>
+        template<typename ... TArgs>
             requires (std::same_as<TArgs, std::string> && ...)
         size_t totalLength(const TArgs& ... args)
         {
@@ -557,10 +557,10 @@ namespace Exercises_Concepts {
             const std::string s3{ "!!!" };
 
             size_t len{ totalLength(s1, s2, s3) };
-            std::cout << len << std::endl;
+            std::println("{}", len);
 
             len = totalLengthEx(s1, s2, s3);
-            std::cout << len << std::endl;
+            std::println("{}", len);
         }
 
         static void testExercise_02()
@@ -570,7 +570,7 @@ namespace Exercises_Concepts {
             std::string s{ "333" };
 
             size_t len{ totalLength(cs, std::string{ "2" }, csr, s) };
-            std::cout << len << std::endl;
+            std::println("{}", len);
         }
 
         static void testExercise() {

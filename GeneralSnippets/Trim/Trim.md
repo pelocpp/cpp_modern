@@ -53,21 +53,22 @@ Der Vorwärts-Iterator hingegen zeigt sowohl physisch als auch logisch auf das El
 Das folgende kleine Programm demonstriert diesen Sachverhalt:
 
 ```cpp
-std::vector<int> vec{ 1, 2, 3, 4, 5 };
-
-std::vector<int>::iterator it = std::find(
-    std::begin(vec),
-    std::end(vec),
-    3
-);
-
-std::cout << *it << std::endl;  // prints '3'
-
-std::reverse_iterator<std::vector<int>::iterator> rit{ it };
-std::cout << *rit << std::endl; // prints '2'
-
-std::vector<int>::iterator i2 = rit.base();
-std::cout << *i2 << std::endl;  // prints '3'
+01: static void test_03()
+02: {
+03:     std::vector<int> vec{ 1, 2, 3, 4, 5 };
+04: 
+05:     std::vector<int>::iterator it{
+06:         std::find(vec.begin(),vec.end(), 3)
+07:     };
+08: 
+09:     std::cout << *it << std::endl;  // prints '3'
+10: 
+11:     std::reverse_iterator<std::vector<int>::iterator> rit{ it };
+12:     std::cout << *rit << std::endl; // prints '2'
+13: 
+14:     std::vector<int>::iterator i2 = rit.base();
+15:     std::cout << *i2 << std::endl;  // prints '3'
+16: }
 ```
 
 *Ausgabe*:

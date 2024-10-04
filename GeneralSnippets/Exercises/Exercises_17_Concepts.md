@@ -115,8 +115,7 @@ bool result = andAll(1, 2, 3);
 soll eine &ndash; soweit möglich &ndash; verständliche Fehlermeldung erzeugen,
 also nicht übersetzbar sein!
 
-*Hinweis zur Lösung*:
-
+*Hinweis zur Lösung*:<br />
 Die Technik des *Foldings* kann auch auch *Konzepte* angewendet werden. 
 
 ---
