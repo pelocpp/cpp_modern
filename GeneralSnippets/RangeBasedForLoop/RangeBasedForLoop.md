@@ -90,6 +90,26 @@ Elapsed time: 103 milliseconds.
 sum: 5000000050000000
 ```
 
+#### `std::vector<double>`-Objekt mit 100.000.000 Elementen &ndash; Debug-Modus mit GCC
+
+```
+Classic Loop: 
+Elapsed time: 486 milliseconds.
+sum: 5000000050000000
+Iterator Loop: 
+Elapsed time: 1474 milliseconds.
+sum: 5000000050000000
+Range-based Loop: 
+Elapsed time: 991 milliseconds.
+sum: 5000000050000000
+Standard Algorithm - std::for_each:
+Elapsed time: 1325 milliseconds.
+sum: 5000000050000000
+Standard Algorithm - std::accumulate:
+Elapsed time: 1350 milliseconds.
+sum: 5000000050000000
+```
+
 ---
 
 [Zurück](../../Readme.md)
