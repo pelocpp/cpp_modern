@@ -2,6 +2,10 @@
 // Folding.cpp // Variadic Templates // Folding
 // =====================================================================================
 
+module;
+
+#include "../ScopedTimer/ScopedTimer.h"
+
 module modern_cpp:folding;
 
 namespace Folding {
@@ -126,6 +130,48 @@ namespace Folding {
     static void test_05() {
         printerWithSeperator(1, 2, 3, "ABC", "DEF", "GHI");
     }
+
+    // -----------------------------------------------------------------------
+
+    // Performance Comparison
+    template<typename... TArgs>
+    static auto addFolding(TArgs... values) {
+        return (... + values);
+    }
+
+    template<typename... TArgs>
+    static auto addIterating(TArgs... values) {
+        
+        auto list = { values ...};
+
+        auto sum{ 0 };
+
+        for (auto elem : list) {
+            sum += elem;
+        }
+
+        return sum;
+    }
+
+    constexpr size_t MaxIterations = 1'000'000;
+
+    static void test_06_benchmark_folding() {
+
+        ScopedTimer watch{ };
+
+        for (size_t i{}; i != MaxIterations; ++i) {
+            auto sum = addFolding(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        }
+    }
+
+    static void test_06_benchmark_iterating() {
+
+        ScopedTimer watch{ };
+
+        for (size_t i{}; i != MaxIterations; ++i) {
+            auto sum = addIterating(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        }
+    }
 }
 
 void main_folding()
@@ -139,6 +185,9 @@ void main_folding()
     test_03d();
     test_04();
     test_05();
+
+    test_06_benchmark_folding();
+    test_06_benchmark_iterating();
 }
 
 // =====================================================================================
