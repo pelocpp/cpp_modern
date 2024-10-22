@@ -12,7 +12,7 @@ namespace StdArray {
     static void test_01() {
 
         // initialization variants
-        std::array<int, 5> array1;
+        [[maybe_unused]] std::array<int, 5> array1;
 
         std::array<int, 5> array2{};
 

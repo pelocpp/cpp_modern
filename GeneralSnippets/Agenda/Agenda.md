@@ -27,7 +27,7 @@
   * *Capture*-Klausel
   * *Closure* von Lambdas
   * Lambdas und `std::function<T>`
-  * Zusammenhang Lambda-Objekt und aufrufbare Objekte
+  * Zusammenhang Lambda-Objekt und aufrufbares Objekt
   * IIFE &ndash; *Immediately Invoked Functional Expression*
 
 

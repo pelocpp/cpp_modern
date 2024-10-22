@@ -539,6 +539,9 @@
     <Image Include="VariadicTemplates\cpp_snippets_mixins_01.png" />
     <Image Include="VariadicTemplates\cpp_snippets_mixins_02.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ScopedTimer\ScopedTimer.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
