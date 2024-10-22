@@ -11,7 +11,8 @@ import std;
 
 int main()
 {
-    extern int _main_modules();
+    //extern int _main_modules();
+    //_main_modules();
 
     std::cout << "[Collection of Modern C++-Code Examples - Copyright (C) 2019-2024 Peter Loos]" << std::endl;
 
@@ -44,7 +45,6 @@ int main()
         //main_decltype();
         //main_default_initialization();
         //main_erase_remove_idiom();
-        //main_exercises();
         //main_expression_templates();
         //main_generate();
         //main_generic_functions();
@@ -74,7 +74,7 @@ int main()
         //main_raii();
         //main_raii_02();
         //main_random();
-        main_range_based_for_loop();
+        //main_range_based_for_loop();
         //main_reference_wrapper();
         //main_regular_expressions();
         //main_rvalue_lvalue();
@@ -107,6 +107,8 @@ int main()
         //main_virtual_base_class_destructor();
         //main_virtual_override_final();
         //main_weak_pointer();
+
+        //main_exercises();
     }
     catch (const std::exception& ex) {
         std::cout << "Exception: " << ex.what() << std::endl;

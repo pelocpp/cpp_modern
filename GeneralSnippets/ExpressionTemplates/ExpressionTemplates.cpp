@@ -4,7 +4,7 @@
 
 module;
 
-#include <chrono>
+#include "../ScopedTimer/ScopedTimer.h"
 
 module modern_cpp:expression_templates;
 
@@ -224,15 +224,11 @@ namespace ExpressionTemplates {
         const Matrix<Size>& a4,
         const Matrix<Size>& a5)
     {
-        auto start = std::chrono::high_resolution_clock::now();
+        ScopedTimer watch{};
+
         for (size_t i{}; i != iterations; ++i) {
             result = a1 + a2 + a3 + a4 + a5;
         }
-        auto end = std::chrono::high_resolution_clock::now();
-
-        std::cout
-            << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count()
-            << " milliseconds." << std::endl;
     }
 
     static void test_04b_benchmark(
@@ -256,15 +252,11 @@ namespace ExpressionTemplates {
         MatrixExpr sumABCD{ sumABC, a4 };
         MatrixExpr sumABCDE{ sumABCD, a5 };
 
-        auto start = std::chrono::high_resolution_clock::now();
+        ScopedTimer watch{};
+
         for (size_t i{}; i != iterations; ++i) {
             result = sumABCDE;
         }
-        auto end = std::chrono::high_resolution_clock::now();
-
-        std::cout
-            << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count()
-            << " milliseconds." << std::endl;
     }
 
     static void test_04_benchmark()

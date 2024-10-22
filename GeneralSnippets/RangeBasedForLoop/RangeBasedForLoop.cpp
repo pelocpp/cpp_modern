@@ -261,7 +261,7 @@ namespace RangeBasedForLoop {
 void main_range_based_for_loop()
 {
     using namespace RangeBasedForLoop;
-    //test(); 
+    test(); 
     benchmarks();
 }
 

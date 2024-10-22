@@ -2,13 +2,16 @@
 // Exercises_10_CRTP.cpp
 // =====================================================================================
 
+module;
+
+#include "../ScopedTimer/ScopedTimer.h"
+
 module modern_cpp_exercises:crtp;
 
 namespace Exercises_CRTP {
 
     namespace Exercise_01 {
 
-        using Clock = std::chrono::high_resolution_clock;
         constexpr long MaxIterations = 10000;
         constexpr bool Verbose = false;
         constexpr int Width = 400;
@@ -84,7 +87,7 @@ namespace Exercises_CRTP {
 
             Image* pImage = new PngImage(Width, Height);
 
-            auto start = Clock::now();
+            ScopedTimer watch{};
 
             // call draw several times to make sure performance is visible 
             for (int i = 0; i < MaxIterations; ++i) {
@@ -93,11 +96,7 @@ namespace Exercises_CRTP {
 
             long pixels = pImage->getNumPixels();
             std::cout << "Pixels: " << pixels << std::endl;
-
-            auto end = Clock::now();
-            std::cout << "Time taken: "
-                << std::chrono::duration_cast<std::chrono::microseconds>(end - start).count()
-                << " microseconds" << std::endl;
+            std::cout << "Done." << std::endl;
         }
 
         // CRTP approach: base class for all image types.
@@ -179,7 +178,7 @@ namespace Exercises_CRTP {
 
             ImageCRTP<PngImageCRTP>* pImage = new PngImageCRTP(Width, Height);
 
-            auto start = Clock::now();
+            ScopedTimer watch{};
 
             // call draw several times to make sure performance is visible 
             for (int i = 0; i < MaxIterations; ++i) {
@@ -188,11 +187,7 @@ namespace Exercises_CRTP {
 
             long pixels = pImage->getNumPixels();
             std::cout << "Pixels: " << pixels << std::endl;
-
-            auto end = Clock::now();
-            std::cout << "Time taken: "
-                << std::chrono::duration_cast<std::chrono::microseconds>(end - start).count()
-                << " microseconds" << std::endl;
+            std::cout << "Done." << std::endl;
         }
 
         static void testExercise_01() {

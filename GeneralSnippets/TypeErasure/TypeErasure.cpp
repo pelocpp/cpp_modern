@@ -4,14 +4,13 @@
 
 module;
 
-#include <chrono>
+#include "../ScopedTimer/ScopedTimer.h"
 
 module modern_cpp:type_erasure;
 
 namespace {
-   // size_t MaxIterations = 1000000;
-
-    size_t MaxIterations = 100000;
+    size_t MaxIterations = 1000000;
+    //size_t MaxIterations = 100000;
 }
 
 // =====================================================================================
@@ -361,19 +360,14 @@ namespace BookStoreUsingDynamicPolymorphism {
 
         std::shared_ptr<IMedia> cBook{ std::make_shared<Book>("C", "Dennis Ritchie", 11.99, 12) };
 
-        const auto startTime{ std::chrono::high_resolution_clock::now() };
+        ScopedTimer watch{};
 
         double total{};
         for (size_t i{}; i != MaxIterations; ++i) {
             total += cBook->getCount() * cBook->getPrice();
         }
 
-        const auto endTime{ std::chrono::high_resolution_clock::now() };
-
-        double duration{ std::chrono::duration_cast<std::chrono::duration<double, std::milli>>(endTime - startTime).count() };
-
-        std::println("Done: {} msecs.", duration);
-        std::println();
+        std::print("Done: ");
     }
 
     static void test_bookstore_polymorphic_04() {
@@ -388,7 +382,7 @@ namespace BookStoreUsingDynamicPolymorphism {
             bookstore.addMedia(cBook);
         }
 
-        const auto startTime{ std::chrono::high_resolution_clock::now() };
+        ScopedTimer watch{};
 
         double total{};
         for (size_t i{}; i != MaxIterations; ++i) {
@@ -396,12 +390,7 @@ namespace BookStoreUsingDynamicPolymorphism {
             total += totalBalance;
         }
 
-        const auto endTime{ std::chrono::high_resolution_clock::now() };
-
-        double duration{ std::chrono::duration_cast<std::chrono::duration<double, std::milli>>(endTime - startTime).count() };
-
-        std::println("Done: {} msecs.", duration);
-        std::println();
+        std::print("Done: ");
     }
 }
 
@@ -616,19 +605,14 @@ namespace BookStoreUsingTypeErasure {
 
         Book cBook{ "C", "Dennis Ritchie", 11.99, 12 };
 
-        const auto startTime{ std::chrono::high_resolution_clock::now() };
+        ScopedTimer watch{};
 
         double total{};
         for (size_t i{}; i != MaxIterations; ++i) {
             total += cBook.getCount() * cBook.getPrice();
         }
 
-        const auto endTime{ std::chrono::high_resolution_clock::now() };
-
-        double duration{ std::chrono::duration_cast<std::chrono::duration<double, std::milli>>(endTime - startTime).count() };
-
-        std::println("Done: {} msecs.", duration);
-        std::println();
+        std::print("Done: ");
     }
 
     static void test_bookstore_type_erasure_04() {
@@ -643,7 +627,7 @@ namespace BookStoreUsingTypeErasure {
             bookstore.addMedia(cBook);
         }
 
-        const auto startTime{ std::chrono::high_resolution_clock::now() };
+        ScopedTimer watch{};
 
         double total{};
         for (size_t i{}; i != MaxIterations; ++i) {
@@ -651,12 +635,7 @@ namespace BookStoreUsingTypeErasure {
             total += totalBalance;
         }
 
-        const auto endTime{ std::chrono::high_resolution_clock::now() };
-
-        double duration{ std::chrono::duration_cast<std::chrono::duration<double, std::milli>>(endTime - startTime).count() };
-
-        std::println("Done: {} msecs.", duration);
-        std::println();
+        std::print("Done: ");
     }
 
     class BluRay

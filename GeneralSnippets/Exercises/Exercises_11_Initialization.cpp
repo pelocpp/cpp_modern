@@ -2,6 +2,10 @@
 // Exercises_11_Initialization.cpp
 // =====================================================================================
 
+module;
+
+#include "../ScopedTimer/ScopedTimer.h"
+
 module modern_cpp_exercises:initialization;
 
 namespace Exercises_Initialization {
@@ -45,20 +49,6 @@ namespace Exercises_Initialization {
 
     namespace Exercise_02 {
 
-        void printResults(
-            std::string tag,
-            std::chrono::high_resolution_clock::time_point startTime,
-            std::chrono::high_resolution_clock::time_point endTime)
-        {
-            std::cout
-                << tag
-                << std::fixed
-                << std::setprecision(6)
-                << std::chrono::duration_cast<std::chrono::duration<double, std::milli>>(endTime - startTime).count()
-                << " msecs."
-                << std::endl;
-        }
-
         class SomeStrings
         {
         public:
@@ -88,7 +78,7 @@ namespace Exercises_Initialization {
 
         static void testExercise_02() {
             {
-                const auto startTime{ std::chrono::high_resolution_clock::now() };
+                ScopedTimer watch{};
 
                 for (size_t i{}; i != MaxIteration; ++i) {
 
@@ -101,12 +91,11 @@ namespace Exercises_Initialization {
                     });
                 }
 
-                const auto endTime{ std::chrono::high_resolution_clock::now() };
-                printResults("std::vector:           ", startTime, endTime);
+                std::cout << "std::vector: " << std::endl;
             }
 
             {
-                const auto startTime{ std::chrono::high_resolution_clock::now() };
+                ScopedTimer watch{};
 
                 for (size_t i{}; i != MaxIteration; ++i) {
 
@@ -119,8 +108,7 @@ namespace Exercises_Initialization {
                     });
                 }
 
-                const auto endTime{ std::chrono::high_resolution_clock::now() };
-                printResults("std::initializer_list: ", startTime, endTime);
+                std::cout << "std::initializer_list: " << std::endl;;
             }
         }
     }

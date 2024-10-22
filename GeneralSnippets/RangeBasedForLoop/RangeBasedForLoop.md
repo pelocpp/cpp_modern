@@ -39,19 +39,18 @@ Folgende Varianten werden betrachtet:
 
   * Die *klassische* `for`-Wiederholungsschleife
   * Iteration mit STL-Iteratoren
-  * *Bereichsbasierte* `for`-Schleife (Range-based Loop)
+  * *Bereichsbasierte* `for`-Schleife (*Range-based Loop*)
   * Standard-STL-Algorithmus (`std::for_each`)
   * Standard-STL-Algorithmus (`std::accumulate`)
 
 
 *Hinweis*:<br />
 Es lassen sich groﬂe Unterschiede zwischen Debug- und Release-Modus beobachten.
-
 Vor allem f‰llt im Debug-Modus der Gebrauch von STL-Iteratoren aus dem Rahmen.
 
 Es folgen einige Beispiele:
 
-### `std::vector<double>`-Objekt mit 10.000.000 Elementen &ndash; Debug-Modus
+#### `std::vector<double>`-Objekt mit 10.000.000 Elementen &ndash; Debug-Modus
 
 ```
 Classic Loop:
@@ -71,7 +70,7 @@ Elapsed time: 38 milliseconds.
 sum:  50000005000000
 ```
 
-### `std::vector<double>`-Objekt mit 100.000.000 Elementen &ndash; Release-Modus
+#### `std::vector<double>`-Objekt mit 100.000.000 Elementen &ndash; Release-Modus
 
 ```
 Classic Loop:

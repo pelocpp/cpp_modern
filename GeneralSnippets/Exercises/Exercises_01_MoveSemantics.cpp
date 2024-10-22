@@ -2,6 +2,10 @@
 // Exercises_01_MoveSemantics.cpp
 // =====================================================================================
 
+module;
+
+#include "../ScopedTimer/ScopedTimer.h"
+
 module modern_cpp_exercises:move_semantics;
 
 namespace Exercises_MoveSemantics {
@@ -64,7 +68,7 @@ namespace Exercises_MoveSemantics {
 
     namespace Exercise_02 {
 
-#define SOLUTION 
+// #define SOLUTION 
 
         class HugeArray {
         private:
@@ -142,18 +146,22 @@ namespace Exercises_MoveSemantics {
         }
 #endif
 
-        static void testExercise_02() {
+        static void testExercise_02()
+        {
             std::cout << "Start:" << std::endl;
-            auto start = std::chrono::high_resolution_clock::now();
+         
+            ScopedTimer watch{};
+
             std::vector<HugeArray> myVec;
+
             HugeArray bArray(10000000);
             HugeArray bArray2(bArray);
             myVec.push_back(bArray);   // <== std::move
             bArray = HugeArray(20000000);
+
             myVec.push_back(HugeArray(30000000));  // <== emplace_back (30000000)
-            auto end = std::chrono::high_resolution_clock::now();
-            //auto diff = std::chrono::duration_cast<std::chrono::milliseconds> (end - start);
-            //std::cout << "Done [" << diff.count() << " msecs]" << std::endl;
+
+            std::cout << "Done." << std::endl;
         }
     }
 }

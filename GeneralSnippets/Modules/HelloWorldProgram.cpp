@@ -4,7 +4,7 @@
 
 import hello_world;
 
-static int _main_modules()
+int _main_modules()
 {
     MyHelloWorld::globalData = 123;
 
