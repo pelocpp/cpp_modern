@@ -179,7 +179,7 @@ namespace DumbBigData {
     }
 
     // test method
-    static void test_01_dumb_big_data() {
+    static void test_dumb_big_data() {
 
         BigData data(10);
 
@@ -343,7 +343,7 @@ void main_copy_swap_idiom()
     using namespace DumbBigData;
     using namespace IdiomBigDataWithCopySwap;
 
-    test_01_dumb_big_data();
+    test_dumb_big_data();
     test_02_big_data_copy_swap_idiom();
 }
 

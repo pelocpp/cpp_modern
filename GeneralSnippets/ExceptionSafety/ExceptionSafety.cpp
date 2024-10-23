@@ -18,7 +18,7 @@ namespace ExceptionSafety {
         {}
     };
 
-    static void test_01_exception_safety()
+    static void test_exception_safety()
     {
         TwoPointers tp { new int(123), new double(123.456) };
     }

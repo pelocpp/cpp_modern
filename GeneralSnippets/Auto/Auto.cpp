@@ -8,7 +8,7 @@ namespace Auto_Examples {
 
     // ---------------------------------------------------------------------
 
-    static void test_01_a() {
+    static void test_01() {
 
         // type deduction / type inference
 
@@ -28,26 +28,39 @@ namespace Auto_Examples {
 
         // C++ 23 and above we have size_t and signed size_t
         // Not yet supported from Visual C++
-        // auto k = 1uz;        // size_t
-        // auto m = 1z;         // signed size_t
+        // auto k = 1uz;             // size_t
+        // auto m = 1z;              // signed size_t
     }
 
     // ---------------------------------------------------------------------
 
-    std::map<int, std::string> getFunction() {
+    static std::map<int, std::string> getFunction() {
 
         return std::map<int, std::string>{};
     }
 
-    static void test_01_b() {
+    static void test_02() {
 
-        auto n{ 123 };    // n is type of int
+        auto n{ 123 };                   // n is type of int
 
-        auto result{ getFunction() };
+        auto result{ getFunction() };    // result is type of ...
 
-        std::map<int, std::string> result2{
+        std::map<int, std::string> result2 {
             getFunction()
         };
+    }
+
+    // ---------------------------------------------------------------------
+
+    static void test_03() {
+
+        std::map<int, std::string> anotherMap{ { 1, "Hello"  } };
+
+        std::map<int, std::string>::iterator it = anotherMap.begin();
+
+        // std::pair<int, std::string>& entry1 = *it;  // Why this line DOES NOT compile ???
+
+        auto& entry2 = *it;
     }
 
     // ---------------------------------------------------------------------
@@ -75,7 +88,7 @@ namespace Auto_Examples {
         return (flag) ? f : d;
     }
 
-    static void test_01_c() {
+    static void test_04() {
 
         auto result = sum(1.0, 2.0);                           // float
 
@@ -110,7 +123,7 @@ namespace Auto_Examples {
         return Planet{ "Saturn", 82, true };
     }
 
-    static void test_01_d() {
+    static void test_05() {
 
         // using automatic return type deduction
         auto planet{ make_planet() };
@@ -130,7 +143,7 @@ namespace Auto_Examples {
         return message;
     }
 
-    static void test_01_e() {
+    static void test_06() {
 
         auto msg1{ getMessage() };
         std::println("Message: {}", msg1);
@@ -155,7 +168,7 @@ namespace Auto_Examples {
         return s[0];
     }
 
-    static void test_01_f()
+    static void test_07()
     {
         auto ch1{ getFirstCharacter(std::string{ "ABC" }) };
 
@@ -166,28 +179,22 @@ namespace Auto_Examples {
 
     static int f() { return 0; }
 
-    static void test_01_g_01()
+    static void test_08()
     {
         decltype(f()) i{ 1 };                 // i is integer
 
-        std::vector<decltype(f())> v;        // vector<int>, cannot be done with auto
+        std::vector<decltype(f())> v;         // vector<int>, cannot be done with auto
     }
 
     static int& g(int& i) { return ++i; }
 
-    static void test_01_g_02()
+    static void test_09()
     {
         int x { 10 };
 
         auto i{ g(x) };      // i gets a copy of f(10) ==> 11
 
         auto& j{ g(x) };     // j is a reference to x  ==> 12
-    }
-
-    static void test_01_g()
-    {
-        test_01_g_01();
-        test_01_g_02();
     }
 
     // ---------------------------------------------------------------------
@@ -210,7 +217,7 @@ namespace Auto_Examples {
         return t1 + t2;
     }
 
-    static void test_01_h()
+    static void test_10()
     {
         // works - specifying all template parameters
         auto result{ add1<long, int, int>(10, 20) };
@@ -229,14 +236,16 @@ namespace Auto_Examples {
 void main_auto()
 {
     using namespace Auto_Examples;
-    test_01_a();
-    test_01_b();
-    test_01_c();
-    test_01_d();
-    test_01_e();
-    test_01_f();
-    test_01_g();
-    test_01_h();
+    test_01();
+    test_02();
+    test_03();
+    test_04();
+    test_05();
+    test_06();
+    test_07();
+    test_08();
+    test_09();
+    test_10();
 }
 
 // =====================================================================================

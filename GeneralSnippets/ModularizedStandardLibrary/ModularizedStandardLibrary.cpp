@@ -19,9 +19,9 @@ namespace ModularizedStandardLibrary {
 
         std::unordered_map<std::string, size_t> phonebook
         {
-            { "Hans Meier" , 12345678 },
+            { "Hans Meier" ,     12345678 },
             { "Franz Schneider", 81726354 },
-            { "Hubert Mueller", 87654321 }
+            { "Hubert Mueller",  87654321 }
         };
 
         for (const auto& [name, number] : phonebook) {
@@ -35,7 +35,7 @@ namespace ModularizedStandardLibrary {
             phonebook.begin(),
             phonebook.end(),
             std::back_inserter(names),
-            [](const std::pair<std::string, size_t>& entry) {
+            [](const std::pair<const std::string, size_t>& entry) {
                 return std::get<0>(entry);
             }
         );

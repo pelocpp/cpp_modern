@@ -74,7 +74,7 @@ bis hin zu verletzten Klasseninvarianten.
 10:     {}
 11: };
 12: 
-13: static void test_01_exception_safety()
+13: static void test_exception_safety()
 14: {
 15:     TwoPointers tp { new int(123), new double(123.456) };
 16: }

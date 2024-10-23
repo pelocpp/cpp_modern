@@ -148,7 +148,7 @@ namespace BraceInitialization {
         std::for_each(
             myMap.begin(),
             myMap.end(),
-            [](const std::pair<std::string, int>& value) {
+            [](const std::pair<const std::string, int>& value) {
                 std::cout << value.first << " - " << value.second << std::endl;
             }
         );

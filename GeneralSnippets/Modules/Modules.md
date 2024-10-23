@@ -366,7 +366,7 @@ export import :weak_ptr;
 03: 
 04: namespace SharedPointer {
 05: 
-06:     void test_01_shared_ptr ()
+06:     void test_shared_ptr ()
 07:     { ...
 08:     }
 09: 
@@ -382,7 +382,7 @@ export import :weak_ptr;
 19: void main_shared_ptr()
 20: {
 21:     using namespace SharedPointer;
-22:     test_01_shared_ptr ();
+22:     test_shared_ptr ();
 23:     test_02_shared_ptr ();
 24:     test_03_shared_ptr ();
 25: }
