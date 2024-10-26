@@ -4,7 +4,7 @@
 
 module modern_cpp:copy_swap_idiom;
 
-namespace DumbBigData {
+namespace NaiveBigData {
 
     class BigData
     {
@@ -179,7 +179,7 @@ namespace DumbBigData {
     }
 
     // test method
-    static void test_dumb_big_data() {
+    static void test_01_naive_big_data() {
 
         BigData data(10);
 
@@ -340,10 +340,10 @@ namespace IdiomBigDataWithCopySwap {
 
 void main_copy_swap_idiom()
 {
-    using namespace DumbBigData;
+    using namespace NaiveBigData;
     using namespace IdiomBigDataWithCopySwap;
 
-    test_dumb_big_data();
+    test_01_naive_big_data();
     test_02_big_data_copy_swap_idiom();
 }
 
