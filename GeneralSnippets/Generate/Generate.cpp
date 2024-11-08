@@ -85,7 +85,6 @@ namespace AlgorithmGenerate {
 
         std::cout << std::endl;
     }
-
 }
 
 void main_generate()
