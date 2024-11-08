@@ -107,7 +107,6 @@ public:
     TinyContainer() {}
     TinyContainer(int value) {}
     TinyContainer(std::initializer_list<int>) {};
-    TinyContainer(const std::vector<int>&) {};
 };
 
 void test_03() {
@@ -116,7 +115,6 @@ void test_03() {
     TinyContainer tc2{ 1 };                            // TinyContainer::TinyContainer (std::initializer_list<int>)
     TinyContainer tc3(1);                              // TinyContainer::TinyContainer (int)
     TinyContainer tc4{ };                              // TinyContainer::TinyContainer ()
-    TinyContainer tc5{ std::vector<int> { 1, 2, 3} };  // TinyContainer::TinyContainer (const std::vector<int>&)
 }
 ```
 

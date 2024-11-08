@@ -38,9 +38,13 @@ die Verschiebe-Wertzuweisung ein) kann dem dazugehörigen Quellcode entnommen we
 
 Man beachte, dass das Objekt `data` &ndash; also das durch eine Referenz / einen Aliasnamen
 an den verschiebenden Konstruktor übergebene Objekt &ndash; sich *nach* nach dem Methodenaufruf
-in dem so genannten &bdquo;*Moved-From*&rdquo;-Zustand befindet:
+in dem so genannten &bdquo;*Moved-From*&rdquo;-Zustand befindet.
 
-An einem Objekt im &bdquo;*Moved-From*&rdquo;-Zustand lassen sich nur 2 Vorgänge durchführen:
+An einem Objekt im &bdquo;*Moved-From*&rdquo;-Zustand lassen sich alle vorhandenen Methoden aufrufen,
+es kommt nicht zu einem Absturz &ndash; aber vermutlich auch nicht zu den Ergebnissen,
+die man erwartet hätte.
+
+An einem Objekt im &bdquo;*Moved-From*&rdquo;-Zustand lassen sich zwei Vorgänge durchführen:
 
   * Man kann es zerstören
   * Man kann es neu zuweisen

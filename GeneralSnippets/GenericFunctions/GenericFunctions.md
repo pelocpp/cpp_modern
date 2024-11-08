@@ -43,10 +43,24 @@ auto lambda = [](auto x, int y) {
 
 Man beachte, dass der Lambda Ausdruck einen Parameter vom Typ `auto` hat.
 
-Intern &ndash; also aus Sicht des Compilers &ndash; wird ein derartige Funktion bzw. ein derartiger Lambda Ausdruck
+Intern &ndash; also aus Sicht des Compilers &ndash; wird eine derartige Funktion bzw. ein derartiger Lambda Ausdruck
 auf ein &bdquo;aufrufbares Objekt&rdquo; abgebildet.
 Der Aufruf-Operator `operator()` wird dabei im Sinne der Template Technik als so genannte
 *Template Member Function* realisiert:
+
+
+```cpp
+struct Function
+{
+    template <typename T>
+    auto operator() (T x, int y) {
+        std::cout << "x=" << x << ", y=" << y << std::endl;
+    }
+};
+```
+
+oder
+
 
 ```cpp
 struct Lambda
@@ -121,7 +135,7 @@ Found a value: 75.5
 ```
 
 **Bemerkung**:
-Zwischen Funktionstemplates und generischen Lambda Ausdrücken lassen sich wiederum Gemeinsamkeiten erkennen.
+Zwischen Funktionstemplates und generischen Lambda Ausdrücken lassen sich Gemeinsamkeiten erkennen.
 Das letzte Beispiel hätte man auch mit einem Funktionstemplate realisieren können:
 
 ```cpp

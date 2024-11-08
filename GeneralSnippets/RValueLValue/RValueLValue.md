@@ -121,7 +121,7 @@ in Funktionen oder Methoden erscheinen:
 | `void function(const Type& param)`<br />`void X::method(const Type& param)` | Sowohl *LValue* Referenzen als auch *RValue* Referenzen können als Parameter übergeben werden. |
 | `void function(Type&& param)`<br />`void X::method(Type&& param)` | Als Parameter können nur *RValue* Referenzen übergeben werden. |
 
-*Tabelle* 1: Unterschiedliche Funktions- und Methodensignaturen und ihre zulässigen Parametertypen..
+*Tabelle* 1: Unterschiedliche Funktions- und Methodensignaturen und ihre zulässigen Parametertypen.
 
 Obwohl *RValue*-Referenzen natürlich für Parameter in jeder Funktion oder Methode verwendet werden können,
 ist ihr prädestiniertes Anwendungsgebiet die [*Verschiebe-Semantik*](../../GeneralSnippets/MoveSemantics/MoveSemantics.md).
