@@ -148,6 +148,8 @@
   <ItemGroup>
     <ClCompile Include="Accumulate\Accumulate.cpp" />
     <ClCompile Include="Accumulate\Module_Accumulate.ixx" />
+    <ClCompile Include="Algorithms\Algorithms.cpp" />
+    <ClCompile Include="Algorithms\Module_Algorithms.ixx" />
     <ClCompile Include="Allocator\Allocator.cpp" />
     <ClCompile Include="Allocator\Module_Allocator.ixx" />
     <ClCompile Include="Any\Module_Any.ixx" />
@@ -361,6 +363,7 @@
     <None Include="..\Readme.md" />
     <None Include="Accumulate\Accumulate.md" />
     <None Include="Agenda\Agenda.md" />
+    <None Include="Algorithms\Algorithms.md" />
     <None Include="Allocator\Allocator.md" />
     <None Include="Any\cpp_std_any.svg" />
     <None Include="Any\Any.md" />

@@ -2,10 +2,6 @@
 // RangeBasedForLoop.cpp
 // =====================================================================================
 
-module;
-
-#include "../ScopedTimer/ScopedTimer.h"
-
 module modern_cpp:range_based_for_loop;
 
 /*
@@ -29,7 +25,7 @@ namespace RangeBasedForLoop {
         }
     };
 
-    static void test()
+    static void test_iterations()
     {
         // container of integral data type
         std::vector<int> vec{ 1, 2, 3, 4, 5, 6, 7, 8, 9 };
@@ -139,130 +135,10 @@ namespace RangeBasedForLoop {
     }
 }
 
-namespace RangeBasedForLoop {
-
-    static auto calculate_sum_classic(const std::vector<double>& values) noexcept
-    {
-        std::println("Classic Loop: ");
-
-        double sum{};
-
-        ScopedTimer watch{};
-
-        for (size_t i = 0; i != values.size(); ++i) {
-            sum += values[i];
-        }
-
-        return sum;
-    }
-
-    static auto calculate_sum_iterator(const std::vector<double>& values) noexcept
-    {
-        std::println("Iterator Loop: ");
-
-        double sum{};
-
-        ScopedTimer watch{};
-
-        for (auto it = values.cbegin(); it != values.cend(); ++it) {
-            sum += *it;
-        }
-
-        return sum;
-    }
-
-    static auto calculate_sum_range_based_loop (const std::vector<double>& values) noexcept
-    {
-        std::println("Range-based Loop: ");
-
-        double sum{};
-
-        ScopedTimer watch{};
-
-        for (const auto& value : values) {
-            sum += value;
-        }
-
-        return sum;
-    }
-
-    static auto calculate_sum_standard_algorithm (const std::vector<double>& values) noexcept
-    {
-        std::println("Standard Algorithm - std::for_each:");
-
-        double sum{};
-
-        ScopedTimer watch{};
-
-        std::for_each(
-            values.cbegin(),
-            values.cend(),
-            [&sum] (const auto& value) {sum += value; }
-        );
-
-        return sum;
-    }
-
-    static auto calculate_sum_accumulate(const std::vector<double>& values) noexcept
-    {
-        std::println("Standard Algorithm - std::accumulate:");
-
-        ScopedTimer watch{};
-
-        double sum{ 
-            std::accumulate(
-                values.cbegin(),
-                values.cend(),
-                0.0
-            ) 
-        };
-
-        return sum;
-    }
-
-    static void benchmark() {
-
-        constexpr int Length = 100'000'000;   // use with release mode
-        //constexpr int Length = 10'000'000;        // use with debug mode
-        //constexpr int Length = 10;             // just for testing software
-
-        std::vector<double> values(Length);
-
-        std::generate(
-            values.begin(),
-            values.end(), 
-            [value = 0.0]() mutable { ++value; return value; }
-        );
-
-        double sum{};
-
-        sum = calculate_sum_classic(values);
-        std::println("sum: {:15.20g}", sum);
-
-        sum = calculate_sum_iterator(values);
-        std::println("sum: {:15.20g}", sum);
-
-        sum = calculate_sum_range_based_loop(values);
-        std::println("sum: {:15.20g}", sum);
-        
-        sum = calculate_sum_standard_algorithm(values);
-        std::println("sum: {:15.20g}", sum);
-        
-        sum = calculate_sum_accumulate(values);
-        std::println("sum: {:15.20g}", sum);
-    }
-
-    static void benchmarks()
-    {
-        benchmark();
-    }
-}
-
 void main_range_based_for_loop()
 {
     using namespace RangeBasedForLoop;
-    test(); 
-    benchmarks();
+    test_iterations();
 }
 
 // =====================================================================================

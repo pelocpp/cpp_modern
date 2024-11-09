@@ -5,6 +5,7 @@
 export module modern_cpp;
 
 export import :accumulate;
+export import :algorithms;
 export import :allocator;
 export import :any;
 export import :apply;

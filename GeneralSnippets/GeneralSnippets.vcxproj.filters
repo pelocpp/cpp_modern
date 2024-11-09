@@ -660,6 +660,12 @@
     <ClCompile Include="Println\Println.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Algorithms\Algorithms.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Algorithms\Module_Algorithms.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -1047,6 +1053,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Println\Println.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Algorithms\Algorithms.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

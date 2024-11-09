@@ -125,6 +125,7 @@ Es folgt eine tabellarische Auflistung dieser Unterverzeichnisse.
 | Thema | Kurzbeschreibung |
 |:- |:-|
 | [Accumulate](GeneralSnippets/Accumulate/Accumulate.md) | STL-Algorithmus `std::accumulate` und Lambda-Objekte in der Anwendung |
+| [Algorithmen](GeneralSnippets/Algorithms/Algorithms.md) | Elementare STL-Algorithmen (`std::fill`, `std::for_each`, `std::generate`, `std::accumulate`) |
 | [Allocator](GeneralSnippets/Allocator/Allocator.md) | Container und Speicher-Allokatoren |
 | [Any](GeneralSnippets/Any/Any.md) | Neue STL-Utility Klasse `std::any` |
 | [Apply](GeneralSnippets/Apply/Apply.md) | `std::apply`, `std::integer_sequence` und `std::make_integer_sequence` |
