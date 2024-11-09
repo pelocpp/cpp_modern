@@ -2,19 +2,15 @@
 // StringView.cpp // Klasse std::string_view
 // =====================================================================================
 
-module;
-
-#include <cstdint>   // for uint8_t
-
 module modern_cpp:string_view;
 
 namespace StringViewDemonstration {
 
     static void test_01()
     {
-        std::string_view sv{ "The quick brown fox jumps over the lazy dog" };  // Konstante Zeichenkette
+        std::string_view sv{ "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" };  // Konstante Zeichenkette
 
-        std::string s{ "The quick brown fox jumps over the lazy dog" };        //  Heap
+        std::string s{ "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" };        //  Heap
 
         // sv[0] = '?';   // error
         char ch{ sv[0] };
@@ -22,13 +18,13 @@ namespace StringViewDemonstration {
 
     static void test_02()
     {
-        std::string s{ "How vexingly quick daft zebras jump!" };
+        std::string s{ "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" };
 
         std::string_view sv{ s };
 
         std::cout << sv << std::endl;
 
-        s += "Sixty zippers were quickly picked from the woven jute bag";  // the content of s is reallocated !
+        s += "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB";  // the content of s is reallocated !
 
         std::cout << sv << std::endl;
     }
@@ -42,9 +38,9 @@ namespace StringViewDemonstration {
         std::cout << "moo"sv << std::endl;  // sv suffix: std::string_view literal
     }
 
-    static uint32_t countUpperCaseChars(std::string_view sv) {
+    static size_t countUpperCaseChars(std::string_view sv) {
 
-        uint32_t result{};
+        size_t result{};
 
         for (char c : sv) {
             if (std::isupper(c)) {
@@ -58,7 +54,7 @@ namespace StringViewDemonstration {
     static void test_04()
     {
         std::string_view sv{ "DiesIstEinLangerSatz" };
-        uint32_t count{ countUpperCaseChars(sv) };
+        size_t count{ countUpperCaseChars(sv) };
         std::cout << "countUpperCaseChars: " << count << std::endl;
 
         std::string s{ "AuchDasWiederIstEinLangerSatz" };

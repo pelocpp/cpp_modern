@@ -8,21 +8,47 @@
 
 ---
 
-Wenn es um die Handhabung variadischer Funktionen geht, können wir nicht im klassischen
-"iterativen" C++ - Stil denken. Wir müssen solche Funktionen rekursiv schreiben - mit
-einem so genannten "Normal"-Fall und einem "rekursiven" Fall, der sich nach endlich vielen Schritten
-auf einen "Normal"-Fall reduzieren lässt. 
+## Inhalt
 
-Variadische Templates bestehen deshalb aus zwei Template-Überladungen:
+  * [Allgemeines](#link1)
+  * [Syntax](#link2)
+  * [&bdquo;Folding über einem Komma&rdquo;](#link3)
+  * [Ein Zeitvergleich](#link4)
 
-  * Einem *normalen* Template
-  * Einem *rekursiven* Template, das neben einem normalen Parameter ein so genanntes *Parameter Pack* besitzt (Notation mit "..."). 
-    Diese drei Punkte können sowohl links vom Argument (Parameter-Pack-Deklaration) als auch rechts stehen (Entpacken des Parameter Packs).
+---
 
-Ab C++ 17 kann man die zwei Templates eines variadischen Templates auch auf Eines reduzieren. 
-Dies erfolgt mit Hilfe eines sogenannten "*Folding-Ausdrucks*".
+## Allgemeines <a name="link1"></a>
 
-*Folding-Expressions* lassen sich in 4 Kategorien einteilen, wie folgende Tabelle 
+Ein *Folding*-Ausdruck ist ein arithmetischer Ausdruck,
+der einen Operator auf alle Werte eines variadischen Parameterpacks anwendet.
+
+*Beispiel*:
+
+Arithmetischer Ausdruck mit Plus-Operator &ndash; Notation ohne *Folding*:
+
+```cpp
+int sum = 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10;
+```
+
+Berechnung desselben Ausdrucks durch einen Folding-Ausdruck:
+
+```cpp
+auto add(auto ... args) {
+    return (... + args);
+}
+
+void test() {
+
+    int sum = add(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+}
+```
+
+---
+
+## Syntax <a name="link2"></a>
+
+
+*Folding*-Audrücke lassen sich in 4 Kategorien einteilen, wie folgende Tabelle 
 darstellt:
 
 | Name | Ausdruck | Wird erweitert zu |
@@ -32,28 +58,68 @@ darstellt:
 | Unary Right Fold | (pack *op* ...) | pack<sub>1</sub> *op* (... *op* (pack<sub>N-1</sub> *op* pack<sub>N</sub>)) |
 | Binary Right Fold | (pack *op* ... *op* init) | pack<sub>1</sub> *op* (... *op* (pack<sub>N-1</sub> *op* (pack<sub>N</sub> *op* init))) |
 
-*Tabelle* 1: *"Folding-Expressions"*.
+*Tabelle* 1: *Folding*-Audrücke.
 
 Der Addierer und ein einfacher Printer demonstrieren in den Code-Snippets *fold expressions*.
 
 Theoretisch stehen für *Folding-Expressions* 32 Operatoren zur Verfügung.
 Diese wären `+`, `-`, `*`, `/`, `%`, `^`, `&`, `|`, `=`, `<`, `>`, `<<`, `>>`, `+=`, `-=`, `*=`, `/=`, `%=`, `^=`, `&=`, `|=`, `<<=`, `>>=`, `==`, `!=`, `<=`, `>=`, `&&`, `||`, `,`, `.*` und `->*`.
 
-Ein Sonderfall des Foldings ist das sogenannte *"Folding über einem Komma"*.
-Dieses wird ebenfalls an mehreren Beispielen veranschaulicht.
+---
 
-Ausgabe der Code-Snippets zu *fold expressions*:
+## &bdquo;Folding über einem Komma&rdquo; <a name="link3"></a>
+
+Ein Sonderfall des Foldings ist das sogenannte *&bdquo;Folding über einem Komma&rdquo;*.
+Dieses wird ebenfalls an mehreren Beispielen veranschaulicht:
 
 ```cpp
-Sum from 1 up to 10: 55
-123ABCDEFGHI
-BRF: 1 - (2 - (3 - (4 - ( 5 - 0)))): 3
-BLF: ((((0 - 1) - 2) - 3) - 4) - 5: -15
-URF: 1 - (2 - (3 - (4 - 5))): 3
-URF: ((((1 - 2) - 3) - 4) - 5: -13
-1 2 3 ABC DEF GHI
-1 2 3 ABC DEF GHI
-1-2-3-ABC-DEF-GHI-
+template <typename... TArgs>
+static void printerWithSeperator(TArgs ... args) {
+    std::string sep = " - ";
+    ((std::cout << args << sep) , ...) << std::endl;
+}
+```
+
+---
+
+## Ein Zeitvergleich <a name="link4"></a>
+
+Wir schließen dieses Kapitel mit einem Zeitvergleich ab.
+Um die ersten zehn natürlichen Zahlen zu addieren, betrachten wir zwei Funktionen:
+
+```cpp
+auto add (auto ... values) {
+    return (... + values);
+}
+```
+
+und
+
+```cpp
+auto add (auto ... values) {
+        
+    auto list = { values ...};
+
+    auto sum{ 0 };
+    for (auto elem : list) {
+        sum += elem;
+    }
+
+    return sum;
+}
+```
+
+Wenn wir den Aufruf
+
+```cpp
+auto sum { add(1, 2, 3, 4, 5, 6, 7, 8, 9, 10) };
+```
+
+entsprechend oft wiederholen, zeichnet sich folgender Unterschied ab (*Debug*-Modus):
+
+```
+Elapsed time: 516 milliseconds.    // folding
+Elapsed time: 6211 milliseconds.   // iterating
 ```
 
 ---

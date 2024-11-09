@@ -154,8 +154,6 @@
     <ClCompile Include="Allocator\Module_Allocator.ixx" />
     <ClCompile Include="Any\Module_Any.ixx" />
     <ClCompile Include="Any\Any.cpp" />
-    <ClCompile Include="Apply\Apply.cpp" />
-    <ClCompile Include="Apply\Module_Apply.ixx" />
     <ClCompile Include="ArgumentDependentNameLookup\ArgumentDependentNameLookup.cpp" />
     <ClCompile Include="ArgumentDependentNameLookup\Module_ArgumentDependentNameLookup.ixx" />
     <ClCompile Include="ArrayDecay\ArrayDecay.cpp" />
@@ -367,7 +365,6 @@
     <None Include="Allocator\Allocator.md" />
     <None Include="Any\cpp_std_any.svg" />
     <None Include="Any\Any.md" />
-    <None Include="Apply\Apply.md" />
     <None Include="ArgumentDependentNameLookup\ArgumentDependentNameLookup.md" />
     <None Include="ArrayDecay\ArrayDecay.md" />
     <None Include="Array\Array.md" />

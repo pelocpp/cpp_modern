@@ -17,11 +17,11 @@ Es werden einfache STL-Algorithmen vorgestellt:
   * `generate`
   * `accumulate`
 
-An Hand von Zeitvergleichen lassen sich elementare Funktionaitäten vergleichen:
+An Hand von Zeitvergleichen lassen sich elementare Funktionalitäten vergleichen:
 
-  * Initialisierung eines STL-Containers mit konstantem Wert
-  * Initialisierung eines STL-Containers mit variienden Werten
-  * Traversierung eines STL-Containers zur Summenbildung
+  * Initialisierung eines STL-Containers mit konstantem Wert.
+  * Initialisierung eines STL-Containers mit variienden Werten.
+  * Traversierung eines STL-Containers zur Summenbildung.
 
 ---
 

@@ -162,9 +162,6 @@
     <ClCompile Include="BackInserter\BackInserter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Apply\Apply.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="VirtualOverrideFinal\VirtualOverrideFinal.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -304,9 +301,6 @@
       <Filter>Modules</Filter>
     </ClCompile>
     <ClCompile Include="Accumulate\Module_Accumulate.ixx">
-      <Filter>Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="Apply\Module_Apply.ixx">
       <Filter>Modules</Filter>
     </ClCompile>
     <ClCompile Include="ArgumentDependentNameLookup\Module_ArgumentDependentNameLookup.ixx">
@@ -822,9 +816,6 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="BackInserter\BackInserter.md">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="Apply\Apply.md">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="VirtualOverrideFinal\VirtualOverrideFinal.md">

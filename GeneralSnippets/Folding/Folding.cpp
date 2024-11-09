@@ -15,7 +15,7 @@ namespace Folding {
 
     template<typename... TArgs>
     static auto anotherAdder(TArgs... args) {
-        return (args + ... + 0);  // binary right fold (init == 0)
+        return (... + args);  // unary left fold
     }
 
     static void test_01() {
@@ -134,18 +134,15 @@ namespace Folding {
     // -----------------------------------------------------------------------
 
     // Performance Comparison
-    template<typename... TArgs>
-    static auto addFolding(TArgs... values) {
+    static auto addFolding(auto ... values) {
         return (... + values);
     }
 
-    template<typename... TArgs>
-    static auto addIterating(TArgs... values) {
+    static auto addIterating(auto ... values) {
         
         auto list = { values ...};
 
         auto sum{ 0 };
-
         for (auto elem : list) {
             sum += elem;
         }
@@ -153,14 +150,14 @@ namespace Folding {
         return sum;
     }
 
-    constexpr size_t MaxIterations = 1'000'000;
+    constexpr size_t MaxIterations = 100'000'000;
 
     static void test_06_benchmark_folding() {
 
         ScopedTimer watch{ };
 
         for (size_t i{}; i != MaxIterations; ++i) {
-            auto sum = addFolding(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+            auto sum{ addFolding(1, 2, 3, 4, 5, 6, 7, 8, 9, 10) };
         }
     }
 
@@ -169,7 +166,7 @@ namespace Folding {
         ScopedTimer watch{ };
 
         for (size_t i{}; i != MaxIterations; ++i) {
-            auto sum = addIterating(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+            auto sum{ addIterating(1, 2, 3, 4, 5, 6, 7, 8, 9, 10) };
         }
     }
 }
@@ -177,14 +174,14 @@ namespace Folding {
 void main_folding()
 {
     using namespace Folding;
-    test_01();
-    test_02();
-    test_03a();
-    test_03b();
-    test_03c();
-    test_03d();
-    test_04();
-    test_05();
+    //test_01();
+    //test_02();
+    //test_03a();
+    //test_03b();
+    //test_03c();
+    //test_03d();
+    //test_04();
+    //test_05();
 
     test_06_benchmark_folding();
     test_06_benchmark_iterating();

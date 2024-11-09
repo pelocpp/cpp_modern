@@ -20,10 +20,9 @@ int main()
     try
     {
         //main_accumulate();
-        main_algorithms();
+        //main_algorithms();
         //main_allocator();
         //main_any();
-        //main_apply();  
         //main_argument_dependent_name_lookup();
         //main_array();
         //main_array_decay();

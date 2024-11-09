@@ -8,7 +8,6 @@ export import :accumulate;
 export import :algorithms;
 export import :allocator;
 export import :any;
-export import :apply;
 export import :argument_dependent_name_lookup;
 export import :class_array;
 export import :array_decay;

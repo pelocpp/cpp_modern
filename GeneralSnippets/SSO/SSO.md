@@ -31,15 +31,15 @@ wie groﬂ der in einem `std::string`-Objekt vorhandene, interne Datenbereich ist,
 um die Zeichenkette aufzunehmen und damit die Heap-Anforderung zu umgehen:
 
 ```cpp
-auto size = sizeof(std::string);
-auto capacity = std::string{}.capacity();
-auto small = std::string(capacity, '*');
-auto big = std::string(capacity + 1, '#');
-
-std::cout << "sizeof  : " << size << std::endl;
-std::cout << "Capacity: " << capacity << std::endl;
-std::cout << "Small   : " << small.capacity() << ": " << small << std::endl;
-std::cout << "Big     : " << big.capacity() << ": " << big << std::endl;
+01:     auto size{ sizeof(std::string) };
+02:     auto capacity{ std::string{}.capacity() };
+03:     auto small { std::string(capacity, '*') };
+04:     auto big{ std::string(capacity + 1, '#') };
+05: 
+06:     std::cout << "sizeof  : " << size << std::endl;
+07:     std::cout << "Capacity: " << capacity << std::endl;
+08:     std::cout << "Small   : " << small.capacity() << ": " << small << std::endl;
+09:     std::cout << "Big     : " << big.capacity() << ": " << big << std::endl;
 ```
 
 Die Ausgabe auf meinem Rechner lautet:
@@ -49,6 +49,16 @@ sizeof  : 40
 Capacity: 15
 Small   : 15: ***************
 Big     : 31: ################
+```
+
+Im Vergleich zum GCC-Compiler kann man kleine Unterschiede erkennen:
+
+
+```
+sizeof  : 32
+Capacity: 15
+Small   : 15: ***************
+Big     : 16: ################
 ```
 
 ---
