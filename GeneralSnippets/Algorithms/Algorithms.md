@@ -13,9 +13,9 @@
 Es werden einfache STL-Algorithmen vorgestellt:
 
   * `std::fill`
-  * `for_each`
-  * `generate`
-  * `accumulate`
+  * `std::for_each`
+  * `std::generate`
+  * `std::accumulate`
 
 An Hand von Zeitvergleichen lassen sich elementare Funktionalitäten vergleichen:
 

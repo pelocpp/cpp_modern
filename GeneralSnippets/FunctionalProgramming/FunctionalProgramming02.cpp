@@ -352,7 +352,7 @@ namespace FunctionalProgramming_01 {
 
         // a) filter books which appeared past 1990
         // b) extract book title
-        // c) reduce to result string, e.g. comma seperated list
+        // c) reduce to result string, e.g. comma separated list
 
         auto result1 = filter(
             std::begin(booksList),

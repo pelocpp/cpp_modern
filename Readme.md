@@ -130,7 +130,7 @@ Es folgt eine tabellarische Auflistung dieser Unterverzeichnisse.
 | [Any](GeneralSnippets/Any/Any.md) | Neue STL-Utility Klasse `std::any` |
 | [Argument Dependent Name Lookup](GeneralSnippets/ArgumentDependentNameLookup/ArgumentDependentNameLookup.md) | Argument-Dependent Name Lookup (ADL) / *Koenig*-Lookup |
 | [Array](GeneralSnippets/Array/Array.md) | Neue STL-Utility Klasse `std::array`, Hilfsfunktion `std::to_array` und Hilfsklasse `std::span` |
-| [Array-Decay](GeneralSnippets/ArrayDecay/ArrayDecay.md) | Arrays und Pointer |
+| [Array Decay](GeneralSnippets/ArrayDecay/ArrayDecay.md) | Arrays und Pointer |
 | [Attributes](GeneralSnippets/Attributes/Attributes.md) | C++ Standard Attribute |
 | [Auto](GeneralSnippets/Auto/Auto.md) | Keyword `auto` |
 | [BackInserter](GeneralSnippets/BackInserter/BackInserter.md) | `std::back_inserter` Iterator |
@@ -162,7 +162,7 @@ Es folgt eine tabellarische Auflistung dieser Unterverzeichnisse.
 | [Lambda](GeneralSnippets/Lambda/Lambda.md) | Lambda-Objekte |
 | [Literals](GeneralSnippets/Literals/Literals.md) | Benutzerdefinierte Literale |
 | [Memory Leaks](GeneralSnippets/MemoryLeaks/MemoryLeaksDetection.md) | CRT (C-Runtime-Library) Memory Leak Detection |
-| [MetaProgramming](GeneralSnippets/MetaProgramming/Metaprogramming01.md) | Programmierung zur Übersetzungszeit |
+| [Meta-Programming](GeneralSnippets/MetaProgramming/Metaprogramming01.md) | Programmierung zur Übersetzungszeit |
 | [Modularized Standard Library](GeneralSnippets/ModularizedStandardLibrary/ModularizedStandardLibrary.md) | Modularisierte Standardbibliothek |
 | [Modules](GeneralSnippets/Modules/Modules.md) | Neues Modul-Konzept |
 | [Move-Semantics](GeneralSnippets/MoveSemantics/MoveSemantics.md) | *Move Semantics* / Verschiebesemantik |
@@ -174,24 +174,23 @@ Es folgt eine tabellarische Auflistung dieser Unterverzeichnisse.
 | [RAII](GeneralSnippets/RAII/RAII.md) | RAII-Idiom (*Resource acquisition is Initialization*) |
 | [Random](GeneralSnippets/Random/Random.md) | Generierung von Zufallszahlen |
 | [Range-Based For Loop](GeneralSnippets/RangeBasedForLoop/RangeBasedForLoop.md) | Range-based `for` Loop |
-| [ReferenceWrapper](GeneralSnippets/ReferenceWrapper/ReferenceWrapper.md)  | Klasse `std::reference_wrapper` und Funktion `std::ref` |
+| [Reference Wrapper](GeneralSnippets/ReferenceWrapper/ReferenceWrapper.md)  | Klasse `std::reference_wrapper` und Funktion `std::ref` |
 | [RegExpr](GeneralSnippets/RegExpr/RegExpr.md) | Reguläre Ausdrücke |
 | [RValue/LValue](GeneralSnippets/RValueLValue/RValueLValue.md) | LValue- und RValue Referenzen |
 | [SFINAE_EnableIf](GeneralSnippets/SFINAE_EnableIf/Sfinae.md) | SFINAE und `std::enable_if` |
 | [Shared Pointer](GeneralSnippets/SharedPtr/SharedPtr.md) | Klasse `std::shared_ptr<T>` |
-| [SourceLocation](GeneralSnippets/SourceLocation/SourceLocation.md) | Klasse `std::source_location` |
+| [Source Location](GeneralSnippets/SourceLocation/SourceLocation.md) | Klasse `std::source_location` |
 | [SSO](GeneralSnippets/SSO/SSO.md) | *Small String Optimization* |
 | [StaticAssert](GeneralSnippets/StaticAssert/StaticAssert.md) | Compile-Time Makro `static_assert` |
 | [StringView](GeneralSnippets/StringView/StringView.md) | Klasse `std::string_view` |
 | [Structured Binding](GeneralSnippets/StructuredBinding/StructuredBinding.md) | Verknüpfung einer Liste von Bezeichnern mit einem Satz von Objekten (Variablen) |
-| [Templates: FunctioBasics](GeneralSnippets/TemplateFunctionBasics/TemplatesFunctionBasics.md) | Grundlagen zu Funktions-Templates |
+| [Templates: FunctionBasics](GeneralSnippets/TemplateFunctionBasics/TemplatesFunctionBasics.md) | Grundlagen zu Funktions-Templates |
 | [Templates: Class Basics](GeneralSnippets/TemplateClassBasics/TemplatesClassBasics.md) | Grundlagen zu Klassen-Templates |
 | [Templates: Specialization](GeneralSnippets/TemplateSpecialization/TemplateSpecialization.md) | Template Spezialisierung |
 | [Templates: ConstexprIf](GeneralSnippets/TemplateConstexprIf/TemplatesConstExpr_If.md) | Templates und bedingte Compilierung (`if constexpr`) |
 | [Templates: TemplateParameter](GeneralSnippets/TemplateTemplateParameter/TemplateTemplateParameter.md) | Template Template Parameter |
 | [ToUnderlying](GeneralSnippets/ToUnderlying/ToUnderlying.md) | Funktion `std::to_underlying` |
 | [Transform](GeneralSnippets/Transform/Transform.md) | STL-Algorithmus `std::transform` und Lambda-Objekte in der Anwendung |
-| [TrimmingStrings](GeneralSnippets/Trim/Trim.md) | Leerzeichen am Anfang und Ende einer Zeichenkette entfernen |
 | [Tuples](GeneralSnippets/Tuple/Tuple.md) | Neue STL-Utility Klasse `std::tuple` |
 | [Two-Phase Name Lookup](GeneralSnippets/TwoPhaseNameLookup/TwoPhaseNameLookup.md) | Two-Phase Name Lookup |
 | [TypeErasure](GeneralSnippets/TypeErasure/TypeErasure.md) | *Type Erasure* &ndash; statischer versus dynamischer Polymorphismus |

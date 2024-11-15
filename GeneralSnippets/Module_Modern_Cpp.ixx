@@ -71,7 +71,6 @@ export import :template_specialization;
 export import :template_template_parameter;
 export import :to_underlying;
 export import :transform;
-export import :trim;
 export import :tuple;
 export import :two_phase_name_lookup;
 export import :type_erasure;

@@ -331,8 +331,6 @@
     <ClCompile Include="ToUnderlying\ToUnderlying.cpp" />
     <ClCompile Include="Transform\Module_Transform.ixx" />
     <ClCompile Include="Transform\Transform.cpp" />
-    <ClCompile Include="Trim\Module_Trim.ixx" />
-    <ClCompile Include="Trim\Trim.cpp" />
     <ClCompile Include="Tuple\Module_Tuple.ixx" />
     <ClCompile Include="Tuple\Tuple.cpp" />
     <ClCompile Include="TwoPhaseNameLookup\Module_TwoPhaseNameLookup.ixx" />
@@ -460,9 +458,6 @@
     <None Include="Transform\cpp_snippet_transform_01.svg" />
     <None Include="Transform\cpp_snippet_transform_02.svg" />
     <None Include="Transform\Transform.md" />
-    <None Include="Trim\cpp_snippet_base_01.svg" />
-    <None Include="Trim\cpp_snippet_base_02.svg" />
-    <None Include="Trim\Trim.md" />
     <None Include="Tuple\cpp_std_tuple.svg" />
     <None Include="Tuple\Tuple.md" />
     <None Include="TwoPhaseNameLookup\TwoPhaseNameLookup.md" />

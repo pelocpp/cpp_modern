@@ -192,9 +192,6 @@
     <ClCompile Include="Folding\Folding.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Trim\Trim.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Auto\Auto.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -508,9 +505,6 @@
       <Filter>Modules</Filter>
     </ClCompile>
     <ClCompile Include="Transform\Module_Transform.ixx">
-      <Filter>Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="Trim\Module_Trim.ixx">
       <Filter>Modules</Filter>
     </ClCompile>
     <ClCompile Include="Tuple\Module_Tuple.ixx">
@@ -894,15 +888,6 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="OnlineCppCompilers\OnlineCppCompilers.md">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="Trim\Trim.md">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="Trim\cpp_snippet_base_02.svg">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="Trim\cpp_snippet_base_01.svg">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="ConstExpr\Constexpr.md">

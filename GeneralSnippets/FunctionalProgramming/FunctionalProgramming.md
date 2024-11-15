@@ -11,12 +11,11 @@
 ## Inhalt
 
   * [Allgemeines](#link1)
-  * [*Pure* Funktionen](#link)
-  * [Funktionen höherer Ordnung](#link)
-  * [Umsetzung in C++ und STL](#link)
-  * [*Filter-Map-Reduce* Pattern](#link)
-  * [Umsetzung in C++ und *Ranges*](#link)
-
+  * [*Pure* Funktionen](#link2)
+  * [Funktionen höherer Ordnung](#link3)
+  * [Umsetzung in C++ und STL](#link4)
+  * [*Filter-Map-Reduce* Pattern](#link5)
+  * [Umsetzung in C++ und *Ranges*](#link6)
 
 ---
 
@@ -299,7 +298,7 @@ Im Quellcode zu diesem Snippet gibt es Beispiel zum *Filter-Map-Reduce* Pattern:
 38:         [] (const Book& book) { return book.m_title; }  // convert Book to std::string
 39:     );
 40: 
-41:     // reduce to result string, e.g. comma seperated list
+41:     // reduce to result string, e.g. comma separated list
 42:     std::string titles = std::accumulate(
 43:         std::begin(bookTitles),
 44:         std::end(bookTitles),
@@ -354,7 +353,7 @@ Titles: Java, C#
 22:         | std::ranges::views::transform([](const Book& book) { return book.m_title; }) 
 23:         | std::ranges::views::common;
 24: 
-25:     // reduce to result string, e.g. comma seperated list
+25:     // reduce to result string, e.g. comma separated list
 26:     std::string titles = std::accumulate(
 27:         std::begin(results),
 28:         std::end(results),

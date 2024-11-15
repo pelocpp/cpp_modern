@@ -72,7 +72,7 @@ namespace FunctionalProgramming {
             m_state = state;
         }
 
-        int get_state() {
+        int get_state() const {
             return m_state;
         }
 
@@ -82,7 +82,7 @@ namespace FunctionalProgramming {
         }
     };
 
-    void doSomething(Function f)
+    static void doSomething(Function f)
     {
         f();
     }
@@ -135,22 +135,24 @@ namespace FunctionalProgramming {
             [] (const Book& book) { return book.m_title; }  // convert Book to std::string
         );
 
-        // reduce to result string, e.g. comma seperated list
-        std::string titles = std::accumulate(
-            std::begin(bookTitles),
-            std::end(bookTitles),
-            std::string{},
-            [](std::string a, std::string b) {
-                std::stringstream ss;
-                if (a.empty()) {
-                    ss << b;
+        // reduce to result string, e.g. comma separated list
+        std::string titles{
+            std::accumulate(
+                std::begin(bookTitles),
+                std::end(bookTitles),
+                std::string{},
+                [](std::string a, std::string b) {
+                    std::stringstream ss;
+                    if (a.empty()) {
+                        ss << b;
+                    }
+                    else {
+                        ss << a << ", " << b;
+                    }
+                    return ss.str();
                 }
-                else {
-                    ss << a << ", " << b;
-                }
-                return ss.str();
-            }
-        );
+            ) 
+        };
 
         std::println("Titles: {}", titles);
     }
@@ -165,27 +167,31 @@ namespace FunctionalProgramming {
             { "C#", "Anders Hejlsberg", 2000, 29.99 }
         };
 
-        auto results = booksList
-            | std::ranges::views::filter ([](const Book& book) { return book.m_year < 1990; })
-            | std::ranges::views::transform([](const Book& book) { return book.m_title; }) 
-            | std::ranges::views::common;
+        auto results {
+            booksList
+            | std::ranges::views::filter([](const Book& book) { return book.m_year >= 1990; })
+            | std::ranges::views::transform([](const Book& book) { return book.m_title; })
+            | std::ranges::views::common 
+        };
 
-        // reduce to result string, e.g. comma seperated list
-        std::string titles = std::accumulate(
-            std::begin(results),
-            std::end(results),
-            std::string{},
-            [](std::string a, std::string b) {
-                std::stringstream ss;
-                if (a.empty()) {
-                    ss << b;
+        // reduce to result string, e.g. comma separated list
+        std::string titles{
+            std::accumulate(
+                std::begin(results),
+                std::end(results),
+                std::string{},
+                [](std::string a, std::string b) {
+                    std::stringstream ss;
+                    if (a.empty()) {
+                        ss << b;
+                    }
+                    else {
+                        ss << a << ", " << b;
+                    }
+                    return ss.str();
                 }
-                else {
-                    ss << a << ", " << b;
-                }
-                return ss.str();
-            }
-        );
+            ) 
+        };
 
         std::println("Titles: {}", titles);
     }

@@ -349,7 +349,7 @@ namespace FunctionalProgramming_02 {
 
         // a) filter books which appeared past 1990
         // b) extract book title
-        // c) reduce to result string, e.g. comma seperated list
+        // c) reduce to result string, e.g. comma separated list
 
         std::vector<Book> result1 = filter(
             booksList,
@@ -390,7 +390,7 @@ namespace FunctionalProgramming_02 {
 
         // a) filter books which appeared past 1990
         // b) extract book title
-        // c) reduce to result string, e.g. comma seperated list
+        // c) reduce to result string, e.g. comma separated list
 
         std::string result = foldLeft(
             map(

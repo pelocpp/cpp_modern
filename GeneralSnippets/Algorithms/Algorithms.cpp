@@ -13,15 +13,15 @@ namespace Algorithms {
     //static constexpr int MaxIterations = 100'000'000;  // release
     static constexpr int MaxIterations = 10'000'000;     // debug
 
-    static std::vector<double> values(MaxIterations);
-
     // =================================================================================
     // Initialization with a constant value
     // =================================================================================
 
-    static auto test_constant_initialize_classic_loop ()
+    static auto test_constant_initialize_classic_for_loop()
     {
         std::println("Using a classic for-loop");
+
+        std::vector<double> values(MaxIterations);
 
         ScopedTimer watch{};
 
@@ -34,6 +34,8 @@ namespace Algorithms {
     {
         std::println("Using an iterator-based for-loop");
 
+        std::vector<double> values(MaxIterations);
+
         ScopedTimer watch{};
 
         for (auto it{ values.begin() }; it != values.end(); ++it) {
@@ -44,6 +46,8 @@ namespace Algorithms {
     static auto test_constant_initialize_std_fill()
     {
         std::println("Using std::fill");
+
+        std::vector<double> values(MaxIterations);
 
         ScopedTimer watch{};
 
@@ -58,6 +62,8 @@ namespace Algorithms {
     {
         std::println("Using std::for_each");
 
+        std::vector<double> values(MaxIterations);
+
         ScopedTimer watch{};
 
         std::for_each(
@@ -71,6 +77,8 @@ namespace Algorithms {
     {
         std::println("Using std::generate");
 
+        std::vector<double> values(MaxIterations);
+
         ScopedTimer watch{};
 
         std::generate(
@@ -80,22 +88,34 @@ namespace Algorithms {
         );
     }
 
+    static auto test_constant_initialize_user_defined_ctor()
+    {
+        std::println("Using special std::vector c'tor");
+
+        ScopedTimer watch{};
+
+        std::vector<double> values(MaxIterations, 123.0);
+    }
+
     static void test_const_initialization()
     {
-        test_constant_initialize_classic_loop();
+        test_constant_initialize_classic_for_loop();
         test_constant_initialize_iterator_based();
         test_constant_initialize_std_fill();
         test_constant_initialize_std_for_each();
         test_constant_initialize_std_generate();
+        test_constant_initialize_user_defined_ctor();
     }
 
     // =================================================================================
     // Initialization with a varying value
     // =================================================================================
 
-    static auto test_initialize_classic_loop()
+    static auto test_initialize_classic_for_loop()
     {
         std::println("Classic for-loop");
+
+        std::vector<double> values(MaxIterations);
 
         ScopedTimer watch{};
 
@@ -108,6 +128,8 @@ namespace Algorithms {
     {
         std::println("Iterator-based for-loop");
 
+        std::vector<double> values(MaxIterations);
+
         ScopedTimer watch{};
 
         size_t i{};
@@ -119,6 +141,8 @@ namespace Algorithms {
     static auto test_initialize_std_for_each()
     {
         std::println("Using std::for_each");
+
+        std::vector<double> values(MaxIterations);
 
         ScopedTimer watch{};
 
@@ -133,6 +157,8 @@ namespace Algorithms {
     {
         std::println("Using std::generate");
 
+        std::vector<double> values(MaxIterations);
+
         ScopedTimer watch{};
 
         std::generate(
@@ -144,7 +170,7 @@ namespace Algorithms {
 
     static void test_initialization()
     {
-        test_initialize_classic_loop();
+        test_initialize_classic_for_loop();
         test_initialize_iterator_based();
         test_initialize_std_for_each();
         test_initialize_std_for_generate();
@@ -154,14 +180,13 @@ namespace Algorithms {
     // Using algorithms for elementary calculations
     // =================================================================================
 
-    static auto test_calculate_sum_classic()
+    static auto test_calculate_sum_classic_for_loop(std::vector<double>& values)
     {
         std::println("Classic Loop: ");
 
-        double sum{};
-
         ScopedTimer watch{};
 
+        double sum{};
         for (size_t i{}; i != values.size(); ++i) {
             sum += values[i];
         }
@@ -169,14 +194,13 @@ namespace Algorithms {
         return sum;
     }
 
-    static auto test_calculate_sum_iterator()
+    static auto test_calculate_sum_iterator_based(std::vector<double>& values)
     {
         std::println("Iterator Loop: ");
 
-        double sum{};
-
         ScopedTimer watch{};
 
+        double sum{};
         for (auto it{ values.cbegin() }; it != values.cend(); ++it) {
             sum += *it;
         }
@@ -184,14 +208,13 @@ namespace Algorithms {
         return sum;
     }
 
-    static auto test_calculate_sum_range_based_loop()
+    static auto test_calculate_sum_range_based_loop(std::vector<double>& values)
     {
         std::println("Range-based Loop: ");
 
-        double sum{};
-
         ScopedTimer watch{};
 
+        double sum{};
         for (const auto& value : values) {
             sum += value;
         }
@@ -199,14 +222,13 @@ namespace Algorithms {
         return sum;
     }
 
-    static auto test_calculate_sum_standard_algorithm()
+    static auto test_calculate_sum_std_for_each(std::vector<double>& values)
     {
         std::println("Standard Algorithm - std::for_each:");
 
-        double sum{};
-
         ScopedTimer watch{};
 
+        double sum{};
         std::for_each(
             values.cbegin(),
             values.cend(),
@@ -216,7 +238,7 @@ namespace Algorithms {
         return sum;
     }
 
-    static auto test_calculate_sum_accumulate()
+    static auto test_calculate_sum_std_accumulate(std::vector<double>& values)
     {
         std::println("Standard Algorithm - std::accumulate:");
 
@@ -235,7 +257,9 @@ namespace Algorithms {
 
     static void test_sum_calculation()
     {
-        auto initArray = [] {
+        std::vector<double> values(MaxIterations);
+
+        auto initArray = [&] {
             std::generate(
                 values.begin(),
                 values.end(),
@@ -246,23 +270,23 @@ namespace Algorithms {
         double sum{};
 
         initArray();
-        sum = test_calculate_sum_classic();
+        sum = test_calculate_sum_classic_for_loop(values);
         std::println("Sum: {:15.20g}", sum);
 
         initArray();
-        sum = test_calculate_sum_iterator();
+        sum = test_calculate_sum_iterator_based(values);
         std::println("Sum: {:15.20g}", sum);
 
         initArray();
-        sum = test_calculate_sum_range_based_loop();
+        sum = test_calculate_sum_range_based_loop(values);
         std::println("Sum: {:15.20g}", sum);
 
         initArray();
-        sum = test_calculate_sum_standard_algorithm();
+        sum = test_calculate_sum_std_for_each(values);
         std::println("Sum: {:15.20g}", sum);
 
         initArray();
-        sum = test_calculate_sum_accumulate();
+        sum = test_calculate_sum_std_accumulate(values);
         std::println("Sum: {:15.20g}", sum);
     }
 }

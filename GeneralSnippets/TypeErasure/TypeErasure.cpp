@@ -409,7 +409,7 @@ namespace BookStoreUsingTypeErasure {
     public:
         Book(std::string author, std::string title, double price, size_t count)
             : m_author{ author }, m_title{ title }, m_price{ price }, m_count{ count }
-        { }
+        {}
 
         // getter / setter
         std::string getAuthor() const { return m_author; }
@@ -461,13 +461,14 @@ namespace BookStoreUsingTypeErasure {
 
         // template member method
         template <typename T>
+            requires MediaConcept<T>
         void addMedia(const T& media) {
             // m_stock.push_back(StockType{ media });  // ausführliche Schreibweise
             m_stock.push_back(media);
         }
 
         // or
-        void addMediaEx(const auto& media) {
+        void addMediaEx(const MediaConcept auto& media) {
             m_stock.push_back(media);
         }
 
