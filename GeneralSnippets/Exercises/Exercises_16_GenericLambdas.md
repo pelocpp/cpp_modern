@@ -40,17 +40,23 @@ also in unserem Beispiel älter als 50 Jahre &ndash; mit demselben Lambda-Ausdru
 durchsuchen kann:
 
 ```cpp
-std::vector<Person> personValues{
-    Person{ "Hans", 40 },
-    Person{ "Sepp", 60 }
-};
+int main()
+{
+    std::vector<Person> personValues{
+        Person{ "Hans", 40 },
+        Person{ "Sepp", 60 }
+    };
 
-// use generic lambda with a vector of Persons
-auto pos = std::find_if(
-    std::begin(personValues),
-    std::end(personValues),
-    isGreaterThanFifty
-);
+    // use generic lambda with a vector of Persons
+    auto pos = std::find_if(
+        std::begin(personValues),
+        std::end(personValues),
+        isGreaterThanFifty
+    );
+    if (pos != std::end(personValues)) {
+        std::cout << "Found Person:  " << (*pos).getName() << std::endl;
+    }
+}
 ```
 
 ---

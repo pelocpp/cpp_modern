@@ -20,7 +20,7 @@ namespace Exercises_ConstExpr {
             std::string m_str;
 
         public:
-            FromString(const char* str) : m_str(str) {}
+            FromString(const char* str) : m_str{ str } {}
 
             template <typename T>
             operator T()
@@ -73,7 +73,7 @@ namespace Exercises_ConstExpr {
     namespace Exercise_02 {
 
         template<typename T1, typename T2>
-        constexpr bool sameType(T1 arg1, T2 arg2)
+        constexpr bool sameType(T1, T2)
         {
             return std::is_same<T1, T2>::value;
         }
@@ -92,12 +92,12 @@ namespace Exercises_ConstExpr {
         //    return std::is_same<T1, T2>::value && sameType(arg2, args...);
         //}
 
-        static void testExercise_01() {
-
-            constexpr bool result1 = sameType(43, false, "hello");
+        static void testExercise_01()
+        {
+            constexpr bool result1{ sameType(43, false, "hello") };
             std::cout << std::boolalpha << result1 << std::endl;
 
-            constexpr bool result2 = sameType(1, 2, 3, 4, 5, 6, 7, 8, 9);
+            constexpr bool result2{ sameType(1, 2, 3, 4, 5, 6, 7, 8, 9) };
             std::cout << std::boolalpha << result2 << std::endl;
         }
     }

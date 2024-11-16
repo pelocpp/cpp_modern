@@ -82,14 +82,15 @@ sind, andernfalls `false` *und* ist zur Übersetzungszeit zu berechnen.
 *Beispiel*:
 
 ```cpp
+#include <iostream>
+
 int main() 
 {
-    constexpr bool result1 = sameType(43, false, "hello");
+    constexpr bool result1{ sameType(43, false, "hello") };
     std::cout << std::boolalpha << result1 << std::endl;
 
-    constexpr bool result2 = sameType(1, 2, 3, 4, 5, 6, 7, 8, 9);
+    constexpr bool result2{ sameType(1, 2, 3, 4, 5, 6, 7, 8, 9) };
     std::cout << std::boolalpha << result2 << std::endl;
-    return 1;
 }
 ```
 

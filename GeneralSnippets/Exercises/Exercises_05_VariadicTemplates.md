@@ -14,16 +14,21 @@ Schreiben Sie zwei Funktionen `andAll` und `orAll`, die eine variable Anzahl von
 logisch UND oder logisch ODER verknüpfen. Mögliche Testbeispiele können so aussehen:
 
 ```cpp
-bool result = andAll(true, false, true);
-std::cout << std::boolalpha << result << std::endl;
+#include <iostream>
 
-result = andAll(true, true, true, true, true, true, true, true, true, true);
-std::cout << std::boolalpha << result << std::endl;
+int main() 
+{
+    bool result { andAll(true, false, true) };
+    std::cout << std::boolalpha << result << std::endl;
+
+    result = andAll(true, true, true, true, true, true, true, true, true, true);
+    std::cout << std::boolalpha << result << std::endl;
+}
 ```
 
 *Ausgabe*:
 
-```cpp
+```
 false
 true
 ```
@@ -45,20 +50,22 @@ sind, andernfalls `false`.
 *Beispiel*:
 
 ```cpp
-int main() {
+#include <iostream>
+
+int main() 
+{
     bool result;
+    result = sameType(43, false, "hello");
+    std::cout << std::boolalpha << result << std::endl;
+    
     result = sameType(1, 2, 3, 4, 5, 6, 7, 8, 9);
     std::cout << std::boolalpha << result << std::endl;
-
-    result = sameType(1, 2, 3, 4, '?', 5, 6, 7, 8, 9);
-    std::cout << std::boolalpha << result << std::endl;
-    return 1;
 }
 ```
 
 *Ausgabe*:
 
-```cpp
+```
 true
 false
 ```
@@ -109,13 +116,13 @@ auf der Konsole ausgibt.
 *Beispiel*:
 
 ```cpp
-auto tuple = std::make_tuple(1, std::string("Modern C++"), false, 3.14159);
+auto tuple {std::make_tuple(1, std::string("Modern C++"), false, 3.14159) };
 printTuple(tuple);
 ```
 
 *Ausgabe*:
 
-```cpp
+```
 [1, Modern C++, 0, 3.14159]
 ```
 

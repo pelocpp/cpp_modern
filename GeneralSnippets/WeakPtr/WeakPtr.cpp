@@ -75,9 +75,9 @@ namespace WeakPointer {
     /**
      * Spoiler Alarm: Don't read this :-)
      * Note: there are 2 cycles!
-     * a) Both smart pointers are std::shared_ptr's ==> No d'tor at all will be called
+     * a) Both smart pointer are std::shared_ptr's  ==> No d'tor at all will be called
      * b) One smart pointer is a std::shared_ptr    ==> One d'tor is called
-     * c) Both smart pointers are std::weak_ptr's   ==> All d'tors are called
+     * c) Both smart pointer are std::weak_ptr's    ==> All d'tors are called
      */
 
     class ParentNode {
@@ -138,20 +138,10 @@ namespace WeakPointer {
 
         parent->setRightNode(rightNode);
         parent->setLeftNode(leftNode);
-    }
 
-    static void test_03()
-    {
-        std::shared_ptr<ParentNode> parent{ new ParentNode {} };
-        std::shared_ptr<RightNode> rightNode{ new RightNode { parent } };
-        std::shared_ptr<LeftNode> leftNode{ new LeftNode { parent } };
-
-        parent->setRightNode(rightNode);
-        parent->setLeftNode(leftNode);
-
-        std::println("Reference-Count parent:    {}", parent.use_count());
-        std::println("Reference-Count rightNode: {}", rightNode.use_count());
-        std::println("Reference-Count leftNode:  {}", leftNode.use_count());
+        //std::println("Reference-Count parent:    {}", parent.use_count());
+        //std::println("Reference-Count rightNode: {}", rightNode.use_count());
+        //std::println("Reference-Count leftNode:  {}", leftNode.use_count());
     }
 }
 
@@ -161,7 +151,6 @@ void main_weak_pointer()
     using namespace WeakPointer;
     test_01();
     test_02();
-    test_03();
 }
 
 // =====================================================================================

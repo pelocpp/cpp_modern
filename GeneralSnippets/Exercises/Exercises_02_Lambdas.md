@@ -119,13 +119,15 @@ Erraten Sie die Ausgabe? Begründen Sie Ihre Antworten.
 *Quiz 1*:
 
 ```cpp
-void test_01()
+#include <iostream>
+
+int main ()
 {
     int variable{ 1 };
-
-    auto lambda{ [variable]() mutable {
-        std::cout << "Variable: " << variable << std::endl;
-        variable++;
+    auto lambda{
+        [variable]() mutable {
+            std::cout << "Variable: " << variable << std::endl;
+            variable++;
         }
     };
 
@@ -141,7 +143,9 @@ void test_01()
 *Quiz 2*:
 
 ```cpp
-void test_02()
+#include <iostream>
+
+int main ()
 {
     auto L = [val = 10]() mutable { std::cout << val++ << std::endl; };
     L();
@@ -160,7 +164,9 @@ void test_02()
 *Quiz 3*:
 
 ```cpp
-void test_03()
+#include <iostream>
+
+int main ()
 {
     int i{ };
     
@@ -182,12 +188,15 @@ void test_03()
 *Quiz 4*:
 
 ```cpp
+#include <iostream>
+#include <functional>
+
 void invoke(const std::function<void(void)>& fn)
 {
     fn();
 }
 
-void test_04()
+int main ()
 {
     int i{ };
 

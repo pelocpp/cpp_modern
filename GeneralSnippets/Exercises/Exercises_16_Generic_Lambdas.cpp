@@ -38,7 +38,7 @@ namespace Exercises_Generic_Lambdas {
 
             std::string getName() const { return m_name; }
 
-            bool operator > (int age) const {
+            bool operator > (size_t age) const {
                 return m_age > age;
             }
         };

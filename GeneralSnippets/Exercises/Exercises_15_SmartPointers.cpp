@@ -105,7 +105,8 @@ namespace Exercises_SmartPointers {
         // =============================================================
         // Considering a "non-owning reference"
 
-        class UnsafeWatcher {
+        class UnsafeWatcher
+        {
         private:
             int* m_ptr;
 
@@ -128,7 +129,7 @@ namespace Exercises_SmartPointers {
             UnsafeWatcher watcher;
 
             {
-                std::shared_ptr<int> sp = std::make_shared<int>(123);
+                std::shared_ptr<int> sp{ std::make_shared<int>(123) };
                 watcher.watch(sp);
                 std::cout << "Value: " << watcher.currentValue() << std::endl;
             }
@@ -159,7 +160,7 @@ namespace Exercises_SmartPointers {
             HeavyAndSafeWatcher watcher;
 
             {
-                std::shared_ptr<int> sp = std::make_shared<int>(123);
+                std::shared_ptr<int> sp{ std::make_shared<int>(123) };
                 watcher.watch(sp);
                 std::cout << "Value: " << watcher.currentValue() << std::endl;
             }
@@ -181,9 +182,9 @@ namespace Exercises_SmartPointers {
 
             int currentValue() const
             {
-                // Now we can safely ask whether *m_ptr has been
-                // deallocated or not.
-                if (std::shared_ptr<int> sp; (sp = m_ptr.lock()) != nullptr)
+                // Now we can safely ask whether *m_ptr has been deallocated or not
+                std::shared_ptr<int> sp{ m_ptr.lock() };
+                if (sp != nullptr)
                 {
                     return *sp;
                 }
@@ -199,7 +200,7 @@ namespace Exercises_SmartPointers {
             LightweightAndSafeWatcher watcher;
 
             {
-                std::shared_ptr<int> sp = std::make_shared<int>(123);
+                std::shared_ptr<int> sp{ std::make_shared<int>(123) };
                 watcher.watch(sp);
                 std::cout << "Value: " << watcher.currentValue() << std::endl;
             }

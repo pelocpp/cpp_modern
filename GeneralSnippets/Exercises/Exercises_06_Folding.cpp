@@ -18,7 +18,7 @@ namespace Exercises_Folding {
 
         static void testExercise_01a() {
 
-            bool result = andAll(true, (1 > 2), true);
+            bool result{ andAll(true, (1 > 2), true) };
             std::cout << std::boolalpha << result << std::endl;
 
             result = andAll(true, true, true);
@@ -35,7 +35,7 @@ namespace Exercises_Folding {
 
         static void testExercise_01b() {
 
-            bool result = orAll(false, false, true);
+            bool result{ orAll(false, false, true) };
             std::cout << std::boolalpha << result << std::endl;
 
             result = orAll(false, false, false, false, false);
@@ -67,16 +67,16 @@ namespace Exercises_Folding {
 
         static void testExercise_02() {
 
-            constexpr bool result1 = sameType(1, 2, 3, 4, '?', 6, 7, 8, 9);
+            constexpr bool result1{ sameType(1, 2, 3, 4, '?', 6, 7, 8, 9) };
             std::cout << std::boolalpha << result1 << std::endl;
 
-            constexpr bool result2 = sameType(43, false, "hello");
+            constexpr bool result2{ sameType(43, false, "hello") };
             std::cout << std::boolalpha << result2 << std::endl;
 
-            constexpr bool result3 = sameType(1, 2, 3, 4, 5, 6, 7, 8, 9);
+            constexpr bool result3{ sameType(1, 2, 3, 4, 5, 6, 7, 8, 9) };
             std::cout << std::boolalpha << result3 << std::endl;
 
-            constexpr bool result4 = sameType(1, 2, 3, 4, '?', 5, 6, 7, 8, 9);
+            constexpr bool result4{ sameType(1, 2, 3, 4, '?', 5, 6, 7, 8, 9) };
             std::cout << std::boolalpha << result4 << std::endl;
         }
     }
@@ -86,10 +86,10 @@ namespace Exercises_Folding {
         template <typename T, typename ...  TArgs>
         auto minimum(const T& x, const T& y, const TArgs&... args)
         {
-            auto m = (x < y) ? x : y;
+            auto m{ (x < y) ? x : y };
 
-            if constexpr (sizeof... (args) > 0) {
-
+            if constexpr (sizeof... (args) > 0)
+            {
                 auto helper = [&] (const auto& value) {
                     if (value < m) {
                         m = value;
@@ -105,10 +105,10 @@ namespace Exercises_Folding {
         template <typename T, typename ...  TArgs>
         auto maximum(const T& x, const T& y, const TArgs&... args)
         {
-            auto m = (x > y) ? x : y;
+            auto m{ (x > y) ? x : y };
 
-            if constexpr (sizeof... (args) > 0) {
-
+            if constexpr (sizeof... (args) > 0)
+            {
                 auto helper = [&] (const auto& value) {
                     if (value > m) {
                         m = value;
@@ -169,11 +169,9 @@ namespace Exercises_Folding {
 
             pushBackAll_01<double>(values, 30.0, 31.0, 32.0);
 
-            std::copy(
-                std::begin(values),
-                std::end(values),
-                std::ostream_iterator<double>(std::cout, " ")
-            );
+            for (auto elem : values) {
+                std::cout << elem << ' ';
+            }
 
             std::cout << std::endl;
         }
@@ -200,11 +198,9 @@ namespace Exercises_Folding {
 
             pushBackAll_02<double>(values, 20.0, 21.0, 22.0);
 
-            std::copy(
-                std::begin(values),
-                std::end(values),
-                std::ostream_iterator<double>(std::cout, " ")
-            );
+            for (auto elem : values) {
+                std::cout << elem << ' ';
+            }
 
             std::cout << std::endl;
         }
@@ -224,11 +220,9 @@ namespace Exercises_Folding {
 
             pushBackAll_03<double>(values, 10.0, 11.0, 12.0);
 
-            std::copy(
-                std::begin(values),
-                std::end(values),
-                std::ostream_iterator<double>(std::cout, " ")
-            );
+            for (auto elem : values) {
+                std::cout << elem << ' ';
+            }
 
             std::cout << std::endl;
         }
@@ -374,11 +368,11 @@ namespace Exercises_Folding {
 void test_exercises_folding()
 {
     using namespace Exercises_Folding;
-    Exercise_01::testExercise_01();
-    Exercise_02::testExercise_02();
-    Exercise_03::testExercise_03();
+    //Exercise_01::testExercise_01();
+    //Exercise_02::testExercise_02();
+    //Exercise_03::testExercise_03();
     Exercise_04::testExercise_04();
-    Exercise_05::testExercise_05();
+    //Exercise_05::testExercise_05();
 }
 
 // =====================================================================================

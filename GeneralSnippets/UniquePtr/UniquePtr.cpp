@@ -58,28 +58,32 @@ namespace UniquePointerGeneral {
         // auto ptr1{ std::make_unique<int>(123) };
 
         // access value behind smart pointer
-        std::println("*ptr1:   {}", *ptr1);
+        int n{ *ptr1 };
+        std::println("*ptr1:   {}", n);
 
         // access value using raw pointer
-        int* ip1{ ptr1.get() };
-        (*ip1)++;
-        std::println("*ip:     {}", *ip1);
+        int* ip{ ptr1.get() };
+        (*ip)++;
+        int m{ *ip };
+        std::println("*ip:     {}", m);
 
         // access value - again - behind smart pointer
-        std::println("*ptr:    {}", *ptr1);
+        m = *ptr1;
+        std::println("*ptr1:   {}", m);
 
+        // move construction:
         // second std::unique_ptr by moving 'ptr1' to 'ptr2',
         // 'ptr1' doesn't own the object anymore
         std::unique_ptr<int> ptr2{ std::move(ptr1) };
         // std::println("*ptr1:   {}", *ptr1);    // crashes 
-        std::println("*ptr2:   {}", *ptr2);
+        m = *ptr2;
+        std::println("*ptr2:   {}", m);
 
+        // move assignment
         std::unique_ptr<int> ptr3{};
         ptr3 = std::move(ptr2);
-
-        int* ip3{ ptr3.get() };
-        (*ip3)++;
-        std::println("*ptr3:   {}", *ptr3);
+        m = *ptr3;
+        std::println("*ptr3:   {}", m);
     }
 
     static void test_02()

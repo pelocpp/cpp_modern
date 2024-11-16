@@ -16,7 +16,11 @@ Erstellen Sie eine leeres Visual C++ Projekt,
 fügen Sie nachstehenden Quellcode dort ein und bringen Sie das Programm zum Laufen:
 
 ```cpp
-class IntegerContainer {
+#include <iostream>
+#include <vector>
+
+class IntegerContainer
+{
 private:
     std::vector<int> m_data;
 
@@ -24,8 +28,8 @@ public:
     // c'tors
 };
 
-int main () {
-    return 0;
+int main ()
+{
 }
 ```
 

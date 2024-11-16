@@ -1,4 +1,4 @@
-# Aufgaben zu Smart Pointers
+# Aufgaben zu Smart Pointer
 
 [Zurück](Exercises.md)
 
@@ -87,36 +87,39 @@ Studieren Sie vor dem geschilderten Hintergrund das folgende Szenario:
   * Welcher prinzipielle Programmierfehler liegt in diesem Code-Fragment vor?
 
 ```cpp
-01: class UnsafeWatcher {
-02: private:
-03:     int* m_ptr;
-04: 
-05: public:
-06:     UnsafeWatcher() : m_ptr{ nullptr } {}
-07: 
-08:     void watch(const std::shared_ptr<int>& sp)
-09:     {
-10:         m_ptr = sp.get();
-11:     }
-12: 
-13:     int currentValue() const
-14:     {
-15:         return *m_ptr;
-16:     }
-17: };
-18: 
-19: void test()
-20: {
-21:     UnsafeWatcher watcher;
-22: 
-23:     {
-24:         std::shared_ptr<int> sp = std::make_shared<int>(123);
-25:         watcher.watch(sp);
-26:         std::cout << "Value: " << watcher.currentValue() << std::endl;
-27:     }
-28: 
-29:     std::cout << "Value: " << watcher.currentValue() << std::endl;
-30: }
+#include <iostream>
+#include <memory>
+
+class UnsafeWatcher {
+private:
+    int* m_ptr;
+
+public:
+    UnsafeWatcher() : m_ptr{ nullptr } {}
+
+    void watch(const std::shared_ptr<int>& sp)
+    {
+        m_ptr = sp.get();
+    }
+
+    int currentValue() const
+    {
+        return *m_ptr;
+    }
+};
+
+int main()
+{
+    UnsafeWatcher watcher;
+
+    {
+        std::shared_ptr<int> sp{ std::make_shared<int>(123) };
+        watcher.watch(sp);
+        std::cout << "Value: " << watcher.currentValue() << std::endl;
+    }
+
+    std::cout << "Value: " << watcher.currentValue() << std::endl;
+}
 ```
 
 ---
@@ -126,36 +129,39 @@ Damit würden wir aber zu einem Besitzer des Zeigers und verlassen den Ansatz ei
 Auch dies wollen wir mit einem Beispiel untermauern:
 
 ```cpp
-01: class HeavyAndSafeWatcher {
-02: private:
-03:     std::shared_ptr<int> m_ptr;
-04: 
-05: public:
-06:     HeavyAndSafeWatcher() {}
-07: 
-08:     void watch(const std::shared_ptr<int>& sp)
-09:     {
-10:         m_ptr = sp;
-11:     }
-12: 
-13:     int currentValue() const
-14:     {
-15:         return *m_ptr;
-16:     }
-17: };
-18: 
-19: void test()
-20: {
-21:     HeavyAndSafeWatcher watcher;
-22: 
-23:     {
-24:         std::shared_ptr<int> sp = std::make_shared<int>(123);
-25:         watcher.watch(sp);
-26:         std::cout << "Value: " << watcher.currentValue() << std::endl;
-27:     }
-28: 
-29:     std::cout << "Value: " << watcher.currentValue() << std::endl;
-30: }
+#include <iostream>
+#include <memory>
+
+class HeavyAndSafeWatcher {
+private:
+    std::shared_ptr<int> m_ptr;
+
+public:
+    HeavyAndSafeWatcher() {}
+
+    void watch(const std::shared_ptr<int>& sp)
+    {
+        m_ptr = sp;
+    }
+
+    int currentValue() const
+    {
+        return *m_ptr;  // m_ptr is always alive!
+    }
+};
+
+int main()
+{
+    HeavyAndSafeWatcher watcher;
+
+    {
+        std::shared_ptr<int> sp{ std::make_shared<int>(123) };
+        watcher.watch(sp);
+        std::cout << "Value: " << watcher.currentValue() << std::endl;
+    }
+
+    std::cout << "Value: " << watcher.currentValue() << std::endl;
+}
 ```
 
 *Aufgabe*: 

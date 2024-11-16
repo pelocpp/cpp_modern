@@ -12,7 +12,8 @@ namespace Exercises_Initialization {
 
     namespace Exercise_01 {
 
-        class IntegerContainer {
+        class IntegerContainer
+        {
         private:
             std::vector<int> m_data;
 

@@ -18,6 +18,9 @@ Wir wollen diese Eigenschaft an einem Beispiel näher unter die Lupe nehmen.
 Bringen Sie dazu das folgende Beispiel zum Laufen:
 
 ```cpp
+#include <iostream>
+#include <vector>
+
 class Person {
 private:
     std::string m_name;         // name of person
@@ -58,8 +61,6 @@ int main()
 
     // print person again
     std::cout << "Person: " << dagobert << std::endl;
-
-    return 0;
 }
 ```
 
@@ -103,6 +104,9 @@ dass ein großes Objekt (Klasse `HugeArray`) insgesamt 5 Mal neu angelegt oder u
 *Beispielprogramm*:
 
 ```cpp
+#include <iostream>
+#include <chrono>
+
 class HugeArray {
 private:
     size_t m_len;
@@ -150,7 +154,7 @@ HugeArray& HugeArray::operator=(const HugeArray& other) {
     return *this;
 }
 
-void testExercise() {
+int main () {
     std::cout << "Start:" << std::endl;
     auto start = std::chrono::high_resolution_clock::now();
     std::vector<HugeArray> myVec;

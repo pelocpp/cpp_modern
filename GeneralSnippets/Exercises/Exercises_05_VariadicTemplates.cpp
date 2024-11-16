@@ -113,8 +113,8 @@ namespace Exercises_VariadicTemplates {
             // return sameType(arg2, args...) && std::is_same<decltype(arg1), decltype(arg2)>::value;
         }
 
-        static void testExercise_02() {
-
+        static void testExercise_02()
+        {
             bool result;
             result = sameType(43, false, "hello");
             std::cout << std::boolalpha << result << std::endl;
@@ -145,14 +145,15 @@ namespace Exercises_VariadicTemplates {
             return std::min(static_cast<result_type>(first), static_cast<result_type>(minimum(rest...)));
         }
 
-        static void testExercise_03() {
-            auto min1 = minimum(-7, 3.7f, 9u, -2.6);
+        static void testExercise_03()
+        {
+            auto min1{ minimum(-7, 3.7f, 9u, -2.6) };
             std::cout << "min1: " << min1 << std::endl;
 
-            auto min2 = minimum(-7, 3.7f, 9u, -42.6);
+            auto min2{ minimum(-7, 3.7f, 9u, -42.6) };
             std::cout << "min2: " << min2 << std::endl;
 
-            auto min3 = minimum(123, (short)456, (long)789);
+            auto min3{ minimum(123, (short)456, (long)789) };
             std::cout << "min3: " << min3 << std::endl;
         }
     }
@@ -184,16 +185,16 @@ namespace Exercises_VariadicTemplates {
         template<typename... TArgs>
         void printTupleEx(const std::tuple<TArgs... >& t) {
             using tuple_type = const std::tuple<TArgs... >&;
-            static const int tupleSize = sizeof...(TArgs);
+            static const int tupleSize{ sizeof...(TArgs) };
             std::cout << "[";
             ShowTupleImpl<tuple_type, tupleSize>::print(t);
             std::cout << "]" << std::endl;
         }
 
         static void testExercise_04() {
-            auto tuple1 = std::make_tuple(1, std::string("Modern C++"), false, 3.14159);
-            auto tuple2 = std::make_tuple(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
-            auto tuple3 = std::make_tuple(12345);
+            auto tuple1 {std::make_tuple(1, std::string("Modern C++"), false, 3.14159) };
+            auto tuple2 {std::make_tuple(1, 2, 3, 4, 5, 6, 7, 8, 9, 10) };
+            auto tuple3 {std::make_tuple(12345) };
 
             printTuple(tuple1);
             printTuple(tuple2);
@@ -219,7 +220,7 @@ namespace Exercises_VariadicTemplates {
         class sum1<>
         {
         public:
-            static constexpr int result = 0;
+            static constexpr int result{ 0 };
         };
 
         // ODER
@@ -228,14 +229,14 @@ namespace Exercises_VariadicTemplates {
         class sum1<N>
         {
         public:
-            static constexpr int result = N;
+            static constexpr int result{ N };
         };
 
         template <int N, int ... TRest>
         class sum1<N, TRest ...>
         {
         public:
-            static constexpr int result = N + sum1<TRest ...>::result;
+            static constexpr int result{ N + sum1<TRest ...>::result };
         };
 
         // =============================================================

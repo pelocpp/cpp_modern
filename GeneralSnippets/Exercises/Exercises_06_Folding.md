@@ -48,24 +48,24 @@ Die Funktion kann eine variabel lange Liste von Parametern (mindestens zwei) ent
 Erklären Sie die Funktionsweise ihrer Realisierung. Welche Rolle spielt Zeile 14?
 
 ```cpp
-01: template <typename T, typename ... TArgs>
-02: auto minimum(const T& x, const T& y, const TArgs& ... args)
-03: {
-04:     auto m = (x < y) ? x : y;
-05: 
-06:     if constexpr (sizeof ... (args) > 0) {
-07: 
-08:         auto helper = [&](const auto& value) {
-09:             if (value < m) {
-10:                 m = value;
-11:             }
-12:         };
-13: 
-14:         (..., helper(args));
-15:     }
-16: 
-17:     return m;
-18: }
+template <typename T, typename ...  TArgs>
+auto minimum(const T& x, const T& y, const TArgs&... args)
+{
+    auto m{ (x < y) ? x : y };
+
+    if constexpr (sizeof... (args) > 0)
+    {
+        auto helper = [&] (const auto& value) {
+            if (value < m) {
+                m = value;
+            }
+        };
+
+        ( ... , helper(args) );
+    }
+
+    return m;
+}
 ```
 
   * Testen Sie die Korrektheit der Funktion `minimum` mit einigen Testbeispielen.
@@ -88,15 +88,24 @@ realisieren Sie das Funktionstemplate mit einem *Folding* Ausdruck.
 Das folgende &ndash; hoffentlich intuitive &ndash; Beispiel sollte ausführbar sein:
 
 ```cpp
-std::vector<double> values;
+#include <iostream>
+#include <vector>
 
-pushBackAll<double>(values, 30.0, 31.0, 32.0);
+template <typename T, typename ...  TArgs>
+void pushBackAll(std::vector<T>& vec, const TArgs&... args)
+{
+    (vec.push_back(args) , ...);
+}
 
-std::copy(
-    std::begin(values),
-    std::end(values),
-    std::ostream_iterator<double>(std::cout, " ")
-);
+int main()
+{
+    std::vector<double> values;
+    pushBackAll<double>(values, 30.0, 31.0, 32.0);
+    for (auto elem : values) {
+        std::cout << elem << ' ';
+    }
+    std::cout << std::endl;
+}
 ```
 
 *Ausgabe*:
@@ -186,4 +195,3 @@ folgende Sprachkonzepte in eine Realisierung mit einbeziehen:
 [An den Anfang](#aufgaben-zu-folding)
 
 ---
-

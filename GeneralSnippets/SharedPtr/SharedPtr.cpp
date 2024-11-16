@@ -42,18 +42,21 @@ namespace SharedPointer {
         // auto ptr1{ std::make_shared<int>(123) };
 
         // access value behind smart pointer
-        std::println("ptr1:        {}", *ptr1);
+        int n{ *ptr1 };
+        std::println("ptr1:        {}", n);
 
         // access value using raw pointer
-        int* ip1{ ptr1.get() };
-        (*ip1)++;
-        std::println("*ip:         {}", *ptr1);
+        int* ip{ ptr1.get() };
+        (*ip)++;
+        int m{ *ip };
+        std::println("*ip:         {}", m);
 
         // access value - again - behind smart pointer
-        std::println("*ptr1:       {}", *ptr1);
+        m = *ptr1;
+        std::println("*ptr1:       {}", m);
 
-        // create several smart pointers that share the same object:
-        //
+        /* create several smart pointers that share the same object
+        */
         // 1.) copy-construction
         std::shared_ptr<int> ptr2{ ptr1 };
 
@@ -70,6 +73,8 @@ namespace SharedPointer {
         std::println("Value:       {}", *ptr1);
         std::println("Value:       {}", *ptr2);
         std::println("Value:       {}", *ptr3);
+
+        // shared ptr are going out of scope right now!
     }
 
     static void test_02()
@@ -86,12 +91,12 @@ namespace SharedPointer {
     {
         // you can create a const shared pointer from a non-const pointer 
         std::shared_ptr<int> ptr1{ new int{ 123 } };
-        const std::shared_ptr<const int> ptr2 = ptr1;
+        const std::shared_ptr<const int> ptr2{ ptr1 };
 
         // *ptr2 = 456;  // error: 'ptr2': you cannot assign to a variable that is const
 
-        int dummy = *ptr2;
-        const int* ip = ptr2.get();
+        int dummy{ *ptr2 };
+        const int* ip{ ptr2.get() };
     }
 
     static void storeSharedPointerEx(const std::shared_ptr<const int>& ptr)
@@ -104,7 +109,7 @@ namespace SharedPointer {
     {
         std::shared_ptr<int> ptr1{ new int{ 123 } };
 
-        const std::shared_ptr<const int> ptr2 = ptr1;
+        const std::shared_ptr<const int> ptr2{ ptr1 };
 
         storeSharedPointerEx(ptr1);
         storeSharedPointerEx(ptr2);

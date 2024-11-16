@@ -1,5 +1,5 @@
 // =====================================================================================
-// Module Interface Partition Exercises 'Smart Pointers'
+// Module Interface Partition Exercises 'Smart Pointer'
 // =====================================================================================
 
 export module modern_cpp_exercises:smart_pointers;
