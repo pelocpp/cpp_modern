@@ -253,15 +253,15 @@ namespace Exercises_Folding {
         }
 
         // ---------------------------------------------------------
-        // The solution uses a template argument for the first parameter
-        // and then a variadic parameter list for the rest.
+        // This solution uses a template argument for the first parameter
+        // and then a variadic parameter list for the remaining parameters.
         // We print then the first element and then add a separator
         // before all remaining entries are being printed
 
         template <typename T, typename ... TArgs>
-        void printer3(T first, TArgs... rest) {
+        void printer3(T first, TArgs... args) {
             std::cout << first;
-            ((std::cout << ", " << rest) , ...);
+            ((std::cout << ", " << args) , ...);
         }
 
         /* Miscellaneous implementation variants:
@@ -276,9 +276,9 @@ namespace Exercises_Folding {
         }
 
         template <typename T, typename ... TArgs>
-        void printer4(T first, TArgs ... rest) {
+        void printer4(T first, TArgs ... args) {
             std::cout << first;
-            for (auto value : { rest ... }) {
+            for (auto value : { args ... }) {
                 printCommaAndValue(value);
             }
         }
@@ -287,9 +287,9 @@ namespace Exercises_Folding {
         // similar to printer3 - just using a helper function
 
         template <typename T, typename ... TArgs>
-        void printer5(T first, TArgs ... rest) {
+        void printer5(T first, TArgs ... args) {
             std::cout << first;
-            (printCommaAndValue(rest) , ...);
+            (printCommaAndValue(args) , ...);
         }
 
         // ----------------------------------------------------
@@ -300,44 +300,44 @@ namespace Exercises_Folding {
         };
 
         template <typename T, typename ... TArgs>
-        void printer6(T first, TArgs ... rest) {
+        void printer6(T first, TArgs ... args) {
             std::cout << first;
-            (lambdaPrintCommaAndValue(rest) , ...);
+            (lambdaPrintCommaAndValue(args) , ...);
         }
 
         // ----------------------------------------------------
         // hiding lambda helper function inside printer function
 
         template <typename T, typename ... TArgs>
-        void printer7(T first, TArgs ... rest) {
+        void printer7(T first, TArgs ... args) {
 
             auto localLambdaPrintCommaAndValue = [](auto value) {
                 std::cout << ", " << value;
             };
 
             std::cout << first;
-            (localLambdaPrintCommaAndValue(rest), ...);
+            (localLambdaPrintCommaAndValue(args), ...);
         }
 
         // ----------------------------------------------------
         // using self-invoking lambda helper function
 
         template <typename T, typename ... TArgs>
-        void printer8(T first, TArgs ... rest) {
+        void printer8(T first, TArgs ... args) {
             std::cout << first;
             // IIFE - Immediately Invoked Functional Expression :
-            ([](auto value) { std::cout << ", " << value; } (rest), ...);
+            ([](auto value) { std::cout << ", " << value; } (args), ...);
         }
 
         // ----------------------------------------------------
         // using binary folding: extract first parameter
-        // and print this parameter with the help of an 'init object';
+        // and print this parameter with the help of an 'init object':
         // print the remaining parameters with 'binary folding over a comma'
 
         template <typename T, typename ... TArgs>
-        void printer9(T first, TArgs ... rest) {
+        void printer9(T first, TArgs ... args) {
 
-            ( (std::cout << first) , ..., (std::cout << ", " << rest) );
+            ( (std::cout << first) , ..., (std::cout << ", " << args) );
             std::cout << std::endl;
         }
 
@@ -368,11 +368,11 @@ namespace Exercises_Folding {
 void test_exercises_folding()
 {
     using namespace Exercises_Folding;
-    //Exercise_01::testExercise_01();
-    //Exercise_02::testExercise_02();
-    //Exercise_03::testExercise_03();
+    Exercise_01::testExercise_01();
+    Exercise_02::testExercise_02();
+    Exercise_03::testExercise_03();
     Exercise_04::testExercise_04();
-    //Exercise_05::testExercise_05();
+    Exercise_05::testExercise_05();
 }
 
 // =====================================================================================

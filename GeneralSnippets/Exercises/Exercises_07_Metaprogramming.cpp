@@ -6,29 +6,29 @@ module modern_cpp_exercises:metaprogramming;
 
 namespace Exercises_Metaprogramming
 {
-
     namespace Exercise_01 {
 
         template <size_t TNumber, size_t ... TArgs>
         struct Values
         {
-            static const size_t MaxNumber =
+            static const size_t MaxNumber{
                 Values<TNumber>::MaxNumber > Values<TArgs...>::MaxNumber ?
-                Values<TNumber>::MaxNumber : Values<TArgs...>::MaxNumber;
+                Values<TNumber>::MaxNumber : Values<TArgs...>::MaxNumber
+            };
         };
 
         template <size_t TNumber>
         struct Values<TNumber>
         {
-            static const std::size_t MaxNumber = TNumber;
+            static const std::size_t MaxNumber{ TNumber };
         };
 
         static void testExercise_01()
         {
-            constexpr size_t max = Values<1, 3, 5, 4, 2>::MaxNumber;
+            constexpr size_t max{ Values<1, 3, 5, 4, 2>::MaxNumber };
             std::cout << "Max: " << max << std::endl;
 
-            constexpr size_t max2 = Values<8, 6, 4, 10, 3, 5, 7>::MaxNumber;
+            constexpr size_t max2{ Values<8, 6, 4, 10, 3, 5, 7>::MaxNumber };
             std::cout << "Max: " << max2 << std::endl;
         }
     }
@@ -36,13 +36,13 @@ namespace Exercises_Metaprogramming
     namespace Exercise_02 {
 
         // runtime versions
-        size_t convert1(size_t number)
+        static size_t convert1(size_t number)
         {
             // prepend higher bits to lowest bit
             return (number == 0) ? 0 : (number % 10) | (convert1(number / 10) << 1);
         }
 
-        size_t convert2(size_t number)
+        static size_t convert2(size_t number)
         {
             return number == 0 ? 0 : number % 10 + 2 * convert2(number / 10);
         }
@@ -84,8 +84,7 @@ namespace Exercises_Metaprogramming
         static void testExercise_02a() {
 
             size_t number{ 11111111 };
-            size_t result{};
-            result = convert1(number);
+            size_t result{ convert1(number) };
             std::cout << result << std::endl;
             result = convert2(number);
             std::cout << result << std::endl;
@@ -99,14 +98,14 @@ namespace Exercises_Metaprogramming
 
         static void testExercise_02b() {
 
-            constexpr size_t one = Binary<1>::value;
-            constexpr size_t three = Binary<11>::value;
-            constexpr size_t five = Binary<101>::value;
-            constexpr size_t seven = Binary<111>::value;
-            constexpr size_t nine = Binary<1001>::value;
-            constexpr size_t big = Binary<1000'0010'0011'0101>::value;
-            constexpr size_t wrong1 = Binary<2>::value;
-            constexpr size_t wrong2 = Binary<12345>::value;
+            constexpr size_t one{ Binary<1>::value };
+            constexpr size_t three{ Binary<11>::value };
+            constexpr size_t five{ Binary<101>::value };
+            constexpr size_t seven{ Binary<111>::value };
+            constexpr size_t nine{ Binary<1001>::value };
+            constexpr size_t big{ Binary<1000'0010'0011'0101>::value };
+            constexpr size_t wrong1{ Binary<2>::value };
+            constexpr size_t wrong2{ Binary<12345>::value };
             
             std::cout << one << std::endl;
             std::cout << three << std::endl;
@@ -120,14 +119,14 @@ namespace Exercises_Metaprogramming
 
         static void testExercise_02c() {
 
-            constexpr size_t one = BinaryEx<1>::value;
-            constexpr size_t three = BinaryEx<11>::value;
-            constexpr size_t five = BinaryEx<101>::value;
-            constexpr size_t seven = BinaryEx<111>::value;
-            constexpr size_t nine = BinaryEx<1001>::value;
-            constexpr size_t big = BinaryEx<1000'0010'0011'0101>::value;
-            //constexpr size_t wrong1 = BinaryEx<2>::value;       // doesn't compile
-            //constexpr size_t wrong2 = BinaryEx<12345>::value;   // doesn't compile
+            constexpr size_t one{ BinaryEx<1>::value };
+            constexpr size_t three{ BinaryEx<11>::value };
+            constexpr size_t five{ BinaryEx<101>::value };
+            constexpr size_t seven{ BinaryEx<111>::value };
+            constexpr size_t nine{ BinaryEx<1001>::value };
+            constexpr size_t big{ BinaryEx<1000'0010'0011'0101>::value };
+            //constexpr size_t wrong1 { BinaryEx<2>::value };       // doesn't compile
+            //constexpr size_t wrong2 { BinaryEx<12345>::value };   // doesn't compile
 
             std::cout << one << std::endl;
             std::cout << three << std::endl;

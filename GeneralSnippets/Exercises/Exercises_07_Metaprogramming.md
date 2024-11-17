@@ -17,8 +17,8 @@ Das Ergebnis soll zur Übersetzungszeit berechnet werden.
 *Beispiel*:
 
 ```cpp
-constexpr size_t max = Values<8, 6, 4, 10, 3, 5, 7>::MaxNumber;
-std::cout << "Max: " << max << std::endl;
+constexpr size_t max2{ Values<8, 6, 4, 10, 3, 5, 7>::MaxNumber };
+std::cout << "Max: " << max2 << std::endl;
 ```
 
 *Ausgabe*:

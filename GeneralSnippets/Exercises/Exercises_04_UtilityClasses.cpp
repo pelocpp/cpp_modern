@@ -9,7 +9,7 @@ namespace Exercises_UtilityClasses {
     namespace Exercise_01 {
 
         // generic visitor (matching all types in the variant)
-        auto visitor = [](auto const& elem) {
+        auto visitor = [](auto const& elem) -> void {
             std::cout << elem << std::endl;
         };
 
@@ -29,25 +29,23 @@ namespace Exercises_UtilityClasses {
         // improved generic visitor
         auto improvedVisitor = [](auto const& elem) {
 
-            using CurrentType = decltype(elem);
+            using Type = decltype(elem);
 
-            using CurrentTypeWithoutReference =
-                typename std::remove_reference<CurrentType>::type;
+            using TypeWithoutReference =
+                std::remove_reference<Type>::type;
 
-            using CurrentTypeWithoutReferenceAndConst =
-                typename std::remove_const<CurrentTypeWithoutReference>::type;
+            using TypeWithoutReferenceAndConst =
+                std::remove_const<TypeWithoutReference>::type;
 
-            CurrentTypeWithoutReferenceAndConst x = CurrentTypeWithoutReferenceAndConst{};
-
-            if constexpr (std::is_same<CurrentTypeWithoutReferenceAndConst, int>::value == true)
+            if constexpr (std::is_same<TypeWithoutReferenceAndConst, int>::value == true)
             {
                 std::cout << "int: " << elem << std::endl;
             }
-            else if constexpr (std::is_same<CurrentTypeWithoutReferenceAndConst, double>::value == true)
+            else if constexpr (std::is_same<TypeWithoutReferenceAndConst, double>::value == true)
             {
                 std::cout << "double: " << elem << std::endl;
             }
-            else if constexpr (std::is_same<CurrentTypeWithoutReferenceAndConst, std::string>::value == true)
+            else if constexpr (std::is_same<TypeWithoutReferenceAndConst, std::string>::value == true)
             {
                 std::cout << "std::string: " << elem << std::endl;
                 size_t len = elem.size();
@@ -80,21 +78,21 @@ namespace Exercises_UtilityClasses {
 
     namespace Exercise_02 {
 
-        std::optional<int> toInt(std::string s)
+        static std::optional<int> toInt(const std::string& s)
         {
             std::optional<int> result{ std::nullopt };
             
             try
             {
-                int i{ std::stoi(s) };
+                int n{ std::stoi(s) };
 
                 // want input string to be consumed entirely (there are several ways
                 // to accomplish this each with advantages and disadvantages)
-                std::string tmp{ std::to_string(i) };
+                std::string tmp{ std::to_string(n) };
                 if (tmp.length() != s.length())
                     throw std::invalid_argument("input string illegal");
 
-                result.emplace(i);
+                result = n;
             }
             catch (const std::invalid_argument&)
             {
@@ -115,7 +113,7 @@ namespace Exercises_UtilityClasses {
 
             try
             {
-                if constexpr (std::is_same_v<T, int> || std::is_same_v<T, short>)
+                if constexpr (std::is_same<T, int>::value || std::is_same<T, short>::value)
                 {
                     int i{ std::stoi(s) };
                     std::string tmp{ std::to_string(i) };

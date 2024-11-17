@@ -63,6 +63,25 @@ vom Übersetzer erzeugen lassen!
 *Aufgabe*: Erstellen Sie eine Klasseschablone `ScalarProduct`, die mit Hilfe von &bdquo;Loop Unrolling&rdquo;
 dieses Ziel erreicht.
 
+Vergleichen Sie die Zeiten in der Ausführung an einem Beispiel.
+Auf meinem Rechner habe ich drei Realisierungen getestet:
+
+  * Skalarprodukt mit `std::vector`-Objekten und Zugriff auf die Vektorenelemente mit dem Index-Operator `operator[]`.
+  * Skalarprodukt mit `std::vector`-Objekten und Zugriff auf die Vektorenelemente mit Iteratorenobjekten.
+  * Skalarprodukt mit `std::vector`-Objekten und Expression Templates.
+
+
+*Ausgabe*:
+
+```
+scalarProduct<double>(a, a): 385
+Elapsed time: 5391 milliseconds.
+scalarProductEx<double>(a.begin(), a.end(), a.begin()): 385
+Elapsed time: 3406 milliseconds.
+ScalarProduct<10, double>::result(a.cbegin(), a.cbegin()): 385
+Elapsed time: 1102 milliseconds.
+```
+
 ---
 
 [An den Anfang](#Aufgaben-zu-Expression-Templates)

@@ -13,20 +13,24 @@
 #### Vorausetzungen: `if constexpr`, `decltype`, `std::variant`, `std::visit`, Type Traits, `std::remove_reference`,<br/>`std::is_scalar`, `std::is_same` und `std::remove_cvref`
 
 Für `std::variant`-Objekte gibt es eine *Visitor*-Unterstützung in Gestalt der Funktion `std::visit`.
-Diese benötigt neben einem `std::variant`-Objekt ein so genanntes *Callable*-Objekt,
+Diese benötigt neben einem `std::variant`-Objekt ein *Callable*-Objekt,
 das jede mögliche Alternative im `std::variant`-Objekt besuchen kann.
 Eine sehr elegante wie auch kurze Lösung ist ein *Callable* in Gestalt eines generischen Lambdas,
 siehe dazu folgendes Beispiel:
 
 ```cpp
+#include <iostream>
+#include <variant>
+
 // generic visitor (matching all types in the variant)
-auto visitor = [](auto const& elem) {
+auto visitor = [](auto const& elem) -> void {
     std::cout << elem << std::endl;
 };
 
-void test() {
+int main () {
 
     std::variant<int, double, std::string> var{ 123.456 };
+
     std::visit(visitor, var);
 
     var = 10;
@@ -44,7 +48,7 @@ Anders formuliert: Es ist per Quellcode nicht möglich, an Hand unterschiedliche
 unterschiedliche Aktionen auszuführen.
 
 Wie könnte eine erweiterte Realisierung aussehen,
-die &ndash; an dem gezeigten Beispiel &ndash; eine Unterscheidung der drei Datentypen `int`, `double` und `std::string` vornimmt?
+die an dem gezeigten Beispiel eine Unterscheidung der drei Datentypen `int`, `double` und `std::string` vornimmt?
 
 *Hinweis*: Funktionen aus dem *Type Traits* Umfeld stellen eine große Hilfe dar.
 
@@ -59,7 +63,7 @@ Welche Beobachtung machen Sie?
 
 #### Vorausetzungen: Templates Grundlagen, `std::optional`, `if constexpr`
 
-Schreiben Sie eine Funktion `std::optional<int> toInt(std::string)`.
+Schreiben Sie eine Funktion `std::optional<int> toInt(std::string s)`.
 Der Rückgabewert vom Typ `std::optional<int>` darf nur dann einen gültigen `int`-Wert enthalten,
 wenn sich die Zeichenkette `s` komplett in eine ganze Zahl umwandeln lässt.
 
@@ -83,8 +87,9 @@ Realisieren Sie die Funktion analog zur Funktion `toInt`. Für `T` sollen die in
 
 #### Vorausetzungen: `std::variant`, `std::visit`, `std::vector`
 
-Für STL-Container in C++ gilt prinzipiell die Anwort auf die Frage "Kann ich einen `std::vector` so verwenden,
-dass er Variablen mehr als einen Typs enthält?": Nein!
+Für STL-Container in C++ gilt prinzipiell die Anwort auf die Frage
+&bdquo;Kann ich einen `std::vector` so verwenden,
+dass er Variablen mehr als einen Typs enthält?&rdquo;: Nein!
 Diese Aussage ist mit Erscheinen der Klasse `std::variant` etwas in Wanken geraten.
 Ein Variant ist in C++ eine Datenstruktur, die zur Laufzeit Variablen unterschiedlichen Typs aufnehmen kann:
 
@@ -148,16 +153,22 @@ In einem weiteren Schritt wollen wir diesen Vektor in einer Klasse als Member-Va
 Erstellen Sie eine Klasse `HeterogeneousContainer`.
 
 ```cpp
-HeterogeneousContainer<int, std::string> heterogeneousCont;
+#include <iostream>
+#include <variant>
+#include <vector>
 
-heterogeneousCont.Values().emplace_back(12);
-heterogeneousCont.Values().emplace_back(std::string("34"));
-heterogeneousCont.Values().emplace_back(56);
-heterogeneousCont.Values().emplace_back(std::string("78"));
+int main()
+{
+    HeterogeneousContainer<int, std::string> hetCont;
 
-// print them
-heterogeneousCont.visit(lambdaAllInOneVisitor);
-std::cout << std::endl;
+    hetCont.Values().emplace_back(12);
+    hetCont.Values().emplace_back(std::string("34"));
+    hetCont.Values().emplace_back(56);
+    hetCont.Values().emplace_back(std::string("78"));
+
+    // print again
+    hetCont.visit(lambdaAllInOneVisitor);
+}
 ```
 
 Versuchen nun wiederum, dieses Code-Fragment zum Laufen zu bekommen.
