@@ -22,17 +22,18 @@ namespace BraceInitialization {
 
     static void test_01()
     {
-        int n{};              // n equals 0
-        float f{};            // f equals 0.0
-        double d{};           // d equals 0.0
-        unsigned long l{};    // l equals 0
-        size_t i{};           // i equals 0
+        int n{};                   // n equals 0
+        float f{};                 // f equals 0.0
+        double d{};                // d equals 0.0
+        unsigned long l{};         // l equals 0
+        size_t i{};                // i equals 0
 
-        std::cout << "n: " << n << std::endl;
-        std::cout << "f: " << f << std::endl;
-        std::cout << "d: " << d << std::endl;
-        std::cout << "l: " << l << std::endl;
-        std::cout << "i: " << i << std::endl;
+        std::println("n: {}", n);
+        std::println("f: {}", f);
+        std::println("d: {}", d);
+        std::println("l: {}", l);
+        std::println("i: {}", i);
+
     }
 
     // =================================================================================
@@ -40,13 +41,17 @@ namespace BraceInitialization {
 
     static void test_02()
     {
-        int n{ 1 };          // n equals 1
-        float f{ 1.5f };     // f equals 1.5
-        double d{ 2.5 };     // d equals 2.5
+        int n{ 1 };                // n equals 1
+        float f{ 2.5f };           // f equals 2.5
+        double d{ 3.5 };           // d equals 3.5
+        unsigned long l{ 4l };     // l equals 4
+        size_t i{ 5 };             // i equals 5
 
-        std::cout << "n: " << n << std::endl;
-        std::cout << "f: " << f << std::endl;
-        std::cout << "d: " << d << std::endl;
+        std::println("n: {}", n);
+        std::println("f: {}", f);
+        std::println("d: {}", d);
+        std::println("l: {}", l);
+        std::println("i: {}", i);
     }
 
     // =================================================================================
@@ -102,21 +107,21 @@ namespace BraceInitialization {
     class AnotherClass
     {
     private:
-        int m_a;
+        int    m_a;
         double m_b;
 
     public:
         AnotherClass() : m_a{ }, m_b{ } {}
         AnotherClass(int a, double b = 0.0) : m_a{ a }, m_b{ b } {}
 
-        void operator() () { std::cout << "a: " << m_a << ", b: " << m_b << std::endl; }
+        void operator() () { std::println("a: {}, b: {}", m_a, m_b); }
     };
 
     static void test_06()
     {
         AnotherClass obj1{};
-        AnotherClass obj2{ 42, 1.2 };
-        AnotherClass obj3{ 42 };
+        AnotherClass obj2{ 123, 123.456 };
+        AnotherClass obj3{ 123 };
 
         obj1();
         obj2();
@@ -140,16 +145,16 @@ namespace BraceInitialization {
             myVector.begin(),
             myVector.end(),
             [](int value) {
-                std::cout << value << ", ";
+                std::print("{}, ", value);
             }
         );
-        std::cout << std::endl;
+        std::println();
 
         std::for_each(
             myMap.begin(),
             myMap.end(),
             [](const std::pair<const std::string, int>& value) {
-                std::cout << value.first << " - " << value.second << std::endl;
+                std::println("{} - {}", value.first, value.second);
             }
         );
 
@@ -158,7 +163,7 @@ namespace BraceInitialization {
             myMap.begin(),
             myMap.end(),
             [](const auto& value) {
-                std::cout << value.first << " - " << value.second << std::endl;
+                std::println("{} - {}", value.first, value.second);
             }
         );
     }
@@ -168,18 +173,18 @@ namespace BraceInitialization {
 
     static void test_08()
     {
-        int* pi = new int[5] { 1, 2, 3, 4, 5 };
-        double* pd = new double[5] { 1.0, 2.0, 3.0, 4.0, 5.0 };
+        int* pi{ new int[5] { 1, 2, 3, 4, 5 } };
+        double* pd{ new double[5] { 1.0, 2.0, 3.0, 4.0, 5.0 } };
 
-        for (int i = 0; i < 5; i++) {
-            std::cout << pi[i] << ", ";
+        for (size_t i{}; i != 5; i++) {
+            std::println("{}, ", pi[i]);
         }
-        std::cout << std::endl;
+        std::println();
 
-        for (int i = 0; i < 5; i++) {
-            std::cout << pd[i] << ", ";
+        for (size_t i{}; i != 5; i++) {
+            std::println("{}, ", pi[i]);
         }
-        std::cout << std::endl;
+        std::println();
 
         delete[] pi;
         delete[] pd;
@@ -190,12 +195,17 @@ namespace BraceInitialization {
 
     static void test_09()
     {
-        int intArray[] { 1, 2, 3, 4, 5 };
+        int intArray1[5]{ 1, 2, 3, 4, 5 };
 
-        for (int n : intArray) {
-            std::cout << n << ", ";
-        }
-        std::cout << std::endl;
+        int intArray2[]{ 1, 2, 3, 4, 5 };
+
+        int intArray3[5]{ 1, 2, 3 };
+
+        int intArray4[10]{ 1 };
+
+        int intArray5[10]{ 0 };
+
+        int intArray6[10]{ };
     }
 
     // =================================================================================
@@ -232,10 +242,10 @@ namespace BraceInitialization {
 
     static void test_11()
     {
-        [[ maybe_unused]] Inner inner1; // uninitialized
-        Inner inner2{ };                // m_array[0] => 0 & m_array[1] => 0
-        Inner inner3{ { 1, 2 } };       // Direct initialization
-        Inner inner4{ 1, 2 };           // Uses Brace Elision (!) of m_array
+        Inner inner1;                       // uninitialized
+        Inner inner2{ };                    // m_array[0] => 0 & m_array[1] => 0
+        Inner inner3{ { 1, 2 } };           // Direct initialization
+        Inner inner4{ 1, 2 };               // Uses Brace Elision (!) of m_array
     }
 
     static void test_12()
@@ -255,33 +265,33 @@ namespace BraceInitialization {
 
     struct MyDataStruct
     {
-        int m_a;
+        int    m_a;
         double m_b;
     };
 
     class MyDataClass {
     public:
-        int m_x;
+        int    m_x;
         double m_y;
 
         void operator()() const
         {
-            std::cout << "x: " << m_x << ", y: " << m_y << std::endl;
+            std::println("x: {}, y: {}", m_x, m_y);
         }
     };
 
     static void test_13()
     {
-        MyDataStruct s{ 42, 1.2 };
-        std::cout << "a: " << s.m_a << ", b: " << s.m_b << std::endl;
+        MyDataStruct s{ 123, 123.456 };
+        std::println("a: {}, b: {}", s.m_a, s.m_b);
 
         // or - using C++ designated initializers:
-        MyDataStruct s2{ .m_a = 43, .m_b = 1.3 };
-        std::cout << "a: " << s2.m_a << ", b: " << s2.m_b << std::endl;
+        MyDataStruct s2{ .m_a = 123, .m_b = 123.456 };
+        std::println("a: {}, b: {}", s2.m_a, s2.m_b);
 
         // initialization of public attributes of an arbitrary object
-        MyDataClass obj1{ 111, 1.23 };
-        MyDataClass obj2{ 123, 99.9 };
+        MyDataClass obj1{ 123, 123.456 };
+        MyDataClass obj2{ 456, 654.321 };
         obj1();
         obj2();
     }
@@ -296,16 +306,21 @@ namespace BraceInitialization {
 
     public:
         MyAnotherClass() : m_data{ 10, 20, 30, 40, 50 }, m_n{ 98 } {}
+
         MyAnotherClass(int a, int b, int c, int d, int e)
-            : m_data{ a, b, c, d, e }, m_n{ 99 } {}
+            : m_data{ a, b, c, d, e }, m_n{ 99 }
+        {}
+        
         MyAnotherClass(int a, int b, int c, int d, int e, int f)
-            : m_data{ a, b, c, d, e }, m_n{ f } {}
+            : m_data{ a, b, c, d, e }, m_n{ f }
+        {}
 
     public:
         void operator()() {
-            std::cout << "m_n: " << m_n << std::endl;
-            for (size_t i{ }; i < 5; i++) {
-                std::cout << i << ": " << m_data[i] << std::endl;
+            std::println("m_n: {}", m_n);
+
+            for (size_t i{}; i != 5; i++) {
+                std::println("{}: {}", i, m_data[i]);
             }
         }
     };
@@ -320,8 +335,9 @@ namespace BraceInitialization {
     public:
         void operator()() 
         {
-            for (size_t i{ }; i < m_vec.size(); i++) {
-                std::cout << i << ": " << m_vec[i] << std::endl;
+            for (size_t i{}; i != m_vec.size(); i++) {
+                std::println("{}: {}", i, m_vec[i]);
+
             }
         }
     };

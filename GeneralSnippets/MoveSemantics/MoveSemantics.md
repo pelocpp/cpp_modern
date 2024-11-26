@@ -13,7 +13,7 @@
   * [Allgemeines](#link1)
   * [Realisierung](#link2)
   * [Notwendigkeit des Schlüsselworts `noexcept`](#link3)
-  * [Rule of Three (Four), Rule of Five (Six), Rule of Zero](#link4)
+  * [Rule of Three, Rule of Five, Rule of Zero](#link4)
 
 ---
 
@@ -101,29 +101,20 @@ den Kopierkonstruktor, wenn intern der Datenpuffer neu auszurichten ist!
 
 ---
 
-## Rule of Three (Four), Rule of Five (Six), Rule of Zero <a name="link4"></a>
-
-*Allgemeines*:
-
-  * Default constructor: `X()`
-  * Copy constructor: `X(const X&)`
-  * Copy assignment: `operator=(const X&)`
-  * Move constructor: `X(X&&) noexcept`
-  * Move assignment: `operator=(X&&) noexcept`
-  * Destructor: `~X()`
+## &bdquo;Rule of Three&rdquo;, &bdquo;Rule of Five&rdquo; und &bdquo;Rule of Zero&rdquo;  <a name="link4"></a>
 
 *Rule of Three*:
 
   * Copy constructor: `X(const X&)`
-  * Copy assignment: `operator=(const X&)`
+  * Copy assignment: `X& operator=(const X&)`
   * Destructor: `~X()`
 
 *Rule of Five*:
 
   * Copy constructor: `X(const X&)`
-  * Copy assignment: `operator=(const X&)`
+  * Copy assignment: `X& operator=(const X&)`
   * Move constructor: `X(X&&) noexcept`
-  * Move assignment: `operator=(X&&) noexcept`
+  * Move assignment: `X& operator=(X&&) noexcept`
   * Destructor: `~X()`
 
 *Rule of Zero*:
