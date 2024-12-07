@@ -10,7 +10,7 @@ namespace RegularExpressions {
     {
         // simple example
 
-        std::regex re{ "[a-z]+\\.txt" };
+        std::regex expression{ "[a-z]+\\.txt" };
 
         std::string names[] = {
             "foo.txt",
@@ -20,8 +20,30 @@ namespace RegularExpressions {
         };
 
         for (const auto& name : names) {
-            bool result{ std::regex_match(name, re) };
+            bool result{ std::regex_match(name, expression) };
             std::cout << std::boolalpha << name << ": " << result << std::endl;
+        }
+    }
+
+    static void test_02_simple_regex()
+    {
+        // simple example - counting the number of all matches
+
+        std::regex expression{ "[^\\s]+" };
+
+        std::string text = { "std::regex_iterator is a read-only iterator" };
+
+        auto iterator = std::sregex_iterator(
+            text.begin(),
+            text.end(),
+            expression
+        );
+
+        while (iterator != std::sregex_iterator{}) {
+
+            const auto& token = *iterator;
+            std::println("{}", token.str());
+            ++iterator;
         }
     }
 
@@ -53,9 +75,11 @@ namespace RegularExpressions {
             // pattern at index 2 is the 2nd capturing group "forgeeks"
 
             std::cout << "Whole match : " << match.str(0) << std::endl;
+
             std::cout << "First capturing group is '" << match.str(1)
                 << "' which is captured at index " << match.position(1)
                 << std::endl;
+
             std::cout << "Second capturing group is '" << match.str(2)
                 << "' which is captured at index " << match.position(2)
                 << std::endl;
@@ -79,6 +103,7 @@ namespace RegularExpressions {
         };
 
         for (const auto& path : paths) {
+
             std::smatch sm;
             bool success{ std::regex_match(path, sm, re) };
             if (success) {
@@ -138,6 +163,7 @@ namespace RegularExpressions {
         };
 
         for (const auto& date : dates) {
+
             bool success{ std::regex_match(date, re) };
             if (success) {
                 std::cout << "Valid date:   " << date << std::endl;
@@ -162,7 +188,9 @@ namespace RegularExpressions {
         };
 
         for (const auto& date : dates) {
+
             std::smatch sm;
+
             bool success{ std::regex_match(date, sm, re) };
             if (success) {
                 int year{ stoi(sm[1]) };
@@ -183,6 +211,7 @@ void main_regular_expressions()
 {
     using namespace RegularExpressions;
     test_01_simple_regex();
+    test_02_simple_regex();
     test_02_capturing_groups();
     test_03_capturing_group_vs_non_capturing_group_01();
     test_04_capturing_group_vs_non_capturing_group_02();
