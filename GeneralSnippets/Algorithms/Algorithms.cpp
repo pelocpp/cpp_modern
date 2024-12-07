@@ -10,8 +10,8 @@ module modern_cpp:algorithms;
 
 namespace Algorithms {
 
-    //static constexpr int MaxIterations = 100'000'000;  // release
-    static constexpr int MaxIterations = 10'000'000;     // debug
+    //static constexpr int Size = 100'000'000;  // release
+    static constexpr int Size = 10'000'000;     // debug
 
     // =================================================================================
     // Initialization with a constant value
@@ -21,7 +21,7 @@ namespace Algorithms {
     {
         std::println("Using a classic for-loop");
 
-        std::vector<double> values(MaxIterations);
+        std::vector<double> values(Size);
 
         ScopedTimer watch{};
 
@@ -34,7 +34,7 @@ namespace Algorithms {
     {
         std::println("Using an iterator-based for-loop");
 
-        std::vector<double> values(MaxIterations);
+        std::vector<double> values(Size);
 
         ScopedTimer watch{};
 
@@ -47,7 +47,7 @@ namespace Algorithms {
     {
         std::println("Using std::fill");
 
-        std::vector<double> values(MaxIterations);
+        std::vector<double> values(Size);
 
         ScopedTimer watch{};
 
@@ -58,11 +58,27 @@ namespace Algorithms {
         );
     }
 
+    static auto test_constant_initialize_std_fill_parallelized ()
+    {
+        std::println("Using std::fill - using execution policy ");
+
+        std::vector<double> values(Size);
+
+        ScopedTimer watch{};
+
+        std::fill(
+            std::execution::par,
+            values.begin(),
+            values.end(),
+            123.0
+        );
+    }
+
     static auto test_constant_initialize_std_for_each()
     {
         std::println("Using std::for_each");
 
-        std::vector<double> values(MaxIterations);
+        std::vector<double> values(Size);
 
         ScopedTimer watch{};
 
@@ -77,7 +93,7 @@ namespace Algorithms {
     {
         std::println("Using std::generate");
 
-        std::vector<double> values(MaxIterations);
+        std::vector<double> values(Size);
 
         ScopedTimer watch{};
 
@@ -94,7 +110,7 @@ namespace Algorithms {
 
         ScopedTimer watch{};
 
-        std::vector<double> values(MaxIterations, 123.0);
+        std::vector<double> values(Size, 123.0);
     }
 
     static void test_const_initialization()
@@ -102,6 +118,7 @@ namespace Algorithms {
         test_constant_initialize_classic_for_loop();
         test_constant_initialize_iterator_based();
         test_constant_initialize_std_fill();
+        test_constant_initialize_std_fill_parallelized();
         test_constant_initialize_std_for_each();
         test_constant_initialize_std_generate();
         test_constant_initialize_user_defined_ctor();
@@ -115,7 +132,7 @@ namespace Algorithms {
     {
         std::println("Classic for-loop");
 
-        std::vector<double> values(MaxIterations);
+        std::vector<double> values(Size);
 
         ScopedTimer watch{};
 
@@ -128,7 +145,7 @@ namespace Algorithms {
     {
         std::println("Iterator-based for-loop");
 
-        std::vector<double> values(MaxIterations);
+        std::vector<double> values(Size);
 
         ScopedTimer watch{};
 
@@ -142,7 +159,7 @@ namespace Algorithms {
     {
         std::println("Using std::for_each");
 
-        std::vector<double> values(MaxIterations);
+        std::vector<double> values(Size);
 
         ScopedTimer watch{};
 
@@ -157,7 +174,7 @@ namespace Algorithms {
     {
         std::println("Using std::generate");
 
-        std::vector<double> values(MaxIterations);
+        std::vector<double> values(Size);
 
         ScopedTimer watch{};
 
@@ -257,7 +274,7 @@ namespace Algorithms {
 
     static void test_sum_calculation()
     {
-        std::vector<double> values(MaxIterations);
+        std::vector<double> values(Size);
 
         auto initArray = [&] {
             std::generate(

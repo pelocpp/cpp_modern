@@ -222,7 +222,7 @@
     <ClCompile Include="TemplateClassBasics\TemplatesClassBasics02.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TemplateSpecialization\TemplateSpecialization.cpp">
+    <ClCompile Include="TemplateSpecialization\TemplatesSpecialization.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TemplateClassBasics\AnotherArray.cpp">
@@ -498,7 +498,7 @@
     <ClCompile Include="TemplateFunctionBasics\Module_TemplatesFunctionBasics.ixx">
       <Filter>Modules</Filter>
     </ClCompile>
-    <ClCompile Include="TemplateSpecialization\Module_TemplateSpecialization.ixx">
+    <ClCompile Include="TemplateSpecialization\Module_TemplatesSpecialization.ixx">
       <Filter>Modules</Filter>
     </ClCompile>
     <ClCompile Include="TemplateTemplateParameter\Module_TemplateTemplateParameter.ixx">

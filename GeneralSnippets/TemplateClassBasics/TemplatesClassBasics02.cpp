@@ -334,7 +334,7 @@ namespace ClassTemplatesBasics_02 {
     }
 }
 
-void main_class_templates_basics_02()
+void main_templates_class_basics_02()
 {
     using namespace ClassTemplatesBasics_02;
 

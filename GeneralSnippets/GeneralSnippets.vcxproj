@@ -322,8 +322,8 @@
     <ClCompile Include="TemplateConstexprIf\TemplatesConstExpr_If.cpp" />
     <ClCompile Include="TemplateFunctionBasics\Module_TemplatesFunctionBasics.ixx" />
     <ClCompile Include="TemplateFunctionBasics\TemplatesFunctionBasics.cpp" />
-    <ClCompile Include="TemplateSpecialization\Module_TemplateSpecialization.ixx" />
-    <ClCompile Include="TemplateSpecialization\TemplateSpecialization.cpp" />
+    <ClCompile Include="TemplateSpecialization\Module_TemplatesSpecialization.ixx" />
+    <ClCompile Include="TemplateSpecialization\TemplatesSpecialization.cpp" />
     <ClCompile Include="TemplateTemplateParameter\Module_TemplateTemplateParameter.ixx" />
     <ClCompile Include="TemplateTemplateParameter\TemplateTemplateParameter_01.cpp" />
     <ClCompile Include="TemplateTemplateParameter\TemplateTemplateParameter_02.cpp" />

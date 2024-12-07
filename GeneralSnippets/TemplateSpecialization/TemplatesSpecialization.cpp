@@ -1,8 +1,8 @@
 // =====================================================================================
-// TemplateSpecialization.cpp // Template Specialization
+// TemplatesSpecialization.cpp // Template Specialization
 // =====================================================================================
 
-module modern_cpp:template_specialization;
+module modern_cpp:templates_specialization;
 
 namespace TemplateSpecialization {
 
@@ -59,7 +59,7 @@ namespace TemplateSpecialization {
     }
 }
 
-void main_template_specialization()
+void main_templates_specialization()
 {
     using namespace TemplateSpecialization;
     ClassTemplates_ExplicitTemplateSpecialization::test_01();

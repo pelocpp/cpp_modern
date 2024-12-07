@@ -74,7 +74,7 @@ namespace ClassTemplatesBasics {
     }
 }
 
-void main_class_templates_basics_01()
+void main_templates_class_basics_01()
 {
     using namespace ClassTemplatesBasics::SimpleTemplateCalculator;
     test_01();

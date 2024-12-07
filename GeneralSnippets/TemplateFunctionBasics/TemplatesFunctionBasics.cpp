@@ -180,7 +180,7 @@ namespace FunctionTemplates_04_Specialization_vs_FunctionOverloading {
     }
 }
 
-void main_function_templates_basics()
+void main_templates_function_basics()
 {
     using namespace FunctionTemplate_01_Basics;
     test_01();

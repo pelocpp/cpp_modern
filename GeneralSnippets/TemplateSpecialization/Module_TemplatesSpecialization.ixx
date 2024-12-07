@@ -1,12 +1,12 @@
 // =====================================================================================
-// Module Interface Partition 'template_specialization'
+// Module Interface Partition 'templates_specialization'
 // =====================================================================================
 
-export module modern_cpp:template_specialization;
+export module modern_cpp:templates_specialization;
 
 import std;
 
-export void main_template_specialization();
+export void main_templates_specialization();
 
 // =====================================================================================
 // End-of-File

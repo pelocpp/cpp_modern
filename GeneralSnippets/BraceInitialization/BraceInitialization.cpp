@@ -65,11 +65,19 @@ namespace BraceInitialization {
 
     static void test_03()
     {
-        [[ maybe_unused]] struct Struct obj0;         // uninitialized !!!
+        [[ maybe_unused]]
+        struct Struct obj0;                           // uninitialized !!!
+
         struct Struct obj1 {};                        // obj1.m_i => 0, obj1.m_j => 0
+
         struct Struct obj2 { 1, 2 };                  // obj2.m_i => 1, obj2.m_j => 2
-        struct Struct obj3 { 3 };                     // obj3.m_i => 3, obj3.m_j => 0
-        // gcc: warning: missing initializer for member 'Struct::m_j'
+
+        // designated initializer syntax
+        struct Struct obj3 { .m_i = 1, .m_j = 2 };    // obj2.m_i => 1, obj2.m_j => 2
+
+        struct Struct obj4 { 3 };                     // obj3.m_i => 3, obj3.m_j => 0
+        // gcc: warning:
+        // missing initializer for member 'Struct::m_j'
     }
 
     // struct with constructor
@@ -195,17 +203,20 @@ namespace BraceInitialization {
 
     static void test_09()
     {
-        int intArray1[5]{ 1, 2, 3, 4, 5 };
+        [[ maybe_unused]]
+        int intArray1[10];
 
-        int intArray2[]{ 1, 2, 3, 4, 5 };
+        int intArray2[10]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
-        int intArray3[5]{ 1, 2, 3 };
+        int intArray3[]  { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
-        int intArray4[10]{ 1 };
+        int intArray4[10]{ 1, 2, 3 };
 
-        int intArray5[10]{ 0 };
+        int intArray5[10]{ 1 };
 
-        int intArray6[10]{ };
+        int intArray6[10]{ 0 };
+
+        int intArray7[10]{ };
     }
 
     // =================================================================================
@@ -242,9 +253,13 @@ namespace BraceInitialization {
 
     static void test_11()
     {
+        [[ maybe_unused]]
         Inner inner1;                       // uninitialized
+        
         Inner inner2{ };                    // m_array[0] => 0 & m_array[1] => 0
+        
         Inner inner3{ { 1, 2 } };           // Direct initialization
+        
         Inner inner4{ 1, 2 };               // Uses Brace Elision (!) of m_array
     }
 

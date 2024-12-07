@@ -67,7 +67,7 @@ export import :structured_binding;
 export import :templates_class_basics;
 export import :templates_constexpr_if;
 export import :templates_function_basics;
-export import :template_specialization;
+export import :templates_specialization;
 export import :template_template_parameter;
 export import :to_underlying;
 export import :transform;

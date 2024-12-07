@@ -79,11 +79,15 @@ namespace UniquePointerGeneral {
         m = *ptr2;
         std::println("*ptr2:   {}", m);
 
-        // move assignment
-        std::unique_ptr<int> ptr3{};
-        ptr3 = std::move(ptr2);
-        m = *ptr3;
-        std::println("*ptr3:   {}", m);
+        {
+            // move assignment
+            std::unique_ptr<int> ptr3{};
+            ptr3 = std::move(ptr2);
+            m = *ptr3;
+            std::println("*ptr3:   {}", m);
+        }
+
+        // Note: pointer behind std::unique_ptr's has been released
     }
 
     static void test_02()
