@@ -306,6 +306,82 @@ namespace Algorithms {
         sum = test_calculate_sum_std_accumulate(values);
         std::println("Sum: {:15.20g}", sum);
     }
+
+    // =================================================================================
+    // Using algorithms for copying ranges
+    // =================================================================================
+
+    static auto test_copying_classic_for_loop()
+    {
+        std::println("Copying: Using a classic for-loop");
+
+        std::vector<double> source(Size, 123.0);
+        std::vector<double> target(Size);
+
+        ScopedTimer watch{};
+
+        for (size_t i{}; i != source.size(); ++i) {
+            target[i] = source[i];
+        }
+    }
+
+    static auto test_copying_iterator_based()
+    {
+        std::println("Copying: Using an iterator-based for-loop");
+
+        ScopedTimer watch{};
+        
+        std::vector<double> source(Size, 123.0);
+        std::vector<double> target(Size);
+
+        auto itSource{ source.begin() };
+        auto itTarget{ target.begin() };
+
+        for (auto it{ source.begin() }; it != source.end(); ++it) {
+            *itTarget = *itSource;
+        }
+    }
+
+    static auto test_copying_std_copy()
+    {
+        std::println("Standard Algorithm - std::copy:");
+
+        ScopedTimer watch{};
+
+        std::vector<double> source(Size, 123.0);
+        std::vector<double> target(Size);
+
+        std::copy(
+            source.begin(),
+            source.end(),
+            target.begin()
+        );
+    }
+
+    static auto test_copying_std_copy_parallelized()
+    {
+        std::println("Using std::copy - using execution policy");
+
+        ScopedTimer watch{};
+
+        std::vector<double> source(Size, 123.0);
+        std::vector<double> target(Size);
+
+        std::copy(
+            std::execution::par,
+            source.begin(),
+            source.end(),
+            target.begin()
+        );
+    }
+
+    static void test_copying()
+    {
+        test_copying_classic_for_loop();
+        test_copying_iterator_based();
+        test_copying_std_copy();
+        test_copying_std_copy_parallelized();
+    }
 }
 
 void main_algorithms()
@@ -314,6 +390,7 @@ void main_algorithms()
     test_const_initialization();
     test_initialization();
     test_sum_calculation();
+    test_copying();
 }
 
 // =====================================================================================
