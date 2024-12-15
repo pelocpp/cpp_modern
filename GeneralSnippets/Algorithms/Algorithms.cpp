@@ -375,12 +375,30 @@ namespace Algorithms {
         );
     }
 
+    static auto test_copying_std_memcpy()
+    {
+        std::println("Using std::memcpy");
+
+        ScopedTimer watch{};
+
+        std::vector<double> source(Size, 123.0);
+        std::vector<double> target(Size);
+
+        // take care: works only with continuous memory
+        std::memcpy(
+            target.data(),
+            source.data(),
+            Size * sizeof (double)
+        );
+    }
+
     static void test_copying()
     {
         test_copying_classic_for_loop();
         test_copying_iterator_based();
         test_copying_std_copy();
         test_copying_std_copy_parallelized();
+        test_copying_std_memcpy();
     }
 }
 

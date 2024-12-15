@@ -104,10 +104,9 @@
 
 
 ## Ausgewählte STL-Algorithmen
-  * `std::generate`
-  * `std::accumulate`
-  * `std::transform`
-  * `std::back_inserter` (Iterator-Adapter)
+  * `std::fill`, `std::for_each`, `std::generate`
+  * `std::copy`, `std::transform`, `std::accumulate`
+  * `std::back_inserter` (Iteratoren-Adapter)
   * Das *Erase-Remove*-Idiom
 
 
