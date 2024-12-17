@@ -152,13 +152,17 @@ namespace Auto_Examples {
         const auto& msg2{ getMessage() };
         std::println("Message: {}", msg2);
 
-        // or:
-        decltype(getMessage()) msg3{ getMessage() };
+        // Ohhh:
+        auto& msg3{ getMessage() };
         std::println("Message: {}", msg3);
 
-        // once again 'or':
-        decltype(auto) msg4{ getMessage() };
+        // or:
+        decltype(getMessage()) msg4{ getMessage() };
         std::println("Message: {}", msg4);
+
+        // once again 'or':
+        decltype(auto) msg5{ getMessage() };
+        std::println("Message: {}", msg5);
     }
 
     // ---------------------------------------------------------------------

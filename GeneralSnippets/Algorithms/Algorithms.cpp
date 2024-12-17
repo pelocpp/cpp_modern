@@ -21,9 +21,9 @@ namespace Algorithms {
     {
         std::println("Using a classic for-loop");
 
-        std::vector<double> values(Size);
-
         ScopedTimer watch{};
+
+        std::vector<double> values(Size);
 
         for (size_t i{}; i != values.size(); ++i) {
             values[i] = 123.0;
@@ -34,9 +34,9 @@ namespace Algorithms {
     {
         std::println("Using an iterator-based for-loop");
 
-        std::vector<double> values(Size);
-
         ScopedTimer watch{};
+
+        std::vector<double> values(Size);
 
         for (auto it{ values.begin() }; it != values.end(); ++it) {
             *it = 123.0;
@@ -47,9 +47,9 @@ namespace Algorithms {
     {
         std::println("Using std::fill");
 
-        std::vector<double> values(Size);
-
         ScopedTimer watch{};
+
+        std::vector<double> values(Size);
 
         std::fill(
             values.begin(),
@@ -62,9 +62,9 @@ namespace Algorithms {
     {
         std::println("Using std::fill - using execution policy ");
 
-        std::vector<double> values(Size);
-
         ScopedTimer watch{};
+
+        std::vector<double> values(Size);
 
         std::fill(
             std::execution::par,
@@ -78,9 +78,9 @@ namespace Algorithms {
     {
         std::println("Using std::for_each");
 
-        std::vector<double> values(Size);
-
         ScopedTimer watch{};
+
+        std::vector<double> values(Size);
 
         std::for_each(
             values.begin(),
@@ -89,18 +89,31 @@ namespace Algorithms {
         );
     }
 
+    static auto test_constant_initialize_range_based_for_loop()
+    {
+        std::println("Using range-based for loop");
+
+        ScopedTimer watch{};
+
+        std::vector<double> values(Size);
+
+        for (auto& elem : values) {
+            elem = 123.0;
+        }
+    }
+
     static auto test_constant_initialize_std_generate()
     {
         std::println("Using std::generate");
 
-        std::vector<double> values(Size);
-
         ScopedTimer watch{};
+
+        std::vector<double> values(Size);
 
         std::generate(
             values.begin(),
             values.end(),
-            [] { return 123.0; }
+            [] () { return 123.0; }
         );
     }
 
@@ -120,6 +133,7 @@ namespace Algorithms {
         test_constant_initialize_std_fill();
         test_constant_initialize_std_fill_parallelized();
         test_constant_initialize_std_for_each();
+        test_constant_initialize_range_based_for_loop();
         test_constant_initialize_std_generate();
         test_constant_initialize_user_defined_ctor();
     }
@@ -132,9 +146,9 @@ namespace Algorithms {
     {
         std::println("Classic for-loop");
 
-        std::vector<double> values(Size);
-
         ScopedTimer watch{};
+
+        std::vector<double> values(Size);
 
         for (size_t i{}; i != values.size(); ++i) {
             values[i] = 2.0 * i;
@@ -145,9 +159,9 @@ namespace Algorithms {
     {
         std::println("Iterator-based for-loop");
 
-        std::vector<double> values(Size);
-
         ScopedTimer watch{};
+
+        std::vector<double> values(Size);
 
         size_t i{};
         for (auto it{ values.begin() }; it != values.end(); ++it) {
@@ -159,9 +173,9 @@ namespace Algorithms {
     {
         std::println("Using std::for_each");
 
-        std::vector<double> values(Size);
-
         ScopedTimer watch{};
+
+        std::vector<double> values(Size);
 
         std::for_each(
             values.begin(),
@@ -170,18 +184,31 @@ namespace Algorithms {
         );
     }
 
+    static auto test_initialize_range_based_for_loop()
+    {
+        std::println("Using range-based for loop");
+
+        ScopedTimer watch{};
+
+        std::vector<double> values(Size);
+
+        for (int i{}; auto& elem : values) {
+            elem = 2.0 * i++;
+        }
+    }
+
     static auto test_initialize_std_for_generate()
     {
         std::println("Using std::generate");
 
-        std::vector<double> values(Size);
-
         ScopedTimer watch{};
+
+        std::vector<double> values(Size);
 
         std::generate(
             values.begin(),
             values.end(),
-            [i = 0.0]() mutable { return 2.0 * i++; }
+            [i = 0.0] () mutable { return 2.0 * i++; }
         );
     }
 
@@ -190,6 +217,7 @@ namespace Algorithms {
         test_initialize_classic_for_loop();
         test_initialize_iterator_based();
         test_initialize_std_for_each();
+        test_initialize_range_based_for_loop();
         test_initialize_std_for_generate();
     }
 
@@ -225,9 +253,9 @@ namespace Algorithms {
         return sum;
     }
 
-    static auto test_calculate_sum_range_based_loop(std::vector<double>& values)
+    static auto test_calculate_sum_range_based_for_loop(std::vector<double>& values)
     {
-        std::println("Range-based Loop: ");
+        std::println("Using range-based for loop");
 
         ScopedTimer watch{};
 
@@ -295,7 +323,7 @@ namespace Algorithms {
         std::println("Sum: {:15.20g}", sum);
 
         initArray();
-        sum = test_calculate_sum_range_based_loop(values);
+        sum = test_calculate_sum_range_based_for_loop(values);
         std::println("Sum: {:15.20g}", sum);
 
         initArray();
@@ -315,10 +343,10 @@ namespace Algorithms {
     {
         std::println("Copying: Using a classic for-loop");
 
+        ScopedTimer watch{};
+
         std::vector<double> source(Size, 123.0);
         std::vector<double> target(Size);
-
-        ScopedTimer watch{};
 
         for (size_t i{}; i != source.size(); ++i) {
             target[i] = source[i];

@@ -30,7 +30,7 @@ namespace Lambdas {
     {
         Comparer obj{ false };
 
-        bool result = obj(1, 2);
+        bool result{ obj(1, 2) };
 
         std::cout << std::boolalpha << result << std::endl;
     }
@@ -71,8 +71,7 @@ namespace Lambdas {
         std::sort(
             vec.begin(),
             vec.end(),
-            Comparer{}
-            // Comparer{ false }
+            Comparer{}  // Comparer{ false }
         );
 
         for (int n : vec) {
@@ -109,8 +108,7 @@ namespace Lambdas {
         std::sort(
             vec.begin(),
             vec.end(),
-            LocalComparer{}
-            // LocalComparer{ false }
+            LocalComparer{}  // LocalComparer{ false }
         );
 
         for (int n : vec) {
@@ -145,18 +143,13 @@ namespace Lambdas {
     static void test_05() {
 
         // shortest lambda on earth: no parameters, capturing and doing nothing
-        auto nothing = [] {};
+        auto nothing{ [] {} };
         nothing();
 
         // c'tor notation
-        auto itsOne ([] { return 1; });
-        auto itsTwo ([] { return 2; });
+        auto itsOne{ [] { return 1; } };
+        auto itsTwo{ [] { return 2; } };
         std::cout << itsOne() << ", " << itsTwo() << std::endl;
-
-        // "copy-c'tor" notation
-        auto itsFour = [] { return 4; };
-        auto itsFive = [] { return 5; };
-        std::cout << itsFour() << ", " << itsFive() << std::endl;
     }
 
     static void test_06() {
@@ -253,6 +246,7 @@ namespace Lambdas {
 
         auto outerLambda1 = test_09_helper_a();
         auto outerLambda2 = test_09_helper_b();
+
         outerLambda1();
         outerLambda2();
     }
@@ -279,9 +273,51 @@ namespace Lambdas {
         auto constexpr ConstValue = [] () {
             /* several lines of code ... - "very complex" computation */
             return 123;
-        }();
+        } ();
 
         std::cout << "Const Value: " << ConstValue << std::endl;
+    }
+
+    static void test_12() {
+
+        // Feature: Generalized Lambda Capture
+
+        class SampleClass
+        {
+        public:
+            void doSomething() { std::println("Doing Something"); };
+        };
+
+        std::unique_ptr<SampleClass> ptr { 
+            std::make_unique<SampleClass>() 
+        };
+
+        // Does not compile: by-value capture with move-only type (!)
+        // auto lambda = [=] () { ptr->doSomething(); };
+
+        // Compiles: by-reference capture with move-only type (!)
+        auto lambda = [&] () { ptr->doSomething(); };
+
+        // How about by-move capture?
+        // Instead of adding it, C++14 introduced the "Generalized Lambda Capture",
+        // also known as "Init Capture":
+
+        auto lambda2 = [ptrSampleClass = std::move(ptr)] () {
+            ptrSampleClass->doSomething();
+        };
+
+        lambda2();
+
+        // Note:
+        // We are allowed to keep the name of the variable 'ptr' the same inside the lambda:
+
+        ptr = std::make_unique<SampleClass>();
+
+        auto lambda3 = [ptr = std::move(ptr)]() {
+            ptr->doSomething();
+        };
+
+        lambda3();
     }
 }
 
@@ -300,6 +336,7 @@ void main_lambdas()
     test_09();
     test_10();
     test_11();
+    test_12();
 }
 
 // =====================================================================================

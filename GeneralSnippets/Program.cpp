@@ -14,7 +14,7 @@ int main()
     //extern int _main_modules();
     //_main_modules();
 
-    std::cout << "[Collection of Modern C++-Code Examples - Copyright (C) 2019-2024 Peter Loos]" << std::endl;
+    std::println("[Collection of Modern C++-Code Examples - Copyright (C) 2019-2024 Peter Loos]");
 
     // main entry points code snippets
     try
@@ -110,10 +110,10 @@ int main()
         //main_exercises();
     }
     catch (const std::exception& ex) {
-        std::cout << "Exception: " << ex.what() << std::endl;
+        std::println("Exception: {}", ex.what());
     }
 
-    std::cout << "[Done.]" << std::endl;
+    std::println("[Done.]");
     return 0;
 }
 

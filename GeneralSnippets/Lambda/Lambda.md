@@ -7,41 +7,22 @@
 [Quellcode 1 - Motivation, allgemeine Beispiele](Lambda01.cpp)<br />
 [Quellcode 2 - Lambda und Closure](Lambda02.cpp)<br />
 [Quellcode 3 - Lambda und Closure: Spezialfall `this`](Lambda03.cpp)<br />
-[Quellcode 4 - Lambda und das Visitor-Pattern](Lambda04.cpp)
 
 ---
 
 ## Inhalt
 
   * [Allgemeines](#link1)
-  * [Zugriffsklausel / Capture Clause](#link2)
-  * [Weitere Besonderheiten im Aufbau eines Lambda-Objekts](#link3)
-  * [IIFE - Immediately Invoked Functional Expressions](#link4)
+  * [Weitere Besonderheiten im Aufbau eines Lambda-Objekts](#link2)
+  * [IIFE - Immediately Invoked Functional Expressions](#link3)
+  * [Generalized Lambda Captures](#link4)
 
 ---
 
 ## Allgemeines <a name="link1"></a>
 
-Es werden folgende Überlegungen der Reihe nach betrachtet:
-
-  * Betrachtung 1:</br>Sortieren eines Vektors mit einer globalen Funktion.</br>
-
-  * Betrachtung 2:</br>Sortieren eines Vektors mit einem Funktionsobjekt (also ohne Lambda-Methode):</br>
-    Man erkennt, dass es im Prinzip einer zusätzlichen Klasse (Struktur) bedarf, um
-    `std::sort` mit einer Vergleichsmethode aufrufen zu können.
-
-  * Betrachtung 3:</br>Wie Betrachtung 2, nur mit einer lokalen Struktur:</br>
-    Es wird gezeigt, dass Strukturdefinitionen auch lokal in einer Funktion möglich sind.
-
-  * Betrachtung 4:</br>Sortieren eines Vektors mit Lambda-Methode:</br>
-    Es wird ein einfaches Lambda-Objekt vorgestellt.
-
-
----
-
-## Zugriffsklausel / Capture Clause <a name="link2"></a>
-
-*Tabelle* 1 vermittelt einen Überblick bzgl. der Gestaltungsmöglichkeiten der Zugriffsklausel:
+*Tabelle* 1 vermittelt einen Überblick bzgl. der Gestaltungsmöglichkeiten der
+Zugriffsklausel (*Capture Clause*):
 
 | Zugriffsklausel | Erläuterung |
 |:- |:-|
@@ -67,7 +48,7 @@ Die `counter`-Variable ist nur **in** der Lambda-Funktion verfügbar.
 
 ---
 
-## Weitere Besonderheiten im Aufbau eines Lambda-Objekts <a name="link3"></a>
+## Weitere Besonderheiten im Aufbau eines Lambda-Objekts <a name="link2"></a>
 
 Neben der Zugriffsklausel kann ein Lambda-Objekt mit zahlreichen Schlüsselwörtern *garniert* werden.
 Siehe hierzu *Abbildung* 1:
@@ -78,7 +59,7 @@ Siehe hierzu *Abbildung* 1:
 
 ---
 
-## IIFE - Immediately Invoked Functional Expressions <a name="link4"></a>
+## IIFE - Immediately Invoked Functional Expressions <a name="link3"></a>
 
 In C++ ist ein &bdquo;*Immediately Invoked Function Expression*&rdquo; (*IIFE*) ein Ausdruck,
 mit dem man eine Funktion unmittelbar nach ihrer Erstellung ausführen kann.
@@ -86,6 +67,19 @@ mit dem man eine Funktion unmittelbar nach ihrer Erstellung ausführen kann.
 Diese Technik wurde aus Sprachen wie JavaScript übernommen und wird normalerweise verwendet,
 um Code in einem lokalen Bereich zu kapseln und sofort auszuführen.
 
+---
+
+## Generalized Lambda Captures <a name="link4"></a>
+
+C++ 11 bietet im Kontext der Capture-Klausel nur die Möglichkeit *by-value*- oder *by-reference* an, 
+um auf Variablen im umgebenden Scope zuzugreifen.
+
+Es fehlt also die Möglichkeit, mit der Move-Semantik Variablen / Objekte in ein Lambda-Objekt zu verschieben
+(*by-move*).
+
+Anstatt dieses Feature explizit zu ergänzen,
+führte C++ 14 das so genannte *Generalized Lambda Capture* Feature ein,
+auch bekannt als *Init*-Capture.
 
 ---
 
