@@ -9,19 +9,35 @@ namespace AnySamples {
     static void test_01_any()
     {
         std::any a{ 1 };
-        std::println("{}: {}", a.type().name(), std::any_cast<int>(a));
+        
+        {
+            std::string type{ a.type().name() };
+            auto value{ std::any_cast<int>(a) };
+            std::println("Value: {} / Type: {}", value, type);
+        }
 
         a = 3.14;
-        std::println("{}: {}", a.type().name(), std::any_cast<double>(a));
+
+        {
+            std::string type{ a.type().name() };
+            auto value{ std::any_cast<double>(a) };
+            std::println("Value: {} / Type: {}", value, type);
+        }
+
 
         a = true;
-        std::println("{}: {}", a.type().name(), std::any_cast<bool>(a));
+
+        {
+            std::string type{ a.type().name() };
+            auto value{ std::any_cast<bool>(a) };
+            std::println("Value: {} / Type: {}", value, type);
+        }
 
         // bad cast
         try
         {
             a = 1;
-            std::println("{}", std::any_cast<float>(a));
+            auto value{ std::any_cast<float>(a) };
         }
         catch (const std::bad_any_cast & e)
         {
@@ -33,7 +49,9 @@ namespace AnySamples {
 
         if (a.has_value())
         {
-            std::println("{}", a.type().name());
+            std::string type{ a.type().name() };
+            auto value{ std::any_cast<int>(a) };
+            std::println("Value: {} / Type: {}", value, type);
         }
 
         // reset
@@ -41,7 +59,7 @@ namespace AnySamples {
 
         if (!a.has_value())
         {
-            std::println("no value");
+            std::println("No value!");
         }
 
         // pointer to contained data

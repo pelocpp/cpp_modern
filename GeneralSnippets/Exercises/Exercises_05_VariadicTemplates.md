@@ -66,8 +66,8 @@ int main()
 *Ausgabe*:
 
 ```
-true
 false
+true
 ```
 
 *Zusatzaufgabe*:

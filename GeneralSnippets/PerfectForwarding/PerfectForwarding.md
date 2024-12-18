@@ -13,7 +13,7 @@
 Voraussetzung für das &bdquo;Perfect Forwarding&rdquo; ist das Vorhandensein eines
 Funktionstemplates, das im Rumpf weitere unterlagerte Funktionen aufruft:
 
- > Werden die Argumente des Funktionstemplate &bdquo;identisch&bdquo;
+ > Werden die Argumente des Funktionstemplate &bdquo;identisch&rdquo;
    &ndash;
    darunter verstehen wir in diesem Kontext: die *LValue*- oder *RValue*-Eigenschaft bleibt erhalten 
    &ndash;

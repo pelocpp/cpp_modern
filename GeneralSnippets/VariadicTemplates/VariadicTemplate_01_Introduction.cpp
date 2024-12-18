@@ -66,10 +66,10 @@ namespace VariadicTemplates_TestClassUnknown {
     };
 
     std::ostream& operator<< (std::ostream& os, const Unknown& obj) {
-        os 
+        os
             << "var1: " << obj.m_var1
             << ", var2: " << obj.m_var2
-            << ", var3: " << obj.m_var3 << std::endl;
+            << ", var3: " << obj.m_var3;
 
         return os;
     }
@@ -98,6 +98,16 @@ namespace VariadicTemplatesIntro_02 {
         return std::unique_ptr<T>{ new T{ std::forward<TArgs>(args)... } };
     }
 
+    // noch bessere Variante: Generische Funktionsschreibweise (C++ 20)
+    // Siehe auch:
+    // https://en.cppreference.com/w/cpp/utility/forward
+    template <typename T>
+    std::unique_ptr<T> my_make_unique_ex_ex(auto&& ... args)
+    {
+        std::unique_ptr<T> tmp{ new T{ std::forward<decltype(args)>(args) ... } };
+        return tmp;
+    }
+
     static void test_my_make_unique()
     {
         std::unique_ptr<Unknown> up1 = my_make_unique<Unknown>();
@@ -118,6 +128,17 @@ namespace VariadicTemplatesIntro_02 {
 
         int n = 33, m = 34;
         std::unique_ptr<Unknown> up5 = my_make_unique_ex<Unknown>(n, m);
+    }
+
+    static void test_my_make_unique_ex_ex()
+    {
+        std::unique_ptr<Unknown> up1 = my_make_unique_ex_ex<Unknown>();
+        std::unique_ptr<Unknown> up2 = my_make_unique_ex_ex<Unknown>(1);
+        std::unique_ptr<Unknown> up3 = my_make_unique_ex_ex<Unknown>(10, 11);
+        std::unique_ptr<Unknown> up4 = my_make_unique_ex_ex<Unknown>(100, 101, 102);
+
+        int n = 33, m = 34;
+        std::unique_ptr<Unknown> up5 = my_make_unique_ex_ex<Unknown>(n, m);
     }
 }
 

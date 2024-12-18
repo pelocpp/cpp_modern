@@ -174,15 +174,14 @@ namespace Folding {
 void main_folding()
 {
     using namespace Folding;
-    //test_01();
-    //test_02();
-    //test_03a();
-    //test_03b();
-    //test_03c();
-    //test_03d();
-    //test_04();
-    //test_05();
-
+    test_01();
+    test_02();
+    test_03a();
+    test_03b();
+    test_03c();
+    test_03d();
+    test_04();
+    test_05();
     test_06_benchmark_folding();
     test_06_benchmark_iterating();
 }

@@ -20,21 +20,29 @@ namespace TupleSamples {
         // just in one statement
         std::tuple <char, int, double> moreValues{ 'Z', 987, 987.654 };
 
-        // accessing tuple values using std::get 
-        std::print("The values of tuple are : ");
-        std::println("{} - {} - {}", 
-            std::get<0>(values), std::get<1>(values), std::get<2>(values)
-        );
+        // accessing tuple values using std::get
+        {
+            auto value1{ std::get<0>(values) };
+            auto value2{ std::get<1>(values) };
+            auto value3{ std::get<2>(values) };
+
+            std::print("The values of tuple are : ");
+            std::println("{} - {} - {}", value1, value2, value3);
+        }
 
         // use std::get to change single values of a tuple 
         std::get<0>(values) = 'M';
         std::get<2>(values) = 135.79;
 
         // printing tuple values again
-        std::print("The modified values of tuple are : ");
-        std::println("{} - {} - {}", 
-            std::get<0>(values), std::get<1>(values), std::get<2>(values)
-        );
+        {
+            auto value1{ std::get<0>(values) };
+            auto value2{ std::get<1>(values) };
+            auto value3{ std::get<2>(values) };
+
+            std::print("The modified values of tuple are : ");
+            std::println("{} - {} - {}", value1, value2, value3);
+        }
     }
 
     // =======================================================
@@ -176,7 +184,7 @@ void main_tuple()
     test_02();
     test_03();
     test_04();
-    test_05();
+    test_05(); 
 }
 
 // =====================================================================================
