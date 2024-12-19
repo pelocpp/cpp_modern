@@ -298,7 +298,12 @@ namespace Exercises_VariadicTemplates {
             constexpr operator int() const
             {
                 std::initializer_list<int> args = { TArgs ... };
-                return std::accumulate(std::begin(args), std::end(args), 0);
+
+                auto sum{ 
+                    std::accumulate(std::begin(args), std::end(args), 0)
+                };
+
+                return sum;
             }
         };
 
