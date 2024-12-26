@@ -57,12 +57,15 @@ namespace Exercises_Folding {
         // das 1. mit dem 2., das 2. mit dem 3., das 3. mit dem 4. Element usw. verglichen!
 
         template<typename T, typename ... TArgs>
-        constexpr bool sameType(T arg, TArgs... args)
+        constexpr bool sameType(T, TArgs...)
         {
-            // since C++17: folding expression !
             return (std::is_same_v<T, TArgs> && ...);
-            // or
-            // return (std::is_same_v<decltype(arg), decltype(args)> && ...);
+        }
+
+        template<typename T, typename ... TArgs>
+        constexpr bool sameTypeEx(T arg, TArgs... args)
+        {
+            return (std::is_same_v<decltype(arg), decltype(args)> && ...);
         }
 
         static void testExercise_02() {
@@ -73,10 +76,10 @@ namespace Exercises_Folding {
             constexpr bool result2{ sameType(43, false, "hello") };
             std::cout << std::boolalpha << result2 << std::endl;
 
-            constexpr bool result3{ sameType(1, 2, 3, 4, 5, 6, 7, 8, 9) };
+            constexpr bool result3{ sameTypeEx(1, 2, 3, 4, 5, 6, 7, 8, 9) };
             std::cout << std::boolalpha << result3 << std::endl;
 
-            constexpr bool result4{ sameType(1, 2, 3, 4, '?', 5, 6, 7, 8, 9) };
+            constexpr bool result4{ sameTypeEx(1, 2, 3, 4, '?', 5, 6, 7, 8, 9) };
             std::cout << std::boolalpha << result4 << std::endl;
         }
     }

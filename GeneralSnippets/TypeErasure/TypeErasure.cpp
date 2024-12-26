@@ -244,6 +244,7 @@ namespace BookStoreUsingDynamicPolymorphism {
         size_t      m_count;
 
     public:
+        // c'tor
         Book(std::string author, std::string title, double price, size_t count)
             : m_author{ author }, m_title{ title }, m_price{ price }, m_count{ count }
         {}
@@ -252,6 +253,7 @@ namespace BookStoreUsingDynamicPolymorphism {
         std::string getAuthor() const { return m_author; }
         std::string getTitle() const { return m_title; }
 
+        // interface 'IMedia'
         double getPrice() const override { return m_price; }
         size_t getCount() const override { return m_count; }
     };
@@ -265,6 +267,7 @@ namespace BookStoreUsingDynamicPolymorphism {
         size_t      m_count;
 
     public:
+        // c'tor
         Movie(std::string title, std::string director, double price, size_t count)
             : m_title{ title }, m_director{ director }, m_price{ price }, m_count{ count }
         { }
@@ -273,6 +276,7 @@ namespace BookStoreUsingDynamicPolymorphism {
         std::string getTitle() const { return m_title; }
         std::string getDirector() const { return m_director; }
 
+        // interface 'IMedia'
         double getPrice() const override { return m_price; }
         size_t getCount() const override { return m_count; }
     };
@@ -283,13 +287,13 @@ namespace BookStoreUsingDynamicPolymorphism {
         using Stock = std::vector<std::shared_ptr<IMedia>>;
         using StockList = std::initializer_list<std::shared_ptr<IMedia>>;
 
+        Stock m_stock;
+
     public:
+        // c'tor
         explicit Bookstore(StockList stock) : m_stock{ stock } {}
 
-        void addMedia(const std::shared_ptr<IMedia>& media) {
-            m_stock.push_back(media);
-        }
-
+        // public interface
         double totalBalance() const {
 
             double total{};
@@ -312,8 +316,9 @@ namespace BookStoreUsingDynamicPolymorphism {
             return total;
         }
 
-    private:
-        Stock m_stock;
+        void addMedia(const std::shared_ptr<IMedia>& media) {
+            m_stock.push_back(media);
+        }
     };
 
     static void test_bookstore_polymorphic_01() {
@@ -407,6 +412,7 @@ namespace BookStoreUsingTypeErasure {
         size_t      m_count;
 
     public:
+        // c'tor
         Book(std::string author, std::string title, double price, size_t count)
             : m_author{ author }, m_title{ title }, m_price{ price }, m_count{ count }
         {}
@@ -428,6 +434,7 @@ namespace BookStoreUsingTypeErasure {
         size_t      m_count;
 
     public:
+        // c'tor
         Movie(std::string title, std::string director, double price, size_t count)
             : m_title{ title }, m_director{ director }, m_price{ price }, m_count{ count }
         { }
@@ -453,8 +460,10 @@ namespace BookStoreUsingTypeErasure {
     {
     private:
         using StockType = std::variant<TMedia ...>;
-        using Stock = std::vector<StockType>;
+        using Stock     = std::vector<StockType>;
         using StockList = std::initializer_list<StockType>;
+
+        Stock m_stock;
 
     public:
         explicit Bookstore(StockList stock) : m_stock{ stock } {}
@@ -463,8 +472,8 @@ namespace BookStoreUsingTypeErasure {
         template <typename T>
             requires MediaConcept<T>
         void addMedia(const T& media) {
-            // m_stock.push_back(StockType{ media });  // ausführliche Schreibweise
-            m_stock.push_back(media);
+            // m_stock.push_back(StockType{ media });  // detailed notation
+            m_stock.push_back(media);                  // implicit type conversion (T => std::variant<T>)
         }
 
         // or
@@ -472,6 +481,7 @@ namespace BookStoreUsingTypeErasure {
             m_stock.push_back(media);
         }
 
+        // public interface
         double totalBalance() const {
 
             double total{};
@@ -554,9 +564,6 @@ namespace BookStoreUsingTypeErasure {
 
             return total;
         }
-
-    private:
-        Stock m_stock;
     };
 
     static void test_bookstore_type_erasure_01() {

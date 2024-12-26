@@ -274,7 +274,7 @@ keine Spezialisierung vorhanden ist:
 ## Member Function Templates
 
 *Member Function Templates* sind Funktions-Templates, die Mitglieder einer (regulären) Klasse oder
-eines Klassen_Template sind.
+eines Klassen-Template sind.
 
 
 *Beispiel*:
