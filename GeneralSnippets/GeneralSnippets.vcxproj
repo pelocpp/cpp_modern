@@ -525,6 +525,7 @@
     <Image Include="OnlineCppCompilers\WandboxOptions01.png" />
     <Image Include="OnlineCppCompilers\WandboxOptions02.png" />
     <Image Include="OnlineCppCompilers\WandboxOptions03.png" />
+    <Image Include="PerfectForwarding\Whaaaat.gif" />
     <Image Include="Println\StdPrintln.png" />
     <Image Include="SharedPtr\SharedPointer_01.png" />
     <Image Include="SharedPtr\SharedPointer_02.png" />

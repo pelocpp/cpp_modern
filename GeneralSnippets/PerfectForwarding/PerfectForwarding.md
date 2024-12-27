@@ -4,7 +4,13 @@
 
 ---
 
-[Quellcode](PerfectForwarding.cpp)
+[Quellcode](PerfectForwarding.cpp) 
+
+---
+
+<img src="Whaaaat.gif" width="600" />
+
+<sup>(Credits: [Blog von Pranay Kumar](https://medium.com/pranayaggarwal25/universal-reference-perfect-forwarding-5664514cacf9))</sup>
 
 ---
 
@@ -80,6 +86,10 @@ des Sachverhalts an:
 Gute Beschreibungen zu diesem Thema befinden sich in
 
 > Peter Pohmann, "C++ 17: Praxiswissen zum neuen Standard. Von C++11 bis 17" (siehe das [Literaturverzeichnis](../Literatur/Literature.md)).
+
+oder
+
+[Universal Reference and Perfect forwarding](https://medium.com/pranayaggarwal25/universal-reference-perfect-forwarding-5664514cacf9)<br>(abgerufen am 27.12.2024)
 
 oder
  

@@ -58,7 +58,7 @@ template <unsigned... NS>    // NS is a list of non-type parameters (unsigned)
 ```
 
 Der erste Fall tritt in der Praxis am häufigsten auf.
-Wie bei „normalen“ Vorlagen können variadische Templates Funktionstemplates
+Wie bei &bdquo;normalen&rdquo; Vorlagen können variadische Templates Funktionstemplates
 oder Klassentemplates sein.
 Wir können auch einzelne Parameter und *Parameter Packs* mischen,
 mit der Einschränkung, dass es nur eine einzige *Parameter Pack* Definition geben kann
@@ -74,15 +74,19 @@ das *Template Parameter Pack* zum Definieren von Funktionsargumenten verwendet w
 Dies sollten wir an einem Beispiel veranschaulichen:
 
 ```cpp
-template <typename... ARGS>    // ARGS is the template parameter pack
-void f(int i, ARGS... args) {  // args is the function parameter pack
+template <typename... TArgs>    // TArgs is the template parameter pack
+void func (TArgs... args) {     // args is the function parameter pack
   //...
 }
 ```
 
 Noch etwas formale Formulierungen gewünscht? Bitte schön: 
-Wenn in Betrachtung der Funktionsschablone `f` **ARGS** ≙ **T1, T2** ist,
-dann gilt **ARGS... args** ≙ **T1 t1, T2 t2** und **args... = t1, t2**.
+Wenn in Betrachtung der Funktionsschablone `func` **TArgs** ≙ **T1, T2** ist,
+dann gilt
+
+  * **TArgs ... args** ≙ **T1 t1, T2 t2** und
+  * **args ... ≙ t1, t2**
+
 
 ## Expansion eines Parameter Packs: Datentypen und Argumente <a name="link3"></a>
 

@@ -1168,6 +1168,9 @@
     <Image Include="Literatur\Buch_Nicolai_Josuttis_Cpp_20_Complete_Guide.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="PerfectForwarding\Whaaaat.gif">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ScopedTimer\ScopedTimer.h">
