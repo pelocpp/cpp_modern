@@ -8,7 +8,7 @@
 
 ---
 
-<img src="Whaaaat.gif" width="600" />
+<img src="Whaaaat.gif" width="500" />
 
 <sup>(Credits: [Blog von Pranay Kumar](https://medium.com/pranayaggarwal25/universal-reference-perfect-forwarding-5664514cacf9))</sup>
 
