@@ -29,7 +29,7 @@ namespace VariadicTemplatesWorkingOnEveryArgument {
     }
 
     static void test_01() {
-        doSomethingForAll(1, '!', std::string("ABC"), 5.5);
+        doSomethingForAll(1, '!', std::string{ "ABC" }, 5.5);
         std::cout << std::endl;
     }
 

@@ -12,7 +12,23 @@
 
 ---
 
-## Einführung
+## Inhalt
+
+  * [Einleitung](#link1)
+  * [Das *Parameter Pack*](#link2)
+  * [Expansion eines Parameter Packs: Datentypen und Argumente](#link3)
+  * [Ein einfaches Beispiel: `add`-Funktion mit beliebig vielen Argumenten](#link4)
+  * [ Zugriff auf die einzelnen Elemente eines Parameter Packs](#link5)
+  * [Leeres Parameter Pack](#link6)
+  * [Wo können Parameter Pack Expansionen auftreten?](#link7)
+  * [Der `sizeof...` Operator](#link8)
+  * [Ein erstes Anwendungsbeispiel: Abbildung eines *Parameter Packs* auf einen Methodenaufruf](#link9)
+  * [Ein zweites Anwendungsbeispiel: Verwendung eines Parameter Packs bei Smart Pointern (hier: Unique Pointern)](#link10)
+  * [Literaturhinweise](#link11)
+
+---
+
+## Einleitung <a name="link1"></a>
 
 Ab C++&ndash;11 gibt es in C++ die so genannten *variadischen Templates*  (*Variadic Templates*).
 Darunter versteht man Klassen- oder Funktionstemplates ,
@@ -24,13 +40,12 @@ Variadische Templates helfen jedoch, dieses Problem zu überwinden.
 
 Das Konzept für diese Spracherweiterung wurde von *Douglas Gregor* und *Jaakko Järvi* entwickelt.
 
-
 Grundsätzlich werden zwei neue syntaktische Elemente
 für die Definition derartiger Templates benötigt:
 Zum einen das so genannte *Parameter Pack* zur Deklaration des Templates,
 zum anderen die *Expansion* des *Parameter Packs* in der Definition des Templates.
 
-## Parameter Pack
+## Das *Parameter Pack* <a name="link2"></a>
 
 Ein *Parameter Pack* ist einfach ein Name,
 der einer Liste von Templateparametern anstelle eines einzelnen Parameters
@@ -69,50 +84,56 @@ Noch etwas formale Formulierungen gewünscht? Bitte schön:
 Wenn in Betrachtung der Funktionsschablone `f` **ARGS** ≙ **T1, T2** ist,
 dann gilt **ARGS... args** ≙ **T1 t1, T2 t2** und **args... = t1, t2**.
 
-## Expansion des Parameter Packs
+## Expansion eines Parameter Packs: Datentypen und Argumente <a name="link3"></a>
 
 Es ist nicht möglich, ein *Parameter Pack* anders zu verwenden als es zu erweitern.
 In den meisten Fällen ergibt die Erweiterung des *Parameter Packs* eine durch Kommas getrennte Liste von Ausdrücken,
-die die einzelnen Elemente des packs enthalten.
+die die einzelnen Elemente des *Packs* enthalten.
 
 Die einfachste Pack-Expansion ist nur der Name des *Parameter Packs*,
-gefolgt von der Ellipse (`...`), was zu einer durch komma-getrennten Liste der *pack*-Elemente führt:
+gefolgt von der Ellipse (`...`), was zu einer durch komma-getrennten Liste der *Pack*-Elemente führt:
 
 ```cpp
-template <typename... ARGS>
-void f(int i, ARGS... args) {
-    // expand template parameter pack ARGS first,
-    // then function parameter pack args
-    std::tuple<ARGS...> argsTuple{ args... };
-    //...
+template <typename... TArgs>
+void examine_parameter_pack(TArgs ... args) {
+    std::tuple<TArgs ...> tup { args ... };
+}
+```
+
+oder ab C++ 20:
+
+```cpp
+void examine_parameter_pack_ex(auto ... args) {
+    std::tuple tup1{ args ... };
 }
 ```
 
 Betrachten wir ein Beispiel:
 
 ```cpp
-f(21, 54.3, "foo", 47u);
+examine_parameter_pack(123, 123.456, std::string{ "foo" }, 789ll);
 ```
 
-In dem Funktionsaufruf von `f` ist `21` der `int`-Parameter, und die anderen drei Parameter
-definieren **zwei** *Parameter Packs*. Das *Template Parameter Pack* `ARGS` ist die Liste der Typen
-`double`, `char const*` und `unsigned`,
-während das *function parameter pack* `args` die Liste mit den Werte ist `54.3`, `"foo"` und `47u` ist.
+In dem Funktionsaufruf von `examine_parameter_pack` definieren die vier Parameter
+**zwei** *Parameter Packs*. Das *Template Parameter Pack* `TArgs` ist die Liste der Typen
+`int`, `double`, `std::string` und `long  long`,
+während das *Function Parameter Pack* `args` die Liste mit den Werten
+`123`, `123.456`, `std::string{ "foo" }` und `789ll`
+darstellt.
 
-Diese einzelne Instanziierung der Funktionsvorlage entspricht quasi dem,
+Diese betrachtete Instanziierung der Funktionsvorlage entspricht quasi dem,
 als hätten wir geschrieben:
 
 ```cpp
-void f(int i, double args_1, char const* args_2, unsigned args_3) {
-    std::tuple<double, char const*, unsigned> argsTuple{ args_1, args_2, args_3} ;
-    //...
+void examine_parameter_pack_ex_ex(int args_1, double args_2, std::string args_3, long long args_4) {
+    std::tuple<int, double, std::string, long long> tup{ args_1, args_2, args_3, args_4 };
 }
 ```
 
 Nur um es kurz angesprochen zu haben: Bei `std::tuple` handelt es sich ebenfalls
 um ein variadisches Klassentemplate.
 
-## Ein einfaches Beispiel
+## Ein einfaches Beispiel: `add`-Funktion mit beliebig vielen Argumenten <a name="link4"></a>
 
 Eine Funktionsschablone zur Addition beliebig vieler Zahlen
 (exakter: zur Anwendung des `+`-Operators auf beliebig viele Objekte) kann
@@ -149,7 +170,7 @@ std::string stringConcat = add(
 std::cout << "String Concatenation: " << stringConcat << std::endl;
 ```
 
-## Zugriff auf die einzelnen Elemente eines Parameter Packs
+## Zugriff auf die einzelnen Elemente eines Parameter Packs <a name="link5"></a>
 
 Prinzipiell ist der Zugriff auf die einzelnen Elemente eines Parameter Packs nicht vorgesehen.
 
@@ -182,7 +203,7 @@ static void test_accessing_parameterpack()
 ```
 
 
-## Leeres Parameter Pack
+## Leeres Parameter Pack <a name="link6"></a>
 
 Ein Parameter Pack kann prinzipiell auch keine Parameter annehmen.
 In diesen Fällen ergibt die Pack-Expansion eine leere Liste.
@@ -198,7 +219,7 @@ void f(int i /*, ignored comma before empty pack expansion */) {
 }
 ```
 
-## Wo können Parameter Pack Expansionen auftreten?
+## Wo können Parameter Pack Expansionen auftreten? <a name="link7"></a>
 
 Unsere bisherigen Beispiele haben sich auf den Gebrauch von Parameter Pack Expansionen konzentriert,
 um eine Folge von Template Argumenten zu erzeugen.
@@ -217,7 +238,7 @@ wo die Grammatik eine durch Kommas getrennte Liste gestattet:
 
 *Tabelle* 1. Einsatzmöglichkeiten von Parameter Pack Expansionen.
 
-## Der sizeof… Operator
+## Der `sizeof...` Operator <a name="link8"></a>
 
 Der `sizeof...`-Operator ist eine spezielle Form der Parameter Pack Expansion.
 Es gibt einfach die Anzahl der Parameter Pack Elemente zurück und funktioniert
@@ -244,7 +265,7 @@ printCount(22, std::optional{0}, "!");
 3 3
 ```
 
-## Ein erstes Anwendungsbeispiel: Abbildung eines *Parameter Packs* auf einen Methodenaufruf
+## Ein erstes Anwendungsbeispiel: Abbildung eines *Parameter Packs* auf einen Methodenaufruf <a name="link9"></a>
 
 Es wird demonstriert, wie ein *Parameter Pack* auf einen Methodenaufruf
 (hier: Konstruktor) abgebildet werden kann 
@@ -254,7 +275,7 @@ Zu diesem Zweck definieren wir eine Klasse `Unknown` mit einer Reihe
 von Konstruktoren, um zu zeigen, wie das Auspacken des *Parameter Packs*
 dem passenden Konstruktor zugeordnet wird:
 
-Es kommt die zentrale `std::forwarding`-Anweisung zum Zuge:
+Es kommt das &bdquo;*perfekte Forwarding*&rdquo; zum Zuge:
 
 ```cpp
 T(std::forward<Args>(args)...);
@@ -263,13 +284,13 @@ T(std::forward<Args>(args)...);
 Siehe hierzu den [Quellcode](VariadicTemplate_01_Introduction.cpp).
 
 
-## Ein zweites Anwendungsbeispiel: Verwendung eines Parameter Packs bei Smart Pointern (hier: Unique Pointern)
+## Ein zweites Anwendungsbeispiel: Verwendung eines Parameter Packs bei Smart Pointern (hier: Unique Pointern) <a name="link10"></a>
 
 Siehe hierzu den [Quellcode](VariadicTemplate_01_Introduction.cpp).
 
 ---
 
-## Literaturhinweise
+## Literaturhinweise <a name="link11"></a>
 
 Einführende Artikel zum Thema der varadischen Templates finden sich zum Beispiel unter
 

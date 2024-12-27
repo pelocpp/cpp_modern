@@ -26,9 +26,24 @@ namespace VariadicTemplatesIntro_01 {
         print<TRest...>(rest ...);
     }
 
+    // Generische Funktionsschreibweise (C++ 20)
+    static void print_ex(auto value)
+    {
+        std::cout << value << " ";
+    }
+
+    // Generische Funktionsschreibweise (C++ 20) - rekursiver Anteil
+    static void print_ex(auto n, auto ... rest)
+    {
+        print_ex(n);
+        print_ex(rest ...);
+    }
+
     static void test_printer_01()
     {
         print<int, int, int, int, int>(1, 2, 3, 4, 5);
+
+        print_ex<int, int, int, int, int>(1, 2, 3, 4, 5);
     }
 }
 
@@ -85,14 +100,14 @@ namespace VariadicTemplatesIntro_02 {
     using namespace VariadicTemplates_TestClassUnknown;
 
     // einfache Variante
-    template<typename T, typename... TArgs>
-    std::unique_ptr<T> my_make_unique(TArgs... args)
+    template<typename T, typename ... TArgs>
+    std::unique_ptr<T> my_make_unique(TArgs ... args)
     {
         return std::unique_ptr<T>{ new T{ args... } };
     }
 
     // bessere Variante: Mit Universal Referenz
-    template<typename T, typename... TArgs>
+    template<typename T, typename ... TArgs>
     std::unique_ptr<T> my_make_unique_ex(TArgs&&... args)
     {
         return std::unique_ptr<T>{ new T{ std::forward<TArgs>(args)... } };
@@ -144,38 +159,8 @@ namespace VariadicTemplatesIntro_02 {
 
 namespace VariadicTemplatesIntro_03 {
 
-    // =============================================================
-    // 3. Beispiel für ein variadisches Template:
-    // Anwendungsfall: Zugriff auf die einzelnen Elemente eines Parameter Packs
-    // =============================================================
-
-    template <typename... TArgs>
-    void func(TArgs... args) {
-
-        // unpack all function arguments with the help of a std::initializer_list object
-        auto unpackedArgs = { args ... };
-
-        for (auto param : unpackedArgs) {
-            std::cout << "Passed Argument: " << param << std::endl;
-        }
-
-        // oder
-
-        for (auto param : { args ... } ) {
-            std::cout << "Passed Argument: " << param << std::endl;
-        }
-    }
-
-    static void test_accessing_parameterpack()
-    {
-        func(10, 11, 12, 13, 14, 15);
-    }
-}
-
-namespace VariadicTemplatesIntro_04 {
-
     // =================================================================================
-    // 4. Beispiel für ein variadisches Template:
+    // 3. Beispiel für ein variadisches Template:
     // 
     // Anwendungsfall: "Generische Funktion 'make_an_object'"
     //                 Umsetzung Parameter Pack auf einen passenden Konstruktor
@@ -248,10 +233,75 @@ namespace VariadicTemplatesIntro_04 {
     }
 }
 
+namespace VariadicTemplatesIntro_04 {
+
+    // =============================================================
+    // 4. Beispiel für ein variadisches Template:
+    // Expansion des Parameter Packs: Datentypen und Argumente
+    // =============================================================
+
+    template <typename... TArgs>
+    void examine_parameter_pack(TArgs ... args) {
+
+        // expand template parameter pack 'TArgs' first,
+        // then function parameter pack 'args'
+        std::tuple<TArgs ...> tup { args ... };
+    }
+
+    static void examine_parameter_pack_ex(auto ... args) {
+
+        std::tuple tup1{ args ... };
+
+        std::tuple<decltype(args) ...> tup2{args ...};
+    }
+
+    static void examine_parameter_pack_ex_ex(int args_1, double args_2, std::string args_3, long long args_4) {
+
+        std::tuple<int, double, std::string, long long> tup{ args_1, args_2, args_3, args_4 };
+    }
+
+    static void test_parameterpack_expansion() {
+
+        examine_parameter_pack(123, 123.456, std::string{ "foo" }, 789ll);
+        examine_parameter_pack_ex(123, 123.456, std::string{ "foo" }, 789ll);
+        examine_parameter_pack_ex_ex(123, 123.456, std::string{ "foo" }, 789ll);
+    }
+}
+
 namespace VariadicTemplatesIntro_05 {
 
+    // =============================================================
+    // 5. Beispiel für ein variadisches Template:
+    // Anwendungsfall: Zugriff auf die einzelnen Elemente eines Parameter Packs
+    // =============================================================
+
+    template <typename... TArgs>
+    void func(TArgs... args) {
+
+        // unpack all function arguments with the help of a std::initializer_list object
+        auto unpackedArgs = { args ... };
+
+        for (auto param : unpackedArgs) {
+            std::cout << "Passed Argument: " << param << std::endl;
+        }
+
+        // oder
+
+        for (auto param : { args ... }) {
+            std::cout << "Passed Argument: " << param << std::endl;
+        }
+    }
+
+    static void test_accessing_parameterpack()
+    {
+        func(10, 11, 12, 13, 14, 15);
+    }
+}
+
+namespace VariadicTemplatesIntro_06 {
+
     // ========================================================================
-    // 5.) Drittes Beispiel:
+    // 6. Beispiel:
     // Ein variadisches Template in zwei Realisierungsvarianten.
     // 
     // Ende der Rekursion:
@@ -302,22 +352,19 @@ namespace VariadicTemplatesIntro_05 {
 
 void main_variadic_templates_introduction()
 {
-    using namespace VariadicTemplatesIntro_01;
-    test_printer_01();
+    VariadicTemplatesIntro_01::test_printer_01();
 
-    using namespace VariadicTemplatesIntro_02;
-    test_my_make_unique();
-    test_my_make_unique_ex();
+    VariadicTemplatesIntro_02::test_my_make_unique();
+    VariadicTemplatesIntro_02::test_my_make_unique_ex();
 
-    using namespace VariadicTemplatesIntro_03;
-    test_accessing_parameterpack();
+    VariadicTemplatesIntro_03::test_make_an_object();
+    VariadicTemplatesIntro_03::test_make_an_object_ex();
 
-    using namespace VariadicTemplatesIntro_04;
-    test_make_an_object();
-    test_make_an_object_ex();
+    VariadicTemplatesIntro_04::test_parameterpack_expansion();
 
-    using namespace VariadicTemplatesIntro_05;
-    test_printer_02();
+    VariadicTemplatesIntro_05::test_accessing_parameterpack();
+
+    VariadicTemplatesIntro_06::test_printer_02();
 }
 
 // =====================================================================================
