@@ -41,26 +41,39 @@ auto lambda = [](auto x, int y) {
 };
 ```
 
-Man beachte, dass der Lambda Ausdruck einen Parameter vom Typ `auto` hat.
-
 Intern &ndash; also aus Sicht des Compilers &ndash; wird eine derartige Funktion bzw. ein derartiger Lambda Ausdruck
-auf ein &bdquo;aufrufbares Objekt&rdquo; abgebildet.
+auf ein Funktionstemplate bzw. ein &bdquo;aufrufbares Objekt&rdquo; abgebildet.
 Der Aufruf-Operator `operator()` wird dabei im Sinne der Template Technik als so genannte
 *Template Member Function* realisiert:
 
 
 ```cpp
-struct Function
+template<typename T>
+static void Function(T x, int y)
 {
-    template <typename T>
-    auto operator() (T x, int y) {
-        std::cout << "x=" << x << ", y=" << y << std::endl;
-    }
-};
+    std::cout << "x=" << x << ", y=" << y << std::endl;
+}
+
+template<>
+void Function<int>(int x, int y)
+{
+    std::cout << "x=" << x << ", y=" << y << std::endl;
+}
+
+template<>
+void Function<double>(double x, int y)
+{
+    std::cout << "x=" << x << ", y=" << y << std::endl;
+}
+
+template<>
+void Function<std::string>(std::string x, int y)
+{
+    std::cout << "x=" << x << ", y=" << y << std::endl;
+}
 ```
 
 oder
-
 
 ```cpp
 struct Lambda
@@ -69,8 +82,25 @@ struct Lambda
     auto operator() (T x, int y) {
         std::cout << "x=" << x << ", y=" << y << std::endl;
     }
+
+    template<>
+    auto operator() <int> (int x, int y) {
+        std::cout << "x=" << x << ", y=" << y << std::endl;
+    }
+
+    template<>
+    auto operator() <double> (double x, int y) {
+        std::cout << "x=" << x << ", y=" << y << std::endl;
+    }
+
+    template<>
+    auto operator() <std::string> (std::string x, int y) {
+        std::cout << "x=" << x << ", y=" << y << std::endl;
+    }
 };
 ```
+
+---
 
 Besitzt eine Funktion bzw. ein Lambda Ausdruck mehrere `auto` Parameter, dann werden bei der Umsetzung
 auf eine adäquate *Template Member Function* mehrere Template Parameter eingesetzt:

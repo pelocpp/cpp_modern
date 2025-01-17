@@ -53,7 +53,7 @@ int main()
         //main_functional_programming();
         //main_functional_programming_alternate();
         //main_generate();
-        //main_generic_functions();
+        main_generic_functions();
         //main_initializer_list();
         //main_input_output_streams();  
         //main_invoke();

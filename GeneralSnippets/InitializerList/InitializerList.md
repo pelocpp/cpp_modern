@@ -28,7 +28,7 @@ eine Referenz zu verwenden &ndash; die Parameterübergabe *Call-by-Value* ist völ
 
 *Hinweis*:
 Ein `std::initializer_list`-Objekt ist immer *per-Value* zu übergeben.
-Eine mögliche *per-Reference*-Übergabe könnte möglichen Optimierungen des Compilers im Wege stehen. 
+Eine *per-Reference*-Übergabe könnte möglichen Optimierungen des Compilers im Wege stehen. 
 
 ---
 
