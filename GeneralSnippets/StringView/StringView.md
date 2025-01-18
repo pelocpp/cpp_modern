@@ -11,7 +11,8 @@
 ## Inhalt
 
   * [Allgemeines](#link1)
-  * [Einige Beispiele](#link2)
+  * [Ist ein Parametertyp `std::string_view` besser als `const std::string&`?](#link2)
+  * [Einige Beispiele](#link3)
 
 
 ---
@@ -38,7 +39,28 @@ als `std::string_view` an eine Funktion zu übergeben.
 
 ---
 
-## Einige Beispiele <a name="link2"></a>
+## Ist ein Parametertyp `std::string_view` besser als `const std::string&`? <a name="link2"></a>
+
+Diese Frage kann man durchaus mit &bdquo;Ja&rdquo; beantworten:
+
+  * Der Typ `const std::string&` setzt voraus,
+    dass die Daten in einem `std::string` vorliegen und eben nicht in einem einfachen C-Array (also `const char*`).
+    Mit der Klasse `std::string` müssen die Daten auf dem Heap (Halde) vorhanden sein,
+    bei konstanten C-Zeichenketten muss dies nicht der Fall sein.
+
+  * Einige der typischen Zeichenkettenoperationen, zum Beispiel `substring`, lassen sich mit 
+    der Klasse `std::string_view` erheblich performanter als mit der `std::string`-Klasse umsetzen:
+    * Die Methode `substr` der `std::string`-Klasse liefert ein Teilzeichenkettenobjekt zurück, das aus dem Originalobjekt extrahiert wird
+    und folglich in einer Kopie auf dem Heap anzulegen ist.
+    * Die beiden Methoden `remove_prefix` und `remove_suffix` modifizieren ein vorhandenes `std::string_view`-Objekt
+    (Modifikation der Anfangsadresse der Zeichenkette um einen bestimmten Offset). Dies ist eine sehr schnelle Operation,
+    und es wird weder eine Kopie für das Ergebnis noch wird die Freispeicherverwaltung des Programms aktiviert,
+    um ein Objekt auf der Halde zu erzeugen.
+
+
+---
+
+## Einige Beispiele <a name="link3"></a>
 
 Wir betrachten dazu einige Code-Snippets:
 
@@ -113,7 +135,7 @@ countUpperCaseChars: 0
 Wenn Sie von nun an eine Funktion schreiben, die eine Zeichenfolge benötigt,
 denken Sie an `std::string_view` als Parametertyp.
 Es ist nicht erforderlich, eine `std::string_view`-Referenz zu verwenden!
-Ein `std::string_view`-Objekt ist sehr "billig" zu kopieren,
+Ein `std::string_view`-Objekt ist sehr &bdquo;billig&rdquo; zu kopieren,
 daher ist es vollkommen in Ordnung, es als Wert zu übergeben.
 Grundsätzlich enthält eine `std::string_view`-Instanz nur einen Zeiger auf eine Zeichenfolge
 und deren Länge.

@@ -8,9 +8,9 @@ namespace StringViewDemonstration {
 
     static void test_01()
     {
-        std::string_view sv{ "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" };  // Konstante Zeichenkette
+        std::string_view sv{ "AAAAAAAAAAAAAAAAAAAAAAAAAAAA" };  // Konstante Zeichenkette
 
-        std::string s{ "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" };        //  Heap
+        std::string s{ "AAAAAAAAAAAAAAAAAAAAAAAAAAAA" };        //  Heap
 
         // sv[0] = '?';   // error
         char ch{ sv[0] };
@@ -18,24 +18,24 @@ namespace StringViewDemonstration {
 
     static void test_02()
     {
-        std::string s{ "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" };
+        std::string s{ "AAAAAAAAAAAAAAAAAAAAAAAAAAAA" };
 
         std::string_view sv{ s };
 
-        std::cout << sv << std::endl;
+        std::println("{}", sv);
 
-        s += "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB";  // the content of s is reallocated !
+        s += "BBBBBBBBBBBBBBBBBBBBBBBBBBBB";  // the content of s is reallocated !
 
-        std::cout << sv << std::endl;
+        std::println("{}", sv);
     }
 
     static void test_03()
     {
         using namespace std::literals;      // easiest way to access the s and sv suffixes
 
-        std::cout << "foo" << std::endl;    // no suffix: C-style string literal
-        std::cout << "goo"s << std::endl;   // s suffix:  std::string literal
-        std::cout << "moo"sv << std::endl;  // sv suffix: std::string_view literal
+        std::println("{}", "foo");         // no suffix: C-style string literal
+        std::println("{}", "goo"s);        // s suffix:  std::string literal
+        std::println("{}", "moo"sv);       // sv suffix: std::string_view literal
     }
 
     static size_t countUpperCaseChars(std::string_view sv) {
@@ -55,22 +55,22 @@ namespace StringViewDemonstration {
     {
         std::string_view sv{ "DiesIstEinLangerSatz" };
         size_t count{ countUpperCaseChars(sv) };
-        std::cout << "countUpperCaseChars: " << count << std::endl;
+        std::println("countUpperCaseChars: {}", count);
 
         std::string s{ "AuchDasWiederIstEinLangerSatz" };
         count = countUpperCaseChars(s);
-        std::cout << "countUpperCaseChars: " << count << std::endl;
+        std::println("countUpperCaseChars: {}", count);
 
         count = countUpperCaseChars("NurKurzJetzt");
-        std::cout << "countUpperCaseChars: " << count << std::endl;
+        std::println("countUpperCaseChars: {}", count);
 
         // works too 
         count = countUpperCaseChars({ &s[25] }); // "Satz"
-        std::cout << "countUpperCaseChars: " << count << std::endl;
+        std::println("countUpperCaseChars: {}", count);
 
         // works too
         count = countUpperCaseChars({ &s[26], 2 }); // "at"
-        std::cout << "countUpperCaseChars: " << count << std::endl;
+        std::println("countUpperCaseChars: {}", count);
     }
 }
 

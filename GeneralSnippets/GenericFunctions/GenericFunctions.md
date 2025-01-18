@@ -11,11 +11,12 @@
 ## Inhalt
 
   * [Einleitung](#link1)
-  * [*Automatic Type Deduction* bei generischen Lambda Ausdrücken](#link2)
-  * [Lambda Ausdrücke mit `template`-Header](#link3)
-  * [*Perfect Forwarding* mit generischen Lambdas](#link4)
-  * [Rekursive Lambda Ausdrücke](#link5)
-  * [Literaturhinweise](#link6)
+  * [Generische Funktionen mit mehreren `auto`-Parametern](#link2)
+  * [*Automatic Type Deduction* bei generischen Lambda Ausdrücken](#link3)
+  * [Lambda Ausdrücke mit `template`-Header](#link4)
+  * [*Perfect Forwarding* mit generischen Lambdas](#link5)
+  * [Rekursive Lambda Ausdrücke](#link6)
+  * [Literaturhinweise](#link7)
     
 ---
 
@@ -33,7 +34,7 @@ auto function(auto x, int y) {
 Ebenso:
 
 Ein Lambda-Ausdruck, der mindestens einen Parameter vom Typ `auto` hat,
-wird als generischer Lambda-Ausdruck bezeichnet:
+wird als *generischer Lambda-Ausdruck* bezeichnet:
 
 ```cpp
 auto lambda = [](auto x, int y) {
@@ -43,9 +44,11 @@ auto lambda = [](auto x, int y) {
 
 Intern &ndash; also aus Sicht des Compilers &ndash; wird eine derartige Funktion bzw. ein derartiger Lambda Ausdruck
 auf ein Funktionstemplate bzw. ein &bdquo;aufrufbares Objekt&rdquo; abgebildet.
-Der Aufruf-Operator `operator()` wird dabei im Sinne der Template Technik als so genannte
-*Template Member Function* realisiert:
 
+
+#### Interne Sicht der Sprache C++ auf eine *generische Funktion*
+
+Man beachte das sprachliche Mittel der (expliziten) Template-Spezialisierung:
 
 ```cpp
 template<typename T>
@@ -73,7 +76,13 @@ void Function<std::string>(std::string x, int y)
 }
 ```
 
-oder
+#### Interne Sicht der Sprache C++ auf einen *generischen Lambda-Ausdruck*:
+
+Man beachte im folgenden Beispiel
+den Einsatz des Aufruf-Operators `operator()`, hier im Sinne der Template Technik
+als so genannte *Template Member Function* realisiert.
+Die Spezialisierungen des Aufruf-Operators werden ebenfalls dargestellt:
+
 
 ```cpp
 struct Lambda
@@ -100,7 +109,7 @@ struct Lambda
 };
 ```
 
----
+## Generische Funktionen mit mehreren `auto`-Parametern <a name="link2"></a>
 
 Besitzt eine Funktion bzw. ein Lambda Ausdruck mehrere `auto` Parameter, dann werden bei der Umsetzung
 auf eine adäquate *Template Member Function* mehrere Template Parameter eingesetzt:
@@ -121,7 +130,7 @@ struct FuncionTwice
 
 ---
 
-## *Automatic Type Deduction* bei generischen Lambda Ausdrücken <a name="link2"></a>
+## *Automatic Type Deduction* bei generischen Lambda Ausdrücken <a name="link3"></a>
 
 Das Feature der *Automatic Type Deduction* wird auch bei Lambda-Ausdrücken angewendet,
 und zwar sowohl beim Rückgabetyp als auch bei den Parametern der Lambda-Funktion.
@@ -207,7 +216,7 @@ if (it2 != std::end(doubleValues)) {
 
 ---
 
-## Lambda Ausdrücke mit `template`-Header <a name="link3"></a>
+## Lambda Ausdrücke mit `template`-Header <a name="link4"></a>
 
 Lambda Ausdrücke mit `template`-Header Syntax, die in C++ 20 eingeführt wurde,
 ermöglichen es, explizit auf die Gestaltung des Template-basierten Funktionsaufrufoperators `operator()`
@@ -328,7 +337,7 @@ ist dies nur mit dem gezeigten Lösungswegs eines Lambda Ausdrucks mit `template
 
 ---
 
-## *Perfect Forwarding* mit generischen Lambdas <a name="link4"></a>
+## *Perfect Forwarding* mit generischen Lambdas <a name="link5"></a>
 
 Das Prinzip des &bdquo;perfekteb Weiterleitens&rdquo; gibt es auch für generische Lambdas.
 Definiert man einen Parameter eines generischen Lambdas vom Typ `auto&&`, also als so genannte *Universal Reference*,
@@ -367,7 +376,7 @@ Calling foo(): Hello World with RValue - Signature: &&
 
 ---
 
-## Rekursive Lambda Ausdrücke <a name="link5"></a>
+## Rekursive Lambda Ausdrücke <a name="link6"></a>
 
 
 Generische Lambda Ausdrücke eröffnen auch die Möglichkeit, rekursive Lambda-Funktionen zu realisieren,
@@ -430,7 +439,7 @@ std::cout << power(power, 2.71828, 10);           // e^10 = 22026.3
 
 ---
 
-## Literaturhinweise <a name="link6"></a>
+## Literaturhinweise <a name="link7"></a>
 
 Die Anregungen zu rekursiven Lambda Ausdrücken stammen aus
 [Generic code with generic lambda expression](https://www.nextptr.com/tutorial/ta1224017367/generic-code-with-generic-lambda-expression).

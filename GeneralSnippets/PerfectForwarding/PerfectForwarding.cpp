@@ -7,11 +7,11 @@ module modern_cpp:perfect_forwarding;
 namespace PerfectForwarding {
 
     static void overloaded(int& arg) {
-        std::cout << "By lvalue: " << arg << std::endl;
+        std::println("By lvalue: {}", arg);
     }
 
     static void overloaded(int&& arg) {
-        std::cout << "By rvalue: " << arg << std::endl;
+        std::println("By rvalue: {}", arg);
     }
 
     /*
@@ -56,18 +56,15 @@ namespace PerfectForwarding {
         // T obj1 = std::forward<T>(arg1);
         // vs
         T obj1 = arg1;
-        std::cout << arg1 << std::endl;
+        std::println("[{}]", arg1);
 
         T obj2 = std::forward<U>(arg2);
-        std::cout << arg2 << std::endl;
+        std::println("[{}]", arg2);
     }
 
     static void test_example()
     {
-        using namespace std::string_literals;
-
         std::string s{ "DEF" };
-        std::cout << s << std::endl;
 
         foo(std::string{ "ABC" }, s);
     }
