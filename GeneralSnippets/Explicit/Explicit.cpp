@@ -18,7 +18,7 @@ namespace KeywordExplicit {
         /* explicit */ Complex(double real) :   // remove or add keyword 'explicit'
             m_real{ real }, m_imag{} {}
 
-        explicit Complex(double real, double imag) :
+        Complex(double real, double imag) :
             m_real{ real }, m_imag{ imag } {}
 
         // comparison operator
