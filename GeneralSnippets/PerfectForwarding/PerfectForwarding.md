@@ -39,8 +39,8 @@ Eine konstante Referenz, gekennzeichnet durch `const T&`, kann an alles gebunden
 Das Originalobjekt kann durch eine solche Referenz niemals verändert werden.
 
 `const`-Referenzen sollten eigentlich immer dann verwendet werden, 
-wenn man das betroffene Objekt nicht kopieren möchte.
-Sei es zum Schutze des Objekts oder aus Gründen der Performanz.
+wenn man das betroffene Objekt nicht verändern möchte,
+zum Beispiel zum Schutze des Objekts.
 
 
 ### Veränderbare (mutable) Referenzen

@@ -12,31 +12,24 @@ namespace OptionalExamples {
 
     static void test_01_optional() {
 
-        std::optional<int> someValue;
+        std::optional<int> someValue{ 123 };
 
         if (someValue.has_value()) {
-            
-            std::cout << "Value:" << someValue.value() << std::endl;
+            std::println("Value: {}", someValue.value());
+        }
+
+        if (someValue) {
+            // providing an interface similar to smart pointers
+            std::println("Value: {}", *someValue);
         }
 
         someValue = std::nullopt;
 
-        if (someValue) {
-
-            std::cout << "Value:" << someValue.value() << std::endl;
-        }
-
-        someValue = 123;
-
         if (someValue.has_value()) {
-
-            std::cout << "Value: " << someValue.value() << std::endl;
+            std::println("Value: {}", someValue.value());
         }
-
-        if (someValue) {
-
-            // providing an interface similar to smart pointers
-            std::cout << "Value: " << *someValue << std::endl;
+        else {
+            std::println("someValue does not contain a value!");
         }
     }
 
@@ -46,7 +39,6 @@ namespace OptionalExamples {
 
     class Contact
     {
-
     private:
         std::optional<std::string> m_phone;
 
@@ -63,19 +55,19 @@ namespace OptionalExamples {
         Contact contact{};
 
         if (contact.getPhone()) {
-            std::cout << "Number: " << contact.getPhone().value() << std::endl;
+            std::println("Number: {}", contact.getPhone().value());
         }
         else {
-            std::cout << "No Number found!" << std::endl;
+            std::println("No Number found!");
         }
 
         contact.setPhone("123456789");
 
         if (contact.getPhone()) {
-            std::cout << "Number: " << *contact.getPhone() << std::endl;
+            std::println("Number: {}", *contact.getPhone());
         }
         else {
-            std::cout << "No Number found!" << std::endl;
+            std::println("No Number found!");
         }
     }
 
@@ -97,21 +89,19 @@ namespace OptionalExamples {
         auto result{ divide(1.0, 3.0) };
 
         if (result.has_value()) {
-
-            std::cout << "Result: " << result.value() << std::endl;
+            std::println("Result: {}", result.value());
         }
         else {
-            std::cout << "Division by zero!" << std::endl;
+            std::println("Division by zero!");
         }
 
         result = divide(1.0, 0.0);
 
         if (result.has_value()) {
-
-            std::cout << "Result: " << result.value() << std::endl;
+            std::println("Result: {}", result.value());
         }
         else {
-            std::cout << "Division by zero!" << std::endl;
+            std::println("Division by zero!");
         }
 
         // Alternatively you can use std::optional<T>::value_or()
@@ -123,7 +113,7 @@ namespace OptionalExamples {
 
         auto value = result.value_or(defaultValue);
 
-        std::cout << "Result (or default value): " << value << std::endl;
+        std::println("Result (or default value): {}", value);
     }
 
     /*
