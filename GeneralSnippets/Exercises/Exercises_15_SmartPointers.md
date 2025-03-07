@@ -54,7 +54,7 @@ Studieren Sie das folgende Code-Fragement genau.
 13: std::shared_ptr<X> pC;
 14: 
 15: pB = pA;
-16: pC = std::shared_ptr<X>(pB.get());
+16: pC = std::shared_ptr<X>{ pB.get() };
 17: pC = nullptr; 
 18: int value = (*pB).getValue();
 19: std::cout << "Value: " << value << std::endl;

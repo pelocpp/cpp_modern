@@ -41,15 +41,7 @@ constexpr auto crcTable{
     }() 
 };
 
-static constexpr auto calcCRC(uint8_t len, const uint8_t* data) {
-    uint8_t checksum{};
-    while (len--) {
-        checksum = crcTable<MY_POLYNOM>[*data++ ^ checksum];
-    }
-    return checksum;
-}
-
-static constexpr auto calcCRC2(const std::string& data) {
+static constexpr auto calcCRC(std::string_view data) {
     uint8_t checksum{};
     auto len{ data.size() };
     for (size_t i{}; i != len; ++i) {
@@ -60,17 +52,12 @@ static constexpr auto calcCRC2(const std::string& data) {
 
 void main_constexpr_crc()
 {
-    constexpr uint8_t message[]{ "Hello World" };
-
-    constexpr uint8_t checksum{ calcCRC(11, message) };
-    constexpr uint8_t checksum2{ calcCRC2(std::string{"Hello World"}) };
-
-    std::println("Checksum is:  {}", static_cast<int>(checksum));
-    std::println("Checksum2 is: {}", static_cast<int>(checksum2));
+    constexpr uint8_t checksum{ calcCRC("Hello World") };
+    std::println("Checksum is: {}", checksum);
 
     // print table
     for (size_t i{}; i != TABLE_SIZE; ++i) {
-        std::cout << static_cast<int>(crcTable<MY_POLYNOM>[i]) << std::endl;
+        std::println("{:03}: {}", i, crcTable<MY_POLYNOM>[i]);
     }
 }
 

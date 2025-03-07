@@ -80,7 +80,7 @@ namespace Exercises_SmartPointers {
             assert(pA.use_count() == 2);
             assert(pB.use_count() == 2);
 
-            pC = std::shared_ptr<X>(pB.get());
+            pC = std::shared_ptr<X>{ pB.get() };
             // ERROR! Don't double-manage a raw pointer!
             // Give never the same pointer to a shared_ptr object again,
             // which would tell this shared_ptr to manage it -- twice!
