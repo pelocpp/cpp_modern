@@ -159,6 +159,11 @@
     Cheatsheet zu allen Spracherweiterungen von C++ in Bezug auf die einzelnen Versionen (C++20/17/14/11).
 
 
+  * [The Daily bit(e) of C++ series](https://github.com/happycerberus)
+
+    Dies ist ein Verzeichnis für die Beiträge der *Daily bit(e) of C++*&ndash;Reihe (ab 2. Januar 2023).
+    Die Reihe präsentiert Informationen zu modernem C++ in einem leicht verdaulichen, mundgerechten Format.
+
 ---
 
 [Zurück](../../Readme.md)
