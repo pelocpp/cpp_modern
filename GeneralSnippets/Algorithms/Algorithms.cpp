@@ -225,7 +225,7 @@ namespace Algorithms {
     // Using algorithms for elementary calculations
     // =================================================================================
 
-    static auto test_calculate_sum_classic_for_loop(std::vector<double>& values)
+    static auto test_calculate_sum_classic_for_loop(const std::vector<double>& values)
     {
         std::println("Classic Loop: ");
 
@@ -239,7 +239,7 @@ namespace Algorithms {
         return sum;
     }
 
-    static auto test_calculate_sum_iterator_based(std::vector<double>& values)
+    static auto test_calculate_sum_iterator_based(const std::vector<double>& values)
     {
         std::println("Iterator Loop: ");
 
@@ -253,7 +253,7 @@ namespace Algorithms {
         return sum;
     }
 
-    static auto test_calculate_sum_range_based_for_loop(std::vector<double>& values)
+    static auto test_calculate_sum_range_based_for_loop(const std::vector<double>& values)
     {
         std::println("Using range-based for loop");
 
@@ -267,7 +267,7 @@ namespace Algorithms {
         return sum;
     }
 
-    static auto test_calculate_sum_std_for_each(std::vector<double>& values)
+    static auto test_calculate_sum_std_for_each(const std::vector<double>& values)
     {
         std::println("Standard Algorithm - std::for_each:");
 
@@ -283,7 +283,7 @@ namespace Algorithms {
         return sum;
     }
 
-    static auto test_calculate_sum_std_accumulate(std::vector<double>& values)
+    static auto test_calculate_sum_std_accumulate(const std::vector<double>& values)
     {
         std::println("Standard Algorithm - std::accumulate:");
 

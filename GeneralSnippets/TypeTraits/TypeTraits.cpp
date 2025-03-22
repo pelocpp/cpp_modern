@@ -148,10 +148,10 @@ namespace TypeTraits_Conditional_Compilation_Demo {
 
     public:
         Gadget() : Gadget{ 0, "" } {}
-        Gadget(int id, std::string name) : m_id{ id }, m_name{ name } {}
+        Gadget(int id, const std::string& name) : m_id{ id }, m_name{ name } {}
 
         int getId() const { return m_id; }
-        std::string getName() const { return m_name; }
+        const std::string& getName() const { return m_name; }
     };
 
     std::ostream& operator <<(std::ostream& os, const Gadget& gadget)

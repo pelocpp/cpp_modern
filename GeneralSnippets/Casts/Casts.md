@@ -8,6 +8,39 @@
 
 ---
 
+## Inhalt
+
+  * [Einleitung](#link1)
+  * [Implizite Konvertierungen](#link2)
+  * [Explizite C-Style Konvertierungen](#link3)
+  * [Explizite C++ Konvertierungen](#link4)
+
+---
+
+## Einleitung <a name="link1"></a>
+
+<img src="cpp_casts.svg" width="500">
+
+*Abbildung* 1: Überblick übert die unterschiedlichen Typkonvertierungsmöglichkeiten in C/C++
+
+---
+
+WEITER:
+
+https://web.archive.org/web/20160316114647/http://pvtuts.com/cpp/cpp-type-conversions
+
+https://stackoverflow.com/questions/1609163/what-is-the-difference-between-static-cast-and-c-style-casting#:~:text=In%20short%3A,much%20better%20using%20C%2B%2B%20casts.
+
+
+https://anteru.net/blog/2007/c-background-static-reinterpret-and-c-style-casts/
+
+https://stackoverflow.com/questions/103512/why-use-static-casttx-instead-of-tx
+
+
+---
+
+ALTES ZEUGS
+
 Es wird an mehreren Beispielen die Funktionsweise folgender C++-Typumwandlungen gezeigt:
 
   * `static_cast`
@@ -28,7 +61,7 @@ einen `nullptr` zurück. Dies kann man zur Laufzeit abfragen.
 Der `const_cast`-Operator wird verwendet,
 um die `const`-Eigenschaft von Variablen zu entfernen.
 
-Dies sollte man eigentlich nur im Ausnahmefall machen, den die ursprüngliche Vergabe des `const`-Attributs
+Dies sollte man eigentlich nur im Ausnahmefall machen, denn die ursprüngliche Vergabe des `const`-Attributs
 sollte ja einen Sinn gehabt haben.
 
 Der `reinterpret_cast`-Cast ist der freizügigste Cast-Operator von allen: Er *re-interpretiert* eine Variable / ein Objekt

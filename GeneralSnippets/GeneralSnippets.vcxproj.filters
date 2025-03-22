@@ -1034,6 +1034,9 @@
     <None Include="Algorithms\Algorithms.md">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="Casts\cpp_casts.svg">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="VariadicTemplates\cpp_snippets_mixins_01.png">

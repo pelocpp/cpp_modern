@@ -120,6 +120,7 @@ namespace BraceInitialization {
 
     public:
         AnotherClass() : m_a{ }, m_b{ } {}
+
         AnotherClass(int a, double b = 0.0) : m_a{ a }, m_b{ b } {}
 
         void operator() () { std::println("a: {}, b: {}", m_a, m_b); }

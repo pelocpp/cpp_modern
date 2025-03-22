@@ -105,7 +105,7 @@ namespace WeakPointer {
         std::shared_ptr<ParentNode> m_parentNode;
 
     public:
-        RightNode(std::shared_ptr<ParentNode> parent)
+        explicit RightNode(std::shared_ptr<ParentNode> parent)
             : m_parentNode{ parent } {
             std::println("c'tor RightNode");
         }
@@ -120,7 +120,7 @@ namespace WeakPointer {
         std::shared_ptr<ParentNode> m_parentNode;
 
     public:
-        LeftNode(std::shared_ptr<ParentNode> parent)
+        explicit LeftNode(std::shared_ptr<ParentNode> parent)
             : m_parentNode{ parent } {
             std::println("c'tor LeftNode");
         }

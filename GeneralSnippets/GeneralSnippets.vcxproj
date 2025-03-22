@@ -372,6 +372,7 @@
     <None Include="Bind\Bind.md" />
     <None Include="BraceInitialization\BraceInitialization.md" />
     <None Include="Casts\Casts.md" />
+    <None Include="Casts\cpp_casts.svg" />
     <None Include="CommonType\CommonType.md" />
     <None Include="ConceptsRequiresClasses\ConceptsRequiresClasses.md" />
     <None Include="ConceptsRequiresFunctions\ConceptsRequiresFunctions.md" />

@@ -105,6 +105,8 @@ namespace Auto_Examples {
         size_t m_number;
 
     public:
+        Contact() : m_name{}, m_number{} {}
+
         auto getName() const { return m_name; }
         auto getMobileNumber() const { return m_number; }
     };

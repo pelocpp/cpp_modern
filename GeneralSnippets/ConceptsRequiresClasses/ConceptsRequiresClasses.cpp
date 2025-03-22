@@ -17,7 +17,7 @@ namespace ClassesAndConcepts_01 {
         T  m_number;
 
     public:
-        WrappedNumber(T number) : m_number{ number } {}
+        explicit WrappedNumber(T number) : m_number{ number } {}
 
         T getNumber() const { return m_number; }
     };
@@ -82,7 +82,7 @@ namespace ClassesAndConcepts_03 {
         T  m_number;
 
     public:
-        WrappedNumber(T number) : m_number{ number } {}
+        explicit WrappedNumber(T number) : m_number{ number } {}
 
         T getNumber() const { return m_number; }
     };
