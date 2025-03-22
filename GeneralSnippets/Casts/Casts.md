@@ -315,14 +315,11 @@ WEITER:
 
 https://web.archive.org/web/20160316114647/http://pvtuts.com/cpp/cpp-type-conversions
 
-
 ---
 
 ## Literatur <a name="link10"></a>
 
-
 ---
-
 
 ALTES ZEUGS
 
