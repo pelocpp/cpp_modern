@@ -19,30 +19,18 @@
   * [Die `const_cast`-Operation](#link7)
   * [*C-Style-Casts* und *New-Style-Casts*](#link8)
   * [Die `dynamic_cast`-Operation](#link9)
-  * [Literatur](#link10)
-
+  * [`static_cast`- oder `dynamic_cast`-Operation](#link10)
+  * [Literatur](#link11)
 
 ---
 
 ## Einleitung <a name="link1"></a>
 
+Die Programmiersprache C++ kennt 5 verschiedene Typkonvertierungsmöglichkeiten:
+
 <img src="cpp_casts.svg" width="450">
 
 *Abbildung* 1: Überblick über die unterschiedlichen Typkonvertierungsmöglichkeiten in C/C++
-
----
-
-WEITER:
-
-https://web.archive.org/web/20160316114647/http://pvtuts.com/cpp/cpp-type-conversions
-
-https://stackoverflow.com/questions/1609163/what-is-the-difference-between-static-cast-and-c-style-casting#:~:text=In%20short%3A,much%20better%20using%20C%2B%2B%20casts.
-
-
-https://anteru.net/blog/2007/c-background-static-reinterpret-and-c-style-casts/
-
-https://stackoverflow.com/questions/103512/why-use-static-casttx-instead-of-tx
-
 
 ---
 
@@ -311,13 +299,155 @@ dass Entwickler nach einer anderen Lösung suchen.
 
 ### Die `dynamic_cast`-Operation <a name="link9"></a>
 
+Im folgenden Beispiel wird ein `Derived`-Zeiger mithilfe einer dynamischen Konvertierung in einen `Base`-Zeiger umgewandelt.
+
+Diese &bdquo;*derived-to-base*&rdquo; Konvertierung ist erfolgreich, da das `Derived`-Objekt ein vollständiges `Base`-Objekt enthält:
+
+```cpp
+01: class Base
+02: {
+03: public: 
+04:     virtual void test() { std::println("Base"); }
+05: };
+06:             
+07: class Derived : public Base
+08: {
+09: public:
+10:     virtual void test() { std::println("Derived"); }
+11: };
+12: 
+13: {
+14:     Derived* child = new Derived();
+15:     Base* base = dynamic_cast<Base*>(child); // ok
+16:     base->test();
+17: }
+```
+
+*Ausgabe*:
+
+```
+Derived
+```
+
+Das nächste Beispiel versucht, einen `Base`-Zeiger in einen `Derived`-Zeiger umzuwandeln.
+Da das `Base`-Objekt kein vollständiges `Derived`-Objekt enthält, schlägt diese Zeigerkonvertierung fehl.
+
+Um dies anzuzeigen, gibt der dynamische Cast einen Nullzeiger zurück.
+So lässt sich bequem zur Laufzeit überprüfen, ob eine Konvertierung erfolgreich war:
+
+
+```cpp
+01: Base* base = new Base();
+02: Derived* child = dynamic_cast<Derived*>(base);
+03: 
+04: if (child == 0) {
+05:     std::println("Null pointer returned!");
+06: }
+```
+
+*Ausgabe*:
+
+```
+Null pointer returned!
+```
+
+Wird anstelle eines Zeigers eine Referenz konvertiert, schlägt die dynamische Umwandlung mit einer `std::bad_cast`-Exception fehl.
+Dies muss mithilfe einer `try`-`catch`-Anweisung behandelt werden:
+
+```cpp
+01: Base base;
+02: 
+03: try {
+04:     Derived& child = dynamic_cast<Derived&>(base);
+05: }
+06: catch (std::bad_cast& e)
+07: {
+08:     std::println("{}", e.what());
+09: }
+```
+
+*Ausgabe*:
+
+```
+Bad dynamic_cast!
+```
+
+### `static_cast`- oder `dynamic_cast`-Operation <a name="link10"></a>
+
+Der Vorteil eines dynamischen Casts besteht darin, dass der Programmierer während der Laufzeit prüfen kann,
+ob eine Konvertierung erfolgreich war.
+
+Der Nachteil ist der damit verbundene Performance-Overhead.
+
+Aus diesem Grund wäre im ersten Beispiel ein statischer Cast vorzuziehen gewesen,
+da eine &bdquo;*derived-to-base*&rdquo; Konvertierung nie fehlschlagen kann:
+
+```cpp
+01: // less performance overhead : using a static_cast
+02: Derived* child = new Derived();
+03: Base* base = static_cast<Base*>(child); // ok
+04: base->test();
+```
+
+*Ausgabe*:
+
+```
+Derived
+```
+
+Wäre die Konvertierung von der Basis- zur abgeleiteten Klasse mit einem statischen statt einem dynamischen Cast durchgeführt worden,
+wäre die Konvertierung nicht fehlgeschlagen.
+
+
+
+```cpp
+01: Base* base = new Base();  // toggle between Base and Derived
+02: Derived* child = static_cast<Derived*>(base);
+03: 
+04: if (child == 0) {
+05:     std::println("Null pointer returned!");
+06: }
+07: else {
+08:     std::println("static_cast successful!");   // Oooops
+09: }
+```
+
+*Ausgabe*:
+
+```
+static_cast successful!
+```
+
+Sie hätte einen Zeiger zurückgegeben, der auf ein unvollständiges Objekt verweist.
+Die Dereferenzierung eines solchen Zeigers kann zu Laufzeitfehlern führen.
+
+---
+
 WEITER:
 
 https://web.archive.org/web/20160316114647/http://pvtuts.com/cpp/cpp-type-conversions
 
 ---
 
-## Literatur <a name="link10"></a>
+## Literatur <a name="link11"></a>
+
+Eine sehr gute Beschreibung aller möglichen Tpykonvertierungsmöglochkeiten findet sich hier:
+
+[Tutorial Type Conversions](https://web.archive.org/web/20160316114647/http://pvtuts.com/cpp/cpp-type-conversions)<br />
+(abgerufen am 23.3.2025).
+
+Haben Sie sich schon einmal gefragt, warum C-Style-Casts und `reinterpret_cast`-Casts als schädlich gelten?
+
+In diesem Artikel wird genauer betrachtet, was bei ihnen schiefläuft:
+
+[C++ background: Static, reinterpret and C-Style casts](https://anteru.net/blog/2007/c-background-static-reinterpret-and-c-style-casts/)<br />
+(abgerufen am 23.3.2025).
+
+
+
+
+
+
 
 ---
 

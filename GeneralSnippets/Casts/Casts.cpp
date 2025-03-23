@@ -114,6 +114,87 @@ namespace DiverseCasts {
             }
         }
 
+        static void test_05_explicit_conversions_dynamic_cast()
+        {
+            class Base
+            {
+            public: 
+                virtual void test() { std::println("Base"); }
+            };
+            
+            class Derived : public Base
+            {
+            public:
+                virtual void test() { std::println("Derived"); }
+            };
+
+            {
+                Derived* child = new Derived();
+                Base* base = dynamic_cast<Base*>(child); // ok
+                base->test();
+            }
+
+            {
+                Base* base = new Base();
+                Derived* child = dynamic_cast<Derived*>(base);
+
+                if (child == 0) {
+                    std::println("Null pointer returned!");
+                }
+            }
+
+            {
+                Base base;
+
+                try {
+                    Derived& child = dynamic_cast<Derived&>(base);
+                }
+                catch (std::bad_cast& e)
+                {
+                    std::println("{}", e.what());
+                }
+            }
+
+            {
+                // less performance overhead : using a static_cast
+                Derived* child = new Derived();
+                Base* base = static_cast<Base*>(child); // ok
+                base->test();
+            }
+
+            {
+                // conversion may either succeed or fail:
+                // Failure: the base pointer points to a Base instance
+                // Success: the base pointer points to a Derived instance
+
+                Base* base = new Derived();  // toggle between Base and Derived
+                Derived* child = dynamic_cast<Derived*>(base);
+
+                if (child == 0) {
+                    std::println("Null pointer returned!");
+                }
+                else {
+                    std::println("dynamic_cast successful!");
+                }
+            }
+
+            {
+                // conversion may either succeed or fail:
+                // Failure: the base pointer points to a Base instance
+                // Success: the base pointer points to a Derived instance
+
+                Base* base = new Base();  // toggle between Base and Derived
+                Derived* child = static_cast<Derived*>(base);
+
+                if (child == 0) {
+                    std::println("Null pointer returned!");
+                }
+                else {
+                    std::println("static_cast successful!");   // Oooops
+                }
+            }
+        }
+
 
         // altes Zeugs
 
@@ -308,12 +389,11 @@ void main_casts()
     using namespace DiverseCasts::CastConst;
     using namespace DiverseCasts::CastReinterpret;
 
-    test_01_implicit_conversions();
-    test_02_explicit_conversions_static_cast();
-    test_03_explicit_conversions_reinterpret_cast();
-    test_04_explicit_conversions_const_cast();
-
-
+    //test_01_implicit_conversions();
+    //test_02_explicit_conversions_static_cast();
+    //test_03_explicit_conversions_reinterpret_cast();
+    //test_04_explicit_conversions_const_cast();
+    test_05_explicit_conversions_dynamic_cast();
 }
 
 // =====================================================================================
