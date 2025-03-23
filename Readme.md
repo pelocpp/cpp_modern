@@ -136,7 +136,7 @@ Es folgt eine tabellarische Auflistung dieser Unterverzeichnisse.
 | [BackInserter](GeneralSnippets/BackInserter/BackInserter.md) | `std::back_inserter` Iterator |
 | [Bind](GeneralSnippets/Bind/Bind.md) | `std::bind` |
 | [Brace Initialization](GeneralSnippets/BraceInitialization/BraceInitialization.md) | Einheitliches Initialisierungs-Konzept |
-| [Casts](GeneralSnippets/Casts/Casts.md) | Typumwandlungen `static_cast`, `dynamic_cast`, `const_cast` und `reinterpret_cast` |
+| [Casts](GeneralSnippets/Casts/Casts.md) | Typumwandlungen `static_cast`, `dynamic_cast`, `const_cast`, `reinterpret_cast` und *C-Style-Cast* |
 | [CommonType](GeneralSnippets/CommonType/CommonType.md) | Utility `std::common_type` |
 | [Concepts for Classes](GeneralSnippets/ConceptsRequiresClasses/ConceptsRequiresClasses.md) | Konzepte (*Concepts*) und Einschränkungen (*Requirements*) für Klassen |
 | [Concepts for Functions](GeneralSnippets/ConceptsRequiresFunctions/ConceptsRequiresFunctions.md) | Konzepte (*Concepts*) und Einschränkungen (*Requirements*) für Funktionen |

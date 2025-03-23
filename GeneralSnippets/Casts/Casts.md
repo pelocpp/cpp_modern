@@ -12,7 +12,7 @@
 
   * [Einleitung](#link1)
   * [Implizite Konvertierungen](#link2)
-  * [Explizite Konvertierungen: C-Style](#link3)
+  * [Explizite Konvertierungen: C-Style Cast](#link3)
   * [Explizite C++ Konvertierungen](#link4)
   * [Die `static_cast`-Operation](#link5)
   * [Die `reinterpret_cast`-Operation](#link6)
@@ -26,7 +26,8 @@
 
 ## Einleitung <a name="link1"></a>
 
-Die Programmiersprache C++ kennt 5 verschiedene Typkonvertierungsmöglichkeiten:
+Die Programmiersprache C++ kennt eine ganze Reihe verschiedener Typkonvertierungsmöglichkeiten.
+Einen Überblick über die expliziten Typkonvertierungen finden Sie in *Abbildung* 1 vor:
 
 <img src="cpp_casts.svg" width="450">
 
@@ -58,6 +59,11 @@ Beispielsweise können Konvertierungen zwischen primitiven Datentypen implizit er
 Implizite primitive Konvertierungen können auch zur Laufzeit durchgeführt werden:
 
 ```cpp
+01: int a = 123;    
+02: long b = 123l; 
+03: 
+04: long n = a;      // int implicitly converted to long 
+05: double m = b;    // long implicitly converted to double
 ```
 
 *Maschinencode*:
@@ -78,10 +84,10 @@ Implizite primitive Konvertierungen können auch zur Laufzeit durchgeführt werden
 ```
 
 Hier erkennen wir, dass beispielsweise bei der Konvertierung von ganzzahligen Werten nach Gleitpunktwerten
-Konvertierungsroutinen zur Laufzeit ausgeführt werden müssen. Dies kostet Laufzeit!
+Konvertierungsroutinen zur Laufzeit ausgeführt werden müssen. Dies kostet Performanz!
 
 Diese impliziten primitiven Konvertierungen lassen sich weiter in zwei Arten unterteilen:
-*Promotion* und *Demotion* (in etwa &bdquo;*Heraufstufung*&bdquo; und &bdquo;*Herabstufung*&bdquo;).
+*Promotion* und *Demotion* (in etwa &bdquo;*Heraufstufung*&rdquo; und &bdquo;*Herabstufung*&rdquo;).
 
 Eine *Promotion* erfolgt, wenn ein Ausdruck implizit in einen größeren Typ konvertiert wird,
 und eine *Demotion* erfolgt, wenn ein Ausdruck in einen kleineren Typ konvertiert wird.
@@ -113,10 +119,10 @@ kann man die Warnung durch eine &bdquo;*explizite*&rdquo; Konvertierung unterdrü
 
 Dies führt uns zum nächsten Abschnitt:
 
-## Explizite Konvertierungen: C-Style <a name="link3"></a>
+## Explizite Konvertierungen: C-Style Cast <a name="link3"></a>
 
 Die erste explizite Konvertierung (im engl. &bdquo;*Type Cast*&rdquo;)
-ist der aus C übernommene und wird allgemein als *C-Style-Cast* bezeichnet.
+ist aus C übernommen und wird allgemein als *C-Style-Cast* bezeichnet.
 
 Der gewünschte Datentyp wird einfach in Klammern links neben dem zu konvertierenden Ausdruck platziert:
 
@@ -126,15 +132,12 @@ Der gewünschte Datentyp wird einfach in Klammern links neben dem zu konvertieren
 03: bool b = (bool) 123;     // int demoted to char
 ```
 
-
 Der *C-Style-Cast* eignet sich für die meisten Konvertierungen zwischen primitiven Datentypen.
 
 Bei Konvertierungen zwischen Klassen und Zeigern kann er jedoch zu mächtig sein.
 
 Um eine bessere Kontrolle über die verschiedenen möglichen Konvertierungsarten zu erhalten,
-wurden in C++ vier neue Casts eingeführt, die sogenannten *Named Casts* oder *New-Style-Casts*.
-
-
+wurden in C++ vier neue Cast-Operationen eingeführt, die sogenannten *Named Casts* oder *New-Style-Casts*.
 
 ## Explizite C++ Konvertierungen <a name="link4"></a>
 
@@ -169,7 +172,7 @@ Beispielsweise erlaubt der *C-Style-Cast*, dass ein Integer-Zeiger auf eine `cha
 ```cpp
 // C-Style-Cast
 char c = 10;       // 1 byte
-int* p = (int*)&c; // 4 bytes, compikles, works ?!?
+int* p = (int*)&c; // 4 bytes, compiles, works ?!?
 ```
 
 Da dies zu einem 4-Byte-Zeiger führt, der auf 1 Byte allokierten Speicher verweist,
@@ -179,7 +182,7 @@ führt das Schreiben in diesen Zeiger entweder zu einem Laufzeitfehler oder übers
 *p = 5;            // run-time error: stack corruption
 ```
 
-Im Gegensatz zum Cast im *C-Style* ermöglicht der statische Cast dem Compiler, zu überprüfen,
+Im Gegensatz zum Cast im *C-Style* ermöglicht der statische Cast dem Compiler zu überprüfen,
 ob die *Pointer*- und *Pointee*-Datentypen kompatibel sind,
 wodurch der Programmierer diese falsche Zeigerzuweisung während der Kompilierung erkennen kann:
 
@@ -194,7 +197,7 @@ Der Compiler reagiert mit der Fehlermeldung <i>Invalid type conversion: 'static_
 ### Die `reinterpret_cast`-Operation <a name="link6"></a>
 
 Um eine Zeigerkonvertierung zu erzwingen, verwendet man stattdessen die `reinterpret_cast`-Operation.
-Dieser arbeitet im Hintergrund auf dieselbe Weise wie der *C-Style-Cast*:
+Diese arbeitet im Hintergrund auf dieselbe Weise wie der *C-Style-Cast*:
 
 ```cpp
 01: // reinterpret_cast
@@ -268,7 +271,7 @@ wenn eine Funktion ein nicht konstantes Zeigerargument annimmt, obwohl sie den Z
 04: }
 ```
 
-Der Funktion kann dann mithilfe einer  `const_cast`-Operation eine konstante Variable übergeben werden:
+Der Funktion kann dann mit Hilfe einer  `const_cast`-Operation eine konstante Variable übergeben werden:
 
 ```cpp
 01: const int constVar = 123;
@@ -313,7 +316,7 @@ Diese &bdquo;*derived-to-base*&rdquo; Konvertierung ist erfolgreich, da das `Der
 07: class Derived : public Base
 08: {
 09: public:
-10:     virtual void test() { std::println("Derived"); }
+10:     void test() override { std::println("Derived"); }
 11: };
 12: 
 13: {
@@ -395,10 +398,8 @@ da eine &bdquo;*derived-to-base*&rdquo; Konvertierung nie fehlschlagen kann:
 Derived
 ```
 
-Wäre die Konvertierung von der Basis- zur abgeleiteten Klasse mit einem statischen statt einem dynamischen Cast durchgeführt worden,
+Wäre die Konvertierung von der Basis- zur abgeleiteten Klasse mit einem statischen anstatt einem dynamischen Cast durchgeführt worden,
 wäre die Konvertierung nicht fehlgeschlagen.
-
-
 
 ```cpp
 01: Base* base = new Base();  // toggle between Base and Derived
@@ -418,104 +419,23 @@ wäre die Konvertierung nicht fehlgeschlagen.
 static_cast successful!
 ```
 
-Sie hätte einen Zeiger zurückgegeben, der auf ein unvollständiges Objekt verweist.
+Die Konvertierung hat einen Zeiger zurückgegeben, der auf ein unvollständiges Objekt verweist!
 Die Dereferenzierung eines solchen Zeigers kann zu Laufzeitfehlern führen.
-
----
-
-WEITER:
-
-https://web.archive.org/web/20160316114647/http://pvtuts.com/cpp/cpp-type-conversions
 
 ---
 
 ## Literatur <a name="link11"></a>
 
-Eine sehr gute Beschreibung aller möglichen Tpykonvertierungsmöglochkeiten findet sich hier:
+Eine sehr gute Beschreibung aller möglichen Tpykonvertierungsmöglichkeiten findet sich hier:
 
 [Tutorial Type Conversions](https://web.archive.org/web/20160316114647/http://pvtuts.com/cpp/cpp-type-conversions)<br />
 (abgerufen am 23.3.2025).
 
 Haben Sie sich schon einmal gefragt, warum C-Style-Casts und `reinterpret_cast`-Casts als schädlich gelten?
-
 In diesem Artikel wird genauer betrachtet, was bei ihnen schiefläuft:
 
-[C++ background: Static, reinterpret and C-Style casts](https://anteru.net/blog/2007/c-background-static-reinterpret-and-c-style-casts/)<br />
+[C++ Background: Static, reinterpret and C-Style casts](https://anteru.net/blog/2007/c-background-static-reinterpret-and-c-style-casts/)<br />
 (abgerufen am 23.3.2025).
-
-
-
-
-
-
-
----
-
-ALTES ZEUGS
-
-Es wird an mehreren Beispielen die Funktionsweise folgender C++-Typumwandlungen gezeigt:
-
-  * `static_cast`
-  * `dynamic_cast`
-  * `const_cast`
-  * `reinterpret_cast`
-
-Der `static_cast`-Operator ist dazu gedacht, implizit erlaubte Typumwandlungen durchzuführen,
-die zur Übersetzungszeit stattfinden.
-
-Interessanter ist der `dynamic_cast`-Operator. Er wird zur Laufzeit ausgeführt
-(von trivialen Überprüfungen zur Übersetzungszeit einmal abgesehen).
-
-Seine Stärke sind *downcast*-Typwandlungen (*upcast*-Typwandlungen sind trivial).
-Kann zur Laufzeit die Typwandlung *nicht* durchgeführt werden, liefert der Operator
-einen `nullptr` zurück. Dies kann man zur Laufzeit abfragen.
-
-Der `const_cast`-Operator wird verwendet,
-um die `const`-Eigenschaft von Variablen zu entfernen.
-
-Dies sollte man eigentlich nur im Ausnahmefall machen, denn die ursprüngliche Vergabe des `const`-Attributs
-sollte ja einen Sinn gehabt haben.
-
-Der `reinterpret_cast`-Cast ist der freizügigste Cast-Operator von allen: Er *re-interpretiert* eine Variable / ein Objekt
-im Sinne des gewünschten Datentyps. Diese Operation betrifft die Interpretation von Bits (also der Repräsentation einer Variablen / eines Objekts im Speicher),
-ist folglich extrem maschinenabhängig und sollte nur selten bzw. sehr bewusst eingesetzt werden.
-
-**Ausgabe** zu `static_cast`-Beispiel:
-
-```cpp
-2
-This is Base!
-This is Derived!
-This is Derived!
-This is Derived!
-This is Derived!
-```
-
-**Ausgabe** zu `dynamic_cast`-Beispiel:
-
-```cpp
-1
-2
-3
-4
-```
-
-**Ausgabe** zu `const_cast`-Beispiel:
-
-```cpp
-This is Derived!
-This is Derived!
-dynamic_cast failed!
-This is Base!
-```
-
-**Ausgabe** zu `reinterpret_cast`-Beispiel:
-
-```cpp
-65
-A
-ABC
-```
 
 ---
 
