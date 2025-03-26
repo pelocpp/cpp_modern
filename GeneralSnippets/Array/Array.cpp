@@ -343,9 +343,9 @@ namespace StdArray {
     }
 
     // --------------------------------------------------------------------
-    // demonstrating printSpan with std::span parameter
+    // demonstrating printArray with std::span parameter
 
-    static void printSpan(std::span<int> values) {
+    static void printArray(std::span<int> values) {
 
         std::println("Number of elements: {}", values.size());
         std::println("Size of span:       {}", values.size_bytes());
@@ -359,29 +359,29 @@ namespace StdArray {
 
     static void test_31() {
 
-        int carr[]{ 1, 2, 3, 4, 5 };
-        printSpan(carr);
-
-        std::array arr{ 6, 7, 8, 9, 10 };
-        printSpan(arr);
-
-        std::vector<int> vec{ 1, 3, 5, 7, 9 };
-        printSpan(vec);
-
         //int carr[]{ 1, 2, 3, 4, 5 };
-        //printSpan(std::span{ carr });
+        //printArray(carr);
 
         //std::array arr{ 6, 7, 8, 9, 10 };
-        //printSpan(std::span{ arr });
+        //printArray(arr);
 
-        //std::vector vec{ 1, 3, 5, 7, 9 };
-        //printSpan(std::span{ vec });
+        //std::vector<int> vec{ 1, 3, 5, 7, 9 };
+        //printArray(vec);
+
+        int carr[]{ 1, 2, 3, 4, 5 };
+        printArray(std::span{ carr });
+
+        std::array arr{ 6, 7, 8, 9, 10 };
+        printArray(std::span{ arr });
+
+        std::vector vec{ 1, 3, 5, 7, 9 };
+        printArray(std::span{ vec });
     }
 
     // --------------------------------------------------------------------
     // demonstrating std::span with const type
 
-    static void printSpanConst(std::span<const int> values) {
+    static void printArrayConst(std::span<const int> values) {
 
         std::println("Number of elements: {}", values.size());
         std::println("Size of span:       {}", values.size_bytes());
@@ -395,13 +395,13 @@ namespace StdArray {
     static void test_32() {
 
         int carr[]{ 1, 2, 3, 4, 5 };
-        printSpanConst(carr);
+        printArrayConst(carr);
 
         std::array arr{ 6, 7, 8, 9, 10 };
-        printSpanConst(arr);
+        printArrayConst(arr);
 
         std::vector vec{ 1, 3, 5, 7, 9 };
-        printSpanConst(vec);
+        printArrayConst(vec);
     }
 }
 

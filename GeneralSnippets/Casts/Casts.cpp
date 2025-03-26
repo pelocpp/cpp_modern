@@ -37,9 +37,15 @@ namespace DiverseCasts {
         }
 
         {
+#pragma warning(push)
+#pragma warning(disable : 4244)
+#pragma warning(disable : 4305)
+
             // Demotion
-            int  a = 10.5;   // warning: possible loss of data
+            int  a = 10.0;   // warning: possible loss of data
             bool b = 123;    // warning: possible loss of data
+
+#pragma warning(pop)
         }
     }
 

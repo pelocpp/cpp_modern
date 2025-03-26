@@ -110,7 +110,7 @@ Beispielsweise besteht für die nachfolgende Funktion `print` keine Möglichkeit z
 eines ihrer Elemente im Datenbereich.
 
 ```cpp
-01: void printSpan(std::span<const int> values) {
+01: void printArray(std::span<const int> values) {
 02: 
 03:     std::println("Number of elements: {}", values.size());
 04:     std::println("Size of span:       {}", values.size_bytes());

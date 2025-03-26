@@ -103,7 +103,7 @@ bei den meisten Compilern eine Warnung:
 
 ```cpp
 01: // Demotion
-02: int  a = 10.5;   // warning: possible loss of data
+02: int  a = 10.0;   // warning: possible loss of data
 03: bool b = 123;    // warning: possible loss of data
 ```
 
@@ -129,7 +129,7 @@ Der gewünschte Datentyp wird einfach in Klammern links neben dem zu konvertieren
 ```cpp
 01: // C-style cast
 02: int  a = (int) 123.456;  // double demoted to int
-03: bool b = (bool) 123;     // int demoted to char
+03: bool b = (bool) 123;     // int demoted to bool
 ```
 
 Der *C-Style-Cast* eignet sich für die meisten Konvertierungen zwischen primitiven Datentypen.
@@ -157,7 +157,7 @@ Diese Casts ermöglichen eine präzisere Kontrolle über die Konvertierung,
 was wiederum dem Compiler das Erkennen von Konvertierungsfehlern erleichtert.
 
 *Bemerkung*:<br />
-Der *C-Style-Cast* umfasst in einer Definition den `static_cast`, den `reinterpret_cast`
+Der *C-Style-Cast* umfasst in seiner Definition den `static_cast`, den `reinterpret_cast`
 und den `const_cast`.
 Bei falscher Anwendung führt dieser Cast daher häufiger zu subtilen Konvertierungsfehlern.
 
