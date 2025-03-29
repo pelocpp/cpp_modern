@@ -132,16 +132,17 @@ namespace WeakPointer {
 
     static void test_02()
     {
-        std::shared_ptr<ParentNode> parent{ new ParentNode {} };
-        std::shared_ptr<RightNode> rightNode{ new RightNode { parent } };
-        std::shared_ptr<LeftNode> leftNode{ new LeftNode { parent } };
+        std::shared_ptr parent{ std::make_shared<ParentNode>() };
+        std::shared_ptr rightNode{ std::make_shared<RightNode>(parent) };
+        std::shared_ptr leftNode{ std::make_shared<LeftNode>(parent) };
 
         parent->setRightNode(rightNode);
         parent->setLeftNode(leftNode);
 
-        //std::println("Reference-Count parent:    {}", parent.use_count());
-        //std::println("Reference-Count rightNode: {}", rightNode.use_count());
-        //std::println("Reference-Count leftNode:  {}", leftNode.use_count());
+        // some informations output
+        std::println("Reference-Count parent:    {}", parent.use_count());
+        std::println("Reference-Count rightNode: {}", rightNode.use_count());
+        std::println("Reference-Count leftNode:  {}", leftNode.use_count());
     }
 }
 
