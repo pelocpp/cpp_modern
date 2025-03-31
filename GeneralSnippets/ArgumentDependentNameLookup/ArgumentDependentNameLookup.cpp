@@ -15,7 +15,7 @@ namespace ArgumentDependentNameLookup
 
     namespace MyProject
     {
-        void test_01()
+        static void test_01()
         {
             MyNamespace::MyClass obj;
 
@@ -26,26 +26,24 @@ namespace ArgumentDependentNameLookup
             doSomething(obj);              // works too
         }
 
-        void test_02()
+        static void test_02()
         {
             std::cout << "Hello World" << std::endl;
         }
 
-        void test_03()
+        static void test_03()
         {
             using std::operator<<;
 
             std::cout << "Hello World" << std::endl;
         }
 
-        void test_04()
+        static void test_04()
         {
             std::operator<<(std::cout, "Hello World").operator<<(std::endl);
         }
     }
 }
-
-
 
 void main_argument_dependent_name_lookup()
 {

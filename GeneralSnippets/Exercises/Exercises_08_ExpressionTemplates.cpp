@@ -11,7 +11,7 @@ module modern_cpp_exercises:expression_templates;
 namespace Exercises_ExpressionTemplates {
 
     template <typename T>
-    T scalarProduct(const std::vector<T>& a, const std::vector<T>& b)
+    static T scalarProduct(const std::vector<T>& a, const std::vector<T>& b)
     {
         T product{};
         for (size_t i{}; i != a.size(); ++i) {
@@ -21,7 +21,7 @@ namespace Exercises_ExpressionTemplates {
     }
 
     template <typename T>
-    T scalarProductEx(typename std::vector<T>::iterator&& a, typename std::vector<T>::iterator&& end, typename std::vector<T>::iterator&& b)
+    static T scalarProductEx(typename std::vector<T>::iterator&& a, typename std::vector<T>::iterator&& end, typename std::vector<T>::iterator&& b)
     {
         T product{};
         for (; a != end; ++a, ++b) {
@@ -129,9 +129,9 @@ namespace Exercises_ExpressionTemplates {
 void test_exercices_expression_templates()
 {
     using namespace Exercises_ExpressionTemplates;
-    //test_01();
-    //test_02();
-    //test_03();
+    test_01();
+    test_02();
+    test_03();
     test_04();
 }
 
