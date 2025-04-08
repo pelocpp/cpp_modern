@@ -223,7 +223,7 @@ namespace BraceInitialization {
     // =================================================================================
     // Nested Structures / *Brace Elision*
 
-        // POD - C-kompatibel
+    // POD - C-kompatibel
     struct Point
     {
         int x;
