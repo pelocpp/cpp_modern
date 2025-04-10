@@ -18,7 +18,7 @@ namespace TupleSamples {
         values = std::make_tuple('A', 123, 123.456);
 
         // just in one statement
-        std::tuple <char, int, double> moreValues{ 'Z', 987, 987.654 };
+        std::tuple<char, int, double> moreValues{ 'Z', 987, 987.654 };
 
         // accessing tuple values using std::get
         {
@@ -64,9 +64,9 @@ namespace TupleSamples {
 
     static void test_02()
     {
-        Row row1 = std::make_tuple(10, 'A', 1.11, "Mueller");
-        Row row2 = std::make_tuple(11, 'B', 2.22, "Sepp");
-        Row row3 = std::make_tuple(12, 'C', 3.33, "Hans");
+        Row row1{ 10, 'A', 1.11, "Mueller" };
+        Row row2{ 11, 'B', 2.22, "Sepp" };
+        Row row3{ 12, 'C', 3.33, "Hans" };
 
         std::vector<Row> mySheet;
 
@@ -84,9 +84,9 @@ namespace TupleSamples {
 
     static void test_03()
     {
-        Row row1 = std::make_tuple(10, 'A', 1.11, "Mueller");
-        Row row2 = std::make_tuple(11, 'B', 2.22, "Sepp");
-        Row row3 = std::make_tuple(12, 'C', 3.33, "Hans");
+        Row row1{ 10, 'A', 1.11, "Mueller" };
+        Row row2{ 11, 'B', 2.22, "Sepp" };
+        Row row3{ 12, 'C', 3.33, "Hans" };
 
         std::vector<Row> mySheet;
 
@@ -113,9 +113,9 @@ namespace TupleSamples {
 
     static void test_04()
     {
-        Row row1 = std::make_tuple(91, 'a', 1.11, "Mueller");
-        Row row2 = std::make_tuple(92, 'b', 2.22, "Sepp");
-        Row row3 = std::make_tuple(93, 'c', 3.33, "Hans");
+        Row row1{ 10, 'A', 1.11, "Mueller" };
+        Row row2{ 11, 'B', 2.22, "Sepp" };
+        Row row3{ 12, 'C', 3.33, "Hans" };
 
         std::vector<Row> mySheet;
 
