@@ -9,7 +9,7 @@ module modern_cpp:raii;
 
 namespace RAIIDemo02 {
 
-    void write_to_file(const std::string& message)
+    static void write_to_file(const std::string& message)
     {
         // mutex to protect file access (shared across threads)
         static std::mutex mtex;
