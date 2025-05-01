@@ -36,7 +36,7 @@ namespace Auto_Examples {
 
     static std::map<int, std::string> getFunction() {
 
-        return std::map<int, std::string>{};
+        return {};
     }
 
     static void test_02() {
