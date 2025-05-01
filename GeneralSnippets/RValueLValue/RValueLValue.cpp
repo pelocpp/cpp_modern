@@ -27,14 +27,14 @@ namespace LValueRValue {
 
     // -------------------------------------------------------------------
 
-    static void helper(std::string&& message) {
-
+    static void helper(std::string&& message)
+    {
         sayHello(message);
         // sayHello(std::move(message));    // casting an lvalue to an rvalue
     }
 
-    static void test02() {
-
+    static void test02()
+    {
         helper(std::string("Where are we going ..."));
     }
 
@@ -53,19 +53,20 @@ namespace LValueRValue {
 
     static void test04() {
 
-        // int& i = 2;          // invalid: reference to a constant
-
-        // int a = 2;
-        // int b = 3;
-
-        // int& k = a + b;     // invalid: reference to a temporary
-
-        int&& i = 2;           // works: reference to a constant
-
         int a = 2;
         int b = 3;
 
-        int&& k = a + b;       // works: reference to a temporary
+        int& ri = a;          // works: (lvalue) reference to a (named) variable
+
+        // int& i = 123;      // invalid: (lvalue) reference to a constant
+
+        int&& i = 123;        // works: (rvalue) reference to a constant
+
+        const int& j = 123;   // works: const references binds to everything
+
+        // int& k = a + b;    // invalid: (lvalue) reference to a temporary object
+
+        int&& k = a + b;      // works: (rvalue) reference to a temporary object
     }
 }
 
