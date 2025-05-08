@@ -62,12 +62,12 @@ In den folgenden beiden Abbildungen betrachten wir die Arbeitsweise der `substr`
 in Bezug auf die beiden Klassen `std::string` und `std::string_view`:
 
 
-<img src="cpp_string_view_01.svg" width="600">
+<img src="cpp_string_view_01.svg" width="700">
 
 *Abbildung* 1: Arbeitsweise der `substr`-Methode von Klasse `std::string`.
 
 
-<img src="cpp_string_view_02.svg" width="700">
+<img src="cpp_string_view_02.svg" width="800">
 
 *Abbildung* 2: Arbeitsweise der `substr`-Methode von Klasse `std::string_view`.
 
