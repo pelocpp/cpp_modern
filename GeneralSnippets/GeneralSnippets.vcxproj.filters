@@ -1037,6 +1037,12 @@
     <None Include="Casts\cpp_casts.svg">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="StringView\cpp_string_view_01.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="StringView\cpp_string_view_02.svg">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="VariadicTemplates\cpp_snippets_mixins_01.png">

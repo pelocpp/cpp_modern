@@ -83,7 +83,7 @@ int main()
         //main_source_location();
         //main_sso();
         //main_static_assert();
-        //main_string_view();
+        main_string_view();
         //main_structured_binding();
         //main_templates_class_basics_01();
         //main_templates_class_basics_02();

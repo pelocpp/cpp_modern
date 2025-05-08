@@ -48,7 +48,7 @@ Diese Frage kann man durchaus mit &bdquo;Ja&rdquo; beantworten:
     Mit der Klasse `std::string` müssen die Daten auf dem Heap (Halde) vorhanden sein,
     bei konstanten C-Zeichenketten muss dies nicht der Fall sein.
 
-  * Einige der typischen Zeichenkettenoperationen, zum Beispiel `substring`, lassen sich mit 
+  * Einige der typischen Zeichenkettenoperationen, zum Beispiel `substr`, lassen sich mit 
     der Klasse `std::string_view` erheblich performanter als mit der `std::string`-Klasse umsetzen:
     * Die Methode `substr` der `std::string`-Klasse liefert ein Teilzeichenkettenobjekt zurück, das aus dem Originalobjekt extrahiert wird
     und folglich in einer Kopie auf dem Heap anzulegen ist.
@@ -56,6 +56,20 @@ Diese Frage kann man durchaus mit &bdquo;Ja&rdquo; beantworten:
     (Modifikation der Anfangsadresse der Zeichenkette um einen bestimmten Offset). Dies ist eine sehr schnelle Operation,
     und es wird weder eine Kopie für das Ergebnis noch wird die Freispeicherverwaltung des Programms aktiviert,
     um ein Objekt auf der Halde zu erzeugen.
+
+
+In den folgenden beiden Abbildungen betrachten wir die Arbeitsweise der `substr`-Methode
+in Bezug auf die beiden Klassen `std::string` und `std::string_view`:
+
+
+<img src="cpp_string_view_01.svg" width="600">
+
+*Abbildung* 1: Arbeitsweise der `substr`-Methode von Klasse `std::string`.
+
+
+<img src="cpp_string_view_02.svg" width="700">
+
+*Abbildung* 2: Arbeitsweise der `substr`-Methode von Klasse `std::string_view`.
 
 
 ---
@@ -67,68 +81,32 @@ Wir betrachten dazu einige Code-Snippets:
 *Beispiel*:
 
 ```cpp
-01: void test_01()
+01: void test()
 02: {
-03:     std::string s = "12345";
-04:     std::cout << s << std::endl;
-05: 
-06:     s[2] = '!';
-07:     std::cout << s << std::endl;
+03:     std::string_view sv{ "AAAAAAAAAAAAAAAAAAAAAAAAAAAA" };  // Konstante Zeichenkette
+04: 
+05:     std::string s{ "AAAAAAAAAAAAAAAAAAAAAAAAAAAA" };        //  Heap
+06: 
+07:     // sv[0] = '?';   // error
+08:     char ch{ sv[0] };
+09: }
+```
+
+*Beispiel*:
+
+```cpp
+01: void test()
+02: {
+03:     std::string s{ "AAAAAAAAAAAAAAAAAAAAAAAAAAAA" };
+04: 
+05:     std::string_view sv{ s };
+06: 
+07:     std::println("{}", sv);
 08: 
-09:     std::string_view sv(s);
-10:     std::cout << sv << std::endl;
-11:     // sv[2] = '?';  // 'sv': you cannot assign to a variable that is const
+09:     s += "BBBBBBBBBBBBBBBBBBBBBBBBBBBB";        // Caution: the content of s is reallocated !
+10: 
+11:     std::println("{}", sv);
 12: }
-13: 
-14: uint32_t countUpperCaseChars(std::string_view sv ) {
-15:     uint32_t result{};
-16:     for (char c : sv) {
-17:         if (std::isupper(c)) {
-18:             ++result;
-19:         }
-20:     }
-21:     return result;
-22: }
-23: 
-24: void test_02()
-25: {
-26:     std::string_view sv("DiesIstEinLangerSatz");
-27:     uint32_t count = countUpperCaseChars(sv);
-28:     std::cout << "countUpperCaseChars: " << count << std::endl;
-29: 
-30:     std::string s = "AuchDasWiederIstEinLangerSatz";
-31:     count = countUpperCaseChars(s);
-32:     std::cout << "countUpperCaseChars: " << count << std::endl;
-33: 
-34:     count = countUpperCaseChars("NurKurzJetzt");
-35:     std::cout << "countUpperCaseChars: " << count << std::endl;
-36: 
-37:     // works too 
-38:     count = countUpperCaseChars({&s[25]}); // "Satz"
-39:     std::cout << "countUpperCaseChars: " << count << std::endl;
-40: 
-41:     // works too
-42:     count = countUpperCaseChars({ &s[26], 2 }); // "at"
-43:     std::cout << "countUpperCaseChars: " << count << std::endl;
-44: }
-```
-
-*Ausgabe* von `test_01`:
-
-```cpp
-12345
-12!45
-12!45
-```
-
-*Ausgabe* von `test_02`:
-
-```cpp
-countUpperCaseChars: 5
-countUpperCaseChars: 7
-countUpperCaseChars: 3
-countUpperCaseChars: 1
-countUpperCaseChars: 0
 ```
 
 *Hinweis*:

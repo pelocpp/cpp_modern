@@ -447,6 +447,8 @@
     <None Include="SourceLocation\SourceLocation.md" />
     <None Include="SSO\SSO.md" />
     <None Include="StaticAssert\StaticAssert.md" />
+    <None Include="StringView\cpp_string_view_01.svg" />
+    <None Include="StringView\cpp_string_view_02.svg" />
     <None Include="StringView\StringView.md" />
     <None Include="StructuredBinding\StructuredBinding.md" />
     <None Include="TemplateClassBasics\cpp_template_instantiation.svg" />

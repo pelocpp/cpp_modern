@@ -24,18 +24,41 @@ namespace StringViewDemonstration {
 
         std::println("{}", sv);
 
-        s += "BBBBBBBBBBBBBBBBBBBBBBBBBBBB";  // the content of s is reallocated !
+        s += "BBBBBBBBBBBBBBBBBBBBBBBBBBBB";        // Caution: the content of s is reallocated !
 
         std::println("{}", sv);
     }
 
     static void test_03()
     {
-        using namespace std::literals;      // easiest way to access the s and sv suffixes
+        std::string s{ "This is a std::string object" };
+        std::println("{}", s);
+        std::println("{}", s.size());
 
-        std::println("{}", "foo");         // no suffix: C-style string literal
-        std::println("{}", "goo"s);        // s suffix:  std::string literal
-        std::println("{}", "moo"sv);       // sv suffix: std::string_view literal
+        std::string sub{ s.substr(8, 5) };
+        std::println("{}", sub);
+        std::println("{}", sub.size());
+
+        std::string_view sv{ "This is a std::string object" };
+        std::println("{}", sv);
+        std::println("{}", sv.size());
+
+        std::string_view sv_sub = sv.substr(8, 5);
+        std::println("{}", sv_sub);
+        std::println("{}", sv_sub.size());
+    }
+
+    static void test_04()
+    {
+        using namespace std::literals;    // easiest way to access the s and sv suffixes
+
+        auto s1 = "ABC";                  // no suffix: C-style string literal
+        auto s2 = "DEF"s;                 // s suffix:  std::string literal
+        auto s3 = "GHI"sv;                // sv suffix: std::string_view literal
+
+        std::println("{}", s1);
+        std::println("{}", s2);
+        std::println("{}", s3);
     }
 
     static size_t countUpperCaseChars(std::string_view sv) {
@@ -51,7 +74,7 @@ namespace StringViewDemonstration {
         return result;
     }
 
-    static void test_04()
+    static void test_05()
     {
         std::string_view sv{ "DiesIstEinLangerSatz" };
         size_t count{ countUpperCaseChars(sv) };
@@ -77,10 +100,11 @@ namespace StringViewDemonstration {
 void main_string_view()
 {
     using namespace StringViewDemonstration;
-    test_01();
-    test_02();
+    //test_01();
+    //test_02();
     test_03();
-    test_04();
+    //test_04();
+    //test_05();
 }
 
 // =====================================================================================
