@@ -4,7 +4,7 @@
 
 ---
 
-[Quellcode](GenericLambdas.cpp)
+[Quellcode](GenericFunctions.cpp)
 
 ---
 
