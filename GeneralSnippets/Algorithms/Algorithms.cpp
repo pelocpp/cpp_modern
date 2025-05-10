@@ -10,216 +10,378 @@ module modern_cpp:algorithms;
 
 namespace Algorithms {
 
-    //static constexpr int Size = 100'000'000;  // release
-    static constexpr int Size = 10'000'000;     // debug
-
     // =================================================================================
-    // Initialization with a constant value
+    // Global constants and types
     // =================================================================================
 
-    static auto test_constant_initialize_classic_for_loop()
-    {
-        std::println("Using a classic for-loop");
+    static constexpr int Size = 100'000'000;      // release
+    //static constexpr int Size = 10'000'000;     // debug
 
-        ScopedTimer watch{};
+    // need array in global data space, stack isn't suited for large objects
+    std::array<double, Size> values;
+}
 
-        std::vector<double> values(Size);
 
-        for (size_t i{}; i != values.size(); ++i) {
-            values[i] = 123.0;
+namespace Algorithms {
+
+    namespace Initialization_Vector_Constant_Value {
+
+        // =============================================================================
+        // Initialization with a constant value
+        // =============================================================================
+
+        static auto test_vector_constant_initialize_classic_for_loop()
+        {
+            std::println("std::vector: using a classic for-loop");
+
+            ScopedTimer watch{};
+
+            std::vector<double> values(Size);
+
+            for (size_t i{}; i != values.size(); ++i) {
+                values[i] = 123.0;
+            }
+        }
+
+        static auto test_vector_constant_initialize_iterator_based()
+        {
+            std::println("std::vector: using an iterator-based for-loop");
+
+            ScopedTimer watch{};
+
+            std::vector<double> values(Size);
+
+            for (auto it{ values.begin() }; it != values.end(); ++it) {
+                *it = 123.0;
+            }
+        }
+
+        static auto test_vector_constant_initialize_std_fill()
+        {
+            std::println("std::vector: using std::fill");
+
+            ScopedTimer watch{};
+
+            std::vector<double> values(Size);
+
+            std::fill(
+                values.begin(),
+                values.end(),
+                123.0
+            );
+        }
+
+        static auto test_vector_constant_initialize_std_fill_parallelized()
+        {
+            std::println("std::vector: using std::fill - using execution policy ");
+
+            ScopedTimer watch{};
+
+            std::vector<double> values(Size);
+
+            std::fill(
+                std::execution::par,
+                values.begin(),
+                values.end(),
+                123.0
+            );
+        }
+
+        static auto test_vector_constant_initialize_std_for_each()
+        {
+            std::println("std::vector: using std::for_each");
+
+            ScopedTimer watch{};
+
+            std::vector<double> values(Size);
+
+            std::for_each(
+                values.begin(),
+                values.end(),
+                [](auto& elem) { elem = 123.0; }
+            );
+        }
+
+        static auto test_vector_constant_initialize_range_based_for_loop()
+        {
+            std::println("std::vector: using range-based for loop");
+
+            ScopedTimer watch{};
+
+            std::vector<double> values(Size);
+
+            for (auto& elem : values) {
+                elem = 123.0;
+            }
+        }
+
+        static auto test_vector_constant_initialize_std_generate()
+        {
+            std::println("std::vector: using std::generate");
+
+            ScopedTimer watch{};
+
+            std::vector<double> values(Size);
+
+            std::generate(
+                values.begin(),
+                values.end(),
+                []() { return 123.0; }
+            );
+        }
+
+        static auto test_vector_constant_initialize_user_defined_ctor()
+        {
+            std::println("std::vector: using special std::vector c'tor");
+
+            ScopedTimer watch{};
+
+            std::vector<double> values(Size, 123.0);
         }
     }
 
-    static auto test_constant_initialize_iterator_based()
+
+    static void test_vector_constant_initialization()
     {
-        std::println("Using an iterator-based for-loop");
+        using namespace Initialization_Vector_Constant_Value;
 
-        ScopedTimer watch{};
+        test_vector_constant_initialize_classic_for_loop();
+        test_vector_constant_initialize_iterator_based();
+        test_vector_constant_initialize_std_fill();
+        test_vector_constant_initialize_std_fill_parallelized();
+        test_vector_constant_initialize_std_for_each();
+        test_vector_constant_initialize_range_based_for_loop();
+        test_vector_constant_initialize_std_generate();
+        test_vector_constant_initialize_user_defined_ctor();
+    }
+}
 
-        std::vector<double> values(Size);
 
-        for (auto it{ values.begin() }; it != values.end(); ++it) {
-            *it = 123.0;
+
+
+
+
+namespace Algorithms {
+
+    namespace Initialization_Array_Constant_Value {
+
+        // =============================================================================
+        // Initialization with a constant value
+        // =============================================================================
+
+        static auto test_array_constant_initialize_classic_for_loop()
+        {
+            std::println("std::array: using a classic for-loop");
+
+            ScopedTimer watch{};
+
+            for (size_t i{}; i != values.size(); ++i) {
+                values[i] = 123.0;
+            }
         }
-    }
 
-    static auto test_constant_initialize_std_fill()
-    {
-        std::println("Using std::fill");
+        static auto test_array_constant_initialize_iterator_based()
+        {
+            std::println("std::array: using an iterator-based for-loop");
 
-        ScopedTimer watch{};
+            ScopedTimer watch{};
 
-        std::vector<double> values(Size);
-
-        std::fill(
-            values.begin(),
-            values.end(),
-            123.0
-        );
-    }
-
-    static auto test_constant_initialize_std_fill_parallelized ()
-    {
-        std::println("Using std::fill - using execution policy ");
-
-        ScopedTimer watch{};
-
-        std::vector<double> values(Size);
-
-        std::fill(
-            std::execution::par,
-            values.begin(),
-            values.end(),
-            123.0
-        );
-    }
-
-    static auto test_constant_initialize_std_for_each()
-    {
-        std::println("Using std::for_each");
-
-        ScopedTimer watch{};
-
-        std::vector<double> values(Size);
-
-        std::for_each(
-            values.begin(),
-            values.end(),
-            [](auto& elem) { elem = 123.0; }
-        );
-    }
-
-    static auto test_constant_initialize_range_based_for_loop()
-    {
-        std::println("Using range-based for loop");
-
-        ScopedTimer watch{};
-
-        std::vector<double> values(Size);
-
-        for (auto& elem : values) {
-            elem = 123.0;
+            for (auto it{ values.begin() }; it != values.end(); ++it) {
+                *it = 123.0;
+            }
         }
-    }
 
-    static auto test_constant_initialize_std_generate()
-    {
-        std::println("Using std::generate");
+        static auto test_array_constant_initialize_std_fill()
+        {
+            std::println("std::array: using std::fill");
 
-        ScopedTimer watch{};
+            ScopedTimer watch{};
 
-        std::vector<double> values(Size);
-
-        std::generate(
-            values.begin(),
-            values.end(),
-            [] () { return 123.0; }
-        );
-    }
-
-    static auto test_constant_initialize_user_defined_ctor()
-    {
-        std::println("Using special std::vector c'tor");
-
-        ScopedTimer watch{};
-
-        std::vector<double> values(Size, 123.0);
-    }
-
-    static void test_const_initialization()
-    {
-        test_constant_initialize_classic_for_loop();
-        test_constant_initialize_iterator_based();
-        test_constant_initialize_std_fill();
-        test_constant_initialize_std_fill_parallelized();
-        test_constant_initialize_std_for_each();
-        test_constant_initialize_range_based_for_loop();
-        test_constant_initialize_std_generate();
-        test_constant_initialize_user_defined_ctor();
-    }
-
-    // =================================================================================
-    // Initialization with a varying value
-    // =================================================================================
-
-    static auto test_initialize_classic_for_loop()
-    {
-        std::println("Classic for-loop");
-
-        ScopedTimer watch{};
-
-        std::vector<double> values(Size);
-
-        for (size_t i{}; i != values.size(); ++i) {
-            values[i] = 2.0 * i;
+            std::fill(
+                values.begin(),
+                values.end(),
+                123.0
+            );
         }
-    }
 
-    static auto test_initialize_iterator_based()
-    {
-        std::println("Iterator-based for-loop");
+        static auto test_array_constant_initialize_std_fill_parallelized()
+        {
+            std::println("std::array: using std::fill - using execution policy ");
 
-        ScopedTimer watch{};
+            ScopedTimer watch{};
 
-        std::vector<double> values(Size);
-
-        size_t i{};
-        for (auto it{ values.begin() }; it != values.end(); ++it) {
-            *it = 2.0 * i++;
+            std::fill(
+                std::execution::par,
+                values.begin(),
+                values.end(),
+                123.0
+            );
         }
-    }
 
-    static auto test_initialize_std_for_each()
-    {
-        std::println("Using std::for_each");
+        static auto test_array_constant_initialize_std_for_each()
+        {
+            std::println("std::array: using std::for_each");
 
-        ScopedTimer watch{};
+            ScopedTimer watch{};
 
-        std::vector<double> values(Size);
-
-        std::for_each(
-            values.begin(),
-            values.end(),
-            [i = 0.0] (auto& elem) mutable { elem = 2.0 * i++; }
-        );
-    }
-
-    static auto test_initialize_range_based_for_loop()
-    {
-        std::println("Using range-based for loop");
-
-        ScopedTimer watch{};
-
-        std::vector<double> values(Size);
-
-        for (int i{}; auto& elem : values) {
-            elem = 2.0 * i++;
+            std::for_each(
+                values.begin(),
+                values.end(),
+                [](auto& elem) { elem = 123.0; }
+            );
         }
+
+        static auto test_array_constant_initialize_range_based_for_loop()
+        {
+            std::println("std::array: using range-based for loop");
+
+            ScopedTimer watch{};
+
+            for (auto& elem : values) {
+                elem = 123.0;
+            }
+        }
+
+        static auto test_array_constant_initialize_std_generate()
+        {
+            std::println("std::array: using std::generate");
+
+            ScopedTimer watch{};
+
+            std::generate(
+                values.begin(),
+                values.end(),
+                []() { return 123.0; }
+            );
+        }
+
     }
 
-    static auto test_initialize_std_for_generate()
+
+    static void test_array_constant_initialization()
     {
-        std::println("Using std::generate");
+        using namespace Initialization_Array_Constant_Value;
 
-        ScopedTimer watch{};
+        test_array_constant_initialize_classic_for_loop();
+        test_array_constant_initialize_iterator_based();
+        test_array_constant_initialize_std_fill();
+        test_array_constant_initialize_std_fill_parallelized();
+        test_array_constant_initialize_std_for_each();
+        test_array_constant_initialize_range_based_for_loop();
+        test_array_constant_initialize_std_generate();
+    }
+}
 
-        std::vector<double> values(Size);
 
-        std::generate(
-            values.begin(),
-            values.end(),
-            [i = 0.0] () mutable { return 2.0 * i++; }
-        );
+
+
+
+
+
+
+
+
+
+
+
+namespace Algorithms {
+
+    namespace Initialization_Vector_Varying_Value {
+
+        // =================================================================================
+        // Initialization with a varying value
+        // =================================================================================
+
+        static auto test_vector_varying_initialize_classic_for_loop()
+        {
+            std::println("Classic for-loop");
+
+            ScopedTimer watch{};
+
+            std::vector<double> values(Size);
+
+            for (size_t i{}; i != values.size(); ++i) {
+                values[i] = 2.0 * i;
+            }
+        }
+
+        static auto test_vector_varying_initialize_iterator_based()
+        {
+            std::println("Iterator-based for-loop");
+
+            ScopedTimer watch{};
+
+            std::vector<double> values(Size);
+
+            size_t i{};
+            for (auto it{ values.begin() }; it != values.end(); ++it) {
+                *it = 2.0 * i++;
+            }
+        }
+
+        static auto test_vector_varying_initialize_std_for_each()
+        {
+            std::println("Using std::for_each");
+
+            ScopedTimer watch{};
+
+            std::vector<double> values(Size);
+
+            std::for_each(
+                values.begin(),
+                values.end(),
+                [i = 0.0](auto& elem) mutable { elem = 2.0 * i++; }
+            );
+        }
+
+        static auto test_vector_varying_initialize_range_based_for_loop()
+        {
+            std::println("Using range-based for loop");
+
+            ScopedTimer watch{};
+
+            std::vector<double> values(Size);
+
+            for (int i{}; auto & elem : values) {
+                elem = 2.0 * i++;
+            }
+        }
+
+        static auto test_vector_varying_initialize_std_for_generate()
+        {
+            std::println("Using std::generate");
+
+            ScopedTimer watch{};
+
+            std::vector<double> values(Size);
+
+            std::generate(
+                values.begin(),
+                values.end(),
+                [i = 0.0]() mutable { return 2.0 * i++; }
+            );
+        }
+
     }
 
-    static void test_initialization()
+
+
+
+    static void test_vector_varying_initialize()
     {
-        test_initialize_classic_for_loop();
-        test_initialize_iterator_based();
-        test_initialize_std_for_each();
-        test_initialize_range_based_for_loop();
-        test_initialize_std_for_generate();
+        test_vector_varying_initialize_classic_for_loop();
+        test_vector_varying_initialize_iterator_based();
+        test_vector_varying_initialize_std_for_each();
+        test_vector_varying_initialize_range_based_for_loop();
+        test_vector_varying_initialize_std_for_generate();
     }
+}
+
+
+
+
+namespace Algorithms {
+
 
     // =================================================================================
     // Using algorithms for elementary calculations
@@ -289,7 +451,7 @@ namespace Algorithms {
 
         ScopedTimer watch{};
 
-        double sum {
+        double sum{
             std::accumulate(
                 values.cbegin(),
                 values.cend(),
@@ -308,9 +470,9 @@ namespace Algorithms {
             std::generate(
                 values.begin(),
                 values.end(),
-                [value = 0.0] () mutable { return ++value; }
+                [value = 0.0]() mutable { return ++value; }
             );
-        };
+            };
 
         double sum{};
 
@@ -334,6 +496,11 @@ namespace Algorithms {
         sum = test_calculate_sum_std_accumulate(values);
         std::println("Sum: {:15.20g}", sum);
     }
+}
+
+
+namespace Algorithms {
+
 
     // =================================================================================
     // Using algorithms for copying ranges
@@ -433,10 +600,13 @@ namespace Algorithms {
 void main_algorithms()
 {
     using namespace Algorithms;
-    test_const_initialization();
-    test_initialization();
-    test_sum_calculation();
-    test_copying();
+
+    test_vector_constant_initialization();
+    test_array_constant_initialization();
+
+    //test_initialization();
+    //test_sum_calculation();
+    //test_copying();
 }
 
 // =====================================================================================
