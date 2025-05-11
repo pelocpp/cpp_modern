@@ -18,7 +18,9 @@ public:
     }
 
     ~ScopedTimer() {
-        stopWatchMilli(std::cout);
+        //stopWatchMilli(std::cout);
+        //stopWatchMicro(std::cout);
+        stopWatchNano(std::cout);
     }
 
     // no copying or moving
@@ -43,6 +45,12 @@ private:
         std::chrono::steady_clock::time_point end{ std::chrono::steady_clock::now() };
         auto duration{ std::chrono::duration_cast<std::chrono::microseconds>(end - s_begin).count() };
         os << "Elapsed time: " << duration << " microseconds." << std::endl;
+    }
+
+    static void stopWatchNano(std::ostream& os) {
+        std::chrono::steady_clock::time_point end{ std::chrono::steady_clock::now() };
+        auto duration{ std::chrono::duration_cast<std::chrono::nanoseconds>(end - s_begin).count() };
+        os << "Elapsed time: " << duration << " nanoseconds." << std::endl;
     }
 };
 

@@ -150,7 +150,8 @@ namespace Folding {
         return sum;
     }
 
-    constexpr size_t MaxIterations = 100'000'000;
+    //constexpr size_t MaxIterations = 100'000'000;   // release
+    constexpr size_t MaxIterations = 100'000'000;       // debug
 
     static void test_06_benchmark_folding() {
 
@@ -169,6 +170,34 @@ namespace Folding {
             auto sum{ addIterating(1, 2, 3, 4, 5, 6, 7, 8, 9, 10) };
         }
     }
+
+    static size_t test_06_benchmark_folding_02() {
+
+        ScopedTimer watch{ };
+
+        size_t total{};
+
+        for (size_t i{}; i != MaxIterations; ++i) {
+            auto sum{ addFolding(1, 2, 3, 4, 5, 6, 7, 8, 9, 10) };
+            total += sum;
+        }
+
+        return total;
+    }
+
+    static size_t test_06_benchmark_iterating_02() {
+
+        ScopedTimer watch{ };
+
+        size_t total{};
+
+        for (size_t i{}; i != MaxIterations; ++i) {
+            auto sum{ addIterating(1, 2, 3, 4, 5, 6, 7, 8, 9, 10) };
+            total += sum;
+        }
+
+        return total;
+    }
 }
 
 void main_folding()
@@ -182,8 +211,15 @@ void main_folding()
     test_03d();
     test_04();
     test_05();
+    
+    // Benchmarks: need to switch to nano seconds! 
+    // Optimizer in Release mode is very aggressive
     test_06_benchmark_folding();
     test_06_benchmark_iterating();
+    size_t result1{ test_06_benchmark_folding_02() };
+    size_t result2{ test_06_benchmark_iterating_02() };
+    std::println("Result1: {}", result1);
+    std::println("Result2: {}", result2);
 }
 
 // =====================================================================================
