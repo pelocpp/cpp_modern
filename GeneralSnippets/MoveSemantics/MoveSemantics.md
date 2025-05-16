@@ -125,7 +125,7 @@ den Kopierkonstruktor, wenn intern der Datenpuffer neu auszurichten ist!
 
 In diesen Fällen benötigt man keine Realisierung der *Rule of Three* oder *Rule of Five*,
 da der Compiler an Hand der Standardklassen die für diese Klassen passenden Kopier- und Verschiebeoperationen
-generiert. Deklarieren oder defineren Sie dann keine Operationen der *Rule of Three* oder *Rule of Five* für Ihre Klasse.
+generiert. Deklarieren oder definieren Sie dann keine Operationen der *Rule of Three* oder *Rule of Five* für Ihre Klasse.
 
 ---
 
