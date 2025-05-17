@@ -9,18 +9,38 @@
 
 class ScopedTimer
 {
+public:
+    enum class Resolution { Milli, Micro, Nano };
+
 private:
-    static inline std::chrono::steady_clock::time_point s_begin;
+    std::chrono::steady_clock::time_point m_begin;
+    enum class Resolution m_resolution;
 
 public:
-    ScopedTimer() {
+    ScopedTimer() : ScopedTimer{ Resolution::Milli }
+    {
+        startWatch();
+    }
+
+    ScopedTimer(enum class Resolution resolution) : m_resolution{ resolution }
+    {
         startWatch();
     }
 
     ~ScopedTimer() {
-        stopWatchMilli(std::cout);
-        //stopWatchMicro(std::cout);
-        //stopWatchNano(std::cout);
+
+        switch (m_resolution)
+        {
+        case Resolution::Milli:
+            stopWatchMilli(std::cout);
+            break;
+        case Resolution::Micro:
+            stopWatchMicro(std::cout);
+            break;
+        case Resolution::Nano:
+            stopWatchNano(std::cout);
+            break;
+        }
     }
 
     // no copying or moving
@@ -31,25 +51,25 @@ public:
     ScopedTimer& operator=(ScopedTimer&&) = delete;
 
 private:
-    static void startWatch() {
-        s_begin = std::chrono::steady_clock::now();
+    void startWatch() {
+        m_begin = std::chrono::steady_clock::now();
     }
 
-    static void stopWatchMilli(std::ostream& os) {
+    void stopWatchMilli(std::ostream& os) const {
         std::chrono::steady_clock::time_point end{ std::chrono::steady_clock::now() };
-        auto duration{ std::chrono::duration_cast<std::chrono::milliseconds>(end - s_begin).count() };
+        auto duration{ std::chrono::duration_cast<std::chrono::milliseconds>(end - m_begin).count() };
         os << "Elapsed time: " << duration << " milliseconds." << std::endl;
     }
 
-    static void stopWatchMicro(std::ostream& os) {
+    void stopWatchMicro(std::ostream& os) const {
         std::chrono::steady_clock::time_point end{ std::chrono::steady_clock::now() };
-        auto duration{ std::chrono::duration_cast<std::chrono::microseconds>(end - s_begin).count() };
+        auto duration{ std::chrono::duration_cast<std::chrono::microseconds>(end - m_begin).count() };
         os << "Elapsed time: " << duration << " microseconds." << std::endl;
     }
 
-    static void stopWatchNano(std::ostream& os) {
+    void stopWatchNano(std::ostream& os) const {
         std::chrono::steady_clock::time_point end{ std::chrono::steady_clock::now() };
-        auto duration{ std::chrono::duration_cast<std::chrono::nanoseconds>(end - s_begin).count() };
+        auto duration{ std::chrono::duration_cast<std::chrono::nanoseconds>(end - m_begin).count() };
         os << "Elapsed time: " << duration << " nanoseconds." << std::endl;
     }
 };
