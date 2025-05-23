@@ -49,6 +49,12 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
       
 ---
 
+  * ### [Move-Semantik](Exercises_01_MoveSemantics.md)
+
+
+---
+
+
 ### Aufgaben zur Move-Semantik
 
 | Aufgabe | Beschreibung |

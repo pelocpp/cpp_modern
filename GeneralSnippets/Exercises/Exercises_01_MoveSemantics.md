@@ -8,7 +8,18 @@
 
 ---
 
-## Aufgabe 1: Verschiebe-Semantik am Beispiel einer benutzerdefinierten Klasse
+### Aufgaben zur Move-Semantik
+
+| Aufgabe | Beschreibung |
+| :- | :- |
+| [Aufgabe 1](#link1) | Verschiebe-Semantik am Beispiel einer benutzerdefinierten Klasse |
+| [Aufgabe 2](./Exercises_01_MoveSemantics.md#aufgabe-2-verschiebe-semantik-am-beispiel-einer-klasse-hugearray-betrachtet) | Verschiebe-Semantik am Beispiel einer Klasse `HugeArray` betrachtet |
+
+*Tabelle* 1: Aufgaben zur Move-Semantik.
+
+---
+
+## Aufgabe 1: Verschiebe-Semantik am Beispiel einer benutzerdefinierten Klasse <a name="link1"></a>
 
 Die Verschiebe-Semantik erfordert für Klassen, die sie unterstützen wollen,
 eine Implementierung des *Move*-Konstruktors (Verschiebe-Konstruktor) und der *Move*-Wertzuweisung (Verschiebe-Wertzuweisung).
