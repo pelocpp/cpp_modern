@@ -1,10 +1,23 @@
 # Aufgaben zu Konzepten
 
-[Zurück](Exercises.md)
+[Zurück](./Exercises.md)
 
 ---
 
 [Lösungen](Exercises_17_Concepts.cpp)
+
+---
+
+### Überblick
+
+| Aufgabe | Beschreibung |
+| :- | :- |
+| *Aufgabe* 1 | Überprüfung des Vorhandenseins einer bestimmten Basisklasse<br/>(Vorausetzungen: `concept`, `requires`) |
+| *Aufgabe* 2 | Überprüfung des Datentyps von Funktionsparametern<br/>(Vorausetzungen: `concept`, `requires`) |
+| *Aufgabe* 3 | Konzepte und Schnittstellen im Vergleich<br/>(Vorausetzungen: `concept`, `requires`, `virtual`, `override`) |
+| *Aufgabe* 4 | Berechnung der Gesamtlänge beliebig vieler Zeichenketten<br/>(Vorausetzungen: `requires`, `std::initializer_list`) |
+
+*Tabelle* 1: Aufgaben zu Konzepten.
 
 ---
 
@@ -84,10 +97,6 @@ Der Einfachheit halber legen wir die Vererbungsart `public` zu Grunde.
 
 ---
 
-[An den Anfang](#aufgaben-zu-konzepten)
-
----
-
 ## Aufgabe 2: Überprüfung des Datentyps von Funktionsparametern
 
 #### Vorausetzungen: `concept`, `requires`
@@ -118,9 +127,6 @@ also nicht übersetzbar sein!
 *Hinweis zur Lösung*:<br />
 Die Technik des *Foldings* kann auch auch *Konzepte* angewendet werden. 
 
----
-
-[An den Anfang](#aufgaben-zu-konzepten)
 
 ---
 
@@ -217,6 +223,6 @@ std::cout << len << std::endl;
 
 ---
 
-[An den Anfang](#aufgaben-zu-konzepten)
+[Zurück](./Exercises.md)
 
 ---

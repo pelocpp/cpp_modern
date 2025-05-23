@@ -1,10 +1,21 @@
 # Aufgaben zur funktionalen Programmierung
 
-[Zurück](Exercises.md)
+[Zurück](./Exercises.md)
 
 ---
 
 [Lösungen](Exercises_13_FunctionalProgramming.cpp)
+
+---
+
+### Überblick
+
+| Aufgabe | Beschreibung |
+| :- | :- |
+| *Aufgabe* 1 | Umwandlung von Zeichenketten eines `std::vector`-Objekts<br/>(Vorausetzungen: Templates, Lambda-Funktionen) |
+| *Aufgabe* 2 | `decltype`, `declval` und nachlaufender Rückgabetyp in der Praxis<br/>(Vorausetzungen: Kenntnisse von `decltype` und `declval`) |
+
+*Tabelle* 1: Aufgaben zur funktionalen Programmierung.
 
 ---
 
@@ -44,9 +55,6 @@ die einzelnen Zeichen aller Zeichenketten dieses Vektors in Großbuchstaben umge
 Welche Funktion höherer Ordnung benötigen Sie hierzu?
 Schreiben Sie eine Testfunktion, die ihre Realisierung testet. 
 
----
-
-[An den Anfang](#Aufgaben-zur-funktionalen-Programmierung)
 
 ---
 
@@ -117,6 +125,6 @@ auto foldEx(InputIterator begin, InputIterator end, TFunctor&& lambda)
 
 ---
 
-[An den Anfang](#Aufgaben-zur-funktionalen-Programmierung)
+[Zurück](./Exercises.md)
 
 ---

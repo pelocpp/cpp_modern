@@ -1,10 +1,23 @@
 # Aufgaben zu SFINAE
 
-[Zurück](Exercises.md)
+[Zurück](./Exercises.md)
 
 ---
 
 [Lösungen](Exercises_09_SFINAE.cpp)
+
+---
+
+### Überblick
+
+| Aufgabe | Beschreibung |
+| :- | :- |
+| *Aufgabe* 1 | Eine Funktion mit bestimmten Parametertypen |
+| *Aufgabe* 2 | Eine Methode, unterschiedliche Implementierungen<br/>(Vorausetzungen: Templates, `decltype` und `std::declval`) |
+| *Aufgabe* 3 | Detektion von Methoden in einer Klasse<br/>(Vorausetzungen: Templates, `decltype` und `std::declval`) |
+| *Aufgabe* 4 | Eine Methode, unterschiedliche Implementierungen zum Zweiten<br/>(Vorausetzungen: `std::array`) |
+
+*Tabelle* 1: Aufgaben zu SFINAE.
 
 ---
 
@@ -35,10 +48,6 @@ Für nicht-integrale Datentypen wiederum ergibt eine Spezialisierung von `distan
 **Aufgabe**: Realisieren Sie eine Funktion `distance`, so dass diese nur mit Argumenten
 des Typs `float` oder `double` aufgerufen werden kann.
 Verwenden Sie hierzu die SFINAE-Technik!
-
----
-
-[An den Anfang](#Aufgaben-zu-SFINAE)
 
 ---
 
@@ -238,11 +247,6 @@ vor.
 
 ---
 
-[An den Anfang](#Aufgaben-zu-SFINAE)
-
----
-
-
 ## Aufgabe 3: Detektion von Methoden in einer Klasse
 
 #### Vorausetzungen: Templates, `decltype` und `std::declval`
@@ -365,12 +369,10 @@ das Iterator-Objekt `begin`.
 
 ---
 
-[An den Anfang](#Aufgaben-zu-SFINAE)
-
 [Lösungen](Exercises_09_SFINAE.cpp)
 
 ---
 
-[An den Anfang](#Aufgaben-zu-SFINAE)
+[Zurück](./Exercises.md)
 
 ---

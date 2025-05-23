@@ -1,10 +1,23 @@
 # Aufgaben zur Metaprogrammierung
 
-[Zurück](Exercises.md)
+[Zurück](./Exercises.md)
 
 ---
 
 [Lösungen](Exercises_07_Metaprogramming.cpp)
+
+---
+
+### Überblick
+
+| Aufgabe | Beschreibung |
+| :- | :- |
+| *Aufgabe* 1 | Bestimmung des Maximums aus einer Folge von ganzen, positiven Zahlen |
+| *Aufgabe* 2 | Konvertierung binärer Zahlen in Dezimalzahlen |
+| *Aufgabe* 3 | *Fibonacci*-Zahlen |
+| *Aufgabe* 4 | Selektiver Zugriff auf ein Parameter Pack von Datentypen |
+
+*Tabelle* 1: Aufgaben zur Metaprogrammierung.
 
 ---
 
@@ -142,6 +155,6 @@ TLast ch { '!' };
 
 ---
 
-[An den Anfang](#Aufgaben-zur-Metaprogrammierung)
+[Zurück](./Exercises.md)
 
 ---
