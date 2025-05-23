@@ -2,6 +2,9 @@
 
 [Zurück](../../Readme.md)
 
+[Zurück ZWEI](/Readme.md)
+
+
 ---
 
 [Quellcode](WeakPtr.cpp)
