@@ -1,6 +1,6 @@
 # Aufgaben zur Move-Semantik
 
-[Zurück](./Exercises.md)
+[Zurück](/Exercises/Exercises.md)
 
 ---
 
@@ -183,6 +183,6 @@ int main () {
 
 ---
 
-[Zurück](./Exercises.md)
+[Zurück](/Exercises/Exercises.md)
 
 ---
