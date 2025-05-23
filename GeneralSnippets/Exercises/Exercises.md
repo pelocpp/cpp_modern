@@ -13,45 +13,40 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 
 ---
 
-  * ### [Move-Semantik](#Aufgaben-zur-Move-Semantik)
-
-  * ### [Lambda Funktionen](#Aufgaben-zu-Lambda-Funktionen)
-
-  * ### [Generische Lambda Funktionen](#Aufgaben-zu-generischen-Lambda-Funktionen)
-
-  * ### [Initialisierung](#Aufgaben-zur-Initialisierung)
-
-  * ### [Smart Pointer](#Aufgaben-zu-Smart-Pointer)
-
-  * ### [STL-Algorithmen](#Aufgaben-zu-STL-Algorithmen)
-
-  * ### [constexpr](#Aufgaben-zu-constexpr)
-    
-  * ### [Variadische Templates](#Aufgaben-zu-variadischen-Templates)
-    
-  * ### [Folding](#Aufgaben-zu-Folding)
-    
-  * ### [Utility Klassen](#Aufgaben-zu-Utility-Klassen)
-    
-  * ### [Metaprogrammierung](#Aufgaben-zur-Metaprogrammierung)
- 
-  * ### [Expression Templates](#Aufgaben-zu-Expression-Templates)
-    
-  * ### [*Perfect Forwarding*](#Aufgaben-zu-Perfect-Forwarding)
-    
-  * ### [Funktionale Programmierung](#Aufgaben-zur-funktionalen-Programmierung)
-    
-  * ### [SFINAE](#Aufgaben-zu-SFINAE)
-    
-  * ### [CRTP](#Aufgaben-zu-CRTP)
-
-  * ### [Konzepte](#Aufgaben-zu-Konzepten)
-      
----
-
   * ### [Move-Semantik](Exercises_01_MoveSemantics.md)
 
+  * ### [Lambda Funktionen](Exercises_02_Lambdas.md)
 
+  * ### [Generische Lambda Funktionen](Exercises_16_GenericLambdas.md)
+
+  * ### [Initialisierung](Exercises_11_Initialization.md)
+
+  * ### [Smart Pointer](Exercises_15_SmartPointers.md)
+
+  * ### [STL-Algorithmen](Exercises_03_Algorithms.md)
+
+  * ### [constexpr](Exercises_14_ConstExpr.md)
+    
+  * ### [Variadische Templates](Exercises_05_VariadicTemplates.md)
+    
+  * ### [Folding](Exercises_06_Folding.md)
+    
+  * ### [Utility Klassen](Exercises_04_UtilityClasses.md)
+    
+  * ### [Metaprogrammierung](Exercises_07_Metaprogramming.md)
+ 
+  * ### [Expression Templates](Exercises_08_ExpressionTemplates.md)
+    
+  * ### [*Perfect Forwarding*](Exercises_12_PerfectForwarding.md)
+    
+  * ### [Funktionale Programmierung](Exercises_13_FunctionalProgramming.md)
+    
+  * ### [SFINAE](Exercises_09_SFINAE.md)
+    
+  * ### [CRTP](Exercises_10_CRTP.md)
+
+  * ### [Konzepte](Exercises_17_Concepts.md)
+    
 ---
 
 
