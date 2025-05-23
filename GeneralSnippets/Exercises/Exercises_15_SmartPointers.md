@@ -1,10 +1,22 @@
 # Aufgaben zu Smart Pointer
 
-[Zurück](Exercises.md)
+[Zurück](./Exercises.md)
 
 ---
 
 [Lösungen](Exercises_15_SmartPointers.cpp)
+
+---
+
+### Überblick
+
+| Aufgabe | Beschreibung |
+| :- | :- |
+| *Aufgabe* 1 | Quiz zu Smart Pointer<br/>(Vorausetzungen: `std::shared_ptr<>`) |
+| *Aufgabe* 2 | Noch ein Quiz zu Smart Pointer<br/>(Vorausetzungen: `std::shared_ptr<>`) |
+| *Aufgabe* 3 | Betrachtungen eines &bdquo;nicht besitzenden&rdquo; Zeigers<br/>(Vorausetzungen: `std::shared_ptr<>`, `std::weak_ptr<>`) |
+
+*Tabelle* 1: Aufgaben zu Smart Pointer.
 
 ---
 
@@ -27,6 +39,8 @@ Welchen Wert hat der Referenzzähler des Objekts `pC` in der letzten Zeile?
 09: pC = std::move(pA);
 10: pB = nullptr;
 ```
+
+---
 
 ## Aufgabe 2: Noch ein Quiz zu Smart Pointer
 
@@ -59,10 +73,6 @@ Studieren Sie das folgende Code-Fragement genau.
 18: int value = (*pB).getValue();
 19: std::cout << "Value: " << value << std::endl;
 ```
-
----
-
-[An den Anfang](#aufgaben-zu-smart-pointers)
 
 ---
 
@@ -189,6 +199,6 @@ das referenzierte Objekt noch existiert.
 
 ---
 
-[An den Anfang](#aufgaben-zu-smart-pointers)
+[Zurück](./Exercises.md)
 
 ---

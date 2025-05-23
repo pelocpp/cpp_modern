@@ -1,10 +1,22 @@
 # Aufgaben zu Utility Klassen
 
-[Zurück](Exercises.md)
+[Zurück](./Exercises.md)
 
 ---
 
 [Lösungen](Exercises_04_UtilityClasses.cpp)
+
+---
+
+### Überblick
+
+| Aufgabe | Beschreibung |
+| :- | :- |
+| *Aufgabe* 1 | `std::visit` und generische Lambdas<br/>(Vorausetzungen: `if constexpr`, `decltype`, `std::variant`, `std::visit`, Type Traits) |
+| *Aufgabe* 2 | `std::optional`: Umwandlung von Zeichenketten in ganze Zahlen<br/>(Vorausetzungen: Templates Grundlagen, `std::optional`, `if constexpr`) |
+| *Aufgabe* 3 | `std::variant`: Ein heterogener Container<br/>(Vorausetzungen: `std::variant`, `std::visit`, `std::vector`) |
+
+*Tabelle* 1: Aufgaben zu Utility Klassen.
 
 ---
 
@@ -76,10 +88,6 @@ std::optional<T> toNumber(std::string s);
 
 Realisieren Sie die Funktion analog zur Funktion `toInt`. Für `T` sollen die integralen Datentypen
 `short`, `int`, `long` und `long long` als Template Argumente möglich sein.
-
----
-
-[An den Anfang](#Aufgaben-zu-Utility-Klassen)
 
 ---
 
@@ -181,6 +189,6 @@ gekapselten `std::vector<std::variant<...>`-Objekts zurück.
 
 ---
 
-[An den Anfang](#Aufgaben-zu-Utility-Klassen)
+[Zurück](./Exercises.md)
 
 ---

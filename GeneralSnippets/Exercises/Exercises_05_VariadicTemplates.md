@@ -1,10 +1,25 @@
 # Aufgaben zu variadischen Templates
 
-[Zurück](Exercises.md)
+[Zurück](./Exercises.md)
 
 ---
 
 [Lösungen](Exercises_05_VariadicTemplates.cpp)
+
+---
+
+### Überblick
+
+| Aufgabe | Beschreibung |
+| :- | :- |
+| *Aufgabe* 1 | Logische Operationen mit beliebig vielen Operanden |
+| *Aufgabe* 2 | `decltype` und Type-Traits am Beispiel von `sameType`<br/>(Vorausetzungen: `std::is_same`) |
+| *Aufgabe* 3 | Generische Funktion `miminum`<br/>(Vorausetzungen: Utility-Funktion `std::common_type`) |
+| *Aufgabe* 4 | Ausgabe eines `std::tuple` Objekts<br/>(Vorausetzungen: `std::tuple`, Non-Type Template Parameter) |
+| *Aufgabe* 5 | Viele Wege führen zum gleichen Ergebnis: Summenbildung natürlicher Zahlen |
+| *Aufgabe* 6 | Variadische Templates und Vererbung |
+
+*Tabelle* 1: Aufgaben zu variadischen Templates.
 
 ---
 
@@ -32,10 +47,6 @@ int main()
 false
 true
 ```
-
----
-
-[An den Anfang](#Aufgaben-zu-variadischen-Templates)
 
 ---
 
@@ -82,10 +93,6 @@ Können Sie das Feature "*Short-Circuit-Evaluation*" in Ihrer Realisierung der F
 
 ---
 
-[An den Anfang](#Aufgaben-zu-variadischen-Templates)
-
----
-
 ## Aufgabe 3: Generische Funktion `miminum`
 
 #### Vorausetzungen: Utility-Funktion `std::common_type`
@@ -95,10 +102,6 @@ beliebigen Typs akzeptiert und das Minimum aller Werte berechnet.
 
 Sie dürfen dabei die Annahme zu Grunde legen, dass für alle Argumente
 die Funktion `std::common_type` definiert ist.
-
----
-
-[An den Anfang](#Aufgaben-zu-variadischen-Templates)
 
 ---
 
@@ -125,10 +128,6 @@ printTuple(tuple);
 ```
 [1, Modern C++, 0, 3.14159]
 ```
-
----
-
-[An den Anfang](#Aufgaben-zu-variadischen-Templates)
 
 ---
 
@@ -168,10 +167,6 @@ welche davon `constexpr`-fähig sind!
 Tool [cppinsights.io](https://cppinsights.io/).
 Vollziehen Sie die jeweiligen Umsetzung der Anweisung `sumX(1, 2, 3, 4, 5)`
 in C++-Anweisungen *ohne* variadische Templates nach!
-
----
-
-[An den Anfang](#Aufgaben-zu-variadischen-Templates)
 
 ---
 
@@ -219,6 +214,6 @@ void test()
 
 ---
 
-[An den Anfang](#Aufgaben-zu-variadischen-Templates)
+[Zurück](./Exercises.md)
 
 ---

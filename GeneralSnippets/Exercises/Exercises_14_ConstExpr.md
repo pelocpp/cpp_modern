@@ -1,10 +1,21 @@
 # Aufgaben zu `constexpr`
 
-[Zurück](Exercises.md)
+[Zurück](./Exercises.md)
 
 ---
 
 [Lösungen](Exercises_14_ConstExpr.cpp)
+
+---
+
+### Überblick
+
+| Aufgabe | Beschreibung |
+| :- | :- |
+| *Aufgabe* 1 | *Return Type Resolver*<br/>(Voraussetzungen: Templates, `std::is_same` und `constexpr`) |
+| *Aufgabe* 2 | Auswertung von variadischen Templates, `decltype` und Type-Traits am Beispiel von `sameType` zur Übersetzungszeit<br/>(Voraussetzungen: `decltype`, `std::is_same`) |
+
+*Tabelle* 1: Aufgaben zu `constexpr`.
 
 ---
 
@@ -107,6 +118,6 @@ true
 
 ---
 
-[An den Anfang](#Aufgaben-zu-constexpr)
+[Zurück](./Exercises.md)
 
 ---

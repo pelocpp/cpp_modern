@@ -1,10 +1,20 @@
 # Aufgaben zu generischen Lambda Funktionen
 
-[Zurück](Exercises.md)
+[Zurück](./Exercises.md)
 
 ---
 
 [Lösungen](Exercises_16_Generic_Lambdas.cpp)
+
+---
+
+### Überblick
+
+| Aufgabe | Beschreibung |
+| :- | :- |
+| *Aufgabe* 1 | Personensuche<br/>(Vorausetzungen: Algorithmus `std::find_if`) |
+
+*Tabelle* 1: Aufgaben zu generischen Lambda Funktionen.
 
 ---
 
@@ -65,6 +75,6 @@ int main()
 
 ---
 
-[An den Anfang](#Aufgaben-zu-generischen-Lambda-Funktionen)
+[Zurück](./Exercises.md)
 
 ---

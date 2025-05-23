@@ -1,10 +1,24 @@
 # Aufgaben zu Folding
 
-[Zurück](Exercises.md)
+[Zurück](./Exercises.md)
 
 ---
 
 [Lösungen](Exercises_06_Folding.cpp)
+
+---
+
+### Überblick
+
+| Aufgabe | Beschreibung |
+| :- | :- |
+| *Aufgabe* 1 | Logische Operationen mit beliebig vielen Operanden |
+| *Aufgabe* 2 | `decltype` und Type-Traits am Beispiel von `sameType`<br/>(Vorausetzungen: `std::is_same`) |
+| *Aufgabe* 3 | &bdquo;Folding over a Comma&rdquo; am Beispiel zweier Funktionen `minimum` und `maximum`<br/>(Voraussetzungen: Lambda Funktionen) |
+| *Aufgabe* 4 | Beliebig viele Werte zu einem `std::vector`-Objekt hinzufügen |
+| *Aufgabe* 5 | Störende Trennzeichen am Ende eines Folding-Ausdrucks |
+
+*Tabelle* 1: Aufgaben zu Folding.
 
 ---
 
@@ -14,6 +28,8 @@ Die Aufgabenstellung ist identisch zur ersten Aufgabe
 &bdquo;Logische Operationen mit beliebig vielen Operanden&rdquo;
 aus dem Abschnitt [Variadische Templates](Exercises_05_VariadicTemplates.md):
 Setzen Sie zur Lösung dieses Mal *Folding Expressions* ein.
+
+---
 
 ## Aufgabe 2: Folding Expressions, `decltype` und Type-Traits am Beispiel von `sameType`
 
@@ -27,10 +43,6 @@ Setzen Sie zur Lösung dieses Mal *Folding Expressions* ein.
 *Zusatzfrage*:
 Welchen prinzipiellen Unterschied beobachten Sie im Lösungsansatz
 von Aufgabe 1 und 2?
-
----
-
-[An den Anfang](#aufgaben-zu-folding)
 
 ---
 
@@ -71,9 +83,6 @@ auto minimum(const T& x, const T& y, const TArgs&... args)
   * Testen Sie die Korrektheit der Funktion `minimum` mit einigen Testbeispielen.
   * Schreiben Sie eine zweite Funktion `maximum`, die das Maximum aller Parameter bestimmt.
 
----
-
-[An den Anfang](#aufgaben-zu-folding)
 
 ---
 
@@ -192,6 +201,6 @@ folgende Sprachkonzepte in eine Realisierung mit einbeziehen:
 
 ---
 
-[An den Anfang](#aufgaben-zu-folding)
+[Zurück](./Exercises.md)
 
 ---

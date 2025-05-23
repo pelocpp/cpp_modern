@@ -240,7 +240,7 @@ namespace Exercises_Lambdas {
 
     namespace Exercise_03 {
 
-        void testExercise_03a()
+        static void testExercise_03a()
         {
             // Output:
             // Variable: 1

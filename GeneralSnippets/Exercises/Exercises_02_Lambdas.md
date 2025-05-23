@@ -1,10 +1,22 @@
 # Aufgaben zu Lambda-Funktionen
 
-[Zurück](Exercises.md)
+[Zurück](./Exercises.md)
 
 ---
 
 [Lösungen](Exercises_02_Lambdas.cpp)
+
+---
+
+### Überblick
+
+| Aufgabe | Beschreibung |
+| :- | :- |
+| *Aufgabe* 1 | Einfache Realisierung einer Lambda-Funktion<br/>(Vorausetzungen: Algorithmus `std::for_each`, bei Bedarf auch `std::generate`) |
+| *Aufgabe* 2 | Taschenrechner mit Lambda-Funktionen<br/>(Vorausetzungen: Container `std::map`, Klasse `std::pair`) | 
+| *Aufgabe* 3 | Quiz mit Lambda-Funktionen |
+
+*Tabelle* 1: Aufgaben zu Lambda Funktionen.
 
 ---
 
@@ -45,10 +57,6 @@ Dabei soll der Divisor
   * durch eine Variable in der Zugriffsklausel ("*Capture Clause*") 
 
 bestimmt werden.
-
----
-
-[An den Anfang](#Aufgaben-zu-Lambda-Funktionen)
 
 ---
 
@@ -104,10 +112,6 @@ Enter second Operand: 2.7
 Enter operation (+, -, *, /): +
 Result: 1.5 + 1.5 = 4.2.
 ```
-
----
-
-[An den Anfang](#Aufgaben-zu-Lambda-Funktionen)
 
 ---
 
@@ -214,6 +218,6 @@ int main ()
 
 ---
 
-[An den Anfang](#Aufgaben-zu-Lambda-Funktionen)
+[Zurück](./Exercises.md)
 
 ---

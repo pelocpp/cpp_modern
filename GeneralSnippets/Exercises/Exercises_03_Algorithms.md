@@ -1,10 +1,22 @@
 # Aufgaben zu STL-Algorithmen
 
-[Zurück](Exercises.md)
+[Zurück](./Exercises.md)
 
 ---
 
 [Lösungen](Exercises_03_Algorithms.cpp)
+
+---
+
+### Überblick
+
+| Aufgabe | Beschreibung |
+| :- | :- |
+| *Aufgabe* 1 | Der Algorithmus `std::accumulate` in der Anwendung<br/>(Voraussetzungen: `std::accumulate`, `std::initializer_list`) |
+| *Aufgabe* 2 | *Fibonacci*-Zahlen<br/>(Voraussetzungen: Algorithmen `std::generate`, `std::for_each`, Lambda-Funktionen, Structured Binding) |
+
+*Tabelle* 1: Aufgaben zu STL-Algorithmen.
+
 
 ---
 
@@ -31,10 +43,6 @@ Setzen zur Lösung der Aufgabe den STL-Algorithmus `std::accumulate` ein!
 false
 true
 ```
-
----
-
-[An den Anfang](#Aufgaben-zu-STL-Algorithmen)
 
 ---
 
@@ -73,6 +81,6 @@ Wie müssen Sie diese Lambda-Funktion definieren, so dass das `std::pair`-Objekt
 
 ---
 
-[An den Anfang](#Aufgaben-zu-STL-Algorithmen)
+[Zurück](./Exercises.md)
 
 ---

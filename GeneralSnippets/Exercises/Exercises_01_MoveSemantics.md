@@ -1,4 +1,4 @@
-# Aufgaben zur Move-Semantik <a name="link0"></a>
+# Aufgaben zur Move-Semantik
 
 [Zurück](./Exercises.md)
 
@@ -12,14 +12,14 @@
 
 | Aufgabe | Beschreibung |
 | :- | :- |
-| [Aufgabe 1](#link1) | Verschiebe-Semantik am Beispiel einer benutzerdefinierten Klasse |
-| [Aufgabe 2](#link2) | Verschiebe-Semantik am Beispiel einer Klasse `HugeArray` betrachtet |
+| *Aufgabe* 1 | Verschiebe-Semantik am Beispiel einer benutzerdefinierten Klasse |
+| *Aufgabe* 2 | Verschiebe-Semantik am Beispiel einer Klasse `HugeArray` betrachtet |
 
 *Tabelle* 1: Aufgaben zur Move-Semantik.
 
 ---
 
-## Aufgabe 1: Verschiebe-Semantik am Beispiel einer benutzerdefinierten Klasse <a name="link1"></a>
+## Aufgabe 1: Verschiebe-Semantik am Beispiel einer benutzerdefinierten Klasse
 
 Die Verschiebe-Semantik erfordert für Klassen, die sie unterstützen wollen,
 eine Implementierung des *Move*-Konstruktors (Verschiebe-Konstruktor) und der *Move*-Wertzuweisung (Verschiebe-Wertzuweisung).
@@ -89,13 +89,10 @@ Die Verschiebe-Semantik wird von benutzerdefinierten Klassen nur *automatisch* b
 wenn keine der &bdquo;Big-Five&rdquo;-Methoden in der Klasse explizit vorhanden ist.
 Demonstrieren Sie diese Aussage, indem Sie die Klasse `Person` geeignet um eine einzige Quellcodezeile ergänzen.
 
----
-
-[An den Anfang](#link0)
 
 ---
 
-## Aufgabe 2: Verschiebe-Semantik am Beispiel einer Klasse `HugeArray` betrachtet <a name="link2"></a>
+## Aufgabe 2: Verschiebe-Semantik am Beispiel einer Klasse `HugeArray` betrachtet
 
 Erstellen Sie eine leeres Visual C++ Projekt,
 fügen Sie nachstehenden Quellcode dort ein und bringen Sie das Programm zum Laufen.
@@ -186,6 +183,6 @@ int main () {
 
 ---
 
-[An den Anfang](#link0)
+[Zurück](./Exercises.md)
 
 ---

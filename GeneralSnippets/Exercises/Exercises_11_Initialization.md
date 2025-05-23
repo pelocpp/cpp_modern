@@ -1,6 +1,17 @@
 # Aufgaben zur Initialisierung
 
-[Zurück](Exercises.md)
+[Zurück](./Exercises.md)
+
+---
+
+### Überblick
+
+| Aufgabe | Beschreibung |
+| :- | :- |
+| *Aufgabe* 1 | *Brace Initialization* und Initialisierungliste<br/>(Vorausetzungen: Templates, `std::vector<>`, `std::initializer_list<>`) |
+| *Aufgabe* 2 | Ein Zeitvergleich<br/>(Vorausetzungen: `std::vector<>`, `std::initializer_list<>`) |
+
+*Tabelle* 1: Aufgaben zur Initialisierung.
 
 ---
 
@@ -133,6 +144,6 @@ printResults("std::initializer_list: ", startTime, endTime);
 
 ---
 
-[An den Anfang](#Aufgaben-zur-Initialisierung)
+[Zurück](./Exercises.md)
 
 ---

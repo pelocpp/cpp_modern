@@ -10,7 +10,7 @@ namespace Exercises_Algorithms {
 
     namespace Exercise_01 {
 
-        bool andAll(std::initializer_list<bool> vec) {
+        static bool andAll(std::initializer_list<bool> vec) {
 
             return std::accumulate(
                 std::begin(vec),
@@ -22,7 +22,7 @@ namespace Exercises_Algorithms {
             );
         }
 
-        bool orAll(std::initializer_list<bool> vec) {
+        static bool orAll(std::initializer_list<bool> vec) {
 
             return std::accumulate(
                 std::begin(vec),
