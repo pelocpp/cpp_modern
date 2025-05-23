@@ -1,6 +1,6 @@
 # Aufgaben zur Move-Semantik <a name="link0"></a>
 
-[Zurück](./Exercises.md)
+[Zurück](/Exercises.md)
 
 ---
 
@@ -186,6 +186,6 @@ int main () {
 
 ---
 
-[An den Anfang](#Aufgaben-zur-Move-Semantik)
+[An den Anfang](#link0)
 
 ---
