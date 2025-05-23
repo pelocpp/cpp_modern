@@ -1,6 +1,6 @@
 # Aufgaben zu Utility Klassen
 
-[Zurück](./Exercises.md)
+[Zurück](/GeneralSnippets/Exercises/Exercises.md)
 
 ---
 
@@ -189,6 +189,6 @@ gekapselten `std::vector<std::variant<...>`-Objekts zurück.
 
 ---
 
-[Zurück](./Exercises.md)
+[Zurück](/GeneralSnippets/Exercises/Exercises.md)
 
 ---

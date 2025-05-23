@@ -1,6 +1,6 @@
 # Aufgaben zur Initialisierung
 
-[Zurück](./Exercises.md)
+[Zurück](/GeneralSnippets/Exercises/Exercises.md)
 
 ---
 
@@ -144,6 +144,6 @@ printResults("std::initializer_list: ", startTime, endTime);
 
 ---
 
-[Zurück](./Exercises.md)
+[Zurück](/GeneralSnippets/Exercises/Exercises.md)
 
 ---

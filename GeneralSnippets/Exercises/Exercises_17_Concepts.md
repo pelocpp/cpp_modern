@@ -1,6 +1,6 @@
 # Aufgaben zu Konzepten
 
-[Zurück](./Exercises.md)
+[Zurück](/GeneralSnippets/Exercises/Exercises.md)
 
 ---
 
@@ -223,6 +223,6 @@ std::cout << len << std::endl;
 
 ---
 
-[Zurück](./Exercises.md)
+[Zurück](/GeneralSnippets/Exercises/Exercises.md)
 
 ---

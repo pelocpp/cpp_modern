@@ -1,6 +1,6 @@
 # Aufgaben zu Smart Pointer
 
-[Zurück](./Exercises.md)
+[Zurück](/GeneralSnippets/Exercises/Exercises.md)
 
 ---
 
@@ -199,6 +199,6 @@ das referenzierte Objekt noch existiert.
 
 ---
 
-[Zurück](./Exercises.md)
+[Zurück](/GeneralSnippets/Exercises/Exercises.md)
 
 ---

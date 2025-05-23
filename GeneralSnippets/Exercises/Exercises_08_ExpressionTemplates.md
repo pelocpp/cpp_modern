@@ -1,6 +1,6 @@
 # Aufgaben zu Expression Templates
 
-[Zurück](./Exercises.md)
+[Zurück](/GeneralSnippets/Exercises/Exercises.md)
 
 ---
 
@@ -99,6 +99,6 @@ Elapsed time: 1102 milliseconds.
 
 ---
 
-[Zurück](./Exercises.md)
+[Zurück](/GeneralSnippets/Exercises/Exercises.md)
 
 ---

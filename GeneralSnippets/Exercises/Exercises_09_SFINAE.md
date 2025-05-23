@@ -1,6 +1,6 @@
 # Aufgaben zu SFINAE
 
-[Zurück](./Exercises.md)
+[Zurück](/GeneralSnippets/Exercises/Exercises.md)
 
 ---
 
@@ -373,6 +373,6 @@ das Iterator-Objekt `begin`.
 
 ---
 
-[Zurück](./Exercises.md)
+[Zurück](/GeneralSnippets/Exercises/Exercises.md)
 
 ---

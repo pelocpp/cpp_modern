@@ -1,6 +1,6 @@
 # Aufgaben zu Folding
 
-[Zurück](./Exercises.md)
+[Zurück](/GeneralSnippets/Exercises/Exercises.md)
 
 ---
 
@@ -201,6 +201,6 @@ folgende Sprachkonzepte in eine Realisierung mit einbeziehen:
 
 ---
 
-[Zurück](./Exercises.md)
+[Zurück](/GeneralSnippets/Exercises/Exercises.md)
 
 ---

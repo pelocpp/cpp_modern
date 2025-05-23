@@ -1,6 +1,6 @@
 # Aufgaben zur funktionalen Programmierung
 
-[Zurück](./Exercises.md)
+[Zurück](/GeneralSnippets/Exercises/Exercises.md)
 
 ---
 
@@ -125,6 +125,6 @@ auto foldEx(InputIterator begin, InputIterator end, TFunctor&& lambda)
 
 ---
 
-[Zurück](./Exercises.md)
+[Zurück](/GeneralSnippets/Exercises/Exercises.md)
 
 ---

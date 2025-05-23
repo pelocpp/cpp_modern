@@ -1,6 +1,6 @@
 # Aufgaben zu CRTP
 
-[Zurück](./Exercises.md)
+[Zurück](/GeneralSnippets/Exercises/Exercises.md)
 
 ---
 
@@ -176,6 +176,6 @@ Time taken: 402634 microseconds
 
 ---
 
-[Zurück](./Exercises.md)
+[Zurück](/GeneralSnippets/Exercises/Exercises.md)
 
 ---

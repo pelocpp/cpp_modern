@@ -1,6 +1,6 @@
 # Aufgaben zur Metaprogrammierung
 
-[Zurück](./Exercises.md)
+[Zurück](/GeneralSnippets/Exercises/Exercises.md)
 
 ---
 
@@ -155,6 +155,6 @@ TLast ch { '!' };
 
 ---
 
-[Zurück](./Exercises.md)
+[Zurück](/GeneralSnippets/Exercises/Exercises.md)
 
 ---

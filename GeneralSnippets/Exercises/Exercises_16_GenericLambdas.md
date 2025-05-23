@@ -1,6 +1,6 @@
 # Aufgaben zu generischen Lambda Funktionen
 
-[Zurück](./Exercises.md)
+[Zurück](/GeneralSnippets/Exercises/Exercises.md)
 
 ---
 
@@ -75,6 +75,6 @@ int main()
 
 ---
 
-[Zurück](./Exercises.md)
+[Zurück](/GeneralSnippets/Exercises/Exercises.md)
 
 ---

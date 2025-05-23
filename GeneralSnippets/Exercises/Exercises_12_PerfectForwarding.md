@@ -1,6 +1,6 @@
 # Aufgaben zum *Perfect Forwarding*
 
-[Zurück](./Exercises.md)
+[Zurück](/GeneralSnippets/Exercises/Exercises.md)
 
 ---
 
@@ -125,6 +125,6 @@ und misst ihre Ausführungszeit.
 
 ---
 
-[Zurück](./Exercises.md)
+[Zurück](/GeneralSnippets/Exercises/Exercises.md)
 
 ---

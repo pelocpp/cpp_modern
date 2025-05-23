@@ -4,7 +4,7 @@
 
 ---
 
-[Lösungen](Exercises_03_Algorithms.cpp)
+[Zurück](/GeneralSnippets/Exercises/Exercises.md)
 
 ---
 
@@ -81,6 +81,6 @@ Wie müssen Sie diese Lambda-Funktion definieren, so dass das `std::pair`-Objekt
 
 ---
 
-[Zurück](./Exercises.md)
+[Zurück](/GeneralSnippets/Exercises/Exercises.md)
 
 ---
