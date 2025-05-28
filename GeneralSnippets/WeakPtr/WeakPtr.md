@@ -16,6 +16,14 @@
   * [Zyklische Referenzen](#link4)
   * [Betrachtung der Referenzzähler im Detail](#link5)
 
+
+
+  * [&bdquo;It's about ownership&rdquo;](#its-about-ownership-)
+  * [Funktionsweise Klasse `std::weak_ptr`](#funktionsweise-klasse-stdweak_ptr-)
+  * [*Control Block*](control-block--)
+  * [Zyklische Referenzen](zyklische-referenzen-)
+  * [Betrachtung der Referenzzähler im Detail](#betrachtung-der-referenzzähler-im-detail-)
+
 ---
 
 ## &bdquo;It's about ownership&rdquo; <a name="link1"></a>
