@@ -27,6 +27,7 @@
   * [Betrachtung der Referenzzähler im Detail](#betrachtung-der-referenzzähler-im-detail)
 
 
+<div id="Chapter_Weak_Pointer"></div>
 
 ---
 
@@ -63,6 +64,8 @@ Der bei `std::shared_ptr`-Objekten vorhandene *Control Block* bezieht auch
 
 ---
 
+<div id="zyklische-referenzen"></div>
+
 ## Zyklische Referenzen
 
 Interessant ist der Weak-Pointer bei zyklischen Referenzen:
@@ -94,6 +97,8 @@ d'tor LeftNode
 d'tor RightNode
 d'tor ParentNode
 ```
+
+<div id="betrachtung-der-referenzzähler-im-detail"></div>
 
 ## Betrachtung der Referenzzähler im Detail
 
