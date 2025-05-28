@@ -24,6 +24,15 @@
   * [Zyklische Referenzen](zyklische-referenzen-)
   * [Betrachtung der Referenzzähler im Detail](#betrachtung-der-referenzzähler-im-detail-)
 
+
+[&bdquo;It's about ownership&rdquo;](#its-about-ownership-)
+[Funktionsweise Klasse `std::weak_ptr`](#funktionsweise-klasse-stdweak_ptr-)
+[*Control Block*](control-block--)
+[Zyklische Referenzen](zyklische-referenzen)
+[Betrachtung der Referenzzähler im Detail](#betrachtung-der-referenzzähler-im-detail)
+
+
+
 ---
 
 ## &bdquo;It's about ownership&rdquo; <a name="link1"></a>
@@ -59,7 +68,7 @@ Der bei `std::shared_ptr`-Objekten vorhandene *Control Block* bezieht auch
 
 ---
 
-## Zyklische Referenzen <a name="link4"></a>
+## Zyklische Referenzen
 
 Interessant ist der Weak-Pointer bei zyklischen Referenzen:
 
@@ -91,7 +100,7 @@ d'tor RightNode
 d'tor ParentNode
 ```
 
-## Betrachtung der Referenzzähler im Detail <a name="link5"></a>
+## Betrachtung der Referenzzähler im Detail
 
 Wir sind dem Problem von `std::shared_ptr`-Objekten und zyklischen Referenzen auf die Spur gekommen.
 Möglicherweise ist es aber immer noch nicht ganz genau verständlich geworden,
