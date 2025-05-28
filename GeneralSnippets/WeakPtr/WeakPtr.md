@@ -15,27 +15,22 @@
   * [*Control Block*](#link3)
   * [Zyklische Referenzen](#link4)
   * [Betrachtung der Referenzzähler im Detail](#link5)
-
-
-
   * [&bdquo;It's about ownership&rdquo;](#its-about-ownership-)
   * [Funktionsweise Klasse `std::weak_ptr`](#funktionsweise-klasse-stdweak_ptr-)
   * [*Control Block*](control-block--)
   * [Zyklische Referenzen](zyklische-referenzen-)
   * [Betrachtung der Referenzzähler im Detail](#betrachtung-der-referenzzähler-im-detail-)
-
-
-[&bdquo;It's about ownership&rdquo;](#its-about-ownership-)
-[Funktionsweise Klasse `std::weak_ptr`](#funktionsweise-klasse-stdweak_ptr-)
-[*Control Block*](control-block--)
-[Zyklische Referenzen](zyklische-referenzen)
-[Betrachtung der Referenzzähler im Detail](#betrachtung-der-referenzzähler-im-detail)
+  * [&bdquo;It's about ownership&rdquo;](#its-about-ownership)
+  * [Funktionsweise Klasse `std::weak_ptr`](#funktionsweise-klasse-stdweak_ptr)
+  * [*Control Block*](#control-block)
+  * [Zyklische Referenzen](#zyklische-referenzen)
+  * [Betrachtung der Referenzzähler im Detail](#betrachtung-der-referenzzähler-im-detail)
 
 
 
 ---
 
-## &bdquo;It's about ownership&rdquo; <a name="link1"></a>
+## &bdquo;It's about ownership&rdquo;
 
 ###### Exklusiver Besitz: `std::unique_ptr<T>`
 
@@ -45,7 +40,7 @@
 
 ---
 
-## Funktionsweise Klasse `std::weak_ptr` <a name="link2"></a>
+## Funktionsweise Klasse `std::weak_ptr`
 
 Die Funktionsweise der Klasse `std::weak_ptr` wird an zwei Beispielen aufgezeigt.
 
@@ -57,7 +52,7 @@ die sich durch `std::shared_ptr`-Objekte gegenseitig referenzieren.
 
 ---
 
-## *Control Block*  <a name="link3"></a>
+## *Control Block*
 
 Der bei `std::shared_ptr`-Objekten vorhandene *Control Block* bezieht auch 
 `std::weak_ptr`-Objekte mit ein:
