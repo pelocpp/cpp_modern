@@ -15,23 +15,10 @@
   * [*Control Block*](#link3)
   * [Zyklische Referenzen](#link4)
   * [Betrachtung der Referenzzähler im Detail](#link5)
-  * [&bdquo;It's about ownership&rdquo;](#its-about-ownership-)
-  * [Funktionsweise Klasse `std::weak_ptr`](#funktionsweise-klasse-stdweak_ptr-)
-  * [*Control Block*](control-block--)
-  * [Zyklische Referenzen](zyklische-referenzen-)
-  * [Betrachtung der Referenzzähler im Detail](#betrachtung-der-referenzzähler-im-detail-)
-  * [&bdquo;It's about ownership&rdquo;](#its-about-ownership)
-  * [Funktionsweise Klasse `std::weak_ptr`](#funktionsweise-klasse-stdweak_ptr)
-  * [*Control Block*](#control-block)
-  * [Zyklische Referenzen](#zyklische-referenzen)
-  * [Betrachtung der Referenzzähler im Detail](#betrachtung-der-referenzzähler-im-detail)
-
-
-<div id="Chapter_Weak_Pointer"></div>
 
 ---
 
-## &bdquo;It's about ownership&rdquo;
+## &bdquo;It's about ownership&rdquo; <a name="link1"></a>
 
 ###### Exklusiver Besitz: `std::unique_ptr<T>`
 
@@ -41,7 +28,7 @@
 
 ---
 
-## Funktionsweise Klasse `std::weak_ptr`
+## Funktionsweise Klasse `std::weak_ptr` <a name="link2"></a>
 
 Die Funktionsweise der Klasse `std::weak_ptr` wird an zwei Beispielen aufgezeigt.
 
@@ -53,7 +40,7 @@ die sich durch `std::shared_ptr`-Objekte gegenseitig referenzieren.
 
 ---
 
-## *Control Block*
+## *Control Block* <a name="link3"></a>
 
 Der bei `std::shared_ptr`-Objekten vorhandene *Control Block* bezieht auch 
 `std::weak_ptr`-Objekte mit ein:
@@ -64,9 +51,7 @@ Der bei `std::shared_ptr`-Objekten vorhandene *Control Block* bezieht auch
 
 ---
 
-<div id="zyklische-referenzen"></div>
-
-## Zyklische Referenzen
+## Zyklische Referenzen <a name="link4"></a>
 
 Interessant ist der Weak-Pointer bei zyklischen Referenzen:
 
@@ -98,9 +83,7 @@ d'tor RightNode
 d'tor ParentNode
 ```
 
-<div id="betrachtung-der-referenzzähler-im-detail"></div>
-
-## Betrachtung der Referenzzähler im Detail
+## Betrachtung der Referenzzähler im Detail <a name="link5"></a>
 
 Wir sind dem Problem von `std::shared_ptr`-Objekten und zyklischen Referenzen auf die Spur gekommen.
 Möglicherweise ist es aber immer noch nicht ganz genau verständlich geworden,
