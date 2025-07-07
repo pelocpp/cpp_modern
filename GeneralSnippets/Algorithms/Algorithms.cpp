@@ -14,11 +14,13 @@ namespace Algorithms {
     // Global constants and types
     // =================================================================================
 
-    // static constexpr int VectorSize = 100'000'000;     // release
+#ifdef _DEBUG
     static constexpr int VectorSize = 10'000'000;         // debug
-
-    // static constexpr int ArraySize = 50'000'000;       // release
     static constexpr int ArraySize = 10'000'000;          // debug
+#else
+    static constexpr int VectorSize = 100'000'000;        // release
+    static constexpr int ArraySize = 50'000'000;          // release
+#endif
 
     // need array in global data space, stack isn't suited for large objects
     std::array<double, ArraySize> values;

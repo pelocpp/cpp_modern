@@ -150,8 +150,11 @@ namespace Folding {
         return sum;
     }
 
-    //constexpr size_t MaxIterations = 100'000'000;   // release
-    constexpr size_t MaxIterations = 100'000'000;       // debug
+#ifdef _DEBUG
+    constexpr size_t MaxIterations = 10'000'000;     // debug
+#else
+    constexpr size_t MaxIterations = 100'000'000;    // release
+#endif
 
     static void test_06_benchmark_folding() {
 
