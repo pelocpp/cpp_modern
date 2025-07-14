@@ -223,6 +223,9 @@
   * `std::format`
   * Spaceship Operator `<=>`
 
+## C++&ndash;26: Ausblick
+  * Reflection
+
 ---
 
 [Zurück](../../Readme.md)

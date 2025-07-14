@@ -467,11 +467,10 @@ namespace Algorithms {
 
             ScopedTimer watch{};
 
-            auto itSource{ source.begin() };
             auto itTarget{ target.begin() };
-
             for (auto it{ source.begin() }; it != source.end(); ++it) {
-                *itTarget = *itSource;
+                *itTarget = *it;
+                ++itTarget;
             }
         }
 
@@ -561,11 +560,10 @@ namespace Algorithms {
 
             ScopedTimer watch{};
 
-            auto itSource{ source.begin() };
             auto itTarget{ target.begin() };
-
             for (auto it{ source.begin() }; it != source.end(); ++it) {
-                *itTarget = *itSource;
+                *itTarget = *it;
+                ++itTarget;
             }
         }
 
