@@ -26,7 +26,7 @@ Wir haben bei den generischen Lambda Funktionen das so genannte Feature
 der *Automatic Type Deduction* kennen gelernt:
 
 ```cpp
-auto isGreaterThanFifty = [](const auto& n) { return n > 50; };
+auto isGreaterThanFifty = [](auto n) { return n > 50; };
 ```
 
 Mit diesem Lambda-Ausdruck haben wir `std::vector`-Objekte mit

@@ -142,12 +142,10 @@ namespace Folding {
         
         auto list = { values ...};
 
-        // using ElemType = decltype (list)::value_type;
+        //using ElemType = decltype (list)::value_type;
+        //ElemType sum{};
 
         auto sum{ 0 };
-
-        // ElemType sum{};
-
         for (auto elem : list) {
             sum += elem;
         }

@@ -59,7 +59,7 @@ namespace Literals_Color_Runtime {
     }
 
     // literal operator ("cooked" version)
-    static Color operator"" _rgb(unsigned long long int value) {
+    static Color operator"" _rgb(unsigned long long value) {
 
         if (value > 0xFFFFFF) {
             throw std::runtime_error("literal too large");
@@ -156,7 +156,7 @@ namespace Literals_Color_CompileTime {
     }
 
     // literal operator ("cooked" version)
-    static constexpr Color operator"" _rgb(unsigned long long int value) {
+    static constexpr Color operator"" _rgb(unsigned long long value) {
 
         if (value > 0xFFFFFF) {
             throw std::logic_error("literal too large");

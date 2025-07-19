@@ -26,7 +26,7 @@ Eine Funktion, die mindestens einen Parameter vom Typ `auto` hat,
 wird als *generische Funktion* bezeichnet:
 
 ```cpp
-auto function(auto x, int y) {
+void function(auto x, int y) {
     std::cout << "x=" << x << ", y=" << y << std::endl;
 };
 ```

@@ -56,9 +56,9 @@ namespace Exercises_Initialization {
             static auto transferData(const std::vector<std::string>& strings)
             {
                 // prevent optimizer to work too hard ...
-                auto& first = strings.front();
-                auto& last = strings.back();
-                return first + last;
+                const auto first = strings.begin();
+                const auto last = std::prev(strings.end());
+                return *first + *last;
                 //std::cout << "first=" << first << std::endl;
                 //std::cout << "last=" << last << std::endl;
             }
@@ -66,8 +66,8 @@ namespace Exercises_Initialization {
             static auto transferData(const std::initializer_list<std::string> strings)
             {
                 // prevent optimizer to work too hard ...
-                const auto& first = strings.begin();
-                const auto& last = std::prev(strings.end());
+                const auto first = strings.begin();
+                const auto last = std::prev(strings.end());
                 return *first + *last;
                 //std::cout << "first=" << *first << std::endl;
                 //std::cout << "last=" << *last << std::endl;
