@@ -58,7 +58,7 @@ namespace PerfectForwarding {
         T obj1 = arg1;
         std::println("[{}]", arg1);
 
-        T obj2 = std::forward<U>(arg2);
+        U obj2 = std::forward<U>(arg2);
         std::println("[{}]", arg2);
     }
 

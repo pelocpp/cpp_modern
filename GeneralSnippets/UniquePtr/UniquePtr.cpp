@@ -142,7 +142,7 @@ namespace UniquePointer_SourceSinkPattern
 
 namespace UniquePointerWrappingResourceHandles {
 
-    // stateless callable object to delete FILE files
+    // stateless callable object to close FILE files
     struct FILE_Deleter
     {
         void operator() (FILE* pFile) const
