@@ -278,7 +278,40 @@ namespace Lambdas {
         std::cout << "Const Value: " << ConstValue << std::endl;
     }
 
+    // Another IIFE Examples:
+    // Lambda are defined 'constexpr' - some concrete values are computed
+    auto constexpr times = [] (int n, int m) {
+
+        auto result = m;
+        for (size_t i{ 1 }; i != n; ++i) {
+            result *= m;
+        }
+        return result;
+    };
+
+    template <typename T>
+    auto constexpr power = [](T base, T exp) {
+
+        auto result = base;
+        for (size_t i{ 1 }; i != exp; ++i) {
+            result *= base;
+        }
+        return result;
+    };
+
     static void test_12() {
+
+        // IIFE - Immediately Invoked Functional Expression:
+        // some real-world examples
+
+        constexpr auto twoTimesTen = times(2, 10);
+        constexpr auto fiveTimesTen = times(5, 10);
+
+        constexpr auto twoToThePowerOfTen = power<int>(2, 10);
+        constexpr auto threeToThePowerOfThree = power<double>(3.0, 3.0);
+    }
+
+    static void test_13() {
 
         // Feature: Generalized Lambda Capture
 
@@ -337,6 +370,7 @@ void main_lambdas()
     test_10();
     test_11();
     test_12();
+    test_13();
 }
 
 // =====================================================================================
