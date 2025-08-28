@@ -7,14 +7,16 @@ import modern_cpp_exercises;
 
 import std;
 
-#pragma message("Collection of Modern C++-Code Examples - Copyright (C) 2019-2025 Peter Loos")
+#define MessageText "Collection of introductory C Code Examples - Copyright (C) 2025 Peter Loos."
+
+#pragma message(MessageText)
 
 int main()
 {
     //extern int _main_modules();
     //_main_modules();
 
-    std::println("[Collection of Modern C++-Code Examples - Copyright (C) 2019-2025 Peter Loos]");
+    std::println(MessageText);
 
     // main entry points code snippets
     try
@@ -113,7 +115,7 @@ int main()
         std::println("Exception: {}", ex.what());
     }
 
-    std::println("[Done.]");
+    std::println("Done.");
     return 0;
 }
 

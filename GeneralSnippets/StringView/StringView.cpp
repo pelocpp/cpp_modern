@@ -35,15 +35,15 @@ namespace StringViewDemonstration {
         std::println("{}", s);
         std::println("{}", s.size());
 
-        std::string sub{ s.substr(8, 5) };
+        std::string sub{ s.substr(5, 23) };
         std::println("{}", sub);
         std::println("{}", sub.size());
 
-        std::string_view sv{ "This is a std::string object" };
+        std::string_view sv{ "This is a std::string_view object" };
         std::println("{}", sv);
         std::println("{}", sv.size());
 
-        std::string_view sv_sub = sv.substr(8, 5);
+        std::string_view sv_sub = sv.substr(5, 28);
         std::println("{}", sv_sub);
         std::println("{}", sv_sub.size());
     }
