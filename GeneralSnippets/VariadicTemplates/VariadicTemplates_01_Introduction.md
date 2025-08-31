@@ -18,7 +18,7 @@
   * [Das *Parameter Pack*](#link2)
   * [Expansion eines Parameter Packs: Datentypen und Argumente](#link3)
   * [Ein einfaches Beispiel: `add`-Funktion mit beliebig vielen Argumenten](#link4)
-  * [ Zugriff auf die einzelnen Elemente eines Parameter Packs](#link5)
+  * [Zugriff auf die einzelnen Elemente eines Parameter Packs](#link5)
   * [Leeres Parameter Pack](#link6)
   * [Wo können Parameter Pack Expansionen auftreten?](#link7)
   * [Der `sizeof...` Operator](#link8)
