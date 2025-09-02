@@ -212,7 +212,7 @@
   * Modularisierte Standardbibliothek
   * The Return of &bdquo;`printf`&rdquo;: `std::print(ln)` in C++ 23
   * C++ Standard-Attribute
-  * Neue Klasse zur Fehlerbehandlung: `std::std::expected`
+  * Neue Klasse zur Fehlerbehandlung: `std::expected`
   * Klasse `std::source_location`
   * Funktion `std::to_underlying`
 

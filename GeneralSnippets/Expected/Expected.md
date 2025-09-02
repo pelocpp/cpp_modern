@@ -1,4 +1,4 @@
-# Klasse `std::expected`
+# Neue Klasse zur Fehlerbehandlung: `std::expected`
 
 [Zurück](../../Readme.md)
 
@@ -12,7 +12,7 @@
 
   * [Allgemeines](#link1)
   * [Tradionelle Vorgehensweisen bei der Behandlung von Fehlersituationen](#link2)
-  * [Klasse `std::std::expected`](#link3)
+  * [Klasse `std::expected`](#link3)
   * [Methode `and_then`](#link4)
   * [ Methode `transform`](#link5)
   * [Ein weiteres Beispiel zum Verketten von Methoden](#link6)
@@ -44,7 +44,7 @@ Im herkömmlichen C/C++&ndash;Stil kennt man zwei Vorgehensweisen bei der Betrach
 
 ---
 
-## Klasse `std::std::expected` <a name="link3"></a>
+## Klasse `std::expected` <a name="link3"></a>
 
 Die Verwendung von `std::expected` beginnt mit der Erstellung eines Objekts, das entweder einen Wert oder einen Fehler enthalten kann.
 Der Typ `std::expected<T, E>` repräsentiert einen erwarteten Wert vom Typ `T` oder einen Fehler vom Typ `E`.
