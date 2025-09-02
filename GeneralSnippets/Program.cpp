@@ -50,6 +50,7 @@ int main()
         //main_erase_remove_idiom();
         //main_expression_templates();
         //main_exception_safety();
+        main_expected();
         //main_explicit_keyword();
         //main_folding();
         //main_functional_programming_ranges();

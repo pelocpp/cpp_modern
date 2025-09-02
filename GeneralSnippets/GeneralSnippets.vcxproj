@@ -234,6 +234,8 @@
     <ClCompile Include="Exercises\Module_Exercises_15_SmartPointers.ixx" />
     <ClCompile Include="Exercises\Module_Exercises_16_GenericLambdas.ixx" />
     <ClCompile Include="Exercises\Module_Exercises_17_Concepts.ixx" />
+    <ClCompile Include="Expected\Expected.cpp" />
+    <ClCompile Include="Expected\Module_Expected.ixx" />
     <ClCompile Include="Explicit\Explicit.cpp" />
     <ClCompile Include="Explicit\Module_Explicit.ixx" />
     <ClCompile Include="ExpressionTemplates\ExpressionTemplates.cpp" />
@@ -406,6 +408,7 @@
     <None Include="Exercises\Exercises_13_FunctionalProgramming.md" />
     <None Include="Exercises\Exercises.md" />
     <None Include="Exercises\Exercises_17_Concepts.md" />
+    <None Include="Expected\Expected.md" />
     <None Include="Explicit\Explicit.md" />
     <None Include="ExpressionTemplates\ExpressionTemplates.md" />
     <None Include="Folding\Folding.md" />
