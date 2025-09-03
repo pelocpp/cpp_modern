@@ -150,6 +150,7 @@ Es folgt eine tabellarische Auflistung dieser Unterverzeichnisse.
 | [Default Initialization](GeneralSnippets/DefaultInitialization/DefaultInitialization.md)| Default-Initialisierung für Member-Variablen |
 | [*Erase-Remove* Idiom](GeneralSnippets/EraseRemoveIdiom/EraseRemoveIdiom.md) | Das *Erase-Remove*-Idiom |
 | [Exception Safety](GeneralSnippets/ExceptionSafety/ExceptionSafety.md) | Ausnahmesicherheit / *Exception Safety* |
+| [Expected](GeneralSnippets/Expected/Expected.md) | Neue Klasse zur Fehlerbehandlung: `std::expected` |
 | [Explicit](GeneralSnippets/Explicit/Explicit.md) | Schlüsselwort `explicit` |
 | [Expression Templates](GeneralSnippets/ExpressionTemplates/ExpressionTemplates.md) | Expression Templates |
 | [Folding](GeneralSnippets/Folding/Folding.md) | *Folding Expressions* |

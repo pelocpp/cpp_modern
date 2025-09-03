@@ -654,6 +654,12 @@
     <ClCompile Include="Algorithms\Module_Algorithms.ixx">
       <Filter>Modules</Filter>
     </ClCompile>
+    <ClCompile Include="Expected\Expected.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Expected\Module_Expected.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -1041,6 +1047,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="StringView\cpp_string_view_02.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Expected\Expected.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
