@@ -24,7 +24,7 @@
 
 <img src="cpp_std_expected.svg" width="800">
 
-`std::expected` ist eine leistungsstarke Funktion, die in C++ 23 eingeführt wurde
+`std::expected` ist eine leistungsstarke Klasse, die in C++ 23 eingeführt wurde
 und eine moderne, typsichere Alternative zu herkömmlichen Methoden der Fehlerbehandlung bietet.
 
 `std::expected` ermöglicht es Entwicklern, einen Wert oder einen Fehler in einem einzelnen Objekt darzustellen,
@@ -42,14 +42,60 @@ Im herkömmlichen C/C++&ndash;Stil kennt man zwei Vorgehensweisen bei der Betrach
   * Return Codes
   * Werfen und Fangen von *Exception*-Objekten
 
+
+#### Ein Beispiel zu Return Codes:
+
+```cpp
+01: bool divideUsingReturnCodes(double numerator, double denominator, double& result, std::string& error) {
+02: 
+03:     if (denominator == 0.0) {
+04:         error = "Error: Division by zero";
+05:         return false;
+06:     }
+07: 
+08:     result = numerator / denominator;
+09:     return true;
+10: }
+```
+
+#### Ein Beispiel zum Werfen und Fangen von *Exception*-Objekten:
+
+
+```cpp
+01: double divideException(double numerator, double denominator) {
+02: 
+03:     if (denominator == 0.0) {
+04:         throw std::runtime_error("Error: Division by zero");
+05:     }
+06: 
+07:     return numerator / denominator;
+08: }
+09: 
+10: void testDivideException()
+11: {
+12:     try
+13:     {
+14:         divideException(10, 0);
+15:     }
+16:     catch (const std::runtime_error& error)
+17:     {
+18:         std::println("Error: {}", error.what());
+19:     }
+20:     catch (const std::exception& error)
+21:     {
+22:         std::println("Error: {}", error.what());
+23:     }
+24: }
+```
+
 ---
 
 ## Klasse `std::expected` <a name="link3"></a>
 
-Die Verwendung von `std::expected` beginnt mit der Erstellung eines Objekts, das entweder einen Wert oder einen Fehler enthalten kann.
+Die Verwendung der Klasse `std::expected` beginnt mit der Erstellung eines Objekts, das entweder einen Wert oder einen Fehler enthalten kann.
 Der Typ `std::expected<T, E>` repräsentiert einen erwarteten Wert vom Typ `T` oder einen Fehler vom Typ `E`.
 
-In diesem Beispiel ist `divide` eine Funktion, die zwei Gleitpunktwerte verarbeitet
+In nächsten Beispiel ist `divide` eine Funktion, die zwei Gleitpunktwerte verarbeitet
 und ein `std::expected<int, std::string>`-Objekt zurückgibt.
 
 Wenn der Nenner Null ist, gibt die Funktion eine Fehlermeldung mit `std::unexpected` zurück;
@@ -95,7 +141,7 @@ und mit den Methoden `value` und `error()` könnte man auf den enthaltenen Wert b
 ## Methode `and_then` <a name="link4"></a>
 
 In diesem Code wird die Methode `and_then` demonstriert,
-um eine Operation zu verketten, die das Ergebnis einer erfolgreichen Division quadriert.
+um eine Operation zu verketten, die das Ergebnis einer erfolgreichen Division quadriert:
 
 ```cpp
 01: auto square(auto value) {
@@ -115,7 +161,7 @@ um eine Operation zu verketten, die das Ergebnis einer erfolgreichen Division qu
 15:     return squareResult;
 16: }
 17: 
-18: sstd::expected<double, std::string> squareIfSuccessEx(double numerator, double denominator) {
+18: std::expected<double, std::string> squareIfSuccessEx(double numerator, double denominator) {
 19: 
 20:     return divide(numerator, denominator).and_then(
 21:         [](auto value) {
@@ -217,11 +263,11 @@ falls dieser vorhanden ist:
 Wir stellen ein weiteres Beispiel zum Verketten mehrerer Methoden vor.
 Je nach dem Eingabewert im ersten Methodenaufruf können wir in einer der verketteten Methoden einen Fehler beobachten bzw. verursachen.
 
-Es geht bei dem Beispiel darum zu veranschaulichen, dass es nicht um die mögliche Fehlerursache in
+Es geht bei diesem Beispiel darum zu veranschaulichen, dass es nicht um die mögliche Fehlerursache in
 der zweiten oder dritten Methode geht.
 
 Es geht darum,  dass entweder die ganze Kette funktioniert oder eben nicht.
-Man ist nicht daran interessiert, in Erfahrung zu bringen, in welchen Kettenglied ein Fehler aufgetreten ist.
+Man ist nicht daran interessiert, in Erfahrung zu bringen, in welchem Kettenglied ein Fehler aufgetreten ist.
 
 
 ```cpp
@@ -273,6 +319,15 @@ Man ist nicht daran interessiert, in Erfahrung zu bringen, in welchen Kettenglie
 ---
 
 ## Literaturhinweise  <a name="link7"></a>
+
+Die Anregungen zu diesem Code-Snippet finden sich unter anderem in
+[The Definitive Guide to std::expected in C++](https://johnfarrier.com/the-definitive-guide-to-std-expected-in-c/)<br>(abgerufen am 04.09.2025)
+vor.
+
+Weitere gute Beispiele gibt Bartlomiej Filipek in seinen zwei Artikeln
+[Using std::expected from C++23](https://www.cppstories.com/2024/expected-cpp23/) (abgerufen am 04.09.2025)
+und
+[Function Composition and the Pipe Operator in C++23 &ndash; with `std::expected`](https://www.cppstories.com/2024/pipe-operator/) (abgerufen am 04.09.2025).
 
 ---
 
