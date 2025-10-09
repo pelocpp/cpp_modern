@@ -14,7 +14,7 @@ public:
 
 private:
     std::chrono::steady_clock::time_point m_begin;
-    enum class Resolution m_resolution;
+    enum Resolution m_resolution;
 
 public:
     ScopedTimer() : ScopedTimer{ Resolution::Milli }
@@ -22,7 +22,7 @@ public:
         startWatch();
     }
 
-    ScopedTimer(enum class Resolution resolution) : m_resolution{ resolution }
+    ScopedTimer(enum Resolution resolution) : m_resolution{ resolution }
     {
         startWatch();
     }
