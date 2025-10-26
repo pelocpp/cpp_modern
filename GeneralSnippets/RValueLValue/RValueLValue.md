@@ -118,19 +118,19 @@ ein temporäres Objekt zuzuweisen, einer non-`const` *LValue*-Referenz (`T&`) je
 *Beispiel*:
 
 ```cpp
-const int& r1 = 5;   // ✅ OK: binds temporary to const reference
-int& r2 = 5;         // ❌ Error: cannot bind temporary to non-const reference
+const int& r1 = 123;   // ✅ OK: binds temporary to const reference
+int& r2 = 123;         // ❌ Error: cannot bind temporary to non-const reference
 ```
 
 Die Frage ist: Warum funktioniert die erste Zeile, die zweite jedoch nicht?
 
 ### Was ist ein &bdquo;temporäres Objekt&rdquo;?
 
-Ein temporäres Objekt (ein *RValue*-Wert) ist ein vom Compiler für kurze Zeit erstelltes Objekt &ndash; es wird nicht in einer benannten Variable gespeichert.
+Ein temporäres Objekt (ein *RValue*) ist ein vom Compiler für kurze Zeit erstelltes Objekt &ndash; es wird nicht in einer benannten Variable gespeichert.
 
 ```cpp
 std::string("hello")   // temporary string object
-5 + 3                  // temporary int result variable
+123 + 456              // temporary int result variable
 Foo()                  // temporary Foo object
 ```
 
@@ -154,11 +154,11 @@ int& ref = x;  // ✅ OK: 'x' is modifiable and persists
 Betrachten wir folgende Anweisungen:
 
 ```cpp
-int& r = 123;  // ❌ imagine if this worked
-r = 456;      // modifies ... what exactly?
+int& r = 123;  // ❌ imagine if this worked - this line does NOT compile
+r = 456;       // modifies ... what exactly?
 ```
 
-Das Literal 123 ist ein temporärer *RValue*-Wert.
+Das Literal 123 ist ein temporärer *RValue*.
 Wenn Sie ihn ändern würden, würden Sie in ein Objekt schreiben, das kurz vor dem Verschwinden steht &ndash; das wäre sinnlos und unsicher.
 
 C++ verbietet daher die Bindung einer nicht-konstanten Referenz an einen temporären Wert, weil:
@@ -193,12 +193,15 @@ const std::string& s = std::string("hello") + " world";
 std::cout << s;                    // ✅ prints safely, temporary kept alive
 ```
 
+### Zusammenfassung
+
 Damit können wir folgende Aussagen treffen:
 
   * Ein temporärer Wert ist kurzlebig.
   * Eine nicht-konstante Referenz könnte versuchen, ihn zu verändern – gefährlich und deshalb in der Sprache nicht zugelassen.
   * Eine konstante Referenz liest ihn nur &ndash; sicher.
   * Daher erlaubt C++ die Bindung temporärer Werte nur an konstante Referenzen und verlängert sogar deren Lebensdauer.
+
 
 ---
 
