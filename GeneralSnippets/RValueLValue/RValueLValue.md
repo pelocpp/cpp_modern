@@ -13,7 +13,8 @@
   * [Wertekategorien](#link1)
   * [Funktionsüberladungen mit *RValue* und *LValue* Referenzen als Parametertyp](#link2)
   * [`std::move`](#link3)
-  * [Zusammenfassung:*RValue* Referenzen als Parametertyp](#link4)
+  * [Die Besonderheit von `const` *LValue*-Referenzen](#link4)
+  * [Zusammenfassung:*RValue* Referenzen als Parametertyp](#link5)
 
 ---
 
@@ -109,7 +110,7 @@ indem man die Funktion `std::move` einsetzt
 
 ---
 
-## Die Besonderheit von `const` *LValue*-Referenzen
+## Die Besonderheit von `const` *LValue*-Referenzen <a name="link4"></a>
 
 Warum ist es in C++ möglich, einer `const` *LValue*-Referenz (`const T&`)
 ein temporäres Objekt zuzuweisen, einer non-`const` *LValue*-Referenz (`T&`) jedoch nicht?
@@ -128,19 +129,17 @@ Die Frage ist: Warum funktioniert die erste Zeile, die zweite jedoch nicht?
 Ein temporäres Objekt (ein *RValue*-Wert) ist ein vom Compiler für kurze Zeit erstelltes Objekt &ndash; es wird nicht in einer benannten Variable gespeichert.
 
 ```cpp
-std::string("hello")   // temporary string
-5 + 3                  // temporary int result
+std::string("hello")   // temporary string object
+5 + 3                  // temporary int result variable
 Foo()                  // temporary Foo object
 ```
 
 ### Was ist eine *LValue*-Referenz?
 
-Eine nicht-konstante *LValue*-Referenz (`T&`) bedeutet:
-
+Eine nicht-konstante *LValue*-Referenz (`T&`) bedeutet:<br />
 &bdquo;Ich beziehe mich auf ein benanntes, existierendes, veränderbares Objekt.&rdquo;
 
-Sie verspricht:
-
+Sie verspricht:<br />
 Das Objekt existiert über den Ausdruck hinaus,
 und Sie können es über die Referenz verändern.
 
@@ -149,7 +148,27 @@ int x = 123;
 int& ref = x;  // ✅ OK: 'x' is modifiable and persists
 ```
 
-### Warum kann eine konstante *Lvalue*-Referenz an ein temporäres Objekt gebunden werden
+
+### Warum kann man eine nicht-konstante Referenz (T&) nicht an ein temporäres Objekt (Variable) binden?
+    
+Betrachten wir folgende Anweisungen:
+
+```cpp
+int& r = 123;  // ❌ imagine if this worked
+r = 456;      // modifies ... what exactly?
+```
+
+Das Literal 123 ist ein temporärer *RValue*-Wert.
+Wenn Sie ihn ändern würden, würden Sie in ein Objekt schreiben, das kurz vor dem Verschwinden steht &ndash; das wäre sinnlos und unsicher.
+
+C++ verbietet daher die Bindung einer nicht-konstanten Referenz an einen temporären Wert, weil:
+
+  * Der temporäre Wert wird am Ende der Anweisung zerstört.
+  * Die Referenz könnte dann auf ein Dangling-Objekt verweisen.
+  * Und da die Referenz Änderungen zulässt, ist sie unsicher.
+
+
+### Warum kann eine konstante *LValue*-Referenz an ein temporäres Objekt (Variable) gebunden werden?
 
 ```cpp
 const int& r = 123;  // ✅ OK
@@ -174,7 +193,7 @@ const std::string& s = std::string("hello") + " world";
 std::cout << s;                    // ✅ prints safely, temporary kept alive
 ```
 
-### Zusammenfassung
+Damit können wir folgende Aussagen treffen:
 
   * Ein temporärer Wert ist kurzlebig.
   * Eine nicht-konstante Referenz könnte versuchen, ihn zu verändern – gefährlich und deshalb in der Sprache nicht zugelassen.
@@ -183,7 +202,7 @@ std::cout << s;                    // ✅ prints safely, temporary kept alive
 
 ---
 
-## Zusammenfassung: *RValue* Referenzen als Parametertyp <a name="link4"></a>
+## Zusammenfassung: *RValue* Referenzen als Parametertyp <a name="link5"></a>
 
 Mit der Einführung von *RValue* Referenzen können diese natürlich auch als Parameter
 in Funktionen oder Methoden erscheinen:
