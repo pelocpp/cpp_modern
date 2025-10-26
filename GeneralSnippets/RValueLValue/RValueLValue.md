@@ -1,6 +1,6 @@
-# *RValues* und *LValues*
+ï»¿# *RValues* und *LValues*
 
-[Zurück](../../Readme.md)
+[ZurÃ¼ck](../../Readme.md)
 
 ---
 
@@ -11,7 +11,7 @@
 ## Inhalt
 
   * [Wertekategorien](#link1)
-  * [Funktionsüberladungen mit *RValue* und *LValue* Referenzen als Parametertyp](#link2)
+  * [FunktionsÃ¼berladungen mit *RValue* und *LValue* Referenzen als Parametertyp](#link2)
   * [`std::move`](#link3)
   * [Zusammenfassung:*RValue* Referenzen als Parametertyp](#link4)
 
@@ -20,14 +20,14 @@
 ## Wertekategorien <a name="link1"></a>
 
 *RValues* und *LValues* zahlen in C++ zu so genannten *Wertekategorien*.
-Auf Basis dieser Wertekategorien gibt es für den C++&ndash;Übersetzer Regeln,
-die dieser beim Erstellen, Kopieren und Verschieben temporärer Objekte
-während der Auswertung eines Ausdrucks befolgen muss.
+Auf Basis dieser Wertekategorien gibt es fÃ¼r den C++&ndash;Ãœbersetzer Regeln,
+die dieser beim Erstellen, Kopieren und Verschieben temporÃ¤rer Objekte
+wÃ¤hrend der Auswertung eines Ausdrucks befolgen muss.
 
 Unter einem *RValue* verstehen wir
 
   * Konstante
-  * temporäre Objekte
+  * temporÃ¤re Objekte
   * Objekte ohne Namen
 
 ```cpp
@@ -37,7 +37,7 @@ int n = 123;
 // std::string{ "ABC"} ist ein Objekt ohne Namen:
 std::string s = std::string{ "ABC"};
 
-// std::string{ "ABC"} + std::string{ "DEF"} ist ein temporäres Objekt:
+// std::string{ "ABC"} + std::string{ "DEF"} ist ein temporÃ¤res Objekt:
 std::string a = std::string{ "ABC"} + std::string{ "DEF"};
 ```
 
@@ -45,19 +45,19 @@ Unter einem *LValue* verstehen wir
 
   * einen Ausdruck, der eine Referenz eines Objekts beschreibt.
     Zum Beispiel Objekte mit Namen oder auch Objekte,
-    die in einem Array über einen Index erreichbar sind.
+    die in einem Array Ã¼ber einen Index erreichbar sind.
 
 ---
 
-## Funktionsüberladungen mit *RValue* und *LValue* Referenzen als Parametertyp <a name="link2"></a>
+## FunktionsÃ¼berladungen mit *RValue* und *LValue* Referenzen als Parametertyp <a name="link2"></a>
 
 Wenn `X` ein Typ ist, wird `X&&` als *RValue* Referenz auf `X` bezeichnet.
-Zur besseren Unterscheidung wird die gewöhnliche Referenz `X&` jetzt auch als *LValue* Referenz bezeichnet.
-Eine *RValue* Referenz ist ein Typ, der sich - von einigen Ausnahmen abgesehen - ähnlich
-wie die normale *LValue* Referenz `X&` verhält.
+Zur besseren Unterscheidung wird die gewÃ¶hnliche Referenz `X&` jetzt auch als *LValue* Referenz bezeichnet.
+Eine *RValue* Referenz ist ein Typ, der sich - von einigen Ausnahmen abgesehen - Ã¤hnlich
+wie die normale *LValue* Referenz `X&` verhÃ¤lt.
 
-Das Wichtigste ist, dass *LValue*s bei der Auflösung von Funktionsüberladungen die
-herkömmlichen *LValue*-Referenzen bevorzugen, während *RValue*s
+Das Wichtigste ist, dass *LValue*s bei der AuflÃ¶sung von FunktionsÃ¼berladungen die
+herkÃ¶mmlichen *LValue*-Referenzen bevorzugen, wÃ¤hrend *RValue*s
 die neuen *RValue*-Referenzen bevorzugen:
 
 ```cpp
@@ -73,8 +73,8 @@ die neuen *RValue*-Referenzen bevorzugen:
 
 Eine der Kernaussagen bei *RValue* / *LValue* Referenzen lautet also:
  
-Mit *Rvalue*-Referenzen kann eine Funktion zur Übersetzungszeit (mittels Überladung)
-unter der Bedingung "*Werde ich für einen L-Wert oder einen R-Wert aufgerufen?*" verzweigen.
+Mit *Rvalue*-Referenzen kann eine Funktion zur Ãœbersetzungszeit (mittels Ãœberladung)
+unter der Bedingung "*Werde ich fÃ¼r einen L-Wert oder einen R-Wert aufgerufen?*" verzweigen.
 
 Siehe weiteres dazu im korrespondieren [Quellcode](RValueLValue.cpp).
 
@@ -109,25 +109,99 @@ indem man die Funktion `std::move` einsetzt
 
 ---
 
-## Zusammenfassung: *RValue* Referenzen als Parametertyp <a name="link4"></a>
+## Die Besonderheit von `const` *LValue*-Referenzen
 
-Mit der Einführung von *RValue* Referenzen können diese natürlich auch als Parameter
-in Funktionen oder Methoden erscheinen:
+Warum ist es in C++ mÃ¶glich, einer `const` *LValue*-Referenz (`const T&`)
+ein temporÃ¤res Objekt zuzuweisen, einer non-`const` *LValue*-Referenz (`T&`) jedoch nicht?
 
-| Funktions-/Methodensignatur | Zulässige Parametertypen |
-|:-|:-|
-| `void function(Type param)`<br />`void X::method(Type param)` | Sowohl *LValue* Referenzen als auch *RValue* Referenzen können als Parameter übergeben werden. |
-| `void function(Type& param)`<br />`void X::method(Type& param)` | Als Parameter können nur *LValue* Referenzen übergeben werden. |
-| `void function(const Type& param)`<br />`void X::method(const Type& param)` | Sowohl *LValue* Referenzen als auch *RValue* Referenzen können als Parameter übergeben werden. |
-| `void function(Type&& param)`<br />`void X::method(Type&& param)` | Als Parameter können nur *RValue* Referenzen übergeben werden. |
+*Beispiel*:
 
-*Tabelle* 1: Unterschiedliche Funktions- und Methodensignaturen und ihre zulässigen Parametertypen.
+```cpp
+const int& r1 = 5;   // âœ… OK: binds temporary to const reference
+int& r2 = 5;         // âŒ Error: cannot bind temporary to non-const reference
+```
 
-Obwohl *RValue*-Referenzen natürlich für Parameter in jeder Funktion oder Methode verwendet werden können,
-ist ihr prädestiniertes Anwendungsgebiet die [*Verschiebe-Semantik*](../../GeneralSnippets/MoveSemantics/MoveSemantics.md).
+Die Frage ist: Warum funktioniert die erste Zeile, die zweite jedoch nicht?
+
+### Was ist ein &bdquo;temporÃ¤res Objekt&rdquo;?
+
+Ein temporÃ¤res Objekt (ein *RValue*-Wert) ist ein vom Compiler fÃ¼r kurze Zeit erstelltes Objekt &ndash; es wird nicht in einer benannten Variable gespeichert.
+
+```cpp
+std::string("hello")   // temporary string
+5 + 3                  // temporary int result
+Foo()                  // temporary Foo object
+```
+
+### Was ist eine *LValue*-Referenz?
+
+Eine nicht-konstante *LValue*-Referenz (`T&`) bedeutet:
+
+&bdquo;Ich beziehe mich auf ein benanntes, existierendes, verÃ¤nderbares Objekt.&rdquo;
+
+Sie verspricht:
+
+Das Objekt existiert Ã¼ber den Ausdruck hinaus,
+und Sie kÃ¶nnen es Ã¼ber die Referenz verÃ¤ndern.
+
+```cpp
+int x = 123;
+int& ref = x;  // âœ… OK: 'x' is modifiable and persists
+```
+
+### Warum kann eine konstante *Lvalue*-Referenz an ein temporÃ¤res Objekt gebunden werden
+
+```cpp
+const int& r = 123;  // âœ… OK
+```
+
+Folgendes passiert im Hintergrund:
+
+  * Der Compiler erstellt ein temporÃ¤res `int`-Objekt fÃ¼r den Wert 123.
+  * Er bindet dieses temporÃ¤re Objekt an `r`.
+  * Da `r` konstant ist, kann das temporÃ¤re Objekt nicht geÃ¤ndert werden.
+  * Der Compiler verlÃ¤ngert die Lebensdauer des temporÃ¤ren Objekts, bis `r` den GÃ¼ltigkeitsbereich verlÃ¤sst.
+
+Somit ist alles sicher:
+
+  * Das temporÃ¤re Objekt existiert so lange wie die Referenz.
+  * Sie kÃ¶nnen nur daraus lesen, nicht darauf schreiben.
+
+Dies erklÃ¤rt, warum die beiden folgenden Anweisungen wie beabsichtigt ausgefÃ¼hrt werden:
+
+```cpp
+const std::string& s = std::string("hello") + " world";
+std::cout << s;                    // âœ… prints safely, temporary kept alive
+```
+
+### Zusammenfassung
+
+  * Ein temporÃ¤rer Wert ist kurzlebig.
+  * Eine nicht-konstante Referenz kÃ¶nnte versuchen, ihn zu verÃ¤ndern â€“ gefÃ¤hrlich und deshalb in der Sprache nicht zugelassen.
+  * Eine konstante Referenz liest ihn nur &ndash; sicher.
+  * Daher erlaubt C++ die Bindung temporÃ¤rer Werte nur an konstante Referenzen und verlÃ¤ngert sogar deren Lebensdauer.
 
 ---
 
-[Zurück](../../Readme.md)
+## Zusammenfassung: *RValue* Referenzen als Parametertyp <a name="link4"></a>
+
+Mit der EinfÃ¼hrung von *RValue* Referenzen kÃ¶nnen diese natÃ¼rlich auch als Parameter
+in Funktionen oder Methoden erscheinen:
+
+| Funktions-/Methodensignatur | ZulÃ¤ssige Parametertypen |
+|:-|:-|
+| `void function(Type param)`<br />`void X::method(Type param)` | Sowohl *LValue* Referenzen als auch *RValue* Referenzen kÃ¶nnen als Parameter Ã¼bergeben werden. |
+| `void function(Type& param)`<br />`void X::method(Type& param)` | Als Parameter kÃ¶nnen nur *LValue* Referenzen Ã¼bergeben werden. |
+| `void function(const Type& param)`<br />`void X::method(const Type& param)` | Sowohl *LValue* Referenzen als auch *RValue* Referenzen kÃ¶nnen als Parameter Ã¼bergeben werden. |
+| `void function(Type&& param)`<br />`void X::method(Type&& param)` | Als Parameter kÃ¶nnen nur *RValue* Referenzen Ã¼bergeben werden. |
+
+*Tabelle* 1: Unterschiedliche Funktions- und Methodensignaturen und ihre zulÃ¤ssigen Parametertypen.
+
+Obwohl *RValue*-Referenzen natÃ¼rlich fÃ¼r Parameter in jeder Funktion oder Methode verwendet werden kÃ¶nnen,
+ist ihr prÃ¤destiniertes Anwendungsgebiet die [*Verschiebe-Semantik*](../../GeneralSnippets/MoveSemantics/MoveSemantics.md).
+
+---
+
+[ZurÃ¼ck](../../Readme.md)
 
 ---
