@@ -71,7 +71,7 @@ namespace StdExpected {
             return std::unexpected{ "Error: Division by zero" };
         }
 
-        return std::expected<double, std::string> { numerator / denominator};
+        return std::expected<double, std::string> { numerator / denominator };
     }
 
     static void test_excepted_01()
@@ -279,10 +279,10 @@ void main_expected()
 {
     using namespace StdExpected;
 
-    //test_excepted_01();   // std::expected
-    //test_excepted_02();   // and_then
-    //test_excepted_03();   // transform
-    //test_excepted_04();   // transform
+    test_excepted_01();   // std::expected
+    test_excepted_02();   // and_then
+    test_excepted_03();   // transform
+    test_excepted_04();   // transform
     test_excepted_05();
     test_excepted_06();
 }
