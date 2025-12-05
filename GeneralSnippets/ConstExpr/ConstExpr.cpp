@@ -36,9 +36,9 @@ namespace ConstExprComplex {
         constexpr Complex c1{ 1.0, 2.0 };
         constexpr Complex c2{ 3.0, 3.0 };
 
-        constexpr float r1 = c1.real();
-        constexpr Complex c3 = c1 + c2;
-        constexpr float r2 = c3.real();
+        constexpr float r1{ c1.real() };
+        constexpr Complex c3{ c1 + c2 };
+        constexpr float r2{ c3.real() };
 
         // verify 'constness' with the help of disassembly and
         // https://www.h-schmidt.net/FloatConverter/IEEE754de.html
@@ -57,16 +57,16 @@ namespace ConstExprDynamicData {
 
     static constexpr int naiveSum(unsigned int n)
     {
-        auto ip = new int[n];
+        auto ip{ new int[n] };
         std::iota(ip, ip + n, 1);
-        auto tmp = std::accumulate(ip, ip + n, 0);
+        auto tmp{ std::accumulate(ip, ip + n, 0) };
         delete[] ip;
         return tmp;
     }
 
     static void testDynamicData()
     {
-        constexpr int sum = naiveSum(10);
+        constexpr int sum{ naiveSum(10) };
         std::println("Sum from 1 up to 10: {}", sum);
     }
 }
