@@ -90,13 +90,13 @@ namespace SharedPointer {
     static void test_03()
     {
         // you can create a const shared pointer from a non-const pointer 
-        std::shared_ptr<int> ptr1{ new int{ 123 } };
-        const std::shared_ptr<const int> ptr2{ ptr1 };
+        std::shared_ptr<int> ptr{ new int{ 123 } };
+        const std::shared_ptr<const int> sp{ ptr };
 
-        // *ptr2 = 456;  // error: 'ptr2': you cannot assign to a variable that is const
+        // *sp = 456;  // error: 'sp': you cannot assign to a variable that is const
 
-        int dummy{ *ptr2 };
-        const int* ip{ ptr2.get() };
+        int dummy{ *sp };
+        const int* ip{ sp.get() };
     }
 
     static void storeSharedPointerEx(const std::shared_ptr<const int>& ptr)
