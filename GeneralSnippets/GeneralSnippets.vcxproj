@@ -390,6 +390,7 @@
     <None Include="EraseRemoveIdiom\EraseRemoveIdiom.md" />
     <None Include="ExceptionSafety\ExceptionSafety.md" />
     <None Include="Exercises\cpp_dividend_divisor.svg" />
+    <None Include="Exercises\cpp_exercise_my_string.svg" />
     <None Include="Exercises\Exercises_14_ConstExpr.md" />
     <None Include="Exercises\Exercises_15_SmartPointers.md" />
     <None Include="Exercises\Exercises_16_GenericLambdas.md" />

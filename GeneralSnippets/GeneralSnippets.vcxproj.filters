@@ -1052,6 +1052,9 @@
     <None Include="Expected\Expected.md">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="Exercises\cpp_exercise_my_string.svg">
+      <Filter>Exercises</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="VariadicTemplates\cpp_snippets_mixins_01.png">
