@@ -11,10 +11,11 @@
 ## Inhalt
 
   * [&bdquo;It's about ownership&rdquo;](#link1)
-  * [Verpacken von Resource Handles in `std::unique_ptr`-Objekten](#link2)
-  * [Verpacken von Win32 HANDLEs in `std::unique_ptr`-Objekten](#link3)
-  * [Das *Source*-*Sink*-Pattern mit `std::unique_ptr<T>`-Objekten](#link4)
-  * [Literaturhinweise](#link5)
+  * [Die Klasse `std::unique_ptr` unterstützt Arrays](#link2)
+  * [Das *Source*-*Sink*-Pattern mit `std::unique_ptr<T>`-Objekten](#link3)
+  * [Verpacken von Resource Handles in `std::unique_ptr`-Objekten](#link4)
+  * [Verpacken von Win32 HANDLEs in `std::unique_ptr`-Objekten](#link5)
+  * [Literaturhinweise](#link6)
 
 ---
 
@@ -26,10 +27,42 @@
 
 ###### Temporärer Besitz: `std::weak_ptr<T>`
 
+---
+
+## Die Klasse `std::unique_ptr` unterstützt Arrays <a name="link2"></a>
+
+Beispiel:
+
+```cpp
+01: // creates a unique_ptr to an array of 5 A objects
+02: std::unique_ptr<A[]> ptr{ std::make_unique<A[]>(5) };
+```
 
 ---
 
-## Verpacken von Resource Handles in `std::unique_ptr`-Objekten <a name="link2"></a>
+## Das *Source*-*Sink*-Pattern mit `std::unique_ptr<T>`-Objekten <a name="link3"></a>
+
+`std::unique_ptr<T>`-Objekte sind weder kopierbar (Kopier-Konstruktor)
+noch ist eine Wertzuweisung (`operator=`) möglich.
+
+Dies schließt interessanterweise nicht aus, dass man Funktionen/Methoden schreiben kann,
+die einen Parameter des Typs `std::unique_ptr<T>` (*by-value*) haben,
+also nicht vom Typ `std::unique_ptr<T>&` (*by-reference*)!
+
+Wir zeigen die Vorgehensweise an einem Beispiel auf &ndash;
+in der Praxis sprechen wir vom *Source*-*Sink*-Pattern:
+
+> Eine Funktion kreiert (`new`) eine Ressource, eine andere gibt sie wieder frei (`delete`).
+Natürlich kommt in diesem Pattern bzgl. des `std::unique_ptr<T>`-Objekts die Move-Semantik zum Tragen.
+Sie muss in diesem Beispiel nur nicht explizit formuliert werden,
+da der Rückgabewert des Erzeugers ein temporäres Objekt ist und infolgedessen der
+Verschiebe-Konstruktor automatisch aufgerufen wird.
+
+Im [Quellcode](UniquePtr.cpp) finden Sie hierzu ein Beispiel vor.
+
+---
+
+## Verpacken von Resource Handles in `std::unique_ptr`-Objekten <a name="link4"></a>
 
 Standardmäßig arbeiten Smart Pointer (`std::unique_ptr`, `std::shared_ptr`) mit Zeigern,
 aber man kann ihre Funktionalität auch verwenden,
@@ -47,7 +80,7 @@ durch ein `std::unique_ptr`-Objekt verwaltet.
 
 ---
 
-## Verpacken von Win32 HANDLEs in `std::unique_ptr`-Objekten <a name="link3"></a>
+## Verpacken von Win32 HANDLEs in `std::unique_ptr`-Objekten <a name="link5"></a>
 
 Ähnliche Überlegungen, wie sie zum Verpacken von Resource Handles angestellt wurden,
 kann man speziell auch für Win32 HANDLEs anstellen.
@@ -116,30 +149,7 @@ kann man speziell auch für Win32 HANDLEs anstellen.
 
 ---
 
-## Das *Source*-*Sink*-Pattern mit `std::unique_ptr<T>`-Objekten <a name="link4"></a>
-
-`std::unique_ptr<T>`-Objekte sind weder kopierbar (Kopier-Konstruktor)
-noch ist eine Wertzuweisung (`operator=`) möglich.
-
-Dies schließt interessanterweise nicht aus, dass man Funktionen/Methoden schreiben kann,
-die einen Parameter des Typs `std::unique_ptr<T>` (*by-value*) haben,
-also nicht vom Typ `std::unique_ptr<T>&` (*by-reference*)!
-
-Wir zeigen die Vorgehensweise an einem Beispiel auf &ndash;
-in der Praxis sprechen wir vom *Source*-*Sink*-Pattern:
-
-> Eine Funktion kreiert (`new`) eine Ressource, eine andere gibt sie wieder frei (`delete`).
-Natürlich kommt in diesem Pattern bzgl. des `std::unique_ptr<T>`-Objekts die Move-Semantik zum Tragen.
-Sie muss in diesem Beispiel nur nicht explizit formuliert werden,
-da der Rückgabewert des Erzeugers ein temporäres Objekt ist und infolgedessen der
-Verschiebe-Konstruktor automatisch aufgerufen wird.
-
-Im [Quellcode](UniquePtr.cpp) finden Sie hierzu ein Beispiel vor.
-
----
-
-## Literaturhinweise <a name="link5"></a>
-
+## Literaturhinweise <a name="link6"></a>
 
 Die Beispiele zu dem Verpacken von Resource Handles in `std::unique_ptr<T>`-Objekten
 stammen aus einem Artikel von

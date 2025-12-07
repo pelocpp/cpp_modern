@@ -19,19 +19,6 @@ module modern_cpp:shared_ptr;
 
 namespace SharedPointer {
 
-    // 'shared ptr' approach
-    static std::shared_ptr<int> loadSharedPointer()
-    {
-        std::shared_ptr<int> tmp{ std::make_shared<int>(123) };
-        return tmp;
-    }
-
-    // note: play with 'call-by-value' or 'call-by-reference'
-    static void storeSharedPointer(std::shared_ptr<int> ptr)
-    {
-        std::println("Inner scope: {}", ptr.use_count());
-    }
-
     static void test_01() {
 
         // 'ptr1' is a shared pointer for a new instance of an int
@@ -77,6 +64,20 @@ namespace SharedPointer {
         // shared ptr are going out of scope right now!
     }
 
+    // ===========================================================================
+
+    static std::shared_ptr<int> loadSharedPointer()
+    {
+        std::shared_ptr<int> tmp{ std::make_shared<int>(123) };
+        return tmp;
+    }
+
+    // note: play with 'call-by-value' or 'call-by-reference'
+    static void storeSharedPointer(std::shared_ptr<int> ptr)
+    {
+        std::println("Inner scope: {}", ptr.use_count());
+    }
+
     static void test_02()
     {
         std::shared_ptr<int> ptr{ loadSharedPointer() };
@@ -87,43 +88,46 @@ namespace SharedPointer {
         // no explicit delete on object ptr: shared ptr goes out of scope!
     }
 
+    // ===========================================================================
+    // std::unique_ptr with arrays
+
+    class A {
+    public:
+        A() {
+            std::println("Constructor A called");
+        }
+
+        ~A() {
+            std::println("Destructor A called");
+        }
+    };
+
     static void test_03()
     {
-        // you can create a const shared pointer from a non-const pointer 
-        std::shared_ptr<int> ptr{ new int{ 123 } };
-        const std::shared_ptr<const int> sp{ ptr };
+        // shared pointer - prior to C++17
+        A* ip{ new A[3] };
+        std::shared_ptr<A> sp{ ip, std::default_delete<A[]>() };
+        std::println();
+        sp.reset();
+        std::println();
 
-        // *sp = 456;  // error: 'sp': you cannot assign to a variable that is const
-
-        int dummy{ *sp };
-        const int* ip{ sp.get() };
-    }
-
-    static void storeSharedPointerEx(const std::shared_ptr<const int>& ptr)
-    {
-        std::println("Inner scope: {}", ptr.use_count());
-        // *ptr = 456;
-    }
-
-    static void test_04()
-    {
-        std::shared_ptr<int> ptr1{ new int{ 123 } };
-
-        const std::shared_ptr<const int> ptr2{ ptr1 };
-
-        storeSharedPointerEx(ptr1);
-        storeSharedPointerEx(ptr2);
+        // shared pointer - C++ 17 
+        std::shared_ptr<A[]> sp2 = std::make_shared<A[]>(3);
+        std::println();
+        sp2.reset();
+        std::println();
     }
 }
+
+// =====================================================================================
 
 void main_shared_ptr() 
 {
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
     using namespace SharedPointer;
     test_01();
-    test_02();
-    test_03();
-    test_04();
+    test_02();  // interaction with functions/methods
+    test_03();  // support of arrays
 }
 
 // =====================================================================================

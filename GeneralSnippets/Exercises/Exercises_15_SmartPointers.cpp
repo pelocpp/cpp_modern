@@ -225,6 +225,26 @@ namespace Exercises_SmartPointers {
         // =============================================================
         // MyString implementation using std::shared_ptr
 
+        // Note:
+        //     This is a theoretical implementation of the task.
+        //     In practice, there is exactly one owner of the string within the class.
+        //     Therefore, the class `std: :unique_ptr` would be the appropriate implementation method.
+
+        // Note the side effects of both implementations:
+        // 
+        //     The Rule of Zero could be applied to the `MyStringSP` class.
+        //     However, the resulting behavior of the `MyStringSP` class is incorrect,
+        //     because copies of `MyStringSP` objects are not real copies (shallow-copy behavior)!
+        // 
+        //     The Rule of Zero is not applicable to the `MyStringUP` class,
+        //     because attempting to copy or assign `MyStringUP` objects results in error messages.
+        //     The copy constructor and the assignment operator must be explicitly implemented
+        //     (with deep-copy behavior).
+        // 
+        //     In both implementations, a destructor can be omitted.
+        //     The destructor of a `std::shared_ptr` or a `std::unique_ptr` object
+        //     is automatically called as being a child object of a parent object in both cases.
+
         class MyStringSP
         {
         private:
@@ -241,7 +261,6 @@ namespace Exercises_SmartPointers {
                 m_length = std::strlen(string);
                 m_string = std::make_shared<char[]>(m_length + 1);
                 std::memcpy(m_string.get(), string, m_length + 1);  // incl. copying '\0'
-
             }
 
             // no destructor necessary

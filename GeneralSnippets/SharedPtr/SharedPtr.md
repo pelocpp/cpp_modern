@@ -13,7 +13,8 @@
   * [&bdquo;It's about ownership&rdquo;](#link1)
   * [`std::make_shared`](#link2)
   * [*Control Block*](#link3)
-  * [Literaturhinweise](#link4)
+  * [Die Klasse `std::shared_ptr` unterstützt Arrays](#link4)
+  * [Literaturhinweise](#link5)
 
 ---
 
@@ -72,7 +73,28 @@ Siehe hierzu *Abbildung* 3:
 
 ---
 
-## Literaturhinweise <a name="link4"></a>
+## Die Klasse `std::shared_ptr` unterstützt Arrays <a name="link4"></a>
+
+Beispiel:
+
+```cpp
+01: // shared pointer - prior to C++17
+02: A* ip{ new A[3] };
+03: std::shared_ptr<A> sp{ ip, std::default_delete<A[]>() };
+04: std::println();
+05: sp.reset();
+06: std::println();
+07: 
+08: // shared pointer - C++ 17 
+09: std::shared_ptr<A[]> sp2 = std::make_shared<A[]>(3);
+10: std::println();
+11: sp2.reset();
+12: std::println();
+```
+
+---
+
+## Literaturhinweise <a name="link5"></a>
 
 Auch in das C++&ndash;Umfeld dringen bisweilen *Fake*-*News* ein:
 

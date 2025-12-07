@@ -11,43 +11,6 @@ module modern_cpp:unique_ptr;
 
 namespace UniquePointerGeneral {
 
-    static std::unique_ptr<int> loadUniquePointer()
-    {
-        std::unique_ptr<int> ptr{ std::make_unique<int>(100) };
-        return ptr;
-    }
-
-    static void storeUniquePointer(std::unique_ptr<int>& ptr)
-    {
-        std::println("*ptr:    {}", *ptr);
-        (*ptr)++;
-        std::println("*ptr:    {}", *ptr);
-
-        // take ownership right now:
-        // std::unique_ptr<int> ptr2{ std::move(ptr) };
-    }
-
-    static void storeUniquePointerSafe(const std::unique_ptr<int>& ptr)
-    {
-        std::println("*ptr:    {}", *ptr);
-        (*ptr)++;
-        std::println("*ptr:    {}", *ptr);
-
-        // ownership CANNOT be taken right now - ptr is const:
-        // std::unique_ptr<int> ptr2{ std::move(ptr) };
-    }
-
-    static void storeUniquePointerAlternate(int* ptr)
-    {
-        std::println("*ptr:    {}", *ptr);
-        (*ptr)++;
-        std::println("*ptr:    {}", *ptr);
-
-        // A) taking ownership right now: MAKES NO SENSE
-        // B) delete: Under no circumstances: 
-        //    pointer is owned by accompanied Unique Ptr
-    }
-
     static void test_01()
     {
         // create a unique_ptr to an int with value 123
@@ -90,6 +53,45 @@ namespace UniquePointerGeneral {
         // Note: pointer behind std::unique_ptr's has been released
     }
 
+    // ===========================================================================
+
+    static std::unique_ptr<int> loadUniquePointer()
+    {
+        std::unique_ptr<int> ptr{ std::make_unique<int>(100) };
+        return ptr;
+    }
+
+    static void storeUniquePointer(std::unique_ptr<int>& ptr)
+    {
+        std::println("*ptr:    {}", *ptr);
+        (*ptr)++;
+        std::println("*ptr:    {}", *ptr);
+
+        // take ownership right now:
+        // std::unique_ptr<int> ptr2{ std::move(ptr) };
+    }
+
+    static void storeUniquePointerSafe(const std::unique_ptr<int>& ptr)
+    {
+        std::println("*ptr:    {}", *ptr);
+        (*ptr)++;
+        std::println("*ptr:    {}", *ptr);
+
+        // ownership CANNOT be taken right now - ptr is const:
+        // std::unique_ptr<int> ptr2{ std::move(ptr) };
+    }
+
+    static void storeUniquePointerAlternate(int* ptr)
+    {
+        std::println("*ptr:    {}", *ptr);
+        (*ptr)++;
+        std::println("*ptr:    {}", *ptr);
+
+        // A) taking ownership right now: MAKES NO SENSE
+        // B) delete: Under no circumstances: 
+        //    pointer is owned by accompanied Unique Ptr
+    }
+
     static void test_02()
     {
         // retrieving a unique pointer from a function
@@ -106,10 +108,25 @@ namespace UniquePointerGeneral {
         std::println("*ptr:    {}", *ptr);
     }
 
+    // ===========================================================================
+    // std::unique_ptr with arrays
+
+    class A {
+    public:
+        A() {
+            std::println("Constructor A called");
+        }
+
+        ~A() {
+            std::println("Destructor A called");
+        }
+    };
+
     static void test_03()
     {
-        // creates a unique_ptr to an array of 20 ints
-        std::unique_ptr<int[]> ptr{ std::make_unique<int[]>(20) };
+        // creates a unique_ptr to an array of 5 A objects
+        std::unique_ptr<A[]> ptr{ std::make_unique<A[]>(5) };
+        ptr.reset();
     }
 }
 
@@ -249,12 +266,14 @@ namespace UniquePointerWrappingWin32Handles {
     }
 }
 
+// =====================================================================================
+
 void main_unique_ptr()
 {
     using namespace UniquePointerGeneral;
-    test_01();
-    test_02();
-    test_03();
+    test_01();   
+    test_02();     // interaction with functions/methods
+    test_03();     // support of arrays
 
     using namespace UniquePointer_SourceSinkPattern;
     test_04();
