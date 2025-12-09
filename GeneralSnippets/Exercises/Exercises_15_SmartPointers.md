@@ -258,11 +258,11 @@ Nun kommen wir auf den zweiten Schwerpunkt der Aufgabe zu sprechen:
 
 ### Regelwerk Rule-of-Zero oder Rule-of-Three?
 
-Es ist das Rule-of-Zero oder Rule-of-Three Regelwerk zu betrachten und in seiner Umsetzung
+Es ist das *Rule-of-Zero* oder *Rule-of-Three* Regelwerk zu betrachten und in seiner Umsetzung
 in der Klasse `MyString` zu begründen. 
 
 1. Frage:<br />
-Kann man das Rule-of-Zero Regelwerk in Anspruch nehmen?
+Kann man das *Rule-of-Zero* Regelwerk in Anspruch nehmen?
  
 In diesem Fall wäre folglich keine der drei fraglichen Methoden/Operatoren Kopierkonstruktor, Wertzuweisungsoperator und Destruktor zu realisieren.
 Verifizieren Sie, ob in Ihrer Realisierung der `MyString`-Klasse diese drei Methoden/Operatoren zur Laufzeit zur Verfügung stehen?
@@ -270,9 +270,9 @@ Welche Ergebnisse erhalten Sie bei der Ausführung?
 
 
 2. Frage:<br />
-Wenn die Antwort auf die erste Frage 'nein' lautet,
+Wenn die Antwort auf die erste Frage &bdquo;Nein&rdquo; lautet,
 wie sieht dann eine Realisierung dieser drei Methoden/Operatoren aus?
-Testen Sie die Implementierung mit ensprechenden Beispielen.
+Testen Sie die Implementierung mit entsprechenden Beispielen.
 
 ### Klasse `MyString` und die Verschiebe-Semantik: Regelwerk Rule-of-Five
 
