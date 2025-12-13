@@ -8,8 +8,8 @@ namespace StdSourceLocation {
 
     static void log(
         const std::string_view message, 
-        const std::source_location location = std::source_location::current()) {
-
+        const std::source_location location = std::source_location::current())
+    {
         std::println("File:          {}", location.file_name());
         std::println("Function Name: {}", location.function_name());
         std::println("Column :       {}", location.column());

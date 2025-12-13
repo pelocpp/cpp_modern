@@ -17,8 +17,8 @@ z. B. Dateiname, Zeilennummer und Funktionsname:
 ```cpp
 01: static void log(
 02:     const std::string_view message, 
-03:     const std::source_location location = std::source_location::current()) {
-04: 
+03:     const std::source_location location = std::source_location::current())
+04: {
 05:     std::println("File:          {}", location.file_name());
 06:     std::println("Function Name: {}", location.function_name());
 07:     std::println("Column :       {}", location.column());
@@ -52,6 +52,18 @@ Function Name: void __cdecl StdSourceLocation::function<const char*>(const char 
 Column :       9
 Line:          23
 ```
+
+*Bemerkung*:<br />
+Die Zeilennummern in der Ausgabe beziehen sich auf den Quellcode im Original.
+Dort befinden sich die Aufrufe der `log`-Methode in den Zeilen 23 bzw. 28 und nicht
+wie verkürzt im Beispielcode oben dargestellt in den Zeilen 15 und 20.
+
+---
+
+## Literaturhinweise
+
+Ein interessanter Artikel &bdquo;Modern C++ flow diagnostic tools&rdquo;
+zur Klasse `std::source_location` findet sich [hier](https://learnmoderncpp.com/2022/08/24/modern-c-flow-diagnostic-tools/).
 
 ---
 
