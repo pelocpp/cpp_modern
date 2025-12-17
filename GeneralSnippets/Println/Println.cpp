@@ -2,6 +2,11 @@
 // Println.cpp // std::print // std::println
 // =====================================================================================
 
+
+module;
+
+#include <cstdint>
+
 module modern_cpp:println;
 
 // defines for custom formatting
@@ -117,6 +122,16 @@ namespace StdPrintln {
         std::println("Binary:       {:#B}", 7);     // "Binary:      0B111"
         std::println("Binary:       {:#15b} ", 31); // "Binary:              0b11111"   (width = 15)
         std::println("Binary:       {:#15B}", 7);   // "Binary:                0B111"   (width = 15)
+    }
+
+    // printing address of a variable  
+    static void test_09()
+    {
+        int n = 123;
+        int* ip = &n;
+
+        std::println("&n: {:#X}", reinterpret_cast<intptr_t>(ip));
+        std::println("&n: {:#x}", reinterpret_cast<intptr_t>(&n));
     }
 }
 
@@ -625,6 +640,7 @@ void main_println()
     test_06();
     test_07();
     test_08();
+    test_09();
 
 #ifdef StdFormatter_01_Basic_Formatter_API
     test_10();
