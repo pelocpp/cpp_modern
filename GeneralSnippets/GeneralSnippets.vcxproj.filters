@@ -1055,6 +1055,14 @@
     <None Include="Exercises\cpp_exercise_my_string.svg">
       <Filter>Exercises</Filter>
     </None>
+    <None Include="WeakPtr\cpp_control_block_02.svg" />
+    <None Include="WeakPtr\cpp_sharedptr_cycle_10.svg" />
+    <None Include="WeakPtr\cpp_sharedptr_cycle_11.svg" />
+    <None Include="Expected\cpp_std_expected.svg" />
+    <None Include="PerfectForwarding\PerfectForwarding_01.md" />
+    <None Include="PerfectForwarding\PerfectForwarding_02.md" />
+    <None Include="PerfectForwarding\PerfectForwarding_03.md" />
+    <None Include="SharedPtr\cpp_control_block_01.svg" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="VariadicTemplates\cpp_snippets_mixins_01.png">
@@ -1190,6 +1198,24 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="PerfectForwarding\Whaaaat.gif">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="EraseRemoveIdiom\InvalidIterator.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="WeakPtr\cpp_snippets_cyclic_references.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="WeakPtr\cycle.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="PerfectForwarding\ScottMeyers_Forward.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="SharedPtr\WeakPointer_01.PNG">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="SharedPtr\WeakPointer_02.PNG">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

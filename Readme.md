@@ -148,7 +148,7 @@ Es folgt eine tabellarische Auflistung dieser Unterverzeichnisse.
 | [CRTP](GeneralSnippets/CRTP/CRTP.md) | Curiously Recurring Template Pattern (CRTP) |
 | [DeclType](GeneralSnippets/DeclType/decltype.md) | `decltype` und `std::declval` |
 | [Default Initialization](GeneralSnippets/DefaultInitialization/DefaultInitialization.md)| Default-Initialisierung für Member-Variablen |
-| [*Erase-Remove* Idiom](GeneralSnippets/EraseRemoveIdiom/EraseRemoveIdiom.md) | Das *Erase-Remove*-Idiom |
+| [*Erase-Remove* Idiom](GeneralSnippets/EraseRemoveIdiom/EraseRemoveIdiom.md) | Das *Erase-Remove*-Idiom / Entfernen von Elementen eines STL-Containers |
 | [Exception Safety](GeneralSnippets/ExceptionSafety/ExceptionSafety.md) | Ausnahmesicherheit / *Exception Safety* |
 | [Expected](GeneralSnippets/Expected/Expected.md) | Neue Klasse zur Fehlerbehandlung: `std::expected` |
 | [Explicit](GeneralSnippets/Explicit/Explicit.md) | Schlüsselwort `explicit` |

@@ -409,6 +409,7 @@
     <None Include="Exercises\Exercises_13_FunctionalProgramming.md" />
     <None Include="Exercises\Exercises.md" />
     <None Include="Exercises\Exercises_17_Concepts.md" />
+    <None Include="Expected\cpp_std_expected.svg" />
     <None Include="Expected\Expected.md" />
     <None Include="Explicit\Explicit.md" />
     <None Include="ExpressionTemplates\ExpressionTemplates.md" />
@@ -437,6 +438,9 @@
     <None Include="Optional\Optional.md" />
     <None Include="ParametersWithConstAndRef\ConstDeclarations.md" />
     <None Include="PerfectForwarding\PerfectForwarding.md" />
+    <None Include="PerfectForwarding\PerfectForwarding_01.md" />
+    <None Include="PerfectForwarding\PerfectForwarding_02.md" />
+    <None Include="PerfectForwarding\PerfectForwarding_03.md" />
     <None Include="PlacementNew\PlacementNew.md" />
     <None Include="Println\Println.md" />
     <None Include="RAII\RAII.md" />
@@ -447,6 +451,7 @@
     <None Include="RegExpr\RegExpr.md" />
     <None Include="RValueLValue\RValueLValue.md" />
     <None Include="SFINAE_EnableIf\Sfinae.md" />
+    <None Include="SharedPtr\cpp_control_block_01.svg" />
     <None Include="SharedPtr\SharedPtr.md" />
     <None Include="SourceLocation\SourceLocation.md" />
     <None Include="SSO\SSO.md" />
@@ -482,11 +487,14 @@
     <None Include="Variant\Variant.md" />
     <None Include="VirtualBaseClassDestructor\VirtualBaseClassDestructor.md" />
     <None Include="VirtualOverrideFinal\VirtualOverrideFinal.md" />
+    <None Include="WeakPtr\cpp_control_block_02.svg" />
     <None Include="WeakPtr\cpp_sharedptr_cycle_01.svg" />
     <None Include="WeakPtr\cpp_sharedptr_cycle_02.svg" />
     <None Include="WeakPtr\cpp_sharedptr_cycle_03.svg" />
     <None Include="WeakPtr\cpp_sharedptr_cycle_04.svg" />
     <None Include="WeakPtr\cpp_sharedptr_cycle_05.svg" />
+    <None Include="WeakPtr\cpp_sharedptr_cycle_10.svg" />
+    <None Include="WeakPtr\cpp_sharedptr_cycle_11.svg" />
     <None Include="WeakPtr\cpp_snippets_cyclic_references.svg" />
     <None Include="WeakPtr\WeakPtr.md" />
   </ItemGroup>
@@ -507,6 +515,7 @@
     <Image Include="ConstExpr\constexpr_lambda_01.png" />
     <Image Include="ConstExpr\constexpr_lambda_02.png" />
     <Image Include="CopyMoveElision\CopyMoveElision.png" />
+    <Image Include="EraseRemoveIdiom\InvalidIterator.png" />
     <Image Include="Exercises\cpp_dividend_divisor.png" />
     <Image Include="Images\CertifiedExpertTrainer.png" />
     <Image Include="Images\Horse_Cpp.png" />
@@ -532,16 +541,21 @@
     <Image Include="OnlineCppCompilers\WandboxOptions01.png" />
     <Image Include="OnlineCppCompilers\WandboxOptions02.png" />
     <Image Include="OnlineCppCompilers\WandboxOptions03.png" />
+    <Image Include="PerfectForwarding\ScottMeyers_Forward.png" />
     <Image Include="PerfectForwarding\Whaaaat.gif" />
     <Image Include="Println\StdPrintln.png" />
     <Image Include="SharedPtr\SharedPointer_01.png" />
     <Image Include="SharedPtr\SharedPointer_02.png" />
+    <Image Include="SharedPtr\WeakPointer_01.PNG" />
+    <Image Include="SharedPtr\WeakPointer_02.PNG" />
     <Image Include="TemplateClassBasics\template_instantiations_01.png" />
     <Image Include="TemplateClassBasics\template_instantiations_02.png" />
     <Image Include="Trim\stl_base.png" />
     <Image Include="UniformInitialization\cpp_init.gif" />
     <Image Include="VariadicTemplates\cpp_snippets_mixins_01.png" />
     <Image Include="VariadicTemplates\cpp_snippets_mixins_02.png" />
+    <Image Include="WeakPtr\cpp_snippets_cyclic_references.png" />
+    <Image Include="WeakPtr\cycle.jpg" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ScopedTimer\ScopedTimer.h" />
