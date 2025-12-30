@@ -435,6 +435,18 @@ Size: 5, Capacity: 6
 
 ---
 
+## Literaturhinweise
+
+Diese Serie mit vier Artikeln widmet sich exklusiv dem Thema, wie sich Elemente aus STL Containern entfernen lassen:
+
+["How to Remove Elements from a Sequence Container in C++"](https://www.fluentcpp.com/2018/09/14/how-to-remove-elements-from-a-sequence-container/)
+
+Auch lesenswert:
+
+["Removal Algorithms"](https://www.studyplan.dev/pro-cpp/removal-algorithms)
+
+---
+
 [Zurück](../../Readme.md)
 
 ---
