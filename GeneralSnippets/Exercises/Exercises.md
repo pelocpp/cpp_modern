@@ -23,7 +23,7 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 
   * ### [Smart Pointer](Exercises_15_SmartPointers.md)
 
-  * ### [STL-Algorithmen](Exercises_03_Algorithms.md)
+  * ### [STL](Exercises_03_STL.md)
 
   * ### [constexpr](Exercises_14_ConstExpr.md)
     

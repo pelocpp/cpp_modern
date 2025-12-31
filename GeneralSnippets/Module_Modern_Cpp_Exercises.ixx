@@ -6,7 +6,7 @@ export module modern_cpp_exercises;
 
 export import :move_semantics; 
 export import :lambdas;
-export import :algorithms;
+export import :stl;
 export import :utility_classes;
 export import :variadic_templates;
 export import :folding;

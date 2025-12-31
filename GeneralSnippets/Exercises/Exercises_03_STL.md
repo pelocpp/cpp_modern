@@ -1,4 +1,4 @@
-# Aufgaben zu STL-Algorithmen
+# Aufgaben zur STL
 
 [Zurück](./Exercises.md)
 
@@ -12,15 +12,24 @@
 
 | Aufgabe | Beschreibung |
 | :- | :- |
-| *Aufgabe* 1 | Der Algorithmus `std::accumulate` in der Anwendung<br/>(Voraussetzungen: `std::accumulate`, `std::initializer_list`) |
-| *Aufgabe* 2 | *Fibonacci*-Zahlen<br/>(Voraussetzungen: Algorithmen `std::generate`, `std::for_each`, Lambda-Funktionen, Structured Binding) |
+| *Aufgabe* 1 | Löschen aller ungeraden Elemente eines sequenziellen Containers<br/>(Voraussetzungen: Methode `erase`, Algorithmus `std::remove`) |
+| *Aufgabe* 2 | Der Algorithmus `std::accumulate` in der Anwendung<br/>(Voraussetzungen: `std::accumulate`, `std::initializer_list`) |
+| *Aufgabe* 3 | *Fibonacci*-Zahlen<br/>(Voraussetzungen: Algorithmen `std::generate`, `std::for_each`, Lambda-Funktionen, Structured Binding) |
 
-*Tabelle* 1: Aufgaben zu STL-Algorithmen.
+*Tabelle* 1: Aufgaben zur STL.
 
 
 ---
 
-## Aufgabe 1: Der Algorithmus `std::accumulate` in der Anwendung
+## Aufgabe 1: Löschen aller ungeraden Elemente eines sequenziellen Containers
+
+#### Voraussetzungen: Methode `erase`, Algorithmus `std::remove`
+
+WEITER: TEXT
+
+---
+
+## Aufgabe 2: Der Algorithmus `std::accumulate` in der Anwendung
 
 #### Voraussetzungen: `std::accumulate`, `std::initializer_list` (Initialisierungliste)
 
@@ -46,7 +55,7 @@ true
 
 ---
 
-## Aufgabe 2: *Fibonacci*-Zahlen
+## Aufgabe 3: *Fibonacci*-Zahlen
 
 #### Vorausetzungen: Algorithmen `std::generate`, Lambda-Funktionen, Structured Binding
 
@@ -77,7 +86,7 @@ Wie müssen Sie diese Lambda-Funktion definieren, so dass das `std::pair`-Objekt
 
 ---
 
-[Lösungen](Exercises_03_Algorithms.cpp)
+[Lösungen](Exercises_03_STL.cpp)
 
 ---
 

@@ -246,7 +246,7 @@
     <ClCompile Include="Exercises\Exercises_02_Lambdas.cpp">
       <Filter>Exercises</Filter>
     </ClCompile>
-    <ClCompile Include="Exercises\Exercises_03_Algorithms.cpp">
+    <ClCompile Include="Exercises\Exercises_03_STL.cpp">
       <Filter>Exercises</Filter>
     </ClCompile>
     <ClCompile Include="Exercises\Exercises_04_UtilityClasses.cpp">
@@ -408,7 +408,7 @@
     <ClCompile Include="Exercises\Module_Exercises_02_Lambdas.ixx">
       <Filter>Exercises</Filter>
     </ClCompile>
-    <ClCompile Include="Exercises\Module_Exercises_03_Algorithms.ixx">
+    <ClCompile Include="Exercises\Module_Exercises_03_STL.ixx">
       <Filter>Exercises</Filter>
     </ClCompile>
     <ClCompile Include="Exercises\Module_Exercises_04_UtilityClasses.ixx">
@@ -848,7 +848,7 @@
     <None Include="Exercises\Exercises.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="Exercises\Exercises_03_Algorithms.md">
+    <None Include="Exercises\Exercises_03_STL.md">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Exercises\Exercises_04_UtilityClasses.md">
@@ -1055,14 +1055,30 @@
     <None Include="Exercises\cpp_exercise_my_string.svg">
       <Filter>Exercises</Filter>
     </None>
-    <None Include="WeakPtr\cpp_control_block_02.svg" />
-    <None Include="WeakPtr\cpp_sharedptr_cycle_10.svg" />
-    <None Include="WeakPtr\cpp_sharedptr_cycle_11.svg" />
-    <None Include="Expected\cpp_std_expected.svg" />
-    <None Include="PerfectForwarding\PerfectForwarding_01.md" />
-    <None Include="PerfectForwarding\PerfectForwarding_02.md" />
-    <None Include="PerfectForwarding\PerfectForwarding_03.md" />
-    <None Include="SharedPtr\cpp_control_block_01.svg" />
+    <None Include="SharedPtr\cpp_control_block_01.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="WeakPtr\cpp_control_block_02.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="WeakPtr\cpp_sharedptr_cycle_10.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="WeakPtr\cpp_sharedptr_cycle_11.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Expected\cpp_std_expected.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="PerfectForwarding\PerfectForwarding_01.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="PerfectForwarding\PerfectForwarding_02.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="PerfectForwarding\PerfectForwarding_03.md">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="VariadicTemplates\cpp_snippets_mixins_01.png">

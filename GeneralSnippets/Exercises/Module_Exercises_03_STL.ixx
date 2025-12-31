@@ -2,11 +2,11 @@
 // Module Interface Partition Exercises 'Algorithms'
 // =====================================================================================
 
-export module modern_cpp_exercises:algorithms;
+export module modern_cpp_exercises:stl;
 
 import std;
 
-export void test_exercises_algorithms();
+export void test_exercises_stl();
 
 // =====================================================================================
 // End-of-File

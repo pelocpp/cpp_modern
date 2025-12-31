@@ -2,10 +2,6 @@
 // EraseRemoveIdiom.cpp // Erase-Remove Idiom
 // =====================================================================================
 
-module;
-
-#include "../ScopedTimer/ScopedTimer.h"
-
 module modern_cpp:erase_remove_idiom;
 
 namespace EraseRemoveIdiom
@@ -110,7 +106,7 @@ namespace EraseRemoveIdiom
 #pragma warning(disable : 4858)
 
         // the next statement doesn't make any sense without storing the return value,
-        // this function has only demonstration purposes
+        // this function call has only demonstration purposes
 
         std::remove(vec.begin(), vec.end(), value);
 
@@ -158,6 +154,7 @@ namespace EraseRemoveIdiom
     static void test_removing_elements_30()
     {
         // invalid iterator object
+
         std::vector<int> vec{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
         std::vector<int>::iterator it = vec.begin() + 3;
@@ -173,6 +170,7 @@ namespace EraseRemoveIdiom
     static void test_removing_elements_31()
     {
         // valid iterator objects
+
         std::vector<int> vec{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
         std::vector<int>::iterator it = vec.begin() + 3;
@@ -189,6 +187,7 @@ namespace EraseRemoveIdiom
     static void test_removing_elements_40()
     {
         // "Swap and Pop" idiom
+
         std::vector<int> vec{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
         print(vec);
 
@@ -205,21 +204,29 @@ namespace EraseRemoveIdiom
     static void test_removing_elements_50()
     {
         // 'std::remove_copy' algorithm
+
         std::vector<int> src{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
         std::vector<int> dst{};
 
+        std::print("src: ");
         print(src);
 
         std::remove_copy(src.begin(), src.end(), std::back_inserter(dst), 5);
+
+        std::print("src: ");
+        print(src);
+        std::print("dst: ");
         print(dst);
     }
 
     static void test_removing_elements_51()
     {
         // 'std::remove_copy_if' algorithm
+
         std::vector<int> src{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
         std::vector<int> dst{};
 
+        std::print("src: ");
         print(src);
 
         std::remove_copy_if(
@@ -229,130 +236,10 @@ namespace EraseRemoveIdiom
             [](auto elem) { return elem % 2 == 0; }
         );
 
+        std::print("src: ");
+        print(src);
+        std::print("dst: ");
         print(dst);
-    }
-
-    // ===========================================================================
-    // ===========================================================================
-
-
-
-
-
-
-
-    static void test_removing_elements_100()
-    {
-        // "wrong" implementation
-        std::vector<int> vec{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-
-        print(vec);
-
-        // erase all even numbers
-        for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); ++it)
-        {
-            if (*it % 2 == 0) {
-                vec.erase(it);
-            }
-        }
-
-        print(vec);
-    }
-
-    static void test_removing_elements_101()
-    {
-        // Inefficient implementation
-        std::vector<int> vec{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-
-        print(vec);
-
-        // erase all even numbers
-        for (std::vector<int>::iterator it = vec.begin(); it != vec.end();)
-        {
-            if (*it % 2 == 0)
-                it = vec.erase(it);
-            else
-                ++it;
-        }
-
-        print(vec);
-    }
-
-    static void test_removing_elements_102()
-    {
-        // Better (good) implementation
-        std::vector<int> vec{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-
-        print(vec);
-
-        std::vector<int>::iterator pos = std::remove_if(
-            vec.begin(),
-            vec.end(),
-            [](auto elem) { return elem % 2 == 0; }
-        );
-
-        vec.erase(pos, vec.end());
-
-        print(vec);
-    }
-
-    // 2 benchmarks
-
-    //constexpr std::size_t Max = 1000;
-    //constexpr std::size_t NumIterations = 100;
-
-    constexpr std::size_t Max = 5000;
-    constexpr std::size_t NumIterations = 1000;
-
-    static void test_removing_elements_103()
-    {
-        ScopedTimer watch{};
-
-        for (std::size_t i{}; i != NumIterations; ++i) {
-
-            // inefficient implementation
-            std::vector<int> vec(Max);
-
-            std::iota(vec.begin(), vec.end(), 1);
-
-            print(vec);
-
-            // erase all even numbers
-            for (std::vector<int>::iterator it = vec.begin(); it != vec.end();)
-            {
-                if (*it % 2 == 0)
-                    it = vec.erase(it);
-                else
-                    ++it;
-            }
-
-            print(vec);
-        }
-    }
-
-    static void test_removing_elements_104()
-    {
-        ScopedTimer watch{};
-
-        for (std::size_t i{}; i != NumIterations; ++i) {
-
-            // Better (good) implementation
-            std::vector<int> vec(Max);
-
-            std::iota(vec.begin(), vec.end(), 1);
-
-            //  print(vec);
-
-            std::vector<int>::iterator pos = std::remove_if(
-                vec.begin(),
-                vec.end(),
-                [](auto elem) { return elem % 2 == 0; }
-            );
-
-            vec.erase(pos, vec.end());
-
-            //  print(vec);
-        }
     }
 }
 
@@ -377,12 +264,6 @@ void main_erase_remove_idiom()
 
     test_removing_elements_50();
     test_removing_elements_51();
-
-    //test_removing_elements_100();
-    //test_removing_elements_101();
-    //test_removing_elements_102();
-    //test_removing_elements_103();
-    //test_removing_elements_104();
 }
 
 // =====================================================================================

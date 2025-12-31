@@ -203,7 +203,7 @@
     <ClCompile Include="Exercises\Exercises_15_SmartPointers.cpp" />
     <ClCompile Include="Exercises\Exercises_01_MoveSemantics.cpp" />
     <ClCompile Include="Exercises\Exercises_02_Lambdas.cpp" />
-    <ClCompile Include="Exercises\Exercises_03_Algorithms.cpp" />
+    <ClCompile Include="Exercises\Exercises_03_STL.cpp" />
     <ClCompile Include="Exercises\Exercises_04_UtilityClasses.cpp" />
     <ClCompile Include="Exercises\Exercises_05_VariadicTemplates.cpp" />
     <ClCompile Include="Exercises\Exercises_06_Folding.cpp" />
@@ -219,7 +219,7 @@
     <ClCompile Include="Exercises\Exercises_17_Concepts.cpp" />
     <ClCompile Include="Exercises\Module_Exercises_01_MoveSemantics.ixx" />
     <ClCompile Include="Exercises\Module_Exercises_02_Lambdas.ixx" />
-    <ClCompile Include="Exercises\Module_Exercises_03_Algorithms.ixx" />
+    <ClCompile Include="Exercises\Module_Exercises_03_STL.ixx" />
     <ClCompile Include="Exercises\Module_Exercises_04_UtilityClasses.ixx" />
     <ClCompile Include="Exercises\Module_Exercises_05_VariadicTemplates.ixx" />
     <ClCompile Include="Exercises\Module_Exercises_06_Folding.ixx" />
@@ -396,7 +396,7 @@
     <None Include="Exercises\Exercises_16_GenericLambdas.md" />
     <None Include="Exercises\Exercises_01_MoveSemantics.md" />
     <None Include="Exercises\Exercises_02_Lambdas.md" />
-    <None Include="Exercises\Exercises_03_Algorithms.md" />
+    <None Include="Exercises\Exercises_03_STL.md" />
     <None Include="Exercises\Exercises_04_UtilityClasses.md" />
     <None Include="Exercises\Exercises_05_VariadicTemplates.md" />
     <None Include="Exercises\Exercises_06_Folding.md" />

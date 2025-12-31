@@ -11,17 +11,20 @@
 ## Inhalt
 
   * [Elemente aus einem sequentiellen STL Container entfernen](#link1)
-  * [Performance Betrachtungen](#link2)
-  * [Das &bdquo;*Erase Remove*&rdquo; Idiom](#link3)
-  * [Ungültige Iteratorenobjekte](#link4)
-  * [Noch ein Idiom: &bdquo;*Swap and Pop*&rdquo;](#link5)
-  * [Die Algorithmen `std::remove_copy` und `std::remove_copy_if`](#link6)
+  * [Elemente an einer bestimmten Position entfernen](#link2)
+  * [Elemente entfernen, die einen bestimmten Wert haben](#link3)
+  * [Performance Betrachtungen](#link4)
+  * [Das &bdquo;*Erase Remove*&rdquo; Idiom](#link5)
+  * [Ungültige Iteratorenobjekte](#link6)
+  * [Noch ein Idiom: &bdquo;*Swap and Pop*&rdquo;](#link7)
+  * [Die Algorithmen `std::remove_copy` und `std::remove_copy_if`](#link8)
+  * [Literaturhinweise](#link9)
 
 ---
 
 ## Elemente aus einem sequentiellen STL Container entfernen <a name="link1"></a> 
 
-### Elemente an einer bestimmten Position entfernen
+### Elemente an einer bestimmten Position entfernen <a name="link2"></a> 
 
 #### 1. Ein Element an einer bestimmten Position entfernen
 
@@ -68,7 +71,7 @@ Size: 2, Capacity: 5
 1 5
 ```
 
-### Elemente entfernen, die einen bestimmten Wert haben
+### Elemente entfernen, die einen bestimmten Wert haben <a name="link3"></a> 
 
 #### 1. Entfernen eines Elements, das einen bestimmten Wert hat
 
@@ -110,7 +113,7 @@ Size: 7, Capacity: 8
 #### 2. Entfernen aller Elemente, die einen bestimmten Wert haben
 
 *Bemerkung*:<br />
-Dieses Beispiel kann erst ab C++ 20 übernommen werden:
+Dieses Beispiel kann erst ab C++ 20 übersetzt werden:
 
 
 ```cpp
@@ -170,7 +173,7 @@ weist subtile Unterschiede zum ersten Ansatz auf:
 Wir gehen auf diese Beobachtungen im nächsten Abschnitt näher ein.
 
 
-## Performance Betrachtungen <a name="link2"></a> 
+## Performance Betrachtungen <a name="link4"></a> 
 
 ### Überblick
 
@@ -180,7 +183,7 @@ oder der Methode `remove` (existiert nur als STL Algorithmus) gibt es einige wes
 1. Die Methode `erase` (in beiden Ausprägungen) operiert direkt auf dem Container. Das bedeutet zum Beispiel, das Datenbereiche verschoben werden,
   wenn am Anfang des Containers ein Element gelöscht wird.
 
-2. Die Methode `remove` hat nur Iteratoren als Parameter. Sie hat damit keinen direkten Zugriff zum Datenbereichs des Containers.
+2. Die Methode `remove` hat nur Iteratoren als Parameter. Sie hat damit keinen direkten Zugriff zum Datenbereich des Containers.
   Mit Hilfe der Iteratoren können ebenfalls Änderungen an den Daten durchgeführt werden (zum Beispiel ein Tausch zweier Elemente),
   aber keine direkten Verschiebe-Operationen im Datenbereich.
 
@@ -215,7 +218,7 @@ Welche Aufgaben führt `std::erase`durch?
 Für die Beantwortung dieser Frage gibt es mehrere Gründe:
 
   * Container müssen in ihrem Aufbau / in ihrer Struktur logisch korrekt bleiben.
-  * Benutzer erwarten, dass gelöschte Elemente endgültig entfernt/zerstört werden.
+  * Benutzer erwarten, dass gelöschte Elemente endgültig entfernt / zerstört werden.
   * Speicher muss freigegeben werden.
   * Destruktoren müssen ausgeführt werden.
 
@@ -241,18 +244,18 @@ Daher:
 *Tabelle* 1: Unterschiede zwischen `std::remove` und `std::erase`.
 
 
-## Das &bdquo;*Erase Remove*&rdquo; Idiom <a name="link3"></a> 
+## Das &bdquo;*Erase Remove*&rdquo; Idiom <a name="link5"></a> 
 
-Da der STL Algorithmus `std::remove` nicht wirklich löscht,
-gibt es eine interessante Kombination dieser beiden Funktionen.
-Diese wird als *Erase Remove* Idiom bezeichnet:
-
-Im folgenden Beispiel wird die Frage beantwortet, wie wir nach einem Aufruf
-von `std::remove` die Kenntnis erlangen, welche neue, tatsächliche Länge der Container nun hat.
+Wie erlangen wir nach einem Aufruf von `std::remove` die Kenntnis,
+welche neue, tatsächliche Länge der Container nun hat?
 
 Es ist der Rückgabewert von `std::remove`, der diese Position in Gestalt eines
-Iteratorenobjekts beschreibt. Dieser Iterator kann/sollte an `vec.erase` übergeben werden,
-um von dieser Position aus bis zum Ende alle Elemente im Container zu löschen.
+Iteratorenobjekts beschreibt. Dieser Iterator kann / sollte an `vec.erase` übergeben werden,
+um von dieser Position bis zum Ende des Containers alle Elemente zu löschen.
+
+Da der STL Algorithmus `std::remove` nicht wirklich löscht,
+gibt es eine interessante Kombination dieser Funktion mit `std::erase`.
+Sie wird als *Erase Remove* Idiom bezeichnet:
 
 
 ```cpp
@@ -289,7 +292,7 @@ Häufig findet man das &bdquo;*Erase Remove*&rdquo; Idiom auch kompakter programm
 
 Die Ausgabe ist identisch zur ersten Ausgabe.
 
-## Ungültige Iteratorenobjekte <a name="link4"></a> 
+## Ungültige Iteratorenobjekte <a name="link6"></a> 
 
 Wird in einem Container an einer bestimmten Position ein Element entfernt,
 so gelangt der Iterator, der diese Position beschreibt, in einen ungültigen Zustand:
@@ -315,13 +318,13 @@ oder nicht mehr auf eine gültige Speicheradresse verweist.&rdquo;
 
 Im Debug-Modus stürzt das Programm ab:
 
-<img src="InvalidIterator.png" width="300">
+<img src="InvalidIterator.png" width="350">
 
 *Abbildung* 1: Ein ungültiges Iteratorenobjekt.
 
 Wie kann man das letzte Programm korrekt schreiben?
 Damit ist zunächst die Frage zu klären, was mit einer Position / einem Iteratorenobjekt
-geschehen soll, dessen Position als solche nicht mehr existiert.
+geschehen soll, dessen Position als solche nicht mehr existiert?
 
 Die `erase`-Methode der `std::vector`-Klasse liefert ein neues Iteratorenobjekt zurück,
 das dem zuletzt entfernten Element folgt.
@@ -349,7 +352,7 @@ Man beachte hier vor allem Zeile 7. Die Variable `it` bekommt einen neuen Wert z
 3. Element: 4
 ```
 
-## Noch ein Idiom: &bdquo;*Swap and Pop*&rdquo; <a name="link5"></a> 
+## Noch ein Idiom: &bdquo;*Swap and Pop*&rdquo; <a name="link7"></a> 
 
 Bei einem ungeordneten Datensatz empfiehlt es sich,
 das zu löschende Element mit dem letzten Element zu vertauschen und anschließend `pop_back()` zu verwenden.
@@ -382,7 +385,7 @@ Size: 9, Capacity: 10
 0 1 2 9 4 5 6 7 8
 ```
 
-## Die Algorithmen `std::remove_copy` und `std::remove_copy_if` <a name="link6"></a> 
+## Die Algorithmen `std::remove_copy` und `std::remove_copy_if` <a name="link8"></a> 
 
 ### Ein Beispiel zu `std::remove_copy` 
 
@@ -399,10 +402,13 @@ Size: 9, Capacity: 10
 *Ausgabe*:
 
 ```
-Size: 10, Capacity: 10
+src: Size: 10, Capacity: 10
 0 1 2 3 4 5 6 7 8 9
 
-Size: 9, Capacity: 9
+src: Size: 10, Capacity: 10
+0 1 2 3 4 5 6 7 8 9
+
+dst: Size: 9, Capacity: 9
 0 1 2 3 4 6 7 8 9
 ```
 
@@ -426,24 +432,27 @@ Size: 9, Capacity: 9
 *Ausgabe*:
 
 ```
-Size: 10, Capacity: 10
+src: Size: 10, Capacity: 10
 0 1 2 3 4 5 6 7 8 9
 
-Size: 5, Capacity: 6
+src: Size: 10, Capacity: 10
+0 1 2 3 4 5 6 7 8 9
+
+dst: Size: 5, Capacity: 6
 1 3 5 7 9
 ```
 
 ---
 
-## Literaturhinweise
+## Literaturhinweise <a name="link9"></a> 
 
-Diese Serie mit vier Artikeln widmet sich exklusiv dem Thema, wie sich Elemente aus STL Containern entfernen lassen:
+Diese Serie mit vier Artikeln von Jonathan Boccara widmet sich exklusiv dem Thema, wie sich Elemente aus STL Containern entfernen lassen:
 
 ["How to Remove Elements from a Sequence Container in C++"](https://www.fluentcpp.com/2018/09/14/how-to-remove-elements-from-a-sequence-container/)
 
 Auch lesenswert:
 
-["Removal Algorithms"](https://www.studyplan.dev/pro-cpp/removal-algorithms)
+["Removal Algorithms"](https://www.studyplan.dev/pro-cpp/removal-algorithms) aus dem Tutorial &bdquo;*StudyPlan.dev*&rdquo;.
 
 ---
 
