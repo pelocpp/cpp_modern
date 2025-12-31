@@ -24,9 +24,9 @@ namespace Exercises_STL {
             std::println();
         }
 
-        static void test_removing_elements_100()
+        static void testExercise_01()
         {
-            // "wrong" implementation
+            // "wrong" implementation (usage of invalid iterator)
 
             std::vector<int> vec{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
@@ -43,9 +43,10 @@ namespace Exercises_STL {
             print(vec);
         }
 
-        static void test_removing_elements_101()
+        static void testExercise_02()
         {
-            // Inefficient implementation
+            // correct implementation, but inefficient runtime behaviour
+
             std::vector<int> vec{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
             print(vec);
@@ -62,9 +63,10 @@ namespace Exercises_STL {
             print(vec);
         }
 
-        static void test_removing_elements_102()
+        static void testExercise_03()
         {
-            // Better (good) implementation
+            // again correct implementation, but efficient (good) runtime behaviour
+
             std::vector<int> vec{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
             print(vec);
@@ -80,28 +82,30 @@ namespace Exercises_STL {
             print(vec);
         }
 
-        // 2 benchmarks
-
-        //constexpr std::size_t Max = 1000;
-        //constexpr std::size_t NumIterations = 100;
+        // =======================================
+        // 2 benchmarks:
+        // constexpr std::size_t Max = 20;
+        // constexpr std::size_t NumIterations = 1;
 
         constexpr std::size_t Max = 5000;
-        constexpr std::size_t NumIterations = 1000;
+        constexpr std::size_t NumIterations = 100;
 
-        static void test_removing_elements_103()
+        static void testExercise_benchmark_01()
         {
+            std::vector<int> original(Max);
+
+            std::iota(original.begin(), original.end(), 1);
+
             ScopedTimer watch{};
 
             for (std::size_t i{}; i != NumIterations; ++i) {
 
-                // inefficient implementation
-                std::vector<int> vec(Max);
+                // demonstration of inefficient implementation
 
-                std::iota(vec.begin(), vec.end(), 1);
+                std::vector<int> vec{ original };
 
-                print(vec);
+                // print(vec);
 
-                // erase all even numbers
                 for (std::vector<int>::iterator it = vec.begin(); it != vec.end();)
                 {
                     if (*it % 2 == 0)
@@ -110,22 +114,25 @@ namespace Exercises_STL {
                         ++it;
                 }
 
-                print(vec);
+                // print(vec);
             }
         }
 
-        static void test_removing_elements_104()
+        static void testExercise_benchmark_02()
         {
+            std::vector<int> original(Max);
+
+            std::iota(original.begin(), original.end(), 1);
+
             ScopedTimer watch{};
 
             for (std::size_t i{}; i != NumIterations; ++i) {
 
-                // Better (good) implementation
-                std::vector<int> vec(Max);
+                // demonstration of a better, (hopefully) efficient implementation
 
-                std::iota(vec.begin(), vec.end(), 1);
+                std::vector<int> vec{ original };
 
-                //  print(vec);
+                // print(vec);
 
                 std::vector<int>::iterator pos = std::remove_if(
                     vec.begin(),
@@ -135,14 +142,19 @@ namespace Exercises_STL {
 
                 vec.erase(pos, vec.end());
 
-                //  print(vec);
+                // print(vec);
             }
         }
 
-
         static void testExercise() {
-        }
 
+            // testExercise_01();  // crashes - by design
+            testExercise_02();
+            testExercise_03();
+
+            testExercise_benchmark_01();
+            testExercise_benchmark_02();
+        }
     }
 
     namespace Exercise_02 {
@@ -242,8 +254,8 @@ void test_exercises_stl()
 {
     using namespace Exercises_STL;
     Exercise_01::testExercise();
-    Exercise_02::testExercise();
-    Exercise_03::testExercise();
+    //Exercise_02::testExercise();
+    //Exercise_03::testExercise();
 }
 
 // =====================================================================================
