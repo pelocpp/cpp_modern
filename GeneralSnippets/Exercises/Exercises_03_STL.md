@@ -13,11 +13,10 @@
 | Aufgabe | Beschreibung |
 | :- | :- |
 | *Aufgabe* 1 | Löschen aller ungeraden Elemente eines sequenziellen Containers<br/>(Voraussetzungen: Methode `erase`, Algorithmus `std::remove`) |
-| *Aufgabe* 2 | Der Algorithmus `std::accumulate` in der Anwendung<br/>(Voraussetzungen: `std::accumulate`, `std::initializer_list`) |
-| *Aufgabe* 3 | *Fibonacci*-Zahlen<br/>(Voraussetzungen: Algorithmen `std::generate`, `std::for_each`, Lambda-Funktionen, Structured Binding) |
+| *Aufgabe* 2 | *Fibonacci*-Zahlen<br/>(Voraussetzungen: Algorithmen `std::generate`, `std::for_each`, Lambda-Funktionen, Structured Binding) |
+| *Aufgabe* 3 | Der Algorithmus `std::accumulate` in der Anwendung<br/>(Voraussetzungen: `std::accumulate`, `std::initializer_list`) |
 
 *Tabelle* 1: Aufgaben zur STL.
-
 
 ---
 
@@ -54,7 +53,7 @@ in der Konsole aus. Welche Beobachtungen machen Sie bei der Ausführung des Prog
 
 Welche Änderungen sind an der `test`-Funktion notwendig, so dass die Ausführung korrekt verläuft.
 Es ist durchaus möglich, die `for`-Wiederholungsschleife beizubehalten.
-Was fällt Ihnen an diesem Beispiel betrachtet zum Thema &bdquo;ungültiger Iteratoren&rdquo; ein?
+Was fällt Ihnen an diesem Beispiel betrachtet zum Thema &bdquo;ungültige Iteratoren&rdquo; ein?
 
 *Teilaufgabe* 3:
 Für die Aufgabenstellung eignet sich auch eine Verwendung des STL-Algorithmus `std::remove_if`.
@@ -71,36 +70,9 @@ Zum Messen der Zeit verwenden Sie eine Klasse `ScopedTimer`,
 deren Quellcode Sie [hier](https://github.com/pelocpp/cpp_modern/blob/master/GeneralSnippets/ScopedTimer/ScopedTimer.h) finden.
 Welche Beobachtungen können Sie in Bezug auf die Ausführungszeiten des Vergleichs machen?
 
-
 ---
 
-## Aufgabe 2: Der Algorithmus `std::accumulate` in der Anwendung
-
-#### Voraussetzungen: `std::accumulate`, `std::initializer_list` (Initialisierungliste)
-
-Schreiben Sie zwei Funktionen `andAll` und `orAll`, die eine variable Anzahl von `bool`-Parametern
-logisch UND oder logisch ODER verknüpfen. Mögliche Testbeispiele können so aussehen:
-
-```cpp
-bool result = andAll({ true, false, true });
-std::cout << std::boolalpha << result << std::endl;
-
-result = orAll({ false, false, false, false, false, false, false, false, false, true });
-std::cout << std::boolalpha << result << std::endl;
-```
-
-Setzen zur Lösung der Aufgabe den STL-Algorithmus `std::accumulate` ein!
-
-*Ausgabe*:
-
-```cpp
-false
-true
-```
-
----
-
-## Aufgabe 3: *Fibonacci*-Zahlen
+## Aufgabe 2: *Fibonacci*-Zahlen
 
 #### Vorausetzungen: Algorithmen `std::generate`, Lambda-Funktionen, Structured Binding
 
@@ -127,6 +99,32 @@ Wie müssen Sie diese Lambda-Funktion definieren, so dass das `std::pair`-Objekt
 
 ```
 0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181
+```
+
+---
+
+## Aufgabe 3: Der Algorithmus `std::accumulate` in der Anwendung
+
+#### Voraussetzungen: `std::accumulate`, `std::initializer_list` (Initialisierungliste)
+
+Schreiben Sie zwei Funktionen `andAll` und `orAll`, die eine variable Anzahl von `bool`-Parametern
+logisch UND oder logisch ODER verknüpfen. Mögliche Testbeispiele können so aussehen:
+
+```cpp
+bool result = andAll({ true, false, true });
+std::cout << std::boolalpha << result << std::endl;
+
+result = orAll({ false, false, false, false, false, false, false, false, false, true });
+std::cout << std::boolalpha << result << std::endl;
+```
+
+Setzen zur Lösung der Aufgabe den STL-Algorithmus `std::accumulate` ein!
+
+*Ausgabe*:
+
+```cpp
+false
+true
 ```
 
 ---

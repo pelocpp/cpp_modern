@@ -159,6 +159,50 @@ namespace Exercises_STL {
 
     namespace Exercise_02 {
 
+        static void testExercise() {
+
+            std::vector<int> numbers(20);
+
+            // uses structured binding
+            auto fibo = [p = std::pair{ 0, 1 }]() mutable {
+                auto [a, b] = p;
+                p = { b, a + b };
+                return a;
+            };
+
+            // without structured binding
+            auto fibo2 = [p = std::pair{ 0, 1 }]() mutable {
+                int n1 = p.first;
+                int n2 = p.second;
+                p = { n2, n1 + n2 };
+                return n1;
+            };
+
+            // using a 'state' variable in the scope / "closure"
+            auto pLocal = std::pair{ 0, 1 };
+            auto fibo3 = [&] {
+                int n1 = pLocal.first;
+                int n2 = pLocal.second;
+                pLocal = { n2, n1 + n2 };
+                return n1;
+            };
+
+            std::generate(
+                std::begin(numbers),
+                std::end(numbers),
+                fibo3
+            );
+
+            for (int n : numbers) {
+                std::cout << n << ' ';
+            }
+
+            std::cout << std::endl;
+        }
+    }
+
+    namespace Exercise_03 {
+
         static bool andAll(std::initializer_list<bool> vec) {
 
             return std::accumulate(
@@ -202,50 +246,6 @@ namespace Exercises_STL {
         static void testExercise() {
             testExercise_01a();
             testExercise_01b();
-        }
-    }
-
-    namespace Exercise_03 {
-
-        static void testExercise() {
-
-            std::vector<int> numbers(20);
-
-            // uses structured binding
-            auto fibo = [p = std::pair{ 0, 1 }]() mutable {
-                auto [a, b] = p;
-                p = { b, a + b };
-                return a;
-            };
-
-            // without structured binding
-            auto fibo2 = [p = std::pair{ 0, 1 }]() mutable {
-                int n1 = p.first;
-                int n2 = p.second;
-                p = { n2, n1 + n2 };
-                return n1;
-            };
-
-            // using a 'state' variable in the scope / "closure"
-            auto pLocal = std::pair{ 0, 1 };
-            auto fibo3 = [&] {
-                int n1 = pLocal.first;
-                int n2 = pLocal.second;
-                pLocal = { n2, n1 + n2 };
-                return n1;
-            };
-
-            std::generate(
-                std::begin(numbers),
-                std::end(numbers),
-                fibo3
-            );
-
-            for (int n : numbers) {
-                std::cout << n << ' ';
-            }
-
-            std::cout << std::endl;
         }
     }
 }
