@@ -13,10 +13,11 @@
 
   * [Allgemeines](#link1)
   * [Variablen](#link2)
-  * [Klassen mit `constexpr` Konstruktoren](#link3)
-  * [`constexpr` und dynamische Speicherverwaltung](#link4)
-  * [`constexpr`-Funktionen und `constexpr`-Lambda-Funktionen](#link5)
-  * [Literaturhinweise](#link6)
+  * [Funktionen](#link3)
+  * [Klassen mit `constexpr` Konstruktoren](#link4)
+  * [`constexpr` und dynamische Speicherverwaltung](#link5)
+  * [`constexpr`-Funktionen und `constexpr`-Lambda-Funktionen](#link6)
+  * [Literaturhinweise](#link7)
 
 ---
 
@@ -52,12 +53,45 @@ constexpr double Pi = 3.14159265359;
 Für Variablen, die mit `constexpr` definiert sind, gelten folgende Regeln, die mehr oder minder naheliegend oder einleuchtend sind:
 
   * Die Variable ist implizit `const`.
+  * Die Variable hat einen expliziten Typ &ndash; in diesem Beispiel `double`.
   * Die Variable muss vorbelegt werden.
-  * Der Vorbelegungswert muss ein konstanter Ausdruck sein
+  * Der Vorbelegungswert muss ein konstanter Ausdruck sein.
+  * Der Compiler kann Missbrauch erkennen.
 
-Vielmehr gibt es zum Themenbereich &bdquo;Variablen&rdquo; nicht zu sagen, wir kommen jetzt auf Klassen und Objekte zu sprechen.
+*Bemerkung*:<br />
+Was sind die Vorteile einer `constexpr`-Variablendefinition gegenüber dem Gebrauch der `#define`-Präprozessoranweisung?
 
-## Klassen mit `constexpr` Konstruktoren <a name="link3"></a>
+```cpp
+#define   Pi    3.14159
+```
+
+  * Pi besitzt keinen Typ.
+  * Der Bezeichner `Pi` kann stillschweigend in einen beliebigen Wert konvertiert werden.
+
+
+## Funktionen <a name="link3"></a>
+
+Einfache Funktionen, häufig einfache Hilfsfunktionen wie ein Vergleich zweier Werte zum Beispiel,
+lassen sich in klassischem C als Makros und in modernem C++ als `constexpr`-Funktionen oder -Lambdas schreiben.
+
+Man sollte auf Grund der Nachteile von C-Makros immer der `constexpr`-Variante den Vorzug geben.
+
+*Beispiel*:<br />
+
+C-Makro mit Nachteilen:
+
+```cpp
+#define   SQUARE(x)    x * x
+```
+
+
+
+
+
+
+Wir kommen jetzt auf Klassen und Objekte zu sprechen.
+
+## Klassen mit `constexpr` Konstruktoren <a name="link4"></a>
 
 Wie Variablen, deren Wert zur Übersetzungszeit bestimmt wird,
 lassen sich analog auch Objekte vom Übersetzer zur Übersetzungszeit erzeugen.
@@ -160,7 +194,7 @@ Aufruf der *getter*-Methode `real()`!
 *Abbildung* 3: IEEE-754 Konverter für Fließkommazahlen.
 
 
-## `constexpr` und dynamische Speicherverwaltung <a name="link4"></a>
+## `constexpr` und dynamische Speicherverwaltung <a name="link5"></a>
 
 Zur Fragestellung &bdquo;`constexpr` und dynamische Speicherverwaltung&rdquo;
 gibt es einen interessanten Aufsatz im [Netz](https://www.cppstories.com/2021/constexpr-new-cpp20)
@@ -195,7 +229,7 @@ Sum from 1 up to 10: 55
 
 
 
-## `constexpr`-Funktionen und `constexpr`-Lambda-Funktionen <a name="link5"></a>
+## `constexpr`-Funktionen und `constexpr`-Lambda-Funktionen <a name="link6"></a>
 
 Mit C++&ndash;17 haben `constexpr`-Funktionen und `constexpr`-Lambda-Methoden Einzug in die Sprache gefunden.
 Dazu betrachten wir am besten gleich ein Beispiel.
@@ -287,7 +321,7 @@ Der hexadezimale Wert `3D3h` tritt in einer `MOV`-Instruktion auf, der Übersetze
 *Abbildung* 2: `MOV`-Instruktion mit Operand 979 (3D3h)
 
 
-## Literaturhinweise <a name="link6"></a>
+## Literaturhinweise <a name="link7"></a>
 
 Die Anregungen zu dem CRC8-Artikel stammen aus einem Aufsatz aus der Zeitschrift *IX*:
 

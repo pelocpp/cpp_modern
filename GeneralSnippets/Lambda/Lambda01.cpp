@@ -262,7 +262,7 @@ namespace Lambdas {
     static void test_11() {
 
         // IIFE - Immediately Invoked Functional Expression:
-        // Inline-definition and direct invocation of lambda funtion:
+        // Inline-definition and direct invocation of lambda function:
         
         std::cout << [](int l, int r) { return l + r; } (11, 12) << std::endl;
 
@@ -280,7 +280,7 @@ namespace Lambdas {
 
     // Another IIFE Examples:
     // Lambda are defined 'constexpr' - some concrete values are computed
-    auto constexpr times = [] (int n, int m) {
+    auto times = [] (int n, int m) constexpr {
 
         auto result = m;
         for (size_t i{ 1 }; i != n; ++i) {
@@ -290,7 +290,17 @@ namespace Lambdas {
     };
 
     template <typename T>
-    auto constexpr power = [](T base, T exp) {
+    auto power = [](T base, T exp) constexpr {
+
+        auto result = base;
+        for (size_t i{ 1 }; i != exp; ++i) {
+            result *= base;
+        }
+        return result;
+    };
+
+    // constexpr lambda as a compile-time function template (C++ 20)
+    constexpr auto power2 = []<typename T> (T base, T exp) constexpr {
 
         auto result = base;
         for (size_t i{ 1 }; i != exp; ++i) {
@@ -309,6 +319,9 @@ namespace Lambdas {
 
         constexpr auto twoToThePowerOfTen = power<int>(2, 10);
         constexpr auto threeToThePowerOfThree = power<double>(3.0, 3.0);
+
+        constexpr auto twoToThePowerOfFive = power2(2, 5);
+        constexpr auto twoToThePowerOfThree = power2(2.0, 3.0);
     }
 
     static void test_13() {

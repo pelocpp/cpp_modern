@@ -2,9 +2,123 @@
 // ConstExpr.cpp
 // =====================================================================================
 
+module;
+
+#include <cassert>
+
 module modern_cpp:const_expr;
 
-namespace ConstExprComplex {
+namespace ConstExprVariables {
+
+    constexpr double Pi = 3.14159265359;
+
+#define          PI   3.14159265359
+
+    static void testVariables() {
+
+        std::println("Pi: {}", Pi);
+        std::println("PI: {}", PI);
+    }
+}
+
+namespace ConstExprFunctions {
+
+#define   CLAMP(x, lo, hi)      ((x) < (lo) ? (lo) : ((x) > (hi) ? (hi) : (x)))
+
+#define   SQUARE(x)             x * x
+
+#define   SWAP(a, b)            \
+          {                     \
+              auto tmp = (a);   \
+              (a) = (b);        \
+              (b) = tmp;        \
+          }
+
+    static auto clamp = [](auto x, auto lo, auto hi) constexpr {
+        return x < lo ? lo : (x > hi ? hi : x);
+    };
+
+    //static constexpr int square(int x) constexpr {
+    //    return x * x;
+    //};
+
+    static constexpr auto square = [](auto x) constexpr {
+        return x * x;
+    };
+
+    static auto swap = [](auto& a, auto& b) constexpr {
+        auto tmp = a;
+        a = b;
+        b = tmp;
+        };
+
+    static auto squareLambda = [](auto x) constexpr { return x * x; };
+
+    static auto constexpr squareOfTwo = squareLambda(2);
+
+    static auto constexpr squareOfThree = squareLambda(3.0);
+
+    static void testFunctions_01() {
+
+        constexpr std::size_t a{ 3 };
+        constexpr std::size_t b{ 8 };
+
+        constexpr auto value1{ CLAMP(a + b, 0, 10) };
+        constexpr auto value2{ clamp(a + b, 0, 10) };
+        constexpr auto value3{ clamp(a + b, 5,  8) };
+    }
+
+    static void testFunctions_02() {
+
+        // Note: macros can produce unexpected results
+
+        std::size_t a{ 1 };
+        std::size_t b{ 2 };
+        std::size_t value{ SQUARE(a + b) };       // value == 5: Wrong result !!!
+        assert(value == 5);
+    }
+
+    static void testFunctions_03() {
+
+        // Note: constexpr functions don't have side effects !!!
+
+        constexpr std::size_t a{ 1 };
+        constexpr std::size_t b{ 2 };
+        constexpr auto value{ square(a + b) };
+        static_assert(value == 9);                // correct result !!!
+    }
+
+    static void testFunctions_04() {
+
+        std::size_t a{ 1 };
+        std::size_t b{ 2 };
+
+        std::println("{} - {}", a, b);
+        SWAP(a, b);
+        std::println("{} - {}", a, b);
+    }
+
+    static void testFunctions_05() {
+
+        std::size_t a{ 1 };
+        std::size_t b{ 2 };
+
+        std::println("{} - {}", a, b);
+        swap(a, b);
+        std::println("{} - {}", a, b);
+    }
+
+    static void testFunctions() {
+
+        testFunctions_01();
+        testFunctions_02();
+        testFunctions_03();
+        testFunctions_04();
+        testFunctions_05();
+    }
+}
+
+namespace ConstExprClassesAndObjects {
 
     class Complex
     {
@@ -140,9 +254,11 @@ namespace ConstExprPow {
 
 void main_constexpr()
 {
-    ConstExprComplex::testComplex();
-    ConstExprDynamicData::testDynamicData();
-    ConstExprPow::testPower();
+    //ConstExprVariables::testVariables();
+    ConstExprFunctions::testFunctions();
+    //ConstExprClassesAndObjects::testComplex();
+    //ConstExprDynamicData::testDynamicData();
+    //ConstExprPow::testPower();
 }
 
 // =====================================================================================
