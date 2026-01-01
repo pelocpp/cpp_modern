@@ -7,7 +7,7 @@ import modern_cpp_exercises;
 
 import std;
 
-#define MessageText "Collection of introductory Modern C++ Code Examples - Copyright (C) 2025 Peter Loos."
+#define MessageText "Collection of Modern C++ Code Examples - Copyright (C) 2026 Peter Loos."
 
 #pragma message(MessageText)
 
@@ -110,7 +110,7 @@ int main()
         //main_virtual_override_final();
         //main_weak_pointer();
 
-        main_exercises();
+        //main_exercises();
     }
     catch (const std::exception& ex) {
         std::println("Exception: {}", ex.what());

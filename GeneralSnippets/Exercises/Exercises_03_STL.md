@@ -1,10 +1,11 @@
 # Aufgaben zur STL
 
-[Zurück](./Exercises.md)
+
+[Zurück](/GeneralSnippets/Exercises/Exercises.md)
 
 ---
 
-[Zurück](/GeneralSnippets/Exercises/Exercises.md)
+[Lösungen](Exercises_03_STL.cpp)
 
 ---
 
@@ -12,7 +13,7 @@
 
 | Aufgabe | Beschreibung |
 | :- | :- |
-| *Aufgabe* 1 | Löschen aller ungeraden Elemente eines sequenziellen Containers<br/>(Voraussetzungen: Methode `erase`, Algorithmus `std::remove`) |
+| *Aufgabe* 1 | Löschen aller ungeraden Elemente eines sequenziellen Containers<br/>(Voraussetzungen: STL-Container `std::vector<int>`, Methode `erase`, STL-Algorithmus `std::remove_if`) |
 | *Aufgabe* 2 | *Fibonacci*-Zahlen<br/>(Voraussetzungen: Algorithmen `std::generate`, `std::for_each`, Lambda-Funktionen, Structured Binding) |
 | *Aufgabe* 3 | Der Algorithmus `std::accumulate` in der Anwendung<br/>(Voraussetzungen: `std::accumulate`, `std::initializer_list`) |
 
@@ -22,7 +23,7 @@
 
 ## Aufgabe 1: Löschen aller ungeraden Elemente in einem sequenziellen STL-Container
 
-#### Voraussetzungen: Methode `erase`, Algorithmus `std::remove`
+#### Voraussetzungen: STL-Container `std::vector<int>`, Methode `erase`, STL-Algorithmus `std::remove_if`
 
 *Teilaufgabe* 1:
 
