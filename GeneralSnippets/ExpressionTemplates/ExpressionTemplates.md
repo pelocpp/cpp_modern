@@ -207,7 +207,7 @@ sumABC(x, y) = sumAB(a, b) + c(x, y) = a(x, y) + b(x, y) + c(x, y);
 
 Das letzte Puzzleteil besteht nun darin, die betrachtete Ausdrucksvorlage
 in die `Matrix`-Klasse einzufügen.
-Dies wird im Wesentlichen durch die Bereitstellung einer Implementierung des Wertzuweisungsoperators
+Dies wird im Wesentlichen durch die Bereitstellung einer Implementierung des Zuweisungsoperators
 `operator=()` erreicht, der eine Ausdrucksvorlage als Argument entgegen nimmt
 und in einem Durchgang auswertet, wie wir es zuvor schon "manuell" betrachtet haben:
 

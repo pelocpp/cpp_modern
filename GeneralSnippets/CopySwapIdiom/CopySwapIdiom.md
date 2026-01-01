@@ -19,7 +19,7 @@
 ## Allgemeines <a name="link1"></a>
 
 Das *Copy-and-Swap*-Idiom wurde eingeführt, um zwei Ziele zu erreichen:
-  * Realisierung der Kopier-Konstruktoren und Wertzuweisungsoperatoren (sowohl &bdquo;kopierende&rdquo; als auch &bdquo;verschiebende&rdquo; Semantik)
+  * Realisierung der Kopier-Konstruktoren und Zuweisungsoperatoren (sowohl &bdquo;kopierende&rdquo; als auch &bdquo;verschiebende&rdquo; Semantik)
   auf eine einfache Weise (Vermeidung von Code-Duplikationen).
   * Bereitstellung der so genannten *Strong Exception Guarantee*.
 

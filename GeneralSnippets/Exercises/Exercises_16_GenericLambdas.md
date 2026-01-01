@@ -12,7 +12,7 @@
 
 | Aufgabe | Beschreibung |
 | :- | :- |
-| *Aufgabe* 1 | Personensuche<br/>(Vorausetzungen: Algorithmus `std::find_if`) |
+| *Aufgabe* 1 | Personensuche<br/>(Voraussetzungen: Algorithmus `std::find_if`) |
 
 *Tabelle* 1: Aufgaben zu generischen Lambda Funktionen.
 
@@ -20,7 +20,7 @@
 
 ## Aufgabe 1: Personensuche
 
-#### Vorausetzungen: Algorithmus `std::find_if`
+#### Voraussetzungen: Algorithmus `std::find_if`
 
 Wir haben bei den generischen Lambda Funktionen das so genannte Feature
 der *Automatic Type Deduction* kennen gelernt:

@@ -20,7 +20,7 @@
 ## Allgemeines <a name="link1"></a>
 
 Die Erweiterung einer Klasse von der Kopier-Konstruktion (dies schließt den Kopier-Konstruktor und
-den Wertzuweisungsoperator ein) hin zur Verschiebe-Konstruktion (dies wiederum 
+den Zuweisungsoperator ein) hin zur Verschiebe-Konstruktion (dies wiederum 
 schließt den Verschiebe-Konstruktor und
 die Verschiebe-Wertzuweisung ein) kann dem dazugehörigen Quellcode entnommen werden.
 

@@ -75,7 +75,7 @@ Welche Beobachtungen können Sie in Bezug auf die Ausführungszeiten des Verglei
 
 ## Aufgabe 2: *Fibonacci*-Zahlen
 
-#### Vorausetzungen: Algorithmen `std::generate`, Lambda-Funktionen, Structured Binding
+#### Voraussetzungen: Algorithmen `std::generate`, Lambda-Funktionen, Structured Binding
 
 In der Mathematik bilden die *Fibonacci*-Zahlen eine Folge,
 so dass jede Zahl die Summe der beiden vorhergehenden Zahlen ist, beginnend mit 0 und 1. 

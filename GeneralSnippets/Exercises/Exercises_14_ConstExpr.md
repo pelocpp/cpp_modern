@@ -21,7 +21,7 @@
 
 ## Aufgabe 1: *Return Type Resolver*
 
-#### Vorausetzungen: Templates, `std::is_same`, `auto` und `constexpr`
+#### Voraussetzungen: Templates, `std::is_same`, `auto` und `constexpr`
 
 Betrachten Sie die beiden folgenden Quellcodezeilen:
 
@@ -84,7 +84,7 @@ Wie ließe sich das letze Codefragment umformulieren, um das gewünschte Ziel zu
 
 ## Aufgabe 2: Auswertung von variadischen Templates, `decltype` und Type-Traits am Beispiel von `sameType` zur Übersetzungszeit
 
-#### Vorausetzungen: `std::is_same`
+#### Voraussetzungen: `std::is_same`
 
 Schreiben Sie eine Funktionsschablone `sameType`, die eine beliebige Anzahl von Argumenten
 beliebigen Typs akzeptiert. Der Rückgabewert vom Typ `bool` ist `true`, wenn alle Argumente vom selben Typ

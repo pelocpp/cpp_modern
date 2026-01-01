@@ -12,9 +12,9 @@
 
 | Aufgabe | Beschreibung |
 | :- | :- |
-| *Aufgabe* 1 | `std::visit` und generische Lambdas<br/>(Vorausetzungen: `if constexpr`, `decltype`, `std::variant`, `std::visit`, Type Traits) |
-| *Aufgabe* 2 | `std::optional`: Umwandlung von Zeichenketten in ganze Zahlen<br/>(Vorausetzungen: Templates Grundlagen, `std::optional`, `if constexpr`) |
-| *Aufgabe* 3 | `std::variant`: Ein heterogener Container<br/>(Vorausetzungen: `std::variant`, `std::visit`, `std::vector`) |
+| *Aufgabe* 1 | `std::visit` und generische Lambdas<br/>(Voraussetzungen: `if constexpr`, `decltype`, `std::variant`, `std::visit`, Type Traits) |
+| *Aufgabe* 2 | `std::optional`: Umwandlung von Zeichenketten in ganze Zahlen<br/>(Voraussetzungen: Templates Grundlagen, `std::optional`, `if constexpr`) |
+| *Aufgabe* 3 | `std::variant`: Ein heterogener Container<br/>(Voraussetzungen: `std::variant`, `std::visit`, `std::vector`) |
 
 *Tabelle* 1: Aufgaben zu Utility Klassen.
 
@@ -22,7 +22,7 @@
 
 ## Aufgabe 1: `std::visit` und generische Lambdas
 
-#### Vorausetzungen: `if constexpr`, `decltype`, `std::variant`, `std::visit`, Type Traits, `std::remove_reference`,<br/>`std::is_scalar`, `std::is_same` und `std::remove_cvref`
+#### Voraussetzungen: `if constexpr`, `decltype`, `std::variant`, `std::visit`, Type Traits, `std::remove_reference`,<br/>`std::is_scalar`, `std::is_same` und `std::remove_cvref`
 
 Für `std::variant`-Objekte gibt es eine *Visitor*-Unterstützung in Gestalt der Funktion `std::visit`.
 Diese benötigt neben einem `std::variant`-Objekt ein *Callable*-Objekt,
@@ -73,7 +73,7 @@ Welche Beobachtung machen Sie?
 
 ## Aufgabe 2: `std::optional`: Umwandlung von Zeichenketten in ganze Zahlen
 
-#### Vorausetzungen: Templates Grundlagen, `std::optional`, `if constexpr`
+#### Voraussetzungen: Templates Grundlagen, `std::optional`, `if constexpr`
 
 Schreiben Sie eine Funktion `std::optional<int> toInt(std::string s)`.
 Der Rückgabewert vom Typ `std::optional<int>` darf nur dann einen gültigen `int`-Wert enthalten,
@@ -93,7 +93,7 @@ Realisieren Sie die Funktion analog zur Funktion `toInt`. Für `T` sollen die in
 
 ## Aufgabe 3: `std::variant`: Ein heterogener Container
 
-#### Vorausetzungen: `std::variant`, `std::visit`, `std::vector`
+#### Voraussetzungen: `std::variant`, `std::visit`, `std::vector`
 
 Für STL-Container in C++ gilt prinzipiell die Anwort auf die Frage
 &bdquo;Kann ich einen `std::vector` so verwenden,

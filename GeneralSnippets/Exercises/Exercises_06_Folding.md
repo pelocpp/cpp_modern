@@ -13,7 +13,7 @@
 | Aufgabe | Beschreibung |
 | :- | :- |
 | *Aufgabe* 1 | Logische Operationen mit beliebig vielen Operanden |
-| *Aufgabe* 2 | `decltype` und Type-Traits am Beispiel von `sameType`<br/>(Vorausetzungen: `std::is_same`) |
+| *Aufgabe* 2 | `decltype` und Type-Traits am Beispiel von `sameType`<br/>(Voraussetzungen: `std::is_same`) |
 | *Aufgabe* 3 | &bdquo;Folding over a Comma&rdquo; am Beispiel zweier Funktionen `minimum` und `maximum`<br/>(Voraussetzungen: Lambda Funktionen) |
 | *Aufgabe* 4 | Beliebig viele Werte zu einem `std::vector`-Objekt hinzufügen |
 | *Aufgabe* 5 | Störende Trennzeichen am Ende eines Folding-Ausdrucks |
@@ -33,7 +33,7 @@ Setzen Sie zur Lösung dieses Mal *Folding Expressions* ein.
 
 ## Aufgabe 2: Folding Expressions, `decltype` und Type-Traits am Beispiel von `sameType`
 
-#### Vorausetzungen: `std::is_same`
+#### Voraussetzungen: `std::is_same`
 
 Die Aufgabenstellung ist identisch zur zweiten Aufgabe
 &bdquo;Logische Operationen mit beliebig vielen Operanden&rdquo;

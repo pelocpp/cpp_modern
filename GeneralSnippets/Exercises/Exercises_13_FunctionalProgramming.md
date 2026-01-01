@@ -12,8 +12,8 @@
 
 | Aufgabe | Beschreibung |
 | :- | :- |
-| *Aufgabe* 1 | Umwandlung von Zeichenketten eines `std::vector`-Objekts<br/>(Vorausetzungen: Templates, Lambda-Funktionen) |
-| *Aufgabe* 2 | `decltype`, `declval` und nachlaufender Rückgabetyp in der Praxis<br/>(Vorausetzungen: Kenntnisse von `decltype` und `declval`) |
+| *Aufgabe* 1 | Umwandlung von Zeichenketten eines `std::vector`-Objekts<br/>(Voraussetzungen: Templates, Lambda-Funktionen) |
+| *Aufgabe* 2 | `decltype`, `declval` und nachlaufender Rückgabetyp in der Praxis<br/>(Voraussetzungen: Kenntnisse von `decltype` und `declval`) |
 
 *Tabelle* 1: Aufgaben zur funktionalen Programmierung.
 
@@ -21,7 +21,7 @@
 
 ## Aufgabe 1: Umwandlung von Zeichenketten eines `std::vector`-Objekts
 
-#### Vorausetzungen: Templates, Lambda-Funktionen
+#### Voraussetzungen: Templates, Lambda-Funktionen
 
 In den beiden Dateien
 
@@ -60,7 +60,7 @@ Schreiben Sie eine Testfunktion, die ihre Realisierung testet.
 
 ## Aufgabe 2: `decltype`, `declval` und nachlaufender Rückgabetyp in der Praxis
 
-#### Vorausetzungen: Kenntnisse von `decltype` und `declval`
+#### Voraussetzungen: Kenntnisse von `decltype` und `declval`
 
 Im Code-Snippet zu *Funktionaler Programmierung* haben wir die Funktion höherer Ordnung `fold` betrachtet:
 

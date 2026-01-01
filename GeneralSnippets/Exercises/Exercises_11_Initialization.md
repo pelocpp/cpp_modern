@@ -8,8 +8,8 @@
 
 | Aufgabe | Beschreibung |
 | :- | :- |
-| *Aufgabe* 1 | *Brace Initialization* und Initialisierungliste<br/>(Vorausetzungen: Templates, `std::vector<>`, `std::initializer_list<>`) |
-| *Aufgabe* 2 | Ein Zeitvergleich<br/>(Vorausetzungen: `std::vector<>`, `std::initializer_list<>`) |
+| *Aufgabe* 1 | *Brace Initialization* und Initialisierungliste<br/>(Voraussetzungen: Templates, `std::vector<>`, `std::initializer_list<>`) |
+| *Aufgabe* 2 | Ein Zeitvergleich<br/>(Voraussetzungen: `std::vector<>`, `std::initializer_list<>`) |
 
 *Tabelle* 1: Aufgaben zur Initialisierung.
 
@@ -21,7 +21,7 @@
 
 ## Aufgabe 1: *Brace Initialization* und Initialisierungliste
 
-#### Vorausetzungen: Templates, `std::vector<>`, `std::initializer_list<>`
+#### Voraussetzungen: Templates, `std::vector<>`, `std::initializer_list<>`
 
 Erstellen Sie eine leeres Visual C++ Projekt,
 fügen Sie nachstehenden Quellcode dort ein und bringen Sie das Programm zum Laufen:

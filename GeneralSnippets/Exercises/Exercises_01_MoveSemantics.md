@@ -99,7 +99,7 @@ fügen Sie nachstehenden Quellcode dort ein und bringen Sie das Programm zum Lau
 Analysieren Sie das Code-Fragment: An Hand der Testausgaben sollte man erkennen,
 dass ein großes Objekt (Klasse `HugeArray`) insgesamt 5 Mal neu angelegt oder umkopiert wird. Dies soll nun verhindert werden:
 
-  * Fügen Sie der Klasse `HugeArray` eine Definition des Move-Konstruktors und des Move-Wertzuweisungsoperators hinzu.
+  * Fügen Sie der Klasse `HugeArray` eine Definition des Move-Konstruktors und des Move-Zuweisungsoperators hinzu.
     Implementieren Sie die beiden Methoden entsprechend. Wieviele echte Kopiervorgänge können Sie nun noch beobachten? (Anwort: 2).
   * Studieren Sie die Testfunktion `testExercise` genau: Ein einer Stelle können Sie durch Einfügen eines
     `std::move`-Aufrufs einen weiteren Kopiervorgang einsparen!

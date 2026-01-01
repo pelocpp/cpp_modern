@@ -363,7 +363,7 @@ Nun ist die Klasse `PolymorphicObjectWrapper` entsprechend anzupassen:
 Wir vertiefen die Betrachtungen zu *Type Erasure* an einem praxisnahen Beispiel: einer Buchhandung.
 Das *Type Erasure* Idiom kommt hier indirekt zum Zuge, indem wir die Klasse `std::variant` verwenden.
 
-Als Vorausetzungen für dieses Beispiel benötigen wir Kenntnisse bzgl.
+Als Voraussetzungen für dieses Beispiel benötigen wir Kenntnisse bzgl.
 der Klassen bzw. Funktionen `std::variant`, `std::visit`, `std::vector` und variadischer Templates.
 
 Worum geht es?

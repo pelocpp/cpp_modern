@@ -12,8 +12,8 @@
 
 | Aufgabe | Beschreibung |
 | :- | :- |
-| *Aufgabe* 1 | Einfache Realisierung einer Lambda-Funktion<br/>(Vorausetzungen: Algorithmus `std::for_each`, bei Bedarf auch `std::generate`) |
-| *Aufgabe* 2 | Taschenrechner mit Lambda-Funktionen<br/>(Vorausetzungen: Container `std::map`, Klasse `std::pair`) | 
+| *Aufgabe* 1 | Einfache Realisierung einer Lambda-Funktion<br/>(Voraussetzungen: Algorithmus `std::for_each`, bei Bedarf auch `std::generate`) |
+| *Aufgabe* 2 | Taschenrechner mit Lambda-Funktionen<br/>(Voraussetzungen: Container `std::map`, Klasse `std::pair`) | 
 | *Aufgabe* 3 | Quiz mit Lambda-Funktionen |
 
 *Tabelle* 1: Aufgaben zu Lambda Funktionen.
@@ -22,7 +22,7 @@
 
 ## Aufgabe 1: Einfache Realisierung einer Lambda-Funktion
 
-#### Vorausetzungen: Algorithmus `std::for_each`, bei Bedarf auch `std::generate`
+#### Voraussetzungen: Algorithmus `std::for_each`, bei Bedarf auch `std::generate`
 
 Erstellen Sie eine leeres Visual C++ Projekt,
 fügen Sie nachstehenden Quellcode dort ein und bringen Sie das Programm zum Laufen.
@@ -62,7 +62,7 @@ bestimmt werden.
 
 ## Aufgabe 2: Taschenrechner mit Lambda-Funktionen
 
-#### Vorausetzungen: Container `std::map`, Klasse `std::pair`, Klasse `std::function`
+#### Voraussetzungen: Container `std::map`, Klasse `std::pair`, Klasse `std::function`
 
 Erstellen Sie ein `std::map`-Objekt vom Typ `std::map<char, std::function<double(double, double)>>`.
 Der zweite Parameter `std::function<double(double, double)>` ist so ausgelegt,

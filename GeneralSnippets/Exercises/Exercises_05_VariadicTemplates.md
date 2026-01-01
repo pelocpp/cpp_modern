@@ -13,9 +13,9 @@
 | Aufgabe | Beschreibung |
 | :- | :- |
 | *Aufgabe* 1 | Logische Operationen mit beliebig vielen Operanden |
-| *Aufgabe* 2 | `decltype` und Type-Traits am Beispiel von `sameType`<br/>(Vorausetzungen: `std::is_same`) |
-| *Aufgabe* 3 | Generische Funktion `miminum`<br/>(Vorausetzungen: Utility-Funktion `std::common_type`) |
-| *Aufgabe* 4 | Ausgabe eines `std::tuple` Objekts<br/>(Vorausetzungen: `std::tuple`, Non-Type Template Parameter) |
+| *Aufgabe* 2 | `decltype` und Type-Traits am Beispiel von `sameType`<br/>(Voraussetzungen: `std::is_same`) |
+| *Aufgabe* 3 | Generische Funktion `miminum`<br/>(Voraussetzungen: Utility-Funktion `std::common_type`) |
+| *Aufgabe* 4 | Ausgabe eines `std::tuple` Objekts<br/>(Voraussetzungen: `std::tuple`, Non-Type Template Parameter) |
 | *Aufgabe* 5 | Viele Wege führen zum gleichen Ergebnis: Summenbildung natürlicher Zahlen |
 | *Aufgabe* 6 | Variadische Templates und Vererbung |
 
@@ -52,7 +52,7 @@ true
 
 ## Aufgabe 2: `decltype` und Type-Traits am Beispiel von `sameType`
 
-#### Vorausetzungen: `std::is_same`
+#### Voraussetzungen: `std::is_same`
 
 Schreiben Sie eine Funktionsschablone `sameType`, die eine beliebige Anzahl von Argumenten
 beliebigen Typs akzeptiert. Der Rückgabewert vom Typ `bool` ist `true`, wenn alle Argumente vom selben Typ
@@ -95,7 +95,7 @@ Können Sie das Feature "*Short-Circuit-Evaluation*" in Ihrer Realisierung der F
 
 ## Aufgabe 3: Generische Funktion `miminum`
 
-#### Vorausetzungen: Utility-Funktion `std::common_type`
+#### Voraussetzungen: Utility-Funktion `std::common_type`
 
 Schreiben Sie eine Funktion `miminum`, die eine beliebige Anzahl von Argumenten
 beliebigen Typs akzeptiert und das Minimum aller Werte berechnet.
@@ -107,7 +107,7 @@ die Funktion `std::common_type` definiert ist.
 
 ## Aufgabe 4: Ausgabe eines `std::tuple` Objekts
 
-#### Vorausetzungen: `std::tuple<T>`, Non-Type Template Parameter
+#### Voraussetzungen: `std::tuple<T>`, Non-Type Template Parameter
 
 Ein `std::tuple` ist ein Objekt, das eine Sammlung von beliebigen Elementen enthalten kann.
 Jedes Element kann dabei von einem anderen Typ sein. Mit der Funktion `std::get<size_t index>()` erhält

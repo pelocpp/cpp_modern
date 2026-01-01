@@ -12,10 +12,10 @@
 
 | Aufgabe | Beschreibung |
 | :- | :- |
-| *Aufgabe* 1 | Überprüfung des Vorhandenseins einer bestimmten Basisklasse<br/>(Vorausetzungen: `concept`, `requires`) |
-| *Aufgabe* 2 | Überprüfung des Datentyps von Funktionsparametern<br/>(Vorausetzungen: `concept`, `requires`) |
-| *Aufgabe* 3 | Konzepte und Schnittstellen im Vergleich<br/>(Vorausetzungen: `concept`, `requires`, `virtual`, `override`) |
-| *Aufgabe* 4 | Berechnung der Gesamtlänge beliebig vieler Zeichenketten<br/>(Vorausetzungen: `requires`, `std::initializer_list`) |
+| *Aufgabe* 1 | Überprüfung des Vorhandenseins einer bestimmten Basisklasse<br/>(Voraussetzungen: `concept`, `requires`) |
+| *Aufgabe* 2 | Überprüfung des Datentyps von Funktionsparametern<br/>(Voraussetzungen: `concept`, `requires`) |
+| *Aufgabe* 3 | Konzepte und Schnittstellen im Vergleich<br/>(Voraussetzungen: `concept`, `requires`, `virtual`, `override`) |
+| *Aufgabe* 4 | Berechnung der Gesamtlänge beliebig vieler Zeichenketten<br/>(Voraussetzungen: `requires`, `std::initializer_list`) |
 
 *Tabelle* 1: Aufgaben zu Konzepten.
 
@@ -23,7 +23,7 @@
 
 ## Aufgabe 1: Überprüfung des Vorhandenseins einer bestimmten Basisklasse
 
-#### Vorausetzungen: `concept`, `requires`
+#### Voraussetzungen: `concept`, `requires`
 
 Erstellen Sie ein Konzept, das für ein Klassentemplate überprüft,
 dass deren Template Parameter sich von einer bestimmten Basisklasse ableiten.
@@ -99,7 +99,7 @@ Der Einfachheit halber legen wir die Vererbungsart `public` zu Grunde.
 
 ## Aufgabe 2: Überprüfung des Datentyps von Funktionsparametern
 
-#### Vorausetzungen: `concept`, `requires`
+#### Voraussetzungen: `concept`, `requires`
 
 In den Übungen zu variadischen Templates hatten wir zwei Funktionen `andAll` und `orAll`
 betrachtet:
@@ -132,7 +132,7 @@ Die Technik des *Foldings* kann auch auch *Konzepte* angewendet werden.
 
 ## Aufgabe 3: Konzepte und Schnittstellen im Vergleich
 
-#### Vorausetzungen: `concept`, `requires`, `virtual`
+#### Voraussetzungen: `concept`, `requires`, `virtual`
 
 Betrachten wir folgendes Funktionstemplate:
 
@@ -195,7 +195,7 @@ die das Konzept erfüllt.
 
 ## Aufgabe 4: Berechnung der Gesamtlänge beliebig vieler Zeichenketten
 
-#### Vorausetzungen: `requires`, `std::initializer_list`
+#### Voraussetzungen: `requires`, `std::initializer_list`
 
 Schreiben Sie eine Funktion `totalLength`, die eine variable Anzahl von `std::string`-Parametern besitzt.
 Als Rückgabewert liefert sie die Gesamtlänge aller Zeichenketten zurück.

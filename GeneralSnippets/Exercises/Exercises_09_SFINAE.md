@@ -13,9 +13,9 @@
 | Aufgabe | Beschreibung |
 | :- | :- |
 | *Aufgabe* 1 | Eine Funktion mit bestimmten Parametertypen |
-| *Aufgabe* 2 | Eine Methode, unterschiedliche Implementierungen<br/>(Vorausetzungen: Templates, `decltype` und `std::declval`) |
-| *Aufgabe* 3 | Detektion von Methoden in einer Klasse<br/>(Vorausetzungen: Templates, `decltype` und `std::declval`) |
-| *Aufgabe* 4 | Eine Methode, unterschiedliche Implementierungen zum Zweiten<br/>(Vorausetzungen: `std::array`) |
+| *Aufgabe* 2 | Eine Methode, unterschiedliche Implementierungen<br/>(Voraussetzungen: Templates, `decltype` und `std::declval`) |
+| *Aufgabe* 3 | Detektion von Methoden in einer Klasse<br/>(Voraussetzungen: Templates, `decltype` und `std::declval`) |
+| *Aufgabe* 4 | Eine Methode, unterschiedliche Implementierungen zum Zweiten<br/>(Voraussetzungen: `std::array`) |
 
 *Tabelle* 1: Aufgaben zu SFINAE.
 
@@ -249,7 +249,7 @@ vor.
 
 ## Aufgabe 3: Detektion von Methoden in einer Klasse
 
-#### Vorausetzungen: Templates, `decltype` und `std::declval`
+#### Voraussetzungen: Templates, `decltype` und `std::declval`
 
 Das *Detection Idiom* (zu deutsch etwa &bdquo;Erkennungsidiom&rdquo;)
 ermöglicht die Introspektion eines C++-Klassentyps zur Übersetzungszeit.
@@ -358,7 +358,7 @@ Realisieren und testen Sie eine entsprechende Klasse `MethodDetectorEx`.
 
 ## Aufgabe 4: Eine Methode, unterschiedliche Implementierungen zum Zweiten
 
-#### Vorausetzungen: `std::array`
+#### Voraussetzungen: `std::array`
 
 Arrays treten in C++ - unter anderem aus historischen Gründen - mehrfach in Erscheinung:
 Als klassisches Array im Stile von C oder als Objekte der Klasse `std::array`.

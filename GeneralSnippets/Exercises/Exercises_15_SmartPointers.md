@@ -12,10 +12,10 @@
 
 | Aufgabe | Beschreibung |
 | :- | :- |
-| *Aufgabe* 1 | Quiz zu Smart Pointer<br/>(Vorausetzungen: `std::shared_ptr<>`) |
-| *Aufgabe* 2 | Noch ein Quiz zu Smart Pointer<br/>(Vorausetzungen: `std::shared_ptr<>`) |
-| *Aufgabe* 3 | Betrachtungen eines &bdquo;nicht besitzenden&rdquo; Zeigers<br/>(Vorausetzungen: `std::shared_ptr<>`, `std::weak_ptr<>`) |
-| *Aufgabe* 4 | Verwendung von Smartpointern für Membervariablen einer Klasse<br/>(Vorausetzungen: `std::unique_ptr<>` und `std::shared_ptr<>`) |
+| *Aufgabe* 1 | Quiz zu Smart Pointer<br/>(Voraussetzungen: `std::shared_ptr<>`) |
+| *Aufgabe* 2 | Noch ein Quiz zu Smart Pointer<br/>(Voraussetzungen: `std::shared_ptr<>`) |
+| *Aufgabe* 3 | Betrachtungen eines &bdquo;nicht besitzenden&rdquo; Zeigers<br/>(Voraussetzungen: `std::shared_ptr<>`, `std::weak_ptr<>`) |
+| *Aufgabe* 4 | Verwendung von Smartpointern für Membervariablen einer Klasse<br/>(Voraussetzungen: `std::unique_ptr<>` und `std::shared_ptr<>`) |
 
 *Tabelle* 1: Aufgaben zu Smart Pointer.
 
@@ -23,7 +23,7 @@
 
 ## Aufgabe 1: Quiz zu Smart Pointer
 
-#### Vorausetzungen: `std::shared_ptr<>`
+#### Voraussetzungen: `std::shared_ptr<>`
 
 Studieren Sie das folgende Code-Fragement genau.
 Welchen Wert hat der Referenzzähler des Objekts `pC` in der letzten Zeile?
@@ -45,7 +45,7 @@ Welchen Wert hat der Referenzzähler des Objekts `pC` in der letzten Zeile?
 
 ## Aufgabe 2: Noch ein Quiz zu Smart Pointer
 
-#### Vorausetzungen: `std::shared_ptr<>`
+#### Voraussetzungen: `std::shared_ptr<>`
 
 Studieren Sie das folgende Code-Fragement genau.
 
@@ -198,7 +198,7 @@ das referenzierte Objekt noch existiert.
 
 ## Aufgabe 4: Verwendung von Smartpointern für Membervariablen einer Klasse
 
-#### Vorausetzungen: `std::unique_ptr<>` und `std::shared_ptr<>`
+#### Voraussetzungen: `std::unique_ptr<>` und `std::shared_ptr<>`
 
 In dieser Aufgabe gehen wir auf den Gebrauch eines Smartpointers als Membervariable einer Klasse ein.
 
@@ -264,7 +264,7 @@ in der Klasse `MyString` zu begründen.
 1. Frage:<br />
 Kann man das *Rule-of-Zero* Regelwerk in Anspruch nehmen?
  
-In diesem Fall wäre folglich keine der drei fraglichen Methoden/Operatoren Kopierkonstruktor, Wertzuweisungsoperator und Destruktor zu realisieren.
+In diesem Fall wäre folglich keine der drei fraglichen Methoden/Operatoren Kopierkonstruktor, Zuweisungsoperator und Destruktor zu realisieren.
 Verifizieren Sie, ob in Ihrer Realisierung der `MyString`-Klasse diese drei Methoden/Operatoren zur Laufzeit zur Verfügung stehen?
 Welche Ergebnisse erhalten Sie bei der Ausführung?
 
