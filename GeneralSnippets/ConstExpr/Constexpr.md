@@ -4,7 +4,7 @@
 
 ---
 
-[Quellcode](ConstExpr.cpp)
+[Quellcode](ConstExpr.cpp)<br />
 [Quellcode CRC](ConstExpr_CRC.cpp)
 
 ---
@@ -71,7 +71,7 @@ Was sind die Vorteile einer `constexpr`-Variablendefinition gegenüber dem Gebrau
 
 ## Funktionen <a name="link3"></a>
 
-Einfache Funktionen, häufig einfache Hilfsfunktionen wie ein Vergleich zweier Werte zum Beispiel,
+Einfache Funktionen, z. B. kleine Hilfsfunktionen wie ein Vergleich zweier Werte,
 lassen sich in klassischem C als Makros und in modernem C++ als `constexpr`-Funktionen oder -Lambdas schreiben.
 
 Man sollte auf Grund der Nachteile von C-Makros immer der `constexpr`-Variante den Vorzug geben.
@@ -84,10 +84,68 @@ C-Makro mit Nachteilen:
 #define   SQUARE(x)    x * x
 ```
 
+Eine Anwendung von `SQUARE` wie etwa
 
+```cpp
+std::size_t a{ 1 };
+std::size_t b{ 2 };
+std::size_t value{ SQUARE(a + b) };  
+```
 
+liefert einen falschen Wert zurück! Erkennen Sie das Problem?
+Eine Textersetzung von `SQUARE(a + b)` resultiert in dem Ausdruck `a + b * a + b`
+und dieser Ausdruck evaluiert zu *1 + 2 * 1 + 2* ist gleich 5. 
+Man würde aber 3 * 3 = 9 als Ergebnis erwarten.
 
+Okay, man hätte das in dem Makro `SQUARE` besser machen können, zum Beispiel so:
 
+```cpp
+#define   SQUARE(x)    (x * x)
+```
+
+Dennoch erkennen wir die Schwachstellen der C-Makro Technik.
+
+Mit `constexpr` würde man eine `square`-Funktion so schreiben:
+
+```cpp
+static constexpr auto square = [](auto x) constexpr {
+    return x * x;
+};
+```
+
+oder auch
+
+```cpp
+static auto squareLambda = [](auto x) constexpr {
+    return x * x;
+};
+```
+
+Damit sind nun folgende Anwendungen möglich:
+
+```cpp
+constexpr std::size_t a{ 1 };
+constexpr std::size_t b{ 2 };
+constexpr auto value{ square(a + b) };
+static_assert(value == 9);                  // correct result !!!
+
+constexpr double x{ 3.0 };
+constexpr double y{ 4.0 };
+constexpr auto dvalue{ square(x + y) };
+static_assert(dvalue == 49.0);              // correct result !!!
+```
+
+Beachten Sie auch diese vier Deklarationen:
+
+```cpp
+constexpr auto squareOfTwo = square(2);
+constexpr auto squareOfThree = square(3.0);
+
+constexpr auto squareOfFour = squareLambda(4);
+constexpr auto squareOfFive = squareLambda(5.0);
+```
+
+Es werden alle Werte vom Compiler zur Übersetzungszeit berechnet!
 
 Wir kommen jetzt auf Klassen und Objekte zu sprechen.
 

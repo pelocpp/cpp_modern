@@ -8,6 +8,9 @@ module;
 
 module modern_cpp:const_expr;
 
+// =====================================================================================
+// variables
+
 namespace ConstExprVariables {
 
     constexpr double Pi = 3.14159265359;
@@ -21,42 +24,19 @@ namespace ConstExprVariables {
     }
 }
 
+// =====================================================================================
+// functions
+
 namespace ConstExprFunctions {
 
-#define   CLAMP(x, lo, hi)      ((x) < (lo) ? (lo) : ((x) > (hi) ? (hi) : (x)))
+    // ======================================================
+    // limit a number in a range or in between two given numbers
 
-#define   SQUARE(x)             x * x
-
-#define   SWAP(a, b)            \
-          {                     \
-              auto tmp = (a);   \
-              (a) = (b);        \
-              (b) = tmp;        \
-          }
+    #define   CLAMP(x, lo, hi)      ((x) < (lo) ? (lo) : ((x) > (hi) ? (hi) : (x)))
 
     static auto clamp = [](auto x, auto lo, auto hi) constexpr {
         return x < lo ? lo : (x > hi ? hi : x);
-    };
-
-    //static constexpr int square(int x) constexpr {
-    //    return x * x;
-    //};
-
-    static constexpr auto square = [](auto x) constexpr {
-        return x * x;
-    };
-
-    static auto swap = [](auto& a, auto& b) constexpr {
-        auto tmp = a;
-        a = b;
-        b = tmp;
-        };
-
-    static auto squareLambda = [](auto x) constexpr { return x * x; };
-
-    static auto constexpr squareOfTwo = squareLambda(2);
-
-    static auto constexpr squareOfThree = squareLambda(3.0);
+        }; 
 
     static void testFunctions_01() {
 
@@ -67,6 +47,25 @@ namespace ConstExprFunctions {
         constexpr auto value2{ clamp(a + b, 0, 10) };
         constexpr auto value3{ clamp(a + b, 5,  8) };
     }
+    
+    // ======================================================
+    // calculate the number multiplied by itself
+
+    #define   SQUARE(x)             x * x
+
+    static constexpr auto square = [](auto x) constexpr {
+        return x * x;
+    };
+
+    static auto squareLambda = [](auto x) constexpr {
+        return x * x;
+    };
+
+    static constexpr auto squareOfTwo = square(2);
+    static constexpr auto squareOfThree = square(3.0);
+
+    static constexpr auto squareOfFour = squareLambda(4);
+    static constexpr auto squareOfFive = squareLambda(5.0);
 
     static void testFunctions_02() {
 
@@ -85,8 +84,37 @@ namespace ConstExprFunctions {
         constexpr std::size_t a{ 1 };
         constexpr std::size_t b{ 2 };
         constexpr auto value{ square(a + b) };
-        static_assert(value == 9);                // correct result !!!
+        static_assert(value == 9);                  // correct result !!!
+
+        constexpr double x{ 3.0 };
+        constexpr double y{ 4.0 };
+        constexpr auto dvalue{ square(x + y) };
+        static_assert(dvalue == 49.0);              // correct result !!!
     }
+
+    // ======================================================
+    // swap the values of two variables
+
+    #define   SWAP(a, b)        \
+          {                     \
+              auto tmp = (a);   \
+              (a) = (b);        \
+              (b) = tmp;        \
+          }
+
+    static auto swap = [](auto& a, auto& b) constexpr {
+        auto tmp = a;
+        a = b;
+        b = tmp;
+    };
+
+    // constexpr lambda as a compile-time function template (C++ 20)
+    // enforces that both parameters have the same type
+    //static auto swap = []<typename T>(T& a, T& b) constexpr {
+    //    auto tmp = a;
+    //    a = b;
+    //    b = tmp;
+    //    };
 
     static void testFunctions_04() {
 
@@ -108,6 +136,8 @@ namespace ConstExprFunctions {
         std::println("{} - {}", a, b);
     }
 
+    // ======================================================
+
     static void testFunctions() {
 
         testFunctions_01();
@@ -117,6 +147,9 @@ namespace ConstExprFunctions {
         testFunctions_05();
     }
 }
+
+// =====================================================================================
+// classes and objects
 
 namespace ConstExprClassesAndObjects {
 
@@ -167,6 +200,9 @@ namespace ConstExprClassesAndObjects {
     }
 }
 
+// =====================================================================================
+// dynamic variables
+
 namespace ConstExprDynamicData {
 
     static constexpr int naiveSum(unsigned int n)
@@ -184,6 +220,9 @@ namespace ConstExprDynamicData {
         std::println("Sum from 1 up to 10: {}", sum);
     }
 }
+
+// =====================================================================================
+// example: compile-time table of power numbers
 
 namespace ConstExprPow {
 

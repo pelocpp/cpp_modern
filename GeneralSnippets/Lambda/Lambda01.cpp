@@ -270,7 +270,7 @@ namespace Lambdas {
         // This kind of expression might be useful when you have
         // a complex initialization of a const  object:
 
-        auto constexpr ConstValue = [] () {
+        constexpr auto ConstValue = [] () {
             /* several lines of code ... - "very complex" computation */
             return 123;
         } ();
