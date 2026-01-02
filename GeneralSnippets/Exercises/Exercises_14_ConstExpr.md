@@ -38,14 +38,14 @@ das Ergebnis bereits zur Übersetzungszeit berechnet wird.
 *Beispiel*:
 
 ```cpp
-constexpr auto result1 = maximum(1, 2, 3);
+constexpr auto result = maximum(1, 2, 3);
 ```
 
 Aus dem Maschinencode des Programms können wir ablesen,
 dass der Übersetzer den Wert 3 bereits berechnet hat:
 
 ```
-constexpr auto result1 = maximum(1, 2, 3);
+constexpr auto result = maximum(1, 2, 3);
 00007FF6CEF273CC  mov dword ptr [result1],3  
 ```
 
