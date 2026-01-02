@@ -367,7 +367,6 @@ namespace Lambdas {
         return (n <= m) ? n : m;
     };
 
-
     static void test_13() {
 
         // IIFE - Immediately Invoked Functional Expression:
@@ -389,7 +388,6 @@ namespace Lambdas {
         constexpr auto value9 = minimumMoreGeneric(60, 50);
         // constexpr auto value10 = minimumMoreGeneric(50.0f, 60.0);  // does NOT compile (!), compare with 'minimumGeneric' (?!?!)
     }
-
 
     // ======================================================
     // Feature: Generalized Lambda Capture

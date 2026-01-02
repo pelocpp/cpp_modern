@@ -8,65 +8,78 @@ namespace Exercises_ConstExpr {
 
     namespace Exercise_01 {
 
-        // int fromString(const char* str) { return 0; }
-        // double fromString(const char* str) { return 0.0; } 
-        // 
-        // Error: overloaded function differs only by return type 
-        // from 'int fromString(const char *)'
+        // works for int arguments
+        auto maximum = [](int a, int b, int c) constexpr {
 
-        class FromString
-        {
-        private:
-            std::string m_str;
-
-        public:
-            FromString(const char* str) : m_str{ str } {}
-
-            template <typename T>
-            operator T()
+            if (a > b && a > c)
             {
-                if constexpr (std::is_same<T, int>::value)
-                {
-                    return std::stoi(m_str);
-                }
-                else if constexpr (std::is_same<T, float>::value)
-                {
-                    return std::stof(m_str);
-                }
-                else if constexpr (std::is_same<T, double>::value)
-                {
-                    return std::stod(m_str);
-                }
+                return a;
+            }
+            else if (b > a && b > c)
+            {
+                return b;
+            }
+            else
+            {
+                return c;
             }
         };
 
-        static void testExercise_01() {
+        // works for arguments of different type (?!?)
+        // type of the ternary ?: expression is
+        // the common type of its second and third argument
+        auto maximumAuto = [](auto a, auto b, auto c) constexpr {
+            return (a > b && a > c) ? a : ((b > a && b > c) ? b : c  );
+        };
 
-            using namespace Exercises_ConstExpr;
+        // works for arguments of different type (?!?)
+        // type of the ternary ?: expression is
+        // the common type of its second and third argument
+        auto maximumMoreAuto = [](auto a, auto b, auto c) constexpr {
 
-            int n{ FromString{ "123" } };
-            float f{ FromString{ "45.67f" } };
-            double d{ FromString{ "89.123" } };
+            if (a > b && a > c)
+            {
+                return a;
+            }
+            else if (b > a && b > c)
+            {
+                return b;
+            }
+            else
+            {
+                return c;
+            }
+        };
 
-            std::cout << n << std::endl;
-            std::cout << f << std::endl;
-            std::cout << d << std::endl;
+        // works for arbitrary arguments of the same type (!)
+        template <typename T>
+        auto maximumGeneric = [](T a, T b, T c) constexpr {
+            return (a > b && a > c) ? a : ((b > a && b > c) ? b : c);
+        };
 
-            auto n1{ FromString{ "123" } };
-            auto f1{ FromString{ "45.67f" } };
-            auto d1{ FromString{ "89.123" } };
+        // works for arbitrary arguments of the same type (!)
+        // different syntax
+        auto maximumMoreGeneric = []<typename T>(T a, T b, T c) constexpr {
+            return (a > b && a > c) ? a : ((b > a && b > c) ? b : c);
+        };
 
-            auto na{ FromString{ "123" }.operator int() };
-            auto fa{ FromString{ "45.67f" }.operator float() };
-            auto da{ FromString{ "89.123" }.operator double() };
+        static void testExercise() {
 
-            std::cout << na << std::endl;
-            std::cout << fa << std::endl;
-            std::cout << da << std::endl;
+            constexpr auto result1 = maximum(1, 2, 3);
 
-            std::cout << static_cast<int>(n1) << std::endl;
-            std::cout << static_cast<float>(f1) << std::endl;
-            std::cout << static_cast<double>(d1) << std::endl;
+            constexpr auto result2 = maximumAuto(3, 1, 2);
+            constexpr auto result3 = maximumAuto(3, 2, 1);                    // Why does this compile, different argument types (?)
+
+            constexpr auto result4 = maximumMoreAuto(1.5, 3.5, 2.5);
+            // constexpr auto result5 = maximumMoreAuto(1.5, 3.5f, 2.5);      // does NOT compile (!)
+
+            constexpr auto result6 = maximumAuto(1.5, 3.5f, 2.5);             // Why does this compile (?)
+
+            constexpr auto result7 = maximumGeneric<int>(5, 7, 6);
+            constexpr auto result8 = maximumGeneric<double>(7.5, 8.5, 6.5f);  // Compiles, but different argument types (!)
+
+            constexpr auto result9 = maximumMoreGeneric(5, 4, 3);
+            // constexpr auto result10 = maximumMoreGeneric(5.5f, 4.5, 3.5);  // does NOT compile (!), compare with 'maximumGeneric' (?!?!)
         }
     }
 
@@ -92,7 +105,7 @@ namespace Exercises_ConstExpr {
         //    return std::is_same<T1, T2>::value && sameType(arg2, args...);
         //}
 
-        static void testExercise_01()
+        static void testExercise()
         {
             constexpr bool result1{ sameType(43, false, "hello") };
             std::cout << std::boolalpha << result1 << std::endl;
@@ -106,8 +119,9 @@ namespace Exercises_ConstExpr {
 void test_exercises_constexpr()
 {
     using namespace Exercises_ConstExpr;
-    Exercise_01::testExercise_01();
-    Exercise_02::testExercise_01();
+
+    Exercise_01::testExercise();
+    Exercise_02::testExercise();
 }
 
 // =====================================================================================

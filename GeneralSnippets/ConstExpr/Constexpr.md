@@ -14,7 +14,7 @@
   * [Allgemeines](#link1)
   * [Variablen](#link2)
   * [Funktionen](#link3)
-  * [Klassen mit `constexpr` Konstruktoren](#link4)
+  * [Klassen und Objekte](#link4)
   * [`constexpr` und dynamische Speicherverwaltung](#link5)
   * [`constexpr`-Funktionen und `constexpr`-Lambda-Funktionen](#link6)
   * [Literaturhinweise](#link7)
@@ -149,7 +149,7 @@ Es werden alle Werte vom Compiler zur Übersetzungszeit berechnet!
 
 Wir kommen jetzt auf Klassen und Objekte zu sprechen.
 
-## Klassen mit `constexpr` Konstruktoren <a name="link4"></a>
+## Klassen und Objekte <a name="link4"></a>
 
 Wie Variablen, deren Wert zur Übersetzungszeit bestimmt wird,
 lassen sich analog auch Objekte vom Übersetzer zur Übersetzungszeit erzeugen.

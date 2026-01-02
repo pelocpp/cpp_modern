@@ -110,7 +110,7 @@ int main()
         //main_virtual_override_final();
         //main_weak_pointer();
 
-        //main_exercises();
+        main_exercises();
     }
     catch (const std::exception& ex) {
         std::println("Exception: {}", ex.what());

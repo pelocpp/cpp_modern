@@ -6,7 +6,7 @@
 
 [Quellcode 1 - Motivation, allgemeine Beispiele](Lambda01.cpp)<br />
 [Quellcode 2 - Lambda und Closure](Lambda02.cpp)<br />
-[Quellcode 3 - Lambda und Closure: Spezialfall `this`](Lambda03.cpp)<br />
+[Quellcode 3 - Lambda und Closure: Spezialfall `this`](Lambda03.cpp)
 
 ---
 
@@ -98,8 +98,25 @@ um Code in einem lokalen Bereich zu kapseln und sofort auszuführen.
 27: };
 ```
 
+Folgende Aufrufe der `power`-Funktionen führt der Compiler aus,
+die Werte sind damit zur Übersetzungszeit bekannt:
+
+```cpp
+01: void test() {
+02:     constexpr auto twoTimesTen = power(2, 10);
+03:     constexpr auto fiveTimesTen = power(5, 10);
+04: 
+05:     constexpr auto threeTimesThree = powerGeneric<float>(3.0f, 3);
+06:     constexpr auto fiveTimesFive = powerGeneric<double>(5.0, 5);
+07: 
+08:     constexpr auto twoTimesThree = powerAuto(2.0f, 3);
+09:     constexpr auto fiveTimesThree = powerAuto(5.0, 3);
+10: }
+```
+
+
 Bei mehreren Parametern gibt es unterschiedliche Möglichkeiten,
-auf die *Type Deduction* Einfluss zu nehmen. Also um die Entscheidung,
+auf die *Type Deduction* Einfluss zu nehmen. Also auf die Entscheidung,
 welcher Datentyp einem mit `auto` deklarierten Parameter zuzuordnen ist.
 
 Betrachten Sie vor diesem Hintergrund die folgenden Definitionen:
@@ -168,7 +185,6 @@ Betrachten Sie vor diesem Hintergrund die folgenden Definitionen:
 61:     // constexpr auto value10 = minimumMoreGeneric(50.0f, 60.0);  // does NOT compile (!), compare with 'minimumGeneric' (?!?!)
 62: }
 ```
-
 
 ---
 
