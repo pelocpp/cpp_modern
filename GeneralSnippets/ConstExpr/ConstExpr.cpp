@@ -53,19 +53,13 @@ namespace ConstExprFunctions {
 
     #define   SQUARE(x)             x * x
 
-    static constexpr auto square = [](auto x) constexpr {
+    static constexpr auto square (auto x) {
         return x * x;
     };
 
     static auto squareLambda = [](auto x) constexpr {
         return x * x;
     };
-
-    static constexpr auto squareOfTwo = square(2);
-    static constexpr auto squareOfThree = square(3.0);
-
-    static constexpr auto squareOfFour = squareLambda(4);
-    static constexpr auto squareOfFive = squareLambda(5.0);
 
     static void testFunctions_02() {
 
@@ -88,9 +82,15 @@ namespace ConstExprFunctions {
 
         constexpr double x{ 3.0 };
         constexpr double y{ 4.0 };
-        constexpr auto dvalue{ square(x + y) };
+        constexpr auto dvalue{ squareLambda(x + y) };
         static_assert(dvalue == 49.0);              // correct result !!!
     }
+
+    static constexpr auto squareOfTwo = square(2);
+    static constexpr auto squareOfThree = square(3.0);
+
+    static constexpr auto squareOfFour = squareLambda(4);
+    static constexpr auto squareOfFive = squareLambda(5.0);
 
     // ======================================================
     // swap the values of two variables
@@ -293,11 +293,11 @@ namespace ConstExprPow {
 
 void main_constexpr()
 {
-    //ConstExprVariables::testVariables();
+    ConstExprVariables::testVariables();
     ConstExprFunctions::testFunctions();
-    //ConstExprClassesAndObjects::testComplex();
-    //ConstExprDynamicData::testDynamicData();
-    //ConstExprPow::testPower();
+    ConstExprClassesAndObjects::testComplex();
+    ConstExprDynamicData::testDynamicData();
+    ConstExprPow::testPower();
 }
 
 // =====================================================================================

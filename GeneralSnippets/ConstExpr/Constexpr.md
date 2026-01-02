@@ -72,7 +72,7 @@ Was sind die Vorteile einer `constexpr`-Variablendefinition gegenüber dem Gebrau
 ## Funktionen <a name="link3"></a>
 
 Einfache Funktionen, z. B. kleine Hilfsfunktionen wie ein Vergleich zweier Werte,
-lassen sich in klassischem C als Makros und in modernem C++ als `constexpr`-Funktionen oder -Lambdas schreiben.
+lassen sich in klassischem C als Makro und in modernem C++ als `constexpr`-Funktion oder -Lambda schreiben.
 
 Man sollte auf Grund der Nachteile von C-Makros immer der `constexpr`-Variante den Vorzug geben.
 
@@ -108,7 +108,7 @@ Dennoch erkennen wir die Schwachstellen der C-Makro Technik.
 Mit `constexpr` würde man eine `square`-Funktion so schreiben:
 
 ```cpp
-static constexpr auto square = [](auto x) constexpr {
+constexpr auto square (auto x) {
     return x * x;
 };
 ```
@@ -116,7 +116,7 @@ static constexpr auto square = [](auto x) constexpr {
 oder auch
 
 ```cpp
-static auto squareLambda = [](auto x) constexpr {
+auto squareLambda = [](auto x) constexpr {
     return x * x;
 };
 ```
@@ -131,7 +131,7 @@ static_assert(value == 9);                  // correct result !!!
 
 constexpr double x{ 3.0 };
 constexpr double y{ 4.0 };
-constexpr auto dvalue{ square(x + y) };
+constexpr auto dvalue{ squareLambda(x + y) };
 static_assert(dvalue == 49.0);              // correct result !!!
 ```
 

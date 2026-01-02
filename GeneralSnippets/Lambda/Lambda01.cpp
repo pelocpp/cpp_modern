@@ -182,7 +182,7 @@ namespace Lambdas {
             return count;
         };
 
-        for (size_t i{}; i < 5; ++i) {
+        for (std::size_t i{}; i < 5; ++i) {
             std::cout << counter() << " ";
         }
         std::cout << std::endl;
@@ -270,7 +270,7 @@ namespace Lambdas {
         // This kind of expression might be useful when you have
         // a complex initialization of a const  object:
 
-        constexpr auto ConstValue = [] () {
+        constexpr auto ConstValue = [] () constexpr {
             /* several lines of code ... - "very complex" computation */
             return 123;
         } ();
@@ -278,33 +278,34 @@ namespace Lambdas {
         std::cout << "Const Value: " << ConstValue << std::endl;
     }
 
+    // ======================================================
     // Another IIFE Examples:
-    // Lambda are defined 'constexpr' - some concrete values are computed
-    auto times = [] (int n, int m) constexpr {
+    // Lambda is defined 'constexpr' - some concrete values are computed
+
+    auto power = [] (int m, std::size_t n) constexpr {
 
         auto result = m;
-        for (size_t i{ 1 }; i != n; ++i) {
+        for (std::size_t i{ 1 }; i != n; ++i) {
             result *= m;
         }
         return result;
     };
 
     template <typename T>
-    auto power = [](T base, T exp) constexpr {
+    auto powerGeneric = [](T m, std::size_t n) constexpr {
 
-        auto result = base;
-        for (size_t i{ 1 }; i != exp; ++i) {
-            result *= base;
+        T result = m;
+        for (std::size_t i{ 1 }; i != n; ++i) {
+            result *= m;
         }
         return result;
     };
 
-    // constexpr lambda as a compile-time function template (C++ 20)
-    constexpr auto power2 = []<typename T> (T base, T exp) constexpr {
+    auto powerAuto = [](auto m, std::size_t n) constexpr {
 
-        auto result = base;
-        for (size_t i{ 1 }; i != exp; ++i) {
-            result *= base;
+        auto result = m;
+        for (std::size_t i{ 1 }; i != n; ++i) {
+            result *= m;
         }
         return result;
     };
@@ -314,17 +315,87 @@ namespace Lambdas {
         // IIFE - Immediately Invoked Functional Expression:
         // some real-world examples
 
-        constexpr auto twoTimesTen = times(2, 10);
-        constexpr auto fiveTimesTen = times(5, 10);
+        constexpr auto twoTimesTen = power(2, 10);
+        constexpr auto fiveTimesTen = power(5, 10);
 
-        constexpr auto twoToThePowerOfTen = power<int>(2, 10);
-        constexpr auto threeToThePowerOfThree = power<double>(3.0, 3.0);
+        constexpr auto threeTimesThree = powerGeneric<float>(3.0f, 3);
+        constexpr auto fiveTimesFive = powerGeneric<double>(5.0, 5);
 
-        constexpr auto twoToThePowerOfFive = power2(2, 5);
-        constexpr auto twoToThePowerOfThree = power2(2.0, 3.0);
+        constexpr auto twoTimesThree = powerAuto(2.0f, 3);
+        constexpr auto fiveTimesThree = powerAuto(5.0, 3);
     }
 
+    // ======================================================
+    // More IIFE Examples:
+    // Parameters of the 'constexpr' callable (function, lambda)
+    // should have the same data type
+
+    // works for int arguments
+    auto minimum = [](int n, int m) constexpr {
+        return (n <= m) ? n : m;
+    };
+
+    // works for arguments of different type (?!?)
+    // type of the ternary ?: expression is
+    // the common type of its second and third argument
+    auto minimumAuto = [](auto n, auto m) constexpr {
+        return (n <= m) ? n : m;
+    };
+
+    // works for arguments of different type (?!?)
+    // type of the ternary ?: expression is
+    // the common type of its second and third argument
+    auto minimumMoreAuto = [](auto n, auto m) constexpr {
+
+        if (n <= m) {
+            return n;
+        }
+        else {
+            return m;
+        }
+    };
+
+    // works for arbitrary arguments of the same type (!)
+    template <typename T>
+    auto minimumGeneric = [](T n, T m) constexpr {
+        return (n <= m) ? n : m;
+    };
+
+    // works for arbitrary arguments of the same type (!)
+    // different syntax
+    auto minimumMoreGeneric = []<typename T>(T n, T m) constexpr {
+        return (n <= m) ? n : m;
+    };
+
+
     static void test_13() {
+
+        // IIFE - Immediately Invoked Functional Expression:
+        // some more real-world examples: regarding argument data types
+
+        constexpr auto value1 = minimum(10, 20);
+
+        constexpr auto value2 = minimumAuto(10.0, 5.0);
+        constexpr auto value3 = minimumAuto(11.11, 5.5f);             // Why does this compile, different argument types (?)
+
+        constexpr auto value4 = minimumMoreAuto(11.11, 5.5); 
+        // constexpr auto value5 = minimumMoreAuto(11.11, 5.5f);      // does NOT compile (!)
+
+        constexpr auto value6 = minimumAuto(11.11, 5.5f);             // Why does this compile (?)
+
+        constexpr auto value7 = minimumGeneric<int>(30, 40);
+        constexpr auto value8 = minimumGeneric<double>(30.0f, 40.0);  // Compiles, but different argument types (!)
+
+        constexpr auto value9 = minimumMoreGeneric(60, 50);
+        // constexpr auto value10 = minimumMoreGeneric(50.0f, 60.0);  // does NOT compile (!), compare with 'minimumGeneric' (?!?!)
+    }
+
+
+    // ======================================================
+    // Feature: Generalized Lambda Capture
+    // Lambdas and Move-Semantics of Closure Variables
+
+    static void test_14() {
 
         // Feature: Generalized Lambda Capture
 
@@ -384,6 +455,7 @@ void main_lambdas()
     test_11();
     test_12();
     test_13();
+    test_14();
 }
 
 // =====================================================================================
