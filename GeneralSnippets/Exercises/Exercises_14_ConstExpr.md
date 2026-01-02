@@ -27,12 +27,13 @@ Schreiben Sie eine Funktion `maximum`, die zu drei vorgegebenen Zahlen die grö�
 Natürlich kommen hier `if`-Anweisungen ins Spiel, es gibt aber durchaus mehrere Möglichkeiten, das Ziel zu erreichen.
 
 Die `maximum`-Funktion soll für alle elementaren Datentypen, die man vergleichen kann, aufrufbar sein.
-Inwieweit beim Aufruf der `maximum`-Funktion alle drei Parameter denselben Datentyp haben müssen oder &bdquo;geringfügige&rdquo; Untschiede erlaubt sind,
+Inwieweit beim Aufruf der `maximum`-Funktion alle drei Parameter denselben Datentyp haben müssen
+oder &bdquo;geringfügige&rdquo; Unterschiede erlaubt sind,
 ist Ihrer Entscheidung überlassen.
 
 Die Funktion soll den Qualifizierer `constexpr` besitzen.
 Überprüfen Sie Ihre Realisierung darauf hin, dass `maximum` bei konstanten Argumenten oder bei mit `constexpr` deklarierten Variablen
-das Ergebnis bereits zur Übersetzungszeit berechnet.
+das Ergebnis bereits zur Übersetzungszeit berechnet wird.
 
 *Beispiel*:
 
