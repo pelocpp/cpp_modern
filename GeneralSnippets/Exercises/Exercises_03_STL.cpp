@@ -253,9 +253,10 @@ namespace Exercises_STL {
 void test_exercises_stl()
 {
     using namespace Exercises_STL;
+
     Exercise_01::testExercise();
-    //Exercise_02::testExercise();
-    //Exercise_03::testExercise();
+    Exercise_02::testExercise();
+    Exercise_03::testExercise();
 }
 
 // =====================================================================================

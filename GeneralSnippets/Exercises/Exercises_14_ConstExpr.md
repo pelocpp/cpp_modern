@@ -13,7 +13,8 @@
 | Aufgabe | Beschreibung |
 | :- | :- |
 | *Aufgabe* 1 | Maximum dreier Werte<br/>(Voraussetzungen: `constexpr`, Lambdas und teilweise Templates) |
-| *Aufgabe* 2 | Auswertung von variadischen Templates, `decltype` und Type-Traits am Beispiel von `sameType` zur Übersetzungszeit<br/>(Voraussetzungen: `decltype`, `std::is_same`) |
+| *Aufgabe* 2 | Maximum beliebig vieler Werte<br/>(Voraussetzungen: `constexpr`, Lambdas, variadische Templates und Folding) |
+| *Aufgabe* 3 | Auswertung von variadischen Templates, `decltype` und Type-Traits am Beispiel von `sameType` zur Übersetzungszeit<br/>(Voraussetzungen: `decltype`, `std::is_same`) |
 
 *Tabelle* 1: Aufgaben zu `constexpr`.
 
@@ -33,7 +34,7 @@ ist Ihrer Entscheidung überlassen.
 
 Die Funktion soll den Qualifizierer `constexpr` besitzen.
 Überprüfen Sie Ihre Realisierung darauf hin, dass `maximum` bei konstanten Argumenten oder bei mit `constexpr` deklarierten Variablen
-das Ergebnis bereits zur Übersetzungszeit berechnet wird.
+das Ergebnis bereits zur Übersetzungszeit berechnet.
 
 *Beispiel*:
 
@@ -46,7 +47,7 @@ dass der Übersetzer den Wert 3 bereits berechnet hat:
 
 ```
 constexpr auto result = maximum(1, 2, 3);
-00007FF6CEF273CC  mov dword ptr [result1],3  
+00007FF6CEF273CC  mov dword ptr [result1], 3   // <= value 3 resides in machine code  
 ```
 
 ##### Zusatzfrage:
@@ -56,70 +57,31 @@ Diskutieren bzw. erläutern Sie die Unterschiede der jeweiligen Deklaration.
 
 ---
 
-## Aufgabe 1: *Return Type Resolver*
+## Aufgabe 2: Maximum beliebig vieler Werte
 
-#### Voraussetzungen: Templates, `std::is_same`, `auto` und `constexpr`
+#### Voraussetzungen: `constexpr`, Lambdas, variadische Templates und Folding
 
-Betrachten Sie die beiden folgenden Quellcodezeilen:
+Als Ergänzung der letzten Aufgabe wollen wir nicht die Fragestellung außer Acht lassen,
+ob sich die Realisierung der `maximum`-Funktion auch auf beliebig viele Parameter erweitern lässt?
 
-```cpp
-int   from_string(const char* str) { return std::stoi(str); }
-float from_string(const char* str) { return std::stof(str); }
-```
+Natürlich geht das, nur ist in diesem Fall das Repertoire der einzusetzenden Modern C++ Sprachmitter größer.
 
-Erklären Sie, warum und welchen Übersetzungsfehler Sie enthalten?
-
-Wir sind im Abschnitt &bdquo;Überladung von Methoden/Operatoren&rdquo; angekommen und hier
-beim Spezialfall &bdquo;Eine Überladung einer Funktion kann sich nicht nur durch ihren Rückgabetyp von einer anderen Funktion unterscheiden.&rdquo; angekommen.
-
-Unter dem Stichwort *Return Type Resolver* findet sich eine Lösung dieses Problems &ndash;
-natürlich mit einem anderen Realisierungsansatz als dem des fälschlichen Überladens einer Funktion.
-Schreiben Sie eine Klasse `FromString`, die auf geschickte Weise den Typkonvertierungsoperator `operator()` überlädt,
-um so das folgende Codefragment übersetzen zu können:
+Schreiben Sie eine Funktion `maximum`, die den maximalen Wert aller übergebenen Parameter berechnet
+und als Ergebnis zurückliefert:
 
 ```cpp
-int n{ FromString{ "123" } };
-float f{ FromString{ "45.67f" } };
-double d{ FromString{ "89.123" } };
-
-std::cout << n << std::endl;
-std::cout << f << std::endl;
-std::cout << d << std::endl;
+constexpr int m{ maximum(1, 5, 3, 9, 2) };
 ```
 
-*Ausgabe*:
+Für die Übergabe beliebig vieler Argumente an die `maximum`-Funktion verwenden Sie eine Parameterdeklaration
+mit variadischen Templates. Alternativ können Sie auch mit `auto` arbeiten.
 
-```
-123
-45.67
-89.123
-```
-
-*Hilfestellung*:
-In der Lösung kommen ein Klassentemplate, *Type Traits* und `constexpr` zum Einsatz.
-
-
-##### 1. Zusatzfrage:
-
-Testen Sie die Lösung an folgendem, zweiten Codefragment:
-
-```cpp
-auto n1{ FromString{ "123" } };
-auto f1{ FromString{ "45.67f" } };
-auto d1{ FromString{ "89.123" } };
-```
-
-  * Ist dieses Codefragment übersetzungsfähig?
-  * Wenn ja, wie erklären Sie sich die Ausführung des Programm?
-  * Warum ist eine Anweisung der Gestalt `std::cout << n1` nicht übersetzungsfähig?
-
-##### 2. Zusatzfrage:
-
-Wie ließe sich das letze Codefragment umformulieren, um das gewünschte Ziel zu erreichen?
+Das explizite Berechnung des größten Werts auf der Grundlage eines Parameter Packs kann mit Folding erfolgen.
+Es bietet sich ein Spezialfall dieser Technik an, das so genannte &bdquo;*Folding over a Comma*&rdquo;.
 
 ---
 
-## Aufgabe 2: Auswertung von variadischen Templates, `decltype` und Type-Traits am Beispiel von `sameType` zur Übersetzungszeit
+## Aufgabe 3: Auswertung von variadischen Templates, `decltype` und Type-Traits am Beispiel von `sameType` zur Übersetzungszeit
 
 #### Voraussetzungen: `std::is_same`
 

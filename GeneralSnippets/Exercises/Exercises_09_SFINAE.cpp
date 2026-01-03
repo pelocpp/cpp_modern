@@ -50,8 +50,8 @@ namespace Exercises_SFINAE {
             return std::sqrt(tmp1 * tmp1 + tmp2 * tmp2);
         }
 
-        static void testExercise_01() {
-
+        static void testExercise()
+        {
             double result1 = distanceEx<double>(2.0, 2.0, 1.0, 1.0);
             std::cout << result1 << std::endl;
 
@@ -198,7 +198,8 @@ namespace Exercises_SFINAE {
             print2(obj2);
         }
 
-        static void testExercise_02() {
+        static void testExercise()
+        {
             test_02a();
             test_02b();
             test_02c();
@@ -306,7 +307,8 @@ namespace Exercises_SFINAE {
                 << std::endl;
         };
 
-        static void testExercise_03() {
+        static void testExercise()
+        {
             testExercise_03a();
             testExercise_03b();
         }
@@ -326,7 +328,8 @@ namespace Exercises_SFINAE {
             return arr;
         }
 
-        static void testExercise_04() {
+        static void testExercise()
+        {
             int vals[5]{ 1, 2, 3, 4, 5 };
             int elem = *(first(vals));
             std::cout << elem << std::endl;
@@ -355,10 +358,11 @@ namespace Exercises_SFINAE {
 void test_exercices_sfinae()
 {
     using namespace Exercises_SFINAE;
-    Exercise_01::testExercise_01();
-    Exercise_02::testExercise_02();
-    Exercise_03::testExercise_03();
-    Exercise_04::testExercise_04();
+
+    Exercise_01::testExercise();
+    Exercise_02::testExercise();
+    Exercise_03::testExercise();
+    Exercise_04::testExercise();
 }
 
 // =====================================================================================

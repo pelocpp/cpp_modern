@@ -45,7 +45,7 @@ namespace Exercises_MoveSemantics {
         * = the object's class defines the special member move functions
         */
 
-        static void testExercise_01() {
+        static void testExercise() {
 
             // create a person with some initial values
             Person dagobert{ "Dagobert Duck" };
@@ -146,7 +146,7 @@ namespace Exercises_MoveSemantics {
         }
 #endif
 
-        static void testExercise_02()
+        static void testExercise()
         {
             std::cout << "Start:" << std::endl;
          
@@ -169,8 +169,9 @@ namespace Exercises_MoveSemantics {
 void test_exercises_move_semantics()
 {
     using namespace Exercises_MoveSemantics;
-    Exercise_01::testExercise_01();
-    Exercise_02::testExercise_02();
+
+    Exercise_01::testExercise();
+    Exercise_02::testExercise();
 }
 
 // =====================================================================================

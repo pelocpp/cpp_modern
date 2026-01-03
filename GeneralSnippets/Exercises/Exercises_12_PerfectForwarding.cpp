@@ -168,7 +168,8 @@ namespace Exercises_PerfectForwarding {
             delete pp;
         }
 
-        static void testExercise_01() {
+        static void testExercise()
+        {
             test_01();
             test_02();
             test_03();
@@ -222,7 +223,8 @@ namespace Exercises_PerfectForwarding {
             std::println("{} msecs.", time.count());
         }
 
-        static void testExercise_02() {
+        static void testExercise()
+        {
             test_01();
             test_02();
         }
@@ -232,8 +234,8 @@ namespace Exercises_PerfectForwarding {
 void test_exercices_perfect_forwarding()
 {
     using namespace Exercises_PerfectForwarding;
-    Exercise_01::testExercise_01();
-    Exercise_02::testExercise_02();
+    Exercise_01::testExercise();
+    Exercise_02::testExercise();
 }
 
 // =====================================================================================

@@ -23,7 +23,7 @@ namespace Exercises_Metaprogramming
             static const std::size_t MaxNumber{ TNumber };
         };
 
-        static void testExercise_01()
+        static void testExercise()
         {
             constexpr size_t max{ Values<1, 3, 5, 4, 2>::MaxNumber };
             std::cout << "Max: " << max << std::endl;
@@ -136,7 +136,8 @@ namespace Exercises_Metaprogramming
             std::cout << big << std::endl;
         }
 
-        static void testExercise_02() {
+        static void testExercise()
+        {
             testExercise_02a();
             testExercise_02b();
             testExercise_02c();
@@ -167,7 +168,8 @@ namespace Exercises_Metaprogramming
             static constexpr size_t value = FibImpl<N>::value;
         };
 
-        static void testExercise_03() {
+        static void testExercise()
+        {
             std::cout << 1 << ":  " << Fibonacci<1>::value << std::endl;
             std::cout << 2 << ":  " << Fibonacci<2>::value << std::endl;
             std::cout << 5 << ":  " << Fibonacci<5>::value << std::endl;
@@ -213,7 +215,7 @@ namespace Exercises_Metaprogramming
             using type = LastType<TArgs ...>::type;
         };
 
-        static void testExercise_04() {
+        static void testExercise() {
 
             using TFirst = FirstType<double, int, long>::type;
             using TLast = LastType<int, long, double, char>::type;
@@ -230,10 +232,10 @@ namespace Exercises_Metaprogramming
 void test_exercices_metaprogramming()
 {
     using namespace Exercises_Metaprogramming;
-    Exercise_01::testExercise_01();
-    Exercise_02::testExercise_02();
-    Exercise_03::testExercise_03();
-    Exercise_04::testExercise_04();
+    Exercise_01::testExercise();
+    Exercise_02::testExercise();
+    Exercise_03::testExercise();
+    Exercise_04::testExercise();
 }
 
 // =====================================================================================

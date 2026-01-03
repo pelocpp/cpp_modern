@@ -190,7 +190,8 @@ namespace Exercises_CRTP {
             std::cout << "Done." << std::endl;
         }
 
-        static void testExercise_01() {
+        static void testExercise()
+        {
             testExercise_01a_classic_benchmark();
             testExercise_01a_crtp_benchmark();
         }
@@ -200,7 +201,8 @@ namespace Exercises_CRTP {
 void test_exercices_crtp()
 {
     using namespace Exercises_CRTP;
-    Exercise_01::testExercise_01();
+
+    Exercise_01::testExercise();
 }
 
 // =====================================================================================

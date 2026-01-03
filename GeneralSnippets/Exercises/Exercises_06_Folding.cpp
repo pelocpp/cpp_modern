@@ -42,7 +42,8 @@ namespace Exercises_Folding {
             std::cout << std::boolalpha << result << std::endl;
         }
 
-        static void testExercise_01() {
+        static void testExercise()
+        {
             testExercise_01a();
             testExercise_01b();
         }
@@ -68,8 +69,8 @@ namespace Exercises_Folding {
             return (std::is_same_v<decltype(arg), decltype(args)> && ...);
         }
 
-        static void testExercise_02() {
-
+        static void testExercise()
+        {
             constexpr bool result1{ sameType(1, 2, 3, 4, '?', 6, 7, 8, 9) };
             std::cout << std::boolalpha << result1 << std::endl;
 
@@ -139,7 +140,8 @@ namespace Exercises_Folding {
             std::cout << maximum(6, 1, 5, 2, 4, 3) << std::endl;
         }
 
-        static void testExercise_03() {
+        static void testExercise()
+        {
             testExercise_03a();
             testExercise_03b();
         }
@@ -230,7 +232,8 @@ namespace Exercises_Folding {
             std::cout << std::endl;
         }
 
-        static void testExercise_04() {
+        static void testExercise()
+        {
             testExercise_04a();
             testExercise_04b();
             testExercise_04c();
@@ -346,7 +349,8 @@ namespace Exercises_Folding {
 
         // ----------------------------------------------------
 
-        static void testExercise_05() {
+        static void testExercise()
+        {
             printer1(1, "ABC", 2, "DEF", 3, "GHI");
             std::cout << std::endl;
             printer2(1, "ABC", 2, "DEF", 3, "GHI");
@@ -371,11 +375,11 @@ namespace Exercises_Folding {
 void test_exercises_folding()
 {
     using namespace Exercises_Folding;
-    Exercise_01::testExercise_01();
-    Exercise_02::testExercise_02();
-    Exercise_03::testExercise_03();
-    Exercise_04::testExercise_04();
-    Exercise_05::testExercise_05();
+    Exercise_01::testExercise();
+    Exercise_02::testExercise();
+    Exercise_03::testExercise();
+    Exercise_04::testExercise();
+    Exercise_05::testExercise();
 }
 
 // =====================================================================================

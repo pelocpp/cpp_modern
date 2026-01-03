@@ -118,18 +118,19 @@ namespace Exercises_FunctionalProgramming {
             std::cout << concatenated << std::endl;
         }
 
-        static void testExercise_02() {
+        static void testExercise()
+        {
             test_fold_01();
             test_fold_02();
         }
     }
-
 }
 
 void test_exercises_functional_programming()
 {
     using namespace Exercises_FunctionalProgramming;
-    Exercise_02::testExercise_02();
+
+    Exercise_02::testExercise();
 }
 
 // =====================================================================================

@@ -156,7 +156,8 @@ namespace Exercises_Lambdas {
             );
         }
 
-        static void testExercise_01() {
+        static void testExercise()
+        {
             testExercise_01a();
             testExercise_01b();
             testExercise_01c();
@@ -232,7 +233,8 @@ namespace Exercises_Lambdas {
             std::cout << "1.5 ^ 2.5 = " << calculator['^'](1.5, 2.5) << std::endl;
         };
 
-        static void testExercise_02() {
+        static void testExercise()
+        {
             // testExercise_02a();  // needs console input
             testExercise_02b();
         }
@@ -376,7 +378,7 @@ namespace Exercises_Lambdas {
             std::cout << std::endl;
         }
 
-        static void testExercise_03()
+        static void testExercise()
         {
             testExercise_03a();
             testExercise_03b();
@@ -390,9 +392,10 @@ namespace Exercises_Lambdas {
 void test_exercises_lambdas()
 {
     using namespace Exercises_Lambdas;
-    Exercise_01::testExercise_01();
-    Exercise_02::testExercise_02();
-    Exercise_03::testExercise_03();
+
+    Exercise_01::testExercise();
+    Exercise_02::testExercise();
+    Exercise_03::testExercise();
 }
 
 // =====================================================================================

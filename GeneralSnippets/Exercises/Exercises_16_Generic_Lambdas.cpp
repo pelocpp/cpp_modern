@@ -66,7 +66,8 @@ namespace Exercises_Generic_Lambdas {
             }
         }
 
-        static void testExercise_01() {
+        static void testExercise()
+        {
             testExercise_01_01();
             testExercise_01_02();
         }
@@ -76,7 +77,8 @@ namespace Exercises_Generic_Lambdas {
 void test_exercises_generic_lambdas()
 {
     using namespace Exercises_Generic_Lambdas;
-    Exercise_01::testExercise_01();
+
+    Exercise_01::testExercise();
 }
 
 // =====================================================================================

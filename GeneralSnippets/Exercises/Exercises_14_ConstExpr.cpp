@@ -113,8 +113,8 @@ namespace Exercises_ConstExpr {
             return (a > b && a > c) ? a : ((b > a && b > c) ? b : c);
         };
 
-        static void testExercise() {
-
+        static void testExercise()
+        {
             constexpr auto result01 = maximum(1, 2, 3);
 
             constexpr auto result02 = maximumGeneric(1.5, 2.5, 3.5);
@@ -144,6 +144,38 @@ namespace Exercises_ConstExpr {
     }
 
     namespace Exercise_02 {
+
+        template <typename T, typename ... TArgs>
+        constexpr T maximum(T first, TArgs ... args)
+        {
+            T result{ first };
+
+            ((result = result > args ? result : args) , ... );
+
+            return result;
+        }
+
+        constexpr auto maximumAuto(auto first, auto ... args)
+        {
+            auto result{ first };
+
+            ((result = result > args ? result : args) , ...);
+
+            return result;
+        }
+
+        static void testExercise()
+        {
+            constexpr int m1{ maximum(1, 5, 3, 9, 7) };
+
+            constexpr int m2{ maximum(2, 4, 6, 8, 6, 4, 2) };
+
+            static_assert(m1 == 9, "wrong maximum value");
+            static_assert(m2 == 8, "wrong maximum value");
+        }
+    }
+
+    namespace Exercise_03 {
 
         template<typename T1, typename T2>
         static constexpr bool sameType(T1, T2)
@@ -182,6 +214,7 @@ void test_exercises_constexpr()
 
     Exercise_01::testExercise();
     Exercise_02::testExercise();
+    Exercise_03::testExercise();
 }
 
 // =====================================================================================

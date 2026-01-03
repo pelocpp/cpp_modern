@@ -1,5 +1,5 @@
 // =====================================================================================
-// Exercises_04_UtilityClasses.cpp
+// Exercises_03_UtilityClasses.cpp
 // =====================================================================================
 
 module modern_cpp_exercises:utility_classes;
@@ -70,7 +70,8 @@ namespace Exercises_UtilityClasses {
             std::visit(improvedVisitor, var);
         }
 
-        static void testExercise_01() {
+        static void testExercise()
+        {
             testExercise_01a();
             testExercise_01b();
         }
@@ -153,7 +154,7 @@ namespace Exercises_UtilityClasses {
             return result;
         }
 
-        static void testExercise_03a() {
+        static void testExercise_02a() {
             std::optional<int> i1{ toInt("123") };
             if (i1.has_value()) {
                 std::cout << i1.value() << std::endl;
@@ -175,7 +176,7 @@ namespace Exercises_UtilityClasses {
             }
         }
 
-        static void testExercise_03b() {
+        static void testExercise_02b() {
 
             std::optional<short> i1{ toNumber<short>("32767") };
             if (i1.has_value()) {
@@ -198,9 +199,10 @@ namespace Exercises_UtilityClasses {
             }
         }
 
-        static void testExercise_03() {
-            testExercise_03a();
-            testExercise_03b();
+        static void testExercise()
+        {
+            testExercise_02a();
+            testExercise_02b();
         }
     }
 
@@ -208,7 +210,7 @@ namespace Exercises_UtilityClasses {
 
         // https://gieseanw.wordpress.com/2017/05/03/a-true-heterogeneous-container-in-c/
 
-        static void testExercise_04a()
+        static void testExercise_03a()
         {
             std::variant<int, std::string> myVariant;
             myVariant = 123;
@@ -249,7 +251,7 @@ namespace Exercises_UtilityClasses {
 
         // ----------------------------------------------------------------------------------
 
-        static void testExercise_04b()
+        static void testExercise_03b()
         {
             std::variant<int, std::string> myVariant;
             myVariant = 123;
@@ -275,7 +277,7 @@ namespace Exercises_UtilityClasses {
             std::visit(lambdaAllInOneVisitor, myVariant);
         }
 
-        static void testExercise_04c()
+        static void testExercise_03c()
         {
             std::vector<std::variant<int, std::string>> hetVec;
 
@@ -321,7 +323,7 @@ namespace Exercises_UtilityClasses {
             };
         };
 
-        static void testExercise_04d()
+        static void testExercise_03d()
         {
             HeterogeneousContainer<int, std::string> hetCont;
 
@@ -342,20 +344,23 @@ namespace Exercises_UtilityClasses {
             std::cout << std::endl;
         }
 
-        static void testExercise_04() {
-            testExercise_04a();
-            testExercise_04b();
-            testExercise_04c();
-            testExercise_04d();
+        static void testExercise()
+        {
+            testExercise_03a();
+            testExercise_03b();
+            testExercise_03c();
+            testExercise_03d();
         }
     }
 }
 
 void test_exercises_utility_classes()
 {
-    Exercises_UtilityClasses::Exercise_01::testExercise_01();
-    Exercises_UtilityClasses::Exercise_02::testExercise_03();
-    Exercises_UtilityClasses::Exercise_03::testExercise_04();
+    using namespace Exercises_UtilityClasses;
+
+    Exercise_01::testExercise();
+    Exercise_02::testExercise();
+    Exercise_03::testExercise();
 }
 
 // =====================================================================================
