@@ -62,9 +62,9 @@ Diskutieren bzw. erläutern Sie die Unterschiede der jeweiligen Deklaration.
 #### Voraussetzungen: `constexpr`, Lambdas, variadische Templates und Folding
 
 Als Ergänzung der letzten Aufgabe wollen wir nicht die Fragestellung außer Acht lassen,
-ob sich die Realisierung der `maximum`-Funktion auch auf beliebig viele Parameter erweitern lässt?
+ob sich die Realisierung der `maximum`-Funktion nicht auch auf beliebig viele Parameter erweitern lässt?
 
-Natürlich geht das, nur ist in diesem Fall das Repertoire der einzusetzenden Modern C++ Sprachmitter größer.
+Natürlich geht das, nur ist in diesem Fall das Repertoire der einzusetzenden Modern C++ Sprachmittel größer.
 
 Schreiben Sie eine Funktion `maximum`, die den maximalen Wert aller übergebenen Parameter berechnet
 und als Ergebnis zurückliefert:
@@ -76,7 +76,7 @@ constexpr int m{ maximum(1, 5, 3, 9, 2) };
 Für die Übergabe beliebig vieler Argumente an die `maximum`-Funktion verwenden Sie eine Parameterdeklaration
 mit variadischen Templates. Alternativ können Sie auch mit `auto` arbeiten.
 
-Das explizite Berechnung des größten Werts auf der Grundlage eines Parameter Packs kann mit Folding erfolgen.
+Die explizite Berechnung des größten Werts auf der Grundlage eines Parameter Packs kann mit *Folding* erfolgen.
 Es bietet sich ein Spezialfall dieser Technik an, das so genannte &bdquo;*Folding over a Comma*&rdquo;.
 
 ---
