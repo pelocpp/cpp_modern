@@ -16,6 +16,7 @@
 | *Aufgabe* 2 | Noch ein Quiz zu Smart Pointer<br/>(Voraussetzungen: `std::shared_ptr<>`) |
 | *Aufgabe* 3 | Betrachtungen eines &bdquo;nicht besitzenden&rdquo; Zeigers<br/>(Voraussetzungen: `std::shared_ptr<>`, `std::weak_ptr<>`) |
 | *Aufgabe* 4 | Verwendung von Smartpointern für Membervariablen einer Klasse<br/>(Voraussetzungen: `std::unique_ptr<>` und `std::shared_ptr<>`) |
+| *Aufgabe* 5 | Rückgabe eines `std::unique_ptr<>`-Objekts aus einer Funktion<br/>(Voraussetzungen: `std::unique_ptr<>`, bei Bedarf `std::tuple<>` und `std::optional`) |
 
 *Tabelle* 1: Aufgaben zu Smart Pointer.
 
@@ -238,11 +239,10 @@ dass auf Grund der Anforderungen an die `MyString`-Klasse nur eine der beiden Kl
 Für eine minimale Ausstattung der `MyString`-Klasse realisieren wir
 
   * einen benutzerdefinierten Konstruktor, der eine `const char*` Zeichenkette entgegennimmt,
-deren Zeichen im `MyString`-Objekt aufzunehmen sind,
+  deren Zeichen im `MyString`-Objekt aufzunehmen sind,
   * eine `print`-Methode zur Ausgabe der Zeichen in der Konsole,
   * eine `length`-Methode, die die Anzahl der Zeichen zurückliefert und
   * einen Index-Operator, um auf einzelne Zeichen in der Zeichenkette lesend und schreibend zugreifen zu können.
-
 
 
 | Name | Beschreibung |
@@ -281,6 +281,84 @@ Welche Methoden/Operatoren muss die Klasse `MyString` bereitstellen,
 so dass deren Objekte auch verschoben werden können.
 
 Zeigen Sie das Verschieben an entsprechenden Beispielen auf.
+
+---
+
+## Aufgabe 5: Rückgabe eines `std::unique_ptr<>`-Objekts aus einer Funktion
+
+#### Voraussetzungen: `std::unique_ptr<>`, bei Bedarf `std::tuple<>` und `std::optional`
+
+
+In dieser Aufgabe wollen wir ein `std::unique_ptr<>`-Objekt in einem Unterprogramm (Funktion, Methode) anlegen.
+Es sollen verschiedene Wege aufgezeigt und bewertet werden, wie diese `std::unique_ptr<>`-Variable aus dem Unterprogramm
+zurückgegeben werden kann.
+
+Da man meistens auch andere Werte zurückgeben möchte, gibt es mehrere gängige Vorgehensweisen.
+Im Folgenden finden Sie die wichtigsten Methoden mit Hinweisen, wann welche anzuwenden ist.
+
+Schreiben Sie eine Funktion `splitToDigits`, die eine ganze Zahl in ihre einzelnen Ziffern zerlegt.
+Die Ziffern der Zahl sind der Reihe nach in einem dynamisch allokierten Speicherblock abzulegen.
+Offensichtlich muss die Funktion neben der Zerlegung der Zahl auch die Anzahl der einzelnen Ziffern berechnen,
+um so die Länge des dynamisch zu allokierenden Speichbereichs zu kennen.
+
+Natürlich wird der Speicherblock für die einzelnen Ziffern mit dem `new`-Operator angelegt,
+die Adresse ist aber &ndash; ganz konform zu Modern C++ &ndash; durch ein `std::unique_ptr<>`-Objekt zu verwalten.
+
+Welche Möglichkeiten gibt es, das `std::unique_ptr<>`-Objekt aus der Funktion zurückzugeben?
+
+Welche Vorteile hat es, mit einem `std::unique_ptr<std::size_t[]>`-Objekt anstatt mit einem `std::size_t*`-Zeiger zu arbeiten?
+
+Beachten Sie dabei, dass neben dem Zeiger auch die Anzahl der Ziffern in einer zweiten Variablen zurückgegeben werden soll.
+Und zu guter Letzt soll auch noch eine boolsche Variable zurückgeliefert werden, die angibt,
+ob die Funktion `splitToDigits` in ihrer Funktionsweise korrekt gearbeitet hat oder nicht.
+Die Berechnung des Ergebnisses stellt hier weniger das Problem dar,
+aber die interne Speicherplatzanforderung mit `new` muss nicht immer funktionieren.
+Ein Wert von `true` bedeutet, dass der Speicherbereich und die Längenangabe eine korrekte Zerlegung der Zahl darstellen,
+in allen anderen Fällen wird `false` zurückgeben.
+
+Um Ihnen eine kleine Hilfestellung zu geben, folgen hier einige Hinweise für die Spezifikation der `splitToDigits`-Funktion:
+
+  * Liefere direkt ein `std::unique_ptr<>`-Objekt zurück (Verschiebe-Semantik oder *Copy-Move-Elision*).
+  * Liefere eine Strukturvariable zurück (klassische Herangehensweise, im Prinzip der zu favorisierende Ansatz).
+  * Liefere ein `std::tuple`-Objekt zurück (moderne, leichtgewichtige Herangehensweise, Lesbarkeit nicht ganz so gut).
+  * Verwende Rückgabewert und eine Menge an Out-Parameters (*Call-by-Reference* &ndash; ähnlich wie die Variante mit Strukturvariablen zu bewerten).
+  * Liefere ein `std::pair` zurück (wenn es kompakt sein soll und man mit zwei Werten auskommt).
+  * Rückgabe mit Hilfe von `std::optional` und `std::pair` (interessant, wenn nicht immer ein Ergebnis vorliegen muss).
+
+*Beispiel*:
+
+```cpp
+01: void test()
+02: {
+03:     // pass all parameters by reference
+04:     std::size_t number{ 54321 };
+05:     std::size_t count{};
+06:     std::unique_ptr<std::size_t[]> buffer{};
+07: 
+08:     bool success { splitToDigitsByRef(number, buffer, count) };
+09: 
+10:     if (success) {
+11:         std::span<size_t> digits{ buffer.get(), count };
+12: 
+13:         std::println("Splitting of {}:", number);
+14:         for (std::size_t i{}; auto digit : digits) {
+15:             std::println("{}: {}", i, digit);
+16:             ++i;
+17:         }
+18:     }
+19: }
+```
+
+*Ausgabe*:
+
+```
+Splitting of 12345:
+0: 1
+1: 2
+2: 3
+3: 4
+4: 5
+```
 
 ---
 
