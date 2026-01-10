@@ -120,8 +120,8 @@ den Kopierkonstruktor, wenn intern der Datenpuffer neu auszurichten ist!
 *Rule of Zero*:
 
   * Es dürfen keine Zeiger vorhanden sein, die mit `new` allokiert wurden.
-  * Verwenden Sie Container der STL.
-  * Verwenden Sie *Smart Pointer*.
+  * Verwenden Sie Container Klassen der STL.
+  * Verwenden Sie *Smart Pointer* Variablen.
 
 In diesen Fällen benötigt man keine Realisierung der *Rule of Three* oder *Rule of Five*,
 da der Compiler an Hand der Standardklassen die für diese Klassen passenden Kopier- und Verschiebeoperationen

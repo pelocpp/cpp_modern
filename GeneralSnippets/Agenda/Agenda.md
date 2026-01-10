@@ -60,7 +60,7 @@
   * Argument-Dependent Name Lookup (ADL) / *Koenig*-Lookup
 
 
-## Intelligente Zeiger (*Smart Pointer*)
+## Intelligente Zeiger (*Smart Pointer* Klassen)
   * Zeiger mit einem Besitzer: `std::unique_ptr`
   * Intelligenter Zeiger mit Referenzzählung: `std::shared_ptr`
   * Spezieller intelligenter Zeiger in Verbindung mit `std::shared_ptr`: `std::weak_ptr`

@@ -1,4 +1,4 @@
-# Aufgaben zu Smart Pointer
+# Aufgaben zu Smart Pointer Klassen
 
 [Zurück](/GeneralSnippets/Exercises/Exercises.md)
 
@@ -12,17 +12,17 @@
 
 | Aufgabe | Beschreibung |
 | :- | :- |
-| *Aufgabe* 1 | Quiz zu Smart Pointer<br/>(Voraussetzungen: `std::shared_ptr<>`) |
-| *Aufgabe* 2 | Noch ein Quiz zu Smart Pointer<br/>(Voraussetzungen: `std::shared_ptr<>`) |
+| *Aufgabe* 1 | Quiz zu Smart Pointer Klassen<br/>(Voraussetzungen: `std::shared_ptr<>`) |
+| *Aufgabe* 2 | Noch ein Quiz zu Smart Pointer Klassen<br/>(Voraussetzungen: `std::shared_ptr<>`) |
 | *Aufgabe* 3 | Betrachtungen eines &bdquo;nicht besitzenden&rdquo; Zeigers<br/>(Voraussetzungen: `std::shared_ptr<>`, `std::weak_ptr<>`) |
-| *Aufgabe* 4 | Verwendung von Smartpointern für Membervariablen einer Klasse<br/>(Voraussetzungen: `std::unique_ptr<>` und `std::shared_ptr<>`) |
+| *Aufgabe* 4 | Verwendung von Smart Pointern für Membervariablen einer Klasse<br/>(Voraussetzungen: `std::unique_ptr<>` und `std::shared_ptr<>`) |
 | *Aufgabe* 5 | Rückgabe eines `std::unique_ptr<>`-Objekts aus einer Funktion<br/>(Voraussetzungen: `std::unique_ptr<>`, bei Bedarf `std::tuple<>` und `std::optional`) |
 
-*Tabelle* 1: Aufgaben zu Smart Pointer.
+*Tabelle* 1: Aufgaben zu Smart Pointer Klassen.
 
 ---
 
-## Aufgabe 1: Quiz zu Smart Pointer
+## Aufgabe 1: Quiz zu Smart Pointer Klassen
 
 #### Voraussetzungen: `std::shared_ptr<>`
 
@@ -44,7 +44,7 @@ Welchen Wert hat der Referenzzähler des Objekts `pC` in der letzten Zeile?
 
 ---
 
-## Aufgabe 2: Noch ein Quiz zu Smart Pointer
+## Aufgabe 2: Noch ein Quiz zu Smart Pointer Klassen
 
 #### Voraussetzungen: `std::shared_ptr<>`
 
@@ -197,7 +197,7 @@ das referenzierte Objekt noch existiert.
 
 ---
 
-## Aufgabe 4: Verwendung von Smartpointern für Membervariablen einer Klasse
+## Aufgabe 4: Verwendung von Smart Pointern für Membervariablen einer Klasse
 
 #### Voraussetzungen: `std::unique_ptr<>` und `std::shared_ptr<>`
 
@@ -304,9 +304,9 @@ um so die Länge des dynamisch zu allokierenden Speichbereichs zu kennen.
 Natürlich wird der Speicherblock für die einzelnen Ziffern mit dem `new`-Operator angelegt,
 die Adresse ist aber &ndash; ganz konform zu Modern C++ &ndash; durch ein `std::unique_ptr<>`-Objekt zu verwalten.
 
-Welche Möglichkeiten gibt es, das `std::unique_ptr<>`-Objekt aus der Funktion zurückzugeben?
+  * Welche Möglichkeiten gibt es, das `std::unique_ptr<>`-Objekt aus der Funktion zurückzugeben?
 
-Welche Vorteile hat es, mit einem `std::unique_ptr<std::size_t[]>`-Objekt anstatt mit einem `std::size_t*`-Zeiger zu arbeiten?
+  * Welche Vorteile hat es, mit einem `std::unique_ptr<std::size_t[]>`-Objekt anstatt mit einem `std::size_t*`-Zeiger zu arbeiten?
 
 Beachten Sie dabei, dass neben dem Zeiger auch die Anzahl der Ziffern in einer zweiten Variablen zurückgegeben werden soll.
 Und zu guter Letzt soll auch noch eine boolsche Variable zurückgeliefert werden, die angibt,
@@ -318,10 +318,10 @@ in allen anderen Fällen wird `false` zurückgeben.
 
 Um Ihnen eine kleine Hilfestellung zu geben, folgen hier einige Hinweise für die Spezifikation der `splitToDigits`-Funktion:
 
-  * Liefere direkt ein `std::unique_ptr<>`-Objekt zurück (Verschiebe-Semantik oder *Copy-Move-Elision*).
+  * Liefere direkt ein `std::unique_ptr<>`-Objekt zurück (Verschiebe-Semantik oder *Copy-Move-Elision* hinter den Kulissen).
   * Liefere eine Strukturvariable zurück (klassische Herangehensweise, im Prinzip der zu favorisierende Ansatz).
   * Liefere ein `std::tuple`-Objekt zurück (moderne, leichtgewichtige Herangehensweise, Lesbarkeit nicht ganz so gut).
-  * Verwende Rückgabewert und eine Menge an Out-Parameters (*Call-by-Reference* &ndash; ähnlich wie die Variante mit Strukturvariablen zu bewerten).
+  * Verwende Rückgabewert und eine Menge an Out-Parametern (*Call-by-Reference* &ndash; ähnlich wie die Variante mit Strukturvariablen zu bewerten).
   * Liefere ein `std::pair` zurück (wenn es kompakt sein soll und man mit zwei Werten auskommt).
   * Rückgabe mit Hilfe von `std::optional` und `std::pair` (interessant, wenn nicht immer ein Ergebnis vorliegen muss).
 

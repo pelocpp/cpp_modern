@@ -21,7 +21,7 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 
   * ### [Initialisierung](Exercises_11_Initialization.md)
 
-  * ### [Smart Pointer](Exercises_15_SmartPointers.md)
+  * ### [Smart Pointer Klassen](Exercises_15_SmartPointers.md)
 
   * ### [STL](Exercises_03_STL.md)
 
