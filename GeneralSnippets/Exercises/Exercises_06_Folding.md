@@ -14,7 +14,7 @@
 | :- | :- |
 | *Aufgabe* 1 | Logische Operationen mit beliebig vielen Operanden |
 | *Aufgabe* 2 | `decltype` und Type-Traits am Beispiel von `sameType`<br/>(Voraussetzungen: `std::is_same`) |
-| *Aufgabe* 3 | &bdquo;Folding over a Comma&rdquo; am Beispiel zweier Funktionen `minimum` und `maximum`<br/>(Voraussetzungen: Lambda Funktionen) |
+| *Aufgabe* 3 | &bdquo;Folding over a Comma&rdquo; am Beispiel zweier Funktionen `minimum` und `maximum`<br/>(Voraussetzungen: Lambdas) |
 | *Aufgabe* 4 | Beliebig viele Werte zu einem `std::vector`-Objekt hinzufügen |
 | *Aufgabe* 5 | Störende Trennzeichen am Ende eines Folding-Ausdrucks |
 
@@ -48,7 +48,7 @@ von Aufgabe 1 und 2?
 
 ## Aufgabe 3: &bdquo;*Folding over a Comma*&rdquo; am Beispiel zweier Funktionen `minimum` und `maximum`
 
-#### Voraussetzungen: Lambda Funktionen
+#### Voraussetzungen: Lambdas
 
 Der Zugriff auf die einzelnen Werte eines Parameter Packs ist nicht ganz einfach.
 Eine übliche Vorgehensweise ist das so genannte &bdquo;*Folding over a Comma*&rdquo;.

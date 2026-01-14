@@ -15,9 +15,9 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
 
   * ### [Move-Semantik](Exercises_01_MoveSemantics.md)
 
-  * ### [Lambda Funktionen](Exercises_02_Lambdas.md)
+  * ### [Lambdas](Exercises_02_Lambdas.md)
 
-  * ### [Generische Lambda Funktionen](Exercises_16_GenericLambdas.md)
+  * ### [Generische Lambdas](Exercises_16_GenericLambdas.md)
 
   * ### [Initialisierung](Exercises_11_Initialization.md)
 

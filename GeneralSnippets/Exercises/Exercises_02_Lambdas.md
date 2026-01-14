@@ -16,7 +16,7 @@
 | *Aufgabe* 2 | Taschenrechner mit Lambda-Funktionen<br/>(Voraussetzungen: Container `std::map`, Klasse `std::pair`) | 
 | *Aufgabe* 3 | Quiz mit Lambda-Funktionen |
 
-*Tabelle* 1: Aufgaben zu Lambda Funktionen.
+*Tabelle* 1: Aufgaben zu Lambdas.
 
 ---
 
