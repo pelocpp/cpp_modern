@@ -206,22 +206,29 @@ gehen bei der Typableitung verloren.
 Wir demonstrieren dies an einem Beispiel:
 
 ```cpp
-const std::string message{ "This is an important message :)" };
-
-const std::string& getMessage()
-{
-    return message;
-}
+01: class Person
+02: {
+03: private:
+04:     std::string m_name;
+05: 
+06: public:
+07:     // c'tor
+08:     Person(const std::string& name) : m_name(name) {}
+09: 
+10:     // getter
+11:     const std::string& getName() { return m_name; }
+12: };
 ```
 
-Wenn wir die Funktion `getMessage` aufrufen und ihr Resultat in einer mit `auto`  deklarierten Variablen abspeichern,
+Wenn wir die Methode `getName` aufrufen und ihr Resultat in einer mit `auto` deklarierten Variablen abspeichern,
 verlieren wir sowohl `const` als auch die Referenz:
 
 ```cpp
-auto msg = getMessage();   // msg has type 'std::string'
+Person hans{ "Hans" };
+auto name = hans.getName();   // 'name' has type 'std::string'
 ```
 
-Die Variable `msg` hat den Typ `std::string` &ndash; und damit nicht den Typ `const std::string&`!
+Die Variable `name` hat den Typ `std::string` &ndash; und damit nicht den Typ `const std::string&`!
 
 *Hinweis*:
 Der Visual C++ Compiler weist in einem Tooltip darauf hin (*Abbildung* 1):
@@ -237,12 +244,12 @@ Es würde eine *zweite* Möglichkeit geben, den Verlust von `const` bzw. von `&` a
 Hierzu darf man nicht `auto` einsetzen, sondern muss mit `decltype` arbeiten:
 
 ```cpp
-decltype(getMessage()) msg3 = getMessage();  // msg3 has type `const std::string&`
-
-std::cout << "Message: " << msg3 << std::endl;
+decltype(hans.getName()) name{ hans.getName() };  // name has type `const std::string&`
+std::println("Message: {}", name);
 ```
 
-Ein letzter Schönheitsfehler verbleibt: Es kommt quasi zu einer Dopplung des Ausdrucks, in unserem Beispiel `getMessage()`.
+Ein letzter Schönheitsfehler verbleibt: Es kommt quasi zu einer Dopplung des Ausdrucks,
+in unserem Beispiel `hans.getName()`.
 Auch das beheben wir noch, siehe hierzu die Kombination
 von `auto` und `decltype`:
 

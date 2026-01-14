@@ -107,7 +107,7 @@ namespace Auto_Examples {
     public:
         Contact() : m_name{}, m_number{} {}
 
-        auto getName() const { return m_name; }
+        const auto& getName() const { return m_name; }
         auto getMobileNumber() const { return m_number; }
     };
 
@@ -138,33 +138,41 @@ namespace Auto_Examples {
 
     // ---------------------------------------------------------------------
 
-    const std::string message{ "This is an important message :)" };
-
-    static const std::string& getMessage()
+    class Person
     {
-        return message;
-    }
+    private:
+        std::string m_name;
+
+    public:
+        // c'tor
+        Person(const std::string& name) : m_name(name) {}
+
+        // getter
+        const std::string& getName() { return m_name; }
+    };
 
     static void test_06() {
 
-        auto msg1{ getMessage() };
-        std::println("Message: {}", msg1);
+        Person hans{ "Hans" };
+
+        auto name1{ hans.getName() };
+        std::println("Message: {}", name1);
 
         // but:
-        const auto& msg2{ getMessage() };
-        std::println("Message: {}", msg2);
+        const auto& name2{ hans.getName() };
+        std::println("Message: {}", name2);
 
         // Ohhh:
-        auto& msg3{ getMessage() };
-        std::println("Message: {}", msg3);
+        auto& name3{ hans.getName() };
+        std::println("Message: {}", name3);
 
         // or:
-        decltype(getMessage()) msg4{ getMessage() };
-        std::println("Message: {}", msg4);
+        decltype(hans.getName()) name4{ hans.getName() };
+        std::println("Message: {}", name4);
 
         // once again 'or':
-        decltype(auto) msg5{ getMessage() };
-        std::println("Message: {}", msg5);
+        decltype(auto) name5{ hans.getName() };
+        std::println("Message: {}", name5);
     }
 
     // ---------------------------------------------------------------------
