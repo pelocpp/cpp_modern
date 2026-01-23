@@ -7,7 +7,7 @@ module modern_cpp:rvalue_lvalue;
 namespace LValueRValue {
 
     // lvalue reference
-    static void sayHello(std::string& message) {
+    static void sayHello(const std::string& message) {
         std::println("sayHello [std::string&]:  {}", message);
     }
 

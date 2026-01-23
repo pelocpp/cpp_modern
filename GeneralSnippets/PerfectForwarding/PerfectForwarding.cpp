@@ -6,7 +6,7 @@ module modern_cpp:perfect_forwarding;
 
 namespace PerfectForwarding {
 
-    static void overloaded(int& arg) {
+    static void overloaded(const int& arg) {
         std::println("By lvalue: {}", arg);
     }
 

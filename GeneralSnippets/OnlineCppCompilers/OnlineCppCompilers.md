@@ -100,7 +100,7 @@ vergleichen können. Der Compiler-Explorer ist auf GitHub zu finden und kann loka
 denn sie erlaubt es nicht, kompilierte Programme auszuführen.
 Stattdessen zeigt die IDE eine andere Version des Quellcodes, die einen Teil der Magie zeigt,
 die der Compiler unter der Haube macht. Man könnte auch sagen, dass *Cppinsights* eine Art
-&bdquo;C++ nach C++&rdquo;&ndash;Präcompiler mit dem Ziel ist, den ursprünglichen Quellcode besser verständlich umzuwandeln.
+&bdquo;Modern&ndash;C++&rdquo; nach &bdquo;Classic&ndash;C++&rdquo;&ndash;Präcompiler mit dem Ziel ist, den ursprünglichen Quellcode besser verständlich umzuwandeln.
 *Cppinsights* ist ein Tool geschrieben von [Andreas Fertig](https://andreasfertig.info/).
 
 <img src="Cppinsights.png" width="800">

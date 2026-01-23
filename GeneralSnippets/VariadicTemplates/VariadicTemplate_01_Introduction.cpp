@@ -47,40 +47,40 @@ namespace VariadicTemplatesIntro_01 {
     }
 }
 
-namespace VariadicTemplates_TestClassUnknown {
+namespace VariadicTemplates_TestClassDoSomething {
 
     // ========================================================================
-    // Test-Klasse Unknown
+    // Test-Klasse DoSomething
     // Nur die Konstruktoren sind interessant
     // ========================================================================
 
-    class Unknown {
+    class DoSomething {
     private:
         int m_var1;
         int m_var2;
         int m_var3;
 
     public:
-        Unknown() : m_var1{ -1 }, m_var2{ -1 }, m_var3{ -1 } {
+        DoSomething() : m_var1{}, m_var2{}, m_var3{} {
             std::cout << "c'tor()" << std::endl;
         }
 
-        Unknown(int n) : m_var1{ n }, m_var2{ -1 }, m_var3{ -1 } {
+        DoSomething(int n) : m_var1{ n }, m_var2{}, m_var3{} {
             std::cout << "c'tor(int)" << std::endl;
         }
 
-        Unknown(int n, int m) : m_var1{ n }, m_var2{ m }, m_var3{ -1 } {
+        DoSomething(int n, int m) : m_var1{ n }, m_var2{ m }, m_var3{} {
             std::cout << "c'tor(int, int)" << std::endl;
         }
 
-        Unknown(int n, int m, int k) : m_var1{ n }, m_var2{ m }, m_var3{ k } {
+        DoSomething(int n, int m, int k) : m_var1{ n }, m_var2{ m }, m_var3{ k } {
             std::cout << "c'tor(int, int, int)" << std::endl;
         }
 
-        friend std::ostream& operator<< (std::ostream&, const Unknown&);
+        friend std::ostream& operator<< (std::ostream&, const DoSomething&);
     };
 
-    std::ostream& operator<< (std::ostream& os, const Unknown& obj) {
+    std::ostream& operator<< (std::ostream& os, const DoSomething& obj) {
         os
             << "var1: " << obj.m_var1
             << ", var2: " << obj.m_var2
@@ -97,7 +97,7 @@ namespace VariadicTemplatesIntro_02 {
     // Anwendungsfall: Standardfunktion std::unique_ptr<>
     // =============================================================
 
-    using namespace VariadicTemplates_TestClassUnknown;
+    using namespace VariadicTemplates_TestClassDoSomething;
 
     // einfache Variante
     template<typename T, typename ... TArgs>
@@ -125,35 +125,35 @@ namespace VariadicTemplatesIntro_02 {
 
     static void test_my_make_unique()
     {
-        std::unique_ptr<Unknown> up1 = my_make_unique<Unknown>();
-        std::unique_ptr<Unknown> up2 = my_make_unique<Unknown>(1);
-        std::unique_ptr<Unknown> up3 = my_make_unique<Unknown>(10, 11);
-        std::unique_ptr<Unknown> up4 = my_make_unique<Unknown>(100, 101, 102);
+        std::unique_ptr<DoSomething> up1 = my_make_unique<DoSomething>();
+        std::unique_ptr<DoSomething> up2 = my_make_unique<DoSomething>(1);
+        std::unique_ptr<DoSomething> up3 = my_make_unique<DoSomething>(10, 11);
+        std::unique_ptr<DoSomething> up4 = my_make_unique<DoSomething>(100, 101, 102);
 
         int n = 33, m = 34;
-        std::unique_ptr<Unknown> up5 = my_make_unique<Unknown>(n, m);
+        std::unique_ptr<DoSomething> up5 = my_make_unique<DoSomething>(n, m);
     }
 
     static void test_my_make_unique_ex()
     {
-        std::unique_ptr<Unknown> up1 = my_make_unique_ex<Unknown>();
-        std::unique_ptr<Unknown> up2 = my_make_unique_ex<Unknown>(1);
-        std::unique_ptr<Unknown> up3 = my_make_unique_ex<Unknown>(10, 11);
-        std::unique_ptr<Unknown> up4 = my_make_unique_ex<Unknown>(100, 101, 102);
+        std::unique_ptr<DoSomething> up1 = my_make_unique_ex<DoSomething>();
+        std::unique_ptr<DoSomething> up2 = my_make_unique_ex<DoSomething>(1);
+        std::unique_ptr<DoSomething> up3 = my_make_unique_ex<DoSomething>(10, 11);
+        std::unique_ptr<DoSomething> up4 = my_make_unique_ex<DoSomething>(100, 101, 102);
 
         int n = 33, m = 34;
-        std::unique_ptr<Unknown> up5 = my_make_unique_ex<Unknown>(n, m);
+        std::unique_ptr<DoSomething> up5 = my_make_unique_ex<DoSomething>(n, m);
     }
 
     static void test_my_make_unique_ex_ex()
     {
-        std::unique_ptr<Unknown> up1 = my_make_unique_ex_ex<Unknown>();
-        std::unique_ptr<Unknown> up2 = my_make_unique_ex_ex<Unknown>(1);
-        std::unique_ptr<Unknown> up3 = my_make_unique_ex_ex<Unknown>(10, 11);
-        std::unique_ptr<Unknown> up4 = my_make_unique_ex_ex<Unknown>(100, 101, 102);
+        std::unique_ptr<DoSomething> up1 = my_make_unique_ex_ex<DoSomething>();
+        std::unique_ptr<DoSomething> up2 = my_make_unique_ex_ex<DoSomething>(1);
+        std::unique_ptr<DoSomething> up3 = my_make_unique_ex_ex<DoSomething>(10, 11);
+        std::unique_ptr<DoSomething> up4 = my_make_unique_ex_ex<DoSomething>(100, 101, 102);
 
         int n = 33, m = 34;
-        std::unique_ptr<Unknown> up5 = my_make_unique_ex_ex<Unknown>(n, m);
+        std::unique_ptr<DoSomething> up5 = my_make_unique_ex_ex<DoSomething>(n, m);
     }
 }
 
@@ -168,7 +168,7 @@ namespace VariadicTemplatesIntro_03 {
     // Siehe Analogien zu Factory-Pattern
     // =================================================================================
 
-    using namespace VariadicTemplates_TestClassUnknown;
+    using namespace VariadicTemplates_TestClassDoSomething;
 
     // einfache Variante
     template<typename T, typename... TArgs>
@@ -186,10 +186,10 @@ namespace VariadicTemplatesIntro_03 {
 
     static void test_make_an_object()
     {
-        Unknown u1 = make_an_object<Unknown>();
-        Unknown u2 = make_an_object<Unknown>(1);
-        Unknown u3 = make_an_object<Unknown>(10, 11);
-        Unknown u4 = make_an_object<Unknown>(100, 101, 102);
+        DoSomething u1 = make_an_object<DoSomething>();
+        DoSomething u2 = make_an_object<DoSomething>(1);
+        DoSomething u3 = make_an_object<DoSomething>(10, 11);
+        DoSomething u4 = make_an_object<DoSomething>(100, 101, 102);
 
         std::cout << u1 << std::endl;
         std::cout << u2 << std::endl;
@@ -199,23 +199,23 @@ namespace VariadicTemplatesIntro_03 {
         int n = 100;
         const int m = 101;
 
-        Unknown u5 = make_an_object<Unknown, int, int&, const int&>(100, n, m);
-        Unknown u6 = make_an_object<Unknown>(n, 51, m);
+        DoSomething u5 = make_an_object<DoSomething, int, int&, const int&>(100, n, m);
+        DoSomething u6 = make_an_object<DoSomething>(n, 51, m);
 
         std::cout << u5 << std::endl;
         std::cout << u6 << std::endl;
 
         // doesn't compile: too much parameters
-        // Unknown u7 = make_an_object<Unknown>(1000, 1001, 1002, 1003);
+        // DoSomething u7 = make_an_object<DoSomething>(1000, 1001, 1002, 1003);
         // std::cout << u7 << std::endl;
     }
 
     static void test_make_an_object_ex()
     {
-        Unknown u1 = make_an_object_ex<Unknown>();
-        Unknown u2 = make_an_object_ex<Unknown>(1);
-        Unknown u3 = make_an_object_ex<Unknown>(10, 11);
-        Unknown u4 = make_an_object_ex<Unknown>(100, 101, 102);
+        DoSomething u1 = make_an_object_ex<DoSomething>();
+        DoSomething u2 = make_an_object_ex<DoSomething>(1);
+        DoSomething u3 = make_an_object_ex<DoSomething>(10, 11);
+        DoSomething u4 = make_an_object_ex<DoSomething>(100, 101, 102);
 
         std::cout << u1 << std::endl;
         std::cout << u2 << std::endl;
@@ -225,8 +225,8 @@ namespace VariadicTemplatesIntro_03 {
         int n = 100;
         const int m = 101;
 
-        Unknown u5 = make_an_object_ex<Unknown, int, int&, const int&>(100, n, m);
-        Unknown u6 = make_an_object_ex<Unknown>(n, 51, m);
+        DoSomething u5 = make_an_object_ex<DoSomething, int, int&, const int&>(100, n, m);
+        DoSomething u6 = make_an_object_ex<DoSomething>(n, 51, m);
 
         std::cout << u5 << std::endl;
         std::cout << u6 << std::endl;
