@@ -44,7 +44,7 @@ namespace Algorithms {
 
             ScopedTimer watch{};
 
-            for (size_t i{}; i != values.size(); ++i) {
+            for (std::size_t i{}; i != values.size(); ++i) {
                 values[i] = 123.0;
             }
         }
@@ -173,7 +173,7 @@ namespace Algorithms {
 
             ScopedTimer watch{};
 
-            for (size_t i{}; i != values.size(); ++i) {
+            for (std::size_t i{}; i != values.size(); ++i) {
                 values[i] = 123.0;
             }
         }
@@ -282,7 +282,7 @@ namespace Algorithms {
 
             ScopedTimer watch{};
 
-            for (size_t i{}; i != values.size(); ++i) {
+            for (std::size_t i{}; i != values.size(); ++i) {
                 values[i] = 2.0 * i;
             }
         }
@@ -295,7 +295,7 @@ namespace Algorithms {
 
             ScopedTimer watch{};
 
-            size_t i{};
+            std::size_t i{};
             for (auto it{ values.begin() }; it != values.end(); ++it) {
                 *it = 2.0 * i++;
             }
@@ -369,7 +369,7 @@ namespace Algorithms {
 
             ScopedTimer watch{};
 
-            for (size_t i{}; i != values.size(); ++i) {
+            for (std::size_t i{}; i != values.size(); ++i) {
                 values[i] = 2.0 * i;
             }
         }
@@ -380,7 +380,7 @@ namespace Algorithms {
 
             ScopedTimer watch{};
 
-            size_t i{};
+            std::size_t i{};
             for (auto it{ values.begin() }; it != values.end(); ++it) {
                 *it = 2.0 * i++;
             }
@@ -453,7 +453,7 @@ namespace Algorithms {
 
             ScopedTimer watch{};
 
-            for (size_t i{}; i != source.size(); ++i) {
+            for (std::size_t i{}; i != source.size(); ++i) {
                 target[i] = source[i];
             }
         }
@@ -549,7 +549,7 @@ namespace Algorithms {
 
             ScopedTimer watch{};
 
-            for (size_t i{}; i != source.size(); ++i) {
+            for (std::size_t i{}; i != source.size(); ++i) {
                 target[i] = source[i];
             }
         }
@@ -634,7 +634,7 @@ namespace Algorithms {
             ScopedTimer watch{};
 
             double sum{};
-            for (size_t i{}; i != values.size(); ++i) {
+            for (std::size_t i{}; i != values.size(); ++i) {
                 sum += values[i];
             }
 

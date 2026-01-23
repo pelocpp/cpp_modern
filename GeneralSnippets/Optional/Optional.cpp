@@ -45,7 +45,7 @@ namespace OptionalExamples {
     public:
         Contact() : m_phone{ std::nullopt } {}
 
-        void setPhone(std::string phone) { m_phone = phone; }
+        void setPhone(const std::string& phone) { m_phone = phone; }
 
         std::optional<std::string> getPhone() { return m_phone; }
     };

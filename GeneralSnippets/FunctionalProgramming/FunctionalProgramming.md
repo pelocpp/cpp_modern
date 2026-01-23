@@ -303,7 +303,7 @@ Im Quellcode zu diesem Snippet gibt es Beispiel zum *Filter-Map-Reduce* Pattern:
 43:         std::begin(bookTitles),
 44:         std::end(bookTitles),
 45:         std::string{},
-46:         [](std::string a, std::string b) {
+46:         [](const std::string& a, const std::string& b) {
 47:             std::stringstream ss;
 48:             if (a.empty()) {
 49:                 ss << b;
@@ -358,7 +358,7 @@ Titles: Java, C#
 27:         std::begin(results),
 28:         std::end(results),
 29:         std::string{},
-30:         [](std::string a, std::string b) {
+30:         [](const std::string& a, const std::string& b) {
 31:             std::stringstream ss;
 32:             if (a.empty()) {
 33:                 ss << b;

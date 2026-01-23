@@ -75,7 +75,7 @@ Welche Beobachtung machen Sie?
 
 #### Voraussetzungen: Templates Grundlagen, `std::optional`, `if constexpr`
 
-Schreiben Sie eine Funktion `std::optional<int> toInt(std::string s)`.
+Schreiben Sie eine Funktion `std::optional<int> toInt(const std::string& s)`.
 Der Rückgabewert vom Typ `std::optional<int>` darf nur dann einen gültigen `int`-Wert enthalten,
 wenn sich die Zeichenkette `s` komplett in eine ganze Zahl umwandeln lässt.
 
@@ -83,7 +83,7 @@ Schreiben Sie eine zweite Funktion `toNumber`:
 
 ```cpp
 template <typename T>
-std::optional<T> toNumber(std::string s);
+std::optional<T> toNumber(const std::string& s);
 ```
 
 Realisieren Sie die Funktion analog zur Funktion `toInt`. Für `T` sollen die integralen Datentypen

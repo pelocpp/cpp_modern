@@ -75,7 +75,7 @@ namespace TemplateConstExprIf {
         Adder<std::vector<std::string>> intStringAdder(strings);
         std::vector<std::string> stringResult =
             intStringAdder.addToVector(std::string{ "Z" });
-        for (std::string s : stringResult)
+        for (const std::string& s : stringResult)
             std::cout << s << ' ';
         std::cout << std::endl;
     }
@@ -104,7 +104,7 @@ namespace TemplateConstExprIf {
         Adder<std::vector<std::string>> intStringAdder(strings);
         std::vector<std::string> stringResult =
             intStringAdder.add(std::string{ "Z" });
-        for (std::string s : stringResult)
+        for (const std::string& s : stringResult)
             std::cout << s << ' ';
         std::cout << std::endl;
     }

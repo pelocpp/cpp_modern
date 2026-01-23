@@ -245,13 +245,13 @@ namespace BookStoreUsingDynamicPolymorphism {
 
     public:
         // c'tor
-        Book(std::string author, std::string title, double price, size_t count)
+        Book(const std::string& author, const std::string& title, double price, size_t count)
             : m_author{ author }, m_title{ title }, m_price{ price }, m_count{ count }
         {}
 
         // getter / setter
-        std::string getAuthor() const { return m_author; }
-        std::string getTitle() const { return m_title; }
+        const std::string& getAuthor() const { return m_author; }
+        const std::string& getTitle() const { return m_title; }
 
         // interface 'IMedia'
         double getPrice() const override { return m_price; }
@@ -268,13 +268,13 @@ namespace BookStoreUsingDynamicPolymorphism {
 
     public:
         // c'tor
-        Movie(std::string title, std::string director, double price, size_t count)
+        Movie(const std::string& title, const std::string& director, double price, size_t count)
             : m_title{ title }, m_director{ director }, m_price{ price }, m_count{ count }
         { }
 
         // getter / setter
-        std::string getTitle() const { return m_title; }
-        std::string getDirector() const { return m_director; }
+        const std::string& getTitle() const { return m_title; }
+        const std::string& getDirector() const { return m_director; }
 
         // interface 'IMedia'
         double getPrice() const override { return m_price; }
@@ -413,13 +413,13 @@ namespace BookStoreUsingTypeErasure {
 
     public:
         // c'tor
-        Book(std::string author, std::string title, double price, size_t count)
+        Book(const std::string& author, const std::string& title, double price, size_t count)
             : m_author{ author }, m_title{ title }, m_price{ price }, m_count{ count }
         {}
 
         // getter / setter
-        std::string getAuthor() const { return m_author; }
-        std::string getTitle() const { return m_title; }
+        const std::string& getAuthor() const { return m_author; }
+        const std::string& getTitle() const { return m_title; }
 
         double getPrice() const { return m_price; }
         size_t getCount() const { return m_count; }
@@ -435,13 +435,13 @@ namespace BookStoreUsingTypeErasure {
 
     public:
         // c'tor
-        Movie(std::string title, std::string director, double price, size_t count)
+        Movie(const std::string& title, const std::string& director, double price, size_t count)
             : m_title{ title }, m_director{ director }, m_price{ price }, m_count{ count }
         { }
 
         // getter / setter
-        std::string getTitle() const { return m_title; }
-        std::string getDirector() const { return m_director; }
+        const std::string& getTitle() const { return m_title; }
+        const std::string& getDirector() const { return m_director; }
 
         double getPrice() const { return m_price; }
         size_t getCount() const { return m_count; }

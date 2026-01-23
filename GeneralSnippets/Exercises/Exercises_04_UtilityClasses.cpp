@@ -108,7 +108,7 @@ namespace Exercises_UtilityClasses {
         }
 
         template <typename T>
-        std::optional<T> toNumber(std::string s)
+        std::optional<T> toNumber(const std::string& s)
         {
             std::optional<T> result{ std::nullopt };
 

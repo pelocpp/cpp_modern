@@ -76,8 +76,8 @@ und eine Information über die Anzahl der Elemente:
 ```cpp
 template<typename T>
 class span {
-    T*   m_data;
-    size_t m_count;
+    T*          m_data;
+    std::size_t m_count;
 public:
     ...
 };

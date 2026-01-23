@@ -90,7 +90,7 @@ namespace Exercises_FunctionalProgramming {
             std::string concatenated = fold<std::string>(
                 std::begin(numbers),
                 std::end(numbers),
-                [](std::string s, int n) -> std::string {
+                [](const std::string& s, int n) -> std::string {
                     return s + std::to_string(n); 
                 }
 

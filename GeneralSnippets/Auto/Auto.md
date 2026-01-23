@@ -99,7 +99,7 @@ Häufig kann man die Beobachtung machen, dass der Umstieg auf *Function Return Ty
 class Contact
 {
     std::string m_name;
-    size_t m_number;
+    std::size_t m_number;
 
 public:
     <b>auto</b> getName() const { return m_name; }

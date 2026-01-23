@@ -13,7 +13,7 @@ namespace PlacementNew {
         int m_age;
 
     public:
-        User(std::string name, int age)
+        User(const std::string& name, int age)
             : m_name{ name }, m_age{ age }
         {
             std::cout << "c'tor User" << std::endl;

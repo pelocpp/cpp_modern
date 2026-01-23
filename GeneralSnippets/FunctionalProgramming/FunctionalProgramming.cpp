@@ -141,7 +141,7 @@ namespace FunctionalProgramming {
                 std::begin(bookTitles),
                 std::end(bookTitles),
                 std::string{},
-                [](std::string a, std::string b) {
+                [](const std::string& a, const std::string& b) {
                     std::stringstream ss;
                     if (a.empty()) {
                         ss << b;
@@ -180,7 +180,7 @@ namespace FunctionalProgramming {
                 std::begin(results),
                 std::end(results),
                 std::string{},
-                [](std::string a, std::string b) {
+                [](const std::string& a, const std::string& b) {
                     std::stringstream ss;
                     if (a.empty()) {
                         ss << b;

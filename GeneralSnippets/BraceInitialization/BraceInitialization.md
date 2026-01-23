@@ -96,7 +96,7 @@ int n{};                 // n equals 0
 float f{};               // f equals 0.0
 double d{};              // d equals 0.0
 unsigned long l{};       // l equals 0
-size_t i{};              // i equals 0
+std::size_t i{};         // i equals 0
 ```
 
 ---

@@ -26,7 +26,7 @@ namespace BraceInitialization {
         float f{};                 // f equals 0.0
         double d{};                // d equals 0.0
         unsigned long l{};         // l equals 0
-        size_t i{};                // i equals 0
+        std::size_t i{};                // i equals 0
 
         std::println("n: {}", n);
         std::println("f: {}", f);
@@ -45,7 +45,7 @@ namespace BraceInitialization {
         float f{ 2.5f };           // f equals 2.5
         double d{ 3.5 };           // d equals 3.5
         unsigned long l{ 4l };     // l equals 4
-        size_t i{ 5 };             // i equals 5
+        std::size_t i{ 5 };             // i equals 5
 
         std::println("n: {}", n);
         std::println("f: {}", f);
@@ -185,12 +185,12 @@ namespace BraceInitialization {
         int* pi{ new int[5] { 1, 2, 3, 4, 5 } };
         double* pd{ new double[5] { 1.0, 2.0, 3.0, 4.0, 5.0 } };
 
-        for (size_t i{}; i != 5; i++) {
+        for (std::size_t i{}; i != 5; i++) {
             std::println("{}, ", pi[i]);
         }
         std::println();
 
-        for (size_t i{}; i != 5; i++) {
+        for (std::size_t i{}; i != 5; i++) {
             std::println("{}, ", pi[i]);
         }
         std::println();
@@ -335,7 +335,7 @@ namespace BraceInitialization {
         void operator()() {
             std::println("m_n: {}", m_n);
 
-            for (size_t i{}; i != 5; i++) {
+            for (std::size_t i{}; i != 5; i++) {
                 std::println("{}: {}", i, m_data[i]);
             }
         }
@@ -351,7 +351,7 @@ namespace BraceInitialization {
     public:
         void operator()() 
         {
-            for (size_t i{}; i != m_vec.size(); i++) {
+            for (std::size_t i{}; i != m_vec.size(); i++) {
                 std::println("{}: {}", i, m_vec[i]);
 
             }

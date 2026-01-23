@@ -150,14 +150,14 @@ namespace FunctionalProgramming_02 {
 
     static void test_functional_map_02c() {
         std::vector<std::string> vec = { "1", "2", "3", "4", "5", "6", "7" , "8", "9", "10" };
-        std::for_each(std::begin(vec), std::end(vec), [](std::string s) {
+        std::for_each(std::begin(vec), std::end(vec), [](const std::string& s) {
             std::cout << s << ' ';
             });
         std::cout << std::endl;
 
         auto result = map(
             vec,
-            [](std::string s) { return std::stoi(s); }  // convert strings to int
+            [](const std::string& s) { return std::stoi(s); }  // convert strings to int
         );
 
         std::for_each(std::begin(result), std::end(result), [](int value) {
@@ -179,7 +179,7 @@ namespace FunctionalProgramming_02 {
             [](float f) { return std::to_string(f); }  // convert float to string
         );
 
-        std::for_each(std::begin(result), std::end(result), [](std::string s) {
+        std::for_each(std::begin(result), std::end(result), [](const std::string& s) {
             std::cout << s << ' ';
             }
         );
@@ -208,7 +208,7 @@ namespace FunctionalProgramming_02 {
             }
         );
 
-        std::for_each(std::begin(result), std::end(result), [](std::string s) {
+        std::for_each(std::begin(result), std::end(result), [](const std::string& s) {
             std::cout << s << ' ';
             }
         );
@@ -235,7 +235,7 @@ namespace FunctionalProgramming_02 {
     // concatenating a list of strings into a single string
     static void test_functional_fold_03b() {
         std::list<std::string> list = { "Implementing", "fold", "with", "Modern", "C++" };
-        std::for_each(std::begin(list), std::end(list), [](std::string s) {
+        std::for_each(std::begin(list), std::end(list), [](const std::string& s) {
             std::cout << s << ' ';
             });
         std::cout << std::endl;
@@ -243,7 +243,7 @@ namespace FunctionalProgramming_02 {
         auto result1 = foldLeft(
             list,
             std::string(""),
-            [](std::string a, std::string b) { return a + std::string(":") + b; }
+            [](const std::string& a, const std::string& b) { return a + std::string(":") + b; }
         );
 
         std::cout << result1 << std::endl;
@@ -251,7 +251,7 @@ namespace FunctionalProgramming_02 {
         auto result2 = foldRight(
             list,
             std::string(""),
-            [](std::string a, std::string b) { return a + std::string(":") + b; }
+            [](const std::string& a, const std::string& b) { return a + std::string(":") + b; }
         );
 
         std::cout << result2 << std::endl;
@@ -364,7 +364,7 @@ namespace FunctionalProgramming_02 {
         std::string result3 = foldLeft(
             result2,
             std::string(""),
-            [](std::string a, std::string b) {
+            [](const std::string& a, const std::string& b) {
                 std::ostringstream oss;
                 if (a.empty()) {
                     oss << b;
@@ -401,7 +401,7 @@ namespace FunctionalProgramming_02 {
                 [] (const Book& book) { return book.m_title; }  // convert Book to string
             ),
             std::string(""),
-            [] (std::string a, std::string b) {
+            [] (const std::string& a, const std::string& b) {
                 std::ostringstream oss;
                 if (a.empty()) {
                     oss << b;
@@ -449,7 +449,7 @@ namespace FunctionalProgramming_02 {
         std::string result3 = foldLeft(
             result2,
             std::string(""),
-            [](std::string a, SearchResult b) -> std::string {
+            [](const std::string& a, SearchResult b) -> std::string {
                 std::ostringstream oss;
                 if (a.empty()) {
                     oss << b.m_title << " [" << b.m_author << ']';
@@ -486,7 +486,7 @@ namespace FunctionalProgramming_02 {
                 [](const Book& book) { return SearchResult{ book.m_title, book.m_author }; }
             ),
             std::string(""),
-            [](std::string a, SearchResult b) -> std::string {
+            [](const std::string& a, SearchResult b) -> std::string {
                 std::ostringstream oss;
                 if (a.empty()) {
                     oss << b.m_title << " [" << b.m_author << ']';
@@ -528,7 +528,7 @@ namespace FunctionalProgramming_02 {
         auto result3 = foldLeft(
             result2,
             std::string(""),
-            [](std::string a, std::pair<std::string, std::string> b) -> std::string {
+            [](const std::string& a, std::pair<std::string, std::string> b) -> std::string {
                 std::ostringstream oss;
                 if (a.empty()) {
                     oss << b.first << " [" << b.second << ']';
@@ -565,7 +565,7 @@ namespace FunctionalProgramming_02 {
                 [](const Book& book) { return std::make_pair(book.m_title, book.m_author); }
             ),
             std::string(""),
-            [](std::string a, std::pair<std::string, std::string> b) -> std::string {
+            [](const std::string& a, std::pair<std::string, std::string> b) -> std::string {
                 std::ostringstream oss;
                 if (a.empty()) {
                     oss << b.first << " [" << b.second << ']';

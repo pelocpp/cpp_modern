@@ -128,8 +128,8 @@ namespace StdArray {
             }
         };
 
-        for (size_t i{}; i != array.size(); i++) {
-            for (size_t j{}; j != array[0].size(); j++) {
+        for (std::size_t i{}; i != array.size(); i++) {
+            for (std::size_t j{}; j != array[0].size(); j++) {
                 std::print("{} ", array[i][j]);
             }
             std::println();
@@ -138,8 +138,8 @@ namespace StdArray {
 
     static void display(const std::array<std::array<int, 3>, 3>& array) {
 
-        for (size_t i{}; i != 3; i++) {
-            for (size_t j{}; j != 3; j++) {
+        for (std::size_t i{}; i != 3; i++) {
+            for (std::size_t j{}; j != 3; j++) {
                 std::print("{} ", array[i][j]);
             }
             std::println();
@@ -166,14 +166,14 @@ namespace StdArray {
 
     class Employee {
     public:
-        size_t      m_id;
+        std::size_t      m_id;
         std::string m_name;
         std::string m_role;
-        size_t      m_phone;
+        std::size_t      m_phone;
 
         Employee() : Employee(0, "", "", 0) {}
 
-        Employee(size_t m_id, const std::string& m_name, const std::string& m_role, size_t m_phone)
+        Employee(std::size_t m_id, const std::string& m_name, const std::string& m_role, std::size_t m_phone)
             : m_id{ m_id }, m_name{ m_name }, m_role{ m_role }, m_phone{ m_phone }
         {}
     };
@@ -319,12 +319,12 @@ namespace StdArray {
     // std::span
 
     // demonstrating printArray with pointer parameter
-    static void printArray(const int* array, size_t size) {
+    static void printArray(const int* array, std::size_t size) {
 
         std::println("Number of elements: {}", size);
 
         // note: range-based loop doesn't work for pointers
-        for (size_t i{}; i != size; ++i) {
+        for (std::size_t i{}; i != size; ++i) {
             std::println("{} ", array[i]);
         }
         std::println();
