@@ -1052,9 +1052,6 @@
     <None Include="Expected\Expected.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="Exercises\cpp_exercise_my_string.svg">
-      <Filter>Exercises</Filter>
-    </None>
     <None Include="SharedPtr\cpp_control_block_01.svg">
       <Filter>Resource Files</Filter>
     </None>
@@ -1077,6 +1074,15 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="PerfectForwarding\PerfectForwarding_03.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Exercises\cpp_exercise_my_string.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Exercises\cpp_vector_phonebook.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Exercises\cpp_hash_table_phonebook.svg">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
