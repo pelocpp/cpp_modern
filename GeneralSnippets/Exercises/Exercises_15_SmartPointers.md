@@ -229,10 +229,10 @@ um die Adresse der Zeichen auf dem Heap zu verwalten.
 Es ist sorgfältig zu überlegen und zu begründen,
 ob sich hierfür ein `std::shared_ptr`- oder ein `std::unique_ptr`-Objekt besser eignet.
 
-*Hinweis*:
+*Hinweis*:<br/>
 Technisch gesehen ist es möglich, mit beiden Klassen eine `MyString`-Realisierung
 auf die Beine zu stellen. Bei näherem Hinsehen sollte jedoch deutlich werden,
-dass auf Grund der Anforderungen an die `MyString`-Klasse nur eine der beiden Klassen in Betracht kommt.
+dass auf Grund der Anforderungen an die `MyString`-Klasse nur eine der beiden Klassen sinnvoll in Betracht kommt.
 
 ### Minimaler Funktionsumfang der Klasse `MyString`
 
@@ -261,7 +261,7 @@ Nun kommen wir auf den zweiten Schwerpunkt der Aufgabe zu sprechen:
 Es ist das *Rule-of-Zero* oder *Rule-of-Three* Regelwerk zu betrachten und in seiner Umsetzung
 in der Klasse `MyString` zu begründen. 
 
-1. Frage:<br />
+Frage 1:<br />
 Kann man das *Rule-of-Zero* Regelwerk in Anspruch nehmen?
  
 In diesem Fall wäre folglich keine der drei fraglichen Methoden/Operatoren Kopierkonstruktor, Zuweisungsoperator und Destruktor zu realisieren.
@@ -269,7 +269,7 @@ Verifizieren Sie, ob in Ihrer Realisierung der `MyString`-Klasse diese drei Meth
 Welche Ergebnisse erhalten Sie bei der Ausführung?
 
 
-2. Frage:<br />
+Frage 2:<br />
 Wenn die Antwort auf die erste Frage &bdquo;Nein&rdquo; lautet,
 wie sieht dann eine Realisierung dieser drei Methoden/Operatoren aus?
 Testen Sie die Implementierung mit entsprechenden Beispielen.
