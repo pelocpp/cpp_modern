@@ -34,7 +34,7 @@ namespace RangeBasedForLoop {
         // "Classic style" examples
 
         // a) Very, very classic style ... C-stylistic
-        for (size_t i = 0; i != vec.size(); ++i) {
+        for (std::size_t i{}; i != vec.size(); ++i) {
             std::cout << vec[i] << " ";
         }
         std::cout << std::endl;

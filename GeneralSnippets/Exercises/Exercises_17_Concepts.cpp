@@ -319,7 +319,7 @@ namespace Exercises_Concepts {
             {
             private:
                 std::vector<int> m_array;
-                size_t           m_index;
+                std::size_t      m_index;
 
             public:
                 IterableArray(std::initializer_list<int> numbers)
@@ -408,7 +408,7 @@ namespace Exercises_Concepts {
             {
             private:
                 std::vector<int> m_array;
-                size_t           m_index;
+                std::size_t      m_index;
 
             public:
                 IterableArray(std::initializer_list<int> numbers)
@@ -484,7 +484,7 @@ namespace Exercises_Concepts {
             {
             private:
                 std::vector<double> m_array{};
-                size_t              m_index{};
+                std::size_t         m_index{};
 
             public:
                 IterableDoubleArray(std::initializer_list<double> numbers)
@@ -530,9 +530,9 @@ namespace Exercises_Concepts {
 
         template<typename ... TArgs>
             requires (std::same_as<TArgs, std::string> && ...)
-        size_t totalLength(const TArgs& ... args)
+        std::size_t totalLength(const TArgs& ... args)
         {
-            size_t len{};
+            std::size_t len{};
             for (const auto& s : { args ... }) {
                 len += s.size();
             }
@@ -541,9 +541,9 @@ namespace Exercises_Concepts {
 
         template<typename... TArgs>
             requires (std::same_as<TArgs, std::string> && ...)
-        size_t totalLengthEx(const TArgs& ... args)
+        std::size_t totalLengthEx(const TArgs& ... args)
         {
-            size_t len{};
+            std::size_t len{};
             for (const auto& s : { args.size() ... }) {
                 len += s;
             }
@@ -556,7 +556,7 @@ namespace Exercises_Concepts {
             const std::string s2{ "AAAAA" };
             const std::string s3{ "!!!" };
 
-            size_t len{ totalLength(s1, s2, s3) };
+            std::size_t len{ totalLength(s1, s2, s3) };
             std::println("{}", len);
 
             len = totalLengthEx(s1, s2, s3);
@@ -569,7 +569,7 @@ namespace Exercises_Concepts {
             const std::string& csr{ cs };
             std::string s{ "333" };
 
-            size_t len{ totalLength(cs, std::string{ "2" }, csr, s) };
+            std::size_t len{ totalLength(cs, std::string{ "2" }, csr, s) };
             std::println("{}", len);
         }
 

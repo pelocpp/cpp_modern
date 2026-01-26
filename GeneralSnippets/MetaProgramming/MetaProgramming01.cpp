@@ -39,13 +39,13 @@ namespace Metaprogramming {
 
     // =================================================================================
 
-    template <size_t N, size_t D>
+    template <std::size_t N, std::size_t D>
     struct Frac {
-        static constexpr size_t Num = N;
-        static constexpr size_t Den = D;
+        static constexpr std::size_t Num = N;
+        static constexpr std::size_t Den = D;
     };
 
-    template <size_t N, typename F>
+    template <std::size_t N, typename F>
     struct ScalarMultiplication {
         using result = Frac<N * F::Num, F::Den>;
     };
@@ -56,27 +56,27 @@ namespace Metaprogramming {
         std::cout << FourThirds::Num << "/" << FourThirds::Den << std::endl;
     }
 
-    template <size_t X, size_t Y>
+    template <std::size_t X, std::size_t Y>
     struct GGT {
-        static constexpr size_t result = GGT<Y, X % Y>::result;
+        static constexpr std::size_t result = GGT<Y, X % Y>::result;
     };
 
-    template <size_t X>
+    template <std::size_t X>
     struct GGT<X, 0> {
-        static constexpr size_t result = X;
+        static constexpr std::size_t result = X;
     };
 
     template <typename F>
     struct FracNormalizedVerbose {
-        static constexpr size_t ggt = GGT<F::Num, F::Den>::result;
-        static constexpr size_t newNum = F::Num / ggt;
-        static constexpr size_t newDen = F::Den / ggt;
+        static constexpr std::size_t ggt = GGT<F::Num, F::Den>::result;
+        static constexpr std::size_t newNum = F::Num / ggt;
+        static constexpr std::size_t newDen = F::Den / ggt;
         using result = Frac<newNum, newDen>;
     };
 
     template <typename F>
     struct FracNormalized {
-        static constexpr size_t ggt = GGT<F::Num, F::Den>::result;
+        static constexpr std::size_t ggt = GGT<F::Num, F::Den>::result;
         using result = Frac<F::Num / ggt, F::Den / ggt>;
     };
 
@@ -98,8 +98,8 @@ namespace Metaprogramming {
     template <typename X, typename Y>
     struct Sum {
         using Base = SameBase<X, Y>;
-        static constexpr size_t Num = Base::X::Num + Base::Y::Num;
-        static constexpr size_t Den = Base::X::Den * Base::Y::Den;
+        static constexpr std::size_t Num = Base::X::Num + Base::Y::Num;
+        static constexpr std::size_t Den = Base::X::Den * Base::Y::Den;
         using result = typename FracNormalized<Frac<Num, Den>>::result;
     };
 

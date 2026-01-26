@@ -154,16 +154,16 @@ namespace Folding {
     }
 
 #ifdef _DEBUG
-    constexpr size_t MaxIterations = 10'000'000;     // debug
+    constexpr std::size_t MaxIterations = 10'000'000;     // debug
 #else
-    constexpr size_t MaxIterations = 100'000'000;    // release
+    constexpr std::size_t MaxIterations = 100'000'000;    // release
 #endif
 
     static void test_06_benchmark_folding() {
 
         ScopedTimer watch{ };
 
-        for (size_t i{}; i != MaxIterations; ++i) {
+        for (std::size_t i{}; i != MaxIterations; ++i) {
             auto sum{ addFolding(1, 2, 3, 4, 5, 6, 7, 8, 9, 10) };
         }
     }
@@ -172,18 +172,18 @@ namespace Folding {
 
         ScopedTimer watch{ };
 
-        for (size_t i{}; i != MaxIterations; ++i) {
+        for (std::size_t i{}; i != MaxIterations; ++i) {
             auto sum{ addIterating(1, 2, 3, 4, 5, 6, 7, 8, 9, 10) };
         }
     }
 
-    static size_t test_06_benchmark_folding_02() {
+    static std::size_t test_06_benchmark_folding_02() {
 
         ScopedTimer watch{ };
 
-        size_t total{};
+        std::size_t total{};
 
-        for (size_t i{}; i != MaxIterations; ++i) {
+        for (std::size_t i{}; i != MaxIterations; ++i) {
             auto sum{ addFolding(1, 2, 3, 4, 5, 6, 7, 8, 9, 10) };
             total += sum;
         }
@@ -191,13 +191,13 @@ namespace Folding {
         return total;
     }
 
-    static size_t test_06_benchmark_iterating_02() {
+    static std::size_t test_06_benchmark_iterating_02() {
 
         ScopedTimer watch{ };
 
-        size_t total{};
+        std::size_t total{};
 
-        for (size_t i{}; i != MaxIterations; ++i) {
+        for (std::size_t i{}; i != MaxIterations; ++i) {
             auto sum{ addIterating(1, 2, 3, 4, 5, 6, 7, 8, 9, 10) };
             total += sum;
         }
@@ -222,8 +222,8 @@ void main_folding()
     // Optimizer in Release mode is very aggressive
     test_06_benchmark_folding();
     test_06_benchmark_iterating();
-    size_t result1{ test_06_benchmark_folding_02() };
-    size_t result2{ test_06_benchmark_iterating_02() };
+    std::size_t result1{ test_06_benchmark_folding_02() };
+    std::size_t result2{ test_06_benchmark_iterating_02() };
     std::println("Result1: {}", result1);
     std::println("Result2: {}", result2);
 }

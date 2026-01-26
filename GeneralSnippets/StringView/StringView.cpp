@@ -61,9 +61,9 @@ namespace StringViewDemonstration {
         std::println("{}", s3);
     }
 
-    static size_t countUpperCaseChars(std::string_view sv) {
+    static std::size_t countUpperCaseChars(std::string_view sv) {
 
-        size_t result{};
+        std::size_t result{};
 
         for (char c : sv) {
             if (std::isupper(c)) {
@@ -77,7 +77,7 @@ namespace StringViewDemonstration {
     static void test_05()
     {
         std::string_view sv{ "DiesIstEinLangerSatz" };
-        size_t count{ countUpperCaseChars(sv) };
+        std::size_t count{ countUpperCaseChars(sv) };
         std::println("countUpperCaseChars: {}", count);
 
         std::string s{ "AuchDasWiederIstEinLangerSatz" };

@@ -26,10 +26,10 @@ namespace Auto_Examples {
         using namespace std::string_literals;    //  necessary (!)
         auto st = "hello"s;          // std::string, note the s operator
 
-        // C++ 23 and above we have std::size_t and signed size_t
-        // Not yet supported from Visual C++
-        // auto k = 1uz;             // size_t
-        // auto m = 1z;              // signed size_t
+        // C++ 23 and above we have std::size_t and signed std::size_t
+        // Not yet supported from Visual C++ Intellisense
+        auto k = 1uz;             // std::size_t
+        auto m = 1z;              // signed std::size_t
     }
 
     // ---------------------------------------------------------------------
@@ -102,7 +102,7 @@ namespace Auto_Examples {
     class Contact
     {
         std::string m_name;
-        size_t m_number;
+        std::size_t m_number;
 
     public:
         Contact() : m_name{}, m_number{} {}

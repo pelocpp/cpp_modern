@@ -48,7 +48,7 @@ namespace Exercises_UtilityClasses {
             else if constexpr (std::is_same<TypeWithoutReferenceAndConst, std::string>::value == true)
             {
                 std::cout << "std::string: " << elem << std::endl;
-                size_t len = elem.size();
+                std::size_t len = elem.size();
                 std::cout << "Length: " << len << std::endl;
             }
             else

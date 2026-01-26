@@ -9,8 +9,8 @@ module;
 module modern_cpp:type_erasure;
 
 namespace {
-    size_t MaxIterations = 1000000;
-    //size_t MaxIterations = 100000;
+    std::size_t MaxIterations = 1000000;
+    //std::size_t MaxIterations = 100000;
 }
 
 // =====================================================================================
@@ -232,7 +232,7 @@ namespace BookStoreUsingDynamicPolymorphism {
         virtual ~IMedia() = default;
 
         virtual double getPrice() const = 0;
-        virtual size_t getCount() const = 0;
+        virtual std::size_t getCount() const = 0;
     };
 
     class Book : public IMedia
@@ -241,11 +241,11 @@ namespace BookStoreUsingDynamicPolymorphism {
         std::string m_author;
         std::string m_title;
         double      m_price;
-        size_t      m_count;
+        std::size_t      m_count;
 
     public:
         // c'tor
-        Book(const std::string& author, const std::string& title, double price, size_t count)
+        Book(const std::string& author, const std::string& title, double price, std::size_t count)
             : m_author{ author }, m_title{ title }, m_price{ price }, m_count{ count }
         {}
 
@@ -255,7 +255,7 @@ namespace BookStoreUsingDynamicPolymorphism {
 
         // interface 'IMedia'
         double getPrice() const override { return m_price; }
-        size_t getCount() const override { return m_count; }
+        std::size_t getCount() const override { return m_count; }
     };
 
     class Movie : public IMedia
@@ -264,11 +264,11 @@ namespace BookStoreUsingDynamicPolymorphism {
         std::string m_title;
         std::string m_director;
         double      m_price;
-        size_t      m_count;
+        std::size_t      m_count;
 
     public:
         // c'tor
-        Movie(const std::string& title, const std::string& director, double price, size_t count)
+        Movie(const std::string& title, const std::string& director, double price, std::size_t count)
             : m_title{ title }, m_director{ director }, m_price{ price }, m_count{ count }
         { }
 
@@ -278,7 +278,7 @@ namespace BookStoreUsingDynamicPolymorphism {
 
         // interface 'IMedia'
         double getPrice() const override { return m_price; }
-        size_t getCount() const override { return m_count; }
+        std::size_t getCount() const override { return m_count; }
     };
 
     class Bookstore
@@ -305,9 +305,9 @@ namespace BookStoreUsingDynamicPolymorphism {
             return total;
         }
 
-        size_t count() const {
+        std::size_t count() const {
 
-            size_t total{};
+            std::size_t total{};
 
             for (const auto& media : m_stock) {
                 total += media->getCount();
@@ -338,7 +338,7 @@ namespace BookStoreUsingDynamicPolymorphism {
         double balance{ bookstore.totalBalance() };
         std::println("Total value of Bookstore: {:.{}f}", balance, 2);
 
-        size_t count{ bookstore.count() };
+        std::size_t count{ bookstore.count() };
         std::println("Count of elements in Bookstore: {}", count);
     }
 
@@ -355,7 +355,7 @@ namespace BookStoreUsingDynamicPolymorphism {
         std::shared_ptr<IMedia> movieTarantino{ std::make_shared<Movie>("Once upon a time in Hollywood", "Quentin Tarantino", 6.99, 3) };
         bookstore.addMedia(movieTarantino);
 
-        size_t count{ bookstore.count() };
+        std::size_t count{ bookstore.count() };
         std::println("Count of elements in Bookstore: {}", count);
     }
 
@@ -368,7 +368,7 @@ namespace BookStoreUsingDynamicPolymorphism {
         ScopedTimer watch{};
 
         double total{};
-        for (size_t i{}; i != MaxIterations; ++i) {
+        for (std::size_t i{}; i != MaxIterations; ++i) {
             total += cBook->getCount() * cBook->getPrice();
         }
 
@@ -383,14 +383,14 @@ namespace BookStoreUsingDynamicPolymorphism {
 
         std::shared_ptr<IMedia> cBook{ std::make_shared<Book>("C", "Dennis Ritchie", 11.99, 12) };
 
-        for (size_t i{}; i != 100; ++i) {
+        for (std::size_t i{}; i != 100; ++i) {
             bookstore.addMedia(cBook);
         }
 
         ScopedTimer watch{};
 
         double total{};
-        for (size_t i{}; i != MaxIterations; ++i) {
+        for (std::size_t i{}; i != MaxIterations; ++i) {
             double totalBalance{ bookstore.totalBalance() };
             total += totalBalance;
         }
@@ -409,11 +409,11 @@ namespace BookStoreUsingTypeErasure {
         std::string m_author;
         std::string m_title;
         double      m_price;
-        size_t      m_count;
+        std::size_t      m_count;
 
     public:
         // c'tor
-        Book(const std::string& author, const std::string& title, double price, size_t count)
+        Book(const std::string& author, const std::string& title, double price, std::size_t count)
             : m_author{ author }, m_title{ title }, m_price{ price }, m_count{ count }
         {}
 
@@ -422,7 +422,7 @@ namespace BookStoreUsingTypeErasure {
         const std::string& getTitle() const { return m_title; }
 
         double getPrice() const { return m_price; }
-        size_t getCount() const { return m_count; }
+        std::size_t getCount() const { return m_count; }
     };
 
     class Movie
@@ -431,11 +431,11 @@ namespace BookStoreUsingTypeErasure {
         std::string m_title;
         std::string m_director;
         double      m_price;
-        size_t      m_count;
+        std::size_t      m_count;
 
     public:
         // c'tor
-        Movie(const std::string& title, const std::string& director, double price, size_t count)
+        Movie(const std::string& title, const std::string& director, double price, std::size_t count)
             : m_title{ title }, m_director{ director }, m_price{ price }, m_count{ count }
         { }
 
@@ -444,14 +444,14 @@ namespace BookStoreUsingTypeErasure {
         const std::string& getDirector() const { return m_director; }
 
         double getPrice() const { return m_price; }
-        size_t getCount() const { return m_count; }
+        std::size_t getCount() const { return m_count; }
     };
 
     template<typename T>
     concept MediaConcept = requires (const T & m)
     {
         { m.getPrice() } -> std::same_as<double>;
-        { m.getCount() } -> std::same_as<size_t>;
+        { m.getCount() } -> std::same_as<std::size_t>;
     };
 
     template <typename ... TMedia>
@@ -489,7 +489,7 @@ namespace BookStoreUsingTypeErasure {
             for (const auto& media : m_stock) {
 
                 double price{};
-                size_t count{};
+                std::size_t count{};
 
                 std::visit(
                     [&](const auto& element) {
@@ -505,13 +505,13 @@ namespace BookStoreUsingTypeErasure {
             return total;
         }
 
-        size_t count() const {
+        std::size_t count() const {
 
-            size_t total{};
+            std::size_t total{};
 
             for (const auto& media : m_stock) {
 
-                size_t count{};
+                std::size_t count{};
 
                 std::visit(
                     [&](const auto& element) {
@@ -538,7 +538,7 @@ namespace BookStoreUsingTypeErasure {
                 total += std::visit(
                     [](const auto& element) {
                         double price = element.getPrice();
-                        size_t count = element.getCount();
+                        std::size_t count = element.getCount();
                         return price * count;
                     },
                     media
@@ -548,9 +548,9 @@ namespace BookStoreUsingTypeErasure {
             return total;
         }
 
-        size_t countEx() const {
+        std::size_t countEx() const {
 
-            size_t total{};
+            std::size_t total{};
 
             for (const auto& element : m_stock) {
 
@@ -584,7 +584,7 @@ namespace BookStoreUsingTypeErasure {
 
         double balance{ bookstore.totalBalance() };
         std::println("Total value of Bookstore: {:.{}f}", balance, 2);
-        size_t count{ bookstore.count() };
+        std::size_t count{ bookstore.count() };
         std::println("Count of elements in Bookstore: {}", count);
     }
 
@@ -603,7 +603,7 @@ namespace BookStoreUsingTypeErasure {
         Movie movieTarantino{ "Once upon a time in Hollywood", "Quentin Tarantino", 6.99, 3 };
         bookstore.addMediaEx(movieTarantino);
 
-        size_t count{ bookstore.count() };
+        std::size_t count{ bookstore.count() };
         std::println("Count of elements in Bookstore: {}", count);
     }
 
@@ -616,7 +616,7 @@ namespace BookStoreUsingTypeErasure {
         ScopedTimer watch{};
 
         double total{};
-        for (size_t i{}; i != MaxIterations; ++i) {
+        for (std::size_t i{}; i != MaxIterations; ++i) {
             total += cBook.getCount() * cBook.getPrice();
         }
 
@@ -631,14 +631,14 @@ namespace BookStoreUsingTypeErasure {
 
         Book cBook{ "C", "Dennis Ritchie", 11.99, 12 };
 
-        for (size_t i{}; i != 100; ++i) {
+        for (std::size_t i{}; i != 100; ++i) {
             bookstore.addMedia(cBook);
         }
 
         ScopedTimer watch{};
 
         double total{};
-        for (size_t i{}; i != MaxIterations; ++i) {
+        for (std::size_t i{}; i != MaxIterations; ++i) {
             double totalBalance{ bookstore.totalBalance() };
             total += totalBalance;
         }
@@ -652,7 +652,7 @@ namespace BookStoreUsingTypeErasure {
         BluRay() = default;
 
         // getter / setter
-        size_t getCount() const { return 0; }
+        std::size_t getCount() const { return 0; }
         double getPrice() const { return 0.0; }   // put into comments
     };
 

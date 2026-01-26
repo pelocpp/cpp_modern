@@ -15,16 +15,16 @@ namespace ExpressionTemplates {
     using ElemType = double;                 // <== modify values here
 
     // default sizes
-    constexpr size_t DefaultSize{ 5 };
+    constexpr std::size_t DefaultSize{ 5 };
 
     // benchmark sizes
     constexpr int Iterations{ 500000 };
-    constexpr size_t BenchmarkSize{ 50 };
+    constexpr std::size_t BenchmarkSize{ 50 };
 
     // actual sizes
-    constexpr size_t Size{ DefaultSize };    // <== modify values here
+    constexpr std::size_t Size{ DefaultSize };    // <== modify values here
 
-    template<size_t N, typename T = ElemType>
+    template<std::size_t N, typename T = ElemType>
     class Matrix 
     {
     private:
@@ -45,14 +45,14 @@ namespace ExpressionTemplates {
         }
 
         // getter
-        size_t inline getSize() const { return N; };
+        std::size_t inline getSize() const { return N; };
 
         // functor - representing index operator
-        const T& operator()(size_t x, size_t y) const {
+        const T& operator()(std::size_t x, std::size_t y) const {
             return m_values[x][y];
         };
 
-        T& operator()(size_t x, size_t y) {
+        T& operator()(std::size_t x, std::size_t y) {
             return m_values[x][y];
         }
 
@@ -60,8 +60,8 @@ namespace ExpressionTemplates {
         Matrix<N> operator+(const Matrix<N>& other) const
         {
             Matrix<N> result;
-            for (size_t y{}; y != N; ++y) {
-                for (size_t x{}; x != N; ++x) {
+            for (std::size_t y{}; y != N; ++y) {
+                for (std::size_t x{}; x != N; ++x) {
                     result.m_values[x][y] = m_values[x][y] + other.m_values[x][y];
                 }
             }
@@ -72,8 +72,8 @@ namespace ExpressionTemplates {
         template <typename TExpr>
         Matrix<N>& operator=(const TExpr& expr)
         {
-            for (size_t y{}; y != N; ++y) {
-                for (size_t x{}; x != N; ++x) {
+            for (std::size_t y{}; y != N; ++y) {
+                for (std::size_t x{}; x != N; ++x) {
                     m_values[x][y] = expr(x, y);
                 }
             }
@@ -85,8 +85,8 @@ namespace ExpressionTemplates {
         {
             Matrix<N> result;
 
-            for (size_t y{}; y != a.getSize(); ++y) {
-                for (size_t x{}; x != a.getSize(); ++x) {
+            for (std::size_t y{}; y != a.getSize(); ++y) {
+                for (std::size_t x{}; x != a.getSize(); ++x) {
                     result.m_values[x][y] = a.m_values[x][y] + b.m_values[x][y] + c.m_values[x][y];
                 }
             }
@@ -106,7 +106,7 @@ namespace ExpressionTemplates {
     public:
         MatrixExpr(const TLhs& lhs, const TRhs& rhs) : m_rhs{ rhs }, m_lhs{ lhs } {}
 
-        T operator() (size_t x, size_t y) const {
+        T operator() (std::size_t x, std::size_t y) const {
             return m_lhs(x, y) + m_rhs(x, y);
         }
     };
@@ -147,24 +147,24 @@ namespace ExpressionTemplates {
 
         // adding 2 matrices
         MatrixExpr<Matrix<Size>, Matrix<Size>> sumAB(a, b);
-        for (size_t y{}; y != a.getSize(); ++y) {
-            for (size_t x{}; x != a.getSize(); ++x) {
+        for (std::size_t y{}; y != a.getSize(); ++y) {
+            for (std::size_t x{}; x != a.getSize(); ++x) {
                 result(x, y) = sumAB(x, y);
             }
         }
 
         // adding 3 matrices
         MatrixExpr<MatrixExpr<Matrix<Size>, Matrix<Size>>, Matrix<Size>> sumABC(sumAB, c);
-        for (size_t y{}; y != a.getSize(); ++y) {
-            for (size_t x{}; x != a.getSize(); ++x) {
+        for (std::size_t y{}; y != a.getSize(); ++y) {
+            for (std::size_t x{}; x != a.getSize(); ++x) {
                 result(x, y) = sumABC(x, y);
             }
         }
 
         // adding 4 matrices
         MatrixExpr<MatrixExpr<MatrixExpr<Matrix<Size>, Matrix<Size>>, Matrix<Size>>, Matrix<Size>> sumABCD{ sumABC, d };
-        for (size_t y{}; y != a.getSize(); ++y) {
-            for (size_t x{}; x != a.getSize(); ++x) {
+        for (std::size_t y{}; y != a.getSize(); ++y) {
+            for (std::size_t x{}; x != a.getSize(); ++x) {
                 result(x, y) = sumABCD(x, y);
             }
         }
@@ -226,7 +226,7 @@ namespace ExpressionTemplates {
     {
         ScopedTimer watch{};
 
-        for (size_t i{}; i != iterations; ++i) {
+        for (std::size_t i{}; i != iterations; ++i) {
             result = a1 + a2 + a3 + a4 + a5;
         }
     }
@@ -254,7 +254,7 @@ namespace ExpressionTemplates {
 
         ScopedTimer watch{};
 
-        for (size_t i{}; i != iterations; ++i) {
+        for (std::size_t i{}; i != iterations; ++i) {
             result = sumABCDE;
         }
     }

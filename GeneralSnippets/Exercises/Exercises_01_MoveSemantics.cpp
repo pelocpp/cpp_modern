@@ -72,12 +72,12 @@ namespace Exercises_MoveSemantics {
 
         class HugeArray {
         private:
-            size_t m_len;
-            int* m_data;
+            std::size_t m_len;
+            int*        m_data;
 
         public:
             HugeArray();        // default c'tor
-            HugeArray(size_t);  // user-defined c'tor
+            HugeArray(std::size_t);  // user-defined c'tor
             ~HugeArray();       // d'tor
 
             // copy semantics
@@ -95,8 +95,8 @@ namespace Exercises_MoveSemantics {
             std::cout << "default c'tor" << std::endl;
         }
 
-        HugeArray::HugeArray(size_t len) : m_len(len), m_data(new int[len]) {
-            std::cout << "c'tor (size_t):  " << len << " allocated" << std::endl;
+        HugeArray::HugeArray(std::size_t len) : m_len(len), m_data(new int[len]) {
+            std::cout << "c'tor (std::size_t):  " << len << " allocated" << std::endl;
         }
 
         HugeArray::~HugeArray() {

@@ -11,7 +11,7 @@ namespace AlgorithmTransform {
         // very simple phone book
         std::cout << "List of Entries: " << std::endl;
 
-        std::unordered_map<std::string, size_t> phonebook
+        std::unordered_map<std::string, std::size_t> phonebook
         {
             { "Hans Meier" ,     12345678 },
             { "Franz Schneider", 81726354 },
@@ -29,7 +29,7 @@ namespace AlgorithmTransform {
             phonebook.begin(),
             phonebook.end(),
             names.begin(),      // beginning of the destination range
-            [](const std::pair<const std::string, size_t>& entry) {
+            [](const std::pair<const std::string, std::size_t>& entry) {
                 return std::get<0>(entry);
             }
         );
@@ -45,7 +45,7 @@ namespace AlgorithmTransform {
         // very simple phone book
         std::cout << "List of Entries: " << std::endl;
 
-        std::unordered_map<std::string, size_t> phonebook
+        std::unordered_map<std::string, std::size_t> phonebook
         {
             { "Hans Meier" ,      12345678 },
             { "Franz Schneider",  81726354 },
@@ -63,7 +63,7 @@ namespace AlgorithmTransform {
             phonebook.begin(),
             phonebook.end(),
             std::back_inserter(names),   // back_inserter needed (!)
-            [](const std::pair<const std::string, size_t>& entry) {
+            [](const std::pair<const std::string, std::size_t>& entry) {
                 return std::get<0>(entry);
             }
         );
@@ -83,9 +83,9 @@ namespace AlgorithmTransform {
             std::string{ "Franz Schneider" }
         };
 
-        std::vector<size_t> numbers{ 12345678, 7654321, 81726354 };
+        std::vector<std::size_t> numbers{ 12345678, 7654321, 81726354 };
 
-        std::unordered_map<std::string, size_t> contacts{};
+        std::unordered_map<std::string, std::size_t> contacts{};
 
         // std::transform on two ranges - create contacts from separate informations
         std::transform(
@@ -93,8 +93,8 @@ namespace AlgorithmTransform {
             persons.cend(),
             numbers.begin(),
             std::inserter(contacts, contacts.end()),
-            [](const std::string& person, size_t number) {
-                return std::pair<const std::string, size_t>{ person, number };
+            [](const std::string& person, std::size_t number) {
+                return std::pair<const std::string, std::size_t>{ person, number };
             }
         );
 

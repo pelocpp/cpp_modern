@@ -14,7 +14,7 @@ namespace Exercises_ExpressionTemplates {
     static T scalarProduct(const std::vector<T>& a, const std::vector<T>& b)
     {
         T product{};
-        for (size_t i{}; i != a.size(); ++i) {
+        for (std::size_t i{}; i != a.size(); ++i) {
             product += (a[i]) * (b[i]);
         }
         return product;
@@ -55,7 +55,7 @@ namespace Exercises_ExpressionTemplates {
     }
 
     // primary template
-    template <size_t N, typename T>
+    template <std::size_t N, typename T>
     class ScalarProduct {
     public:
         static inline T result(
@@ -98,7 +98,7 @@ namespace Exercises_ExpressionTemplates {
             ScopedTimer watch{};
             auto prod{ 0.0 };
 
-            for (size_t n{}; n != MaxIterations; ++n) {
+            for (std::size_t n{}; n != MaxIterations; ++n) {
                 prod = scalarProduct<double>(a, a);
             }
             std::cout << "scalarProduct<double>(a, a): " << prod << std::endl;
@@ -108,7 +108,7 @@ namespace Exercises_ExpressionTemplates {
             ScopedTimer watch{};
             auto prod{ 0.0 };
 
-            for (size_t n{}; n != MaxIterations; ++n) {
+            for (std::size_t n{}; n != MaxIterations; ++n) {
                 prod = scalarProductEx<double>(a.begin(), a.end(), a.begin());
             }
             std::cout << "scalarProductEx<double>(a.begin(), a.end(), a.begin()): " << prod << std::endl;
@@ -118,7 +118,7 @@ namespace Exercises_ExpressionTemplates {
             ScopedTimer watch{};
             auto prod{ 0.0 };
 
-            for (size_t n{}; n != MaxIterations; ++n) {
+            for (std::size_t n{}; n != MaxIterations; ++n) {
                 prod = ScalarProduct<10, double>::result(a.cbegin(), a.cbegin());
             }
             std::cout << "ScalarProduct<10, double>::result(a.cbegin(), a.cbegin()): " << prod << std::endl;

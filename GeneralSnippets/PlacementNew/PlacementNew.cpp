@@ -106,7 +106,7 @@ namespace PlacementNew {
 
     static void test_06()
     {
-        size_t capacity{ 2 };
+        std::size_t capacity{ 2 };
 
         auto* memory{ std::malloc(sizeof(User) * capacity) };
 
@@ -127,8 +127,8 @@ namespace PlacementNew {
     class VectorEx
     {
     private:
-        size_t m_capacity;
-        size_t m_size;
+        std::size_t m_capacity;
+        std::size_t m_size;
         T* m_data;
 
     public:

@@ -166,10 +166,10 @@ namespace StdArray {
 
     class Employee {
     public:
-        std::size_t      m_id;
+        std::size_t m_id;
         std::string m_name;
         std::string m_role;
-        std::size_t      m_phone;
+        std::size_t m_phone;
 
         Employee() : Employee(0, "", "", 0) {}
 

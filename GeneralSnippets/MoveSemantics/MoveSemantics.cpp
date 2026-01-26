@@ -10,13 +10,13 @@ namespace MoveSemantics {
     {
     private:
         // private member data
-        size_t m_size;  // current number of elements
-        int* m_data;    // array of elements
+        std::size_t m_size;  // current number of elements
+        int*      m_data;    // array of elements
 
     public:
         // c'tors and d'tor
         BigData();
-        BigData(size_t, int);
+        BigData(std::size_t, int);
         ~BigData();
 
         // copy semantics
@@ -34,7 +34,7 @@ namespace MoveSemantics {
 
     public:
         // getter
-        size_t size() const;
+        std::size_t size() const;
         bool isEmpty() const;
     };
 
@@ -45,7 +45,7 @@ namespace MoveSemantics {
         m_data = nullptr;
     }
 
-    BigData::BigData(size_t size, int preset) {
+    BigData::BigData(std::size_t size, int preset) {
         // create buffer
         m_size = size;
         m_data = new int[m_size];
@@ -134,7 +134,7 @@ namespace MoveSemantics {
     // -------------------------------------------------------------------
 
     // getter
-    size_t BigData::size() const {
+    std::size_t BigData::size() const {
         return m_size;
     }
 

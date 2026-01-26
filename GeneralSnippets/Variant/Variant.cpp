@@ -13,7 +13,7 @@ namespace VariantDemo {
         // -------------------------------------------------
 
         {
-            size_t index{ v.index() };
+            std::size_t index{ v.index() };
             int n{ std::get<int>(v) };  // std::get using type
             std::println("{} - Value: {}", index, n);
         }
@@ -21,7 +21,7 @@ namespace VariantDemo {
         // -------------------------------------------------
 
         {
-            size_t index{ v.index() };
+            std::size_t index{ v.index() };
             int n{ std::get<0>(v) };    // std::get using index
             std::println("{} - Value: {}", index, n);
         }
@@ -30,7 +30,7 @@ namespace VariantDemo {
         {
             v = 123.456;                // we're now a double
 
-            size_t index{ v.index() };
+            std::size_t index{ v.index() };
             double d{ std::get<double>(v) };
             std::println("{} - Value: {}", index, d);
         }
@@ -39,7 +39,7 @@ namespace VariantDemo {
         {
             v = std::string{ "Hello" }; // we're now a std::string
 
-            size_t index{ v.index() };
+            std::size_t index{ v.index() };
             std::string s{ std::get<std::string>(v) };
             std::println("{} - Value: {}", index, s);
         }
@@ -49,7 +49,7 @@ namespace VariantDemo {
         {
             v.emplace<2>("Hello again");    // we're now a std::string again
 
-            size_t index{ v.index() };
+            std::size_t index{ v.index() };
             std::string s{ std::get<std::string>(v) };
             std::println("{} - Value: {}", index, s);
         }
@@ -184,7 +184,7 @@ namespace VariantDemo {
             else if constexpr (std::is_same<ElemTypeWithoutRefAndConst, std::string>::value == true)
             {
                 std::println("=> std::string: {}", elem);
-                size_t len = elem.length();
+                std::size_t len = elem.length();
                 std::println("=> length: {}", len);
             }
             else

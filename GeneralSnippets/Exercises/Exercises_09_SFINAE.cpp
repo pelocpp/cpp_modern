@@ -68,7 +68,7 @@ namespace Exercises_SFINAE {
         //char* printTimeStamp(const std::time_t& ttp)
         //{
         //    char* cp{ std::ctime(&ttp) };
-        //    size_t len{ std::strlen(cp) };
+        //    std::size_t len{ std::strlen(cp) };
         //    cp[len - 1] = '\0';
         //    return cp;
         //}
@@ -322,7 +322,7 @@ namespace Exercises_SFINAE {
             return c.begin();
         }
 
-        template <class T, size_t N>
+        template <class T, std::size_t N>
         T* first(T(&arr)[N]) {
             std::cout << "__FUNCSIG__ = " << __FUNCSIG__ << "N = " << N << std::endl;
             return arr;

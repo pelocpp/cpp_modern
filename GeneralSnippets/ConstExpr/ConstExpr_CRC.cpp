@@ -47,7 +47,7 @@ constexpr auto tableBy20 = crcTable<20>;
 static constexpr auto calcCRC(std::string_view data) {
     uint8_t checksum{};
     auto len{ data.size() };
-    for (size_t i{}; i != len; ++i) {
+    for (std::size_t i{}; i != len; ++i) {
         checksum = crcTable<MY_POLYNOM>[data[i] ^ checksum];
     }
     return checksum;
@@ -59,7 +59,7 @@ void main_constexpr_crc()
     std::println("Checksum is: {}", checksum);
 
     // print table
-    for (size_t i{}; i != TABLE_SIZE; ++i) {
+    for (std::size_t i{}; i != TABLE_SIZE; ++i) {
         std::println("{:03}: {}", i, crcTable<MY_POLYNOM>[i]);
     }
 }

@@ -73,7 +73,7 @@ namespace Literals_Color_Runtime {
     }
 
     // literal operator ("raw" version)
-    static Color operator"" _rgb(const char* literal, size_t length) {
+    static Color operator"" _rgb(const char* literal, std::size_t length) {
 
         // tiny implementation - just parsing hexadecimal format
         std::string arg(literal);
@@ -200,7 +200,7 @@ namespace Literals_Color_CompileTime {
         return byte;
     }
 
-    static constexpr size_t hexstoi(const char* str)
+    static constexpr std::size_t hexstoi(const char* str)
     {
         int value{};
 
@@ -218,7 +218,7 @@ namespace Literals_Color_CompileTime {
     }
 
     // literal operator ('raw' and 'constexpr' version)
-    static constexpr Color operator"" _rgb(const char* literal, size_t length) {
+    static constexpr Color operator"" _rgb(const char* literal, std::size_t length) {
 
         // std::string is partially 'constexpr'
         std::string arg(literal);

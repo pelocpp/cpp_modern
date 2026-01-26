@@ -168,7 +168,7 @@ namespace ClassTemplatesBasics_02 {
 
     namespace ClassTemplatesBasics_Intro_06 {
 
-        template <typename T, size_t DIM>
+        template <typename T, std::size_t DIM>
         class FixedVector
         {
         private:
@@ -177,11 +177,11 @@ namespace ClassTemplatesBasics_02 {
         public:
             FixedVector () : m_data{} {}
 
-            size_t size() { return DIM; }
+            std::size_t size() { return DIM; }
 
-            void set(size_t idx, const T& elem) { m_data[idx] = elem; }
+            void set(std::size_t idx, const T& elem) { m_data[idx] = elem; }
 
-            T get(size_t idx) const { return m_data[idx]; }
+            T get(std::size_t idx) const { return m_data[idx]; }
 
             void print(std::ostream& os) {
                 for (const auto& elem : m_data) {
@@ -195,7 +195,7 @@ namespace ClassTemplatesBasics_02 {
 
             FixedVector<int, 5> vec;
 
-            for (size_t n{}; n < vec.size(); ++n) {
+            for (std::size_t n{}; n < vec.size(); ++n) {
                 vec.set(n, 2 * static_cast<int>(n));
             }
 
@@ -254,7 +254,7 @@ namespace ClassTemplatesBasics_02 {
     // Alias Templates
     namespace ClassTemplatesBasics_Intro_08 {
 
-        template <typename T = int, size_t DIM = 10>
+        template <typename T = int, std::size_t DIM = 10>
         class FixedVector
         {
         private:
@@ -263,11 +263,11 @@ namespace ClassTemplatesBasics_02 {
         public:
             FixedVector() : m_data{} {}
 
-            size_t size() { return DIM; }
+            std::size_t size() { return DIM; }
 
-            void set(size_t idx, const T& elem) { m_data[idx] = elem; }
+            void set(std::size_t idx, const T& elem) { m_data[idx] = elem; }
 
-            T get(size_t idx) const { return m_data[idx]; }
+            T get(std::size_t idx) const { return m_data[idx]; }
 
             void print(std::ostream& os) {
                 for (const auto& elem : m_data) {
@@ -290,7 +290,7 @@ namespace ClassTemplatesBasics_02 {
             vec4.print(std::cout);
         }
 
-        template <size_t MAX>
+        template <std::size_t MAX>
         using FixedIntVector = FixedVector<int, MAX>;
 
         static void test_08_02() {
@@ -311,7 +311,7 @@ namespace ClassTemplatesBasics_02 {
 
         MyArray<int, 10> array;
 
-        for (size_t i = 0; i != 10; ++i) {
+        for (std::size_t i = 0; i != 10; ++i) {
             array[i] = static_cast<int>(2 * i);
         }
 
@@ -324,7 +324,7 @@ namespace ClassTemplatesBasics_02 {
         using namespace ClassTemplatesBasics;
 
         AnotherArray<double, 5> array;
-        for (size_t i = 0; i != 5; ++i) {
+        for (std::size_t i = 0; i != 5; ++i) {
             array[i] = 2.0 * i + 0.5;
         }
         array.print();

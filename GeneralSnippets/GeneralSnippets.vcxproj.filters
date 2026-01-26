@@ -543,9 +543,6 @@
     <ClCompile Include="ConceptsRequiresClasses\ConceptsRequiresClasses.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Literals\Literals_02.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Exercises\Module_Exercises_17_Concepts.ixx">
       <Filter>Exercises</Filter>
     </ClCompile>

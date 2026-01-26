@@ -57,7 +57,7 @@ namespace Random {
 
     void main_random_03()
     {
-        static const size_t numCoins = 10;
+        static const std::size_t numCoins = 10;
 
         // pseudo-random numbers engine
         std::default_random_engine engine{};

@@ -226,19 +226,19 @@ namespace ConstExprDynamicData {
 
 namespace ConstExprPow {
 
-    constexpr size_t TableSize = 5;
-    constexpr size_t Factor = 4;
+    constexpr std::size_t TableSize = 5;
+    constexpr std::size_t Factor = 4;
 
-    template<size_t F>
+    template<std::size_t F>
     constexpr auto powerTable = [] {
 
-        std::array<size_t, TableSize> table = {};
+        std::array<std::size_t, TableSize> table = {};
 
-        size_t index{ 1 };
-        for (size_t& elem : table) {
+        std::size_t index{ 1 };
+        for (std::size_t& elem : table) {
 
-            size_t tmp{ 1 };
-            for (size_t i{}; i != F; ++i) {
+            std::size_t tmp{ 1 };
+            for (std::size_t i{}; i != F; ++i) {
                 tmp *= index;
             }
 
@@ -249,7 +249,7 @@ namespace ConstExprPow {
         return table;
     } ();
 
-    static constexpr size_t sumUpPowerTable()
+    static constexpr std::size_t sumUpPowerTable()
     {
         static_assert (powerTable<Factor>[0] == 1, "Value should be ");
         static_assert (powerTable<Factor>[1] == 16, "Value should be ");
@@ -257,9 +257,9 @@ namespace ConstExprPow {
         static_assert (powerTable<Factor>[3] == 256, "Value should be ");
         static_assert (powerTable<Factor>[4] == 625, "Value should be ");
 
-        size_t total{};
+        std::size_t total{};
 
-        for (size_t i{}; i != TableSize; ++i) {
+        for (std::size_t i{}; i != TableSize; ++i) {
             total += powerTable<Factor>[i];
         }
 
@@ -268,7 +268,7 @@ namespace ConstExprPow {
 
     static void testPower_01()
     {
-        constexpr size_t total{ sumUpPowerTable() };
+        constexpr std::size_t total{ sumUpPowerTable() };
         static_assert (total == 979, "Sum should be 979");
         std::println("Total: ", total);
     }
@@ -276,11 +276,11 @@ namespace ConstExprPow {
     static void testPower_02()
     {
         int index = 1;
-        for (size_t elem : powerTable<Factor>) {
+        for (std::size_t elem : powerTable<Factor>) {
             std::println("{:02}: {}", index++, elem);
         }
 
-        constexpr size_t total = sumUpPowerTable();
+        constexpr std::size_t total = sumUpPowerTable();
         std::println("Total: {}", total);
     }
 

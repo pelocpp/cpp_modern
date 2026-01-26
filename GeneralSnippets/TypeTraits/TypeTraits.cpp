@@ -363,27 +363,27 @@ namespace TypeTraits_Second_Iterator_Demo
     using Category = typename Iterator::iterator_category;
 
     template <typename Iterator>
-    ValueType<Iterator> getAt(Iterator it, size_t position, std::forward_iterator_tag)
+    ValueType<Iterator> getAt(Iterator it, std::size_t position, std::forward_iterator_tag)
     {
         std::cout << "[Forward Iterator] ";
         Iterator pos = it;
-        for (size_t i{}; i != position; ++i)
+        for (std::size_t i{}; i != position; ++i)
             ++pos;
         return *pos;
     }
 
     template <typename Iterator>
-    ValueType<Iterator> getAt(Iterator it, size_t position, std::bidirectional_iterator_tag)
+    ValueType<Iterator> getAt(Iterator it, std::size_t position, std::bidirectional_iterator_tag)
     {
         std::cout << "[Bidirectional Access] ";
         Iterator pos = it;
-        for (size_t i{}; i != position; ++i)
+        for (std::size_t i{}; i != position; ++i)
             ++pos;
         return *pos;
     }
 
     template <typename Iterator>
-    ValueType<Iterator> getAt(Iterator it, size_t position, std::random_access_iterator_tag)
+    ValueType<Iterator> getAt(Iterator it, std::size_t position, std::random_access_iterator_tag)
     {
         std::cout << "[Random Access] ";
         Iterator pos = it + position;
@@ -391,7 +391,7 @@ namespace TypeTraits_Second_Iterator_Demo
     }
 
     template <typename Iterator>
-    ValueType<Iterator> getAt(Iterator it, size_t size)
+    ValueType<Iterator> getAt(Iterator it, std::size_t size)
     {
         Category<Iterator> category{};
         return getAt(it, size, category);

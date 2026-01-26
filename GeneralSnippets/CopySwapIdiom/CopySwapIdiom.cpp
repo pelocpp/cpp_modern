@@ -10,13 +10,13 @@ namespace NaiveBigData {
     {
     private:
         // private member data
-        size_t m_size;  // current number of elements
+        std::size_t m_size;  // current number of elements
         int* m_data;    // array of elements
 
     public:
         // c'tors and d'tor
         BigData();
-        BigData(size_t);
+        BigData(std::size_t);
         ~BigData();
 
         // copy semantics
@@ -29,7 +29,7 @@ namespace NaiveBigData {
 
     public:
         // getter
-        size_t size() const;
+        std::size_t size() const;
         bool isEmpty() const;
 
         // output operator
@@ -43,7 +43,7 @@ namespace NaiveBigData {
         m_data = nullptr;
     }
 
-    BigData::BigData(size_t size) {
+    BigData::BigData(std::size_t size) {
         // create buffer
         m_size = size;
         m_data = new int[m_size];
@@ -105,7 +105,7 @@ namespace NaiveBigData {
     //    }
 
     //    // get the new data ready before we replace the old
-    //    size_t tmpNewSize = other.m_size;
+    //    std::size_t tmpNewSize = other.m_size;
     //    int* tmpNewData = nullptr;
 
     //    if (tmpNewSize > 0) {
@@ -152,7 +152,7 @@ namespace NaiveBigData {
     // ---------------------------------------------------------------------------------
 
     // getter
-    size_t BigData::size() const {
+    std::size_t BigData::size() const {
         return m_size;
     }
 
@@ -168,7 +168,7 @@ namespace NaiveBigData {
         if constexpr (verbose) {
             os << std::endl;
             os << "{";
-            for (size_t i = 0; i < data.m_size; i++) {
+            for (std::size_t i = 0; i < data.m_size; i++) {
                 os << data.m_data[i];
                 if (i < data.m_size - 1)
                     os << ',';
@@ -199,13 +199,13 @@ namespace IdiomBigDataWithCopySwap {
     {
     private:
         // private member data
-        size_t m_size;  // current number of elements
+        std::size_t m_size;  // current number of elements
         int* m_data;    // array of elements
 
     public:
         // c'tors and d'tor
         BigData();
-        BigData(size_t);
+        BigData(std::size_t);
         ~BigData();
 
         // copy semantics
@@ -222,7 +222,7 @@ namespace IdiomBigDataWithCopySwap {
 
     public:
         // getter
-        size_t size() const;
+        std::size_t size() const;
         bool isEmpty() const;
 
         // output operator
@@ -236,7 +236,7 @@ namespace IdiomBigDataWithCopySwap {
         m_data = nullptr;
     }
 
-    BigData::BigData(size_t size) {
+    BigData::BigData(std::size_t size) {
         // create buffer
         m_size = size;
         m_data = new int[m_size];
@@ -289,7 +289,7 @@ namespace IdiomBigDataWithCopySwap {
     // -------------------------------------------------------------------
 
     // getter
-    size_t BigData::size() const {
+    std::size_t BigData::size() const {
         return m_size;
     }
 
@@ -315,7 +315,7 @@ namespace IdiomBigDataWithCopySwap {
         if constexpr (verbose) {
             os << std::endl;
             os << "{";
-            for (size_t i = 0; i < data.m_size; i++) {
+            for (std::size_t i = 0; i < data.m_size; i++) {
                 os << data.m_data[i];
                 if (i < data.m_size - 1)
                     os << ',';

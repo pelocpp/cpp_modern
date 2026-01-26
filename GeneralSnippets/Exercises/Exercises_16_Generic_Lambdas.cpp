@@ -30,15 +30,15 @@ namespace Exercises_Generic_Lambdas {
         {
         private:
             std::string m_name;
-            size_t m_age;
+            std::size_t m_age;
 
         public:
-            Person(const std::string& name, size_t age)
+            Person(const std::string& name, std::size_t age)
                 : m_name{ name }, m_age{ age } {}
 
             const std::string& getName() const { return m_name; }
 
-            bool operator > (size_t age) const {
+            bool operator > (std::size_t age) const {
                 return m_age > age;
             }
         };

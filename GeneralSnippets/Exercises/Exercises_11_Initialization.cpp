@@ -81,7 +81,7 @@ namespace Exercises_Initialization {
             {
                 ScopedTimer watch{};
 
-                for (size_t i{}; i != MaxIteration; ++i) {
+                for (std::size_t i{}; i != MaxIteration; ++i) {
 
                     // heap-based transfer of strings
                     SomeStrings::transferData(
@@ -98,7 +98,7 @@ namespace Exercises_Initialization {
             {
                 ScopedTimer watch{};
 
-                for (size_t i{}; i != MaxIteration; ++i) {
+                for (std::size_t i{}; i != MaxIteration; ++i) {
 
                     // stack-based transfer of strings
                     SomeStrings::transferData(
