@@ -4,7 +4,8 @@
 
 module;
 
-#include <cstdint>   // for uint8_t
+#include <cstdint>   // for std::uint8_t
+#include <cctype>    // for std::isxdigit
 
 module modern_cpp:literals;
 
@@ -142,7 +143,8 @@ namespace Literals_Color_CompileTime {
         constexpr Color() : m_r{}, m_g{}, m_b{} {}
 
         constexpr Color(uint8_t r, uint8_t g, uint8_t b)
-            : m_r{ r }, m_g{ g }, m_b{ b } {}
+            : m_r{ r }, m_g{ g }, m_b{ b }
+        {}
     };
 
     std::ostream& operator<< (std::ostream& os, const Color& col) {

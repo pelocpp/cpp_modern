@@ -146,7 +146,7 @@ namespace Exercises_ConstExpr {
     namespace Exercise_02 {
 
         template <typename T, typename ... TArgs>
-        constexpr T maximum(T first, TArgs ... args)
+        static constexpr T maximum(T first, TArgs ... args)
         {
             T result{ first };
 
@@ -155,7 +155,7 @@ namespace Exercises_ConstExpr {
             return result;
         }
 
-        constexpr auto maximumAuto(auto first, auto ... args)
+        static constexpr auto maximumAuto(auto first, auto ... args)
         {
             auto result{ first };
 
