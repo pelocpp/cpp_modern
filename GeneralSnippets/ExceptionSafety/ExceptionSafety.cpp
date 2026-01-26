@@ -9,7 +9,7 @@ namespace ExceptionSafety {
     class TwoPointers
     {
     private:
-        std::unique_ptr<int> m_pi;
+        std::unique_ptr<int>    m_pi;
         std::unique_ptr<double> m_pd;
 
     public:

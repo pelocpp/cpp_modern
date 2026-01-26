@@ -11,7 +11,7 @@ namespace AnySamples {
         std::any a{ 1 };
         
         {
-            std::string type{ a.type().name() };
+            const std::string& type{ a.type().name() };
             auto value{ std::any_cast<int>(a) };
             std::println("Value: {} / Type: {}", value, type);
         }
@@ -19,7 +19,7 @@ namespace AnySamples {
         a = 3.14;
 
         {
-            std::string type{ a.type().name() };
+            const std::string& type{ a.type().name() };
             auto value{ std::any_cast<double>(a) };
             std::println("Value: {} / Type: {}", value, type);
         }
@@ -28,7 +28,7 @@ namespace AnySamples {
         a = true;
 
         {
-            std::string type{ a.type().name() };
+            const std::string& type{ a.type().name() };
             auto value{ std::any_cast<bool>(a) };
             std::println("Value: {} / Type: {}", value, type);
         }
@@ -49,7 +49,7 @@ namespace AnySamples {
 
         if (a.has_value())
         {
-            std::string type{ a.type().name() };
+            const std::string& type{ a.type().name() };
             auto value{ std::any_cast<int>(a) };
             std::println("Value: {} / Type: {}", value, type);
         }
@@ -80,7 +80,7 @@ namespace AnySamples {
     using Row = std::tuple<std::any, std::any, std::any>;
 
     // helper method (forward declaration)
-    std::string to_string(const std::any&);
+    static std::string toString(const std::any&);
 
     static void test_03_any()
     {
@@ -97,17 +97,17 @@ namespace AnySamples {
 
         for (const auto& [val1, val2, val3] : mySheet) {
             std::cout
-                << "Value1:  " << to_string(val1) << std::endl
-                << "Value2:  " << to_string(val2) << std::endl
-                << "Value3:  " << to_string(val3) << std::endl;
+                << "Value1:  " << toString(val1) << std::endl
+                << "Value2:  " << toString(val2) << std::endl
+                << "Value3:  " << toString(val3) << std::endl;
 
-            std::println("Value1: {}", to_string(val1));
-            std::println("Value2: {}", to_string(val2));
-            std::println("Value3: {}", to_string(val3));
+            std::println("Value1: {}", toString(val1));
+            std::println("Value2: {}", toString(val2));
+            std::println("Value3: {}", toString(val3));
         }
     }
 
-    std::string to_string(const std::any& var) 
+    static std::string toString(const std::any& var)
     {
         if (var.type() == typeid (int)) {
             return std::to_string(std::any_cast<int>(var));

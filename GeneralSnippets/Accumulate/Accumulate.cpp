@@ -53,20 +53,20 @@ namespace AlgorithmAccumulate {
 
     static void test_01() {
         std::vector<std::string> names {"Hans", "Sepp", "Georg"};
-        std::string s{ toString(names) };
+        const std::string& s{ toString(names) };
         std::cout << s << std::endl;
     }
 
     static void test_02() {
         std::vector<float> digits { 10.5f, 11.5f, 12.5f, 13.5f, 14.5f, 15.5f };
-        std::string s{ toString(digits) };
+        const std::string& s{ toString(digits) };
         std::cout << s << std::endl;
     }
 
     static void test_03() {
         // using template version of toString
         std::vector<std::string> names { "Hans", "Sepp", "Georg" };
-        std::string s{ toString<std::string>(names) };
+        const std::string& s{ toString<std::string>(names) };
         std::cout << s << std::endl;
     }
 }

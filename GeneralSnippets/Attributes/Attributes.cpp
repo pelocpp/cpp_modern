@@ -8,7 +8,7 @@ module modern_cpp:attributes;
 
 namespace StandardAttributes {
 
-    [[ nodiscard ]] int discard_test()
+    [[ nodiscard ]] static int discard_test()
     {
         return 123;
     }
@@ -49,7 +49,7 @@ namespace StandardAttributes {
     struct [[ deprecated ]] Struct {};
 
     // for Functions
-    [[ deprecated("Reason for deprecation") ]] void f() {}
+    [[ deprecated("Reason for deprecation") ]] static void f() {}
 
     // for namespaces
     namespace [[ deprecated ]] any_namespace {}

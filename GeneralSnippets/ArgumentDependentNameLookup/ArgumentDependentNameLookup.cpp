@@ -9,8 +9,8 @@ namespace ArgumentDependentNameLookup
     namespace MyNamespace
     {
         class MyClass {};
-        void doSomething(MyClass) {}
-        void doSomething() {}
+        static void doSomething(MyClass) {}
+        static void doSomething() {}
     }
 
     namespace MyProject

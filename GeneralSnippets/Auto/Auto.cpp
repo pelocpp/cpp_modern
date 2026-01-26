@@ -28,8 +28,8 @@ namespace Auto_Examples {
 
         // C++ 23 and above we have std::size_t and signed std::size_t
         // Not yet supported from Visual C++ Intellisense
-        auto k = 1uz;             // std::size_t
-        auto m = 1z;              // signed std::size_t
+        auto k = 1uz;                // std::size_t
+        auto m = 1z;                 // signed std::size_t
     }
 
     // ---------------------------------------------------------------------
@@ -214,19 +214,19 @@ namespace Auto_Examples {
     // ---------------------------------------------------------------------
 
     template <typename TReturn, typename T1, typename T2>
-    TReturn add1(const T1& t1, const T2& t2)
+    static TReturn add1(const T1& t1, const T2& t2)
     {
         return t1 + t2;
     }
 
     template <typename T1, typename T2, typename TReturn>
-    TReturn add2(const T1& t1, const T2& t2)
+    static TReturn add2(const T1& t1, const T2& t2)
     {
         return t1 + t2;
     }
 
     template <typename TReturn = long, typename T1, typename T2>
-    TReturn add3(const T1& t1, const T2& t2)
+    static TReturn add3(const T1& t1, const T2& t2)
     {
         return t1 + t2;
     }
