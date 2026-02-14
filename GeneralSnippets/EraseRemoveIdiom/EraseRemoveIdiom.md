@@ -178,7 +178,7 @@ Wir gehen auf diese Beobachtungen im nächsten Abschnitt näher ein.
 ### Überblick
 
 Zwischen den beiden Methoden `erase` (entweder in der Ausprägung als Methode der Klasse `std::vector` oder als STL Algorithmus)
-oder der Methode `remove` (existiert nur als STL Algorithmus) gibt es einige wesentliche Unterschiede:
+und der Methode `remove` (existiert nur als STL Algorithmus) gibt es einige wesentliche Unterschiede:
 
 1. Die Methode `erase` (in beiden Ausprägungen) operiert direkt auf dem Container. Das bedeutet zum Beispiel, das Datenbereiche verschoben werden,
   wenn am Anfang des Containers ein Element gelöscht wird.
