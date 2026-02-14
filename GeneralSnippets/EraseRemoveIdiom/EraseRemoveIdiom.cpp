@@ -184,7 +184,30 @@ namespace EraseRemoveIdiom
 
     // ===========================================================================
 
+    static bool isOdd(int elem) {
+        return elem % 2 == 1;
+    }
+
     static void test_removing_elements_40()
+    {
+        // removing several elements
+
+        std::vector<int> vec{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+        print(vec);
+
+        std::vector<int>::iterator last = std::remove_if(
+            vec.begin(),
+            vec.end(), 
+            isOdd
+        );
+
+        vec.erase(last, vec.end());
+        print(vec);
+    }
+
+    // ===========================================================================
+
+    static void test_removing_elements_50()
     {
         // "Swap and Pop" idiom
 
@@ -201,7 +224,7 @@ namespace EraseRemoveIdiom
 
     // ===========================================================================
 
-    static void test_removing_elements_50()
+    static void test_removing_elements_60()
     {
         // 'std::remove_copy' algorithm
 
@@ -219,7 +242,7 @@ namespace EraseRemoveIdiom
         print(dst);
     }
 
-    static void test_removing_elements_51()
+    static void test_removing_elements_61()
     {
         // 'std::remove_copy_if' algorithm
 
@@ -263,7 +286,9 @@ void main_erase_remove_idiom()
     test_removing_elements_40();
 
     test_removing_elements_50();
-    test_removing_elements_51();
+
+    test_removing_elements_60();
+    test_removing_elements_61();
 }
 
 // =====================================================================================
