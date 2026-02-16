@@ -184,10 +184,6 @@ namespace EraseRemoveIdiom
 
     // ===========================================================================
 
-    static bool isOdd(int elem) {
-        return elem % 2 == 1;
-    }
-
     static void test_removing_elements_40()
     {
         // removing several elements
@@ -198,7 +194,7 @@ namespace EraseRemoveIdiom
         std::vector<int>::iterator last = std::remove_if(
             vec.begin(),
             vec.end(), 
-            isOdd
+            [] (int elem) { return elem % 2 == 1; }
         );
 
         vec.erase(last, vec.end());

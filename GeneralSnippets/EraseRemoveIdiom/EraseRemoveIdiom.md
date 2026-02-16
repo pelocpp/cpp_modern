@@ -353,8 +353,6 @@ Man beachte hier vor allem Zeile 7. Die Variable `it` bekommt einen neuen Wert z
 3. Element: 4
 ```
 
-
-
 ## Noch einmal das &bdquo;*Erase Remove*&rdquo; Idiom: Der `std::remove_if`-Algorithmus <a name="link7"></a> 
 
 Das &bdquo;*Erase Remove*&rdquo; Idiom kann man auch verwenden, um die Elemente, die aus einem Container entfernt werden sollen,
@@ -363,23 +361,19 @@ zur Laufzeit zu bestimmen:
 *Beispiel*:
 
 ```cpp
-01: bool isOdd(int elem) {
-02:     return elem % 2 == 1;
-03: }
-04: 
-05: void test()
-06: {
-07:     // removing several elements
-08:     std::vector<int> vec{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-09: 
-10:     std::vector<int>::iterator last = std::remove_if(
-11:         vec.begin(),
-12:         vec.end(), 
-13:         isOdd
-14:     );
-15: 
-16:     vec.erase(last, vec.end());
-17: }
+01: void test()
+02: {
+03:     // removing several elements
+04:     std::vector<int> vec{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+05: 
+06:     std::vector<int>::iterator last = std::remove_if(
+07:         vec.begin(),
+08:         vec.end(), 
+09:         [] (int elem) { return elem % 2 == 1; }
+10:     );
+11: 
+12:     vec.erase(last, vec.end());
+13: }
 ```
 
 *Ausgabe*:
