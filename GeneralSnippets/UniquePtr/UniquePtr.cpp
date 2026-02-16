@@ -128,6 +128,8 @@ namespace UniquePointerGeneral {
         std::unique_ptr<A[]> ptr{ std::make_unique<A[]>(5) };
         ptr.reset();
     }
+
+    // ===========================================================================
 }
 
 namespace UniquePointer_SourceSinkPattern
