@@ -16,10 +16,11 @@
   * [Performance Betrachtungen](#link4)
   * [Das &bdquo;*Erase Remove*&rdquo; Idiom](#link5)
   * [Ungültige Iteratorenobjekte](#link6)
-  * [Noch einmal das &bdquo;*Erase Remove*&rdquo; Idiom: Der `std::remove_if`-Algorithmus](#link7) 
-  * [Noch ein Idiom: &bdquo;*Swap and Pop*&rdquo;](#link8)
-  * [Die Algorithmen `std::remove_copy` und `std::remove_copy_if`](#link9)
-  * [Literaturhinweise](#link10)
+  * [Noch einmal das &bdquo;*Erase Remove*&rdquo; Idiom: Der `std::remove_if`-Algorithmus](#link7)
+  * [Und noch einmal das Löschen von mehreren Elementen: Der `std::erase_if`-Algorithmus](#link8)
+  * [Noch ein Idiom: &bdquo;*Swap and Pop*&rdquo;](#link9)
+  * [Die Algorithmen `std::remove_copy` und `std::remove_copy_if`](#link10)
+  * [Literaturhinweise](#link11)
 
 ---
 
@@ -386,7 +387,51 @@ Size: 5, Capacity: 10
 0 2 4 6 8
 ```
 
-## Noch ein Idiom: &bdquo;*Swap and Pop*&rdquo; <a name="link8"></a> 
+## Und noch einmal das Löschen von mehreren Elementen: Der `std::erase_if`-Algorithmus  <a name="link8"></a>
+
+Mit dem Standard C++20 wurde offiziell die Funktion `std::erase_if` eingeführt.
+Vor C++20 war das Löschen von Elementen aus einem Vektor basierend auf einer Bedingung (einem Prädikat)
+nur mit dem *Erase-Remove*-Idiom möglich, siehe den letzten Abschnitt.
+
+Mit C++20 wurde dies durch die so genannte &bdquo;*Uniform Container Erasure*&rdquo; deutlich vereinfacht
+und lesbarer gemacht:
+
+*Beispiel*:
+
+```cpp
+01: void test()
+02: {
+03:     std::vector<int> vec{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+04:     print(vec);
+05: 
+06:     auto countErasedElements = std::erase_if(
+07:         vec, 
+08:         [] (int elem) { return elem % 2 == 1; }
+09:     );
+10: 
+11:     std::println("Count erased elements: {}", countErasedElements);
+12:     print(vec);
+13: }
+```
+
+*Ausgabe*:
+
+```
+Size: 10, Capacity: 10
+0 1 2 3 4 5 6 7 8 9
+
+Count erased elements: 5
+Size: 5, Capacity: 10
+0 2 4 6 8
+```
+
+*Hinweise*:<br />
+  * `std::erase_if` ist keine Member-Funktion:<br />Anders als `v.clear()` ist `std::erase_if` eine freie Funktion, die im Header des jeweiligen Containers definiert ist.
+  * Rückgabewert:<br />Die Funktion gibt die Anzahl der entfernten Elemente zurück (als `std::size_type`). Das war beim alten Idiom nicht ohne Weiteres möglich.
+  * Performance:<br />Sie ist hochoptimiert für den jeweiligen Container-Typ (funktioniert auch für `std::list`, `std::deque`, etc.). 
+
+
+## Noch ein Idiom: &bdquo;*Swap and Pop*&rdquo; <a name="link9"></a> 
 
 Bei einem ungeordneten Datensatz empfiehlt es sich,
 das zu löschende Element mit dem letzten Element zu vertauschen und anschließend `pop_back()` zu verwenden.
@@ -419,7 +464,7 @@ Size: 9, Capacity: 10
 0 1 2 9 4 5 6 7 8
 ```
 
-## Die Algorithmen `std::remove_copy` und `std::remove_copy_if` <a name="link9"></a> 
+## Die Algorithmen `std::remove_copy` und `std::remove_copy_if` <a name="link10"></a> 
 
 ### Ein Beispiel zu `std::remove_copy` 
 
@@ -478,7 +523,7 @@ dst: Size: 5, Capacity: 6
 
 ---
 
-## Literaturhinweise <a name="link10"></a> 
+## Literaturhinweise <a name="link11"></a> 
 
 Diese Serie mit vier Artikeln von Jonathan Boccara widmet sich exklusiv dem Thema, wie sich Elemente aus STL Containern entfernen lassen:
 

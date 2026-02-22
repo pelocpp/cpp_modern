@@ -193,8 +193,8 @@ namespace EraseRemoveIdiom
 
         std::vector<int>::iterator last = std::remove_if(
             vec.begin(),
-            vec.end(), 
-            [] (int elem) { return elem % 2 == 1; }
+            vec.end(),
+            [](int elem) { return elem % 2 == 1; }
         );
 
         vec.erase(last, vec.end());
@@ -204,6 +204,24 @@ namespace EraseRemoveIdiom
     // ===========================================================================
 
     static void test_removing_elements_50()
+    {
+        // removing several elements
+
+        std::vector<int> vec{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+        print(vec);
+
+        auto countErasedElements = std::erase_if(
+            vec, 
+            [] (int elem) { return elem % 2 == 1; }
+        );
+
+        std::println("Count erased elements: {}", countErasedElements);
+        print(vec);
+    }
+
+    // ===========================================================================
+
+    static void test_removing_elements_60()
     {
         // "Swap and Pop" idiom
 
@@ -220,7 +238,7 @@ namespace EraseRemoveIdiom
 
     // ===========================================================================
 
-    static void test_removing_elements_60()
+    static void test_removing_elements_70()
     {
         // 'std::remove_copy' algorithm
 
@@ -238,7 +256,7 @@ namespace EraseRemoveIdiom
         print(dst);
     }
 
-    static void test_removing_elements_61()
+    static void test_removing_elements_71()
     {
         // 'std::remove_copy_if' algorithm
 
@@ -284,7 +302,9 @@ void main_erase_remove_idiom()
     test_removing_elements_50();
 
     test_removing_elements_60();
-    test_removing_elements_61();
+
+    test_removing_elements_70();
+    test_removing_elements_71();
 }
 
 // =====================================================================================
