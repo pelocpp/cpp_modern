@@ -204,11 +204,38 @@ namespace Folding {
 
         return total;
     }
+
+    // =================================================================================
+    /* C++ 20: Variadic Capture / Pack Expansion in Lambda Init-Capture
+    */
+
+    template <typename... TArgs>
+    auto createDelayedPrinter(TArgs&&... args)
+    {
+        // Variadic Capture: [...args = std::forward<Args>(args)]
+        // This captures each element of the pack into the lambda.
+        return [...args = std::forward<TArgs>(args)] () {
+            
+            // using a fold expression to print the captured pack
+            (std::cout << ... << args) << std::endl;
+        };
+    }
+
+    static void test_07()
+    {
+        auto printMessage = createDelayedPrinter("Hello - ", "Variadic - ", "Capture!");
+
+        // doing something else ...
+
+        // now invoking the wrapper object, including the parameters
+        printMessage();
+    }
 }
 
 void main_folding()
 {
     using namespace Folding;
+
     test_01();
     test_02();
     test_03a();
@@ -226,6 +253,8 @@ void main_folding()
     std::size_t result2{ test_06_benchmark_iterating_02() };
     std::println("Result1: {}", result1);
     std::println("Result2: {}", result2);
+
+    test_07();
 }
 
 // =====================================================================================
