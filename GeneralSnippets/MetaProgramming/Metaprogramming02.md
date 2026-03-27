@@ -218,11 +218,7 @@ struct Contains {
     using Head = typename LIST::Head;
     using Tail = typename LIST::Tail ;
 
-    static constexpr bool result = Equals<Elm, Head>::result || Contains<Elm, Tail>::result;
-
-    // shorter
-    // static constexpr bool result = Equals<Elm, typename LIST::Head>::result ||
-    //    Contains<Elm, typename LIST::Tail>::result;
+    static constexpr bool result = Equals<Elm, Head>::result or Contains<Elm, Tail>::result;
 };
 
 template <class Elm>

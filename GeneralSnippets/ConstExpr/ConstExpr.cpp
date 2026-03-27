@@ -15,7 +15,7 @@ namespace ConstExprVariables {
 
     constexpr double Pi = 3.14159265359;
 
-#define          PI   3.14159265359
+#define   PI   3.14159265359
 
     static void testVariables() {
 
@@ -32,7 +32,7 @@ namespace ConstExprFunctions {
     // ======================================================
     // limit a number in a range or in between two given numbers
 
-    #define   CLAMP(x, lo, hi)      ((x) < (lo) ? (lo) : ((x) > (hi) ? (hi) : (x)))
+    #define   CLAMP(x, lo, hi)    ((x) < (lo) ? (lo) : ((x) > (hi) ? (hi) : (x)))
 
     static auto clamp = [](auto x, auto lo, auto hi) constexpr {
         return x < lo ? lo : (x > hi ? hi : x);

@@ -11,11 +11,11 @@ namespace Exercises_ConstExpr {
         // works for int arguments
         static constexpr auto maximum (int a, int b, int c) {
 
-            if (a > b && a > c)
+            if (a > b and a > c)
             {
                 return a;
             }
-            else if (b > a && b > c)
+            else if (b > a and b > c)
             {
                 return b;
             }
@@ -28,11 +28,11 @@ namespace Exercises_ConstExpr {
         template <typename T>
         static constexpr auto maximumGeneric (T a, T b, T c) {
 
-            if (a > b && a > c)
+            if (a > b and a > c)
             {
                 return a;
             }
-            else if (b > a && b > c)
+            else if (b > a and b > c)
             {
                 return b;
             }
@@ -44,11 +44,11 @@ namespace Exercises_ConstExpr {
 
         static constexpr auto maximumAuto(auto a, auto b, auto c) {
 
-            if (a > b && a > c)
+            if (a > b and a > c)
             {
                 return a;
             }
-            else if (b > a && b > c)
+            else if (b > a and b > c)
             {
                 return b;
             }
@@ -61,11 +61,11 @@ namespace Exercises_ConstExpr {
         // works for int arguments
         static auto maximumLambda = [](int a, int b, int c) constexpr {
 
-            if (a > b && a > c)
+            if (a > b and a > c)
             {
                 return a;
             }
-            else if (b > a && b > c)
+            else if (b > a and b > c)
             {
                 return b;
             }
@@ -79,7 +79,7 @@ namespace Exercises_ConstExpr {
         // type of the ternary ?: expression is
         // the common type of its second and third argument
         static auto maximumAutoLambda = [](auto a, auto b, auto c) constexpr {
-            return (a > b && a > c) ? a : ((b > a && b > c) ? b : c  );
+            return (a > b and a > c) ? a : ((b > a and b > c) ? b : c  );
         };
 
         // works for arguments of different type (?!?)
@@ -87,11 +87,11 @@ namespace Exercises_ConstExpr {
         // the common type of its second and third argument
         static auto maximumMoreAutoLambda = [](auto a, auto b, auto c) constexpr {
 
-            if (a > b && a > c)
+            if (a > b and a > c)
             {
                 return a;
             }
-            else if (b > a && b > c)
+            else if (b > a and b > c)
             {
                 return b;
             }
@@ -104,13 +104,13 @@ namespace Exercises_ConstExpr {
         // works for arbitrary arguments of the same type (!)
         template <typename T>
         static auto maximumGenericLambda = [](T a, T b, T c) constexpr {
-            return (a > b && a > c) ? a : ((b > a && b > c) ? b : c);
+            return (a > b and a > c) ? a : ((b > a and b > c) ? b : c);
         };
 
         // works for arbitrary arguments of the same type (!)
         // different syntax
         static auto maximumMoreGenericLambda = []<typename T>(T a, T b, T c) constexpr {
-            return (a > b && a > c) ? a : ((b > a && b > c) ? b : c);
+            return (a > b and a > c) ? a : ((b > a and b > c) ? b : c);
         };
 
         static void testExercise()
@@ -271,7 +271,7 @@ namespace Exercises_ConstExpr {
                     auto g{ byte(svG) };
                     auto b{ byte(svB) };
 
-                    if (r.has_value() && g.has_value() && b.has_value()) {
+                    if (r.has_value() and g.has_value() and b.has_value()) {
                         return Color{ r.value() , g.value() , b.value() };
                     }
                     else {
@@ -281,13 +281,13 @@ namespace Exercises_ConstExpr {
 
                 // decode a nibble
                 static constexpr std::optional<std::uint8_t> nibble(char n) {
-                    if (n >= '0' && n <= '9') {
+                    if (n >= '0' and n <= '9') {
                         return n - '0';
                     }
-                    else if (n >= 'a' && n <= 'f') {
+                    else if (n >= 'a' and n <= 'f') {
                         return n - 'a' + 10;
                     }
-                    else if (n >= 'A' && n <= 'F') {
+                    else if (n >= 'A' and n <= 'F') {
                         return n - 'A' + 10;
                     }
                     else {
@@ -300,7 +300,7 @@ namespace Exercises_ConstExpr {
                     auto upperNibble = nibble(sv[0]);
                     auto lowerNibble = nibble(sv[1]);
 
-                    if (lowerNibble.has_value() && upperNibble.has_value()) {
+                    if (lowerNibble.has_value() and upperNibble.has_value()) {
                         return upperNibble.value() << 4 | lowerNibble.value();
                     }
                     else {
@@ -455,7 +455,7 @@ namespace Exercises_ConstExpr {
         template<typename T1, typename T2, typename... TRest>
         static constexpr bool sameType(T1 arg1, T2 arg2, TRest... args)
         {
-            return std::is_same<decltype(arg1), decltype(arg2)>::value && sameType(arg2, args...);
+            return std::is_same<decltype(arg1), decltype(arg2)>::value and sameType(arg2, args...);
         }
 
         // Oder
@@ -463,7 +463,7 @@ namespace Exercises_ConstExpr {
         //template<typename T1, typename T2, typename... TRest>
         //constexpr bool sameType(T1 arg1, T2 arg2, TRest... args)
         //{
-        //    return std::is_same<T1, T2>::value && sameType(arg2, args...);
+        //    return std::is_same<T1, T2>::value and sameType(arg2, args...);
         //}
 
         static void testExercise()

@@ -18,7 +18,7 @@ namespace Exercises_VariadicTemplates {
 
         template<typename T, typename ... TRest>
         bool andAll(T cond, TRest ... conds) {
-            return cond && andAll(conds...);
+            return cond and andAll(conds...);
         }
 
         // or
@@ -29,7 +29,7 @@ namespace Exercises_VariadicTemplates {
         //
         //template<typename T, typename ... TRest>
         //bool andAll(T cond, TRest... conds) {
-        //    return cond && andAll(conds...);
+        //    return cond and andAll(conds...);
         //}
 
         static void testExercise_01a() {
@@ -54,7 +54,7 @@ namespace Exercises_VariadicTemplates {
 
         template<typename T, typename... TRest>
         bool orAll(T cond, TRest ... conds) {
-            return cond || orAll(conds...);
+            return cond or orAll(conds...);
         }
 
         // or
@@ -65,7 +65,7 @@ namespace Exercises_VariadicTemplates {
 
         //template<typename T, typename... TRest>
         //bool orAll(T cond, TRest... conds) {
-        //    return cond || orAll(conds...);
+        //    return cond or orAll(conds...);
         //}
 
         static void testExercise_01b() {
@@ -107,11 +107,11 @@ namespace Exercises_VariadicTemplates {
 
             // Note: short-circuit-evaluation is considered !
             // Study output of program execution
-            return std::is_same<decltype(arg1), decltype(arg2)>::value && sameType(arg2, args...);
+            return std::is_same<decltype(arg1), decltype(arg2)>::value and sameType(arg2, args...);
 
             // Note: Due to order of expression evaluation short-circuit-evaluation cannot be considered !
             // Study output of program execution
-            // return sameType(arg2, args...) && std::is_same<decltype(arg1), decltype(arg2)>::value;
+            // return sameType(arg2, args...) and std::is_same<decltype(arg1), decltype(arg2)>::value;
         }
 
         static void testExercise()

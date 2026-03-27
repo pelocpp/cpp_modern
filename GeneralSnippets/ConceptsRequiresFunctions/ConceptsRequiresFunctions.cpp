@@ -6,11 +6,11 @@ module modern_cpp:concepts_requires_functions;
 
 // using <concepts>
 template <typename T>
-concept Numerical = std::integral<T> || std::floating_point<T>;
+concept Numerical = std::integral<T> or std::floating_point<T>;
 
 // using <type_traits>
 template <typename T>
-concept NumericalEx = std::is_integral<T>::value || std::is_floating_point<T>::value;
+concept NumericalEx = std::is_integral<T>::value or std::is_floating_point<T>::value;
 
 namespace Requires_Clause {
 
@@ -23,7 +23,7 @@ namespace Requires_Clause {
 
     // "inlining" constraints on template parameter types
     template <typename T>
-        requires std::integral<T> || std::floating_point<T>
+        requires std::integral<T> or std::floating_point<T>
     auto addEx(T a, T b)
     {
         return a + b;
@@ -55,7 +55,7 @@ namespace Requires_Clause {
     // several, different template parameters
 
     template <typename T, typename U>
-        requires Numerical<T> && Numerical<U>
+        requires Numerical<T> and Numerical<U>
     auto add(T a, U b)
     {
         return a + b;
@@ -121,13 +121,13 @@ namespace Trailing_Requires_Clause {
     }
 
     template <typename T>
-    auto addEx(T a, T b) requires std::integral<T> || std::floating_point<T>
+    auto addEx(T a, T b) requires std::integral<T> or std::floating_point<T>
     {
         return a + b;
     }
 
     template <typename T, typename U>
-    auto add(T a, U b) requires Numerical<T> && Numerical<U>
+    auto add(T a, U b) requires Numerical<T> and Numerical<U>
     {
         return a + b;
     }
@@ -199,7 +199,7 @@ namespace UserDefined_Concept {
 
     // using <type_traits>
     template <typename T>
-    concept GreatIntegral = std::is_integral<T>::value && isGreaterThanWord<T>;
+    concept GreatIntegral = std::is_integral<T>::value and isGreaterThanWord<T>;
 
     template<GreatIntegral T>
     T incrementByOne(const T& arg) {

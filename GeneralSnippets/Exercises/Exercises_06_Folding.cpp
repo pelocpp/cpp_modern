@@ -13,7 +13,7 @@ namespace Exercises_Folding {
 
         template<typename ... TArgs>
         bool andAll(TArgs ... args) {
-            return (... && args);  // unary left fold
+            return (... and args);  // unary left fold
         }
 
         static void testExercise_01a() {
@@ -30,7 +30,7 @@ namespace Exercises_Folding {
 
         template<typename ... TArgs>
         bool orAll(TArgs... args) {
-            return (args || ...);  // unary right fold
+            return (args or ...);  // unary right fold
         }
 
         static void testExercise_01b() {
@@ -60,13 +60,13 @@ namespace Exercises_Folding {
         template<typename T, typename ... TArgs>
         constexpr bool sameType(T, TArgs...)
         {
-            return (std::is_same_v<T, TArgs> && ...);
+            return (std::is_same_v<T, TArgs> and ...);
         }
 
         template<typename T, typename ... TArgs>
         constexpr bool sameTypeEx(T arg, TArgs... args)
         {
-            return (std::is_same_v<decltype(arg), decltype(args)> && ...);
+            return (std::is_same_v<decltype(arg), decltype(args)> and ...);
         }
 
         static void testExercise()

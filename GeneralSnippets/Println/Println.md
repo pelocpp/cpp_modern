@@ -367,8 +367,8 @@ Two Values: 123 - 123
 13:         constexpr auto parse(std::format_parse_context& ctx)
 14:         {
 15:             auto pos{ ctx.begin() };
-16:             while (pos != ctx.end() && *pos != '}') {
-17:                 if (*pos < '0' || *pos > '9') {
+16:             while (pos != ctx.end() and *pos != '}') {
+17:                 if (*pos < '0' or *pos > '9') {
 18:                     throw std::format_error{ std::format("invalid format '{}'", *pos) };
 19:                 }
 20: 
@@ -758,8 +758,8 @@ Color (100, 200, 255)
 12:         constexpr auto parse(std::format_parse_context& ctx)
 13:         {
 14:             auto pos{ ctx.begin() };
-15:             while (pos != ctx.end() && *pos != '}') {
-16:                 if (*pos == 'h' || *pos == 'H')
+15:             while (pos != ctx.end() and *pos != '}') {
+16:                 if (*pos == 'h' or *pos == 'H')
 17:                     m_isHex = true;
 18:                 ++pos;
 19:             }

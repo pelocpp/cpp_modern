@@ -224,7 +224,7 @@ namespace UniquePointerWrappingWin32Handles {
 
     static HANDLE_UniquePtr make_Win32_HANDLE(HANDLE handle)
     {
-        if (handle == INVALID_HANDLE_VALUE || handle == nullptr) {
+        if (handle == INVALID_HANDLE_VALUE or handle == nullptr) {
             return HANDLE_UniquePtr{ nullptr };
         }
 

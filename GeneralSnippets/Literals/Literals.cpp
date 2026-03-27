@@ -2,11 +2,6 @@
 // User defined literals
 // =====================================================================================
 
-module;
-
-#include <cstdint>   // for std::uint8_t
-#include <cctype>    // for std::isxdigit
-
 module modern_cpp:literals;
 
 namespace Literals_With_Separators {
@@ -38,15 +33,16 @@ namespace Literals_Color_Runtime {
         friend std::ostream& operator<< (std::ostream&, const Color&);
 
     private:
-        uint8_t m_r;
-        uint8_t m_g;
-        uint8_t m_b;
+        std::uint8_t m_r;
+        std::uint8_t m_g;
+        std::uint8_t m_b;
 
     public:
         Color() : m_r{}, m_g{}, m_b{} {}
 
-        Color(uint8_t r, uint8_t g, uint8_t b)
-            : m_r{ r }, m_g{ g }, m_b{ b } {}
+        Color(std::uint8_t r, std::uint8_t g, std::uint8_t b)
+            : m_r{ r }, m_g{ g }, m_b{ b }
+        {}
     };
 
     std::ostream& operator<< (std::ostream& os, const Color& col) {
@@ -59,6 +55,8 @@ namespace Literals_Color_Runtime {
         return os;
     }
 
+    // =====================================================================================
+     
     // literal operator ("cooked" version)
     static Color operator"" _rgb(unsigned long long value) {
 
@@ -77,7 +75,7 @@ namespace Literals_Color_Runtime {
     static Color operator"" _rgb(const char* literal, std::size_t length) {
 
         // tiny implementation - just parsing hexadecimal format
-        std::string arg(literal);
+        std::string arg{ literal };
 
         if (arg.size() == 2 /* 0x */ + 6 /* FF FF FF */) {
 
@@ -85,15 +83,17 @@ namespace Literals_Color_Runtime {
             std::string gs { arg.substr(4, 2) };
             std::string bs { arg.substr(6, 2) };
 
-            uint8_t r { static_cast<uint8_t>(std::stoi(rs, nullptr, 16)) };
-            uint8_t g { static_cast<uint8_t>(std::stoi(gs, nullptr, 16)) };
-            uint8_t b { static_cast<uint8_t>(std::stoi(bs, nullptr, 16)) };
+            std::uint8_t r { static_cast<uint8_t>(std::stoi(rs, nullptr, 16)) };
+            std::uint8_t g { static_cast<uint8_t>(std::stoi(gs, nullptr, 16)) };
+            std::uint8_t b { static_cast<uint8_t>(std::stoi(bs, nullptr, 16)) };
 
             return Color{ r, g, b };
         }
 
         return Color{};
     }
+
+    // =================================================================================
 
     static void test_02() {
 
@@ -135,14 +135,14 @@ namespace Literals_Color_CompileTime {
         friend std::ostream& operator<< (std::ostream&, const Color&);
 
     private:
-        uint8_t m_r;
-        uint8_t m_g;
-        uint8_t m_b;
+        std::uint8_t m_r;
+        std::uint8_t m_g;
+        std::uint8_t m_b;
 
     public:
         constexpr Color() : m_r{}, m_g{}, m_b{} {}
 
-        constexpr Color(uint8_t r, uint8_t g, uint8_t b)
+        constexpr Color(std::uint8_t r, std::uint8_t g, std::uint8_t b)
             : m_r{ r }, m_g{ g }, m_b{ b }
         {}
     };
@@ -157,37 +157,39 @@ namespace Literals_Color_CompileTime {
         return os;
     }
 
+    // =================================================================================
+
     // literal operator ("cooked" version)
-    static constexpr Color operator"" _rgb(unsigned long long value) {
+    static /*constexpr*/ consteval Color operator"" _rgb(unsigned long long value) {
 
         if (value > 0xFFFFFF) {
             throw std::logic_error("literal too large");
         }
 
-        uint8_t r{ static_cast<uint8_t>((value & 0x00FF0000) >> 16) };
-        uint8_t g{ static_cast<uint8_t>((value & 0x0000FF00) >> 8) };
-        uint8_t b{ static_cast<uint8_t>((value & 0x000000FF) >> 0) };
+        std::uint8_t r{ static_cast<uint8_t>((value & 0x00FF0000) >> 16) };
+        std::uint8_t g{ static_cast<uint8_t>((value & 0x0000FF00) >> 8) };
+        std::uint8_t b{ static_cast<uint8_t>((value & 0x000000FF) >> 0) };
 
         return Color{ r, g, b };
     }
 
     static constexpr bool isHex(char ch) {
 
-        if ((ch >= '0' && ch <= '9') || (ch >= 'A' && ch <= 'F') || (ch >= 'a' && ch <= 'f')) {
+        if ((ch >= '0' and ch <= '9') or (ch >= 'A' and ch <= 'F') or (ch >= 'a' and ch <= 'f')) {
             return true;
         }
 
         return false;
     }
 
-    static constexpr uint8_t hex2int(char ch) {
+    static constexpr std::uint8_t hex2int(char ch) {
 
         if (!isHex(ch)) {
             throw std::logic_error("illegal hexadecimal digit");
         }
 
         // transform hex character to 4-bit equivalent number
-        uint8_t byte{ static_cast<uint8_t>(ch) };
+        std::uint8_t byte{ static_cast<uint8_t>(ch) };
 
         if (byte >= '0' and byte <= '9') {
             byte -= '0';
@@ -220,10 +222,10 @@ namespace Literals_Color_CompileTime {
     }
 
     // literal operator ('raw' and 'constexpr' version)
-    static constexpr Color operator"" _rgb(const char* literal, std::size_t length) {
+    static /*constexpr*/ consteval Color operator"" _rgb(const char* literal, std::size_t length) {
 
         // std::string is partially 'constexpr'
-        std::string arg(literal);
+        std::string arg{ literal };
 
         if (arg.size() == 2 /* 0x */ + 6 /* FF FF FF */) {
 
@@ -232,15 +234,17 @@ namespace Literals_Color_CompileTime {
             std::string bs{ arg.substr(6, 2) };
 
             // std::stoi is not 'constexpr' -  at the time of this writing
-             uint8_t r { static_cast<uint8_t>(hexstoi(rs.c_str())) };
-             uint8_t g { static_cast<uint8_t>(hexstoi(gs.c_str())) };
-             uint8_t b { static_cast<uint8_t>(hexstoi(bs.c_str())) };
+            std::uint8_t r { static_cast<uint8_t>(hexstoi(rs.c_str())) };
+            std::uint8_t g { static_cast<uint8_t>(hexstoi(gs.c_str())) };
+            std::uint8_t b { static_cast<uint8_t>(hexstoi(bs.c_str())) };
 
             return Color{ r, g, b };
         }
 
         return Color{};
     }
+
+    // =================================================================================
 
     static void test_03() {
 
@@ -264,7 +268,7 @@ namespace Literals_Color_CompileTime {
         // constexpr Color col1{ 0x1FFFFFF_rgb };
 
         // illegal hexadecimal digit
-        // constexpr Color col2{ "0x00GG00"_rgb };
+        // constexpr Color col2{ "0x00GG00"_rgb };  // 0x00GG00
     }
 }
 

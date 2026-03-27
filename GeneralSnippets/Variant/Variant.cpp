@@ -276,7 +276,7 @@ namespace VariantDemo {
             vec.begin(),
             vec.end(),
             [](auto v) {
-                return std::holds_alternative<int>(v) && std::get<int>(v) == 789;
+                return std::holds_alternative<int>(v) and std::get<int>(v) == 789;
             }
         );
 

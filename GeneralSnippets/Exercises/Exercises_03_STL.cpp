@@ -250,7 +250,7 @@ namespace Exercises_STL {
                     m_entries.end(),
                     [&](const auto& entry) {
                         const auto& [_first, _last, _number] = entry;
-                        return _first == first && _last == last;
+                        return _first == first and _last == last;
                     }
                 );
 
@@ -271,7 +271,7 @@ namespace Exercises_STL {
                     m_entries.end(),
                     [&](const auto& entry) {
                         const auto& [_first, _last, _number] = entry;
-                        return _first == first && _last == last;
+                        return _first == first and _last == last;
                     }
                 );
 
@@ -292,7 +292,7 @@ namespace Exercises_STL {
                     m_entries.end(),
                     [&](const auto& entry) {
                         const auto& [_first, _last, _number] = entry;
-                        return _first == first && _last == last;
+                        return _first == first and _last == last;
                     }
                 );
 
@@ -306,7 +306,7 @@ namespace Exercises_STL {
                     m_entries.end(),
                     [&](const auto& entry) {
                         const auto& [_first, _last, _number] = entry;
-                        return _first == first && _last == last;
+                        return _first == first and _last == last;
                     }
                 );
 

@@ -7,7 +7,7 @@ module modern_cpp:concepts_requires_classes;
 namespace ClassesAndConcepts_01 {
 
     template <typename T>
-    concept Number = std::integral<T> || std::floating_point<T>;
+    concept Number = std::integral<T> or std::floating_point<T>;
 
     template <typename T>
         requires Number<T>
@@ -37,10 +37,10 @@ namespace ClassesAndConcepts_01 {
 namespace ClassesAndConcepts_02 {
 
     template <typename T>
-    concept Number = std::integral<T> || std::floating_point<T>;
+    concept Number = std::integral<T> or std::floating_point<T>;
 
     template <typename T, typename U>
-        requires Number<T> && Number<U>
+        requires Number<T> and Number<U>
     class WrappedPair
     {
     private:
@@ -73,7 +73,7 @@ namespace ClassesAndConcepts_02 {
 namespace ClassesAndConcepts_03 {
 
     template <typename T>
-    concept Number = std::integral<T> || std::floating_point<T>;
+    concept Number = std::integral<T> or std::floating_point<T>;
 
     template <Number T>
     class WrappedNumber
@@ -102,7 +102,7 @@ namespace ClassesAndConcepts_03 {
 namespace ClassesAndConcepts_04 {
 
     template <typename T>
-    concept Number = std::integral<T> || std::floating_point<T>;
+    concept Number = std::integral<T> or std::floating_point<T>;
 
     template <Number T, Number U>
     class WrappedPair

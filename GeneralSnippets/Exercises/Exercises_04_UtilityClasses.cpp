@@ -114,7 +114,7 @@ namespace Exercises_UtilityClasses {
 
             try
             {
-                if constexpr (std::is_same<T, int>::value || std::is_same<T, short>::value)
+                if constexpr (std::is_same<T, int>::value or std::is_same<T, short>::value)
                 {
                     int i{ std::stoi(s) };
                     std::string tmp{ std::to_string(i) };

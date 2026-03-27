@@ -41,7 +41,7 @@ die wir festlegen wollen.
 
 ```cpp
 01: template <typename T>
-02: concept Number = std::integral<T> || std::floating_point<T>;
+02: concept Number = std::integral<T> or std::floating_point<T>;
 03: 
 04: template <typename T>
 05:     requires Number<T>
@@ -69,7 +69,7 @@ In diesem Fall müssen wir die `requires`-Klausel entsprechend für alle Template 
 
 ```cpp
 01: template <typename T, typename U>
-02:     requires Number<T> && Number<U>
+02:     requires Number<T> and Number<U>
 03: class WrappedPair
 04: {
 05: private:

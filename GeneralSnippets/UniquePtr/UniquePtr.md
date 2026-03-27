@@ -102,7 +102,7 @@ kann man speziell auch für Win32 HANDLEs anstellen.
 12: 
 13: static HANDLE_UniquePtr make_Win32_HANDLE(HANDLE handle)
 14: {
-15:     if (handle == INVALID_HANDLE_VALUE || handle == nullptr) {
+15:     if (handle == INVALID_HANDLE_VALUE or handle == nullptr) {
 16:         return HANDLE_UniquePtr{ nullptr };
 17:     }
 18: 

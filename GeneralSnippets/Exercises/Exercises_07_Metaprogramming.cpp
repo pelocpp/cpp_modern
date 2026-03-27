@@ -67,7 +67,7 @@ namespace Exercises_Metaprogramming
         template <std::size_t N>
         struct BinaryEx
         {
-            static_assert((N % 10) == 0 || (N % 10) == 1);
+            static_assert((N % 10) == 0 or (N % 10) == 1);
 
             static constexpr std::size_t value = BinaryEx<N / 10>::value << 1 | N % 10;
             // or

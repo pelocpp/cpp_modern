@@ -44,7 +44,7 @@ Der Rückgabetyp der Funktion kann dann `auto` oder einer der Template Parameter 
 
 ```cpp
 01: template <typename T>
-02: concept Numerical = std::integral<T> || std::floating_point<T>;
+02: concept Numerical = std::integral<T> or std::floating_point<T>;
 03: 
 04: template <typename T>
 05:     requires Numerical<T>
@@ -59,7 +59,7 @@ Im nachfolgenden Beispiel lassen sich Werte unterschiedlichen Typs addieren:
 
 ```cpp
 template <typename T, typename U>
-    requires Numerical<T> && Numerical<U>
+    requires Numerical<T> and Numerical<U>
 auto add(T a, U b)
 {
     return a + b;
@@ -85,7 +85,7 @@ Man kann die Requirements der Template Parameter auch in einer Art
 
 ```cpp
 01: template <typename T>
-02:     requires std::integral<T> || std::floating_point<T>
+02:     requires std::integral<T> or std::floating_point<T>
 03: auto add(T a, T b)
 04: {
 05:     return a + b;
@@ -99,15 +99,15 @@ um Arten von Ausdrücken zu beschreiben, die zum Erstellen einer `requires`-Klaus
 verwendet werden können:
 
   * Eine Einschränkungs-Konjunktion (*constraint conjunction*) wird gebildet,
-  indem der `&&`-Operator auf zwei Einschränkungen angewendet wird.
+  indem der `&&`-Operator (`and`-Operator) auf zwei Einschränkungen angewendet wird.
 
   * Eine Einschränkungs-Disjunktion (*constraint disjunction*) wird gebildet,
-  indem der `||`-Operator auf zwei Einschränkungen angewendet wird.
+  indem der `||`-Operator (`or`-Operator) auf zwei Einschränkungen angewendet wird.
 
   * Eine atomare Einschränkung bezeichnet einen Ausdruck, der einen boolschen Typ zurückgibt und
   nicht weiter zerlegt werden kann.
 
-  * Der logische *Not*-Operator (`!`) wird verwendet, um den negierten Wert einer Einschränkung zu erhalten.
+  * Der logische *Not*-Operator (`!`, `not`) wird verwendet, um den negierten Wert einer Einschränkung zu erhalten.
 
 
 ---
@@ -135,7 +135,7 @@ Wir müssten die Template Definition ähnlich wie zuvor ändern:
 
 ```cpp
 01: template <typename T, typename U>
-02: auto add(T a, U b) requires Numerical<T> && Numerical<U>
+02: auto add(T a, U b) requires Numerical<T> and Numerical<U>
 03: {
 04:     return a + b;
 05: }
@@ -170,7 +170,7 @@ Wenn man die `requires`-Klausel wie in der Art von Variante 1 oder 2 verwenden w
 könnte man einen Ausdruck wie z.B.
 
 ```cpp
-requires std::integral<T> || std::floating_point<T>
+requires std::integral<T> or std::floating_point<T>
 ```
 
 schreiben. In der dritten Variante geht das nicht.
@@ -221,7 +221,7 @@ Damit ließe sich dann ein Konzept so definieren:
 ```cpp
 // using <type_traits>
 template <typename T>
-concept GreatIntegral = std::is_integral<T>::value && isGreaterThanWord<T>;
+concept GreatIntegral = std::is_integral<T>::value and isGreaterThanWord<T>;
 ```
 
 Eine mögliche Anwendung könnte dann so aussehen:

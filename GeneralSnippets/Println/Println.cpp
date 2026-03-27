@@ -212,8 +212,8 @@ namespace std
         constexpr auto parse(std::format_parse_context& ctx)
         {
             auto pos{ ctx.begin() };
-            while (pos != ctx.end() && *pos != '}') {
-                if (*pos < '0' || *pos > '9') {
+            while (pos != ctx.end() and *pos != '}') {
+                if (*pos < '0' or *pos > '9') {
                     throw std::format_error{ std::format("invalid format '{}'", *pos) };
                 }
 
@@ -591,8 +591,8 @@ namespace std
         constexpr auto parse(std::format_parse_context& ctx)
         {
             auto pos{ ctx.begin() };
-            while (pos != ctx.end() && *pos != '}') {
-                if (*pos == 'h' || *pos == 'H')
+            while (pos != ctx.end() and *pos != '}') {
+                if (*pos == 'h' or *pos == 'H')
                     m_isHex = true;
                 ++pos;
             }

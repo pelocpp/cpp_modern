@@ -24,7 +24,7 @@ namespace KeywordExplicit {
         // comparison operator
         bool operator == (Complex rhs)
         {
-            return (m_real == rhs.m_real && m_imag == rhs.m_imag);
+            return (m_real == rhs.m_real and m_imag == rhs.m_imag);
         }
     };
 }

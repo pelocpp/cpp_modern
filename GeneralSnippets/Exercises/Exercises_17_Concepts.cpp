@@ -162,9 +162,9 @@ namespace Exercises_Concepts {
             }
 
             template<typename T, typename ... TRest>
-                requires std::same_as<T, bool> && (std::same_as<TRest, bool> && ...)
+                requires std::same_as<T, bool> and (std::same_as<TRest, bool> and ...)
             bool andAll(T cond, TRest ... conds) {
-                return cond && andAll(conds...);
+                return cond and andAll(conds...);
             }
 
             static void test() {
@@ -184,9 +184,9 @@ namespace Exercises_Concepts {
             // Using Folding
 
             template<typename ... TArgs>
-                requires (std::same_as<TArgs, bool> && ...)
+                requires (std::same_as<TArgs, bool> and ...)
             bool andAll(TArgs ... args) {
-                return (... && args);
+                return (... and args);
             }
 
             static void test() {
@@ -206,7 +206,7 @@ namespace Exercises_Concepts {
             // Using "Abbreviated Function Templates Syntax"
 
             static bool andAll(std::same_as<bool> auto ... args) {
-                return (... && args);
+                return (... and args);
             }
 
             static void test() {
@@ -231,7 +231,7 @@ namespace Exercises_Concepts {
             }
 
             static bool andAll(std::same_as<bool> auto cond, std::same_as<bool> auto ... conds) {
-                return cond && andAll(conds...);
+                return cond and andAll(conds...);
             }
 
             static void test() {
@@ -262,7 +262,7 @@ namespace Exercises_Concepts {
             std::enable_if <AreSame<TArgs ...>, bool>::type
                 andAll(TArgs ... args) noexcept
             {
-                return (... && args);
+                return (... and args);
             }
 
             static void test() {
@@ -529,7 +529,7 @@ namespace Exercises_Concepts {
     namespace Exercise_04 {
 
         template<typename ... TArgs>
-            requires (std::same_as<TArgs, std::string> && ...)
+            requires (std::same_as<TArgs, std::string> and ...)
         std::size_t totalLength(const TArgs& ... args)
         {
             std::size_t len{};
@@ -540,7 +540,7 @@ namespace Exercises_Concepts {
         }
 
         template<typename... TArgs>
-            requires (std::same_as<TArgs, std::string> && ...)
+            requires (std::same_as<TArgs, std::string> and ...)
         std::size_t totalLengthEx(const TArgs& ... args)
         {
             std::size_t len{};
