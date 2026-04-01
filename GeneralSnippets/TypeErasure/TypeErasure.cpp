@@ -241,7 +241,7 @@ namespace BookStoreUsingDynamicPolymorphism {
         std::string m_author;
         std::string m_title;
         double      m_price;
-        std::size_t      m_count;
+        std::size_t m_count;
 
     public:
         // c'tor
@@ -264,7 +264,7 @@ namespace BookStoreUsingDynamicPolymorphism {
         std::string m_title;
         std::string m_director;
         double      m_price;
-        std::size_t      m_count;
+        std::size_t m_count;
 
     public:
         // c'tor
@@ -409,7 +409,7 @@ namespace BookStoreUsingTypeErasure {
         std::string m_author;
         std::string m_title;
         double      m_price;
-        std::size_t      m_count;
+        std::size_t m_count;
 
     public:
         // c'tor
@@ -431,7 +431,7 @@ namespace BookStoreUsingTypeErasure {
         std::string m_title;
         std::string m_director;
         double      m_price;
-        std::size_t      m_count;
+        std::size_t m_count;
 
     public:
         // c'tor
@@ -472,8 +472,8 @@ namespace BookStoreUsingTypeErasure {
         template <typename T>
             requires MediaConcept<T>
         void addMedia(const T& media) {
-            // m_stock.push_back(StockType{ media });  // detailed notation
-            m_stock.push_back(media);                  // implicit type conversion (T => std::variant<T>)
+            m_stock.push_back(StockType{ media });    // detailed notation
+            // m_stock.push_back(media);              // implicit type conversion (T => std::variant<T>)
         }
 
         // or
