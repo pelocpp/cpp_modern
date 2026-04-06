@@ -479,7 +479,7 @@ namespace FunctionalProgramming_01 {
     }
 }
 
-void main_functional_programming()
+void main_functional_programming_legacy()
 {
     using namespace FunctionalProgramming_01;
 

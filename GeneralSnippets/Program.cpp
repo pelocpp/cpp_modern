@@ -52,8 +52,8 @@ int main()
         //main_expected();
         //main_explicit_keyword();
         //main_folding();
-        //main_functional_programming_ranges();
-        //main_functional_programming();
+        main_functional_programming();
+        //main_functional_programming_legacy();
         //main_functional_programming_alternate();
         //main_generate();
         //main_generic_functions();

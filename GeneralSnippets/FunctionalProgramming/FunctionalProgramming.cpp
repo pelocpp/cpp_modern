@@ -10,9 +10,8 @@ namespace FunctionalProgramming {
     {
     public:
         std::string m_name;
-        int m_age;
-        std::string m_phone_number;
-        std::string m_email;
+        std::string m_phone;
+        std::size_t m_age;
     };
 
     static void updateAge(User& user)
@@ -38,6 +37,7 @@ namespace FunctionalProgramming {
         User john
         {
             .m_name{ "John" },
+            .m_phone{ "12345678" },
             .m_age{ 25 }
         };
 
@@ -49,46 +49,40 @@ namespace FunctionalProgramming {
         User john
         {
             .m_name{ "John" },
+            .m_phone{ "12345678" },
             .m_age{ 25 }
         };
 
-        auto updated{ pureUpdateAge2(john) };
+        auto updated{ pureUpdateAge(john) };
         std::println("Age: {}", updated.m_age);
 
-        updated = pureUpdateAge2(john);
+        updated = pureUpdateAge(john);
         std::println("Age: {}", updated.m_age);
     }
 
     class Function
     {
     private:
-        int m_state;
+        std::size_t m_state;
 
     public:
         Function () : Function{ 0 } {}
-        Function(int state) : m_state{ state } {}
+        Function(std::size_t state) : m_state{ state } {}
 
-        void modify_state(int state) {
-            m_state = state;
-        }
+        void modify_state(std::size_t state) { m_state = state; }
+        std::size_t get_state() const { return m_state; }
 
-        int get_state() const {
-            return m_state;
-        }
-
-        void operator()() {
+        void operator()() const {
             // do something that a function would do
             std::println("Do something using state {}", m_state);
         }
     };
 
-    static void doSomething(Function f)
-    {
+    static void doSomething(const Function& f) {
         f();
     }
 
-    static void test_functional_programming_03()
-    {
+    static void test_functional_programming_03() {
         Function func{ 123 };
         doSomething(func);
     }
@@ -101,8 +95,8 @@ namespace FunctionalProgramming {
     public:
         std::string m_title;
         std::string m_author;
-        int m_year;
-        double m_price;
+        std::size_t m_year;
+        double      m_price;
     };
 
     static void test_functional_programming_04() {
@@ -142,14 +136,7 @@ namespace FunctionalProgramming {
                 std::end(bookTitles),
                 std::string{},
                 [](const std::string& a, const std::string& b) {
-                    std::stringstream ss;
-                    if (a.empty()) {
-                        ss << b;
-                    }
-                    else {
-                        ss << a << ", " << b;
-                    }
-                    return ss.str();
+                    return a.empty() ? b : std::format("{}, {}", a, b);
                 }
             ) 
         };
@@ -181,14 +168,7 @@ namespace FunctionalProgramming {
                 std::end(results),
                 std::string{},
                 [](const std::string& a, const std::string& b) {
-                    std::stringstream ss;
-                    if (a.empty()) {
-                        ss << b;
-                    }
-                    else {
-                        ss << a << ", " << b;
-                    }
-                    return ss.str();
+                    return a.empty() ? b : std::format("{}, {}", a, b);
                 }
             ) 
         };
@@ -197,7 +177,7 @@ namespace FunctionalProgramming {
     }
 }
 
-void main_functional_programming_ranges()
+void main_functional_programming()
 {
     using namespace FunctionalProgramming;
 
