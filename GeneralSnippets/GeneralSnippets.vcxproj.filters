@@ -81,7 +81,7 @@
     <ClCompile Include="TemplateConstexprIf\TemplatesConstExpr_If.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Lambda\Lambda01.cpp">
+    <ClCompile Include="Lambda\Lambda01_Legacy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Accumulate\Accumulate.cpp">
@@ -656,6 +656,9 @@
     </ClCompile>
     <ClCompile Include="Expected\Module_Expected.ixx">
       <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Lambda\Lambda01.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1271,6 +1274,12 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="SharedPtr\WeakPointer_02.PNG">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Lambda\CppInsights.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Lambda\Lambdas_constexpr_IIFE.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

@@ -258,6 +258,7 @@
     <ClCompile Include="Invoke\Invoke.cpp" />
     <ClCompile Include="Invoke\Module_Invoke.ixx" />
     <ClCompile Include="Lambda\Lambda01.cpp" />
+    <ClCompile Include="Lambda\Lambda01_Legacy.cpp" />
     <ClCompile Include="Lambda\Lambda03.cpp" />
     <ClCompile Include="Lambda\Lambda02.cpp" />
     <ClCompile Include="Lambda\Module_Lambda.ixx" />
@@ -534,6 +535,8 @@
     <Image Include="Images\Horse_Cpp.png" />
     <Image Include="Images\tiobe_index_december_2022.png" />
     <Image Include="Images\what_are_you_studying.png" />
+    <Image Include="Lambda\CppInsights.png" />
+    <Image Include="Lambda\Lambdas_constexpr_IIFE.png" />
     <Image Include="Literatur\Buch_Andreas_Fertig_Cpp_Tips_Tricks.png" />
     <Image Include="Literatur\Buch_Jacek_Galowicz_Cpp_17_Cookbook.png" />
     <Image Include="Literatur\Buch_Marc_Gregoire.png" />

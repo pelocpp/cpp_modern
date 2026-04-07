@@ -169,7 +169,7 @@ Es folgt eine tabellarische Auflistung dieser Unterverzeichnisse.
 | [InitializerList](GeneralSnippets/InitializerList/InitializerList.md) | Klasse `std::initializer_list<T>` |
 | [Input/Output Streams](GeneralSnippets/InputOutputStreams/InputOutputStreams.md) | Streams manipulieren und formatieren |
 | [Invoke](GeneralSnippets/Invoke/Invoke.md) | `std::invoke`: "*Uniformly invoking anything callable*" |
-| [Lambda](GeneralSnippets/Lambda/Lambda.md) | Lambda-Objekte |
+| [Lambda](GeneralSnippets/Lambda/Lambda.md) | Lambdas in Modern C++ |
 | [Literals](GeneralSnippets/Literals/Literals.md) | Benutzerdefinierte Literale |
 | [Memory Leaks](GeneralSnippets/MemoryLeaks/MemoryLeaksDetection.md) | CRT (C-Runtime-Library) Memory Leak Detection |
 | [Meta-Programming](GeneralSnippets/MetaProgramming/Metaprogramming01.md) | Programmierung zur Übersetzungszeit |
