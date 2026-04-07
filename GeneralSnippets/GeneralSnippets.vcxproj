@@ -436,6 +436,7 @@
     <None Include="Invoke\Invoke.md" />
     <None Include="Lambda\cpp_snippets_lambda.svg" />
     <None Include="Lambda\Lambda.md" />
+    <None Include="Lambda\Lambda_Legacy.md" />
     <None Include="Literals\Literals.md" />
     <None Include="Literatur\Literature.md" />
     <None Include="MemoryLeaks\MemoryLeaksDetection.md" />

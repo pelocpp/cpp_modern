@@ -12,24 +12,27 @@
 
   * [Allgemeines](#link1)
   * [*Pure* Funktionen](#link2)
-  * [Funktionen höherer Ordnung](#link3)
-  * [Umsetzung in C++ und STL](#link4)
-  * [*Filter-Map-Reduce* Pattern](#link5)
-  * [Umsetzung in C++ und *Ranges*](#link6)
+  * [*Partial Application* und *Currying*](#link3)
+    * [*Partial Application*](#link4)
+    * [*Currying*](#link5)
+  * [Funktionen höherer Ordnung](#link6)
+  * [*Filter-Map-Reduce* Pattern](#link7)
+    * [Umsetzung in C++ und STL](#link8)
+    * [Umsetzung in C++ und *Ranges*](#link9)
 
 ---
 
-
 ## Allgemeines <a name="link1"></a>
 
-C++ ist eine &bdquo;prozedurale, objektorientierte und generische Programmiersprache&rdquo; und keine rein &bdquo;funktionale Programmiersprache&rdquo;.
+C++ ist eine &bdquo;prozedurale, objektorientierte und generische Programmiersprache&rdquo; und keine &bdquo;funktionale Programmiersprache&rdquo;.
 Mit den Neuerungen des so genannten &bdquo;Modern C++&rdquo; lassen sich aber auch
 Aspekte der &bdquo;funktionalen Programmierung&rdquo; in C++ darstellen.
 
 &bdquo;Funktionen&rdquo; ähneln Methoden. Aber anders als Methoden werden Funktionen bei der &bdquo;funktionalen Programmierung&rdquo; weitergereicht, beispielsweise als Argumente an Methoden oder als Return-Wert einer Methode.
 Dies ist in C++ spätestens seit Einführung der Lambda-Funktionen auch möglich.
 
-&bdquo;Rein funktionale Sprachen&rdquo; (&bdquo;*Pure functional languages*&rdquo;) wie beispielsweise *Haskell* sind zustandslos und Funktionen haben keinerlei Seiteneffekte. Sie ändern keine Daten, sondern können höchstens neue Daten als Resultat einer Funktion zurückliefern.
+&bdquo;Rein funktionale Sprachen&rdquo; (&bdquo;*Pure functional languages*&rdquo;) wie beispielsweise *Haskell* sind zustandslos und Funktionen haben keine Seiteneffekte.
+Sie ändern keine Daten, sondern können höchstens neue Daten als Resultat einer Funktion zurückliefern.
 Das ist natürlich bei C++ anders. Hier können Funktionen durchaus Daten ändern.
 
 &bdquo;Rein funktionale Programmierung&rdquo; eignet sich ideal zur Parallelverarbeitung sowie für mathematische Aufgaben und steht in dem Ruf,
@@ -43,7 +46,7 @@ Dies ist eben das Terrain der objektorientierten zustandsbehafteten Programmieru
 Eine &bdquo;Pure Function&rdquo; (&bdquo;reine Funktion&rdquo;) ist im Grunde eine Funktion,
 die sich wie eine mathematische Formel verhält. Sie zeichnet sich durch zwei Hauptmerkmale aus: 
 
-  * Determinisimus:<br />Bei gleichen Eingabewerten liefert sie immer das gleiche Ergebnis.
+  * Determinismus:<br />Bei gleichen Eingabewerten liefert sie immer das gleiche Ergebnis.
   * Keine Nebenwirkungen (*Side Effects*):<br />Sie verändert keine globalen Variablen, schreibt nicht in Dateien
     und manipuliert keine Daten durch übergebene Referenzen oder Zeiger.
 
@@ -134,7 +137,370 @@ Age: 26
 Es wird in der funktionalen Programmierung als großer Vorteil angesehen,
 wenn sich eine Funktion bei jedem Aufruf für dieselben Eingabedaten gleich verhält.
 
-## Funktionen höherer Ordnung <a name="link3"></a>
+
+## *Partial Application* und *Currying* <a name="link3"></a>
+
+### *Partial Application* <a name="link4"></a>
+
+In C++ bedeutet *Partial Application*, einige Argumente einer Funktion festzulegen
+und eine neue Funktion zu erzeugen, die die verbleibenden Argumente entgegennimmt.
+Lambdas ermöglichen dies auf eine sehr natürliche und einfache Weise.
+
+*Beispiel*:
+
+```cpp
+01: int add(int a, int b) {
+02:     return a + b;
+03: }
+04: 
+05: void test()
+06: {
+07:     auto addFive = [](int b) {
+08:         return add(5, b);  // partially applied: a = 5
+09:     };
+10: 
+11:     auto result{ addFive(3) };
+12:     std::print("{} ", result);
+13: }
+```
+
+*Ausgabe*:
+
+```
+8
+```
+
+Der Wert 5 war im letzten Beispiel im Aufruf der freien Funktion `addFive` gewissermaßen einprogrammiert.
+Das kann man flexibler mit Lambdas und deren Erfassungsklausel gestalten:
+
+*Beispiel*:
+
+```cpp
+01: auto partialAdd(int a) {
+02:     return [a](int b) {
+03:         return a + b;
+04:     };
+05: }
+06: 
+07: void test()
+08: {
+09:     auto addTen = partialAdd(10);
+10:     auto result{ addTen(5) };
+11:     std::print("{} ", result);
+12: }
+```
+
+*Ausgabe*:
+
+```
+15
+```
+
+Noch immer haben wir eine freie Funktion beteiligt (`partialAdd`). Es geht aber auch ganz ohne freie Funktionen:
+
+
+*Beispiel*:
+
+```cpp
+01: void test()
+02: {
+03:     auto partialAdd = [](int a) {
+04:         return [a](int b) {
+05:             return a + b;
+06:         };
+07:     };
+08: 
+09:     auto addTwenty = partialAdd(20);
+10:     auto result{ addTwenty(10) };
+11:     std::print("{} ", result);
+12: }
+```
+
+*Ausgabe*:
+
+```
+30
+```
+
+Die Idee hinter *Partial Application*, einige Parameter in einer neuen Funktion (ggf. Lambda) zu fixieren
+und die anderen später beim Aufruf bereitzustellen, lässt sich verallgemeinern.
+Im folgenden werden mehrere neue &bdquo;partielle&rdquo; Funktionen auf Basis der vorhandenen Funktion `partialAdd` gebildet:
+
+```cpp
+01: void test()
+02: {
+03:     auto partialAdd = [](int a) {
+04:         return [a](int b) {
+05:             return a + b;
+06:             };
+07:         };
+08: 
+09:     auto addTen = partialAdd(10);
+10:     auto addTwenty = partialAdd(20);
+11:     auto addThirty = partialAdd(30);
+12: 
+13:     auto result{ 0 };
+14: 
+15:     result= addTen(10);
+16:     std::println("{} ", result);
+17: 
+18:     result = addTwenty(10);
+19:     std::println("{} ", result);
+20: 
+21:     result = addThirty(10);
+22:     std::println("{} ", result);
+23: }
+```
+
+*Ausgabe*:
+
+```
+20
+30
+40
+```
+
+Das Thema der *Partial Application* wird mit mehreren Argumenten interessanter:
+
+```cpp
+01: auto multiply(auto a, auto b, auto c) {
+02:     return a * b * c;
+03: }
+04: 
+05: void test()
+06: {
+07:     auto multiply_By_5_and_10 = [](int c) {
+08:         return multiply(5, 10, c);  // partially applied: a=5, b=10
+09:     };
+10: 
+11:     auto result{ multiply_By_5_and_10(15) };
+12: 
+13:     std::println("5*10*15={} ", result);    // output: 750
+14: }
+```
+
+*Ausgabe*:
+
+```
+5*10*15=750
+```
+
+*Bemerkung*: Kernidee der *Partial Application*<br />
+  * Die Kernidee der *Partial Application* besteht darin, einige Argumente einer Funktion vorab festzulegen, die restlichen Argumente später beim Aufruf hinzuzufügen.
+  * Mit Lambdas kann dies sehr elegant umgesetzt werden: Die festgelegten Argumente werden auf die Erfassungsklausel abgebildet, die restlichen auf die Parameter des Aufrufs.
+
+
+### *Currying* <a name="link5"></a>
+
+Die Hauptunterschiede zwischen *Partial Application* und *Currying* sind:
+
+  * *Partial Application*:<br />
+  Man nimmt eine Funktion mit mehreren Argumenten und legt einige von ihnen vorab fest &RightArrow; man erhält eine neue Funktion mit weniger Argumenten.
+  * *Currying*:<br />
+  Man transformiert eine Funktion so, dass sie immer nur ein Argument entgegennimmt und jedes Mal eine neue Funktion zurückgibt.
+
+Zum *Currying* betrachten wir nun einige Beispiele:
+
+
+```cpp
+01: auto addRegular(auto a, auto b) {
+02:     return a + b;
+03: }
+04: 
+05: auto addCurried = [](auto a) {
+06:     return [a](auto b) {
+07:         return a + b;
+08:     };
+09: };
+10: 
+11: void test_01()
+12: {
+13:     auto result{ addCurried(5)(5) };
+14: 
+15:     std::println("{} ", result);
+16: }
+17: 
+18: void test_02()
+19: {
+20:     auto addFive{ addCurried(5) };
+21: 
+22:     auto result{ addFive(10) };
+23: 
+24:     std::println("{} ", result);
+25: }
+```
+
+*Ausgabe*:
+
+```
+10
+15
+```
+
+Was kann man beobachten?
+
+Eine &bdquo;reguläre&rdquo; Addition zweier ganzer Zahlen würde so aussehen:
+
+```cpp
+auto result{ addRegular(5, 10) };
+```
+
+In der Variante mit *Currying*:
+
+```cpp
+auto result{ addCurried(5)(5) };
+```
+
+Die Funktion wird in eine Kette von Funktionen und Funktionsaufrufen mit jeweils einem Argument umgewandelt.
+
+In einer Art intuitiven Betrachtung könnte man auch sagen:
+
+  * *Partial Application*: &bdquo;Ich kenne bereits einige Eingaben &ndash; fixiere sie.&rdquo;
+  * *Currying*: &bdquo;Lass uns die Funktion so umgestalten, dass die Eingaben nacheinander erfolgen.&rdquo;
+
+Wir betrachten auch beim *Currying* ein Beispiel mit mehreren Parametern:
+
+```cpp
+01: auto addMoreCurried(int a) {
+02:     return [a] (int b) {
+03:         return [a, b](int c) { 
+04:             return a + b + c;
+05:         };
+06:     };
+07: }
+08: 
+09: void test()
+10: {
+11:     auto result{ addMoreCurried(1)(2)(3) };
+12:     std::println("{} ", result);
+13: }
+```
+
+*Ausgabe*:
+
+```
+6
+```
+
+Von Interesse ist die Funktion `addMoreCurried`: Sie besitzt einen Parameter `a`,
+dessen Wert von einem Lambda erfasst wird. Dieser Lambda ist das Ergebnis der `addMoreCurried`-Funktion.
+
+Das zurückgelieferte Lambdaobjekt besitzt ebenfalls einen Parameter (hier: `b`),
+der ebenfalls von einem unterlagerten Lambda erfasst wird. Dieses nochmals unterlagerte Lambdaobjekt 
+hat über die Erfassungsklausel Zugriff auf die beiden Parameter `a` und `b` und besitzt selbst einen Parameter `c`.
+
+Dieses Spiel könnte man natürlich beliebig weit treiben. Wir demonstrieren den Zugriff auf die vorhandenen Lambdas
+in einer alternativen Formulierung der letzten `test`-Funktion:
+
+```cpp
+01: void test()
+02: {
+03:     auto addToOne{ addMoreCurried(1) };
+04: 
+05:     auto addToThree{ addToOne(2) };
+06: 
+07:     auto result{ 0 };
+08:     result = addToThree(3);
+09:     std::println("{} ", result);
+10: 
+11:     result = addToThree(4);
+12:     std::println("{} ", result);
+13: }
+```
+
+
+*Ausgabe*:
+
+```
+6
+7
+```
+
+In dieser Funktion extrahieren wir die zwei Lamba-Objekte zunächst manuell.
+`addToOne` ist das erste Lambdaobjekt, in seiner Erfassungsklausel wird der Wert `1` abgespeichert.
+`addToThree` ist das zweite Lambdaobjekt, in seiner Erfassungsklausel wird der Wert `2` abgespeichert.
+
+Da nun immer die zwei Werte `1` und `2` als Summe (`3`) im Endergebnis berücksichtigt werden,
+habe ich die beiden Lambdas mit den entsprechenden Namen `addToOne` und `addToThree` versehen.
+
+Das zweite Lambdaobjekt können wir nun mit unterschiedlichen Parametern aufrufen,
+in unserem Beispiel mit den Werten `3` und `4`. Damit erhalten wir die erwarteten Summenwerte `6` und `7` als Endergebnis.
+
+Das letzte Beispiel mit den geschachtelten Lambdaobjekten wollen wir zum Abschluss noch auf 
+eine andere Weise analysieren. &bdquo;Lambdas&rdquo; werden auf aufrufbare Objekte vom Compiler abgebildet.
+Wie würde dies am Beispiel der Funktion `addMoreCurried` aussehen?
+
+
+```cpp
+01: void test()
+02: {
+03:     class OuterLambda
+04:     {
+05:     private:
+06:         class MiddleLambda
+07:         {
+08:         private:
+09:             class InnerLambda
+10:             {
+11:             public:
+12:                 inline int operator()(int c) const
+13:                 {
+14:                     return (m_a + m_b) + c;
+15:                 }
+16: 
+17:             private:
+18:                 int m_a;
+19:                 int m_b;
+20: 
+21:             public:
+22:                 InnerLambda(int a, int b) : m_a{ a }, m_b{ b } {}
+23:             };
+24: 
+25:         public:
+26:             inline InnerLambda operator()(int b) const
+27:             {
+28:                 InnerLambda tmp{ m_a, b };
+29:                 return tmp;
+30:             }
+31: 
+32:         private:
+33:             int m_a;
+34: 
+35:         public:
+36:             MiddleLambda(int a) : m_a{ a } {}
+37:         };
+38: 
+39:     public:
+40:         inline MiddleLambda operator()(int a) const
+41:         {
+42:             MiddleLambda tmp{ a };
+43:             return tmp;
+44:         }
+45:     };
+46: 
+47:     // longer, explanatory syntax
+48:     auto firstLambda{ OuterLambda{} };
+49:     auto secondLambda{ firstLambda(21) };
+50:     auto thirdLambda{ secondLambda(22) };
+51:     auto result1{ thirdLambda(23) };
+52:     std::println("{} ", result1);
+53: 
+54:     // short syntax
+55:     OuterLambda lambda = OuterLambda{};
+56:     auto result2{ lambda(10)(11)(12) };
+57:     std::println("{} ", result2);
+58: }
+```
+
+
+*Ausgabe*:
+
+```
+66
+33
+```
+
+## Funktionen höherer Ordnung <a name="link6"></a>
 
 Funktionen, die entweder Funktionen als Argument annehmen oder als Ergebnis zurückgeben, werden als
 *Funktionen höherer Ordnung* bezeichnet.
@@ -196,11 +562,11 @@ Do something using state 123
 
 *Bemerkung*:<br />
 Aufrufbare Objekte (*Callables*, Objekte, die den Operator `operator()` überladen) sind nicht die einzige Möglichkeit,
-Funktionen als Parameter zu übergeben. Die Hüllenklasse `std::funtion` und Lambda-Objekte sind weitere Kandidaten in C++,
+Funktionen als Parameter zu übergeben. Die Hüllenklasse `std::function` und Lambda-Objekte sind weitere Kandidaten in C++,
 um diese Wirkung zu erzielen.
 
 
-## *Filter-Map-Reduce* Pattern <a name="link5"></a>
+## *Filter-Map-Reduce* Pattern <a name="link7"></a>
 
 Die Klassiker aus der funktionalen Programmierung sind die drei
 Funktionen `map`, `filter` und `reduce`. Diese drei Funktionen höherer Ordnung werden über eine weitere 
@@ -214,7 +580,7 @@ speziell Lambda-Funktionen an.
   * `reduce` &ndash; Reduktion der Elemente eines Containers auf ein Endergebnis (Resultat). Typischerweise wird eine Lambda-Funktion
     mit zwei Argumenten auf ein Element des Containers und das vorangehende Zwischenergebnis angewendet.
 
-#### Umsetzung in C++ und STL <a name="link4"></a>
+### Umsetzung in C++ und STL <a name="link8"></a>
 
 In einer ersten Näherung finden wir die drei Funktionen höherer Ordnung auch in C++
 bei genauem Hinsehen in den STL-Algorithmen vor:
@@ -224,7 +590,7 @@ bei genauem Hinsehen in den STL-Algorithmen vor:
   * `reduce` &ndash; ähnlich zu `std::accumulate`.
 
 
-#### Ein Beispiel
+*Ein Beispiel*:
 
 ```cpp
 01: class Book 
@@ -288,7 +654,9 @@ bei genauem Hinsehen in den STL-Algorithmen vor:
 Titles: Java, C#
 ```
 
-## Umsetzung in C++ und *Ranges* <a name="link6"></a>
+### Umsetzung in C++ und *Ranges* <a name="link9"></a>
+
+*Ein Beispiel*:
 
 
 ```cpp

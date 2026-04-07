@@ -737,7 +737,7 @@
     <None Include="ParametersWithConstAndRef\ConstDeclarations.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="Lambda\Lambda.md">
+    <None Include="Lambda\Lambda_Legacy.md">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="UniquePtr\UniquePtr.md">
@@ -1113,6 +1113,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Architecture\cpp_architecture_07_value_vs_reference_semantics.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Lambda\Lambda.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
