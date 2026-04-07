@@ -50,25 +50,34 @@ Es wird fast immer als kompilierte Sprache implementiert, und viele Anbieter bie
 darunter die Free Software Foundation, LLVM, Microsoft, Intel, Oracle und IBM.
 C++ ist daher auf sehr vielen Plattformen verfügbar.
 
-Einen genauen Abriss zur geschichtlichen Entwicklung von C++ kann man
-[hier](https://en.cppreference.com/w/cpp/language/history)
-nachlesen.
-
-*Bemerkung*:
-
-Die Betreiber des monatlich erscheinenden *TIOBE Programming Community Index* haben im Januar 2023
-die Programmiersprache des Jahres 2022 bekannt gegeben.
-Den Titel erhält jeweils die Sprache, die im Verlauf des Jahres den höchsten Zuwachs im Ranking zu verzeichnen hat.
-Nach Python im Jahr 2021 steht nun C++ auf dem Thron für 2022:
-
-<img src="GeneralSnippets/Images/tiobe_index_december_2022.png" width="500">
-
-*Abbildung* 3: Die Rangfolge der ersten zehn Programmiersprachen auf Basis des *TIOBE Programming Community Index* im Januar 2023.
-
 Der Grund für die Beliebtheit von C++ liegt laut TIOBE
 &bdquo;in seiner hervorragenden Leistung und der Tatsache, dass es sich um eine objektorientierte Hochsprache handelt.
 Daher ist es möglich, schnelle und umfangreiche Softwaresysteme (über Millionen von Codezeilen) in C++ zu entwickeln,
 ohne zwangsläufig in einem Wartungsalptraum zu enden.&rdquo;
+
+Einen genauen Abriss zur geschichtlichen Entwicklung von C++ kann man
+[hier](https://en.cppreference.com/w/cpp/language/history)
+nachlesen.
+
+---
+
+## Die Kernphilosophie von *Modern C++*
+
+Die Kernphilosophie von *Modern C++* lautet:
+
+**Goldstandard für hocheffiziente Softwarelösungen mit erstklassigem Code für anspruchsvolle Anwendungen**.
+
+*Modern C++* &ndash; hauptsächlich definiert durch die sprachlichen Erweiterungen beginnend mit C++11 bis hin zu C++26 &ndash;
+zeichnet sich durch eine deutliche Verlagerung hin zu sichererer, ausdrucksstärkerer und performanterer Programmierung aus.
+
+*Modern C++* entfernt sich von *Classic C++* und damit von vielen fehleranfälligen C-Idiomen.
+
+Man kann es auch so ausdrücken:<br />
+Die Kernphilosophie von *Modern C++* besteht darin, Abstraktionen
+auf höheren Ebenen bereitzustellen &ndash; die die Sicherheit und Lesbarkeit verbessern &ndash; ohne
+die Leistung auf niedrigeren Ebenen zu beeinträchtigen.
+
+[Zur Kernphilosophie](GeneralSnippets/Architecture/Architecture.md).
 
 ---
 

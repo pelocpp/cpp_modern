@@ -364,6 +364,17 @@
     <None Include="Allocator\Allocator.md" />
     <None Include="Any\cpp_std_any.svg" />
     <None Include="Any\Any.md" />
+    <None Include="Architecture\Architecture.md" />
+    <None Include="Architecture\Architecture_01.md" />
+    <None Include="Architecture\Architecture_02.md" />
+    <None Include="Architecture\Architecture_03.md" />
+    <None Include="Architecture\cpp_architecture_01_value_vs_reference_semantics.svg" />
+    <None Include="Architecture\cpp_architecture_02_value_vs_reference_semantics.svg" />
+    <None Include="Architecture\cpp_architecture_03_value_vs_reference_semantics.svg" />
+    <None Include="Architecture\cpp_architecture_04_value_vs_reference_semantics.svg" />
+    <None Include="Architecture\cpp_architecture_05_value_vs_reference_semantics.svg" />
+    <None Include="Architecture\cpp_architecture_06_value_vs_reference_semantics.svg" />
+    <None Include="Architecture\cpp_architecture_07_value_vs_reference_semantics.svg" />
     <None Include="ArgumentDependentNameLookup\ArgumentDependentNameLookup.md" />
     <None Include="ArrayDecay\ArrayDecay.md" />
     <None Include="Array\Array.md" />

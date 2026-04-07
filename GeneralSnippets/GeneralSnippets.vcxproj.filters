@@ -1082,6 +1082,39 @@
     <None Include="Exercises\cpp_hash_table_phonebook.svg">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="Architecture\Architecture.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Architecture\Architecture_01.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Architecture\Architecture_02.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Architecture\Architecture_03.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Architecture\cpp_architecture_01_value_vs_reference_semantics.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Architecture\cpp_architecture_02_value_vs_reference_semantics.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Architecture\cpp_architecture_03_value_vs_reference_semantics.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Architecture\cpp_architecture_04_value_vs_reference_semantics.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Architecture\cpp_architecture_05_value_vs_reference_semantics.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Architecture\cpp_architecture_06_value_vs_reference_semantics.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Architecture\cpp_architecture_07_value_vs_reference_semantics.svg">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="VariadicTemplates\cpp_snippets_mixins_01.png">
