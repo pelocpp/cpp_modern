@@ -448,7 +448,7 @@ static void lambda_13()
     // Compiles: "Generalized Lambda Capture"
     auto lambda2 = [ptrSampleClass = std::move(ptr)]() {
         ptrSampleClass->doSomething();
-        };
+    };
     lambda2();
 
     ptr = std::make_unique<SampleClass>();
@@ -456,7 +456,7 @@ static void lambda_13()
     // Compiles too: Same name for captured variable and internal variable of lambda object
     auto lambda3 = [ptr = std::move(ptr)]() {
         ptr->doSomething();
-        };
+    };
     lambda3();
 }
 
@@ -522,7 +522,7 @@ auto createTask(TArgs&&... args) {
 
         // folding over a comma: process all arguments
         (process(args), ...);
-        };
+    };
 }
 
 static void lambda_15()
