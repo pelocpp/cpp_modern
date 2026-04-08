@@ -14,9 +14,10 @@
   * [Tradionelle Vorgehensweisen bei der Behandlung von Fehlersituationen](#link2)
   * [Klasse `std::expected`](#link3)
   * [Methode `and_then`](#link4)
-  * [ Methode `transform`](#link5)
+  * [Methode `transform`](#link5)
   * [Ein weiteres Beispiel zum Verketten von Methoden](#link6)
-  * [Literaturhinweise](#link7)
+  * [Methode `or_else`](#link7)
+  * [Literaturhinweise](#link8)
 
 ---
 
@@ -96,7 +97,7 @@ Die Verwendung der Klasse `std::expected` beginnt mit der Erstellung eines Objek
 Der Typ `std::expected<T, E>` repräsentiert einen erwarteten Wert vom Typ `T` oder einen Fehler vom Typ `E`.
 
 In nächsten Beispiel ist `divide` eine Funktion, die zwei Gleitpunktwerte verarbeitet
-und ein `std::expected<int, std::string>`-Objekt zurückgibt.
+und ein `std::expected<double, std::string>`-Objekt zurückgibt.
 
 Wenn der Nenner Null ist, gibt die Funktion eine Fehlermeldung mit `std::unexpected` zurück;
 andernfalls gibt sie das Ergebnis der Division zurück.
@@ -272,7 +273,7 @@ Man ist nicht daran interessiert, in Erfahrung zu bringen, in welchem Kettenglie
 
 ```cpp
 01: // add five
-02: std::expected<double, std::string> add_five(double value) {
+02: std::expected<double, std::string> addFive(double value) {
 03:     return value + 5;
 04: }
 05: 
@@ -291,7 +292,7 @@ Man ist nicht daran interessiert, in Erfahrung zu bringen, in welchem Kettenglie
 18:     }
 19:     else
 20:     {
-21:         return static_cast<double>(value);
+21:         return value;
 22:     }
 23: }
 24: 
@@ -301,7 +302,7 @@ Man ist nicht daran interessiert, in Erfahrung zu bringen, in welchem Kettenglie
 28:     auto denominator = 2.5;         // success
 29: 
 30:     auto result = divide(numerator, denominator)
-31:         .and_then(add_five)
+31:         .and_then(addFive)
 32:         .and_then(powerOfThree)
 33:         .and_then(russianRoulette)
 34:         .and_then(powerOfThree);
@@ -315,6 +316,49 @@ Man ist nicht daran interessiert, in Erfahrung zu bringen, in welchem Kettenglie
 42:     }
 43: }
 ```
+
+---
+
+## Methode `or_else` <a name="link6"></a>
+
+Die Methode `or_else` behandelt Fehler, indem es eine Funktion auf den enthaltenen Fehler anwendet, falls das `std::expected`-Objekt einen Fehler enthält.
+Die Methode ist nützlich für Protokollierung, Fehlertransformation oder Wiederherstellungsstrategien.
+
+```cpp
+01: void test()
+02: {
+03:     auto numerator = 20.0;
+04:     auto denominator = 0.0;
+05: 
+06:     // use 'or_else' to handle errors
+07:     auto errorResult = divide(numerator, denominator)
+08:         .and_then(addFive)
+09:         .and_then(powerOfThree)
+10:         .or_else([](const std::string& error) {
+11:             std::println("Error occurred: {}", error);
+12:             return std::expected<double, std::string>(0); // providing a default value
+13:         }
+14:     );
+15: 
+16:     // check
+17:     if (errorResult.has_value()) {
+18:         std::println("Result: {}", errorResult.value());
+19:     }
+20:     else {
+21:         std::println("Error: {}", errorResult.error());
+22:     }
+23: }
+```
+
+*Ausgabe*:
+
+```
+Error occurred: Error: Division by zero
+Result: 0
+```
+
+Sollten wir in dem gezeigten Beispiel an dem `std::optional-Objekt ` weitere `and_then`-Methoden verkettet sein (hier: `addFive` und `powerOfThree`),
+so kommen diese Methoden nicht zur Ausführung.
 
 ---
 

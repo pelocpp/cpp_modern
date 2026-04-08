@@ -141,6 +141,22 @@ namespace StdExpected {
         if (!result.has_value()) {
             std::println("Error: {}", result.error());
         }
+
+        denominator = 2.5;
+
+        result = squareIfSuccessEx(numerator, denominator);
+
+        if (result.has_value()) {
+            std::println("Square: {}", result.value());
+        }
+
+        denominator = 0.0;
+
+        result = squareIfSuccessEx(numerator, denominator);
+
+        if (!result.has_value()) {
+            std::println("Error: {}", result.error());
+        }
     }
 
     //==================================================================================
@@ -206,7 +222,7 @@ namespace StdExpected {
     // more chaining: or_else
 
     // add five
-    static std::expected<double, std::string> add_five(double value) {
+    static std::expected<double, std::string> addFive(double value) {
         return value + 5;
     }
 
@@ -223,20 +239,19 @@ namespace StdExpected {
         if (remainder == 0) {
             return std::unexpected{ "Error: Value is multiple of Two" };
         }
-        else
-        {
-            return static_cast<double>(value);
+        else {
+            return value;
         }
     }
 
     static void test_excepted_05()
     {
         auto numerator = 20.0;
-        auto denominator = 2.5;         // success
-        // auto denominator = 20.0;     // error
+        // auto denominator = 2.5;         // success
+        auto denominator = 20.0;     // error
 
         auto result = divide(numerator, denominator)
-            .and_then(add_five)
+            .and_then(addFive)
             .and_then(powerOfThree)
             .and_then(russianRoulette)
             .and_then(powerOfThree);
@@ -257,7 +272,7 @@ namespace StdExpected {
 
         // use 'or_else' to handle errors
         auto errorResult = divide(numerator, denominator)
-            .and_then(add_five)
+            .and_then(addFive)
             .and_then(powerOfThree)
             .or_else([](const std::string& error) {
                 std::println("Error occurred: {}", error);
@@ -283,8 +298,8 @@ void main_expected()
     test_excepted_02();   // and_then
     test_excepted_03();   // transform
     test_excepted_04();   // transform
-    test_excepted_05();
-    test_excepted_06();
+    test_excepted_05();   // chaining of 'and_then'
+    test_excepted_06();   // or_else
 }
 
 // =====================================================================================

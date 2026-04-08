@@ -96,9 +96,7 @@ Die Anforderungen an die in `and_then()` übergebene Funktion sind wie folgt:
   * Eingabetyp:<br />Die Funktion muss ein einzelnes Argument akzeptieren. Der Typ dieses Arguments muss mit dem Typ des Werts im `std::optional`-Objekt übereinstimmen, auf dem `and_then()` aufgerufen wird. 
   * Rückgabetyp:<br />Die Funktion muss ein `std::optional<U>`-Objekt zurückgeben, wobei `U` ein beliebiger Typ sein kann.
 
-
-
-Wir betrachten ein zweites, realitätsnaheres Beispiel. Es geht um `User`-Objekte:
+Wir betrachten ein zweites, realitätsnahes Beispiel. Es geht um `User`-Objekte:
 
 ```cpp
 01: class User
@@ -110,13 +108,11 @@ Wir betrachten ein zweites, realitätsnaheres Beispiel. Es geht um `User`-Objekt
 07: };
 ```
 
-
 Der Einfachheit halber legen wir fest, dass ein `User`-Objekt einen gültigen Namen besitzt,
-wenn die beiden Zeichenketten der Vor- und Nachnamens nicht leer sind.
+wenn die beiden Zeichenketten des Vor- und Nachnamens nicht leer sind.
 
 Mit der Funktion `and_then()` können wir auf einem gültigen `std::optional<User>` eine Nachverarbeitung
 der in der Klasse `User` vorhandenen Informationen vornehmen:
-
 
 *Beispiel*:
 
@@ -144,14 +140,11 @@ der in der Klasse `User` vorhandenen Informationen vornehmen:
 21: }
 ```
 
-
 *Ausgabe*:
 
 ```
 Result: Hans Mueller
 ```
-
-
 
 ## `or_else` <a name="link4"></a>
 
@@ -177,7 +170,6 @@ Ist er leer, wird die angegebene Funktion aufgerufen und deren Ergebnis (das ebe
 13:     }
 14: }
 ```
-
 
 *Ausgabe*:
 
@@ -233,7 +225,6 @@ Ist das ursprüngliche `std::optional`-Objekt leer, wird die Funktion nicht aufg
 ```
 Result: HANS MUELLER
 ```
-
 
 ---
 
