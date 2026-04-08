@@ -56,9 +56,9 @@ Die Sprache unterstützt nun Paradigmen, die den Code lesbarer machen.
     Sie können folglich direkt im Code definiert werden, was die Callback-Logik und die Verwendung von STL-Algorithmen vereinfacht.
   * Bereichsbasierte For-Schleifen (*Range-Based For Loop*):<br />Saubere und sichere Iteration über Container,
     wodurch Indexmanipulationen und *Off-by-One*-Fehler vermieden werden.
-  * &bdquo;Monadische&bdquo; Interfaces:<br />Ab C++ 23 wurden zu den Klasse `std::optional` und `std::expected` neue Operationen
+  * &bdquo;Monadische&rdquo; Interfaces:<br />Ab C++ 23 wurden zu den Klassen `std::optional` und `std::expected` neue Operationen
     hinzugefügt: `and_then`, `or_else` und `transform`. Diese Operationen, die von Konzepten der funktionalen Programmierung inspiriert sind,
-    bieten eine prägnantere und ausdrucksstärkere Möglichkeit, mit optionalen Werten (also mit `std::optional`-Objekten) zu arbeiten.
+    bieten eine prägnantere und ausdrucksstärkere Möglichkeit, mit optionalen Werten (also mit `std::optional`-Objekten) oder mit Fehlersituationen zu arbeiten.
   * Structured Binding:<br />Ermöglicht das direkte Entpacken von Tupeln,
     Paaren und Strukturen in benannte Variablen (z. B. `auto [x, y] = point;`).
   * *Brace Initialization* (auch *Uniform Initialization* genannt):<br />Diese Form der Initialisierung wurde mit C++ 11 eingeführt,
