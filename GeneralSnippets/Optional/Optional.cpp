@@ -146,15 +146,139 @@ namespace OptionalExamples {
         );
         std::cout << std::endl;
     }
+
+    // =================================================================================
+
+    /*
+     * Demonstrating monadic interface for std::optional
+     */
+
+     // =================================================================
+     // and_then
+
+    static void test_01_optional_monadic()
+    {
+        std::optional<int> n{ 123 };
+        // or
+        // std::optional<int> n{ std::nullopt };
+
+        auto result = n.and_then([](auto x) /*-> std::optional<std::string>*/ {
+            if (x == 123) {
+                return std::optional<std::string>("Got expected value 123");
+            }
+            else {
+                //return std::nullopt;
+                return std::optional<std::string>("Got unexpected value! ");
+            }
+            });
+
+        if (result) {
+            std::println("{}", result.value());
+        }
+
+        std::println("Done.");
+    }
+
+    class User
+    {
+    public:
+        std::string m_first;
+        std::string m_last;
+        std::size_t m_age;
+    };
+
+    static std::optional<std::string> hasValidName(const User& user) {
+        if (!user.m_first.empty() and !user.m_last.empty()) {
+            return user.m_first + " " + user.m_last;
+        }
+        else {
+            return std::nullopt;
+        }
+    }
+
+    static void test_02_optional_monadic()
+    {
+        auto user = std::make_optional<User>("Hans", "Mueller", 30);
+        // or
+        // auto user = std::make_optional<User>("Sepp", "", 30);
+
+        auto result = user.and_then([](const auto& user) {
+            return hasValidName(user);
+            });
+
+        if (result) {
+            std::println("Result: {}", result.value());
+        }
+
+        std::println("Done.");
+    }
+
+    // =================================================================
+    // or_else
+
+    static void test_03_optional_monadic()
+    {
+        auto user = std::make_optional<User>("Hans", "Mueller", 30);
+        // or
+        // auto user = std::make_optional<User>("Sepp", "", 30);
+
+        auto result = user.and_then([](const auto& user) {
+            return hasValidName(user);
+            }).or_else([]() {
+                return std::optional<std::string>{"Max Mustermann"};
+            });
+
+        if (result) {
+            std::println("Result: {}", result.value());
+        }
+
+        std::println("Done.");
+    }
+
+    // =================================================================
+    // transform
+
+    static void test_04_optional_monadic()
+    {
+        auto user = std::make_optional<User>("Hans", "Mueller", 30);
+        // or
+        // auto user = std::make_optional<User>("Sepp", "", 30);
+
+        auto result = user.and_then([](const auto& user) {
+            return hasValidName(user);
+            }).transform([](auto name) {
+
+                std::transform(
+                    name.begin(),
+                    name.end(),
+                    name.begin(),
+                    [](unsigned char c) { return std::toupper(c); }
+                );
+
+                return name;
+            });
+
+        if (result) {
+            std::println("Result: {}", result.value());
+        }
+
+        std::println("Done.");
+    }
 }
 
 void main_optional()
 {
     using namespace OptionalExamples;
+
     test_01_optional();
     test_02_optional();
     test_03_optional();
     test_04_optional();
+
+    test_01_optional_monadic();
+    test_02_optional_monadic();
+    test_03_optional_monadic();
+    test_04_optional_monadic();
 }
 
 // =====================================================================================
