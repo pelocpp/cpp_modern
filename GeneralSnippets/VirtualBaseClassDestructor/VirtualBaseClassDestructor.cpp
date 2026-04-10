@@ -13,6 +13,7 @@ namespace VirtualBaseClassDestructor {
         {
             // do some important cleanup in class Base
             std::cout << "d'tor Base" << std::endl;
+            std::println("d'tor Base");
         }
 
         // some virtual methods
@@ -26,6 +27,7 @@ namespace VirtualBaseClassDestructor {
         {
             // do some important cleanup in class Derived
             std::cout << "d'tor Derived" << std::endl;
+            std::println("d'tor Derived");
         }
     };
 

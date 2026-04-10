@@ -14,32 +14,32 @@ Virtuelle Destruktoren sind nützlich, wenn Sie möglicherweise eine Instanz einer
 über einen Zeiger auf die Basisklasse löschen. Wir betrachten das folgende Beispiel:
 
 ```cpp
-class Base
-{
-public:
-    ~Base()
-    {
-        // do some important cleanup in class Base
-        std::cout << "d'tor Base" << std::endl;
-    }
-
-    // some virtual methods
-    virtual void doSomething() {}
-};
+01: class Base
+02: {
+03: public:
+04:     ~Base()
+05:     {
+06:         // do some important cleanup in class Base
+07:         std::println("d'tor Base");
+08:     }
+09: 
+10:     // some virtual methods
+11:     virtual void doSomething() {}
+12: };
 ```
 
 und eine davon abgeleitete Klasse `Derived`:
 
 ```cpp
-class Derived : public Base
-{
-public:
-    ~Derived()
-    {
-        // do some important cleanup in class Derived
-        std::cout << "d'tor Derived" << std::endl;
-    }
-};
+01: class Derived : public Base
+02: {
+03: public:
+04:     ~Derived()
+05:     {
+06:         // do some important cleanup in class Derived
+07:         std::println("d'tor Derived");
+08:     }
+09: };
 ```
 
 Wir verwenden beide Klassen `Base` und `Derived` nun wie folgt:
@@ -68,11 +68,11 @@ wenn sie auf Grund eines polymorphen Szenarios aufgerufen werden sollten.
 Wenn Sie in unserem Beispiel den Destruktor von `Base` in 
 
 ```
-virtual ~Base()
-{
-    // do some important cleanup in class Base
-    std::cout << "d'tor Base" << std::endl;
-}
+01: virtual ~Base()
+02: {
+03:     // do some important cleanup in class Base
+04:     std::println("d'tor Base");
+05: }
 ```
 
 abändern, also nur das Schlüsselwort `virtual` hinzufügen, lautet die Programmausgabe wie gewünscht
