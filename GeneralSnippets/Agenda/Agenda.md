@@ -23,12 +23,13 @@
 
 
 ## Lambdas
-  * Historische Betrachtung (Funktionen, aufrufbare Objekte, Lambdas)
-  * *Capture*-Klausel
-  * *Closure* von Lambdas
-  * Lambdas und `std::function<T>`
-  * Zusammenhang Lambda-Objekt und aufrufbares Objekt
+  * Anonyme Funktionsobjekte
+  * Historische Betrachtung: Funktionen &RightArrow; aufrufbare Objekte &RightArrow; Lambdas
+  * Erfassungsklausel / *Capture-Clause* / *Closure* von Lambdas
+  * Lambdas: `auto` und `std::function<T>`
   * IIFE &ndash; *Immediately Invoked Functional Expression*
+  * &bdquo;*Generalized Lambda Capture*&rdquo;
+  * C++20: &bdquo;*Variadic Capture*&rdquo;
 
 
 ## Generische Funktionen (inkl. Lambdas)
@@ -146,10 +147,12 @@
 ## Funktionale Programmierung mit C++
   * Grundlagen
   * *Pure* Funktionen
+  * *Partial Application* und *Currying*
   * Funktionen höherer Ordnung
+  * *Filter-Map-Reduce* Pattern
   * Ein Beispiel mit STL und *Ranges*
 
-  
+
 ## Expression Templates / Lazy Evaluation
   * Allgemeines / Erläuterung
   * Beispiel Klasse `Matrix`
