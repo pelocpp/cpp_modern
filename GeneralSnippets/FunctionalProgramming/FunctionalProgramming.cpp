@@ -293,16 +293,14 @@ namespace FunctionalProgramming {
 
     static void functional_currying_07()
     {
+        // ===============================================================
         // look behind the scenes: using syntax with callable objects
+        // 
         //auto addCurried = [](int a) {
         //    return [a](int b) {
         //        return a + b;
         //        };
         //    };
-
-        //auto result{ addCurried(10)(11) };
-
-        // std::println("{} ", result);
 
         // ===============================================================
         // or longer, explanatory version
@@ -347,7 +345,9 @@ namespace FunctionalProgramming {
 
     static void functional_currying_08()
     {
+        // ===============================================================
         // look behind the scenes: using syntax with callable objects
+        // 
         //auto addCurried = [](int a) {
         //    return [a](int b) {
         //        return [a, b](int c) {
@@ -355,10 +355,6 @@ namespace FunctionalProgramming {
         //            };
         //        };
         //    };
-
-        //auto result{ addCurried(10)(11)(12)};
-
-        // std::println("{} ", result);
 
         // ===============================================================
         // or longer, explanatory version
