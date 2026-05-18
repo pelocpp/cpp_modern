@@ -26,16 +26,16 @@ namespace InitializerList {
     static void print(std::initializer_list<int> list) {
 
         for (const auto& value : list) {
-            std::cout << value << " - ";
+            std::print("{} - ", value);
         }
-        std::cout << std::endl;
+        std::println();
     }
 
     static void test_01() {
 
         // testing functions expecting lists in function call
         int sum = adder({ 1, 2, 3, 4, 5 });
-        std::cout << sum << std::endl;
+        std::println("{}", sum);
 
         print({ 1, 2, 3, 4, 5 });
     }
@@ -124,26 +124,26 @@ namespace InitializerList {
     void printEx(std::initializer_list<T> list) {
 
         for (const auto& value : list) {
-            std::cout << value << " - ";
+            std::print("{} - ", value);
         }
-        std::cout << std::endl;
+        std::println();
     }
 
     // delegating templated std::initializer_list to std::for_each with lambda
     template<typename T>
     void printExEx(std::initializer_list<T> list) {
 
-        std::cout << "Begin of list: ";
+        std::print("Begin of list: ");
 
         std::for_each(
             list.begin(),
             list.end(),
             [](const T& elem) {
-                std::cout << elem << " - ";
+                std::print("{} - ", elem);
             }
         );
 
-        std::cout << " End of list." << std::endl;
+        std::println(" End of list.");
     }
 
     static void test_05() {
@@ -151,7 +151,7 @@ namespace InitializerList {
         // testing generic functions expecting lists
         printEx({ 11, 12, 13, 14, 15 });
 
-        std::cout << "--------------------------------" << std::endl;
+        std::println("--------------------------------");
 
         printEx({ 'a', 'b', 'c' });        // template argument T can be deduced automatically
         printEx<char>({ 'a','b', 'c' });   // template argument T specified explicitly
@@ -160,7 +160,7 @@ namespace InitializerList {
         printEx<std::string>({ "ABC", "DEF", "GHI" });
         printEx<std::string>({ std::string("RST"), std::string("UVW"), std::string("XYZ") });
 
-        std::cout << "--------------------------------" << std::endl;
+        std::println("--------------------------------");
 
         printExEx({ 'a', 'b', 'c' });        // template argument T can be deduced automatically
         printExEx<char>({ 'a','b', 'c' });   // template argument T specified explicitly

@@ -10,7 +10,7 @@ namespace GenericFunctions {
     // generic function
 
     static void function(auto x, int y) {
-        std::cout << "x=" << x << ", y=" << y << std::endl;
+        std::println("x={}, y={}", x, y);
     };
 
     static void test_01()
@@ -31,25 +31,25 @@ namespace GenericFunctions {
     template<typename T>
     static void Function(T x, int y)
     {
-        std::cout << "x=" << x << ", y=" << y << std::endl;
+        std::println("x={}, y={}", x, y);
     }
 
     template<>
     void Function<int>(int x, int y)
     {
-        std::cout << "x=" << x << ", y=" << y << std::endl;
+        std::println("x={}, y={}", x, y);
     }
 
     template<>
     void Function<double>(double x, int y)
     {
-        std::cout << "x=" << x << ", y=" << y << std::endl;
+        std::println("x={}, y={}", x, y);
     }
 
     template<>
     void Function<std::string>(std::string x, int y)
     {
-        std::cout << "x=" << x << ", y=" << y << std::endl;
+        std::println("x={}, y={}", x, y);
     }
 
     static void test_02()
@@ -63,7 +63,7 @@ namespace GenericFunctions {
     // generic function - several 'auto' parameters
 
     static void functionTwice(auto x, auto y) {
-        std::cout << "x=" << x << ", y=" << y << std::endl;
+        std::println("x={}, y={}", x, y);
     };
 
     // ---------------------------------------------------------------------------------
@@ -72,7 +72,7 @@ namespace GenericFunctions {
     template<typename T, typename U>
     static void FunctionTwice(T x, U y)
     {
-        std::cout << "x=" << x << ", y=" << y << std::endl;
+        std::println("x={}, y={}", x, y);
     }
 
     static void test_03()
@@ -99,7 +99,7 @@ namespace GenericLambdas {
     // generic lambda
 
     auto lambda = [](auto x, int y) {
-        std::cout << "x=" << x << ", y=" << y << std::endl;
+        std::println("x={}, y={}", x, y);
         };
 
     static void test_01()
@@ -116,22 +116,22 @@ namespace GenericLambdas {
     {
         template <typename T>
         auto operator() (T x, int y) {
-            std::cout << "x=" << x << ", y=" << y << std::endl;
+            std::println("x={}, y={}", x, y);
         }
 
         template<>
         auto operator() <int> (int x, int y) {
-            std::cout << "x=" << x << ", y=" << y << std::endl;
+            std::println("x={}, y={}", x, y);
         }
 
         template<>
         auto operator() <double> (double x, int y) {
-            std::cout << "x=" << x << ", y=" << y << std::endl;
+            std::println("x={}, y={}", x, y);
         }
 
         template<>
         auto operator() <std::string> (std::string x, int y) {
-            std::cout << "x=" << x << ", y=" << y << std::endl;
+            std::println("x={}, y={}", x, y);
         }
     };
 
@@ -152,7 +152,7 @@ namespace GenericLambdas {
     // generic lambda - several 'auto' parameters
 
     auto lambdaTwice = [](auto x, auto y) {
-        std::cout << "x=" << x << ", y=" << y << std::endl;
+        std::println("x={}, y={}", x, y);
         };
 
     // ---------------------------------------------------------------------------------
@@ -162,22 +162,22 @@ namespace GenericLambdas {
     {
         template <typename T, typename U>
         auto operator() (T x, U y) {
-            std::cout << "x=" << x << ", y=" << y << std::endl;
+            std::println("x={}, y={}", x, y);
         }
 
         template<>
         auto operator() <int,int> (int x, int y) {
-            std::cout << "x=" << x << ", y=" << y << std::endl;
+            std::println("x={}, y={}", x, y);
         }
 
         template<>
         auto operator() <long, long long> (long x, long long y) {
-            std::cout << "x=" << x << ", y=" << y << std::endl;
+            std::println("x={}, y={}", x, y);
         }
 
         template<>
         auto operator() <double, float> (double x, float y) {
-            std::cout << "x=" << x << ", y=" << y << std::endl;
+            std::println("x={}, y={}", x, y);
         }
     };
 
@@ -217,7 +217,7 @@ namespace GenericLambdasExample {
             isGreaterThanFifty
         );
         if (it1 != intValues.end()) {
-            std::cout << "Found a value: " << *it1 << std::endl;
+            std::println("Found a value: {}", *it1);
         }
 
         std::vector<double> doubleValues{ 24.5, 75.5, 12.5, 87.5, 12.5 };
@@ -229,7 +229,7 @@ namespace GenericLambdasExample {
             isGreaterThanFifty
         );
         if (it2 != doubleValues.end()) {
-            std::cout << "Found a value: " << *it2 << std::endl;
+            std::println("Found a value: {}", *it2);
         }
     }
 
@@ -250,7 +250,7 @@ namespace GenericLambdasExample {
             isGreaterThanFiftyEx<int>
         );
         if (it1 != std::end(intValues)) {
-            std::cout << "Found a value: " << *it1 << std::endl;
+            std::println("Found a value: {}", *it1);
         }
 
         std::vector<double> doubleValues{ 24.5, 75.5, 12.5, 87.5, 12.5 };
@@ -263,7 +263,7 @@ namespace GenericLambdasExample {
             isGreaterThanFiftyEx<double>
         );
         if (it2 != std::end(doubleValues)) {
-            std::cout << "Found a value: " << *it2 << std::endl;
+            std::println("Found a value: {}", *it2);
         }
     }
 }
@@ -287,7 +287,7 @@ namespace GenericFunctionsExample {
         ) };
 
         if (it1 != intValues.end()) {
-            std::cout << "Found a value: " << *it1 << std::endl;
+            std::println("Found a value: {}", *it1);
         }
 
         std::vector<double> doubleValues{ 24.5, 75.5, 12.5, 87.5, 12.5 };
@@ -300,7 +300,7 @@ namespace GenericFunctionsExample {
         ) };
 
         if (it2 != doubleValues.end()) {
-            std::cout << "Found a value: " << *it2 << std::endl;
+            std::println("Found a value: {}", *it2);
         }
     }
 }
@@ -380,15 +380,15 @@ namespace GenericTemplatedLambdas {
     // -------------------------------------------------------------------------------------
 
     static void foo(const std::string& s) {
-        std::cout << "Signature: const&" << std::endl;
+        std::println("Signature: const&");
     }
 
     static void foo(std::string&& s) {
-        std::cout << "Signature: &&" << std::endl;
+        std::println("Signature: &&");
     }
 
     auto callingFoo = [](auto&& s) {
-        std::cout << "Calling foo(): " << s;
+        std::print("Calling foo(): {}", s);
         foo(std::forward<decltype(s)>(s));
     };
 
@@ -413,7 +413,7 @@ namespace GenericRecursiveLambdas {
             return exp == 0 ? 1 : base * power(base, exp - 1);
             };
 
-        std::cout << power(2, 10) << std::endl; // 2^10 = 1024
+        std::println("{}", power(2, 10));       // 2^10 = 1024
     }
 
     static void test_02()
@@ -430,7 +430,7 @@ namespace GenericRecursiveLambdas {
             }
             };
 
-        std::cout << factorial(5) << std::endl; // 120
+        std::println("{}", factorial(5));       // 120
     }
 
     static void test_03()
@@ -440,9 +440,9 @@ namespace GenericRecursiveLambdas {
             return exp == 0 ? 1 : base * self(self, base, exp - 1);
             };
 
-        std::cout << power(power, 2, 10) << std::endl;    // 2^10 = 1024
+        std::println("{}", power(power, 2, 10));          // 2^10 = 1024
 
-        std::cout << power(power, 2.71828, 10);           // e^10 = 22026.3
+        std::println("{}", power(power, 2.71828, 10));    // e^10 = 22026.3
     }
 
     static void test_04()
@@ -458,7 +458,7 @@ namespace GenericRecursiveLambdas {
             }
             };
 
-        std::cout << factorial(factorial, 5) << std::endl; // 120
+        std::println("{}", factorial(factorial, 5));        // 120
     }
 }
 
@@ -482,7 +482,7 @@ namespace GenericLambdasCurrying {
 
         auto plusTen = [plus](auto x) { return plus(10, x); };
 
-        std::cout << plusTen(5) << std::endl;
+        std::println("{}", plusTen(5));
     }
 
     // ---------------------------------------------------------------------
@@ -500,7 +500,7 @@ namespace GenericLambdasCurrying {
         double d = 2.7;
 
         auto result1 = add<int, double>(n, d);
-        std::cout << result1 << std::endl;
+        std::println("{}", result1);
     }
 }
 

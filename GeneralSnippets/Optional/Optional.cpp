@@ -132,7 +132,7 @@ namespace OptionalExamples {
             optVec->end(),
             std::ostream_iterator<int>(std::cout, ", ")
         );
-        std::cout << std::endl;
+        std::println();
 
         std::set<int> ints{ 1, 2, 3, 4, 5 };
 
@@ -144,7 +144,7 @@ namespace OptionalExamples {
             optVec->end(),
             std::ostream_iterator<int>(std::cout, ", ")
         );
-        std::cout << std::endl;
+        std::println();
     }
 
     // =================================================================================
@@ -204,7 +204,8 @@ namespace OptionalExamples {
 
         auto result = user.and_then([](const auto& user) {
             return hasValidName(user);
-            });
+            }
+        );
 
         if (result) {
             std::println("Result: {}", result.value());

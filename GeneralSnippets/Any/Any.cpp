@@ -96,10 +96,6 @@ namespace AnySamples {
         mySheet.push_back(row3);
 
         for (const auto& [val1, val2, val3] : mySheet) {
-            std::cout
-                << "Value1:  " << toString(val1) << std::endl
-                << "Value2:  " << toString(val2) << std::endl
-                << "Value3:  " << toString(val3) << std::endl;
 
             std::println("Value1: {}", toString(val1));
             std::println("Value2: {}", toString(val2));
