@@ -150,6 +150,16 @@ namespace DiverseCasts {
         }
 
         {
+            Derived* child = new Derived();
+
+            Base* base1 = static_cast<Base*>(child);   // also ok ...
+            Base* base2 = child;                       // ... and also ok
+
+            base1->test();
+            base2->test();
+        }
+
+        {
             Base* base = new Base();
             Derived* child = dynamic_cast<Derived*>(base);
 

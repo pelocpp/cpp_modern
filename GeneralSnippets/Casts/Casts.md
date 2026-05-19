@@ -332,6 +332,21 @@ Diese &bdquo;*derived-to-base*&rdquo; Konvertierung ist erfolgreich, da das `Der
 Derived
 ```
 
+*Bemerkung*:<br />
+Das letzte Beispiel hätte man auch einfacher schreiben können:
+
+```cpp
+01: Derived* child = new Derived();
+02: 
+03: Base* base1 = static_cast<Base*>(child); // also ok ...
+04:                                          // or 
+05: Base* base2 = child;                     // ... also ok
+```
+
+Das Beispiel soll einfach nur ein erster Schritt sein, um in einer Ableitungshierarchie
+Typwandlungen in beide Richtungen zu demonstrieren.
+
+
 Das nächste Beispiel versucht, einen `Base`-Zeiger in einen `Derived`-Zeiger umzuwandeln.
 Da das `Base`-Objekt kein vollständiges `Derived`-Objekt enthält, schlägt diese Zeigerkonvertierung fehl.
 
