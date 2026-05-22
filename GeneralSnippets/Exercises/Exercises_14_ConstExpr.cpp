@@ -395,7 +395,7 @@ namespace Exercises_ConstExpr {
             using namespace ConstexprRecommendedUsage;
 
             constexpr Color cyan{ 0, 255, 255 };
-            auto value{ cyan.value() };
+            constexpr auto value{ cyan.value() };
             std::cout << std::format("{:#010X}", value) << std::endl;
         }
 

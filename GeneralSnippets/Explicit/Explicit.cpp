@@ -22,7 +22,7 @@ namespace KeywordExplicit {
             m_real{ real }, m_imag{ imag } {}
 
         // comparison operator
-        bool operator == (Complex rhs)
+        bool operator == (const Complex& rhs) const
         {
             return (m_real == rhs.m_real and m_imag == rhs.m_imag);
         }
