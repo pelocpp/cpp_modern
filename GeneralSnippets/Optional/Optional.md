@@ -240,9 +240,6 @@ Sie unterscheiden sich jedoch darin, was die jeweilige Callback-Funktion zurück
   * `and_then()`: Verketten von Operationen, die bereits ein Optional zurückgeben:<br />
   &nbsp;&nbsp;&nbsp;&nbsp;`std::optional<T> -> (T -> optional<U>) -> std::optional<U>`
 
-
-
-
 ---
 
 ## Literaturhinweise <a name="link7"></a>

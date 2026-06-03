@@ -281,7 +281,6 @@ namespace OptionalExamples {
         // y is std::optional<int>{10}
     }
 
-
     static void test_05_optional_monadic_and_then()
     {
         std::optional<int> x = 5;
