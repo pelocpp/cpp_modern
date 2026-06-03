@@ -15,7 +15,8 @@
     * [`and_then`](#link3)
     * [`or_else`](#link4)
     * [`transform`](#link5)
-  * [Literaturhinweise](#link6)
+  * [Unterschied zwischen `and_then` und `transform`](#link6)
+  * [Literaturhinweise](#link7)
 
 ---
 
@@ -33,20 +34,20 @@ Ab C++ 23 wurden zur Klasse `std::optional` neue Operationen hinzugefügt: `and_
 
 Diese Operationen, die von Konzepten der funktionalen Programmierung inspiriert sind,
 bieten eine prägnantere und ausdrucksstärkere Möglichkeit,
-mit optionalen Werten (also mit `std::optional`-Objekten) zu arbeiten,
+mit optionalen Werten &ndash; also mit `std::optional`-Objekten &ndash; zu arbeiten.
 
 Die monadischen Interfaces (eingeführt mit C++ 23) bringen vor allem Eleganz und Sicherheit in den Code. Hier sind die wichtigsten Vorteile:
 
-  * Vermeidung von &bdquo;if-Pyramiden&bdquo;:<br />Statt verschachtelter `if (opt.has_value())`-Abfragen kann man Operationen einfach
+  * Vermeidung von &bdquo;if-Pyramiden&brquo;:<br />Statt verschachtelter `if (opt.has_value())`-Abfragen kann man Operationen einfach
     mit `.and_then()` oder `.transform()` verketten. Das hält den Code flach und lesbar.
   * Deklarativer Stil:<br />Der Fokus liegt auf dem *Was* (der Logik) statt auf dem *Wie* (dem Error-Handling).
     Der Kontrollfluss für Fehlerfälle ist implizit eingebaut.
   * Sicheres Pipelining:<br />Wenn ein Glied in der Kette `std::nullopt` oder einen Fehler zurückgibt, wird der Rest der Kette automatisch übersprungen.
     Man muss nicht bei jedem Zwischenschritt manuell prüfen.
   * Kompaktheit:<br />Komplexe Transformationen, die früher mehrere Zeilen *Boilerplate*-Code erforderten,
-    lassen sich oft in einem einzigen Ausdruck (Expression) formulieren.
+    lassen sich oft in einem einzigen Ausdruck (*Expression*) formulieren.
 
-Kurz gesagt: Es macht Quellcode funktionaler und weniger fehleranfällig gegenüber vergessenen Null-Checks.
+Kurz gesagt: Monadische Funktionen machen Quellcode funktionaler und weniger fehleranfällig gegenüber vergessenen Null-Checks.
 
 ## `and_then` <a name="link3"></a>
 
@@ -96,7 +97,7 @@ Die Anforderungen an die in `and_then()` übergebene Funktion sind wie folgt:
   * Eingabetyp:<br />Die Funktion muss ein einzelnes Argument akzeptieren. Der Typ dieses Arguments muss mit dem Typ des Werts im `std::optional`-Objekt übereinstimmen, auf dem `and_then()` aufgerufen wird. 
   * Rückgabetyp:<br />Die Funktion muss ein `std::optional<U>`-Objekt zurückgeben, wobei `U` ein beliebiger Typ sein kann.
 
-Wir betrachten ein zweites, realitätsnahes Beispiel. Es geht um `User`-Objekte:
+Wir betrachten ein zweites, realitätsnäheres Beispiel. Es geht um `User`-Objekte:
 
 ```cpp
 01: class User
@@ -228,8 +229,23 @@ Result: HANS MUELLER
 
 ---
 
+## Unterschied zwischen `and_then` und `transform` <a name="link6"></a>
 
-## Literaturhinweise <a name="link6"></a>
+Sie ähneln sich darin, dass beide nur dann ausgeführt werden, wenn das *Optional* einen Wert enthält.
+Sie unterscheiden sich jedoch darin, was die jeweilige Callback-Funktion zurückgeben soll:
+
+  * `transform()`: Bildet einen Wert auf einen anderen Wert ab:<br />
+  &nbsp;&nbsp;&nbsp;&nbsp;`std::optional<T> -> (T -> U) -> std::optional<U>`
+
+  * `and_then()`: Verketten von Operationen, die bereits ein Optional zurückgeben:<br />
+  &nbsp;&nbsp;&nbsp;&nbsp;`std::optional<T> -> (T -> optional<U>) -> std::optional<U>`
+
+
+
+
+---
+
+## Literaturhinweise <a name="link7"></a>
 
 Die Anregungen zu diesem Code-Snippet finden sich unter anderem unter
 

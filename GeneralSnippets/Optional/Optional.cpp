@@ -198,9 +198,9 @@ namespace OptionalExamples {
 
     static void test_02_optional_monadic()
     {
-        auto user = std::make_optional<User>("Hans", "Mueller", 30);
+        auto user{ std::make_optional<User>("Hans", "Mueller", 30) };
         // or
-        // auto user = std::make_optional<User>("Sepp", "", 30);
+        // auto user{ std::make_optional<User>("Sepp", "", 30) };
 
         auto result = user.and_then([](const auto& user) {
             return hasValidName(user);
@@ -265,6 +265,64 @@ namespace OptionalExamples {
 
         std::println("Done.");
     }
+
+    // =================================================================
+    // difference between and_then and transform
+
+    static void test_05_optional_monadic_transform()
+    {
+        std::optional<int> x = 5;
+
+        auto y = x.transform([](int n) {
+            return n * 2;
+            }
+        );
+
+        // y is std::optional<int>{10}
+    }
+
+
+    static void test_05_optional_monadic_and_then()
+    {
+        std::optional<int> x = 5;
+
+        auto y = x.and_then([](int n) -> std::optional<int> {
+
+            if (n > 0) {
+                return n * 2;
+            }
+
+            return std::nullopt;
+        });
+
+        // y is std::optional<int>{10}
+    }
+
+    static std::optional<std::string> find_user(int id)
+    {
+        return std::nullopt;
+    }
+
+    static std::optional<int> parseAge(const std::string&)
+    {
+        return std::nullopt;
+    }
+
+    static void test_05_optional_monadic_comparison()
+    {
+        auto age1 = find_user(42).and_then(parseAge);   // note: std::optional<int>
+
+        auto age2 = find_user(42).transform(parseAge);  // note: std::optional<std::optional<int>>
+
+        // transform always wraps the callback result in an optional, even if the callback already returned one
+    }
+
+    static void test_05_optional_monadic()
+    {
+        test_05_optional_monadic_transform();
+        test_05_optional_monadic_and_then();
+        test_05_optional_monadic_comparison();
+    }
 }
 
 void main_optional()
@@ -280,6 +338,7 @@ void main_optional()
     test_02_optional_monadic();
     test_03_optional_monadic();
     test_04_optional_monadic();
+    test_05_optional_monadic();
 }
 
 // =====================================================================================
