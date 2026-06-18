@@ -24,9 +24,9 @@
   * [Rückgabetyp von Lambdas: *Trailing Return Type*](#link6)
   * [Veränderbare Lambdas](#link7)
   * [Lambdas mit Instanzvariablen](#link8)
-  * [Lambdas in einer Variablen abspeichern: `auto`](#link9)
-  * [Lambdas in einer Variablen abspeichern: `std::function<>`](#link10)
-  * [Lambdas in einer Variablen abspeichern: Funktionszeiger](#link11)
+  * [Lambdas in einer Variablen speichern: `auto`](#link9)
+  * [Lambdas in einer Variablen speichern: `std::function<>`](#link10)
+  * [Lambdas in einer Variablen speichern: Funktionszeiger](#link11)
   * [Lambdas sind vollwertige Datentypen](#link12)
   * [Lambdas und `constexpr`](#link13)
   * [IIFE - *Immediately Invoked Functional Expression*](#link14)
@@ -42,10 +42,10 @@
 Lambdas sind zustandsbehaftete Inline-Funktionsobjekte mit einer flexiblen &bdquo;Erfassungsklausel&rdquo; (&bdquo;*Capture Clause*&rdquo;),
 ideal für prägnanten und ausdrucksstarken Code.
 
-  * Sie sind kurz in der Schreibweise, haben eine minimalistische Syntax, sind ausdruckstark.
+  * Sie sind kurz in der Schreibweise, haben eine minimalistische Syntax, sind ausdrucksstark.
   * Sie sind kopierbar oder nur verschiebbar.
   * Sie können neben einer Methode auch Daten (Werte, Referenzen) transportieren.
-  * Sie sind vollwertige Datentypen. Lambda-Objekte können als Argumente übergeben werden, von Funktionen zurückgegeben werden und in Variablen gespeichert werden.
+  * Sie sind vollwertige Datentypen: Lambda-Objekte können als Argumente übergeben werden, von Funktionen zurückgegeben werden und in Variablen gespeichert werden.
 
 ---
 
@@ -119,7 +119,7 @@ Damit sind folgende klassische Schreibweisen obsolet geworden:
 ## Erfassung lokaler Variablen aus dem umgebenden Bereich <a name="link3"></a>
 
 Lambdas können Variablen aus dem umgebenden Gültigkeitsbereich erfassen.
-Dazu gibt es die so genannte &bdquo;*Capture Clause*&rdquo; (zu dt. etwa &bdquo;Erfassungsklausel&rdquo;), sie wird in eckigen Klammern `[]` angegeben. 
+Dazu gibt es die sogenannte &bdquo;*Capture Clause*&rdquo; (zu dt. etwa &bdquo;Erfassungsklausel&rdquo;), sie wird in eckigen Klammern `[]` angegeben. 
 Sie bestimmt, wie auf externe Variablen innerhalb des Lambda-Objekts zugegriffen wird.
 
 Es gibt drei Möglichkeiten, externe Variablen mithilfe der *Capture Clause* zu erfassen:
@@ -152,7 +152,7 @@ Siehe hierzu *Abbildung* 1:
 *Beispiel*:
 
 ```cpp
-01: void lambda()
+01: void test()
 02: {
 03:     std::vector<int> vec{ 1, 2, 3 };
 04: 
@@ -182,16 +182,16 @@ auf die Art und Weise, wie auf die Variable(n) aus der Umgebung zugegriffen wird
 
 
 ```
-[=]             // 'header' wird kopiert
-[&]             // 'header' ist ein Alias (Referenz)
-[header]        // 'header' wird kopiert
-[&header]       // 'header' ist ein Alias (Referenz)
+[=]             // Variable 'header' wird kopiert
+[&]             // Variable 'header' ist ein Alias (Referenz)
+[header]        // Variable 'header' wird kopiert
+[&header]       // Variable 'header' ist ein Alias (Referenz)
 ```
 
 *Beispiel*:
 
 ```cpp
-01: void lambda()
+01: void test()
 02: {
 03:     int n{ 1 };
 04:     int m{ 2 };
@@ -236,7 +236,7 @@ Dadurch wird der Zugriff auf Instanzvariablen eines umgebenden Objekts &ndash; p
 Die Parameter von Lambdas können ab C++ 14 mit `auto` definiert werden:
 
 ```cpp
-01: void lambda()
+01: void test()
 02: {
 03:     std::vector<int> vec{ 1, 2, 3 };
 04: 
@@ -266,7 +266,7 @@ in dem *Closure Object* abgebildet.
 
 
 ```cpp
-01: void lambda()
+01: void test()
 02: {
 03:     std::string s{ "Hello" };
 04: 
@@ -290,7 +290,7 @@ vereinfacht:
 
 
 ```cpp
-01: void lambda()
+01: void test()
 02: {
 03:     std::string s{ "Hello" };
 04: 
@@ -321,7 +321,7 @@ Welche Auswirkungen hat diese Änderung auf die *Closure Type*-Klasse?
 Studieren Sie dazu das nächste Listing genau:
 
 ```cpp
-01: void lambda()
+01: void test()
 02: {
 03:     std::string s{ "Hello" };
 04: 
@@ -350,13 +350,14 @@ In C++ wird der Rückgabetyp eines Lambdas meist automatisch per *Automatic Retur
 Ein expliziter Rückgabetyp (mittels der *Trailing Return Type Syntax* `-> type`)
 ist möglich.
 
+*Bemerkung*:<br />
 Wenn ein Lambda mehrere `return`-Statements hat, die unterschiedliche Typen liefern würden,
 kann der Compiler den Typ nicht eindeutig bestimmen.
 Hier ist die explizite Angabe des Rückgabetyps zwingend erforderlich:
 
 
 ```cpp
-01: void lambda()
+01: void test()
 02: {
 03:     auto getValue = [] (bool condition) -> std::variant<int, std::string> {
 04: 
@@ -379,7 +380,7 @@ Hier ist die explizite Angabe des Rückgabetyps zwingend erforderlich:
 Standardmäßig sind Variablen, die per Wert erfasst werden, konstant.
 Um diese Aussage noch einmal anders zu formulieren:
 In der Implementierung des Aufrufoperators `operator()` in der exemplarischen *Closure Type*-Klasse
-war der Einsatz des `const`-Schlüsselwort nicht zufällig vorhanden:
+war der Einsatz des `const`-Schlüsselworts nicht zufällig vorhanden:
 
 ```cpp
 inline void operator() () const { ... }
@@ -390,28 +391,25 @@ um die *Const Correctness* des Aufrufoperators auszuschalten:
 
 
 ```cpp
-01: void lambda()
+01: void test()
 02: {
 03:     std::size_t value{ 123 };
 04: 
-05:     auto increment = [=] () mutable -> std::size_t {
+05:     auto increment = [=]() mutable -> std::size_t {
 06: 
 07:         ++value;
 08:         return value;
 09:     };
 10: 
-11:     value = increment(); std::println("{}", value);
-12:     value = increment(); std::println("{}", value);
-13:     value = increment(); std::println("{}", value);
-14: }
+11:     value = increment();
+12:     std::println("{}", value);
+13: }
 ```
 
 *Ausgabe*: 
 
 ```
 124
-125
-126
 ```
 
 ---
@@ -427,7 +425,7 @@ Können *Closure* Objekte daneben auch eigene Instanzvariablen haben?
 Mit der so genannten &bdquo;*Capture Initialization*&rdquo; geht auch dies:
 
 ```cpp
-01: void lambda()
+01: void test()
 02: {
 03:     auto increment = [start = 123] () mutable -> std::size_t {
 04: 
@@ -453,9 +451,9 @@ Mit der so genannten &bdquo;*Capture Initialization*&rdquo; geht auch dies:
 
 ---
 
-## Lambdas in einer Variablen abspeichern: `auto` <a name="link9"></a>
+## Lambdas in einer Variablen speichern: `auto` <a name="link9"></a>
 
-Wie lassen sich Lambdas in Variablen abspeichern?
+Wie lassen sich Lambdas in Variablen speichern?
 Eine erste Möglichkeit haben wir bereits kennen gelernt:
 
 ```cpp
@@ -469,9 +467,9 @@ und für den Ersteller des Programms nicht zugänglich.
 
 ---
 
-## Lambdas in einer Variablen abspeichern: `std::function<>` <a name="link10"></a>
+## Lambdas in einer Variablen speichern: `std::function<>` <a name="link10"></a>
 
-Wie könnte man nun Lambdas beispielsweise in einem STL-Container abspeichern?
+Wie könnte man nun Lambdas beispielsweise in einem STL-Container speichern?
 Die Schreibweise
 
 ```cpp
@@ -485,11 +483,11 @@ mit einer passenden Signatur speichern kann.
 
   * Vorteil:<br />Man kann unterschiedliche Lambdas im selben Container mischen, solange die Parameter und der Rückgabetyp übereinstimmen.
   * Nachteil:<br />Es entsteht ein Laufzeit-Overhead durch *Type-Erasure*, oft inklusive Heap-Allokation und virtuellem Funktionsaufruf,
-    da wir das Lambda-Objekt in einem Hüllenobjekt abspeichern.
+    da wir das Lambda-Objekt in einem Hüllenobjekt speichern.
 
 
 ```cpp
-01: void lambda()
+01: void test()
 02: {
 03:     auto lambdaOne = [] () { std::println("One"); };
 04:     auto lambdaTwo = [] () { std::println("Two"); };
@@ -514,9 +512,9 @@ Two
 
 ---
 
-## Lambdas in einer Variablen abspeichern: Funktionszeiger <a name="link11"></a>
+## Lambdas in einer Variablen speichern: Funktionszeiger <a name="link11"></a>
 
-Die performanteste Lösung zum Abspeichern von Lambdas könnte man anwenden, wenn das Lambda-Objekt
+Die performanteste Lösung zum Speichern von Lambdas könnte man anwenden, wenn das Lambda-Objekt
 eine leere Erfassungsliste hat, also &bdquo;nichts einfängt&rdquo;.
 Derartige Lambdas können implizit in klassische C-Funktionszeiger umgewandelt werden. 
 
@@ -527,7 +525,7 @@ Derartige Lambdas können implizit in klassische C-Funktionszeiger umgewandelt we
 *Beispiel*:
 
 ```cpp
-01: void lambda()
+01: void test()
 02: {
 03:     auto lambda1 = [] () { std::println("1"); };
 04:     auto lambda2 = [] () { std::println("2"); };
@@ -581,7 +579,7 @@ Sie können:
 16:     return lambda;             // I would't do this never ever :-)
 17: }
 18: 
-19: void lambda()
+19: void test()
 20: {
 21:     auto outerLambda1{ helper_a() };
 22:     auto outerLambda2{ helper_b() };
@@ -627,7 +625,7 @@ Programms ausgeführt werden müssen:
 08:     return result;
 09: };
 10: 
-11: void lambda()
+11: void test()
 12: {
 13:     constexpr auto result{ sum(10, 11) };         // sum = 21 at compile time
 14:     constexpr auto twoPowerTen{ power(2, 10) };   // twoPowerTen = 1024 at compile time
@@ -704,14 +702,14 @@ um auf Variablen im umgebenden Scope zugreifen zu können:
 
 Es fehlt also die Möglichkeit, mit der Move-Semantik Variablen / Objekte in ein Lambda-Objekt *verschieben* zu können.
 
-Anstatt dieses Feature explizit zu ergänzen, wurde in C++ 14 das so genannte *Generalized Lambda Capture Feature* eingeführt,
-auch bekannt als *Init-Capture*.
+Anstatt dieses Feature explizit zu ergänzen, wurde in C++ 14 das so genannte &bdquo;*Generalized Lambda Capture Feature*&rdquo; eingeführt,
+auch bekannt als &bdquo;*Init-Capture*&rdquo;.
 
 Das folgende Code-Fragment demonstriert das &bdquo;*Generalized Lambda Capture Feature*&rdquo;
 in mehreren Facetten:
 
 ```cpp
-01: void lambda()
+01: void test()
 02: {
 03:     class SampleClass
 04:     {
@@ -763,7 +761,7 @@ welches nur verschoben, aber nicht kopiert werden kann (wie z. B. ein `std::uniq
 
 
 ```cpp
-01: void lambda()
+01: void test()
 02: {
 03:     std::unique_ptr<std::string> ptr{ std::make_unique<std::string>("12345") };
 04: 
@@ -790,7 +788,7 @@ welches nur verschoben, aber nicht kopiert werden kann (wie z. B. ein `std::uniq
 ```
 
 
-Möchte man solche Objekt z. B. in einem `std::function<>`-Hüllenobjekt abspeichern, geht das nicht!
+Möchte man solche Objekt z. B. in einem `std::function<>`-Hüllenobjekt speichern, geht das nicht!
 
 Aus diesem Grund gibt es eine weitere Hüllentyp-Klasse: `std::move_only_function`.
 
@@ -799,7 +797,7 @@ die Move-Only Objekte in ihrer Erfassungsliste verwenden (`std::unique_ptr`, `st
 
 
 ```cpp
-01: void lambda()
+01: void test()
 02: {
 03:     std::unique_ptr<std::string> ptr{ std::make_unique<std::string>("ABCDE") };
 04: 
@@ -832,7 +830,7 @@ dass keine Ausnahmen ausgelöst werden:
 
 
 ```cpp
-01: void lambda()
+01: void test()
 02: {
 03:     auto multiplyByTwo = [](int x) noexcept { return x * 2; };
 04:     auto result = multiplyByTwo(10);
@@ -853,12 +851,11 @@ Result: 20
 ## C++20: &bdquo;*Variadic Capture*&rdquo; <a name="link18"></a>
 
 Ab C++20 lässt sich mit Hilfe des so genannten &bdquo;*Variadic Capture*&rdquo;
-(oft auch als &bdquo;Pack Expansion in Lambda Init-Capture&rdquo; genannt)
+(oft auch als &bdquo;*Pack Expansion in Lambda Init-Capture*&rdquo; genannt)
 ein komplettes variadisches Parameterpaket (*Parameter Pack*) in einen Lambda-Ausdruck einbinden.
 
 Diese Funktionalität ermöglicht es, eine Liste von Argumenten &bdquo;perfekt&rdquo; an den Closure eines Lambda-Ausdrucks weiterzuleiten.
 Hierdurch kann das Schreiben generischer Wrapper oder Factory-Funktionen vereinfacht werden.
-
 
 ```cpp
 01: template <typename... TArgs>
@@ -877,7 +874,7 @@ Hierdurch kann das Schreiben generischer Wrapper oder Factory-Funktionen vereinf
 14:     };
 15: }
 16: 
-17: void lambda()
+17: void test()
 18: {
 19:     double d{ 123.0 };
 20:     std::string s{ "ABCDE" };

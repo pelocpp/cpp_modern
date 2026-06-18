@@ -138,7 +138,7 @@ static void lambda_04_01()
 {
     std::string s{ "Hello" };
 
-    auto func = [=]() { std::print("{}", s); };
+    auto func = [=] { std::print("{}", s); };
 
     func();
 
@@ -171,7 +171,7 @@ static void lambda_04_02()
 {
     std::string s{ "Hello" };
 
-    auto func = [&]() { std::print("{}", s); };
+    auto func = [&] { std::print("{}", s); };
 
     func();
 
@@ -237,11 +237,10 @@ static void lambda_06()
 
         ++value;
         return value;
-        };
+    };
 
-    value = increment(); std::println("{}", value);
-    value = increment(); std::println("{}", value);
-    value = increment(); std::println("{}", value);
+    value = increment();
+    std::println("{}", value);
 }
 
 // =====================================================================================
@@ -378,7 +377,7 @@ static constexpr auto power = [](int m, std::size_t n) {
         result *= m;
     }
     return result;
-    };
+};
 
 static void lambda_11()
 {
@@ -557,23 +556,22 @@ static void lambda_16()
 
 void main_lambdas()
 {
-    lambda_01();
-    lambda_02();
-    lambda_03();
-    lambda_04();
-    lambda_05();
-    lambda_06();
-    lambda_07();
-    lambda_08();
-    lambda_09();
-    lambda_10();
-    lambda_11();
-    lambda_12();
+    //lambda_01();
+    //lambda_02();
+    //lambda_03();
+    //lambda_04();
+    //lambda_05();
+    //lambda_06();
+    //lambda_07();
+    //lambda_08();
+    //lambda_09();
+    //lambda_10();
+    //lambda_11();
+    //lambda_12();
     lambda_13();
-    lambda_14();
-    lambda_15();
-    lambda_16();
-
+    //lambda_14();
+    //lambda_15();
+    //lambda_16();
 }
 
 // =====================================================================================
