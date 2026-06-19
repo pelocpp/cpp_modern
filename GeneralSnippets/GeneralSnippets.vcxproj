@@ -297,6 +297,8 @@
     <ClCompile Include="RangeBasedForLoop\RangeBasedForLoop.cpp" />
     <ClCompile Include="ReferenceWrapper\Module_ReferenceWrapper.ixx" />
     <ClCompile Include="ReferenceWrapper\ReferenceWrapper.cpp" />
+    <ClCompile Include="Reflection\Module_Reflection.ixx" />
+    <ClCompile Include="Reflection\Reflection.cpp" />
     <ClCompile Include="RegExpr\Module_RegExpr.ixx" />
     <ClCompile Include="RegExpr\RegExpr.cpp" />
     <ClCompile Include="RValueLValue\Module_RValueLValue.ixx" />
@@ -462,6 +464,7 @@
     <None Include="RangeBasedForLoop\cpp_range_based_loop.svg" />
     <None Include="RangeBasedForLoop\RangeBasedForLoop.md" />
     <None Include="ReferenceWrapper\ReferenceWrapper.md" />
+    <None Include="Reflection\Reflection.md" />
     <None Include="RegExpr\RegExpr.md" />
     <None Include="RValueLValue\RValueLValue.md" />
     <None Include="SFINAE_EnableIf\Sfinae.md" />

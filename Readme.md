@@ -185,6 +185,7 @@ Es folgt eine tabellarische Auflistung dieser Unterverzeichnisse.
 | [Random](GeneralSnippets/Random/Random.md) | Generierung von Zufallszahlen |
 | [Range-Based For Loop](GeneralSnippets/RangeBasedForLoop/RangeBasedForLoop.md) | Range-based `for` Loop |
 | [Reference Wrapper](GeneralSnippets/ReferenceWrapper/ReferenceWrapper.md)  | Klasse `std::reference_wrapper` und Funktion `std::ref` |
+| [Reflection in C++](GeneralSnippets/Reflection/Reflection.md)  | Reflection in C++ |
 | [RegExpr](GeneralSnippets/RegExpr/RegExpr.md) | Reguläre Ausdrücke |
 | [RValue/LValue](GeneralSnippets/RValueLValue/RValueLValue.md) | LValue- und RValue Referenzen |
 | [SFINAE_EnableIf](GeneralSnippets/SFINAE_EnableIf/Sfinae.md) | SFINAE und `std::enable_if` |

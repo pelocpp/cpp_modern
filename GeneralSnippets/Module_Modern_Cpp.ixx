@@ -56,6 +56,7 @@ export import :raii;
 export import :random;
 export import :range_based_for_loop;
 export import :reference_wrapper;
+export import :reflection;
 export import :regexpr;
 export import :rvalue_lvalue;
 export import :sfinae;

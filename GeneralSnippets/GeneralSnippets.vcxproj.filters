@@ -660,6 +660,12 @@
     <ClCompile Include="Lambda\Lambda01.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Reflection\Reflection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Reflection\Module_Reflection.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -1119,6 +1125,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Lambda\Lambda.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Reflection\Reflection.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
