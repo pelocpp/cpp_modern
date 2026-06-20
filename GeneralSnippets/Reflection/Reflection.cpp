@@ -2,11 +2,11 @@
 // Reflection.cpp
 // =====================================================================================
 
-module;
-
-#include <cassert>
-
 module modern_cpp:reflection;
+
+// Still in work:
+// See the files 'Reflection_01.txt' and so on being linked in the 
+// corresponding Markdown file
 
 namespace Reflection {
 

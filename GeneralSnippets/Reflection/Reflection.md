@@ -39,17 +39,24 @@ Durch Reflection bekommt C++ zwei neue Operatoren:
 ### Der Reflection-Operator `^^` 
 
 Der Reflexionsoperator erzeugt einen so genannten &bdquo;Reflexionswert&rdquo; aus seinem Operanden,
-zum Beispiel `^int` oder `^char`:
+zum Beispiel `^^int` oder `^^char`:
 
 *Beispiel*:
 
 ```cpp
-constexpr auto r = ^int;
+constexpr auto r = ^^int;
 ```
 
 Ein Reflexionswert ist eine Darstellung von Programmelementen als konstanter Ausdruck.
 
 Reflexionswerte können von Typen, Aufzählungen, Funktionen etc. gebildet werden.
+
+*Hinweis*:<br />
+Dieses Beispiel mit dem Doppel-Caret (`^^int`) entspricht der aktuellen Syntax für C++ 26.
+Das Gegenstück mit dem einzelnen Caret (`^int`) war ein alter Entwurf und ist im standardisierten C++ 26 nicht mehr gültig.
+
+Richtig und final für den C++ 26 &ndash; Standard ist stattdessen die Anweisung mit dem Doppel-Caret (`^^`),
+informell auch &bdquo;Cat-Ears-&rdquo; oder &bdquo;Unibrow&rdquo;-Operator genannt.
 
 ### Der Splice-Operator `[: ... :]`
 
@@ -84,7 +91,7 @@ Im folgenden sind eine Reihe von Textdateien mit Reflection-Beispielen vorhanden
 [Reflection_03: std::meta::members_of](Reflection_03.txt)
 
 *Erläuterungen* zum Beispiel &bdquo;Enum -> String und Enum -> String&rdquo;:<br />
-  * `^E`: Reflektiert den Typ der Enumeration (holt die Metadaten in den Compiler).
+  * `^^E`: Reflektiert den Typ der Enumeration (holt die Metadaten in den Compiler).
   * `std::meta::identifier_of(e)`: Liefert zur Compilezeit den exakten Namen des Enumerators als Text zurück.
   * `[:e:]` (Splicer): Wandelt das Metadaten-Objekt `e` wieder zurück in echten C++-Code um &ndash; in diesem Fall wird daraus der echte Wert (z. B. `Color::Red`) an die Stelle im Code eingesetzt.
 
