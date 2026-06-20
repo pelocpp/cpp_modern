@@ -7,14 +7,14 @@ int main()
 {
     std::println("Start 1:");
 
-    constexpr auto r = ^^int;
-    typename[:r:] x = 123;           // same as: int x = 123;
-    typename[: ^^char :] c = '*';    // same as: char c = '*';
+	constexpr auto r = ^^int;
+	typename[:r:] x = 123;           // same as: int x = 123;
+	typename[: ^^char :] c = '*';    // same as: char c = '*';
 
-    static_assert(std::same_as<decltype(x), int>);
-    static_assert(std::same_as<decltype(c), char>);
-    assert(x == 123);
-    assert(c == '*');
+	static_assert(std::same_as<decltype(x), int>);
+	static_assert(std::same_as<decltype(c), char>);
+	assert(x == 123);
+	assert(c == '*');
 
     std::println("Done.");
 }

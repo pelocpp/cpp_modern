@@ -1307,5 +1307,8 @@
     <Text Include="Reflection\Reflection_02.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="Reflection\Reflection_03.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

@@ -1,0 +1,65 @@
+#include <meta>
+#include <print>
+
+namespace demo
+{
+    struct S
+    {
+      int x;
+    };
+
+    enum class E: uint8_t
+    {
+        A = 1,
+        B = 2
+    };
+
+    void f();
+
+    inline constexpr int k = 123;
+}
+
+consteval int countThingsInDemo()
+{
+    constexpr auto ctx = std::meta::access_context::current();
+
+    auto ms = std::meta::members_of(^^demo, ctx);
+  
+    int types{};
+    int funcs{};
+    int vars{};
+
+    for (std::meta::info m : ms)
+    {
+        if (is_type(m))
+        {
+            ++types;
+        }
+
+        if (is_function(m))
+        {
+            ++funcs;
+        }
+      
+        if (is_variable(m))
+        {
+            ++vars;
+        }
+    }
+  
+    // S + E, f, k => 2 / 1 / 1 => overall 4
+    return types + funcs + vars;
+}
+
+int main()
+{
+    std::println("Start 3:");
+
+    constexpr int count = countThingsInDemo();
+    
+	static_assert(count == 4, "Expected 4 members in namespace 'demo'");
+
+	std::println("Found {} members in namespace 'demo'.", count);
+
+    std::println("Done.");
+}

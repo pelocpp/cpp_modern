@@ -583,6 +583,7 @@
     <Text Include="Reflection\Reflection_00_Compiler_Explorer.txt" />
     <Text Include="Reflection\Reflection_01.txt" />
     <Text Include="Reflection\Reflection_02.txt" />
+    <Text Include="Reflection\Reflection_03.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
