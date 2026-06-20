@@ -1,0 +1,59 @@
+#include <meta>
+#include <optional>
+#include <print>
+#include <string_view>
+#include <type_traits>
+
+template<typename E>
+concept isEnum = std::is_enum_v<E>;
+
+template<isEnum E, bool Enumerable = std::meta::is_enumerable_type(^^E)>
+constexpr std::string_view enum_to_string(E value)
+{
+  if constexpr (Enumerable)
+  {
+    template for (constexpr auto e : std::define_static_array(std::meta::enumerators_of(^^E)))
+    {
+      if (value == [:e:])
+      {
+        return std::meta::identifier_of(e);
+      }
+    }
+  }
+  return "<unnamed>";
+}
+
+template<isEnum E, bool Enumerable = std::meta::is_enumerable_type(^^E)>
+constexpr std::optional<E> string_to_enum(std::string_view name)
+{
+  if constexpr (Enumerable)
+  {
+    template for (constexpr auto e : std::define_static_array(std::meta::enumerators_of(^^E)))
+    {
+      if (name == std::meta::identifier_of(e))
+      {
+        return [:e:];
+      }
+    }
+  }
+  return std::nullopt;
+}
+
+int main()
+{
+  enum class Color : int
+  {
+    red,
+    green,
+    blue
+  };
+
+  static_assert(enum_to_string(Color::red) == "red");
+  static_assert(enum_to_string(Color(42)) == "<unnamed>");
+  static_assert(string_to_enum<Color>("green") == Color::green);
+  static_assert(!string_to_enum<Color>("nope").has_value());
+
+  std::println("Color::red  -> {}", enum_to_string(Color::red));
+  std::println("\"blue\"     -> {}", ( int ) *string_to_enum<Color>("blue"));
+  std::println("\"nope\"     -> {}", string_to_enum<Color>("nope").has_value());
+}

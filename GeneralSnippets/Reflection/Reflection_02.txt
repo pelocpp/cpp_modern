@@ -1,0 +1,66 @@
+
+#include <meta>
+#include <string>
+#include <type_traits>
+#include <optional>
+#include <print>
+
+template<typename E>
+    requires std::is_enum_v<E>
+constexpr std::string enum_to_string(E value) {
+    // iterate over all enumerators at compile time
+    template for (constexpr auto e : std::define_static_array(std::meta::enumerators_of(^^E))) {
+        if (value == [:e:]) {
+            return std::string(std::meta::identifier_of(e));
+        }
+    }
+    return "<unnamed>";
+}
+
+template<typename E>
+    requires std::is_enum_v<E>
+constexpr std::optional<E> string_to_enum(std::string_view name) {
+    // generate an array from reflection data at compile time
+    template for (constexpr auto e : std::define_static_array(std::meta::enumerators_of(^^E))) {
+        // compare the passed string with the name of the current enum value
+        if (name == std::meta::identifier_of(e)) {
+            // if found, return the actual enum value.
+            return [:e:]; 
+        }
+    }
+
+    // if the string does not match any enum entry
+    return std::nullopt; 
+}
+
+int main()
+{
+    std::println("Start 2:");
+
+    enum Color { red, green, blue, white, black, magenta };
+
+    // 1. Enum -> String
+    std::string s { enum_to_string(Color::red) };
+    std::println("Color::red => {}", s);
+
+    // 2. String -> Enum
+    std::string_view input { "blue" };
+    if (auto parsed_color = string_to_enum<Color>(input)) {
+        if (*parsed_color == Color::blue) {
+            std::println("String successfully converted into Color::blue!");
+        }
+    } else {
+        std::println("Error: Color not found!");
+    }
+
+	input = "abc";
+    if (auto parsed_color = string_to_enum<Color>(input)) {
+        if (*parsed_color == Color::blue) {
+            std::println("String successfully converted into Color::blue!");
+        }
+    } else {
+        std::println("Error: Color not found!");
+    }
+
+    std::println("Done.");
+}

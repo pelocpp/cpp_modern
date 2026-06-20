@@ -11,16 +11,18 @@
 ## Inhalt
 
   * [Allgemeines](#link1)
-  * [Literaturhinweise](#link2)
+  * [Erste Schritte](#link2)
+  * [Weitere Beispiele](#link3)
+  * [Literaturhinweise](#link4)
 
 
 ---
 
-## Allgemeines
+## Allgemeines  <a name="link1"></a>
 
 ---
 
-## Hinweis
+#### Hinweis
 
 Das C++ 26 Reflection-API wird aktuell von Microsoft Visual C++ nicht unterstützt.
 
@@ -31,7 +33,7 @@ in der man den aktuellen Stand der Reflection-API Entwicklung testen und ausprob
 
 ---
 
-## Erste Schritte
+## Erste Schritte <a name="link2"></a>
 
 Durch Reflection bekommt C++ zwei neue Operatoren:
 
@@ -59,64 +61,50 @@ Ist `r` eine Reflection einer Entität, so fügt `[:r:]` die entsprechende Entität
 *Beispiel*:
 
 ```cpp
-typename[:r:] x = 123;       // Same as: int x = 123;
-typename[:^char:] c = '*';  // Same as: char c = '*';
+typename[:r:] x = 123;       // same as: int x = 123;
+typename[:^char:] c = '*';   // same as: char c = '*';
 
 static_assert(std::same_as<decltype(x), int>);
 static_assert(std::same_as<decltype(c), char>);
-assert(x == 42);
+assert(x == 123);
 assert(c == '*');
 ```
 
-Man kann sich das wie „Quote“ (`^^`) und „Unquote“ (`[: :]`) vorstellen – jedoch direkt in die Sprache integriert.
+Man kann sich das wie &bdquo;Quote&rdquo; (`^^`) und &bdquo;Unquote&rdquo; (`[: :]`) vorstellen &ndash; jedoch direkt in die Sprache integriert.
 
 ---
 
-## Literaturhinweise <a name="link2"></a>
+## Weitere Beispiele <a name="link3"></a>
+
+Im folgenden sind eine Reihe von Textdateien mit Reflection-Beispielen vorhanden:
+
+[Reflection_00: Beispiel aus Compiler Explorer](Reflection_00_Compiler_Explorer.txt)<br />
+[Reflection_01: Simple Example](Reflection_01.txt)<br />
+[Reflection_02: Enum -> String und Enum -> String](Reflection_02.txt)
 
 
-A)
+Erläuterungen zum Beispiel &bdquo;Enum -> String und Enum -> String&rdquo;:
 
-https://www.heise.de/blog/Programmiersprache-Reflection-in-C-26-9920405.html
-
-https://starsurgeon.medium.com/c-with-reflection-a-whole-new-language-157e9d243fee
-
-
-WEITER : enum to string
+`^E`: Reflektiert den Typ der Enumeration (holt die Metadaten in den Compiler).
+`std::meta::identifier_of(e)`: Liefert zur Compilezeit den exakten Namen des Enumerators als Text zurück.
+`[:e:]` (Splicer): Wandelt das Metadaten-Objekt `e` wieder zurück in echten C++-Code um – in diesem Fall wird daraus der echte Wert (z. B. `Color::Red`) an die Stelle im Code eingesetzt.
 
 
+---
 
-https://github.com/starsurgeon/cpp_reflection_blog
+## Literaturhinweise <a name="link4"></a>
 
+Die elementaren Erläuterungen der grammatikalischen Spracherweiterungen
+stammen aus [Programmiersprache: Reflection in C++26](https://www.heise.de/blog/Programmiersprache-Reflection-in-C-26-9920405.html).
 
+Eine ganze Serie von Beispielen zu diesem Thema findet man in einer Artikelserie von Andreas Müller.
 
+Die Serie startet mit [diesem](https://starsurgeon.medium.com/c-with-reflection-a-whole-new-language-157e9d243fee) Artikel,
+die Folgeartikel sind am Ende
+des ersten Artikels mit der Überschrift &bdquo;C++ with Reflection &ndash; &bdquo;A whole new language&rdquo; &ndash; Part 1: From enum to string … and back again&rdquo;
+am Ende aufgeführt.
 
-
-
-
-
-
-
-
-
-
-Die Beispiele zu dem Verpacken von Resource Handles in `std::unique_ptr<T>`-Objekten
-stammen aus einem Artikel von
-
-[Wrapping Resource Handles in Smart Pointers](https://www.cppstories.com/2016/10/wrapping-resource-handles-in-smart/) (abgerufen am 5.7.2024).
-
-
-Auch in das C++&ndash;Umfeld dringen bisweilen *Fake*-*News* ein:
-
-[No New New: Das Ende von Zeigern in C++](https://www.heise.de/blog/No-New-New-4009347.html) (abgerufen am 13.06.2022).
-
-&bdquo;*Vor zwei Wochen fand das ISO-C++-Standardisierungsmeeting in Jacksonville statt.*
-*Das Standardisierungskomitee entschied, dass Zeiger mit C++ 20 deprecated und mit C++23 mit hoher Wahrscheinlichkeit entfernt werden.*&rdquo;
-Alles weitere hierzu können Sie dem zitierten Artikel entnehmen :)
-
-Ein interessanter &ndash; und inhaltlich zutreffenderer &ndash; Artikel zum Thema &bdquo;Smart Pointer&rdquo; findet sich unter
-
-[unique_ptr, shared_ptr, weak_ptr, or reference_wrapper for class relationships](https://www.nextptr.com/tutorial/ta1450413058/unique_ptr-shared_ptr-weak_ptr-or-reference_wrapper-for-class-relationships)<br>(abgerufen am 20.12.2021).
+Der Quellcode der Artikelserie wird auch durch ein Github-Repository [cpp_reflection_blog](https://github.com/starsurgeon/cpp_reflection_blog) begleitet.
 
 ---
 

@@ -1297,4 +1297,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="Reflection\Reflection_00_Compiler_Explorer.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="Reflection\Reflection_01.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="Reflection\Reflection_02.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+  </ItemGroup>
 </Project>
