@@ -100,7 +100,7 @@ Im folgenden sind eine Reihe von Textdateien mit Reflection-Beispielen vorhanden
 ## Literaturhinweise <a name="link4"></a>
 
 Die elementaren Erläuterungen der grammatikalischen Spracherweiterungen
-stammen aus dem Blog von Rainer Grimm: [Programmiersprache: Reflection in C++26](https://www.heise.de/blog/Programmiersprache-Reflection-in-C-26-9920405.html).
+stammen aus dem Blog von Rainer Grimm: [Programmiersprache C++: Reflection in C++26](https://www.heise.de/blog/Programmiersprache-Reflection-in-C-26-9920405.html).
 
 Eine ganze Serie von Beispielen zu diesem Thema findet sich in einer Artikelserie von Andreas Müller.
 Die Serie startet mit [diesem](https://starsurgeon.medium.com/c-with-reflection-a-whole-new-language-157e9d243fee) Artikel,
