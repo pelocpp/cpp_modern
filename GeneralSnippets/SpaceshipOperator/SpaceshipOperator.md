@@ -13,8 +13,11 @@
   * [Allgemeines](#link1)
   * [Vergleichskategorien (*Comparison Categories*)](#link2)
   * [Der C++ 20 Spaceship Operator `<=>`](#link3)
-  * [Ein Beispiel zum Spaceship Operator](#link4)
-  * [Literaturhinweise](#link5)
+  * [Was versteht man unter der `= default` Realisierung des Spaceship Operators](#link4)
+  * [Eine Zusammenfassung](#link5)
+  * [Ein Beispiel zum Spaceship Operator](#link6)
+  * [Der Operator `==`](#link7)
+  * [Literaturhinweise](#link8)
 
 ---
 
@@ -326,7 +329,7 @@ Das klassische Beispiel hierfür ist ein Wrapper für Zeichenketten, der Groß- und
 
 ---
 
-## Was versteht man unter der `= default` Realisierung des Spaceship Operators
+## Was versteht man unter der `= default` Realisierung des Spaceship Operators  <a name="link4"></a>
 
 Technisch gesehen eine Zeile der Art
 
@@ -381,7 +384,7 @@ Der Rückgabetyp ergibt sich durch die &bdquo;schwächste&rdquo; Vergleichskategor
 
 ---
 
-## Eine Zusammenfassung
+## Eine Zusammenfassung  <a name="link5"></a>
 
   * In der Realisierung des Spaceship Operators (`<=>`) orientiert man sich an den mathematischen Eigenschaften des Typs (standardmäßigen Vergleichskategorien aus dem Header `<compare>`),
    nicht beispielsweise an dem Operator `<`.
@@ -412,12 +415,11 @@ Die praktische Regel lautet also:<br />
 
 ---
 
-## Ein Beispiel zum Spaceship Operator  <a name="link4"></a>
-
+## Ein Beispiel zum Spaceship Operator  <a name="link6"></a>
 
 ---
 
-## Der Operator `==`
+## Der Operator `==`  <a name="link7"></a>
 
 Wenn der Spaceship Operator `<=>` den Wert 0 zurückgibt, könnte man meinen, dass dies &bdquo;gleich&rdquo; bedeutet.
 Warum reicht das dann nicht aus?
@@ -454,7 +456,7 @@ Die Regeln lauten:
 
 ---
 
-## Literaturhinweise  <a name="link5"></a>
+## Literaturhinweise  <a name="link8"></a>
 
 Interessante Informationen und Beschreibungen des *Spaceship*-Operators findet sich hier:
 
