@@ -85,6 +85,7 @@ int main()
         //main_sfinae();
         //main_shared_ptr();
         //main_source_location();
+        //main_spaceship_operator();
         //main_sso();
         //main_static_assert();
         //main_string_view();

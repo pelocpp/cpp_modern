@@ -474,6 +474,7 @@
     <None Include="SharedPtr\SharedPtr.md" />
     <None Include="SourceLocation\SourceLocation.md" />
     <None Include="SpaceshipOperator\cpp_20_comparison_categories.svg" />
+    <None Include="SpaceshipOperator\cpp_20_spaceship_operator.svg" />
     <None Include="SpaceshipOperator\SpaceshipOperator.md" />
     <None Include="SSO\SSO.md" />
     <None Include="StaticAssert\StaticAssert.md" />

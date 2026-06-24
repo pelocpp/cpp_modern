@@ -64,6 +64,8 @@ Die Sprache unterstützt nun Paradigmen, die den Code lesbarer machen.
   * *Brace Initialization* (auch *Uniform Initialization* genannt):<br />Diese Form der Initialisierung wurde mit C++ 11 eingeführt,
     um die Objekterzeugung zu vereinheitlichen. Man kann dieselbe Syntax `{}` für fast alles verwenden &ndash; egal ob es sich um
     primitive Datentypen, Arrays, Standard-Container (wie `std::vector`) oder um Konstruktoren für Klassen/Strukturen handelt.
+  * *Spaceship Operator* `<=>` (Drei-Wege-Vergleichsoperator)<br />Ein einziger Operator definiert die komplette Vergleichslogik einer Klasse.
+	Dieser ersetzt die üblicherweise selbst zu schreibenden sechs Operatoren `<`, `<=`, `>`, `>=`, `==` und `!=`.
 
 ## Moderne Sprachmerkmale
 

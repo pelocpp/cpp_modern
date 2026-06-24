@@ -8,16 +8,27 @@
 
 ---
 
-## Allgemeines
+## Inhalt
 
-Es gibt in C++ ein gewissen Boilerplate-Codeproblem für Vergleiche von Objekten.
+  * [Allgemeines](#link1)
+  * [Vergleichskategorien (*Comparison Categories*)](#link2)
+  * [Der C++ 20 Spaceship Operator `<=>`](#link3)
+  * [Ein Beispiel zum Spaceship Operator](#link4)
+  * [Literaturhinweise](#link5)
+
+---
+
+## Allgemeines <a name="link1"></a>
+
+Es gibt in C++ ein gewisses Boilerplate-Codeproblem für Vergleiche von Objekten.
 Angenommen, wir haben eine einfache `Version`-Klasse, die eine Software-Versionsnummer repräsentiert:
 
 ```cpp
-struct Version {
-  int major; 
-  int minor; 
-  int patch;
+struct Version
+{
+    int major; 
+    int minor; 
+    int patch;
 };
 ```
 
@@ -44,11 +55,11 @@ Wie sieht es nun mit folgendem einfachen Beispiel aus:
 08:     }
 09: 
 10:     if (firstVersion > anotherVersion) {
-11:         std::println("firstVersion is newer");  // compilation error: no operator>
+11:         std::println("firstVersion is newer");  // error: no operator>
 12:     } 
 13: 
 14:     if (firstVersion == anotherVersion) {
-15:         std::println("same version");           // compilation error: no operator==
+15:         std::println("same version");           // error: no operator==
 16:     }
 17: }
 ```
@@ -78,7 +89,7 @@ Man muss diese alle selbst schreiben:
 19: }
 ```
 
-Das sind sechs Funktionen, um ein einziges Konzept auszudrücken: &bdquo;Wie lassen sich zwei `Version`-Objekte vergleichen?&bdquo;
+Das sind fünf weitere Funktionen, um ein einziges Konzept auszudrücken: &bdquo;Wie lassen sich zwei `Version`-Objekte vergleichen?&rdquo;
 Vor diesem Hintergrund wurde ein neues Konzept entwickelt und ab C++ 20 in die Sprache aufgenommen:
 Der so genannte Spaceship Operator `<=>`.
 
@@ -86,7 +97,7 @@ Bevor wir auf diesen Operator näher eingehen, benötigen wir noch einige Definiti
 
 ---
 
-## Vergleichskategorien
+## Vergleichskategorien (*Comparison Categories*)  <a name="link2"></a>
 
 Nicht alle Arten des Vergleichs zweier Werte oder Objekte sind gleich.
 Es gibt verschiedene Möglichkeiten des Vergleichens:
@@ -145,7 +156,7 @@ Diese Typen bilden unterschiedliche mathematische Ordnungseigenschaften ab:
 *Abbildung* 1: Vergleichskategorien.
 
 
-| Vergleichskategorie | Werte | 
+| Vergleichskategorie | Werte | | | | 
 |:-|:-|:-|:-|:-|
 | `std::strong_ordering`:  | *less* | *equal*      | *greater* | |
 | `std::weak_ordering`:    | *less* | *equivalent* | *greater* | | 
@@ -155,11 +166,11 @@ Diese Typen bilden unterschiedliche mathematische Ordnungseigenschaften ab:
 
 Der Hauptunterschied zwischen *equal* und *equivalent*:<br />
 `std::strong_ordering::equal` impliziert, dass die beiden Werte tatsächlich gegeneinander austauschbar sind.<br />
-`std::weak_ordering::equivalent` bedeutet &bdquo;Ich betrachte sie für die Zwecke dieses Vergleichs als gleich&rdquo;I, sie können sich jedoch in anderer Hinsicht unterscheiden.
+`std::weak_ordering::equivalent` bedeutet &bdquo;Ich betrachte sie für die Zwecke dieses Vergleichs als gleich&rdquo;, sie können sich jedoch in anderer Hinsicht unterscheiden.
 
 ---
 
-## Der C++ 20 Spaceship Operator `<=>`
+## Der C++ 20 Spaceship Operator `<=>`  <a name="link3"></a>
 
 Mit C++ 20 wurde der Operator `<=>` eingeführt, auch Drei-Wege-Vergleichsoperator genannt
 (und aufgrund seiner Ähnlichkeit mit einem Raumschiff umgangssprachlich &bdquo;Spaceship Operator&rdquo; genannt).
@@ -190,7 +201,8 @@ if (result == 0) { /* a == b */ }
 
 Wir betrachten für die drei Vergleichskategorien jeweils ein Beispiel:
 
-Alle Standarddatentypen in C++ fallen bei Verwendung des Raumschiffoperators natürlich entweder in die std::strong_ordering oder in die std::partial_ordering Vergleichskategorie:
+Alle Standarddatentypen in C++ fallen bei Verwendung des Raumschiffoperators natürlich
+entweder in die `std::strong_ordering` oder in die `std::partial_ordering` Vergleichskategorie:
 Ganzzahlen, Zeiger, Boolesche Werte und Zeichen geben `std::strong_ordering` zurück.
 Dies liegt daran, dass äquivalente Werte perfekt ersetzbar sind (z. B. wenn `a == b`, dann `5 + a == 5 + b`).
 
@@ -261,13 +273,13 @@ werden sie natürlich nie zu einem reinen `std::weak_ordering` ausgewertet.
 ### Beispiel zu `std::weak_ordering`
 
 Es gibt in C++ keinen fundamentalen Datentyp und keinen Datentyp der Standardbibliothek (STL),
-dessen nativer Spaceship Operator (<=>) `std::weak_ordering` zurückgibt.
+dessen nativer Spaceship Operator (`<=>`) `std::weak_ordering` zurückgibt.
 
-Wie man `std::weak_ordering` erzwingt: `std::weak_ordering` ist als bewusste, vom Benutzer gewählte Semantik gedacht.
-Es kommt zum Einsatz, wenn zwei Objekte mathematisch als &bdquo;äquivalent&rdquo; betrachtet werden können,
+Wie man `std::weak_ordering` erzwingt: `std::weak_ordering` ist als bewusste, vom Benutzer gewählte Vergleichskategorie gedacht.
+Sie kommt zum Einsatz, wenn zwei Objekte mathematisch als &bdquo;äquivalent&rdquo; betrachtet werden können,
 ohne völlig identisch oder in jeder Funktion gegeneinander austauschbar zu sein.
 Soll ein Typ `std::weak_ordering` verwenden, muss dies manuell definiert werden.
-Das klassische Lehrbuchbeispiel hierfür ist ein Wrapper für Zeichenketten, der Groß- und Kleinschreibung ignoriert.
+Das klassische Beispiel hierfür ist ein Wrapper für Zeichenketten, der Groß- und Kleinschreibung ignoriert.
 
 ```cpp
 01: class CaseInsensitiveString
@@ -312,19 +324,141 @@ Das klassische Lehrbuchbeispiel hierfür ist ein Wrapper für Zeichenketten, der G
 40: }
 ```
 
+---
+
+## Was versteht man unter der `= default` Realisierung des Spaceship Operators
+
+Technisch gesehen eine Zeile der Art
+
+```cpp
+struct Point
+{
+    auto operator<=> (const Point&) const = default;
+};
+```
+
+Aber wie sieht die Realisierung, die der Compiler automatisch erzeugt, aus?
+
+Hierzu ein Beispiel:
+
+
+```cpp
+struct Point
+{
+    int    m_x;   // strong_ordering
+    int    m_y;   // strong_ordering
+    double m_z;   // partial_ordering <== weakens the whole thing
+
+    auto operator<=>(const Point&) const = default; // deduces return type: std::partial_ordering
+};
+```
+
+Eine standardmäßige Realisierung des Spaceship Operators `<=>` führt einen Vergleich
+in der lexikografischen Reihenfolge der Instanzvariablen durch.
+
+Es vergleicht die erste Instanzvariable und wechselt, wenn diese &bdquo;equal&rdquo; sind,
+zur zweiten usw. &ndash; in der Reihenfolge der Deklarationen.
+
+Der Rückgabetyp ergibt sich durch die &bdquo;schwächste&rdquo; Vergleichskategorie aus der Liste aller Mitglieder:
+
+```
+[ x <=> other.x ]
+       |
+    not 0? ---------------------------------------> return that result
+       |
+    == 0
+       |
+[ y <=> other.y ]
+       |
+    not 0? ---------------------------------------> return that result
+       |
+    == 0
+       |
+[ z <=> other.z ]
+       |
+       -------------------------------------------> return that result
+```
 
 ---
 
-## Ein Beispiel zum Spaceship Operator
+## Eine Zusammenfassung
+
+  * In der Realisierung des Spaceship Operators (`<=>`) orientiert man sich an den mathematischen Eigenschaften des Typs (standardmäßigen Vergleichskategorien aus dem Header `<compare>`),
+   nicht beispielsweise an dem Operator `<`.
+  * Der Compiler schreibt `<`, `<=`, `>`, `>=` über `(a <=> b) == 0` um.
+  * `==` und `!=` werden separat über `operator==` gelöst (aus Performancegründen).
+
+
+Die Implementierung muss einen dieser drei Typen zurückgeben:
+
+  * `std::strong_ordering`: Für absolut eindeutige Werte (z. B. Ganzzahlen). Wenn `a == b`, dann sind `a` und `b` in allen Aspekten absolut identisch (austauschbar).
+  * `std::weak_ordering`: Für Werte, die gleichwertig, aber nicht identisch sind (z. B. Groß-/Kleinschreibung ignorieren: `"Text"` und `"text"`).
+  * `std::partial_ordering`: Für Werte, die nicht zwingend vergleichbar sind (z. B. NaN bei Fließkommazahlen).
+
+
+Deshalb wurde im Standard bewusst entschieden: Der Operator `==` wird nicht aus `<=>` generiert
+(wenn man einen benutzerdefinierten `<=>`-Operator schreibt). Die Gleichheit bietet oft Optimierungsmöglichkeiten, die die Reihenfolge nicht bietet, und das Komitee wollte == nicht stillschweigend benachteiligen.
+
+Die Regeln lauten:
+
+<img src="cpp_20_spaceship_operator.svg" width="500">
+
+*Abbildung* 2: Automatische Generierung von Operatoren bei Verwendung des Spaceship Operators `<=>`.
+
+Die praktische Regel lautet also:<br />
+  * Wenn man ein benutzerdefiniertes `<=>` schreibt, schreibt man auch ein benutzerdefiniertes `==`.
+  * Wenn man `<=>` durch `= default` festlegt, erhält man `==` kostenlos.
 
 
 ---
 
-## Literaturhinweise
+## Ein Beispiel zum Spaceship Operator  <a name="link4"></a>
 
-Interessante Informationen und Beschreibungen des *Spaceship*-Operators finden sich hier:
 
-[&ldquo;The C++20 Spaceship Operator: Three-Way Comparison&rdquo;]https://towardsdev.com/cpp20-spaceship-operator-three-way-comparison-b1213302bf93)
+---
+
+## Der Operator `==`
+
+Wenn der Spaceship Operator `<=>` den Wert 0 zurückgibt, könnte man meinen, dass dies &bdquo;gleich&rdquo; bedeutet.
+Warum reicht das dann nicht aus?
+
+Die Antwort liegt in der Performance und der Semantik. Betrachten wir folgendes Beispiel:
+
+```cpp
+struct BigData
+{
+    std::vector<int> items;
+    std::string label;
+
+    auto operator<=>(const BigData&) const = default;
+};
+```
+
+Wenn Sie `a == b` schreiben, könnte der Compiler dies als `(a <=> b) == 0` umschreiben.
+Aber `<=>` durchläuft einen `std::vector` vollständig lexikografisch &ndash; es durchläuft jedes Element
+Bei Gleichheit könnte man die Prüfung sofort abbrechen, wenn sich die Größen unterscheiden:
+
+```cpp
+bool operator==(const BigData& other) const {
+    return items.size() == other.items.size()
+        && items == other.items
+        && label == other.label;
+}
+```
+
+Deshalb wurde im Standard bewusst entschieden: Der Operator `==` wird nicht aus `<=>` generiert
+(wenn man einen benutzerdefinierten `<=>`-Operator schreibt).
+Die Gleichheit bietet oft Optimierungsmöglichkeiten, deshalb wollte man `==` nicht stillschweigend benachteiligen.
+
+Die Regeln lauten:
+
+---
+
+## Literaturhinweise  <a name="link5"></a>
+
+Interessante Informationen und Beschreibungen des *Spaceship*-Operators findet sich hier:
+
+[&ldquo;The C++20 Spaceship Operator: Three-Way Comparison&rdquo;](https://towardsdev.com/cpp20-spaceship-operator-three-way-comparison-b1213302bf93)
 
 ---
 
