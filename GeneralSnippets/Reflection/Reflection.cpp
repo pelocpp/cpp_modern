@@ -12,7 +12,7 @@ namespace Reflection {
 
     static void test_01()
     {
-        std::println("Start 1:");
+        std::println("Start:");
         std::println("Done.");
     }
 }

@@ -666,6 +666,12 @@
     <ClCompile Include="Reflection\Module_Reflection.ixx">
       <Filter>Modules</Filter>
     </ClCompile>
+    <ClCompile Include="SpaceshipOperator\SpaceshipOperator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SpaceshipOperator\Module_SpaceshipOperator.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -1128,6 +1134,12 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Reflection\Reflection.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="SpaceshipOperator\cpp_20_comparison_categories.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="SpaceshipOperator\SpaceshipOperator.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

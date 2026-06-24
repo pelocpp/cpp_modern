@@ -309,6 +309,8 @@
     <ClCompile Include="SharedPtr\SharedPtr.cpp" />
     <ClCompile Include="SourceLocation\Module_SourceLocation.ixx" />
     <ClCompile Include="SourceLocation\SourceLocation.cpp" />
+    <ClCompile Include="SpaceshipOperator\Module_SpaceshipOperator.ixx" />
+    <ClCompile Include="SpaceshipOperator\SpaceshipOperator.cpp" />
     <ClCompile Include="SSO\Module_SSO.ixx" />
     <ClCompile Include="SSO\SSO.cpp" />
     <ClCompile Include="StaticAssert\Module_StaticAssert.ixx" />
@@ -471,6 +473,8 @@
     <None Include="SharedPtr\cpp_control_block_01.svg" />
     <None Include="SharedPtr\SharedPtr.md" />
     <None Include="SourceLocation\SourceLocation.md" />
+    <None Include="SpaceshipOperator\cpp_20_comparison_categories.svg" />
+    <None Include="SpaceshipOperator\SpaceshipOperator.md" />
     <None Include="SSO\SSO.md" />
     <None Include="StaticAssert\StaticAssert.md" />
     <None Include="StringView\cpp_string_view_01.svg" />
