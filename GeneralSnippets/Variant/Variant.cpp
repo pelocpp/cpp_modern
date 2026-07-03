@@ -111,20 +111,20 @@ namespace VariantDemo {
 
     static void test_04() {
 
-        std::variant<int, double, std::string> v{ 123 };
+        std::variant<int, double, std::string> var{ 123 };
 
         // using a generic visitor (matching all types in the variant)
         auto visitor = [](const auto& elem) {
             std::println("{}", elem);
         };
 
-        std::visit(visitor, v);
+        std::visit(visitor, var);
 
-        v = 123.456;
-        std::visit(visitor, v);
+        var = 123.456;
+        std::visit(visitor, var);
 
-        v = std::string{ "Hello" };
-        std::visit(visitor, v);
+        var = std::string{ "Hello" };
+        std::visit(visitor, var);
     }
 
     // -------------------------------------------------------------------

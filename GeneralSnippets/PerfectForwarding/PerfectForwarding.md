@@ -53,7 +53,18 @@ Verwenden Sie eine veränderbare Referenz nur dann, wenn Sie das Objekt ändern mö
 ### Universal Referenzen / *Forwarding Referenz*
 
 Die Schreibweise `T&&` wird als *Forwarding Referenz* (auch als *universelle Referenz*) bezeichnet.
-Sie kann an alles gebunden werden.
+
+Universelle Referenzen (*Forwarding References*) sind spezielle Referenzen, die sowohl *RValue*- als auch *LValue*-Referenzen binden können
+und dabei die &bdquo;Wertkategorie&bdquo; (*Value Category*) des Arguments exakt beibehalten.
+
+#### Die Rolle von `std::forward<>`
+
+Weil jeder benannte Parameter innerhalb einer Funktion technisch als LValue behandelt wird,
+geht die ursprüngliche Information (ob das Argument ein RValue war) verloren.
+Hier kommt `std::forward<>` ins Spiel: Es castet das Argument nur dann in einen RValue zurück,
+wenn es ursprünglich als RValue übergeben wurde.
+
+Dies ermöglicht das sogenannte *Perfect Forwarding* (perfektes Weiterleiten).
 
 *Achtung*:<br />
 Verwenden Sie universelle Referenzen nur dann, wenn Sie Variablen/Objekte an unterlagerte Funktionen/Methoden weiterleiten wollen.

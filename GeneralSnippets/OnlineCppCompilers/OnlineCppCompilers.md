@@ -4,7 +4,16 @@
 
 ---
 
-## Allgemeines
+## Inhalt
+
+  * [Allgemeines](#link1)
+  * [Wandbox](#link2)
+  * [Compiler Explorer (Godbolt)](#link3)
+  * [Cpp Insights](#link4)
+
+---
+
+## Allgemeines <a name="link1"></a>
 
 Unter [List of Online C++ Compilers](https://arnemertz.github.io/online-compilers/)
 findet man eine Liste mit Informationen zu verfügbaren C++ Online Compilern und ihren wichtigsten Funktionen vor.
@@ -21,7 +30,7 @@ Es folgen einige Details zu drei sehr populären Online C++ Compilern.
 
 ---
 
-### Wandbox
+### Wandbox <a name="link2"></a>
 
 [Wandbox](https://wandbox.org/) bietet so ziemlich alle Funktionen, die Sie sich von einem typischen Online-Compiler wünschen,
 einschließlich der Unterstützung mehrerer Dateien und verschiedener Editor-Tastenkombinationen.
@@ -79,7 +88,7 @@ führt dieselbe Aufgabe aus.
 
 ---
 
-### Compiler Explorer (Godbolt)
+### Compiler Explorer (Godbolt) <a name="link3"></a>
 
 [Compiler Explorer](https://godbolt.org/) ist eine &bdquo;*compile-as-you-type*&rdquo; IDE mit einer besonderen Funktion,
 da sie den von den Compilern erzeugten Assemblercode darstellt.
@@ -94,7 +103,7 @@ vergleichen können. Der Compiler-Explorer ist auf GitHub zu finden und kann loka
 
 ---
 
-### Cppinsights
+### Cpp Insights <a name="link4"></a>
 
 [Cppinsights](https://cppinsights.io/) ist weniger eine Online-IDE im herkömmlichen Sinne,
 denn sie erlaubt es nicht, kompilierte Programme auszuführen.

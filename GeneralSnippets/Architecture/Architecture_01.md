@@ -40,7 +40,7 @@ Modernes C++ bietet Komfort ohne Laufzeiteinbußen und folgt dem Prinzip: Man zah
    `std::execution::par` ermöglicht die parallele Ausführung von STL-Algorithmen ab C++17.
   * Schlüsselwort `noexcept`:<br />Das Markieren einer Methode (auch Lambda) mit `noexcept` ist 
     ein wichtiges Werkzeug für die Performance-Optimierung und die Ausnahmesicherheit (*Exception Safety*).
-  * Leichtgewichtiger STL-Container `std::initializer_list<>`:<br />.Zur Steigerung der Effizienz belegt ein `std::initializer_list`-Objekt &ndash; im Gegensatz zu `std::vector` &ndash;
+  * Leichtgewichtiger STL-Container `std::initializer_list<>`:<br />Zur Steigerung der Effizienz belegt ein `std::initializer_list`-Objekt &ndash; im Gegensatz zu `std::vector` &ndash;
     in der Regel keinen dynamischen Speicher. Der Compiler erstellt stattdessen ein temporäres Array,
     das meist auf dem Stack oder im Read-Only-Speicher (statisch) liegt. Das `std::initializer_list`-Objekt selbst besteht intern meist nur aus zwei Zeigern (Anfang und Ende)
     oder einem Zeiger und einer Längenangabe. Dadurch ist es sehr performant, ein `std::initializer_list`-Objekt per Value zu übergeben.
@@ -59,12 +59,14 @@ Die Sprache unterstützt nun Paradigmen, die den Code lesbarer machen.
   * &bdquo;Monadische&rdquo; Interfaces:<br />Ab C++ 23 wurden zu den Klassen `std::optional` und `std::expected` neue Operationen
     hinzugefügt: `and_then`, `or_else` und `transform`. Diese Operationen, die von Konzepten der funktionalen Programmierung inspiriert sind,
     bieten eine prägnantere und ausdrucksstärkere Möglichkeit, mit optionalen Werten (also mit `std::optional`-Objekten) oder mit Fehlersituationen zu arbeiten.
-  * Structured Binding:<br />Ermöglicht das direkte Entpacken von Tupeln,
+  * *Structured Binding*:<br />Ermöglicht das direkte Entpacken von Tupeln,
     Paaren und Strukturen in benannte Variablen (z. B. `auto [x, y] = point;`).
   * *Brace Initialization* (auch *Uniform Initialization* genannt):<br />Diese Form der Initialisierung wurde mit C++ 11 eingeführt,
     um die Objekterzeugung zu vereinheitlichen. Man kann dieselbe Syntax `{}` für fast alles verwenden &ndash; egal ob es sich um
     primitive Datentypen, Arrays, Standard-Container (wie `std::vector`) oder um Konstruktoren für Klassen/Strukturen handelt.
-  * *Spaceship Operator* `<=>` (Drei-Wege-Vergleichsoperator)<br />Ein einziger Operator definiert die komplette Vergleichslogik einer Klasse.
+  * *User-Defined Literals* (*UDL*):<br />User-Defined Literals erlauben es, eigene Suffixe für Konstanten zu definieren.
+	Dadurch lassen sich Werten eine direkte Bedeutung zuweisen (z. B. `auto distance = 2.5_km;`), was den Code lesbarer und sicherer macht.
+  * *Spaceship Operator* `<=>` (Drei-Wege-Vergleichsoperator):<br />Ein einziger Operator definiert die komplette Vergleichslogik einer Klasse.
 	Dieser ersetzt die üblicherweise selbst zu schreibenden sechs Operatoren `<`, `<=`, `>`, `>=`, `==` und `!=`.
 
 ## Moderne Sprachmerkmale

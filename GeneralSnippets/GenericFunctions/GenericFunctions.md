@@ -119,7 +119,7 @@ auto functionTwice(auto x, auto y) {
     std::cout << "x=" << x << ", y=" << y << std::endl;
 };
 
-struct FuncionTwice
+struct FunctionTwice
 {
     template <typename T, typename U>
     auto operator() (T x, U y) {

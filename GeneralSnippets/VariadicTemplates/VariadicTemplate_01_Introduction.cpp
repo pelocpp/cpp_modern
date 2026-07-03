@@ -62,19 +62,23 @@ namespace VariadicTemplates_TestClassDoSomething {
 
     public:
         DoSomething() : m_var1{}, m_var2{}, m_var3{} {
-            std::cout << "c'tor()" << std::endl;
+            std::println("c'tor()");
         }
 
         DoSomething(int n) : m_var1{ n }, m_var2{}, m_var3{} {
-            std::cout << "c'tor(int)" << std::endl;
+            std::println("c'tor(int)");
         }
 
         DoSomething(int n, int m) : m_var1{ n }, m_var2{ m }, m_var3{} {
-            std::cout << "c'tor(int, int)" << std::endl;
+            std::println("c'tor(int, int)");
         }
 
         DoSomething(int n, int m, int k) : m_var1{ n }, m_var2{ m }, m_var3{ k } {
-            std::cout << "c'tor(int, int, int)" << std::endl;
+            std::println("c'tor(int, int, int)");
+        }
+
+        ~DoSomething() {
+            std::println("d'tor()");
         }
 
         friend std::ostream& operator<< (std::ostream&, const DoSomething&);

@@ -206,7 +206,7 @@ namespace UserDefined_Concept {
         return arg + 1;
     }
 
-    auto incrementByTwo(GreatIntegral auto arg) {
+    static auto incrementByTwo(GreatIntegral auto arg) {
         return arg + 2;
     }
 
