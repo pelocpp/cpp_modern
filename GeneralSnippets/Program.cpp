@@ -101,6 +101,7 @@ int main()
         //main_tuple(); 
         //main_two_phase_name_lookup();
         //main_type_erasure();
+        //main_type_erasure_bookstore();
         //main_type_traits();
         //main_unique_ptr();
         //main_variadic_templates_introduction();

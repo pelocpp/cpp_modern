@@ -4,7 +4,8 @@
 
 ---
 
-[Quellcode](TypeErasure.cpp)
+[Quellcode *TypeErasure.cpp*](TypeErasure.cpp)<br />
+[Quellcode *TypeErasure_Bookstore.cpp*](TypeErasure_Bookstore.cpp)
 
 ---
 
@@ -15,9 +16,10 @@
   * [*Type Erasure* in der C++ Klassenbibliothek STL](#link3)
   * [Benutzerdefinierte Implementierung des *Type Erasure* Idioms](#link4)
   * [Verbesserung der Implementierung mit Konzepten](#link5)
-  * [Beispiel: Eine Buchhandung](#link6)
-  * [Fazit](#link7)
-  * [Literaturhinweise](#link8)
+  * [Beispiel: Vereinfachte Realisierung von `std::function<>`](#link6)
+  * [Beispiel: Eine Buchhandung](#link7)
+  * [Fazit](#link8)
+  * [Literaturhinweise](#link9)
 
 ---
 
@@ -356,9 +358,149 @@ Nun ist die Klasse `PolymorphicObjectWrapper` entsprechend anzupassen:
 48:     std::shared_ptr<ObjectConcept> m_wrappedObject;
 49: };
 ```
+
 ---
 
-## Beispiel: Eine Buchhandung <a name="link6"></a>
+## Beispiel: Vereinfachte Realisierung von `std::function<>`  <a name="link6"></a>
+
+Die STL-Standardklasse `std::function<>` wird mit den Prinzipien des Type Erasure umgesetzt.
+Eine vereinfachende Realisierung entnehmen Sie dem folgenden Listing.
+Es werden Beispiele mit freien Funktion (mit und ohne Parameter) und mit Lambda-Funktionen aufgezeigt.
+
+Das Feature des *Type Erasure* wird mit fundamentalen Techniken der Template-Programmierung erzielt.
+Es gibt ein primäres Template `SimpleFunction`, zum dem zwei Spezialisierungen hinzugefügt werden.
+Die erste Spezialisierung kümmert sich im *Callables* ohne Parameter und mit `void` als Rückgabetyp.
+Die zweite Spezialisierung übernimmt *Callables* mit beliebiger Anzahl von Parametern und beliebigem Rückgabetyp.
+
+```cpp
+001: // primary template declaration
+002: template<typename TSignature>
+003: class SimpleFunction;
+004: 
+005: // template specialization for signature 'void()'
+006: template<>
+007: class SimpleFunction<void()> {
+008: private:
+009: 
+010:     // the interface for type erasure
+011:     struct CallableInvoker
+012:     {
+013:         virtual ~CallableInvoker() = default;
+014:         virtual void invoke() = 0;
+015:     };
+016: 
+017:     // the concrete implementation that holds the actual function object
+018:     template<typename TObject>
+019:     struct CallableHolder : CallableInvoker
+020:     {
+021:         TObject m_callable;
+022: 
+023:         CallableHolder(TObject callable)
+024:             : m_callable(std::move(callable))
+025:         {}
+026: 
+027:         void invoke() override {
+028:             m_callable();  // calling the callable
+029:         }
+030:     };
+031: 
+032:     // we use std::unique_ptr to manage the lifetime on the heap
+033:     std::unique_ptr<CallableInvoker> m_invoker;
+034: 
+035: public:
+036:     // default constructor (creates an empty function)
+037:     SimpleFunction() = default;
+038: 
+039:     // template constructor: accepts ANY callable object (function, lambda, etc.)
+040:     template<typename TFunc>
+041:     SimpleFunction(TFunc func)
+042:         : m_invoker(std::make_unique<CallableHolder<TFunc>>(std::move(func)))
+043:     {}
+044: 
+045:     // function call operator()
+046:     void operator()() const {
+047: 
+048:         if (m_invoker == nullptr) {
+049:             throw std::runtime_error("Error: Calling an empty SimpleFunction!");
+050:         }
+051:         return m_invoker->invoke();
+052:     }
+053: };
+054: 
+055: // template specialization for signatures like 'TReturn(TArgs...)'
+056: template<typename TReturn, typename... TArgs>
+057: class SimpleFunction<TReturn(TArgs ...)> {
+058: private:
+059: 
+060:     // method 'invoke' now returns the type 'TReturn'
+061:     struct CallableInvoker
+062:     {
+063:         virtual ~CallableInvoker() = default;
+064:         virtual TReturn invoke(TArgs ... args) = 0;
+065:     };
+066: 
+067:     // the concrete implementation of method 'invoke' also returns 'TReturn'
+068:     template<typename TObject>
+069:     struct CallableHolder : CallableInvoker
+070:     {
+071:         TObject m_callable;
+072: 
+073:         CallableHolder(TObject callable)
+074:             : m_callable(std::move(callable))
+075:         {}
+076: 
+077:         TReturn invoke(TArgs ... args) override {
+078:             return m_callable(std::forward<TArgs>(args)...);  // calling the callable with the passed arguments
+079:         }
+080:     };
+081: 
+082:     std::unique_ptr<CallableInvoker> m_invoker;
+083: 
+084: public:
+085:     SimpleFunction() = default;
+086: 
+087:     template<typename TFunc>
+088:     SimpleFunction(TFunc func)
+089:         : m_invoker(std::make_unique<CallableHolder<TFunc>>(std::move(func)))
+090:     {}
+091: 
+092:     // operator() now returns 'TReturn' and accepts 'TArgs ...'
+093:     TReturn operator()(TArgs ... args) const {
+094: 
+095:         if (m_invoker == nullptr) {
+096:             throw std::runtime_error("Error: Calling an empty SimpleFunction!");
+097:         }
+098:         return m_invoker->invoke(std::forward<TArgs>(args)...);
+099:     }
+100: };
+```
+
+
+*Beispiel*:
+
+
+```cpp
+01: void test()
+02: {
+03:     int counter = 123;
+04: 
+05:     // define a lambda with state (capture)
+06:     auto lambda = [counter]() {
+07:         std::println("Hello from Lambda: {}", counter);
+08:     };
+09: 
+10:     // pass the lambda to a SimpleFunction object
+11:     SimpleFunction<void()> func{ lambda };
+12: 
+13:     // calling like a normal function
+14:     func();
+15: }
+```
+
+
+---
+
+## Beispiel: Eine Buchhandung <a name="link7"></a>
 
 Wir vertiefen die Betrachtungen zu *Type Erasure* an einem praxisnahen Beispiel: einer Buchhandung.
 Das *Type Erasure* Idiom kommt hier indirekt zum Zuge, indem wir die Klasse `std::variant` verwenden.
@@ -445,7 +587,7 @@ Im Quellcode finden Sie zwei Realisierungen vor:
 
 ---
 
-## Fazit  <a name="link7"></a>
+## Fazit  <a name="link8"></a>
 
   * Der Vorteil des *Type Erasure* Idioms besteht darin,
   dass die Typen keine gemeinsame Basisklasse benötigen und sie dennoch typsicher ist.
@@ -463,7 +605,7 @@ Im Quellcode finden Sie zwei Realisierungen vor:
 
 ---
 
-## Literaturhinweise  <a name="link8"></a>
+## Literaturhinweise  <a name="link9"></a>
 
 
 Die Anregungen zu den Beispielen aus diesem Abschnitt sind aus dem Buch

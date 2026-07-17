@@ -672,6 +672,9 @@
     <ClCompile Include="SpaceshipOperator\Module_SpaceshipOperator.ixx">
       <Filter>Modules</Filter>
     </ClCompile>
+    <ClCompile Include="TypeErasure\TypeErasure_Bookstore.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">

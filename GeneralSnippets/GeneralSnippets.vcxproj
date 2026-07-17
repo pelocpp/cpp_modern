@@ -343,6 +343,7 @@
     <ClCompile Include="TwoPhaseNameLookup\TwoPhaseNameLookup.cpp" />
     <ClCompile Include="TypeErasure\Module_TypeErasure.ixx" />
     <ClCompile Include="TypeErasure\TypeErasure.cpp" />
+    <ClCompile Include="TypeErasure\TypeErasure_Bookstore.cpp" />
     <ClCompile Include="TypeTraits\Module_TypeTraits.ixx" />
     <ClCompile Include="TypeTraits\TypeTraits.cpp" />
     <ClCompile Include="UniquePtr\Module_UniquePtr.ixx" />
