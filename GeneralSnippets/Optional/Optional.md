@@ -38,7 +38,7 @@ mit optionalen Werten &ndash; also mit `std::optional`-Objekten &ndash; zu arbei
 
 Die monadischen Interfaces (eingeführt mit C++ 23) bringen vor allem Eleganz und Sicherheit in den Code. Hier sind die wichtigsten Vorteile:
 
-  * Vermeidung von &bdquo;if-Pyramiden&brquo;:<br />Statt verschachtelter `if (opt.has_value())`-Abfragen kann man Operationen einfach
+  * Vermeidung von &bdquo;if-Pyramiden&rdquo;:<br />Statt verschachtelter `if (opt.has_value())`-Abfragen kann man Operationen einfach
     mit `.and_then()` oder `.transform()` verketten. Das hält den Code flach und lesbar.
   * Deklarativer Stil:<br />Der Fokus liegt auf dem *Was* (der Logik) statt auf dem *Wie* (dem Error-Handling).
     Der Kontrollfluss für Fehlerfälle ist implizit eingebaut.

@@ -182,12 +182,12 @@
   * *No-throw*-Garantie (*No-throw guarantee*)
 
 
-## *Type Erasure* &ndash; statischer versus dynamischer Polymorphismus
+## *Type Erasure*
   * Was ist *Type Erasure*
   * Implementierung des *Type Erasure* Idioms
   * Ergänzung um Konzepte (`concept`) 
   * Vergleich (Performanzbetrachtung) von statischem Polymorphismus (Templates) mit dynamischem Polymorphismus (virtueller Methodenaufrufmechanismus)
-  * Beispiel &bdquo;Buchhandlung&rdquo;
+  * Beispiel &bdquo;Buchhandlung&rdquo; (statischer versus dynamischer Polymorphismus)
   
 
 ## CRTP (&bdquo;Curiously recurring template pattern&rdquo;)

@@ -1,4 +1,4 @@
-# *Type Erasure* &ndash; statischer versus dynamischer Polymorphismus
+# *Type Erasure*
 
 [Zurück](../../Readme.md)
 
@@ -17,7 +17,7 @@
   * [Benutzerdefinierte Implementierung des *Type Erasure* Idioms](#link4)
   * [Verbesserung der Implementierung mit Konzepten](#link5)
   * [Beispiel: Vereinfachte Realisierung von `std::function<>`](#link6)
-  * [Beispiel: Eine Buchhandung](#link7)
+  * [Beispiel: Eine Buchhandung (statischer versus dynamischer Polymorphismus)](#link7)
   * [Fazit](#link8)
   * [Literaturhinweise](#link9)
 
@@ -500,7 +500,7 @@ Die zweite Spezialisierung übernimmt *Callables* mit beliebiger Anzahl von Param
 
 ---
 
-## Beispiel: Eine Buchhandung <a name="link7"></a>
+## Beispiel: Eine Buchhandung (statischer versus dynamischer Polymorphismus) <a name="link7"></a>
 
 Wir vertiefen die Betrachtungen zu *Type Erasure* an einem praxisnahen Beispiel: einer Buchhandung.
 Das *Type Erasure* Idiom kommt hier indirekt zum Zuge, indem wir die Klasse `std::variant` verwenden.

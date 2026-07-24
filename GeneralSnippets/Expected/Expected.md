@@ -32,7 +32,7 @@ und eine moderne, typsichere Alternative zu herkömmlichen Methoden der Fehlerbeh
 `std::expected` ermöglicht es Entwicklern, einen Wert oder einen Fehler in einem einzelnen Objekt darzustellen,
 wodurch die Handhabung von Erfolgs- und Fehlerszenarien auf saubere und lesbarere Weise vereinfacht wird.
 
-Gewisse Ähnichkeiten von `std::expected` zu `std::optional` und `std::variant` lassen
+Gewisse Ähnlichkeiten von `std::expected` zu `std::optional` und `std::variant` lassen
 sich nicht von der Hand weisen.
 
 ---
