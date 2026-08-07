@@ -74,16 +74,18 @@ namespace WeakPointer {
 
     /**
      * Spoiler Alarm: Don't read this :-)
-     * Note: there are 2 cycles!
+     * Note:
+     * There are 2 cycles! But: A child does not own its parents -> std::weak_ptr prevents cycles.
+     * 
      * a) Both smart pointer are std::shared_ptr's  ==> No d'tor at all will be called
-     * b) One smart pointer is a std::shared_ptr    ==> One d'tor is called
+     * b) One smart pointer is a std::weak_ptr    ==> One d'tor is called
      * c) Both smart pointer are std::weak_ptr's    ==> All d'tors are called
      */
 
     class ParentNode {
     private:
-        std::shared_ptr<RightNode> m_rightNode;   // <== shared or weak ?
-        std::shared_ptr<LeftNode> m_leftNode;     // <== shared or weak ?
+        std::shared_ptr<RightNode> m_rightNode;
+        std::shared_ptr<LeftNode> m_leftNode;
 
     public:
         ParentNode() {
@@ -102,7 +104,7 @@ namespace WeakPointer {
 
     class RightNode {
     private:
-        std::shared_ptr<ParentNode> m_parentNode;
+        std::shared_ptr<ParentNode> m_parentNode;   // <== shared or weak ?
 
     public:
         explicit RightNode(const std::shared_ptr<ParentNode>& parent)
@@ -117,7 +119,7 @@ namespace WeakPointer {
 
     class LeftNode {
     private:
-        std::shared_ptr<ParentNode> m_parentNode;
+        std::shared_ptr<ParentNode> m_parentNode;   // <== shared or weak ?
 
     public:
         explicit LeftNode(const std::shared_ptr<ParentNode>& parent)
