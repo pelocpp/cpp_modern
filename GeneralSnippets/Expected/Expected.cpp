@@ -101,7 +101,7 @@ namespace StdExpected {
         return value * value;
     }
 
-    static std::expected<double, std::string> squareIfSuccess(double numerator, double denominator) {
+    static std::expected<double, std::string> squareIfDivisionSuccessful(double numerator, double denominator) {
 
         auto result{ divide(numerator, denominator) };
 
@@ -114,7 +114,7 @@ namespace StdExpected {
         return squareResult;
     }
 
-    static std::expected<double, std::string> squareIfSuccessEx(double numerator, double denominator) {
+    static std::expected<double, std::string> squareIfDivisionSuccessfulEx(double numerator, double denominator) {
 
         return divide(numerator, denominator).and_then(
             [](auto value) {
@@ -128,7 +128,7 @@ namespace StdExpected {
         auto numerator = 10.0;
         auto denominator = 2.5;
 
-        auto result = squareIfSuccess(numerator, denominator);
+        auto result = squareIfDivisionSuccessful(numerator, denominator);
 
         if (result.has_value()) {
             std::println("Square: {}", result.value());
@@ -136,7 +136,7 @@ namespace StdExpected {
 
         denominator = 0.0;
 
-        result = squareIfSuccess(numerator, denominator);
+        result = squareIfDivisionSuccessful(numerator, denominator);
 
         if (!result.has_value()) {
             std::println("Error: {}", result.error());
@@ -144,7 +144,7 @@ namespace StdExpected {
 
         denominator = 2.5;
 
-        result = squareIfSuccessEx(numerator, denominator);
+        result = squareIfDivisionSuccessfulEx(numerator, denominator);
 
         if (result.has_value()) {
             std::println("Square: {}", result.value());
@@ -152,7 +152,7 @@ namespace StdExpected {
 
         denominator = 0.0;
 
-        result = squareIfSuccessEx(numerator, denominator);
+        result = squareIfDivisionSuccessfulEx(numerator, denominator);
 
         if (!result.has_value()) {
             std::println("Error: {}", result.error());

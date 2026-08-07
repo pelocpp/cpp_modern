@@ -134,7 +134,7 @@ Es gibt drei Möglichkeiten, externe Variablen mithilfe der *Capture Clause* zu e
 | Nichts zu erfassen                                  | `[]` |
 | Per Wert                                            | `[=]` |
 | Per Referenz                                        | `[&]` |
-| Explizit                                            | `[x, &y]` |
+| Explizit (Wert oder Referenz)                       | `[x, &y]` |
 | Gemischt                                            | `[=, &y]` oder `[&, y]` |
 | Erfasst den `this`-Zeiger der umschließenden Klasse | `[this]` |
 

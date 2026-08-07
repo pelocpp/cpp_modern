@@ -10,10 +10,10 @@ module modern_cpp:range_based_for_loop;
 
 namespace RangeBasedForLoop {
 
-    // global function
+    // free function
     static void processElement(int n)
     {
-        std::cout << n << " ";
+        std::print("{} ", n);
     }
 
     // functor: "callable object" - class which implements operator()
@@ -21,7 +21,7 @@ namespace RangeBasedForLoop {
     {
     public:
         void operator() (int n) const { 
-            std::cout << n << " ";
+            std::print("{} ", n);
         }
     };
 
@@ -35,72 +35,72 @@ namespace RangeBasedForLoop {
 
         // a) Very, very classic style ... C-stylistic
         for (std::size_t i{}; i != vec.size(); ++i) {
-            std::cout << vec[i] << " ";
+            std::print("{} ", vec[i]);
         }
-        std::cout << std::endl;
+        std::println();
 
         // b) Looks like C++, very classic style
         std::for_each(
             vec.cbegin(),                   // Iterator-object for begin of range
             vec.cend(),                     // Iterator-object for end of range
-            processElement                 // function pointer
+            processElement                  // free function
         );
-        std::cout << std::endl;
+        std::println();
 
         // c) Same as b), modified ranges
         std::for_each(
             std::next(vec.cbegin()),        // Iterator-object for begin of range
             std::prev(vec.cend()),          // Iterator-object for end of range
-            processElement                 // function pointer
+            processElement                  // free function
         );
-        std::cout << std::endl;
+        std::println();
 
-        // d) Looks like C++, classic style, 'Functor'-stylistic
+        // d) Looks like C++, classic style, using "callable" object
         std::for_each(
             vec.cbegin(),                   // Iterator-object for begin of range
             vec.cend(),                     // Iterator-object for end of range
-            ElementProcessor{}             // "callable" object
+            ElementProcessor{}              // "callable" object
         );
-        std::cout << std::endl;
+        std::println();
 
         // e) Using STL algorithm std::for_each with a lambda: Modern style
         std::for_each(
             vec.cbegin(),                   // Iterator-object for begin of range
             vec.cend(),                     // Iterator-object for end of range
-            [](int n) {                    // anonymous method (lambda)
-                std::cout << n << " ";
+            [](int n) {                     // anonymous method (lambda)
+                std::print("{} ", n);
             }
         );
-        std::cout << std::endl;
+        std::println();
 
         // =========================================================================
         // Range-based 'for' Loop examples
 
         // f) Using Range-based 'for' Loop: Very modern style
         for (int n : vec) {
-            std::cout << n << " ";
+            std::print("{} ", n);
             if (n == 2)  // break is possible
                 break;
         }
-        std::cout << std::endl;
+        std::println();
 
         // g) Same as f), using 'const int&'
         for (const int& n : vec) {
-            std::cout << n << " ";
+            std::print("{} ", n);
         }
-        std::cout << std::endl;
+        std::println();
 
         // h) Same as f): Using 'auto' keyword to cause type inference to be used
         for (auto n : vec) {
-            std::cout << n << " ";
+            std::print("{} ", n);
         }
-        std::cout << std::endl;
+        std::println();
 
         // i) Same as g), using 'const auto&': type inference by reference
         for (const auto& n : vec) {
-            std::cout << n << " ";
+            std::print("{} ", n);
         }
-        std::cout << std::endl;
+        std::println();
 
         // j) Real C++: How the compiler 'sees' a Range-based 'for' Loop
         std::vector<int>::const_iterator begin = vec.cbegin();
@@ -109,10 +109,10 @@ namespace RangeBasedForLoop {
         while (begin != end) {
 
             int n{ *begin };
-            std::cout << n << " ";
+            std::print("{} ", n);
             ++begin;
         }
-        std::cout << std::endl;
+        std::println();
 
         // k) Same as h), using 'auto'
         auto begin2 = vec.cbegin();
@@ -121,15 +121,15 @@ namespace RangeBasedForLoop {
         while (begin2 != end2) {
 
             int n{ *begin2 };
-            std::cout << n << " ";
+            std::print("{} ", n);
             ++begin2;
         }
-        std::cout << std::endl;
+        std::println();
 
         // l) Range-based 'for' loop with initializer,
         // we can now use the index variable inside the for statement
         for (int index{}; int n : vec) {
-            std::cout << index << ": " << n << " " << std::endl;
+            std::println("{}: {} ", index, n);
             ++index;
         }
     }

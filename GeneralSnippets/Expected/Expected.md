@@ -114,7 +114,7 @@ und mit den Methoden `value` und `error()` könnte man auf den enthaltenen Wert b
 04:         return std::unexpected{ "Error: Division by zero" };
 05:     }
 06: 
-07:     return std::expected<double, std::string> { numerator / denominator};
+07:     return std::expected<double, std::string> { numerator / denominator };
 08: }
 09: 
 10: void test()

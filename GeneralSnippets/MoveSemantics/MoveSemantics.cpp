@@ -10,8 +10,8 @@ namespace MoveSemantics {
     {
     private:
         // private member data
-        std::size_t m_size;  // current number of elements
-        int*      m_data;    // array of elements
+        std::size_t m_size;    // current number of elements
+        int*        m_data;    // array of elements
 
     public:
         // c'tors and d'tor
@@ -20,12 +20,12 @@ namespace MoveSemantics {
         ~BigData();
 
         // copy semantics
-        BigData(const BigData&);                  // copy c'tor
-        BigData& operator= (const BigData&);      // copy assignment
+        BigData(const BigData&);                     // copy c'tor
+        BigData& operator= (const BigData&);         // copy assignment
 
         // move semantics
-        //BigData(BigData&&) noexcept;              // move c'tor
-        //BigData& operator= (BigData&&) noexcept;  // move assignment
+        // BigData(BigData&&) noexcept;              // move c'tor
+        // BigData& operator= (BigData&&) noexcept;  // move assignment
 
     private:
         // private helper methods

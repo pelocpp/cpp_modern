@@ -87,6 +87,10 @@ Das Feature der *einheitlichen Initialisierung* bringt drei Vorteile mit sich:
 Eine genaue Begründung der Fehlermeldung des letzten Beispiels
 findet man [hier](https://isocpp.org/blog/2016/05/quick-q-why-is-list-initialization-using-curly-braces-better-than-the-alter/).
 
+Die Begrifflichkeit &bdquo;*Narrowing*&rdquo; bezieht sich also schlicht auf den Verlust an Breite (Wertebereich/Präzision)
+bei der Konvertierung von einem großen zu einem kleineren Datentyp.
+
+
 ---
 
 ## Variablen elementaren Datentyps: Initialisierung mit datentyp-spezifischem Null-Wert <a name="link4"></a>
