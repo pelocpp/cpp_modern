@@ -2,11 +2,9 @@
 // Exercises_11_Initialization.cpp
 // =====================================================================================
 
-module;
-
-#include "../ScopedTimer/ScopedTimer.h"
-
 module modern_cpp_exercises:initialization;
+
+import scoped_timer;
 
 namespace Exercises_Initialization {
 

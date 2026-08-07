@@ -2,11 +2,9 @@
 // Folding.cpp // Variadic Templates // Folding
 // =====================================================================================
 
-module;
-
-#include "../ScopedTimer/ScopedTimer.h"
-
 module modern_cpp:folding;
+
+import scoped_timer;
 
 namespace Folding {
 

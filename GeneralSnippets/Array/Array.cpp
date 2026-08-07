@@ -359,23 +359,23 @@ namespace StdArray {
 
     static void test_31() {
 
-        //int carr[]{ 1, 2, 3, 4, 5 };
-        //printArray(carr);
-
-        //std::array arr{ 6, 7, 8, 9, 10 };
-        //printArray(arr);
-
-        //std::vector<int> vec{ 1, 3, 5, 7, 9 };
-        //printArray(vec);
-
         int carr[]{ 1, 2, 3, 4, 5 };
-        printArray(std::span{ carr });
+        printArray(carr);
 
         std::array arr{ 6, 7, 8, 9, 10 };
-        printArray(std::span{ arr });
+        printArray(arr);
 
-        std::vector vec{ 1, 3, 5, 7, 9 };
-        printArray(std::span{ vec });
+        std::vector<int> vec{ 1, 3, 5, 7, 9 };
+        printArray(vec);
+
+        //int carr[]{ 1, 2, 3, 4, 5 };
+        //printArray(std::span{ carr });
+
+        //std::array arr{ 6, 7, 8, 9, 10 };
+        //printArray(std::span{ arr });
+
+        //std::vector vec{ 1, 3, 5, 7, 9 };
+        //printArray(std::span{ vec });
     }
 
     // --------------------------------------------------------------------
@@ -386,13 +386,28 @@ namespace StdArray {
         std::println("Number of elements: {}", values.size());
         std::println("Size of span:       {}", values.size_bytes());
 
-        for (const auto elem : values) {
+        for (auto& elem : values) {
             std::println("{}", elem);
         }
         std::println();
     }
 
     static void test_32() {
+
+        std::vector vec{ 1, 2, 3, 4, 5 };
+
+        std::span<int> sp{ vec };   // non-owning container
+
+        printArray(sp);
+
+        vec.push_back(6);
+
+        printArray(sp);    
+        printArray(vec);
+        // printArray(std::span<int> { vec });
+    }
+
+    static void test_33() {
 
         int carr[]{ 1, 2, 3, 4, 5 };
         printArrayConst(carr);
@@ -424,6 +439,7 @@ void main_array()
     test_30();
     test_31();
     test_32();
+    test_33();
 }
 
 // =====================================================================================

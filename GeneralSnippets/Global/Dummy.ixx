@@ -8,7 +8,7 @@ import std;
 
 constexpr bool isVerbose = true;
 
-class Dummy
+export class Dummy
 {
 private:
     int m_dummy;
@@ -16,13 +16,13 @@ private:
 public:
     explicit Dummy() : m_dummy{} {
         if (isVerbose) {
-            std::cout << "c'tor Dummy [" << m_dummy << "]" << std::endl;
+            std::cout << "c'tor Dummy() [" << m_dummy << "]" << std::endl;
         }
     }
 
     explicit Dummy(int dummy) : m_dummy{ dummy } {
         if (isVerbose) {
-            std::cout << "c'tor Dummy [" << m_dummy << "]" << std::endl;
+            std::cout << "c'tor Dummy(int) [" << m_dummy << "]" << std::endl;
         }
     }
 
@@ -64,11 +64,11 @@ public:
     }
 
     // mimimalistic public interface
-    int getValue() {
+    int getValue() const {
         return m_dummy;
     }
 
-    void sayHello() { 
+    void sayHello() const {
         std::cout << "Hello Dummy [" << m_dummy << "]" << std::endl;
     }
 

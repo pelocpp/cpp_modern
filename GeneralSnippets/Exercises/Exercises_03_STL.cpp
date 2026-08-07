@@ -2,11 +2,9 @@
 // Exercises_03_Algorithms.cpp
 // =====================================================================================
 
-module;
-
-#include "../ScopedTimer/ScopedTimer.h"
-
 module modern_cpp_exercises:stl;
+
+import scoped_timer;
 
 namespace Exercises_STL {
 

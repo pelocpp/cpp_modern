@@ -74,7 +74,7 @@ int main()
         //main_perfect_forwarding();
         //main_placement_new();
         //main_println();
-        //main_raii();
+        main_raii();
         //main_raii_02();
         //main_random();
         //main_range_based_for_loop();

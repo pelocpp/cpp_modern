@@ -2,11 +2,9 @@
 // Algorithms.cpp // std::fill, std::for_each, std::generate and more ...
 // =====================================================================================
 
-module;
-
-#include "../ScopedTimer/ScopedTimer.h"
-
 module modern_cpp:algorithms;
+
+import scoped_timer;
 
 namespace Algorithms {
 

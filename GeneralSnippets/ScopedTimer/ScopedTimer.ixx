@@ -1,13 +1,12 @@
-// ===========================================================================
-// ScopedTimer.h
-// ===========================================================================
+// ===============================================================================
+// ScopedTimer.ixx // Class for measuring runtime
+// ===============================================================================
 
-#pragma once
+export module scoped_timer;
 
-#include <iostream>
-#include <chrono>
+import std;
 
-class ScopedTimer
+export class ScopedTimer
 {
 public:
     enum class Resolution { Milli, Micro, Nano };
@@ -47,8 +46,8 @@ public:
     ScopedTimer(const ScopedTimer&) = delete;
     ScopedTimer& operator=(const ScopedTimer&) = delete;
 
-    ScopedTimer(ScopedTimer&&) = delete;
-    ScopedTimer& operator=(ScopedTimer&&) = delete;
+    ScopedTimer(ScopedTimer&&) noexcept = delete;
+    ScopedTimer& operator=(ScopedTimer&&) noexcept = delete;
 
 private:
     void startWatch() {
@@ -74,6 +73,6 @@ private:
     }
 };
 
-// ===========================================================================
+// ===============================================================================
 // End-of-File
-// ===========================================================================
+// ===============================================================================

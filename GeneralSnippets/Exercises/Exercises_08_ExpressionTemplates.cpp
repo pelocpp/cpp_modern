@@ -2,11 +2,9 @@
 // Exercises_08_ExpressionTemplates.cpp
 // =====================================================================================
 
-module;
-
-#include "../ScopedTimer/ScopedTimer.h"
-
 module modern_cpp_exercises:expression_templates;
+
+import scoped_timer;
 
 namespace Exercises_ExpressionTemplates {
 

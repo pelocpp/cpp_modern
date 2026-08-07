@@ -33,7 +33,6 @@ export import :exception_safety;
 export import :explicit_keyword;
 export import :expected;
 export import :expression_templates;
-export import :expression_templates;
 export import :folding;
 export import :functional_programming;
 export import :generate;

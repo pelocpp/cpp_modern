@@ -2,55 +2,60 @@
 // Variant.cpp // std::variant
 // =====================================================================================
 
+module;
+
+#include <print>     // module implementation too unstable
+#include <variant>
+
 module modern_cpp:variant;
 
 namespace VariantDemo {
 
     static void test_01() {
 
-        std::variant<int, double, std::string> v{ 123 };
+        std::variant<int, double, std::string> var{ 123 };
 
         // -------------------------------------------------
 
         {
-            std::size_t index{ v.index() };
-            int n{ std::get<int>(v) };  // std::get using type
+            std::size_t index{ var.index() };
+            int n{ std::get<int>(var) };  // std::get using type
             std::println("{} - Value: {}", index, n);
         }
 
         // -------------------------------------------------
 
         {
-            std::size_t index{ v.index() };
-            int n{ std::get<0>(v) };    // std::get using index
+            std::size_t index{ var.index() };
+            int n{ std::get<0>(var) };    // std::get using index
             std::println("{} - Value: {}", index, n);
         }
 
         // -------------------------------------------------
         {
-            v = 123.456;                // we're now a double
+            var = 123.456;                // we're now a double
 
-            std::size_t index{ v.index() };
-            double d{ std::get<double>(v) };
+            std::size_t index{ var.index() };
+            double d{ std::get<double>(var) };
             std::println("{} - Value: {}", index, d);
         }
 
         // -------------------------------------------------
         {
-            v = std::string{ "Hello" }; // we're now a std::string
+            var = std::string{ "Hello" }; // we're now a std::string
 
-            std::size_t index{ v.index() };
-            std::string s{ std::get<std::string>(v) };
+            std::size_t index{ var.index() };
+            std::string s{ std::get<std::string>(var) };
             std::println("{} - Value: {}", index, s);
         }
 
         // -------------------------------------------------
 
         {
-            v.emplace<2>("Hello again");    // we're now a std::string again
+            var.emplace<2>("Hello again");    // we're now a std::string again
 
-            std::size_t index{ v.index() };
-            std::string s{ std::get<std::string>(v) };
+            std::size_t index{ var.index() };
+            std::string s{ std::get<std::string>(var) };
             std::println("{} - Value: {}", index, s);
         }
 
@@ -59,8 +64,8 @@ namespace VariantDemo {
         {
             // std::get returns a reference, so you can change the value:
 
-            std::get<std::string>(v) += std::string{ " World" };
-            std::println("{} - Value: {}", v.index(), std::get<std::string>(v));
+            std::get<std::string>(var) += std::string{ " World" };
+            std::println("{} - Value: {}", var.index(), std::get<std::string>(var));
         }
     }
 
@@ -68,18 +73,18 @@ namespace VariantDemo {
 
     static void test_02() {
 
-        std::variant<int, double, std::string> v{};
+        std::variant<int, double, std::string> var{};
 
-        auto result{ std::holds_alternative<int>(v) };   // true, int is first alternative
+        auto result{ std::holds_alternative<int>(var) };   // true, int is first alternative
 
-        v = 123;
-        result = std::holds_alternative<int>(v);         // true
+        var = 123;
+        result = std::holds_alternative<int>(var);         // true
 
-        v = std::string{ "Hello" };
-        result = std::holds_alternative<int>(v);         // false, int was overwritten
+        var = std::string{ "Hello" };
+        result = std::holds_alternative<int>(var);         // false, int was overwritten
         
-        v = 123.456;
-        result = std::holds_alternative<double>(v);      // true, v is now double
+        var = 123.456;
+        result = std::holds_alternative<double>(var);      // true, v is now double
     }
         
         
@@ -89,13 +94,13 @@ namespace VariantDemo {
 
         // accessing a variant
 
-        std::variant<int, double, std::string> v{ std::string{ "Hello" } };
+        std::variant<int, double, std::string> var{ std::string{ "Hello" } };
 
-        std::println("{} - Value: {}", v.index(), std::get<std::string>(v));
+        std::println("{} - Value: {}", var.index(), std::get<std::string>(var));
 
         try
         {
-            double d = std::get<double>(v);
+            double d = std::get<double>(var);
             std::println("double! ", d);
         }
         catch (std::bad_variant_access&)
@@ -103,8 +108,8 @@ namespace VariantDemo {
             std::println("Variant doesn't hold a double at this moment ...");
         }
 
-        v = 123;
-        std::println("{} - Value: {}", v.index(), std::get<int>(v));
+        var = 123;
+        std::println("{} - Value: {}", var.index(), std::get<int>(var));
     }
 
     // -------------------------------------------------------------------
@@ -164,7 +169,7 @@ namespace VariantDemo {
 
     static void test_06() {
 
-        std::variant<int, double, std::string> v{ 123 };
+        std::variant<int, double, std::string> var{ 123 };
 
         // using a generic visitor
         auto visitor = [](const auto& elem) {
@@ -193,21 +198,23 @@ namespace VariantDemo {
             }
         };
 
-        std::visit(visitor, v);
+        std::visit(visitor, var);
 
-        v = 123.456;
-        std::visit(visitor, v);
+        var = 123.456;
+        std::visit(visitor, var);
 
-        v = std::string{ "Hello" };
-        std::visit(visitor, v);
+        var = std::string{ "Hello" };
+        std::visit(visitor, var);
     }
 
     // -------------------------------------------------------------------
 
     static void test_07() {
 
-        std::vector<std::variant<int, long, long long, float, double>>
-            vec = { 100, 200l, 300ll, 400.5f, 500.5 };
+        std::vector<std::variant<int, long, long long, float, double>> vec
+        {
+            100, 200l, 300ll, 400.5f, 500.5 
+        };
 
         // display each value
         std::println("Values:      ");
@@ -254,7 +261,7 @@ namespace VariantDemo {
         auto numInts = std::count_if(
             vec.begin(),
             vec.end(),
-            [](auto elem) {
+            [](const auto& elem) {
                 return std::holds_alternative<int>(elem);
             }
         );
@@ -275,8 +282,8 @@ namespace VariantDemo {
         auto contains = std::any_of(
             vec.begin(),
             vec.end(),
-            [](auto v) {
-                return std::holds_alternative<int>(v) and std::get<int>(v) == 789;
+            [](const auto& var) {
+                return std::holds_alternative<int>(var) and std::get<int>(var) == 789;
             }
         );
 

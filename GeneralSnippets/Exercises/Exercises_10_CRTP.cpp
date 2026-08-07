@@ -2,11 +2,9 @@
 // Exercises_10_CRTP.cpp
 // =====================================================================================
 
-module;
-
-#include "../ScopedTimer/ScopedTimer.h"
-
 module modern_cpp_exercises:crtp;
+
+import scoped_timer;
 
 namespace Exercises_CRTP {
 

@@ -675,6 +675,9 @@
     <ClCompile Include="TypeErasure\TypeErasure_Bookstore.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ScopedTimer\ScopedTimer.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -1309,11 +1312,6 @@
     <Image Include="Lambda\Lambdas_constexpr_IIFE.png">
       <Filter>Resource Files</Filter>
     </Image>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="ScopedTimer\ScopedTimer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Reflection\Reflection_00_Compiler_Explorer.txt">

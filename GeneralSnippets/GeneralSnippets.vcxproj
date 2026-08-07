@@ -303,6 +303,7 @@
     <ClCompile Include="RegExpr\RegExpr.cpp" />
     <ClCompile Include="RValueLValue\Module_RValueLValue.ixx" />
     <ClCompile Include="RValueLValue\RValueLValue.cpp" />
+    <ClCompile Include="ScopedTimer\ScopedTimer.ixx" />
     <ClCompile Include="SFINAE_EnableIf\Module_Sfinae.ixx" />
     <ClCompile Include="SFINAE_EnableIf\Sfinae.cpp" />
     <ClCompile Include="SharedPtr\Module_SharedPtr.ixx" />
@@ -581,9 +582,6 @@
     <Image Include="VariadicTemplates\cpp_snippets_mixins_02.png" />
     <Image Include="WeakPtr\cpp_snippets_cyclic_references.png" />
     <Image Include="WeakPtr\cycle.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="ScopedTimer\ScopedTimer.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Reflection\Reflection_00_Compiler_Explorer.txt" />

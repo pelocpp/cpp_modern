@@ -1,12 +1,10 @@
 // =====================================================================================
-// ExpressionTemplates_01.cpp // Expression Templates
+// ExpressionTemplates.cpp // Expression Templates
 // =====================================================================================
 
-module;
-
-#include "../ScopedTimer/ScopedTimer.h"
-
 module modern_cpp:expression_templates;
+
+import scoped_timer;
 
 namespace ExpressionTemplates {
 

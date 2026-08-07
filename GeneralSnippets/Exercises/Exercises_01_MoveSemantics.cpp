@@ -2,11 +2,9 @@
 // Exercises_01_MoveSemantics.cpp
 // =====================================================================================
 
-module;
-
-#include "../ScopedTimer/ScopedTimer.h"
-
 module modern_cpp_exercises:move_semantics;
+
+import scoped_timer;
 
 namespace Exercises_MoveSemantics {
 

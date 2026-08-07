@@ -2,11 +2,9 @@
 // TypeErasure_Bookstore.cpp - Static versus Dynamic Polymorphism
 // =====================================================================================
 
-module;
-
-#include "../ScopedTimer/ScopedTimer.h"
-
 module modern_cpp:type_erasure;
+
+import scoped_timer;
 
 // =====================================================================================
 

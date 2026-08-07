@@ -205,7 +205,7 @@ Es folgt eine tabellarische Auflistung dieser Unterverzeichnisse.
 | [Transform](GeneralSnippets/Transform/Transform.md) | STL-Algorithmus `std::transform` und Lambda-Objekte in der Anwendung |
 | [Tuples](GeneralSnippets/Tuple/Tuple.md) | Neue STL-Utility Klasse `std::tuple` |
 | [Two-Phase Name Lookup](GeneralSnippets/TwoPhaseNameLookup/TwoPhaseNameLookup.md) | Two-Phase Name Lookup |
-| [TypeErasure](GeneralSnippets/TypeErasure/TypeErasure.md) | *Type Erasure* &ndash; |
+| [TypeErasure](GeneralSnippets/TypeErasure/TypeErasure.md) | *Type Erasure* |
 | [TypeTraits](GeneralSnippets/TypeTraits/TypeTraits.md) | Typmerkmale |
 | [Unique Pointer](GeneralSnippets/UniquePtr/UniquePtr.md) | Klasse `std::unique_ptr<T>` |
 | [Using Namespace Std](GeneralSnippets/UsingNamespaceStd/UsingNamespaceStd.md) | Warum ist `using namespace std;` als schlechte Praxis angesehen? |
