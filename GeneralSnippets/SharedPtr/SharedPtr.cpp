@@ -15,6 +15,8 @@ module;
 #endif
 #endif  // _DEBUG
 
+#include <print>  // module implementation too unstable
+
 module modern_cpp:shared_ptr;
 
 namespace SharedPointer {
