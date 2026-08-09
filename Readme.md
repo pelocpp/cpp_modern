@@ -190,6 +190,7 @@ Es folgt eine tabellarische Auflistung dieser Unterverzeichnisse.
 | [RValue/LValue](GeneralSnippets/RValueLValue/RValueLValue.md) | LValue- und RValue Referenzen |
 | [SFINAE_EnableIf](GeneralSnippets/SFINAE_EnableIf/Sfinae.md) | SFINAE und `std::enable_if` |
 | [Shared Pointer](GeneralSnippets/SharedPtr/SharedPtr.md) | Klasse `std::shared_ptr<T>` |
+| [Smart Pointer](GeneralSnippets/SmartPointer/SmartPointer.md) | Smart Pointer Klassen |
 | [Source Location](GeneralSnippets/SourceLocation/SourceLocation.md) | Klasse `std::source_location` |
 | [SpaceshipOperator](GeneralSnippets/SpaceshipOperator/SpaceshipOperator.md) | Drei-Wege-Vergleichsoperator (*Spaceship Operator* `<=>`) |
 | [SSO](GeneralSnippets/SSO/SSO.md) | *Small String Optimization* |

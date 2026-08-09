@@ -1151,6 +1151,9 @@
     <None Include="SpaceshipOperator\cpp_20_spaceship_operator.svg">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="SmartPointer\SmartPointer.md">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="VariadicTemplates\cpp_snippets_mixins_01.png">
