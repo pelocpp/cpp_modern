@@ -26,10 +26,10 @@ Der so reservierte Speicherbereich kann auf diese Weise nie mehr anderweitig ver
 
 Folgende Überlegungen haben zu einem alternativen Ansatz geführt:
 
-  * C++ ist eine objekt-orientierte Programmiersprache.
+  * C++ ist eine objektorientierte Programmiersprache.
   * Folglich gibt es Klassen und Objekte.
   * Klassen/Objekte besitzen Konstruktoren und Destruktoren.
-  * Wann wird speziell ein Konstruktor aufgerufen: Am Ende des Scopes des dazugehörigen Objekts.
+  * Wann wird speziell ein Konstruktor aufgerufen: Am Ende des Scopes des zugehörigen Objekts.
   * Damit kann man sagen: Der Aufruf eines Konstruktor ist deterministisch &ndash; im Gegensatz zum Aufruf des `delete`-Operators, der explizit vom Anwender abzusetzen ist.
   * Idee: Man platziere / verstecke den durch `new` erhaltenen Zeiger in einer Hüllenklasse / einem Hüllenobjekt (*Wrapper*-Objekt):
     * Konstruktor des Hüllenobjekts: Bekommt auf irgendeine Weise den Zeiger übergeben.
@@ -57,7 +57,7 @@ nativen Zeigers verfolgen:
 
 ## Klasse `std::shared_ptr` &ndash; Geteilter Besitz <a name="link4"></a>
 
-  * Konzept: Ein Objekt hat mehrere *einzigen* Besitzer.
+  * Konzept: Ein Objekt hat *mehrere* Besitzer.
   * Kopieren: Geht (Kopierkonstruktor).
   * Wertzuweisung: Geht (Zuweisungsoperator `operator=`).
   * Mechanismus: Nutzt intern einen Referenzzähler (*Reference Counting*). Gewisse Ähnlichkeiten zu einem *Garbage Collector* vorhanden.
