@@ -155,8 +155,8 @@
     &bdquo;C++ The Documentary&rdquo; zeichnet den gesamten Werdegang nach &ndash; von den Anfängen in den Fluren der Bell Labs
     bis hin zur weltweiten Gemeinschaft, die die Sprache heute prägt.
     
-    Im Mittelpunkt stehen die Menschen, die C++ erschaffen und weiterentwickelt haben,
-    die darüber stritten und sich weigerten, die Sprache sterben zu lassen.
+    &bdquo;Im Mittelpunkt stehen die Menschen, die C++ erschaffen und weiterentwickelt haben,
+    die darüber stritten und sich weigerten, die Sprache sterben zu lassen.&rdquo;
     
     Bjarne Stroustrup: Bell Labs, Designer and original implementer of C++<br />
     Alexander Stepanov: Designer of the Standard Template Library<br />
