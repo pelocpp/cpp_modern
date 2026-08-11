@@ -6,6 +6,7 @@ module;
 
 #include <stdio.h>
 #include <windows.h>
+#include <print>
 
 module modern_cpp:unique_ptr;
 
@@ -109,6 +110,41 @@ namespace UniquePointerGeneral {
     }
 
     // ===========================================================================
+    // accessing the allocated memory does not necessarily require the smart pointer
+
+    static void processDataCLike(const std::string* data)
+    {
+        std::println("Data: {}", *data);
+    }
+
+    static void processDataCppLike(const std::string& data)
+    {
+        std::println("Data: {}", data);
+    }
+
+    static void test_03()
+    {
+        auto ptr1 = std::make_unique<std::string>("123");
+        auto ptr2 = std::make_unique<std::string>("456");
+
+        std::vector<std::unique_ptr<std::string>> vec;
+
+        vec.push_back(std::move(ptr1));
+        vec.push_back(std::move(ptr2));
+
+        // ======================
+
+        auto ptr3 = std::move(vec[0]);
+        auto& ptr4 = vec[1];
+
+        processDataCLike(vec[1].get());    // C-Stylistics, using native address 
+
+        processDataCppLike(*vec[1].get()); // C++-Stylistics, using reference syntax
+        // or
+        processDataCppLike(*vec[1]);       // C++-Stylistics, using reference syntax
+    }
+
+    // ===========================================================================
     // std::unique_ptr with arrays
 
     class A {
@@ -122,7 +158,7 @@ namespace UniquePointerGeneral {
         }
     };
 
-    static void test_03()
+    static void test_04()
     {
         // creates a unique_ptr to an array of 5 A objects
         std::unique_ptr<A[]> ptr{ std::make_unique<A[]>(5) };
@@ -146,7 +182,7 @@ namespace UniquePointer_SourceSinkPattern
         // now *ptr is deleted 
     }
 
-    static void test_04()
+    static void test_05()
     {
         // creating a unique pointer with the help of a creator function
         std::unique_ptr<int> ptr{ createResource(123) };
@@ -188,7 +224,7 @@ namespace UniquePointerWrappingResourceHandles {
         return FILE_UniquePtr{ file };
     }
 
-    static void test_05()
+    static void test_06()
     {
         const char* fileName{ "..\\GeneralSnippets\\UniquePtr\\UniquePtr.cpp" };
 
@@ -231,7 +267,7 @@ namespace UniquePointerWrappingWin32Handles {
         return HANDLE_UniquePtr{ handle };
     }
 
-    static void test_06()
+    static void test_07()
     {
         const auto* fileName{ L"..\\GeneralSnippets\\UniquePtr\\UniquePtr.cpp" };
 
@@ -275,16 +311,17 @@ void main_unique_ptr()
     using namespace UniquePointerGeneral;
     test_01();   
     test_02();     // interaction with functions/methods
-    test_03();     // support of arrays
+    test_03();     // accessing the allocated memory does not necessarily require the smart pointer
+    test_04();     // support of arrays
 
     using namespace UniquePointer_SourceSinkPattern;
-    test_04();
-
-    using namespace UniquePointerWrappingResourceHandles;
     test_05();
 
-    using namespace UniquePointerWrappingWin32Handles;
+    using namespace UniquePointerWrappingResourceHandles;
     test_06();
+
+    using namespace UniquePointerWrappingWin32Handles;
+    test_07();
 }
 
 // =================================================================================

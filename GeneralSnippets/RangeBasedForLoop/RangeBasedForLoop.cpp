@@ -16,7 +16,7 @@ namespace RangeBasedForLoop {
         std::print("{} ", n);
     }
 
-    // functor: "callable object" - class which implements operator()
+    // "callable object" - class which implements operator()
     class ElementProcessor
     {
     public:

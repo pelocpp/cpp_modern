@@ -45,7 +45,7 @@ namespace ExpressionTemplates {
         // getter
         std::size_t inline getSize() const { return N; };
 
-        // functor - representing index operator
+        // callable object - representing index operator
         const T& operator()(std::size_t x, std::size_t y) const {
             return m_values[x][y];
         };

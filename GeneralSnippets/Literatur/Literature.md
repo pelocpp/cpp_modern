@@ -17,8 +17,6 @@
 
 ---
 
-## C++
-
   * Josuttis, Nicolai M., &bdquo;*C++20 - The Complete Guide*&rdquo;.</br>
     NicoJosuttis (7. November, 2022), 768 Seiten. Sprache: Englisch. ISBN-13: 978-3967309201, ISBN-10: 3967309207.
 
@@ -144,6 +142,35 @@
     Das ultimative Buch zu Templates in C++. 
 
     <img src="Buch_Vandervoorde_Josuttis_Gregor_Cpp_Templates.png" width="150">
+
+---
+
+## Youtube: &bdquo;The Story of C++: The World's Most Consequential Programming Language | The Official Story&rdquo;
+
+  * [C++ The Documentary](https://www.youtube.com/watch?v=lI7tMxzSJ7w)
+
+  &bdquo;Dies ist die Geschichte von C++, einer der weltweit am weitesten verbreiteten und einflussreichsten Programmiersprachen.
+  C++ spaltet die Geister, lässt sich nicht so leicht verdrängen und hat fast alles überdauert, was zu seiner Ablösung entwickelt wurde.&rdquo;
+  
+  &bdquo;C++ The Documentary&rdquo; zeichnet den gesamten Werdegang nach &ndash; von den Anfängen in den Fluren der Bell Labs
+  bis hin zur weltweiten Gemeinschaft, die die Sprache heute prägt.
+  
+  Im Mittelpunkt stehen die Menschen, die C++ erschaffen und weiterentwickelt haben,
+  die darüber stritten und sich weigerten, die Sprache sterben zu lassen.
+  
+  Bjarne Stroustrup: Bell Labs, Designer and original implementer of C++ 
+  Alexander Stepanov: Designer of the Standard Template Library 
+  Anders Hejlsberg: Creator of C#, TypeScript, and Turbo Pascal 
+  Andrei Alexandrescu:  Principal Research Scientist, Nvidia & C++ Author 
+  Andrew Koenig: Bell Labs, Founding member of the C++ Standards Committee, Researcher, C++ Author & Educator 
+  Barbara Moo:  Bell Labs, Manager C++ Development Team & C++ Author 
+  Brian Kernighan: Bell Labs, Computer Scientist, Co-author of "The C Programming Language"
+  Chris Lattner: Creator of Mojo, LLVM, Clang & Swift 
+  Eric Lubin: Software Developer - Lead, Hudson River Trading 
+  Gabriel Dos Reis: Software Engineer and Architect, Microsoft; C++ tools builder; Mathematician
+  Herb Sutter: Technical Fellow, Citadel Securities; Chair, Standard C++ Foundation; Emeritus Chair, ISO C++ Committee 
+  u. a. m.
+
 ---
 
 ## Frameworks, Bibliotheken, Ressources und mehr ...

@@ -2,6 +2,10 @@
 // ScopedTimer.ixx // Class for measuring runtime
 // ===============================================================================
 
+module;
+
+#include <chrono>   // module implementation too unstable
+
 export module scoped_timer;
 
 import std;

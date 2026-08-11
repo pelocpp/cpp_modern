@@ -91,6 +91,30 @@ namespace SharedPointer {
     }
 
     // ===========================================================================
+    // accessing the allocated memory does not necessarily require the smart pointer
+
+    static void processDataCLike(const std::string* data)
+    {
+        std::println("Data: {}", *data);
+    }
+
+    static void processDataCppLike(const std::string& data)
+    {
+        std::println("Data: {}", data);
+    }
+
+    static void test_03()
+    {
+        auto ptr = std::make_shared<std::string>("123");
+
+        processDataCLike(ptr.get());    // C-Stylistics, using native address 
+
+        processDataCppLike(*ptr.get()); // C++-Stylistics, using reference syntax
+        // or
+        processDataCppLike(*ptr);       // C++-Stylistics, using reference syntax
+    }
+
+    // ===========================================================================
     // std::unique_ptr with arrays
 
     class A {
@@ -104,7 +128,7 @@ namespace SharedPointer {
         }
     };
 
-    static void test_03()
+    static void test_04()
     {
         // shared pointer - prior to C++17
         A* ip{ new A[3] };
@@ -130,6 +154,7 @@ void main_shared_ptr()
     test_01();
     test_02();  // interaction with functions/methods
     test_03();  // support of arrays
+    test_04();  // support of arrays
 }
 
 // =====================================================================================

@@ -29,7 +29,7 @@ Folgende Überlegungen haben zu einem alternativen Ansatz geführt:
   * C++ ist eine objektorientierte Programmiersprache.
   * Folglich gibt es Klassen und Objekte.
   * Klassen/Objekte besitzen Konstruktoren und Destruktoren.
-  * Wann wird speziell ein Konstruktor aufgerufen: Am Ende des Scopes des zugehörigen Objekts.
+  * Wann wird speziell ein Destruktor aufgerufen: Am Ende des Scopes des zugehörigen Objekts.
   * Damit kann man sagen: Der Aufruf eines Konstruktor ist deterministisch &ndash; im Gegensatz zum Aufruf des `delete`-Operators, der explizit vom Anwender abzusetzen ist.
   * Idee: Man platziere / verstecke den durch `new` erhaltenen Zeiger in einer Hüllenklasse / einem Hüllenobjekt (*Wrapper*-Objekt):
     * Konstruktor des Hüllenobjekts: Bekommt auf irgendeine Weise den Zeiger übergeben.
@@ -60,17 +60,17 @@ nativen Zeigers verfolgen:
   * Konzept: Ein Objekt hat *mehrere* Besitzer.
   * Kopieren: Geht (Kopierkonstruktor).
   * Wertzuweisung: Geht (Zuweisungsoperator `operator=`).
-  * Mechanismus: Nutzt intern einen Referenzzähler (*Reference Counting*). Gewisse Ähnlichkeiten zu einem *Garbage Collector* vorhanden.
-  * Lebensdauer: Das Objekt wird gelöscht, wenn das letzte besitzende `std::shared_ptr`-Objekte zerstört wird.
+  * Mechanismus: Nutzt intern einen Referenzzähler (*Reference Counting*). Gewisse Ähnlichkeiten zu einem *Garbage Collector* sind vorhanden.
+  * Lebensdauer: Das Objekt wird gelöscht, wenn das letzte besitzende `std::shared_ptr`-Objekt zerstört wird.
   * Performance: Etwas Overhead durch die Verwaltung des Referenzzählers (*Threadsicher*).
   * Erzeugung: Bevorzugt mit `std::make_shared<T>()`.
 
 ## Klasse `std::weak_ptr` &ndash; Temporärer Besitz <a name="link5"></a>
 
-  * Konzept: Verweist auf ein Objekt, das von einem `std::shared_ptr`-Objekt verwaltet wird, ohne den Referenzzähler zu erhöhen.
+  * Konzept: Verweist auf ein Objekt, das von einem `std::shared_ptr`-Objekt verwaltet wird, ohne den Referenzzähler zu beeinflussen.
   * Hauptzweck: Ermöglicht Zugriff auf den von einem `std::shared_ptr`-Objekt verwalteten Speicherbereich, ohne einen Besitzanspruch zu verlangen. Es ist möglich, dass dieser Speicherbereich nicht mehr existiert.
-  * Weiterer Zweck: Verhindert zyklische Referenzen (Memory Leaks, bei denen sich zwei Objekte gegenseitig halten).
-  * Zugriff: Kann nicht direkt auf Daten zugreifen. Mit einem Aufruf von `lock()` wird temporär `std::shared_ptr` zur Verfügung gestellt.
+  * Weiterer Zweck: Verhindert zyklische Referenzen (Memory Leaks, bei denen sich zwei Objekte gegenseitig referenzieren).
+  * Zugriff: Kann nicht direkt auf die Daten zugreifen. Mit einem Aufruf von `lock()` wird temporär ein `std::shared_ptr`-Objekt zur Verfügung gestellt.
   * Prüfung: Eine Methode `expired()` prüft, ob das Objekt bereits gelöscht wurde.
   * Erzeugung: Durch Zuweisung eines `std::shared_ptr`-Objekts an ein `std::weak_ptr`-Objekt.
 
