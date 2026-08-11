@@ -149,27 +149,27 @@
 
   * [C++ The Documentary](https://www.youtube.com/watch?v=lI7tMxzSJ7w)
 
-  &bdquo;Dies ist die Geschichte von C++, einer der weltweit am weitesten verbreiteten und einflussreichsten Programmiersprachen.
-  C++ spaltet die Geister, lässt sich nicht so leicht verdrängen und hat fast alles überdauert, was zu seiner Ablösung entwickelt wurde.&rdquo;
-  
-  &bdquo;C++ The Documentary&rdquo; zeichnet den gesamten Werdegang nach &ndash; von den Anfängen in den Fluren der Bell Labs
-  bis hin zur weltweiten Gemeinschaft, die die Sprache heute prägt.
-  
-  Im Mittelpunkt stehen die Menschen, die C++ erschaffen und weiterentwickelt haben,
-  die darüber stritten und sich weigerten, die Sprache sterben zu lassen.
-  
-  Bjarne Stroustrup: Bell Labs, Designer and original implementer of C++ 
-  Alexander Stepanov: Designer of the Standard Template Library 
-  Anders Hejlsberg: Creator of C#, TypeScript, and Turbo Pascal 
-  Andrei Alexandrescu:  Principal Research Scientist, Nvidia & C++ Author 
-  Andrew Koenig: Bell Labs, Founding member of the C++ Standards Committee, Researcher, C++ Author & Educator 
-  Barbara Moo:  Bell Labs, Manager C++ Development Team & C++ Author 
-  Brian Kernighan: Bell Labs, Computer Scientist, Co-author of "The C Programming Language"
-  Chris Lattner: Creator of Mojo, LLVM, Clang & Swift 
-  Eric Lubin: Software Developer - Lead, Hudson River Trading 
-  Gabriel Dos Reis: Software Engineer and Architect, Microsoft; C++ tools builder; Mathematician
-  Herb Sutter: Technical Fellow, Citadel Securities; Chair, Standard C++ Foundation; Emeritus Chair, ISO C++ Committee 
-  u. a. m.
+    &bdquo;Dies ist die Geschichte von C++, einer der weltweit am weitesten verbreiteten und einflussreichsten Programmiersprachen.
+    C++ spaltet die Geister, lässt sich nicht so leicht verdrängen und hat fast alles überdauert, was zu seiner Ablösung entwickelt wurde.&rdquo;
+    
+    &bdquo;C++ The Documentary&rdquo; zeichnet den gesamten Werdegang nach &ndash; von den Anfängen in den Fluren der Bell Labs
+    bis hin zur weltweiten Gemeinschaft, die die Sprache heute prägt.
+    
+    Im Mittelpunkt stehen die Menschen, die C++ erschaffen und weiterentwickelt haben,
+    die darüber stritten und sich weigerten, die Sprache sterben zu lassen.
+    
+    Bjarne Stroustrup: Bell Labs, Designer and original implementer of C++<br />
+    Alexander Stepanov: Designer of the Standard Template Library<br />
+    Anders Hejlsberg: Creator of C#, TypeScript, and Turbo Pascal<br />
+    Andrei Alexandrescu:  Principal Research Scientist, Nvidia & C++ Author<br /> 
+    Andrew Koenig: Bell Labs, Founding member of the C++ Standards Committee, Researcher, C++ Author & Educator<br /> 
+    Barbara Moo:  Bell Labs, Manager C++ Development Team & C++ Author<br />
+    Brian Kernighan: Bell Labs, Computer Scientist, Co-author of "The C Programming Language"<br />
+    Chris Lattner: Creator of Mojo, LLVM, Clang & Swift<br />
+    Eric Lubin: Software Developer - Lead, Hudson River Trading<br /> 
+    Gabriel Dos Reis: Software Engineer and Architect, Microsoft; C++ tools builder; Mathematician<br />
+    Herb Sutter: Technical Fellow, Citadel Securities; Chair, Standard C++ Foundation; Emeritus Chair, ISO C++ Committee<br /> 
+    u. a. m.
 
 ---
 
