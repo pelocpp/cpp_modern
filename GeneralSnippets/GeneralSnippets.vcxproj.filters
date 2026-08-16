@@ -678,6 +678,12 @@
     <ClCompile Include="ScopedTimer\ScopedTimer.ixx">
       <Filter>Modules</Filter>
     </ClCompile>
+    <ClCompile Include="AllOfAnyOfNoneOf\AllOfAnyOfNoneOf.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AllOfAnyOfNoneOf\AllOfAnyOfNoneOf.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -1152,6 +1158,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="SmartPointer\SmartPointer.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="AllOfAnyOfNoneOf\AllOfAnyOfNoneOf.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

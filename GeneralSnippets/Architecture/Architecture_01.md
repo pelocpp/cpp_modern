@@ -86,7 +86,7 @@ Die STL ist der wesentliche Bestandteil der modernen C++&ndash;Programmierung, d
 sich auf die Logik der Anwendung zu konzentrieren, anstatt grundlegende Datenstrukturen selbst zu implementieren.
 
   * Standardbibliothek (STL):<br />Eine umfangreiche, ausgereifte Standardbibliothek für effiziente und portable Lösungen.
-    Zusätzliche Bereiche der STL umfassen Zeichenkettenverarbeitung, Eingabe/Ausgabe, Utilities (wie `std::pair` oder `std::tuple`), Threading, Zeitmanagement und Dateisysteme.
+    Zusätzliche Bereiche der STL umfassen Zeichenkettenverarbeitung, Eingabe/Ausgabe, Utilities (wie `std::pair`, `std::tuple` etc. oder `std::all_of`, `std::any_of` und `std::none_of`), Threading, Zeitmanagement und Dateisysteme.
   * Die STL ist auf Effizienz getrimmt und nutzt Templates für *Compile-Time*-Polymorphie, um maximale Performance zu bieten.
   * Abwärtskompatibilität:<br />Modernes C++ ist weiterhin mit C-Bibliotheken und älterem C++-Code kompatibel und ermöglicht so eine schrittweise Modernisierung.
 

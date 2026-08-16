@@ -135,6 +135,7 @@ Es folgt eine tabellarische Auflistung dieser Unterverzeichnisse.
 |:- |:-|
 | [Accumulate](GeneralSnippets/Accumulate/Accumulate.md) | STL-Algorithmus `std::accumulate` und Lambda-Objekte in der Anwendung |
 | [Algorithmen](GeneralSnippets/Algorithms/Algorithms.md) | Elementare STL-Algorithmen (`std::fill`, `std::for_each`, `std::generate`, `std::accumulate`) |
+| [AllOf, AnyOf, NoneOf](GeneralSnippets/AllOfAnyOfNoneOf/AllOfAnyOfNoneOf.md) | Drei weitere STL Algorithmen: `std::all_of`, `std::any_of` und `std::none_of` |
 | [Allocator](GeneralSnippets/Allocator/Allocator.md) | Container und Speicher-Allokatoren |
 | [Any](GeneralSnippets/Any/Any.md) | Neue STL-Utility Klasse `std::any` |
 | [Argument Dependent Name Lookup](GeneralSnippets/ArgumentDependentNameLookup/ArgumentDependentNameLookup.md) | Argument-Dependent Name Lookup (ADL) / *Koenig*-Lookup |

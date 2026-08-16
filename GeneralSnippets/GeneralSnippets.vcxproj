@@ -152,6 +152,8 @@
     <ClCompile Include="Algorithms\Module_Algorithms.ixx" />
     <ClCompile Include="Allocator\Allocator.cpp" />
     <ClCompile Include="Allocator\Module_Allocator.ixx" />
+    <ClCompile Include="AllOfAnyOfNoneOf\AllOfAnyOfNoneOf.cpp" />
+    <ClCompile Include="AllOfAnyOfNoneOf\AllOfAnyOfNoneOf.ixx" />
     <ClCompile Include="Any\Module_Any.ixx" />
     <ClCompile Include="Any\Any.cpp" />
     <ClCompile Include="ArgumentDependentNameLookup\ArgumentDependentNameLookup.cpp" />
@@ -369,6 +371,7 @@
     <None Include="Agenda\Agenda.md" />
     <None Include="Algorithms\Algorithms.md" />
     <None Include="Allocator\Allocator.md" />
+    <None Include="AllOfAnyOfNoneOf\AllOfAnyOfNoneOf.md" />
     <None Include="Any\cpp_std_any.svg" />
     <None Include="Any\Any.md" />
     <None Include="Architecture\Architecture.md" />

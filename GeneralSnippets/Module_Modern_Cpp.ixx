@@ -6,6 +6,7 @@ export module modern_cpp;
 
 export import :accumulate;
 export import :algorithms;
+export import :all_of_any_of_none_of;
 export import :allocator;
 export import :any;
 export import :argument_dependent_name_lookup;
