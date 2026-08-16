@@ -14,18 +14,18 @@
   * [`std::all_of`](#link2)
   * [`std::any`](#link3)
   * [`std::none_of`](#link4)
-  * [&bdquo;*Short Circuit Evaluation*&rdquo;](#link5)
+  * [*Short Circuit Evaluation*](#link5)
   * [Drei weitere Beispiele](#link6)
 
 ---
 
 ## Allgemeines <a name="link1"></a>
 
-Am einfachsten lassen sie sich dieses drei Hilfsalgorithmen anhand einer Frage unterscheiden, die sie beantworten:
+Am einfachsten lassen sie sich diese drei Hilfsalgorithmen anhand einer Frage unterscheiden, die sie beantworten:
 
-  * `std::all_of` &RightArrow; Erfüllen alle Elemente die Bedingung?
-  * `std::any_of` &RightArrow; Erfüllt mindestens ein Element die Bedingung?
-  * `std::none_of` &RightArrow; Erfüllt kein Element die Bedingung?
+  * `std::all_of` &RightArrow; Erfüllen alle Elemente eine bestimmte Bedingung?
+  * `std::any_of` &RightArrow; Erfüllt mindestens ein Element eine bestimmte Bedingung?
+  * `std::none_of` &RightArrow; Erfüllt kein Element eine bestimmte Bedingung?
 
 ---
 
@@ -48,9 +48,9 @@ Am einfachsten lassen sie sich dieses drei Hilfsalgorithmen anhand einer Frage u
 12: }
 ```
 
-Hier lautet die Fragestellung: &bdquo;Sind alle Zahlen gerade?&bdquo;
+Hier lautet die Fragestellung: &bdquo;Sind alle Zahlen gerade?&rdquo;
 
-Ja, das Ergebnis ist also wahr.
+Ja, das Ergebnis ist in diesem Beispiel wahr.
 
 ---
 
@@ -73,7 +73,7 @@ Ja, das Ergebnis ist also wahr.
 12: }
 ```
 
-Hier fragen wir: &bdquo;Gibt es mindestens eine gerade Zahl?&bdquo;
+Hier fragen wir: &bdquo;Gibt es mindestens eine gerade Zahl?&rdquo;
 
 Ja, 4 ist gerade, also ist das Ergebnis wahr.
 
@@ -100,37 +100,34 @@ Wichtig ist: Es spielt keine Rolle, dass die anderen Zahlen ungerade sind.
 12: }
 ```
 
-Wir fragen:
+Wir fragen: Gibt es keine geraden Zahlen?
 
-Gibt es keine geraden Zahlen?
-
-Ja. Keine der Zahlen ist gerade, daher ist das Ergebnis wahr.
-
+Ja, keine der Zahlen ist gerade, daher ist das Ergebnis wahr.
 
 Eine gute Eselsbrücke ist:
 
-`std::all_of` &RightArrow; alles
-`std::any_of` &RightArrow; mindestens eines
-`std::none_of` &RightArrow; null
+`std::all_of` &RightArrow; Bedingung für alle Elemente erfüllt.<br />
+`std::any_of` &RightArrow; Bedingung für mindestens ein Element erfüllt.<br />
+`std::none_of` &RightArrow; Bedingung für kein Element erfüllt.
 
 ---
 
-## &bdquo;*Short Circuit Evaluation*&rdquo; <a name="link5"></a>
+## *Short Circuit Evaluation* <a name="link5"></a>
 
-Besitzt einer dieser drei Algorithmen eine Art &bdquo;*Short Circuit Evaluation*&rdquo;?
+Unterstützen diese drei Algorithmen eine Art &bdquo;*Short Circuit Evaluation*&rdquo;?
 
-Ja &ndaash; alle drei weisen dieses optimierende Verhalten auf, sprich sie beenden die Ausführung,
+Ja &ndash; alle drei weisen dieses optimierende Verhalten auf, sprich sie beenden die Ausführung,
 wenn das Endergebnis bereits vorzeitig bekannt ist.
 
 Man kann sie sich also fast wie die logischen Operatoren `&&` und `||` vorstellen:
 
 | Algorithmus | &bdquo;*Short Circuit Evaluation*&rdquo; |
 |:-|:-|
-| `std::all_of`  &#x2258; | `condition1 && condition2 && condition3` ... | 
-| `std::any_of`  &#x2258; | `condition1 || condition2 || condition3` ...| 
-| `std::none_of` &#x2258; | `!condition1 && !condition2 && !condition3` ...| 
+| `std::all_of`  | &#x2258; `condition1 && condition2 && condition3` ... | 
+| `std::any_of`  | &#x2258; `condition1 || condition2 || condition3` ... |
+| `std::none_of` | &#x2258; `!condition1 && !condition2 && !condition3` ... | 
 
-*Tabelle* 1:  &bdquo;*Short Circuit Evaluation*&rdquo; von `std::all_of`, `std::any_of` und `std::none_of`.
+*Tabelle* 1: *Short Circuit Evaluation* von `std::all_of`, `std::any_of` und `std::none_of`.
 
 #### `std::all_of`
 
@@ -153,7 +150,7 @@ Hält bei dem ersten Element an, das die Bedingung nicht erfüllt.
 12: }
 ```
 
-Es gibt keinen Grund, 8 oder 10 zu untersuchen, da wir bereits an dem Wert 5 wissen, dass nicht alle Elemente die Bedingung erfüllen.
+Es gibt keinen Grund, 8 oder 10 zu untersuchen, da wir bereits mit Wert 5 wissen, dass nicht alle Elemente die Bedingung erfüllen.
 
 ---
 
@@ -210,10 +207,10 @@ Dies ist in diesem Beispiel beim Wert 4 der Fall.
 
 ## Drei weitere Beispiele <a name="link6"></a>
 
-  * `std::all_of` &ndash; Stellen Sie sich vor, Sie validieren Benutzerkonten, bevor Sie einen Batch-Vorgang zulassen. Die Frage lautet: Sind alle Nutzer volljährige Personen mit verifizierten E-Mail-Adressen?
-	Dies ist eine sehr natürliche Verwendung von `std::all_of`: &bdquo;Erfüllt der gesamte STL Container meine Anforderungen?&rdquo;
-  * std::any_of &ndash; Erkennen, ob etwas Aufmerksamkeit erfordert. In Bezug auf das Beispiel von unten: &bdquo;Gibt es mindestens einen Auftrag, der Aufmerksamkeit erfordert?&rdquo;
-  * std::none_of &ndash; Sicherstellen, dass eine Sammlung keine ungültigen Elemente enthält. In Bezug auf das Beispiel von unten: &bdquo;Gibt es keine .exe-Dateien?&rdquo;
+  * `std::all_of` &ndash; Wir validieren Benutzerkonten, bevor wir einen Batch-Vorgang zulassen. Die Frage lautet: Sind alle Nutzer volljährige Personen mit verifizierten E-Mail-Adressen?
+	Dies ist eine sehr natürliche Verwendung von `std::all_of`: &bdquo;Erfüllt der gesamte STL Container eine bestimmte Anforderung&rdquo;?
+  * `std::any_of` &ndash; Erkennen, ob etwas Aufmerksamkeit erfordert. In Bezug auf das Beispiel von unten: &bdquo;Gibt es mindestens einen Auftrag, der Aufmerksamkeit erfordert&rdquo;?
+  * `std::none_of` &ndash; Sicherstellen, dass eine Sammlung keine ungültigen Elemente enthält. In Bezug auf das Beispiel von unten: &bdquo;Gibt es keine .exe-Dateien&rdquo;?
 
 
 *Beispiel*:
@@ -246,6 +243,11 @@ Dies ist in diesem Beispiel beim Wert 4 der Fall.
 25: }
 ```
 
+*Ausgabe*:
+
+```
+Are all users adults with verified email addresses? false
+```
 
 *Beispiel*:
 
@@ -277,6 +279,11 @@ Dies ist in diesem Beispiel beim Wert 4 der Fall.
 25: }
 ```
 
+*Ausgabe*:
+
+```
+Is there at least one job that needs attention? true
+```
 
 *Beispiel*:
 
@@ -300,6 +307,12 @@ Dies ist in diesem Beispiel beim Wert 4 der Fall.
 17: 
 18:     std::println("Are there no .exe files? {}", safe);
 19: }
+```
+
+*Ausgabe*:
+
+```
+Are there no .exe files? false
 ```
 
 ---
