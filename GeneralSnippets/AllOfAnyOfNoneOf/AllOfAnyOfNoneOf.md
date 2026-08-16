@@ -121,7 +121,7 @@ wenn das Endergebnis bereits vorzeitig bekannt ist.
 
 Man kann sie sich also fast wie die logischen Operatoren `&&` und `||` vorstellen:
 
-| Algorithmus | &bdquo;*Short Circuit Evaluation*&rdquo; |
+| Algorithmus | *Short Circuit Evaluation* |
 |:-|:-|
 | `std::all_of`  | &#x2258; `condition1` && `condition2` && `condition3` ... | 
 | `std::any_of`  | &#x2258; `condition1` &#124;&#124; `condition2` &#124;&#124; `condition3` ... |
