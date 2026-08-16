@@ -123,9 +123,9 @@ Man kann sie sich also fast wie die logischen Operatoren `&&` und `||` vorstelle
 
 | Algorithmus | &bdquo;*Short Circuit Evaluation*&rdquo; |
 |:-|:-|
-| `std::all_of`  | &#x2258; `condition1 && condition2 && condition3` ... | 
-| `std::any_of`  | &#x2258; <pre>condition1 || condition2 || condition3</pre> ... |
-| `std::none_of` | &#x2258; `!condition1 && !condition2 && !condition3` ... | 
+| `std::all_of` &#x2258;  | <pre>condition1 && condition2 && condition3<pre> ... | 
+| `std::any_of` &#x2258;  | <pre>condition1 || condition2 || condition3</pre> ... |
+| `std::none_of` &#x2258;  | <pre>!condition1 && !condition2 && !condition3<pre> ... | 
 
 *Tabelle* 1: *Short Circuit Evaluation* von `std::all_of`, `std::any_of` und `std::none_of`.
 
