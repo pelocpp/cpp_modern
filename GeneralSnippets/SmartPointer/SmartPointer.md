@@ -30,7 +30,7 @@ Folgende Überlegungen haben zu einem alternativen Ansatz geführt:
   * Folglich gibt es Klassen und Objekte.
   * Klassen/Objekte besitzen Konstruktoren und Destruktoren.
   * Wann wird speziell ein Destruktor aufgerufen: Am Ende des Scopes des zugehörigen Objekts.
-  * Damit kann man sagen: Der Aufruf eines Konstruktor ist deterministisch &ndash; im Gegensatz zum Aufruf des `delete`-Operators, der explizit vom Anwender abzusetzen ist.
+  * Damit kann man sagen: Der Aufruf eines Destruktors ist deterministisch &ndash; im Gegensatz zum Aufruf des `delete`-Operators, der explizit vom Anwender abzusetzen ist.
   * Idee: Man platziere / verstecke den durch `new` erhaltenen Zeiger in einer Hüllenklasse / einem Hüllenobjekt (*Wrapper*-Objekt):
     * Konstruktor des Hüllenobjekts: Bekommt auf irgendeine Weise den Zeiger übergeben.
     * Destruktor des Hüllenobjekts: Aufruf von `delete`.
