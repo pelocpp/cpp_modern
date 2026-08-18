@@ -23,7 +23,7 @@ int main()
     {
         //main_accumulate();
         //main_algorithms();
-        main_all_of_any_of_none_of();
+        //main_all_of_any_of_none_of();
         //main_allocator();
         //main_any();
         //main_argument_dependent_name_lookup();

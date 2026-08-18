@@ -22,23 +22,26 @@ namespace UniquePointerGeneral {
         // auto ptr1{ std::make_unique<int>(123) };
 
         // access value behind smart pointer
-        int n{ *ptr1 };
+        int n = *ptr1;
         std::println("*ptr1:   {}", n);
 
         // access value using raw pointer
-        int* ip{ ptr1.get() };
+        int* ip = ptr1.get();
         (*ip)++;
-        int m{ *ip };
+        int m = *ip;
         std::println("*ip:     {}", m);
 
-        // access value - again - behind smart pointer
-        m = *ptr1;
-        std::println("*ptr1:   {}", m);
+        // access value using reference
+        int& ri = *ptr1;
+        // int& ri = *ptr1.get();  // works too
+        ri++;
+        std::println("ri:      {}", ri);
 
-        // move construction:
-        // second std::unique_ptr by moving 'ptr1' to 'ptr2',
-        // 'ptr1' doesn't own the object anymore
-        std::unique_ptr<int> ptr2{ std::move(ptr1) };
+        /* move construction: another std::unique_ptr by moving 'ptr1' to 'ptr2',
+         *'ptr1' doesn't own the object anymore
+         */
+
+        std::unique_ptr<int> ptr2 = std::move(ptr1);
         // std::println("*ptr1:   {}", *ptr1);    // crashes 
         m = *ptr2;
         std::println("*ptr2:   {}", m);
