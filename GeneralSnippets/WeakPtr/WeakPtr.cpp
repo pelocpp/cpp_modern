@@ -78,7 +78,7 @@ namespace WeakPointer {
      * There are 2 cycles! But: A child does not own its parents -> std::weak_ptr prevents cycles.
      * 
      * a) Both smart pointer are std::shared_ptr's  ==> No d'tor at all will be called
-     * b) One smart pointer is a std::weak_ptr    ==> One d'tor is called
+     * b) One smart pointer is a std::weak_ptr      ==> No d'tor at all will be called
      * c) Both smart pointer are std::weak_ptr's    ==> All d'tors are called
      */
 
