@@ -2,7 +2,7 @@
 // Dummy.ixx // Dummy Class for Testing Purposes
 // ===============================================================================
 
-export module modern_cpp:dummy;
+export module dummy;
 
 import std;
 
@@ -75,6 +75,11 @@ public:
     // output
     friend std::ostream& operator<< (std::ostream&, const Dummy&);
 };
+
+export std::ostream& operator<< (std::ostream& os, const Dummy& dummy) {
+    os << "Dummy [" << dummy.m_dummy << ']';
+    return os;
+}
 
 // ===============================================================================
 // End-of-File

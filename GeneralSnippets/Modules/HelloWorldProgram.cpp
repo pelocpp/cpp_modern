@@ -2,15 +2,13 @@
 // HelloWorldProgram.cpp
 // =====================================================================================
 
-import hello_world;
+import hello_world_module;
 
-int _main_modules()
+void main_modules_hello_world()
 {
     MyHelloWorld::globalData = 123;
 
     MyHelloWorld::sayHello();
-
-    return 0;
 }
 
 // =====================================================================================

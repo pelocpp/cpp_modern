@@ -60,9 +60,6 @@
     <ClCompile Include="MemoryLeaks\MemoryLeaksDetection.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Global\Dummy.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="TemplateTemplateParameter\TemplateTemplateParameter_02.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -624,13 +621,7 @@
     <ClCompile Include="Modules\HelloWorldProgram.ixx">
       <Filter>Modules</Filter>
     </ClCompile>
-    <ClCompile Include="Modules\Module_Modules.ixx">
-      <Filter>Modules</Filter>
-    </ClCompile>
     <ClCompile Include="Modules\HelloWorldProgram.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Modules\Modules.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GenericFunctions\Module_Generic_Functions.ixx">
@@ -681,7 +672,7 @@
     <ClCompile Include="AllOfAnyOfNoneOf\AllOfAnyOfNoneOf.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AllOfAnyOfNoneOf\AllOfAnyOfNoneOf.ixx">
+    <ClCompile Include="AllOfAnyOfNoneOf\Module_AllOfAnyOfNoneOf.ixx">
       <Filter>Modules</Filter>
     </ClCompile>
   </ItemGroup>

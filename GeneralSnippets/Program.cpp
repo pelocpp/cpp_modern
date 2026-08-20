@@ -5,17 +5,18 @@
 import modern_cpp;
 import modern_cpp_exercises;
 
+import hello_world_module;
+
 import std;
 
 #define MessageText "Collection of Modern C++ Code Examples - Copyright (C) 2026 Peter Loos."
 
 #pragma message(MessageText)
 
+extern void main_modules_hello_world();
+
 int main()
 {
-    //extern int _main_modules();
-    //_main_modules();
-
     std::println(MessageText);
 
     // main entry points code snippets
@@ -68,8 +69,8 @@ int main()
         //main_memory_leaks_detection();
         //main_metaprogramming_01();
         //main_metaprogramming_02(); 
-        //main_modularized_standard_library(); 
-        //main_modules();
+        //main_modularized_standard_library();
+        //main_modules_hello_world();
         //main_move_semantics();
         //main_optional();
         //main_perfect_forwarding();

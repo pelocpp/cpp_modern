@@ -1,8 +1,8 @@
 // =====================================================================================
-// Module Interface Partition 'hello_world' // HelloWorldProgram.ixx
+// Module Interface Partition 'hello_world_module' // HelloWorldProgram.ixx
 // =====================================================================================
 
-export module hello_world;
+export module hello_world_module;
 
 import std;
 

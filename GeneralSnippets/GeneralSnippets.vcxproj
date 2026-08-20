@@ -153,7 +153,7 @@
     <ClCompile Include="Allocator\Allocator.cpp" />
     <ClCompile Include="Allocator\Module_Allocator.ixx" />
     <ClCompile Include="AllOfAnyOfNoneOf\AllOfAnyOfNoneOf.cpp" />
-    <ClCompile Include="AllOfAnyOfNoneOf\AllOfAnyOfNoneOf.ixx" />
+    <ClCompile Include="AllOfAnyOfNoneOf\Module_AllOfAnyOfNoneOf.ixx" />
     <ClCompile Include="Any\Module_Any.ixx" />
     <ClCompile Include="Any\Any.cpp" />
     <ClCompile Include="ArgumentDependentNameLookup\ArgumentDependentNameLookup.cpp" />
@@ -252,7 +252,6 @@
     <ClCompile Include="Generate\Module_Generate.ixx" />
     <ClCompile Include="GenericFunctions\GenericFunctions.cpp" />
     <ClCompile Include="GenericFunctions\Module_Generic_Functions.ixx" />
-    <ClCompile Include="Global\Dummy.cpp" />
     <ClCompile Include="InitializerList\InitializerList.cpp" />
     <ClCompile Include="InitializerList\Module_InitializerList.ixx" />
     <ClCompile Include="InputOutputStreams\InputOutputStreams.cpp" />
@@ -275,8 +274,6 @@
     <ClCompile Include="ModularizedStandardLibrary\Module_ModularizedStandardLibrary.ixx" />
     <ClCompile Include="Modules\HelloWorldProgram.cpp" />
     <ClCompile Include="Modules\HelloWorldProgram.ixx" />
-    <ClCompile Include="Modules\Modules.cpp" />
-    <ClCompile Include="Modules\Module_Modules.ixx" />
     <ClCompile Include="Module_Modern_Cpp.ixx" />
     <ClCompile Include="Module_Modern_Cpp_Exercises.ixx" />
     <ClCompile Include="MoveSemantics\Module_MoveSemantics.ixx" />

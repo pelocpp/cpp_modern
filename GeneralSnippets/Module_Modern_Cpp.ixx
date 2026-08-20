@@ -46,7 +46,6 @@ export import :literals;
 export import :memory_leaks_detection;
 export import :metaprogramming;
 export import :modularized_standard_library;
-export import :modules;
 export import :move_semantics;
 export import :optional;
 export import :perfect_forwarding;
