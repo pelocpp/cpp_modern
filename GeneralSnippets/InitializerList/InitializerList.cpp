@@ -4,6 +4,8 @@
 
 module modern_cpp:initializer_list;
 
+import std;
+
 namespace InitializerList {
 
     // function using std::initializer_list

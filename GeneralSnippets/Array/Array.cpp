@@ -4,6 +4,8 @@
 
 module modern_cpp:class_array;
 
+import std;
+
 namespace StdArray {
 
     // -------------------------------------------------------------------

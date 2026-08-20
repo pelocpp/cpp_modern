@@ -4,6 +4,8 @@
 
 module modern_cpp:random;
 
+import std;
+
 namespace Random {
 
     static void main_random_01()

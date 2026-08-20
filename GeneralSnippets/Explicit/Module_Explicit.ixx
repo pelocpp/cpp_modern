@@ -4,8 +4,6 @@
 
 export module modern_cpp:explicit_keyword;
 
-import std;
-
 export void main_explicit_keyword();
 
 // =====================================================================================

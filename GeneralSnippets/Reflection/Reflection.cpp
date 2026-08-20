@@ -4,6 +4,8 @@
 
 module modern_cpp:reflection;
 
+import std;
+
 // Still in work:
 // See the files 'Reflection_01.txt' and so on being linked in the 
 // corresponding Markdown file

@@ -4,6 +4,8 @@
 
 module modern_cpp:copy_swap_idiom;
 
+import std;
+
 namespace NaiveBigData {
 
     class BigData

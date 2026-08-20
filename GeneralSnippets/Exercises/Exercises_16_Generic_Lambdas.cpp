@@ -4,6 +4,8 @@
 
 module modern_cpp_exercises:generic_lambdas;
 
+import std;
+
 namespace Exercises_Generic_Lambdas {
 
     namespace Exercise_01 {

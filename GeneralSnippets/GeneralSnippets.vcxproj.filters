@@ -618,10 +618,10 @@
     <ClCompile Include="TwoPhaseNameLookup\Module_TwoPhaseNameLookup.ixx">
       <Filter>Modules</Filter>
     </ClCompile>
-    <ClCompile Include="Modules\HelloWorldProgram.ixx">
+    <ClCompile Include="Modules\HelloWorldModule.ixx">
       <Filter>Modules</Filter>
     </ClCompile>
-    <ClCompile Include="Modules\HelloWorldProgram.cpp">
+    <ClCompile Include="Modules\HelloWorldModules.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GenericFunctions\Module_Generic_Functions.ixx">

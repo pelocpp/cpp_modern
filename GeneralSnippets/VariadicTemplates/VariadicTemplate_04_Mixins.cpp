@@ -4,6 +4,8 @@
 
 module modern_cpp:variadic_templates;
 
+import std;
+
 namespace VariadicTemplatesMixins {
 
     // ===================================================================

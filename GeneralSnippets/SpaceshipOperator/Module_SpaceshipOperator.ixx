@@ -4,8 +4,6 @@
 
 export module modern_cpp:spaceship_operator;
 
-import std;
-
 export void main_spaceship_operator();
 
 // =====================================================================================

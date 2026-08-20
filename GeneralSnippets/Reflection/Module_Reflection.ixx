@@ -4,8 +4,6 @@
 
 export module modern_cpp:reflection;
 
-import std;
-
 export void main_reflection();
 
 // =====================================================================================

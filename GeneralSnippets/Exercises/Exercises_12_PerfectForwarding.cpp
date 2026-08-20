@@ -4,6 +4,8 @@
 
 module modern_cpp_exercises:perfect_forwarding;
 
+import std;
+
 namespace Exercises_PerfectForwarding {
 
     namespace Exercise_01

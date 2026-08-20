@@ -4,6 +4,8 @@
 
 module modern_cpp:common_type;
 
+import std;
+
 namespace CommonType {
 
     template <typename T>

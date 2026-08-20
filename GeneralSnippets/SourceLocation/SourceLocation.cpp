@@ -4,6 +4,8 @@
 
 module modern_cpp:source_location;
 
+import std;
+
 namespace StdSourceLocation {
 
     static void log(

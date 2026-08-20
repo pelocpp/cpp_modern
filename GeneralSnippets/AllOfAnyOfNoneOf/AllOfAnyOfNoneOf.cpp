@@ -4,6 +4,8 @@
 
 module modern_cpp:all_of_any_of_none_of;
 
+import std;
+
 namespace AllOfAnyOfNoneOf {
 
     /* std::allof, std::any_of, std::none_of: introduction

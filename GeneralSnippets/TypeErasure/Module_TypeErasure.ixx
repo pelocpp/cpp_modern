@@ -4,8 +4,6 @@
 
 export module modern_cpp:type_erasure;
 
-import std;
-
 export void main_type_erasure();
 export void main_type_erasure_bookstore();
 

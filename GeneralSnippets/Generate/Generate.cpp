@@ -4,6 +4,8 @@
 
 module modern_cpp:generate;
 
+import std;
+
 namespace AlgorithmGenerate {
 
     static void test_01()

@@ -4,6 +4,8 @@
 
 module modern_cpp:templates_specialization;
 
+import std;
+
 namespace TemplateSpecialization {
 
     // Explicit Template Specialization

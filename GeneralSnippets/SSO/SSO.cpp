@@ -4,6 +4,8 @@
 
 module modern_cpp:sso;
 
+import std;
+
 void main_sso()
 {
     auto size{ sizeof(std::string) };

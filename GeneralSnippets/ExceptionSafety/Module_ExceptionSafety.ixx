@@ -4,8 +4,6 @@
 
 export module modern_cpp:exception_safety;
 
-import std;
-
 export void main_exception_safety();
 
 // =====================================================================================

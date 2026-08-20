@@ -4,6 +4,7 @@
 
 module modern_cpp_exercises:stl;
 
+import std;
 import scoped_timer;
 
 namespace Exercises_STL {

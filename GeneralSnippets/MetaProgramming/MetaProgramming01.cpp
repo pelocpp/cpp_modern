@@ -4,6 +4,8 @@
 
 module modern_cpp:metaprogramming;
 
+import std;
+
 namespace Metaprogramming {
 
     template <long N>

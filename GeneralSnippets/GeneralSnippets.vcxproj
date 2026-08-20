@@ -272,8 +272,8 @@
     <ClCompile Include="MetaProgramming\Module_MetaProgramming.ixx" />
     <ClCompile Include="ModularizedStandardLibrary\ModularizedStandardLibrary.cpp" />
     <ClCompile Include="ModularizedStandardLibrary\Module_ModularizedStandardLibrary.ixx" />
-    <ClCompile Include="Modules\HelloWorldProgram.cpp" />
-    <ClCompile Include="Modules\HelloWorldProgram.ixx" />
+    <ClCompile Include="Modules\HelloWorldModules.cpp" />
+    <ClCompile Include="Modules\HelloWorldModule.ixx" />
     <ClCompile Include="Module_Modern_Cpp.ixx" />
     <ClCompile Include="Module_Modern_Cpp_Exercises.ixx" />
     <ClCompile Include="MoveSemantics\Module_MoveSemantics.ixx" />

@@ -8,6 +8,8 @@ module;
 
 module modern_cpp:spaceship_operator;
 
+import std;
+
 namespace Comparison_Problem_Classic
 {
     struct Version

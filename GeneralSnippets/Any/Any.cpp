@@ -4,6 +4,8 @@
 
 module modern_cpp:any;
 
+import std;
+
 namespace AnySamples {
 
     static void test_01_any()

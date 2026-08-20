@@ -7,6 +7,8 @@ module modern_cpp:raii;
 // See also:  
 // https://stackoverflow.com/questions/4802494/do-i-need-to-close-a-stdfstream/4802506
 
+import std;
+
 namespace RAIIDemo02 {
 
     static void write_to_file(const std::string& message)

@@ -5,6 +5,8 @@
 
 module modern_cpp:casts;
 
+import std;
+
 namespace DiverseCasts {
 
     static void test_01_implicit_conversions()

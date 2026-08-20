@@ -19,6 +19,8 @@ module;
 
 module modern_cpp_exercises:smart_pointers;
 
+import std;
+
 namespace Exercises_SmartPointers {
 
     namespace Exercise_01 {

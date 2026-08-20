@@ -4,6 +4,8 @@
 
 module modern_cpp:attributes;
 
+import std;
+
 // #define DEMONSTRATE_WARNINGS_AND_ERRORS   1
 
 namespace StandardAttributes {

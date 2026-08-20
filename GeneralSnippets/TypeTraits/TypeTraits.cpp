@@ -4,6 +4,8 @@
 
 module modern_cpp:type_traits;
 
+import std;
+
 namespace TypeTraits_Simple_Demo
 {
     // primary template

@@ -4,6 +4,8 @@
 
 module modern_cpp:type_erasure;
 
+import std;
+
 // =====================================================================================
 
 namespace TypeErasureUsingDynamicPolymorphism {

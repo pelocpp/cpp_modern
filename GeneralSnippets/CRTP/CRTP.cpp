@@ -4,6 +4,8 @@
 
 module modern_cpp:crtp;
 
+import std;
+
 namespace CRTP {
 
     class ControlBase

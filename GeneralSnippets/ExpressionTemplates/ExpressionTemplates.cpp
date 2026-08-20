@@ -4,6 +4,8 @@
 
 module modern_cpp:expression_templates;
 
+import std;
+
 import scoped_timer;
 
 namespace ExpressionTemplates {

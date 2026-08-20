@@ -4,6 +4,8 @@
 
 module modern_cpp:perfect_forwarding;
 
+import std;
+
 namespace PerfectForwarding {
 
     static void overloaded(const int& arg) {

@@ -4,6 +4,8 @@
 
 module modern_cpp:template_template_parameter;
 
+import std;
+
 namespace TemplateTemplateParameter_02 {
 
     template<typename T>

@@ -4,6 +4,7 @@
 
 module modern_cpp:type_erasure;
 
+import std;
 import scoped_timer;
 
 // =====================================================================================

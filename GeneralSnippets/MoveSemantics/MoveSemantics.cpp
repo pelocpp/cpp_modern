@@ -4,6 +4,8 @@
 
 module modern_cpp:move_semantics;
 
+import std;
+
 namespace MoveSemantics {
 
     class BigData

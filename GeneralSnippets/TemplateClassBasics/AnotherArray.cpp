@@ -4,6 +4,8 @@
 
 module modern_cpp:another_array;
 
+import std;
+
 namespace ClassTemplatesBasics {
 
     template<typename T, std::size_t DIM>

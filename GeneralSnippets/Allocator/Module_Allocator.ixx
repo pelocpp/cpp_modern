@@ -4,8 +4,6 @@
 
 export module modern_cpp:allocator;
 
-import std;
-
 export void main_allocator();
 
 // =====================================================================================

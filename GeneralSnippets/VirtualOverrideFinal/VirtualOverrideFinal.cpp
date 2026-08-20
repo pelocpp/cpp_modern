@@ -4,6 +4,8 @@
 
 module modern_cpp:virtual_override_final;
 
+import std;
+
 namespace VirtualOverrideFinal{
 
     class Base

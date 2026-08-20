@@ -1,19 +1,14 @@
 // =====================================================================================
-// Module Interface Partition 'hello_world_module' // HelloWorldProgram.ixx
+// HelloWorldModules.cpp
 // =====================================================================================
 
-export module hello_world_module;
+import hello_world_module;
 
-import std;
-
-export namespace MyHelloWorld
+void main_modules_hello_world()
 {
-    int globalData{};
+    MyHelloWorld::globalData = 123;
 
-    void sayHello()
-    {
-        std::printf("Hello Module! Data is %d\n", globalData);
-    }
+    MyHelloWorld::sayHello();
 }
 
 // =====================================================================================

@@ -4,6 +4,8 @@
 
 module modern_cpp:regexpr;
 
+import std;
+
 namespace RegularExpressions {
 
     static void test_01_simple_regex()

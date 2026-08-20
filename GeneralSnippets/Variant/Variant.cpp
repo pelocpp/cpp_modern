@@ -9,6 +9,8 @@ module;
 
 module modern_cpp:variant;
 
+import std;
+
 namespace VariantDemo {
 
     static void test_01() {

@@ -4,6 +4,8 @@
 
 module modern_cpp:explicit_keyword;
 
+import std;
+
 namespace KeywordExplicit {
 
     class Complex {

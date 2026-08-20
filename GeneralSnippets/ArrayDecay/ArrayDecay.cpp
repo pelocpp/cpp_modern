@@ -4,6 +4,8 @@
 
 module modern_cpp:array_decay;
 
+import std;
+
 namespace ArrayDecay {
 
     static void displayValue(int* p) {

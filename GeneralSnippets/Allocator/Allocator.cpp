@@ -4,6 +4,7 @@
 
 module modern_cpp:allocator;
 
+import std;
 import dummy;
 
 namespace Allocator {

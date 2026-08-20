@@ -4,8 +4,6 @@
 
 export module modern_cpp:all_of_any_of_none_of;
 
-import std;
-
 export void main_all_of_any_of_none_of();
 
 // =====================================================================================

@@ -4,6 +4,8 @@
 
 module modern_cpp:argument_dependent_name_lookup;
 
+import std;
+
 namespace ArgumentDependentNameLookup
 {
     namespace MyNamespace

@@ -4,6 +4,8 @@
 
 module modern_cpp:auto_keyword;
 
+import std;
+
 namespace Auto_Examples {
 
     // ----------------------------------------------------------------------

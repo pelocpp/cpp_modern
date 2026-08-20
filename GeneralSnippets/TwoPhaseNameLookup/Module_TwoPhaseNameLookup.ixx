@@ -4,8 +4,6 @@
 
 export module modern_cpp:two_phase_name_lookup;
 
-import std;
-
 export void main_two_phase_name_lookup();
 
 // =====================================================================================

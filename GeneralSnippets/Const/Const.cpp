@@ -4,6 +4,8 @@
 
 module modern_cpp:const_variants;
 
+import std;
+
 namespace ConstVariants {
 
     // ============================================================

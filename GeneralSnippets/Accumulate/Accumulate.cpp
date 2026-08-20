@@ -4,6 +4,8 @@
 
 module modern_cpp:accumulate;
 
+import std;
+
 namespace AlgorithmAccumulate {
 
     static std::string toString(std::vector<std::string> const& vec) {

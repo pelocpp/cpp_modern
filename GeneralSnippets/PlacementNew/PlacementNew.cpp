@@ -4,6 +4,8 @@
 
 module modern_cpp:placement_new;
 
+import std;
+
 namespace PlacementNew {
 
     class User

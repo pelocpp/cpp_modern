@@ -4,6 +4,8 @@
 
 module modern_cpp:copy_move_elision;
 
+import std;
+
 namespace CopyMoveElision {
 
     class Foo

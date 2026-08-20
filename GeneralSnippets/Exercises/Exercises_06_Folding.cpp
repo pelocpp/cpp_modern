@@ -4,6 +4,8 @@
 
 module modern_cpp_exercises:folding;
 
+import std;
+
 namespace Exercises_Folding {
 
     namespace Exercise_01 {

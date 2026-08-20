@@ -4,6 +4,8 @@
 
 module modern_cpp:optional;
 
+import std;
+
 namespace OptionalExamples {
 
     /*

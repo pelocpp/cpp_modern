@@ -4,6 +4,8 @@
 
 module modern_cpp_exercises:concepts;
 
+import std;
+
 namespace Exercises_Concepts {
 
     namespace Exercise_01 {

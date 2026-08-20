@@ -4,6 +4,8 @@
 
 module modern_cpp_exercises:const_expr;
 
+import std;
+
 namespace Exercises_ConstExpr {
 
     namespace Exercise_01 {

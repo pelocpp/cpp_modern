@@ -4,9 +4,8 @@
 
 ---
 
-[Quellcode *Modules.cpp*](Modules.cpp)<br />
-[Quellcode *HelloWorldProgram.ixx*](HelloWorldProgram.ixx)<br />
-[Quellcode *HelloWorldProgram.cpp*](HelloWorldProgram.cpp)
+[Quellcode *HelloWorldModule.ixx*](HelloWorldModule.ixx)<br />
+[Quellcode *HelloWorldModules.cpp*](HelloWorldModules.cpp)
 
 ---
 
@@ -228,20 +227,12 @@ wird die STL in die aktuelle Übersetzungseinheit importiert.
 Dies hat gegenüber der Vorgehensweise mit `#include`&ndash;Direktiven und entsprechenden Header-Dateien
 den Vorteil, dass sich die Kompilierungszeiten je nach Größe des Programms erheblich verkürzen.
 
-Dazu wird allerdings &ndash; in Bezug auf den Visual C++ Compiler &ndash; eine Datei `std.ixx` 
-im Programm benötigt. Diese muss man nicht selbst erstellen, sie ist in einer Visual C++ Installation
-in folgendem Verzeichnis vorhanden:
-
-<pre>
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\modules\std.ixx
-</pre>
-
 ---
 
 ## Ein einfaches Beispiel <a name="link8"></a>
 
 Das nachfolgende Programmfragment (*Code-Listing* 1) zeigt die Einbindung eines Moduls
-`hello_world` mit der `import`-Anweisung. 
+`hello_world_module` mit der `import`-Anweisung. 
 Das Modul exportiert einen Namensraum `MyHelloWorld`.
 Auf diese Weise stehen eine globale Variable `globalData` und eine globale Funktion `sayHello`
 zur Verfügung.
@@ -256,17 +247,17 @@ vorhanden sein: Das Modul bringt alles Notwendige mit:
 
 
 ```cpp
-01: // File: HelloWorldProgram.cpp
-02: 
-03: import hello_world;
+01: // =====================================================================================
+02: // HelloWorldModules.cpp
+03: // =====================================================================================
 04: 
-05: int main()
-06: {
-07:     MyHelloWorld::globalData = 123;
-08: 
-09:     MyHelloWorld::sayHello();
+05: import hello_world_module;
+06: 
+07: void main_modules_hello_world()
+08: {
+09:     MyHelloWorld::globalData = 123;
 10: 
-11:     return 0;
+11:     MyHelloWorld::sayHello();
 12: }
 ```
 
@@ -274,30 +265,29 @@ vorhanden sein: Das Modul bringt alles Notwendige mit:
 
 
 ```cpp
-01: // File: HelloWorldProgram.ixx
-02: 
-03: export module hello_world;
+01: // =====================================================================================
+02: // Module Interface Partition 'hello_world_module' // HelloWorldModule.ixx
+03: // =====================================================================================
 04: 
-05: import std;
+05: export module hello_world_module;
 06: 
-07: export namespace MyHelloWorld
-08: {
-09:     int globalData{};
-10: 
-11:     void sayHello()
-12:     {
-13:         std::printf("Hello Module! Data is %d\n", globalData);
-14:     }
-15: }
-
+07: import std;
+08: 
+09: export namespace MyHelloWorld
+10: {
+11:     int globalData{};
+12: 
+13:     void sayHello()
+14:     {
+15:         std::printf("Hello Module! Data is %d\n", globalData);
+16:     }
+17: }
 ```
 
 *Code-Listing* 2: Definition/Implementierung eines Moduls.
 
-
 Der Effekt des Importierens eines Moduls besteht darin, die in dem Modul deklarierten
 exportierten Entitäten (hier: Namensraum `MyHelloWorld`) für die importierende Übersetzungseinheit sichtbar zu machen.
-
 
 ---
 

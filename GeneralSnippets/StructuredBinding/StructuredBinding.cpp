@@ -4,6 +4,8 @@
 
 module modern_cpp:structured_binding;
 
+import std;
+
 namespace StructuredBinding {
 
     static std::pair<int, int> divide_remainder(int dividend, int divisor)

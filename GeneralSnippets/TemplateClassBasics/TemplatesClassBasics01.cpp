@@ -4,6 +4,8 @@
 
 module modern_cpp:templates_class_basics;
 
+import std;
+
 namespace ClassTemplatesBasics {
 
     namespace SimpleTemplateCalculator {

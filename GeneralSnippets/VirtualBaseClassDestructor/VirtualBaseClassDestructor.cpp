@@ -4,6 +4,8 @@
 
 module modern_cpp:virtual_base_class_destructor;
 
+import std;
+
 namespace VirtualBaseClassDestructor {
 
     class Base

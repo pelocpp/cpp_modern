@@ -4,6 +4,8 @@
 
 module modern_cpp:range_based_for_loop;
 
+import std;
+
 /*
  *  12 ways to iterate through a vector 
  */

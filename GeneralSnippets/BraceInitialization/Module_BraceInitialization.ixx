@@ -4,8 +4,6 @@
 
 export module modern_cpp:brace_initialization;
 
-import std;
-
 export void main_brace_initialization();
 
 // =====================================================================================

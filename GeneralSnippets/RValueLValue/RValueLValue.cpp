@@ -4,6 +4,8 @@
 
 module modern_cpp:rvalue_lvalue;
 
+import std;
+
 namespace LValueRValue {
 
     // lvalue reference

@@ -4,6 +4,8 @@
 
 module modern_cpp:string_view;
 
+import std;
+
 namespace StringViewDemonstration {
 
     static void test_01()

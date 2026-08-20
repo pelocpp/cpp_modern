@@ -4,8 +4,6 @@
 
 export module modern_cpp:source_location;
 
-import std;
-
 export void main_source_location();
 
 // =====================================================================================

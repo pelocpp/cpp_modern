@@ -4,6 +4,8 @@
 
 module modern_cpp:decltype_keyword;
 
+import std;
+
 namespace Decltype {
 
     // decltype may modify type deduction, e.g. in generic lambdas

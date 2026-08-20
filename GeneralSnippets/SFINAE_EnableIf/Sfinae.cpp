@@ -4,6 +4,8 @@
 
 module modern_cpp:sfinae;
 
+import std;
+
 namespace SFINAE_Examples {
 
     void foo(unsigned i) {

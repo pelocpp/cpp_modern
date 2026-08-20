@@ -4,8 +4,6 @@
 
 export module modern_cpp:templates_specialization;
 
-import std;
-
 export void main_templates_specialization();
 
 // =====================================================================================

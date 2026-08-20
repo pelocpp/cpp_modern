@@ -4,8 +4,6 @@
 
 export module modern_cpp:to_underlying;
 
-import std;
-
 export void main_to_underlying();
 
 // =====================================================================================

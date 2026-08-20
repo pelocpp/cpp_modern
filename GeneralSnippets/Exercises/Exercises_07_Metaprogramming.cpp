@@ -4,6 +4,8 @@
 
 module modern_cpp_exercises:metaprogramming;
 
+import std;
+
 namespace Exercises_Metaprogramming
 {
     namespace Exercise_01 {

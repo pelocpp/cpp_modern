@@ -4,8 +4,6 @@
 
 export module modern_cpp_exercises:stl;
 
-import std;
-
 export void test_exercises_stl();
 
 // =====================================================================================

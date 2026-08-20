@@ -4,6 +4,8 @@
 
 module modern_cpp:constructors_destructors_order;
 
+import std;
+
 namespace OrderConstructorInvocations {
 
     class Something {

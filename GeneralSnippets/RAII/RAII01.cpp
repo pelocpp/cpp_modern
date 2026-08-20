@@ -4,6 +4,7 @@
 
 module modern_cpp:raii;
 
+import std;
 import dummy;
 
 namespace RAIIDemo {

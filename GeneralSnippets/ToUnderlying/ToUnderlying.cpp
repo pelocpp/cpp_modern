@@ -4,6 +4,8 @@
 
 module modern_cpp:to_underlying;
 
+import std;
+
 namespace ToUnderlying {
 
     enum class Color : char {

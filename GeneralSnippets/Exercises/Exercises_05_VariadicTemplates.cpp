@@ -4,6 +4,8 @@
 
 module modern_cpp_exercises:variadic_templates;
 
+import std;
+
 namespace Exercises_VariadicTemplates {
 
     namespace Exercise_01 {

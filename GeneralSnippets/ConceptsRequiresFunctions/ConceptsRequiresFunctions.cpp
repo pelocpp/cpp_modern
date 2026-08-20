@@ -4,6 +4,8 @@
 
 module modern_cpp:concepts_requires_functions;
 
+import std;
+
 // using <concepts>
 template <typename T>
 concept Numerical = std::integral<T> or std::floating_point<T>;

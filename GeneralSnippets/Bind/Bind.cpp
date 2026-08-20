@@ -4,6 +4,8 @@
 
 module modern_cpp:bind;
 
+import std;
+
 namespace Bind {
 
     static void test() {

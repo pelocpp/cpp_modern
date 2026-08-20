@@ -4,8 +4,6 @@
 
 export module modern_cpp:expected;
 
-import std;
-
 export void main_expected();
 
 // =====================================================================================

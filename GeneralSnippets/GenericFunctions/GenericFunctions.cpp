@@ -4,6 +4,8 @@
 
 module modern_cpp:generic_functions;
 
+import std;
+
 namespace GenericFunctions {
 
     // ---------------------------------------------------------------------------------

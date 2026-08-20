@@ -4,8 +4,6 @@
 
 export module modern_cpp:println;
 
-import std;
-
 export void main_println();
 
 // =====================================================================================

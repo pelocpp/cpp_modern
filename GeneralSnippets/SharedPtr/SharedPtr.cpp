@@ -19,6 +19,8 @@ module;
 
 module modern_cpp:shared_ptr;
 
+import std;
+
 namespace SharedPointer {
 
     static void test_01() {

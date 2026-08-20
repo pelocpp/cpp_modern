@@ -4,8 +4,6 @@
 
 export module modern_cpp:class_array;
 
-import std;
-
 export void main_array();
 
 // =====================================================================================

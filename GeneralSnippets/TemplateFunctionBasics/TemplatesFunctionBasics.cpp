@@ -4,6 +4,8 @@
 
 module modern_cpp:templates_function_basics;
 
+import std;
+
 namespace FunctionTemplate_01_Basics {
 
     template <typename T>

@@ -4,8 +4,6 @@
 
 export module modern_cpp:algorithms;
 
-import std;
-
 export void main_algorithms();
 
 // =====================================================================================

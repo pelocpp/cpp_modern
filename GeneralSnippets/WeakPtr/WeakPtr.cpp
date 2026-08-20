@@ -18,6 +18,8 @@ module;
 
 module modern_cpp:weak_ptr;
 
+import std;
+
 namespace WeakPointer {
 
     static void test_01()

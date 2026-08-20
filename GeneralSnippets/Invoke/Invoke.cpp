@@ -4,6 +4,8 @@
 
 module modern_cpp:invoke;
 
+import std;
+
 namespace StdInvoke {
 
     // helper functions / classes

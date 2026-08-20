@@ -4,6 +4,8 @@
 
 module modern_cpp:static_assert_keyword;
 
+import std;
+
 namespace StaticAssertDemo {
 
     template < typename T, int Height, int Width >

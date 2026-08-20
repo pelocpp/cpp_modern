@@ -4,6 +4,8 @@
 
 module modern_cpp:literals;
 
+import std;
+
 namespace Literals_With_Separators {
 
     static void test_01() {

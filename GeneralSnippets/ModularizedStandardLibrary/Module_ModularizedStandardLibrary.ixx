@@ -4,8 +4,6 @@
 
 export module modern_cpp:modularized_standard_library;
 
-import std;
-
 export void main_modularized_standard_library();
 
 // =====================================================================================

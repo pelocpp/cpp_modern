@@ -4,6 +4,8 @@
 
 module modern_cpp:lambda;
 
+import std;
+
 namespace LambdaAndThisClosure {
 
     class Class {

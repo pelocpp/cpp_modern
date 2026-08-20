@@ -4,6 +4,8 @@
 
 module modern_cpp:erase_remove_idiom;
 
+import std;
+
 namespace EraseRemoveIdiom
 {
     template <typename T>

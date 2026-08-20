@@ -4,6 +4,8 @@
 
 module modern_cpp:concepts_requires_classes;
 
+import std;
+
 namespace ClassesAndConcepts_01 {
 
     template <typename T>

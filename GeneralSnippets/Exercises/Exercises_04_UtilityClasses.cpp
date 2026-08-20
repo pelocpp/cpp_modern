@@ -4,6 +4,8 @@
 
 module modern_cpp_exercises:utility_classes;
 
+import std;
+
 namespace Exercises_UtilityClasses {
 
     namespace Exercise_01 {

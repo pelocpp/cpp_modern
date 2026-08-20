@@ -4,6 +4,8 @@
 
 module modern_cpp:input_output_streams;
 
+import std;
+
 namespace InputOutputStreams {
 
     static void test_01() {

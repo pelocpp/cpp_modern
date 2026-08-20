@@ -4,6 +4,7 @@
 
 module modern_cpp:folding;
 
+import std;
 import scoped_timer;
 
 namespace Folding {

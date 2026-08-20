@@ -8,6 +8,8 @@ module;
 
 module modern_cpp:functional_programming;
 
+import std;
+
 namespace FunctionalProgramming_02 {
 
     // =================================================================================

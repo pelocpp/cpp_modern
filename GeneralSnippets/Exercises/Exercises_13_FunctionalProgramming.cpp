@@ -4,6 +4,8 @@
 
 module modern_cpp_exercises:functional_programming;
 
+import std;
+
 namespace Exercises_FunctionalProgramming {
 
     namespace Exercise_01 {

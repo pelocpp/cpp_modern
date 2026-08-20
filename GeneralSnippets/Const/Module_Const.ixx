@@ -4,8 +4,6 @@
 
 export module modern_cpp:const_variants;
 
-import std;
-
 export void main_const_variants();
 
 // =====================================================================================

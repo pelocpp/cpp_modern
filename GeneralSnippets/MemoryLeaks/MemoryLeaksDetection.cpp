@@ -17,6 +17,8 @@ module;
 
 module modern_cpp:memory_leaks_detection;
 
+import std;
+
 namespace MemoryLeaksDetection {
 
     static void test_01() {

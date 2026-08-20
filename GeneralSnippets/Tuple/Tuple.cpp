@@ -4,6 +4,8 @@
 
 module modern_cpp:tuple;
 
+import std;
+
 namespace TupleSamples {
 
     // =======================================================

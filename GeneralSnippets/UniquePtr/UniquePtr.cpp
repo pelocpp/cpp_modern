@@ -10,6 +10,8 @@ module;
 
 module modern_cpp:unique_ptr;
 
+import std;
+
 namespace UniquePointerGeneral {
 
     static void test_01()

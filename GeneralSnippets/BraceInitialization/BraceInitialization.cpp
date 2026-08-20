@@ -4,6 +4,8 @@
 
 module modern_cpp:brace_initialization;
 
+import std;
+
 namespace BraceInitialization {
 
     // =================================================================================

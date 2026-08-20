@@ -4,6 +4,7 @@
 
 module modern_cpp:algorithms;
 
+import std;
 import scoped_timer;
 
 namespace Algorithms {

@@ -11,6 +11,8 @@ module;
 
 module modern_cpp_exercises:sfinae;
 
+import std;
+
 namespace Exercises_SFINAE {
 
     namespace Exercise_01 {

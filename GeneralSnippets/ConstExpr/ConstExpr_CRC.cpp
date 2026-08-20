@@ -19,6 +19,8 @@ module;
 
 module modern_cpp:const_expr;
 
+import std;
+
 constexpr uint8_t MY_POLYNOM = 0x07;
 constexpr int TABLE_SIZE = 256;
 

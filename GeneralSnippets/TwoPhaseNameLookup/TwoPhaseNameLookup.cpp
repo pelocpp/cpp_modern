@@ -4,6 +4,8 @@
 
 module modern_cpp:two_phase_name_lookup;
 
+import std;
+
 namespace TwoPhaseNameLookup
 {
     // Non-Template Code Example:

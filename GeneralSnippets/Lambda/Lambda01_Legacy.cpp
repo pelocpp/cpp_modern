@@ -4,6 +4,8 @@
 
 module modern_cpp:lambda;
 
+import std;
+
 namespace Lambdas {
 
     static bool compare (int n1, int n2) {

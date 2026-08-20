@@ -4,6 +4,8 @@
 
 module modern_cpp:templates_class_basics;
 
+import std;
+
 import :my_array;        // demonstrating 'Templates Inclusion Model'
 import :another_array;   // demonstrating 'Templates Explicit Instantiation Model'
 

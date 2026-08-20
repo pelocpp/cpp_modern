@@ -4,8 +4,6 @@
 
 export module modern_cpp:placement_new;
 
-import std;
-
 export void main_placement_new();
 
 // =====================================================================================

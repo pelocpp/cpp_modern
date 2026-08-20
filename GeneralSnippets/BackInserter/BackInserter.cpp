@@ -4,6 +4,8 @@
 
 module modern_cpp:back_inserter;
 
+import std;
+
 namespace BackInserter {
 
     static void test_01() {

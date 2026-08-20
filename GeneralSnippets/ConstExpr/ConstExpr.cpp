@@ -8,6 +8,8 @@ module;
 
 module modern_cpp:const_expr;
 
+import std;
+
 // =====================================================================================
 // variables
 
