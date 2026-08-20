@@ -13,8 +13,6 @@ import std;
 
 #pragma message(MessageText)
 
-extern void main_modules_hello_world();
-
 int main()
 {
     std::println(MessageText);
