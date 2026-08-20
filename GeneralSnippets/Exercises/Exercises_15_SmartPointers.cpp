@@ -900,10 +900,10 @@ void test_exercises_smartpointer()
 {
     using namespace Exercises_SmartPointers;
 
-    //Exercise_01::testExercise();
-    //// Exercise_02::testExercise();   // crashes when executed
-    //Exercise_03::testExercise();
-    //Exercise_04::testExercise();
+    Exercise_01::testExercise();
+    // Exercise_02::testExercise();   // crashes when executed
+    Exercise_03::testExercise();
+    Exercise_04::testExercise();
     Exercise_05::testExercise();
 }
 

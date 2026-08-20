@@ -290,8 +290,8 @@ Zeigen Sie das Verschieben an entsprechenden Beispielen auf.
 
 
 In dieser Aufgabe wollen wir ein `std::unique_ptr<>`-Objekt in einem Unterprogramm (Funktion, Methode) anlegen.
-Es sollen verschiedene Wege aufgezeigt und bewertet werden, wie diese `std::unique_ptr<>`-Variable aus dem Unterprogramm
-zurückgegeben werden kann.
+Es sollen verschiedene Wege aufgezeigt und bewertet werden, wie diese eine `std::unique_ptr<>`-Variable aus dem Unterprogramm
+zurückgegeben kann.
 
 Da man meistens auch andere Werte zurückgeben möchte, gibt es mehrere gängige Vorgehensweisen.
 Im Folgenden finden Sie die wichtigsten Methoden mit Hinweisen, wann welche anzuwenden ist.
