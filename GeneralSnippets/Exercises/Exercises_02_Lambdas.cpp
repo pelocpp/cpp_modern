@@ -2,6 +2,10 @@
 // Exercises_02_Lambdas.cpp
 // =====================================================================================
 
+module;
+
+#include <map>    // module implementation too unstable
+
 module modern_cpp_exercises:lambdas;
 
 import std;

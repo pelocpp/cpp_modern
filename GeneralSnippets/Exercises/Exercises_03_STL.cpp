@@ -2,6 +2,10 @@
 // Exercises_03_Algorithms.cpp
 // =====================================================================================
 
+module;
+
+#include <utility>  // module implementation too unstable
+
 module modern_cpp_exercises:stl;
 
 import std;

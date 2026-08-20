@@ -17,6 +17,8 @@ module;
 
 #include <cassert>
 
+#include <span>
+
 module modern_cpp_exercises:smart_pointers;
 
 import std;
@@ -783,7 +785,7 @@ namespace Exercises_SmartPointers {
 
             if (success) {
 
-                std::span<size_t> digits{ buffer.get(), count };
+                std::span<std::size_t> digits{ buffer.get(), count };
 
                 std::println("Splitting of {}:", number);
                 for (std::size_t i{}; auto digit : digits) {
@@ -806,7 +808,7 @@ namespace Exercises_SmartPointers {
 
             if (success) {
 
-                std::span<size_t> digits{ buffer.get(), count };
+                std::span<std::size_t> digits{ buffer.get(), count };
 
                 std::println("Splitting of {}:", number);
                 for (std::size_t i{}; auto digit : digits) {
@@ -827,7 +829,7 @@ namespace Exercises_SmartPointers {
 
             if (splitting.m_success) {
 
-                std::span<size_t> digits{ splitting.m_digits.get(), splitting.m_count };
+                std::span<std::size_t> digits{ splitting.m_digits.get(), splitting.m_count };
 
                 std::println("Splitting of {}:", number);
                 for (std::size_t i{}; auto digit : digits) {
@@ -848,7 +850,7 @@ namespace Exercises_SmartPointers {
 
             if (success) {
 
-                std::span<size_t> digits{ buffer.get(), count };
+                std::span<std::size_t> digits{ buffer.get(), count };
 
                 std::println("Splitting of {}:", number);
                 for (std::size_t i{}; auto digit : digits) {
@@ -871,7 +873,7 @@ namespace Exercises_SmartPointers {
 
                 const auto& [buffer, count] = result.value();
 
-                std::span<size_t> digits{ buffer.get(), count };
+                std::span<std::size_t> digits{ buffer.get(), count };
 
                 std::println("Splitting of {}:", number);
                 for (std::size_t i{}; auto digit : digits) {
@@ -894,17 +896,119 @@ namespace Exercises_SmartPointers {
             test_returning_unique_ptr_variant_05();
         }
     }
+
+    namespace Exercise_06 {
+
+        class Child;  // Forward declaration
+
+        class Mom {
+        private:
+            std::string m_name;
+            std::weak_ptr<const Child> m_child;
+
+        public:
+            explicit Mom(std::string name)
+                : m_name(std::move(name))
+            {}
+
+            ~Mom() {
+                std::println("Mother ({}) passes away.", m_name);
+            }
+
+            const std::string& getName() const { return m_name; }
+
+            void setChild(const std::shared_ptr<Child>& child) {
+                m_child = child;
+            }
+
+            void sayHello() const;
+        };
+
+        class Child {
+        private:
+            std::string m_name;
+            std::weak_ptr<const Mom> m_mother;
+
+        public:
+            explicit Child(std::string name)
+                : m_name(std::move(name))
+            {}
+
+            ~Child() {
+                std::println("Child ({}) passes away.", m_name);
+            }
+
+            const std::string& getName() const { return m_name; }
+
+            void setMother(const std::shared_ptr<Mom>& mother) {
+                m_mother = mother;
+            }
+
+            void sayHello() const {
+                if (auto mother = m_mother.lock()) {
+                    std::println("{}: Hello mother.", m_name);
+                }
+                else {
+                    std::println("{}: My mother no longer exists.", m_name);
+                }
+            }
+        };
+
+        void Mom::sayHello() const {
+            if (auto child = m_child.lock()) {
+                std::println("{}: Hello child.", m_name);
+            }
+            else {
+                std::println("{}: My child no longer exists.", m_name);
+            }
+        }
+
+        static void testExercise() {
+
+            using namespace Exercise_06;
+
+            // both human beings are independently owned
+            auto mother = std::make_shared<Mom>("Dorothea");
+            auto child = std::make_shared<Child>("John");
+
+            // establish the relationships
+            mother->setChild(child);
+            child->setMother(mother);
+
+            std::println("{}: use_count = {}", mother->getName(), mother.use_count());
+            std::println("{}: use_count = {}", child->getName(), child.use_count());
+
+            // living independently
+            mother->sayHello();
+            child->sayHello();
+
+            // first human being is passing away
+            bool motherPassesFirst = true;
+            if (motherPassesFirst) {
+                // mother no longer exists
+                mother.reset();
+                child->sayHello();
+            }
+            else {
+                // mother no longer exists
+                child.reset();
+                mother->sayHello();
+            }
+        }
+    }
 }
 
 void test_exercises_smartpointer()
 {
     using namespace Exercises_SmartPointers;
 
-    Exercise_01::testExercise();
-    // Exercise_02::testExercise();   // crashes when executed
-    Exercise_03::testExercise();
-    Exercise_04::testExercise();
-    Exercise_05::testExercise();
+    //Exercise_01::testExercise();
+    //// Exercise_02::testExercise();   // crashes when executed
+    //Exercise_03::testExercise();
+    //Exercise_04::testExercise();
+    //Exercise_05::testExercise();
+
+    Exercise_06::testExercise();
 }
 
 // =====================================================================================

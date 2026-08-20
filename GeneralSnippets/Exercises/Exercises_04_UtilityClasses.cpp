@@ -2,6 +2,11 @@
 // Exercises_03_UtilityClasses.cpp
 // =====================================================================================
 
+module;
+
+#include <variant>  // module implementation too unstable
+#include <print>    // module implementation too unstable
+
 module modern_cpp_exercises:utility_classes;
 
 import std;
@@ -12,7 +17,8 @@ namespace Exercises_UtilityClasses {
 
         // generic visitor (matching all types in the variant)
         auto visitor = [](auto const& elem) -> void {
-            std::cout << elem << std::endl;
+            // std::cout << elem << std::endl;
+            std::println("{}", elem);
         };
 
         static void testExercise_01a() {

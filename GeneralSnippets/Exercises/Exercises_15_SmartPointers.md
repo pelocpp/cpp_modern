@@ -17,6 +17,7 @@
 | *Aufgabe* 3 | Betrachtungen eines &bdquo;nicht besitzenden&rdquo; Zeigers<br/>(Voraussetzungen: `std::shared_ptr<>`, `std::weak_ptr<>`) |
 | *Aufgabe* 4 | Verwendung von Smart Pointern für Membervariablen einer Klasse<br/>(Voraussetzungen: `std::unique_ptr<>` und `std::shared_ptr<>`) |
 | *Aufgabe* 5 | Rückgabe eines `std::unique_ptr<>`-Objekts aus einer Funktion<br/>(Voraussetzungen: `std::unique_ptr<>`, bei Bedarf `std::tuple<>` und `std::optional`) |
+| *Aufgabe* 6 | Modellierung eines Mutter-Kind Szenarios mit Smart Pointer Klassen<br/>(Voraussetzungen: Smart Pointer Klassen) |
 
 *Tabelle* 1: Aufgaben zu Smart Pointer Klassen.
 
@@ -359,6 +360,46 @@ Splitting of 12345:
 3: 4
 4: 5
 ```
+
+---
+
+| *Aufgabe* 6 | Modellierung eines Mutter-Kind Szenarios mit Smart Pointer Klassen<br/>(Voraussetzungen: Smart Pointer Klassen) |
+
+
+## Aufgabe 6: Modellierung eines Mutter-Kind Szenarios mit Smart Pointer Klassen
+
+#### Voraussetzungen: Smart Pointer Klassen
+
+Es ist das folgende Szenario in C++ und mit Smart Pointer Klassen nachzubilden:
+
+  * Es soll zwei Klassen geben – &bdquo;*Mom*&rdquo; (Mutter) und &bdquo;*Child*&rdquo; (Kind) &ndash; sowie
+  zwei entsprechende Objekte dazu: eine Mutter und ein Kind.
+
+  * Beide Objekte sollen mithilfe von Smart Pointern auf dem Heap angelegt werden.
+
+  * Mutter und Kind sollen unabhängig voneinander existieren können. Natürlich wird die Mutter vor dem Kind geboren,
+  aber beide Personen können jeweils für längere Zeit unabhängig leben.
+
+  * Gegen Ende der Simulation stirbt entweder die Mutter oder das Kind zuerst. An entsprechende Ausgaben in der Konsole
+  kann man dies mit verfolgen. Ganz am Ende stirbt dann die andere Person.
+
+
+Eine mögliche Ausgabe des Programms in der Konsole könnte so aussehen:
+
+```
+Dorothea: use_count = 1
+John: use_count = 1
+Dorothea: Hello child.
+John: Hello mother.
+Mother (Dorothea) passes away.
+John: My mother no longer exists.
+Child (John) passes away.
+```
+
+Wichtig an dieser Aufgabe sind die Entwurfsentscheidungen:
+
+  * Sollten `std::shared_ptr<>`- oder `std::unique_ptr<>`-Klassen zum Einsatz kommen?
+  * Liegt das Zyklenproblem vor. Und wenn ja, wie kann es behoben werden?
 
 ---
 
