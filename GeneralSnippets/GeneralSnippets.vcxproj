@@ -258,6 +258,8 @@
     <ClCompile Include="InputOutputStreams\Module_InputOutputStreams.ixx" />
     <ClCompile Include="Invoke\Invoke.cpp" />
     <ClCompile Include="Invoke\Module_Invoke.ixx" />
+    <ClCompile Include="IsTransparent\IsTransparent.cpp" />
+    <ClCompile Include="IsTransparent\Module_IsTransparent.ixx" />
     <ClCompile Include="Lambda\Lambda01.cpp" />
     <ClCompile Include="Lambda\Lambda01_Legacy.cpp" />
     <ClCompile Include="Lambda\Lambda03.cpp" />
@@ -441,6 +443,7 @@
     <None Include="InitializerList\InitializerList.md" />
     <None Include="InputOutputStreams\InputOutputStreams.md" />
     <None Include="Invoke\Invoke.md" />
+    <None Include="IsTransparent\IsTransparent.md" />
     <None Include="Lambda\cpp_snippets_lambda.svg" />
     <None Include="Lambda\Lambda.md" />
     <None Include="Lambda\Lambda_Legacy.md" />

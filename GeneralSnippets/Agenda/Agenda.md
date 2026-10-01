@@ -67,6 +67,7 @@
   * Spezieller intelligenter Zeiger in Verbindung mit `std::shared_ptr`: `std::weak_ptr`
   * Memory Leaks Detection
 
+
 ## `constexpr`
   * Funktionen mit `constexpr` verwenden um teure Berechnungen in die Übersetzungszeit zu verschieben
   * `constexpr` erklärt
@@ -100,7 +101,6 @@
 ## Standard Template Library (STL)
   * STL-Container, -Iteratoren, -Algorithmen und aufrufbare Objekte
   * Von sequentiellen auf ungeordnete assoziative Container umsteigen, um die Laufzeit zu verbessern
-  * Algorithmen
   * STL-Algorithmen und Lambdas
 
 
@@ -110,6 +110,7 @@
   * `std::all_of`, `std::any_of` und `std::none_of`
   * `std::back_inserter` (Iteratoren-Adapter)
   * Das *Erase-Remove*-Idiom
+  * Verwendung von `is_transparent`
 
 
 ## Metaprogramming

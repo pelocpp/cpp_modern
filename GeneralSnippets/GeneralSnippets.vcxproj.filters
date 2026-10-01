@@ -675,6 +675,12 @@
     <ClCompile Include="AllOfAnyOfNoneOf\Module_AllOfAnyOfNoneOf.ixx">
       <Filter>Modules</Filter>
     </ClCompile>
+    <ClCompile Include="IsTransparent\Module_IsTransparent.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="IsTransparent\IsTransparent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -1152,6 +1158,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="AllOfAnyOfNoneOf\AllOfAnyOfNoneOf.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="IsTransparent\IsTransparent.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

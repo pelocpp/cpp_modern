@@ -41,6 +41,7 @@ export import :generic_functions;
 export import :initializer_list;
 export import :input_output_streams;
 export import :invoke;
+export import :is_transparent;
 export import :lambda;
 export import :literals;
 export import :memory_leaks_detection;
