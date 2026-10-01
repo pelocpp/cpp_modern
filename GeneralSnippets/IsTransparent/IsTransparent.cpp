@@ -153,17 +153,70 @@ namespace IsTransparent {
 
         auto pos = strings.find("one");
     }
+
+    // =================================================================================
+    // Implementing a transparent comparator involves defining a function object
+    // with an is_transparent type and overloads for operator() that can compare different types.
+    // Here's a simplified example using std::set:
+
+    struct CaseInsensitiveCompare
+    {
+        using is_transparent = void;
+
+        bool operator() (const std::string& a, const std::string& b) const {
+            
+            return std::lexicographical_compare(
+                a.begin(),
+                a.end(),
+                b.begin(),
+                b.end(),
+                [](char ac, char bc) {
+                    return std::tolower(ac) < std::tolower(bc); 
+                }
+            );
+        }
+
+        bool operator() (char a, const std::string& b) const {
+
+            return std::lexicographical_compare(&a, &a + 1, b.begin(), b.end(),
+                [](char ac, char bc) { 
+                    return std::tolower(ac) < std::tolower(bc);
+                }
+            );
+        }
+
+        bool operator() (const std::string& a, char b) const {
+
+            for (char ch : a) {
+                if (std::tolower(ch) == std::tolower(b)) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+    };
+
+    static void test_06()
+    {
+        std::set<std::string, CaseInsensitiveCompare> s = { "Alpha", "beta", "Gamma" };
+
+        std::println("{}", s.find("alpha") != s.end());   // true
+
+        std::println("{}", s.find('G') != s.end());       // true
+    }
 }
 
 void main_is_transparent()
 {
     using namespace IsTransparent;
 
-    test_01();
-    test_02();
-    test_03();
-    test_04();
-    test_05();
+    //test_01();
+    //test_02();
+    //test_03();
+    //test_04();
+    //test_05();
+    test_06();
 }
 
 // =====================================================================================

@@ -102,15 +102,15 @@
   * STL-Container, -Iteratoren, -Algorithmen und aufrufbare Objekte
   * Von sequentiellen auf ungeordnete assoziative Container umsteigen, um die Laufzeit zu verbessern
   * STL-Algorithmen und Lambdas
+  * `std::back_inserter` (Iteratoren-Adapter)
+  * Das *Erase-Remove*-Idiom
+  * Verwendung von `is_transparent`
 
 
 ## Ausgewählte STL-Algorithmen
   * `std::fill`, `std::for_each`, `std::generate`
   * `std::copy`, `std::transform`, `std::accumulate`
   * `std::all_of`, `std::any_of` und `std::none_of`
-  * `std::back_inserter` (Iteratoren-Adapter)
-  * Das *Erase-Remove*-Idiom
-  * Verwendung von `is_transparent`
 
 
 ## Metaprogramming
