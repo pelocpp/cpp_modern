@@ -18,7 +18,7 @@ namespace IsTransparent {
     public:
         // c'tor
         explicit Employee(std::size_t id, const std::string& name)
-            : m_id{ id }, m_name{ name } 
+            : m_id{ id }, m_name{ name }
         {}
 
         // getter
@@ -155,6 +155,57 @@ namespace IsTransparent {
     }
 
     // =================================================================================
+    // Prerequisites for is_transparent
+
+    static void test_06()
+    {
+        std::set<std::string, std::less<>> strings;   // since C++14
+
+        strings.insert("two");                        // `insert` does not have a heterogeneous variant; a `std::string` is still created here.
+        auto pos = strings.find("one");               // template<class K> find(const K&), no temporary std::string
+    }
+
+    // =================================================================================
+    // Demonstration of whether conversion takes place
+    // Variant: Custom key type.
+    // Custom key type with output in the constructor.
+    // This allows you to see the conversion directly.
+
+    class Key
+    {
+    private:
+        std::string m_s;
+
+    public:
+        Key(const std::string& s) : m_s{ s }
+        {
+            std::println("-> No Conversion: std::string& -> Key");
+        }
+
+        Key(const char* cp) : m_s{ cp }
+        {
+            std::println("-> Conversion: const char* -> Key");
+        }
+
+        friend bool operator<(const Key& a, const Key& b) { return a.m_s < b.m_s; }
+        friend bool operator<(const Key& a, const char* b) { return a.m_s < b; }
+        friend bool operator<(const char* a, const Key& b) { return a < b.m_s; }
+    };
+
+    static void test_07()
+    {
+        std::set<Key> normal;
+        normal.insert("one");                         // conversion (necessary)
+        std::puts("find in normal std::set:");
+        auto pos1 = normal.find("one");               // conversion
+
+        std::set<Key, std::less<>> transparent;
+        transparent.insert("one");                    // conversion (necessary)
+        std::puts("find in transparent std::set:");
+        auto pos2 = transparent.find("one");          // no output, no conversion
+    }
+
+    // =================================================================================
     // Implementing a transparent comparator involves defining a function object
     // with an is_transparent type and overloads for operator() that can compare different types.
     // Here's a simplified example using std::set:
@@ -197,7 +248,7 @@ namespace IsTransparent {
         }
     };
 
-    static void test_06()
+    static void test_08()
     {
         std::set<std::string, CaseInsensitiveCompare> s = { "Alpha", "beta", "Gamma" };
 
@@ -211,12 +262,14 @@ void main_is_transparent()
 {
     using namespace IsTransparent;
 
-    //test_01();
-    //test_02();
-    //test_03();
-    //test_04();
-    //test_05();
+    test_01();
+    test_02();
+    test_03();
+    test_04();
+    test_05();
     test_06();
+    test_07();
+    test_08();
 }
 
 // =====================================================================================
