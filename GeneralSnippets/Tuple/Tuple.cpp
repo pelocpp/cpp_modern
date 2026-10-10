@@ -20,7 +20,10 @@ namespace TupleSamples {
         values = std::make_tuple('A', 123, 123.456);
 
         // just in one statement
-        std::tuple<char, int, double> moreValues{ 'Z', 987, 987.654 };
+        std::tuple<char, int, double> anotherValues{ 'A', 123, 123.456 };
+
+        // using CTAD
+        std::tuple moreValues{ 'A', 123, 123.456 };
 
         // accessing tuple values using std::get
         {

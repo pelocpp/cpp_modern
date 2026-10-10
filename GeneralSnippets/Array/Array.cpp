@@ -260,6 +260,9 @@ namespace StdArray {
 #pragma warning(push)
 #pragma warning(disable : 4172)
 
+    // error message also possible
+// #pragma warning(error : 4172)
+
     // returning address of local variable or temporary C style array:
     // compiles, but is false
 

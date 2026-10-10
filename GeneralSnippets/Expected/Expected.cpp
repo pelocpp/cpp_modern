@@ -249,8 +249,8 @@ namespace StdExpected {
     static void test_excepted_05()
     {
         auto numerator = 20.0;
-        // auto denominator = 2.5;         // success
-        auto denominator = 20.0;     // error
+        auto denominator = 2.5;         // success
+        // auto denominator = 20.0;     // error
 
         auto result = divide(numerator, denominator)
             .and_then(addFive)

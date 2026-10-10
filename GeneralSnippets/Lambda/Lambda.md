@@ -10,10 +10,6 @@
 
 ---
 
-[Zurück](../../Readme.md)
-
----
-
 ## Inhalt
 
   * [Allgemeines](#link1)

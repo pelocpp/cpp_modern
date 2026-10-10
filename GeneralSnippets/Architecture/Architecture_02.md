@@ -30,7 +30,7 @@ hat eben damit zu tun, dass beide Arten dieser Semantiken vorhanden sind (siehe 
 Viele andere Sprachen (wie C#, Java oder Python) unterstützen für Objekte nur die Referenzsemantik.
 
 Da diese Sprachen zeitlich betrachtet nach C++ erfunden/konzipiert wurden, hat man versucht, einige der Erfahrungen
-aus dem Sprachentwurf von C++ mit einzubringen. Eine dieses Konsequenzen dürfte sicherlich gewesen sein,
+aus dem Sprachentwurf von C++ mit einzubringen. Eine dieser Konsequenzen dürfte sicherlich gewesen sein,
 auf die Wertsemantik in C#/Java etc. zu verzichten, um die Komplexität der neu entwickelten Sprachen einfacher zu halten.
 
 Von dieser strengen Regel gibt es Ausnahmen: Elementare Datentypen (`int`, `double`) liegen immer als Wert vor (auf dem Stack).
@@ -48,7 +48,7 @@ Hier steht der Inhalt (Wert) eines Objekts im Vordergrund, nicht seine Identität
   * Speicherung:<br />Objekte werden direkt (z. B. auf dem Stack oder im globalen Datensegment) gespeichert,
     was oft schnelleren Zugriff ermöglicht, da keine zusätzliche Indirektion über Pointer nötig ist.
     Der Inhalt (Wert) eines Objekts befindet sich bei Wertsemantik nicht auf dem Heap.
-  * Standard in C++:<br />Alle eingebauten Typen (`int`, `double`) und benutzerdefinierten Klassen (`struct`, `class`) folgen standardmäßig diesem Prinzip.
+  * Standard in C++:<br />Alle elementaren Typen (`int`, `double`) und benutzerdefinierten Typen (`struct`, `class`) folgen standardmäßig diesem Prinzip.
   * Vorteile:<br />Höhere Sicherheit (direkter Zugriff über eine vorhandene Adresse/statisches Binden,
     keine Probleme mit ungültigen Adressen), bessere Performance durch Cache-Lokalität.
 
