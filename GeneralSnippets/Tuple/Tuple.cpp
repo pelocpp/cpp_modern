@@ -132,7 +132,7 @@ namespace TupleSamples {
         int id{};
         char abbr{};
         double val{};
-        std::string name{};
+        std::string name;
 
         std::tie(id, abbr, val, name) = mySheet[0];
 

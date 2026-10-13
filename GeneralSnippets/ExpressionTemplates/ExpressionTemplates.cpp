@@ -224,7 +224,7 @@ namespace ExpressionTemplates {
         const Matrix<Size>& a4,
         const Matrix<Size>& a5)
     {
-        ScopedTimer watch{};
+        ScopedTimer watch;
 
         for (std::size_t i{}; i != iterations; ++i) {
             result = a1 + a2 + a3 + a4 + a5;
@@ -252,7 +252,7 @@ namespace ExpressionTemplates {
         MatrixExpr sumABCD{ sumABC, a4 };
         MatrixExpr sumABCDE{ sumABCD, a5 };
 
-        ScopedTimer watch{};
+        ScopedTimer watch;
 
         for (std::size_t i{}; i != iterations; ++i) {
             result = sumABCDE;

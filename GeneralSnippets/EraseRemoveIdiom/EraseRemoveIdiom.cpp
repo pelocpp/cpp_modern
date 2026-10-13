@@ -245,7 +245,7 @@ namespace EraseRemoveIdiom
         // 'std::remove_copy' algorithm
 
         std::vector<int> src{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-        std::vector<int> dst{};
+        std::vector<int> dst;
 
         std::print("src: ");
         print(src);
@@ -263,7 +263,7 @@ namespace EraseRemoveIdiom
         // 'std::remove_copy_if' algorithm
 
         std::vector<int> src{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-        std::vector<int> dst{};
+        std::vector<int> dst;
 
         std::print("src: ");
         print(src);

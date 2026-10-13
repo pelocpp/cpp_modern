@@ -149,7 +149,7 @@ namespace Exercises_MoveSemantics {
         {
             std::cout << "Start:" << std::endl;
          
-            ScopedTimer watch{};
+            ScopedTimer watch;
 
             std::vector<HugeArray> myVec;
 

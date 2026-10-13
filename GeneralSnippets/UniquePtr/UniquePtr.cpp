@@ -50,7 +50,7 @@ namespace UniquePointerGeneral {
 
         {
             // move assignment
-            std::unique_ptr<int> ptr3{};
+            std::unique_ptr<int> ptr3;
             ptr3 = std::move(ptr2);
             m = *ptr3;
             std::println("*ptr3:   {}", m);

@@ -78,7 +78,7 @@ namespace Exercises_Initialization {
 
         static void testExercise() {
             {
-                ScopedTimer watch{};
+                ScopedTimer watch;
 
                 for (std::size_t i{}; i != MaxIteration; ++i) {
 
@@ -95,7 +95,7 @@ namespace Exercises_Initialization {
             }
 
             {
-                ScopedTimer watch{};
+                ScopedTimer watch;
 
                 for (std::size_t i{}; i != MaxIteration; ++i) {
 

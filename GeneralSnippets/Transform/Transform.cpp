@@ -58,7 +58,7 @@ namespace AlgorithmTransform {
             std::cout << name << ": " << number << std::endl;
         }
 
-        std::vector<std::string> names{};    // empty vector (!)
+        std::vector<std::string> names;    // empty vector (!)
 
         // std::transform on a single range - retrieve names from phonebook
         std::transform(
@@ -87,7 +87,7 @@ namespace AlgorithmTransform {
 
         std::vector<std::size_t> numbers{ 12345678, 7654321, 81726354 };
 
-        std::unordered_map<std::string, std::size_t> contacts{};
+        std::unordered_map<std::string, std::size_t> contacts;
 
         // std::transform on two ranges - create contacts from separate informations
         std::transform(

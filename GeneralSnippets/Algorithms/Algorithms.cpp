@@ -41,7 +41,7 @@ namespace Algorithms {
 
             std::vector<double> values(VectorSize);
 
-            ScopedTimer watch{};
+            ScopedTimer watch;
 
             for (std::size_t i{}; i != values.size(); ++i) {
                 values[i] = 123.0;
@@ -54,7 +54,7 @@ namespace Algorithms {
 
             std::vector<double> values(VectorSize);
 
-            ScopedTimer watch{};
+            ScopedTimer watch;
 
             for (auto it{ values.begin() }; it != values.end(); ++it) {
                 *it = 123.0;
@@ -67,7 +67,7 @@ namespace Algorithms {
 
             std::vector<double> values(VectorSize);
 
-            ScopedTimer watch{};
+            ScopedTimer watch;
 
             std::fill(
                 values.begin(),
@@ -82,7 +82,7 @@ namespace Algorithms {
 
             std::vector<double> values(VectorSize);
 
-            ScopedTimer watch{};
+            ScopedTimer watch;
 
             std::fill(
                 std::execution::par,
@@ -98,7 +98,7 @@ namespace Algorithms {
 
             std::vector<double> values(VectorSize);
 
-            ScopedTimer watch{};
+            ScopedTimer watch;
 
             std::for_each(
                 values.begin(),
@@ -113,7 +113,7 @@ namespace Algorithms {
 
             std::vector<double> values(VectorSize);
 
-            ScopedTimer watch{};
+            ScopedTimer watch;
 
             for (auto& elem : values) {
                 elem = 123.0;
@@ -126,7 +126,7 @@ namespace Algorithms {
 
             std::vector<double> values(VectorSize);
 
-            ScopedTimer watch{};
+            ScopedTimer watch;
 
             std::generate(
                 values.begin(),
@@ -139,7 +139,7 @@ namespace Algorithms {
         {
             std::println("std::vector: using special std::vector c'tor (Note: time includes initialization of std::vector!)");
 
-            ScopedTimer watch{};
+            ScopedTimer watch;
 
             std::vector<double> values(VectorSize, 123.0);
         }
@@ -170,7 +170,7 @@ namespace Algorithms {
         {
             std::println("std::array: using a classic for-loop");
 
-            ScopedTimer watch{};
+            ScopedTimer watch;
 
             for (std::size_t i{}; i != values.size(); ++i) {
                 values[i] = 123.0;
@@ -181,7 +181,7 @@ namespace Algorithms {
         {
             std::println("std::array: using an iterator-based for-loop");
 
-            ScopedTimer watch{};
+            ScopedTimer watch;
 
             for (auto it{ values.begin() }; it != values.end(); ++it) {
                 *it = 123.0;
@@ -192,7 +192,7 @@ namespace Algorithms {
         {
             std::println("std::array: using std::fill");
 
-            ScopedTimer watch{};
+            ScopedTimer watch;
 
             std::fill(
                 values.begin(),
@@ -205,7 +205,7 @@ namespace Algorithms {
         {
             std::println("std::array: using std::fill - using execution policy ");
 
-            ScopedTimer watch{};
+            ScopedTimer watch;
 
             std::fill(
                 std::execution::par,
@@ -219,7 +219,7 @@ namespace Algorithms {
         {
             std::println("std::array: using std::for_each");
 
-            ScopedTimer watch{};
+            ScopedTimer watch;
 
             std::for_each(
                 values.begin(),
@@ -232,7 +232,7 @@ namespace Algorithms {
         {
             std::println("std::array: using range-based for loop");
 
-            ScopedTimer watch{};
+            ScopedTimer watch;
 
             for (auto& elem : values) {
                 elem = 123.0;
@@ -243,7 +243,7 @@ namespace Algorithms {
         {
             std::println("std::array: using std::generate");
 
-            ScopedTimer watch{};
+            ScopedTimer watch;
 
             std::generate(
                 values.begin(),
@@ -279,7 +279,7 @@ namespace Algorithms {
 
             std::vector<double> values(VectorSize);
 
-            ScopedTimer watch{};
+            ScopedTimer watch;
 
             for (std::size_t i{}; i != values.size(); ++i) {
                 values[i] = 2.0 * i;
@@ -292,7 +292,7 @@ namespace Algorithms {
 
             std::vector<double> values(VectorSize);
 
-            ScopedTimer watch{};
+            ScopedTimer watch;
 
             std::size_t i{};
             for (auto it{ values.begin() }; it != values.end(); ++it) {
@@ -306,7 +306,7 @@ namespace Algorithms {
 
             std::vector<double> values(VectorSize);
 
-            ScopedTimer watch{};
+            ScopedTimer watch;
 
             std::for_each(
                 values.begin(),
@@ -321,7 +321,7 @@ namespace Algorithms {
 
             std::vector<double> values(VectorSize);
 
-            ScopedTimer watch{};
+            ScopedTimer watch;
 
             for (int i{}; auto & elem : values) {
                 elem = 2.0 * i++;
@@ -334,7 +334,7 @@ namespace Algorithms {
 
             std::vector<double> values(VectorSize);
 
-            ScopedTimer watch{};
+            ScopedTimer watch;
 
             std::generate(
                 values.begin(),
@@ -366,7 +366,7 @@ namespace Algorithms {
         {
             std::println("std::array: using a classic for-loop");
 
-            ScopedTimer watch{};
+            ScopedTimer watch;
 
             for (std::size_t i{}; i != values.size(); ++i) {
                 values[i] = 2.0 * i;
@@ -377,7 +377,7 @@ namespace Algorithms {
         {
             std::println("std::array: using an iterator-based for-loop");
 
-            ScopedTimer watch{};
+            ScopedTimer watch;
 
             std::size_t i{};
             for (auto it{ values.begin() }; it != values.end(); ++it) {
@@ -389,7 +389,7 @@ namespace Algorithms {
         {
             std::println("std::array: using std::for_each");
 
-            ScopedTimer watch{};
+            ScopedTimer watch;
 
             std::for_each(
                 values.begin(),
@@ -402,7 +402,7 @@ namespace Algorithms {
         {
             std::println("std::array: using range-based for loop");
 
-            ScopedTimer watch{};
+            ScopedTimer watch;
 
             for (int i{}; auto & elem : values) {
                 elem = 2.0 * i++;
@@ -413,7 +413,7 @@ namespace Algorithms {
         {
             std::println("std::array: using std::generate");
 
-            ScopedTimer watch{};
+            ScopedTimer watch;
 
             std::generate(
                 values.begin(),
@@ -450,7 +450,7 @@ namespace Algorithms {
             std::vector<double> source(VectorSize, 123.0);
             std::vector<double> target(VectorSize);
 
-            ScopedTimer watch{};
+            ScopedTimer watch;
 
             for (std::size_t i{}; i != source.size(); ++i) {
                 target[i] = source[i];
@@ -464,7 +464,7 @@ namespace Algorithms {
             std::vector<double> source(VectorSize, 123.0);
             std::vector<double> target(VectorSize);
 
-            ScopedTimer watch{};
+            ScopedTimer watch;
 
             auto itTarget{ target.begin() };
             for (auto it{ source.begin() }; it != source.end(); ++it) {
@@ -480,7 +480,7 @@ namespace Algorithms {
             std::vector<double> source(VectorSize, 123.0);
             std::vector<double> target(VectorSize);
 
-            ScopedTimer watch{};
+            ScopedTimer watch;
 
             std::copy(
                 source.begin(),
@@ -496,7 +496,7 @@ namespace Algorithms {
             std::vector<double> source(VectorSize, 123.0);
             std::vector<double> target(VectorSize);
 
-            ScopedTimer watch{};
+            ScopedTimer watch;
 
             std::copy(
                 std::execution::par,
@@ -513,7 +513,7 @@ namespace Algorithms {
             std::vector<double> source(VectorSize, 123.0);
             std::vector<double> target(VectorSize);
 
-            ScopedTimer watch{};
+            ScopedTimer watch;
 
             // take care: works only with continuous memory
             std::memcpy(
@@ -546,7 +546,7 @@ namespace Algorithms {
         {
             std::println("std::array: Copying: Using a classic for-loop");
 
-            ScopedTimer watch{};
+            ScopedTimer watch;
 
             for (std::size_t i{}; i != source.size(); ++i) {
                 target[i] = source[i];
@@ -557,7 +557,7 @@ namespace Algorithms {
         {
             std::println("std::array: Copying: Using an iterator-based for-loop");
 
-            ScopedTimer watch{};
+            ScopedTimer watch;
 
             auto itTarget{ target.begin() };
             for (auto it{ source.begin() }; it != source.end(); ++it) {
@@ -570,7 +570,7 @@ namespace Algorithms {
         {
             std::println("std::array: Standard Algorithm - std::copy:");
 
-            ScopedTimer watch{};
+            ScopedTimer watch;
 
             std::copy(
                 source.begin(),
@@ -583,7 +583,7 @@ namespace Algorithms {
         {
             std::println("std::array: Using std::copy - using execution policy");
 
-            ScopedTimer watch{};
+            ScopedTimer watch;
 
             std::copy(
                 std::execution::par,
@@ -597,7 +597,7 @@ namespace Algorithms {
         {
             std::println("std::array: Using std::memcpy");
 
-            ScopedTimer watch{};
+            ScopedTimer watch;
 
             // take care: works only with continuous memory
             std::memcpy(
@@ -630,7 +630,7 @@ namespace Algorithms {
         {
             std::println("Classic Loop: ");
 
-            ScopedTimer watch{};
+            ScopedTimer watch;
 
             double sum{};
             for (std::size_t i{}; i != values.size(); ++i) {
@@ -644,7 +644,7 @@ namespace Algorithms {
         {
             std::println("Iterator Loop: ");
 
-            ScopedTimer watch{};
+            ScopedTimer watch;
 
             double sum{};
             for (auto it{ values.cbegin() }; it != values.cend(); ++it) {
@@ -658,7 +658,7 @@ namespace Algorithms {
         {
             std::println("Using range-based for loop");
 
-            ScopedTimer watch{};
+            ScopedTimer watch;
 
             double sum{};
             for (const auto& value : values) {
@@ -672,7 +672,7 @@ namespace Algorithms {
         {
             std::println("Standard Algorithm - std::for_each:");
 
-            ScopedTimer watch{};
+            ScopedTimer watch;
 
             double sum{};
             std::for_each(
@@ -688,7 +688,7 @@ namespace Algorithms {
         {
             std::println("Standard Algorithm - std::accumulate:");
 
-            ScopedTimer watch{};
+            ScopedTimer watch;
 
             double sum{
                 std::accumulate(

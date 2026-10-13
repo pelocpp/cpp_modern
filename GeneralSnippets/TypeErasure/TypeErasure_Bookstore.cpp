@@ -157,7 +157,7 @@ namespace BookStoreUsingDynamicPolymorphism {
 
         std::shared_ptr<IMedia> cBook{ std::make_shared<Book>("C", "Dennis Ritchie", 11.99, 12) };
 
-        ScopedTimer watch{};
+        ScopedTimer watch;
 
         double total{};
         for (std::size_t i{}; i != MaxIterations; ++i) {
@@ -179,7 +179,7 @@ namespace BookStoreUsingDynamicPolymorphism {
             bookstore.addMedia(cBook);
         }
 
-        ScopedTimer watch{};
+        ScopedTimer watch;
 
         double total{};
         for (std::size_t i{}; i != MaxIterations; ++i) {
@@ -405,7 +405,7 @@ namespace BookStoreUsingTypeErasure {
 
         Book cBook{ "C", "Dennis Ritchie", 11.99, 12 };
 
-        ScopedTimer watch{};
+        ScopedTimer watch;
 
         double total{};
         for (std::size_t i{}; i != MaxIterations; ++i) {
@@ -427,7 +427,7 @@ namespace BookStoreUsingTypeErasure {
             bookstore.addMedia(cBook);
         }
 
-        ScopedTimer watch{};
+        ScopedTimer watch;
 
         double total{};
         for (std::size_t i{}; i != MaxIterations; ++i) {

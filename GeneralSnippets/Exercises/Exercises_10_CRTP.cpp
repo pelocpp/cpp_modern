@@ -86,7 +86,7 @@ namespace Exercises_CRTP {
 
             Image* pImage = new PngImage(Width, Height);
 
-            ScopedTimer watch{};
+            ScopedTimer watch;
 
             // call draw several times to make sure performance is visible 
             for (int i = 0; i < MaxIterations; ++i) {
@@ -177,7 +177,7 @@ namespace Exercises_CRTP {
 
             ImageCRTP<PngImageCRTP>* pImage = new PngImageCRTP(Width, Height);
 
-            ScopedTimer watch{};
+            ScopedTimer watch;
 
             // call draw several times to make sure performance is visible 
             for (int i = 0; i < MaxIterations; ++i) {

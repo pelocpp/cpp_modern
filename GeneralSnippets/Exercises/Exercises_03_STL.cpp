@@ -99,7 +99,7 @@ namespace Exercises_STL {
 
             std::iota(original.begin(), original.end(), 1);
 
-            ScopedTimer watch{};
+            ScopedTimer watch;
 
             for (std::size_t i{}; i != NumIterations; ++i) {
 
@@ -127,7 +127,7 @@ namespace Exercises_STL {
 
             std::iota(original.begin(), original.end(), 1);
 
-            ScopedTimer watch{};
+            ScopedTimer watch;
 
             for (std::size_t i{}; i != NumIterations; ++i) {
 

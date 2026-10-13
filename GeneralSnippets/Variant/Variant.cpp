@@ -75,7 +75,20 @@ namespace VariantDemo {
 
     static void test_02() {
 
-        std::variant<int, double, std::string> var{};
+        using Value = std::variant<std::monostate, int, double, std::string>;  // std::monostate == nil
+
+        Value value;
+
+        if (value.index() == 0) {
+            std::println("No value present ...");
+        }
+    }
+
+    // -------------------------------------------------------------------
+
+    static void test_03() {
+
+        std::variant<int, double, std::string> var;
 
         auto result{ std::holds_alternative<int>(var) };   // true, int is first alternative
 
@@ -92,7 +105,7 @@ namespace VariantDemo {
         
     // -------------------------------------------------------------------
 
-    static void test_03() {
+    static void test_04() {
 
         // accessing a variant
 
@@ -116,7 +129,7 @@ namespace VariantDemo {
 
     // -------------------------------------------------------------------
 
-    static void test_04() {
+    static void test_05() {
 
         std::variant<int, double, std::string> var{ 123 };
 
@@ -152,11 +165,11 @@ namespace VariantDemo {
         }
     };
 
-    static void test_05() {
+    static void test_06() {
 
         std::variant<int, double, std::string> var{ 123 };
 
-        Visitor visitor{};
+        Visitor visitor;
 
         std::visit(visitor, var);
 
@@ -169,7 +182,7 @@ namespace VariantDemo {
 
     // -------------------------------------------------------------------
 
-    static void test_06() {
+    static void test_07() {
 
         std::variant<int, double, std::string> var{ 123 };
 
@@ -211,7 +224,7 @@ namespace VariantDemo {
 
     // -------------------------------------------------------------------
 
-    static void test_07() {
+    static void test_08() {
 
         std::vector<std::variant<int, long, long long, float, double>> vec
         {
@@ -233,7 +246,7 @@ namespace VariantDemo {
         std::println();
 
         // get the sum
-        std::common_type<int, long, long long, float, double>::type res{};
+        std::common_type<int, long, long long, float, double>::type res;
         std::println("Type of Sum: {}", typeid(res).name());
 
         for (const auto& var : vec) {
@@ -252,7 +265,7 @@ namespace VariantDemo {
 
     // -------------------------------------------------------------------
 
-    static void test_08() {
+    static void test_09() {
 
         // Inspecting container according to what types are currently present
 
@@ -273,7 +286,7 @@ namespace VariantDemo {
 
     // -------------------------------------------------------------------
 
-    static void test_09() {
+    static void test_10() {
 
         // Inspecting container to find content by both type and value
 
@@ -299,7 +312,7 @@ namespace VariantDemo {
     
     template<class... Ts> Overload(Ts...) -> Overload<Ts...>;
 
-    static void test_10() {
+    static void test_11() {
 
         std::variant<int, double, std::string> var{ "Hello" };
 
@@ -324,7 +337,7 @@ namespace VariantDemo {
 
     // -------------------------------------------------------------------
 
-    static void test_11() {
+    static void test_12() {
 
         std::variant<int, double, std::string> var{ "Hello" };
 
@@ -357,6 +370,7 @@ void main_variant()
     test_09();
     test_10();
     test_11();
+    test_12();
 }
 
 // =====================================================================================

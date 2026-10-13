@@ -95,7 +95,7 @@ namespace Exercises_ExpressionTemplates {
         std::vector<double> a{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
         {
-            ScopedTimer watch{};
+            ScopedTimer watch;
             auto prod{ 0.0 };
 
             for (std::size_t n{}; n != MaxIterations; ++n) {
@@ -105,7 +105,7 @@ namespace Exercises_ExpressionTemplates {
         }
 
         {
-            ScopedTimer watch{};
+            ScopedTimer watch;
             auto prod{ 0.0 };
 
             for (std::size_t n{}; n != MaxIterations; ++n) {
@@ -115,7 +115,7 @@ namespace Exercises_ExpressionTemplates {
         }
 
         {
-            ScopedTimer watch{};
+            ScopedTimer watch;
             auto prod{ 0.0 };
 
             for (std::size_t n{}; n != MaxIterations; ++n) {
