@@ -326,20 +326,95 @@ namespace OptionalExamples {
     }
 }
 
+
+// =====================================================================================
+// Neuer Zeugs
+// =====================================================================================
+
+
+struct User
+{
+    std::string name;
+    std::optional<std::string> email;  // not every user has one
+};
+
+const std::map<std::size_t, User> database =
+{
+    { 1,{ "Sepp", "sepp@gmx.de" } },
+    { 2,{ "Anton", std::nullopt } },
+    { 3,{ "Hubert", "hubert@gmail-com" } }
+};
+
+static std::optional<User> find_user(int id) {
+    if (auto it = database.find(id); it != database.end()) {
+        return it->second;
+    }
+
+    return std::nullopt;
+}
+
+static std::optional<std::string> email_domain(const std::string& email) {
+    auto at = email.find('@');
+    if (at == std::string::npos) {
+        return std::nullopt;
+    }
+
+    return email.substr(at + 1);
+}
+
+static std::string to_lower(std::string s) {
+    for (char& c : s) c = static_cast<char>(std::tolower(static_cast<unsigned char>(c)));
+    return s;
+}
+
+static std::optional<std::string> domain_of(int id) {
+    return find_user(id)                                        // optional<User>
+        .and_then([](const User& u) { return u.email; })        // -> optional<string>
+        .and_then(email_domain)                                 // -> optional<string>
+        .transform(to_lower);                                   // string -> string, re-wrapped
+}
+
+static void main_xxx() {
+    for (int id : { 0, 1, 2, 3, 4 }) {
+        std::cout << id << ": "
+            << domain_of(id)
+            .or_else([] { std::cerr << "  (no domain)\n"; return std::optional<std::string>{}; })
+            .value_or("<none>")
+            << '\n';
+    }
+}
+//
+//int main_old()
+//{
+//    std::optional<std::string> domain_of_old(int id) {
+//        auto user = find_user(id);
+//        if (!user) return std::nullopt;
+//        if (!user->email) return std::nullopt;
+//        auto domain = email_domain(*user->email);
+//        if (!domain) return std::nullopt;
+//        return to_lower(*domain);
+//    }
+//}
+
+
+
+
 void main_optional()
 {
     using namespace OptionalExamples;
 
-    test_01_optional();
-    test_02_optional();
-    test_03_optional();
-    test_04_optional();
+    //test_01_optional();
+    //test_02_optional();
+    //test_03_optional();
+    //test_04_optional();
 
-    test_01_optional_monadic();
-    test_02_optional_monadic();
-    test_03_optional_monadic();
-    test_04_optional_monadic();
-    test_05_optional_monadic();
+    //test_01_optional_monadic();
+    //test_02_optional_monadic();
+    //test_03_optional_monadic();
+    //test_04_optional_monadic();
+    //test_05_optional_monadic();
+
+    main_xxx();
 }
 
 // =====================================================================================

@@ -71,7 +71,7 @@ int main()
         //main_modularized_standard_library();
         //main_modules_hello_world();
         //main_move_semantics();
-        //main_optional();
+        main_optional();
         //main_perfect_forwarding();
         //main_placement_new();
         //main_println();
