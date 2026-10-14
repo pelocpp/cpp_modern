@@ -2,6 +2,11 @@
 // Array.cpp // std::array // std::to_array // std::span
 // =====================================================================================
 
+module;
+
+#include <array>
+#include <span>
+
 module modern_cpp:class_array;
 
 import std;
@@ -266,32 +271,30 @@ namespace StdArray {
     // returning address of local variable or temporary C style array:
     // compiles, but is false
 
-    static int* scalarProduct(int scalar, const int vec[3])
+    static int* createClassicArray()
     {
-        int result[3] = { scalar * vec[0], scalar * vec[1], scalar * vec[2] };
-        return result;
+        int numbers[3] = { 1, 2, 3 };
+        return numbers;
     }
 
 #pragma warning(pop)
 
     // returning an std::array
-    static std::array<int, 3> scalarProduct(int scalar, const std::array<int, 3>& vec)
+    static std::array<int, 3> createModernArray()
     {
-        std::array result = { scalar * vec[0], scalar * vec[1], scalar * vec[2] };
-        return result;
+        std::array<int, 3> numbers = { 1, 2, 3 };
+        return numbers;
     }
 
     static void test_11()
     {
-        // testing scalarProduct with C-style array
-        int vector[3] { 1, 2, 3 };
-        int* result{ scalarProduct(3, vector) };
+        // testing createClassicArray with C-style array
+        int* result{ createClassicArray() };
         std::println("Result: {},{},{}", result[0], result[1], result[2]);
         // results can be correct, but that is absolutely coincidental
 
-        // testing scalarProduct with std::array
-        std::array vector2 { 1, 2, 3 };
-        std::array result2{ scalarProduct(3, vector2) };
+        // testing createModernArray with std::array
+        std::array result2{ createModernArray() };
         std::println("Result: {},{},{}", result2[0], result2[1], result2[2]);
     }
 

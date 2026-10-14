@@ -17,8 +17,6 @@ module;
 
 #include <cassert>
 
-#include <span>
-
 module modern_cpp_exercises:smart_pointers;
 
 import std;
@@ -903,13 +901,11 @@ namespace Exercises_SmartPointers {
 
         class Mom {
         private:
-            std::string m_name;
+            const std::string m_name;
             std::weak_ptr<const Child> m_child;
 
         public:
-            explicit Mom(std::string name)
-                : m_name(std::move(name))
-            {}
+            explicit Mom(std::string name) : m_name{ std::move(name) } {}
 
             ~Mom() {
                 std::println("Mother ({}) passes away.", m_name);
@@ -926,12 +922,14 @@ namespace Exercises_SmartPointers {
 
         class Child {
         private:
-            std::string m_name;
+            const std::string m_name;
             std::weak_ptr<const Mom> m_mother;
 
         public:
-            explicit Child(std::string name)
-                : m_name(std::move(name))
+            explicit Child(std::string name) : m_name{ std::move(name) } {}
+
+            Child(std::string name, const std::shared_ptr<Mom>& mother)
+                : m_name{ std::move(name) }, m_mother{ mother }
             {}
 
             ~Child() {
@@ -940,16 +938,12 @@ namespace Exercises_SmartPointers {
 
             const std::string& getName() const { return m_name; }
 
-            void setMother(const std::shared_ptr<Mom>& mother) {
-                m_mother = mother;
-            }
-
             void sayHello() const {
                 if (auto mother = m_mother.lock()) {
                     std::println("{}: Hello mother.", m_name);
                 }
                 else {
-                    std::println("{}: My mother no longer exists.", m_name);
+                    std::println("{}: My mother no longer lives.", m_name);
                 }
             }
         };
@@ -959,7 +953,7 @@ namespace Exercises_SmartPointers {
                 std::println("{}: Hello child.", m_name);
             }
             else {
-                std::println("{}: My child no longer exists.", m_name);
+                std::println("{}: My child no longer lives.", m_name);
             }
         }
 
@@ -967,13 +961,14 @@ namespace Exercises_SmartPointers {
 
             using namespace Exercise_06;
 
-            // both human beings are independently owned
+            // mother gets born - lives independently
             auto mother = std::make_shared<Mom>("Dorothea");
-            auto child = std::make_shared<Child>("John");
 
-            // establish the relationships
+            // child gets born - of course, the mother is known
+            auto child = std::make_shared<Child>("John", mother);
+
+            // establish the relationship from the mother to its child
             mother->setChild(child);
-            child->setMother(mother);
 
             std::println("{}: use_count = {}", mother->getName(), mother.use_count());
             std::println("{}: use_count = {}", child->getName(), child.use_count());
@@ -1002,12 +997,11 @@ void test_exercises_smartpointer()
 {
     using namespace Exercises_SmartPointers;
 
-    //Exercise_01::testExercise();
-    //// Exercise_02::testExercise();   // crashes when executed
-    //Exercise_03::testExercise();
-    //Exercise_04::testExercise();
-    //Exercise_05::testExercise();
-
+    Exercise_01::testExercise();
+    // Exercise_02::testExercise();   // crashes when executed
+    Exercise_03::testExercise();
+    Exercise_04::testExercise();
+    Exercise_05::testExercise();
     Exercise_06::testExercise();
 }
 
