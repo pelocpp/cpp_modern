@@ -21,20 +21,20 @@ import std;
 // #define StdFormatter_07_Custom_Parsing_02
 // #define StdFormatter_07_Custom_Parsing_03
 
-namespace StdPrintln {
+namespace {
 
-    static void test_01()
+    void println_01()
     {
         std::println("Hello, world!");
     }
 
-    static void test_02()
+    void println_02()
     {
         int value{ 123 };
         std::println("Value: {}", value);
     }
 
-    static void test_03()
+    void println_03()
     {
         int firstValue{ 123 };
         int secondValue{ 456 };
@@ -44,7 +44,7 @@ namespace StdPrintln {
     }
 
     // fill and align
-    static void test_04()
+    void println_04()
     {
         int value{ 123 };
 
@@ -56,7 +56,7 @@ namespace StdPrintln {
     }
 
     // fill, align and precision
-    static void test_05()
+    void println_05()
     {
         int value{ 123 };
 
@@ -74,7 +74,7 @@ namespace StdPrintln {
     }
 
     // fill, align and precision
-    static void test_06()
+    void println_06()
     {
         float pi{ 3.1415926535f };
 
@@ -89,7 +89,7 @@ namespace StdPrintln {
     }
 
     // fill, align and precision
-    static void test_07()
+    void println_07()
     {
         double pi{ 3.1415926535f };
 
@@ -104,7 +104,7 @@ namespace StdPrintln {
     }
 
     // Sign, #, and different formats 
-    static void test_08()
+    void println_08()
     {
         std::println("Hexadecimal:  {:x}", 6);      // "Hexadecimal:  6"
         std::println("Hexadecimal:  {:x}", 30);     // "Hexadecimal: 1e"
@@ -126,7 +126,7 @@ namespace StdPrintln {
     }
 
     // printing address of a variable  
-    static void test_09()
+    void println_09()
     {
         int n = 123;
         int* ip = &n;
@@ -178,7 +178,7 @@ namespace std
     };
 }
 
-static void test_10()
+void println_10()
 {
     using namespace Formatting_Examples_Revised;
 
@@ -231,7 +231,7 @@ namespace std
     };
 }
 
-static void test_11()
+void println_11()
 {
     using namespace Formatting_Examples_Revised;
 
@@ -280,7 +280,7 @@ namespace std
     };
 }
 
-static void test_12()
+void println_12()
 {
     using namespace Formatting_Examples_Revised;
 
@@ -319,7 +319,7 @@ namespace std
     };
 }
 
-static void test_13()
+void println_13()
 {
     using namespace Formatting_Examples_Revised;
 
@@ -382,7 +382,7 @@ namespace std
     };
 }
 
-static void test_14()
+void println_14()
 {
     using namespace Formatting_Examples_Revised;
 
@@ -469,7 +469,7 @@ namespace std
     };
 }
 
-static void test_15()
+void println_15()
 {
     std::vector<int> intVec = { 1, 2, 3, 4, 5 };
     std::println("{}", intVec);
@@ -526,7 +526,7 @@ namespace std
     };
 }
 
-static void test_16()
+void println_16()
 {
     using namespace Formatting_Examples_Again_Revised;
 
@@ -560,7 +560,7 @@ namespace std
     };
 }
 
-static void test_17()
+void println_17()
 {
     using namespace Formatting_Examples_Again_Revised;
 
@@ -614,7 +614,7 @@ namespace std
     };
 }
 
-static void test_18()
+void println_18()
 {
     using namespace Formatting_Examples_Again_Revised;
 
@@ -631,52 +631,50 @@ static void test_18()
 
 void main_println()
 {
-    using namespace StdPrintln;
-
-    test_01();
-    test_02();
-    test_03();
-    test_04();
-    test_05();
-    test_06();
-    test_07();
-    test_08();
-    test_09();
+    println_01();
+    println_02();
+    println_03();
+    println_04();
+    println_05();
+    println_06();
+    println_07();
+    println_08();
+    println_09();
 
 #ifdef StdFormatter_01_Basic_Formatter_API
-    test_10();
+    println_10();
 #endif
 
 #ifdef StdFormatter_02_Parsing_Format_String
-    test_11();
+    println_11();
 #endif
 
 #ifdef StdFormatter_03_Delegating_Formatting_to_Standard_Formatters
-    test_12();
+    println_12();
 #endif
 
 #ifdef StdFormatter_04_Inheriting_From_Standard_Formatters
-    test_13();
+    println_13();
 #endif
 
 #ifdef StdFormatter_05_Using_Standard_Formatters_for_Strings
-    test_14();
+    println_14();
 #endif
 
 #ifdef StdFormatter_06_Using_Standard_Formatters_for_StdVector
-    test_15();
+    println_15();
 #endif
 
 #ifdef StdFormatter_07_Custom_Parsing_01
-    test_16();
+    println_16();
 #endif
 
 #ifdef StdFormatter_07_Custom_Parsing_02
-    test_17();
+    println_17();
 #endif
 
 #ifdef StdFormatter_07_Custom_Parsing_03
-    test_18();
+    println_18();
 #endif
 }
 

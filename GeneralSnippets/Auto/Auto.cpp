@@ -6,11 +6,11 @@ module modern_cpp:auto_keyword;
 
 import std;
 
-namespace Auto_Examples {
+namespace {
 
     // ----------------------------------------------------------------------
 
-    static void test_01() {
+    void auto_01() {
 
         // type deduction / type inference
 
@@ -36,12 +36,12 @@ namespace Auto_Examples {
 
     // ---------------------------------------------------------------------
 
-    static std::map<int, std::string> getFunction() {
+    std::map<int, std::string> getFunction() {
 
         return {};
     }
 
-    static void test_02() {
+    void auto_02() {
 
         auto n{ 123 };                   // n is type of int
 
@@ -54,7 +54,7 @@ namespace Auto_Examples {
 
     // ---------------------------------------------------------------------
 
-    static void test_03() {
+    void auto_03() {
 
         std::unordered_map<int, std::string> anotherMap{ { 1, "Hello"  } };
 
@@ -67,12 +67,12 @@ namespace Auto_Examples {
 
     // ---------------------------------------------------------------------
 
-    static auto sum(float f1, float f2)
+    auto sum(float f1, float f2)
     {
         return f1 + f2;
     }
 
-    static auto foo(bool flag, float f, double d) -> double
+    auto foo(bool flag, float f, double d) -> double
     {
         if (flag) {
             return f;
@@ -85,12 +85,12 @@ namespace Auto_Examples {
     // type of the ternary ?: expression is the common type
     // of its second and third argument
     // (if both types are the same, you get a reference back)
-    static auto moreFoolish(bool flag, float f, double d)
+    auto moreFoolish(bool flag, float f, double d)
     {
         return (flag) ? f : d;
     }
 
-    static void test_04() {
+    void auto_04() {
 
         auto result = sum(1.0, 2.0);                           // float
 
@@ -115,7 +115,7 @@ namespace Auto_Examples {
 
     // ---------------------------------------------------------------------
 
-    static auto make_planet()
+    auto make_planet()
     {
         struct Planet 
         { 
@@ -127,7 +127,7 @@ namespace Auto_Examples {
         return Planet{ "Saturn", 82, true };
     }
 
-    static void test_05() {
+    void auto_05() {
 
         // using automatic return type deduction
         auto planet{ make_planet() };
@@ -153,7 +153,7 @@ namespace Auto_Examples {
         const std::string& getName() { return m_name; }
     };
 
-    static void test_06() {
+    void auto_06() {
 
         Person hans{ "Hans" };
 
@@ -179,12 +179,12 @@ namespace Auto_Examples {
 
     // ---------------------------------------------------------------------
 
-    static decltype(auto) getFirstCharacter(const std::string& s)
+    decltype(auto) getFirstCharacter(const std::string& s)
     {
         return s[0];
     }
 
-    static void test_07()
+    void auto_07()
     {
         auto ch1{ getFirstCharacter(std::string{ "ABC" }) };
 
@@ -193,18 +193,18 @@ namespace Auto_Examples {
 
     // ---------------------------------------------------------------------
 
-    static int f() { return 0; }
+    int f() { return 0; }
 
-    static void test_08()
+    void auto_08()
     {
         decltype(f()) i{ 1 };                 // i is integer
 
         std::vector<decltype(f())> v;         // vector<int>, cannot be done with auto
     }
 
-    static int& g(int& i) { return ++i; }
+    int& g(int& i) { return ++i; }
 
-    static void test_09()
+    void auto_09()
     {
         int x { 10 };
 
@@ -216,24 +216,24 @@ namespace Auto_Examples {
     // ---------------------------------------------------------------------
 
     template <typename TReturn, typename T1, typename T2>
-    static TReturn add1(const T1& t1, const T2& t2)
+    TReturn add1(const T1& t1, const T2& t2)
     {
         return t1 + t2;
     }
 
     template <typename T1, typename T2, typename TReturn>
-    static TReturn add2(const T1& t1, const T2& t2)
+    TReturn add2(const T1& t1, const T2& t2)
     {
         return t1 + t2;
     }
 
     template <typename TReturn = long, typename T1, typename T2>
-    static TReturn add3(const T1& t1, const T2& t2)
+    TReturn add3(const T1& t1, const T2& t2)
     {
         return t1 + t2;
     }
 
-    static void test_10()
+    void auto_10()
     {
         // works - specifying all template parameters
         auto result{ add1<long, int, int>(10, 20) };
@@ -251,17 +251,16 @@ namespace Auto_Examples {
 
 void main_auto()
 {
-    using namespace Auto_Examples;
-    test_01();
-    test_02();
-    test_03();
-    test_04();
-    test_05();
-    test_06();
-    test_07();
-    test_08();
-    test_09();
-    test_10();
+    auto_01();
+    auto_02();
+    auto_03();
+    auto_04();
+    auto_05();
+    auto_06();
+    auto_07();
+    auto_08();
+    auto_09();
+    auto_10();
 }
 
 // =====================================================================================

@@ -21,9 +21,9 @@ module modern_cpp:shared_ptr;
 
 import std;
 
-namespace SharedPointer {
+namespace {
 
-    static void test_01() {
+    void shared_ptr_01() {
 
         // 'ptr1' is a shared pointer for a new instance of an int
         std::shared_ptr<int> ptr1{ new int{ 123 } };
@@ -73,19 +73,19 @@ namespace SharedPointer {
 
     // ===========================================================================
 
-    static std::shared_ptr<int> loadSharedPointer()
+    std::shared_ptr<int> loadSharedPointer()
     {
         std::shared_ptr<int> tmp{ std::make_shared<int>(123) };
         return tmp;
     }
 
     // note: play with 'call-by-value' or 'call-by-reference'
-    static void storeSharedPointer(std::shared_ptr<int> ptr)
+    void storeSharedPointer(std::shared_ptr<int> ptr)
     {
         std::println("Inner scope: {}", ptr.use_count());
     }
 
-    static void test_02()
+    void shared_ptr_02()
     {
         std::shared_ptr<int> ptr{ loadSharedPointer() };
         std::println("Outer scope: {}", ptr.use_count());
@@ -98,17 +98,17 @@ namespace SharedPointer {
     // ===========================================================================
     // accessing the allocated memory does not necessarily require the smart pointer
 
-    static void processDataCLike(const std::string* data)
+    void processDataCLike(const std::string* data)
     {
         std::println("Data: {}", *data);
     }
 
-    static void processDataCppLike(const std::string& data)
+    void processDataCppLike(const std::string& data)
     {
         std::println("Data: {}", data);
     }
 
-    static void test_03()
+    void shared_ptr_03()
     {
         auto ptr = std::make_shared<std::string>("123");
 
@@ -133,7 +133,7 @@ namespace SharedPointer {
         }
     };
 
-    static void test_04()
+    void shared_ptr_04()
     {
         // shared pointer - prior to C++17
         A* ip{ new A[3] };
@@ -155,11 +155,11 @@ namespace SharedPointer {
 void main_shared_ptr() 
 {
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-    using namespace SharedPointer;
-    test_01();
-    test_02();  // interaction with functions/methods
-    test_03();  // support of arrays
-    test_04();  // support of arrays
+
+    shared_ptr_01();
+    shared_ptr_02();  // interaction with functions/methods
+    shared_ptr_03();  // support of arrays
+    shared_ptr_04();  // support of arrays
 }
 
 // =====================================================================================

@@ -16,7 +16,7 @@ namespace {
     * Introduction
     */
 
-    void test_01_optional() {
+    void optional_01_standard_creation() {
 
         std::optional<int> someValue{ 123 };
 
@@ -35,7 +35,38 @@ namespace {
             std::println("Value: {}", someValue.value());
         }
         else {
-            std::println("someValue does not contain a value!");
+            std::println("std::optional variable does not contain a value!");
+        }
+    }
+
+    void optional_02_more_creation_options() {
+
+        // direct:
+        std::optional<int> oInt(10);
+        std::optional oIntDeduced(10); // deduction guides
+
+        // make_optional
+        auto optDouble = std::make_optional(3.0);
+        auto optComplex = std::make_optional<std::complex<double>>(3.0, 4.0);
+
+        // in_place
+        std::optional<std::complex<double>> optComplex2{ std::in_place, 3.0, 4.0 };
+
+        // will call vector with direct init of {1, 2, 3}
+        std::optional<std::vector<int>> oVec{ std::in_place,{ 1, 2, 3 } };
+
+        std::optional<std::string> jack{ "Jack" };
+        std::println("{}", jack.value());        // OK: contains a value
+
+        jack.reset(); // now empty
+
+        try
+        {
+            std::println("{}", jack.value());        // no value exists
+        }
+        catch (const std::bad_optional_access&)
+        {
+            std::println("No nickname");
         }
     }
 
@@ -56,7 +87,7 @@ namespace {
         std::optional<std::string> getPhone() { return m_phone; }
     };
 
-    void test_02_optional() {
+    void optional_03_with_methods() {
 
         Contact contact{};
 
@@ -90,7 +121,7 @@ namespace {
         return std::nullopt;
     }
 
-    void test_03_optional() {
+    void optional_04_value_or() {
 
         auto result{ divide(1.0, 3.0) };
 
@@ -120,37 +151,6 @@ namespace {
         auto value = result.value_or(defaultValue);
 
         std::println("Result (or default value): {}", value);
-    }
-
-    /*
-    * Demonstrating std::optional and emplace
-    */
-
-    void test_04_optional() {
-
-        // construct a std::vector<int> object inside std::optional in-place
-        std::optional<std::vector<int>> optVec{
-            std::make_optional<std::vector<int>>(5, 123)   // { 123, 123, 123, 123, 123 }
-        };
-
-        std::copy(
-            optVec->begin(),
-            optVec->end(),
-            std::ostream_iterator<int>(std::cout, ", ")
-        );
-        std::println();
-
-        std::set<int> ints{ 1, 2, 3, 4, 5 };
-
-        // construct a std::vector<int> object inside std::optional in-place
-        optVec.emplace(ints.begin(), ints.end());
-
-        std::copy(
-            optVec->begin(),
-            optVec->end(),
-            std::ostream_iterator<int>(std::cout, ", ")
-        );
-        std::println();
     }
 
     // =================================================================================
@@ -208,7 +208,7 @@ namespace {
             .transform(toLower);                                // string -> string, re-wrapped
     }
 
-    void test_04_optional_monadic()
+    void optional_05_monadic()
     {
         for (int id : { 0, 1, 2, 3, 4, 5 }) {
             auto domain = domainOf(id).or_else([] {
@@ -223,11 +223,11 @@ namespace {
 
 void main_optional()
 {
-    test_01_optional();
-    test_02_optional();
-    test_03_optional();
-    test_04_optional();
-    test_04_optional_monadic();
+    optional_01_standard_creation();
+    optional_02_more_creation_options();
+    optional_03_with_methods();
+    optional_04_value_or();
+    optional_05_monadic();
 }
 
 // =====================================================================================

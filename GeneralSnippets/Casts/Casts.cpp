@@ -7,9 +7,9 @@ module modern_cpp:casts;
 
 import std;
 
-namespace DiverseCasts {
+namespace {
 
-    static void test_01_implicit_conversions()
+    void casts_01_implicit_conversions()
     {
         {
             // no conversions at all
@@ -51,7 +51,7 @@ namespace DiverseCasts {
         }
     }
 
-    static void test_02_explicit_conversions_static_cast()
+    void casts_02_explicit_conversions_static_cast()
     {
         {
             // static_cast
@@ -82,7 +82,7 @@ namespace DiverseCasts {
         }
     }
 
-    static void test_03_explicit_conversions_reinterpret_cast()
+    void casts_03_explicit_conversions_reinterpret_cast()
     {
         {
             // reinterpret_cast
@@ -109,12 +109,12 @@ namespace DiverseCasts {
         }
     }
 
-    static void print(int* ptr)
+    void print(int* ptr)
     {
         std::println("{}", *ptr);
     }
 
-    static void test_04_explicit_conversions_const_cast()
+    void casts_04_explicit_conversions_const_cast()
     {
         {
             const int constVar = 123;
@@ -131,7 +131,7 @@ namespace DiverseCasts {
         }
     }
 
-    static void test_05_explicit_conversions_dynamic_cast()
+    void casts_05_explicit_conversions_dynamic_cast()
     {
         class Base
         {
@@ -253,13 +253,11 @@ namespace DiverseCasts {
 
 void main_casts()
 {
-    using namespace DiverseCasts;
-
-    test_01_implicit_conversions();
-    test_02_explicit_conversions_static_cast();
-    test_03_explicit_conversions_reinterpret_cast();
-    test_04_explicit_conversions_const_cast();
-    test_05_explicit_conversions_dynamic_cast();
+    casts_01_implicit_conversions();
+    casts_02_explicit_conversions_static_cast();
+    casts_03_explicit_conversions_reinterpret_cast();
+    casts_04_explicit_conversions_const_cast();
+    casts_05_explicit_conversions_dynamic_cast();
 }
 
 // =====================================================================================

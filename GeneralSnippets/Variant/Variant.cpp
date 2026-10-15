@@ -11,9 +11,9 @@ module modern_cpp:variant;
 
 import std;
 
-namespace VariantDemo {
+namespace {
 
-    static void test_01() {
+    void variant_01() {
 
         std::variant<int, double, std::string> var{ 123 };
 
@@ -73,7 +73,7 @@ namespace VariantDemo {
 
     // -------------------------------------------------------------------
 
-    static void test_02() {
+    void variant_02() {
 
         using Value = std::variant<std::monostate, int, double, std::string>;  // std::monostate == nil
 
@@ -86,7 +86,7 @@ namespace VariantDemo {
 
     // -------------------------------------------------------------------
 
-    static void test_03() {
+    void variant_03() {
 
         std::variant<int, double, std::string> var;
 
@@ -105,7 +105,7 @@ namespace VariantDemo {
         
     // -------------------------------------------------------------------
 
-    static void test_04() {
+    void variant_04() {
 
         // accessing a variant
 
@@ -129,7 +129,7 @@ namespace VariantDemo {
 
     // -------------------------------------------------------------------
 
-    static void test_05() {
+    void variant_05() {
 
         std::variant<int, double, std::string> var{ 123 };
 
@@ -165,7 +165,7 @@ namespace VariantDemo {
         }
     };
 
-    static void test_06() {
+    void variant_06() {
 
         std::variant<int, double, std::string> var{ 123 };
 
@@ -182,7 +182,7 @@ namespace VariantDemo {
 
     // -------------------------------------------------------------------
 
-    static void test_07() {
+    void variant_07() {
 
         std::variant<int, double, std::string> var{ 123 };
 
@@ -224,7 +224,7 @@ namespace VariantDemo {
 
     // -------------------------------------------------------------------
 
-    static void test_08() {
+    void variant_08() {
 
         std::vector<std::variant<int, long, long long, float, double>> vec
         {
@@ -265,7 +265,7 @@ namespace VariantDemo {
 
     // -------------------------------------------------------------------
 
-    static void test_09() {
+    void variant_09() {
 
         // Inspecting container according to what types are currently present
 
@@ -286,7 +286,7 @@ namespace VariantDemo {
 
     // -------------------------------------------------------------------
 
-    static void test_10() {
+    void variant_10() {
 
         // Inspecting container to find content by both type and value
 
@@ -312,7 +312,7 @@ namespace VariantDemo {
     
     template<class... Ts> Overload(Ts...) -> Overload<Ts...>;
 
-    static void test_11() {
+    void variant_11() {
 
         std::variant<int, double, std::string> var{ "Hello" };
 
@@ -337,7 +337,7 @@ namespace VariantDemo {
 
     // -------------------------------------------------------------------
 
-    static void test_12() {
+    void variant_12() {
 
         std::variant<int, double, std::string> var{ "Hello" };
 
@@ -357,20 +357,18 @@ namespace VariantDemo {
 
 void main_variant()
 {
-    using namespace VariantDemo;
-
-    test_01();
-    test_02();
-    test_03();
-    test_04();
-    test_05();
-    test_06();
-    test_07();
-    test_08();
-    test_09();
-    test_10();
-    test_11();
-    test_12();
+    variant_01();
+    variant_02();
+    variant_03();
+    variant_04();
+    variant_05();
+    variant_06();
+    variant_07();
+    variant_08();
+    variant_09();
+    variant_10();
+    variant_11();
+    variant_12();
 }
 
 // =====================================================================================

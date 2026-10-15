@@ -20,9 +20,9 @@ module modern_cpp:weak_ptr;
 
 import std;
 
-namespace WeakPointer {
+namespace {
 
-    static void test_01()
+    void weak_pointer_01()
     {
         std::println("Begin-of-Program");
 
@@ -134,7 +134,7 @@ namespace WeakPointer {
         }
     };
 
-    static void test_02()
+    void weak_pointer_02()
     {
         std::shared_ptr parent{ std::make_shared<ParentNode>() };
         std::shared_ptr rightNode{ std::make_shared<RightNode>(parent) };
@@ -153,9 +153,9 @@ namespace WeakPointer {
 void main_weak_pointer()
 {
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-    using namespace WeakPointer;
-    test_01();
-    test_02();
+
+    weak_pointer_01();
+    weak_pointer_02();
 }
 
 // =====================================================================================

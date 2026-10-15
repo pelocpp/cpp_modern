@@ -6,19 +6,19 @@ module modern_cpp:rvalue_lvalue;
 
 import std;
 
-namespace LValueRValue {
+namespace {
 
     // lvalue reference
-    static void sayHello(std::string& message) {
+    void sayHello(std::string& message) {
         std::println("sayHello [std::string&]:  {}", message);
     }
 
     // rvalue reference
-    static void sayHello(std::string&& message) {
+    void sayHello(std::string&& message) {
         std::println("sayHello [std::string&&]: {}", message);
     }
 
-    static void test01() {
+    void rvalue_lvalue_01() {
 
         std::string a = "Hello";
         std::string b = " World";
@@ -29,20 +29,20 @@ namespace LValueRValue {
 
     // -------------------------------------------------------------------
 
-    static void helper(std::string&& message)
+    void helper(std::string&& message)
     {
         sayHello(message);
         // sayHello(std::move(message));    // casting an lvalue to an rvalue
     }
 
-    static void test02()
+    void rvalue_lvalue_02()
     {
         helper(std::string("Where are we going ..."));
     }
 
     // -------------------------------------------------------------------
 
-    static void test03() {
+    void rvalue_lvalue_03() {
 
         std::string s = "Hello";
 
@@ -53,7 +53,7 @@ namespace LValueRValue {
 
     // -------------------------------------------------------------------
 
-    static void test04() {
+    void rvalue_lvalue_04() {
 
         int a = 2;
         int b = 3;
@@ -74,11 +74,10 @@ namespace LValueRValue {
 
 void main_rvalue_lvalue()
 {
-    using namespace LValueRValue;
-    test01();
-    test02();
-    test03();
-    test04();
+    rvalue_lvalue_01();
+    rvalue_lvalue_02();
+    rvalue_lvalue_03();
+    rvalue_lvalue_04();
 }
 
 // =====================================================================================

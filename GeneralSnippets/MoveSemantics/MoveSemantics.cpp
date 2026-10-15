@@ -6,7 +6,7 @@ module modern_cpp:move_semantics;
 
 import std;
 
-namespace MoveSemantics {
+namespace {
 
     class BigData
     {
@@ -162,30 +162,30 @@ namespace MoveSemantics {
     }
 
     // test methods
-    static BigData createHugeData() {
+    BigData createHugeData() {
         BigData data(10, 1);
         return data;
     }
 
-    static void test_01_move_semantics() {
+    void move_semantics_01() {
 
         BigData data;
         data = createHugeData();
     }
 
-    static void test_02_demonstrate_move_ctor() {
+    void move_semantics_02_move_ctor() {
 
         std::vector<BigData> vec;
         vec.push_back(BigData(10, 1));
     }
 
-    static void test_03_demonstrate_move_assignment() {
+    void move_semantics_03_move_assignment() {
 
         BigData data;
         data = BigData(10, 1);
     }
 
-    static void test_04_demonstrate_move_assignment() {
+    void move_semantics_04_move_assignment() {
 
         std::vector<BigData> vec;
 
@@ -196,7 +196,7 @@ namespace MoveSemantics {
         vec.push_back(std::move(someData));
     }
 
-    static void test_05_demonstrate_missing_noexept() {
+    void move_semantics_05_missing_noexept() {
 
         std::vector<BigData> vec;
         vec.push_back(BigData(10, 1));
@@ -206,12 +206,11 @@ namespace MoveSemantics {
 
 void main_move_semantics()
 {
-    using namespace MoveSemantics;
-    test_01_move_semantics();
-    test_02_demonstrate_move_ctor();
-    test_03_demonstrate_move_assignment();
-    test_04_demonstrate_move_assignment();
-    test_05_demonstrate_missing_noexept();
+    move_semantics_01();
+    move_semantics_02_move_ctor();
+    move_semantics_03_move_assignment();
+    move_semantics_04_move_assignment();
+    move_semantics_05_missing_noexept();
 }
 
 // =====================================================================================

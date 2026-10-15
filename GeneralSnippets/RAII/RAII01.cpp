@@ -7,7 +7,7 @@ module modern_cpp:raii;
 import std;
 import dummy;
 
-namespace RAIIDemo {
+namespace {
 
     template <typename TFinalizer>
     class RAII {
@@ -31,7 +31,7 @@ namespace RAIIDemo {
         TFinalizer m_finalizer;
     };
 
-    static void test_01()
+    void raii_01()
     {
         {
             Dummy* ptr = new Dummy{ 1 };
@@ -45,7 +45,7 @@ namespace RAIIDemo {
         std::cout << "Done." << std::endl;
     }
 
-    static void test_02()
+    void raii_02()
     {
         // test RAII idiom upon a loop break
         do {
@@ -61,7 +61,7 @@ namespace RAIIDemo {
         std::cout << "Done." << std::endl;
     }
 
-    static void test_03()
+    void raii_03()
     {
         // test RAII idiom upon exception being thrown
         try {
@@ -80,7 +80,7 @@ namespace RAIIDemo {
         std::cout << "Done." << std::endl;
     }
 
-    static void test_04()
+    void raii_04()
     {
         // test RAII idiom with two encapsulated resources:
         // Note order of destructor calls
@@ -108,7 +108,7 @@ namespace RAIIDemo {
         RAII<TFinalizer> m_raii;
     };
 
-    static void test_05()
+    static void raii_05()
     {
         Dummy* ptr = new Dummy{ 1 };
         if (ptr == nullptr) {
@@ -125,12 +125,11 @@ namespace RAIIDemo {
 
 void main_raii()
 {
-    using namespace RAIIDemo;
-    test_01();
-    test_02();
-    test_03();
-    test_04();
-    test_05();
+    raii_01();
+    raii_02();
+    raii_03();
+    raii_04();
+    raii_05();
 }
 
 // =====================================================================================
