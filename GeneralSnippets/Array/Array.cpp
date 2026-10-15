@@ -11,12 +11,12 @@ module modern_cpp:class_array;
 
 import std;
 
-namespace StdArray {
+namespace {
 
     // -------------------------------------------------------------------
     // initialization
 
-    static void test_01() {
+    void array_01() {
 
         // initialization variants
         [[maybe_unused]] std::array<int, 5> array1;
@@ -33,7 +33,7 @@ namespace StdArray {
     // -------------------------------------------------------------------
     // assignment
 
-    static void test_02() {
+    void array_02() {
 
         std::array<int, 5> array;
 
@@ -47,7 +47,7 @@ namespace StdArray {
     // -------------------------------------------------------------------
     // exception handling
 
-    static void test_03() {
+    void array_03() {
 
         // Exception handling:
         // 'at' does bounds checking, is therefore slower - but safer.
@@ -91,7 +91,7 @@ namespace StdArray {
         std::println("Length: {}", array.size());
     }
 
-    static void test_04() {
+    void array_04() {
 
         std::array<int, 5> array1 = { 1, 2, 3, 4, 5 };
         print(array1);
@@ -103,7 +103,7 @@ namespace StdArray {
     // -------------------------------------------------------------------
     // miscellaneous
 
-    static void test_05() {
+    void array_05() {
 
         std::array<int, 5> array { 1, 2, 3, 4, 5 };
 
@@ -124,7 +124,7 @@ namespace StdArray {
     // -------------------------------------------------------------------
     // multidimensional arrays
 
-    static void test_06() {
+    void array_06() {
 
         // multidimensional std::array
         std::array<std::array<int, 3>, 3> array {
@@ -153,7 +153,7 @@ namespace StdArray {
         }
     }
 
-    static void test_07() {
+    void array_07() {
 
         // passing a multidimensional std::array to another function
         std::array<std::array<int, 3>, 3> array
@@ -185,7 +185,7 @@ namespace StdArray {
         {}
     };
 
-    static void test_08() {
+    void array_08() {
 
         // arrays of objects
         std::array<Employee, 2> employees
@@ -206,7 +206,7 @@ namespace StdArray {
     // -------------------------------------------------------------------
     // assignment - comparison C-style array with std::string
 
-    static void test_09() {
+    void array_09() {
 
         /* C-style array
         */
@@ -242,7 +242,7 @@ namespace StdArray {
         );
     }
 
-    static void test_10() {
+    void array_10() {
 
         /* std::array
         */
@@ -286,7 +286,7 @@ namespace StdArray {
         return numbers;
     }
 
-    static void test_11()
+    void array_11()
     {
         // testing createClassicArray with C-style array
         int* result{ createClassicArray() };
@@ -302,7 +302,7 @@ namespace StdArray {
     // std::to_array
     // helper for creating a std::array from a C-array
 
-    static void test_20() {
+    void array_20() {
 
         // type is deduced to std::array<char, 13>
         // Note: see std::array above
@@ -338,7 +338,7 @@ namespace StdArray {
         std::println();
     }
 
-    static void test_30() {
+    void array_30() {
 
         int carr[]{ 1, 2, 3, 4, 5 };
         printArray(carr, 5);
@@ -365,7 +365,7 @@ namespace StdArray {
         std::println();
     }
 
-    static void test_31() {
+    void array_31() {
 
         int carr[]{ 1, 2, 3, 4, 5 };
         printArray(carr);
@@ -400,7 +400,7 @@ namespace StdArray {
         std::println();
     }
 
-    static void test_32() {
+    void array_32() {
 
         std::vector vec{ 1, 2, 3, 4, 5 };
 
@@ -415,7 +415,7 @@ namespace StdArray {
         // printArray(std::span<int> { vec });
     }
 
-    static void test_33() {
+    void array_33() {
 
         int carr[]{ 1, 2, 3, 4, 5 };
         printArrayConst(carr);
@@ -430,24 +430,22 @@ namespace StdArray {
 
 void main_array()
 {
-    using namespace StdArray;
-
-    test_01();
-    test_02();
-    test_03();
-    test_04();
-    test_05();
-    test_06();
-    test_07();
-    test_08();
-    test_09();
-    test_10();
-    test_11();
-    test_20();
-    test_30();
-    test_31();
-    test_32();
-    test_33();
+    array_01();
+    array_02();
+    array_03();
+    array_04();
+    array_05();
+    array_06();
+    array_07();
+    array_08();
+    array_09();
+    array_10();
+    array_11();
+    array_20();
+    array_30();
+    array_31();
+    array_32();
+    array_33();
 }
 
 // =====================================================================================

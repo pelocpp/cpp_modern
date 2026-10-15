@@ -6,9 +6,9 @@ module modern_cpp:any;
 
 import std;
 
-namespace AnySamples {
+namespace {
 
-    static void test_01_any()
+    void any_01()
     {
         std::any a{ 1 };
         
@@ -70,7 +70,7 @@ namespace AnySamples {
         std::println("{}", *i);
     }
 
-    static void test_02_any()
+    void any_02()
     {
         std::any a1{ std::make_any<std::string>("Hello, std::any!") };
         std::any a2{ std::make_any<double>(123.456) };
@@ -82,9 +82,9 @@ namespace AnySamples {
     using Row = std::tuple<std::any, std::any, std::any>;
 
     // helper method (forward declaration)
-    static std::string toString(const std::any&);
+    std::string toString(const std::any&);
 
-    static void test_03_any()
+    void any_03()
     {
         Row row1{ 1, 2, 3  };
         Row row2{ '1',  std::string{"ABC"}, 99.99 };
@@ -105,7 +105,7 @@ namespace AnySamples {
         }
     }
 
-    static std::string toString(const std::any& var)
+    std::string toString(const std::any& var)
     {
         if (var.type() == typeid (int)) {
             return std::to_string(std::any_cast<int>(var));
@@ -127,7 +127,7 @@ namespace AnySamples {
         }
     }
 
-    static void test_04_any() {
+    void any_04() {
 
         // array with three instances of std::any (note: brace elision)
         const std::array<std::any, 3> many
@@ -162,11 +162,10 @@ namespace AnySamples {
 
 void main_any()
 {
-    using namespace AnySamples;
-    test_01_any();
-    test_02_any();
-    test_03_any();
-    test_04_any();
+    any_01();
+    any_02();
+    any_03();
+    any_04();
 }
 
 // =====================================================================================

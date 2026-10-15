@@ -6,15 +6,17 @@ module;
 
 #include <stdio.h>
 #include <windows.h>
+
+#include <memory>
 #include <print>
 
 module modern_cpp:unique_ptr;
 
 import std;
 
-namespace UniquePointerGeneral {
+namespace {
 
-    static void test_01()
+    void unique_pointer_01()
     {
         // create a unique_ptr to an int with value 123
         std::unique_ptr<int> ptr1{ new int{ 123 } };
@@ -61,13 +63,13 @@ namespace UniquePointerGeneral {
 
     // ===========================================================================
 
-    static std::unique_ptr<int> loadUniquePointer()
+    std::unique_ptr<int> loadUniquePointer()
     {
         std::unique_ptr<int> ptr{ std::make_unique<int>(100) };
         return ptr;
     }
 
-    static void storeUniquePointer(std::unique_ptr<int>& ptr)
+    void storeUniquePointer(std::unique_ptr<int>& ptr)
     {
         std::println("*ptr:    {}", *ptr);
         (*ptr)++;
@@ -77,7 +79,7 @@ namespace UniquePointerGeneral {
         // std::unique_ptr<int> ptr2{ std::move(ptr) };
     }
 
-    static void storeUniquePointerSafe(const std::unique_ptr<int>& ptr)
+    void storeUniquePointerSafe(const std::unique_ptr<int>& ptr)
     {
         std::println("*ptr:    {}", *ptr);
         (*ptr)++;
@@ -87,7 +89,7 @@ namespace UniquePointerGeneral {
         // std::unique_ptr<int> ptr2{ std::move(ptr) };
     }
 
-    static void storeUniquePointerAlternate(int* ptr)
+    void storeUniquePointerAlternate(int* ptr)
     {
         std::println("*ptr:    {}", *ptr);
         (*ptr)++;
@@ -98,7 +100,7 @@ namespace UniquePointerGeneral {
         //    pointer is owned by accompanied Unique Ptr
     }
 
-    static void test_02()
+    void unique_pointer_02()
     {
         // retrieving a unique pointer from a function
         std::unique_ptr<int> ptr{ loadUniquePointer() };
@@ -117,17 +119,17 @@ namespace UniquePointerGeneral {
     // ===========================================================================
     // accessing the allocated memory does not necessarily require the smart pointer
 
-    static void processDataCLike(const std::string* data)
+    void processDataCLike(const std::string* data)
     {
         std::println("Data: {}", *data);
     }
 
-    static void processDataCppLike(const std::string& data)
+    void processDataCppLike(const std::string& data)
     {
         std::println("Data: {}", data);
     }
 
-    static void test_03()
+    void unique_pointer_03()
     {
         auto ptr1 = std::make_unique<std::string>("123");
         auto ptr2 = std::make_unique<std::string>("456");
@@ -163,7 +165,7 @@ namespace UniquePointerGeneral {
         }
     };
 
-    static void test_04()
+    void unique_pointer_04()
     {
         // creates a unique_ptr to an array of 5 A objects
         std::unique_ptr<A[]> ptr{ std::make_unique<A[]>(5) };
@@ -171,23 +173,21 @@ namespace UniquePointerGeneral {
     }
 
     // ===========================================================================
-}
+    // Source Sink Pattern
 
-namespace UniquePointer_SourceSinkPattern
-{
-    static std::unique_ptr<int> createResource(int value)
+    std::unique_ptr<int> createResource(int value)
     {
         std::unique_ptr<int> ptr{ std::make_unique<int>(value) };
         return ptr;
     }
 
-    static void consumeResource(std::unique_ptr<int> ptr)  // call by-value (!)
+    void consumeResource(std::unique_ptr<int> ptr)  // call by-value (!)
     {
         std::println("*ptr:    {}", *ptr);
         // now *ptr is deleted 
     }
 
-    static void test_05()
+    void unique_pointer_05()
     {
         // creating a unique pointer with the help of a creator function
         std::unique_ptr<int> ptr{ createResource(123) };
@@ -198,9 +198,9 @@ namespace UniquePointer_SourceSinkPattern
         // so the std::unique_ptr's move constructor is automatically invoked
         consumeResource(createResource(456));
     }
-}
 
-namespace UniquePointerWrappingResourceHandles {
+    // ===========================================================================
+    // Wrapping Resource Handles
 
     // stateless callable object to close FILE files
     struct FILE_Deleter
@@ -215,7 +215,7 @@ namespace UniquePointerWrappingResourceHandles {
 
     using FILE_UniquePtr = std::unique_ptr<FILE, FILE_Deleter>;
 
-    static FILE_UniquePtr make_fopen(const char* fileName, const char* mode)
+    FILE_UniquePtr make_fopen(const char* fileName, const char* mode)
     {
         FILE* file{ nullptr };
         auto err{ fopen_s(&file, fileName, mode) };
@@ -229,7 +229,7 @@ namespace UniquePointerWrappingResourceHandles {
         return FILE_UniquePtr{ file };
     }
 
-    static void test_06()
+    void unique_pointer_06()
     {
         const char* fileName{ "..\\GeneralSnippets\\UniquePtr\\UniquePtr.cpp" };
 
@@ -246,9 +246,9 @@ namespace UniquePointerWrappingResourceHandles {
             std::print("First Line: {}", buf);
         }
     }
-}
 
-namespace UniquePointerWrappingWin32Handles {
+    // ===========================================================================
+    // Wrapping Win32 Handles
 
     // stateless callable object to release Win32 handles
     struct HANDLE_Deleter
@@ -263,7 +263,7 @@ namespace UniquePointerWrappingWin32Handles {
 
     using HANDLE_UniquePtr = std::unique_ptr<void, HANDLE_Deleter>;
 
-    static HANDLE_UniquePtr make_Win32_HANDLE(HANDLE handle)
+    HANDLE_UniquePtr make_Win32_HANDLE(HANDLE handle)
     {
         if (handle == INVALID_HANDLE_VALUE or handle == nullptr) {
             return HANDLE_UniquePtr{ nullptr };
@@ -272,11 +272,11 @@ namespace UniquePointerWrappingWin32Handles {
         return HANDLE_UniquePtr{ handle };
     }
 
-    static void test_07()
+    void unique_pointer_07()
     {
         const auto* fileName{ L"..\\GeneralSnippets\\UniquePtr\\UniquePtr.cpp" };
 
-        HANDLE  hFile = ::CreateFile (
+        HANDLE  hFile = ::CreateFile(
             fileName,                                       // file to open
             GENERIC_READ,                                   // open for reading
             FILE_SHARE_READ,                                // share for reading
@@ -286,9 +286,9 @@ namespace UniquePointerWrappingWin32Handles {
             NULL
         );
 
-        HANDLE_UniquePtr uniquePtr { make_Win32_HANDLE(hFile ) };
+        HANDLE_UniquePtr uniquePtr{ make_Win32_HANDLE(hFile) };
 
-        if (! uniquePtr) {
+        if (!uniquePtr) {
             return;
         }
         else {
@@ -313,20 +313,13 @@ namespace UniquePointerWrappingWin32Handles {
 
 void main_unique_ptr()
 {
-    using namespace UniquePointerGeneral;
-    test_01();   
-    test_02();     // interaction with functions/methods
-    test_03();     // accessing the allocated memory does not necessarily require the smart pointer
-    test_04();     // support of arrays
-
-    using namespace UniquePointer_SourceSinkPattern;
-    test_05();
-
-    using namespace UniquePointerWrappingResourceHandles;
-    test_06();
-
-    using namespace UniquePointerWrappingWin32Handles;
-    test_07();
+    unique_pointer_01();
+    unique_pointer_02();     // interaction with functions/methods
+    unique_pointer_03();     // accessing the allocated memory does not necessarily require the smart pointer
+    unique_pointer_04();     // support of arrays
+    unique_pointer_05();     // Source Sink Pattern
+    unique_pointer_06();     // wrapping Resource Handles
+    unique_pointer_07();     // wrapping Win32 Handles
 }
 
 // =================================================================================

@@ -6,7 +6,7 @@ module modern_cpp:argument_dependent_name_lookup;
 
 import std;
 
-namespace ArgumentDependentNameLookup
+namespace
 {
     namespace MyNamespace
     {
@@ -17,7 +17,7 @@ namespace ArgumentDependentNameLookup
 
     namespace MyProject
     {
-        static void test_01()
+        static void argument_dependent_name_lookup_01()
         {
             MyNamespace::MyClass obj;
 
@@ -28,19 +28,19 @@ namespace ArgumentDependentNameLookup
             doSomething(obj);              // works too
         }
 
-        static void test_02()
+        static void argument_dependent_name_lookup_02()
         {
             std::cout << "Hello World" << std::endl;
         }
 
-        static void test_03()
+        static void argument_dependent_name_lookup_03()
         {
             using std::operator<<;
 
             std::cout << "Hello World" << std::endl;
         }
 
-        static void test_04()
+        static void argument_dependent_name_lookup_04()
         {
             std::operator<<(std::cout, "Hello World").operator<<(std::endl);
         }
@@ -49,11 +49,10 @@ namespace ArgumentDependentNameLookup
 
 void main_argument_dependent_name_lookup()
 {
-    using namespace ArgumentDependentNameLookup::MyProject;
-    test_01();
-    test_02();
-    test_03();
-    test_04();
+    MyProject::argument_dependent_name_lookup_01();
+    MyProject::argument_dependent_name_lookup_02();
+    MyProject::argument_dependent_name_lookup_03();
+    MyProject::argument_dependent_name_lookup_04();
 }
 
 // =====================================================================================

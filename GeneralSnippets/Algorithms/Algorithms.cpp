@@ -2,6 +2,10 @@
 // Algorithms.cpp // std::fill, std::for_each, std::generate and more ...
 // =====================================================================================
 
+module;
+
+#include <span>
+
 module modern_cpp:algorithms;
 
 import std;

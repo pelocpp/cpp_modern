@@ -6,9 +6,9 @@ module modern_cpp:accumulate;
 
 import std;
 
-namespace AlgorithmAccumulate {
+namespace {
 
-    static std::string toString(std::vector<std::string> const& vec) {
+    std::string toString(std::vector<std::string> const& vec) {
 
         std::string s{ 
             std::accumulate(
@@ -31,7 +31,7 @@ namespace AlgorithmAccumulate {
     }
 
     template <typename T>
-    static std::string toString(std::vector<T> const& vec) {
+    std::string toString(std::vector<T> const& vec) {
 
         std::string s{ 
             std::accumulate(
@@ -53,19 +53,19 @@ namespace AlgorithmAccumulate {
         return s;
     }
 
-    static void test_01() {
+    void accumulate_01() {
         std::vector<std::string> names {"Hans", "Sepp", "Georg"};
         const std::string& s{ toString(names) };
         std::println("{}", s);
     }
 
-    static void test_02() {
+    void accumulate_02() {
         std::vector<float> digits { 10.5f, 11.5f, 12.5f, 13.5f, 14.5f, 15.5f };
         const std::string& s{ toString(digits) };
         std::println("{}", s);
     }
 
-    static void test_03() {
+    void accumulate_03() {
         // using template version of toString
         std::vector<std::string> names { "Hans", "Sepp", "Georg" };
         const std::string& s{ toString<std::string>(names) };
@@ -75,10 +75,9 @@ namespace AlgorithmAccumulate {
 
 void main_accumulate()
 {
-    using namespace AlgorithmAccumulate;
-    test_01();
-    test_02();
-    test_03();
+    accumulate_01();
+    accumulate_02();
+    accumulate_03();
 }
 
 // =====================================================================================
