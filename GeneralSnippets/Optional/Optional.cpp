@@ -2,17 +2,21 @@
 // Optional.cpp // std::optional
 // =====================================================================================
 
+module;
+
+#include <print>
+
 module modern_cpp:optional;
 
 import std;
 
-namespace OptionalExamples {
+namespace {
 
     /*
     * Introduction
     */
 
-    static void test_01_optional() {
+    void test_01_optional() {
 
         std::optional<int> someValue{ 123 };
 
@@ -52,7 +56,7 @@ namespace OptionalExamples {
         std::optional<std::string> getPhone() { return m_phone; }
     };
 
-    static void test_02_optional() {
+    void test_02_optional() {
 
         Contact contact{};
 
@@ -77,7 +81,7 @@ namespace OptionalExamples {
     * Using optionals as return value / std::optional<T>::value_or()
     */
 
-    static std::optional<double> divide(double a, double b) {
+    std::optional<double> divide(double a, double b) {
 
         if (b != 0.0) { 
             return a / b; 
@@ -86,7 +90,7 @@ namespace OptionalExamples {
         return std::nullopt;
     }
 
-    static void test_03_optional() {
+    void test_03_optional() {
 
         auto result{ divide(1.0, 3.0) };
 
@@ -122,7 +126,7 @@ namespace OptionalExamples {
     * Demonstrating std::optional and emplace
     */
 
-    static void test_04_optional() {
+    void test_04_optional() {
 
         // construct a std::vector<int> object inside std::optional in-place
         std::optional<std::vector<int>> optVec{
@@ -155,266 +159,75 @@ namespace OptionalExamples {
      * Demonstrating monadic interface for std::optional
      */
 
-     // =================================================================
-     // and_then
-
-    static void test_01_optional_monadic()
+    struct User
     {
-        std::optional<int> n{ 123 };
-        // or
-        // std::optional<int> n{ std::nullopt };
-
-        auto result = n.and_then([](auto x) /*-> std::optional<std::string>*/ {
-            if (x == 123) {
-                return std::optional<std::string>("Got expected value 123");
-            }
-            else {
-                //return std::nullopt;
-                return std::optional<std::string>("Got unexpected value! ");
-            }
-            });
-
-        if (result) {
-            std::println("{}", result.value());
-        }
-
-        std::println("Done.");
-    }
-
-    class User
-    {
-    public:
-        std::string m_first;
-        std::string m_last;
-        std::size_t m_age;
+        std::string name;
+        std::optional<std::string> email;  // not every user has one
     };
 
-    static std::optional<std::string> hasValidName(const User& user) {
-        if (!user.m_first.empty() and !user.m_last.empty()) {
-            return user.m_first + " " + user.m_last;
+    const std::map<std::size_t, User> database =
+    {
+        { 1, { "Sepp", "sepp@gmx.de" } },
+        { 2, { "Anton", std::nullopt } },
+        { 3, { "Hubert", "hubert@GMAIL.COM" } },
+        { 4, { "Franz", "www.franzschneider.com" } }
+    };
+
+    std::optional<User> findUser(int id) {
+        if (auto it = database.find(id); it != database.end()) {
+            return it->second;
         }
-        else {
+
+        return std::nullopt;
+    }
+
+    std::optional<std::string> emailDomain(const std::string& email) {
+        auto at = email.find('@');
+        if (at == std::string::npos) {
             return std::nullopt;
         }
+
+        return email.substr(at + 1);
     }
 
-    static void test_02_optional_monadic()
-    {
-        auto user{ std::make_optional<User>("Hans", "Mueller", 30) };
-        // or
-        // auto user{ std::make_optional<User>("Sepp", "", 30) };
+    std::string toLower(std::string s) {
 
-        auto result = user.and_then([](const auto& user) {
-            return hasValidName(user);
-            }
+        std::transform(
+            s.begin(),
+            s.end(),
+            s.begin(),
+            [](unsigned char c) { return std::tolower(c); }
         );
+        return s;
+    }
 
-        if (result) {
-            std::println("Result: {}", result.value());
+    std::optional<std::string> domainOf(int id) {
+        return findUser(id)                                     // -> optional<User>
+            .and_then([](const User& u) { return u.email; })    // -> optional<string>
+            .and_then(emailDomain)                              // -> optional<string>
+            .transform(toLower);                                // string -> string, re-wrapped
+    }
+
+    void test_04_optional_monadic()
+    {
+        for (int id : { 0, 1, 2, 3, 4, 5 }) {
+            auto domain = domainOf(id).or_else([] {
+                // std::println("  >>> no valid domain found");
+                return std::optional<std::string>{};
+                }
+            );
+            std::println("{}: {}", id, domain.value_or("<none>"));
         }
-
-        std::println("Done.");
-    }
-
-    // =================================================================
-    // or_else
-
-    static void test_03_optional_monadic()
-    {
-        auto user = std::make_optional<User>("Hans", "Mueller", 30);
-        // or
-        // auto user = std::make_optional<User>("Sepp", "", 30);
-
-        auto result = user.and_then([](const auto& user) {
-            return hasValidName(user);
-            }).or_else([]() {
-                return std::optional<std::string>{"Max Mustermann"};
-            });
-
-        if (result) {
-            std::println("Result: {}", result.value());
-        }
-
-        std::println("Done.");
-    }
-
-    // =================================================================
-    // transform
-
-    static void test_04_optional_monadic()
-    {
-        auto user = std::make_optional<User>("Hans", "Mueller", 30);
-        // or
-        // auto user = std::make_optional<User>("Sepp", "", 30);
-
-        auto result = user.and_then([](const auto& user) {
-            return hasValidName(user);
-            }).transform([](auto name) {
-
-                std::transform(
-                    name.begin(),
-                    name.end(),
-                    name.begin(),
-                    [](unsigned char c) { return std::toupper(c); }
-                );
-
-                return name;
-            });
-
-        if (result) {
-            std::println("Result: {}", result.value());
-        }
-
-        std::println("Done.");
-    }
-
-    // =================================================================
-    // difference between and_then and transform
-
-    static void test_05_optional_monadic_transform()
-    {
-        std::optional<int> x = 5;
-
-        auto y = x.transform([](int n) {
-            return n * 2;
-            }
-        );
-
-        // y is std::optional<int>{10}
-    }
-
-    static void test_05_optional_monadic_and_then()
-    {
-        std::optional<int> x = 5;
-
-        auto y = x.and_then([](int n) -> std::optional<int> {
-
-            if (n > 0) {
-                return n * 2;
-            }
-
-            return std::nullopt;
-        });
-
-        // y is std::optional<int>{10}
-    }
-
-    static std::optional<std::string> find_user(int id)
-    {
-        return std::nullopt;
-    }
-
-    static std::optional<int> parseAge(const std::string&)
-    {
-        return std::nullopt;
-    }
-
-    static void test_05_optional_monadic_comparison()
-    {
-        auto age1 = find_user(42).and_then(parseAge);   // note: std::optional<int>
-
-        auto age2 = find_user(42).transform(parseAge);  // note: std::optional<std::optional<int>>
-
-        // transform always wraps the callback result in an optional, even if the callback already returned one
-    }
-
-    static void test_05_optional_monadic()
-    {
-        test_05_optional_monadic_transform();
-        test_05_optional_monadic_and_then();
-        test_05_optional_monadic_comparison();
     }
 }
-
-
-// =====================================================================================
-// Neuer Zeugs
-// =====================================================================================
-
-
-struct User
-{
-    std::string name;
-    std::optional<std::string> email;  // not every user has one
-};
-
-const std::map<std::size_t, User> database =
-{
-    { 1,{ "Sepp", "sepp@gmx.de" } },
-    { 2,{ "Anton", std::nullopt } },
-    { 3,{ "Hubert", "hubert@gmail-com" } }
-};
-
-static std::optional<User> find_user(int id) {
-    if (auto it = database.find(id); it != database.end()) {
-        return it->second;
-    }
-
-    return std::nullopt;
-}
-
-static std::optional<std::string> email_domain(const std::string& email) {
-    auto at = email.find('@');
-    if (at == std::string::npos) {
-        return std::nullopt;
-    }
-
-    return email.substr(at + 1);
-}
-
-static std::string to_lower(std::string s) {
-    for (char& c : s) c = static_cast<char>(std::tolower(static_cast<unsigned char>(c)));
-    return s;
-}
-
-static std::optional<std::string> domain_of(int id) {
-    return find_user(id)                                        // optional<User>
-        .and_then([](const User& u) { return u.email; })        // -> optional<string>
-        .and_then(email_domain)                                 // -> optional<string>
-        .transform(to_lower);                                   // string -> string, re-wrapped
-}
-
-static void main_xxx() {
-    for (int id : { 0, 1, 2, 3, 4 }) {
-        std::cout << id << ": "
-            << domain_of(id)
-            .or_else([] { std::cerr << "  (no domain)\n"; return std::optional<std::string>{}; })
-            .value_or("<none>")
-            << '\n';
-    }
-}
-//
-//int main_old()
-//{
-//    std::optional<std::string> domain_of_old(int id) {
-//        auto user = find_user(id);
-//        if (!user) return std::nullopt;
-//        if (!user->email) return std::nullopt;
-//        auto domain = email_domain(*user->email);
-//        if (!domain) return std::nullopt;
-//        return to_lower(*domain);
-//    }
-//}
-
-
-
 
 void main_optional()
 {
-    using namespace OptionalExamples;
-
-    //test_01_optional();
-    //test_02_optional();
-    //test_03_optional();
-    //test_04_optional();
-
-    //test_01_optional_monadic();
-    //test_02_optional_monadic();
-    //test_03_optional_monadic();
-    //test_04_optional_monadic();
-    //test_05_optional_monadic();
-
-    main_xxx();
+    test_01_optional();
+    test_02_optional();
+    test_03_optional();
+    test_04_optional();
+    test_04_optional_monadic();
 }
 
 // =====================================================================================

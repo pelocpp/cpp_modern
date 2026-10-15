@@ -12,11 +12,8 @@
 
   * [Allgemeines](#link1)
   * [Neue monadische Funktionen](#link2)
-    * [`and_then`](#link3)
-    * [`or_else`](#link4)
-    * [`transform`](#link5)
-  * [Unterschied zwischen `and_then` und `transform`](#link6)
-  * [Literaturhinweise](#link7)
+  * [Unterschied zwischen `and_then` und `transform`](#link3)
+  * [Literaturhinweise](#link4)
 
 ---
 
@@ -28,7 +25,7 @@ Siehe das Beispiel im korrespondierenden Quellcode.
 
 ---
 
-# Neue monadische Funktionen <a name="link2"></a>
+## Neue monadische Funktionen <a name="link2"></a>
 
 Ab C++ 23 wurden zur Klasse `std::optional` neue Operationen hinzugefügt: `and_then`, `or_else` und `transform`.
 
@@ -49,200 +46,110 @@ Die monadischen Interfaces (eingeführt mit C++ 23) bringen vor allem Eleganz un
 
 Kurz gesagt: Monadische Funktionen machen Quellcode funktionaler und weniger fehleranfällig gegenüber vergessenen Null-Checks.
 
-## `and_then` <a name="link3"></a>
-
-Die Funktion `and_then` ermöglicht die Verkettung von Funktionen, die einen `std::optional`-Wert zurückgeben.
-Enthält das `std::optional`-Objekt, auf dem `and_then` aufgerufen wird, einen Wert,
-wird die angegebene Funktion mit diesem Wert aufgerufen.
-Das `std::optional`-Objekt wird gewissermaßen ausgepackt.
-
-Bei erfolgreichem Funktionsaufruf wird ein Ergebnis zurückgegeben,
-andernfalls wird ein leeres `std::optional`-Objekt zurückgegeben.
+#### Ein Beispiel
 
 *Beispiel*:
 
 ```cpp
-01: void test()
+01: struct User
 02: {
-03:     std::optional<int> n{ 123 };
-04: 
-05:     auto result = n.and_then([](auto x) {
-06:         if (x == 123) {
-07:             return std::optional<std::string>("Got expected value 123");
-08:         }  
-09:         else {
-10:             return std::optional<std::string>("Got unexpected value! ");
-11:         }
-12:     });
-13: 
-14:     if (result) {
-15:         std::println("{}", result.value());
-16:     }
-17: 
-18:     std::println("Done.");
-19: }
-```
-
-
-*Ausgabe*:
-
-```
-Got expected value 123
-```
-
-Die Funktion `and_then()` erwartet eine Funktion, die einen Wert vom Typ des in `std::optional` enthaltenen Objekts entgegennimmt
-und ein anderes `std::optional`-Objekt zurückgibt.
-Die Anforderungen an die in `and_then()` übergebene Funktion sind wie folgt:
-
-  * Eingabetyp:<br />Die Funktion muss ein einzelnes Argument akzeptieren. Der Typ dieses Arguments muss mit dem Typ des Werts im `std::optional`-Objekt übereinstimmen, auf dem `and_then()` aufgerufen wird. 
-  * Rückgabetyp:<br />Die Funktion muss ein `std::optional<U>`-Objekt zurückgeben, wobei `U` ein beliebiger Typ sein kann.
-
-Wir betrachten ein zweites, realitätsnäheres Beispiel. Es geht um `User`-Objekte:
-
-```cpp
-01: class User
-02: {
-03: public:
-04:     std::string m_first;
-05:     std::string m_last;
-06:     std::size_t m_age;
-07: };
-```
-
-Der Einfachheit halber legen wir fest, dass ein `User`-Objekt einen gültigen Namen besitzt,
-wenn die beiden Zeichenketten des Vor- und Nachnamens nicht leer sind.
-
-Mit der Funktion `and_then()` können wir auf einem gültigen `std::optional<User>` eine Nachverarbeitung
-der in der Klasse `User` vorhandenen Informationen vornehmen:
-
-*Beispiel*:
-
-```cpp
-01: std::optional<std::string> hasValidName(const User& user) {
-02:     if (!user.m_first.empty() and !user.m_last.empty()) {
-03:         return user.m_first + " " + user.m_last;
-04:     }
-05:     else {
-06:         return std::nullopt;
-07:     }
-08: }
-09: 
-10: void test()
-11: {
-12:     auto user = std::make_optional<User>("Hans", "Mueller", 30);
-13: 
-14:     auto result = user.and_then([](const auto& user) {
-15:         return hasValidName(user);
-16:     });
-17: 
-18:     if (result) {
-19:         std::println("Result: {}", result.value());
-20:     }
+03:     std::string name;
+04:     std::optional<std::string> email;  // not every user has one
+05: };
+06: 
+07: const std::map<std::size_t, User> database =
+08: {
+09:     { 1,{ "Sepp", "sepp@gmx.de" } },
+10:     { 2,{ "Anton", std::nullopt } },
+11:     { 3,{ "Hubert", "hubert@GMAIL.COM" } },
+12:     { 4,{ "Franz", "www.franzschneider.com" } }
+13: };
+14: 
+15: std::optional<User> findUser(int id) {
+16:     if (auto it = database.find(id); it != database.end()) {
+17:         return it->second;
+18:     }
+19: 
+20:     return std::nullopt;
 21: }
+22: 
+23: std::optional<std::string> emailDomain(const std::string& email) {
+24:     auto at = email.find('@');
+25:     if (at == std::string::npos) {
+26:         return std::nullopt;
+27:     }
+28: 
+29:     return email.substr(at + 1);
+30: }
+31: 
+32: std::string toLower(std::string s) {
+33: 
+34:     std::transform(
+35:         s.begin(),
+36:         s.end(),
+37:         s.begin(),
+38:         [](unsigned char c) { return std::tolower(c); }
+39:     );
+40:     return s;
+41: }
+42: 
+43: std::optional<std::string> domainOf(int id) {
+44:     return findUser(id)                                         // -> optional<User>
+45:         .and_then([](const User& u) { return u.email; })        // -> optional<string>
+46:         .and_then(emailDomain)                                  // -> optional<string>
+47:         .transform(toLower);                                    // string -> string, re-wrapped
+48: }
+49: 
+50: void test_04_optional_monadic()
+51: {
+52:     for (int id : { 0, 1, 2, 3, 4, 5 }) {
+53:         auto domain = domainOf(id).or_else([] {
+54:             // std::println("  >>> no valid domain found");
+55:             return std::optional<std::string>{};
+56:             }
+57:         );
+58:         std::println("{}: {}", id, domain.value_or("<none>"));
+59:     }
+60: }
 ```
 
 *Ausgabe*:
 
 ```
-Result: Hans Mueller
+0: <none>
+1: gmx.de
+2: <none>
+3: gmail.com
+4: <none>
+5: <none>
 ```
 
-## `or_else` <a name="link4"></a>
+*Bemerkung*:<br />
+`value_or` zählt nicht in die Kategorie der `and_then`, `transform` oder `or_else` Schritte.
+Es handelt sich um eine gewöhnliche `std::optional`-Member-Methode, die genau einmal ausgeführt wird &ndash;
+nämlich an dem Punkt, an dem die Kette endet &ndash;, wobei sie den Zustand des `std::optional`-Objekts
+zu diesem Zeitpunkt überprüft:
 
-Die `or_else`-Operation ermöglicht es, eine Alternative für den Fall festzulegen,
-dass `std::optional` leer ist. Enthält `std::optional` einen Wert, wird dieser unverändert durchgereicht.
-Ist er leer, wird die angegebene Funktion aufgerufen und deren Ergebnis (das ebenfalls ein `std::optional` sein sollte) zurückgegeben.
-
-*Beispiel*:
-
-```cpp
-01: void test()
-02: {
-03:     auto user = std::make_optional<User>("Hans", "Mueller", 30);
-04: 
-05:      auto result = user.and_then([](const auto& user) {
-06:          return hasValidName(user);
-07:          }).or_else([]() {
-08:              return std::optional<std::string>{"Max Mustermann"};
-09:          });
-10: 
-11:     if (result) {
-12:         std::println("Result: {}", result.value());
-13:     }
-14: }
-```
-
-*Ausgabe*:
-
-```
-Result: Hans Mueller
-```
-
-Stimmt an dem Vor- oder Nachnamen etwas nicht, erhält man die Ausgabe
-
-```
-Result: Max Mustermann
-```
-
-## `transform` <a name="link5"></a>
-
-Die `transform`-Operation ähnelt `and_then`, jedoch mit einem entscheidenden Unterschied:
-Die an `transform` übergebene Funktion gibt einen einfachen Wert zurück, kein `std::optional`.
-Dieser Wert wird dann in ein neues `std::optional`-Objekt eingeschlossen.
-
-Ist das ursprüngliche `std::optional`-Objekt leer, wird die Funktion nicht aufgerufen und es wird ein leeres `std::optional`-Objekt zurückgegeben.
-
-
-*Beispiel*:
-
-```cpp
-01: void test()
-02: {
-03:     auto user = std::make_optional<User>("Hans", "Mueller", 30);
-04: 
-05:     auto result = user.and_then([](const auto& user) {
-06:         return hasValidName(user);
-07:         }).transform([](auto name) {
-08: 
-09:             std::transform(
-10:                 name.begin(),
-11:                 name.end(),
-12:                 name.begin(),
-13:                 [](unsigned char c) { return std::toupper(c); }
-14:             );
-15: 
-16:             return name;
-17:         });
-18: 
-19:     if (result) {
-20:         std::println("Result: {}", result.value());
-21:     }
-22: }
-```
-
-
-*Ausgabe*:
-
-```
-Result: HANS MUELLER
-```
+  * Ist ein Wert vorhanden, gibt `value_or` eine Kopie dieses Werts zurück; der Ersatzwert (*Fallback*) wird dabei ignoriert.
+  * Ist das `std::optional`-Objekt leer, wird der übergebene Ersatzwert zurückgegeben.
 
 ---
 
-## Unterschied zwischen `and_then` und `transform` <a name="link6"></a>
+## Unterschied zwischen `and_then` und `transform` <a name="link3"></a>
 
-Sie ähneln sich darin, dass beide nur dann ausgeführt werden, wenn das *Optional* einen Wert enthält.
-Sie unterscheiden sich jedoch darin, was die jeweilige Callback-Funktion zurückgeben soll:
+`and_then(f)`:<br />`f` Nimmt den enthaltenen Wert entgegen und gibt selbst ein Optional zurück. Wird verwendet, wenn der Schritt fehlschlagen kann. Ist das Optional leer, wird f nicht aufgerufen und der leere Zustand wird weitergegeben.
 
-  * `transform()`: Bildet einen Wert auf einen anderen Wert ab:<br />
-  &nbsp;&nbsp;&nbsp;&nbsp;`std::optional<T> -> (T -> U) -> std::optional<U>`
+`transform(f)`:<br />`f` Nimmt den Wert entgegen und gibt einen einfachen Wert zurück, den `transform` wiederum in ein Optional einbettet. Wird verwendet, wenn der Schritt nicht fehlschlagen kann!
 
   * `and_then()`: Verketten von Operationen, die bereits ein Optional zurückgeben:<br />
   &nbsp;&nbsp;&nbsp;&nbsp;`std::optional<T> -> (T -> optional<U>) -> std::optional<U>`
 
+  * `transform()`: Bildet einen Wert auf einen anderen Wert ab:<br />
+  &nbsp;&nbsp;&nbsp;&nbsp;`std::optional<T> -> (T -> U) -> std::optional<U>`
+
 ---
 
-## Literaturhinweise <a name="link7"></a>
+## Literaturhinweise <a name="link4"></a>
 
 Die Anregungen zu diesem Code-Snippet finden sich unter anderem unter
 
