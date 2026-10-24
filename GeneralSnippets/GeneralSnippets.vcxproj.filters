@@ -681,6 +681,12 @@
     <ClCompile Include="IsTransparent\IsTransparent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="LegacyToModernity\LegacyToModernity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LegacyToModernity\Module_LegacyToModernity.ixx">
+      <Filter>Modules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md">
@@ -1163,6 +1169,9 @@
     <None Include="IsTransparent\IsTransparent.md">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="LegacyToModernity\Legacy.md">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="VariadicTemplates\cpp_snippets_mixins_01.png">
@@ -1322,6 +1331,12 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Lambda\Lambdas_constexpr_IIFE.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="LegacyToModernity\Method Chaining_01.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="LegacyToModernity\Method Chaining_02.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

@@ -27,14 +27,6 @@ Einsatzbereichen nicht mehr wegzudenken.
 C++ zählt zu den Programmiersprachen, die ein etwas tieferes Verständnis erfordern.
 Ziel dieses Seminars/Repositories ist es, auf die größten Hürden beim Erlernen von *Modern C++* einzugehen!
 
-<p>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="GeneralSnippets/Images/Horse_Cpp.png" width="600">
-</p>
-
-*Abbildung* 2: We get the Job done &ndash; :)
-
-([How To Build A Horse With Programming](https://toggl.com/blog/build-horse-programming))
-
 ---
 
 ## Überblick
@@ -92,6 +84,19 @@ so zu gliedern und zusammenzufassen, dass bei deren Betrachtung der &bdquo;rote 
 
 ---
 
+## From Legacy to Modernity
+
+In der Software-Entwicklung ist der Begriff &bdquo;Legacy&rdquo; (für Altsysteme / Legacy-Code) fest etabliert.
+Die Formulierung ist nicht abwertend zu verstehen: Ein Programm, das &bdquo;robust läuft&rdquo;, ist ein wertvoller Besitz.
+Nichtsdestotrotz sollte man die eine oder andere Überlegung spendieren, wie man einen in die Jahre gekommenen Software-Stapel
+modernisieren kann und sollte.
+
+In disem Abschnitt finden Sie einen Reihe von Anregungen vor, die Ihnen dabei behilflich sein könnten.
+
+[Zu den Anregungen](GeneralSnippets/LegacyToModernity/Legacy.md).
+
+---
+
 ## Aufgaben
 
 Einige kleinere Aufgaben (samt Musterlösungen) sind diesem Repository ebenfalls beigefügt.
@@ -122,6 +127,18 @@ Aus diesem Grund habe ich im Folgenden eine Liste mit Büchern zusammengestellt,
 die bei mir derzeit hoch im Kurs stehen und meiner Meinung nach absolut lesenswert sind. 
 
 [Zum Literaturverzeichnis](GeneralSnippets/Literatur/Literature.md).
+
+---
+
+## We get the Job done
+
+<p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="GeneralSnippets/Images/Horse_Cpp.png" width="600">
+</p>
+
+*Abbildung* 2: We get the Job done &ndash; :)
+
+([How To Build A Horse With Programming](https://toggl.com/blog/build-horse-programming))
 
 ---
 

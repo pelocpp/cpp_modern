@@ -64,6 +64,7 @@ int main()
         //main_lambdas();
         //main_lambda_and_closure();
         //main_lambdas_this_closure();
+        main_legacy();
         //main_literals();
         //main_memory_leaks_detection();
         //main_metaprogramming_01();

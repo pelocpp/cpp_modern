@@ -43,6 +43,7 @@ export import :input_output_streams;
 export import :invoke;
 export import :is_transparent;
 export import :lambda;
+export import :legacy;
 export import :literals;
 export import :memory_leaks_detection;
 export import :metaprogramming;

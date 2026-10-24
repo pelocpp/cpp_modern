@@ -1,4 +1,4 @@
-# Die Essentials von zu Modern C++
+# Die Essentials von Modern C++
 
 [Zurück](../../Readme.md)
 
