@@ -14,6 +14,23 @@ import std;
 namespace {
 
     // =======================================================================
+    // creating a copy instead using a const reference
+
+    class Person
+    {
+    private:
+        std::string m_name;
+
+    public:
+        // c'tor
+        Person(const std::string& name) : m_name(name) {}
+        // setter
+        void setName(const std::string& name) { m_name = name; }
+        // getter
+        const std::string& getName() { return m_name; }
+    };
+
+    // =======================================================================
     // NULL, 0, nullptr
 
     void log(int code) {}
@@ -44,6 +61,37 @@ namespace {
     }
 
     // =======================================================================
+    // keyword 'override'
+
+    class Base
+    {
+    public:
+        // user wants to override this method in the derived class
+        virtual void func() { std::println("In base class"); }
+    };
+
+    class Derived : public Base
+    {
+    public:
+        // did a silly mistake by putting an argument "int a"
+        void func(int a) /*override*/   // <=== remove comment
+        {
+            std::println("In derived class");
+        }
+    };
+
+    void legacy_inheritance_keyword_override()
+    {
+        Base base;
+        Derived derived;
+        std::println("Compiles successfully");
+
+        Base* bp;
+        bp = &derived;
+        bp->func();
+    }
+
+    // =======================================================================
     // auto / Range-based for-loop
 
     struct Order { double price() const { return 0.0; } };
@@ -60,6 +108,15 @@ namespace {
         // C++11
         for (const Order& o : orders)
             total += o.price();
+
+        // refactoring
+
+        std::vector<Person> persons;   // add comment ...
+        // std::list<Person> persons;  // ... and remove comment
+
+        std::vector<Person>::const_iterator it = persons.begin();
+
+        auto it2 = persons.begin();
     }
 
     // =======================================================================
@@ -180,12 +237,13 @@ namespace {
 
 void main_legacy()
 {
-    legacy_null();
-    legacy_auto_range_based_for_loop();
-    legacy_enums();
-    legacy_default_ctor();
-    legacy_method_chaining();
-    legacy_move_semantics();
+    //legacy_null();
+    legacy_inheritance_keyword_override();
+    //legacy_auto_range_based_for_loop();
+    //legacy_enums();
+    //legacy_default_ctor();
+    //legacy_method_chaining();
+    //legacy_move_semantics();
 }
 
 // ===========================================================================

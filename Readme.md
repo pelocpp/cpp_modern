@@ -86,12 +86,13 @@ so zu gliedern und zusammenzufassen, dass bei deren Betrachtung der &bdquo;rote 
 
 ## From Legacy to Modernity
 
-In der Software-Entwicklung ist der Begriff &bdquo;Legacy&rdquo; (für Altsysteme / Legacy-Code) fest etabliert.
-Die Formulierung ist nicht abwertend zu verstehen: Ein Programm, das &bdquo;robust läuft&rdquo;, ist ein wertvoller Besitz.
-Nichtsdestotrotz sollte man die eine oder andere Überlegung spendieren, wie man einen in die Jahre gekommenen Software-Stapel
-modernisieren kann und sollte.
+In der Softwareentwicklung hat sich der Begriff &bdquo;Legacy&rdquo; für gewachsene Altsysteme und historisch entstandenen Code fest etabliert. Abwertend ist er dabei keineswegs zu verstehen: Software, die über Jahre hinweg zuverlässig ihren Dienst verrichtet, ist ein wertvolles Gut.
 
-In disem Abschnitt finden Sie einen Reihe von Anregungen vor, die Ihnen dabei behilflich sein könnten.
+&bdquo;Never change a running system&rdquo; ist schließlich ein bekanntes Motto &ndash; aber nicht immer die beste Strategie für die Zukunft.
+Es lohnt sich, gelegentlich innezuhalten und darüber nachzudenken, ob und wie sich ein in die Jahre gekommener Software-Stack sinnvoll modernisieren lässt.
+Denn auch bewährte Systeme können von neuen Technologien, zeitgemäßen Architekturen und verbesserten Entwicklungsansätzen profitieren.
+
+Dieser Abschnitt bietet Ihnen eine Reihe von Denkanstößen und Anregungen, die Sie bei der Frage unterstützen sollen, wann und auf welche Weise eine Modernisierung sinnvoll sein kann.
 
 [Zu den Anregungen](GeneralSnippets/LegacyToModernity/Legacy.md).
 

@@ -4,45 +4,94 @@
 
 ---
 
-## Allgemeines
+WEITER: Hier die Inhaltsangabe .................
 
+---
 
-Modernisiere schrittweise, aber nur dort, wo es sich auszahlt &ndash; und niemals im Rahmen einer kompletten Neuentwicklung
-(&bdquo;*Big-Bang Rewrite*&rdquo;) auf einen Schlag.
 
 ## Zuerst die Grundregeln
 
-  * Erstelle Tests für den betroffenen Code, bevor irgendetwas geändert wird<br />
+  * Modernisiere schrittweise:<br />
+   Aber nur dort, wo es sich auszahlt &ndash; und niemals auf einen Schlag im Rahmen einer kompletten Neuentwicklung
+(sogenanntes &bdquo;*Big-Bang Rewrite*&rdquo;).
+
+  * Erstelle Tests für den betroffenen Code, bevor irgendetwas geändert wird:<br />
 Sogenannte &bdquo;Characterization Tests&rdquo; (die das aktuelle Verhalten erfassen und festschreiben)
 sind wichtiger als jedes spezifische Sprachfeature.
 
-  * Hebe den Standard schrittweise an<br />
+  * Hebe den Standard schrittweise an:<br />
 Kompilieren Sie den Code zunächst mit C++11, dann mit C++14, C++17 usw.
 Beheben Sie bei jedem Schritt die auftretenden Warnungen.
-Ein direkter Sprung auf C++20 macht es schwierig, Fehler ihren jeweiligen Ursachen zuzuordnen.
+Ein direkter Sprung auf C++20 oder höhrt macht es schwieriger, Fehler ihren jeweiligen Ursachen zuzuordnen.
 
-  * Nutze Werkzeuge<br />
+  * Nutze Werkzeuge:<br />
 `clang-tidy` bietet eine Reihe von &bdquo;modernize-*&rdquo;-Prüfungen
 (z. B. `modernize-use-override`, `modernize-use-nullptr`, `modernize-loop-convert`, `modernize-use-auto`, `modernize-make-unique` usw.),
 die den Großteil der mechanischen Arbeit sicher erledigen.
 
-  * *Sanitizer* (ASan/UBSan)<br />
-Setzen Sie Sanitizer (ASan/UBSan) ein und verwenden Sie die Compiler-Flags `-Wall` sowie `-Wextra`,
+  * *Sanitizer* (ASan/UBSan):<br />
+Setze Sanitizer (ASan/UBSan) ein und verwende die Compiler-Flags `-Wall` sowie `-Wextra`,
 um Probleme aufzudecken, die im alten Code bisher unbemerkt blieben.
 
-  * Ändern Sie nur den Code, an dem Sie ohnehin gerade arbeiten.<br />
-Modernisieren Sie keine stabilen, unangetasteten Module allein aus stilistischen Gründen.
+  * Ändere nur Code, an dem ohnehin gerade gearbeitet wird:<br />
+Modernisiere keine stabilen, unangetasteten Module allein aus stilistischen Gründen.
 
 ## Hoher Nutzen, geringes Risiko (C++11-Grundlagen)
 
-### `nullptr` statt `NULL` / `0`.
+#### 1. Versehentliches Kopieren statt Gebrauch einer Referenz
 
-Das Kernproblem: `NULL` ist lediglich eine Ganzzahl
+```cpp
+01: class Person
+02: {
+03: private:
+04:     std::string m_name;
+05: 
+06: public:
+07:     // c'tor
+08:     Person(const std::string& name) : m_name(name) {}
+09: 
+10:     // setter
+11:     void setName(std::string name) { m_name = name; }
+15: };
+```
 
-In C++98 ist NULL als `0` (bzw. `0L` oder &ndash; bei GCC &ndash; als `__null`) definiert;
+Der *setter* kann besser geschrieben werden:
+
+```cpp
+void setName(const std::string& name) { m_name = name; }
+```
+
+#### 2. Versehentliches Kopieren statt Gebrauch einer Referenz - bei Rückgabe von Werten
+
+```cpp
+01: class Person
+02: {
+03: private:
+04:     std::string m_name;
+05: 
+06: public:
+07:     // c'tor
+08:     Person(const std::string& name) : m_name(name) {}
+12: 
+13:     // getter
+14:     std::string getName() { return m_name; }
+15: };
+```
+
+Der *getter* kann besser geschrieben werden:
+
+```cpp
+const std::string& getName() { return m_name; }
+```
+
+#### 3. `nullptr` statt `NULL` / `0`.
+
+Das Kernproblem: `NULL` ist eine ganzzahlige Konstante.
+
+In C++98 ist `NULL` als `0` (bzw. `0L` oder &ndash; bei GCC &ndash; als `__null`) definiert;
 es handelt sich also um eine Ganzzahlkonstante, nicht um einen Zeiger. Dies führt zu mehreren konkreten Problemen.
 
-a). Bei der &bdquo;*Overload Resolution*&rdquo; wird die falsche Funktion gewählt.
+1. Bei der &bdquo;*Overload Resolution*&rdquo; wird die falsche Funktion gewählt.
 
 ```cpp
 01: void log(int code) {}
@@ -53,27 +102,84 @@ a). Bei der &bdquo;*Overload Resolution*&rdquo; wird die falsche Funktion gewäh
 ```
 
 Bei `NULL` erhält man &ndash; ohne dass dies explizit gemeldet wird &ndash; entweder die Überladung für Ganzzahlen oder einen Fehler
-wegen eines &bdquo;mehrdeutigen Aufrufs&rdquo; (ambiguous call). `nullptr` hingegen besitzt einen eigenen Typ,
+wegen eines &bdquo;mehrdeutigen Aufrufs&rdquo; (&bdquo;*ambiguous call*&rdquo;).
+
+`nullptr` hingegen besitzt einen eigenen Typ,
 `std::nullptr_t`, der zwar in jeden Zeigertyp konvertiert werden kann, niemals jedoch in eine Ganzzahl.
 
-b.) *Template Forwarding* schlägt fehlt
+2. *Template Forwarding* schlägt fehlt
 
 ```cpp
-01: template <typename T>
-02: void wrap(T arg) { takesPointer(arg); }
-03: 
-06: wrap(0);          // T = int; int does NOT convert to a pointer, compile error
-07: wrap(NULL);       // same problem, compile error
-08: wrap(nullptr);    // T = nullptr_t; converts to any pointer, works
+01: void takesPointer(int* ptr) {}
+02: 
+03: template <typename T>
+04: void wrap(T arg) { takesPointer(arg); }
+05: 
+08: wrap(0);           // T = int; int does NOT convert to a pointer, compile error
+09: wrap(NULL);        // same problem, compile error
+10: wrap(nullptr);     // T = nullptr_t; converts to any pointer, works
 ```
 
 
-### Schlüsselwörter `override` / `final` für virtuelle Funktionen.<br />
+#### 4. Schlüsselwörter `override` / `final` für virtuelle Funktionen.<br />
 
-Dies erkennt stillschweigende Signaturkonflikte und ist nahezu kostenlos.
+Diese Schlüsselwörter erkennen stillschweigende Signaturkonflikte und sind nahezu kostenlos.
+Deklariert man eine Methode mit dem Schlüsselwort `override`, drückt man die Absicht aus,
+sie zu überschreiben. 
+Daher ist es sinnvoll, `override` an der Stelle anzugeben,
+an der man diese Absicht hat.
+Dies kann und sollte man dann den Übersetzer auch überprüfen lassen,
+nämlich die Absicht, diese Methode zu überschreiben.
 
+Frei nach dem Motto
 
-### Bereichsbasierte `for`-Schleifen und `auto` für Iteratoren-Boilerplate Code
+> **The more things you check at compile time the fewer runtime bugs you have.**
+
+Eine derartige Deklaration reicht dann auch aus, um zu überprüfen,
+ob die Methode ursprünglich (in einer der Basisklassen) als `virtual` deklariert wurde
+und ob man in der abgeleiteten Klasse die Signatur richtig verwendet hat.
+
+*Beispiel*:
+
+```cpp
+01: class Base
+02: {
+03: public:
+04:     virtual void func() { std::println("In base class"); }
+05: };
+06: 
+07: class Derived : public Base
+08: {
+09: public:
+10:     void func(int a)
+11:     {
+12:         std::println("In derived class");
+13:     }
+14: };
+15: 
+16: void test()
+17: {
+18:     Base base;
+19:     Derived derived;
+20:     std::println("Compiles successfully");
+21: 
+22:     Base* bp;
+23:     bp = &derived;
+24:     bp->func();
+25: }
+```
+
+*Frage*:<br />
+Welche Ausgabe erwarten Sie in der Konsole?
+
+*Ausgabe*:
+
+```
+Compiles successfully
+In base class
+```
+
+#### 5. Bereichsbasierte `for`-Schleife und Verwendung von `auto` für Iteratoren-Boilerplate Code
 
 ```cpp
 01: // C++98
@@ -90,45 +196,53 @@ ohne `begin()`/`end()` und ohne `++it`, bei dem man Fehler machen kann.
 
 Herkömmliche Schleifen lassen Fehler zu, die der Compiler nicht erkennt:
 
-  * Vergleiche mit dem `end()` eines anderen Containers (*Copy-and-Paste*-Fehler)
-  * `it++` statt `++it` (oder das Vergessen des Inkrements)
-  * die Verwendung eines `iterator` anstelle eines `const_iterator` (oder umgekehrt),
+  * Vergleiche mit dem `end()` eines anderen Containers (*Copy-and-Paste*-Fehler).
+  * `it++` statt `++it` (oder das Vergessen des Inkrements).
+  * die Verwendung eines `iterator`-Objekts anstelle eines `const_iterator`-Objekts (oder umgekehrt).
   * &bdquo;Off-by-one&rdquo;-Fehler bei indexbasierten Schleifen (z. B. `i <= v.size()`).
 
 Die &bdquo;Range-based for&rdquo;-Schleife schließt all diese Fehler konstruktionsbedingt aus.
 
-### Refactoring wird einfacher
+#### 6. Verwendung von `auto`: Refactoring wird einfacher
 
-Wenn jemand `std::vector<Order>` in `std::list<Order>` oder `std::deque<Order>` ändert,
+Wenn jemand `std::vector<Person>` in `std::list<Person>` oder `std::deque<Person>` ändert,
 müssen alle explizit ausgeschriebenen Anweisungen mit
 
-`std::vector<Order>::const_iterator`-Instanzen
+`std::vector<Person>::const_iterator`-Variablen
 
-angepasst werden.
+angepasst werden:
+
+```cpp
+01: std::vector<Person> persons;   // add comment ...
+02: // std::list<Person> persons;  // ... and remove comment
+03: 
+04: std::vector<Person>::const_iterator it = persons.begin();   // Container-class of iterator must be adjusted
+05: 
+06: auto it2 = persons.begin();                                 // type of it2 is deducted (at compile time)
+```
 
 Bei einer &bdquo;Range-based for&rdquo;-Schleife oder der Verwendung von `auto` spielt das hingegen keine Rolle.
 
-Dasselbe gilt für lange Template-Typen wie `std::map<std::string, std::vector<int>>::const_iterator` &ndash; `auto` übernimmt dies,
-ohne dass man den Typ selbst ausschreiben muss.
+Dasselbe gilt für lange Template-Typen wie `std::map<std::string, std::vector<int>>::const_iterator`:
 
-#### Man beachte
+`auto` übernimmt dies, ohne dass man den Typ selbst ausschreiben muss.
 
-#### Was man **nicht** gewinnt
+##### Man beachte, was man **nicht** gewinnt
 
   * Kein Performance-Unterschied. Es wird im Wesentlichen in denselben Code übersetzt wie eine Schleife mit Iteratoren.
   * Keine Verhaltensänderung (sofern die Umstellung korrekt durchgeführt wird).
   * Keine Fehlerbehebungen in bereits funktionierendem Code. Schleifen, die seit Jahren einwandfrei funktionieren, werden nicht plötzlich fehlerhaft.
 
-#### Wo Probleme auftreten können
+##### Man beachte, wo Probleme auftreten können
 
-  * Versehentliche Kopien: `for (auto o : orders)` kopiert jedes Element. Verwenden man stattdessen `const auto&` (oder `auto&`, falls Sie das Element ändern möchten).
+  * Versehentliche Kopien: `for (auto o : orders)` kopiert jedes Element. Verwende stattdessen `const auto&` (oder `auto&`), falls man das Element ändern möchten.
   * Schleifen, die den Iterator selbst verwenden (etwa zum Löschen von Elementen, für `std::distance` oder den Zugriff auf das vorherige bzw. nächste Element), lassen sich nicht einfach umstellen.
-  * Wird der Container innerhalb der Schleife verändert, werden &ndash; genau wie zuvor &ndash; die Iteratoren ungültig; eine bereichsbasierte for-Schleife (*range-based for loop*) bietet dagegen keinen Schutz.
+  * Wird der Container innerhalb der Schleife verändert, werden &ndash; genau wie zuvor &ndash; die Iteratoren ungültig; eine bereichsbasierte `for`-Schleife (*range-based for loop*) bietet in diesem Fall auch keinen Schutz.
 
 
-### Enum-Klassen statt einfacher Enums
+#### 7. Enum-Klassen statt einfacher Enums
 
-Untertschiede im Gültigkeitsbereich, keine implizite `int`-Konvertierung:
+Unterschiede im Gültigkeitsbereich, keine implizite `int`-Konvertierung:
 
 ```cpp
 01: // 1. the problem with classic enums (unscoped enums)
@@ -168,12 +282,12 @@ Untertschiede im Gültigkeitsbereich, keine implizite `int`-Konvertierung:
 35: }
 ```
 
-### `= delete` statt des Tricks mit dem &bdquo;privaten undefinierten Kopierkonstruktor&rdquo;
+### 8. `= delete` statt des Tricks mit dem &bdquo;privaten undefinierten Kopierkonstruktor&rdquo;
 
-Gegen private Konstruktoren spricht nichts, wenn sie ihren eigentlichen Zweck erfüllen &ndash; wie
+Gegen private Konstruktoren spricht zunächst einmal nichts, wenn sie ihren eigentlichen Zweck erfüllen &ndash; wie
 etwa beim *Singleton*-Pattern oder bei *Factory*-Methoden, wo die Instanziierung bewusst kontrolliert werden soll.
 
-Wenn es aber rein darum geht, das Kopieren oder Verschieben einer Klasse zu verhindern,
+Wenn es aber rein darum geht, das Kopieren oder Verschieben eines Objekts zu verhindern,
 ist der alte Trick mit dem privaten, undefinierten Kopierkonstruktor (aus C++ 98&ndash;Zeiten) heute veraltet.
 Seit C++ 11 ist `= delete` der Standard.
 
@@ -185,11 +299,6 @@ Seit C++ 11 ist `= delete` der Standard.
 *Tabelle* 1: Zuordnung der Klassen
 
 ### `= default` für triviale spezielle Member
-
-
-
-
-
 
 
 6. Aliase statt typedef verwenden und >> in verschachtelten Templates ohne Leerzeichen.
@@ -206,35 +315,61 @@ Seit C++ 11 ist `= delete` der Standard.
 C++ 98&ndash;Code enthält typischerweise direkte `new`/`delete`-Aufrufe, manuelle Ressourcenbereinigung sowie `std::auto_ptr`.
 
 Hier verbergen sich die meisten echten Fehler (Leaks, Double-Frees, Lücken in der Exception-Sicherheit).
-daher ist dies die lohnendste Änderung, erfordert aber auch die größte Sorgfalt.
+Daher ist dies die lohnendste Änderung, erfordert aber auch die größte Sorgfalt.
 Gehen Sie dabei modulweise vor und setzen Sie Tests ein.
 
-1. Ersetze `std::auto_ptr` durch `std::unique_ptr`. Da `std::auto_ptr` in C++17 entfernt wurde, ist dieser Schritt langfristig zwingend erforderlich.
+### 1. Ersetze `std::auto_ptr` durch `std::unique_ptr`
 
-2. Für besitzende (&bdquo;owning&rdquo;) Rohzeiger gilt: Verwende `std::unique_ptr` (bei exklusivem Besitz) oder `std::shared_ptr` (nur wenn der Besitz tatsächlich geteilt wird).
-   Erstelle diese Objekte mittels `std::make_unique` (ab C++14) oder `std::make_shared`.
+Da `std::auto_ptr` in C++17 entfernt wurde, ist dieser Schritt langfristig zwingend erforderlich.
 
-3. Nicht-besitzende (&bdquo;non-owning&rdquo;) Rohzeiger können beibehalten werden. Es ist nicht erforderlich, jeden Zeiger in einen Smart Pointer umzuwandeln &ndash; dies wäre eine unnötige Überkorrektur.
+### 2. Klassen `std::unique_ptr` und `std::shared_ptr`
 
-4. Nutzen Sie RAII-Wrapper für Ressourcen wie Dateien, Locks oder Handles &ndash; etwa `std::lock_guard` / `std::scoped_lock`, `std::fstream` oder `std::unique_ptr` mit benutzerdefinierten &bdquo;Deletern&rdquo;.
+Für besitzende (&bdquo;owning&rdquo;) Rohzeiger gilt: Verwende `std::unique_ptr` (bei exklusivem Besitz) oder
+`std::shared_ptr` (nur wenn der Besitz tatsächlich geteilt wird).
 
-5. Verwenden Sie Container bzw. die STL anstelle von manuell verwalteten Arrays: Setzen Sie auf `std::vector` oder `std::array` statt auf `new[]`/`delete[]` oder C-Arrays.
+Erstelle diese Objekte mittels `std::make_unique` (ab C++14) oder `std::make_shared`.
+
+### 3. Nicht-besitzende (&bdquo;non-owning&rdquo;) Rohzeiger können beibehalten werden
+
+Es ist nicht erforderlich, jeden Zeiger in einen Smart Pointer umzuwandeln &ndash; dies wäre eine unnötige Überkorrektur.
+
+### 4. Nutze RAII-Wrapper für Ressourcen wie Dateien, Locks oder Handles
+
+Nutze RAII-Wrapper Klassen wie z. B. `std::lock_guard` / `std::scoped_lock`, `std::fstream` oder `std::unique_ptr` mit benutzerdefinierten &bdquo;Deletern&rdquo;.
+
+### 5. Verwenden Sie Container bzw. die STL anstelle von manuell verwalteten Arrays
+
+Setze auf `std::vector` oder `std::array` statt auf `new[]`/`delete[]` oder C-Arrays.
+
+
 
 ## Performanz and API Cleanliness
 
-1. Move-Semantik (Rvalue-Referenzen): Die Rückgabe großer Objekte per Wert wird effizienter. Füge Move-Konstruktoren/Zuweisungen hinzu, wenn Klassen Ressourcen besitzen (folge nach Möglichkeit der Nullregel: Wenn Member sich selbst verwalten, benötigst du keine speziellen Member).
+### 1. Move-Semantik (Rvalue-Referenzen)
 
-2. Verwende `emplace_back` / `emplace` anstelle der Erstellung eines temporären Objekts und dessen Zuweisung.
+Die Rückgabe großer Objekte per Wert wird effizienter. Füge Move-Konstruktoren/Zuweisungen hinzu, wenn Klassen Ressourcen besitzen (folge nach Möglichkeit der Nullregel: Wenn Member sich selbst verwalten, benötigst du keine speziellen Member).
 
-3. Verwende `std::unordered_map` / `unordered_set`, wenn keine Reihenfolge (Sortierung) erforderlich ist.
+### 2. `emplace_back` / `emplace`
 
-4. Einheitliche Initialisierung `{}` und Initialisierungslisten für eine übersichtlichere Konstruktion.
+Verwende `emplace_back` / `emplace` anstelle der Erstellung eines temporären Objekts und dessen Zuweisung
 
-   Beachte auf den Fehler `std::vector<int>{3, 4}` vs. `std::vector<int>(3, 4)` und verringere Konvertierungen, die nun Fehler verursachen).
+### 3. `std::unordered_map` / `unordered_set`
 
-5. Delegiere und vererbe Konstruktoren, um doppelten Initialisierungscode zu vermeiden.
+Verwende `std::unordered_map` / `unordered_set`, wenn keine Reihenfolge (Sortierung) erforderlich ist.
 
-6. Verwende Standard-Member-Initialisierer (`int count = 0;`), um Konstruktoren zu vereinfachen.
+### 4. Einheitliche Initialisierung
+
+Einheitliche Initialisierung `{}` und Initialisierungslisten für eine übersichtlichere Konstruktion.
+
+Beachte auf den Fehler `std::vector<int>{3, 4}` vs. `std::vector<int>(3, 4)` und verringere Konvertierungen, die nun Fehler verursachen.
+
+### 5. Vererbung von Konstruktoren
+
+Delegiere und vererbe Konstruktoren, um doppelten Initialisierungscode zu vermeiden.
+
+### 6. Standard-Member-Initialisierer
+
+Verwende Standard-Member-Initialisierer (`int count = 0;`), um Konstruktoren zu vereinfachen.
 
 
 ## Ersetzen von Eigenentwicklungen durch die Standardbibliothek
