@@ -86,8 +86,8 @@ namespace {
 
     class ParentNode {
     private:
-        std::shared_ptr<RightNode> m_rightNode;
-        std::shared_ptr<LeftNode> m_leftNode;
+        std::shared_ptr<RightNode> m_rightNode;    // <== shared or weak ?
+        std::shared_ptr<LeftNode> m_leftNode;      // <== shared or weak ?
 
     public:
         ParentNode() {
@@ -106,7 +106,7 @@ namespace {
 
     class RightNode {
     private:
-        std::shared_ptr<ParentNode> m_parentNode;   // <== shared or weak ?
+        std::shared_ptr<ParentNode> m_parentNode;
 
     public:
         explicit RightNode(const std::shared_ptr<ParentNode>& parent)
@@ -121,7 +121,7 @@ namespace {
 
     class LeftNode {
     private:
-        std::shared_ptr<ParentNode> m_parentNode;   // <== shared or weak ?
+        std::shared_ptr<ParentNode> m_parentNode;
 
     public:
         explicit LeftNode(const std::shared_ptr<ParentNode>& parent)

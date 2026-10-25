@@ -6,7 +6,7 @@ module modern_cpp:copy_move_elision;
 
 import std;
 
-namespace CopyMoveElision {
+namespace {
 
     class Foo
     {
@@ -40,21 +40,20 @@ namespace CopyMoveElision {
     };
 
     // test method
-    static Foo createData() {
+    Foo createData() {
         Foo data{ 1 };
         return data;
 
         // return Foo{ 1 };   // Note: Mandatory copy / move elision
     }
 
-    static void test_copy_elision() {
+    void test_copy_elision() {
         Foo data{ createData() };
     }
 }
 
 void main_copy_move_elision()
 {
-    using namespace CopyMoveElision;
     test_copy_elision();
 }
 

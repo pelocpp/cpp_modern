@@ -18,11 +18,11 @@ namespace Algorithms {
     // =================================================================================
 
 #ifdef _DEBUG
-    static constexpr int VectorSize = 10'000'000;         // debug
-    static constexpr int ArraySize = 10'000'000;          // debug
+    static constexpr std::size_t VectorSize = 10'000'000;         // debug
+    static constexpr std::size_t ArraySize = 10'000'000;          // debug
 #else
-    static constexpr int VectorSize = 100'000'000;        // release
-    static constexpr int ArraySize = 50'000'000;          // release
+    static constexpr std::size_t VectorSize = 100'000'000;        // release
+    static constexpr std::size_t ArraySize = 50'000'000;          // release
 #endif
 
     // need array in global data space, stack isn't suited for large objects
@@ -39,7 +39,7 @@ namespace Algorithms {
         // Initialization of std::vector with a constant value
         // =============================================================================
 
-        static auto test_vector_constant_initialize_classic_for_loop()
+        static auto vector_constant_initialize_classic_for_loop()
         {
             std::println("std::vector: using a classic for-loop");
 
@@ -52,7 +52,7 @@ namespace Algorithms {
             }
         }
 
-        static auto test_vector_constant_initialize_iterator_based()
+        static auto vector_constant_initialize_iterator_based()
         {
             std::println("std::vector: using an iterator-based for-loop");
 
@@ -65,7 +65,7 @@ namespace Algorithms {
             }
         }
 
-        static auto test_vector_constant_initialize_std_fill()
+        static auto vector_constant_initialize_std_fill()
         {
             std::println("std::vector: using std::fill");
 
@@ -80,7 +80,7 @@ namespace Algorithms {
             );
         }
 
-        static auto test_vector_constant_initialize_std_fill_parallelized()
+        static auto vector_constant_initialize_std_fill_parallelized()
         {
             std::println("std::vector: using std::fill - using execution policy ");
 
@@ -96,7 +96,7 @@ namespace Algorithms {
             );
         }
 
-        static auto test_vector_constant_initialize_std_for_each()
+        static auto vector_constant_initialize_std_for_each()
         {
             std::println("std::vector: using std::for_each");
 
@@ -111,7 +111,7 @@ namespace Algorithms {
             );
         }
 
-        static auto test_vector_constant_initialize_range_based_for_loop()
+        static auto vector_constant_initialize_range_based_for_loop()
         {
             std::println("std::vector: using range-based for loop");
 
@@ -124,7 +124,7 @@ namespace Algorithms {
             }
         }
 
-        static auto test_vector_constant_initialize_std_generate()
+        static auto vector_constant_initialize_std_generate()
         {
             std::println("std::vector: using std::generate");
 
@@ -139,7 +139,7 @@ namespace Algorithms {
             );
         }
 
-        static auto test_vector_constant_initialize_user_defined_ctor()
+        static auto vector_constant_initialize_user_defined_ctor()
         {
             std::println("std::vector: using special std::vector c'tor (Note: time includes initialization of std::vector!)");
 
@@ -148,16 +148,16 @@ namespace Algorithms {
             std::vector<double> values(VectorSize, 123.0);
         }
 
-        static void test_vector_constant_initialization()
+        static void vector_constant_initialization()
         {
-            test_vector_constant_initialize_classic_for_loop();
-            test_vector_constant_initialize_iterator_based();
-            test_vector_constant_initialize_std_fill();
-            test_vector_constant_initialize_std_fill_parallelized();
-            test_vector_constant_initialize_std_for_each();
-            test_vector_constant_initialize_range_based_for_loop();
-            test_vector_constant_initialize_std_generate();
-            test_vector_constant_initialize_user_defined_ctor();
+            vector_constant_initialize_classic_for_loop();
+            vector_constant_initialize_iterator_based();
+            vector_constant_initialize_std_fill();
+            vector_constant_initialize_std_fill_parallelized();
+            vector_constant_initialize_std_for_each();
+            vector_constant_initialize_range_based_for_loop();
+            vector_constant_initialize_std_generate();
+            vector_constant_initialize_user_defined_ctor();
         }
     }
 }
@@ -170,7 +170,7 @@ namespace Algorithms {
         // Initialization of std::array with a constant value
         // =============================================================================
 
-        static auto test_array_constant_initialize_classic_for_loop()
+        static auto array_constant_initialize_classic_for_loop()
         {
             std::println("std::array: using a classic for-loop");
 
@@ -181,7 +181,7 @@ namespace Algorithms {
             }
         }
 
-        static auto test_array_constant_initialize_iterator_based()
+        static auto array_constant_initialize_iterator_based()
         {
             std::println("std::array: using an iterator-based for-loop");
 
@@ -192,7 +192,7 @@ namespace Algorithms {
             }
         }
 
-        static auto test_array_constant_initialize_std_fill()
+        static auto array_constant_initialize_std_fill()
         {
             std::println("std::array: using std::fill");
 
@@ -205,7 +205,7 @@ namespace Algorithms {
             );
         }
 
-        static auto test_array_constant_initialize_std_fill_parallelized()
+        static auto array_constant_initialize_std_fill_parallelized()
         {
             std::println("std::array: using std::fill - using execution policy ");
 
@@ -219,7 +219,7 @@ namespace Algorithms {
             );
         }
 
-        static auto test_array_constant_initialize_std_for_each()
+        static auto array_constant_initialize_std_for_each()
         {
             std::println("std::array: using std::for_each");
 
@@ -232,7 +232,7 @@ namespace Algorithms {
             );
         }
 
-        static auto test_array_constant_initialize_range_based_for_loop()
+        static auto array_constant_initialize_range_based_for_loop()
         {
             std::println("std::array: using range-based for loop");
 
@@ -243,7 +243,7 @@ namespace Algorithms {
             }
         }
 
-        static auto test_array_constant_initialize_std_generate()
+        static auto array_constant_initialize_std_generate()
         {
             std::println("std::array: using std::generate");
 
@@ -256,15 +256,15 @@ namespace Algorithms {
             );
         }
 
-        static void test_array_constant_initialization()
+        static void array_constant_initialization()
         {
-            test_array_constant_initialize_classic_for_loop();
-            test_array_constant_initialize_iterator_based();
-            test_array_constant_initialize_std_fill();
-            test_array_constant_initialize_std_fill_parallelized();
-            test_array_constant_initialize_std_for_each();
-            test_array_constant_initialize_range_based_for_loop();
-            test_array_constant_initialize_std_generate();
+            array_constant_initialize_classic_for_loop();
+            array_constant_initialize_iterator_based();
+            array_constant_initialize_std_fill();
+            array_constant_initialize_std_fill_parallelized();
+            array_constant_initialize_std_for_each();
+            array_constant_initialize_range_based_for_loop();
+            array_constant_initialize_std_generate();
         }
     }
 }
@@ -277,7 +277,7 @@ namespace Algorithms {
         // Initialization of std::vector with a varying value
         // =================================================================================
 
-        static auto test_vector_varying_initialize_classic_for_loop()
+        static auto vector_varying_initialize_classic_for_loop()
         {
             std::println("std::vector: using a classic for-loop");
 
@@ -290,7 +290,7 @@ namespace Algorithms {
             }
         }
 
-        static auto test_vector_varying_initialize_iterator_based()
+        static auto vector_varying_initialize_iterator_based()
         {
             std::println("std::vector: using an iterator-based for-loop");
 
@@ -304,7 +304,7 @@ namespace Algorithms {
             }
         }
 
-        static auto test_vector_varying_initialize_std_for_each()
+        static auto vector_varying_initialize_std_for_each()
         {
             std::println("std::vector: using std::for_each");
 
@@ -319,7 +319,7 @@ namespace Algorithms {
             );
         }
 
-        static auto test_vector_varying_initialize_range_based_for_loop()
+        static auto vector_varying_initialize_range_based_for_loop()
         {
             std::println("std::vector: using range-based for loop");
 
@@ -332,7 +332,7 @@ namespace Algorithms {
             }
         }
 
-        static auto test_vector_varying_initialize_std_for_generate()
+        static auto vector_varying_initialize_std_for_generate()
         {
             std::println("std::vector: using std::generate");
 
@@ -347,13 +347,13 @@ namespace Algorithms {
             );
         }
 
-        static void test_vector_varying_initialization()
+        static void vector_varying_initialization()
         {
-            test_vector_varying_initialize_classic_for_loop();
-            test_vector_varying_initialize_iterator_based();
-            test_vector_varying_initialize_std_for_each();
-            test_vector_varying_initialize_range_based_for_loop();
-            test_vector_varying_initialize_std_for_generate();
+            vector_varying_initialize_classic_for_loop();
+            vector_varying_initialize_iterator_based();
+            vector_varying_initialize_std_for_each();
+            vector_varying_initialize_range_based_for_loop();
+            vector_varying_initialize_std_for_generate();
         }
     }
 }
@@ -366,7 +366,7 @@ namespace Algorithms {
         // Initialization of std::array with a varying value
         // =================================================================================
 
-        static auto test_array_varying_initialize_classic_for_loop()
+        static auto array_varying_initialize_classic_for_loop()
         {
             std::println("std::array: using a classic for-loop");
 
@@ -377,7 +377,7 @@ namespace Algorithms {
             }
         }
 
-        static auto test_array_varying_initialize_iterator_based()
+        static auto array_varying_initialize_iterator_based()
         {
             std::println("std::array: using an iterator-based for-loop");
 
@@ -389,7 +389,7 @@ namespace Algorithms {
             }
         }
 
-        static auto test_array_varying_initialize_std_for_each()
+        static auto array_varying_initialize_std_for_each()
         {
             std::println("std::array: using std::for_each");
 
@@ -402,7 +402,7 @@ namespace Algorithms {
             );
         }
 
-        static auto test_array_varying_initialize_range_based_for_loop()
+        static auto array_varying_initialize_range_based_for_loop()
         {
             std::println("std::array: using range-based for loop");
 
@@ -413,7 +413,7 @@ namespace Algorithms {
             }
         }
 
-        static auto test_array_varying_initialize_std_for_generate()
+        static auto array_varying_initialize_std_for_generate()
         {
             std::println("std::array: using std::generate");
 
@@ -426,15 +426,15 @@ namespace Algorithms {
             );
         }
 
-        static void test_array_varying_initialization()
+        static void array_varying_initialization()
         {
             using namespace Initialization_Array_Varying_Value;
 
-            test_array_varying_initialize_classic_for_loop();
-            test_array_varying_initialize_iterator_based();
-            test_array_varying_initialize_std_for_each();
-            test_array_varying_initialize_range_based_for_loop();
-            test_array_varying_initialize_std_for_generate();
+            array_varying_initialize_classic_for_loop();
+            array_varying_initialize_iterator_based();
+            array_varying_initialize_std_for_each();
+            array_varying_initialize_range_based_for_loop();
+            array_varying_initialize_std_for_generate();
         }
     }
 }
@@ -447,7 +447,7 @@ namespace Algorithms {
 
     namespace Copying_Vectors {
     
-        static auto test_vector_copying_classic_for_loop()
+        static auto vector_copying_classic_for_loop()
         {
             std::println("std::vector: Copying: Using a classic for-loop");
 
@@ -461,7 +461,7 @@ namespace Algorithms {
             }
         }
 
-        static auto test_vector_copying_iterator_based()
+        static auto vector_copying_iterator_based()
         {
             std::println("std::vector: Copying: Using an iterator-based for-loop");
 
@@ -477,7 +477,7 @@ namespace Algorithms {
             }
         }
 
-        static auto test_vector_copying_std_copy()
+        static auto vector_copying_std_copy()
         {
             std::println("std::vector: Standard Algorithm - std::copy:");
 
@@ -493,7 +493,7 @@ namespace Algorithms {
             );
         }
 
-        static auto test_vector_copying_std_copy_parallelized()
+        static auto vector_copying_std_copy_parallelized()
         {
             std::println("std::vector: Using std::copy - using execution policy");
 
@@ -510,7 +510,7 @@ namespace Algorithms {
             );
         }
 
-        static auto test_vector_copying_std_memcpy()
+        static auto vector_copying_std_memcpy()
         {
             std::println("std::vector: Using std::memcpy");
 
@@ -527,13 +527,13 @@ namespace Algorithms {
             );
         }
 
-        static void test_vector_copying()
+        static void vector_copying()
         {
-            test_vector_copying_classic_for_loop();
-            test_vector_copying_iterator_based();
-            test_vector_copying_std_copy();
-            test_vector_copying_std_copy_parallelized();
-            test_vector_copying_std_memcpy();
+            vector_copying_classic_for_loop();
+            vector_copying_iterator_based();
+            vector_copying_std_copy();
+            vector_copying_std_copy_parallelized();
+            vector_copying_std_memcpy();
         }
     }
 }
@@ -546,7 +546,7 @@ namespace Algorithms {
 
     namespace Copying_Arrays {
 
-        static auto test_array_copying_classic_for_loop()
+        static auto array_copying_classic_for_loop()
         {
             std::println("std::array: Copying: Using a classic for-loop");
 
@@ -557,7 +557,7 @@ namespace Algorithms {
             }
         }
 
-        static auto test_array_copying_iterator_based()
+        static auto array_copying_iterator_based()
         {
             std::println("std::array: Copying: Using an iterator-based for-loop");
 
@@ -570,7 +570,7 @@ namespace Algorithms {
             }
         }
 
-        static auto test_array_copying_std_copy()
+        static auto array_copying_std_copy()
         {
             std::println("std::array: Standard Algorithm - std::copy:");
 
@@ -583,7 +583,7 @@ namespace Algorithms {
             );
         }
 
-        static auto test_array_copying_std_copy_parallelized()
+        static auto array_copying_std_copy_parallelized()
         {
             std::println("std::array: Using std::copy - using execution policy");
 
@@ -597,7 +597,7 @@ namespace Algorithms {
             );
         }
 
-        static auto test_array_copying_std_memcpy()
+        static auto array_copying_std_memcpy()
         {
             std::println("std::array: Using std::memcpy");
 
@@ -611,13 +611,13 @@ namespace Algorithms {
             );
         }
 
-        static void test_array_copying()
+        static void array_copying()
         {
-            test_array_copying_classic_for_loop();
-            test_array_copying_iterator_based();
-            test_array_copying_std_copy();
-            test_array_copying_std_copy_parallelized();
-            test_array_copying_std_memcpy();
+            array_copying_classic_for_loop();
+            array_copying_iterator_based();
+            array_copying_std_copy();
+            array_copying_std_copy_parallelized();
+            array_copying_std_memcpy();
         }
     }
 }
@@ -630,7 +630,7 @@ namespace Algorithms {
         // Using algorithms for elementary calculations both suited for std::vector or std::array
         // =================================================================================
 
-        static auto test_calculate_sum_classic_for_loop(std::span<const double> values)
+        static auto calculate_sum_classic_for_loop(std::span<const double> values)
         {
             std::println("Classic Loop: ");
 
@@ -644,7 +644,7 @@ namespace Algorithms {
             return sum;
         }
 
-        static auto test_calculate_sum_iterator_based(std::span<const double> values)
+        static auto calculate_sum_iterator_based(std::span<const double> values)
         {
             std::println("Iterator Loop: ");
 
@@ -658,7 +658,7 @@ namespace Algorithms {
             return sum;
         }
 
-        static auto test_calculate_sum_range_based_for_loop(std::span<const double> values)
+        static auto calculate_sum_range_based_for_loop(std::span<const double> values)
         {
             std::println("Using range-based for loop");
 
@@ -672,7 +672,7 @@ namespace Algorithms {
             return sum;
         }
 
-        static auto test_calculate_sum_std_for_each(std::span<const double> values)
+        static auto calculate_sum_std_for_each(std::span<const double> values)
         {
             std::println("Standard Algorithm - std::for_each:");
 
@@ -688,7 +688,7 @@ namespace Algorithms {
             return sum;
         }
 
-        static auto test_calculate_sum_std_accumulate(std::span<const double> values)
+        static auto calculate_sum_std_accumulate(std::span<const double> values)
         {
             std::println("Standard Algorithm - std::accumulate:");
 
@@ -711,7 +711,7 @@ namespace Algorithms {
 
     namespace Elementary_Calculations_With_Vectors {
 
-        static void test_vector_sum_calculation()
+        static void vector_sum_calculation()
         {
             using namespace Elementary_Calculations;
 
@@ -728,30 +728,30 @@ namespace Algorithms {
             double sum{};
 
             initArray();
-            sum = test_calculate_sum_classic_for_loop(std::span{ values });
+            sum = calculate_sum_classic_for_loop(std::span{ values });
             std::println("std::vector: Sum: {:15.20g}", sum);
 
             initArray();
-            sum = test_calculate_sum_iterator_based(std::span{ values });
+            sum = calculate_sum_iterator_based(std::span{ values });
             std::println("std::vector: Sum: {:15.20g}", sum);
 
             initArray();
-            sum = test_calculate_sum_range_based_for_loop(std::span{ values });
+            sum = calculate_sum_range_based_for_loop(std::span{ values });
             std::println("std::vector: Sum: {:15.20g}", sum);
 
             initArray();
-            sum = test_calculate_sum_std_for_each(std::span{ values });
+            sum = calculate_sum_std_for_each(std::span{ values });
             std::println("std::vector: Sum: {:15.20g}", sum);
 
             initArray();
-            sum = test_calculate_sum_std_accumulate(std::span{ values });
+            sum = calculate_sum_std_accumulate(std::span{ values });
             std::println("std::vector: Sum: {:15.20g}", sum);
         }
     }
 
     namespace Elementary_Calculations_With_Arrays {
 
-        static void test_array_sum_calculation()
+        static void array_sum_calculation()
         {
             using namespace Elementary_Calculations;
 
@@ -766,23 +766,23 @@ namespace Algorithms {
             double sum{};
 
             initArray();
-            sum = test_calculate_sum_classic_for_loop(std::span{ values });
+            sum = calculate_sum_classic_for_loop(std::span{ values });
             std::println("std::array: Sum: {:15.20g}", sum);
 
             initArray();
-            sum = test_calculate_sum_iterator_based(std::span{ values });
+            sum = calculate_sum_iterator_based(std::span{ values });
             std::println("std::array: Sum: {:15.20g}", sum);
 
             initArray();
-            sum = test_calculate_sum_range_based_for_loop(std::span{ values });
+            sum = calculate_sum_range_based_for_loop(std::span{ values });
             std::println("std::array: Sum: {:15.20g}", sum);
 
             initArray();
-            sum = test_calculate_sum_std_for_each(std::span{ values });
+            sum = calculate_sum_std_for_each(std::span{ values });
             std::println("std::array: Sum: {:15.20g}", sum);
 
             initArray();
-            sum = test_calculate_sum_std_accumulate(std::span{ values });
+            sum = calculate_sum_std_accumulate(std::span{ values });
             std::println("std::array: Sum: {:15.20g}", sum);
         }
     }
@@ -791,20 +791,20 @@ namespace Algorithms {
 void main_algorithms()
 {
     // initialization of std::vector or std::array with a constant value
-    Algorithms::Initialization_Vector_Constant_Value::test_vector_constant_initialization();
-    Algorithms::Initialization_Array_Constant_Value::test_array_constant_initialization();
+    Algorithms::Initialization_Vector_Constant_Value::vector_constant_initialization();
+    Algorithms::Initialization_Array_Constant_Value::array_constant_initialization();
 
     // initialization of std::vector or std::array with a a varying value
-    Algorithms::Initialization_Vector_Varying_Value::test_vector_varying_initialization();
-    Algorithms::Initialization_Array_Varying_Value::test_array_varying_initialization();
+    Algorithms::Initialization_Vector_Varying_Value::vector_varying_initialization();
+    Algorithms::Initialization_Array_Varying_Value::array_varying_initialization();
 
     // using algorithms for copying ranges (std::vector or std::array)
-    Algorithms::Copying_Vectors::test_vector_copying();
-    Algorithms::Copying_Arrays::test_array_copying();
+    Algorithms::Copying_Vectors::vector_copying();
+    Algorithms::Copying_Arrays::array_copying();
 
     // using algorithms for elementary calculations (std::vector or std::array)
-    Algorithms::Elementary_Calculations_With_Vectors::test_vector_sum_calculation();
-    Algorithms::Elementary_Calculations_With_Arrays::test_array_sum_calculation();
+    Algorithms::Elementary_Calculations_With_Vectors::vector_sum_calculation();
+    Algorithms::Elementary_Calculations_With_Arrays::array_sum_calculation();
 }
 
 // =====================================================================================

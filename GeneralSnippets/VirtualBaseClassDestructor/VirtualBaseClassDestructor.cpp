@@ -6,7 +6,7 @@ module modern_cpp:virtual_base_class_destructor;
 
 import std;
 
-namespace VirtualBaseClassDestructor {
+namespace {
 
     class Base
     {
@@ -30,18 +30,13 @@ namespace VirtualBaseClassDestructor {
             std::println("d'tor Derived");
         }
     };
-
-    static void test01() {
-        Base* b = new Derived();
-        // use b
-        delete b; // here's the problem!
-    }
 }
 
 void main_virtual_base_class_destructor()
 {
-    using namespace VirtualBaseClassDestructor;
-    test01();
+    Base* b = new Derived();
+    // use b
+    delete b; // here's the problem!
 }
 
 // =====================================================================================

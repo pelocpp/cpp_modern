@@ -6,13 +6,13 @@ module modern_cpp:perfect_forwarding;
 
 import std;
 
-namespace PerfectForwarding {
+namespace {
 
-    static void overloaded(const int& arg) {
+    void overloaded(const int& arg) {
         std::println("By lvalue: {}", arg);
     }
 
-    static void overloaded(int&& arg) {
+    void overloaded(int&& arg) {
         std::println("By rvalue: {}", arg);
     }
 
@@ -30,7 +30,7 @@ namespace PerfectForwarding {
         overloaded(std::forward<T>(arg));
     }
 
-    static void test_forwarding() {
+    void forwarding() {
 
         int n{ 123 };
 
@@ -39,7 +39,7 @@ namespace PerfectForwarding {
         forwarding(456);
     }
 
-    static void test_forwardingPerfect() {
+    void forwarding_perfect() {
 
         int n{ 123 };
 
@@ -64,7 +64,7 @@ namespace PerfectForwarding {
         std::println("[{}]", arg2);
     }
 
-    static void test_example()
+    void forwarding_perfect_second_example()
     {
         std::string s{ "DEF" };
 
@@ -74,10 +74,9 @@ namespace PerfectForwarding {
 
 void main_perfect_forwarding()
 {
-    using namespace PerfectForwarding;
-    test_forwarding();
-    test_forwardingPerfect();
-    test_example();
+    forwarding();
+    forwarding_perfect();
+    forwarding_perfect_second_example();
 }
 
 // =====================================================================================

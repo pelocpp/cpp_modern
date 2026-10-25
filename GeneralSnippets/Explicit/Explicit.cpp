@@ -6,7 +6,7 @@ module modern_cpp:explicit_keyword;
 
 import std;
 
-namespace KeywordExplicit {
+namespace {
 
     class Complex {
     private:
@@ -33,8 +33,6 @@ namespace KeywordExplicit {
 
 void main_explicit_keyword()
 {
-    using namespace KeywordExplicit;
-
     // a Complex object
     Complex c{ 3.0, 0.0 };
     

@@ -63,32 +63,102 @@ namespace {
     // =======================================================================
     // keyword 'override'
 
-    class Base
-    {
-    public:
-        // user wants to override this method in the derived class
-        virtual void func() { std::println("In base class"); }
-    };
+    namespace Keyword_Override {
 
-    class Derived : public Base
-    {
-    public:
-        // did a silly mistake by putting an argument "int a"
-        void func(int a) /*override*/   // <=== remove comment
+        class Base
         {
-            std::println("In derived class");
+        public:
+            // user wants to override this method in the derived class
+            virtual void func() { std::println("In base class"); }
+        };
+
+        class Derived : public Base
+        {
+        public:
+            // did a silly mistake by putting an argument "int a"
+            void func(int a) /*override*/   // <=== remove comment
+            {
+                std::println("In derived class");
+            }
+        };
+
+        static void legacy_inheritance_keyword_override()
+        {
+            Base base;
+            Derived derived;
+            std::println("Compiles successfully");
+
+            Base* bp;
+            bp = &derived;
+            bp->func();
         }
-    };
+    }
 
-    void legacy_inheritance_keyword_override()
+    // =======================================================================
+    // Inheriting constructors (C++11)
+
+    namespace Inheriting_Constructors_Cpp_98 {
+
+        // Variant 1: C++ 98: Boilerplate Forwarding
+
+        class Base {
+        public:
+            Base(int id) : m_id(id) {}
+            Base(int id, const std::string& name) : m_id(id), m_name(name) {}
+        
+        protected:
+            int         m_id;
+            std::string m_name;
+        };
+
+        class Derived : public Base {
+        public:
+            Derived(int id) : Base(id) {}                                  // pure forwarding
+            Derived(int id, const std::string& name) : Base(id, name) {}   // pure forwarding
+        
+        private:
+            int m_extra;
+        };
+
+        static void legacy_inheriting_constructors_01()
+        {
+            Derived d1(1);
+            Derived d2(2, "two");
+        }
+    }
+
+    namespace Inheriting_Constructors_Cpp_11 {
+
+        // Variant 2: C++11: One line
+
+        class Base {
+        public:
+            Base(int id) : m_id(id) {}
+            Base(int id, const std::string& name) : m_id(id), m_name(name) {}
+
+        protected:
+            int         m_id;
+            std::string m_name;
+        };
+
+        class Derived : public Base {
+        public:
+            using Base::Base;      // inherits Base(int) and Base(int, const std::string&)
+        private:
+            int m_extra = 0;        // default member initializer, important
+        };
+
+        static void legacy_inheriting_constructors_02()
+        {
+            Derived d1(1);
+            Derived d2(2, "two");
+        }
+    }
+
+    void legacy_inheriting_constructors()
     {
-        Base base;
-        Derived derived;
-        std::println("Compiles successfully");
-
-        Base* bp;
-        bp = &derived;
-        bp->func();
+        Inheriting_Constructors_Cpp_98::legacy_inheriting_constructors_01();
+        Inheriting_Constructors_Cpp_11::legacy_inheriting_constructors_02();
     }
 
     // =======================================================================
@@ -159,34 +229,23 @@ namespace {
     }
 
     // =======================================================================
-    // Noch nicht behandelt
-
-    struct Alt {
-        int x;
-        Alt() {} // Benutzerdefiniert, tut nichts!
-    };
-
-    struct Neu {
-        int x;
-        Neu() = default; // Compiler-generiert
-    };
-
-    void legacy_default_ctor() {
-        Alt a = Alt(); // a.x ist UNINITIALISIERT (Zufallswert im Speicher!)
-        Neu n = Neu(); // n.x wird garantiert mit 0 initialisiert (Value-Initialization)
-        Neu n2{};      // n.x wird garantiert mit 0 initialisiert (Value-Initialization)
-    }
-
-    // =======================================================================
     // Method Chaining
 
-    int legacy_method_chaining()
+    void legacy_method_chaining()
     {
         std::string s = "I have even sold some";
         s.replace(0, 6, "").replace(s.find("even"), 4, "only");
 
         std::println("{}", s);
-        return 0;
+    }
+
+    // =======================================================================
+    // std::string_view
+
+    void legacy_string_view()
+    {
+        std::string s1 = "I'm more than 15 chars long - and reside on the heap";
+        std::string_view s2 = "I'm more than 15 chars long - and reside not the heap";
     }
 
     // =======================================================================
@@ -210,6 +269,8 @@ namespace {
         Handle h = std::move(h1);
     }
 
+    // double-free according to defaulted move c'tor
+
     class Buffer {
     public:
         Buffer() { m_data = new char [5] {}; }
@@ -219,17 +280,57 @@ namespace {
         char* m_data;
     };
 
-
     void legacy_move_semantics_02()
     {
         Buffer buffer1;
         Buffer buffer2 = std::move(buffer1);  // crashes
     }
 
+    // double-free according to defaulted move c'tor
+
+    struct Tracer {
+
+        std::string name;
+
+        Tracer(std::string n) : name{ std::move(n) } {}
+
+        Tracer(const Tracer& other) : name(other.name) {
+            std::println("copy {}", name);
+        }
+
+        Tracer(Tracer&& other) noexcept : name{ std::move(other.name) } {
+            std::println("move");
+        }
+    };
+
+    void legacy_move_semantics_03()
+    {
+        Tracer a{ "one" };
+        Tracer b = std::move(a);        // prints "move"
+
+        const Tracer c{ "two" };
+        Tracer d = std::move(c);        // prints "copy two"
+    }
+
+    std::unique_ptr<int> getValue()
+    {
+        std::unique_ptr<int> value{ std::make_unique<int>(100) };
+        return value;               // RVO !!!
+        // or
+        //return std::move(value);  // Bad Style - RVO is prevented
+    }
+
+    void legacy_move_semantics_04()
+    {
+        std::unique_ptr<int> data = getValue();
+    }
+
     void legacy_move_semantics()
     {
-        legacy_move_semantics_01();
-        legacy_move_semantics_02();
+        //legacy_move_semantics_01();
+        //legacy_move_semantics_02();
+       // legacy_move_semantics_03();
+        legacy_move_semantics_04();
     }
 }
 
@@ -237,15 +338,36 @@ namespace {
 
 void main_legacy()
 {
-    legacy_null();
-    legacy_inheritance_keyword_override();
-    legacy_auto_range_based_for_loop();
-    legacy_enums();
-    legacy_default_ctor();
-    legacy_method_chaining();
-    legacy_move_semantics();
+//    legacy_null();
+//    legacy_inheritance_keyword_override();
+     legacy_inheriting_constructors();
+//    legacy_auto_range_based_for_loop();
+//    legacy_enums();
+//    legacy_default_ctor();
+//    legacy_method_chaining();
+//    legacy_move_semantics();
 }
 
 // ===========================================================================
 // End-of-File
 // ===========================================================================
+
+
+    // =======================================================================
+    // Noch nicht behandelt
+
+struct Alt {
+    int x;
+    Alt() {} // Benutzerdefiniert, tut nichts!
+};
+
+struct Neu {
+    int x;
+    Neu() = default; // Compiler-generiert
+};
+
+void legacy_default_ctor() {
+    Alt a = Alt(); // a.x ist UNINITIALISIERT (Zufallswert im Speicher!)
+    Neu n = Neu(); // n.x wird garantiert mit 0 initialisiert (Value-Initialization)
+    Neu n2{};      // n.x wird garantiert mit 0 initialisiert (Value-Initialization)
+}

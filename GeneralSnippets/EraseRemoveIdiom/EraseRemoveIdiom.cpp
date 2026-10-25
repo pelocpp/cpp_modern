@@ -6,10 +6,10 @@ module modern_cpp:erase_remove_idiom;
 
 import std;
 
-namespace EraseRemoveIdiom
+namespace
 {
     template <typename T>
-    static void print(const std::vector<T>& v)
+    void print(const std::vector<T>& v)
     {
         std::println("Size: {}, Capacity: {}", v.size(), v.capacity());
 
@@ -20,7 +20,7 @@ namespace EraseRemoveIdiom
         std::println();
     }
 
-    static void test_removing_elements_01()
+    void removing_elements_01()
     {
         // removing an element at a given position
 
@@ -35,7 +35,7 @@ namespace EraseRemoveIdiom
         print(vec);
     }
 
-    static void test_removing_elements_02()
+    void removing_elements_02()
     {
         // removing the elements of a given subrange
 
@@ -52,7 +52,7 @@ namespace EraseRemoveIdiom
     }
 
 
-    static void test_removing_elements_10()
+    void removing_elements_10()
     {
         // removing the first element equal to a certain value / C++ 20 (!)
 
@@ -77,7 +77,7 @@ namespace EraseRemoveIdiom
     }
 
 
-    static void test_removing_elements_11()
+    void removing_elements_11()
     {
         // removing all elements equal to a certain value - C++ 20 (!)
 
@@ -94,7 +94,7 @@ namespace EraseRemoveIdiom
 
     // ===========================================================================
 
-    static void test_removing_elements_20()
+    void removing_elements_20()
     {
         // removing all elements equal to a certain value
 
@@ -117,7 +117,7 @@ namespace EraseRemoveIdiom
         print(vec);
     }
 
-    static void test_removing_elements_21()
+    void removing_elements_21()
     {
         // removing and erasing all elements equal to a certain value
         // (Remove-Erase Idiom)
@@ -135,7 +135,7 @@ namespace EraseRemoveIdiom
         print(vec);
     }
 
-    static void test_removing_elements_22()
+    void removing_elements_22()
     {
         // removing and erasing all elements equal to a certain value
         // (Remove-Erase Idiom - more compact notation)
@@ -153,7 +153,7 @@ namespace EraseRemoveIdiom
 
     // ===========================================================================
 
-    static void test_removing_elements_30()
+    void removing_elements_30()
     {
         // invalid iterator object
 
@@ -169,7 +169,7 @@ namespace EraseRemoveIdiom
     }
 
 
-    static void test_removing_elements_31()
+    void removing_elements_31()
     {
         // valid iterator objects
 
@@ -186,7 +186,7 @@ namespace EraseRemoveIdiom
 
     // ===========================================================================
 
-    static void test_removing_elements_40()
+    void removing_elements_40()
     {
         // removing several elements
 
@@ -205,7 +205,7 @@ namespace EraseRemoveIdiom
 
     // ===========================================================================
 
-    static void test_removing_elements_50()
+    void removing_elements_50()
     {
         // removing several elements
 
@@ -223,7 +223,7 @@ namespace EraseRemoveIdiom
 
     // ===========================================================================
 
-    static void test_removing_elements_60()
+    void removing_elements_60()
     {
         // "Swap and Pop" idiom
 
@@ -240,7 +240,7 @@ namespace EraseRemoveIdiom
 
     // ===========================================================================
 
-    static void test_removing_elements_70()
+    void removing_elements_70()
     {
         // 'std::remove_copy' algorithm
 
@@ -258,7 +258,7 @@ namespace EraseRemoveIdiom
         print(dst);
     }
 
-    static void test_removing_elements_71()
+    void removing_elements_71()
     {
         // 'std::remove_copy_if' algorithm
 
@@ -284,29 +284,27 @@ namespace EraseRemoveIdiom
 
 void main_erase_remove_idiom()
 {
-    using namespace EraseRemoveIdiom;
+    removing_elements_01();
+    removing_elements_02();
 
-    test_removing_elements_01();
-    test_removing_elements_02();
+    removing_elements_10();
+    removing_elements_11();
 
-    test_removing_elements_10();
-    test_removing_elements_11();
+    removing_elements_20();
+    removing_elements_21();
+    removing_elements_22();
 
-    test_removing_elements_20();
-    test_removing_elements_21();
-    test_removing_elements_22();
+    // removing_elements_30();    // crashes - by design
+    removing_elements_31();
 
-    // test_removing_elements_30();    // crashes - by design
-    test_removing_elements_31();
+    removing_elements_40();
 
-    test_removing_elements_40();
+    removing_elements_50();
 
-    test_removing_elements_50();
+    removing_elements_60();
 
-    test_removing_elements_60();
-
-    test_removing_elements_70();
-    test_removing_elements_71();
+    removing_elements_70();
+    removing_elements_71();
 }
 
 // =====================================================================================

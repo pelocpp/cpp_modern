@@ -6,9 +6,9 @@ module modern_cpp:string_view;
 
 import std;
 
-namespace StringViewDemonstration {
+namespace {
 
-    static void test_01()
+    void string_view_01()
     {
         std::string_view sv{ "AAAAAAAAAAAAAAAAAAAAAAAAAAAA" };  // Konstante Zeichenkette
 
@@ -18,7 +18,7 @@ namespace StringViewDemonstration {
         char ch{ sv[0] };
     }
 
-    static void test_02()
+    void string_view_02()
     {
         std::string s{ "AAAAAAAAAAAAAAAAAAAAAAAAAAAA" };
 
@@ -31,7 +31,7 @@ namespace StringViewDemonstration {
         std::println("{}", sv);
     }
 
-    static void test_03()
+    void string_view_03()
     {
         std::string s{ "This is a std::string object" };
         std::println("{}", s);
@@ -50,7 +50,7 @@ namespace StringViewDemonstration {
         std::println("{}", sv_sub.size());
     }
 
-    static void test_04()
+    void string_view_04()
     {
         using namespace std::literals;    // easiest way to access the s and sv suffixes
 
@@ -76,7 +76,7 @@ namespace StringViewDemonstration {
         return result;
     }
 
-    static void test_05()
+    void string_view_05()
     {
         std::string_view sv{ "DiesIstEinLangerSatz" };
         std::size_t count{ countUpperCaseChars(sv) };
@@ -101,12 +101,11 @@ namespace StringViewDemonstration {
 
 void main_string_view()
 {
-    using namespace StringViewDemonstration;
-    test_01();
-    test_02();
-    test_03();
-    test_04();
-    test_05();
+    string_view_01();
+    string_view_02();
+    string_view_03();
+    string_view_04();
+    string_view_05();
 }
 
 // =====================================================================================

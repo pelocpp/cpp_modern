@@ -6,12 +6,12 @@ module modern_cpp:expected;
 
 import std;
 
-namespace StdExpected {
+namespace {
 
     //==================================================================================
     // classical implementions with error handling: using return codes
     
-    static bool divideReturnCode(double numerator, double denominator, double& result, std::string& error) {
+    bool divideReturnCode(double numerator, double denominator, double& result, std::string& error) {
 
         if (denominator == 0.0) {
             error = "Error: Division by zero";
@@ -25,7 +25,7 @@ namespace StdExpected {
     //==================================================================================
     // classical implementions with error handling: using exceptions
 
-    static double divideException(double numerator, double denominator) {
+    double divideException(double numerator, double denominator) {
 
         if (denominator == 0.0) {
             throw std::runtime_error("Error: Division by zero");
@@ -34,7 +34,7 @@ namespace StdExpected {
         return numerator / denominator;
     }
 
-    static void testDivideException()
+    void testDivideException()
     {
         // -------------------------------------------------------------------
         // demonstrating use of return codes
@@ -67,7 +67,7 @@ namespace StdExpected {
     //==================================================================================
     // std::expected
 
-    static std::expected<double, std::string> divide(double numerator, double denominator) {
+    std::expected<double, std::string> divide(double numerator, double denominator) {
 
         if (denominator == 0.0) {
             return std::unexpected{ "Error: Division by zero" };
@@ -76,7 +76,7 @@ namespace StdExpected {
         return std::expected<double, std::string> { numerator / denominator };
     }
 
-    static void test_excepted_01()
+    void excepted_01()
     {
         auto numerator = 10.0;
         auto denominator = 2.5;
@@ -99,11 +99,11 @@ namespace StdExpected {
     //==================================================================================
     // and_then
 
-    static auto square(auto value) {
+    auto square(auto value) {
         return value * value;
     }
 
-    static std::expected<double, std::string> squareIfDivisionSuccessful(double numerator, double denominator) {
+    std::expected<double, std::string> squareIfDivisionSuccessful(double numerator, double denominator) {
 
         auto result{ divide(numerator, denominator) };
 
@@ -116,7 +116,7 @@ namespace StdExpected {
         return squareResult;
     }
 
-    static std::expected<double, std::string> squareIfDivisionSuccessfulEx(double numerator, double denominator) {
+    std::expected<double, std::string> squareIfDivisionSuccessfulEx(double numerator, double denominator) {
 
         return divide(numerator, denominator).and_then(
             [](auto value) {
@@ -125,7 +125,7 @@ namespace StdExpected {
         );
     }
  
-    static void test_excepted_02()
+    void excepted_02()
     {
         auto numerator = 10.0;
         auto denominator = 2.5;
@@ -164,7 +164,7 @@ namespace StdExpected {
     //==================================================================================
     // transform
 
-    static void test_excepted_03()
+    void excepted_03()
     {
         auto numerator = 10.0;
         auto denominator = 2.5;
@@ -191,7 +191,7 @@ namespace StdExpected {
         }
     }
 
-    static void test_excepted_04()
+    void excepted_04()
     {
         auto numerator = 10.0;
         auto denominator = 2.5;
@@ -224,17 +224,17 @@ namespace StdExpected {
     // more chaining: or_else
 
     // add five
-    static std::expected<double, std::string> addFive(double value) {
+    std::expected<double, std::string> addFive(double value) {
         return value + 5;
     }
 
     // to the power of three
-    static std::expected<double, std::string> powerOfThree(double value) {
+    std::expected<double, std::string> powerOfThree(double value) {
         return value * value * value;
     }
 
     // now we are calling a dangerous function
-    static std::expected<double, std::string> russianRoulette(double value) {
+    std::expected<double, std::string> russianRoulette(double value) {
 
         auto remainder = static_cast<int>(value) % 2;
 
@@ -246,7 +246,7 @@ namespace StdExpected {
         }
     }
 
-    static void test_excepted_05()
+    void excepted_05()
     {
         auto numerator = 20.0;
         auto denominator = 2.5;         // success
@@ -267,7 +267,7 @@ namespace StdExpected {
         }
     }
 
-    static void test_excepted_06()
+    void excepted_06()
     {
         auto numerator = 20.0;
         auto denominator = 0.0;
@@ -294,14 +294,12 @@ namespace StdExpected {
 
 void main_expected()
 {
-    using namespace StdExpected;
-
-    test_excepted_01();   // std::expected
-    test_excepted_02();   // and_then
-    test_excepted_03();   // transform
-    test_excepted_04();   // transform
-    test_excepted_05();   // chaining of 'and_then'
-    test_excepted_06();   // or_else
+    excepted_01();   // std::expected
+    excepted_02();   // and_then
+    excepted_03();   // transform
+    excepted_04();   // transform
+    excepted_05();   // chaining of 'and_then'
+    excepted_06();   // or_else
 }
 
 // =====================================================================================

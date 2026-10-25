@@ -6,12 +6,12 @@ module modern_cpp:tuple;
 
 import std;
 
-namespace TupleSamples {
+namespace {
 
     // =======================================================
     // demonstrating simple operations on a std::tuple
 
-    static void test_01()
+    void tuples_01()
     {
         // declaring tuple 
         std::tuple <char, int, double> values;
@@ -67,7 +67,7 @@ namespace TupleSamples {
             std::to_string(d) + ", " + s;
     }
 
-    static void test_02()
+    void tuples_02()
     {
         Row row1{ 10, 'A', 1.11, "Mueller" };
         Row row2{ 11, 'B', 2.22, "Sepp" };
@@ -87,7 +87,7 @@ namespace TupleSamples {
     // =======================================================
     // same example, but using C++ 17 structured binding
 
-    static void test_03()
+    void tuples_03()
     {
         Row row1{ 10, 'A', 1.11, "Mueller" };
         Row row2{ 11, 'B', 2.22, "Sepp" };
@@ -116,7 +116,7 @@ namespace TupleSamples {
         }
     }
 
-    static void test_04()
+    void tuples_04()
     {
         Row row1{ 10, 'A', 1.11, "Mueller" };
         Row row2{ 11, 'B', 2.22, "Sepp" };
@@ -159,7 +159,7 @@ namespace TupleSamples {
     // =======================================================
     // retrieving number of elements of a std::tuple
 
-    static void test_05()
+    void tuples_05()
     {
         // declaring tuple 
         std::tuple <char, int, double> tuple { 'A', 123, 123.456 };
@@ -184,12 +184,11 @@ namespace TupleSamples {
 
 void main_tuple()
 {
-    using namespace TupleSamples;
-    test_01();
-    test_02();
-    test_03();
-    test_04();
-    test_05(); 
+    tuples_01();
+    tuples_02();
+    tuples_03();
+    tuples_04();
+    tuples_05(); 
 }
 
 // =====================================================================================

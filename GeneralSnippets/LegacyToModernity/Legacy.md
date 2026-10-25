@@ -71,7 +71,7 @@ Der *setter* kann besser geschrieben werden, es sollte die überflüssige Kopie 
 void setName(const std::string& name) { m_name = name; }
 ```
 
-#### 2. Versehentliches Kopieren statt Gebrauch einer Referenz - bei Rückgabe von Werten
+#### 2. Versehentliches Kopieren statt Gebrauch einer Referenz &ndash; bei Rückgabe von Werten
 
 ```cpp
 01: class Person
@@ -385,7 +385,7 @@ Das Rad neu zu erfinden, kostet in diesem Fall fast immer Performance und Stabil
 | Suchbaum (meist Rot-Schwarz-Baum, Schlüssel-Wert Paare) | &rarr; | Klasse `std::map<>` |
 | Menge (Element ist gleich Schlüssel) | &rarr; | Klasse `std::set<>` |
 | Stapel (Stack, Last-In, First-Out) | &rarr; | Klasse `std::stack<>` |
-| Warteschlange (Queue, First-In, First-Out) | &rarr; | Klasse `std::queue<>` | 
+| Warteschlange (Queue, First-In, First-Out) | &rarr; | Klasse `std::queue<>` |
 
 *Tabelle* 2: Datenstruktur und STL-Klasse.
 
@@ -405,7 +405,7 @@ Verwende `emplace_back` / `emplace` anstelle der Erstellung eines temporären Ob
 
 ### 3. `std::unordered_map` / `std::unordered_set`
 
-Verwende `std::unordered_map` / `unordered_set`, wenn keine Reihenfolge (Sortierung) erforderlich ist.
+Verwende `std::unordered_map` bzw. `unordered_set` an Stelle von `std::map` bzw. `set`, wenn keine Reihenfolge (Sortierung) erforderlich ist.
 
 ### 4. Einheitliche Initialisierung
 
@@ -415,7 +415,43 @@ Beachte auf den Fehler `std::vector<int>{3, 4}` vs. `std::vector<int>(3, 4)` und
 
 ### 5. Vererbung von Konstruktoren
 
-Delegiere und vererbe Konstruktoren, um doppelten Initialisierungscode zu vermeiden.
+Vererbe Konstruktoren, um doppelten Initialisierungscode zu vermeiden.
+
+*Beispiel*:
+
+```cpp
+01: class Base {
+02: public:
+03:     Base(int id) : m_id(id) {}
+04:     Base(int id, const std::string& name) : m_id(id), m_name(name) {}
+05: 
+06: protected:
+07:     int         m_id;
+08:     std::string m_name;
+09: };
+10: 
+11: class Derived : public Base {
+12: public:
+13:     using Base::Base;      // inherits Base(int) and Base(int, const std::string&)
+14: private:
+15:     int m_extra = 0;        // default member initializer, important
+16: };
+```
+
+*Einige Hinweise*:
+
+  * Neue Member der abgeleiteten Klasse (`Derived`) werden nicht durch die geerbten Konstruktoren initialisiert &ndash; abgesehen
+   von ihren jeweiligen Standard-Member-Initialisierern. Deshalb ist `m_extra = 0` wichtig;
+   ohne diese Angabe bliebe `m_extra` (*Built-in Type*) uninitialisiert.
+
+  * Standard-, Kopier- und Verschiebekonstruktoren der Basisklasse werden nicht vererbt
+   (die abgeleitete Klasse erhält stattdessen ihre eigenen, implizit generierten Varianten).
+
+  * Deklariert die abgeleitete Klasse einen Konstruktor mit derselben Signatur wie ein geerbter Konstruktor,
+   so verdeckt die eigene Version den geerbten Konstruktor.
+
+  * Die Zugriffsberechtigung entspricht der in der Basisklasse: Ein geerbter Konstruktor besitzt denselben Zugriffsschutz wie in der Basisklasse.
+
 
 ### 6. Standard-Member-Initialisierer
 
@@ -436,15 +472,28 @@ Verwende Standard-Member-Initialisierer (`int count = 0;`), um Konstruktoren zu 
 
 5. `std::string_view` (C++17) für schreibgeschützte / konstante Zeichenketten.
 
-6. `std::optional`, `std::variant` und `std::any` als Ersatz für Sentinel-Werte, getaggte Unions sowie `void*`.
+```cpp
+std::string s = "I'm more than 15 chars long - and reside on the heap";
+std::string_view s = "I'm more than 15 chars long - and reside not the heap";
+```
 
-7. `std::filesystem` (C++17) anstelle von selbst implementierter Dateisystembehandlung.
+`std::string_view` Objekte liegen nicht auf dem Heap. Damit entfallen auf Aufrufe in die dynamische Speicherverwaltung (`new`/`delete`),
+der &ndash; allerdings ausschließlich lesende &ndash; Zugriff ist schneller und manche Operationen (z. B. `substr`) sind ebenfalls erheblich performter.
 
-8. Strukturierte Bindungen (*Structured Binding*) (C++17) für Paare, Tupel oder die Iteration über Maps.
 
-9. `[[nodiscard]]`, `[[maybe_unused]]` und `[[fallthrough]]` zur selbsterklärenden Kennzeichnung der Absicht.
+6. `std::optional` als Ersatz für Sentinel-Werte.
 
-10. `std::expected` (C++23) zur Fehlerbehandlung ohne Exceptions.
+7. `std::variant` als Ersatz für getaggte Unions.
+
+8. `std::any` als Ersatz für `void*`.
+
+9. `std::filesystem` (C++17) anstelle von selbst implementierter Dateisystembehandlung.
+
+10. Strukturierte Bindungen (*Structured Binding*) (C++17) für Paare, Tupel oder die Iteration über Maps.
+
+11. `[[nodiscard]]`, `[[maybe_unused]]` und `[[fallthrough]]` zur selbsterklärenden Kennzeichnung der Absicht.
+
+12. `std::expected` (C++23) zur Fehlerbehandlung ohne Exceptions.
 
 ---
 
@@ -482,7 +531,7 @@ Damit der zweite `replace`-Aufruf ausgeführt werden kann, muss der Compiler zue
 Eines dieser Argumente ist `s.find("even")`.
 Die Kernfrage ist: Wann wird `s.find("even")` ausgeführt? Vor oder nach dem ersten `.replace()`?
 
-##### Möglichkeit A: find läuft zuerst (älteren C++ Standards)
+##### Möglichkeit A: `find` wird zuerst ausgeführt (ältere C++ Standards)
 
 1. Der Compiler wertet `s.find("even")` im ursprünglichen String `"I have even sold some"` aus. Das Wort `"even"` startet hier bei Index 7.
 2. Jetzt wird der erste Tausch ausgeführt: `s.replace(0, 6, "")`. Dadurch werden die ersten 6 Zeichen (`"I have"`) gelöscht. Der String ist nun: `" even sold some"`.
@@ -493,7 +542,7 @@ Die Kernfrage ist: Wann wird `s.find("even")` ausgeführt? Vor oder nach dem ers
 
 *Abbildung* 1: Verkettung von Methodenaufrufen &ndash; hier: ältere C++ Standards.
 
-##### Möglichkeit B: Von links nach rechts (C++17 und neuere C++ Standards)
+##### Möglichkeit B: Ausführung von links nach rechts (C++17 und neuere C++ Standards)
 
 Seit dem Standard C++17 wurde die Reihenfolge für verkettete Funktionsaufrufe (sogenanntes *Method Chaining*) strikt geregelt.
 Es gilt: Alles auf der linken Seite einer Kette wird garantiert vor der rechten Seite ausgewertet.
@@ -504,15 +553,15 @@ Es gilt: Alles auf der linken Seite einer Kette wird garantiert vor der rechten 
 
 <img src="Method_Chaining_02.png" width="800">
 
-*Abbildung* 1: Verkettung von Methodenaufrufen ab C++17.
+*Abbildung* 2: Verkettung von Methodenaufrufen ab C++17.
 
 ##### Fazit
 
-  * Vor C++17 konnte `s.find("even")` bereits ausgewertet werden, bevor der erste `replace`-Aufruf ausgeführt wurde,
-  was dazu führte, dass eine veraltete Position ermittelt wurde.
+  * Vor C++17 kann `s.find("even")` bereits ausgewertet werden, bevor der erste `replace`-Aufruf ausgeführt wird,
+  was dazu führt, dass eine veraltete Position ermittelt wird.
 
-  * Ab C++17 ist festgelegt, dass der Objektausdruck (`s.replace(...)`) vor den Argumenten des nachfolgenden Aufrufs ausgewertet wird;
-  dadurch sieht `find` den bereits modifizierten String.
+  * Ab C++17 ist festgelegt, dass der Objektausdruck (`s.replace(...)`) vor den Argumenten des nachfolgenden Aufrufs ausgewertet wird.
+  Dadurch sieht `find` den bereits modifizierten String.
 
 
 ## 2. Ist Move-Semantik mein neuer Freund?
@@ -540,7 +589,7 @@ Dies funktioniert nur dann, wenn Sie `= default` hinzufügen.
 
 ### 3. Standardmäßig generierte (&bdquo;defaulted&rdquo;) Move-Operationen arbeiten elementweise mit flacher Kopie
 
-Bei Verwendung der standardmäßig generierten (&bdquo;defaulted&rdquo;) Move-Operation
+Bei Verwendung der standardmäßig generierten (&bdquo;*defaulted*&rdquo;) Move-Operation
 werden rohe Zeiger einfach kopiert:
 
 ```cpp
@@ -563,16 +612,43 @@ Dies ist eine typische Falle, wenn für Klassen, die Ressourcen manuell verwalte
 
 ### 4. Das umgekehrte Problem: Objekte werden nicht verschoben, sondern kopiert
 
-In manchen Situationen kommen stillschweigend Kopien zum Einsatz, obwohl man ein
+In manchen Situationen kommen Kopien stillschweigend zum Einsatz, obwohl man ein
 Verschieben erwarten würde.
 
 Es geht hier aber weniger um Fehler als vielmehr um Beeinträchtigungen bzgl. der Performance.
 
 #### `std::move` auf einem `const`-Objekt
 
-Es bindet an den Kopierkonstruktor, sodass eine Kopie erstellt wird und ein trügerisches Gefühl von Effizienz entsteht. 
+In diesem Fall bindet die Anweisung an den Kopierkonstruktor, sodass eine Kopie erstellt wird und ein trügerisches Gefühl von Effizienz entsteht. 
 
-#### `std::move` im Zusammenspiel mit `return`
+```cpp
+01: struct Tracer {
+02: 
+03:     std::string name;
+04: 
+05:     Tracer(std::string n) : name{ std::move(n) } {}
+06: 
+07:     Tracer(const Tracer& other) : name(other.name) {
+08:         std::println("copy {}", name);
+09:     }
+10: 
+11:     Tracer(Tracer&& other) noexcept : name{ std::move(other.name) } {
+12:         std::println("move");
+13:     }
+14: };
+15: 
+16: void test()
+17: {
+18:     Tracer a{ "one" };
+19:     Tracer b = std::move(a);        // prints "move"
+20: 
+21:     const Tracer c{ "two" };
+22:     Tracer d = std::move(c);        // prints "copy two"
+23: }
+```
+
+
+#### `std::move` im Zusammenspiel mit `return` 
 
 Eine Anweisung der Gestalt
 
@@ -581,6 +657,22 @@ return std::move(local);
 ```
 
 verhindert das Feature von RVO (*Return Value Optimization*) und erzwingt eine Verschiebung.
+
+Man könnte nun argumentieren, dass eine Verschiebe-Operation schneller ist als eine Kopier-Operation.
+Achtung: Die Aussage hier lautet: **Keine** Operation oder eine Verschiebe-Operation.
+
+```cpp
+01: std::unique_ptr<int> getValue()
+02: {
+03:     std::unique_ptr<int> value{ std::make_unique<int>(100) };
+06:     return std::move(value);  // Bad Style - RVO is prevented
+07: }
+08: 
+09: void test()
+10: {
+11:     std::unique_ptr<int> data = getValue();
+12: }
+```
 
 ---
 
@@ -598,23 +690,13 @@ Details zur Auswertungsreihenfolge,
 implizite Verschiebung,
 Typverengung in geschweiften Klammern {},
 unerwartete automatische Typableitung,
-entfernte Funktionen wie `auto_ptr` und `std::random_shuffle`,
-dynamische Ausnahmebehandlungen mit `throw(X)`
-
-Modernisieren Sie nicht um seiner selbst willen. Die Umstellung jeder Schleife auf `auto`/`lambda`-Ausdrücke in Code,
-der nicht bearbeitet wird, verursacht unnötigen Aufwand bei Code-Reviews und erhöht das Risiko von Regressionen.
-
-
 
 TBD: Was fehlt
 
 const
 std::initializer_list
 
-std::string_view
-
 is_transparent
-
 
 ### `= default` für triviale spezielle Member
 

@@ -6,7 +6,7 @@ module modern_cpp:virtual_override_final;
 
 import std;
 
-namespace VirtualOverrideFinal{
+namespace {
 
     class Base
     {
@@ -60,21 +60,15 @@ namespace VirtualOverrideFinal{
     //};
 
     // =========================================================
-
-    static void test_01()
-    {
-        Base* ptr;
-        ptr = new Derived();
-        ptr->func(123);
-
-        delete ptr;
-    }
 }
 
 void main_virtual_override_final()
 {
-    using namespace VirtualOverrideFinal;
-    test_01();
+    Base* ptr;
+    ptr = new Derived();
+    ptr->func(123);
+
+    delete ptr;
 }
 
 // =====================================================================================
