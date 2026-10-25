@@ -14,25 +14,25 @@
   * [Hoher Nutzen, geringes Risiko (C++11-Grundlagen)](#link2)
   * [Der größte Gewinn: Ownership und Ressourcenmanagement](#link3)
   * [Performanz and API Cleanliness](#link4)
-  * [Ersetzen von Eigenentwicklungen durch die Standardbibliothek STL](#link5)
+  * [Die Standardbibliothek STL / Ersetzen von Eigenentwicklungen](#link5)
   * [Verschiedenes / Stolperfallen](#link6)
 
 ---
 
 ## Die Grundregeln <a name="link1"></a>
 
-  * Modernisiere schrittweise:<br />
+  * Modernisiere nur schrittweise:<br />
    Aber nur dort, wo es sich auszahlt &ndash; und niemals auf einen Schlag im Rahmen einer kompletten Neuentwicklung
   (sogenanntes &bdquo;*Big-Bang Rewrite*&rdquo;).
 
   * Erstelle Tests für den betroffenen Code, bevor irgendetwas geändert wird:<br />
-  Sogenannte &bdquo;Characterization Tests&rdquo; (die das aktuelle Verhalten erfassen und festschreiben)
+  Sogenannte &bdquo;*Characterization Tests*&rdquo; (die das aktuelle Verhalten erfassen und festschreiben)
   sind wichtiger als jedes spezifische Sprachfeature.
 
   * Hebe den Standard schrittweise an:<br />
-  Kompilieren Sie den Code zunächst mit C++11, dann mit C++14, C++17 usw.
-  Beheben Sie bei jedem Schritt die auftretenden Warnungen.
-  Ein direkter Sprung auf C++20 oder höhrt macht es schwieriger, Fehler ihren jeweiligen Ursachen zuzuordnen.
+  Kompiliere den Code zunächst mit C++11, dann mit C++14, C++17 usw.
+  Behebe bei jedem Schritt die auftretenden Warnungen.
+  Ein direkter Sprung auf C++20 oder höher macht es schwieriger, Fehler ihren jeweiligen Ursachen zuzuordnen.
 
   * Nutze Werkzeuge:<br />
   `clang-tidy` bietet eine Reihe von &bdquo;modernize-*&rdquo;-Prüfungen
@@ -95,7 +95,7 @@ const std::string& getName() { return m_name; }
 ```
 
 Diese Anregung ist mit einer gewissen Vorsicht zu sehen:
-Die resultierende Referenz ist nur solange gültig, wie das beteilige Objekt noch nicht zerstört wurde.
+Die resultierende Referenz ist nur so lange gültig, wie das beteiligte Objekt noch nicht zerstört wurde.
 
 #### 3. `nullptr` statt `NULL` / `0`
 
@@ -226,9 +226,9 @@ angepasst werden:
 01: std::vector<Person> persons;   // add comment ...
 02: // std::list<Person> persons;  // ... and remove comment
 03: 
-04: std::vector<Person>::const_iterator it = persons.begin();   // iterator type must be manually adjusted
+04: std::vector<Person>::const_iterator it = persons.begin(); // iterator type must be manually adjusted
 05: 
-06: auto it2 = persons.begin();                                 // iterator type is deducted automatically  - at compile time
+06: auto it2 = persons.begin();                               // iterator type is deducted automatically - at compile time
 ```
 
 Bei einer &bdquo;Range-based for&rdquo;-Schleife oder der Verwendung von `auto` spielt das hingegen keine Rolle.
@@ -334,31 +334,82 @@ Es ist nicht erforderlich, jeden Zeiger in einen Smart Pointer umzuwandeln &ndas
 
 ### 4. Nutze RAII-Wrapper für Ressourcen wie Dateien, Locks oder Handles
 
-Nutze RAII-Wrapper Klassen wie z. B. `std::lock_guard` / `std::scoped_lock`, `std::fstream` oder `std::unique_ptr` mit benutzerdefinierten &bdquo;Deletern&rdquo;.
+Nutze RAII-Wrapper-Klassen wie z. B. `std::lock_guard` / `std::scoped_lock`, `std::fstream` oder `std::unique_ptr` mit benutzerdefinierten &bdquo;Deletern&rdquo;.
 
-### 5. Verwenden Sie Container bzw. die STL anstelle von manuell verwalteten Arrays
+### 5. Verwenden Sie Container bzw. die STL anstelle von Eigenentwicklungen
 
-Setze auf `std::vector` oder `std::array` statt auf `new[]`/`delete[]` oder C-Arrays.
+Man sollte die Container der C++ Standard Template Library (STL) im Gegensatz zu Eigenentwicklungen einsetzen,
+weil sie hochgradig optimiert, fehlerfrei getestet und der gemeinsame Standard in der C++-Entwicklung sind.
 
+Das Rad neu zu erfinden, kostet in diesem Fall fast immer Performance und Stabilität.
+
+1. Maximale Performance (Effizienz)
+
+  * Von Experten optimiert: Die STL-Container wurden über Jahrzehnte von den weltweit besten C++-Entwicklern optimiert.
+  * Compiler-Optimierung: Moderne Compiler kennen die STL in- und auswendig und können den generierten Maschinencode extrem effizient optimieren (z. B. durch Inlining).
+  * Speichereffizienz: Klassen wie `std::vector` minimieren den Overhead bei der Speicherallokation durch clevere Wachstumsstrategien.
+
+2. Zuverlässigkeit und Fehlerfreiheit (Robustheit)
+
+  * Milliardenfach bewährt: STL-Container sind im produktiven Einsatz bei Google, Microsoft, in Gaming-Engines und Raumfahrtsystemen.
+	Sie enthalten keine versteckten Speicherlecks oder Edge-Case-Bugs mehr.
+  * Typsicherheit: Durch C++ **Templates** arbeitet die STL komplett typsicher zur Kompilierzeit, ohne Performance-Verlust.
+
+3. Standardisierung und Lesbarkeit (Wartbarkeit)
+
+  * Gemeinsame Sprache: Jeder C++-Entwickler weltweit versteht sofort, was ein `std::vector` oder eine `std::unordered_map` macht.
+	Bei einer Eigenentwicklung wie `MyCustomList` muss sich jeder neue Entwickler erst durch den Quellcode wühlen.
+  * Zukunftssicherheit: Die STL wird mit jedem neuen C++-Standard (C++20, C++23, C++26) automatisch weiterentwickelt,
+	sicherer gemacht und um moderne Features (wie *Ranges*) erweitert.
+
+4. Das STL-Ökosystem (Interoperabilität)
+
+  * Nahtloses Zusammenspiel: STL-Container sind perfekt auf die Algorithmen der STL (`<algorithm>`) abgestimmt.
+    Man kann eine `std::unordered_set` ohne Anpassung mit `std::find`, `std::copy` oder Sortieralgorithmen kombinieren.
+
+5. Produktivität (Time-to-Market)
+
+  * Kein Zeitverlust: Das Schreiben einer eigenen, absolut sicheren Hashtabelle inklusive Memory-Management, Iterator-Support und Thread-Safety-Garantien dauert Tage oder Wochen.
+	Die STL liefert das fehlerfrei in einer Zeile Code.
+
+*Tabelle* 2 gibt einen Überblick über gängige Datenstrukturen aus der Informatik und ihrem Pendant in der STL:
+
+| Datenstruktur |  | STL-Klasse | 
+|:- |:-|:-|
+| Flexibel langes Feld | &rarr; | Klasse `std::vector<>` |  
+| Fixed-Size Array | &rarr; | Klasse `std::array<>` | 
+| Verkettete Liste | &rarr; | Klasse `std::list<>` | 
+| Einfach verkettete Liste | &rarr; | Klasse `std::forward_list<>` |
+| Hash Tabelle (unsortiert, Schlüssel-Wert Paare) | &rarr; | Klasse `std::unordered_map<>` |
+| Hash Tabelle (unsortiert, Element ist gleich Schlüssel) | &rarr; | Klasse `std::unordered_set<>` |
+| Suchbaum (meist Rot-Schwarz-Baum, Schlüssel-Wert Paare) | &rarr; | Klasse `std::map<>` |
+| Menge (Element ist gleich Schlüssel) | &rarr; | Klasse `std::set<>` |
+| Stapel (Stack, Last-In, First-Out) | &rarr; | Klasse `std::stack<>` |
+| Warteschlange (Queue, First-In, First-Out) | &rarr; | Klasse `std::queue<>` | 
+
+*Tabelle* 2: Datenstruktur und STL-Klasse.
 
 
 ## Performanz and API Cleanliness <a name="link4"></a>
 
-### 1. Move-Semantik (Rvalue-Referenzen)
+### 1. Move-Semantik (RValue-Referenzen)
 
-Die Rückgabe großer Objekte per Wert wird effizienter. Füge Move-Konstruktoren/Zuweisungen hinzu, wenn Klassen Ressourcen besitzen (folge nach Möglichkeit der Nullregel: Wenn Member sich selbst verwalten, benötigst du keine speziellen Member).
+  * Das Weiterreichen großer Objekte per Wert wird effizienter.
+
+  * Füge Move-Konstruktoren/Zuweisungen hinzu, wenn Klassen Ressourcen besitzen &ndash; folge nach Möglichkeit der &bdquo;*Role of Zero*&rdquo;:
+  Wenn Member sich selbst verwalten, benötigt man keine speziellen Member.
 
 ### 2. `emplace_back` / `emplace`
 
-Verwende `emplace_back` / `emplace` anstelle der Erstellung eines temporären Objekts und dessen Zuweisung
+Verwende `emplace_back` / `emplace` anstelle der Erstellung eines temporären Objekts und dessen Zuweisung.
 
-### 3. `std::unordered_map` / `unordered_set`
+### 3. `std::unordered_map` / `std::unordered_set`
 
 Verwende `std::unordered_map` / `unordered_set`, wenn keine Reihenfolge (Sortierung) erforderlich ist.
 
 ### 4. Einheitliche Initialisierung
 
-Einheitliche Initialisierung `{}` und Initialisierungslisten für eine übersichtlichere Konstruktion.
+Einheitliche Initialisierung (&bdquo;*Uniform Initialization*&rdquo; mit `{}`) und Initialisierungslisten für eine übersichtlichere Konstruktion.
 
 Beachte auf den Fehler `std::vector<int>{3, 4}` vs. `std::vector<int>(3, 4)` und verringere Konvertierungen, die nun Fehler verursachen.
 
@@ -371,7 +422,7 @@ Delegiere und vererbe Konstruktoren, um doppelten Initialisierungscode zu vermei
 Verwende Standard-Member-Initialisierer (`int count = 0;`), um Konstruktoren zu vereinfachen.
 
 
-## Ersetzen von Eigenentwicklungen durch die Standardbibliothek STL <a name="link5"></a>
+## Die Standardbibliothek STL / Ersetzen von Eigenentwicklungen <a name="link5"></a>
 
 1. Lambdas anstelle von Funktor-Klassen oder `std::bind1st`/`std::bind2nd`
   Sie sind im Zusammenhang mit `std::sort`, `std::find_if` usw. deutlich besser lesbar.
