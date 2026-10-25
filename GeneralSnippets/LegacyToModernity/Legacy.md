@@ -65,7 +65,7 @@
 15: };
 ```
 
-Der *setter* kann besser geschrieben werden:
+Der *setter* kann besser geschrieben werden, es sollte die überflüssige Kopie vermieden werden:
 
 ```cpp
 void setName(const std::string& name) { m_name = name; }
@@ -94,11 +94,14 @@ Der *getter* kann besser geschrieben werden:
 const std::string& getName() { return m_name; }
 ```
 
-#### 3. `nullptr` statt `NULL` / `0`.
+Diese Anregung ist mit einer gewissen Vorsicht zu sehen:
+Die resultierende Referenz ist nur solange gültig, wie das beteilige Objekt noch nicht zerstört wurde.
+
+#### 3. `nullptr` statt `NULL` / `0`
 
 Das Kernproblem: `NULL` ist eine ganzzahlige Konstante.
 
-In C++98 ist `NULL` als `0` (bzw. `0L` oder &ndash; bei GCC &ndash; als `__null`) definiert;
+In C++98 ist `NULL` als `0` (bzw. `0L` oder &ndash; bei GCC &ndash; als `__null`) definiert,
 es handelt sich also um eine Ganzzahlkonstante, nicht um einen Zeiger. Dies führt zu mehreren konkreten Problemen.
 
 1. Bei der &bdquo;*Overload Resolution*&rdquo; wird die falsche Funktion gewählt.
@@ -130,18 +133,15 @@ wegen eines &bdquo;mehrdeutigen Aufrufs&rdquo; (&bdquo;*ambiguous call*&rdquo;).
 10: wrap(nullptr);     // T = nullptr_t; converts to any pointer, works
 ```
 
+#### 4. Schlüsselwort `override`<br />
 
-#### 4. Schlüsselwörter `override` / `final` für virtuelle Funktionen.<br />
+Mit dem Schlüsselwort `override` erkennt man stillschweigende Signaturkonflikte, die Verwendung des Schlüsselworts ist kostenlos.
 
-Diese Schlüsselwörter erkennen stillschweigende Signaturkonflikte und sind nahezu kostenlos.
 Deklariert man eine Methode mit dem Schlüsselwort `override`, drückt man die Absicht aus,
 sie zu überschreiben. 
 Daher ist es sinnvoll, `override` an der Stelle anzugeben,
-an der man diese Absicht hat.
-Dies kann und sollte man dann den Übersetzer auch überprüfen lassen,
-nämlich die Absicht, diese Methode zu überschreiben.
-
-Frei nach dem Motto
+an der man diese Absicht hat. Dies kann und sollte man dann den Übersetzer auch überprüfen lassen,
+nämlich die Absicht, diese Methode zu überschreiben:
 
 > **The more things you check at compile time the fewer runtime bugs you have.**
 
@@ -211,7 +211,7 @@ Herkömmliche Schleifen lassen Fehler zu, die der Compiler nicht erkennt:
   * die Verwendung eines `iterator`-Objekts anstelle eines `const_iterator`-Objekts (oder umgekehrt).
   * &bdquo;Off-by-one&rdquo;-Fehler bei indexbasierten Schleifen (z. B. `i <= v.size()`).
 
-Die &bdquo;Range-based for&rdquo;-Schleife schließt all diese Fehler konstruktionsbedingt aus.
+Die bereichsbasierte `for`-Schleife schließt all diese Fehler konstruktionsbedingt aus.
 
 #### 6. Verwendung von `auto`: Refactoring wird einfacher
 
@@ -226,9 +226,9 @@ angepasst werden:
 01: std::vector<Person> persons;   // add comment ...
 02: // std::list<Person> persons;  // ... and remove comment
 03: 
-04: std::vector<Person>::const_iterator it = persons.begin();   // Container-class of iterator must be adjusted
+04: std::vector<Person>::const_iterator it = persons.begin();   // iterator type must be manually adjusted
 05: 
-06: auto it2 = persons.begin();                                 // type of it2 is deducted (at compile time)
+06: auto it2 = persons.begin();                                 // iterator type is deducted automatically  - at compile time
 ```
 
 Bei einer &bdquo;Range-based for&rdquo;-Schleife oder der Verwendung von `auto` spielt das hingegen keine Rolle.
@@ -245,9 +245,9 @@ Dasselbe gilt für lange Template-Typen wie `std::map<std::string, std::vector<i
 
 ##### Man beachte, wo Probleme auftreten können
 
-  * Versehentliche Kopien: `for (auto o : orders)` kopiert jedes Element. Verwende stattdessen `const auto&` (oder `auto&`), falls man das Element ändern möchten.
+  * Versehentliche Kopien: `for (auto o : orders)` kopiert jedes Element. Verwende stattdessen `const auto&` (oder `auto&`), falls man das Element ändern möchte.
   * Schleifen, die den Iterator selbst verwenden (etwa zum Löschen von Elementen, für `std::distance` oder den Zugriff auf das vorherige bzw. nächste Element), lassen sich nicht einfach umstellen.
-  * Wird der Container innerhalb der Schleife verändert, werden &ndash; genau wie zuvor &ndash; die Iteratoren ungültig; eine bereichsbasierte `for`-Schleife (*range-based for loop*) bietet in diesem Fall auch keinen Schutz.
+  * Wird der Container innerhalb der Schleife verändert, werden &ndash; genau wie zuvor &ndash; die Iteratoren ungültig; eine bereichsbasierte `for`-Schleife (*Range-based for loop*) bietet in diesem Fall auch keinen Schutz.
 
 
 #### 7. Enum-Klassen statt einfacher Enums
@@ -292,7 +292,7 @@ Unterschiede im Gültigkeitsbereich, keine implizite `int`-Konvertierung:
 35: }
 ```
 
-### 8. `= delete` statt des Tricks mit dem &bdquo;privaten undefinierten Kopierkonstruktor&rdquo;
+#### 8. `= delete` an Stelle des Tricks mit &bdquo;privatem Kopierkonstruktor&rdquo;
 
 Gegen private Konstruktoren spricht zunächst einmal nichts, wenn sie ihren eigentlichen Zweck erfüllen &ndash; wie
 etwa beim *Singleton*-Pattern oder bei *Factory*-Methoden, wo die Instanziierung bewusst kontrolliert werden soll.
@@ -306,7 +306,7 @@ Seit C++ 11 ist `= delete` der Standard.
 | Fehlermeldung | Spät und kryptisch. Oft erst beim Linken, falls innerhalb der Klasse kopiert wird. | Sofort und klar verständlich. Fehlermeldung direkt beim Kompilieren mit exakter Zeilenangabe. |
 | Lesbarkeit (Intention) | Der Entwickler muss raten, ob das Absicht ist oder noch implementiert wird. | Explizit. Drückt die Design-Entscheidung sofort unmissverständlich aus. |
 
-*Tabelle* 1: Zuordnung der Klassen
+*Tabelle* 1: Vergleich von privatem Kopierkonstruktor und `= delete`.
 
 
 ## Der größte Gewinn: Ownership und Ressourcenmanagement <a name="link3"></a>

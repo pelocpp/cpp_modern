@@ -114,9 +114,9 @@ namespace {
         std::vector<Person> persons;   // add comment ...
         // std::list<Person> persons;  // ... and remove comment
 
-        std::vector<Person>::const_iterator it = persons.begin();
+        std::vector<Person>::const_iterator it = persons.begin();  // iterator type must be manually adjusted
 
-        auto it2 = persons.begin();
+        auto it2 = persons.begin();                                // iterator type is deducted automatically  - at compile time
     }
 
     // =======================================================================
