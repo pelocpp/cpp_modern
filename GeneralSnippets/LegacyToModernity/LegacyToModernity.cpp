@@ -307,7 +307,7 @@ namespace {
         Buffer buffer2 = std::move(buffer1);  // crashes
     }
 
-    // double-free according to defaulted move c'tor
+    // copy operation instead of moving
 
     struct Tracer {
 
@@ -333,6 +333,32 @@ namespace {
         Tracer d = std::move(c);        // prints "copy two"
     }
 
+    // copy operation instead of moving - one more example
+
+    std::vector<std::string> members;
+
+    void store(const std::string& s) {
+        members.push_back(std::move(s));   // looks efficient, actually copies
+    }
+
+    // Option 1: take by value and move (good if you always keep a copy)
+    //void store(std::string s) {
+    //    members.push_back(std::move(s));   // moves - one solution
+    //}
+
+    // Option 2: provide overloads
+    //void store(const std::string& s) { members.push_back(s); }
+    //void store(std::string&& s) { members.push_back(std::move(s)); }
+
+    void legacy_move_semantics_04()
+    {
+        std::string s("abc");        
+        store(s);
+        store("def");
+    }
+
+    // do not use std::move in combination with return
+
     std::unique_ptr<int> getValue()
     {
         std::unique_ptr<int> value{ std::make_unique<int>(100) };
@@ -341,7 +367,7 @@ namespace {
         //return std::move(value);  // Bad Style - RVO is prevented
     }
 
-    void legacy_move_semantics_04()
+    void legacy_move_semantics_05()
     {
         std::unique_ptr<int> data = getValue();
     }
@@ -349,9 +375,10 @@ namespace {
     void legacy_move_semantics()
     {
         legacy_move_semantics_01();
-        legacy_move_semantics_02();
+        // legacy_move_semantics_02();  // crashes intentionally
         legacy_move_semantics_03();
         legacy_move_semantics_04();
+        legacy_move_semantics_05();
     }
 }
 
@@ -366,8 +393,8 @@ void main_legacy()
     //legacy_enums();
     //legacy_method_chaining();
     //legacy_string_view();
-    legacy_initializer_list();
-    //legacy_move_semantics();
+    //legacy_initializer_list();
+    legacy_move_semantics();
 }
 
 // ===========================================================================

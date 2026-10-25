@@ -502,12 +502,12 @@ der &ndash; allerdings ausschließlich lesende &ndash; Zugriff ist schneller und
 ```
 
 Die leicht-gewichtige Containerklasse `std::initializer_list` wurde der Klassenbibliothek hinzugefügt,
-um eine Übergabe einer Vektoren-ähnlichen Datenstruktur, die ihre Werte auf den Heap kopiert und verwaltet,
+um die Übergabe einer Vektoren-ähnlichen Datenstruktur, die ihre Werte auf den Heap kopiert und dort verwaltet,
 auch ohne Heap zu ermöglichen.
 
 *Vergleich*: 
 
-Übergabe mit Klasse `std::vector`: Konzeptionell umfasst dies
+Übergabe von Werten mit Klasse `std::vector`: Konzeptionell umfasst dies
 
   * Das Erstellen eines `std::vector`-Objekts.
   * Das Zuweisen von Speicher (`new`) für dessen Elemente, üblicherweise auf dem Heap.
@@ -518,12 +518,12 @@ auch ohne Heap zu ermöglichen.
   * Das Zerstören des temporären `std::vector`-Objekts und die Freigabe des Heap-Speichers.
   * Rückgabe des Ergebnisses
 
-Übergabe mit Klasse `std::initializer_list`: Konzeptionell umfasst dies
+Übergabe von Werten mit Klasse `std::initializer_list`: Konzeptionell umfasst dies
 
-  * Ablegen der Parameter auf dem Stack (also kein Zugriff auf den Heap)
+  * Ablegen der Parameter auf dem Stack (also kein Zugriff auf den Heap).
   * Übergabe zweier Iteratoren-Objekte (Adressen), die auf das erste und das letzte Element auf dem Stack verweisen.
   * Aufruf der Zielfunktion.
-  * Das Summieren der Elemente mit Hilfe zweier Iteratoren-Objekte, die das `std::initializer_list`-Objekt zur Verfügung stellt.
+  * Das Summieren der Elemente mit Hilfe der zwei Iteratoren-Objekte, die das `std::initializer_list`-Objekt zur Verfügung stellt.
   * Rückgabe des Ergebnisses
 
 
@@ -693,6 +693,18 @@ In diesem Fall bindet die Anweisung an den Kopierkonstruktor, sodass eine Kopie 
 23: }
 ```
 
+Noch ein zweites Beispiel: Eine etwas realistischere Version dieser Beobachtung:
+
+
+```cpp
+01: std::vector<std::string> members;
+02: 
+03: void store(const std::string& s) {
+04:     members.push_back(std::move(s));   // looks efficient, actually copies
+05: }
+```
+
+
 ##### `std::move` im Zusammenspiel mit `return` 
 
 Eine Anweisung der Gestalt
@@ -725,11 +737,7 @@ Achtung: Die Aussage hier lautet: **Keine** Operation oder eine Verschiebe-Opera
 
 ---
 
-
-==============================================================================
-==============================================================================
-
-REST
+## To beDone
 
 Details zur Auswertungsreihenfolge,
 implizite Verschiebung,
