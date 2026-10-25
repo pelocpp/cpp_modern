@@ -317,103 +317,103 @@ Hier verbergen sich die meisten echten Fehler (Leaks, Double-Frees, Lücken in d
 Daher ist dies die lohnendste Änderung, erfordert aber auch die größte Sorgfalt.
 Gehen Sie dabei modulweise vor und setzen Sie Tests ein.
 
-### 1. Ersetze `std::auto_ptr` durch `std::unique_ptr`
+#### 1. Ersetze `std::auto_ptr` durch `std::unique_ptr`
 
 Da `std::auto_ptr` in C++17 entfernt wurde, ist dieser Schritt langfristig zwingend erforderlich.
 
-### 2. Klassen `std::unique_ptr` und `std::shared_ptr`
+#### 2. Klassen `std::unique_ptr` und `std::shared_ptr`
 
 Für besitzende (&bdquo;owning&rdquo;) Rohzeiger gilt: Verwende `std::unique_ptr` (bei exklusivem Besitz) oder
 `std::shared_ptr` (nur wenn der Besitz tatsächlich geteilt wird).
 
 Erstelle diese Objekte mittels `std::make_unique` (ab C++14) oder `std::make_shared`.
 
-### 3. Nicht-besitzende (&bdquo;non-owning&rdquo;) Rohzeiger können beibehalten werden
+#### 3. Nicht-besitzende (&bdquo;non-owning&rdquo;) Rohzeiger können beibehalten werden
 
 Es ist nicht erforderlich, jeden Zeiger in einen Smart Pointer umzuwandeln &ndash; dies wäre eine unnötige Überkorrektur.
 
-### 4. Nutze RAII-Wrapper für Ressourcen wie Dateien, Locks oder Handles
+#### 4. Nutze RAII-Wrapper für Ressourcen wie Dateien, Locks oder Handles
 
 Nutze RAII-Wrapper-Klassen wie z. B. `std::lock_guard` / `std::scoped_lock`, `std::fstream` oder `std::unique_ptr` mit benutzerdefinierten &bdquo;Deletern&rdquo;.
 
-### 5. Verwenden Sie Container bzw. die STL anstelle von Eigenentwicklungen
+#### 5. Verwenden Sie Container bzw. die STL anstelle von Eigenentwicklungen
 
 Man sollte die Container der C++ Standard Template Library (STL) im Gegensatz zu Eigenentwicklungen einsetzen,
 weil sie hochgradig optimiert, fehlerfrei getestet und der gemeinsame Standard in der C++-Entwicklung sind.
 
 Das Rad neu zu erfinden, kostet in diesem Fall fast immer Performance und Stabilität.
 
-1. Maximale Performance (Effizienz)
+##### 1. Maximale Performance (Effizienz)
 
   * Von Experten optimiert: Die STL-Container wurden über Jahrzehnte von den weltweit besten C++-Entwicklern optimiert.
   * Compiler-Optimierung: Moderne Compiler kennen die STL in- und auswendig und können den generierten Maschinencode extrem effizient optimieren (z. B. durch Inlining).
   * Speichereffizienz: Klassen wie `std::vector` minimieren den Overhead bei der Speicherallokation durch clevere Wachstumsstrategien.
 
-2. Zuverlässigkeit und Fehlerfreiheit (Robustheit)
+##### 2. Zuverlässigkeit und Fehlerfreiheit (Robustheit)
 
   * Milliardenfach bewährt: STL-Container sind im produktiven Einsatz bei Google, Microsoft, in Gaming-Engines und Raumfahrtsystemen.
 	Sie enthalten keine versteckten Speicherlecks oder Edge-Case-Bugs mehr.
   * Typsicherheit: Durch C++ **Templates** arbeitet die STL komplett typsicher zur Kompilierzeit, ohne Performance-Verlust.
 
-3. Standardisierung und Lesbarkeit (Wartbarkeit)
+##### 3. Standardisierung und Lesbarkeit (Wartbarkeit)
 
   * Gemeinsame Sprache: Jeder C++-Entwickler weltweit versteht sofort, was ein `std::vector` oder eine `std::unordered_map` macht.
 	Bei einer Eigenentwicklung wie `MyCustomList` muss sich jeder neue Entwickler erst durch den Quellcode wühlen.
   * Zukunftssicherheit: Die STL wird mit jedem neuen C++-Standard (C++20, C++23, C++26) automatisch weiterentwickelt,
 	sicherer gemacht und um moderne Features (wie *Ranges*) erweitert.
 
-4. Das STL-Ökosystem (Interoperabilität)
+##### 4. Das STL-Ökosystem (Interoperabilität)
 
   * Nahtloses Zusammenspiel: STL-Container sind perfekt auf die Algorithmen der STL (`<algorithm>`) abgestimmt.
     Man kann eine `std::unordered_set` ohne Anpassung mit `std::find`, `std::copy` oder Sortieralgorithmen kombinieren.
 
-5. Produktivität (Time-to-Market)
+##### 5. Produktivität (*Time-to-Market*)
 
   * Kein Zeitverlust: Das Schreiben einer eigenen, absolut sicheren Hashtabelle inklusive Memory-Management, Iterator-Support und Thread-Safety-Garantien dauert Tage oder Wochen.
 	Die STL liefert das fehlerfrei in einer Zeile Code.
 
 *Tabelle* 2 gibt einen Überblick über gängige Datenstrukturen aus der Informatik und ihrem Pendant in der STL:
 
-| Datenstruktur |  | STL-Klasse | 
-|:- |:-|:-|
-| Flexibel langes Feld | &rarr; | Klasse `std::vector<>` |  
-| Fixed-Size Array | &rarr; | Klasse `std::array<>` | 
-| Verkettete Liste | &rarr; | Klasse `std::list<>` | 
-| Einfach verkettete Liste | &rarr; | Klasse `std::forward_list<>` |
-| Hash Tabelle (unsortiert, Schlüssel-Wert Paare) | &rarr; | Klasse `std::unordered_map<>` |
-| Hash Tabelle (unsortiert, Element ist gleich Schlüssel) | &rarr; | Klasse `std::unordered_set<>` |
-| Suchbaum (meist Rot-Schwarz-Baum, Schlüssel-Wert Paare) | &rarr; | Klasse `std::map<>` |
-| Menge (Element ist gleich Schlüssel) | &rarr; | Klasse `std::set<>` |
-| Stapel (Stack, Last-In, First-Out) | &rarr; | Klasse `std::stack<>` |
-| Warteschlange (Queue, First-In, First-Out) | &rarr; | Klasse `std::queue<>` |
+| Datenstruktur | STL-Klasse | 
+|:- |:-|
+| Flexibel langes Feld | &rarr; Klasse `std::vector<>` |  
+| Fixed-Size Array | &rarr; Klasse `std::array<>` | 
+| Einfach verkettete Liste | &rarr; Klasse `std::forward_list<>` |
+| Doppelt verkettete Liste | &rarr; Klasse `std::list<>` | 
+| Hash Tabelle (unsortiert, Schlüssel-Wert Paare) | &rarr; Klasse `std::unordered_map<>` |
+| Hash Tabelle (unsortiert, Element ist gleich Schlüssel) | &rarr; Klasse `std::unordered_set<>` |
+| Suchbaum (meist Rot-Schwarz-Baum, Schlüssel-Wert Paare) | &rarr; Klasse `std::map<>` |
+| Menge (Element ist gleich Schlüssel) | &rarr; Klasse `std::set<>` |
+| Stapel (Stack, Last-In, First-Out) | &rarr; Klasse `std::stack<>` |
+| Warteschlange (Queue, First-In, First-Out) | &rarr; Klasse `std::queue<>` |
 
-*Tabelle* 2: Datenstruktur und STL-Klasse.
+*Tabelle* 2: Allgemeine Datenstruktur und korrespondierende STL-Klasse.
 
 
 ## Performanz and API Cleanliness <a name="link4"></a>
 
-### 1. Move-Semantik (RValue-Referenzen)
+#### 1. Move-Semantik (RValue-Referenzen)
 
   * Das Weiterreichen großer Objekte per Wert wird effizienter.
 
-  * Füge Move-Konstruktoren/Zuweisungen hinzu, wenn Klassen Ressourcen besitzen &ndash; folge nach Möglichkeit der &bdquo;*Role of Zero*&rdquo;:
+  * Füge Move-Konstruktoren/Zuweisungen hinzu, wenn Klassen Ressourcen besitzen &ndash; folge nach Möglichkeit der &bdquo;*Rule of Zero*&rdquo;:
   Wenn Member sich selbst verwalten, benötigt man keine speziellen Member.
 
-### 2. `emplace_back` / `emplace`
+#### 2. `emplace_back` / `emplace`
 
 Verwende `emplace_back` / `emplace` anstelle der Erstellung eines temporären Objekts und dessen Zuweisung.
 
-### 3. `std::unordered_map` / `std::unordered_set`
+#### 3. `std::unordered_map` / `std::unordered_set`
 
 Verwende `std::unordered_map` bzw. `unordered_set` an Stelle von `std::map` bzw. `set`, wenn keine Reihenfolge (Sortierung) erforderlich ist.
 
-### 4. Einheitliche Initialisierung
+#### 4. Einheitliche Initialisierung
 
 Einheitliche Initialisierung (&bdquo;*Uniform Initialization*&rdquo; mit `{}`) und Initialisierungslisten für eine übersichtlichere Konstruktion.
 
 Beachte auf den Fehler `std::vector<int>{3, 4}` vs. `std::vector<int>(3, 4)` und verringere Konvertierungen, die nun Fehler verursachen.
 
-### 5. Vererbung von Konstruktoren
+#### 5. Vererbung von Konstruktoren
 
 Vererbe Konstruktoren, um doppelten Initialisierungscode zu vermeiden.
 
@@ -453,24 +453,24 @@ Vererbe Konstruktoren, um doppelten Initialisierungscode zu vermeiden.
   * Die Zugriffsberechtigung entspricht der in der Basisklasse: Ein geerbter Konstruktor besitzt denselben Zugriffsschutz wie in der Basisklasse.
 
 
-### 6. Standard-Member-Initialisierer
+#### 6. Standard-Member-Initialisierer
 
 Verwende Standard-Member-Initialisierer (`int count = 0;`), um Konstruktoren zu vereinfachen.
 
 
 ## Die Standardbibliothek STL / Ersetzen von Eigenentwicklungen <a name="link5"></a>
 
-1. Lambdas anstelle von Funktor-Klassen oder `std::bind1st`/`std::bind2nd`
+#### 1. Lambdas anstelle von Funktor-Klassen oder `std::bind1st`/`std::bind2nd`
   Sie sind im Zusammenhang mit `std::sort`, `std::find_if` usw. deutlich besser lesbar.
 
-2. `std::function<>` anstelle von rohen Funktionszeigern in Kombination mit `void*`-Benutzerdaten.
+#### 2. `std::function<>` anstelle von rohen Funktionszeigern in Kombination mit `void*`-Benutzerdaten.
 
-3. `<chrono>`, `<thread>`, `<mutex>`, `<atomic>`, `<future>` anstelle von plattformspezifischem Code (wie `pthread` oder Win32-APIs).
+#### 3. `<chrono>`, `<thread>`, `<mutex>`, `<atomic>`, `<future>` anstelle von plattformspezifischem Code (wie `pthread` oder Win32-APIs).
   Dies bedeutet oft einen erheblichen Gewinn an Portabilität.
 
-4. `<random>` anstelle von `rand()`.
+#### 4. `<random>` anstelle von `rand()`.
 
-5. `std::string_view` (C++17) für schreibgeschützte / konstante Zeichenketten.
+#### 5. `std::string_view` (C++17) für schreibgeschützte / konstante Zeichenketten.
 
 ```cpp
 std::string s = "I'm more than 15 chars long - and reside on the heap";
@@ -481,25 +481,25 @@ std::string_view s = "I'm more than 15 chars long - and reside not the heap";
 der &ndash; allerdings ausschließlich lesende &ndash; Zugriff ist schneller und manche Operationen (z. B. `substr`) sind ebenfalls erheblich performter.
 
 
-6. `std::optional` als Ersatz für Sentinel-Werte.
+#### 6. `std::optional` als Ersatz für Sentinel-Werte.
 
-7. `std::variant` als Ersatz für getaggte Unions.
+#### 7. `std::variant` als Ersatz für getaggte Unions.
 
-8. `std::any` als Ersatz für `void*`.
+#### 8. `std::any` als Ersatz für `void*`.
 
-9. `std::filesystem` (C++17) anstelle von selbst implementierter Dateisystembehandlung.
+#### 9. `std::filesystem` (C++17) anstelle von selbst implementierter Dateisystembehandlung.
 
-10. Strukturierte Bindungen (*Structured Binding*) (C++17) für Paare, Tupel oder die Iteration über Maps.
+#### 10. Strukturierte Bindungen (*Structured Binding*) (C++17) für Paare, Tupel oder die Iteration über Maps.
 
-11. `[[nodiscard]]`, `[[maybe_unused]]` und `[[fallthrough]]` zur selbsterklärenden Kennzeichnung der Absicht.
+#### 11. `[[nodiscard]]`, `[[maybe_unused]]` und `[[fallthrough]]` zur selbsterklärenden Kennzeichnung der Absicht.
 
-12. `std::expected` (C++23) zur Fehlerbehandlung ohne Exceptions.
+#### 12. `std::expected` (C++23) zur Fehlerbehandlung ohne Exceptions.
 
 ---
 
 ## Verschiedenes / Stolperfallen <a name="link6"></a>
 
-### 1. Verkettung von Methodenaufrufen (geändert in C++17)
+#### 1. Verkettung von Methodenaufrufen (geändert in C++17)
 
 Der Umstieg auf C++11+ verändert manchmal die Semantik eines Programms, also einfacher formuliert:
 Ein C++11 Programm erzielt andere Resultate als dasselbe Programm (derselbe Quellcode) ausgeführt mit einem C98 Compiler.
@@ -564,12 +564,12 @@ Es gilt: Alles auf der linken Seite einer Kette wird garantiert vor der rechten 
   Dadurch sieht `find` den bereits modifizierten String.
 
 
-## 2. Ist Move-Semantik mein neuer Freund?
+#### 2. Ist Move-Semantik mein neuer Freund?
 
 Ich möchte, um Laufzeit einzusparen, die eine oder andere überflüssige Kopier-Operation in meinem Programm zu Gunsten einer Verschiebe-Operation 
 austauschen. Gibt es hier etwas zu beachten?
 
-### Nebenwirkungen / Seiteneffekte in Kopier-Konstruktoren treten nicht mehr auf
+##### Nebenwirkungen / Seiteneffekte in Kopier-Konstruktoren treten nicht mehr auf
 
 Wenn ein Kopierkonstruktor mehr tut als nur zu kopieren (Instanzen zählen, protokollieren, das Objekt registrieren, eine Versionsnummer erhöhen),
 wird dieser Code nicht ausgeführt, sobald stattdessen eine Verschiebung ausgewählt wird:
@@ -587,7 +587,7 @@ Beachten Sie, dass in C++98 in Code mit einem vom Benutzer deklarierten Kopierko
 keine implizite Verschiebung generiert wird.
 Dies funktioniert nur dann, wenn Sie `= default` hinzufügen.
 
-### 3. Standardmäßig generierte (&bdquo;defaulted&rdquo;) Move-Operationen arbeiten elementweise mit flacher Kopie
+#### 3. Standardmäßig generierte (&bdquo;defaulted&rdquo;) Move-Operationen arbeiten elementweise mit flacher Kopie
 
 Bei Verwendung der standardmäßig generierten (&bdquo;*defaulted*&rdquo;) Move-Operation
 werden rohe Zeiger einfach kopiert:
@@ -610,14 +610,14 @@ Beide Objekte besitzen nun denselben Speicherbereich, was zu einem &bdquo;Double
 Ein manuell implementierter Move-Konstruktor muss den Zeiger des Quellobjekts zurücksetzen.
 Dies ist eine typische Falle, wenn für Klassen, die Ressourcen manuell verwalten, die Move-Operationen mittels `= default` definiert werden.
 
-### 4. Das umgekehrte Problem: Objekte werden nicht verschoben, sondern kopiert
+#### 4. Das umgekehrte Problem: Objekte werden nicht verschoben, sondern kopiert
 
 In manchen Situationen kommen Kopien stillschweigend zum Einsatz, obwohl man ein
 Verschieben erwarten würde.
 
 Es geht hier aber weniger um Fehler als vielmehr um Beeinträchtigungen bzgl. der Performance.
 
-#### `std::move` auf einem `const`-Objekt
+##### `std::move` auf einem `const`-Objekt
 
 In diesem Fall bindet die Anweisung an den Kopierkonstruktor, sodass eine Kopie erstellt wird und ein trügerisches Gefühl von Effizienz entsteht. 
 
@@ -647,8 +647,7 @@ In diesem Fall bindet die Anweisung an den Kopierkonstruktor, sodass eine Kopie 
 23: }
 ```
 
-
-#### `std::move` im Zusammenspiel mit `return` 
+##### `std::move` im Zusammenspiel mit `return` 
 
 Eine Anweisung der Gestalt
 

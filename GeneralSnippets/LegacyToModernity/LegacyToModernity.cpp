@@ -81,17 +81,19 @@ namespace {
                 std::println("In derived class");
             }
         };
+    }
 
-        static void legacy_inheritance_keyword_override()
-        {
-            Base base;
-            Derived derived;
-            std::println("Compiles successfully");
+    static void legacy_inheritance_keyword_override()
+    {
+        using namespace Keyword_Override;
 
-            Base* bp;
-            bp = &derived;
-            bp->func();
-        }
+        Base base;
+        Derived derived;
+        std::println("Compiles successfully");
+
+        Base* bp;
+        bp = &derived;
+        bp->func();
     }
 
     // =======================================================================
@@ -143,7 +145,7 @@ namespace {
 
         class Derived : public Base {
         public:
-            using Base::Base;      // inherits Base(int) and Base(int, const std::string&)
+            using Base::Base;       // inherits Base(int) and Base(int, const std::string&)
         private:
             int m_extra = 0;        // default member initializer, important
         };
@@ -327,9 +329,9 @@ namespace {
 
     void legacy_move_semantics()
     {
-        //legacy_move_semantics_01();
-        //legacy_move_semantics_02();
-       // legacy_move_semantics_03();
+        legacy_move_semantics_01();
+        legacy_move_semantics_02();
+        legacy_move_semantics_03();
         legacy_move_semantics_04();
     }
 }
@@ -338,14 +340,14 @@ namespace {
 
 void main_legacy()
 {
-//    legacy_null();
-//    legacy_inheritance_keyword_override();
-     legacy_inheriting_constructors();
-//    legacy_auto_range_based_for_loop();
-//    legacy_enums();
-//    legacy_default_ctor();
-//    legacy_method_chaining();
-//    legacy_move_semantics();
+    legacy_null();
+    legacy_inheritance_keyword_override();
+    legacy_inheriting_constructors();
+    legacy_auto_range_based_for_loop();
+    legacy_enums();
+    legacy_method_chaining();
+    legacy_string_view();
+    legacy_move_semantics();
 }
 
 // ===========================================================================
