@@ -11,7 +11,7 @@
 ## Inhalt
 
   * [Die Grundregeln](#link1)
-  * [Hoher Nutzen, geringes Risiko (C++11-Grundlagen)](#link2)
+  * [Hoher Nutzen, geringes Risiko (häufig C++11 Erweiterungen)](#link2)
   * [Der größte Gewinn: Ownership und Ressourcenmanagement](#link3)
   * [Performanz and API Cleanliness](#link4)
   * [Die Standardbibliothek STL / Ersetzen von Eigenentwicklungen](#link5)
@@ -46,7 +46,7 @@
   * Ändere nur Code, an dem ohnehin gerade gearbeitet wird:<br />
   Modernisiere keine stabilen, unangetasteten Module allein aus stilistischen Gründen.
 
-## Hoher Nutzen, geringes Risiko (C++11-Grundlagen)  <a name="link2"></a>
+## Hoher Nutzen, geringes Risiko (häufig C++11 Erweiterungen)  <a name="link2"></a>
 
 #### 1. Versehentliches Kopieren statt Gebrauch einer Referenz
 
@@ -481,6 +481,52 @@ std::string_view s = "I'm more than 15 chars long - and reside not the heap";
 der &ndash; allerdings ausschließlich lesende &ndash; Zugriff ist schneller und manche Operationen (z. B. `substr`) sind ebenfalls erheblich performter.
 
 
+#### 6. `std::initializer_list` für schnellere Übergabe von Werten
+
+```cpp
+01: int adder(std::initializer_list<int> list)
+02: {
+03:     return std::accumulate(list.begin(), list.end(), 0);
+04: }
+05: 
+06: int adder(const std::vector<int>& list)
+07: {
+08:     return std::accumulate(list.begin(), list.end(), 0);
+09: }
+10: 
+11: void test()
+12: {
+13:     int sum = adder({ 1, 2, 3, 4, 5 });
+14:     std::println("{}", sum);
+15: }
+```
+
+Die leicht-gewichtige Containerklasse `std::initializer_list` wurde der Klassenbibliothek hinzugefügt,
+um eine Übergabe einer Vektoren-ähnlichen Datenstruktur, die ihre Werte auf den Heap kopiert und verwaltet,
+auch ohne Heap zu ermöglichen.
+
+*Vergleich*: 
+
+Übergabe mit Klasse `std::vector`: Konzeptionell umfasst dies
+
+  * Das Erstellen eines `std::vector`-Objekts.
+  * Das Zuweisen von Speicher (`new`) für dessen Elemente, üblicherweise auf dem Heap.
+  * Das Initialisieren dieses Speicherbereichs mit den Parametern der Funktion.
+  * Das Übergeben einer Referenz, die auf das temporäre `std::vector`-Objekt verweist.
+  * Aufruf der Zielfunktion.
+  * Das Summieren der Elemente mit Hilfe zweier Iteratoren-Objekte, die das Vektoren-Objekt zur Verfügung stellt.
+  * Das Zerstören des temporären `std::vector`-Objekts und die Freigabe des Heap-Speichers.
+  * Rückgabe des Ergebnisses
+
+Übergabe mit Klasse `std::initializer_list`: Konzeptionell umfasst dies
+
+  * Ablegen der Parameter auf dem Stack (also kein Zugriff auf den Heap)
+  * Übergabe zweier Iteratoren-Objekte (Adressen), die auf das erste und das letzte Element auf dem Stack verweisen.
+  * Aufruf der Zielfunktion.
+  * Das Summieren der Elemente mit Hilfe zweier Iteratoren-Objekte, die das `std::initializer_list`-Objekt zur Verfügung stellt.
+  * Rückgabe des Ergebnisses
+
+
 #### 6. `std::optional` als Ersatz für Sentinel-Werte.
 
 #### 7. `std::variant` als Ersatz für getaggte Unions.
@@ -689,11 +735,6 @@ Details zur Auswertungsreihenfolge,
 implizite Verschiebung,
 Typverengung in geschweiften Klammern {},
 unerwartete automatische Typableitung,
-
-TBD: Was fehlt
-
-const
-std::initializer_list
 
 is_transparent
 

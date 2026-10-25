@@ -251,6 +251,25 @@ namespace {
     }
 
     // =======================================================================
+    // std::string_view
+
+    int adder(std::initializer_list<int> list)
+    {
+        return std::accumulate(list.begin(), list.end(), 0);
+    }
+
+    int adder(const std::vector<int>& list)
+    {
+        return std::accumulate(list.begin(), list.end(), 0);
+    }
+
+    void legacy_initializer_list()
+    {
+        int sum = adder({ 1, 2, 3, 4, 5 });
+        std::println("{}", sum);
+    }
+
+    // =======================================================================
     // Move Semantics
 
     struct Handle {
@@ -340,14 +359,15 @@ namespace {
 
 void main_legacy()
 {
-    legacy_null();
-    legacy_inheritance_keyword_override();
-    legacy_inheriting_constructors();
-    legacy_auto_range_based_for_loop();
-    legacy_enums();
-    legacy_method_chaining();
-    legacy_string_view();
-    legacy_move_semantics();
+    //legacy_null();
+    //legacy_inheritance_keyword_override();
+    //legacy_inheriting_constructors();
+    //legacy_auto_range_based_for_loop();
+    //legacy_enums();
+    //legacy_method_chaining();
+    //legacy_string_view();
+    legacy_initializer_list();
+    //legacy_move_semantics();
 }
 
 // ===========================================================================
