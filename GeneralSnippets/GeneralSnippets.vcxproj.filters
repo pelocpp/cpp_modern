@@ -1333,10 +1333,10 @@
     <Image Include="Lambda\Lambdas_constexpr_IIFE.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="LegacyToModernity\Method Chaining_01.png">
+    <Image Include="LegacyToModernity\Method_Chaining_01.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="LegacyToModernity\Method Chaining_02.png">
+    <Image Include="LegacyToModernity\Method_Chaining_02.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

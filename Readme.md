@@ -86,9 +86,10 @@ so zu gliedern und zusammenzufassen, dass bei deren Betrachtung der &bdquo;rote 
 
 ## From Legacy to Modernity
 
-In der Softwareentwicklung hat sich der Begriff &bdquo;Legacy&rdquo; für gewachsene Altsysteme und historisch entstandenen Code fest etabliert. Abwertend ist er dabei keineswegs zu verstehen: Software, die über Jahre hinweg zuverlässig ihren Dienst verrichtet, ist ein wertvolles Gut.
+In der Softwareentwicklung hat sich der Begriff &bdquo;Legacy Software&rdquo; für gewachsene Altsysteme und historisch entstandenen Code etabliert.
+Abwertend ist er dabei keineswegs zu verstehen: Software, die über Jahre hinweg zuverlässig ihren Dienst verrichtet, ist ein wertvolles Gut.
 
-&bdquo;Never change a running system&rdquo; ist schließlich ein bekanntes Motto &ndash; aber nicht immer die beste Strategie für die Zukunft.
+&bdquo;Never change a running System&rdquo; ist ebenfalls ein bekanntes Motto &ndash; aber nicht immer die beste Strategie für die Zukunft.
 Es lohnt sich, gelegentlich innezuhalten und darüber nachzudenken, ob und wie sich ein in die Jahre gekommener Software-Stack sinnvoll modernisieren lässt.
 Denn auch bewährte Systeme können von neuen Technologien, zeitgemäßen Architekturen und verbesserten Entwicklungsansätzen profitieren.
 

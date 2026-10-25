@@ -237,13 +237,13 @@ namespace {
 
 void main_legacy()
 {
-    //legacy_null();
+    legacy_null();
     legacy_inheritance_keyword_override();
-    //legacy_auto_range_based_for_loop();
-    //legacy_enums();
-    //legacy_default_ctor();
-    //legacy_method_chaining();
-    //legacy_move_semantics();
+    legacy_auto_range_based_for_loop();
+    legacy_enums();
+    legacy_default_ctor();
+    legacy_method_chaining();
+    legacy_move_semantics();
 }
 
 // ===========================================================================
