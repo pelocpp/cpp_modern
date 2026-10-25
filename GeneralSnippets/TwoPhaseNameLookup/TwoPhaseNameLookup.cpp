@@ -6,8 +6,8 @@ module modern_cpp:two_phase_name_lookup;
 
 import std;
 
-namespace TwoPhaseNameLookup
-{
+namespace {
+
     // Non-Template Code Example:
     class Base {
     public:
@@ -48,13 +48,13 @@ namespace TwoPhaseNameLookup
     *   'doSomething': function declaration must be available as none of the arguments depend on a template parameter
     */
 
-    static void test_01() {
+    void two_phase_name_lookup_01() {
 
         Derived derived;
         derived.callBase();
     }
 
-    static void test_02() {
+    void two_phase_name_lookup_02() {
 
         DerivedEx<int> derived;
         derived.callBase();
@@ -63,9 +63,8 @@ namespace TwoPhaseNameLookup
 
 void main_two_phase_name_lookup()
 {
-    using namespace TwoPhaseNameLookup;
-    test_01();
-    test_02();
+    two_phase_name_lookup_01();
+    two_phase_name_lookup_02();
 }
 
 // =====================================================================================

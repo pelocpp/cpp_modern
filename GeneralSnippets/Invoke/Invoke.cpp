@@ -6,7 +6,7 @@ module modern_cpp:invoke;
 
 import std;
 
-namespace StdInvoke {
+namespace {
 
     // helper functions / classes
     int add(int a, int b)
@@ -34,7 +34,7 @@ namespace StdInvoke {
     };
 
     // testing scenarios for std::invoke
-    static void test_01()
+    void invoke_01()
     {
         int result{};
 
@@ -83,8 +83,7 @@ namespace StdInvoke {
 
 void main_invoke()
 {
-    using namespace StdInvoke;
-    test_01();
+    invoke_01();
 }
 
 // =====================================================================================

@@ -71,7 +71,7 @@ Der *setter* kann besser geschrieben werden, es sollte die überflüssige Kopie 
 void setName(const std::string& name) { m_name = name; }
 ```
 
-#### 2. Versehentliches Kopieren statt Gebrauch einer Referenz &ndash; bei Rückgabe von Werten
+#### 2. Versehentliches Kopieren statt Gebrauch einer Referenz &ndash; bei Rückgabe eines Werts
 
 ```cpp
 01: class Person
@@ -226,9 +226,9 @@ angepasst werden:
 01: std::vector<Person> persons;   // add comment ...
 02: // std::list<Person> persons;  // ... and remove comment
 03: 
-04: std::vector<Person>::const_iterator it = persons.begin(); // iterator type must be manually adjusted
+04: std::vector<Person>::const_iterator it = persons.cbegin(); // iterator type must be manually adjusted
 05: 
-06: auto it2 = persons.begin();                               // iterator type is deducted automatically - at compile time
+06: auto it2 = persons.cbegin();                               // iterator type is deducted automatically - at compile time
 ```
 
 Bei einer &bdquo;Range-based for&rdquo;-Schleife oder der Verwendung von `auto` spielt das hingegen keine Rolle.
@@ -432,10 +432,11 @@ Vererbe Konstruktoren, um doppelten Initialisierungscode zu vermeiden.
 10: 
 11: class Derived : public Base {
 12: public:
-13:     using Base::Base;      // inherits Base(int) and Base(int, const std::string&)
-14: private:
-15:     int m_extra = 0;        // default member initializer, important
-16: };
+13:     using Base::Base;       // inherits Base(int) and Base(int, const std::string&)
+14:
+15: private:
+16:     int m_extra = 0;        // default member initializer, important
+17: };
 ```
 
 *Einige Hinweise*:
@@ -478,7 +479,7 @@ std::string_view s = "I'm more than 15 chars long - and reside not the heap";
 ```
 
 `std::string_view` Objekte liegen nicht auf dem Heap. Damit entfallen auf Aufrufe in die dynamische Speicherverwaltung (`new`/`delete`),
-der &ndash; allerdings ausschließlich lesende &ndash; Zugriff ist schneller und manche Operationen (z. B. `substr`) sind ebenfalls erheblich performter.
+der &ndash; allerdings ausschließlich lesende &ndash; Zugriff ist schneller und manche Operationen (z. B. `substr`) sind ebenfalls erheblich performanter.
 
 
 #### 6. `std::initializer_list` für schnellere Übergabe von Werten
@@ -501,7 +502,7 @@ der &ndash; allerdings ausschließlich lesende &ndash; Zugriff ist schneller und
 15: }
 ```
 
-Die leicht-gewichtige Containerklasse `std::initializer_list` wurde der Klassenbibliothek hinzugefügt,
+Die leichtgewichtige Containerklasse `std::initializer_list` wurde der Klassenbibliothek hinzugefügt,
 um die Übergabe einer Vektoren-ähnlichen Datenstruktur, die ihre Werte auf den Heap kopiert und dort verwaltet,
 auch ohne Heap zu ermöglichen.
 

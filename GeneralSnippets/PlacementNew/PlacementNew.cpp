@@ -6,7 +6,7 @@ module modern_cpp:placement_new;
 
 import std;
 
-namespace PlacementNew {
+namespace {
 
     class User
     {
@@ -51,14 +51,14 @@ namespace PlacementNew {
 
     unsigned char global_memory[ sizeof(User) ];
 
-    static void test_01()
+    void placement_new_01()
     {
         auto* user{ ::new (global_memory) User{"John" , 50} };
         user->print();
         user->~User();
     }
 
-    static void test_02()
+    void placement_new_02()
     {
         auto* memory{ std::malloc(sizeof(User)) };
         auto* user{ ::new (memory) User{"John" , 50} };
@@ -67,7 +67,7 @@ namespace PlacementNew {
         std::free(memory);
     }
 
-    static void test_03()
+    void placement_new_03()
     {
         auto* memory{ std::malloc(sizeof(User)) };
         auto* user_ptr{ reinterpret_cast<User*>(memory) };
@@ -77,7 +77,7 @@ namespace PlacementNew {
         std::free(memory);
     }
 
-    static void test_04()
+    void placement_new_04()
     {
         auto* memory{ std::malloc(sizeof(User)) };
         auto* user_ptr{ reinterpret_cast<User*>(memory) };
@@ -100,13 +100,13 @@ namespace PlacementNew {
         ~Vector() { delete[] m_data; }
     };
 
-    static void test_05()
+    void placement_new_05()
     {
         Vector<int> a;
         // Vector<User> b;  // Error: User type doesn't have a default c'tor
     }
 
-    static void test_06()
+    void placement_new_06()
     {
         std::size_t capacity{ 2 };
 
@@ -170,7 +170,7 @@ namespace PlacementNew {
         }
     };
 
-    static void test_07()
+    void placement_new_07()
     {
         VectorEx<User> vec;
 
@@ -182,15 +182,13 @@ namespace PlacementNew {
 
 void main_placement_new()
 {
-    using namespace PlacementNew;
-
-    test_01(); 
-    test_02();
-    test_03();
-    test_04();
-    test_05();
-    test_06();
-    test_07();
+    placement_new_01(); 
+    placement_new_02();
+    placement_new_03();
+    placement_new_04();
+    placement_new_05();
+    placement_new_06();
+    placement_new_07();
 }
 
 // =====================================================================================

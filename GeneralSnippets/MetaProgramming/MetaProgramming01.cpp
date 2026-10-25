@@ -6,7 +6,7 @@ module modern_cpp:metaprogramming;
 
 import std;
 
-namespace Metaprogramming {
+namespace {
 
     template <long N>
     struct Factorial {
@@ -18,7 +18,7 @@ namespace Metaprogramming {
         static constexpr long result = 1;
     };
 
-    static void test_01() {
+    void metaprogramming_01() {
 
         std::cout << Factorial<1>::result << std::endl;
         std::cout << Factorial<2>::result << std::endl;
@@ -52,7 +52,7 @@ namespace Metaprogramming {
         using result = Frac<N * F::Num, F::Den>;
     };
 
-    static void test_02() {
+    void metaprogramming_02() {
         using TwoThirds = Frac<2, 3>;
         using FourThirds = ScalarMultiplication<2, TwoThirds>::result;
         std::cout << FourThirds::Num << "/" << FourThirds::Den << std::endl;
@@ -82,7 +82,7 @@ namespace Metaprogramming {
         using result = Frac<F::Num / ggt, F::Den / ggt>;
     };
 
-    static void test_03() {
+    void metaprogramming_03() {
         using Four = Frac<16, 4>;
         using FourNormalized = FracNormalizedVerbose<Four>::result;
         std::cout << FourNormalized::Num << "/" << FourNormalized::Den << std::endl;
@@ -105,7 +105,7 @@ namespace Metaprogramming {
         using result = typename FracNormalized<Frac<Num, Den>>::result;
     };
 
-    static void test_04() {
+    void metaprogramming_04() {
         using Frac1 = Frac<1, 3>;
         using Frac2 = Frac<4, 7>;
         using Result = Sum<Frac1, Frac2>::result;
@@ -128,7 +128,7 @@ namespace Metaprogramming {
         using result = Frac<1, 1>;
     };
 
-    static void test_05() {
+    void metaprogramming_05() {
         using X = E<8>::result;
         std::cout << "e = " << (1.0 * X::Num / X::Den) << std::endl;
         std::cout << "e = " << X::Num << "/" << X::Den << std::endl;
@@ -137,12 +137,11 @@ namespace Metaprogramming {
 
 void main_metaprogramming_01()
 {
-    using namespace Metaprogramming;
-    test_01();
-    test_02();
-    test_03();
-    test_04();
-    test_05();
+    metaprogramming_01();
+    metaprogramming_02();
+    metaprogramming_03();
+    metaprogramming_04();
+    metaprogramming_05();
 }
 
 // =====================================================================================

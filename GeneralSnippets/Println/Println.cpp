@@ -4,7 +4,7 @@
 
 module;
 
-#include <cstdint>
+#include <cstdint>     // module implementation too unstable
 
 module modern_cpp:println;
 

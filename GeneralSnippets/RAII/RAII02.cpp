@@ -9,9 +9,9 @@ module modern_cpp:raii;
 
 import std;
 
-namespace RAIIDemo02 {
+namespace {
 
-    static void write_to_file(const std::string& message)
+    void write_to_file(const std::string& message)
     {
         // mutex to protect file access (shared across threads)
         static std::mutex mtex;
@@ -37,15 +37,14 @@ namespace RAIIDemo02 {
         // when closing at the end of the scope is sufficient.
     }
 
-    static void test_01 () {
+    void raii_01 () {
         write_to_file("Nachrichtentext");
     }
 }
 
 void main_raii_02()
 {
-    using namespace RAIIDemo02;
-    test_01();
+    raii_01();
 }
 
 // =====================================================================================

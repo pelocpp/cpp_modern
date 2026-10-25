@@ -6,7 +6,7 @@ module modern_cpp:static_assert_keyword;
 
 import std;
 
-namespace StaticAssertDemo {
+namespace {
 
     template < typename T, int Height, int Width >
     struct Grid {
@@ -29,8 +29,6 @@ namespace StaticAssertDemo {
 
 void main_static_assert()
 {
-    using namespace StaticAssertDemo;
-
     //static_assert(sizeof(void*) == 4, "Size of Pointer is 32-bits!");
     static_assert(sizeof(void*) == 8, "Size of Pointer is 64-bits!");
 

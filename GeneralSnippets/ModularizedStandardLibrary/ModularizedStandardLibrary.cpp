@@ -6,14 +6,14 @@ module modern_cpp:modularized_standard_library;
 
 import std;
 
-namespace ModularizedStandardLibrary {
+namespace {
 
-    static void test_01()
+    void modularized_standard_library_01()
     {
         std::println("Hello World");
     }
 
-    static void test_02()
+    void modularized_standard_library_02()
     {
         std::println("List of Entries:");
 
@@ -49,10 +49,8 @@ namespace ModularizedStandardLibrary {
 
 void main_modularized_standard_library()
 {
-    using namespace ModularizedStandardLibrary;
-
-    test_01(); 
-    test_02();
+    modularized_standard_library_01();
+    modularized_standard_library_02();
 }
 
 // =====================================================================================

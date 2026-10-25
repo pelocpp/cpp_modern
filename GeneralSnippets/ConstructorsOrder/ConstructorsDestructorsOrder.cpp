@@ -6,7 +6,7 @@ module modern_cpp:constructors_destructors_order;
 
 import std;
 
-namespace OrderConstructorInvocations {
+namespace {
 
     class Something {
     public:
@@ -34,7 +34,7 @@ namespace OrderConstructorInvocations {
     };
 
 
-    static void test_01() {
+    void order_constructor_invocations() {
 
         Derived myDerived;
         myDerived.printHello();
@@ -43,8 +43,7 @@ namespace OrderConstructorInvocations {
 
 void main_constructor_invocations()
 {
-    using namespace OrderConstructorInvocations;
-    test_01();
+    order_constructor_invocations();
 }
 
 // =====================================================================================

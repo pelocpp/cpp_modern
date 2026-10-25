@@ -6,21 +6,21 @@ module modern_cpp:array_decay;
 
 import std;
 
-namespace ArrayDecay {
+namespace {
 
-    static void displayValue(int* p) {
+    void displayValue(int* p) {
         std::cout << "New size of array by passing the value : ";
         std::cout << sizeof(p) << std::endl;
     }
 
-    static void displayPointer(int(*p)[10]) {
+    void displayPointer(int(*p)[10]) {
         std::cout << "New size of array by passing the pointer : ";
         std::cout << sizeof(p) << std::endl;
     }
 
     const int n = 10;
 
-    static void displayReference(int(&p)[n]) {
+    void displayReference(int(&p)[n]) {
         std::cout << "New size of array by passing reference: ";
 
         p[5] = 99;
@@ -28,7 +28,7 @@ namespace ArrayDecay {
         std::cout << sizeof(p) << std::endl;
     }
 
-    static void test_01 () {
+    void decay_01 () {
 
         int arr[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
         std::cout << "Actual size of array is : ";
@@ -46,8 +46,7 @@ namespace ArrayDecay {
 
 void main_array_decay()
 {
-    using namespace ArrayDecay;
-    test_01();
+    decay_01();
 }
 
 // =====================================================================================

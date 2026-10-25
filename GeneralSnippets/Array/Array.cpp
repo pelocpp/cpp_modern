@@ -4,8 +4,8 @@
 
 module;
 
-#include <array>
-#include <span>
+#include <array>     // module implementation too unstable
+#include <span>      // module implementation too unstable
 
 module modern_cpp:class_array;
 

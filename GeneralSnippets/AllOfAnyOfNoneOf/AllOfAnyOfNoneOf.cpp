@@ -6,12 +6,12 @@ module modern_cpp:all_of_any_of_none_of;
 
 import std;
 
-namespace AllOfAnyOfNoneOf {
+namespace {
 
     /* std::allof, std::any_of, std::none_of: introduction
     */
 
-    static void std_all_of()
+    void std_all_of()
     {
         std::vector<int> numbers{ 2, 4, 6, 8 };
 
@@ -24,7 +24,7 @@ namespace AllOfAnyOfNoneOf {
         std::println("Result: {}", result); // result == true
     }
 
-    static void std_any_of()
+    void std_any_of()
     {
         std::vector<int> numbers{ 1, 3, 4, 7 };
 
@@ -37,7 +37,7 @@ namespace AllOfAnyOfNoneOf {
         std::println("Result: {}", result); // result == true
     }
 
-    static void std_none_of()
+    void std_none_of()
     {
         std::vector<int> numbers{ 1, 3, 5, 7 };
 
@@ -55,7 +55,7 @@ namespace AllOfAnyOfNoneOf {
     /* Short Circuit Evaluation
     */
 
-    static void std_all_of_short_circuit()
+    void std_all_of_short_circuit()
     {
         std::vector<int> numbers{ 2, 4, 5, 8, 10 };
 
@@ -68,7 +68,7 @@ namespace AllOfAnyOfNoneOf {
         );
     }
 
-    static void std_any_of_short_circuit()
+    void std_any_of_short_circuit()
     {
         std::vector<int> numbers{ 1, 3, 4, 7, 9 };
 
@@ -81,7 +81,7 @@ namespace AllOfAnyOfNoneOf {
         );
     }
 
-    static void std_none_of_short_circuit()
+    void std_none_of_short_circuit()
     {
         std::vector<int> numbers{ 1, 3, 4, 7, 9 };
 
@@ -99,7 +99,7 @@ namespace AllOfAnyOfNoneOf {
     /* std::allof, std::any_of, std::none_of: tiny real world examples
     */
 
-    static void std_all_of_example()
+    void std_all_of_example()
     {
         struct User {
             std::string name;
@@ -125,7 +125,7 @@ namespace AllOfAnyOfNoneOf {
         std::println("Are all users adults with verified email addresses? {}", allValid);
     }
 
-    static void std_any_of_example()
+    void std_any_of_example()
     {
         struct Job {
             int id;
@@ -151,7 +151,7 @@ namespace AllOfAnyOfNoneOf {
         std::println("Is there at least one job that needs attention? {}", needsAttention);
     }
 
-    static void std_none_of_example()
+    void std_none_of_example()
     {
         std::vector<std::string> filenames{
             "report.pdf",
@@ -174,8 +174,6 @@ namespace AllOfAnyOfNoneOf {
 
 void main_all_of_any_of_none_of()
 {
-    using namespace AllOfAnyOfNoneOf;
-
     std_all_of();
     std_any_of();
     std_none_of();

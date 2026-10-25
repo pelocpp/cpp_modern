@@ -6,7 +6,7 @@ module modern_cpp:exception_safety;
 
 import std;
 
-namespace ExceptionSafety {
+namespace {
 
     class TwoPointers
     {

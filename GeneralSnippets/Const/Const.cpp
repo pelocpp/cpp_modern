@@ -6,16 +6,16 @@ module modern_cpp:const_variants;
 
 import std;
 
-namespace ConstVariants {
+namespace {
 
     // ============================================================
     // const
 
-    static int computeNumber() {
+    int computeNumber() {
         return 456;
     }
 
-    static void test_01()
+    void const_01()
     {
         const int importantNum{ 123 };
 
@@ -42,7 +42,7 @@ namespace ConstVariants {
         constexpr double getY() const { return m_y; }
     };
 
-    static void test_02()
+    void const_02()
     {
         // computed at compile time
         constexpr Point a{ 123, 456 };
@@ -61,17 +61,17 @@ namespace ConstVariants {
     // ============================================================
     // consteval
 
-    static consteval int sum_consteval(int a, int b)
+    consteval int sum_consteval(int a, int b)
     {
         return a + b;
     }
 
-    static constexpr int sum_constexpr(int a, int b)
+    constexpr int sum_constexpr(int a, int b)
     {
         return a + b;
     }
 
-    static void test_03()
+    void const_03()
     {
         // consteval auto x = 123; // error: 'x' cannot be declared with 'consteval' specifier
 
@@ -89,13 +89,13 @@ namespace ConstVariants {
     // constinit
 
     // init at compile time
-    static constexpr int power(int n) { return n * n; }
+    constexpr int power(int n) { return n * n; }
 
     constinit int g_global{ power(10) };
 
     // constinit int another{ global };  // does not compile
 
-    static void test_04()
+    void const_04()
     {
         // it's allowed to change a constinit variable later...
         g_global = 123;
@@ -121,22 +121,22 @@ namespace ConstVariants {
     // ============================================================
     // comparison of const variants: functions
 
-    static int productRunTime(int n, int m)
+    int productRunTime(int n, int m)
     {
         return n * m;
     }
 
-    static consteval int productCompileTime(int n, int m)
+    consteval int productCompileTime(int n, int m)
     {
         return n * m;
     }
 
-    static constexpr int productRunOrCompileTime(int n, int m)
+    constexpr int productRunOrCompileTime(int n, int m)
     {
         return n * m;
     }
 
-    static void test_05()
+    void const_05()
     {
         // constexpr int prod1{ productRunTime(5, 10) };    // Error: expression did not evaluate to a constant
 
@@ -160,11 +160,11 @@ namespace ConstVariants {
 
     constinit int constinitVal{ 456 };
 
-    static int inc(int val) {
+    int inc(int val) {
         return ++val;
     }
 
-    static void test_06()
+    void const_06()
     {
         auto value{ 123 };
 
@@ -186,14 +186,12 @@ namespace ConstVariants {
 
 void main_const_variants()
 {
-    using namespace ConstVariants;
-
-    test_01();
-    test_02();
-    test_03();
-    test_04();
-    test_05();
-    test_06();
+    const_01();
+    const_02();
+    const_03();
+    const_04();
+    const_05();
+    const_06();
 }
 
 // =====================================================================================

@@ -6,9 +6,9 @@ module modern_cpp:random;
 
 import std;
 
-namespace Random {
+namespace {
 
-    static void main_random_01()
+    void random_01()
     {
         // pseudo-random numbers engine
         std::default_random_engine engine{};
@@ -33,7 +33,7 @@ namespace Random {
         std::cout << std::endl;
     }
 
-    static void main_random_02()
+    void random_02()
     {
         // pseudo-random numbers engine
         std::random_device engine{};
@@ -57,7 +57,7 @@ namespace Random {
         std::cout << std::endl;
     }   
 
-    static void main_random_03()
+    void random_03()
     {
         static const std::size_t numCoins = 10;
 
@@ -85,10 +85,9 @@ namespace Random {
 
 void main_random()
 {
-    using namespace Random;
-    main_random_01();
-    main_random_02();
-    main_random_03();
+    random_01();
+    random_02();
+    random_03();
 }
 
 // =====================================================================================

@@ -6,7 +6,7 @@ module modern_cpp:default_initialization;
 
 import std;
 
-namespace DefaultInitializationExample {
+namespace {
 
     class X
     {
@@ -22,7 +22,7 @@ namespace DefaultInitializationExample {
     X::X(int value) : m_i{ value }  // initializes m_i with value (here: 17) and m_j with 2
     {}
 
-    static void test_01() {
+    static void default_initialization() {
         X x{};
         X y{ 17 };
     }
@@ -30,8 +30,7 @@ namespace DefaultInitializationExample {
 
 void main_default_initialization()
 {
-    using namespace DefaultInitializationExample;
-    test_01();
+    default_initialization();
 }
 
 // =====================================================================================

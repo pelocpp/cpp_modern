@@ -6,9 +6,9 @@ module modern_cpp:back_inserter;
 
 import std;
 
-namespace BackInserter {
+namespace {
 
-    static void test_01() {
+    void back_inserter_01() {
 
         // declaring first container 
         std::vector<int> vec1 = { 1, 2, 3 };
@@ -40,7 +40,7 @@ namespace BackInserter {
         std::cout << std::endl;
     }
 
-    static void test_02() {
+    void back_inserter_02() {
 
         // No prior knowledge of size of container required : 
         // One of the scenario where such a function can be extremely helpful is
@@ -85,9 +85,8 @@ namespace BackInserter {
 
 void main_back_inserter()
 {
-    using namespace BackInserter;
-    test_01();
-    test_02();
+    back_inserter_01();
+    back_inserter_02();
 }
 
 // =====================================================================================

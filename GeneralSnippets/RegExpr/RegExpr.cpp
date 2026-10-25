@@ -6,9 +6,9 @@ module modern_cpp:regexpr;
 
 import std;
 
-namespace RegularExpressions {
+namespace {
 
-    static void test_01_simple_regex()
+    void regex_01_simple_regex()
     {
         // simple example
 
@@ -27,7 +27,7 @@ namespace RegularExpressions {
         }
     }
 
-    static void test_02_simple_regex()
+    void regex_02_simple_regex()
     {
         // simple example - counting the number of all matches
 
@@ -49,7 +49,7 @@ namespace RegularExpressions {
         }
     }
 
-    static void test_02_capturing_groups()
+    void regex_02_capturing_groups()
     {
         // example from 'geeksforgeeks'
 
@@ -91,7 +91,7 @@ namespace RegularExpressions {
         }
     }
 
-    static void test_03_capturing_group_vs_non_capturing_group_01()
+    void regex_03_capturing_group_vs_non_capturing_group_01()
     {
         // example: capturing groups
 
@@ -122,7 +122,7 @@ namespace RegularExpressions {
         }
     }
 
-    static void test_04_capturing_group_vs_non_capturing_group_02()
+    void regex_04_capturing_group_vs_non_capturing_group_02()
     {
         // example: non-capturing group
 
@@ -151,7 +151,7 @@ namespace RegularExpressions {
         }
     }
 
-    static void test_05_datum_01()
+    void regex_05_datum_01()
     {
         // example: date, non-capturing groups
 
@@ -176,7 +176,7 @@ namespace RegularExpressions {
         }
     }
 
-    static void test_06_datum_02()
+    void regex_06_datum_02()
     {
         // example: date, capturing groups
 
@@ -211,14 +211,13 @@ namespace RegularExpressions {
 
 void main_regular_expressions()
 {
-    using namespace RegularExpressions;
-    test_01_simple_regex();
-    test_02_simple_regex();
-    test_02_capturing_groups();
-    test_03_capturing_group_vs_non_capturing_group_01();
-    test_04_capturing_group_vs_non_capturing_group_02();
-    test_05_datum_01();
-    test_06_datum_02();
+    regex_01_simple_regex();
+    regex_02_simple_regex();
+    regex_02_capturing_groups();
+    regex_03_capturing_group_vs_non_capturing_group_01();
+    regex_04_capturing_group_vs_non_capturing_group_02();
+    regex_05_datum_01();
+    regex_06_datum_02();
 }
 
 // =====================================================================================

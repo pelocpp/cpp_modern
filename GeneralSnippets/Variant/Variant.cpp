@@ -4,8 +4,8 @@
 
 module;
 
-#include <print>     // module implementation too unstable
-#include <variant>
+#include <print>       // module implementation too unstable
+#include <variant>     // module implementation too unstable
 
 module modern_cpp:variant;
 

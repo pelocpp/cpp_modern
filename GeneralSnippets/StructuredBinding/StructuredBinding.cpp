@@ -6,9 +6,9 @@ module modern_cpp:structured_binding;
 
 import std;
 
-namespace StructuredBinding {
+namespace {
 
-    static std::pair<int, int> divide_remainder(int dividend, int divisor)
+    std::pair<int, int> divide_remainder(int dividend, int divisor)
     {
         int quotient{ dividend / divisor };
 
@@ -19,7 +19,7 @@ namespace StructuredBinding {
         return result;
     }
 
-    static void test_01()
+    void structured_binding_01()
     {
         auto result{ divide_remainder(16, 3) };
 
@@ -28,14 +28,14 @@ namespace StructuredBinding {
         );
     }
 
-    static void test_02()
+    void structured_binding_02()
     {
         auto [quotient, remainder] { divide_remainder(20, 3) };
 
         std::println("16 / 3 is {} with a remainder of {}", quotient, remainder);
     }
 
-    static void test_03()
+    void structured_binding_03()
     {
         int arr[] { 123, 456, 789 };
 
@@ -44,7 +44,7 @@ namespace StructuredBinding {
         std::println("{}, {}, {}", a, b, c);
     }
 
-    static void test_04()
+    void structured_binding_04()
     {
         std::array<int, 3> arr { 123, 456, 789 };
 
@@ -53,7 +53,7 @@ namespace StructuredBinding {
         std::println("{}, {}, {}", a, b, c);
     }
 
-    static void test_05()
+    void structured_binding_05()
     {
         int arr[] { 123, 456, 789 };
 
@@ -64,7 +64,7 @@ namespace StructuredBinding {
         std::println("{}, {}, {}", arr[0], arr[1], arr[2]);
     }
 
-    static void test_06()
+    void structured_binding_06()
     {
         std::array<int, 3> arr { 123, 456, 789 };
 
@@ -81,7 +81,7 @@ namespace StructuredBinding {
         int m_y;
     };
 
-    static void test_07() {
+    void structured_binding_07() {
 
         // without structured binding
         Point p1 { 1, 2 };
@@ -103,7 +103,7 @@ namespace StructuredBinding {
         std::println("Y Coordinate : {}", y1);
     }
 
-    static void test_08() {
+    void structured_binding_08() {
 
         Point p { 10, 20 };
         auto& [x, y] { p };
@@ -126,7 +126,7 @@ namespace StructuredBinding {
         unsigned long phone;
     };
 
-    static void test_09() {
+    void structured_binding_09() {
 
         Employee worker { 9987, "Sepp", "Engineer", 987654321 };
         Employee manager { 9999, "Hans", "Manager", 123456789 };
@@ -145,16 +145,15 @@ namespace StructuredBinding {
 
 void main_structured_binding()
 {
-    using namespace StructuredBinding;
-    test_01();
-    test_02();
-    test_03();
-    test_04();
-    test_05();
-    test_06();
-    test_07();
-    test_08();
-    test_09();
+    structured_binding_01();
+    structured_binding_02();
+    structured_binding_03();
+    structured_binding_04();
+    structured_binding_05();
+    structured_binding_06();
+    structured_binding_07();
+    structured_binding_08();
+    structured_binding_09();
 }
 
 // =====================================================================================

@@ -7,8 +7,8 @@ module;
 #include <stdio.h>
 #include <windows.h>
 
-#include <memory>
-#include <print>
+#include <memory>     // module implementation too unstable
+#include <print>      // module implementation too unstable
 
 module modern_cpp:unique_ptr;
 

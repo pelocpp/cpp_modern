@@ -10,10 +10,10 @@ import std;
  *  12 ways to iterate through a vector 
  */
 
-namespace RangeBasedForLoop {
+namespace {
 
     // free function
-    static void processElement(int n)
+    void processElement(int n)
     {
         std::print("{} ", n);
     }
@@ -27,7 +27,7 @@ namespace RangeBasedForLoop {
         }
     };
 
-    static void test_iterations()
+    void range_based_for_loop()
     {
         // container of integral data type
         std::vector<int> vec{ 1, 2, 3, 4, 5, 6, 7, 8, 9 };
@@ -139,8 +139,7 @@ namespace RangeBasedForLoop {
 
 void main_range_based_for_loop()
 {
-    using namespace RangeBasedForLoop;
-    test_iterations();
+    range_based_for_loop();
 }
 
 // =====================================================================================

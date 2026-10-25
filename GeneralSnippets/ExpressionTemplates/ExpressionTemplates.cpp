@@ -8,7 +8,7 @@ import std;
 
 import scoped_timer;
 
-namespace ExpressionTemplates {
+namespace {
 
     constexpr bool Verbose{ false };
 
@@ -118,7 +118,7 @@ namespace ExpressionTemplates {
 
     // ========================================================================
 
-    static void test_00()
+    void expression_templates_00()
     {
         std::cout << "Expression Template 00: Very Classical Approach" << std::endl;
 
@@ -128,7 +128,7 @@ namespace ExpressionTemplates {
         result = Matrix<Size>::add3(a, b, c);
     }
 
-    static void test_01()
+    void expression_templates_01()
     {
         std::cout << "Expression Template 01: Classical Approach" << std::endl;
 
@@ -138,7 +138,7 @@ namespace ExpressionTemplates {
         result = a + b + c + d;  // result(x, y) = 10 
     }
 
-    static void test_02()
+    void expression_templates_02()
     {
         std::cout << "Expression Template 02:" << std::endl;
 
@@ -170,7 +170,7 @@ namespace ExpressionTemplates {
         }
     }
 
-    static void test_03_00()
+    void expression_templates_03_00()
     {
         std::cout << "Expression Template 03: Expression Templates Approach" << std::endl;
 
@@ -193,7 +193,7 @@ namespace ExpressionTemplates {
         result = sumABCD;
     }
 
-    static void test_03()
+    void expression_templates_03()
     {
         std::cout << "Expression Template 03: Expression Templates Approach" << std::endl;
 
@@ -215,7 +215,7 @@ namespace ExpressionTemplates {
 
     // =====================================================================================
 
-    static void test_04a_benchmark(
+    void expression_templates_04a_benchmark(
         int iterations,
         Matrix<Size>& result,
         const Matrix<Size>& a1,
@@ -231,7 +231,7 @@ namespace ExpressionTemplates {
         }
     }
 
-    static void test_04b_benchmark(
+    void expression_templates_04b_benchmark(
         int iterations,
         Matrix<Size>& result,
         const Matrix<Size>& a1,
@@ -259,7 +259,7 @@ namespace ExpressionTemplates {
         }
     }
 
-    static void test_04_benchmark()
+    void expression_templates_04_benchmark()
     {
         std::cout << "Expression Templates 04 (Benchmark):" << std::endl;
 
@@ -267,19 +267,18 @@ namespace ExpressionTemplates {
         Matrix<Size> result{};
 
         std::cout << "Start:" << std::endl;
-        test_04a_benchmark(Iterations, result, a, b, c, d, e);
-        test_04b_benchmark(Iterations, result, a, b, c, d, e);
+        expression_templates_04a_benchmark(Iterations, result, a, b, c, d, e);
+        expression_templates_04b_benchmark(Iterations, result, a, b, c, d, e);
         std::cout << "Done." << std::endl;
     }
 }
 
 void main_expression_templates()
 {
-    using namespace ExpressionTemplates;
-    test_01();            // <== classical approach
-    test_02();            // <== expression templates approach
-    test_03();            // <== expression templates approach using modified operator=
-    test_04_benchmark();  // <== benchmark
+    expression_templates_01();            // <== classical approach
+    expression_templates_02();            // <== expression templates approach
+    expression_templates_03();            // <== expression templates approach using modified operator=
+    expression_templates_04_benchmark();  // <== benchmark
 }
 
 // =====================================================================================

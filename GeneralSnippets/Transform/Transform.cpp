@@ -2,13 +2,17 @@
 // Transform.cpp // std::transform
 // =====================================================================================
 
+module;
+
+#include <iterator>   // module implementation too unstable
+
 module modern_cpp:transform;
 
 import std;
 
-namespace AlgorithmTransform {
+namespace {
 
-    static void test_01()
+    void transform_01()
     {
         // very simple phone book
         std::cout << "List of Entries: " << std::endl;
@@ -42,7 +46,7 @@ namespace AlgorithmTransform {
         }
     }
 
-    static void test_02()
+    void transform_02()
     {
         // very simple phone book
         std::cout << "List of Entries: " << std::endl;
@@ -76,7 +80,7 @@ namespace AlgorithmTransform {
         }
     }
 
-    static void test_03()
+    void transform_03()
     {
         std::vector<std::string> persons
         {
@@ -109,10 +113,9 @@ namespace AlgorithmTransform {
 
 void main_transform()
 {
-    using namespace AlgorithmTransform;
-    test_01();
-    test_02();
-    test_03();
+    transform_01();
+    transform_02();
+    transform_03();
 }
 
 // =====================================================================================

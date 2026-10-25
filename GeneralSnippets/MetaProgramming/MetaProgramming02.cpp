@@ -6,7 +6,7 @@ module modern_cpp:metaprogramming;
 
 import std;
 
-namespace Metaprogramming {
+namespace {
 
     struct Nil {
         using Head = Nil;
@@ -22,7 +22,7 @@ namespace Metaprogramming {
     template <int N>
     struct Int { static constexpr int result = N; };
 
-    static void test_06() {
+    void metaprogramming_06() {
         // List(1, List(2, List(3, Nil)))
         using OneTwoThree = List<Int<1>, List<Int<2>, List<Int<3>>>>;
     }
@@ -51,7 +51,7 @@ namespace Metaprogramming {
         static constexpr unsigned int result = 0;
     };
 
-    static void test_07() {
+    void metaprogramming_07() {
         // List (1, 2, 3, 4, 5) 
         using List12345 = List<Int<1>, List<Int<2>, List<Int<3>, List<Int<4>, List<Int<5>>>>>>;
         std::cout << LengthVerbose<List12345>::result << std::endl;
@@ -68,12 +68,12 @@ namespace Metaprogramming {
         using result = typename LIST::Head;
     };
 
-    static void test_08() {
+    void metaprogramming_08() {
         using List12345 = List<Int<1>, List<Int<2>, List<Int<3>, List<Int<4>, List<Int<5>>>>>>;
         std::cout << Nth<List12345, 3>::result::result << std::endl;
     }
 
-    static void test_08a() {
+    void metaprogramming_08a() {
         // out of range: doesn't compile
         // using List12345 = List<Int<1>, List<Int<2>, List<Int<3>, List<Int<4>, List<Int<5>>>>>>;
         // std::cout << Nth<List12345, 99>::result::result << std::endl;
@@ -102,7 +102,7 @@ namespace Metaprogramming {
         static constexpr bool result = false;
     };
 
-    static void test_09() {
+    void metaprogramming_09() {
         using List12345 = List<Int<1>, List<Int<2>, List<Int<3>, List<Int<4>, List<Int<5>>>>>>;
         std::cout << Contains<Int<5>, List12345>::result << std::endl;
         std::cout << Contains<Int<10>, List12345>::result << std::endl;
@@ -127,7 +127,7 @@ namespace Metaprogramming {
         using result = List<Elm>;
     };
 
-    static void test_10() {
+    void metaprogramming_10() {
 
         using List12345 = List<Int<1>, List<Int<2>, List<Int<3>, List<Int<4>, List<Int<5>>>>>>;
 
@@ -143,12 +143,11 @@ namespace Metaprogramming {
 
 void main_metaprogramming_02()
 {
-    using namespace Metaprogramming;
-    test_06();
-    test_07();
-    test_08();
-    test_09();
-    test_10();
+    metaprogramming_06();
+    metaprogramming_07();
+    metaprogramming_08();
+    metaprogramming_09();
+    metaprogramming_10();
 }
 
 // =====================================================================================

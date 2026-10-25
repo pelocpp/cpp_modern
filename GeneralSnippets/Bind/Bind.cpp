@@ -6,9 +6,9 @@ module modern_cpp:bind;
 
 import std;
 
-namespace Bind {
+namespace {
 
-    static void test() {
+    void bind_01() {
 
         using namespace std::placeholders;  // for _1, _2, _3...
 
@@ -71,8 +71,7 @@ namespace Bind {
 
 void main_bind()
 {
-    using namespace Bind;
-    test();
+    bind_01();
 }
 
 // =====================================================================================

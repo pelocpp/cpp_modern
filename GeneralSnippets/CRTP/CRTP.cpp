@@ -6,7 +6,7 @@ module modern_cpp:crtp;
 
 import std;
 
-namespace CRTP {
+namespace {
 
     class ControlBase
     {
@@ -90,7 +90,7 @@ namespace CRTP {
         c.draw();
     }
 
-    static void test_01_crtp()
+    void crtp_01()
     {
         Button b;
         drawControl(b);
@@ -99,14 +99,14 @@ namespace CRTP {
         drawControl(c);
     }
 
-    static void drawControls(std::vector<std::shared_ptr<ControlBase>>& controls) {
+    void drawControls(std::vector<std::shared_ptr<ControlBase>>& controls) {
 
         for (auto& control : controls) {
             control->draw();
         }
     }
 
-    static void test_02_crtp()
+    void crtp_02()
     {
         std::vector<std::shared_ptr<ControlBase>> vector;
 
@@ -119,9 +119,8 @@ namespace CRTP {
 
 void main_crtp()
 {
-    using namespace CRTP;
-    test_01_crtp();
-    test_02_crtp();
+    crtp_01();
+    crtp_02();
 }
 
 // =====================================================================================

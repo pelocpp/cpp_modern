@@ -4,7 +4,7 @@
 
 module;
 
-#include <cctype>
+#include <cctype>     // module implementation too unstable
 
 module modern_cpp:spaceship_operator;
 

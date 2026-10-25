@@ -6,8 +6,8 @@ module modern_cpp:erase_remove_idiom;
 
 import std;
 
-namespace
-{
+namespace {
+
     template <typename T>
     void print(const std::vector<T>& v)
     {

@@ -459,16 +459,6 @@ namespace BookStoreUsingTypeErasure {
 
 void main_type_erasure_bookstore()
 {
-    //using namespace TypeErasureUsingDynamicPolymorphism;
-    //using namespace TypeErasureUsingTemplateTechniques;
-    //using namespace TypeErasureUsingTemplateTechniquesAndConcepts;
-    using namespace BookStoreUsingDynamicPolymorphism;
-    using namespace BookStoreUsingTypeErasure;
-
-    //TypeErasureUsingDynamicPolymorphism::test_type_erasure_using_dynamic_polymorphism();
-    //TypeErasureUsingTemplateTechniques::test_type_erasure_using_template_techniques();
-    //TypeErasureUsingTemplateTechniquesAndConcepts::test_type_erasure_using_template_techniques();
-
     BookStoreUsingDynamicPolymorphism::test_bookstore_polymorphic_01();
     BookStoreUsingDynamicPolymorphism::test_bookstore_polymorphic_02();
     BookStoreUsingDynamicPolymorphism::test_bookstore_polymorphic_03();

@@ -4,8 +4,8 @@
 
 module;
 
-#include <cstddef>
-#include <print>
+#include <cstddef>     // module implementation too unstable
+#include <print>       // module implementation too unstable
 
 module modern_cpp:legacy;
 
@@ -146,6 +146,7 @@ namespace {
         class Derived : public Base {
         public:
             using Base::Base;       // inherits Base(int) and Base(int, const std::string&)
+
         private:
             int m_extra = 0;        // default member initializer, important
         };
@@ -186,9 +187,9 @@ namespace {
         std::vector<Person> persons;   // add comment ...
         // std::list<Person> persons;  // ... and remove comment
 
-        std::vector<Person>::const_iterator it = persons.begin();  // iterator type must be manually adjusted
+        std::vector<Person>::const_iterator it = persons.cbegin();  // iterator type must be manually adjusted
 
-        auto it2 = persons.begin();                                // iterator type is deducted automatically  - at compile time
+        auto it2 = persons.cbegin();                                // iterator type is deducted automatically  - at compile time
     }
 
     // =======================================================================
@@ -386,14 +387,14 @@ namespace {
 
 void main_legacy()
 {
-    //legacy_null();
-    //legacy_inheritance_keyword_override();
-    //legacy_inheriting_constructors();
-    //legacy_auto_range_based_for_loop();
-    //legacy_enums();
-    //legacy_method_chaining();
-    //legacy_string_view();
-    //legacy_initializer_list();
+    legacy_null();
+    legacy_inheritance_keyword_override();
+    legacy_inheriting_constructors();
+    legacy_auto_range_based_for_loop();
+    legacy_enums();
+    legacy_method_chaining();
+    legacy_string_view();
+    legacy_initializer_list();
     legacy_move_semantics();
 }
 
@@ -402,8 +403,8 @@ void main_legacy()
 // ===========================================================================
 
 
-    // =======================================================================
-    // Noch nicht behandelt
+// =======================================================================
+// Noch nicht behandelt
 
 struct Alt {
     int x;

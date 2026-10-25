@@ -7,9 +7,9 @@ module modern_cpp:allocator;
 import std;
 import dummy;
 
-namespace Allocator {
+namespace {
 
-    static void test_01_allocator() {
+    void allocator_01() {
 
         std::allocator<int> myIntAlloc;    // default allocator for ints
         int* ip = myIntAlloc.allocate(3);  // space for three ints
@@ -80,7 +80,7 @@ namespace Allocator {
 
     constexpr int Max = 50;
 
-    static void test_02_allocator() {
+    void allocator_02() {
 
         std::vector<int, MyAlloc<int>> vec;
         // vec.reserve(Max);  // put into comments ... or not
@@ -102,7 +102,7 @@ namespace Allocator {
 
     constexpr int AnotherMax = 5;
 
-    static void test_03a_allocator() {
+    void allocator_03() {
 
         std::cout << "Insertion: push_back - Object by LValue reference" << std::endl;
         std::vector<Dummy, MyAlloc<Dummy>> vec;
@@ -113,7 +113,7 @@ namespace Allocator {
         }
     }
 
-    static void test_03b_allocator() {
+    void allocator_04() {
 
         std::cout << "Insertion: push_back - Object by RValue reference" << std::endl;
         std::vector<Dummy, MyAlloc<Dummy>> vec;
@@ -123,7 +123,7 @@ namespace Allocator {
         }
     }
 
-    static void test_03c_allocator() {
+    void allocator_05() {
 
         std::cout << "Insertion: emplace_back" << std::endl;
         std::vector<Dummy, MyAlloc<Dummy>> vec;
@@ -132,17 +132,15 @@ namespace Allocator {
             vec.emplace_back(n);
         }
     }
-
 }
 
 void main_allocator()
 {
-    using namespace Allocator;
-    test_01_allocator();
-    test_02_allocator();
-    test_03a_allocator();
-    test_03b_allocator();
-    test_03c_allocator();
+    allocator_01();
+    allocator_02();
+    allocator_03();
+    allocator_04();
+    allocator_05();
 }
 
 // =====================================================================================

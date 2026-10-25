@@ -4,7 +4,7 @@
 
 module;
 
-#include <span>
+#include <span>     // module implementation too unstable
 
 module modern_cpp:algorithms;
 

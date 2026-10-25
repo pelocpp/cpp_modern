@@ -6,7 +6,7 @@ module modern_cpp:common_type;
 
 import std;
 
-namespace CommonType {
+namespace {
 
     template <typename T>
     class Number {
@@ -46,7 +46,7 @@ namespace CommonType {
     //    return result;
     //}
 
-    static void test_commontype_01()
+    void commontype_01()
     {
         std::cout << "std::common_type demonstration:" << std::endl;
 
@@ -72,7 +72,7 @@ namespace CommonType {
 
     // do you notice the difference using operator+ between these two examples?
     // (hint: the debugger may help ...)
-    static void test_commontype_02()
+    void commontype_02()
     {
         std::cout << "More std::common_type demonstration:" << std::endl;
 
@@ -90,9 +90,8 @@ namespace CommonType {
 
 void main_common_type()
 {
-    using namespace CommonType;
-    test_commontype_01();
-    test_commontype_02();
+    commontype_01();
+    commontype_02();
 }
 
 // =====================================================================================

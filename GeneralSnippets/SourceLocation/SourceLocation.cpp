@@ -6,7 +6,7 @@ module modern_cpp:source_location;
 
 import std;
 
-namespace StdSourceLocation {
+namespace {
 
     static void log(
         const std::string_view message, 
@@ -25,7 +25,7 @@ namespace StdSourceLocation {
         log(x);
     }
 
-    static void test_01() {
+    void source_location() {
 
         log("Hello World!");
         function("Hello Function!");
@@ -34,8 +34,7 @@ namespace StdSourceLocation {
 
 void main_source_location()
 {
-    using namespace StdSourceLocation;
-    test_01();
+    source_location();
 }
 
 // =====================================================================================
