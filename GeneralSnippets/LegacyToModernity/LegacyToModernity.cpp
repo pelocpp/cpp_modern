@@ -232,6 +232,69 @@ namespace {
     }
 
     // =======================================================================
+    // typedef vs. using
+
+    template <typename T>
+    using StringMap = std::map<std::string, T>;   // Template Aliasing (Alias Templates)
+
+    void legacy_typedef_using()
+    {
+        // Usage:
+        StringMap<int> myMap;
+    }
+
+    typedef int MyInt;
+    using MyInt = int;
+    
+    typedef void (*FuncPtr)(int, const std::string&);
+    using FuncPtr = void(*)(int, const std::string&);
+    
+    typedef int IntArray[10];
+    using IntArray = int[10];
+
+    // =======================================================================
+    // constexpr
+
+    // windef.h -- Basic Windows Type Definitions
+    typedef unsigned char     BYTE;
+    typedef unsigned short    WORD;
+    typedef unsigned long     DWORD;
+
+    // wingdi.h
+    typedef DWORD             COLORREF;
+
+    // wingdi.h // Little-Endian // BGR-Format
+#define RGB(r,g,b)  ((COLORREF)(((BYTE)(r)|((WORD)((BYTE)(g))<<8))|(((DWORD)(BYTE)(b))<<16)))
+
+    // Classic RGB // RGB-Format
+    constexpr std::uint32_t Rgb(std::uint8_t r, std::uint8_t g, std::uint8_t b)
+    {
+        return
+            static_cast<std::uint32_t>(r) << 16 |
+            static_cast<std::uint32_t>(g) << 8 |
+            static_cast<std::uint32_t>(b);
+    }
+
+    void legacy_macros_constexpr()
+    {
+        // not recommended usage - no errors or just warnings
+        COLORREF unknown1 = RGB(255.0, 0.0, 0.0);             // No warning, no error
+        COLORREF unknown2 = RGB('173', '216', '230');         // No warning, no error
+        COLORREF unknown3 = RGB(1000, 5000, 32000);           // No warning, no error
+
+        // recommended usage
+        constexpr std::uint32_t red{ Rgb(255, 0, 0) };
+        constexpr std::uint32_t lightBlue{ Rgb(173, 216, 230) };
+        constexpr std::uint32_t aqua{ Rgb(0, 255, 255) };
+        constexpr std::uint32_t darkGreen{ Rgb(1, 50, 32) };
+
+        std::println("{:#010X}", red);
+        std::println("{:#010X}", lightBlue);
+        std::println("{:#010X}", aqua);
+        std::println("{:#010X}", darkGreen);
+    }
+
+    // =======================================================================
     // Method Chaining
 
     void legacy_method_chaining()
@@ -392,6 +455,8 @@ void main_legacy()
     legacy_inheriting_constructors();
     legacy_auto_range_based_for_loop();
     legacy_enums();
+    legacy_typedef_using();
+    legacy_macros_constexpr();
     legacy_method_chaining();
     legacy_string_view();
     legacy_initializer_list();

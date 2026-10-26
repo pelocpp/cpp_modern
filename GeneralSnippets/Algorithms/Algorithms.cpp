@@ -11,7 +11,7 @@ module modern_cpp:algorithms;
 import std;
 import scoped_timer;
 
-namespace Algorithms {
+namespace {
 
     // =================================================================================
     // Global constants and types
@@ -31,780 +31,734 @@ namespace Algorithms {
     std::array<double, ArraySize> target;
 }
 
-namespace Algorithms {
+namespace {
 
-    namespace Initialization_Vector_Constant_Value {
+    // =============================================================================
+    // Initialization of std::vector with a constant value
+    // =============================================================================
 
-        // =============================================================================
-        // Initialization of std::vector with a constant value
-        // =============================================================================
+    void vector_constant_initialize_classic_for_loop()
+    {
+        std::println("std::vector: using a classic for-loop");
 
-        static auto vector_constant_initialize_classic_for_loop()
-        {
-            std::println("std::vector: using a classic for-loop");
+        std::vector<double> values(VectorSize);
 
-            std::vector<double> values(VectorSize);
+        ScopedTimer watch;
 
-            ScopedTimer watch;
-
-            for (std::size_t i{}; i != values.size(); ++i) {
-                values[i] = 123.0;
-            }
-        }
-
-        static auto vector_constant_initialize_iterator_based()
-        {
-            std::println("std::vector: using an iterator-based for-loop");
-
-            std::vector<double> values(VectorSize);
-
-            ScopedTimer watch;
-
-            for (auto it{ values.begin() }; it != values.end(); ++it) {
-                *it = 123.0;
-            }
-        }
-
-        static auto vector_constant_initialize_std_fill()
-        {
-            std::println("std::vector: using std::fill");
-
-            std::vector<double> values(VectorSize);
-
-            ScopedTimer watch;
-
-            std::fill(
-                values.begin(),
-                values.end(),
-                123.0
-            );
-        }
-
-        static auto vector_constant_initialize_std_fill_parallelized()
-        {
-            std::println("std::vector: using std::fill - using execution policy ");
-
-            std::vector<double> values(VectorSize);
-
-            ScopedTimer watch;
-
-            std::fill(
-                std::execution::par,
-                values.begin(),
-                values.end(),
-                123.0
-            );
-        }
-
-        static auto vector_constant_initialize_std_for_each()
-        {
-            std::println("std::vector: using std::for_each");
-
-            std::vector<double> values(VectorSize);
-
-            ScopedTimer watch;
-
-            std::for_each(
-                values.begin(),
-                values.end(),
-                [](auto& elem) { elem = 123.0; }
-            );
-        }
-
-        static auto vector_constant_initialize_range_based_for_loop()
-        {
-            std::println("std::vector: using range-based for loop");
-
-            std::vector<double> values(VectorSize);
-
-            ScopedTimer watch;
-
-            for (auto& elem : values) {
-                elem = 123.0;
-            }
-        }
-
-        static auto vector_constant_initialize_std_generate()
-        {
-            std::println("std::vector: using std::generate");
-
-            std::vector<double> values(VectorSize);
-
-            ScopedTimer watch;
-
-            std::generate(
-                values.begin(),
-                values.end(),
-                []() { return 123.0; }
-            );
-        }
-
-        static auto vector_constant_initialize_user_defined_ctor()
-        {
-            std::println("std::vector: using special std::vector c'tor (Note: time includes initialization of std::vector!)");
-
-            ScopedTimer watch;
-
-            std::vector<double> values(VectorSize, 123.0);
-        }
-
-        static void vector_constant_initialization()
-        {
-            vector_constant_initialize_classic_for_loop();
-            vector_constant_initialize_iterator_based();
-            vector_constant_initialize_std_fill();
-            vector_constant_initialize_std_fill_parallelized();
-            vector_constant_initialize_std_for_each();
-            vector_constant_initialize_range_based_for_loop();
-            vector_constant_initialize_std_generate();
-            vector_constant_initialize_user_defined_ctor();
+        for (std::size_t i{}; i != values.size(); ++i) {
+            values[i] = 123.0;
         }
     }
-}
 
-namespace Algorithms {
+    void vector_constant_initialize_iterator_based()
+    {
+        std::println("std::vector: using an iterator-based for-loop");
 
-    namespace Initialization_Array_Constant_Value {
+        std::vector<double> values(VectorSize);
 
-        // =============================================================================
-        // Initialization of std::array with a constant value
-        // =============================================================================
+        ScopedTimer watch;
 
-        static auto array_constant_initialize_classic_for_loop()
-        {
-            std::println("std::array: using a classic for-loop");
-
-            ScopedTimer watch;
-
-            for (std::size_t i{}; i != values.size(); ++i) {
-                values[i] = 123.0;
-            }
-        }
-
-        static auto array_constant_initialize_iterator_based()
-        {
-            std::println("std::array: using an iterator-based for-loop");
-
-            ScopedTimer watch;
-
-            for (auto it{ values.begin() }; it != values.end(); ++it) {
-                *it = 123.0;
-            }
-        }
-
-        static auto array_constant_initialize_std_fill()
-        {
-            std::println("std::array: using std::fill");
-
-            ScopedTimer watch;
-
-            std::fill(
-                values.begin(),
-                values.end(),
-                123.0
-            );
-        }
-
-        static auto array_constant_initialize_std_fill_parallelized()
-        {
-            std::println("std::array: using std::fill - using execution policy ");
-
-            ScopedTimer watch;
-
-            std::fill(
-                std::execution::par,
-                values.begin(),
-                values.end(),
-                123.0
-            );
-        }
-
-        static auto array_constant_initialize_std_for_each()
-        {
-            std::println("std::array: using std::for_each");
-
-            ScopedTimer watch;
-
-            std::for_each(
-                values.begin(),
-                values.end(),
-                [](auto& elem) { elem = 123.0; }
-            );
-        }
-
-        static auto array_constant_initialize_range_based_for_loop()
-        {
-            std::println("std::array: using range-based for loop");
-
-            ScopedTimer watch;
-
-            for (auto& elem : values) {
-                elem = 123.0;
-            }
-        }
-
-        static auto array_constant_initialize_std_generate()
-        {
-            std::println("std::array: using std::generate");
-
-            ScopedTimer watch;
-
-            std::generate(
-                values.begin(),
-                values.end(),
-                []() { return 123.0; }
-            );
-        }
-
-        static void array_constant_initialization()
-        {
-            array_constant_initialize_classic_for_loop();
-            array_constant_initialize_iterator_based();
-            array_constant_initialize_std_fill();
-            array_constant_initialize_std_fill_parallelized();
-            array_constant_initialize_std_for_each();
-            array_constant_initialize_range_based_for_loop();
-            array_constant_initialize_std_generate();
+        for (auto it{ values.begin() }; it != values.end(); ++it) {
+            *it = 123.0;
         }
     }
-}
 
-namespace Algorithms {
+    void vector_constant_initialize_std_fill()
+    {
+        std::println("std::vector: using std::fill");
 
-    namespace Initialization_Vector_Varying_Value {
+        std::vector<double> values(VectorSize);
 
-        // =================================================================================
-        // Initialization of std::vector with a varying value
-        // =================================================================================
+        ScopedTimer watch;
 
-        static auto vector_varying_initialize_classic_for_loop()
-        {
-            std::println("std::vector: using a classic for-loop");
+        std::fill(
+            values.begin(),
+            values.end(),
+            123.0
+        );
+    }
 
-            std::vector<double> values(VectorSize);
+    void vector_constant_initialize_std_fill_parallelized()
+    {
+        std::println("std::vector: using std::fill - using execution policy ");
 
-            ScopedTimer watch;
+        std::vector<double> values(VectorSize);
 
-            for (std::size_t i{}; i != values.size(); ++i) {
-                values[i] = 2.0 * i;
-            }
-        }
+        ScopedTimer watch;
 
-        static auto vector_varying_initialize_iterator_based()
-        {
-            std::println("std::vector: using an iterator-based for-loop");
+        std::fill(
+            std::execution::par,
+            values.begin(),
+            values.end(),
+            123.0
+        );
+    }
 
-            std::vector<double> values(VectorSize);
+    void vector_constant_initialize_std_for_each()
+    {
+        std::println("std::vector: using std::for_each");
 
-            ScopedTimer watch;
+        std::vector<double> values(VectorSize);
 
-            std::size_t i{};
-            for (auto it{ values.begin() }; it != values.end(); ++it) {
-                *it = 2.0 * i++;
-            }
-        }
+        ScopedTimer watch;
 
-        static auto vector_varying_initialize_std_for_each()
-        {
-            std::println("std::vector: using std::for_each");
+        std::for_each(
+            values.begin(),
+            values.end(),
+            [](auto& elem) { elem = 123.0; }
+        );
+    }
 
-            std::vector<double> values(VectorSize);
+    void vector_constant_initialize_range_based_for_loop()
+    {
+        std::println("std::vector: using range-based for loop");
 
-            ScopedTimer watch;
+        std::vector<double> values(VectorSize);
 
-            std::for_each(
-                values.begin(),
-                values.end(),
-                [i = 0.0](auto& elem) mutable { elem = 2.0 * i++; }
-            );
-        }
+        ScopedTimer watch;
 
-        static auto vector_varying_initialize_range_based_for_loop()
-        {
-            std::println("std::vector: using range-based for loop");
-
-            std::vector<double> values(VectorSize);
-
-            ScopedTimer watch;
-
-            for (int i{}; auto & elem : values) {
-                elem = 2.0 * i++;
-            }
-        }
-
-        static auto vector_varying_initialize_std_for_generate()
-        {
-            std::println("std::vector: using std::generate");
-
-            std::vector<double> values(VectorSize);
-
-            ScopedTimer watch;
-
-            std::generate(
-                values.begin(),
-                values.end(),
-                [i = 0.0]() mutable { return 2.0 * i++; }
-            );
-        }
-
-        static void vector_varying_initialization()
-        {
-            vector_varying_initialize_classic_for_loop();
-            vector_varying_initialize_iterator_based();
-            vector_varying_initialize_std_for_each();
-            vector_varying_initialize_range_based_for_loop();
-            vector_varying_initialize_std_for_generate();
+        for (auto& elem : values) {
+            elem = 123.0;
         }
     }
-}
 
-namespace Algorithms {
+    void vector_constant_initialize_std_generate()
+    {
+        std::println("std::vector: using std::generate");
 
-    namespace Initialization_Array_Varying_Value {
+        std::vector<double> values(VectorSize);
 
-        // =================================================================================
-        // Initialization of std::array with a varying value
-        // =================================================================================
+        ScopedTimer watch;
 
-        static auto array_varying_initialize_classic_for_loop()
-        {
-            std::println("std::array: using a classic for-loop");
+        std::generate(
+            values.begin(),
+            values.end(),
+            []() { return 123.0; }
+        );
+    }
 
-            ScopedTimer watch;
+    void vector_constant_initialize_user_defined_ctor()
+    {
+        std::println("std::vector: using special std::vector c'tor (Note: time includes initialization of std::vector!)");
 
-            for (std::size_t i{}; i != values.size(); ++i) {
-                values[i] = 2.0 * i;
-            }
-        }
+        ScopedTimer watch;
 
-        static auto array_varying_initialize_iterator_based()
-        {
-            std::println("std::array: using an iterator-based for-loop");
+        std::vector<double> values(VectorSize, 123.0);
+    }
 
-            ScopedTimer watch;
+    void algorithms_vector_constant_initialization()
+    {
+        vector_constant_initialize_classic_for_loop();
+        vector_constant_initialize_iterator_based();
+        vector_constant_initialize_std_fill();
+        vector_constant_initialize_std_fill_parallelized();
+        vector_constant_initialize_std_for_each();
+        vector_constant_initialize_range_based_for_loop();
+        vector_constant_initialize_std_generate();
+        vector_constant_initialize_user_defined_ctor();
+    }
 
-            std::size_t i{};
-            for (auto it{ values.begin() }; it != values.end(); ++it) {
-                *it = 2.0 * i++;
-            }
-        }
+    // =============================================================================
+    // Initialization of std::array with a constant value
+    // =============================================================================
 
-        static auto array_varying_initialize_std_for_each()
-        {
-            std::println("std::array: using std::for_each");
+    void array_constant_initialize_classic_for_loop()
+    {
+        std::println("std::array: using a classic for-loop");
 
-            ScopedTimer watch;
+        ScopedTimer watch;
 
-            std::for_each(
-                values.begin(),
-                values.end(),
-                [i = 0.0](auto& elem) mutable { elem = 2.0 * i++; }
-            );
-        }
-
-        static auto array_varying_initialize_range_based_for_loop()
-        {
-            std::println("std::array: using range-based for loop");
-
-            ScopedTimer watch;
-
-            for (int i{}; auto & elem : values) {
-                elem = 2.0 * i++;
-            }
-        }
-
-        static auto array_varying_initialize_std_for_generate()
-        {
-            std::println("std::array: using std::generate");
-
-            ScopedTimer watch;
-
-            std::generate(
-                values.begin(),
-                values.end(),
-                [i = 0.0]() mutable { return 2.0 * i++; }
-            );
-        }
-
-        static void array_varying_initialization()
-        {
-            using namespace Initialization_Array_Varying_Value;
-
-            array_varying_initialize_classic_for_loop();
-            array_varying_initialize_iterator_based();
-            array_varying_initialize_std_for_each();
-            array_varying_initialize_range_based_for_loop();
-            array_varying_initialize_std_for_generate();
+        for (std::size_t i{}; i != values.size(); ++i) {
+            values[i] = 123.0;
         }
     }
-}
 
-namespace Algorithms {
+    void array_constant_initialize_iterator_based()
+    {
+        std::println("std::array: using an iterator-based for-loop");
+
+        ScopedTimer watch;
+
+        for (auto it{ values.begin() }; it != values.end(); ++it) {
+            *it = 123.0;
+        }
+    }
+
+    void array_constant_initialize_std_fill()
+    {
+        std::println("std::array: using std::fill");
+
+        ScopedTimer watch;
+
+        std::fill(
+            values.begin(),
+            values.end(),
+            123.0
+        );
+    }
+
+    void array_constant_initialize_std_fill_parallelized()
+    {
+        std::println("std::array: using std::fill - using execution policy ");
+
+        ScopedTimer watch;
+
+        std::fill(
+            std::execution::par,
+            values.begin(),
+            values.end(),
+            123.0
+        );
+    }
+
+    void array_constant_initialize_std_for_each()
+    {
+        std::println("std::array: using std::for_each");
+
+        ScopedTimer watch;
+
+        std::for_each(
+            values.begin(),
+            values.end(),
+            [](auto& elem) { elem = 123.0; }
+        );
+    }
+
+    void array_constant_initialize_range_based_for_loop()
+    {
+        std::println("std::array: using range-based for loop");
+
+        ScopedTimer watch;
+
+        for (auto& elem : values) {
+            elem = 123.0;
+        }
+    }
+
+    void array_constant_initialize_std_generate()
+    {
+        std::println("std::array: using std::generate");
+
+        ScopedTimer watch;
+
+        std::generate(
+            values.begin(),
+            values.end(),
+            []() { return 123.0; }
+        );
+    }
+
+    void algorithms_array_constant_initialization()
+    {
+        array_constant_initialize_classic_for_loop();
+        array_constant_initialize_iterator_based();
+        array_constant_initialize_std_fill();
+        array_constant_initialize_std_fill_parallelized();
+        array_constant_initialize_std_for_each();
+        array_constant_initialize_range_based_for_loop();
+        array_constant_initialize_std_generate();
+    }
+
+    // =================================================================================
+    // Initialization of std::vector with a varying value
+    // =================================================================================
+
+    void vector_varying_initialize_classic_for_loop()
+    {
+        std::println("std::vector: using a classic for-loop");
+
+        std::vector<double> values(VectorSize);
+
+        ScopedTimer watch;
+
+        for (std::size_t i{}; i != values.size(); ++i) {
+            values[i] = 2.0 * i;
+        }
+    }
+
+    void vector_varying_initialize_iterator_based()
+    {
+        std::println("std::vector: using an iterator-based for-loop");
+
+        std::vector<double> values(VectorSize);
+
+        ScopedTimer watch;
+
+        std::size_t i{};
+        for (auto it{ values.begin() }; it != values.end(); ++it) {
+            *it = 2.0 * i++;
+        }
+    }
+
+    void vector_varying_initialize_std_for_each()
+    {
+        std::println("std::vector: using std::for_each");
+
+        std::vector<double> values(VectorSize);
+
+        ScopedTimer watch;
+
+        std::for_each(
+            values.begin(),
+            values.end(),
+            [i = 0.0](auto& elem) mutable { elem = 2.0 * i++; }
+        );
+    }
+
+    void vector_varying_initialize_range_based_for_loop()
+    {
+        std::println("std::vector: using range-based for loop");
+
+        std::vector<double> values(VectorSize);
+
+        ScopedTimer watch;
+
+        for (int i{}; auto & elem : values) {
+            elem = 2.0 * i++;
+        }
+    }
+
+    void vector_varying_initialize_std_for_generate()
+    {
+        std::println("std::vector: using std::generate");
+
+        std::vector<double> values(VectorSize);
+
+        ScopedTimer watch;
+
+        std::generate(
+            values.begin(),
+            values.end(),
+            [i = 0.0]() mutable { return 2.0 * i++; }
+        );
+    }
+
+    void algorithms_vector_varying_initialization()
+    {
+        vector_varying_initialize_classic_for_loop();
+        vector_varying_initialize_iterator_based();
+        vector_varying_initialize_std_for_each();
+        vector_varying_initialize_range_based_for_loop();
+        vector_varying_initialize_std_for_generate();
+    }
+
+    // =================================================================================
+    // Initialization of std::array with a varying value
+    // =================================================================================
+
+    void array_varying_initialize_classic_for_loop()
+    {
+        std::println("std::array: using a classic for-loop");
+
+        ScopedTimer watch;
+
+        for (std::size_t i{}; i != values.size(); ++i) {
+            values[i] = 2.0 * i;
+        }
+    }
+
+    void array_varying_initialize_iterator_based()
+    {
+        std::println("std::array: using an iterator-based for-loop");
+
+        ScopedTimer watch;
+
+        std::size_t i{};
+        for (auto it{ values.begin() }; it != values.end(); ++it) {
+            *it = 2.0 * i++;
+        }
+    }
+
+    void array_varying_initialize_std_for_each()
+    {
+        std::println("std::array: using std::for_each");
+
+        ScopedTimer watch;
+
+        std::for_each(
+            values.begin(),
+            values.end(),
+            [i = 0.0](auto& elem) mutable { elem = 2.0 * i++; }
+        );
+    }
+
+    void array_varying_initialize_range_based_for_loop()
+    {
+        std::println("std::array: using range-based for loop");
+
+        ScopedTimer watch;
+
+        for (int i{}; auto & elem : values) {
+            elem = 2.0 * i++;
+        }
+    }
+
+    void array_varying_initialize_std_for_generate()
+    {
+        std::println("std::array: using std::generate");
+
+        ScopedTimer watch;
+
+        std::generate(
+            values.begin(),
+            values.end(),
+            [i = 0.0]() mutable { return 2.0 * i++; }
+        );
+    }
+
+    void algorithms_array_varying_initialization()
+    {
+        array_varying_initialize_classic_for_loop();
+        array_varying_initialize_iterator_based();
+        array_varying_initialize_std_for_each();
+        array_varying_initialize_range_based_for_loop();
+        array_varying_initialize_std_for_generate();
+    }
 
     // =================================================================================
     // Using algorithms for copying ranges (std::vector)
     // =================================================================================
 
-    namespace Copying_Vectors {
-    
-        static auto vector_copying_classic_for_loop()
-        {
-            std::println("std::vector: Copying: Using a classic for-loop");
+    void vector_copying_classic_for_loop()
+    {
+        std::println("std::vector: Copying: Using a classic for-loop");
 
-            std::vector<double> source(VectorSize, 123.0);
-            std::vector<double> target(VectorSize);
+        std::vector<double> source(VectorSize, 123.0);
+        std::vector<double> target(VectorSize);
 
-            ScopedTimer watch;
+        ScopedTimer watch;
 
-            for (std::size_t i{}; i != source.size(); ++i) {
-                target[i] = source[i];
-            }
-        }
-
-        static auto vector_copying_iterator_based()
-        {
-            std::println("std::vector: Copying: Using an iterator-based for-loop");
-
-            std::vector<double> source(VectorSize, 123.0);
-            std::vector<double> target(VectorSize);
-
-            ScopedTimer watch;
-
-            auto itTarget{ target.begin() };
-            for (auto it{ source.begin() }; it != source.end(); ++it) {
-                *itTarget = *it;
-                ++itTarget;
-            }
-        }
-
-        static auto vector_copying_std_copy()
-        {
-            std::println("std::vector: Standard Algorithm - std::copy:");
-
-            std::vector<double> source(VectorSize, 123.0);
-            std::vector<double> target(VectorSize);
-
-            ScopedTimer watch;
-
-            std::copy(
-                source.begin(),
-                source.end(),
-                target.begin()
-            );
-        }
-
-        static auto vector_copying_std_copy_parallelized()
-        {
-            std::println("std::vector: Using std::copy - using execution policy");
-
-            std::vector<double> source(VectorSize, 123.0);
-            std::vector<double> target(VectorSize);
-
-            ScopedTimer watch;
-
-            std::copy(
-                std::execution::par,
-                source.begin(),
-                source.end(),
-                target.begin()
-            );
-        }
-
-        static auto vector_copying_std_memcpy()
-        {
-            std::println("std::vector: Using std::memcpy");
-
-            std::vector<double> source(VectorSize, 123.0);
-            std::vector<double> target(VectorSize);
-
-            ScopedTimer watch;
-
-            // take care: works only with continuous memory
-            std::memcpy(
-                target.data(),
-                source.data(),
-                VectorSize * sizeof(double)
-            );
-        }
-
-        static void vector_copying()
-        {
-            vector_copying_classic_for_loop();
-            vector_copying_iterator_based();
-            vector_copying_std_copy();
-            vector_copying_std_copy_parallelized();
-            vector_copying_std_memcpy();
+        for (std::size_t i{}; i != source.size(); ++i) {
+            target[i] = source[i];
         }
     }
-}
 
-namespace Algorithms {
+    void vector_copying_iterator_based()
+    {
+        std::println("std::vector: Copying: Using an iterator-based for-loop");
+
+        std::vector<double> source(VectorSize, 123.0);
+        std::vector<double> target(VectorSize);
+
+        ScopedTimer watch;
+
+        auto itTarget{ target.begin() };
+        for (auto it{ source.begin() }; it != source.end(); ++it) {
+            *itTarget = *it;
+            ++itTarget;
+        }
+    }
+
+    void vector_copying_std_copy()
+    {
+        std::println("std::vector: Standard Algorithm - std::copy:");
+
+        std::vector<double> source(VectorSize, 123.0);
+        std::vector<double> target(VectorSize);
+
+        ScopedTimer watch;
+
+        std::copy(
+            source.begin(),
+            source.end(),
+            target.begin()
+        );
+    }
+
+    void vector_copying_std_copy_parallelized()
+    {
+        std::println("std::vector: Using std::copy - using execution policy");
+
+        std::vector<double> source(VectorSize, 123.0);
+        std::vector<double> target(VectorSize);
+
+        ScopedTimer watch;
+
+        std::copy(
+            std::execution::par,
+            source.begin(),
+            source.end(),
+            target.begin()
+        );
+    }
+
+    void vector_copying_std_memcpy()
+    {
+        std::println("std::vector: Using std::memcpy");
+
+        std::vector<double> source(VectorSize, 123.0);
+        std::vector<double> target(VectorSize);
+
+        ScopedTimer watch;
+
+        // take care: works only with continuous memory
+        std::memcpy(
+            target.data(),
+            source.data(),
+            VectorSize * sizeof(double)
+        );
+    }
+
+    void algorithms_vector_copying()
+    {
+        vector_copying_classic_for_loop();
+        vector_copying_iterator_based();
+        vector_copying_std_copy();
+        vector_copying_std_copy_parallelized();
+        vector_copying_std_memcpy();
+    }
 
     // =================================================================================
     // Using algorithms for copying ranges (std::array)
     // =================================================================================
 
-    namespace Copying_Arrays {
+    void array_copying_classic_for_loop()
+    {
+        std::println("std::array: Copying: Using a classic for-loop");
 
-        static auto array_copying_classic_for_loop()
-        {
-            std::println("std::array: Copying: Using a classic for-loop");
+        ScopedTimer watch;
 
-            ScopedTimer watch;
-
-            for (std::size_t i{}; i != source.size(); ++i) {
-                target[i] = source[i];
-            }
-        }
-
-        static auto array_copying_iterator_based()
-        {
-            std::println("std::array: Copying: Using an iterator-based for-loop");
-
-            ScopedTimer watch;
-
-            auto itTarget{ target.begin() };
-            for (auto it{ source.begin() }; it != source.end(); ++it) {
-                *itTarget = *it;
-                ++itTarget;
-            }
-        }
-
-        static auto array_copying_std_copy()
-        {
-            std::println("std::array: Standard Algorithm - std::copy:");
-
-            ScopedTimer watch;
-
-            std::copy(
-                source.begin(),
-                source.end(),
-                target.begin()
-            );
-        }
-
-        static auto array_copying_std_copy_parallelized()
-        {
-            std::println("std::array: Using std::copy - using execution policy");
-
-            ScopedTimer watch;
-
-            std::copy(
-                std::execution::par,
-                source.begin(),
-                source.end(),
-                target.begin()
-            );
-        }
-
-        static auto array_copying_std_memcpy()
-        {
-            std::println("std::array: Using std::memcpy");
-
-            ScopedTimer watch;
-
-            // take care: works only with continuous memory
-            std::memcpy(
-                target.data(),
-                source.data(),
-                ArraySize * sizeof(double)
-            );
-        }
-
-        static void array_copying()
-        {
-            array_copying_classic_for_loop();
-            array_copying_iterator_based();
-            array_copying_std_copy();
-            array_copying_std_copy_parallelized();
-            array_copying_std_memcpy();
+        for (std::size_t i{}; i != source.size(); ++i) {
+            target[i] = source[i];
         }
     }
-}
 
-namespace Algorithms {
+    void array_copying_iterator_based()
+    {
+        std::println("std::array: Copying: Using an iterator-based for-loop");
 
-    namespace Elementary_Calculations {
+        ScopedTimer watch;
 
-        // =================================================================================
-        // Using algorithms for elementary calculations both suited for std::vector or std::array
-        // =================================================================================
+        auto itTarget{ target.begin() };
+        for (auto it{ source.begin() }; it != source.end(); ++it) {
+            *itTarget = *it;
+            ++itTarget;
+        }
+    }
 
-        static auto calculate_sum_classic_for_loop(std::span<const double> values)
-        {
-            std::println("Classic Loop: ");
+    void array_copying_std_copy()
+    {
+        std::println("std::array: Standard Algorithm - std::copy:");
 
-            ScopedTimer watch;
+        ScopedTimer watch;
 
-            double sum{};
-            for (std::size_t i{}; i != values.size(); ++i) {
-                sum += values[i];
-            }
+        std::copy(
+            source.begin(),
+            source.end(),
+            target.begin()
+        );
+    }
 
-            return sum;
+    void array_copying_std_copy_parallelized()
+    {
+        std::println("std::array: Using std::copy - using execution policy");
+
+        ScopedTimer watch;
+
+        std::copy(
+            std::execution::par,
+            source.begin(),
+            source.end(),
+            target.begin()
+        );
+    }
+
+    void array_copying_std_memcpy()
+    {
+        std::println("std::array: Using std::memcpy");
+
+        ScopedTimer watch;
+
+        // take care: works only with continuous memory
+        std::memcpy(
+            target.data(),
+            source.data(),
+            ArraySize * sizeof(double)
+        );
+    }
+
+    void algorithms_array_copying()
+    {
+        array_copying_classic_for_loop();
+        array_copying_iterator_based();
+        array_copying_std_copy();
+        array_copying_std_copy_parallelized();
+        array_copying_std_memcpy();
+    }
+
+    // =================================================================================
+    // Using algorithms for elementary calculations both suited for std::vector or std::array
+    // =================================================================================
+
+    auto calculate_sum_classic_for_loop(std::span<const double> values)
+    {
+        std::println("Classic Loop: ");
+
+        ScopedTimer watch;
+
+        double sum{};
+        for (std::size_t i{}; i != values.size(); ++i) {
+            sum += values[i];
         }
 
-        static auto calculate_sum_iterator_based(std::span<const double> values)
-        {
-            std::println("Iterator Loop: ");
+        return sum;
+    }
 
-            ScopedTimer watch;
+    auto calculate_sum_iterator_based(std::span<const double> values)
+    {
+        std::println("Iterator Loop: ");
 
-            double sum{};
-            for (auto it{ values.cbegin() }; it != values.cend(); ++it) {
-                sum += *it;
-            }
+        ScopedTimer watch;
 
-            return sum;
+        double sum{};
+        for (auto it{ values.cbegin() }; it != values.cend(); ++it) {
+            sum += *it;
         }
 
-        static auto calculate_sum_range_based_for_loop(std::span<const double> values)
-        {
-            std::println("Using range-based for loop");
+        return sum;
+    }
 
-            ScopedTimer watch;
+    auto calculate_sum_range_based_for_loop(std::span<const double> values)
+    {
+        std::println("Using range-based for loop");
 
-            double sum{};
-            for (const auto& value : values) {
-                sum += value;
-            }
+        ScopedTimer watch;
 
-            return sum;
+        double sum{};
+        for (const auto& value : values) {
+            sum += value;
         }
 
-        static auto calculate_sum_std_for_each(std::span<const double> values)
-        {
-            std::println("Standard Algorithm - std::for_each:");
+        return sum;
+    }
 
-            ScopedTimer watch;
+    auto calculate_sum_std_for_each(std::span<const double> values)
+    {
+        std::println("Standard Algorithm - std::for_each:");
 
-            double sum{};
-            std::for_each(
+        ScopedTimer watch;
+
+        double sum{};
+        std::for_each(
+            values.cbegin(),
+            values.cend(),
+            [&sum](const auto& value) {sum += value; }
+        );
+
+        return sum;
+    }
+
+    auto calculate_sum_std_accumulate(std::span<const double> values)
+    {
+        std::println("Standard Algorithm - std::accumulate:");
+
+        ScopedTimer watch;
+
+        double sum{
+            std::accumulate(
                 values.cbegin(),
                 values.cend(),
-                [&sum](const auto& value) {sum += value; }
+                0.0
+            )
+        };
+
+        return sum;
+    }
+
+    // =================================================================================
+    // Using algorithms for elementary calculations suited for std::vector
+    // =================================================================================
+
+    void algorithms_vector_sum_calculation()
+    {
+        std::vector<double> values(VectorSize);
+
+        auto initArray = [&] {
+            std::generate(
+                values.begin(),
+                values.end(),
+                [value = 0.0]() mutable { return ++value; }
             );
-
-            return sum;
-        }
-
-        static auto calculate_sum_std_accumulate(std::span<const double> values)
-        {
-            std::println("Standard Algorithm - std::accumulate:");
-
-            ScopedTimer watch;
-
-            double sum{
-                std::accumulate(
-                    values.cbegin(),
-                    values.cend(),
-                    0.0
-                )
             };
 
-            return sum;
-        }
-    }
-}
+        double sum{};
 
-namespace Algorithms {
+        initArray();
+        sum = calculate_sum_classic_for_loop(std::span{ values });
+        std::println("std::vector: Sum: {:15.20g}", sum);
 
-    namespace Elementary_Calculations_With_Vectors {
+        initArray();
+        sum = calculate_sum_iterator_based(std::span{ values });
+        std::println("std::vector: Sum: {:15.20g}", sum);
 
-        static void vector_sum_calculation()
-        {
-            using namespace Elementary_Calculations;
+        initArray();
+        sum = calculate_sum_range_based_for_loop(std::span{ values });
+        std::println("std::vector: Sum: {:15.20g}", sum);
 
-            std::vector<double> values(VectorSize);
+        initArray();
+        sum = calculate_sum_std_for_each(std::span{ values });
+        std::println("std::vector: Sum: {:15.20g}", sum);
 
-            auto initArray = [&] {
-                std::generate(
-                    values.begin(),
-                    values.end(),
-                    [value = 0.0]() mutable { return ++value; }
-                );
-                };
-
-            double sum{};
-
-            initArray();
-            sum = calculate_sum_classic_for_loop(std::span{ values });
-            std::println("std::vector: Sum: {:15.20g}", sum);
-
-            initArray();
-            sum = calculate_sum_iterator_based(std::span{ values });
-            std::println("std::vector: Sum: {:15.20g}", sum);
-
-            initArray();
-            sum = calculate_sum_range_based_for_loop(std::span{ values });
-            std::println("std::vector: Sum: {:15.20g}", sum);
-
-            initArray();
-            sum = calculate_sum_std_for_each(std::span{ values });
-            std::println("std::vector: Sum: {:15.20g}", sum);
-
-            initArray();
-            sum = calculate_sum_std_accumulate(std::span{ values });
-            std::println("std::vector: Sum: {:15.20g}", sum);
-        }
+        initArray();
+        sum = calculate_sum_std_accumulate(std::span{ values });
+        std::println("std::vector: Sum: {:15.20g}", sum);
     }
 
-    namespace Elementary_Calculations_With_Arrays {
+    // =================================================================================
+    // Using algorithms for elementary calculations suited for std::vector
+    // =================================================================================
 
-        static void array_sum_calculation()
-        {
-            using namespace Elementary_Calculations;
+    void algorithms_array_sum_calculation()
+    {
+        auto initArray = [&] {
+            std::generate(
+                values.begin(),
+                values.end(),
+                [value = 0.0]() mutable { return ++value; }
+            );
+            };
 
-            auto initArray = [&] {
-                std::generate(
-                    values.begin(),
-                    values.end(),
-                    [value = 0.0]() mutable { return ++value; }
-                );
-                };
+        double sum{};
 
-            double sum{};
+        initArray();
+        sum = calculate_sum_classic_for_loop(std::span{ values });
+        std::println("std::array: Sum: {:15.20g}", sum);
 
-            initArray();
-            sum = calculate_sum_classic_for_loop(std::span{ values });
-            std::println("std::array: Sum: {:15.20g}", sum);
+        initArray();
+        sum = calculate_sum_iterator_based(std::span{ values });
+        std::println("std::array: Sum: {:15.20g}", sum);
 
-            initArray();
-            sum = calculate_sum_iterator_based(std::span{ values });
-            std::println("std::array: Sum: {:15.20g}", sum);
+        initArray();
+        sum = calculate_sum_range_based_for_loop(std::span{ values });
+        std::println("std::array: Sum: {:15.20g}", sum);
 
-            initArray();
-            sum = calculate_sum_range_based_for_loop(std::span{ values });
-            std::println("std::array: Sum: {:15.20g}", sum);
+        initArray();
+        sum = calculate_sum_std_for_each(std::span{ values });
+        std::println("std::array: Sum: {:15.20g}", sum);
 
-            initArray();
-            sum = calculate_sum_std_for_each(std::span{ values });
-            std::println("std::array: Sum: {:15.20g}", sum);
-
-            initArray();
-            sum = calculate_sum_std_accumulate(std::span{ values });
-            std::println("std::array: Sum: {:15.20g}", sum);
-        }
+        initArray();
+        sum = calculate_sum_std_accumulate(std::span{ values });
+        std::println("std::array: Sum: {:15.20g}", sum);
     }
 }
 
 void main_algorithms()
 {
     // initialization of std::vector or std::array with a constant value
-    Algorithms::Initialization_Vector_Constant_Value::vector_constant_initialization();
-    Algorithms::Initialization_Array_Constant_Value::array_constant_initialization();
+    algorithms_vector_constant_initialization();
+    algorithms_array_constant_initialization();
 
     // initialization of std::vector or std::array with a a varying value
-    Algorithms::Initialization_Vector_Varying_Value::vector_varying_initialization();
-    Algorithms::Initialization_Array_Varying_Value::array_varying_initialization();
+    algorithms_vector_varying_initialization();
+    algorithms_array_varying_initialization();
 
     // using algorithms for copying ranges (std::vector or std::array)
-    Algorithms::Copying_Vectors::vector_copying();
-    Algorithms::Copying_Arrays::array_copying();
+    algorithms_vector_copying();
+    algorithms_array_copying();
 
     // using algorithms for elementary calculations (std::vector or std::array)
-    Algorithms::Elementary_Calculations_With_Vectors::vector_sum_calculation();
-    Algorithms::Elementary_Calculations_With_Arrays::array_sum_calculation();
+    algorithms_vector_sum_calculation();
+    algorithms_array_sum_calculation();
 }
 
 // =====================================================================================

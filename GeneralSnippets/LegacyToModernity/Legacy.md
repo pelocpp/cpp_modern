@@ -301,12 +301,51 @@ Wenn es aber rein darum geht, das Kopieren oder Verschieben eines Objekts zu ver
 ist der alte Trick mit dem privaten, undefinierten Kopierkonstruktor (aus C++ 98&ndash;Zeiten) heute veraltet.
 Seit C++ 11 ist `= delete` der Standard.
 
-| Kriterium | Alter C++98 Trick (`private` | Moderner C++11 Weg (`= delete`) | 
+| Kriterium | Alter C++98 Trick (`private`) | Moderner C++11 Weg (`= delete`) | 
 |:- |:-|:-|
 | Fehlermeldung | Spät und kryptisch. Oft erst beim Linken, falls innerhalb der Klasse kopiert wird. | Sofort und klar verständlich. Fehlermeldung direkt beim Kompilieren mit exakter Zeilenangabe. |
 | Lesbarkeit (Intention) | Der Entwickler muss raten, ob das Absicht ist oder noch implementiert wird. | Explizit. Drückt die Design-Entscheidung sofort unmissverständlich aus. |
 
 *Tabelle* 1: Vergleich von privatem Kopierkonstruktor und `= delete`.
+
+#### 9. `using` (Alias-Deklaration) versus `typedef`
+
+Im modernem C++ ist das Schlüsselwort `using` (Alias-Deklaration) gegenüber `typedef` zu bevorzugen.
+
+Es unterstützt Templates und ist bei der Arbeit mit komplexen Typen deutlich besser lesbar.
+
+##### Template-Aliase (Alias ​​Templates)
+
+Der wichtigste Grund für die Einführung von `using` in C++ 11 ist, dass `typedef` nicht direkt mit Templates verwendet werden kann:
+
+```cpp
+01: template <typename T>
+02: using StringMap = std::map<std::string, T>;   // Template Aliasing (Alias Templates)
+03: 
+04: void legacy_typedef_using()
+05: {
+06:     // Usage:
+07:     StringMap<int> myMap;
+08: }
+```
+
+##### Bessere Lesbarkeit
+
+Die Syntax folgt einer klaren, konsistenten Struktur &ndash; `using NewName = OldType;` &ndash;,
+die einer herkömmlichen Variablenzuweisung ähnelt.
+
+Die Leserichtung ist von links nach rechts.
+
+Bei `typedef` hingegen verschwindet der Bezeichner mitten in komplexen Typen, etwa bei Funktionszeigern oder Arrays.
+
+| Art des Typs | `typedef` Syntax| `using` Syntax | 
+|:- |:-|:-|
+| Einfacher Datentyp | `typedef int MyInt`  | `using MyInt = int;` |
+| Funktionszeiger | `typedef void (*FuncPtr)(int, const std::string&);`  | `using FuncPtr = void(*)(int, const std::string&);` |
+| Feld fester Länge | `typedef int IntArray[10];`  | `using IntArray = int[10];` |
+
+
+*Tabelle* 2: Die `typedef`&ndash; und `using`&ndash;Syntax im Vergleich.
 
 
 ## Der größte Gewinn: Ownership und Ressourcenmanagement <a name="link3"></a>
@@ -372,7 +411,7 @@ Das Rad neu zu erfinden, kostet in diesem Fall fast immer Performance und Stabil
   * Kein Zeitverlust: Das Schreiben einer eigenen, absolut sicheren Hashtabelle inklusive Memory-Management, Iterator-Support und Thread-Safety-Garantien dauert Tage oder Wochen.
 	Die STL liefert das fehlerfrei in einer Zeile Code.
 
-*Tabelle* 2 gibt einen Überblick über gängige Datenstrukturen aus der Informatik und ihrem Pendant in der STL:
+*Tabelle* 3 gibt einen Überblick über gängige Datenstrukturen aus der Informatik und ihrem Pendant in der STL:
 
 | Datenstruktur | STL-Klasse | 
 |:- |:-|
@@ -387,7 +426,7 @@ Das Rad neu zu erfinden, kostet in diesem Fall fast immer Performance und Stabil
 | Stapel (Stack, Last-In, First-Out) | &rarr; Klasse `std::stack<>` |
 | Warteschlange (Queue, First-In, First-Out) | &rarr; Klasse `std::queue<>` |
 
-*Tabelle* 2: Allgemeine Datenstruktur und korrespondierende STL-Klasse.
+*Tabelle* 3: Allgemeine Datenstruktur und korrespondierende STL-Klasse.
 
 
 ## Performanz and API Cleanliness <a name="link4"></a>
@@ -546,7 +585,13 @@ auch ohne Heap zu ermöglichen.
 
 ## Verschiedenes / Stolperfallen <a name="link6"></a>
 
-#### 1. Verkettung von Methodenaufrufen (geändert in C++17)
+
+#### 1. `constexpr` statt Makros für Konstanten und kleine Funktionen zur Kompilierzeit verwenden
+
+To be Done
+
+
+#### 2. Verkettung von Methodenaufrufen (geändert in C++17)
 
 Der Umstieg auf C++11+ verändert manchmal die Semantik eines Programms, also einfacher formuliert:
 Ein C++11 Programm erzielt andere Resultate als dasselbe Programm (derselbe Quellcode) ausgeführt mit einem C98 Compiler.
@@ -611,7 +656,7 @@ Es gilt: Alles auf der linken Seite einer Kette wird garantiert vor der rechten 
   Dadurch sieht `find` den bereits modifizierten String.
 
 
-#### 2. Ist Move-Semantik mein neuer Freund?
+#### 3. Ist Move-Semantik mein neuer Freund?
 
 Ich möchte, um Laufzeit einzusparen, die eine oder andere überflüssige Kopier-Operation in meinem Programm zu Gunsten einer Verschiebe-Operation 
 austauschen. Gibt es hier etwas zu beachten?
@@ -750,10 +795,6 @@ is_transparent
 ### `= default` für triviale spezielle Member
 
 
-6. Aliase statt typedef verwenden und >> in verschachtelten Templates ohne Leerzeichen.
-
 7. static_assert verwenden, um Annahmen zur Kompilierzeit zu dokumentieren und durchzusetzen.
-
-8. constexpr statt Makros für Konstanten und kleine Funktionen zur Kompilierzeit verwenden; ersetzt auch viele #define-Konstanten.
 
 9. noexcept verwenden, wo angebracht (insbesondere bei Verschiebeoperationen und Destruktoren).
