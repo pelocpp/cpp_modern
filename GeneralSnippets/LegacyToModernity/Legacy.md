@@ -14,7 +14,7 @@
   * [Hoher Nutzen, geringes Risiko (häufig C++11 Erweiterungen)](#link2)
   * [Der größte Gewinn: Ownership und Ressourcenmanagement](#link3)
   * [Performanz and API Cleanliness](#link4)
-  * [Die Standardbibliothek STL / Ersetzen von Eigenentwicklungen](#link5)
+  * [Die Standardbibliothek STL / Ersetzen von Eigenentwicklungen](#link5) 
   * [Verschiedenes / Stolperfallen](#link6)
 
 ---
@@ -588,7 +588,51 @@ auch ohne Heap zu ermöglichen.
 
 #### 1. `constexpr` statt Makros für Konstanten und kleine Funktionen zur Kompilierzeit verwenden
 
-To be Done
+C-`#define`- und C-Makros sind mit einer Reihe von Nachteilen ausgestattet. Sie werden von der C/C++&ndash;Toolchain
+von einem Präprozessor abgearbeitet, was im Kern durch eine Textersetzung stattfindet.
+
+Hier sollte man zu `constexpr`-Ausdrücken wechseln:
+
+```cpp
+01: // windef.h -- Basic Windows Type Definitions
+02: typedef unsigned char     BYTE;
+03: typedef unsigned short    WORD;
+04: typedef unsigned long     DWORD;
+05: 
+06: // wingdi.h
+07: typedef DWORD             COLORREF;
+08: 
+09: // wingdi.h // Little-Endian BGR-Format
+10: #define RGB(r,g,b)  ((COLORREF)(((BYTE)(r)|((WORD)((BYTE)(g))<<8))|(((DWORD)(BYTE)(b))<<16)))
+11: 
+12: // classic RGB-Format
+13: constexpr std::uint32_t Rgb(std::uint8_t r, std::uint8_t g, std::uint8_t b)
+14: {
+15:     return
+16:         static_cast<std::uint32_t>(r) << 16 |
+17:         static_cast<std::uint32_t>(g) << 8 |
+18:         static_cast<std::uint32_t>(b);
+19: }
+20: 
+21: void test()
+22: {
+23:     // not recommended usage - no errors or just warnings
+24:     COLORREF unknown1 = RGB(255.0, 0.0, 0.0);             // No warning, no error
+25:     COLORREF unknown2 = RGB('173', '216', '230');         // No warning, no error
+26:     COLORREF unknown3 = RGB(1000, 5000, 32000);           // No warning, no error
+27: 
+28:     // recommended usage
+29:     constexpr std::uint32_t red{ Rgb(255, 0, 0) };
+30:     constexpr std::uint32_t lightBlue{ Rgb(173, 216, 230) };
+31:     constexpr std::uint32_t aqua{ Rgb(0, 255, 255) };
+32:     constexpr std::uint32_t darkGreen{ Rgb(1, 50, 32) };
+33: 
+34:     std::println("{:#010X}", red);
+35:     std::println("{:#010X}", lightBlue);
+36:     std::println("{:#010X}", aqua);
+37:     std::println("{:#010X}", darkGreen);
+38: }
+```
 
 
 #### 2. Verkettung von Methodenaufrufen (geändert in C++17)
@@ -779,7 +823,7 @@ Achtung: Die Aussage hier lautet: **Keine** Operation oder eine Verschiebe-Opera
 
 ---
 
-[Zurück](../../Readme.md)
+[Zurück](../../Readme.md) 
 
 ---
 
@@ -787,7 +831,7 @@ Achtung: Die Aussage hier lautet: **Keine** Operation oder eine Verschiebe-Opera
 
 Details zur Auswertungsreihenfolge,
 implizite Verschiebung,
-Typverengung in geschweiften Klammern {},
+
 unerwartete automatische Typableitung,
 
 is_transparent
@@ -795,6 +839,6 @@ is_transparent
 ### `= default` für triviale spezielle Member
 
 
-7. static_assert verwenden, um Annahmen zur Kompilierzeit zu dokumentieren und durchzusetzen.
+7. static_assert verwenden, um Annahmen zur Kompilierzeit zu dokumentieren und durchzusetzen. 
 
 9. noexcept verwenden, wo angebracht (insbesondere bei Verschiebeoperationen und Destruktoren).

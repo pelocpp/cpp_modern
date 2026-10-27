@@ -263,10 +263,10 @@ namespace {
     // wingdi.h
     typedef DWORD             COLORREF;
 
-    // wingdi.h // Little-Endian // BGR-Format
-#define RGB(r,g,b)  ((COLORREF)(((BYTE)(r)|((WORD)((BYTE)(g))<<8))|(((DWORD)(BYTE)(b))<<16)))
+    // wingdi.h // Little-Endian BGR-Format
+    #define RGB(r,g,b)  ((COLORREF)(((BYTE)(r)|((WORD)((BYTE)(g))<<8))|(((DWORD)(BYTE)(b))<<16)))
 
-    // Classic RGB // RGB-Format
+    // classic RGB-Format
     constexpr std::uint32_t Rgb(std::uint8_t r, std::uint8_t g, std::uint8_t b)
     {
         return
