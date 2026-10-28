@@ -316,9 +316,9 @@ namespace {
         Foo(int) {};
     };
 
-    static Foo createFooOject() { return {}; }
+    Foo createFooOject() { return {}; }
 
-    static void legacy_keyword_auto_left_to_right_initialization_syntax()
+    void legacy_left_to_right_initialization_syntax()
     {
         auto var1 = 0;
         auto var2 = Foo{};
@@ -334,6 +334,37 @@ namespace {
         // auto x2 = X();
     }
 
+    // =======================================================================
+    // is_transparent
+
+    void legacy_is_transparent_01()
+    {
+        std::set<std::string> strings;
+
+        std::string one{ "one" };
+        strings.insert(one);
+        strings.insert("two");   // is there a (performance) problem ???
+
+        auto pos = strings.find("one");
+    }
+
+    void legacy_is_transparent_02()
+    {
+        // using is_transparent implicitly
+
+        std::set<std::string, std::less<>> strings;  // std::less<> is transparent, look at source code of std::less<>
+
+        strings.insert("one");
+        strings.insert("two");
+
+        auto pos = strings.find("one");
+    }
+
+    void legacy_is_transparent()
+    {
+        legacy_is_transparent_01();
+        legacy_is_transparent_02();
+    }
 
     // =======================================================================
     // std::string_view
@@ -488,6 +519,8 @@ void main_legacy()
     legacy_typedef_using();
     legacy_macros_constexpr();
     legacy_method_chaining();
+    legacy_left_to_right_initialization_syntax();
+    legacy_is_transparent();
     legacy_string_view();
     legacy_initializer_list();
     legacy_move_semantics();
@@ -496,7 +529,6 @@ void main_legacy()
 // ===========================================================================
 // End-of-File
 // ===========================================================================
-
 
 // =======================================================================
 // Noch nicht behandelt

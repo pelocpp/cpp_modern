@@ -501,6 +501,25 @@ Vererbe Konstruktoren, um doppelten Initialisierungscode zu vermeiden.
 
 Verwende Standard-Member-Initialisierer (`int count = 0;`), um Konstruktoren zu vereinfachen.
 
+#### 7. Verwendung von `is_transparent`
+
+`is_transparent` ist ein Marker-Typ in einem Vergleichsobjekt, der dem Container signalisiert,
+dass er die Methoden `find`, `lower_bound` und weitere auch mit Argumenten anderen Typs als dem des Schlüsseltyps (Schlüssel-Wert) aufrufen darf,
+ohne vorher ein **temporäres** Schlüsselobjekt zu erzeugen.
+
+```cpp
+01: void legacy_is_transparent_01()
+02: {
+03:     std::set<std::string> strings;
+04: 
+05:     std::string one{ "one" };
+06:     strings.insert(one);
+07:     strings.insert("two");   // is there a (performance) problem ???
+08: 
+09:     auto pos = strings.find("one");
+10: }
+```
+
 ---
 
 ## Ausdrucksstärke und Lesbarkeit <a name="link5"></a>
@@ -522,33 +541,24 @@ für Variablen zu haben:
 
 Welche Vorteile bietet dieser Initialisierungsstil?
 
-##### 1. Das Konsistenzargument
+##### 1. Einfache Lesbarkeit &bdquo;von links nach rechts&rdquo; 
 
 Im Wesentlichen besteht das Argument darin, dass sich der Standardstil in der Initialisierung von Variablen in C++
 in Richtung einer &bdquo;von links nach rechts&rdquo;-Syntax bewegt.
 
-##### 2. Das Initialisierungsargument
+##### 2. Initialisierungswerte müssen vorhanden sein
 
 Eines der stärksten Argumente für den *Left-to-Right* Initialisierungsstil ist,
 dass er das Fehlen eines Initialisierungswerts für Variablen/Objekte unmöglich macht.
 
 ```cpp
-int i;         // bad
+int  i;         // bad
+int  i = 0;     // better
+auto i;         // impossible, doesn't compile
+auto i = 0;     // good, i is now initialized (to 0) and can be read from
 ```
 
-```cpp
-int i = 0;     // better
-```
-
-```cpp
-auto i;        // impossible, doesn't compile
-```
-
-```cpp
-auto i = 0;    // good, i is now initialized (to 0) and can be read from
-```
-
-##### 3. Das Argument, dass bei der Initialisierung die Konvertierung nicht eingeschränkt wird
+##### 3. Initialisierungswerte sind bzgl. des Datentyps exakt passend
 
 ```cpp
 float x = 123.45;        // Hmmm, 123.45 is of type double ?!?
@@ -565,7 +575,7 @@ Mit dem *Left-to-Right* Initialisierungsstil wurde überhaupt kein `double`-Wert
 Und es findet keine &bdquo;*Narrowing Conversion*&rdquo; statt.
 
 
-##### 4. Das Argument, dass es die Leistung (fast) nie beeinträchtigt
+##### 4. Kein Leistungsoverhead
 
 Betrachten Sie diesen Ausdruck mit dem *Left-to-Right* Initialisierungsstil:
 
@@ -936,12 +946,14 @@ Achtung: Die Aussage hier lautet: **Keine** Operation oder eine Verschiebe-Opera
 
 ## To beDone
 
+Brace - init : Siehe Chrome / Gemini: Da sind ein paar gute Tipps drin ......
+
 Details zur Auswertungsreihenfolge,
+
 implizite Verschiebung,
 
 unerwartete automatische Typableitung,
 
-is_transparent
 
 ### `= default` für triviale spezielle Member
 
