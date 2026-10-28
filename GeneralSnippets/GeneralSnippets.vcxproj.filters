@@ -1169,7 +1169,7 @@
     <None Include="IsTransparent\IsTransparent.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="LegacyToModernity\Legacy.md">
+    <None Include="LegacyToModernity\LegacyToModernity.md">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

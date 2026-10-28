@@ -306,6 +306,36 @@ namespace {
     }
 
     // =======================================================================
+    // `auto` keyword: "left-to-right" initialization style
+
+    class X {};
+
+    class Foo {
+    public:
+        Foo() = default;
+        Foo(int) {};
+    };
+
+    static Foo createFooOject() { return {}; }
+
+    static void legacy_keyword_auto_left_to_right_initialization_syntax()
+    {
+        auto var1 = 0;
+        auto var2 = Foo{};
+        auto var3 = createFooOject();
+        auto var4 = std::mutex{};
+
+        auto name = std::string{ "Hans" };
+        auto anotherName = "Sepp";
+        auto ptr = std::make_unique<Foo>(123);
+        auto myLambda = [](auto n, auto m) { return n + m; };
+
+        //X x1();
+        // auto x2 = X();
+    }
+
+
+    // =======================================================================
     // std::string_view
 
     void legacy_string_view()

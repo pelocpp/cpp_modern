@@ -95,7 +95,7 @@ Denn auch bewährte Systeme können von neuen Technologien, zeitgemäßen Archit
 
 Dieser Abschnitt bietet Ihnen eine Reihe von Denkanstößen und Anregungen, die Sie bei der Frage unterstützen sollen, wann und auf welche Weise eine Modernisierung sinnvoll sein kann.
 
-[Zu den Anregungen](GeneralSnippets/LegacyToModernity/Legacy.md).
+[Zu den Anregungen](GeneralSnippets/LegacyToModernity/LegacyToModernity.md).
 
 ---
 

@@ -14,8 +14,9 @@
   * [Hoher Nutzen, geringes Risiko (häufig C++11 Erweiterungen)](#link2)
   * [Der größte Gewinn: Ownership und Ressourcenmanagement](#link3)
   * [Performanz and API Cleanliness](#link4)
-  * [Die Standardbibliothek STL / Ersetzen von Eigenentwicklungen](#link5) 
-  * [Verschiedenes / Stolperfallen](#link6)
+  * [Ausdrucksstärke und Lesbarkeit](#link5) 
+  * [Die Standardbibliothek STL / Ersetzen von Eigenentwicklungen](#link6) 
+  * [Verschiedenes / Stolperfallen](#link7)
 
 ---
 
@@ -45,6 +46,8 @@
 
   * Ändere nur Code, an dem ohnehin gerade gearbeitet wird:<br />
   Modernisiere keine stabilen, unangetasteten Module allein aus stilistischen Gründen.
+
+---
 
 ## Hoher Nutzen, geringes Risiko (häufig C++11 Erweiterungen)  <a name="link2"></a>
 
@@ -347,6 +350,7 @@ Bei `typedef` hingegen verschwindet der Bezeichner mitten in komplexen Typen, et
 
 *Tabelle* 2: Die `typedef`&ndash; und `using`&ndash;Syntax im Vergleich.
 
+---
 
 ## Der größte Gewinn: Ownership und Ressourcenmanagement <a name="link3"></a>
 
@@ -428,6 +432,7 @@ Das Rad neu zu erfinden, kostet in diesem Fall fast immer Performance und Stabil
 
 *Tabelle* 3: Allgemeine Datenstruktur und korrespondierende STL-Klasse.
 
+---
 
 ## Performanz and API Cleanliness <a name="link4"></a>
 
@@ -492,21 +497,125 @@ Vererbe Konstruktoren, um doppelten Initialisierungscode zu vermeiden.
 
   * Die Zugriffsberechtigung entspricht der in der Basisklasse: Ein geerbter Konstruktor besitzt denselben Zugriffsschutz wie in der Basisklasse.
 
-
 #### 6. Standard-Member-Initialisierer
 
 Verwende Standard-Member-Initialisierer (`int count = 0;`), um Konstruktoren zu vereinfachen.
 
+---
 
-## Die Standardbibliothek STL / Ersetzen von Eigenentwicklungen <a name="link5"></a>
+## Ausdrucksstärke und Lesbarkeit <a name="link5"></a>
+
+#### 1. Schlüsselwort `auto`: *Left-to-Right* Initialisierungsstil
+
+Verwenden Sie das Schlüsselwort `auto`, um damit einen einheitlichen, besser lesbaren Initialisierungsstil
+für Variablen zu haben:
+
+```cpp
+01: auto var1 = 0;
+02: auto var2 = Foo{};
+03: auto var3 = createFooOject();
+04: auto var4 = std::mutex{};
+05: auto name = std::string{ "Hans" };
+06: auto anotherName = std::make_unique<Foo>(123);
+07: auto myLambda = [](auto n, auto m) { return n + m; };
+```
+
+Welche Vorteile bietet dieser Initialisierungsstil?
+
+##### 1. Das Konsistenzargument
+
+Im Wesentlichen besteht das Argument darin, dass sich der Standardstil in der Initialisierung von Variablen in C++
+in Richtung einer &bdquo;von links nach rechts&rdquo;-Syntax bewegt.
+
+##### 2. Das Initialisierungsargument
+
+Eines der stärksten Argumente für den *Left-to-Right* Initialisierungsstil ist,
+dass er das Fehlen eines Initialisierungswerts für Variablen/Objekte unmöglich macht.
+
+```cpp
+int i;         // bad
+```
+
+```cpp
+int i = 0;     // better
+```
+
+```cpp
+auto i;        // impossible, doesn't compile
+```
+
+```cpp
+auto i = 0;    // good, i is now initialized (to 0) and can be read from
+```
+
+##### 3. Das Argument, dass bei der Initialisierung die Konvertierung nicht eingeschränkt wird
+
+```cpp
+float x = 123.45;        // Hmmm, 123.45 is of type double ?!?
+```
+
+Es findet eine &bdquo;*Narrowing Conversion*&rdquo; statt:
+`123.45` ist vom Typ `double` und wird in den weniger präzisen Typ `float` konvertiert.
+
+```cpp
+auto x = 123.45f;
+```
+
+Mit dem *Left-to-Right* Initialisierungsstil wurde überhaupt kein `double`-Wert erzeugt.
+Und es findet keine &bdquo;*Narrowing Conversion*&rdquo; statt.
+
+
+##### 4. Das Argument, dass es die Leistung (fast) nie beeinträchtigt
+
+Betrachten Sie diesen Ausdruck mit dem *Left-to-Right* Initialisierungsstil:
+
+
+```cpp
+auto name = std::string{ "Hans" };
+```
+
+Was verbirgt sich hinter dem Gleichheitszeichen? Wird da nicht eine Kopie von `std::string{ "Hans" }` erstellt?
+
+Theoretisch erzeugt der Ausdruck `std::string{ "Hans" }` ein temporäres `std::string`-Objekt,
+das dann nach `name` verschoben wird.
+Diese Syntax könnte also die Kosten einer Verschiebung verursachen.
+
+Ab C++ 17 ist das Feature [Copy Elision](https://en.cppreference.com/w/cpp/language/copy_elision) 
+in der Sprache per Definition vorhanden.
+Deshalb hat der *Left-to-Right* Initialisierungsstil keine Auswirkungen auf die Laufzeitleistung!
+
+*Bemerkung*:
+Dieses Feature ist in C++ 14 und kleiner nicht vorhanden &ndash;
+hier sollten wir diesen Initialisierungsstil deshalb vermeiden.
+
+##### 5. Das &bdquo;*most vexing*&rdquo; Parse-Argument
+
+```cpp
+X x();
+```
+
+Diese Deklaration wird vom Compiler als eine Funktionsdeklaration interpretiert,
+die eine Funktion des Namens `x` ohne Parameter deklariert, die ein Objekt vom Typ `X` zurückliefert.
+
+```cpp
+auto x = X(); // no way to interpret this as a function declaration
+```
+
+In der letzten Deklaration ist `x` ein Objekts des Typs `X`.
+
+---
+
+## Die Standardbibliothek STL / Ersetzen von Eigenentwicklungen <a name="link6"></a>
 
 #### 1. Lambdas anstelle von Funktor-Klassen oder `std::bind1st`/`std::bind2nd`
-  Sie sind im Zusammenhang mit `std::sort`, `std::find_if` usw. deutlich besser lesbar.
+
+Sie sind im Zusammenhang mit `std::sort`, `std::find_if` usw. deutlich besser lesbar.
 
 #### 2. `std::function<>` anstelle von rohen Funktionszeigern in Kombination mit `void*`-Benutzerdaten.
 
 #### 3. `<chrono>`, `<thread>`, `<mutex>`, `<atomic>`, `<future>` anstelle von plattformspezifischem Code (wie `pthread` oder Win32-APIs).
-  Dies bedeutet oft einen erheblichen Gewinn an Portabilität.
+
+Dies bedeutet oft einen erheblichen Gewinn an Portabilität.
 
 #### 4. `<random>` anstelle von `rand()`.
 
@@ -519,7 +628,6 @@ std::string_view s = "I'm more than 15 chars long - and reside not the heap";
 
 `std::string_view` Objekte liegen nicht auf dem Heap. Damit entfallen auf Aufrufe in die dynamische Speicherverwaltung (`new`/`delete`),
 der &ndash; allerdings ausschließlich lesende &ndash; Zugriff ist schneller und manche Operationen (z. B. `substr`) sind ebenfalls erheblich performanter.
-
 
 #### 6. `std::initializer_list` für schnellere Übergabe von Werten
 
@@ -583,8 +691,7 @@ auch ohne Heap zu ermöglichen.
 
 ---
 
-## Verschiedenes / Stolperfallen <a name="link6"></a>
-
+## Verschiedenes / Stolperfallen <a name="link7"></a>
 
 #### 1. `constexpr` statt Makros für Konstanten und kleine Funktionen zur Kompilierzeit verwenden
 
