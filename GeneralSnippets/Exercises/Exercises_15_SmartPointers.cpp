@@ -940,7 +940,7 @@ namespace Exercises_SmartPointers {
 
             void sayHello() const {
                 if (auto mother = m_mother.lock()) {
-                    std::println("{}: Hello mother.", m_name);
+                    std::println("{}: Hello dear mother {}.", m_name, mother->getName());
                 }
                 else {
                     std::println("{}: My mother no longer lives.", m_name);
@@ -950,7 +950,7 @@ namespace Exercises_SmartPointers {
 
         void Mom::sayHello() const {
             if (auto child = m_child.lock()) {
-                std::println("{}: Hello child.", m_name);
+                std::println("{}: Hello dear child {}.", m_name, child->getName());
             }
             else {
                 std::println("{}: My child no longer lives.", m_name);
