@@ -12,10 +12,10 @@
 
 | Aufgabe | Beschreibung |
 | :- | :- |
-| *Aufgabe* 1 | Überprüfung des Vorhandenseins einer bestimmten Basisklasse<br/>(Voraussetzungen: `concept`, `requires`)(#link1) |
-| *Aufgabe* 2 | Überprüfung des Datentyps von Funktionsparametern<br/>(Voraussetzungen: `concept`, `requires`)(#link2) |
-| *Aufgabe* 3 | Konzepte und Schnittstellen im Vergleich<br/>(Voraussetzungen: `concept`, `requires`, `virtual`, `override`) |
-| *Aufgabe* 4 | Berechnung der Gesamtlänge beliebig vieler Zeichenketten<br/>(Voraussetzungen: `requires`, `std::initializer_list`) |
+| [*Aufgabe* 1](#link1) | Überprüfung des Vorhandenseins einer bestimmten Basisklasse<br/>(Voraussetzungen: `concept`, `requires`) |
+| [*Aufgabe* 2](#link2) | Überprüfung des Datentyps von Funktionsparametern<br/>(Voraussetzungen: `concept`, `requires`) |
+| [*Aufgabe* 3](#link3) | Konzepte und Schnittstellen im Vergleich<br/>(Voraussetzungen: `concept`, `requires`, `virtual`, `override`) |
+| [*Aufgabe* 4](#link4) | Berechnung der Gesamtlänge beliebig vieler Zeichenketten<br/>(Voraussetzungen: `requires`, `std::initializer_list`) |
 
 *Tabelle* 1: Aufgaben zu Konzepten.
 
@@ -130,7 +130,7 @@ Die Technik des *Foldings* kann auch auch *Konzepte* angewendet werden.
 
 ---
 
-## Aufgabe 3: Konzepte und Schnittstellen im Vergleich
+## Aufgabe 3: Konzepte und Schnittstellen im Vergleich <a name="link3"></a>
 
 #### Voraussetzungen: `concept`, `requires`, `virtual`
 
@@ -193,7 +193,7 @@ die das Konzept erfüllt.
 
 ---
 
-## Aufgabe 4: Berechnung der Gesamtlänge beliebig vieler Zeichenketten
+## Aufgabe 4: Berechnung der Gesamtlänge beliebig vieler Zeichenketten <a name="link4"></a>
 
 #### Voraussetzungen: `requires`, `std::initializer_list`
 
