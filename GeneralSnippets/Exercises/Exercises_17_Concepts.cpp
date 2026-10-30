@@ -117,10 +117,10 @@ namespace Exercises_Concepts {
             Double d{ 123.456 };
             std::println("{}", d.toString());
 
-            // print01(d);   // the constraint was not satisfied
-            // print02(d);   // the constraint was not satisfied
-            // print03(d);   // the constraint was not satisfied
-            // print04(d);   // the constraint was not satisfied
+             //print01(d);   // the constraint was not satisfied
+             //print02(d);   // the constraint was not satisfied
+             //print03(d);   // the constraint was not satisfied
+             //print04(d);   // the constraint was not satisfied
         }
 
         template <ConceptObjectEx T>

@@ -24,7 +24,7 @@ namespace Exercises_Generic_Lambdas {
                 isGreaterThanFifty
             );
             if (pos != std::end(intValues)) {
-                std::cout << "Found a value: " << *pos << std::endl;
+                std::println("Found a value: {}", *pos);
             }
         }
 
@@ -64,7 +64,7 @@ namespace Exercises_Generic_Lambdas {
                 isGreaterThanFifty
             );
             if (pos != std::end(personValues)) {
-                std::cout << "Found Person:  " << (*pos).getName() << std::endl;
+                std::println("Found Person: {}", (*pos).getName());
             }
         }
 

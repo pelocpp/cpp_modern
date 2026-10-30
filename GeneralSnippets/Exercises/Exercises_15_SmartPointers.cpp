@@ -98,7 +98,7 @@ namespace Exercises_SmartPointers {
             assert(pC == nullptr);
 
             int value = (*pB).getValue();     // accessing the freed object yields undefined behavior
-            std::cout << "Value: " << value << std::endl;
+            std::println("Value: {}", value);
         }
     }
 
@@ -133,10 +133,10 @@ namespace Exercises_SmartPointers {
             {
                 std::shared_ptr<int> sp{ std::make_shared<int>(123) };
                 watcher.watch(sp);
-                std::cout << "Value: " << watcher.currentValue() << std::endl;
+                std::println("Value: {}", watcher.currentValue());
             }
 
-            std::cout << "Value: " << watcher.currentValue() << std::endl;
+            std::println("Value: {}", watcher.currentValue());
         }
 
         class HeavyAndSafeWatcher {
@@ -164,10 +164,10 @@ namespace Exercises_SmartPointers {
             {
                 std::shared_ptr<int> sp{ std::make_shared<int>(123) };
                 watcher.watch(sp);
-                std::cout << "Value: " << watcher.currentValue() << std::endl;
+                std::println("Value: {}", watcher.currentValue());
             }
 
-            std::cout << "Value: " << watcher.currentValue() << std::endl;
+            std::println("Value: {}", watcher.currentValue());
         }
 
         class LightweightAndSafeWatcher {
@@ -204,14 +204,14 @@ namespace Exercises_SmartPointers {
             {
                 std::shared_ptr<int> sp{ std::make_shared<int>(123) };
                 watcher.watch(sp);
-                std::cout << "Value: " << watcher.currentValue() << std::endl;
+                std::println("Value: {}", watcher.currentValue());
             }
 
             try {
-                std::cout << "Value: " << watcher.currentValue() << std::endl;
+                std::println("Value: {}", watcher.currentValue());
             }
             catch (const std::exception& ex) {
-                std::cout << ex.what() << std::endl;
+                std::println("{}", ex.what());
             }
         }
 
@@ -672,7 +672,7 @@ namespace Exercises_SmartPointers {
 
         static DigitsSplitting splitToDigits(std::size_t number)
         {
-            DigitsSplitting splitting{ number };
+            DigitsSplitting splitting{ number, nullptr, 0, false };
 
             auto count{ countDigits(number) };
 
@@ -885,7 +885,7 @@ namespace Exercises_SmartPointers {
 
         // =========================================================
 
-        void testExercise()
+        static void testExercise()
         {
             test_returning_unique_ptr_variant_01();
             test_returning_unique_ptr_variant_02();

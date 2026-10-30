@@ -12,8 +12,8 @@
 
 | Aufgabe | Beschreibung |
 | :- | :- |
-| *Aufgabe* 1 | Überprüfung des Vorhandenseins einer bestimmten Basisklasse<br/>(Voraussetzungen: `concept`, `requires`) |
-| *Aufgabe* 2 | Überprüfung des Datentyps von Funktionsparametern<br/>(Voraussetzungen: `concept`, `requires`) |
+| *Aufgabe* 1 | Überprüfung des Vorhandenseins einer bestimmten Basisklasse<br/>(Voraussetzungen: `concept`, `requires`)(#link1) |
+| *Aufgabe* 2 | Überprüfung des Datentyps von Funktionsparametern<br/>(Voraussetzungen: `concept`, `requires`)(#link2) |
 | *Aufgabe* 3 | Konzepte und Schnittstellen im Vergleich<br/>(Voraussetzungen: `concept`, `requires`, `virtual`, `override`) |
 | *Aufgabe* 4 | Berechnung der Gesamtlänge beliebig vieler Zeichenketten<br/>(Voraussetzungen: `requires`, `std::initializer_list`) |
 
@@ -21,7 +21,7 @@
 
 ---
 
-## Aufgabe 1: Überprüfung des Vorhandenseins einer bestimmten Basisklasse
+## Aufgabe 1: Überprüfung des Vorhandenseins einer bestimmten Basisklasse <a name="link1"></a>
 
 #### Voraussetzungen: `concept`, `requires`
 
@@ -97,7 +97,7 @@ Der Einfachheit halber legen wir die Vererbungsart `public` zu Grunde.
 
 ---
 
-## Aufgabe 2: Überprüfung des Datentyps von Funktionsparametern
+## Aufgabe 2: Überprüfung des Datentyps von Funktionsparametern <a name="link2"></a>
 
 #### Voraussetzungen: `concept`, `requires`
 
