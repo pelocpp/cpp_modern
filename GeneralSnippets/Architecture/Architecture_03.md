@@ -13,6 +13,8 @@
     * Mit Referenzen
     * Mit Adressen (Pointer)
 
+Es werden Vergleiche mit C# und Python betrachtet.
+
 ---
 
 ## Objekte erzeugen
@@ -43,9 +45,8 @@ Objekte in Python liegen ausnahmslos am Heap:
 *Abbildung* 3: Referenzsemantik in Python.
 
 Zwischen C# und Python gibt es kleine Unterschiede. So kennt Python keine *Null*-Referenzen wie im Sinne von C#.
-
 Wenn in Python eine Variable auf &bdquo;nichts&rdquo; zeigen soll, weist man ihr das eingebaute Schlüsselwort `None` zu.
-`None` ist ein vollwertiges Objekt vom Datentyp `NoneType`.
+`None` ist ein vollwertiges Objekt vom Datentyp `NoneType` und liegt am Heap (Singleton).
 
 ---
 
@@ -65,11 +66,27 @@ ein entsprechender Aufruf erfolgt implizit:
 
 ### Kopieren eines Objekts bei Referenzsemantik
 
-Beim Kopieren eines C#&ndash;Objekts wird die Referenz kopiert &ndash; das Objekt selbst bleibt davon unberührt:
+Beim Kopieren eines C#&ndash; oder Python&ndash;Objekts wird die Referenz kopiert &ndash; das Objekt selbst bleibt davon unberührt:
 
 <img src="cpp_architecture_04_value_vs_reference_semantics.svg" width="600">
 
-*Abbildung* 5: Kopieren eines Objekts bei Referenzsemantik in C#.
+*Abbildung* 5: Kopieren eines C#&ndash;Objekts bei Referenzsemantik in C#.
+
+<img src="cpp_architecture_11_value_vs_reference_semantics_python.svg" width="800">
+
+*Abbildung* 6: Kopieren eines Python&ndash;Objekts bei Referenzsemantik in Python.
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ### Erstellen einer echten Kopie bei Referenzsemantik
@@ -78,7 +95,7 @@ Um in C# eine echte (tiefe) Kopie eines Objekts zu erstellen, muss dies mit eine
 
 <img src="cpp_architecture_05_value_vs_reference_semantics.svg" width="600">
 
-*Abbildung* 6: Erstellen einer echten Kopie bei Referenzsemantik in C#.
+*Abbildung* 7: Erstellen einer echten Kopie bei Referenzsemantik in C#.
 
 
 ---
@@ -92,7 +109,7 @@ Die Referenz ist ein Alias &ndash; hinter dem Alias verbirgt sich eine Adresse u
 
 <img src="cpp_architecture_06_value_vs_reference_semantics.svg" width="600">
 
-*Abbildung* 7: Referenzsemantik mit Referenzen.
+*Abbildung* 8: Referenzsemantik mit Referenzen.
 
 
 
@@ -104,7 +121,7 @@ in *Modern C++* die Smart Pointer Klassen `std::unique_ptr`, `std::shared_ptr` o
 
 <img src="cpp_architecture_07_value_vs_reference_semantics.svg" width="800">
 
-*Abbildung* 8: Referenzsemantik mit Zeigern.
+*Abbildung* 9: Referenzsemantik mit Zeigern.
 
 Theoretisch ließen sich Objekte am Heap auch über Referenzen ansprechen, dies ist aber mehr als unüblich
 und führt auf Grund der Lebensdauereinschränkungen von dynamischen Objekten vermutlich eher zu Fehlern:

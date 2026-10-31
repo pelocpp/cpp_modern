@@ -388,6 +388,7 @@
     <None Include="Architecture\cpp_architecture_06_value_vs_reference_semantics.svg" />
     <None Include="Architecture\cpp_architecture_07_value_vs_reference_semantics.svg" />
     <None Include="Architecture\cpp_architecture_10_value_vs_reference_semantics_python.svg" />
+    <None Include="Architecture\cpp_architecture_11_value_vs_reference_semantics_python.svg" />
     <None Include="ArgumentDependentNameLookup\ArgumentDependentNameLookup.md" />
     <None Include="ArrayDecay\ArrayDecay.md" />
     <None Include="Array\Array.md" />
