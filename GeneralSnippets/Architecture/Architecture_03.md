@@ -21,7 +21,7 @@
 
 Objekte können in C++ global oder lokal angelegt werden:
 
-<img src="cpp_architecture_01_value_vs_reference_semantics.svg" width="700">
+<img src="cpp_architecture_01_value_vs_reference_semantics.svg" width="600">
 
 *Abbildung* 1: Wertsemantik in C++.
 
@@ -30,9 +30,22 @@ Objekte können in C++ global oder lokal angelegt werden:
 
 Objekte in C# liegen generall am Heap:
 
-<img src="cpp_architecture_02_value_vs_reference_semantics.svg" width="700">
+<img src="cpp_architecture_02_value_vs_reference_semantics.svg" width="600">
 
 *Abbildung* 2: Referenzsemantik in C#.
+
+### Referenzsemantik in Python
+
+Objekte in Python liegen ausnahmslos am Heap:
+
+<img src="cpp_architecture_10_value_vs_reference_semantics_python.svg" width="800">
+
+*Abbildung* 3: Referenzsemantik in Python.
+
+Zwischen C# und Python gibt es kleine Unterschiede. So kennt Python keine *Null*-Referenzen wie im Sinne von C#.
+
+Wenn in Python eine Variable auf &bdquo;nichts&rdquo; zeigen soll, weist man ihr das eingebaute Schlüsselwort `None` zu.
+`None` ist ein vollwertiges Objekt vom Datentyp `NoneType`.
 
 ---
 
@@ -44,9 +57,9 @@ Beim Kopieren eines C++&ndash;Objekts entsteht eine echte Kopie.
 Je nach Struktur des Objekts kann hierzu ein Kopierkonstruktor notwendig sein,
 ein entsprechender Aufruf erfolgt implizit:
 
-<img src="cpp_architecture_03_value_vs_reference_semantics.svg" width="700">
+<img src="cpp_architecture_03_value_vs_reference_semantics.svg" width="600">
 
-*Abbildung* 3: Kopieren eines Objekts bei Wertsemantik in C++.
+*Abbildung* 4: Kopieren eines Objekts bei Wertsemantik in C++.
 
 
 
@@ -54,18 +67,18 @@ ein entsprechender Aufruf erfolgt implizit:
 
 Beim Kopieren eines C#&ndash;Objekts wird die Referenz kopiert &ndash; das Objekt selbst bleibt davon unberührt:
 
-<img src="cpp_architecture_04_value_vs_reference_semantics.svg" width="700">
+<img src="cpp_architecture_04_value_vs_reference_semantics.svg" width="600">
 
-*Abbildung* 4: Kopieren eines Objekts bei Referenzsemantik in C#.
+*Abbildung* 5: Kopieren eines Objekts bei Referenzsemantik in C#.
 
 
 ### Erstellen einer echten Kopie bei Referenzsemantik
 
 Um in C# eine echte (tiefe) Kopie eines Objekts zu erstellen, muss dies mit einem expliziten Methodenaufruf erfolgen.
 
-<img src="cpp_architecture_05_value_vs_reference_semantics.svg" width="700">
+<img src="cpp_architecture_05_value_vs_reference_semantics.svg" width="600">
 
-*Abbildung* 5: Erstellen einer echten Kopie bei Referenzsemantik in C#.
+*Abbildung* 6: Erstellen einer echten Kopie bei Referenzsemantik in C#.
 
 
 ---
@@ -77,9 +90,9 @@ Um in C# eine echte (tiefe) Kopie eines Objekts zu erstellen, muss dies mit eine
 In C++ kann man zu existierenden Objekten eine Referenz definieren.
 Die Referenz ist ein Alias &ndash; hinter dem Alias verbirgt sich eine Adresse und damit keine Kopie:
 
-<img src="cpp_architecture_06_value_vs_reference_semantics.svg" width="700">
+<img src="cpp_architecture_06_value_vs_reference_semantics.svg" width="600">
 
-*Abbildung* 6: Referenzsemantik mit Referenzen.
+*Abbildung* 7: Referenzsemantik mit Referenzen.
 
 
 
@@ -91,7 +104,7 @@ in *Modern C++* die Smart Pointer Klassen `std::unique_ptr`, `std::shared_ptr` o
 
 <img src="cpp_architecture_07_value_vs_reference_semantics.svg" width="800">
 
-*Abbildung* 7: Referenzsemantik mit Zeigern.
+*Abbildung* 8: Referenzsemantik mit Zeigern.
 
 Theoretisch ließen sich Objekte am Heap auch über Referenzen ansprechen, dies ist aber mehr als unüblich
 und führt auf Grund der Lebensdauereinschränkungen von dynamischen Objekten vermutlich eher zu Fehlern:

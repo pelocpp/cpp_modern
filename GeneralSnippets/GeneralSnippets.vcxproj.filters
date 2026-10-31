@@ -1172,6 +1172,9 @@
     <None Include="LegacyToModernity\LegacyToModernity.md">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="Architecture\cpp_architecture_10_value_vs_reference_semantics_python.svg">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="VariadicTemplates\cpp_snippets_mixins_01.png">
