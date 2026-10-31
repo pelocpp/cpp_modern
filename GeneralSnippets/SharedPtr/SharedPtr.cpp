@@ -156,9 +156,9 @@ void main_shared_ptr()
 {
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 
-    shared_ptr_01();
+    shared_ptr_01();  // getting started
     shared_ptr_02();  // interaction with functions/methods
-    shared_ptr_03();  // support of arrays
+    shared_ptr_03();  // accessing the allocated memory does not necessarily require the smart pointer
     shared_ptr_04();  // support of arrays
 }
 

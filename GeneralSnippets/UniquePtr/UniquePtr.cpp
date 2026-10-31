@@ -313,7 +313,7 @@ namespace {
 
 void main_unique_ptr()
 {
-    unique_pointer_01();
+    unique_pointer_01();     // getting started
     unique_pointer_02();     // interaction with functions/methods
     unique_pointer_03();     // accessing the allocated memory does not necessarily require the smart pointer
     unique_pointer_04();     // support of arrays

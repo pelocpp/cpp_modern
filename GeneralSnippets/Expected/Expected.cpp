@@ -52,7 +52,7 @@ namespace {
 
         try
         {
-            divideException(10, 0);
+            auto result = divideException(10, 0);
         }
         catch (const std::runtime_error& error)
         {

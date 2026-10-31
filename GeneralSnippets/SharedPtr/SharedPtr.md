@@ -55,7 +55,7 @@ effizienter ist, siehe dazu auch die folgenden beiden Abbildungen:
 
 *Abbildung* 1: Der Control-Block enthält beide Speicherbereiche.
 
-<img src="SharedPointer_02.png" width="485">
+<img src="SharedPointer_02.png" width="620">
 
 *Abbildung* 2: Der Control-Block enthält nicht das eigentlich dynamisch angelegte Objekt. 
 

@@ -77,7 +77,7 @@ Im herkömmlichen C/C++&ndash;Stil kennt man zwei Vorgehensweisen bei der Betrach
 11: {
 12:     try
 13:     {
-14:         divideException(10, 0);
+14:         auto result = divideException(10, 0);
 15:     }
 16:     catch (const std::runtime_error& error)
 17:     {
