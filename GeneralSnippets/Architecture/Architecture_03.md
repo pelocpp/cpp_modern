@@ -46,7 +46,7 @@ Objekte in Python liegen ausnahmslos am Heap:
 
 Zwischen C# und Python gibt es kleine Unterschiede. So kennt Python keine *Null*-Referenzen wie im Sinne von C#.
 Wenn in Python eine Variable auf &bdquo;nichts&rdquo; zeigen soll, weist man ihr das eingebaute Schlüsselwort `None` zu.
-`None` ist ein vollwertiges Objekt vom Datentyp `NoneType` und liegt am Heap (Singleton).
+`None` ist ein vollwertiges Objekt vom Datentyp `NoneType` und liegt am Heap (*Singleton*).
 
 ---
 
