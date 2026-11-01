@@ -1124,9 +1124,6 @@
     <None Include="Architecture\Architecture_03.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="Architecture\cpp_architecture_01_value_vs_reference_semantics.svg">
-      <Filter>Resource Files</Filter>
-    </None>
     <None Include="Architecture\cpp_architecture_02_value_vs_reference_semantics.svg">
       <Filter>Resource Files</Filter>
     </None>
@@ -1176,6 +1173,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Architecture\cpp_architecture_10_value_vs_reference_semantics_python.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Architecture\cpp_architecture_01_value_vs_reference_semantics.svg">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
