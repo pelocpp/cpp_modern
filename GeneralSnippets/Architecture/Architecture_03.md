@@ -38,7 +38,7 @@ Objekte in C# liegen generall am Heap:
 
 ### Referenzsemantik in Python
 
-Objekte in Python liegen ausnahmslos am Heap:
+Objekte in Python liegen ebenfalls ausnahmslos am Heap:
 
 <img src="cpp_architecture_100_value_vs_reference_semantics_python.svg" width="800">
 
@@ -102,7 +102,7 @@ Die Referenz ist ein Alias &ndash; hinter dem Alias verbirgt sich eine Adresse u
 
 <img src="cpp_architecture_06_value_vs_reference_semantics.svg" width="600">
 
-*Abbildung* 8: Referenzsemantik mit Referenzen.
+*Abbildung* 9: Referenzsemantik mit Referenzen.
 
 
 
@@ -114,10 +114,10 @@ in *Modern C++* die Smart Pointer Klassen `std::unique_ptr`, `std::shared_ptr` o
 
 <img src="cpp_architecture_07_value_vs_reference_semantics.svg" width="800">
 
-*Abbildung* 9: Referenzsemantik mit Zeigern.
+*Abbildung* 10: Referenzsemantik mit Zeigern.
 
 Theoretisch ließen sich Objekte am Heap auch über Referenzen ansprechen, dies ist aber mehr als unüblich
-und führt auf Grund der Lebensdauereinschränkungen von dynamischen Objekten vermutlich eher zu Fehlern:
+und führt auf Grund der Lebensdauereinschränkungen von dynamischen Objekten eher zu Fehlern:
 
 ```cpp
 01: std::unique_ptr<Person> hansPtr{
@@ -135,8 +135,12 @@ Die allgemeine Regel für Zeiger (Pointer) und Referenzen in C++ lautet:
 
   * Referenzen: Sie werden für lokale und globale Objekte verwendet.<br />
     Zum Beispiel bei der Parameterübergabe, um bei diesem Vorgang Kopien zu vermeiden.
-    Globale Objekte existieren für die gesamte Laufzeit des Programms, lokale Objekte hingegen eignen sich nur für die Betrachtung von Zwischenergebnissen,
+	Zum Beispiel für globale Objekte, da diese für die gesamte Laufzeit des Programms existieren und es keinen Sinn ergibt,
+	diese zu kopieren.<br />
+	Lokale Objekte hingegen eignen sich nur für die Betrachtung von Zwischenergebnissen,
     da diese nach dem Verlassen des Unterprogramms (Methode, freie Funktion, Block) wieder zerstört werden.
+	Daher macht es keinen Sinn, von einem lokalen Objekt eine Referenz zurückzugeben.
+
   * Zeiger: Sie werden für dynamische Objekte verwendet.<br />Ihr Speicherbedarf wird bei Bedarf reserviert und danach wieder freigegeben. 
     Dies ist der Hauptunterschied zu globalen oder lokalen Objekten.
 
