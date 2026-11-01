@@ -40,7 +40,7 @@ Objekte in C# liegen generall am Heap:
 
 Objekte in Python liegen ausnahmslos am Heap:
 
-<img src="cpp_architecture_10_value_vs_reference_semantics_python.svg" width="800">
+<img src="cpp_architecture_100_value_vs_reference_semantics_python.svg" width="800">
 
 *Abbildung* 3: Referenzsemantik in Python.
 
