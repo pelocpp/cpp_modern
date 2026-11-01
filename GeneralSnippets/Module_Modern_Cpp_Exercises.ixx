@@ -16,7 +16,6 @@ export import :sfinae;
 export import :crtp;
 export import :initialization;
 export import :perfect_forwarding;
-export import :functional_programming;
 export import :const_expr;
 export import :smart_pointers;
 export import :generic_lambdas;

@@ -12,14 +12,14 @@
 
 | Aufgabe | Beschreibung |
 | :- | :- |
-| [Aufgabe 1](./Exercises_12_PerfectForwarding.md#aufgabe-1-einfaches-beispiel-zu-variadischen-templates-und-perfect-forwarding) | Einfaches Beispiel zu variadischen Templates und *Perfect Forwarding* |
-| [Aufgabe 2](./Exercises_12_PerfectForwarding.md#aufgabe-2-ausführungszeit-einer-Funktion) | Ausführungszeit einer Funktion<br/>(Voraussetzungen: `std::invoke`, variadische Templates und *Perfect Forwarding*) |
+| [*Aufgabe* 1](#link1) | Einfaches Beispiel zu variadischen Templates und *Perfect Forwarding* |
+| [*Aufgabe* 2](#link2) | Ausführungszeit einer Funktion<br/>(Voraussetzungen: `std::invoke`, variadische Templates und *Perfect Forwarding*) |
 
 *Tabelle* 1: Aufgaben zum *Perfect Forwarding*.
 
 ---
 
-## Aufgabe 1: Einfaches Beispiel zu variadischen Templates und *Perfect Forwarding*
+## Aufgabe 1: Einfaches Beispiel zu variadischen Templates und *Perfect Forwarding* <a name="link1"></a>
 
 Schreiben Sie eine Funktion `list`, die eine variable Anzahl Parameter unterschiedlichen Typs besitzt.
 Ein Aufruf der `list`-Funktion gibt jeden Parameter auf der Konsole mit einem anschließenden Zeilenumbruch aus.
@@ -62,7 +62,7 @@ Wie müssen Sie Ihre Realisierung ändern, so dass die Ausgabe von `list` im let
 
 ---
 
-## Aufgabe 2: Ausführungszeit einer Funktion
+## Aufgabe 2: Ausführungszeit einer Funktion <a name="link1"></a>
 
 #### Voraussetzungen: `std::invoke`, variadische Templates
 

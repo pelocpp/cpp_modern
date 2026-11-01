@@ -13,16 +13,16 @@
 
 | Aufgabe | Beschreibung |
 | :- | :- |
-| *Aufgabe* 1 | Löschen aller ungeraden Elemente eines sequenziellen Containers<br/>(Voraussetzungen: STL-Container `std::vector<int>`, Methode `erase`, STL-Algorithmus `std::remove_if`) |
-| *Aufgabe* 2 | *Fibonacci*-Zahlen<br/>(Voraussetzungen: Algorithmen `std::generate`, `std::for_each`, Lambda-Funktionen, Structured Binding) |
-| *Aufgabe* 3 | Die STL und eine Klasse `Phonebook`<br/>(Voraussetzungen: STL-Container `std::vector`, `std::unordered_map`, STL-Algorithmen `std::for_each`, `std::find_if`) |
-| *Aufgabe* 4 | Der Algorithmus `std::accumulate` in der Anwendung<br/>(Voraussetzungen: `std::accumulate`, `std::initializer_list`) |
+| [*Aufgabe* 1](#link1) | Löschen aller ungeraden Elemente eines sequenziellen Containers<br/>(Voraussetzungen: STL-Container `std::vector<int>`, Methode `erase`, STL-Algorithmus `std::remove_if`) |
+| [*Aufgabe* 2](#link2) | *Fibonacci*-Zahlen<br/>(Voraussetzungen: Algorithmen `std::generate`, `std::for_each`, Lambda-Funktionen, Structured Binding) |
+| [*Aufgabe* 3](#link3) | Die STL und eine Klasse `Phonebook`<br/>(Voraussetzungen: STL-Container `std::vector`, `std::unordered_map`, STL-Algorithmen `std::for_each`, `std::find_if`) |
+| [*Aufgabe* 4](#link4) | Der Algorithmus `std::accumulate` in der Anwendung<br/>(Voraussetzungen: `std::accumulate`, `std::initializer_list`) |
 
 *Tabelle* 1: Aufgaben zur STL.
 
 ---
 
-## Aufgabe 1: Löschen aller ungeraden Elemente in einem sequenziellen STL-Container
+## Aufgabe 1: Löschen aller ungeraden Elemente in einem sequenziellen STL-Container <a name="link1"></a>
 
 #### Voraussetzungen: STL-Container `std::vector<int>`, Methode `erase`, STL-Algorithmus `std::remove_if`
 
@@ -74,7 +74,7 @@ Welche Beobachtungen können Sie in Bezug auf die Ausführungszeiten des Verglei
 
 ---
 
-## Aufgabe 2: *Fibonacci*-Zahlen
+## Aufgabe 2: *Fibonacci*-Zahlen <a name="link2"></a>
 
 #### Voraussetzungen: Algorithmen `std::generate`, Lambda-Funktionen, Structured Binding
 
@@ -105,7 +105,7 @@ Wie müssen Sie diese Lambda-Funktion definieren, so dass das `std::pair`-Objekt
 
 ---
 
-## Aufgabe 3: Die STL und eine Klasse `Phonebook`
+## Aufgabe 3: Die STL und eine Klasse `Phonebook` <a name="link3"></a>
 
 #### Voraussetzungen: STL-Container `std::vector`, `std::unordered_map`, STL-Algorithmen `std::for_each`, `std::find_if`
 
@@ -171,7 +171,7 @@ Nehmen Sie eine zweite Realisierung vor, die auf einem `std::unordered_map`-Cont
 
 ---
 
-## Aufgabe 4: Der Algorithmus `std::accumulate` in der Anwendung
+## Aufgabe 4: Der Algorithmus `std::accumulate` in der Anwendung <a name="link4"></a>
 
 #### Voraussetzungen: `std::accumulate`, `std::initializer_list` (Initialisierungliste)
 

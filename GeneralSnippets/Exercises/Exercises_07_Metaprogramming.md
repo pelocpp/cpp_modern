@@ -12,16 +12,16 @@
 
 | Aufgabe | Beschreibung |
 | :- | :- |
-| *Aufgabe* 1 | Bestimmung des Maximums aus einer Folge von ganzen, positiven Zahlen |
-| *Aufgabe* 2 | Konvertierung binärer Zahlen in Dezimalzahlen |
-| *Aufgabe* 3 | *Fibonacci*-Zahlen |
-| *Aufgabe* 4 | Selektiver Zugriff auf ein Parameter Pack von Datentypen |
+| [*Aufgabe* 1](#link1) | Bestimmung des Maximums aus einer Folge von ganzen, positiven Zahlen |
+| [*Aufgabe* 2](#link2) | Konvertierung binärer Zahlen in Dezimalzahlen |
+| [*Aufgabe* 3](#link3) | *Fibonacci*-Zahlen |
+| [*Aufgabe* 4](#link4) | Selektiver Zugriff auf ein Parameter Pack von Datentypen |
 
 *Tabelle* 1: Aufgaben zur Metaprogrammierung.
 
 ---
 
-## Aufgabe 1: Bestimmung des Maximums aus einer Folge von ganzen, positiven Zahlen
+## Aufgabe 1: Bestimmung des Maximums aus einer Folge von ganzen, positiven Zahlen <a name="link1"></a>
 
 Bestimmen Sie die größte Zahl aus einer Folge von ganzen, positiven Zahlen.
 Die Zahlenfolge selbst stellt das Parameterpack eines Klassentemplates dar.
@@ -42,7 +42,7 @@ Max: 10
 
 ---
 
-## Aufgabe 2: Konvertierung binärer Zahlen in Dezimalzahlen.
+## Aufgabe 2: Konvertierung binärer Zahlen in Dezimalzahlen <a name="link2"></a>
 
 Das Binärsystem, auch Dual- oder Zweiersystem genannt, ist ein Zahlensystem, das nur zwei verschiedene
 Ziffern &ndash; in der Regel `0` und `1` &ndash; zur Darstellung von Zahlen kennt. Die Ziffernfolge `1101` zum
@@ -92,7 +92,7 @@ vom Übersetzer abgewiesen werden?
 
 ---
 
-## Aufgabe 3: *Fibonacci*-Zahlen
+## Aufgabe 3: *Fibonacci*-Zahlen <a name="link3"></a>
 
 In der Mathematik bilden die *Fibonacci*-Zahlen eine Folge,
 so dass jede Zahl die Summe der beiden vorhergehenden Zahlen ist, beginnend mit 0 und 1. 
@@ -126,7 +126,7 @@ std::cout << 20 << ": " << Fibonacci<20>::value << std::endl;
 
 ---
 
-## Aufgabe 4: Selektiver Zugriff auf ein Parameter Pack von Datentypen
+## Aufgabe 4: Selektiver Zugriff auf ein Parameter Pack von Datentypen <a name="link4"></a>
 
 
 Parameter Packs von Instanzierungen von Templates können eine beliebige Anzahl

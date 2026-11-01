@@ -12,17 +12,17 @@
 
 | Aufgabe | Beschreibung |
 | :- | :- |
-| *Aufgabe* 1 | Logische Operationen mit beliebig vielen Operanden |
-| *Aufgabe* 2 | `decltype` und Type-Traits am Beispiel von `sameType`<br/>(Voraussetzungen: `std::is_same`) |
-| *Aufgabe* 3 | &bdquo;Folding over a Comma&rdquo; am Beispiel zweier Funktionen `minimum` und `maximum`<br/>(Voraussetzungen: Lambdas) |
-| *Aufgabe* 4 | Beliebig viele Werte zu einem `std::vector`-Objekt hinzufügen |
-| *Aufgabe* 5 | Störende Trennzeichen am Ende eines Folding-Ausdrucks |
+| [*Aufgabe* 1](#link1) | Logische Operationen mit beliebig vielen Operanden |
+| [*Aufgabe* 2](#link2) | `decltype` und Type-Traits am Beispiel von `sameType`<br/>(Voraussetzungen: `std::is_same`) |
+| [*Aufgabe* 3](#link3) | &bdquo;Folding over a Comma&rdquo; am Beispiel zweier Funktionen `minimum` und `maximum`<br/>(Voraussetzungen: Lambdas) |
+| [*Aufgabe* 4](#link4) | Beliebig viele Werte zu einem `std::vector`-Objekt hinzufügen |
+| [*Aufgabe* 5](#link5) | Störende Trennzeichen am Ende eines Folding-Ausdrucks |
 
 *Tabelle* 1: Aufgaben zu Folding.
 
 ---
 
-## Aufgabe 1: Logische Operationen mit beliebig vielen Operanden
+## Aufgabe 1: Logische Operationen mit beliebig vielen Operanden <a name="link1"></a>
 
 Die Aufgabenstellung ist identisch zur ersten Aufgabe
 &bdquo;Logische Operationen mit beliebig vielen Operanden&rdquo;
@@ -31,7 +31,7 @@ Setzen Sie zur Lösung dieses Mal *Folding Expressions* ein.
 
 ---
 
-## Aufgabe 2: Folding Expressions, `decltype` und Type-Traits am Beispiel von `sameType`
+## Aufgabe 2: Folding Expressions, `decltype` und Type-Traits am Beispiel von `sameType` <a name="link2"></a>
 
 #### Voraussetzungen: `std::is_same`
 
@@ -46,7 +46,7 @@ von Aufgabe 1 und 2?
 
 ---
 
-## Aufgabe 3: &bdquo;*Folding over a Comma*&rdquo; am Beispiel zweier Funktionen `minimum` und `maximum`
+## Aufgabe 3: &bdquo;*Folding over a Comma*&rdquo; am Beispiel zweier Funktionen `minimum` und `maximum` <a name="link3"></a>
 
 #### Voraussetzungen: Lambdas
 
@@ -86,7 +86,7 @@ auto minimum(const T& x, const T& y, const TArgs&... args)
 
 ---
 
-## Aufgabe 4: Beliebig viele Werte zu einem `std::vector`-Objekt hinzufügen
+## Aufgabe 4: Beliebig viele Werte zu einem `std::vector`-Objekt hinzufügen <a name="link4"></a>
 
 Sowohl mit variadischen Templates als auch mit Folding lässt sich ein elegantes Funktionstemplate
 `pushBackAll<T>` schreiben, das eine beliebige Anzahl von Parametern mit `push_back`
@@ -131,7 +131,7 @@ Implementieren Sie die weiteren Varianten.
 
 ---
 
-## Aufgabe 5: Störende Trennzeichen am Ende eines Folding-Ausdrucks
+## Aufgabe 5: Störende Trennzeichen am Ende eines Folding-Ausdrucks <a name="link5"></a>
 
 Betrachten Sie die nachfolgende Funktion `printer`.
 Mit Hilfe von variadischen Templates kann die Funktion eine beliebige Anzahl von Parametern entgegennehmen

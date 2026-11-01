@@ -12,15 +12,15 @@
 
 | Aufgabe | Beschreibung |
 | :- | :- |
-| *Aufgabe* 1 | Einfache Realisierung einer Lambda-Funktion<br/>(Voraussetzungen: Algorithmus `std::for_each`, bei Bedarf auch `std::generate`) |
-| *Aufgabe* 2 | Taschenrechner mit Lambda-Funktionen<br/>(Voraussetzungen: Container `std::map`, Klasse `std::pair`) | 
-| *Aufgabe* 3 | Quiz mit Lambda-Funktionen |
+| [*Aufgabe* 1](#link1) | Einfache Realisierung einer Lambda-Funktion<br/>(Voraussetzungen: Algorithmus `std::for_each`, bei Bedarf auch `std::generate`) |
+| [*Aufgabe* 2](#link2) | Taschenrechner mit Lambda-Funktionen<br/>(Voraussetzungen: Container `std::map`, Klasse `std::pair`) | 
+| [*Aufgabe* 3](#link3) | Quiz mit Lambda-Funktionen |
 
 *Tabelle* 1: Aufgaben zu Lambdas.
 
 ---
 
-## Aufgabe 1: Einfache Realisierung einer Lambda-Funktion
+## Aufgabe 1: Einfache Realisierung einer Lambda-Funktion <a name="link1"></a>
 
 #### Voraussetzungen: Algorithmus `std::for_each`, bei Bedarf auch `std::generate`
 
@@ -60,7 +60,7 @@ bestimmt werden.
 
 ---
 
-## Aufgabe 2: Taschenrechner mit Lambda-Funktionen
+## Aufgabe 2: Taschenrechner mit Lambda-Funktionen <a name="link2"></a>
 
 #### Voraussetzungen: Container `std::map`, Klasse `std::pair`, Klasse `std::function`
 
@@ -115,7 +115,7 @@ Result: 1.5 + 1.5 = 4.2.
 
 ---
 
-## Aufgabe 3: Quiz mit Lambda-Funktionen
+## Aufgabe 3: Quiz mit Lambda-Funktionen <a name="link3"></a>
 
 Betrachten Sie die vier Methoden `test_01`, `test_02`, `test_03` und `test_04`:
 Erraten Sie die Ausgabe? Begründen Sie Ihre Antworten.

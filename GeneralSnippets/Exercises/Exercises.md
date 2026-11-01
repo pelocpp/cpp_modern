@@ -38,9 +38,7 @@ Auch das Studium eines Lösungsvorschlags kann hilfreich sein, um den Zugang zu 
   * ### [Expression Templates](Exercises_08_ExpressionTemplates.md)
     
   * ### [*Perfect Forwarding*](Exercises_12_PerfectForwarding.md)
-    
-  * ### [Funktionale Programmierung](Exercises_13_FunctionalProgramming.md)
-    
+
   * ### [SFINAE](Exercises_09_SFINAE.md)
     
   * ### [CRTP](Exercises_10_CRTP.md)

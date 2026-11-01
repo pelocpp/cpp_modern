@@ -19,7 +19,6 @@ void main_exercises()
     test_exercices_metaprogramming();
     test_exercices_expression_templates();
     test_exercices_perfect_forwarding();
-    test_exercises_functional_programming();
     test_exercices_sfinae();
     test_exercices_crtp();
     test_exercises_concepts();

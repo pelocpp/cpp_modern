@@ -216,7 +216,6 @@
     <ClCompile Include="Exercises\Exercises_10_CRTP.cpp" />
     <ClCompile Include="Exercises\Exercises_11_Initialization.cpp" />
     <ClCompile Include="Exercises\Exercises_12_PerfectForwarding.cpp" />
-    <ClCompile Include="Exercises\Exercises_13_FunctionalProgramming.cpp" />
     <ClCompile Include="Exercises\Exercises.cpp" />
     <ClCompile Include="Exercises\Exercises_16_Generic_Lambdas.cpp" />
     <ClCompile Include="Exercises\Exercises_17_Concepts.cpp" />
@@ -232,7 +231,6 @@
     <ClCompile Include="Exercises\Module_Exercises_10_CRTP.ixx" />
     <ClCompile Include="Exercises\Module_Exercises_11_Initialization.ixx" />
     <ClCompile Include="Exercises\Module_Exercises_12_PerfectForwarding.ixx" />
-    <ClCompile Include="Exercises\Module_Exercises_13_FunctionalProgramming.ixx" />
     <ClCompile Include="Exercises\Module_Exercises_14_ConstExpr.ixx" />
     <ClCompile Include="Exercises\Module_Exercises_15_SmartPointers.ixx" />
     <ClCompile Include="Exercises\Module_Exercises_16_GenericLambdas.ixx" />

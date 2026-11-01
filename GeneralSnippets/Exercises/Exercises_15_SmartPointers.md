@@ -12,18 +12,18 @@
 
 | Aufgabe | Beschreibung |
 | :- | :- |
-| *Aufgabe* 1 | Quiz zu Smart Pointer Klassen<br/>(Voraussetzungen: `std::shared_ptr<>`) |
-| *Aufgabe* 2 | Noch ein Quiz zu Smart Pointer Klassen<br/>(Voraussetzungen: `std::shared_ptr<>`) |
-| *Aufgabe* 3 | Betrachtungen eines &bdquo;nicht besitzenden&rdquo; Zeigers<br/>(Voraussetzungen: `std::shared_ptr<>`, `std::weak_ptr<>`) |
-| *Aufgabe* 4 | Verwendung von Smart Pointern für Membervariablen einer Klasse<br/>(Voraussetzungen: `std::unique_ptr<>` und `std::shared_ptr<>`) |
-| *Aufgabe* 5 | Rückgabe eines `std::unique_ptr<>`-Objekts aus einer Funktion<br/>(Voraussetzungen: `std::unique_ptr<>`, bei Bedarf `std::tuple<>` und `std::optional`) |
-| *Aufgabe* 6 | Modellierung eines Mutter-Kind Szenarios mit Smart Pointer Klassen<br/>(Voraussetzungen: Smart Pointer Klassen) |
+| [*Aufgabe* 1](#link1) | Quiz zu Smart Pointer Klassen<br/>(Voraussetzungen: `std::shared_ptr<>`) |
+| [*Aufgabe* 2](#link2) | Noch ein Quiz zu Smart Pointer Klassen<br/>(Voraussetzungen: `std::shared_ptr<>`) |
+| [*Aufgabe* 3](#link3) | Betrachtungen eines &bdquo;nicht besitzenden&rdquo; Zeigers<br/>(Voraussetzungen: `std::shared_ptr<>`, `std::weak_ptr<>`) |
+| [*Aufgabe* 4](#link4) | Verwendung von Smart Pointern für Membervariablen einer Klasse<br/>(Voraussetzungen: `std::unique_ptr<>` und `std::shared_ptr<>`) |
+| [*Aufgabe* 5](#link5) | Rückgabe eines `std::unique_ptr<>`-Objekts aus einer Funktion<br/>(Voraussetzungen: `std::unique_ptr<>`, bei Bedarf `std::tuple<>` und `std::optional`) |
+| [*Aufgabe* 6](#link6) | Modellierung eines Mutter-Kind Szenarios mit Smart Pointer Klassen<br/>(Voraussetzungen: Smart Pointer Klassen) |
 
 *Tabelle* 1: Aufgaben zu Smart Pointer Klassen.
 
 ---
 
-## Aufgabe 1: Quiz zu Smart Pointer Klassen
+## Aufgabe 1: Quiz zu Smart Pointer Klassen <a name="link1"></a>
 
 #### Voraussetzungen: `std::shared_ptr<>`
 
@@ -45,7 +45,7 @@ Welchen Wert hat der Referenzzähler des Objekts `pC` in der letzten Zeile?
 
 ---
 
-## Aufgabe 2: Noch ein Quiz zu Smart Pointer Klassen
+## Aufgabe 2: Noch ein Quiz zu Smart Pointer Klassen <a name="link2"></a>
 
 #### Voraussetzungen: `std::shared_ptr<>`
 
@@ -79,7 +79,7 @@ Studieren Sie das folgende Code-Fragement genau.
 
 ---
 
-## Aufgabe 3: Betrachtungen eines &bdquo;nicht besitzenden&rdquo; Zeigers
+## Aufgabe 3: Betrachtungen eines &bdquo;nicht besitzenden&rdquo; Zeigers <a name="link3"></a>
 
 #### Voraussetzungen: `std::shared_ptr<>` und `std::weak_ptr<>`
 
@@ -198,7 +198,7 @@ das referenzierte Objekt noch existiert.
 
 ---
 
-## Aufgabe 4: Verwendung von Smart Pointern für Membervariablen einer Klasse
+## Aufgabe 4: Verwendung von Smart Pointern für Membervariablen einer Klasse <a name="link4"></a>
 
 #### Voraussetzungen: `std::unique_ptr<>` und `std::shared_ptr<>`
 
@@ -285,7 +285,7 @@ Zeigen Sie das Verschieben an entsprechenden Beispielen auf.
 
 ---
 
-## Aufgabe 5: Rückgabe eines `std::unique_ptr<>`-Objekts aus einer Funktion
+## Aufgabe 5: Rückgabe eines `std::unique_ptr<>`-Objekts aus einer Funktion <a name="link5"></a>
 
 #### Voraussetzungen: `std::unique_ptr<>`, bei Bedarf `std::tuple<>` und `std::optional`
 
@@ -363,7 +363,7 @@ Splitting of 12345:
 
 ---
 
-## Aufgabe 6: Modellierung eines Mutter-Kind Szenarios mit Smart Pointer Klassen
+## Aufgabe 6: Modellierung eines Mutter-Kind Szenarios mit Smart Pointer Klassen <a name="link6"></a>
 
 #### Voraussetzungen: Smart Pointer Klassen
 

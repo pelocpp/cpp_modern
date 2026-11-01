@@ -12,15 +12,15 @@
 
 | Aufgabe | Beschreibung |
 | :- | :- |
-| *Aufgabe* 1 | `std::visit` und generische Lambdas<br/>(Voraussetzungen: `if constexpr`, `decltype`, `std::variant`, `std::visit`, Type Traits) |
-| *Aufgabe* 2 | `std::optional`: Umwandlung von Zeichenketten in ganze Zahlen<br/>(Voraussetzungen: Templates Grundlagen, `std::optional`, `if constexpr`) |
-| *Aufgabe* 3 | `std::variant`: Ein heterogener Container<br/>(Voraussetzungen: `std::variant`, `std::visit`, `std::vector`) |
+| [*Aufgabe* 1](#link1) | `std::visit` und generische Lambdas<br/>(Voraussetzungen: `if constexpr`, `decltype`, `std::variant`, `std::visit`, Type Traits) |
+| [*Aufgabe* 2](#link2) | `std::optional`: Umwandlung von Zeichenketten in ganze Zahlen<br/>(Voraussetzungen: Templates Grundlagen, `std::optional`, `if constexpr`) |
+| [*Aufgabe* 3](#link3) | `std::variant`: Ein heterogener Container<br/>(Voraussetzungen: `std::variant`, `std::visit`, `std::vector`) |
 
 *Tabelle* 1: Aufgaben zu Utility Klassen.
 
 ---
 
-## Aufgabe 1: `std::visit` und generische Lambdas
+## Aufgabe 1: `std::visit` und generische Lambdas <a name="link1"></a>
 
 #### Voraussetzungen: `if constexpr`, `decltype`, `std::variant`, `std::visit`, Type Traits, `std::remove_reference`,<br/>`std::is_scalar`, `std::is_same` und `std::remove_cvref`
 
@@ -71,7 +71,7 @@ Welche Beobachtung machen Sie?
 
 ---
 
-## Aufgabe 2: `std::optional`: Umwandlung von Zeichenketten in ganze Zahlen
+## Aufgabe 2: `std::optional`: Umwandlung von Zeichenketten in ganze Zahlen <a name="link2"></a>
 
 #### Voraussetzungen: Templates Grundlagen, `std::optional`, `if constexpr`
 
@@ -91,7 +91,7 @@ Realisieren Sie die Funktion analog zur Funktion `toInt`. Für `T` sollen die in
 
 ---
 
-## Aufgabe 3: `std::variant`: Ein heterogener Container
+## Aufgabe 3: `std::variant`: Ein heterogener Container <a name="link3"></a>
 
 #### Voraussetzungen: `std::variant`, `std::visit`, `std::vector`
 

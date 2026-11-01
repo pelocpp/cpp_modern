@@ -12,16 +12,16 @@
 
 | Aufgabe | Beschreibung |
 | :- | :- |
-| *Aufgabe* 1 | Eine Funktion mit bestimmten Parametertypen |
-| *Aufgabe* 2 | Eine Methode, unterschiedliche Implementierungen<br/>(Voraussetzungen: Templates, `decltype` und `std::declval`) |
-| *Aufgabe* 3 | Detektion von Methoden in einer Klasse<br/>(Voraussetzungen: Templates, `decltype` und `std::declval`) |
-| *Aufgabe* 4 | Eine Methode, unterschiedliche Implementierungen zum Zweiten<br/>(Voraussetzungen: `std::array`) |
+| [*Aufgabe* 1](#link1) | Eine Funktion mit bestimmten Parametertypen |
+| [*Aufgabe* 2](#link2) | Eine Methode, unterschiedliche Implementierungen<br/>(Voraussetzungen: Templates, `decltype` und `std::declval`) |
+| [*Aufgabe* 3](#link3) | Detektion von Methoden in einer Klasse<br/>(Voraussetzungen: Templates, `decltype` und `std::declval`) |
+| [*Aufgabe* 4](#link4) | Eine Methode, unterschiedliche Implementierungen zum Zweiten<br/>(Voraussetzungen: `std::array`) |
 
 *Tabelle* 1: Aufgaben zu SFINAE.
 
 ---
 
-## Aufgabe 1: Eine Funktion mit bestimmten Parametertypen
+## Aufgabe 1: Eine Funktion mit bestimmten Parametertypen <a name="link1"></a>
 
 Wir betrachen folgende Funktion `distance`, die den Abstand zweier Punkte in der Ebene berechnet:
 
@@ -51,7 +51,7 @@ Verwenden Sie hierzu die SFINAE-Technik!
 
 ---
 
-## Aufgabe 2: Eine Methode, unterschiedliche Implementierungen
+## Aufgabe 2: Eine Methode, unterschiedliche Implementierungen <a name="link2"></a>
 
 In dieser Aufgabe betrachten wir eine Template Funktion `print`:
 
@@ -247,7 +247,7 @@ vor.
 
 ---
 
-## Aufgabe 3: Detektion von Methoden in einer Klasse
+## Aufgabe 3: Detektion von Methoden in einer Klasse <a name="link3"></a>
 
 #### Voraussetzungen: Templates, `decltype` und `std::declval`
 
@@ -356,7 +356,7 @@ Realisieren und testen Sie eine entsprechende Klasse `MethodDetectorEx`.
 
 ---
 
-## Aufgabe 4: Eine Methode, unterschiedliche Implementierungen zum Zweiten
+## Aufgabe 4: Eine Methode, unterschiedliche Implementierungen zum Zweiten <a name="link4"></a>
 
 #### Voraussetzungen: `std::array`
 

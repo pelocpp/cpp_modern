@@ -12,18 +12,18 @@
 
 | Aufgabe | Beschreibung |
 | :- | :- |
-| *Aufgabe* 1 | Logische Operationen mit beliebig vielen Operanden |
-| *Aufgabe* 2 | `decltype` und Type-Traits am Beispiel von `sameType`<br/>(Voraussetzungen: `std::is_same`) |
-| *Aufgabe* 3 | Generische Funktion `miminum`<br/>(Voraussetzungen: Utility-Funktion `std::common_type`) |
-| *Aufgabe* 4 | Ausgabe eines `std::tuple` Objekts<br/>(Voraussetzungen: `std::tuple`, Non-Type Template Parameter) |
-| *Aufgabe* 5 | Viele Wege führen zum gleichen Ergebnis: Summenbildung natürlicher Zahlen |
-| *Aufgabe* 6 | Variadische Templates und Vererbung |
+| [*Aufgabe* 1](#link1) | Logische Operationen mit beliebig vielen Operanden |
+| [*Aufgabe* 2](#link2) | `decltype` und Type-Traits am Beispiel von `sameType`<br/>(Voraussetzungen: `std::is_same`) |
+| [*Aufgabe* 3](#link3) | Generische Funktion `miminum`<br/>(Voraussetzungen: Utility-Funktion `std::common_type`) |
+| [*Aufgabe* 4](#link4) | Ausgabe eines `std::tuple` Objekts<br/>(Voraussetzungen: `std::tuple`, Non-Type Template Parameter) |
+| [*Aufgabe* 5](#link5) | Viele Wege führen zum gleichen Ergebnis: Summenbildung natürlicher Zahlen |
+| [*Aufgabe* 6](#link6) | Variadische Templates und Vererbung |
 
 *Tabelle* 1: Aufgaben zu variadischen Templates.
 
 ---
 
-## Aufgabe 1: Logische Operationen mit beliebig vielen Operanden
+## Aufgabe 1: Logische Operationen mit beliebig vielen Operanden <a name="link1"></a>
 
 Schreiben Sie zwei Funktionen `andAll` und `orAll`, die eine variable Anzahl von `bool`-Parametern
 logisch UND oder logisch ODER verknüpfen. Mögliche Testbeispiele können so aussehen:
@@ -50,7 +50,7 @@ true
 
 ---
 
-## Aufgabe 2: `decltype` und Type-Traits am Beispiel von `sameType`
+## Aufgabe 2: `decltype` und Type-Traits am Beispiel von `sameType` <a name="link2"></a>
 
 #### Voraussetzungen: `std::is_same`
 
@@ -93,7 +93,7 @@ Können Sie das Feature "*Short-Circuit-Evaluation*" in Ihrer Realisierung der F
 
 ---
 
-## Aufgabe 3: Generische Funktion `miminum`
+## Aufgabe 3: Generische Funktion `miminum` <a name="link3"></a>
 
 #### Voraussetzungen: Utility-Funktion `std::common_type`
 
@@ -105,7 +105,7 @@ die Funktion `std::common_type` definiert ist.
 
 ---
 
-## Aufgabe 4: Ausgabe eines `std::tuple` Objekts
+## Aufgabe 4: Ausgabe eines `std::tuple` Objekts <a name="link4"></a>
 
 #### Voraussetzungen: `std::tuple<T>`, Non-Type Template Parameter
 
@@ -131,7 +131,7 @@ printTuple(tuple);
 
 ---
 
-## Aufgabe 5: Viele Wege führen zum gleichen Ergebnis: Summenbildung natürlicher Zahlen
+## Aufgabe 5: Viele Wege führen zum gleichen Ergebnis: Summenbildung natürlicher Zahlen <a name="link5"></a>
 
 Ziel dieser Übung ist es, mehrere Möglichkeiten
 in der Definition variadischer Templates (Klassenschablone, Funktionsschablone)
@@ -170,7 +170,7 @@ in C++-Anweisungen *ohne* variadische Templates nach!
 
 ---
 
-## Aufgabe 6: Variadische Templates und Vererbung
+## Aufgabe 6: Variadische Templates und Vererbung <a name="link6"></a>
 
 Der Mechanismus variadischer Templates ist auch auf die Vererbung anwendbar.
 Studieren Sie dazu folgende Definition einer Klasse `X`:

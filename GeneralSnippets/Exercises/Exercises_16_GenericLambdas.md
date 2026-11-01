@@ -12,13 +12,13 @@
 
 | Aufgabe | Beschreibung |
 | :- | :- |
-| *Aufgabe* 1 | Personensuche<br/>(Voraussetzungen: Algorithmus `std::find_if`) |
+| [*Aufgabe* 1](#link1) | Personensuche<br/>(Voraussetzungen: Algorithmus `std::find_if`) |
 
 *Tabelle* 1: Aufgaben zu generischen Lambdas.
 
 ---
 
-## Aufgabe 1: Personensuche
+## Aufgabe 1: Personensuche <a name="link1"></a>
 
 #### Voraussetzungen: Algorithmus `std::find_if`
 

@@ -12,16 +12,16 @@
 
 | Aufgabe | Beschreibung |
 | :- | :- |
-| *Aufgabe* 1 | Maximum dreier Werte<br/>(Voraussetzungen: `constexpr`, Lambdas und teilweise Templates) |
-| *Aufgabe* 2 | Maximum beliebig vieler Werte<br/>(Voraussetzungen: `constexpr`, Lambdas, variadische Templates und Folding) |
-| *Aufgabe* 3 | RGB Farben<br/>(Voraussetzungen: `constexpr`) |
-| *Aufgabe* 4 | Auswertung von variadischen Templates, `decltype` und Type-Traits am Beispiel von `sameType` zur Übersetzungszeit<br/>(Voraussetzungen: `decltype`, `std::is_same`) |
+| [*Aufgabe* 1](#link1) | Maximum dreier Werte<br/>(Voraussetzungen: `constexpr`, Lambdas und teilweise Templates) |
+| [*Aufgabe* 2](#link2) | Maximum beliebig vieler Werte<br/>(Voraussetzungen: `constexpr`, Lambdas, variadische Templates und Folding) |
+| [*Aufgabe* 3](#link3) | RGB Farben<br/>(Voraussetzungen: `constexpr`) |
+| [*Aufgabe* 4](#link4) | Auswertung von variadischen Templates, `decltype` und Type-Traits am Beispiel von `sameType` zur Übersetzungszeit<br/>(Voraussetzungen: `decltype`, `std::is_same`) |
 
 *Tabelle* 1: Aufgaben zu `constexpr`.
 
 ---
 
-## Aufgabe 1: Maximum dreier Zahlen
+## Aufgabe 1: Maximum dreier Zahlen <a name="link1"></a>
 
 #### Voraussetzungen: `constexpr`, Lambdas und teilweise Templates
 
@@ -58,7 +58,7 @@ Diskutieren bzw. erläutern Sie die Unterschiede der jeweiligen Deklaration.
 
 ---
 
-## Aufgabe 2: Maximum beliebig vieler Werte
+## Aufgabe 2: Maximum beliebig vieler Werte <a name="link2"></a>
 
 #### Voraussetzungen: `constexpr`, Lambdas, variadische Templates und Folding
 
@@ -82,7 +82,7 @@ Es bietet sich ein Spezialfall dieser Technik an, das so genannte &bdquo;*Foldin
 
 ---
 
-## Aufgabe 3: RGB Farben
+## Aufgabe 3: RGB Farben <a name="link3"></a>
 
 #### Voraussetzungen: `constexpr`
 
@@ -240,7 +240,7 @@ std::cout << std::format("{:#010X}", darkGreen.value()) << std::endl;
 
 ---
 
-## Aufgabe 4: Auswertung von variadischen Templates, `decltype` und Type-Traits am Beispiel von `sameType` zur Übersetzungszeit
+## Aufgabe 4: Auswertung von variadischen Templates, `decltype` und Type-Traits am Beispiel von `sameType` zur Übersetzungszeit <a name="link4"></a>
 
 #### Voraussetzungen: `std::is_same`
 

@@ -273,9 +273,6 @@
     <ClCompile Include="Exercises\Exercises_12_PerfectForwarding.cpp">
       <Filter>Exercises</Filter>
     </ClCompile>
-    <ClCompile Include="Exercises\Exercises_13_FunctionalProgramming.cpp">
-      <Filter>Exercises</Filter>
-    </ClCompile>
     <ClCompile Include="Exercises\Exercises_14_ConstExpr.cpp">
       <Filter>Exercises</Filter>
     </ClCompile>
@@ -433,9 +430,6 @@
       <Filter>Exercises</Filter>
     </ClCompile>
     <ClCompile Include="Exercises\Module_Exercises_12_PerfectForwarding.ixx">
-      <Filter>Exercises</Filter>
-    </ClCompile>
-    <ClCompile Include="Exercises\Module_Exercises_13_FunctionalProgramming.ixx">
       <Filter>Exercises</Filter>
     </ClCompile>
     <ClCompile Include="Exercises\Module_Exercises_14_ConstExpr.ixx">
