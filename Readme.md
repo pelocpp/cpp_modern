@@ -53,6 +53,17 @@ nachlesen.
 
 ---
 
+## Agenda
+
+Es ist nicht einfach, bei der Menge an sprachlichen Ergänzungen, Erweiterungen und Neuerungen von C++ den Überblick
+zu behalten. Das von mir zusammengestellte Inhaltsverzeichnis unternimmt den Versuch,
+den größten Teil dieser Weiterentwicklung zumindest nach gewissen systematischen und methodischen Gesichtspunkten
+so zu gliedern und zusammenzufassen, dass bei deren Betrachtung der &bdquo;rote Faden&rdquo; nicht verloren geht. 
+
+[Zur Agenda](GeneralSnippets/Agenda/Agenda.md).
+
+---
+
 ## Die Kernphilosophie von *Modern C++*
 
 Die Kernphilosophie von *Modern C++* lautet:
@@ -69,18 +80,19 @@ Die Kernphilosophie von *Modern C++* besteht darin, Abstraktionen
 auf höheren Ebenen bereitzustellen &ndash; die die Sicherheit und Lesbarkeit verbessern &ndash; ohne
 die Leistung auf niedrigeren Ebenen zu beeinträchtigen.
 
-[Zur Kernphilosophie](GeneralSnippets/Architecture/Architecture.md).
+[Zur Kernphilosophie](GeneralSnippets/Architecture/Architecture_General.md).
 
 ---
 
-## Agenda
+## C++ im Vergleich zu C# und Python
 
-Es ist nicht einfach, bei der Menge an sprachlichen Ergänzungen, Erweiterungen und Neuerungen von C++ den Überblick
-zu behalten. Das von mir zusammengestellte Inhaltsverzeichnis unternimmt den Versuch,
-den größten Teil dieser Weiterentwicklung zumindest nach gewissen systematischen und methodischen Gesichtspunkten
-so zu gliedern und zusammenzufassen, dass bei deren Betrachtung der &bdquo;rote Faden&rdquo; nicht verloren geht. 
+In einer Programmiersprache beschreiben die Begriff *Wertsemantik* und *Referenzsemantik*
+(im engl. *Value-based*- und *Reference-based Semantics*) Vorgehensweisen,
+wie Objekte gespeichert, kopiert und an Funktionen übergeben werden.
 
-[Zur Agenda](GeneralSnippets/Agenda/Agenda.md).
+Da C++, C# und Python hier große Unterschiede aufweisen, werden wir einen Blick auf die entsprechenden Sprachkonzepte.
+
+[Zum Vergleich](GeneralSnippets/Architecture/Architecture_Comparison.md).
 
 ---
 

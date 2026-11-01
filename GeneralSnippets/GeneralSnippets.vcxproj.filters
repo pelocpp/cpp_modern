@@ -1112,16 +1112,10 @@
     <None Include="Exercises\cpp_hash_table_phonebook.svg">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="Architecture\Architecture.md">
+    <None Include="Architecture\Architecture_General.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="Architecture\Architecture_01.md">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="Architecture\Architecture_02.md">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="Architecture\Architecture_03.md">
+    <None Include="Architecture\Architecture_Comparison.md">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Architecture\cpp_architecture_02_value_vs_reference_semantics.svg">

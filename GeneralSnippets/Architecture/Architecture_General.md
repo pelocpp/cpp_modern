@@ -1,6 +1,6 @@
 # Hauptmerkmale des modernen C++
 
-[Zurück](Architecture.md)
+[Zurück](../../Readme.md)
 
 ---
 
@@ -102,6 +102,6 @@ um C++ an der Spitze der Sprachen für System- und Anwendungsprogrammierung zu ha
 
 ---
 
-[Zurück](Architecture.md)
+[Zurück](../../Readme.md)
 
 ---

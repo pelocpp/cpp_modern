@@ -376,10 +376,8 @@
     <None Include="AllOfAnyOfNoneOf\AllOfAnyOfNoneOf.md" />
     <None Include="Any\cpp_std_any.svg" />
     <None Include="Any\Any.md" />
-    <None Include="Architecture\Architecture.md" />
-    <None Include="Architecture\Architecture_01.md" />
-    <None Include="Architecture\Architecture_02.md" />
-    <None Include="Architecture\Architecture_03.md" />
+    <None Include="Architecture\Architecture_General.md" />
+    <None Include="Architecture\Architecture_Comparison.md" />
     <None Include="Architecture\cpp_architecture_01_value_vs_reference_semantics.svg" />
     <None Include="Architecture\cpp_architecture_02_value_vs_reference_semantics.svg" />
     <None Include="Architecture\cpp_architecture_03_value_vs_reference_semantics.svg" />
