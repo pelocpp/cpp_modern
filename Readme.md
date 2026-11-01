@@ -80,7 +80,7 @@ Die Kernphilosophie von *Modern C++* besteht darin, Abstraktionen
 auf höheren Ebenen bereitzustellen &ndash; die die Sicherheit und Lesbarkeit verbessern &ndash; ohne
 die Leistung auf niedrigeren Ebenen zu beeinträchtigen.
 
-[Zur Kernphilosophie](GeneralSnippets/Architecture/Architecture_General.md).
+[Zu den Hauptmerkmalen des modernen C++](GeneralSnippets/Architecture/Architecture_General.md).
 
 ---
 
@@ -89,8 +89,7 @@ die Leistung auf niedrigeren Ebenen zu beeinträchtigen.
 In einer Programmiersprache beschreiben die Begriff *Wertsemantik* und *Referenzsemantik*
 (im engl. *Value-based*- und *Reference-based Semantics*) Vorgehensweisen,
 wie Objekte gespeichert, kopiert und an Funktionen übergeben werden.
-
-Da C++, C# und Python hier große Unterschiede aufweisen, werden wir einen Blick auf die entsprechenden Sprachkonzepte.
+Da C++, C# und Python hier große Unterschiede aufweisen, werfen wir einen Blick auf die entsprechenden Sprachkonzepte.
 
 [Zum Vergleich](GeneralSnippets/Architecture/Architecture_Comparison.md).
 

@@ -4,19 +4,29 @@
 
 ---
 
-## Allgemeines
+## Inhalt
+
+  * [Allgemeines](#link1)
+  * [Wertsemantik (*Value-based Semantics*)](#link2)
+  * [Referenzsemantik (*Reference-based Semantics*)](#link3)
+  * [Ein Vergleich auf einen Blick](#link4)
+  * [Wertsemantik versus Referenzsemantik in Bildern](#link5)
+    * [Objekte erzeugen](#link6)
+    * [Objekte kopieren](#link7)
+	* [Referenzsemantik in C++](#link8)
+
+---
+
+## Allgemeines <a name="link1"></a>
 
 In einer Programmiersprache beschreiben die Begriff *Wertsemantik* und *Referenzsemantik*
 (im engl. *Value-based*- und *Reference-based Semantics*) Vorgehensweisen,
 wie Objekte gespeichert, kopiert und an Funktionen übergeben werden.
 
-## Überblick
-
 C++ unterstützt beide Arten dieser Semantiken,
 standardmäßig wird die *Value-based Semantics* (Wertsemantik) eingesetzt.
 Einer der vielen Gründe, warum C++ eine so vergleichsweise komplexe und deshalb schwer zu erlernende Programmiersprache ist,
 hat eben damit zu tun, dass beide Arten dieser Semantiken vorhanden sind (siehe dazu auch *Tabelle* 1). 
-
 
 | Programmiersprache | Wertsemantik | Referenzsemantik |
 |:-|:-|:-|
@@ -38,8 +48,9 @@ Ferner kann man in C# von der standardmäßig vorhandenen Referenzsemantik abweich
 Auf diese Weise kommen sie auf dem Stack zu liegen.
 Diese Vorgehensweise stellt im Großen und Ganzen aber eher eine Ausnahme in C#&ndash;Programmen dar.
 
+---
 
-### Wertsemantik (*Value-based Semantics*)
+## Wertsemantik (*Value-based Semantics*) <a name="link2"></a>
 
 Hier steht der Inhalt (Wert) eines Objekts im Vordergrund, nicht seine Identität.
 
@@ -52,8 +63,9 @@ Hier steht der Inhalt (Wert) eines Objekts im Vordergrund, nicht seine Identität
   * Vorteile:<br />Höhere Sicherheit (direkter Zugriff über eine vorhandene Adresse/statisches Binden,
     keine Probleme mit ungültigen Adressen), bessere Performance durch Cache-Lokalität.
 
+---
 
-### Referenzsemantik (*Reference-based Semantics*)
+## Referenzsemantik (*Reference-based Semantics*) <a name="link3"></a>
 
 Hier steht die Identität eines Objekts im Vordergrund. Variablen sind lediglich &bdquo;Labels&rdquo; oder &bdquo;Aliase&rdquo; für ein existierendes Objekt.
 
@@ -70,7 +82,9 @@ Hier steht die Identität eines Objekts im Vordergrund. Variablen sind lediglich 
   * Vorteile:<br />Vermeidung teurer Kopien bei großen Objekten, Ermöglichung von Polymorphismus (dynamisches Binden). 
 
 
-### Ein Vergleich auf einen Blick
+---
+
+## Ein Vergleich auf einen Blick <a name="link4"></a>
 
 Wertsemantik und Referenzsemantik im Vergleich:
 
@@ -83,7 +97,9 @@ Wertsemantik und Referenzsemantik im Vergleich:
 
 *Tabelle* 2: Wert- und Referenzsemantik im Vergleich.
 
-## Wertsemantik versus Referenzsemantik in Bildern
+---
+
+## Wertsemantik versus Referenzsemantik in Bildern <a name="link5"></a>
 
   * Wertsemantik in C++
     * Objekte erzeugen
@@ -96,7 +112,7 @@ Es werden Vergleiche mit C# und Python betrachtet.
 
 ---
 
-### Objekte erzeugen
+### Objekte erzeugen <a name="link6"></a>
 
 #### Wertsemantik in C++
 
@@ -129,7 +145,7 @@ Wenn in Python eine Variable auf &bdquo;nichts&rdquo; zeigen soll, weist man ihr
 
 ---
 
-### Objekte kopieren
+### Objekte kopieren <a name="link7"></a>
 
 #### Kopieren eines Objekts bei Wertsemantik
 
@@ -170,7 +186,7 @@ verwendet man am besten das integrierte Modul `copy` sowie dessen Funktion `copy
 
 ---
 
-### Referenzsemantik in C++
+### Referenzsemantik in C++ <a name="link8"></a>
 
 #### Referenzsemantik mit Referenzen
 
