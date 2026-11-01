@@ -76,19 +76,6 @@ Beim Kopieren eines C#&ndash; oder Python&ndash;Objekts wird die Referenz kopier
 
 *Abbildung* 6: Kopieren eines Python&ndash;Objekts bei Referenzsemantik in Python.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 ### Erstellen einer echten Kopie bei Referenzsemantik
 
 Um in C# eine echte (tiefe) Kopie eines Objekts zu erstellen, muss dies mit einem expliziten Methodenaufruf erfolgen.
@@ -97,6 +84,12 @@ Um in C# eine echte (tiefe) Kopie eines Objekts zu erstellen, muss dies mit eine
 
 *Abbildung* 7: Erstellen einer echten Kopie bei Referenzsemantik in C#.
 
+Um in Python eine echte (tiefe) Kopie eines Objekts zu erstellen,
+verwendet man am besten das integrierte Modul `copy` sowie dessen Funktion `copy.deepcopy()`:
+
+<img src="cpp_architecture_12_value_vs_reference_semantics_python.svg" width="800">
+
+*Abbildung* 8: Erstellen einer echten Kopie bei Referenzsemantik in Python.
 
 ---
 
