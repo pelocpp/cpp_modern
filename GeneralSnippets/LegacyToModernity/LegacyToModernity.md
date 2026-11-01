@@ -13,9 +13,9 @@
   * [Die Grundregeln](#link1)
   * [Hoher Nutzen, geringes Risiko (häufig C++11 Erweiterungen)](#link2)
   * [Der größte Gewinn: Ownership und Ressourcenmanagement](#link3)
-  * [Performanz and API Cleanliness](#link4)
+  * [Performanz](#link4)
   * [Ausdrucksstärke und Lesbarkeit](#link5) 
-  * [Die Standardbibliothek STL / Ersetzen von Eigenentwicklungen](#link6) 
+  * [Standardbibliothek STL / Ersetzen von Eigenentwicklungen](#link6) 
   * [Verschiedenes / Stolperfallen](#link7)
 
 ---
@@ -97,7 +97,7 @@ Der *getter* kann besser geschrieben werden:
 const std::string& getName() { return m_name; }
 ```
 
-Diese Anregung ist mit einer gewissen Vorsicht zu sehen:
+Diese Anregung ist mit einer gewissen Vorsicht zu genießen:
 Die resultierende Referenz ist nur so lange gültig, wie das beteiligte Objekt noch nicht zerstört wurde.
 
 #### 3. `nullptr` statt `NULL` / `0`
@@ -434,7 +434,7 @@ Das Rad neu zu erfinden, kostet in diesem Fall fast immer Performance und Stabil
 
 ---
 
-## Performanz and API Cleanliness <a name="link4"></a>
+## Performanz <a name="link4"></a>
 
 #### 1. Move-Semantik (RValue-Referenzen)
 
@@ -451,13 +451,170 @@ Verwende `emplace_back` / `emplace` anstelle der Erstellung eines temporären Ob
 
 Verwende `std::unordered_map` bzw. `unordered_set` an Stelle von `std::map` bzw. `set`, wenn keine Reihenfolge (Sortierung) erforderlich ist.
 
-#### 4. Einheitliche Initialisierung
+#### 4. Verwendung von `is_transparent`
+
+`is_transparent` ist ein Marker-Typ in einem Vergleichsobjekt, der dem Container signalisiert,
+dass er die Methoden `find`, `lower_bound` und weitere auch mit Argumenten anderen Typs als dem des Schlüsseltyps (Schlüssel-Wert) aufrufen darf,
+ohne vorher ein **temporäres** Schlüsselobjekt zu erzeugen.
+
+```cpp
+01: void legacy_is_transparent_01()
+02: {
+03:     std::set<std::string> strings;
+04: 
+05:     std::string one{ "one" };
+06:     strings.insert(one);
+07:     strings.insert("two");   // is there a (performance) problem ???
+08: 
+09:     auto pos = strings.find("one");
+10: }
+```
+
+#### 5. `std::initializer_list` für schnellere Übergabe von Werten
+
+```cpp
+01: int adder(std::initializer_list<int> list)
+02: {
+03:     return std::accumulate(list.begin(), list.end(), 0);
+04: }
+05: 
+06: int adder(const std::vector<int>& list)
+07: {
+08:     return std::accumulate(list.begin(), list.end(), 0);
+09: }
+10: 
+11: void test()
+12: {
+13:     int sum = adder({ 1, 2, 3, 4, 5 });
+14:     std::println("{}", sum);
+15: }
+```
+
+Die leichtgewichtige Containerklasse `std::initializer_list` wurde der Klassenbibliothek hinzugefügt,
+um die Übergabe einer listen-ähnlichen Datenstruktur, die ihre Werte auf den Heap kopiert und dort verwaltet,
+auch ohne Heap zu ermöglichen.
+
+*Vergleich*: 
+
+Übergabe von Werten mit Klasse `std::vector`: Konzeptionell umfasst dies
+
+  * Das Erstellen eines `std::vector`-Objekts.
+  * Das Zuweisen von Speicher (`new`) für dessen Elemente, üblicherweise auf dem Heap.
+  * Das Initialisieren dieses Speicherbereichs mit den Parametern der Funktion.
+  * Das Übergeben einer Referenz, die auf das temporäre `std::vector`-Objekt verweist.
+  * Aufruf der Zielfunktion.
+  * Das Summieren der Elemente mit Hilfe zweier Iteratoren-Objekte, die das Vektoren-Objekt zur Verfügung stellt.
+  * Das Zerstören des temporären `std::vector`-Objekts und die Freigabe des Heap-Speichers.
+  * Rückgabe des Ergebnisses
+
+Übergabe von Werten mit Klasse `std::initializer_list`: Konzeptionell umfasst dies
+
+  * Ablegen der Parameter auf dem Stack (also kein Zugriff auf den Heap).
+  * Übergabe zweier Iteratoren-Objekte (Adressen), die auf das erste und das letzte Element auf dem Stack verweisen.
+  * Aufruf der Zielfunktion.
+  * Das Summieren der Elemente mit Hilfe der zwei Iteratoren-Objekte, die das `std::initializer_list`-Objekt zur Verfügung stellt.
+  * Rückgabe des Ergebnisses
+
+---
+
+## Ausdrucksstärke und Lesbarkeit <a name="link5"></a>
+
+#### 1. Schlüsselwort `auto`: *Left-to-Right* Initialisierungsstil
+
+Verwenden Sie das Schlüsselwort `auto`, um damit einen einheitlichen, besser lesbaren Initialisierungsstil
+für Variablen zu haben:
+
+```cpp
+01: auto var1 = 0;
+02: auto var2 = Foo{};
+03: auto var3 = createFooOject();
+04: auto var4 = std::mutex{};
+05: auto name = std::string{ "Hans" };
+06: auto anotherName = std::make_unique<Foo>(123);
+07: auto myLambda = [](auto n, auto m) { return n + m; };
+```
+
+Welche Vorteile bietet dieser Initialisierungsstil?
+
+##### a.) Einfache Lesbarkeit &bdquo;von links nach rechts&rdquo; 
+
+Im Wesentlichen besteht das Argument darin, dass sich der Standardstil in der Initialisierung von Variablen in C++
+in Richtung einer &bdquo;von links nach rechts&rdquo;-Syntax bewegt.
+
+##### b.) Initialisierungswerte müssen vorhanden sein
+
+Eines der stärksten Argumente für den *Left-to-Right* Initialisierungsstil ist,
+dass er das Fehlen eines Initialisierungswerts für Variablen/Objekte unmöglich macht.
+
+```cpp
+int  i;         // bad
+int  i = 0;     // better
+auto i;         // impossible, doesn't compile
+auto i = 0;     // good, i is now initialized (to 0) and can be read from
+```
+
+##### c.) Initialisierungswerte sind bzgl. des Datentyps exakt passend
+
+```cpp
+float x = 123.45;        // Hmmm, 123.45 is of type double ?!?
+```
+
+Es findet eine &bdquo;*Narrowing Conversion*&rdquo; statt:
+`123.45` ist vom Typ `double` und wird in den weniger präzisen Typ `float` konvertiert.
+
+```cpp
+auto x = 123.45f;
+```
+
+Mit dem *Left-to-Right* Initialisierungsstil wurde überhaupt kein `double`-Wert erzeugt.
+Und es findet keine &bdquo;*Narrowing Conversion*&rdquo; statt.
+
+
+##### d.) Kein Leistungsoverhead
+
+Betrachten Sie diesen Ausdruck mit dem *Left-to-Right* Initialisierungsstil:
+
+
+```cpp
+auto name = std::string{ "Hans" };
+```
+
+Was verbirgt sich hinter dem Gleichheitszeichen? Wird da nicht eine Kopie von `std::string{ "Hans" }` erstellt?
+
+Theoretisch erzeugt der Ausdruck `std::string{ "Hans" }` ein temporäres `std::string`-Objekt,
+das dann nach `name` verschoben wird.
+Diese Syntax könnte also die Kosten einer Verschiebung verursachen.
+
+Ab C++ 17 ist das Feature [Copy Elision](https://en.cppreference.com/w/cpp/language/copy_elision) 
+in der Sprache per Definition vorhanden.
+Deshalb hat der *Left-to-Right* Initialisierungsstil keine Auswirkungen auf die Laufzeitleistung!
+
+*Bemerkung*:
+Dieses Feature ist in C++ 14 und kleiner nicht vorhanden &ndash;
+hier sollten wir diesen Initialisierungsstil deshalb vermeiden.
+
+##### e.) Das &bdquo;*most vexing*&rdquo; Parse-Argument
+
+```cpp
+X x();
+```
+
+Diese Deklaration wird vom Compiler als eine Funktionsdeklaration interpretiert,
+die eine Funktion des Namens `x` ohne Parameter deklariert, die ein Objekt vom Typ `X` zurückliefert.
+
+```cpp
+auto x = X(); // no way to interpret this as a function declaration
+```
+
+In der letzten Deklaration ist `x` ein Objekts des Typs `X`.
+
+#### 2. Einheitliche Initialisierung
 
 Einheitliche Initialisierung (&bdquo;*Uniform Initialization*&rdquo; mit `{}`) und Initialisierungslisten für eine übersichtlichere Konstruktion.
 
 Beachte auf den Fehler `std::vector<int>{3, 4}` vs. `std::vector<int>(3, 4)` und verringere Konvertierungen, die nun Fehler verursachen.
 
-#### 5. Vererbung von Konstruktoren
+#### 3. Vererbung von Konstruktoren
 
 Vererbe Konstruktoren, um doppelten Initialisierungscode zu vermeiden.
 
@@ -497,125 +654,13 @@ Vererbe Konstruktoren, um doppelten Initialisierungscode zu vermeiden.
 
   * Die Zugriffsberechtigung entspricht der in der Basisklasse: Ein geerbter Konstruktor besitzt denselben Zugriffsschutz wie in der Basisklasse.
 
-#### 6. Standard-Member-Initialisierer
+#### 4. Standard-Member-Initialisierer
 
 Verwende Standard-Member-Initialisierer (`int count = 0;`), um Konstruktoren zu vereinfachen.
 
-#### 7. Verwendung von `is_transparent`
-
-`is_transparent` ist ein Marker-Typ in einem Vergleichsobjekt, der dem Container signalisiert,
-dass er die Methoden `find`, `lower_bound` und weitere auch mit Argumenten anderen Typs als dem des Schlüsseltyps (Schlüssel-Wert) aufrufen darf,
-ohne vorher ein **temporäres** Schlüsselobjekt zu erzeugen.
-
-```cpp
-01: void legacy_is_transparent_01()
-02: {
-03:     std::set<std::string> strings;
-04: 
-05:     std::string one{ "one" };
-06:     strings.insert(one);
-07:     strings.insert("two");   // is there a (performance) problem ???
-08: 
-09:     auto pos = strings.find("one");
-10: }
-```
-
 ---
 
-## Ausdrucksstärke und Lesbarkeit <a name="link5"></a>
-
-#### 1. Schlüsselwort `auto`: *Left-to-Right* Initialisierungsstil
-
-Verwenden Sie das Schlüsselwort `auto`, um damit einen einheitlichen, besser lesbaren Initialisierungsstil
-für Variablen zu haben:
-
-```cpp
-01: auto var1 = 0;
-02: auto var2 = Foo{};
-03: auto var3 = createFooOject();
-04: auto var4 = std::mutex{};
-05: auto name = std::string{ "Hans" };
-06: auto anotherName = std::make_unique<Foo>(123);
-07: auto myLambda = [](auto n, auto m) { return n + m; };
-```
-
-Welche Vorteile bietet dieser Initialisierungsstil?
-
-##### 1. Einfache Lesbarkeit &bdquo;von links nach rechts&rdquo; 
-
-Im Wesentlichen besteht das Argument darin, dass sich der Standardstil in der Initialisierung von Variablen in C++
-in Richtung einer &bdquo;von links nach rechts&rdquo;-Syntax bewegt.
-
-##### 2. Initialisierungswerte müssen vorhanden sein
-
-Eines der stärksten Argumente für den *Left-to-Right* Initialisierungsstil ist,
-dass er das Fehlen eines Initialisierungswerts für Variablen/Objekte unmöglich macht.
-
-```cpp
-int  i;         // bad
-int  i = 0;     // better
-auto i;         // impossible, doesn't compile
-auto i = 0;     // good, i is now initialized (to 0) and can be read from
-```
-
-##### 3. Initialisierungswerte sind bzgl. des Datentyps exakt passend
-
-```cpp
-float x = 123.45;        // Hmmm, 123.45 is of type double ?!?
-```
-
-Es findet eine &bdquo;*Narrowing Conversion*&rdquo; statt:
-`123.45` ist vom Typ `double` und wird in den weniger präzisen Typ `float` konvertiert.
-
-```cpp
-auto x = 123.45f;
-```
-
-Mit dem *Left-to-Right* Initialisierungsstil wurde überhaupt kein `double`-Wert erzeugt.
-Und es findet keine &bdquo;*Narrowing Conversion*&rdquo; statt.
-
-
-##### 4. Kein Leistungsoverhead
-
-Betrachten Sie diesen Ausdruck mit dem *Left-to-Right* Initialisierungsstil:
-
-
-```cpp
-auto name = std::string{ "Hans" };
-```
-
-Was verbirgt sich hinter dem Gleichheitszeichen? Wird da nicht eine Kopie von `std::string{ "Hans" }` erstellt?
-
-Theoretisch erzeugt der Ausdruck `std::string{ "Hans" }` ein temporäres `std::string`-Objekt,
-das dann nach `name` verschoben wird.
-Diese Syntax könnte also die Kosten einer Verschiebung verursachen.
-
-Ab C++ 17 ist das Feature [Copy Elision](https://en.cppreference.com/w/cpp/language/copy_elision) 
-in der Sprache per Definition vorhanden.
-Deshalb hat der *Left-to-Right* Initialisierungsstil keine Auswirkungen auf die Laufzeitleistung!
-
-*Bemerkung*:
-Dieses Feature ist in C++ 14 und kleiner nicht vorhanden &ndash;
-hier sollten wir diesen Initialisierungsstil deshalb vermeiden.
-
-##### 5. Das &bdquo;*most vexing*&rdquo; Parse-Argument
-
-```cpp
-X x();
-```
-
-Diese Deklaration wird vom Compiler als eine Funktionsdeklaration interpretiert,
-die eine Funktion des Namens `x` ohne Parameter deklariert, die ein Objekt vom Typ `X` zurückliefert.
-
-```cpp
-auto x = X(); // no way to interpret this as a function declaration
-```
-
-In der letzten Deklaration ist `x` ein Objekts des Typs `X`.
-
----
-
-## Die Standardbibliothek STL / Ersetzen von Eigenentwicklungen <a name="link6"></a>
+## Standardbibliothek STL / Ersetzen von Eigenentwicklungen <a name="link6"></a>
 
 #### 1. Lambdas anstelle von Funktor-Klassen oder `std::bind1st`/`std::bind2nd`
 
@@ -638,52 +683,6 @@ std::string_view s = "I'm more than 15 chars long - and reside not the heap";
 
 `std::string_view` Objekte liegen nicht auf dem Heap. Damit entfallen auf Aufrufe in die dynamische Speicherverwaltung (`new`/`delete`),
 der &ndash; allerdings ausschließlich lesende &ndash; Zugriff ist schneller und manche Operationen (z. B. `substr`) sind ebenfalls erheblich performanter.
-
-#### 6. `std::initializer_list` für schnellere Übergabe von Werten
-
-```cpp
-01: int adder(std::initializer_list<int> list)
-02: {
-03:     return std::accumulate(list.begin(), list.end(), 0);
-04: }
-05: 
-06: int adder(const std::vector<int>& list)
-07: {
-08:     return std::accumulate(list.begin(), list.end(), 0);
-09: }
-10: 
-11: void test()
-12: {
-13:     int sum = adder({ 1, 2, 3, 4, 5 });
-14:     std::println("{}", sum);
-15: }
-```
-
-Die leichtgewichtige Containerklasse `std::initializer_list` wurde der Klassenbibliothek hinzugefügt,
-um die Übergabe einer Vektoren-ähnlichen Datenstruktur, die ihre Werte auf den Heap kopiert und dort verwaltet,
-auch ohne Heap zu ermöglichen.
-
-*Vergleich*: 
-
-Übergabe von Werten mit Klasse `std::vector`: Konzeptionell umfasst dies
-
-  * Das Erstellen eines `std::vector`-Objekts.
-  * Das Zuweisen von Speicher (`new`) für dessen Elemente, üblicherweise auf dem Heap.
-  * Das Initialisieren dieses Speicherbereichs mit den Parametern der Funktion.
-  * Das Übergeben einer Referenz, die auf das temporäre `std::vector`-Objekt verweist.
-  * Aufruf der Zielfunktion.
-  * Das Summieren der Elemente mit Hilfe zweier Iteratoren-Objekte, die das Vektoren-Objekt zur Verfügung stellt.
-  * Das Zerstören des temporären `std::vector`-Objekts und die Freigabe des Heap-Speichers.
-  * Rückgabe des Ergebnisses
-
-Übergabe von Werten mit Klasse `std::initializer_list`: Konzeptionell umfasst dies
-
-  * Ablegen der Parameter auf dem Stack (also kein Zugriff auf den Heap).
-  * Übergabe zweier Iteratoren-Objekte (Adressen), die auf das erste und das letzte Element auf dem Stack verweisen.
-  * Aufruf der Zielfunktion.
-  * Das Summieren der Elemente mit Hilfe der zwei Iteratoren-Objekte, die das `std::initializer_list`-Objekt zur Verfügung stellt.
-  * Rückgabe des Ergebnisses
-
 
 #### 6. `std::optional` als Ersatz für Sentinel-Werte.
 
@@ -957,7 +956,12 @@ unerwartete automatische Typableitung,
 
 ### `= default` für triviale spezielle Member
 
+7. `static_assert` verwenden, um Annahmen zur Kompilierzeit zu dokumentieren und durchzusetzen. 
 
-7. static_assert verwenden, um Annahmen zur Kompilierzeit zu dokumentieren und durchzusetzen. 
+9. `noexcept` verwenden, wo angebracht (insbesondere bei Verschiebeoperationen und Destruktoren).
 
-9. noexcept verwenden, wo angebracht (insbesondere bei Verschiebeoperationen und Destruktoren).
+---
+
+[Zurück](../../Readme.md)
+
+---
