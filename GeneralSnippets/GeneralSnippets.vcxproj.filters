@@ -1172,13 +1172,10 @@
     <None Include="LegacyToModernity\LegacyToModernity.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="Architecture\cpp_architecture_10_value_vs_reference_semantics_python.svg">
-      <Filter>Resource Files</Filter>
-    </None>
     <None Include="Architecture\cpp_architecture_11_value_vs_reference_semantics_python.svg">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="Architecture\cpp_architecture_100_value_vs_reference_semantics_python.svg">
+    <None Include="Architecture\cpp_architecture_10_value_vs_reference_semantics_python.svg">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
