@@ -193,6 +193,35 @@ namespace {
     }
 
     // =======================================================================
+    // std::unreachable()
+
+    enum class TokenType {
+
+        // single-character tokens
+        LEFT_PARENTHESES, RIGHT_PARENTHESES, LEFT_BRACE, RIGHT_BRACE,
+        // ...
+        END_OF_FILE
+    };
+
+    constexpr std::string_view toString(TokenType type) {
+
+        switch (type) {
+        case TokenType::LEFT_PARENTHESES: return "Left Parenthesis";
+        case TokenType::RIGHT_PARENTHESES: return "Right Parenthesis";
+        case TokenType::LEFT_BRACE: return "Left_Brace";
+        case TokenType::RIGHT_BRACE: return "Right_Brace";
+        // ...
+        case TokenType::END_OF_FILE: return "End_of_File";
+        }
+
+        std::unreachable();
+
+        return "UNKNOWN"; // should never be reached
+    }
+
+    void legacy_should_never_be_reached() {}
+
+    // =======================================================================
     // enums
 
     // 1. the problem with classic enums (unscoped enums)
@@ -515,6 +544,7 @@ void main_legacy()
     legacy_inheritance_keyword_override();
     legacy_inheriting_constructors();
     legacy_auto_range_based_for_loop();
+    legacy_should_never_be_reached();
     legacy_enums();
     legacy_typedef_using();
     legacy_macros_constexpr();

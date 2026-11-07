@@ -216,7 +216,38 @@ Herkömmliche Schleifen lassen Fehler zu, die der Compiler nicht erkennt:
 
 Die bereichsbasierte `for`-Schleife schließt all diese Fehler konstruktionsbedingt aus.
 
-#### 6. Verwendung von `auto`: Refactoring wird einfacher
+
+#### 6. Verwendung von `std::unreachable()`
+
+Manchmal verwendet man im Quellcode Kommentare der Gestalt &bdquo;*should never be reached*&rdquo;:
+
+```cpp
+01: constexpr std::string_view toString(TokenType type) {
+02: 
+03:     switch (type) {
+04:     case TokenType::LEFT_PARENTHESES: return "Left Parenthesis";
+05:     case TokenType::RIGHT_PARENTHESES: return "Right Parenthesis";
+06:     case TokenType::LEFT_BRACE: return "Left_Brace";
+07:     case TokenType::RIGHT_BRACE: return "Right_Brace";
+08:     // ...
+09:     case TokenType::END_OF_FILE: return "End_of_File";
+10:     }
+11: 
+12:     std::unreachable();
+13: 
+14:     return "UNKNOWN"; // should never be reached
+15: }
+```
+
+`std::unreachable()` teilt dem Compiler mit: &bdquo;Diese Stelle im Code wird niemals erreicht. Sollte sie dennoch erreicht werden, ist das Verhalten undefiniert.&rdquo;
+
+Keine unsinnigen Rückgabewerte mehr. Keine Warnungen mehr.
+Zudem kann der Compiler nun davon ausgehen, dass bei einer `switch`-Anweisung immer ein Fall zutrifft &ndash; was echte Optimierungen ermöglicht.
+
+Siehe dazu auch den
+Artikel [C++23 `std::unreachable()` — The Feature That Lets You Talk to the Optimizer](https://towardsdev.com/cpp23-std-unreachable-compiler-optimization-1ab0251be605).
+
+#### 7. Verwendung von `auto`: Refactoring wird einfacher
 
 Wenn jemand `std::vector<Person>` in `std::list<Person>` oder `std::deque<Person>` ändert,
 müssen alle explizit ausgeschriebenen Anweisungen mit
@@ -253,7 +284,7 @@ Dasselbe gilt für lange Template-Typen wie `std::map<std::string, std::vector<i
   * Wird der Container innerhalb der Schleife verändert, werden &ndash; genau wie zuvor &ndash; die Iteratoren ungültig; eine bereichsbasierte `for`-Schleife (*Range-based for loop*) bietet in diesem Fall auch keinen Schutz.
 
 
-#### 7. Enum-Klassen statt einfacher Enums
+#### 8. Enum-Klassen statt einfacher Enums
 
 Unterschiede im Gültigkeitsbereich, keine implizite `int`-Konvertierung:
 
@@ -295,7 +326,7 @@ Unterschiede im Gültigkeitsbereich, keine implizite `int`-Konvertierung:
 35: }
 ```
 
-#### 8. `= delete` an Stelle des Tricks mit &bdquo;privatem Kopierkonstruktor&rdquo;
+#### 9. `= delete` an Stelle des Tricks mit &bdquo;privatem Kopierkonstruktor&rdquo;
 
 Gegen private Konstruktoren spricht zunächst einmal nichts, wenn sie ihren eigentlichen Zweck erfüllen &ndash; wie
 etwa beim *Singleton*-Pattern oder bei *Factory*-Methoden, wo die Instanziierung bewusst kontrolliert werden soll.
@@ -311,7 +342,7 @@ Seit C++ 11 ist `= delete` der Standard.
 
 *Tabelle* 1: Vergleich von privatem Kopierkonstruktor und `= delete`.
 
-#### 9. `using` (Alias-Deklaration) versus `typedef`
+#### 10. `using` (Alias-Deklaration) versus `typedef`
 
 Im modernem C++ ist das Schlüsselwort `using` (Alias-Deklaration) gegenüber `typedef` zu bevorzugen.
 
