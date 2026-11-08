@@ -464,7 +464,7 @@ namespace std
 
             std::format_to(std::back_inserter(tmp), "{}", lastElem);
 
-            return std::formatter<string_view>::format(tmp, ctx);
+            return std::formatter<std::string_view>::format(tmp, ctx);
         }
     };
 }
@@ -546,7 +546,7 @@ namespace std
 
     // formatter for class Color
     template<>
-    struct std::formatter<Color> : std::formatter<string_view>
+    struct std::formatter<Color> : std::formatter<std::string_view>
     {
         auto format(const Color& col, std::format_context& ctx) const {
 
@@ -555,7 +555,7 @@ namespace std
             std::format_to(std::back_inserter(tmp), "({}, {}, {})",
                 col.getRed(), col.getGreen(), col.getBlue());
 
-            return std::formatter<string_view>::format(tmp, ctx);
+            return std::formatter<std::string_view>::format(tmp, ctx);
         }
     };
 }
