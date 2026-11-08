@@ -167,13 +167,13 @@ namespace std
     struct formatter<SimpleClass>
     {
         // parse the format string for this type
-        constexpr auto parse(std::format_parse_context& ctx) {
+        constexpr auto parse(format_parse_context& ctx) {
             return ctx.begin(); // should return position of '}' (hopefully)
         }
 
         // format by always writing its value:
-        auto format(const SimpleClass& obj, std::format_context& ctx) const {
-            return std::format_to(ctx.out(), "{}", obj.getValue());
+        auto format(const SimpleClass& obj, format_context& ctx) const {
+            return format_to(ctx.out(), "{}", obj.getValue());
         }
     };
 }
@@ -210,12 +210,12 @@ namespace std
         constexpr formatter() : m_width{ 0 } {}
 
         // parse the format string for this type
-        constexpr auto parse(std::format_parse_context& ctx)
+        constexpr auto parse(format_parse_context& ctx)
         {
             auto pos{ ctx.begin() };
             while (pos != ctx.end() and *pos != '}') {
                 if (*pos < '0' or *pos > '9') {
-                    throw std::format_error{ std::format("invalid format '{}'", *pos) };
+                    throw format_error{ format("invalid format '{}'", *pos) };
                 }
 
                 m_width = m_width * 10 + (*pos - '0'); // new digit for the width
@@ -225,8 +225,8 @@ namespace std
         }
 
         // format by always writing its value
-        auto format(const SimpleClass& obj, std::format_context& ctx) const {
-            return std::format_to(ctx.out(), "{:{}}", obj.getValue(), m_width);
+        auto format(const SimpleClass& obj, format_context& ctx) const {
+            return format_to(ctx.out(), "{:{}}", obj.getValue(), m_width);
         }
     };
 }
@@ -265,16 +265,16 @@ namespace std
     {
     private:
         // use a standard int formatter that does the work:
-        std::formatter<int> m_formatter;
+        formatter<int> m_formatter;
 
     public:
         // delegate parsing to the standard formatter:
-        constexpr auto parse(std::format_parse_context& ctx) {
+        constexpr auto parse(format_parse_context& ctx) {
             return m_formatter.parse(ctx);
         }
 
         // delegate formatting of the value to the standard formatter:
-        auto format(const SimpleClass& obj, std::format_context& ctx) const {
+        auto format(const SimpleClass& obj, format_context& ctx) const {
             return m_formatter.format(obj.getValue(), ctx);
         }
     };
@@ -310,11 +310,11 @@ namespace std
 
     // inheriting From Standard Formatters
     template<>
-    struct std::formatter<SimpleClass> : std::formatter<int>
+    struct formatter<SimpleClass> : formatter<int>
     {
-        auto format(const SimpleClass& obj, std::format_context& ctx) const {
+        auto format(const SimpleClass& obj, format_context& ctx) const {
             // delegate formatting of the value to the standard formatter
-            return std::formatter<int>::format(obj.getValue(), ctx);
+            return formatter<int>::format(obj.getValue(), ctx);
         }
     };
 }
@@ -354,11 +354,11 @@ namespace std
 
     // formatter for user defined enum type Color
     template<>
-    struct std::formatter<Color> : public std::formatter<std::string>
+    struct formatter<Color> : public formatter<std::string>
     {
         auto format(Color col, format_context& ctx) const {
 
-            std::string value{};
+            string value{};
 
             switch (col)
             {
@@ -372,12 +372,12 @@ namespace std
                 value = "blue";
                 break;
             default:
-                value = std::format("Color{}", static_cast<int>(col));
+                value = format("Color{}", static_cast<int>(col));
                 break;
             }
 
             // delegate the rest of formatting to the string formatter
-            return std::formatter<std::string>::format(value, ctx);
+            return formatter<string>::format(value, ctx);
         }
     };
 }
@@ -406,21 +406,21 @@ namespace std
 
     // formatter for std::vector
     template <typename T>
-    struct std::formatter<std::vector<T>> : std::formatter<std::string_view>
+    struct formatter<vector<T>> : formatter<string_view>
     {
         constexpr auto parse(format_parse_context& ctx) {
             return ctx.begin();
         }
 
-        auto format(const std::vector<T>& vec, std::format_context& ctx) const {
+        auto format(const vector<T>& vec, format_context& ctx) const {
 
-            std::string tmp{};
+            string tmp{};
 
             const auto fmt_str = [&]() {
-                if constexpr (std::is_integral<T>::value) {
+                if constexpr (is_integral<T>::value) {
                     return "{:+5}";
                 }
-                else if constexpr (std::is_floating_point<T>::value) {
+                else if constexpr (is_floating_point<T>::value) {
                     return "{:+5.2}";
                 }
                 else {
@@ -430,19 +430,19 @@ namespace std
 
             const auto header = [&]() {
 
-                if (std::is_same<T, int>::value) {
+                if (is_same<T, int>::value) {
                     return "std::vector<int>";
                 }
-                else if (std::is_same<T, long>::value) {
+                else if (is_same<T, long>::value) {
                     return "std::vector<long>";
                 }
-                else if (std::is_same<T, short>::value) {
+                else if (is_same<T, short>::value) {
                     return "std::vector<short>";
                 }
-                else if (std::is_same<T, float>::value) {
+                else if (is_same<T, float>::value) {
                     return "std::vector<float>";
                 }
-                else if (std::is_same<T, double>::value) {
+                else if (is_same<T, double>::value) {
                     return "std::vector<double>";
                 }
                 else {
@@ -450,21 +450,21 @@ namespace std
                 }
                 }();
 
-            std::format_to(std::back_inserter(tmp), "{} - ", header);
+            format_to(back_inserter(tmp), "{} - ", header);
 
             T lastElem = vec.back();
 
-            std::for_each(
+            for_each(
                 vec.begin(),
-                std::prev(vec.end()),
+                prev(vec.end()),
                 [&](const auto& elem) {
-                    std::format_to(std::back_inserter(tmp), "{}, ", elem);
+                    format_to(back_inserter(tmp), "{}, ", elem);
                 }
             );
 
-            std::format_to(std::back_inserter(tmp), "{}", lastElem);
+            format_to(back_inserter(tmp), "{}", lastElem);
 
-            return std::formatter<std::string_view>::format(tmp, ctx);
+            return formatter<string_view>::format(tmp, ctx);
         }
     };
 }
@@ -513,15 +513,13 @@ namespace std
 
     // formatter for class Color
     template<>
-    struct std::formatter<Color> {
-        constexpr auto parse(std::format_parse_context& ctx) {
+    struct formatter<Color> {
+        constexpr auto parse(format_parse_context& ctx) {
             return ctx.begin();
         }
 
-        auto format(const Color& col, std::format_context& ctx) const {
-
-            return
-                std::format_to(ctx.out(), "[{}, {}, {}]", col.getRed(), col.getGreen(), col.getBlue());
+        auto format(const Color& col, format_context& ctx) const {
+            return format_to(ctx.out(), "[{}, {}, {}]", col.getRed(), col.getGreen(), col.getBlue());
         }
     };
 }
@@ -546,16 +544,16 @@ namespace std
 
     // formatter for class Color
     template<>
-    struct std::formatter<Color> : std::formatter<std::string_view>
+    struct formatter<Color> : formatter<string_view>
     {
-        auto format(const Color& col, std::format_context& ctx) const {
+        auto format(const Color& col, format_context& ctx) const {
 
-            std::string tmp{};
+            string tmp{};
 
-            std::format_to(std::back_inserter(tmp), "({}, {}, {})",
+            format_to(back_inserter(tmp), "({}, {}, {})",
                 col.getRed(), col.getGreen(), col.getBlue());
 
-            return std::formatter<std::string_view>::format(tmp, ctx);
+            return formatter<string_view>::format(tmp, ctx);
         }
     };
 }
@@ -581,7 +579,7 @@ namespace std
 
     // formatter for class Color
     template <>
-    class std::formatter<Color>
+    class formatter<Color>
     {
     private:
         bool m_isHex;
@@ -589,7 +587,7 @@ namespace std
     public:
         constexpr formatter() : m_isHex{ false } {}
 
-        constexpr auto parse(std::format_parse_context& ctx)
+        constexpr auto parse(format_parse_context& ctx)
         {
             auto pos{ ctx.begin() };
             while (pos != ctx.end() and *pos != '}') {
@@ -601,14 +599,14 @@ namespace std
             return pos; // should return position of '}'
         }
 
-        auto format(const Color& col, std::format_context& ctx) const {
+        auto format(const Color& col, format_context& ctx) const {
 
             if (m_isHex) {
                 uint32_t val{ static_cast<uint32_t>(col.getRed() << 16 | col.getGreen() << 8 | col.getBlue()) };
-                return std::format_to(ctx.out(), "#{:X}", val);
+                return format_to(ctx.out(), "#{:X}", val);
             }
             else {
-                return std::format_to(ctx.out(), "[{}, {}, {}]", col.getRed(), col.getGreen(), col.getBlue());
+                return format_to(ctx.out(), "[{}, {}, {}]", col.getRed(), col.getGreen(), col.getBlue());
             }
         };
     };
@@ -681,4 +679,3 @@ void main_println()
 // =====================================================================================
 // End-of-File
 // =====================================================================================
-    
