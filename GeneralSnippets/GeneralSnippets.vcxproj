@@ -563,6 +563,7 @@
     <Image Include="Literatur\Buch_Nicolai_Josuttis_Cpp_20_Complete_Guide.png" />
     <Image Include="Literatur\Buch_Nicolai_Josuttis_Cpp_Move_Semantics.png" />
     <Image Include="Literatur\Buch_Peter_Pohmann_Cpp_17.png" />
+    <Image Include="Literatur\Buch_Robert_Nystrom_Building_Interpreters.png" />
     <Image Include="Literatur\Buch_Stephan_Roth_Clean_Cpp_20.png" />
     <Image Include="Literatur\Buch_T_Will_Cpp_Handbuch_C23.png" />
     <Image Include="Literatur\Buch_Vandervoorde_Josuttis_Gregor_Cpp_Templates.png" />

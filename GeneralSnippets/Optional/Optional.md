@@ -54,63 +54,68 @@ Kurz gesagt: Monadische Funktionen machen Quellcode funktionaler und weniger feh
 01: struct User
 02: {
 03:     std::string name;
-04:     std::optional<std::string> email;  // not every user has one
+04:     std::optional<std::string> email;  // not every user has an email address
 05: };
 06: 
 07: const std::map<std::size_t, User> database =
 08: {
-09:     { 1,{ "Sepp", "sepp@gmx.de" } },
-10:     { 2,{ "Anton", std::nullopt } },
-11:     { 3,{ "Hubert", "hubert@GMAIL.COM" } },
-12:     { 4,{ "Franz", "www.franzschneider.com" } }
+09:     { 1, { "Sepp", "sepp@gmx.de" } },
+10:     { 2, { "Anton", std::nullopt } },
+11:     { 3, { "Hubert", "hubert@GMAIL.COM" } },
+12:     { 4, { "Franz", "www.franzschneider.com" } }
 13: };
 14: 
-15: std::optional<User> findUser(int id) {
-16:     if (auto it = database.find(id); it != database.end()) {
-17:         return it->second;
-18:     }
-19: 
-20:     return std::nullopt;
-21: }
-22: 
-23: std::optional<std::string> emailDomain(const std::string& email) {
-24:     auto at = email.find('@');
-25:     if (at == std::string::npos) {
-26:         return std::nullopt;
-27:     }
-28: 
-29:     return email.substr(at + 1);
-30: }
-31: 
-32: std::string toLower(std::string s) {
+15: std::optional<User> findUser(std::size_t id) {
+16: 
+17:     if (auto it = database.find(id); it != database.end()) {
+18:         return it->second;
+19:     }
+20: 
+21:     return std::nullopt;
+22: }
+23: 
+24: std::optional<std::string> emailDomain(const std::string& email) {
+25: 
+26:     auto at = email.find('@');
+27:     if (at == std::string::npos) {
+28:         return std::nullopt;
+29:     }
+30: 
+31:     return email.substr(at + 1);
+32: }
 33: 
-34:     std::transform(
-35:         s.begin(),
-36:         s.end(),
+34: std::string toLower(std::string s) {
+35: 
+36:     std::transform(
 37:         s.begin(),
-38:         [](unsigned char c) { return std::tolower(c); }
-39:     );
-40:     return s;
-41: }
+38:         s.end(),
+39:         s.begin(),
+40:         [](unsigned char c) { return std::tolower(c); }
+41:     );
 42: 
-43: std::optional<std::string> domainOf(int id) {
-44:     return findUser(id)                                         // -> optional<User>
-45:         .and_then([](const User& u) { return u.email; })        // -> optional<string>
-46:         .and_then(emailDomain)                                  // -> optional<string>
-47:         .transform(toLower);                                    // string -> string, re-wrapped
-48: }
-49: 
-50: void test_04_optional_monadic()
-51: {
-52:     for (int id : { 0, 1, 2, 3, 4, 5 }) {
-53:         auto domain = domainOf(id).or_else([] {
-54:             // std::println("  >>> no valid domain found");
-55:             return std::optional<std::string>{};
-56:             }
-57:         );
-58:         std::println("{}: {}", id, domain.value_or("<none>"));
-59:     }
-60: }
+43:     return s;
+44: }
+45: 
+46: std::optional<std::string> domainOf(std::size_t id) {
+47: 
+48:     return findUser(id)                                          // -> optional<User>
+49:         .and_then([](const User& user) { return user.email; })   // -> optional<string>
+50:         .and_then(emailDomain)                                   // -> optional<string>
+51:         .transform(toLower);                                     // string -> string, re-wrapped
+52: }
+53: 
+54: void optional_05_monadic()
+55: {
+56:     for (std::size_t id : { 0, 1, 2, 3, 4, 5 }) {
+57: 
+58:         auto domain = domainOf(id).or_else([] {
+59:             std::println("  >>> no valid domain found");
+60:             return std::optional<std::string>{};
+61:         });
+62: 
+63:         std::println("{}: {}", id, domain.value_or("<none>"));
+64:     }
+65: }
 ```
 
 *Ausgabe*:

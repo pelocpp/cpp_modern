@@ -145,6 +145,19 @@
 
 ---
 
+## &bdquo;*How to build a C++ Compiler*&rdquo;
+
+  * Robert Nystrom: &bdquo;*Crafting Interpreters*&rdquo;.</br>
+    Addison Wesley (28. Juli 2021), 639 Seiten. Sprache: Englisch. ISBN-10: 0990582930, ISBN-13: 978-0990582939.
+
+	Oder auch Online unter [Crafting Interpreters](https://craftinginterpreters.com/).
+
+    Das ultimative Buch zum Entwurf eines Interpreters (Compilers) einer C++-*ähnlichen* Mini-Programmiersprache. 
+
+    <img src="Buch_Robert_Nystrom_Building_Interpreters.png" width="150">
+
+---
+
 ## Youtube: &bdquo;The Story of C++: The World's Most Consequential Programming Language | The Official Story&rdquo;
 
   * [C++ The Documentary](https://www.youtube.com/watch?v=lI7tMxzSJ7w)
@@ -158,17 +171,17 @@
     &bdquo;Im Mittelpunkt stehen die Menschen, die C++ erschaffen und weiterentwickelt haben,
     die darüber stritten und sich weigerten, die Sprache sterben zu lassen.&rdquo;
     
-    Bjarne Stroustrup: Bell Labs, Designer and original implementer of C++<br />
-    Alexander Stepanov: Designer of the Standard Template Library<br />
-    Anders Hejlsberg: Creator of C#, TypeScript, and Turbo Pascal<br />
-    Andrei Alexandrescu:  Principal Research Scientist, Nvidia & C++ Author<br /> 
-    Andrew Koenig: Bell Labs, Founding member of the C++ Standards Committee, Researcher, C++ Author & Educator<br /> 
-    Barbara Moo:  Bell Labs, Manager C++ Development Team & C++ Author<br />
-    Brian Kernighan: Bell Labs, Computer Scientist, Co-author of "The C Programming Language"<br />
-    Chris Lattner: Creator of Mojo, LLVM, Clang & Swift<br />
-    Eric Lubin: Software Developer - Lead, Hudson River Trading<br /> 
-    Gabriel Dos Reis: Software Engineer and Architect, Microsoft; C++ tools builder; Mathematician<br />
-    Herb Sutter: Technical Fellow, Citadel Securities; Chair, Standard C++ Foundation; Emeritus Chair, ISO C++ Committee<br /> 
+    *Bjarne Stroustrup*: Bell Labs, Designer and original implementer of C++<br />
+    *Alexander Stepanov*: Designer of the Standard Template Library<br />
+    *Anders Hejlsberg*: Creator of C#, TypeScript, and Turbo Pascal<br />
+    *Andrei Alexandrescu*: Principal Research Scientist, Nvidia & C++ Author<br /> 
+    *Andrew Koenig*: Bell Labs, Founding member of the C++ Standards Committee, Researcher, C++ Author & Educator<br /> 
+    *Barbara Moo*: Bell Labs, Manager C++ Development Team & C++ Author<br />
+    *Brian Kernighan*: Bell Labs, Computer Scientist, Co-author of "The C Programming Language"<br />
+    *Chris Lattner*: Creator of Mojo, LLVM, Clang & Swift<br />
+    *Eric Lubin*: Software Developer - Lead, Hudson River Trading<br /> 
+    *Gabriel Dos Reis*: Software Engineer and Architect, Microsoft; C++ tools builder; Mathematician<br />
+    *Herb Sutter*: Technical Fellow, Citadel Securities; Chair, Standard C++ Foundation; Emeritus Chair, ISO C++ Committee<br />
     u. a. m.
 
 ---

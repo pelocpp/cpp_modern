@@ -1333,6 +1333,9 @@
     <Image Include="LegacyToModernity\Method_Chaining_02.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Literatur\Buch_Robert_Nystrom_Building_Interpreters.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Reflection\Reflection_00_Compiler_Explorer.txt">

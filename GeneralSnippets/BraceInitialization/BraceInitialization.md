@@ -41,7 +41,10 @@ Sie wird auch als &bdquo;*Uniform Initialization*&rdquo; oder als &bdquo;*Brace 
 
 *Abbildung* 1: C++ und Initialisierung: *Relax*!
 
+<sup>(Credits: [Forrest Gump learns C++](https://www.reddit.com/r/ProgrammerHumor/comments/8nn4fw/forrest_gump_learns_c/))</sup>
+
 ---
+
 
 ## Überblick <a name="link2"></a>
 

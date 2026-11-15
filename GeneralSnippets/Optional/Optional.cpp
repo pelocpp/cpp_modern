@@ -12,9 +12,8 @@ import std;
 
 namespace {
 
-    /*
-    * Introduction
-    */
+    // =================================================================================
+    // Introduction
 
     void optional_01_standard_creation() {
 
@@ -70,9 +69,8 @@ namespace {
         }
     }
 
-    /*
-    * Using optionals to represent the absence of a value
-    */ 
+    // =================================================================================
+    // Using std::optional to represent the absence of a value
 
     class Contact
     {
@@ -108,9 +106,8 @@ namespace {
         }
     }
 
-    /*
-    * Using optionals as return value / std::optional<T>::value_or()
-    */
+    // =================================================================================
+    // Using optionals as return value / std::optional<T>::value_or()
 
     std::optional<double> divide(double a, double b) {
 
@@ -154,15 +151,12 @@ namespace {
     }
 
     // =================================================================================
-
-    /*
-     * Demonstrating monadic interface for std::optional
-     */
+    // Demonstrating Monadic Interface for std::optional
 
     struct User
     {
         std::string name;
-        std::optional<std::string> email;  // not every user has one
+        std::optional<std::string> email;  // not every user has an email address
     };
 
     const std::map<std::size_t, User> database =
@@ -173,7 +167,8 @@ namespace {
         { 4, { "Franz", "www.franzschneider.com" } }
     };
 
-    std::optional<User> findUser(int id) {
+    std::optional<User> findUser(std::size_t id) {
+
         if (auto it = database.find(id); it != database.end()) {
             return it->second;
         }
@@ -182,6 +177,7 @@ namespace {
     }
 
     std::optional<std::string> emailDomain(const std::string& email) {
+
         auto at = email.find('@');
         if (at == std::string::npos) {
             return std::nullopt;
@@ -198,24 +194,27 @@ namespace {
             s.begin(),
             [](unsigned char c) { return std::tolower(c); }
         );
+
         return s;
     }
 
-    std::optional<std::string> domainOf(int id) {
-        return findUser(id)                                     // -> optional<User>
-            .and_then([](const User& u) { return u.email; })    // -> optional<string>
-            .and_then(emailDomain)                              // -> optional<string>
-            .transform(toLower);                                // string -> string, re-wrapped
+    std::optional<std::string> domainOf(std::size_t id) {
+
+        return findUser(id)                                          // -> optional<User>
+            .and_then([](const User& user) { return user.email; })   // -> optional<string>
+            .and_then(emailDomain)                                   // -> optional<string>
+            .transform(toLower);                                     // string -> string, re-wrapped
     }
 
     void optional_05_monadic()
     {
-        for (int id : { 0, 1, 2, 3, 4, 5 }) {
+        for (std::size_t id : { 0, 1, 2, 3, 4, 5 }) {
+
             auto domain = domainOf(id).or_else([] {
-                // std::println("  >>> no valid domain found");
+                std::println("  >>> no valid domain found");
                 return std::optional<std::string>{};
-                }
-            );
+            });
+
             std::println("{}: {}", id, domain.value_or("<none>"));
         }
     }

@@ -2,6 +2,10 @@
 // TypeErasure.cpp
 // =====================================================================================
 
+module;
+
+#include <print>    // module implementation too unstable
+
 module modern_cpp:type_erasure;
 
 import std;
@@ -218,23 +222,7 @@ namespace TypeErasureUsingTemplateTechniquesAndConcepts {
 
 // =====================================================================================
 
-
 namespace TypeErasure_StdFunction_Simple_Implementation {
-
-//
-//
-//
-//    // ======================================================================================
-//
-//    // HIER ZU TYPE ERASURE ............
-//
-//
-//#include <functional>
-//#include <future>
-//#include <iostream>
-//#include <memory>
-//#include <print>
-//#include <utility>
 
     // primary template declaration
     template<typename TSignature>
@@ -259,7 +247,7 @@ namespace TypeErasure_StdFunction_Simple_Implementation {
             TObject m_callable;
 
             CallableHolder(TObject callable)
-                : m_callable(std::move(callable))
+                : m_callable{ std::move(callable) }
             {}
 
             void invoke() override {
@@ -309,7 +297,7 @@ namespace TypeErasure_StdFunction_Simple_Implementation {
             TObject m_callable;
 
             CallableHolder(TObject callable)
-                : m_callable(std::move(callable))
+                : m_callable{ std::move(callable) }
             {}
 
             TReturn invoke(TArgs ... args) override {
