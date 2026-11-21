@@ -10,11 +10,11 @@ import scoped_timer;
 // =====================================================================================
 
 namespace {
-    std::size_t MaxIterations = 1000000;
+    std::size_t MaxIterations = 1'000'000;
 }
 
 // =====================================================================================
-
+// Classic Implementation: Using Inheritance, Polymorphism, virtual methods
 // =====================================================================================
 
 namespace BookStoreUsingDynamicPolymorphism {
@@ -26,6 +26,9 @@ namespace BookStoreUsingDynamicPolymorphism {
         virtual double getPrice() const = 0;
         virtual std::size_t getCount() const = 0;
     };
+
+    template <typename T>
+    concept MediaPtr = std::convertible_to<T, std::unique_ptr<IMedia>>;
 
     class Book : public IMedia
     {
@@ -75,17 +78,28 @@ namespace BookStoreUsingDynamicPolymorphism {
 
     class Bookstore
     {
-    private:
-        using Stock = std::vector<std::shared_ptr<IMedia>>;
-        using StockList = std::initializer_list<std::shared_ptr<IMedia>>;
+    public:
+        using Stock = std::vector<std::unique_ptr<IMedia>>;
 
+    private:
         Stock m_stock;
 
     public:
-        // c'tor
-        explicit Bookstore(StockList stock) : m_stock{ stock } {}
+        // c'tor(s)
+        Bookstore() = default;
+
+        explicit Bookstore(Stock stock) : m_stock(std::move(stock)) {}
+
+        template <MediaPtr... TArgs>
+            requires (sizeof...(TArgs) > 0)
+        explicit Bookstore(TArgs&&... items)
+        {
+            m_stock.reserve(sizeof...(TArgs));
+            (m_stock.emplace_back(std::forward<TArgs>(items)), ...);
+        }
 
         // public interface
+        [[nodiscard]]
         double totalBalance() const {
 
             double total{};
@@ -97,6 +111,7 @@ namespace BookStoreUsingDynamicPolymorphism {
             return total;
         }
 
+        [[nodiscard]]
         std::size_t count() const {
 
             std::size_t total{};
@@ -108,24 +123,26 @@ namespace BookStoreUsingDynamicPolymorphism {
             return total;
         }
 
-        void addMedia(const std::shared_ptr<IMedia>& media) {
-            m_stock.push_back(media);
+        void addMedia(std::unique_ptr<IMedia> media) {
+            m_stock.push_back(std::move(media));
         }
     };
 
     static void test_bookstore_polymorphic_01() {
 
-        std::shared_ptr<IMedia> cBook{ std::make_shared<Book>("C", "Dennis Ritchie", 11.99, 12) };
-        std::shared_ptr<IMedia> javaBook{ std::make_shared<Book>("Java", "James Gosling", 17.99, 21) };
-        std::shared_ptr<IMedia> cppBook{ std::make_shared<Book>("C++", "Bjarne Stroustrup", 16.99, 4) };
-        std::shared_ptr<IMedia> csharpBook{ std::make_shared<Book>("C#", "Anders Hejlsberg", 21.99, 8) };
+        // Note: The braced-list construction does not work here
+        // because unique_ptr objects need push_back plus std::move.
 
-        std::shared_ptr<IMedia> movieTarantino{ std::make_shared<Movie>("Once upon a time in Hollywood", "Quentin Tarantino", 6.99, 3) };
-        std::shared_ptr<IMedia> movieBond{ std::make_shared<Movie>("Spectre", "Sam Mendes", 8.99, 6) };
+        Bookstore::Stock stock;
 
-        Bookstore bookstore{
-            cBook, movieBond, javaBook, cppBook, csharpBook, movieTarantino
-        };
+        stock.push_back(std::make_unique<Book>("C", "Dennis Ritchie", 11.99, 12));
+        stock.push_back(std::make_unique<Movie>("Spectre", "Sam Mendes", 8.99, 6));
+        stock.push_back(std::make_unique<Book>("Java", "James Gosling", 17.99, 21));
+        stock.push_back(std::make_unique<Book>("C++", "Bjarne Stroustrup", 16.99, 4));
+        stock.push_back(std::make_unique<Book>("C#", "Anders Hejlsberg", 21.99, 8));
+        stock.push_back(std::make_unique<Movie>("Once upon a time in Hollywood", "Quentin Tarantino", 6.99, 3));
+
+        Bookstore bookstore{ std::move(stock) };
 
         double balance{ bookstore.totalBalance() };
         std::println("Total value of Bookstore: {:.{}f}", balance, 2);
@@ -136,16 +153,18 @@ namespace BookStoreUsingDynamicPolymorphism {
 
     static void test_bookstore_polymorphic_02() {
 
-        std::shared_ptr<IMedia> cBook{ std::make_shared<Book>("C", "Dennis Ritchie", 11.99, 12) };
-        std::shared_ptr<IMedia> movieBond{ std::make_shared<Movie>("Spectre", "Sam Mendes", 8.99, 6) };
+        Bookstore bookstore{
+            std::make_unique<Book>("C", "Dennis Ritchie", 11.99, 12),
+            std::make_unique<Book>("Java", "James Gosling", 17.99, 21),
+            std::make_unique<Book>("C++", "Bjarne Stroustrup", 16.99, 4),
+            std::make_unique<Book>("C#", "Anders Hejlsberg", 21.99, 8),
 
-        Bookstore bookstore{ cBook, movieBond };
+            std::make_unique<Movie>("Once upon a time in Hollywood", "Quentin Tarantino", 6.99, 3),
+            std::make_unique<Movie>("Spectre", "Sam Mendes", 8.99, 6)
+        };
 
-        std::shared_ptr<IMedia> csharpBook{ std::make_shared<Book>("C#", "Anders Hejlsberg", 21.99, 8) };
-        bookstore.addMedia(csharpBook);
-
-        std::shared_ptr<IMedia> movieTarantino{ std::make_shared<Movie>("Once upon a time in Hollywood", "Quentin Tarantino", 6.99, 3) };
-        bookstore.addMedia(movieTarantino);
+        double balance{ bookstore.totalBalance() };
+        std::println("Total value of Bookstore: {:.{}f}", balance, 2);
 
         std::size_t count{ bookstore.count() };
         std::println("Count of elements in Bookstore: {}", count);
@@ -153,9 +172,23 @@ namespace BookStoreUsingDynamicPolymorphism {
 
     static void test_bookstore_polymorphic_03() {
 
+        Bookstore bookstore{
+            std::make_unique<Book>("C", "Dennis Ritchie", 11.99, 12),
+            std::make_unique<Movie>("Spectre", "Sam Mendes", 8.99, 6)
+        };
+
+        bookstore.addMedia(std::make_unique<Book>("C#", "Anders Hejlsberg", 21.99, 8));
+        bookstore.addMedia(std::make_unique<Movie>("Once upon a time in Hollywood", "Quentin Tarantino", 6.99, 3));
+
+        std::size_t count{ bookstore.count() };
+        std::println("Count of elements in Bookstore: {}", count);
+    }
+
+    static void test_bookstore_polymorphic_04() {
+
         std::println("Benchmark - Method Call - using Polymorphism");
 
-        std::shared_ptr<IMedia> cBook{ std::make_shared<Book>("C", "Dennis Ritchie", 11.99, 12) };
+        std::unique_ptr<IMedia> cBook{ std::make_unique<Book>("C", "Dennis Ritchie", 11.99, 12) };
 
         ScopedTimer watch;
 
@@ -163,20 +196,19 @@ namespace BookStoreUsingDynamicPolymorphism {
         for (std::size_t i{}; i != MaxIterations; ++i) {
             total += cBook->getCount() * cBook->getPrice();
         }
+        std::println("Total: {}", total);
 
         std::print("Done: ");
     }
 
-    static void test_bookstore_polymorphic_04() {
+    static void test_bookstore_polymorphic_05() {
 
-        std::println("Benchmark - Iterating a Container of Shared Pointers - using Polymorphism");
+        std::println("Benchmark - Iterating a Container of Unique  Pointers - using Polymorphism");
 
-        Bookstore bookstore{ };
-
-        std::shared_ptr<IMedia> cBook{ std::make_shared<Book>("C", "Dennis Ritchie", 11.99, 12) };
+        Bookstore bookstore;
 
         for (std::size_t i{}; i != 100; ++i) {
-            bookstore.addMedia(cBook);
+            bookstore.addMedia(std::make_unique<Book>("C", "Dennis Ritchie", 11.99, 12));
         }
 
         ScopedTimer watch;
@@ -186,11 +218,34 @@ namespace BookStoreUsingDynamicPolymorphism {
             double totalBalance{ bookstore.totalBalance() };
             total += totalBalance;
         }
+        std::println("Total: {}", total);
 
         std::print("Done: ");
     }
+
+    class BluRay
+    {
+    public:
+        BluRay() = default;
+
+        // getter / setter
+        std::size_t getCount() const { return 0; }
+        double getPrice() const { return 0.0; }   // put into comments
+    };
+
+    static void test_bookstore_type_erasure_06() {
+
+        // verifying concept 'MediaConcept'
+        //Bookstore<Book, BluRay, Movie> bookstore;
+
+        Bookstore bookstore;
+
+    //    bookstore.addMedia(std::make_unique<BluRay>());
+    }
 }
 
+// =====================================================================================
+// Alternate Modern C++ Implementation: Using std::variant, std::visit, Variadic Templates
 // =====================================================================================
 
 namespace BookStoreUsingTypeErasure {
@@ -229,7 +284,7 @@ namespace BookStoreUsingTypeErasure {
         // c'tor
         Movie(const std::string& title, const std::string& director, double price, std::size_t count)
             : m_title{ title }, m_director{ director }, m_price{ price }, m_count{ count }
-        { }
+        {}
 
         // getter / setter
         const std::string& getTitle() const { return m_title; }
@@ -240,88 +295,47 @@ namespace BookStoreUsingTypeErasure {
     };
 
     template<typename T>
-    concept MediaConcept = requires (const T & m)
+    concept MediaConcept = requires (const std::remove_cvref<T>::type& media)
     {
-        { m.getPrice() } -> std::same_as<double>;
-        { m.getCount() } -> std::same_as<std::size_t>;
+        { media.getPrice() } -> std::same_as<double>;
+        { media.getCount() } -> std::same_as<std::size_t>;
     };
 
-    template <typename ... TMedia>
-        requires (MediaConcept<TMedia> && ...)
+    template <MediaConcept ... TMedia>
+        requires (sizeof...(TMedia) > 0)
     class Bookstore
     {
-    private:
+    public:
         using StockType = std::variant<TMedia ...>;
-        using Stock     = std::vector<StockType>;
-        using StockList = std::initializer_list<StockType>;
+        using Stock = std::vector<StockType>;
 
+    private:
         Stock m_stock;
 
     public:
-        explicit Bookstore(StockList stock) : m_stock{ stock } {}
+        // c'tor(s)
+        Bookstore() = default;
+
+        explicit Bookstore(Stock stock) : m_stock(std::move(stock)) {}
+
+        template <typename... TArgs>
+            requires (sizeof...(TArgs) > 0 && (std::constructible_from<StockType, TArgs> && ...))
+        explicit Bookstore(TArgs&&... items)
+        {
+            m_stock.reserve(sizeof...(TArgs));
+            (m_stock.emplace_back(std::forward<TArgs>(items)), ...);
+        }
 
         // template member method
         template <typename T>
-            requires MediaConcept<T>
-        void addMedia(const T& media) {
-            m_stock.push_back(StockType{ media });    // detailed notation
-            // m_stock.push_back(media);              // implicit type conversion (T => std::variant<T>)
-        }
-
-        // or
-        void addMediaEx(const MediaConcept auto& media) {
-            m_stock.push_back(media);
+            requires std::constructible_from<StockType, T>
+        void addMedia(T&& item) {
+            m_stock.emplace_back(std::forward<T>(item));
         }
 
         // public interface
+        [[nodiscard]]
         double totalBalance() const {
-
-            double total{};
-
-            for (const auto& media : m_stock) {
-
-                double price{};
-                std::size_t count{};
-
-                std::visit(
-                    [&](const auto& element) {
-                        price = element.getPrice();
-                        count = element.getCount();
-                    },
-                    media
-                );
-
-                total += price * count;
-            }
-
-            return total;
-        }
-
-        std::size_t count() const {
-
-            std::size_t total{};
-
-            for (const auto& media : m_stock) {
-
-                std::size_t count{};
-
-                std::visit(
-                    [&](const auto& element) {
-                        count = element.getCount();
-                    },
-                    media
-                );
-
-                total += count;
-            }
-
-            return total;
-        }
-
-        // -----------------------------------------------
-        // demonstrating std::visit with returning a value
-
-        double totalBalanceEx() const {
 
             double total{};
 
@@ -340,7 +354,8 @@ namespace BookStoreUsingTypeErasure {
             return total;
         }
 
-        std::size_t countEx() const {
+        [[nodiscard]]
+        std::size_t count() const {
 
             std::size_t total{};
 
@@ -370,8 +385,9 @@ namespace BookStoreUsingTypeErasure {
 
         using MyBookstore = Bookstore<Book, Movie>;
 
+        // Note: The braced-list construction works here because variants are copyable
         MyBookstore bookstore{
-            cBook, movieBond, javaBook, cppBook, csharpBook, movieTarantino
+            { cBook, movieBond, javaBook, cppBook, csharpBook, movieTarantino }
         };
 
         double balance{ bookstore.totalBalance() };
@@ -382,24 +398,42 @@ namespace BookStoreUsingTypeErasure {
 
     static void test_bookstore_type_erasure_02() {
 
-        Book cBook{ "C", "Dennis Ritchie", 11.99, 12 };
-        Movie movieBond{ "Spectre", "Sam Mendes", 8.99, 6 };
-
         using MyBookstore = Bookstore<Book, Movie>;
 
-        MyBookstore bookstore{ cBook, movieBond };
+        MyBookstore bookstore{
+            Book { "C", "Dennis Ritchie", 11.99, 12 },
+            Book { "Java", "James Gosling", 17.99, 21 },
+            Book { "C++", "Bjarne Stroustrup", 16.99, 4 },
+            Book { "C#", "Anders Hejlsberg", 21.99, 8 },
 
-        Book csharpBook{ "C#", "Anders Hejlsberg", 21.99, 8 };
-        bookstore.addMedia(csharpBook);
+            Movie { "Once upon a time in Hollywood", "Quentin Tarantino", 6.99, 3 },
+            Movie { "Spectre", "Sam Mendes", 8.99, 6 }
+        };
 
-        Movie movieTarantino{ "Once upon a time in Hollywood", "Quentin Tarantino", 6.99, 3 };
-        bookstore.addMediaEx(movieTarantino);
+        double balance{ bookstore.totalBalance() };
+        std::println("Total value of Bookstore: {:.{}f}", balance, 2);
 
         std::size_t count{ bookstore.count() };
         std::println("Count of elements in Bookstore: {}", count);
     }
 
     static void test_bookstore_type_erasure_03() {
+
+        Book cBook{ "C", "Dennis Ritchie", 11.99, 12 };
+        Movie movieBond{ "Spectre", "Sam Mendes", 8.99, 6 };
+
+        using MyBookstore = Bookstore<Book, Movie>;
+
+        MyBookstore bookstore{ { cBook, movieBond } };
+
+        Book csharpBook{ "C#", "Anders Hejlsberg", 21.99, 8 };
+        bookstore.addMedia(csharpBook);
+
+        std::size_t count{ bookstore.count() };
+        std::println("Count of elements in Bookstore: {}", count);
+    }
+
+    static void test_bookstore_type_erasure_04() {
 
         std::println("Benchmark - Method Call - using Type Erasure");
 
@@ -411,15 +445,16 @@ namespace BookStoreUsingTypeErasure {
         for (std::size_t i{}; i != MaxIterations; ++i) {
             total += cBook.getCount() * cBook.getPrice();
         }
+        std::println("Total: {}", total);
 
         std::print("Done: ");
     }
 
-    static void test_bookstore_type_erasure_04() {
+    static void test_bookstore_type_erasure_05() {
 
         std::println("Benchmark - Iterating a Container of std:variants - using Type Erasure");
         
-        Bookstore<Book, Movie> bookstore{ };
+        Bookstore<Book, Movie> bookstore;
 
         Book cBook{ "C", "Dennis Ritchie", 11.99, 12 };
 
@@ -434,9 +469,12 @@ namespace BookStoreUsingTypeErasure {
             double totalBalance{ bookstore.totalBalance() };
             total += totalBalance;
         }
+        std::println("Total: {}", total);
 
         std::print("Done: ");
     }
+
+    // =====================================================================================
 
     class BluRay
     {
@@ -448,10 +486,10 @@ namespace BookStoreUsingTypeErasure {
         double getPrice() const { return 0.0; }   // put into comments
     };
 
-    static void test_bookstore_type_erasure_05() {
+    static void test_bookstore_type_erasure_06() {
 
         // verifying concept 'MediaConcept'
-        Bookstore<Book, BluRay, Movie> bookstore{};
+        Bookstore<Book, BluRay, Movie> bookstore;
     }
 }
 
@@ -463,14 +501,17 @@ void main_type_erasure_bookstore()
     BookStoreUsingDynamicPolymorphism::test_bookstore_polymorphic_02();
     BookStoreUsingDynamicPolymorphism::test_bookstore_polymorphic_03();
     BookStoreUsingDynamicPolymorphism::test_bookstore_polymorphic_04();
+    BookStoreUsingDynamicPolymorphism::test_bookstore_polymorphic_05();
 
     BookStoreUsingTypeErasure::test_bookstore_type_erasure_01();
     BookStoreUsingTypeErasure::test_bookstore_type_erasure_02();
     BookStoreUsingTypeErasure::test_bookstore_type_erasure_03();
     BookStoreUsingTypeErasure::test_bookstore_type_erasure_04();
+    BookStoreUsingTypeErasure::test_bookstore_type_erasure_05();
+    BookStoreUsingTypeErasure::test_bookstore_type_erasure_06();
+
 }
 
 // =====================================================================================
 // End-of-File
 // =====================================================================================
-
