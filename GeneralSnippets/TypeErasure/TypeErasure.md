@@ -18,7 +18,7 @@
   * [Verbesserung der Implementierung mit Konzepten](#link5)
   * [Beispiel: Vereinfachte Realisierung von `std::function<>`](#link6)
   * [Beispiel: Eine Buchhandung (statischer versus dynamischer Polymorphismus)](#link7)
-  * [Fazit](#link8)
+  * [Gesamtbewertung des Vergleichs](#link8)
   * [Literaturhinweise](#link9)
 
 ---
@@ -497,7 +497,6 @@ Die zweite Spezialisierung übernimmt *Callables* mit beliebiger Anzahl von Param
 15: }
 ```
 
-
 ---
 
 ## Beispiel: Eine Buchhandung (statischer versus dynamischer Polymorphismus) <a name="link7"></a>
@@ -534,19 +533,19 @@ Wie ist die Schnittstelle eines Konstruktors für die `Bookstore`-Klasse zu defin
 wenn dieser `Book`- und `Movie`-Objekte gemischt in einem `std::vector`-Objekt aufnehmen kann?
 
 ```cpp
-Book cBook { "C", "Dennis Ritchie", 11.99, 12 };
-Book javaBook{"Java", "James Gosling", 17.99, 21 };
-Book cppBook{"C++", "Bjarne Stroustrup", 16.99, 4 };
-Book csharpBook{"C#", "Anders Hejlsberg", 21.99, 8 };
-
-Movie movieTarantino{ "Once upon a time in Hollywood", "Quentin Tarantino", 6.99, 3 };
-Movie movieBond{ "Spectre", "Sam Mendes", 8.99, 6 };
-
-using MyBookstore = Bookstore<Book, Movie>;
-
-MyBookstore bookstore {
-    cBook, movieBond, javaBook, cppBook, csharpBook, movieTarantino
-};
+01: Book cBook{ "C", "Dennis Ritchie", 11.99, 12 };
+02: Book javaBook{ "Java", "James Gosling", 17.99, 21 };
+03: Book cppBook{ "C++", "Bjarne Stroustrup", 16.99, 4 };
+04: Book csharpBook{ "C#", "Anders Hejlsberg", 21.99, 8 };
+05: 
+06: Movie movieTarantino{ "Once upon a time in Hollywood", "Quentin Tarantino", 6.99, 3 };
+07: Movie movieBond{ "Spectre", "Sam Mendes", 8.99, 6 };
+08: 
+09: using MyBookstore = Bookstore<Book, Movie>;
+10: 
+11: MyBookstore bookstore{
+12:     { cBook, movieBond, javaBook, cppBook, csharpBook, movieTarantino }
+13: };
 ```
 
 Entwerfen Sie drei rudimentäre Klassen `Book`, `Movie` und `Bookstore`,
@@ -558,8 +557,8 @@ Wie ist in der Klasse `Bookstore` eine Methode `totalBalance` zu implementieren,
 der Buchhandlung zu berechnen? Hier könnten `std::variant` und `std::visit` zum Einsatz gelangen.
 
 ```cpp
-double balance = bookstore.totalBalance();
-std::cout << "Total value of Bookstore: " << balance << std::endl;
+double balance{ bookstore.totalBalance() };
+std::println("Total value of Bookstore: {:.{}f}", balance, 2);
 ```
 
 Noch ein Hinweis:
@@ -576,32 +575,51 @@ Natürlich muss der Datentyp des &bdquo;Media&rdquo;-Objekts (also z.B. `Book` od
 bereits bekannt sein:
 
 ```cpp
-Book csharpBook{ "C#", "Anders Hejlsberg", 21.99, 1 };
+Book csharpBook{ "C#", "Anders Hejlsberg", 21.99, 8 };
 bookstore.addMedia(csharpBook);
 ```
 
 Im Quellcode finden Sie zwei Realisierungen vor:
 
   * Realisierung mit einer abstrakten Basisklasse (Schnittstelle `IMedia`) und davon abgeleiteten Klassen.
-  * Realisierung auf Basis des *Type Erasure* Idioms unter Verwendung von Templates.
+  * Realisierung auf Basis des statischen Polymorphismus unter Verwendung von `std::variant`, `std::visit` und weiteren modernen Sprachfeatures.
 
 ---
 
-## Fazit  <a name="link8"></a>
+## Gesamtbewertung des Vergleichs <a name="link8"></a>
 
-  * Der Vorteil des *Type Erasure* Idioms besteht darin,
-  dass die Typen keine gemeinsame Basisklasse benötigen und sie dennoch typsicher ist.
+### Klassische Variante (dynamischer Polymorphismus)
 
-  * Die `PolymorphicObjectWrapper`-Klasse funktioniert mit allen Datentypen, die eine öffentliche Schnittstelle besitzen,
-  die von der Klasse erwartet wird (*Duck Typing*).
+Stärken:
+  * Klare Schnittstelle
+  * Korrekter virtueller Destruktor
+  * Erweiterbarkeit zur Laufzeit
+  * Verwaltung des Besitzes (*Ownership*) mittels `std::unique_ptr`
+  * Einfaches und vertrautes Design
 
-  * Der Nachteil des Idioms besteht darin, dass es im Vergleich zur viel einfacheren Implementierung
-  mit objektorientierten Techniken einen deutlich höheren Komplexitätsgrad aufweist.
+### Variant-Variante (statischer Polymorphismus)
 
-  * Ein weiterer Nachteil besteht darin, dass es während der Objekterzeugung ein Performanzproblem gibt,
-  da die erstellten Objekte in das `ObjectModel`-Objekt kopiert werden müssen,
-  was zu zusätzlichen Aufrufen des Kopierkonstruktors führt.
+Stärken:
+  * Keine Vererbung erforderlich
+  * Keine virtuellen Methoden
+  * Konzepte (*Concepts*) definieren die erforderliche Schnittstelle
+  * Variadische Templates ermöglichen konfigurierbare Alternativen
+  * `std::visit` übernimmt den Dispatch (Aufruf der passenden Variante)
+  * Potenziell bessere Speicherlokalität
+  * Vermeidet unter Umständen separate Heap-Allokationen
 
+
+*Hinweis*:
+
+Es soll nicht unerwähnt bleiben, dass die Benchmark-Funktionen mehr als nur einen direkten oder indirekten Methodenaufruf vergleichen:
+
+  * Speicherlayout
+  * Zeigerindirektion
+  * Cache-Lokalität
+  * Durchlaufen von Containern
+  * Virtuellen Dispatch
+  * Dispatch bei Varianten (Variant-Dispatch)
+  * Möglicherweise auch Sprungvorhersage (Branch Prediction)
 
 ---
 
