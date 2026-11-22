@@ -100,7 +100,9 @@ namespace {
 
     void processDataCLike(const std::string* data)
     {
-        std::println("Data: {}", *data);
+        if (data != nullptr) {
+            std::println("Data: {}", *data);
+        }
     }
 
     void processDataCppLike(const std::string& data)

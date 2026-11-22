@@ -89,6 +89,15 @@ namespace {
         // std::unique_ptr<int> ptr2{ std::move(ptr) };
     }
 
+    void storeUniquePointerAsSink(std::unique_ptr<int> ptr)
+    {
+        std::println("*ptr:    {}", *ptr);
+        (*ptr)++;
+        std::println("*ptr:    {}", *ptr);
+
+        // ptr is destroyed at the end of the function!
+    }
+
     void storeUniquePointerAlternate(int* ptr)
     {
         std::println("*ptr:    {}", *ptr);
@@ -110,6 +119,11 @@ namespace {
         storeUniquePointer(ptr);
 
         // C++ Core Guidelines
+        // provide a function with a unique pointer: Call-by-Value / Sink-Pattern
+        // Owne-Ship is taken / unique pointer is passed by value / std::move is needed
+        storeUniquePointerAsSink(std::move(ptr));
+
+        // C++ Core Guidelines
         storeUniquePointerAlternate(ptr.get());
 
         // does this work?
@@ -121,7 +135,9 @@ namespace {
 
     void processDataCLike(const std::string* data)
     {
-        std::println("Data: {}", *data);
+        if (data != nullptr) {
+            std::println("Data: {}", *data);
+        }
     }
 
     void processDataCppLike(const std::string& data)
@@ -194,7 +210,7 @@ namespace {
         std::println("*ptr:    {}", *ptr);
 
         // Pass unique pointer to another function:
-        // No need for explicit std::move, temporary is captured as R-Value reference
+        // No need for explicit std::move, temporary is captured as RValue reference
         // so the std::unique_ptr's move constructor is automatically invoked
         consumeResource(createResource(456));
     }

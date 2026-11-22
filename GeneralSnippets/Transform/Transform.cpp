@@ -15,7 +15,7 @@ namespace {
     void transform_01()
     {
         // very simple phone book
-        std::cout << "List of Entries: " << std::endl;
+        std::println("List of Entries: ");
 
         std::unordered_map<std::string, std::size_t> phonebook
         {
@@ -25,7 +25,7 @@ namespace {
         };
 
         for (const auto& [name, number] : phonebook) {
-            std::cout << name << ": " << number << std::endl;
+            std::println("{}: {}", name, number);
         }
 
         std::vector<std::string> names(phonebook.size());  // set size of vector (!)
@@ -34,22 +34,22 @@ namespace {
         std::transform(
             phonebook.begin(),
             phonebook.end(),
-            names.begin(),      // beginning of the destination range
-            [](const std::pair<const std::string, std::size_t>& entry) {
-                return std::get<0>(entry);
+            names.begin(),                  // beginning of the destination range
+            [](const auto& entry) {
+                return entry.first;
             }
         );
 
-        std::cout << "List of Persons: " << std::endl;
+        std::println("List of Persons:");
         for (const auto& name : names) {
-            std::cout << name << std::endl;
+            std::println("Name: {}", name);
         }
     }
 
     void transform_02()
     {
         // very simple phone book
-        std::cout << "List of Entries: " << std::endl;
+        std::println("List of Entries:");
 
         std::unordered_map<std::string, std::size_t> phonebook
         {
@@ -59,7 +59,7 @@ namespace {
         };
 
         for (const auto& [name, number] : phonebook) {
-            std::cout << name << ": " << number << std::endl;
+            std::println("{}: {}", name, number);
         }
 
         std::vector<std::string> names;    // empty vector (!)
@@ -68,15 +68,15 @@ namespace {
         std::transform(
             phonebook.begin(),
             phonebook.end(),
-            std::back_inserter(names),   // back_inserter needed (!)
-            [](const std::pair<const std::string, std::size_t>& entry) {
-                return std::get<0>(entry);
+            std::back_inserter(names),         // back_inserter needed (!)
+            [](const auto& entry) {
+                return entry.first;
             }
         );
 
-        std::cout << "List of Persons: " << std::endl;
+        std::println("List of Persons:");
         for (const auto& name : names) {
-            std::cout << name << std::endl;
+            std::println("Name: {}", name);
         }
     }
 
@@ -89,7 +89,7 @@ namespace {
             std::string{ "Franz Schneider" }
         };
 
-        std::vector<std::size_t> numbers{ 12345678, 7654321, 81726354 };
+        std::vector<std::size_t> numbers{ 12345678, 87654321, 81726354 };
 
         std::unordered_map<std::string, std::size_t> contacts;
 
@@ -97,16 +97,16 @@ namespace {
         std::transform(
             persons.cbegin(),
             persons.cend(),
-            numbers.begin(),
+            numbers.cbegin(),
             std::inserter(contacts, contacts.end()),
             [](const std::string& person, std::size_t number) {
                 return std::pair<const std::string, std::size_t>{ person, number };
             }
         );
 
-        std::cout << "List of Contacts: " << std::endl;
+        std::println("List of Contacts:");
         for (const auto& [name, number] : contacts) {
-            std::cout << name << ": " << number << std::endl;
+            std::println("{}: {}", name, number);
         }
     }
 }
