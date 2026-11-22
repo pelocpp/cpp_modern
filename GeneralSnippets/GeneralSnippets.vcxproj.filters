@@ -78,9 +78,6 @@
     <ClCompile Include="TemplateConstexprIf\TemplatesConstExpr_If.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Lambda\Lambda01_Legacy.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Accumulate\Accumulate.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -1086,15 +1083,6 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Expected\cpp_std_expected.svg">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="PerfectForwarding\PerfectForwarding_01.md">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="PerfectForwarding\PerfectForwarding_02.md">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="PerfectForwarding\PerfectForwarding_03.md">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Exercises\cpp_exercise_my_string.svg">

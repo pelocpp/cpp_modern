@@ -17,7 +17,7 @@
   * [Benutzerdefinierte Implementierung des *Type Erasure* Idioms](#link4)
   * [Verbesserung der Implementierung mit Konzepten](#link5)
   * [Beispiel: Vereinfachte Realisierung von `std::function<>`](#link6)
-  * [Beispiel: Eine Buchhandung (statischer versus dynamischer Polymorphismus)](#link7)
+  * [Beispiel: Eine Buchhandlung (statischer versus dynamischer Polymorphismus)](#link7)
   * [Gesamtbewertung des Vergleichs](#link8)
   * [Literaturhinweise](#link9)
 
@@ -499,9 +499,9 @@ Die zweite Spezialisierung übernimmt *Callables* mit beliebiger Anzahl von Param
 
 ---
 
-## Beispiel: Eine Buchhandung (statischer versus dynamischer Polymorphismus) <a name="link7"></a>
+## Beispiel: Eine Buchhandlung (statischer versus dynamischer Polymorphismus) <a name="link7"></a>
 
-Wir vertiefen die Betrachtungen zu *Type Erasure* an einem praxisnahen Beispiel: einer Buchhandung.
+Wir vertiefen die Betrachtungen zu *Type Erasure* an einem praxisnahen Beispiel: einer Buchhandlung.
 Das *Type Erasure* Idiom kommt hier indirekt zum Zuge, indem wir die Klasse `std::variant` verwenden.
 
 Als Voraussetzungen für dieses Beispiel benötigen wir Kenntnisse bzgl.
@@ -511,8 +511,7 @@ Worum geht es?
 
 Ein Entwurfsmuster aus der Gruppe der Verhaltensmuster (*Behavioral Design Patterns*),
 das so genannt *Visitor*-Entwurfsmuster,
-lässt sich mit `std::variant` und `std::visit` sehr einfach umsetzen.
-
+lässt sich mit `std::variant` und `std::visit` sehr einfach umsetzen.	
 Wir betrachten zu diesem Zweck eine Buchhandlung (Klasse `Bookstore`),
 die Bücher und DVDs (Klassen `Book` und `Movie`) verkauft. 
 
@@ -604,7 +603,7 @@ Stärken:
   * Keine virtuellen Methoden
   * Konzepte (*Concepts*) definieren die erforderliche Schnittstelle
   * Variadische Templates ermöglichen konfigurierbare Alternativen
-  * `std::visit` übernimmt den Dispatch (Aufruf der passenden Variante)
+  * `std::visit` übernimmt den Dispatch (Aufruf der passenden Methode)
   * Potenziell bessere Speicherlokalität
   * Vermeidet unter Umständen separate Heap-Allokationen
 
@@ -618,7 +617,7 @@ Es soll nicht unerwähnt bleiben, dass die Benchmark-Funktionen mehr als nur eine
   * Cache-Lokalität
   * Durchlaufen von Containern
   * Virtuellen Dispatch
-  * Dispatch bei Varianten (Variant-Dispatch)
+  * Dispatch bei `std::variant`
   * Möglicherweise auch Sprungvorhersage (Branch Prediction)
 
 ---

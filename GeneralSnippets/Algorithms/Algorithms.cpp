@@ -133,6 +133,21 @@ namespace {
         std::generate(
             values.begin(),
             values.end(),
+            []() { return 333; }
+        );
+    }
+
+    void vector_constant_initialize_std_generate_n()
+    {
+        std::println("std::vector: using std::generate_n");
+
+        std::vector<double> values(VectorSize);
+
+        ScopedTimer watch;
+
+        std::generate_n(
+            values.begin(),
+            VectorSize,
             []() { return 123.0; }
         );
     }
@@ -155,6 +170,7 @@ namespace {
         vector_constant_initialize_std_for_each();
         vector_constant_initialize_range_based_for_loop();
         vector_constant_initialize_std_generate();
+        vector_constant_initialize_std_generate_n();
         vector_constant_initialize_user_defined_ctor();
     }
 
@@ -220,7 +236,7 @@ namespace {
         std::for_each(
             values.begin(),
             values.end(),
-            [](auto& elem) { elem = 123.0; }
+            [] (auto& elem) { elem = 123.0; }
         );
     }
 
@@ -244,7 +260,20 @@ namespace {
         std::generate(
             values.begin(),
             values.end(),
-            []() { return 123.0; }
+            [] () { return 123.0; }
+        );
+    }
+
+    void array_constant_initialize_std_generate_n()
+    {
+        std::println("std::array: using std::generate_n");
+
+        ScopedTimer watch;
+
+        std::generate_n(
+            values.begin(),
+            ArraySize,
+            [] () { return 123.0; }
         );
     }
 
@@ -257,6 +286,7 @@ namespace {
         array_constant_initialize_std_for_each();
         array_constant_initialize_range_based_for_loop();
         array_constant_initialize_std_generate();
+        array_constant_initialize_std_generate_n();
     }
 
     // =================================================================================
@@ -333,6 +363,21 @@ namespace {
         );
     }
 
+    void vector_varying_initialize_std_for_generate_n()
+    {
+        std::println("std::vector: using std::generate_n");
+
+        std::vector<double> values(VectorSize);
+
+        ScopedTimer watch;
+
+        std::generate_n(
+            values.begin(),
+            VectorSize,
+            [i = 0.0]() mutable { return 2.0 * i++; }
+        );
+    }
+
     void algorithms_vector_varying_initialization()
     {
         vector_varying_initialize_classic_for_loop();
@@ -340,6 +385,7 @@ namespace {
         vector_varying_initialize_std_for_each();
         vector_varying_initialize_range_based_for_loop();
         vector_varying_initialize_std_for_generate();
+        vector_varying_initialize_std_for_generate_n();
     }
 
     // =================================================================================
@@ -406,6 +452,19 @@ namespace {
         );
     }
 
+    void array_varying_initialize_std_for_generate_n()
+    {
+        std::println("std::array: using std::generate_n");
+
+        ScopedTimer watch;
+
+        std::generate_n(
+            values.begin(),
+            ArraySize,
+            [i = 0.0]() mutable { return 2.0 * i++; }
+        );
+    }
+    
     void algorithms_array_varying_initialization()
     {
         array_varying_initialize_classic_for_loop();
@@ -413,6 +472,7 @@ namespace {
         array_varying_initialize_std_for_each();
         array_varying_initialize_range_based_for_loop();
         array_varying_initialize_std_for_generate();
+        array_varying_initialize_std_for_generate_n();
     }
 
     // =================================================================================
@@ -679,7 +739,7 @@ namespace {
                 values.end(),
                 [value = 0.0]() mutable { return ++value; }
             );
-            };
+        };
 
         double sum{};
 
@@ -716,7 +776,7 @@ namespace {
                 values.end(),
                 [value = 0.0]() mutable { return ++value; }
             );
-            };
+        };
 
         double sum{};
 
@@ -746,19 +806,27 @@ void main_algorithms()
 {
     // initialization of std::vector or std::array with a constant value
     algorithms_vector_constant_initialization();
+    std::println();
     algorithms_array_constant_initialization();
+    std::println();
 
     // initialization of std::vector or std::array with a a varying value
     algorithms_vector_varying_initialization();
+    std::println();
     algorithms_array_varying_initialization();
+    std::println();
 
     // using algorithms for copying ranges (std::vector or std::array)
     algorithms_vector_copying();
+    std::println();
     algorithms_array_copying();
+    std::println();
 
     // using algorithms for elementary calculations (std::vector or std::array)
     algorithms_vector_sum_calculation();
+    std::println();
     algorithms_array_sum_calculation();
+    std::println();
 }
 
 // =====================================================================================

@@ -55,7 +55,7 @@ namespace {
         std::optional<std::vector<int>> oVec{ std::in_place,{ 1, 2, 3 } };
 
         std::optional<std::string> jack{ "Jack" };
-        std::println("{}", jack.value());        // OK: contains a value
+        std::println("{}", jack.value());            // OK: contains a value
 
         jack.reset(); // now empty
 
@@ -161,10 +161,10 @@ namespace {
 
     const std::map<std::size_t, User> database =
     {
-        { 1, { "Sepp", "sepp@gmx.de" } },
-        { 2, { "Anton", std::nullopt } },
-        { 3, { "Hubert", "hubert@GMAIL.COM" } },
-        { 4, { "Franz", "www.franzschneider.com" } }
+        { 1, User{ "Sepp", "sepp@gmx.de" } },
+        { 2, User{ "Anton", std::nullopt } },               // no email address available
+        { 3, User{ "Hubert", "hubert@GMAIL.COM" } },
+        { 4, User{ "Franz", "www.franzschneider.com" } }    // wrong format of email address
     };
 
     std::optional<User> findUser(std::size_t id) {
@@ -200,20 +200,22 @@ namespace {
 
     std::optional<std::string> domainOf(std::size_t id) {
 
-        return findUser(id)                                          // -> optional<User>
-            .and_then([](const User& user) { return user.email; })   // -> optional<string>
-            .and_then(emailDomain)                                   // -> optional<string>
-            .transform(toLower);                                     // string -> string, re-wrapped
+        return findUser(id)                                          // -> std::optional<User>
+            .and_then([](const User& user) { return user.email; })   // -> std::optional<std::string>
+            .and_then(emailDomain)                                   // -> std::optional<std::string>
+            .transform(toLower);                                     // std::string -> std::string, re-wrapped
     }
 
     void optional_05_monadic()
     {
         for (std::size_t id : { 0, 1, 2, 3, 4, 5 }) {
 
-            auto domain = domainOf(id).or_else([] {
-                std::println("  >>> no valid domain found");
-                return std::optional<std::string>{};
-            });
+            auto domain = domainOf(id).or_else(
+                [] () -> std::optional<std::string> {
+                     std::println("  >>> no valid domain found");
+                     return std::nullopt;
+                }
+            );
 
             std::println("{}: {}", id, domain.value_or("<none>"));
         }

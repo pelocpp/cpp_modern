@@ -2,84 +2,132 @@
 // Random.cpp // Random Numbers
 // =====================================================================================
 
+module;
+
+#include <print>    // module implementation too unstable
+
 module modern_cpp:random;
 
 import std;
 
 namespace {
 
+    constexpr std::size_t TotalNumbers = 6 * 100'000;
+
+    void printNumbers(const std::vector<int>& numbers)
+    {
+        std::for_each(
+            numbers.begin(),
+            numbers.end(),
+            [](int n) { std::println("{} ", n); }
+        );
+        std::println();
+    }
+
+    void printHistogram(const std::vector<int>& numbers, int scale, int startIndex)
+    {
+        std::for_each(
+            numbers.begin(),
+            numbers.end(),
+            [=, index = startIndex] (int count) mutable {
+                std::string bar(count / scale, '*');
+                std::println("{:10}: {:6} | {}", index++, count, bar);
+            }
+        );
+        std::println();
+    }
+
     void random_01()
     {
-        // pseudo-random numbers engine
-        std::default_random_engine engine{};
+        std::default_random_engine engine;
         // or
-        // std::default_random_engine engine{ static_cast<unsigned int> (time(0)) };
+        // std::default_random_engine engine{ std::random_device{}() };
 
-        // random integer numbers from a given input range with uniform probabilty
         std::uniform_int_distribution<int> distribution{ 0, 5 };
 
-        // need vector of length 6 zero-initialized
-        std::vector<int> numbers(6, 0);
+        std::vector<int> numbers;
+        numbers.reserve(TotalNumbers);
 
-        // generate random numbers
-        for (int i = 0; i < 6 * 100000; i++) {
-            int random = distribution(engine);
-            numbers[random]++;
-        }
+        // 1. generate random numbers using a classic STL algorithm 'std::generate_n'
+        std::generate_n(
+            std::back_inserter(numbers),
+            TotalNumbers,
+            [&]() { return distribution(engine); }
+        );
 
-        // print numbers 
-        for (int n : numbers)
-            std::cout << n << " ";
-        std::cout << std::endl;
+        // 2. count frequencies using 'std::for_each'
+        std::vector<int> frequencies(6, 0);
+        std::for_each(
+            numbers.begin(),
+            numbers.end(), 
+            [&](int random) { ++frequencies[random]; }
+        );
+
+        // 3. output as a table
+        printNumbers(frequencies);
     }
 
     void random_02()
     {
-        // pseudo-random numbers engine
-        std::random_device engine{};
-        std::mt19937 generator(engine());
+        // 1. hardware source for the initial value (seed) only
+        std::random_device device;
 
-        // random integer numbers from a given input range with uniform probabilty
+        // 2. fast pseudo-random number generator (Mersenne Twister)
+        std::mt19937 generator{ device() };
+
+        // 3. uniform distribution
         std::uniform_int_distribution<int> distribution{ 0, 5 };
 
-        // need vector of length 6 zero-initialized
-        std::vector<int> numbers(6, 0);
+        // 4. generating random numbers via an STL algorithm -  passing generator
+        std::vector<int> numbers;
+        numbers.reserve(TotalNumbers);
+        std::generate_n(
+            std::back_inserter(numbers),
+            TotalNumbers, 
+            [&] () { return distribution(generator); }
+        );
 
-        // generate random numbers
-        for (int i = 0; i < 6 * 100000; i++) {
-            int random = distribution(engine);
-            numbers[random]++;
-        }
+        // 5. counting frequencies using std::for_each
+        std::vector<int> frequencies(6, 0);
+        std::for_each(
+            numbers.begin(),
+            numbers.end(), 
+            [&](int random) { ++frequencies[random]; }
+        );
 
-        // print numbers 
-        for (int n : numbers)
-            std::cout << n << " ";
-        std::cout << std::endl;
-    }   
+        // 6. output as ASCII bar chart
+        printHistogram(frequencies, 2'500, 1);
+    }
+
+    constexpr std::size_t NumberOfCoins = 10;
+    constexpr std::size_t TotalTrials = 10 * 100'000;
 
     void random_03()
     {
-        static const std::size_t numCoins = 10;
+        // 1. engine & binomial distribution (10 coins, standard probability p = 0.5)
+        std::mt19937 engine{ std::random_device{}() };
+        std::binomial_distribution<int> distribution{ NumberOfCoins };
 
-        // pseudo-random numbers engine
-        std::default_random_engine engine{};
+        // 2. generate all 1,000,000 attempts using std::generate_n
+        std::vector<int> results;
+        results.reserve(TotalTrials);
 
-        // throw 10 coins, 0..10-time 'Kopf' / binomial probabilty
-        std::binomial_distribution<int> distribution{ numCoins };
+        std::generate_n(
+            std::back_inserter(results),
+            TotalTrials,
+            [&]() { return distribution(engine); }
+        );
 
-        // need vector of length 10 zero-initialized (10 coins)
-        std::vector<int> coins(numCoins + 1, 0);
+        // 3. count frequencies (0 to 10 heads) using std::for_each
+        std::vector<int> coins(NumberOfCoins + 1, 0);
+        std::for_each(
+            results.begin(),
+            results.end(),
+            [&](int heads) { ++coins[heads]; }
+        );
 
-        // generate random numbers
-        for (int i = 0; i < 10 * 100000; i++) {
-            int random = distribution(engine);
-            coins[random]++;
-        }
-
-        // print numbers 
-        for (int n : coins)
-            std::cout << n << " ";
-        std::cout << std::endl;
+        // 4. output as ASCII bar chart
+        printHistogram(coins, 5'000, 0);
     }
 }
 

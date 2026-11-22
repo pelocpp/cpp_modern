@@ -102,7 +102,7 @@ namespace GenericLambdas {
 
     auto lambda = [](auto x, int y) {
         std::println("x={}, y={}", x, y);
-        };
+    };
 
     static void test_01()
     {
@@ -155,7 +155,7 @@ namespace GenericLambdas {
 
     auto lambdaTwice = [](auto x, auto y) {
         std::println("x={}, y={}", x, y);
-        };
+    };
 
     // ---------------------------------------------------------------------------------
     // generic lambda - several 'auto' parameters - how the compiler sees them
@@ -442,9 +442,9 @@ namespace GenericRecursiveLambdas {
             return exp == 0 ? 1 : base * self(self, base, exp - 1);
             };
 
-        std::println("{}", power(power, 2, 10));          // 2^10 = 1024
+            std::println("{}", power(power, 2, 10));          // 2^10 = 1024
 
-        std::println("{}", power(power, 2.71828, 10));    // e^10 = 22026.3
+            std::println("{}", power(power, 2.71828, 10));    // e^10 = 22026.3
     }
 
     static void test_04()

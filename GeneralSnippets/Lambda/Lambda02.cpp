@@ -6,9 +6,9 @@ module modern_cpp:lambda;
 
 import std;
 
-namespace LambdasUnderTheHood {
+namespace {
 
-    static void test_01()
+    void lambda_01()
     {
         int n{ 10 };
 
@@ -19,7 +19,7 @@ namespace LambdasUnderTheHood {
         std::cout << "m: " << m << std::endl;
     }
 
-    static void test_02()
+    void lambda_02()
     {
         class LambdaClass
         {
@@ -47,9 +47,8 @@ namespace LambdasUnderTheHood {
 
 void main_lambda_and_closure()
 {
-    using namespace LambdasUnderTheHood;
-    test_01();
-    test_02();
+    lambda_01();
+    lambda_02();
 }
 
 // =====================================================================================

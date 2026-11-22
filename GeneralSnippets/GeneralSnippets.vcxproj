@@ -260,7 +260,6 @@
     <ClCompile Include="IsTransparent\IsTransparent.cpp" />
     <ClCompile Include="IsTransparent\Module_IsTransparent.ixx" />
     <ClCompile Include="Lambda\Lambda01.cpp" />
-    <ClCompile Include="Lambda\Lambda01_Legacy.cpp" />
     <ClCompile Include="Lambda\Lambda03.cpp" />
     <ClCompile Include="Lambda\Lambda02.cpp" />
     <ClCompile Include="Lambda\Module_Lambda.ixx" />
@@ -463,9 +462,6 @@
     <None Include="Optional\Optional.md" />
     <None Include="ParametersWithConstAndRef\ConstDeclarations.md" />
     <None Include="PerfectForwarding\PerfectForwarding.md" />
-    <None Include="PerfectForwarding\PerfectForwarding_01.md" />
-    <None Include="PerfectForwarding\PerfectForwarding_02.md" />
-    <None Include="PerfectForwarding\PerfectForwarding_03.md" />
     <None Include="PlacementNew\PlacementNew.md" />
     <None Include="Println\Println.md" />
     <None Include="RAII\RAII.md" />

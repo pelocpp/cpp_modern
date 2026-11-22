@@ -2,11 +2,6 @@
 // TypeErasure_Bookstore.cpp - Static versus Dynamic Polymorphism
 // =====================================================================================
 
-module;
-
-// needed for benchmark purposes
-#include <intrin.h>
-
 module modern_cpp:type_erasure;
 
 import std;
@@ -15,43 +10,13 @@ import scoped_timer;
 // =====================================================================================
 
 namespace {
+
 #ifdef _DEBUG
      constexpr std::size_t MaxIterations = 10'000'000;     // debug
-     constexpr std::size_t NumberOfMedia = 1'000'000;
+     constexpr std::size_t NumberOfMedia = 1'000'000;      // debug
 #else
-     constexpr std::size_t MaxIterations = 100'000'000;     // release
-     constexpr std::size_t NumberOfMedia = 1'000'000;
-#endif
-}
-
-// =====================================================================================
-
-namespace {
-
-#if defined(_MSC_VER) && !defined(__clang__)
-
-#define NOINLINE __declspec(noinline)
-
-    template <typename T>
-    inline void doNotOptimize(const T& value) {
-        // volatile read/write is the portable fallback for MSVC
-        const volatile char* p = reinterpret_cast<const volatile char*>(&value);
-        (void)*p;
-        _ReadWriteBarrier();
-    }
-
-    inline void clobberMemory() { _ReadWriteBarrier(); }
-
-#else
-
-#define NOINLINE __attribute__((noinline))
-
-    template <typename T>
-    inline void doNotOptimize(const T& value) {
-        asm volatile("" : : "r,m"(value) : "memory");
-    }
-
-    inline void clobberMemory() { asm volatile("" : : : "memory"); }
+     constexpr std::size_t MaxIterations = 100'000'000;    // release
+     constexpr std::size_t NumberOfMedia = 10'000'000;      // debug
 #endif
 
 }
@@ -176,7 +141,7 @@ namespace BookStoreUsingDynamicPolymorphism {
         // Note: The braced-list construction does not work here
         // because unique_ptr objects need push_back plus std::move.
 
-        Bookstore::Stock stock;
+        std::vector<std::unique_ptr<IMedia>> stock;
 
         stock.push_back(std::make_unique<Book>("C", "Dennis Ritchie", 11.99, 12));
         stock.push_back(std::make_unique<Movie>("Spectre", "Sam Mendes", 8.99, 6));
@@ -229,7 +194,7 @@ namespace BookStoreUsingDynamicPolymorphism {
 
     static void test_bookstore_dynamic_polymorphism_04() {
 
-        std::println("Benchmark - Method Call - using Polymorphism");
+        std::println("Benchmark - Measuring Method Calls - using Polymorphism");
 
         std::unique_ptr<IMedia> cBook{ std::make_unique<Book>("C", "Dennis Ritchie", 11.99, 12) };
 
@@ -246,33 +211,11 @@ namespace BookStoreUsingDynamicPolymorphism {
 
     static void test_bookstore_dynamic_polymorphism_05() {
 
-        std::println("Benchmark - Iterating a Container of Unique  Pointers - using Polymorphism");
-
-        Bookstore bookstore;
-
-        for (std::size_t i{}; i != 100; ++i) {
-            bookstore.addMedia(std::make_unique<Book>("C", "Dennis Ritchie", 11.99, 12));
-        }
-
-        ScopedTimer watch;
-
-        double total{};
-        for (std::size_t i{}; i != MaxIterations; ++i) {
-            double totalBalance{ bookstore.totalBalance() };
-            total += totalBalance;
-        }
-        std::println("Total: {}", total);
-
-        std::print("Done: ");
-    }
-
-    static void test_bookstore_dynamic_polymorphism_10() {
-
         std::println("Benchmark - Measuring insertions into an empty bookstore");
 
-        ScopedTimer watch;
-
         Bookstore bookstore;
+
+        ScopedTimer watch;
 
         for (std::size_t i{}; i != NumberOfMedia; ++i)
         {
@@ -285,32 +228,6 @@ namespace BookStoreUsingDynamicPolymorphism {
                 )
             );
         }
-    }
-
-    NOINLINE static std::unique_ptr<IMedia> makeMedia() {
-        return std::make_unique<Book>("C", "Dennis Ritchie", 11.99, 12);
-    }
-
-    static void test_bookstore_dynamic_polymorphism_11() {
-
-        std::println("Benchmark - Method Call - using dynamic Polymorphism");
-
-        auto media{ makeMedia() };
-        IMedia* cBook{ media.get() };
-        doNotOptimize(cBook);               // pointer is now opaque
-
-        ScopedTimer watch;
-
-        double total{};
-        for (std::size_t i{}; i != MaxIterations; ++i) {
-            total += cBook->getCount() * cBook->getPrice();
-            clobberMemory();               // forces the loads to be repeated
-        }
-
-        doNotOptimize(total);
-        std::println("Total: {}", total);
-
-        std::print("Done: ");
     }
 }
 
@@ -503,7 +420,7 @@ namespace BookStoreUsingStaticPolymorphism {
 
     static void test_bookstore_static_polymorphism_04() {
 
-        std::println("Benchmark - Method Call - using Type Erasure");
+        std::println("Benchmark - Measuring Method Calls - using Static Polymorphism");
 
         Book cBook{ "C", "Dennis Ritchie", 11.99, 12 };
 
@@ -513,47 +430,23 @@ namespace BookStoreUsingStaticPolymorphism {
         for (std::size_t i{}; i != MaxIterations; ++i) {
             total += cBook.getCount() * cBook.getPrice();
         }
-        std::println("Total: {}", total);
 
+        std::println("Total: {}", total);
         std::print("Done: ");
     }
 
     static void test_bookstore_static_polymorphism_05() {
 
-        std::println("Benchmark - Iterating a Container of std:variants - using Type Erasure");
-        
-        Bookstore<Book, Movie> bookstore;
-
-        Book cBook{ "C", "Dennis Ritchie", 11.99, 12 };
-
-        for (std::size_t i{}; i != 100; ++i) {
-            bookstore.addMedia(cBook);
-        }
-
-        ScopedTimer watch;
-
-        double total{};
-        for (std::size_t i{}; i != MaxIterations; ++i) {
-            double totalBalance{ bookstore.totalBalance() };
-            total += totalBalance;
-        }
-        std::println("Total: {}", total);
-
-        std::print("Done: ");
-    }
-
-    static void test_bookstore_static_polymorphism_10() {
-
         std::println("Benchmark - Measuring insertions into an empty bookstore");
 
-        ScopedTimer watch;
-
         Bookstore<Book, Movie> bookstore;
+
+        ScopedTimer watch;
 
         for (std::size_t i{}; i != NumberOfMedia; ++i)
         {
             bookstore.addMedia(
-                Book{
+                Book {
                     "Python",
                     "Guido van Rossum",
                     11.99,
@@ -561,31 +454,6 @@ namespace BookStoreUsingStaticPolymorphism {
                 }
             );
         }
-    }
-
-    NOINLINE static Book makeMedia() {
-        return Book { "C", "Dennis Ritchie", 11.99, 12 };
-    }
-
-    static void test_bookstore_static_polymorphism_11() {
-
-        std::println("Benchmark - Method Call - using static Polymorphism");
-
-        auto cBook{ makeMedia() };
-        doNotOptimize(cBook);               // pointer is now opaque
-
-        ScopedTimer watch;
-
-        double total{};
-        for (std::size_t i{}; i != MaxIterations; ++i) {
-            total += cBook.getCount() * cBook.getPrice();
-            clobberMemory();               // forces the loads to be repeated
-        }
-
-        doNotOptimize(total);
-        std::println("Total: {}", total);
-
-        std::print("Done: ");
     }
 
     // =====================================================================================
@@ -616,22 +484,18 @@ namespace BookStoreUsingStaticPolymorphism {
 
 void main_type_erasure_bookstore()
 {
-    //BookStoreUsingDynamicPolymorphism::test_bookstore_dynamic_polymorphism_01();  // creating a book store
-    //BookStoreUsingDynamicPolymorphism::test_bookstore_dynamic_polymorphism_02();  // creating a book store
-    //BookStoreUsingDynamicPolymorphism::test_bookstore_dynamic_polymorphism_03();  // demonstrating 'addMedia'
-    //BookStoreUsingDynamicPolymorphism::test_bookstore_dynamic_polymorphism_04();  // measuring method calls
-    //BookStoreUsingDynamicPolymorphism::test_bookstore_dynamic_polymorphism_05();  // measurung adding objects
-    BookStoreUsingDynamicPolymorphism::test_bookstore_dynamic_polymorphism_10();  // measuring insertions into an empty bookstore
-  // BookStoreUsingDynamicPolymorphism::test_bookstore_dynamic_polymorphism_11();  // measuring method calls
+    BookStoreUsingDynamicPolymorphism::test_bookstore_dynamic_polymorphism_01();  // creating a book store - media objects provided outside
+    BookStoreUsingDynamicPolymorphism::test_bookstore_dynamic_polymorphism_02();  // creating a book store - media objects provided inside
+    BookStoreUsingDynamicPolymorphism::test_bookstore_dynamic_polymorphism_03();  // demonstrating 'addMedia'
+    BookStoreUsingDynamicPolymorphism::test_bookstore_dynamic_polymorphism_04();  // measuring (virtual) method calls
+    BookStoreUsingDynamicPolymorphism::test_bookstore_dynamic_polymorphism_05();  // measuring insertions into an empty bookstore
 
-    //BookStoreUsingStaticPolymorphism::test_bookstore_static_polymorphism_01();    // creating a book store
-    //BookStoreUsingStaticPolymorphism::test_bookstore_static_polymorphism_02();    // creating a book store
-    //BookStoreUsingStaticPolymorphism::test_bookstore_static_polymorphism_03();    // demonstrating 'addMedia'
-  //  BookStoreUsingStaticPolymorphism::test_bookstore_static_polymorphism_04();    // measuring method calls
-    //BookStoreUsingStaticPolymorphism::test_bookstore_static_polymorphism_05();    // measurung adding objects
-    //BookStoreUsingStaticPolymorphism::test_bookstore_static_polymorphism_06();
-    BookStoreUsingStaticPolymorphism::test_bookstore_static_polymorphism_10();  // measuring insertions into an empty bookstore
-   // BookStoreUsingStaticPolymorphism::test_bookstore_static_polymorphism_11();    // measuring method calls
+    BookStoreUsingStaticPolymorphism::test_bookstore_static_polymorphism_01();    // creating a book store - media objects provided outside
+    BookStoreUsingStaticPolymorphism::test_bookstore_static_polymorphism_02();    // creating a book store - media objects provided inside
+    BookStoreUsingStaticPolymorphism::test_bookstore_static_polymorphism_03();    // demonstrating 'addMedia'
+    BookStoreUsingStaticPolymorphism::test_bookstore_static_polymorphism_04();    // measuring (static) method calls 
+    BookStoreUsingStaticPolymorphism::test_bookstore_static_polymorphism_05();    // measuring insertions into an empty bookstore 
+    BookStoreUsingStaticPolymorphism::test_bookstore_static_polymorphism_06();    // verifying concept 'MediaConcept' with a BlueRay media
 }
 
 // =====================================================================================

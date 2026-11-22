@@ -6,7 +6,7 @@ module modern_cpp:lambda;
 
 import std;
 
-namespace LambdaAndThisClosure {
+namespace {
 
     class Class {
 
@@ -44,7 +44,7 @@ namespace LambdaAndThisClosure {
         return os;
     }
 
-    static void test_01() {
+    void lambda_01() {
         Class object;
         std::cout << object << std::endl;
         object.doSomething();
@@ -55,8 +55,7 @@ namespace LambdaAndThisClosure {
 
 void main_lambdas_this_closure()
 {
-    using namespace LambdaAndThisClosure;
-    test_01();
+    lambda_01();
 }
 
 // =====================================================================================

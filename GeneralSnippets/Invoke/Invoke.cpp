@@ -24,7 +24,7 @@ namespace {
         Incrementer(int x) : m_x{ x } {}
 
         void incrementBy(int n) { m_x += n; }
-        void operator()() { std::cout << "m_x: " << m_x << std::endl; }
+        void operator()() { std::println("m_x: {}", m_x); }
     };
 
     class TimesThree
@@ -40,17 +40,17 @@ namespace {
 
         // free function:
         result = std::invoke(add, 1, 2);
-        std::cout << "result: " << result << std::endl;
+        std::println("result: {}", result);
         // => 3
 
         // free function through pointer to function:
         result = std::invoke(&add, 3, 4);
-        std::cout << "result: " << result << std::endl;
+        std::println("result: {}", result);
         // => 7
 
         int(*fadd) (int, int) { &add };
         result = std::invoke(fadd, 5, 6);
-        std::cout << "result: " << result << std::endl;
+        std::println("result: {}", result);
         // => 11
 
         // member function through pointer to member function:
@@ -62,21 +62,21 @@ namespace {
         // invoke (access) a (public) data member (!):
         // C++20: useful for 'projections'
         result = std::invoke(&Incrementer::m_x, &inc);
-        std::cout << "result: " << result << std::endl;
+        std::println("result: {}", result);
 
         // (nested) function objects:
         Incrementer inc2{ 10 };
         result = std::invoke(std::plus<>(), std::invoke(&Incrementer::m_x, &inc2), 3);
-        std::cout << "result: " << result << std::endl;
+        std::println("result: {}", result);
         // => 13
 
         result = std::invoke(TimesThree{}, 5);
-        std::cout << "result: " << result << std::endl;
+        std::println("result: {}", result);
         // => 15
 
         // lambda expression:
         result = std::invoke([](auto a, auto b) {return a + b; }, 11, 12);
-        std::cout << "result: " << result << std::endl;
+        std::println("result: {}", result);
         // => 23
     }
 }

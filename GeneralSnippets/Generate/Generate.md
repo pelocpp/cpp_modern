@@ -15,6 +15,7 @@ Es werden einfache Anwendungsfälle der STL-Algorithmen
   * `std::for_each`
   * `std::fill`
   * `std::generate`
+  * `std::iota`
 
 demonstriert.
 

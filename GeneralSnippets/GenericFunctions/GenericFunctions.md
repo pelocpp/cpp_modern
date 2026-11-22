@@ -27,7 +27,7 @@ wird als *generische Funktion* bezeichnet:
 
 ```cpp
 void function(auto x, int y) {
-    std::cout << "x=" << x << ", y=" << y << std::endl;
+    std::println("x={}, y={}", x, y);
 };
 ```
 
@@ -38,7 +38,7 @@ wird als *generischer Lambda-Ausdruck* bezeichnet:
 
 ```cpp
 auto lambda = [](auto x, int y) {
-    std::cout << "x=" << x << ", y=" << y << std::endl;
+    std::println("x={}, y={}", x, y);
 };
 ```
 
@@ -54,25 +54,25 @@ Man beachte das sprachliche Mittel der (expliziten) Template-Spezialisierung:
 template<typename T>
 static void Function(T x, int y)
 {
-    std::cout << "x=" << x << ", y=" << y << std::endl;
+    std::println("x={}, y={}", x, y);
 }
 
 template<>
 void Function<int>(int x, int y)
 {
-    std::cout << "x=" << x << ", y=" << y << std::endl;
+    std::println("x={}, y={}", x, y);
 }
 
 template<>
 void Function<double>(double x, int y)
 {
-    std::cout << "x=" << x << ", y=" << y << std::endl;
+    std::println("x={}, y={}", x, y);
 }
 
 template<>
 void Function<std::string>(std::string x, int y)
 {
-    std::cout << "x=" << x << ", y=" << y << std::endl;
+    std::println("x={}, y={}", x, y);
 }
 ```
 
@@ -89,22 +89,22 @@ struct Lambda
 {
     template <typename T>
     auto operator() (T x, int y) {
-        std::cout << "x=" << x << ", y=" << y << std::endl;
+        std::println("x={}, y={}", x, y);
     }
 
     template<>
     auto operator() <int> (int x, int y) {
-        std::cout << "x=" << x << ", y=" << y << std::endl;
+        std::println("x={}, y={}", x, y);
     }
 
     template<>
     auto operator() <double> (double x, int y) {
-        std::cout << "x=" << x << ", y=" << y << std::endl;
+        std::println("x={}, y={}", x, y);
     }
 
     template<>
     auto operator() <std::string> (std::string x, int y) {
-        std::cout << "x=" << x << ", y=" << y << std::endl;
+        std::println("x={}, y={}", x, y);
     }
 };
 ```
@@ -116,14 +116,14 @@ auf eine adäquate *Template Member Function* mehrere Template Parameter eingese
 
 ```cpp
 auto functionTwice(auto x, auto y) {
-    std::cout << "x=" << x << ", y=" << y << std::endl;
+    std::println("x={}, y={}", x, y);
 };
 
 struct FunctionTwice
 {
     template <typename T, typename U>
     auto operator() (T x, U y) {
-        std::cout << "x=" << x << ", y=" << y << std::endl;
+        std::println("x={}, y={}", x, y);
     }
 };
 ```
@@ -150,7 +150,7 @@ auto it1 = std::find_if(
     isGreaterThanFifty
 );
 if (it1 != std::end(intValues)) {
-    std::cout << "Found a value: " << *it1 << std::endl;
+    std::println("Found a value: {}", *it1);
 }
 
 std::vector<double> doubleValues{ 24.5, 75.5, 12.5, 87.5, 12.5 };
@@ -162,7 +162,7 @@ auto it2 = std::find_if(
     isGreaterThanFifty
 );
 if (it2 != std::end(doubleValues)) {
-    std::cout << "Found a value: " << *it2 << std::endl;
+    std::println("Found a value: {}", *it2);
 }
 ```
 
@@ -197,7 +197,7 @@ auto it1 = std::find_if(
     isGreaterThanFiftyEx<int>
 );
 if (it1 != std::end(intValues)) {
-    std::cout << "Found a value: " << *it1 << std::endl;
+    std::println("Found a value: {}", *it1);
 }
 
 std::vector<double> doubleValues{ 24.5, 75.5, 12.5, 87.5, 12.5 };
@@ -210,7 +210,7 @@ auto it2 = std::find_if(
     isGreaterThanFiftyEx<double>
 );
 if (it2 != std::end(doubleValues)) {
-    std::cout << "Found a value: " << *it2 << std::endl;
+    std::println("Found a value: {}", *it2);
 }
 ```
 
@@ -345,15 +345,15 @@ so lassen sich die Argumente beim Aufruf &bdquo;perfekt&rdquo; Weiterleiten:
 
 ```cpp
 void foo(const std::string& s) {
-    std::cout << "Signature: const&" << std::endl;
+    std::println("Signature: const&");
 }
 
 void foo(std::string&& s) {
-    std::cout << "Signature: &&" << std::endl;
+    std::println("Signature: &&");
 }
 
 auto callingFoo = [](auto&& s) {
-    std::cout << "Calling foo(): " << s;
+    std::print("Calling foo(): {}", s);
     foo(std::forward<decltype(s)>(s));
 };
 ```
@@ -403,7 +403,7 @@ factorial = [&] (int n) {
     }
 };
 
-std::cout << factorial(5) << std::endl; // 120
+std::println("{}", factorial(5));       // 120
 ```
 
 ##### Vorgehensweise mit generischen Lambda Ausdrücken
@@ -423,7 +423,7 @@ auto factorial = [] (auto f, int const n) {
     }
 };
 
-std::cout << factorial (factorial, 5) << std::endl;
+std::println("{}", factorial(factorial, 5));        // 120
 ```
 
 Die obige generische Lambda-Version von `factorial` ist
@@ -432,9 +432,9 @@ Sie kann jedoch auf unterschiedliche Basistypen angewendet werden,
 siehe dazu das Beispiel von `power` im begleitenden Quelltext:
 
 ```cpp
-std::cout << power(power, 2, 10) << std::endl;    // 2^10 = 1024
+std::println("{}", power(power, 2, 10));          // 2^10 = 1024
 
-std::cout << power(power, 2.71828, 10);           // e^10 = 22026.3
+std::println("{}", power(power, 2.71828, 10));    // e^10 = 22026.3
 ```
 
 ---

@@ -2,6 +2,10 @@
 // Lambda01.cpp // Lambda Methods
 // =====================================================================================
 
+module;
+
+#include <print>   // module implementation too unstable
+
 module modern_cpp:lambda;
 
 import std;
