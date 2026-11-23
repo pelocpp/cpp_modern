@@ -19,7 +19,7 @@ namespace {
     /*
      * Note: "T&&" with "T" being template parameter is special: Universal Reference
      */
-
+        
     template <typename T>
     void forwarding(T&& arg) {
         overloaded(arg);

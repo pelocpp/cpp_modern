@@ -24,6 +24,8 @@ namespace ConstExprVariables {
         std::println("Pi: {}", Pi);
         std::println("PI: {}", PI);
     }
+
+#undef PI  //´the preprocessor ignores namespaces completely
 }
 
 // =====================================================================================
@@ -38,7 +40,7 @@ namespace ConstExprFunctions {
 
     static auto clamp = [](auto x, auto lo, auto hi) constexpr {
         return x < lo ? lo : (x > hi ? hi : x);
-        }; 
+    }; 
 
     static void testFunctions_01() {
 
@@ -49,6 +51,9 @@ namespace ConstExprFunctions {
         constexpr auto value2{ clamp(a + b, 0, 10) };
         constexpr auto value3{ clamp(a + b, 5,  8) };
     }
+
+    #undef CLAMP  //´the preprocessor ignores namespaces completely
+
     
     // ======================================================
     // calculate the number multiplied by itself
@@ -57,7 +62,7 @@ namespace ConstExprFunctions {
 
     static constexpr auto square (auto x) {
         return x * x;
-    };
+    }
 
     static auto squareLambda = [](auto x) constexpr {
         return x * x;
@@ -72,6 +77,8 @@ namespace ConstExprFunctions {
         std::size_t value{ SQUARE(a + b) };       // value == 5: Wrong result !!!
         assert(value == 5);
     }
+
+    #undef SQUARE  //´the preprocessor ignores namespaces completely
 
     static void testFunctions_03() {
 
@@ -127,6 +134,8 @@ namespace ConstExprFunctions {
         SWAP(a, b);
         std::println("{} - {}", a, b);
     }
+
+    #undef SWAP  //´the preprocessor ignores namespaces completely
 
     static void testFunctions_05() {
 
@@ -192,8 +201,8 @@ namespace ConstExprClassesAndObjects {
         // verify 'constness' with the help of disassembly and
         // https://www.h-schmidt.net/FloatConverter/IEEE754de.html
         
-        std::println("Real: ", c3.real());
-        std::println("Imag: ", c3.imag());
+        std::println("Real: {}", c3.real());
+        std::println("Imag: {}", c3.imag());
 
         // verify compile time computing
         static_assert (c1.real() == 1.0, "real part shoud be 1.0");
@@ -253,11 +262,11 @@ namespace ConstExprPow {
 
     static constexpr std::size_t sumUpPowerTable()
     {
-        static_assert (powerTable<Factor>[0] == 1, "Value should be ");
-        static_assert (powerTable<Factor>[1] == 16, "Value should be ");
-        static_assert (powerTable<Factor>[2] == 81, "Value should be ");
-        static_assert (powerTable<Factor>[3] == 256, "Value should be ");
-        static_assert (powerTable<Factor>[4] == 625, "Value should be ");
+        static_assert (powerTable<Factor>[0] == 1, "Value should be 1");
+        static_assert (powerTable<Factor>[1] == 16, "Value should be 16");
+        static_assert (powerTable<Factor>[2] == 81, "Value should be 81");
+        static_assert (powerTable<Factor>[3] == 256, "Value should be 256");
+        static_assert (powerTable<Factor>[4] == 625, "Value should be 625");
 
         std::size_t total{};
 
@@ -272,7 +281,7 @@ namespace ConstExprPow {
     {
         constexpr std::size_t total{ sumUpPowerTable() };
         static_assert (total == 979, "Sum should be 979");
-        std::println("Total: ", total);
+        std::println("Total: {}", total);
     }
 
     static void testPower_02()

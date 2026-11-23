@@ -245,10 +245,11 @@ namespace {
 
             ++value;
             return value;
-            };
+        };
 
-        value = increment();
-        std::println("{}", value);
+        value = increment(); std::println("{}", value);
+        value = increment(); std::println("{}", value);
+        value = increment(); std::println("{}", value);
     }
 
     // =================================================================================
@@ -260,7 +261,7 @@ namespace {
 
             ++start;
             return start;
-            };
+        };
 
         std::size_t value{ 0 };
 
@@ -380,12 +381,12 @@ namespace {
 
     static constexpr auto power = [](int m, std::size_t n) {
 
-        auto result = m;
-        for (std::size_t i{ 1 }; i != n; ++i) {
+        auto result = 1;
+        for (std::size_t i{}; i != n; ++i) {
             result *= m;
         }
         return result;
-        };
+    };
 
     static void lambda_11()
     {
@@ -440,30 +441,31 @@ namespace {
             std::string m_text;
         public:
             SampleClass() : m_text{ "Doing something" } {}
-            void doSomething() { std::println("{}", m_text); };
+            void doSomething() { std::println("{}", m_text); }
         };
 
         std::unique_ptr<SampleClass> ptr{ std::make_unique<SampleClass>() };
 
         // Does not compile: by-value capture with move-only type (!)
-        // auto lambda = [=] () { ptr->doSomething(); };
+        // auto lambda1 = [=] () { ptr->doSomething(); };
 
         // Compiles: by-reference capture with move-only type (!)
-        auto lambda = [&]() { ptr->doSomething(); };
+        auto lambda2 = [&] () { ptr->doSomething(); };
+        lambda2();
 
         // Compiles: "Generalized Lambda Capture"
-        auto lambda2 = [ptrSampleClass = std::move(ptr)]() {
+        auto lambda3 = [ptrSampleClass = std::move(ptr)]() {
             ptrSampleClass->doSomething();
-            };
-        lambda2();
+        };
+        lambda3();
 
         ptr = std::make_unique<SampleClass>();
 
         // Compiles too: Same name for captured variable and internal variable of lambda object
-        auto lambda3 = [ptr = std::move(ptr)]() {
+        auto lambda4 = [ptr = std::move(ptr)]() {
             ptr->doSomething();
-            };
-        lambda3();
+        };
+        lambda4();
     }
 
     // =================================================================================
@@ -504,13 +506,11 @@ namespace {
         std::println("{}", value);
     }
 
-
     static void lambda_14()
     {
         lambda_14_01();
         lambda_14_02();
     }
-
 
     // =================================================================================
     // C++20: "Variadic Capture"
@@ -528,7 +528,7 @@ namespace {
 
             // folding over a comma: process all arguments
             (process(args), ...);
-            };
+        };
     }
 
     static void lambda_15()

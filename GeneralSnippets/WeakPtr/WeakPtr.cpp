@@ -136,9 +136,9 @@ namespace {
 
     void weak_pointer_02()
     {
-        std::shared_ptr parent{ std::make_shared<ParentNode>() };
-        std::shared_ptr rightNode{ std::make_shared<RightNode>(parent) };
-        std::shared_ptr leftNode{ std::make_shared<LeftNode>(parent) };
+        std::shared_ptr<ParentNode> parent{ std::make_shared<ParentNode>() };
+        std::shared_ptr<RightNode> rightNode{ std::make_shared<RightNode>(parent) };
+        std::shared_ptr<LeftNode> leftNode{ std::make_shared<LeftNode>(parent) };
 
         parent->setRightNode(rightNode);
         parent->setLeftNode(leftNode);
