@@ -15,7 +15,7 @@ namespace {
     // =================================================================================
     // Lambdas: Anonymous Function Objects
 
-    static void print(int n)
+    void print(int n)
     {
         std::print("{} ", n);
     }
@@ -28,7 +28,7 @@ namespace {
         }
     };
 
-    static void lambda_01_modern()
+    void lambda_01_modern()
     {
         std::vector<int> vec{ 1, 2, 3 };
 
@@ -43,7 +43,7 @@ namespace {
         std::println();
     }
 
-    static void lambda_01_classic()
+    void lambda_01_classic()
     {
         std::vector<int> vec{ 1, 2, 3 };
 
@@ -56,7 +56,7 @@ namespace {
         std::println();
     }
 
-    static void lambda_01_more_classic()
+    void lambda_01_more_classic()
     {
         std::vector<int> vec{ 1, 2, 3 };
 
@@ -71,7 +71,7 @@ namespace {
         std::println();
     }
 
-    static void lambda_01()
+    void lambda_01()
     {
         lambda_01_modern();
         lambda_01_classic();
@@ -81,7 +81,7 @@ namespace {
     // =================================================================================
     // Capture Clause
 
-    static void lambda_02_01()
+    void lambda_02_01()
     {
         std::vector<int> vec{ 1, 2, 3 };
 
@@ -96,7 +96,7 @@ namespace {
         );
     }
 
-    static void lambda_02_02()
+    void lambda_02_02()
     {
         int n{ 1 };
         int m{ 2 };
@@ -115,7 +115,7 @@ namespace {
         l4();
     }
 
-    static void lambda_02()
+    void lambda_02()
     {
         lambda_02_01();
         lambda_02_02();
@@ -124,7 +124,7 @@ namespace {
     // =================================================================================
     // Generic Lambdas
 
-    static void lambda_03()
+    void lambda_03()
     {
         std::vector<int> vec{ 1, 2, 3 };
 
@@ -142,7 +142,7 @@ namespace {
     // =================================================================================
     // Closure Type / Closure Object
 
-    static void lambda_04_01()
+    void lambda_04_01()
     {
         std::string s{ "Hello" };
 
@@ -153,7 +153,7 @@ namespace {
         std::println();
     }
 
-    static void lambda_04_01_transformed()
+    void lambda_04_01_transformed()
     {
         std::string s{ "Hello" };
 
@@ -175,7 +175,7 @@ namespace {
         std::println();
     }
 
-    static void lambda_04_02()
+    void lambda_04_02()
     {
         std::string s{ "Hello" };
 
@@ -186,7 +186,7 @@ namespace {
         std::println();
     }
 
-    static void lambda_04_02_transformed()
+    void lambda_04_02_transformed()
     {
         std::string s{ "Hello" };
 
@@ -208,7 +208,7 @@ namespace {
         std::println();
     }
 
-    static void lambda_04()
+    void lambda_04()
     {
         lambda_04_01();
         lambda_04_01_transformed();
@@ -219,7 +219,7 @@ namespace {
     // =================================================================================
     // Trailing Return Type
 
-    static void lambda_05()
+    void lambda_05()
     {
         auto getValue = [](bool condition) -> std::variant<int, std::string> {
 
@@ -237,7 +237,7 @@ namespace {
     // =================================================================================
     // mutable
 
-    static void lambda_06()
+    void lambda_06()
     {
         std::size_t value{ 123 };
 
@@ -255,7 +255,7 @@ namespace {
     // =================================================================================
     // Capture Initialization (Closure Objects with state)
 
-    static void lambda_07()
+    void lambda_07()
     {
         auto increment = [start = 123]() mutable -> std::size_t {
 
@@ -273,7 +273,7 @@ namespace {
     // =================================================================================
     // Storing lambdas as std::function
 
-    static void lambda_08_01()
+    void lambda_08_01()
     {
         auto lambdaOne = []() { std::println("One"); };
         auto lambdaTwo = []() { std::println("Two"); };
@@ -288,7 +288,7 @@ namespace {
         }
     }
 
-    static void lambda_08_02()
+    void lambda_08_02()
     {
         std::function<int(int, int, int)> lambdaWithThreeParams{
             [](int x, int y, int z) { return x + y + z; }
@@ -299,7 +299,7 @@ namespace {
         std::println("1+2+3={}", sum);
     }
 
-    static void lambda_08()
+    void lambda_08()
     {
         lambda_08_01();
         lambda_08_02();
@@ -308,7 +308,7 @@ namespace {
     // =================================================================================
     // Storing lambdas as function pointer
 
-    static void lambda_09_01()
+    void lambda_09_01()
     {
         auto lambda1 = []() { std::println("1"); };
         auto lambda2 = []() { std::println("2"); };
@@ -327,7 +327,7 @@ namespace {
         }
     }
 
-    static void lambda_09_02()
+    void lambda_09_02()
     {
         int(*lambdaWithThreeParams)(int, int, int) {
             [](int x, int y, int z) { return x + y + z; }
@@ -338,7 +338,7 @@ namespace {
         std::println("10+11+12={}", sum);
     }
 
-    static void lambda_09()
+    void lambda_09()
     {
         lambda_09_01();
         lambda_09_02();
@@ -347,7 +347,7 @@ namespace {
     // =================================================================================
     // Lambdas as First-Class Citizens
 
-    static auto helper_a() {
+    auto helper_a() {
 
         int n{ 1 };
         int m{ 2 };
@@ -356,7 +356,7 @@ namespace {
         return lambda;
     }
 
-    static auto helper_b() {
+    auto helper_b() {
 
         int n{ 1 };
         int m{ 2 };
@@ -365,7 +365,7 @@ namespace {
         return lambda;             // I would't do this never ever :-)
     }
 
-    static void lambda_10()
+    void lambda_10()
     {
         auto outerLambda1{ helper_a() };
         auto outerLambda2{ helper_b() };
@@ -377,9 +377,9 @@ namespace {
     // =================================================================================
     // Lambdas and constexpr
 
-    static constexpr auto sum = [](int a, int b) { return a + b; };
+    constexpr auto sum = [](int a, int b) { return a + b; };
 
-    static constexpr auto power = [](int m, std::size_t n) {
+    constexpr auto power = [](int m, std::size_t n) {
 
         auto result = 1;
         for (std::size_t i{}; i != n; ++i) {
@@ -388,7 +388,7 @@ namespace {
         return result;
     };
 
-    static void lambda_11()
+    void lambda_11()
     {
         constexpr auto result{ sum(10, 11) };         // sum = 21 at compile time
         constexpr auto twoPowerTen{ power(2, 10) };   // twoPowerTen = 1024 at compile time
@@ -400,18 +400,18 @@ namespace {
 
     // Without IIFE
 
-    static constexpr int complexValueComputation(int x) {
+    constexpr int complexValueComputation(int x) {
         if (x > 10) {
             return x * 2;
         }
         return x + 5;
     }
 
-    static constexpr auto value = complexValueComputation(5);
+    constexpr auto value = complexValueComputation(5);
 
     // With IIFE
 
-    static constexpr auto anotherValue = [](int x)
+    constexpr auto anotherValue = [](int x)
         {
             if (x > 10) {
                 return x * 2;
@@ -419,7 +419,7 @@ namespace {
             return x + 5;
         }(5);
 
-    static constexpr auto squareNumbers = []() {
+    constexpr auto squareNumbers = []() {
         std::array<int, 10> temp{};
         for (int i = 0; i < 10; ++i) {
             temp[i] = i * i;
@@ -427,13 +427,13 @@ namespace {
         return temp;
         }();
 
-    static void lambda_12()
+    void lambda_12()
     {}
 
     // =================================================================================
     // Generalized Lambda Capture
 
-    static void lambda_13()
+    void lambda_13()
     {
         class SampleClass
         {
@@ -471,7 +471,7 @@ namespace {
     // =================================================================================
     // Move-only Lambdas
 
-    static void lambda_14_01()
+    void lambda_14_01()
     {
         std::unique_ptr<std::string> ptr{ std::make_unique<std::string>("12345") };
 
@@ -489,7 +489,7 @@ namespace {
         std::println("{}", value);
     }
 
-    static void lambda_14_02()
+    void lambda_14_02()
     {
         std::unique_ptr<std::string> ptr{ std::make_unique<std::string>("ABCDE") };
 
@@ -506,7 +506,7 @@ namespace {
         std::println("{}", value);
     }
 
-    static void lambda_14()
+    void lambda_14()
     {
         lambda_14_01();
         lambda_14_02();
@@ -531,7 +531,7 @@ namespace {
         };
     }
 
-    static void lambda_15()
+    void lambda_15()
     {
         double d{ 123.0 };
         std::string s{ "ABCDE" };
@@ -550,7 +550,7 @@ namespace {
     // =================================================================================
     // noexcept
 
-    static void lambda_16()
+    void lambda_16()
     {
         auto multiplyByTwo = [](int x) noexcept { return x * 2; };
 

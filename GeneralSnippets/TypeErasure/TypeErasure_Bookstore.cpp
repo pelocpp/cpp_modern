@@ -16,7 +16,7 @@ namespace {
      constexpr std::size_t NumberOfMedia = 1'000'000;      // debug
 #else
      constexpr std::size_t MaxIterations = 100'000'000;    // release
-     constexpr std::size_t NumberOfMedia = 10'000'000;      // debug
+     constexpr std::size_t NumberOfMedia = 10'000'000;     // debug
 #endif
 
 }

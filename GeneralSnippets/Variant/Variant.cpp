@@ -288,7 +288,7 @@ namespace {
 
     void variant_10() {
 
-        // Inspecting container to find content by both type and value
+        // inspecting container to find content by both type and value
 
         using VariantType = std::variant<int, double, std::string>;
 

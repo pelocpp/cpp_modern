@@ -29,17 +29,17 @@ namespace {
         int n = *ptr1;
         std::println("*ptr1:   {}", n);
 
-        // access value using raw pointer
-        int* ip = ptr1.get();
-        (*ip)++;
-        int m = *ip;
-        std::println("*ip:     {}", m);
-
         // access value using reference
         int& ri = *ptr1;
         // int& ri = *ptr1.get();  // works too
         ri++;
         std::println("ri:      {}", ri);
+
+        // access value using raw pointer
+        int* ip = ptr1.get();
+        (*ip)++;
+        int m = *ip;
+        std::println("*ip:     {}", m);
 
         /* move construction: another std::unique_ptr by moving 'ptr1' to 'ptr2',
          *'ptr1' doesn't own the object anymore
@@ -120,14 +120,15 @@ namespace {
 
         // C++ Core Guidelines
         // provide a function with a unique pointer: Call-by-Value / Sink-Pattern
-        // Owne-Ship is taken / unique pointer is passed by value / std::move is needed
+        // Owner-Ship is taken / unique pointer is passed by value / std::move is needed
         storeUniquePointerAsSink(std::move(ptr));
 
+        // or
         // C++ Core Guidelines
-        storeUniquePointerAlternate(ptr.get());
+        // storeUniquePointerAlternate(ptr.get());
 
         // does this work?
-        std::println("*ptr:    {}", *ptr);
+        // std::println("*ptr:    {}", *ptr);
     }
 
     // ===========================================================================
@@ -155,16 +156,23 @@ namespace {
         vec.push_back(std::move(ptr1));
         vec.push_back(std::move(ptr2));
 
-        // ======================
+        // ===================================
 
-        auto ptr3 = std::move(vec[0]);
-        auto& ptr4 = vec[1];
+        auto ptr = std::move(vec[0]);
 
-        processDataCLike(vec[1].get());    // C-Stylistics, using native address 
+        processDataCLike(ptr.get());    // C-Stylistics, using native address 
 
-        processDataCppLike(*vec[1].get()); // C++-Stylistics, using reference syntax
+        processDataCppLike(*ptr.get()); // C++-Stylistics, using reference syntax
         // or
-        processDataCppLike(*vec[1]);       // C++-Stylistics, using reference syntax
+        processDataCppLike(*ptr);       // C++-Stylistics, using reference syntax
+
+        // ===================================
+
+        auto& sp = *vec[1];
+
+        processDataCLike(&sp);         // C-Stylistics, using native address 
+
+        processDataCppLike(sp);        // C++-Stylistics, using reference syntax
     }
 
     // ===========================================================================

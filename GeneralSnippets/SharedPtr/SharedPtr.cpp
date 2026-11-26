@@ -36,17 +36,17 @@ namespace {
         int n = *ptr1;
         std::println("ptr1:        {}", n);
 
-        // access value using raw pointer
-        int* ip = ptr1.get();
-        (*ip)++;
-        int m = *ip;
-        std::println("*ip:         {}", m);
-
         // access value using reference
         int& ri = *ptr1;
         // int& ri = *ptr1.get();  // works too
         ri++;
         std::println("ri:          {}", ri);
+
+        // access value using raw pointer
+        int* ip = ptr1.get();
+        (*ip)++;
+        int m = *ip;
+        std::println("*ip:         {}", m);
 
         /* create several smart pointers that share the same object
         */
@@ -114,11 +114,11 @@ namespace {
     {
         auto ptr = std::make_shared<std::string>("123");
 
-        processDataCLike(ptr.get());    // C-Stylistics, using native address 
+        auto& sp = *ptr;
 
-        processDataCppLike(*ptr.get()); // C++-Stylistics, using reference syntax
-        // or
-        processDataCppLike(*ptr);       // C++-Stylistics, using reference syntax
+        processDataCLike(&sp);    // C-Stylistics, using native address 
+
+        processDataCppLike(sp);   // C++-Stylistics, using reference syntax
     }
 
     // ===========================================================================

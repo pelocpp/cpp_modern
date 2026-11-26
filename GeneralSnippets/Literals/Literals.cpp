@@ -6,9 +6,9 @@ module modern_cpp:literals;
 
 import std;
 
-namespace Literals_With_Separators {
+namespace {
 
-    static void test_01() {
+    void test_01() {
 
         // binary, octal and hexadecimal literals
         // (including single quotation mark as separator)
@@ -276,7 +276,6 @@ namespace Literals_Color_CompileTime {
 
 void main_literals()
 {
-    using namespace Literals_With_Separators;
     test_01();
 
     using namespace Literals_Color_Runtime;

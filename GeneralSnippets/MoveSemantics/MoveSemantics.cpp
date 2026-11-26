@@ -26,8 +26,8 @@ namespace {
         BigData& operator= (const BigData&);         // copy assignment
 
         // move semantics
-        // BigData(BigData&&) noexcept;              // move c'tor
-        // BigData& operator= (BigData&&) noexcept;  // move assignment
+        //BigData(BigData&&) noexcept;              // move c'tor
+        //BigData& operator= (BigData&&) noexcept;  // move assignment
 
     private:
         // private helper methods
@@ -61,33 +61,33 @@ namespace {
     }
 
     // copy semantics
-    BigData::BigData(const BigData& data) {
+    BigData::BigData(const BigData& other) {
 
         std::println("copy c'tor");
 
         // allocate buffer
-        m_size = data.m_size;
+        m_size = other.m_size;
         m_data = new int[m_size];
 
         // copy object
-        std::copy(data.m_data, data.m_data + m_size, m_data);
+        std::copy(other.m_data, other.m_data + m_size, m_data);
     }
 
-    BigData& BigData::operator= (const BigData& data) {
+    BigData& BigData::operator= (const BigData& other) {
 
         // prevent self-assignment
-        if (this == &data)
+        if (this == &other)
             return *this;
 
         // delete old buffer
         delete[] m_data;
 
         // allocate a new buffer
-        m_size = data.m_size;
+        m_size = other.m_size;
         m_data = new int[m_size];
 
         // copy buffer
-        std::copy(data.m_data, data.m_data + m_size, m_data);
+        std::copy(other.m_data, other.m_data + m_size, m_data);
 
         return *this;
     }
@@ -95,40 +95,39 @@ namespace {
     // -------------------------------------------------------------------
 
     // move semantics
-    //BigData::BigData(BigData&& data) noexcept {  // move c'tor
+    //BigData::BigData(BigData&& other) noexcept {  // move c'tor
 
     //    std::println("move c'tor");
 
-    //    m_data = data.m_data;   // shallow copy
-    //    m_size = data.m_size;
-    //    data.m_data = nullptr;  // reset source object, ownership has been moved
-    //    data.m_size = 0;
+    //    m_data = other.m_data;   // shallow copy
+    //    m_size = other.m_size;
+    //    other.m_data = nullptr;  // reset source object, ownership has been moved
+    //    other.m_size = 0;
     //}
 
     // alternate realisation
-    //BigData::BigData(BigData&& data) noexcept {  // move c'tor
-    //    moveFrom(data);  // move argument to current object
+    //BigData::BigData(BigData&& other) noexcept {  // move c'tor
+    //    moveFrom(other);  // move argument to current object
     //}
 
     // -------------------------------------------------------------------
 
-    //BigData& BigData::operator= (BigData&& data) noexcept { // move-assignment
-
-    //    if (this != &data) {
-    //        delete[] m_data;        // release left side
-    //        m_data = data.m_data;   // shallow copy
-    //        m_size = data.m_size;
-    //        data.m_data = nullptr;  // reset source object, ownership has been moved
-    //        data.m_size = 0;
+    //BigData& BigData::operator= (BigData&& other) noexcept { // move-assignment
+    //    if (this != &other) {
+    //        delete[] m_data;         // release left side
+    //        m_data = other.m_data;   // shallow copy
+    //        m_size = other.m_size;   //
+    //        other.m_data = nullptr;  // reset source object, ownership has been moved
+    //        other.m_size = 0;        //
     //    }
     //    return *this;
     //}
 
     // alternate realisation
-    //BigData& BigData::operator= (BigData&& data) noexcept { // move-assignment
-    //    if (this != &data) {
-    //        cleanup();         // release left side
-    //        moveFrom(data);    // move right side to left side
+    //BigData& BigData::operator= (BigData&& other) noexcept { // move-assignment
+    //    if (this != &other) {
+    //        cleanup();          // release left side
+    //        moveFrom(other);    // move right side to left side
     //    }
     //    return *this;
     //}
@@ -151,14 +150,14 @@ namespace {
         m_size = 0;
     }
 
-    void BigData::moveFrom(BigData& data) noexcept {
+    void BigData::moveFrom(BigData& other) noexcept {
         // shallow copy
-        m_data = data.m_data;
-        m_size = data.m_size;
+        m_data = other.m_data;
+        m_size = other.m_size;
 
         // reset source  object, because ownership has been moved
-        data.m_data = nullptr;
-        data.m_size = 0;
+        other.m_data = nullptr;
+        other.m_size = 0;
     }
 
     // test methods

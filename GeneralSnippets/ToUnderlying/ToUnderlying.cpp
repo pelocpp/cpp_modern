@@ -6,7 +6,7 @@ module modern_cpp:to_underlying;
 
 import std;
 
-namespace ToUnderlying {
+namespace {
 
     enum class Color : char {
         Red   = 'R',
@@ -24,7 +24,7 @@ namespace ToUnderlying {
         Sunday     = 7,
     };
 
-    static void test_01()
+    void test_01()
     {
         Color color{ Color::Blue };
         auto colorCode{ std::to_underlying(color) };
@@ -40,8 +40,6 @@ namespace ToUnderlying {
 
 void main_to_underlying()
 {
-    using namespace ToUnderlying;
-
     test_01(); 
 }
 
