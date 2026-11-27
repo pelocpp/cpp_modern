@@ -897,7 +897,7 @@ namespace Exercises_SmartPointers {
 
     namespace Exercise_06 {
 
-        class Child;  // Forward declaration
+        class Child;  // forward declaration
 
         class Mom {
         private:
@@ -905,7 +905,9 @@ namespace Exercises_SmartPointers {
             std::weak_ptr<const Child> m_child;
 
         public:
-            explicit Mom(std::string name) : m_name{ std::move(name) } {}
+            explicit Mom(std::string name) 
+                : m_name{ std::move(name) }
+            {}
 
             ~Mom() {
                 std::println("Mother ({}) passes away.", m_name);
@@ -926,8 +928,6 @@ namespace Exercises_SmartPointers {
             std::weak_ptr<const Mom> m_mother;
 
         public:
-            explicit Child(std::string name) : m_name{ std::move(name) } {}
-
             Child(std::string name, const std::shared_ptr<Mom>& mother)
                 : m_name{ std::move(name) }, m_mother{ mother }
             {}

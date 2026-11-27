@@ -23,7 +23,7 @@ namespace {
 
         std::array<int, 5> array2{};
 
-        std::array<int, 5> array3{ 1, 2, 3, 4, 5 };     // brace initialization
+        std::array<int, 5> array3{ 1, 2, 3, 4, 5 };     // aggregate  initialization
 
         std::array<int, 5> array4 = { 1, 2, 3, 4, 5 };  // initializer list
 
@@ -37,9 +37,9 @@ namespace {
 
         std::array<int, 5> array;
 
-        array = { 1, 2, 3, 4, 5 };    // assignment with initializer list: okay
+        array = { 1, 2, 3, 4, 5 };       // assignment with move-assignmenet operator
 
-        array = { 9, 8, 7 };          // Okay, elements 3 and 4 are set to zero!
+        array = { 9, 8, 7 };             // assignment with move-assignmenet operator, remaining elements are set to zero!
 
         // array = { 0, 1, 2, 3, 4, 5 }; // doesn't compile, too many elements in initializer list!
     }
@@ -86,7 +86,7 @@ namespace {
         std::println("Length: {}", array.size());
     }
 
-    template<typename T, int Length>
+    template<typename T, std::size_t Length>
     void print(const std::array<T, Length>& array) {
         std::println("Length: {}", array.size());
     }
@@ -178,10 +178,10 @@ namespace {
         std::string m_role;
         std::size_t m_phone;
 
-        Employee() : Employee(0, "", "", 0) {}
+        Employee() : Employee{ 0, "", "", 0 } {}
 
-        Employee(std::size_t m_id, const std::string& m_name, const std::string& m_role, std::size_t m_phone)
-            : m_id{ m_id }, m_name{ m_name }, m_role{ m_role }, m_phone{ m_phone }
+        Employee(std::size_t id, const std::string& name, const std::string& role, std::size_t phone)
+            : m_id{ id }, m_name{ name }, m_role{ role }, m_phone{ phone }
         {}
     };
 

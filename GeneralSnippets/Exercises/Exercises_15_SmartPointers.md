@@ -386,10 +386,10 @@ Eine mögliche Ausgabe des Programms in der Konsole könnte so aussehen:
 ```
 Dorothea: use_count = 1
 John: use_count = 1
-Dorothea: Hello child.
-John: Hello mother.
+Dorothea: Hello dear child John.
+John: Hello dear mother Dorothea.
 Mother (Dorothea) passes away.
-John: My mother no longer exists.
+John: My mother no longer lives.
 Child (John) passes away.
 ```
 

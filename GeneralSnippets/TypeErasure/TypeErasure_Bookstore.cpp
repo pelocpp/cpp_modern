@@ -211,6 +211,27 @@ namespace BookStoreUsingDynamicPolymorphism {
 
     static void test_bookstore_dynamic_polymorphism_05() {
 
+        std::println("Benchmark - Measuring method calls within a book store - using Polymorphism");
+
+        Bookstore bookstore {
+            std::make_unique<Book>("C", "Dennis Ritchie", 11.99, 12),
+            std::make_unique<Book>("Java", "James Gosling", 17.99, 21),
+            std::make_unique<Book>("C++", "Bjarne Stroustrup", 16.99, 4),
+            std::make_unique<Book>("C#", "Anders Hejlsberg", 21.99, 8),
+            std::make_unique<Book>("Python", "Guido van Rossum", 11.99, 16)
+        };
+
+        ScopedTimer watch;
+
+        for (std::size_t i{}; i != MaxIterations; ++i) {
+            double total{ bookstore.totalBalance()};
+        }
+
+        std::print("Done: ");
+    }
+
+    static void test_bookstore_dynamic_polymorphism_06() {
+
         std::println("Benchmark - Measuring insertions into an empty bookstore");
 
         Bookstore bookstore;
@@ -420,7 +441,7 @@ namespace BookStoreUsingStaticPolymorphism {
 
     static void test_bookstore_static_polymorphism_04() {
 
-        std::println("Benchmark - Measuring Method Calls - using Static Polymorphism");
+        std::println("Benchmark - Measuring method calls - using Static Polymorphism");
 
         Book cBook{ "C", "Dennis Ritchie", 11.99, 12 };
 
@@ -436,6 +457,29 @@ namespace BookStoreUsingStaticPolymorphism {
     }
 
     static void test_bookstore_static_polymorphism_05() {
+
+        std::println("Benchmark - Measuring method calls within a book store - using Static Polymorphism");
+
+        using MyBookstore = Bookstore<Book, Movie>;
+
+        MyBookstore bookstore{
+            Book{ "C", "Dennis Ritchie", 11.99, 12 },
+            Book{ "Java", "James Gosling", 17.99, 21 },
+            Book{ "C++", "Bjarne Stroustrup", 16.99, 4 },
+            Book{ "C#", "Anders Hejlsberg", 21.99, 8 },
+            Book{ "Python", "Guido van Rossum", 11.99, 16 }
+        };
+
+        ScopedTimer watch;
+
+        for (std::size_t i{}; i != MaxIterations; ++i) {
+            double total{ bookstore.totalBalance() };
+        }
+
+        std::print("Done: ");
+    }
+
+    static void test_bookstore_static_polymorphism_06() {
 
         std::println("Benchmark - Measuring insertions into an empty bookstore");
 
@@ -468,7 +512,7 @@ namespace BookStoreUsingStaticPolymorphism {
         double getPrice() const { return 0.0; }   // put into comments
     };
 
-    static void test_bookstore_static_polymorphism_06() {
+    static void test_bookstore_static_polymorphism_07() {
 
         // verifying concept 'MediaConcept'
         Bookstore<Book, BluRay, Movie> bookstore;
@@ -488,14 +532,16 @@ void main_type_erasure_bookstore()
     BookStoreUsingDynamicPolymorphism::test_bookstore_dynamic_polymorphism_02();  // creating a book store - media objects provided inside
     BookStoreUsingDynamicPolymorphism::test_bookstore_dynamic_polymorphism_03();  // demonstrating 'addMedia'
     BookStoreUsingDynamicPolymorphism::test_bookstore_dynamic_polymorphism_04();  // measuring (virtual) method calls
-    BookStoreUsingDynamicPolymorphism::test_bookstore_dynamic_polymorphism_05();  // measuring insertions into an empty bookstore
+    BookStoreUsingDynamicPolymorphism::test_bookstore_dynamic_polymorphism_05();  // measuring (virtual) method calls within a book store
+    BookStoreUsingDynamicPolymorphism::test_bookstore_dynamic_polymorphism_06();  // measuring insertions into an empty bookstore
 
     BookStoreUsingStaticPolymorphism::test_bookstore_static_polymorphism_01();    // creating a book store - media objects provided outside
     BookStoreUsingStaticPolymorphism::test_bookstore_static_polymorphism_02();    // creating a book store - media objects provided inside
     BookStoreUsingStaticPolymorphism::test_bookstore_static_polymorphism_03();    // demonstrating 'addMedia'
     BookStoreUsingStaticPolymorphism::test_bookstore_static_polymorphism_04();    // measuring (static) method calls 
-    BookStoreUsingStaticPolymorphism::test_bookstore_static_polymorphism_05();    // measuring insertions into an empty bookstore 
-    BookStoreUsingStaticPolymorphism::test_bookstore_static_polymorphism_06();    // verifying concept 'MediaConcept' with a BlueRay media
+    BookStoreUsingStaticPolymorphism::test_bookstore_static_polymorphism_05();    // measuring (static) method calls within a book store
+    BookStoreUsingStaticPolymorphism::test_bookstore_static_polymorphism_06();    // measuring insertions into an empty bookstore 
+    BookStoreUsingStaticPolymorphism::test_bookstore_static_polymorphism_07();    // verifying concept 'MediaConcept' with a BlueRay media
 }
 
 // =====================================================================================

@@ -263,22 +263,20 @@ namespace Exercises_ConstExpr {
                         return Color{ 0, 0, 0 };
                     }
                     else {
+                        std::string_view svR{ str.substr(1, 2) };
+                        std::string_view svG{ str.substr(3, 2) };
+                        std::string_view svB{ str.substr(5, 2) };
 
-                    }
+                        auto r{ byte(svR) };
+                        auto g{ byte(svG) };
+                        auto b{ byte(svB) };
 
-                    std::string_view svR{ str.substr(1, 2) };
-                    std::string_view svG{ str.substr(3, 2) };
-                    std::string_view svB{ str.substr(5, 2) };
-
-                    auto r{ byte(svR) };
-                    auto g{ byte(svG) };
-                    auto b{ byte(svB) };
-
-                    if (r.has_value() and g.has_value() and b.has_value()) {
-                        return Color{ r.value() , g.value() , b.value() };
-                    }
-                    else {
-                        return Color{ 0, 0, 0 };
+                        if (r.has_value() and g.has_value() and b.has_value()) {
+                            return Color{ r.value() , g.value() , b.value() };
+                        }
+                        else {
+                            return Color{ 0, 0, 0 };
+                        }
                     }
                 }
 
